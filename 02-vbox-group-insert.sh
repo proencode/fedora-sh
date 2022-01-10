@@ -18,3 +18,5 @@ if [ "x$a" = "xy" ]; then
 	echo "${cRed}[ ${cReset}reboot ${cRed}]${cReset}"
 	reboot
 fi
+
+echo "${cYellow}>>>>>>>>>>${cGreen} $0 ||| ${cCyan}${MEMO} ${cYellow}>>>>>>>>>>${cReset}"
