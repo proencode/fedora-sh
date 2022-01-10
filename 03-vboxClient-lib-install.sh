@@ -19,6 +19,6 @@ echo "${cCyan}---->${cReset} [장치] 클릭 > [게스트 확장 CD 이미지 �
 echo "${cCyan}---->${cReset} 자동으로 시작하기로 한 프로그램 . . . 실행하시겠습니까? > [실행] 클릭"
 echo "${cCyan}---->${cBlue} ---->${cReset} Do you wish to continue? [yes or no] > 나오면 yes 를 입력하고, 다음 명령을 준다"
 echo "${cCyan}---->${cBlue} ---->${cReset} sudo /sbin/rcvboxadd quicksetup all"
-echo "${cCyan}---->${cReset} ls -l cd /media/sf_Downloads/ #--- 다운로드 폴더를 보여준다"
+echo "${cCyan}---->${cReset} ls -l /media/sf_Downloads/ #--- 다운로드 폴더를 보여준다"
 echo "${cCyan}---->${cReset}"
 echo "${cYellow}>>>>>>>>>>${cGreen} $0 ||| ${cCyan}${MEMO} ${cYellow}>>>>>>>>>>${cReset}"
