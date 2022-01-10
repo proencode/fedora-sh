@@ -10,8 +10,22 @@ cat_and_run () {
 MEMO="게스트확장 을 위한 프로그램 설치"
 echo "${cYellow}>>>>>>>>>>${cGreen} $0 ||| ${cCyan}${MEMO} ${cYellow}>>>>>>>>>>${cReset}"
 
-cat_and_run "sudo dnf install kernel-debug-devel kernel-devel" "커널 devel 추가"
-cat_and_run "sudo dnf install automake autoconf dkms vim-enhanced vim-common mc lynx p7zip" "컴파일용과 추가 프로그램들"
+cat_and_run "sudo dnf install -y kernel-debug-devel kernel-devel" "커널 devel 추가"
+cat_and_run "sudo dnf install -y automake autoconf dkms vim-enhanced vim-common mc lynx p7zip keepass rclone liveusb-creator " "컴파일용과 추가 프로그램들"
+
+cat <<__EOF__
+vi ~/.ssh/config
+Host kaos.kr
+        KexAlgorithms +diffie-hellman-group-exchange-sha1,diffie-hellman-group14-sha1,diffie-hellman-group1-sha1
+        # KexAlgorithms +diffie-hellman-group1-sha1
+        ## PubkeyAcceptedKeyTypes=ssh-rsa
+Host www.kaos.kr
+        KexAlgorithms +diffie-hellman-group-exchange-sha1,diffie-hellman-group14-sha1,diffie-hellman-group1-sha1
+        # KexAlgorithms +diffie-hellman-group1-sha1
+        ## PubkeyAcceptedKeyTypes=ssh-rsa
+
+__EOF__
+
 echo "${cCyan}---->${cReset}"
 echo "${cCyan}---->${cReset} 이 작업이 끝나면,"
 echo "${cCyan}---->${cReset} 화면 맨 위에 있는 ''파일 머신 보기 입력 장치 도움말'' 메뉴에서,"
