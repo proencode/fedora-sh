@@ -35,7 +35,7 @@ fi
 # ----------
 MEMO="docker-compose wiki.js 설치"
 echo "${cYellow}>>>>>>>>>>${cGreen} $0 ||| ${cCyan}${MEMO} ${cYellow}>>>>>>>>>>${cReset}"
-logs_folder="~/zz00-logs" ; if [ ! -d "${logs_folder}" ]; then cat_and_run "mkdir \"${logs_folder}\"" ; fi
+logs_folder="${HOME}/zz00-logs" ; if [ ! -d "${logs_folder}" ]; then cat_and_run "mkdir ${logs_folder}" ; fi
 # ----------
 
 port_no="7757"
@@ -101,17 +101,18 @@ cat_and_run "ifconfig | grep wlp -A1 | tail -1 | awk '{print \$2\":${port_no}\"}
 cat_and_run "sudo docker-compose up --force-recreate &"
 cat_and_run "sudo docker-compose ps -a" "#-- 모든 작업을 확인합니다."
 
-cat  <<__EOF__
-${cCyan}
-#--- 출처: https://wiki.js.org/
-cd ${wiki_dir} ; sudo docker-compose down #--- 작업을 중단할때, 입력합니다.
-localhost:${port_no} #--- 위키서버가 실행되면 브라우저에서 이와같이 입력합니다.
-${cReset}
-__EOF__
-
 cd -
-# ----------
+
 echo "cd ${wiki_dir} ; sudo docker-compose down #--- 작업을 중단할때, 입력합니다." > ${logs_folder}/zz.$(date +"%y%m%d-%H%M%S")__${CMD_NAME}
 cat_and_run "ls --color ${CMD_DIR} ; ls -l --color ${logs_folder}"
 echo "${cYellow}>>>>>>>>>>${cGreen} $0 ||| ${cCyan}${MEMO} ${cYellow}>>>>>>>>>>${cReset}"
-# ----------
+
+cat  <<__EOF__
+${cCyan}#--- 출처: https://wiki.js.org/
+${cRed}+----------------+${cReset}
+${cRed}|                |${cReset}
+${cRed}| ${cReset}localhost:${port_no} ${cRed}| ${cGreen}#--- 위키서버가 실행되면 브라우저에서 이와같이 입력합니다.
+${cRed}|                |${cReset}
+${cRed}+----------------+${cReset}
+${cCyan}cd ${wiki_dir} ; sudo docker-compose down #--- 작업을 중단할때, 입력합니다. ${cReset}
+__EOF__
