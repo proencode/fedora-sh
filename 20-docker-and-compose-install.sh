@@ -102,11 +102,19 @@ __EOF__
 cat_and_run "sudo dnf -y install docker-compose" "Fedora 저장소에서 docker-compose 설치"
 cat_and_run "rpm -qi docker-compose" "설치된 내용 확인"
 cat_and_run "sudo curl -L https://raw.githubusercontent.com/docker/compose/master/contrib/completion/bash/docker-compose -o /etc/bash_completion.d/docker-compose ; source /etc/bash_completion.d/docker-compose" "스크립트 넣기"
+cat_and_run "docker-compose -version" "버전 확인"
 
 # ---
 
-cat_and_readY "firefox https://computingforgeeks.com/install-docker-ui-manager-portainer/" "도커 UI 관리자 - 포테이너"
-cat_and_readY "firefox https://computingforgeeks.com/top-command-for-container-metrics/" "Ctop으로 Docker 컨테이너 리소스 사용량 모니터링"
+cat <<__EOF__
+${cCyan}
+다음 사이트에서 최신 버젼을 확인한다.
+https://github.com/docker/compose/releases #--- 오른쪽 마우스로 클릭해서 링크열기 하면된다.
+
+https://computingforgeeks.com/install-docker-ui-manager-portainer/ #--- 도커 UI 관리자 - 포테이너
+https://computingforgeeks.com/top-command-for-container-metrics/ #--- Ctop으로 Docker 컨테이너 리소스 사용량 모니터링
+${cReset}
+__EOF__
 
 
 echo "${cYellow}>>>>>>>>>>${cGreen} $0 ||| ${cCyan}${MEMO} ${cYellow}>>>>>>>>>>${cReset}"
