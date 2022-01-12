@@ -31,11 +31,11 @@ CMD_DIR=${0%/$CMD_NAME} # 실행 이름을 빼고 나머지 디렉토리만 담�
 if [[ "x$CMD_DIR" == "x" ]] || [[ "x$CMD_DIR" == "x$CMD_NAME" ]]; then
 	CMD_DIR="."
 fi
+logs_folder="${HOME}/zz00-logs" ; if [ ! -d "${logs_folder}" ]; then cat_and_run "mkdir ${logs_folder}" ; fi
 
 # ----------
 MEMO="docker-compose wiki.js 설치"
 echo "${cYellow}>>>>>>>>>>${cGreen} $0 ||| ${cCyan}${MEMO} ${cYellow}>>>>>>>>>>${cReset}"
-logs_folder="${HOME}/zz00-logs" ; if [ ! -d "${logs_folder}" ]; then cat_and_run "mkdir ${logs_folder}" ; fi
 # ----------
 
 port_no="7757"
@@ -47,6 +47,9 @@ if [ ! -d ${DB_FOLDER} ]; then
 	cat_and_run "sudo chcon -R system_u:object_r:container_file_t:s0 ${DB_FOLDER}"
 	cat_and_run "sudo chown -R systemd-coredump.ssh_keys ${DB_FOLDER}"
 	cat_and_run "ls -lZ ${DB_FOLDER}" "폴더를 만들었습니다."
+else
+	echo "${cRed}!!!!${cMagenta} ----> ${cCyan}${DB_FOLDER}${cReset} 디렉토리가 있으므로, 진행을 중단합니다."
+	exit 1
 fi
 
 wiki_dir="${PWD}/wikijs-files"

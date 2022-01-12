@@ -21,21 +21,16 @@ cat_and_readY () {
 	fi
 	echo "${cYellow}<${cMagenta}---- ${cBlue}pressEnter: $1${cReset} $2"
 }
-# ----------
-logs_folder="${HOME}/zz00-logs" ; if [ ! -d "${logs_folder}" ]; then mkdir "${logs_folder}" ; fi
+
 CMD_NAME=`basename $0` # 명령줄에서 실행 프로그램 이름만 꺼냄
 CMD_DIR=${0%/$CMD_NAME} # 실행 이름을 빼고 나머지 디렉토리만 담음
 if [ "x$CMD_DIR" == "x" ] || [ "x$CMD_DIR" == "x$CMD_NAME" ]; then
 	CMD_DIR="."
 fi
+logs_folder="${HOME}/zz00-logs" ; if [ ! -d "${logs_folder}" ]; then mkdir "${logs_folder}" ; fi
 MEMO="데이터베이스에 연결하는 로그인 패쓰 지정하기"
-# ----------
-
+echo "${cRed}<<<<<<<<<<${cBlue} $0 ||| ${cMagenta}${MEMO} ${cRed}<<<<<<<<<<${cReset}"
 cat <<__EOF__
-
-${cMagenta}$0 ${cYellow} ${MEMO} ${cReset}
-출처: yosjeon@gmail.com
-
 ----> 도커이름 전체
 __EOF__
 
@@ -113,3 +108,4 @@ done
 
 touch "${logs_folder}/zz.$(date +"%y%m%d-%H%M%S")__${CMD_NAME}"
 cat_and_run "ls --color ${CMD_DIR}" ; ls --color ${logs_folder}
+echo "${cRed}<<<<<<<<<<${cBlue} $0 ||| ${cMagenta}${MEMO} ${cRed}<<<<<<<<<<${cReset}"

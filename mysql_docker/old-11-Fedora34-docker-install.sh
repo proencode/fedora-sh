@@ -29,22 +29,17 @@ cat_and_readY () {
 # play -q ~/bin/1-bin-scripts/freesound/513865__wormletter__chime-c.wav & #---- 교회 뎅-
 # play -q ~/bin/1-bin-scripts/freesound/91926__tim-kahn__ding.wav & #---- 딩~
 
-# ----------
-logs_folder="${HOME}/zz00-logs" ; if [ ! -d "${logs_folder}" ]; then mkdir "${logs_folder}" ; fi
 CMD_NAME=`basename $0` # 명령줄에서 실행 프로그램 이름만 꺼냄
 CMD_DIR=${0%/$CMD_NAME} # 실행 이름을 빼고 나머지 디렉토리만 담음
 if [ "x$CMD_DIR" == "x" ] || [ "x$CMD_DIR" == "x$CMD_NAME" ]; then
 	CMD_DIR="."
 fi
+logs_folder="${HOME}/zz00-logs" ; if [ ! -d "${logs_folder}" ]; then mkdir "${logs_folder}" ; fi
 MEMO="Fedora34에 Docker Engine 설치"
-
+echo "${cRed}<<<<<<<<<<${cBlue} $0 ||| ${cMagenta}${MEMO} ${cRed}<<<<<<<<<<${cReset}"
 cat <<__EOF__
-
-${cMagenta}$0 ${cYellow} ${MEMO} ${cReset}
 출처: https://docs.docker.com/engine/install/fedora/
-
 __EOF__
-# ----------
 
 cat_and_run "ls -lZ /usr/lib/systemd/system/containerd.service" " docker.service  docker.socket zvbid.service"
 
@@ -162,3 +157,4 @@ cat_and_run "cd /usr/lib/systemd/system ; sudo ls -lZ containerd.service docker.
 
 touch "${logs_folder}/zz.$(date +"%y%m%d-%H%M%S")__${CMD_NAME}"
 cat_and_run "sudo docker ps -a ; ls --color ${CMD_DIR}" ; ls --color ${logs_folder}
+echo "${cRed}<<<<<<<<<<${cBlue} $0 ||| ${cMagenta}${MEMO} ${cRed}<<<<<<<<<<${cReset}"

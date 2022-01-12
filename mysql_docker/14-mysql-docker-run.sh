@@ -21,22 +21,16 @@ cat_and_readY () {
 	fi
 	echo "${cYellow}<${cMagenta}---- ${cBlue}pressEnter: $1${cReset} $2"
 }
-# ----------
-logs_folder="${HOME}/zz00-logs" ; if [ ! -d "${logs_folder}" ]; then mkdir "${logs_folder}" ; fi
+
 CMD_NAME=`basename $0` # 명령줄에서 실행 프로그램 이름만 꺼냄
 CMD_DIR=${0%/$CMD_NAME} # 실행 이름을 빼고 나머지 디렉토리만 담음
 if [ "x$CMD_DIR" == "x" ] || [ "x$CMD_DIR" == "x$CMD_NAME" ]; then
 	CMD_DIR="."
 fi
+logs_folder="${HOME}/zz00-logs" ; if [ ! -d "${logs_folder}" ]; then mkdir "${logs_folder}" ; fi
 MEMO="---MySQL--- DB 서버를 도커에 설치하기"
-# ----------
+echo "${cRed}<<<<<<<<<<${cBlue} $0 ||| ${cMagenta}${MEMO} ${cRed}<<<<<<<<<<${cReset}"
 
-cat <<__EOF__
-
-${cMagenta}$0 ${cYellow} ${MEMO} ${cReset}
-출처: yosjeon@gmail.com
-
-__EOF__
 cat_and_run "sudo docker ps -a" "운영중인 MySQL DB 도커들"
 ##for out in $(sudo docker ps -a | awk '{print $NF}')
 ##do
