@@ -47,8 +47,8 @@ if [ ! -d ${megasync_downloads} ]; then
 fi
 
 if [ ! -d ${home_MEGAsync} ]; then
-	cat_and_run "mkdir ${home_MEGAsync}" "링크할 디렉토리를 홈 디렉토리에 만듭니다."
-	cat_and_run "ln -s ${megasync_downloads}/ ${home_MEGAsync}" "가상시스템의 용량을 줄이기 위해 공유 폴더로 링크를 겁니다."
+	cat_and_run "ln -s ${megasync_downloads} ${home_MEGAsync}" "가상시스템의 용량을 줄이기 위해 공유 폴더로 링크를 겁니다."
+	cat_and_run "ls -l --color ${HOME}"
 fi
 
 if ! [ -x "$(command -v megasync)" ]; then
