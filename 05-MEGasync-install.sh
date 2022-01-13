@@ -31,19 +31,30 @@ CMD_DIR=${0%/$CMD_NAME} # 실행 이름을 빼고 나머지 디렉토리만 담�
 if [ "x$CMD_DIR" == "x" ] || [ "x$CMD_DIR" == "x$CMD_NAME" ]; then
 	CMD_DIR="."
 fi
-mega_dir=${HOME}/MEGAsync
+home_MEGAsync=${HOME}/MEGAsync
+Downloads_link=/media/sf_Downloads
+megasync_downloads=${Downloads_link}/4w/mega
 
 MEMO="MEGAsync 실행하기"
 echo "${cYellow}>>>>>>>>>>${cGreen} $0 ||| ${cCyan}${MEMO} ${cYellow}>>>>>>>>>>${cReset}"
 
-if [ ! -d ~/${mega_dir} ]; then
-	cat_and_run "mkdir ${mega_dir}" "링크할 디렉토리를 홈 디렉토리에 만듭니다."
-	cat_and_run "ln -s /media/sf_Downloads/4w/mega/ MEGAsync" "가상시스템의 용량을 줄이기 위해 공유 폴더로 링크를 겁니다."
+if [ ! -d ${Downloads_link} ]; then
+	echo "${cRed}!!!!! ----> ${cYellow}링크할 ${Downloads_link} 폴더가 없으므로 중단합니다.${cReset}"
+	exit 1
+fi
+if [ ! -d ${megasync_downloads} ]; then
+	cat_and_run "mkdir -p ${megasync_downloads}" "MEGAsync 를 담을 실제 디렉토리를 만듭니다."
+fi
+
+if [ ! -d ${home_MEGAsync} ]; then
+	cat_and_run "mkdir ${home_MEGAsync}" "링크할 디렉토리를 홈 디렉토리에 만듭니다."
+	cat_and_run "ln -s ${megasync_downloads}/ ${home_MEGAsync}" "가상시스템의 용량을 줄이기 위해 공유 폴더로 링크를 겁니다."
 fi
 
 if ! [ -x "$(command -v megasync)" ]; then
 	cat_and_run "sudo dnf -y install megasync" "megasync 를 설치합니다."
 fi
 cat_and_run "megasync &" "megasync 를 실행합니다."
+cat_and_run "ls -lh --color ${home_MEGAsync}" "MEGAsync 에서는 ${megasync_downloads} 에 링크를 걸어야 합니다."
 
 echo "${cYellow}>>>>>>>>>>${cGreen} $0 ||| ${cCyan}${MEMO} ${cYellow}>>>>>>>>>>${cReset}"
