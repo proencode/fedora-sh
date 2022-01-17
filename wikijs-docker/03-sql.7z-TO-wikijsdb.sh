@@ -55,6 +55,7 @@ cat <<__EOF__
 db_sql_7z="$1"
 sql_name=$(basename ${db_sql_7z}) # 백업파일 이름만 꺼냄
 dir_for_backup=${db_sql_7z%/$sql_name} # 백업파일 이름을 빼고 나머지 디렉토리만 담음
+----> Press Enter:
 __EOF__
 read a
 

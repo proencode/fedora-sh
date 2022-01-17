@@ -38,7 +38,7 @@ MEMO="docker-compose wiki.js 설치"
 echo "${cYellow}>>>>>>>>>>${cGreen} $0 ||| ${cCyan}${MEMO} ${cYellow}>>>>>>>>>>${cReset}"
 # ----------
 
-port_no="7757"
+port_no="5800"
 
 DB_FOLDER=/home/docker-data/postgresql
 if [ ! -d ${DB_FOLDER} ]; then
