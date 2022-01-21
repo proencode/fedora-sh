@@ -164,13 +164,14 @@ __EOF__
 echo "${cRed}[${cYellow} ${DB_NAME} ${cRed}] -OK-${cReset}"
 
 uname_n=$(uname -n)
-HOST_DIR=${HOME}/4w-mega_yssc #-- 이 폴더는 $(ln -s /media/sf_Downloads/4w/ ~/4w-mega_yssc) 명령으로 미리 만들어놔야 한다.
-MEGA_DIR=mega
-BACKUP_DIR=${HOST_DIR}/${MEGA_DIR}
+
+BACKUP_DIR=$1 #--- 터미널로 입력받은 백업파일 보관 디렉토리
 
 if [ ! -d ${BACKUP_DIR} ]; then
-	cat_and_run "mkdir -p ${BACKUP_DIR}"
+	echo "${cRed}!!!! ${cYellow}----> ${cCyan} ${BACKUP_DIR} 폴더가 없습니다.${cReset}"
+	exit 1
 fi
+
 db_ALL_sql7z=${DB_NAME}_*.sql.7z
 if [[ -f ${BACKUP_DIR}/${db_ALL_sql7z} ]]; then
 	cat_and_run "ls -hltr --color ${BACKUP_DIR}/${db_ALL_sql7z} | tail -10" "보관중인 백업파일"
@@ -182,9 +183,9 @@ db_now_sql_7z=${DB_NAME}_$(date +"%y%m%d-%H%M%S")_${uname_n}.sql.7z
 
 # cat_and_run "time /usr/bin/mysqldump --login-path=${LOGINPATH_NAME} --column-statistics=0 ${DB_NAME} | 7za a -si ${BACKUP_DIR}/${db_now_sql_7z}" "db 백업받기"
 # BACKUP_DIR 을 MEGA Cloud 로 쓰는 경우, 파일이 생성되면서 클라우드에 실시간 저장이 되어서
-# 한단계 아래인 HOST_DIR 에 저장을 먼저 하고, 저장이 끝난 다음에 BACKUP_DIR 로 옮기도록 하였다.
-cat_and_run "time /usr/bin/mysqldump --login-path=${LOGINPATH_NAME} --column-statistics=0 ${DB_NAME} | 7za a -si ${HOST_DIR}/${db_now_sql_7z}" "db 백업받기"
-cat_and_run "mv ${HOST_DIR}/${db_now_sql_7z} ${BACKUP_DIR}/${db_now_sql_7z}" "백업파일을 클라우드 연결점인 최종 위치로 옮김"
+# 한단계 아래인 HOST_DIR 에 저장을 먼저 하고, 저장이 끝난 다음에 BACKUP_DIR 로 옮기도록 하였다. ---XX 취소함 XX---
+cat_and_run "time /usr/bin/mysqldump --login-path=${LOGINPATH_NAME} --column-statistics=0 ${DB_NAME} | 7za a -si ${BACKUP_DIR}/${db_now_sql_7z}" "db 백업받기"
+#--- 취소함--- cat_and_run "mv ${HOST_DIR}/${db_now_sql_7z} ${BACKUP_DIR}/${db_now_sql_7z}" "백업파일을 클라우드 연결점인 최종 위치로 옮김"
 
 cat_and_run "ls -hltr --color ${BACKUP_DIR}/${DB_NAME}_*.sql.7z | tail -10" "새로 만들어진 백업파일"
 

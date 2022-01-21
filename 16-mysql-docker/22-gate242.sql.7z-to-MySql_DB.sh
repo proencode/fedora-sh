@@ -238,9 +238,9 @@ __EOF__
 
 ding_play 6 #-- 1=띠잉~ 2=뗑-~ 3=데에엥~~ 4=캐스터네츠 5=교회차임 6=딩~
 NOW_UNAME=$(date +"%y%m%d-%H%M%S")_$(uname -n)
-cat_and_run "time /usr/bin/mysqldump --login-path=${LOGIN_PATH} --column-statistics=0 ${DB_NAME} | 7za a -si ${db_7z_dir}/${DB_NAME}_${NOW_UNAME}.sql.7z" "#--> 현재 db 를 백업하기"
+cat_and_run "time /usr/bin/mysqldump --login-path=${LOGIN_PATH} --column-statistics=0 ${DB_NAME} | 7za a -si ${db_7z_dir}/last-${DB_NAME}_${NOW_UNAME}.sql.7z" "#--> 현재 db 를 백업하기"
 
-cat_and_run "ls -hltr --color ${db_7z_dir}/${DB_NAME}_*.sql.7z | tail -10"
+cat_and_run "ls -hltr --color ${db_7z_dir}/last-${DB_NAME}_*.sql.7z | tail -10"
 
 cat <<__EOF__
 +---+
@@ -262,7 +262,7 @@ if [ "x${DOCKER_NAME}" = "xksammy" ]; then
 else
 if [ "x${DOCKER_NAME}" = "xgatedb" ]; then
 	ding_play 6 #-- 1=띠잉~ 2=뗑-~ 3=데에엥~~ 4=캐스터네츠 5=교회차임 6=딩~
-	cat_and_run "mysql --login-path=${LOGIN_PATH} ${DB_NAME} -vvv -e \"select max(id) as id, max(y4mmdd), max(workday), count(*) as 'rowis 4 only' from gt_wonjang where rowis=4 ; select max(id) as id, max(y4mmdd), max(workday), count(*) as 'total count' from gt_wonjang\""
+	cat_and_run "mysql --login-path=${LOGIN_PATH} ${DB_NAME} -vvv -e \"select max(id) as id, max(y4mmdd), max(workday), count(*) as 'rowis=4 only' from gt_wonjang where rowis=4 ; select max(id) as id, max(y4mmdd), max(workday), count(*) as 'total count' from gt_wonjang\""
 	ding_play 4 #-- 1=띠잉~ 2=뗑-~ 3=데에엥~~ 4=캐스터네츠 5=교회차임 6=딩~
 else
 if [ "x${DOCKER_NAME}" = "xkordmy" ]; then
