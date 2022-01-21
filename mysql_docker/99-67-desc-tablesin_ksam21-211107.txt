@@ -1,0 +1,258 @@
+mysql> -- Tables_in_ksam21 -- 211107일1413
+mysql> desc bill ;
+| Field      | Type         | Null | Key | Extra          |
+| id         | bigint(20)   | NO   | PRI | auto_increment |
+| version    | bigint(20)   | NO   |     |
+| addok      | datetime     | NO   |     |
+| billmemo   | varchar(255) | YES  |     |
+| billok     | datetime     | NO   |     |
+| dam_id     | bigint(20)   | NO   | MUL |
+| dambill    | bit(1)       | NO   |     |
+| nap_id     | bigint(20)   | NO   | MUL |
+| running    | bit(1)       | NO   |     |
+| updok      | datetime     | YES  |     |
+| vat        | int(11)      | NO   |     |
+| gakum      | int(11)      | NO   |     |
+| hapkum     | int(11)      | NO   |     |
+| billseq    | int(11)      | NO   |     |
+| billstat   | int(11)      | NO   |     |
+| billy2mmdd | varchar(255) | YES  |     |
+16 rows in set (0.00 sec)
+
+mysql> desc dam ;
+| Field   | Type         | Null | Key | Extra          |
+| id      | bigint(20)   | NO   | PRI | auto_increment |
+| version | bigint(20)   | NO   |     |
+| add_at  | datetime     | YES  |     |
+| gubun1  | varchar(255) | YES  |     |
+| gubun2  | varchar(255) | YES  |     |
+| gubun3  | varchar(255) | YES  |     |
+| gubun4  | varchar(255) | YES  |     |
+| irm     | varchar(255) | NO   |     |
+| memo1   | varchar(255) | YES  |     |
+| memo2   | varchar(255) | YES  |     |
+| memo3   | varchar(255) | YES  |     |
+| memo4   | varchar(255) | YES  |     |
+| nap_id  | bigint(20)   | NO   | MUL |
+| number1 | varchar(255) | YES  |     |
+| number2 | varchar(255) | YES  |     |
+| number3 | varchar(255) | YES  |     |
+| number4 | varchar(255) | YES  |     |
+| run     | bit(1)       | NO   |     |
+| upd_at  | datetime     | YES  |     |
+| addok   | datetime     | YES  |     |
+| updok   | datetime     | YES  |     |
+21 rows in set (0.00 sec)
+
+mysql> desc fee ;
+| Field   | Type       | Null | Key | Extra          |
+| id      | bigint(20) | NO   | PRI | auto_increment |
+| version | bigint(20) | NO   |     |
+| addok   | datetime   | NO   |     |
+| bongim  | int(11)    | NO   |     |
+| feeok   | datetime   | NO   |     |
+| jak_id  | bigint(20) | NO   | MUL |
+| running | bit(1)     | NO   |     |
+| updok   | datetime   | YES  |     |
+| imhap   | int(11)    | NO   |     |
+9 rows in set (0.00 sec)
+
+mysql> desc gesipan ;
+| Field      | Type          | Null | Key | Extra          |
+| id         | bigint(20)    | NO   | PRI | auto_increment |
+| version    | bigint(20)    | NO   |     |
+| abc123     | varchar(255)  | NO   |     |
+| add_at     | datetime      | YES  |     |
+| add_ip     | varchar(255)  | YES  |     |
+| add_who_id | bigint(20)    | YES  | MUL |
+| checking   | int(11)       | NO   |     |
+| content    | varchar(4000) | NO   |     |
+| dd         | int(11)       | NO   |     |
+| headmark   | bit(1)        | NO   |     |
+| hit        | int(11)       | NO   |     |
+| hms        | varchar(255)  | NO   |     |
+| memoname   | varchar(255)  | NO   |     |
+| memoopen   | bit(1)        | NO   |     |
+| memopswd   | varchar(255)  | NO   |     |
+| mm         | int(11)       | NO   |     |
+| my123      | varchar(255)  | NO   |     |
+| myabc      | varchar(255)  | NO   |     |
+| pid        | int(11)       | NO   |     |
+| ppid       | int(11)       | NO   |     |
+| que        | varchar(255)  | NO   |     |
+| reply      | int(11)       | NO   |     |
+| susin_id   | bigint(20)    | NO   | MUL |
+| tab        | int(11)       | NO   |     |
+| tag        | varchar(255)  | YES  |     |
+| upd_at     | datetime      | YES  |     |
+| upd_ip     | varchar(255)  | YES  |     |
+| upd_who_id | bigint(20)    | YES  | MUL |
+| yyyy       | int(11)       | NO   |     |
+| addok      | datetime      | YES  |     |
+| updok      | datetime      | YES  |     |
+31 rows in set (0.00 sec)
+
+mysql> desc jak ;
+| Field   | Type         | Null | Key | Extra          |
+| id      | bigint(20)   | NO   | PRI | auto_increment |
+| version | bigint(20)   | NO   |     |
+| add_at  | datetime     | YES  |     |
+| gubun1  | varchar(255) | YES  |     |
+| gubun2  | varchar(255) | YES  |     |
+| gubun3  | varchar(255) | YES  |     |
+| gubun4  | varchar(255) | YES  |     |
+| imbank  | varchar(255) | YES  |     |
+| imcode  | varchar(255) | YES  |     |
+| imirm   | varchar(255) | YES  |     |
+| irm     | varchar(255) | NO   |     |
+| jumin1  | varchar(255) | YES  |     |
+| jumin2  | varchar(255) | YES  |     |
+| memo1   | varchar(255) | YES  |     |
+| memo2   | varchar(255) | YES  |     |
+| memo3   | varchar(255) | YES  |     |
+| memo4   | varchar(255) | YES  |     |
+| number1 | varchar(255) | YES  |     |
+| number2 | varchar(255) | YES  |     |
+| number3 | varchar(255) | YES  |     |
+| number4 | varchar(255) | YES  |     |
+| upd_at  | datetime     | YES  |     |
+| addok   | datetime     | YES  |     |
+| updok   | datetime     | YES  |     |
+24 rows in set (0.00 sec)
+
+mysql> desc logtab ;
+| Field      | Type         | Null | Key | Extra          |
+| id         | bigint(20)   | NO   | PRI | auto_increment |
+| version    | bigint(20)   | NO   |     |
+| action     | varchar(255) | YES  |     |
+| add_ip     | varchar(255) | YES  |     |
+| addok      | datetime     | YES  |     |
+| controller | varchar(255) | YES  |     |
+| line       | varchar(255) | YES  |     |
+| message    | longtext     | YES  |     |
+| project    | varchar(255) | YES  |     |
+| status     | varchar(255) | YES  |     |
+10 rows in set (0.00 sec)
+
+mysql> desc nap ;
+| Field   | Type         | Null | Key | Extra          |
+| id      | bigint(20)   | NO   | PRI | auto_increment |
+| version | bigint(20)   | NO   |     |
+| add_at  | datetime     | YES  |     |
+| daepyo  | varchar(255) | NO   |     |
+| gubun1  | varchar(255) | YES  |     |
+| gubun2  | varchar(255) | YES  |     |
+| gubun3  | varchar(255) | YES  |     |
+| gubun4  | varchar(255) | YES  |     |
+| ho      | varchar(255) | NO   |     |
+| jongmok | varchar(255) | NO   |     |
+| juso1   | varchar(255) | NO   |     |
+| juso2   | varchar(255) | YES  |     |
+| memo1   | varchar(255) | YES  |     |
+| memo2   | varchar(255) | YES  |     |
+| memo3   | varchar(255) | YES  |     |
+| memo4   | varchar(255) | YES  |     |
+| number1 | varchar(255) | YES  |     |
+| number2 | varchar(255) | YES  |     |
+| number3 | varchar(255) | YES  |     |
+| number4 | varchar(255) | YES  |     |
+| saupno  | varchar(255) | NO   |     |
+| upcode  | varchar(255) | YES  |     |
+| upd_at  | datetime     | YES  |     |
+| uptae   | varchar(255) | NO   |     |
+| addok   | datetime     | YES  |     |
+| updok   | datetime     | YES  |     |
+| dambill | bit(1)       | NO   |     |
+27 rows in set (0.00 sec)
+
+mysql> desc ord ;
+| Field    | Type         | Null | Key | Extra          |
+| id       | bigint(20)   | NO   | PRI | auto_increment |
+| version  | bigint(20)   | NO   |     |
+| addok    | datetime     | YES  |     |
+| bill_id  | bigint(20)   | YES  | MUL |
+| billis   | bit(1)       | NO   |     |
+| billok   | datetime     | YES  |     |
+| bongfrom | datetime     | YES  |     |
+| bongim   | int(11)      | NO   |     |
+| bongis   | bit(1)       | NO   |     |
+| bongmemo | varchar(255) | YES  |     |
+| bongok   | datetime     | YES  |     |
+| bongstat | int(11)      | NO   |     |
+| bongto   | datetime     | YES  |     |
+| dam_id   | bigint(20)   | NO   | MUL |
+| dambill  | bit(1)       | NO   |     |
+| fee_id   | bigint(20)   | YES  | MUL |
+| feeis    | bit(1)       | NO   |     |
+| feeok    | datetime     | YES  |     |
+| hapkum   | int(11)      | NO   |     |
+| hapkumis | bit(1)       | NO   |     |
+| hapkumok | datetime     | YES  |     |
+| imstat   | int(11)      | NO   |     |
+| jak_id   | bigint(20)   | NO   | MUL |
+| nap_id   | bigint(20)   | NO   | MUL |
+| napgi    | datetime     | NO   |     |
+| napis    | bit(1)       | NO   |     |
+| napok    | datetime     | YES  |     |
+| ordmemo  | varchar(255) | YES  |     |
+| ordstat  | int(11)      | NO   |     |
+| running  | bit(1)       | NO   |     |
+| stno     | varchar(255) | NO   |     |
+| su       | int(11)      | NO   |     |
+| updok    | datetime     | YES  |     |
+| billstat | int(11)      | NO   |     |
+| feestat  | int(11)      | NO   |     |
+| tobillis | bit(1)       | NO   |     |
+| tofeeis  | bit(1)       | NO   |     |
+37 rows in set (0.00 sec)
+
+mysql> desc sec_role ;
+| Field     | Type         | Null | Key | Extra          |
+| id        | bigint(20)   | NO   | PRI | auto_increment |
+| version   | bigint(20)   | NO   |     |
+| authority | varchar(255) | NO   | UNI |
+3 rows in set (0.00 sec)
+
+mysql> desc sec_user ;
+| Field            | Type         | Null | Key | Extra          |
+| id               | bigint(20)   | NO   | PRI | auto_increment |
+| version          | bigint(20)   | NO   |     |
+| account_expired  | bit(1)       | NO   |     |
+| account_locked   | bit(1)       | NO   |     |
+| actmenu          | varchar(255) | NO   |     |
+| ctrlmenu         | varchar(255) | NO   |     |
+| enabled          | bit(1)       | NO   |     |
+| fullname         | varchar(255) | NO   |     |
+| memoname         | varchar(255) | NO   |     |
+| memopswd         | varchar(255) | NO   |     |
+| password         | varchar(255) | NO   |     |
+| password_expired | bit(1)       | NO   |     |
+| username         | varchar(255) | NO   | UNI |
+| viewmaxline      | int(11)      | NO   |     |
+14 rows in set (0.00 sec)
+
+mysql> desc sec_user_sec_role ;
+| Field       | Type       | Null | Key | Extra |
+| sec_user_id | bigint(20) | NO   | PRI |       |
+| sec_role_id | bigint(20) | NO   | PRI |       |
+2 rows in set (0.00 sec)
+
+mysql> desc tag ;
+| Field      | Type         | Null | Key | Extra          |
+| id         | bigint(20)   | NO   | PRI | auto_increment |
+| version    | bigint(20)   | NO   |     |
+| bindo      | int(11)      | NO   |     |
+| bindo123   | int(11)      | NO   |     |
+| gesipan_id | bigint(20)   | YES  | MUL |
+| tag        | varchar(255) | NO   |     |
+6 rows in set (0.00 sec)
+
+mysql> -- (숫자부터 끝까지 복사헤서 : 입력한 뒤에 붙여널고 엔터)
+mysql> -- : 1,$-11s/| Default //
+mysql> -- : 1,$-11s/-+---------+/-+/
+mysql> -- : 1,$-11s/| NULL    //
+mysql> -- : 1,$-11s/                |//
+mysql> -- / ^+-- (+----+ 표시가 필요없는 경우에는 n 으로 찾고 dd 로 삭제한다.)
+mysql> -- vi run_sh/mysql_docker_start/99-67-desc-tablesin_ksam21-211107.txt # (vi 에서 수정하기) ---- cut&copy
+mysql> exit ; -- copy cmd to next there.
+

@@ -37,9 +37,6 @@ fi
 logs_folder="${HOME}/zz00-logs" ; if [ ! -d "${logs_folder}" ]; then mkdir "${logs_folder}" ; fi
 MEMO="Fedora34에 Docker Engine 설치"
 echo "${cRed}<<<<<<<<<<${cBlue} $0 ||| ${cMagenta}${MEMO} ${cRed}<<<<<<<<<<${cReset}"
-cat <<__EOF__
-출처: https://docs.docker.com/engine/install/fedora/
-__EOF__
 
 cat_and_run "ls -lZ /usr/lib/systemd/system/containerd.service" " docker.service  docker.socket zvbid.service"
 

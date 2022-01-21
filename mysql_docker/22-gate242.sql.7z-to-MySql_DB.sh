@@ -74,7 +74,30 @@ fi
 clear_cnr_value #-- Cat_N_Run 초기화
 PLAY_OK="-NO-" # "ok" <-- play 설치가 된 경우,
 # ding_play 1 #-- 1=딩~ 2=캐스터네츠~ 3=뗅- 4=띠일~ 5=데에엥~~ 6=교회 뎅-
-MEMO="데이터베이스 백업하기"
+# - - - - - - - - - - - - - - -
+
+db_sql_7z=""
+db_7z_dir=""
+if [ "x$1" != "x" ]; then
+	db_sql_7z=`basename $1` # 명령줄에서 실행 프로그램 이름만 꺼냄
+	db_7z_dir=${1%/$db_sql_7z} # 실행 이름을 빼고 나머지 디렉토리만 담음
+	if [ "x$db_7z_dir" == "x" ] || [ "x$db_7z_dir" == "x$db_sql_7z" ]; then
+		db_7z_dir="."
+	fi
+fi
+
+if [ "x${db_sql_7z}" = "x" ]; then
+	echo "${cRed}!!!! ${cMagenta}----> db_sql_7z ${cReset}${db_sql_7z}${cMagenta}; db_7z_dir ${cReset}${db_7z_dir}${cBlue}; 파일이 없습니다.${cReset}"
+	exit 0
+fi
+
+if [ ! -f ${1} ]; then
+	echo "${cRed}!!!! ${cMagenta}----> ${cReset}${1} ${cBlue}파일이 없습니다.${cReset}"
+	exit 0
+fi
+
+# - - - - - - - - - - - - - - -
+MEMO="DB ${db_sql_7z} 업로드"
 # ----------
 
 cat <<__EOF__
@@ -93,134 +116,159 @@ else
 	echo "good ${cGreen}-silence-${cReset}"
 fi
 
-# - - - - - - - - - - - - - - -
-
-cat_and_run "mysql_config_editor print --all"
+#----
 
 cat <<__EOF__
 
-${cRed}[${cYellow} 1 ${cRed}]${cReset}.... ksamlog
-  2  .... gatelog
+${cYellow}>>>>>>>>>>${cGreen} $0 ||| ${cCyan}${MEMO} ${cYellow}>>>>>>>>>>${cReset}
 
-----> login-path 선택: (1...2)  (또는 직접 입력)  ${cRed}[${cYellow} 1 ${cRed}]${cReset}
+__EOF__
+
+numArray=( a ) #-- 배열로 선언하고, [0]의 값을 'a' 로 지정한다.
+CNT=1
+ViewRange="${cRed}[ ${cReset}1 ${cRed}]${cReset}"
+
+for out in $(sudo docker ps -a | awk '{print $NF}')
+do
+	if [ "x$out" != "xNAMES" ]; then
+		DB_IP=$(sudo docker inspect ${out} | grep '"IPAddress"' | tail -n 1 | awk -F : '{print $2}' | awk -F \" '{print $2}')
+		numArray[${CNT}]=${out} #-- 배열의 CNT 번째에 담는다.
+		echo "${CNT}  ....  ${cGreen}도커 이름: ${cReset}${numArray[$CNT]} ${cGreen}; IP Address: ${cCyan}${DB_IP}${cReset}"
+		if [ "x${CNT}" != "x1" ]; then
+			ViewRange="${cRed}[ ${cReset}1 ${cRed}]${cReset} ... ${CNT}"
+		fi
+		CNT=$(( ${CNT} + 1 ))
+	fi
+done
+CNT=$(( ${CNT} - 1 ))
+
+cat <<__EOF__
+
+${cYellow}----> ${cGreen}/etc/host 에 지정하려는 도커 이름의 ${cReset}번호${cGreen}를 선택하세요: ${cCyan}( ${ViewRange} ${cCyan})${cReset}
 __EOF__
 read a ; echo "${cUp}"
-
-if [ "x$a" = "x1" ]; then
-	LOGINPATH_NAME=ksamlog
-else if [ "x$a" = "x2" ]; then
-	LOGINPATH_NAME=gatelog
-else if [ "x$a" = "x" ]; then
-	#--- 엔터의 경우, default
-	LOGINPATH_NAME=ksamlog
+if [[ "x$a" < "x1" ]]; then
+	DOCKER_NAME=${numArray[1]}
 else
-	#--- 나머지 경우, 입력으로 처리.
-	LOGINPATH_NAME=$a
+if [[ "x$a" > "x${CNT}" ]]; then
+	DOCKER_NAME=${numArray[1]}
+else
+	DOCKER_NAME=${numArray[${a}]}
 fi
 fi
-fi
 
-# - - - - - - - - - - - - - - -
+#----
 
-cat <<__EOF__
-${cRed}[${cYellow} ${LOGINPATH_NAME} ${cRed}] -OK-${cReset}
-
-${cRed}[${cYellow} 1 ${cRed}]${cReset}.... ksam21
-  2  .... gate242
-  3  .... kaosorder2
-
-----> db 선택: (1...3)  (또는 직접 입력)  ${cRed}[${cYellow} 1 ${cRed}]${cReset}
-__EOF__
-read a ; echo "${cUp}"
-
-if [ "x$a" = "x1" ]; then
+L_P_DEFAULT="Login PATH 를 입력해 주세요"
+U_N_DEFAULT="사용자 이름을 입력해 주세요"
+D_N_DEFAULT="db 이름을 입력해 주세요"
+if [ "x${DOCKER_NAME}" = "xksammy" ]; then
+	LOGIN_PATH=ksamlog
+	USER_NAME=ksamroot
 	DB_NAME=ksam21
-else if [ "x$a" = "x2" ]; then
+else
+if [ "x${DOCKER_NAME}" = "xgatedb" ]; then
+	LOGIN_PATH=swlog
+	USER_NAME=gateroot
 	DB_NAME=gate242
-else if [ "x$a" = "x3" ]; then
-	DB_NAME=kaosorder2
-else if [ "x$a" = "x" ]; then
-	#--- 엔터의 경우, default
-	DB_NAME=ksam21
 else
-	#--- 나머지 경우, 입력으로 처리.
+if [ "x${DOCKER_NAME}" = "xkordmy" ]; then
+	LOGIN_PATH=kordlog
+	USER_NAME=kordroot
+	DB_NAME=kaosorder2
+else
+	LOGIN_PATH="${L_P_DEFAULT}"
+	USER_NAME="${U_N_DEFAULT}"
+	DB_NAME="${D_N_DEFAULT}"
+fi
+fi
+fi
+
+#----
+
+cat <<__EOF__
+${cRed}[ ${cReset}${a} ${cRed}]${cReset} ${cCyan}${DOCKER_NAME}${cReset}
+
+${cYellow}----> ${cCyan}${DOCKER_NAME} ${cGreen}의 로그인 PATH 입력: ${cRed}[ ${cReset}${LOGIN_PATH} ${cRed}]${cReset}
+__EOF__
+read a ; echo "${cUp}"
+if [ "x$a" != "x" ]; then
+	LOGIN_PATH=$a
+fi
+
+#----
+
+cat <<__EOF__
+${cRed}[ ${cYellow}${LOGIN_PATH} ${cRed}] -OK-${cReset}
+
+${cYellow}----> ${cCyan}${DOCKER_NAME} ${cGreen}의 user name 입력: ${cRed}[ ${cReset}${USER_NAME} ${cRed}]${cReset}
+__EOF__
+read a ; echo "${cUp}"
+if [ "x$a" != "x" ]; then
+	USER_NAME=$a
+fi
+
+#----
+
+cat <<__EOF__
+${cRed}[ ${cYellow}${USER_NAME} ${cRed}] -OK-${cReset}
+
+${cYellow}----> ${cCyan}${DOCKER_NAME} ${cGreen}의 db name 입력: ${cRed}[ ${cReset}${DB_NAME} ${cRed}]${cReset}
+__EOF__
+read a ; echo "${cUp}"
+if [ "x$a" != "x" ]; then
 	DB_NAME=$a
 fi
-fi
-fi
-fi
+cat <<__EOF__
+${cRed}[ ${cYellow}${DB_NAME} ${cRed}] -OK-${cReset}
 
-# - - - - - - - - - - - - - - -
-
-echo "${cRed}[${cYellow} ${DB_NAME} ${cRed}] -OK-${cReset}"
-
-uname_n=$(uname -n)
-HOME_UNAME_N="../${uname_n}" # ="${HOME}/${uname_n}"
-
-NOW_UNAME=$(date +"%y%m%d-%H%M%S")_${uname_n}
-
-if [ ! -d ${HOME_UNAME_N} ]; then
-	cat_and_run "mkdir -p ${HOME_UNAME_N}"
-fi
-shout=$(ls ${HOME_UNAME_N}/${DB_NAME}_*.sql.7z)
-if [[ "x${shout}" != "x" ]]; then
-	cat_and_run "ls -hltr --color ${HOME_UNAME_N}/${DB_NAME}_*.sql.7z | tail -10" "보관중인 백업파일"
-
-	cat <<__EOF__
-
-----> 위 목록을 보고, 업로드할 ${cRed}[${cYelow} *.sql.7z ${cRed}]${cReset} 파일이름을 ${cYellow}폴더 이름 ${cRed}[${cYellow} ${HOME_UNAME_N}/ ${cRed}]${cYellow} 까지 포함해서 입력하세요.${cReset}
 __EOF__
-	read DB_SQL_7Z
-	if [ ! -f ${DB_SQL_7Z} ]; then
-		cat <<__EOF__
 
-[ $DB_SQL_7Z} ] ${HOME_UNAME_N}/${DB_NAME}_*.sql.7z 파일이 없습니다. 입력한 내용을 확인하세요.
-__EOF__
-		exit 0
-	fi
-else
-	cat <<__EOF__
 
-${HOME_UNAME_N}/${DB_NAME}_*.sql.7z 파일이 없습니다.
-__EOF__
-	exit 0
-fi
-
-a=$(basename ${DB_SQL_7Z})
-sql_db=${a:0:-3} # -3 = 끝에서 거꾸로 3 글자 제외함.
+# a=$(basename ${db_sql_7z})
+# sql_db=${a:0:-3} # -3 = 끝에서 거꾸로 3 글자 (.7z) 제외함.
 
 # ----------
 
 cat <<__EOF__
-
-1. (db 를 업로드하기 전에), 현재의 db 를 다운로드 한다.${cCyan}
--------------------------------------------------------${cReset}
-
++---+
+| 1 | (db 를 업로드하기 전에), 현재의 db 를 다운로드 한다.
++---+
 __EOF__
 
 ding_play 6 #-- 1=띠잉~ 2=뗑-~ 3=데에엥~~ 4=캐스터네츠 5=교회차임 6=딩~
-cat_and_run "time /usr/bin/mysqldump --login-path=${LOGINPATH_NAME} --column-statistics=0 ${DB_NAME} | 7za a -si ${HOME_UNAME_N}/${DB_NAME}_${NOW_UNAME}.sql.7z" "${cBlue}현재 db 를 백업하기${cReset}"
+NOW_UNAME=$(date +"%y%m%d-%H%M%S")_$(uname -n)
+cat_and_run "time /usr/bin/mysqldump --login-path=${LOGIN_PATH} --column-statistics=0 ${DB_NAME} | 7za a -si ${db_7z_dir}/${DB_NAME}_${NOW_UNAME}.sql.7z" "#--> 현재 db 를 백업하기"
 
-cat_and_run "ls -hltr --color ${HOME_UNAME_N}/${DB_NAME}_*.sql.7z | tail -10"
+cat_and_run "ls -hltr --color ${db_7z_dir}/${DB_NAME}_*.sql.7z | tail -10"
 
 cat <<__EOF__
-
-2. db 를 업로드 한다.${cCyan}
----------------------${cReset}
-
++---+
+| 2 | db 를 업로드 한다.
++---+
 __EOF__
 
 ding_play 6 #-- 1=띠잉~ 2=뗑-~ 3=데에엥~~ 4=캐스터네츠 5=교회차임 6=딩~
-cat_and_run "time 7za x -so ${DB_SQL_7Z} | mysql --login-path=${LOGINPATH_NAME} -si ${DB_NAME}" "${cBlue}백업받았던 db 를 ${DB_NAME} 에 풀기${cReset}"
+cat_and_run "time 7za x -so ${1} | mysql --login-path=${LOGIN_PATH} -si ${DB_NAME}" "백업받았던 db 를 ${DB_NAME} 에 풀기"
 
 cat <<__EOF__
-
-3. 업로드한 db 를 확인한다.${cCyan}
----------------------------${cReset}
-
++---+
+| 3 | 업로드한 db 를 확인한다.
++---+
 __EOF__
 
-ding_play 6 #-- 1=띠잉~ 2=뗑-~ 3=데에엥~~ 4=캐스터네츠 5=교회차임 6=딩~
-cat_and_run "mysql --login-path=${LOGINPATH_NAME} ${DB_NAME} -vvv -e \"select max(id),max(y4mmdd),max(workday),count(*) from gt_wonjang\""
+if [ "x${DOCKER_NAME}" = "xksammy" ]; then
+	echo "${cYellow}----> ${DOCKER_NAME} ${cGreen}의 확인 스크립트가 준비되지 않았습니다."
+else
+if [ "x${DOCKER_NAME}" = "xgatedb" ]; then
+	ding_play 6 #-- 1=띠잉~ 2=뗑-~ 3=데에엥~~ 4=캐스터네츠 5=교회차임 6=딩~
+	cat_and_run "mysql --login-path=${LOGIN_PATH} ${DB_NAME} -vvv -e \"select max(id) as id, max(y4mmdd), max(workday), count(*) as 'rowis 4 only' from gt_wonjang where rowis=4 ; select max(id) as id, max(y4mmdd), max(workday), count(*) as 'total count' from gt_wonjang\""
+	ding_play 4 #-- 1=띠잉~ 2=뗑-~ 3=데에엥~~ 4=캐스터네츠 5=교회차임 6=딩~
+else
+if [ "x${DOCKER_NAME}" = "xkordmy" ]; then
+	echo "${cYellow}----> ${DOCKER_NAME} ${cGreen}의 확인 스크립트가 준비되지 않았습니다."
+fi
+fi
+fi
 
-ding_play 4 #-- 1=띠잉~ 2=뗑-~ 3=데에엥~~ 4=캐스터네츠 5=교회차임 6=딩~
+echo "${cYellow}>>>>>>>>>>${cGreen} $0 ||| ${cCyan}${MEMO} ${cYellow}>>>>>>>>>>${cReset}"
