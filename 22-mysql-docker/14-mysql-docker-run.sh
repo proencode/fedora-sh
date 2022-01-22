@@ -152,19 +152,17 @@ done
 if [ "x${return_value}" = "x" ]; then
 	cat_and_read "sudo docker logs ${DOCKER_DB_NAME} 2>&1 | grep --color PASSWORD" "${cRed}# <---- 비밀번호를 계속 확인해야 합니다."
 else
-	cat_and_run "sudo docker logs ${DOCKER_DB_NAME} 2>&1 | grep --color PASSWORD" "${cMagenta}# <---- 비밀번호를 확인하는 명령입니다."
-	cat_and_read "${cCyan}# <---- (0) 위에 표시된 비밀번호를 복사합니다.${cReset}"
+	cat_and_run "sudo docker logs ${DOCKER_DB_NAME} 2>&1 | grep --color PASSWORD" "# <---- (0) 위에 표시된 비밀번호를 복사합니다."
 fi
 
 touch "${logs_folder}/zz.$(date +"%y%m%d-%H%M%S")__${CMD_NAME}"
-cat_and_run "ls --color ${CMD_DIR}" ; ls --color ${logs_folder}
 
 cat <<__EOF__
 sudo docker exec -it ${DOCKER_DB_NAME} mysql -u root -p # ${cMagenta}<---- (1) Enter password: 가 나오면, GENERATED ROOT PASSWORD 를 여기에 붙여넣기 합니다.${cReset}
 
-alter user 'root'@'%' identified by '             ' ; grant all privileges on *.* to 'root'@'%' with grant option ; create database if not exists ${NEW_DATABASE} character set utf8 ; create user '${USER_NAME}'@'%' identified by '          ' ; grant all privileges on *.* to '${USER_NAME}'@'%' with grant option ; exit ; # -------------- 이 앞부분만 복사 + 붙여넣기 합니다.
+alter user 'root'@'%' identified by '<>-<>-<>' ; grant all privileges on *.* to 'root'@'%' with grant option ; create database if not exists ${NEW_DATABASE} character set utf8 ; create user '${USER_NAME}'@'%' identified by '<>-<>-<>' ; grant all privileges on *.* to '${USER_NAME}'@'%' with grant option ; exit ; # -------------- 이 앞부분만 복사 + 붙여넣기 합니다.
 
-sudo docker exec -it ${DOCKER_DB_NAME} /bin/bash ; sudo docker restart ${DOCKER_DB_NAME} ; sudo docker ps -a
+sudo docker exec -it ${DOCKER_DB_NAME} /bin/bash ; sudo docker restart ${DOCKER_DB_NAME} ; sudo docker ps -a ; ls --color ${CMD_DIR}" ; ls --color ${logs_folder}
 
 echo "character-set-server=utf8" >> /etc/mysql/mysql.conf.d/mysqld.cnf ; tail -3 /etc/mysql/mysql.conf.d/mysqld.cnf ; exit
              |
