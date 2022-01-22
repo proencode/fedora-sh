@@ -10,8 +10,8 @@ cat_and_run () {
 MEMO="게스트확장 을 위한 프로그램 설치"
 echo "${cYellow}>>>>>>>>>>${cGreen} $0 ||| ${cCyan}${MEMO} ${cYellow}>>>>>>>>>>${cReset}"
 
-cat_and_run "sudo dnf install -y kernel-debug-devel kernel-devel" "커널 devel 추가"
-cat_and_run "sudo dnf install -y automake autoconf dkms vim-enhanced vim-common mc lynx p7zip keepass rclone liveusb-creator " "컴파일용과 추가 프로그램들"
+cat_and_run "sudo dnf -y install kernel-debug-devel kernel-devel" "커널 devel 추가"
+cat_and_run "sudo dnf -y install vim-enhanced vim-common mc lynx p7zip keepass rclone liveusb-creator " "컴파일용과 추가 프로그램들"
 
 cat <<__EOF__
 vi ~/.ssh/config

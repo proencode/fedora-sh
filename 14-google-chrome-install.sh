@@ -10,8 +10,8 @@ cat_and_run () {
 MEMO="구글 크롬 브라우저 설치"
 echo "${cYellow}>>>>>>>>>>${cGreen} $0 ||| ${cCyan}${MEMO} ${cYellow}>>>>>>>>>>${cReset}"
 
-cat_and_run "sudo dnf install -y fedora-workstation-repositories" "3rd Party 저장소 설치"
+cat_and_run "sudo dnf -y install fedora-workstation-repositories" "3rd Party 저장소 설치"
 cat_and_run "sudo dnf config-manager --set-enabled google-chrome" "Google 크롬 리포지토리를 활성화합니다."
-cat_and_run "sudo dnf install -y google-chrome-stable" "마지막으로 Chrome을 설치합니다."
+cat_and_run "sudo dnf -y install google-chrome-stable" "마지막으로 Chrome을 설치합니다."
 
 echo "${cYellow}>>>>>>>>>>${cGreen} $0 ||| ${cCyan}${MEMO} ${cYellow}>>>>>>>>>>${cReset}"

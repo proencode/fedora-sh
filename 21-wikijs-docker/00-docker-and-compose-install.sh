@@ -60,7 +60,7 @@ __EOF__
 cat_and_run "cat /etc/yum.repos.d/docker-ce.repo" "Fedora 35 에 Docker CE 리포지토리 추가"
 
 cat_and_run "sudo dnf makecache" "저장소 메타 데이터 캐시 생성"
-cat_and_run "sudo dnf install docker-ce docker-ce-cli containerd.io" "Docker CE 설치"
+cat_and_run "sudo dnf -y installce docker-ce-cli containerd.io" "Docker CE 설치"
 cat_and_run "sudo systemctl enable --now docker" "도커 서비스 시작 지시"
 cat_and_run "systemctl status docker" "상태 확인"
 
