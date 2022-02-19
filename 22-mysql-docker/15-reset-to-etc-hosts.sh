@@ -4,32 +4,37 @@ cBlack=$(tput bold)$(tput setaf 0); cRed=$(tput bold)$(tput setaf 1); cGreen=$(t
 
 cat_and_run () {
 	echo "${cYellow}----> ${cGreen}$1 ${cCyan}$2${cReset}"; echo "$1" | sh
-	echo "${cYellow}<${cRed}---- ${cMagenta}$1 $2${cReset}"
+	echo "${cYellow}<${cMagenta}---- ${cBlue}$1 $2${cReset}"
 }
 cat_and_read () {
-	echo "${cYellow}----> ${cGreen}$1 ${cCyan}$2${cYellow} - - - press Enter:${cReset}"
+	echo -e "${cYellow}----> ${cGreen}$1 ${cCyan}$2${cRed}\n - -> press ${cCyan}Enter:${cReset}"
 	read a ; echo "${cUp}"; echo "$1" | sh
-	echo "${cYellow}<${cRed}---- ${cBlue}- - - press Enter:${cMagenta}$1 $2${cReset}"
+	echo "${cYellow}<${cMagenta} - - ${cBlue}press Enter${cRed}: ${cMagenta}$1 $2${cReset}"
 }
 cat_and_readY () {
 	echo "${cYellow}----> ${cGreen}$1 ${cCyan}$2${cReset}"
-	echo "${cYellow}- - - press ${cRed}y${cYellow} or Enter:${cReset}"; read a; echo "${cUp}"
-	if [ "x$a" = "xy" ]; then
-		echo "${cRed}-OK-${cReset}"; echo "$1" | sh
+	if [ "x${ALL_INSTALL}" = "xy" ]; then
+		echo "$1" | sh ; echo "${cYellow}<${cMagenta}---- ${cBlue}$1 $2${cReset}"
 	else
-		echo "${cRed}$1 ${cYellow}--- 를 실행하지 않습니다.${cReset}"
+		echo "${cYellow} - -> ${cRed}press ${cCyan}y${cRed} or ${cCyan}Enter${cRed}:${cReset}"; read a; echo "${cUp}"
+		if [ "x$a" = "xy" ]; then
+			echo "${cRed}-OK-${cReset}"; echo "$1" | sh
+		else
+			echo "${cRed}$1 ${cYellow}--- 작업을 실행하지 않습니다.${cReset}"
+		fi
+		echo "${cYellow}<${cMagenta} - - ${cBlue}press Enter${cRed}: ${cMagenta}$1 $2${cReset}"
 	fi
-	echo "${cYellow}<${cMagenta}---- ${cBlue}pressEnter: $1${cReset} $2"
 }
-# ----------
+
 CMD_NAME=`basename $0` # 명령줄에서 실행 프로그램 이름만 꺼냄
 CMD_DIR=${0%/$CMD_NAME} # 실행 이름을 빼고 나머지 디렉토리만 담음
 if [ "x$CMD_DIR" == "x" ] || [ "x$CMD_DIR" == "x$CMD_NAME" ]; then
 	CMD_DIR="."
 fi
+
 logs_folder="${HOME}/zz00-logs" ; if [ ! -d "${logs_folder}" ]; then mkdir "${logs_folder}" ; fi
 MEMO="데이터베이스에 연결하는 로그인 패쓰 지정하기"
-echo "${cRed}<<<<<<<<<<${cBlue} $0 ||| ${cMagenta}${MEMO} ${cRed}<<<<<<<<<<${cReset}"
+echo "${cMagenta}>>>>>>>>>>${cGreen} $0 ${cMagenta}||| ${cCyan}${MEMO} ${cMagenta}>>>>>>>>>>${cReset}"
 cat <<__EOF__
 ----> 도커이름 전체
 __EOF__
@@ -44,24 +49,25 @@ done
 
 cat <<__EOF__
 
-${cRed}[${cReset} 1 ${cRed}]${cReset}.... ksammy (kaos 샘플실 주문.일정.공임)
-  2  .... kordmy (kaosorder)
-  3  .... gatedb (gate242)
+${cRed}[${cReset} 1 ${cRed}]${cReset}....  gatedb (gate242)
+  2  ....  kordmy (kaosorder)
+  3  ....  ksammy (kaos 샘플실 주문.일정.공임)
 
 ----> /etc/host 에 지정하려는 도커이름: (1...3)  ${cRed}[${cReset} 1 ${cRed}]${cReset}
 __EOF__
 read a ; echo "${cUp}"
 if [ "x$a" = "x2" ]; then
 	DOCKER_NAME=kordmy
-	echo "${cYellow}[${cReset} ${DOCKER_NAME} ${cYellow}] ${cRed}-OK-${cReset}"
+	echo "${cYellow}[${cYellow} ${DOCKER_NAME} ${cYellow}] ${cRed}-OK-${cReset}"
 else
 if [ "x$a" = "x3" ]; then
-	DOCKER_NAME=gatedb
-	echo "${cYellow}[${cReset} ${DOCKER_NAME} ${cYellow}] ${cRed}-OK-${cReset}"
+	DOCKER_NAME=ksammy
+	echo "${cYellow}[${cYellow} ${DOCKER_NAME} ${cYellow}] ${cRed}-OK-${cReset}"
 else
 	#-- default: 1
-	DOCKER_NAME=ksammy
-	echo "${cYellow}[${cReset} ${DOCKER_NAME} ${cYellow}] ${cRed}-OK-${cReset}"
+	DOCKER_NAME=gatedb
+	echo "${cYellow}[${cYellow} ${DOCKER_NAME} ${cYellow}] ${cRed}-OK-${cReset}"
+	a="1"
 fi
 fi
 
@@ -108,4 +114,4 @@ done
 
 touch "${logs_folder}/zz.$(date +"%y%m%d-%H%M%S")__${CMD_NAME}"
 cat_and_run "ls --color ${CMD_DIR}" ; ls --color ${logs_folder}
-echo "${cRed}<<<<<<<<<<${cBlue} $0 ||| ${cMagenta}${MEMO} ${cRed}<<<<<<<<<<${cReset}"
+echo "${cRed}<<<<<<<<<<${cBlue} $0 ${cRed}||| ${cMagenta}${MEMO} ${cRed}<<<<<<<<<<${cReset}"

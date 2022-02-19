@@ -4,32 +4,33 @@ cBlack=$(tput bold)$(tput setaf 0); cRed=$(tput bold)$(tput setaf 1); cGreen=$(t
 
 cat_and_run () {
 	echo "${cYellow}----> ${cGreen}$1 ${cCyan}$2${cReset}"; echo "$1" | sh
-	echo "${cYellow}<${cRed}---- ${cMagenta}$1 ${cBlue}$2${cReset}"
+	echo "${cYellow}<${cMagenta}---- ${cBlue}$1 $2${cReset}"
 }
 cat_and_read () {
-	echo "${cYellow}----> ${cGreen}$1 ${cCyan}$2${cYellow} - - - press Enter:${cReset}"
+	echo -e "${cYellow}----> ${cGreen}$1 ${cCyan}$2${cRed}\n - -> press ${cCyan}Enter:${cReset}"
 	read a ; echo "${cUp}"; echo "$1" | sh
-	echo "${cYellow}<${cRed}---- ${cBlue}- - - press Enter:${cMagenta}$1 ${cBlue}$2${cReset}"
+	echo "${cYellow}<${cMagenta} - - ${cBlue}press Enter${cRed}: ${cMagenta}$1 $2${cReset}"
 }
 cat_and_readY () {
 	echo "${cYellow}----> ${cGreen}$1 ${cCyan}$2${cReset}"
-	echo "${cYellow}- - - press ${cRed}y${cYellow} or Enter:${cReset}"; read a; echo "${cUp}"
-	if [ "x$a" = "xy" ]; then
-		echo "${cRed}-OK-${cReset}"; echo "$1" | sh
+	if [ "x${ALL_INSTALL}" = "xy" ]; then
+		echo "$1" | sh ; echo "${cYellow}<${cMagenta}---- ${cBlue}$1 $2${cReset}"
 	else
-		echo "${cRed}$1 ${cYellow}--- 를 실행하지 않습니다.${cReset}"
+		echo "${cYellow} - -> ${cRed}press ${cCyan}y${cRed} or ${cCyan}Enter${cRed}:${cReset}"; read a; echo "${cUp}"
+		if [ "x$a" = "xy" ]; then
+			echo "${cRed}-OK-${cReset}"; echo "$1" | sh
+		else
+			echo "${cRed}$1 ${cYellow}--- 작업을 실행하지 않습니다.${cReset}"
+		fi
+		echo "${cYellow}<${cMagenta} - - ${cBlue}press Enter${cRed}: ${cMagenta}$1 $2${cReset}"
 	fi
-	echo "${cYellow}<${cMagenta}---- ${cBlue}pressEnter: ${cMagenta}$1 ${cBlue}$2${cReset}"
 }
-# ----------
+
 CMD_NAME=`basename $0` # 명령줄에서 실행 프로그램 이름만 꺼냄
 CMD_DIR=${0%/$CMD_NAME} # 실행 이름을 빼고 나머지 디렉토리만 담음
 if [ "x$CMD_DIR" == "x" ] || [ "x$CMD_DIR" == "x$CMD_NAME" ]; then
 	CMD_DIR="."
 fi
-logs_folder="${HOME}/zz00-logs" ; if [ ! -d "${logs_folder}" ]; then mkdir "${logs_folder}" ; fi
-MEMO="login-path 지정하기"
-echo "${cRed}<<<<<<<<<<${cBlue} $0 ||| ${cMagenta}${MEMO} ${cRed}<<<<<<<<<<${cReset}"
 
 cat <<__EOF__
 200527 수
@@ -60,16 +61,15 @@ Waring: Using a password on the command line interface can be insecure.
 
 다음 프로그램을 써서 호스트,계정,비밀번호를 접속명칭으로 지정해서 저장한다.
 mysql_config_editor set --login-path=[접속명칭] --host=[host 정보] --user=[계정명] --password --socket=/tmp/mysql.sock --port=3306
+
 __EOF__
+
+
+logs_folder="${HOME}/zz00-logs" ; if [ ! -d "${logs_folder}" ]; then mkdir "${logs_folder}" ; fi
+MEMO="login-path 지정하기"
+echo "${cMagenta}>>>>>>>>>>${cGreen} $0 ${cMagenta}||| ${cCyan}${MEMO} ${cMagenta}>>>>>>>>>>${cReset}"
 
 cat_and_run "mysql_config_editor print --all" "#-- 이전에 선언한 Login PATH"
-
-cat <<__EOF__
-
-${cYellow}>>>>>>>>>>${cGreen} $0 ||| ${cCyan}${MEMO} ${cYellow}>>>>>>>>>>${cReset}
-${cRed}<<<<<<<<<<${cBlue} $0 ||| ${cMagenta}${MEMO} ${cRed}<<<<<<<<<<${cReset}
-
-__EOF__
 
 numArray=( a ) #-- 배열로 선언하고, [0]의 값을 'a' 로 지정한다.
 CNT=1
@@ -96,9 +96,11 @@ __EOF__
 read a ; echo "${cUp}"
 if [[ "x$a" < "x1" ]]; then
 	DOCKER_NAME=${numArray[1]}
+	a="1"
 else
 if [[ "x$a" > "x${CNT}" ]]; then
 	DOCKER_NAME=${numArray[1]}
+	a="1"
 else
 	DOCKER_NAME=${numArray[${a}]}
 fi
@@ -186,4 +188,4 @@ cat_and_run "ls --color ${CMD_DIR}" ; ls --color ${logs_folder}
 
 cat_and_run "mysql --login-path=${LOGIN_PATH} mysql" "#-- mysql 데이터베이스를 엽니다."
 
-echo "${cYellow}>>>>>>>>>>${cGreen} $0 ||| ${cCyan}${MEMO} ${cYellow}>>>>>>>>>>${cReset}"
+echo "${cRed}<<<<<<<<<<${cBlue} $0 ${cRed}||| ${cMagenta}${MEMO} ${cRed}<<<<<<<<<<${cReset}"

@@ -98,13 +98,9 @@ fi
 
 # - - - - - - - - - - - - - - -
 MEMO="DB ${db_sql_7z} 업로드"
-# ----------
+echo "${cMagenta}>>>>>>>>>>${cGreen} $0 ${cMagenta}||| ${cCyan}${MEMO} ${cMagenta}>>>>>>>>>>${cReset}"
 
 cat <<__EOF__
-
-${cYellow}>>>>>>>>>>${cGreen} $0 ||| ${cCyan}${MEMO} ${cYellow}>>>>>>>>>>${cReset}
-출처: yosjeon@gmail.com
-
 ----> play 를 사용하려면 'y' 를 누르세요:
 __EOF__
 read a ; echo "${cUp}"
@@ -117,12 +113,6 @@ else
 fi
 
 #----
-
-cat <<__EOF__
-
-${cYellow}>>>>>>>>>>${cGreen} $0 ||| ${cCyan}${MEMO} ${cYellow}>>>>>>>>>>${cReset}
-
-__EOF__
 
 numArray=( a ) #-- 배열로 선언하고, [0]의 값을 'a' 로 지정한다.
 CNT=1
@@ -149,9 +139,11 @@ __EOF__
 read a ; echo "${cUp}"
 if [[ "x$a" < "x1" ]]; then
 	DOCKER_NAME=${numArray[1]}
+	a="1"
 else
 if [[ "x$a" > "x${CNT}" ]]; then
 	DOCKER_NAME=${numArray[1]}
+	a="1"
 else
 	DOCKER_NAME=${numArray[${a}]}
 fi
@@ -232,15 +224,40 @@ __EOF__
 
 cat <<__EOF__
 +---+
-| 1 | (db 를 업로드하기 전에), 현재의 db 를 다운로드 한다.
+| 1 | (db 를 업로드하기 전에), 현재의 db 를 백업하기 위해 다운로드 한다.
 +---+
+----> 백업을 하지 않으려면, 'x' 를 눌러 주세요.
 __EOF__
+read a ; echo "${cUp}"
+echo "${cRed}[ ${cYellow}${a} ${cRed}]${cReset}"
+last_skip="no"
+if [ "x$a" = 'xx' ]; then
+	cat <<__EOF__
 
-ding_play 6 #-- 1=띠잉~ 2=뗑-~ 3=데에엥~~ 4=캐스터네츠 5=교회차임 6=딩~
-NOW_UNAME=$(date +"%y%m%d-%H%M%S")_$(uname -n)
-cat_and_run "time /usr/bin/mysqldump --login-path=${LOGIN_PATH} --column-statistics=0 ${DB_NAME} | 7za a -si ${db_7z_dir}/last-${DB_NAME}_${NOW_UNAME}.sql.7z" "#--> 현재 db 를 백업하기"
 
-cat_and_run "ls -hltr --color ${db_7z_dir}/last-${DB_NAME}_*.sql.7z | tail -10"
+
+
+
+
+${cRed}!!!! 주의 !!!! 현재의 데이터를 다운로드 + 백업하지 않고, 업로드 합니다.${cReset}
+
+----> press 'y' Enter:
+__EOF__
+	read a ; echo "${cUp}"
+	echo "${cRed}[ ${cYellow}${a} ${cRed}]${cReset}"
+	if [ "x$a" != "xy" ]; then
+		exit 1
+	fi
+	last_skip="yes"
+fi
+
+if [ "x${last_skip}" = "xno" ]; then
+	ding_play 6 #-- 1=띠잉~ 2=뗑-~ 3=데에엥~~ 4=캐스터네츠 5=교회차임 6=딩~
+	NOW_UNAME=$(date +"%y%m%d-%H%M%S")_$(uname -n)
+	cat_and_run "time /usr/bin/mysqldump --login-path=${LOGIN_PATH} --column-statistics=0 ${DB_NAME} | 7za a -si ${db_7z_dir}/last-${DB_NAME}_${NOW_UNAME}.sql.7z" "#--> 현재 db 를 백업하기"
+
+	cat_and_run "ls -hltr --color ${db_7z_dir}/${DB_NAME}_*.sql.7z | tail -10"
+fi
 
 cat <<__EOF__
 +---+
@@ -262,7 +279,7 @@ if [ "x${DOCKER_NAME}" = "xksammy" ]; then
 else
 if [ "x${DOCKER_NAME}" = "xgatedb" ]; then
 	ding_play 6 #-- 1=띠잉~ 2=뗑-~ 3=데에엥~~ 4=캐스터네츠 5=교회차임 6=딩~
-	cat_and_run "mysql --login-path=${LOGIN_PATH} ${DB_NAME} -vvv -e \"select max(id) as id, max(y4mmdd), max(workday), count(*) as 'rowis=4 only' from gt_wonjang where rowis=4 ; select max(id) as id, max(y4mmdd), max(workday), count(*) as 'total count' from gt_wonjang\""
+	cat_and_run "mysql --login-path=${LOGIN_PATH} ${DB_NAME} -vvv -e \"select max(id) as id, max(y4mmdd), max(workday), count(*) as 'rowis 4 only' from gt_wonjang where rowis=4 ; select max(id) as id, max(y4mmdd), max(workday), count(*) as 'total count' from gt_wonjang\""
 	ding_play 4 #-- 1=띠잉~ 2=뗑-~ 3=데에엥~~ 4=캐스터네츠 5=교회차임 6=딩~
 else
 if [ "x${DOCKER_NAME}" = "xkordmy" ]; then
@@ -271,4 +288,4 @@ fi
 fi
 fi
 
-echo "${cYellow}>>>>>>>>>>${cGreen} $0 ||| ${cCyan}${MEMO} ${cYellow}>>>>>>>>>>${cReset}"
+echo "${cRed}<<<<<<<<<<${cBlue} $0 ${cRed}||| ${cMagenta}${MEMO} ${cRed}<<<<<<<<<<${cReset}"

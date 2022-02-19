@@ -29,7 +29,7 @@ if [ "x$CMD_DIR" == "x" ] || [ "x$CMD_DIR" == "x$CMD_NAME" ]; then
 fi
 logs_folder="${HOME}/zz00-logs" ; if [ ! -d "${logs_folder}" ]; then mkdir "${logs_folder}" ; fi
 MEMO="---MySQL--- DB 서버를 도커에 설치하기"
-echo "${cRed}<<<<<<<<<<${cBlue} $0 ||| ${cMagenta}${MEMO} ${cRed}<<<<<<<<<<${cReset}"
+echo "${cMagenta}>>>>>>>>>>${cGreen} $0 ${cMagenta}||| ${cCyan}${MEMO} ${cMagenta}>>>>>>>>>>${cReset}"
 
 cat_and_run "sudo docker ps -a" "운영중인 MySQL DB 도커들"
 ##for out in $(sudo docker ps -a | awk '{print $NF}')
@@ -42,17 +42,17 @@ cat_and_run "sudo docker ps -a" "운영중인 MySQL DB 도커들"
 
 cat <<__EOF__
 
-${cRed}[${cReset} 1 ${cRed}]${cReset}.... ksammy (kaos 샘플실 주문.일정.공임)
+${cRed}[${cReset} 1 ${cRed}]${cReset}....  gatedb (gate242)
   2  .... kordmy (kaosorder)
-  3  .... gatedb (gate242)
+  3  ....  ksammy (kaos 샘플실 주문.일정.공임)
 
 ----> /etc/host 에 지정하려는 도커이름: (1...3)  ${cRed}[${cReset} 1 ${cRed}]${cReset}
 __EOF__
 read a ; echo "${cUp}"
 if [ "x$a" = "x3" ]; then
-	DOCKER_DB_NAME=gatedb
-	NEW_DATABASE=gate242
-	USER_NAME=gateroot
+	DOCKER_DB_NAME=ksammy
+	NEW_DATABASE=ksam21
+	USER_NAME=ksamroot
 else
 if [ "x$a" = "x2" ]; then
 	DOCKER_DB_NAME=kordmy
@@ -60,9 +60,9 @@ if [ "x$a" = "x2" ]; then
 	USER_NAME=kordroot
 else
 	#-- default: 1
-	DOCKER_DB_NAME=ksammy
-	NEW_DATABASE=ksam21
-	USER_NAME=ksamroot
+	DOCKER_DB_NAME=gatedb
+	NEW_DATABASE=gate242
+	USER_NAME=gateroot
 fi
 fi
 echo "${cYellow}[${cReset} ${DOCKER_DB_NAME} ${cYellow}] ${cRed}-OK-${cReset}"
@@ -78,6 +78,7 @@ fi
 
 #--
 
+# DATABASE_FOLDER=${HOME}/docker-data/database/${DOCKER_DB_NAME}
 DATABASE_FOLDER=/home/docker-data/database/${DOCKER_DB_NAME}
 
 if [ ! -d ${DATABASE_FOLDER} ]; then
@@ -160,11 +161,13 @@ touch "${logs_folder}/zz.$(date +"%y%m%d-%H%M%S")__${CMD_NAME}"
 cat <<__EOF__
 sudo docker exec -it ${DOCKER_DB_NAME} mysql -u root -p # ${cMagenta}<---- (1) Enter password: 가 나오면, GENERATED ROOT PASSWORD 를 여기에 붙여넣기 합니다.${cReset}
 
-alter user 'root'@'%' identified by '<>-<>-<>' ; grant all privileges on *.* to 'root'@'%' with grant option ; create database if not exists ${NEW_DATABASE} character set utf8 ; create user '${USER_NAME}'@'%' identified by '<>-<>-<>' ; grant all privileges on *.* to '${USER_NAME}'@'%' with grant option ; exit ; # -------------- 이 앞부분만 복사 + 붙여넣기 합니다.
+alter user 'root'@'%' identified by '<>-<>-<>' ; grant all privileges on *.* to 'root'@'%' with grant option ; create database if not exists ${NEW_DATABASE} character set utf8 ; create user '${USER_NAME}'@'%' identified by '<>-<>-<>' ; grant all privileges on *.* to '${USER_NAME}'@'%' with grant option ; exit ; # <>-<>-<> 자리에 비번을 넣습니다.
 
-sudo docker exec -it ${DOCKER_DB_NAME} /bin/bash ; sudo docker restart ${DOCKER_DB_NAME} ; sudo docker ps -a ; ls --color ${CMD_DIR}" ; ls --color ${logs_folder}
+sudo docker exec -it ${DOCKER_DB_NAME} /bin/bash ; sudo docker restart ${DOCKER_DB_NAME} ; sudo docker ps -a ; ls --color ${CMD_DIR} ; ls --color ${logs_folder}
 
 echo "character-set-server=utf8" >> /etc/mysql/mysql.conf.d/mysqld.cnf ; tail -3 /etc/mysql/mysql.conf.d/mysqld.cnf ; exit
              |
              | 위와 같이 진행해야 설치가 끝납니다.
 __EOF__
+
+echo "${cRed}<<<<<<<<<<${cBlue} $0 ${cRed}||| ${cMagenta}${MEMO} ${cRed}<<<<<<<<<<${cReset}"
