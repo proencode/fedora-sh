@@ -33,10 +33,11 @@ if [[ "x$CMD_DIR" == "x" ]] || [[ "x$CMD_DIR" == "x$CMD_NAME" ]]; then
 fi
 logs_folder="${HOME}/zz00-logs" ; if [ ! -d "${logs_folder}" ]; then cat_and_run "mkdir ${logs_folder}" ; fi
 
-# ----------
 MEMO="docker-compose wiki.js 설치"
-echo "${cYellow}>>>>>>>>>>${cGreen} $0 ||| ${cCyan}${MEMO} ${cYellow}>>>>>>>>>>${cReset}"
-# ----------
+cat <<__EOF__
+${cMagenta}>>>>>>>>>>${cGreen} $0 ${cMagenta}||| ${cCyan}${MEMO} ${cMagenta}>>>>>>>>>>${cReset}
+출처: https://computingforgeeks.com/install-and-use-docker-compose-on-fedora/
+__EOF__
 
 port_no="5800"
 
@@ -94,19 +95,21 @@ services:
       wikijs
 __EOF__
 
-cat_and_run "sudo docker ps -a"
-cat_and_run "sudo docker-compose pull wiki"
+cat_and_run "sudo dnf -y install docker-compose" "(1-1) Docker Compose 설치"
+cat_and_run "rpm -qi docker-compose" "(1-2) 설치 확인"
+cat_and_run "sudo docker ps -a" "(1-3)"
+cat_and_run "sudo docker-compose pull wiki" "(1-4)"
 
-cat_and_run "sudo docker-compose ps" "#-- 실행중인 작업을 확인합니다."
-cat_and_run "ifconfig | grep enp -A1 ; ifconfig | grep wlp -A1" "#-- ip 를 확인합니다."
-cat_and_run "ifconfig | grep enp -A1 | tail -1 | awk '{print \$2\":${port_no}\"}'" "#-- ethernet"
-cat_and_run "ifconfig | grep wlp -A1 | tail -1 | awk '{print \$2\":${port_no}\"}'" "#-- wifi"
-cat_and_run "sudo docker-compose up --force-recreate &"
-cat_and_run "sudo docker-compose ps -a" "#-- 모든 작업을 확인합니다."
+cat_and_run "sudo docker-compose ps" "(2-1) 실행중인 작업을 확인합니다."
+cat_and_run "ifconfig | grep enp -A1 ; ifconfig | grep wlp -A1" "(2-2) ip 를 확인합니다."
+cat_and_run "ifconfig | grep enp -A1 | tail -1 | awk '{print \$2\":${port_no}\"}'" "(2-3) ethernet"
+cat_and_run "ifconfig | grep wlp -A1 | tail -1 | awk '{print \$2\":${port_no}\"}'" "(2-4) wifi"
+cat_and_run "sudo docker-compose up --force-recreate &" "(2-5)"
+cat_and_run "sudo docker-compose ps -a" "(2-6) 모든 작업을 확인합니다."
 
 cd -
 
-echo "cd ${wiki_dir} ; sudo docker-compose down #--- 작업을 중단할때, 입력합니다." > ${logs_folder}/zz.$(date +"%y%m%d-%H%M%S")__${CMD_NAME}
+echo "cd ${wiki_dir} ; sudo docker-compose down # (3-1) 작업을 중단할때, 입력합니다." > ${logs_folder}/zz.$(date +"%y%m%d-%H%M%S")__${CMD_NAME}
 cat_and_run "ls --color ${CMD_DIR} ; ls -l --color ${logs_folder}"
 echo "${cYellow}>>>>>>>>>>${cGreen} $0 ||| ${cCyan}${MEMO} ${cYellow}>>>>>>>>>>${cReset}"
 
