@@ -11,17 +11,17 @@ cat_and_run () {
 # ---
 
 MEMO="한글 폰트파일 설치"
-echo "${cYellow}>>>>>>>>>>${cGreen} $0 ||| ${cCyan}${MEMO} ${cYellow}>>>>>>>>>>${cReset}"
+echo "${cMagenta}>>>>>>>>>>${cGreen} $0 ${cMagenta}||| ${cCyan}${MEMO} ${cMagenta}>>>>>>>>>>${cReset}"
 
 org_dir=$(pwd) #-- 현재의 폴더
 font_dir=/usr/share/fonts #-- 폰트 폴더
 
 if [ -f ${org_dir}/Font-D2-KoPub-jeju-nanum-seoul.7z ]; then
-	cat_and_run "ls ${font_dir}" "폰트 등록전의 폴더"
+	cat_and_run "ls ${font_dir}" "폰트 등록전의 폴더 내용"
 	cat_and_run "cd ${font_dir} ; sudo 7za x ${org_dir}/Font-D2-KoPub-jeju-nanum-seoul.7z" "폰트 설치"
-	cat_and_run "ls ${font_dir}" "폰트 등록한 다음의 폴더"
+	cat_and_run "ls ${font_dir}" "폰트 등록후의 폴더 내용"
 else
 	echo "${cRed}!!!! ${cGreen}----> ${cCyan}${org_dir}/Font-D2-KoPub-jeju-nanum-seoul.7z 폰트 파일이 없습니다.${cReset}"
 fi
 
-echo "${cYellow}>>>>>>>>>>${cGreen} $0 ||| ${cCyan}${MEMO} ${cYellow}>>>>>>>>>>${cReset}"
+echo "${cRed}<<<<<<<<<<${cBlue} $0 ${cRed}||| ${cMagenta}${MEMO} ${cRed}<<<<<<<<<<${cReset}"

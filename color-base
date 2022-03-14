@@ -7,20 +7,20 @@ cat_and_run () {
 	echo "${cYellow}<${cMagenta}---- ${cBlue}$1 $2${cReset}"
 }
 cat_and_read () {
-	echo -e "${cYellow}----> ${cGreen}$1 ${cCyan}$2${cYellow}\n - -> ${cRed}press Enter${cCyan}:${cReset}"
+	echo -e "${cYellow}----> ${cGreen}$1 ${cCyan}$2${cRed}\n - -> press ${cCyan}Enter:${cReset}"
 	read a ; echo "${cUp}"; echo "$1" | sh
 	echo "${cYellow}<${cMagenta} - - ${cBlue}press Enter${cRed}: ${cMagenta}$1 $2${cReset}"
 }
 cat_and_readY () {
 	echo "${cYellow}----> ${cGreen}$1 ${cCyan}$2${cReset}"
 	if [ "x${ALL_INSTALL}" = "xy" ]; then
-		echo "$1" | sh ; echo "${cYellow}<${cMagenta}---- ${cBlue}$1${cReset}"
+		echo "$1" | sh ; echo "${cYellow}<${cMagenta}---- ${cBlue}$1 $2${cReset}"
 	else
-		echo "${cYellow} - -> ${cRed}press ${cCyan}y${cRed} or Enter${cCyan}:${cReset}"; read a; echo "${cUp}"
+		echo "${cYellow} - -> ${cRed}press ${cCyan}y${cRed} or ${cCyan}Enter${cRed}:${cReset}"; read a; echo "${cUp}"
 		if [ "x$a" = "xy" ]; then
 			echo "${cRed}-OK-${cReset}"; echo "$1" | sh
 		else
-			echo "${cRed}$1 ${cYellow}--- 를 실행하지 않습니다.${cReset}"
+			echo "${cRed}$1 ${cYellow}--- 작업을 실행하지 않습니다.${cReset}"
 		fi
 		echo "${cYellow}<${cMagenta} - - ${cBlue}press Enter${cRed}: ${cMagenta}$1 $2${cReset}"
 	fi
@@ -33,7 +33,5 @@ if [ "x$CMD_DIR" == "x" ] || [ "x$CMD_DIR" == "x$CMD_NAME" ]; then
 fi
 
 MEMO="Color Base"
-echo "${cYellow}>>>>>>>>>>${cGreen} $0 ||| ${cCyan}${MEMO} ${cYellow}>>>>>>>>>>${cReset}"
-
-# ---
-
+echo "${cMagenta}>>>>>>>>>>${cGreen} $0 ${cMagenta}||| ${cCyan}${MEMO} ${cMagenta}>>>>>>>>>>${cReset}"
+echo "${cRed}<<<<<<<<<<${cBlue} $0 ${cRed}||| ${cMagenta}${MEMO} ${cRed}<<<<<<<<<<${cReset}"
