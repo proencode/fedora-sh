@@ -64,10 +64,9 @@ mysql_config_editor set --login-path=[접속명칭] --host=[host 정보] --user=
 
 __EOF__
 
-
-logs_folder="${HOME}/zz00-logs" ; if [ ! -d "${logs_folder}" ]; then mkdir "${logs_folder}" ; fi
 MEMO="login-path 지정하기"
 echo "${cMagenta}>>>>>>>>>>${cGreen} $0 ${cMagenta}||| ${cCyan}${MEMO} ${cMagenta}>>>>>>>>>>${cReset}"
+logs_folder="${HOME}/zz00-logs" ; if [ ! -d "${logs_folder}" ]; then cat_and_run "mkdir ${logs_folder}" ; fi
 
 cat_and_run "mysql_config_editor print --all" "#-- 이전에 선언한 Login PATH"
 
@@ -183,8 +182,7 @@ echo "${cYellow}<${cMagenta}---- mysql_config_editor set --login-path=${LOGIN_PA
 
 cat_and_run "mysql_config_editor print --all" "#--> 지정 내역 확인"
 
-touch "${logs_folder}/zz.$(date +"%y%m%d-%H%M%S")__${CMD_NAME}"
-cat_and_run "ls --color ${CMD_DIR}" ; ls --color ${logs_folder}
+touch "${logs_folder}/zz.$(date +"%y%m%d-%H%M%S")__${CMD_NAME}" ; cat_and_run "ls --color ${CMD_DIR}" ; ls --color ${logs_folder}
 
 cat_and_run "mysql --login-path=${LOGIN_PATH} mysql" "#-- mysql 데이터베이스를 엽니다."
 

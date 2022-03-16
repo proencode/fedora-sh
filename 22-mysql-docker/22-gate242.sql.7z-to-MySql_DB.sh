@@ -65,7 +65,6 @@ ding_play () {
 	fi
 }
 
-# ----------
 CMD_NAME=`basename $0` # 명령줄에서 실행 프로그램 이름만 꺼냄
 CMD_DIR=${0%/$CMD_NAME} # 실행 이름을 빼고 나머지 디렉토리만 담음
 if [ "x$CMD_DIR" == "x" ] || [ "x$CMD_DIR" == "x$CMD_NAME" ]; then
@@ -74,7 +73,6 @@ fi
 clear_cnr_value #-- Cat_N_Run 초기화
 PLAY_OK="-NO-" # "ok" <-- play 설치가 된 경우,
 # ding_play 1 #-- 1=딩~ 2=캐스터네츠~ 3=뗅- 4=띠일~ 5=데에엥~~ 6=교회 뎅-
-# - - - - - - - - - - - - - - -
 
 db_sql_7z=""
 db_7z_dir=""
@@ -96,9 +94,9 @@ if [ ! -f ${1} ]; then
 	exit 0
 fi
 
-# - - - - - - - - - - - - - - -
 MEMO="DB ${db_sql_7z} 업로드"
 echo "${cMagenta}>>>>>>>>>>${cGreen} $0 ${cMagenta}||| ${cCyan}${MEMO} ${cMagenta}>>>>>>>>>>${cReset}"
+logs_folder="${HOME}/zz00-logs" ; if [ ! -d "${logs_folder}" ]; then cat_and_run "mkdir ${logs_folder}" ; fi
 
 cat <<__EOF__
 ----> play 를 사용하려면 'y' 를 누르세요:
@@ -288,4 +286,5 @@ fi
 fi
 fi
 
+touch "${logs_folder}/zz.$(date +"%y%m%d-%H%M%S")__${CMD_NAME}" ; ls --color ${logs_folder}
 echo "${cRed}<<<<<<<<<<${cBlue} $0 ${cRed}||| ${cMagenta}${MEMO} ${cRed}<<<<<<<<<<${cReset}"

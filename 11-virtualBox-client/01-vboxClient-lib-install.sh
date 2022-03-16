@@ -6,9 +6,15 @@ cat_and_run () {
 	echo "${cYellow}----> ${cGreen}$1 ${cCyan}$2${cReset}"; echo "$1" | sh
 	echo "${cYellow}<${cMagenta}---- ${cBlue}$1 $2${cReset}"
 }
+CMD_NAME=`basename $0` # 명령줄에서 실행 프로그램 이름만 꺼냄
+CMD_DIR=${0%/$CMD_NAME} # 실행 이름을 빼고 나머지 디렉토리만 담음
+if [ "x$CMD_DIR" == "x" ] || [ "x$CMD_DIR" == "x$CMD_NAME" ]; then
+	CMD_DIR="."
+fi
 
 MEMO="게스트확장 을 위한 프로그램 설치"
-echo "${cYellow}>>>>>>>>>>${cGreen} $0 ||| ${cCyan}${MEMO} ${cYellow}>>>>>>>>>>${cReset}"
+echo "${cMagenta}>>>>>>>>>>${cGreen} $0 ${cMagenta}||| ${cCyan}${MEMO} ${cMagenta}>>>>>>>>>>${cReset}"
+logs_folder="${HOME}/zz00-logs" ; if [ ! -d "${logs_folder}" ]; then cat_and_run "mkdir ${logs_folder}" ; fi
 
 cat_and_run "sudo dnf -y install kernel-debug-devel kernel-devel" "커널 devel 추가"
 cat_and_run "sudo dnf -y install vim-enhanced vim-common mc lynx p7zip keepass rclone liveusb-creator " "컴파일용과 추가 프로그램들"
@@ -26,6 +32,7 @@ Host www.kaos.kr
 
 __EOF__
 
+touch "${logs_folder}/zz.$(date +"%y%m%d-%H%M%S")__${CMD_NAME}" ; ls --color ${logs_folder}
 echo "${cCyan}---->${cReset}"
 echo "${cCyan}---->${cReset} 이 작업이 끝나면,"
 echo "${cCyan}---->${cReset} 화면 맨 위에 있는 ''파일 머신 보기 입력 장치 도움말'' 메뉴에서,"
@@ -33,7 +40,5 @@ echo "${cCyan}---->${cReset} [장치] 클릭 > [게스트 확장 CD 이미지 �
 echo "${cCyan}---->${cReset} 자동으로 시작하기로 한 프로그램 . . . 실행하시겠습니까? > [실행] 클릭"
 echo "${cCyan}---->${cBlue} ---->${cReset} Do you wish to continue? [yes or no] > 나오면 yes 를 입력하고, 다음 명령을 준다"
 echo "sudo /sbin/rcvboxadd quicksetup all ; sudo /sbin/rcvboxadd setup"
-
 echo "ls -l /media/sf_Downloads/ #--- 다운로드 폴더를 보여준다"
-echo "${cCyan}---->${cReset}"
-echo "${cYellow}>>>>>>>>>>${cGreen} $0 ||| ${cCyan}${MEMO} ${cYellow}>>>>>>>>>>${cReset}"
+echo "${cRed}<<<<<<<<<<${cBlue} $0 ${cRed}||| ${cMagenta}${MEMO} ${cRed}<<<<<<<<<<${cReset}"

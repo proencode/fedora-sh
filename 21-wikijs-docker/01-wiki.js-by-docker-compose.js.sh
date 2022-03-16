@@ -31,13 +31,13 @@ CMD_DIR=${0%/$CMD_NAME} # 실행 이름을 빼고 나머지 디렉토리만 담�
 if [[ "x$CMD_DIR" == "x" ]] || [[ "x$CMD_DIR" == "x$CMD_NAME" ]]; then
 	CMD_DIR="."
 fi
-logs_folder="${HOME}/zz00-logs" ; if [ ! -d "${logs_folder}" ]; then cat_and_run "mkdir ${logs_folder}" ; fi
 
 MEMO="docker-compose wiki.js 설치"
 cat <<__EOF__
 ${cMagenta}>>>>>>>>>>${cGreen} $0 ${cMagenta}||| ${cCyan}${MEMO} ${cMagenta}>>>>>>>>>>${cReset}
 출처: https://computingforgeeks.com/install-and-use-docker-compose-on-fedora/
 __EOF__
+logs_folder="${HOME}/zz00-logs" ; if [ ! -d "${logs_folder}" ]; then cat_and_run "mkdir ${logs_folder}" ; fi
 
 port_no="5800"
 
@@ -110,8 +110,8 @@ cat_and_run "sudo docker-compose ps -a" "(2-6) 모든 작업을 확인합니다.
 cd -
 
 echo "cd ${wiki_dir} ; sudo docker-compose down # (3-1) 작업을 중단할때, 입력합니다." > ${logs_folder}/zz.$(date +"%y%m%d-%H%M%S")__${CMD_NAME}
-cat_and_run "ls --color ${CMD_DIR} ; ls -l --color ${logs_folder}"
-echo "${cYellow}>>>>>>>>>>${cGreen} $0 ||| ${cCyan}${MEMO} ${cYellow}>>>>>>>>>>${cReset}"
+cat_and_run "ls -l ${logs_folder}"
+echo "${cRed}<<<<<<<<<<${cBlue} $0 ${cRed}||| ${cMagenta}${MEMO} ${cRed}<<<<<<<<<<${cReset}"
 
 cat  <<__EOF__
 ${cCyan}#--- 출처: https://wiki.js.org/

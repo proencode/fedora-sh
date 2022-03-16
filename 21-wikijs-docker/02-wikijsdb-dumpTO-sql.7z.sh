@@ -26,16 +26,15 @@ cat_and_readY () {
 	fi
 }
 
-#----
 CMD_NAME=`basename $0` # 명령줄에서 실행 프로그램 이름만 꺼냄
 CMD_DIR=${0%/$CMD_NAME} # 실행 이름을 빼고 나머지 디렉토리만 담음
 if [ "x$CMD_DIR" == "x" ] || [ "x$CMD_DIR" == "x$CMD_NAME" ]; then
 	CMD_DIR="."
 fi
-#----
 
 MEMO="backup wikijsdb to sql.7z"
-echo "${cYellow}>>>>>>>>>>${cGreen} $0 ||| ${cCyan}${MEMO} ${cYellow}>>>>>>>>>>${cReset}"
+echo "${cMagenta}>>>>>>>>>>${cGreen} $0 ${cMagenta}||| ${cCyan}${MEMO} ${cMagenta}>>>>>>>>>>${cReset}"
+logs_folder="${HOME}/zz00-logs" ; if [ ! -d "${logs_folder}" ]; then cat_and_run "mkdir ${logs_folder}" ; fi
 
 if [ "x$1" = "x" ]; then
 	echo "${cRed}!!!! ${cMagenta}----> ${cBlue} 프로그램 이름 다음에 ${cCyan}(저장하기 위한 폴더)${cBlue}를 지정해야 합니다.${cReset}"
@@ -51,9 +50,10 @@ fi
 dir_for_backup="$1"
 sql_7z="wikijs-$(date +%y%m%d_%H%M%S)-$(uname -n).sql.7z"
 
-cat_and_run "sudo docker ps -a ; sudo docker stop wikijs" "#-- 위키도커 중단"
+cat_and_run "sudo docker ps -a ; sudo docker stop wikijs" "#-- 위키 도커 중단"
 cat_and_run "sudo docker exec wikijsdb pg_dumpall -U wikijs | 7za a -si ${dir_for_backup}/${sql_7z}" "#-- 데이터 백업하기"
-cat_and_run "sudo docker start wikijs ; sudo docker ps -a" "#-- 위키도커 다시 시작"
+cat_and_run "sudo docker start wikijs ; sudo docker ps -a" "#-- 위키 도커 다시 시작"
 
 cat_and_run "ls --color ${CMD_DIR} ; ls -l --color ${dir_for_backup}"
-echo "${cYellow}>>>>>>>>>>${cGreen} $0 ||| ${cCyan}${MEMO} ${cYellow}>>>>>>>>>>${cReset}"
+touch "${logs_folder}/zz.$(date +"%y%m%d-%H%M%S")__${CMD_NAME}" ; ls --color ${logs_folder}
+echo "${cRed}<<<<<<<<<<${cBlue} $0 ${cRed}||| ${cMagenta}${MEMO} ${cRed}<<<<<<<<<<${cReset}"

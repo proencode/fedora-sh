@@ -12,7 +12,6 @@ CMD_DIR=${0%/$CMD_NAME} # 실행 이름을 빼고 나머지 디렉토리만 담�
 if [ "x$CMD_DIR" == "x" ] || [ "x$CMD_DIR" == "x$CMD_NAME" ]; then
 	CMD_DIR="."
 fi
-logs_folder="${HOME}/zz00-logs" ; if [ ! -d "${logs_folder}" ] ; then mkdir "${logs_folder}" ; fi
 
 java_1="8.0.292.hs-adpt"
 groovy_1="1.6.9"
@@ -40,10 +39,11 @@ MEMO="Grails 설치"
 
 cat <<__EOF__
 
-${cYellow}>>>>>>>>>>${cGreen} $0 ||| ${cCyan}${MEMO} ${cYellow}>>>>>>>>>>${cReset}
+${cMagenta}>>>>>>>>>>${cGreen} $0 ${cMagenta}||| ${cCyan}${MEMO} ${cMagenta}>>>>>>>>>>${cReset}
 출처: yosjeon@gmail.com
 
 __EOF__
+logs_folder="${HOME}/zz00-logs" ; if [ ! -d "${logs_folder}" ]; then cat_and_run "mkdir ${logs_folder}" ; fi
 
 echo "${cCyan}#----> java" ; java -version | grep version
 echo "${cGreen}#----> groovy" ; groovy -version | grep Version

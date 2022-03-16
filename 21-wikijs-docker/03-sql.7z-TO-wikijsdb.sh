@@ -32,9 +32,9 @@ if [ "x$CMD_DIR" == "x" ] || [ "x$CMD_DIR" == "x$CMD_NAME" ]; then
 	CMD_DIR="."
 fi
 
-# ----------
 MEMO="restore sql to wikijsdb"
-echo "${cYellow}>>>>>>>>>>${cGreen} $0 ||| ${cCyan}${MEMO} ${cYellow}>>>>>>>>>>${cReset}"
+echo "${cMagenta}>>>>>>>>>>${cGreen} $0 ${cMagenta}||| ${cCyan}${MEMO} ${cMagenta}>>>>>>>>>>${cReset}"
+logs_folder="${HOME}/zz00-logs" ; if [ ! -d "${logs_folder}" ]; then cat_and_run "mkdir ${logs_folder}" ; fi
 
 if [ "x$1" = "x" ]; then
 	echo "${cRed}!!!! ${cMagenta}----> ${cBlue} 프로그램 이름 다음에 ${cCyan}(DB 에 업로드하기 위한 백업파일)${cBlue}을 지정해야 합니다.${cReset}"
@@ -60,7 +60,7 @@ __EOF__
 read a
 
 
-cat_and_run "sudo docker ps -a ; sudo docker stop wikijs" "#-- 위키도커 중단"
+cat_and_run "sudo docker ps -a ; sudo docker stop wikijs" "#-- 위키 도커 중단"
 
 current_backup="last-wikijs-$(date +%y%m%d_%H%M%S)-$(uname -n).sql.7z"
 cat_and_run "sudo docker exec wikijsdb pg_dumpall -U wikijs | 7za a -si ${dir_for_backup}/${current_backup}" "#-- 현재의 DB 백업하기"
@@ -70,8 +70,8 @@ echo "----> sudo docker exec -it wikijsdb createdb -U wikijs wiki #-- DB 만들�
 sudo docker exec -it wikijsdb createdb -U wikijs wiki
 
 cat_and_run "time 7za x -so ${db_sql_7z} | sudo docker exec -i wikijsdb psql -U wikijs wiki" "#-- 백업파일을 db 에 담기"
+cat_and_run "sudo docker start wikijs ; sudo docker ps -a" "#-- 위키 도커 다시 시작"
 
-cat_and_run "sudo docker start wikijs ; sudo docker ps -a" "#-- 위키도커 다시 시작"
-
-cat_and_run "ls --color ${CMD_DIR} ; ls -l --color ${dir_for_backup}"
-echo "${cYellow}>>>>>>>>>>${cGreen} $0 ||| ${cCyan}${MEMO} ${cYellow}>>>>>>>>>>${cReset}"
+cat_and_run "ls -l --color ${dir_for_backup}"
+touch "${logs_folder}/zz.$(date +"%y%m%d-%H%M%S")__${CMD_NAME}" ; ls --color ${logs_folder}
+echo "${cRed}<<<<<<<<<<${cBlue} $0 ${cRed}||| ${cMagenta}${MEMO} ${cRed}<<<<<<<<<<${cReset}"

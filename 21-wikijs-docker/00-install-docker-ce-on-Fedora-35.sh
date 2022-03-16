@@ -37,6 +37,7 @@ cat <<__EOF__
 ${cMagenta}>>>>>>>>>>${cGreen} $0 ${cMagenta}||| ${cCyan}${MEMO} ${cMagenta}>>>>>>>>>>${cReset}
 출처: https://computingforgeeks.com/how-to-install-docker-on-fedora/
 __EOF__
+logs_folder="${HOME}/zz00-logs" ; if [ ! -d "${logs_folder}" ]; then cat_and_run "mkdir ${logs_folder}" ; fi
 
 cat_and_readY "sudo dnf -y update" "(1-1) 시스템을 업데이트 합니다."
 cat_and_readY "sudo reboot" "(1-2) 재부팅 하시겠습니까?"
@@ -62,4 +63,5 @@ cat_and_run "docker version" "(3-6) 도커 버전"
 cat_and_run "docker pull alpine" "(4-1) 설치 확인을 위해, 테스트 도커를 다운로드해 봅니다."
 cat_and_run "docker run -it --rm alpine /bin/sh" "(4-2) 확인을 위해 'apk update' 와 'exit' 를 입력하세요."
 
+touch "${logs_folder}/zz.$(date +"%y%m%d-%H%M%S")__${CMD_NAME}" ; ls --color ${logs_folder}
 echo "${cRed}<<<<<<<<<<${cBlue} $0 ${cRed}||| ${cMagenta}${MEMO} ${cRed}<<<<<<<<<<${cReset}"
