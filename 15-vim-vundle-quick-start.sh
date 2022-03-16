@@ -93,5 +93,5 @@ vim +BundleInstall +qall #---> 복사, 실행해서 설치합니다.
 
 __EOF__
 
-touch "${logs_folder}/zz.$(date +"%y%m%d-%H%M%S")__${CMD_NAME}" ; ls --color ${logs_folder}
+touch "${logs_folder}/zz.$(date +"%y%m%d-%H%M%S")..${CMD_NAME}" ; ls --color ${logs_folder}
 echo "${cRed}<<<<<<<<<<${cBlue} $0 ${cRed}||| ${cMagenta}${MEMO} ${cRed}<<<<<<<<<<${cReset}"

@@ -22,4 +22,4 @@ __EOF__
 curl -s "https://get.sdkman.io" | bash
 source ~/.bashrc
 
-touch "${logs_folder}/zz.$(date +"%y%m%d-%H%M%S")__${CMD_NAME}" ; ls --color ${logs_folder}
+touch "${logs_folder}/zz.$(date +"%y%m%d-%H%M%S")..${CMD_NAME}" ; ls --color ${logs_folder}

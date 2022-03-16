@@ -154,5 +154,5 @@ __EOF__
 cat_and_run "cd /usr/lib/systemd/system ; sudo ls -lZ containerd.service docker.service  docker.socket zvbid.service"
 
 cat_and_run "sudo docker ps -a ; ls --color ${CMD_DIR}"
-touch "${logs_folder}/zz.$(date +"%y%m%d-%H%M%S")__${CMD_NAME}" ; ls --color ${logs_folder}
+touch "${logs_folder}/zz.$(date +"%y%m%d-%H%M%S")..${CMD_NAME}" ; ls --color ${logs_folder}
 echo "${cRed}<<<<<<<<<<${cBlue} $0 ${cRed}||| ${cMagenta}${MEMO} ${cRed}<<<<<<<<<<${cReset}"

@@ -104,7 +104,7 @@ sdk i java ${java} ; sdk i groovy ${groovy} ; sdk i gradle ${gradle} ; sdk i gra
 sdk u java ${java} ; sdk u groovy ${groovy} ; sdk u gradle ${gradle} ; sdk u grails ${grails}
 sdk d java ${java} ; sdk d groovy ${groovy} ; sdk d gradle ${gradle} ; sdk d grails ${grails}
 java -version | grep version ; groovy -version | grep Version ; gradle -version | grep Gradle ; grails -version | grep ersion
-touch "${logs_folder}/zz.\$(date +"%y%m%d-%H%M%S")__$(basename $0)_grails_${grails}"
+touch "${logs_folder}/zz.\$(date +"%y%m%d-%H%M%S")..$(basename $0)_grails_${grails}"
 ls --color ${CMD_DIR} ; echo "#----> ls --color ${logs_folder}" ; ls --color ${logs_folder}
 ${cMagenta}#<---- grails ${grails} 를 설치하려면 실행해 주세요.${cReset}
 __EOF__

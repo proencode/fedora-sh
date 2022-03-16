@@ -20,5 +20,5 @@ cat_and_run "sudo dnf -y install fedora-workstation-repositories" "3rd Party 저
 cat_and_run "sudo dnf config-manager --set-enabled google-chrome" "Google 크롬 리포지토리를 활성화합니다."
 cat_and_run "sudo dnf -y install google-chrome-stable" "마지막으로 Chrome을 설치합니다."
 
-touch "${logs_folder}/zz.$(date +"%y%m%d-%H%M%S")__${CMD_NAME}" ; ls --color ${logs_folder}
+touch "${logs_folder}/zz.$(date +"%y%m%d-%H%M%S")..${CMD_NAME}" ; ls --color ${logs_folder}
 echo "${cRed}<<<<<<<<<<${cBlue} $0 ${cRed}||| ${cMagenta}${MEMO} ${cRed}<<<<<<<<<<${cReset}"

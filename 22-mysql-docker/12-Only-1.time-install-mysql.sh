@@ -48,5 +48,5 @@ cat_and_run "rpm -qa | grep mariadb | sort"
 cat_and_run "sudo systemctl enable docker"
 cat_and_run "sudo systemctl start docker"
 
-touch "${logs_folder}/zz.$(date +"%y%m%d-%H%M%S")__${CMD_NAME}" ; ls --color ${logs_folder}
+touch "${logs_folder}/zz.$(date +"%y%m%d-%H%M%S")..${CMD_NAME}" ; ls --color ${logs_folder}
 echo "${cRed}<<<<<<<<<<${cBlue} $0 ${cRed}||| ${cMagenta}${MEMO} ${cRed}<<<<<<<<<<${cReset}"

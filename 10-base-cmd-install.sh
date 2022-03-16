@@ -21,5 +21,5 @@ cat_and_run "sudo dnf -y install keepass rclone liveusb-creator" "꼭 필요한 
 cat_and_run "sudo systemctl enable sshd"
 cat_and_run "sudo systemctl start sshd"
 
-touch "${logs_folder}/zz.$(date +"%y%m%d-%H%M%S")__${CMD_NAME}" ; ls --color ${logs_folder}
+touch "${logs_folder}/zz.$(date +"%y%m%d-%H%M%S")..${CMD_NAME}" ; ls --color ${logs_folder}
 echo "${cRed}<<<<<<<<<<${cBlue} $0 ${cRed}||| ${cMagenta}${MEMO} ${cRed}<<<<<<<<<<${cReset}"

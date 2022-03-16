@@ -157,7 +157,7 @@ else
 	cat_and_run "sudo docker logs ${DOCKER_DB_NAME} 2>&1 | grep --color PASSWORD" "# <---- (0) 위에 표시된 비밀번호를 복사합니다."
 fi
 
-touch "${logs_folder}/zz.$(date +"%y%m%d-%H%M%S")__${CMD_NAME}"
+touch "${logs_folder}/zz.$(date +"%y%m%d-%H%M%S")..${CMD_NAME}"
 
 cat <<__EOF__
 sudo docker exec -it ${DOCKER_DB_NAME} mysql -u root -p # ${cMagenta}<---- (1) Enter password: 가 나오면, GENERATED ROOT PASSWORD 를 여기에 붙여넣기 합니다.${cReset}

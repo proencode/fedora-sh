@@ -32,12 +32,13 @@ if [ "x$CMD_DIR" == "x" ] || [ "x$CMD_DIR" == "x$CMD_NAME" ]; then
 	CMD_DIR="."
 fi
 
+MEMO="MEGAsync 실행하기"
+echo "${cMagenta}>>>>>>>>>>${cGreen} $0 ${cMagenta}||| ${cCyan}${MEMO} ${cMagenta}>>>>>>>>>>${cReset}"
+logs_folder="${HOME}/zz00-logs" ; if [ ! -d "${logs_folder}" ]; then cat_and_run "mkdir ${logs_folder}" ; fi
+
 Shared_Folder=/media/sf_Downloads #-- 공유폴더
 hostLINK_mega=${Shared_Folder}/bada/mega-yssc #-- 호스트쪽 다운로드/bada
 thisLINK_home_mega=${HOME}/mega-yssc #-- 홈 폴더에 있는 링크
-
-MEMO="MEGAsync 실행하기"
-echo "${cMagenta}>>>>>>>>>>${cGreen} $0 ${cMagenta}||| ${cCyan}${MEMO} ${cMagenta}>>>>>>>>>>${cReset}"
 
 if [ ! -d ${Shared_Folder} ]; then
 	echo "${cRed}!!!!! ----> ${cYellow}링크할 ${Shared_Folder} 폴더가 없으므로 중단합니다.${cReset}"

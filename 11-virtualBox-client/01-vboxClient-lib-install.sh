@@ -32,7 +32,7 @@ Host www.kaos.kr
 
 __EOF__
 
-touch "${logs_folder}/zz.$(date +"%y%m%d-%H%M%S")__${CMD_NAME}" ; ls --color ${logs_folder}
+touch "${logs_folder}/zz.$(date +"%y%m%d-%H%M%S")..${CMD_NAME}" ; ls --color ${logs_folder}
 echo "${cCyan}---->${cReset}"
 echo "${cCyan}---->${cReset} 이 작업이 끝나면,"
 echo "${cCyan}---->${cReset} 화면 맨 위에 있는 ''파일 머신 보기 입력 장치 도움말'' 메뉴에서,"

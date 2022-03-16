@@ -15,6 +15,7 @@ fi
 
 MEMO="한글 폰트파일 설치"
 echo "${cMagenta}>>>>>>>>>>${cGreen} $0 ${cMagenta}||| ${cCyan}${MEMO} ${cMagenta}>>>>>>>>>>${cReset}"
+logs_folder="${HOME}/zz00-logs" ; if [ ! -d "${logs_folder}" ]; then cat_and_run "mkdir ${logs_folder}" ; fi
 
 org_dir=$(pwd)/${CMD_DIR}
 font_dir=/usr/share/fonts #-- 폰트 폴더
@@ -27,4 +28,5 @@ else
 	echo "${cRed}!!!! ${cGreen}----> ${cCyan}${org_dir}/Font-D2-KoPub-jeju-nanum-seoul.7z 폰트 파일이 없습니다.${cReset}"
 fi
 
+touch "${logs_folder}/zz.$(date +"%y%m%d-%H%M%S")..${CMD_NAME}" ; ls --color ${logs_folder}
 echo "${cRed}<<<<<<<<<<${cBlue} $0 ${cRed}||| ${cMagenta}${MEMO} ${cRed}<<<<<<<<<<${cReset}"

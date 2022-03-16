@@ -185,5 +185,5 @@ cat_and_run "mv ${HOST_DIR}/${db_now_sql_7z} ${BACKUP_DIR}/${db_now_sql_7z}" "�
 cat_and_run "ls -hltr --color ${BACKUP_DIR}/${DB_NAME}_*.sql.7z | tail -10" "새로 만들어진 백업파일"
 
 ding_play 4 #-- 1=띠잉~ 2=뗑-~ 3=데에엥~~ 4=캐스터네츠 5=교회차임 6=딩~
-touch "${logs_folder}/zz.$(date +"%y%m%d-%H%M%S")__${CMD_NAME}" ; ls --color ${logs_folder}
+touch "${logs_folder}/zz.$(date +"%y%m%d-%H%M%S")..${CMD_NAME}" ; ls --color ${logs_folder}
 echo "${cRed}<<<<<<<<<<${cBlue} $0 ${cRed}||| ${cMagenta}${MEMO} ${cRed}<<<<<<<<<<${cReset}"

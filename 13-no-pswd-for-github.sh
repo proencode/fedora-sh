@@ -62,5 +62,5 @@ cat_and_readY "git config credential.helper store" "이와 같이 저장합니�
 
 # cat_and_run "sudo systemctl enable sshd ; sudo systemctl start sshd"
 
-touch "${logs_folder}/zz.$(date +"%y%m%d-%H%M%S")__${CMD_NAME}" ; ls --color ${logs_folder}
+touch "${logs_folder}/zz.$(date +"%y%m%d-%H%M%S")..${CMD_NAME}" ; ls --color ${logs_folder}
 echo "${cRed}<<<<<<<<<<${cBlue} $0 ${cRed}||| ${cMagenta}${MEMO} ${cRed}<<<<<<<<<<${cReset}"

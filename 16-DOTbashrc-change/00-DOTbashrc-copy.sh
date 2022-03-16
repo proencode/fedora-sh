@@ -34,8 +34,9 @@ fi
 
 MEMO=".bashrc 바꾸기"
 echo "${cMagenta}>>>>>>>>>>${cGreen} $0 ${cMagenta}||| ${cCyan}${MEMO} ${cMagenta}>>>>>>>>>>${cReset}"
+logs_folder="${HOME}/zz00-logs" ; if [ ! -d "${logs_folder}" ]; then cat_and_run "mkdir ${logs_folder}" ; fi
 
-new_dot_bashrc=DOTbashrc-vfedora35
+new_dot_bashrc=$(pwd)/${CMD_DIR}/DOTbashrc-vfedora35 #-- 스크립트가 있는 디렉토리에 이 파일이 있어야 한다.
 if [ -f ${new_dot_bashrc} ]; then
 	cat_and_run "mv ~/.bashrc dOTbashrc-org-$(date +'%y%m%d_%H%M%S')-fedora35" "원래의 .bashrc 파일을 이곳으로 복사합니다."
 	cat_and_run "cp ${new_dot_bashrc} ~/.bashrc" "미리 작성했던 파일을 ~/.bashrc 로 복사합니다."
@@ -48,5 +49,5 @@ else
 	echo "${cRed}!!!! ${cYellow}----> ${cCyan}${new_dot_bashrc} 파일이 없어서 복하지 못했습니다.${cReset}"
 fi
 cat_and_run "ls -a --color ~/"
-
+touch "${logs_folder}/zz.$(date +"%y%m%d-%H%M%S")..${CMD_NAME}" ; ls --color ${logs_folder}
 echo "${cRed}<<<<<<<<<<${cBlue} $0 ${cRed}||| ${cMagenta}${MEMO} ${cRed}<<<<<<<<<<${cReset}"

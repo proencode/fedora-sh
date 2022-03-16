@@ -55,5 +55,5 @@ cat_and_run "sudo docker exec wikijsdb pg_dumpall -U wikijs | 7za a -si ${dir_fo
 cat_and_run "sudo docker start wikijs ; sudo docker ps -a" "#-- 위키 도커 다시 시작"
 
 cat_and_run "ls --color ${CMD_DIR} ; ls -l --color ${dir_for_backup}"
-touch "${logs_folder}/zz.$(date +"%y%m%d-%H%M%S")__${CMD_NAME}" ; ls --color ${logs_folder}
+touch "${logs_folder}/zz.$(date +"%y%m%d-%H%M%S")..${CMD_NAME}" ; ls --color ${logs_folder}
 echo "${cRed}<<<<<<<<<<${cBlue} $0 ${cRed}||| ${cMagenta}${MEMO} ${cRed}<<<<<<<<<<${cReset}"

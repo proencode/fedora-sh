@@ -109,7 +109,7 @@ cat_and_run "sudo docker-compose ps -a" "(2-6) 모든 작업을 확인합니다.
 
 cd -
 
-echo "cd ${wiki_dir} ; sudo docker-compose down # (3-1) 작업을 중단할때, 입력합니다." > ${logs_folder}/zz.$(date +"%y%m%d-%H%M%S")__${CMD_NAME}
+echo "cd ${wiki_dir} ; sudo docker-compose down # (3-1) 작업을 중단할때, 입력합니다." > ${logs_folder}/zz.$(date +"%y%m%d-%H%M%S")..${CMD_NAME}
 cat_and_run "ls -l ${logs_folder}"
 echo "${cRed}<<<<<<<<<<${cBlue} $0 ${cRed}||| ${cMagenta}${MEMO} ${cRed}<<<<<<<<<<${cReset}"
 
