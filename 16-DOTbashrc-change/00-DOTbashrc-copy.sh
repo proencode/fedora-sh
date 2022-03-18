@@ -38,7 +38,11 @@ log_name="${logs_folder}/zz.$(date +"%y%m%d-%H%M%S")__RUNNING_${CMD_NAME}" ; tou
 
 new_dot_bashrc=$(pwd)/${CMD_DIR}/DOTbashrc-vfedora35 #-- 스크립트가 있는 디렉토리에 이 파일이 있어야 한다.
 if [ -f ${new_dot_bashrc} ]; then
-	cat_and_run "mv ~/.bashrc dOTbashrc-org-$(date +'%y%m%d_%H%M%S')-fedora35" "원래의 .bashrc 파일을 이곳으로 복사합니다."
+	old_files=$(pwd)/${CMD_DIR}/old-files
+	if [ ! -d ${old_files} ]; then
+		mkdir ${old_files}
+	fi
+	cat_and_run "mv ~/.bashrc ${old_files}/dOTbashrc-org-$(date +'%y%m%d_%H%M%S')-$(uname -r)" "원래의 .bashrc 파일을 이곳으로 복사합니다."
 	cat_and_run "cp ${new_dot_bashrc} ~/.bashrc" "미리 작성했던 파일을 ~/.bashrc 로 복사합니다."
 	cat <<__EOF__
 ${cCyan}----------------${cReset}
@@ -46,7 +50,7 @@ source ~/.bashrc ${cCyan}#--- 이 명령으로 프롬프트를 새로 지정합�
 ${cCyan}----------------${cReset}
 __EOF__
 else
-	echo "${cRed}!!!! ${cYellow}----> ${cCyan}${new_dot_bashrc} 파일이 없어서 복하지 못했습니다.${cReset}"
+	echo "${cRed}!!!! ${cYellow}----> ${cCyan}${new_dot_bashrc} 파일이 없어서 복사하지 못했습니다.${cReset}"
 fi
 cat_and_run "ls -a --color ~/"
 
