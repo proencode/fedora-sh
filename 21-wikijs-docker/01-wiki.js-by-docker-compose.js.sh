@@ -112,7 +112,7 @@ cd -
 echo "cd ${wiki_dir} ; sudo docker-compose down # (3-1) 작업을 중단할때, 입력합니다." > ${logs_folder}/zz.$(date +"%y%m%d-%H%M%S")..${CMD_NAME}
 
 # ----
-rm -f ${log_name} ; log_name="${logs_folder}/zz.$(date +"%y%m%d-%H%M%S")__${CMD_NAME}" ; touch ${log_name}
+rm -f ${log_name} ; log_name="${logs_folder}/zz.$(date +"%y%m%d-%H%M%S")..${CMD_NAME}" ; touch ${log_name}
 cat_and_run "ls --color ${CMD_DIR}" ; ls --color ${logs_folder}
 echo "${cRed}<<<<<<<<<<${cBlue} $0 ${cRed}||| ${cMagenta}${MEMO} ${cRed}<<<<<<<<<<${cReset}"
 

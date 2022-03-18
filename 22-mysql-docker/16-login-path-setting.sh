@@ -181,6 +181,6 @@ echo "${cYellow}<${cMagenta}---- mysql_config_editor set --login-path=${LOGIN_PA
 cat_and_run "mysql_config_editor print --all" "#--> 지정 내역 확인"
 
 # ----
-rm -f ${log_name} ; log_name="${logs_folder}/zz.$(date +"%y%m%d-%H%M%S")__${CMD_NAME}" ; touch ${log_name}
+rm -f ${log_name} ; log_name="${logs_folder}/zz.$(date +"%y%m%d-%H%M%S")..${CMD_NAME}" ; touch ${log_name}
 cat_and_run "ls --color ${CMD_DIR}" ; ls --color ${logs_folder}
 echo "${cRed}<<<<<<<<<<${cBlue} $0 ${cRed}||| ${cMagenta}${MEMO} ${cRed}<<<<<<<<<<${cReset}"

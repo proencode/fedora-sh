@@ -34,6 +34,7 @@ MEMO="토큰의 유효기간동안 비번없이 git 사용하기"
 echo "${cMagenta}>>>>>>>>>>${cGreen} $0 ${cMagenta}||| ${cCyan}${MEMO} ${cMagenta}>>>>>>>>>>${cReset}"
 logs_folder="${HOME}/zz00-logs" ; if [ ! -d "${logs_folder}" ]; then cat_and_run "mkdir ${logs_folder}" ; fi
 log_name="${logs_folder}/zz.$(date +"%y%m%d-%H%M%S")__RUNNING_${CMD_NAME}" ; touch ${log_name}
+# ----
 
 cat <<__EOF__
 ${cCyan}git pull push 할때 비밀번호 저장 ${cBlue}https://stackoverflow.com/questions/63025988/linux-git-credentials-how-to-remove-an-instance-of-a-username-password-combo${gReset}
@@ -62,6 +63,6 @@ cat_and_readY "git config credential.helper store" "이와 같이 저장합니�
 # cat_and_run "sudo systemctl enable sshd ; sudo systemctl start sshd"
 
 # ----
-rm -f ${log_name} ; log_name="${logs_folder}/zz.$(date +"%y%m%d-%H%M%S")__${CMD_NAME}" ; touch ${log_name}
+rm -f ${log_name} ; log_name="${logs_folder}/zz.$(date +"%y%m%d-%H%M%S")..${CMD_NAME}" ; touch ${log_name}
 cat_and_run "ls --color ${CMD_DIR}" ; ls --color ${logs_folder}
 echo "${cRed}<<<<<<<<<<${cBlue} $0 ${cRed}||| ${cMagenta}${MEMO} ${cRed}<<<<<<<<<<${cReset}"

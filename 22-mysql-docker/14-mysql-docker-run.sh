@@ -109,7 +109,7 @@ fi
 
 # cat_and_read "$(cat <<__EOF__
 cat <<__EOF__
-${cGreen}sudo docker run --detach \\
+${cYellow}sudo docker run --detach \\
 	--restart=always \\
 	# -it \\
 	--volume ${DATABASE_FOLDER}:/var/lib/mysql \\
@@ -162,7 +162,7 @@ else
 fi
 
 # ----
-rm -f ${log_name} ; log_name="${logs_folder}/zz.$(date +"%y%m%d-%H%M%S")__${CMD_NAME}" ; touch ${log_name}
+rm -f ${log_name} ; log_name="${logs_folder}/zz.$(date +"%y%m%d-%H%M%S")..${CMD_NAME}" ; touch ${log_name}
 cat_and_run "ls --color ${CMD_DIR}" ; ls --color ${logs_folder}
 
 cat <<__EOF__

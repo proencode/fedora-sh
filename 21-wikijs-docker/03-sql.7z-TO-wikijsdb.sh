@@ -72,6 +72,6 @@ cat_and_run "time 7za x -so ${db_sql_7z} | sudo docker exec -i wikijsdb psql -U 
 cat_and_run "sudo docker start wikijs ; sudo docker ps -a" "#-- 위키 도커 다시 시작"
 
 # ----
-rm -f ${log_name} ; log_name="${logs_folder}/zz.$(date +"%y%m%d-%H%M%S")__${CMD_NAME}" ; touch ${log_name}
+rm -f ${log_name} ; log_name="${logs_folder}/zz.$(date +"%y%m%d-%H%M%S")..${CMD_NAME}" ; touch ${log_name}
 cat_and_run "ls --color ${CMD_DIR}" ; ls --color ${logs_folder}
 echo "${cRed}<<<<<<<<<<${cBlue} $0 ${cRed}||| ${cMagenta}${MEMO} ${cRed}<<<<<<<<<<${cReset}"

@@ -60,6 +60,6 @@ cat_and_run "megasync &" "megasync 를 실행합니다."
 cat_and_run "ls -lh --color ${thisLINK_home_mega}" "MEGAsync 에서는 ${hostLINK_mega} 에 링크를 걸어야 합니다."
 
 # ----
-rm -f ${log_name} ; log_name="${logs_folder}/zz.$(date +"%y%m%d-%H%M%S")__${CMD_NAME}" ; touch ${log_name}
+rm -f ${log_name} ; log_name="${logs_folder}/zz.$(date +"%y%m%d-%H%M%S")..${CMD_NAME}" ; touch ${log_name}
 cat_and_run "ls --color ${CMD_DIR}" ; ls --color ${logs_folder}
 echo "${cRed}<<<<<<<<<<${cBlue} $0 ${cRed}||| ${cMagenta}${MEMO} ${cRed}<<<<<<<<<<${cReset}"

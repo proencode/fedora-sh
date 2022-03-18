@@ -188,6 +188,6 @@ cat_and_run "ls -hltr --color ${BACKUP_DIR}/${DB_NAME}_*.sql.7z | tail -10" "새
 ding_play 4 #-- 1=띠잉~ 2=뗑-~ 3=데에엥~~ 4=캐스터네츠 5=교회차임 6=딩~
 
 # ----
-rm -f ${log_name} ; log_name="${logs_folder}/zz.$(date +"%y%m%d-%H%M%S")__${CMD_NAME}" ; touch ${log_name}
+rm -f ${log_name} ; log_name="${logs_folder}/zz.$(date +"%y%m%d-%H%M%S")..${CMD_NAME}" ; touch ${log_name}
 cat_and_run "ls --color ${CMD_DIR}" ; ls --color ${logs_folder}
 echo "${cRed}<<<<<<<<<<${cBlue} $0 ${cRed}||| ${cMagenta}${MEMO} ${cRed}<<<<<<<<<<${cReset}"
