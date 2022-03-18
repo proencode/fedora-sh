@@ -3,34 +3,38 @@
 cBlack=$(tput bold)$(tput setaf 0); cRed=$(tput bold)$(tput setaf 1); cGreen=$(tput bold)$(tput setaf 2); cYellow=$(tput bold)$(tput setaf 3); cBlue=$(tput bold)$(tput setaf 4); cMagenta=$(tput bold)$(tput setaf 5); cCyan=$(tput bold)$(tput setaf 6); cWhite=$(tput bold)$(tput setaf 7); cReset=$(tput bold)$(tput sgr0); cUp=$(tput cuu 2)
 
 cat_and_run () {
-	echo "${cYellow}----> ${cGreen}$1 ${cCyan}$2${cReset}"; echo "$1" | sh
-	echo "${cYellow}<${cMagenta}---- ${cBlue}$1 $2${cReset}"
+	echo "${cGreen}----> ${cYellow}$1 ${cCyan}$2${cReset}"; echo "$1" | sh
+	echo "${cMagenta}<---- ${cBlue}$1 $2${cReset}"
 }
 cat_and_read () {
-	echo -e "${cYellow}----> ${cGreen}$1 ${cCyan}$2${cRed}\n - -> press ${cCyan}Enter:${cReset}"
+	echo -e "${cGreen}----> ${cYellow}$1 ${cCyan}$2${cGreen}\n----> ${cCyan}press Enter${cReset}:"
 	read a ; echo "${cUp}"; echo "$1" | sh
-	echo "${cYellow}<${cMagenta} - - ${cBlue}press Enter${cRed}: ${cMagenta}$1 $2${cReset}"
+	echo "${cMagenta}<---- ${cBlue}press Enter${cReset}: ${cMagenta}$1 $2${cReset}"
 }
 cat_and_readY () {
-	echo "${cYellow}----> ${cGreen}$1 ${cCyan}$2${cReset}"
+	echo "${cGreen}----> ${cYellow}$1 ${cCyan}$2${cReset}"
 	if [ "x${ALL_INSTALL}" = "xy" ]; then
-		echo "$1" | sh ; echo "${cYellow}<${cMagenta}---- ${cBlue}$1 $2${cReset}"
+		echo "$1" | sh ; echo "${cMagenta}<---- ${cBlue}$1 $2${cReset}"
 	else
-		echo "${cYellow} - -> ${cRed}press ${cCyan}y${cRed} or ${cCyan}Enter${cRed}:${cReset}"; read a; echo "${cUp}"
+		echo "${cGreen}----> ${cRed}press ${cCyan}y${cRed} or Enter${cReset}:"; read a; echo "${cUp}"
 		if [ "x$a" = "xy" ]; then
 			echo "${cRed}-OK-${cReset}"; echo "$1" | sh
 		else
-			echo "${cRed}$1 ${cYellow}--- 작업을 실행하지 않습니다.${cReset}"
+			echo "${cRed}[ ${cYellow}$1 ${cRed}] ${cCyan}<--- 명령을 실행하지 않습니다.${cReset}"
 		fi
-		echo "${cYellow}<${cMagenta} - - ${cBlue}press Enter${cRed}: ${cMagenta}$1 $2${cReset}"
+		echo "${cMagenta}<---- ${cBlue}press Enter${cReset}: ${cMagenta}$1 $2${cReset}"
 	fi
 }
-
 CMD_NAME=`basename $0` # 명령줄에서 실행 프로그램 이름만 꺼냄
 CMD_DIR=${0%/$CMD_NAME} # 실행 이름을 빼고 나머지 디렉토리만 담음
 if [ "x$CMD_DIR" == "x" ] || [ "x$CMD_DIR" == "x$CMD_NAME" ]; then
 	CMD_DIR="."
 fi
+MEMO="login-path 지정하기"
+echo "${cMagenta}>>>>>>>>>>${cGreen} $0 ${cMagenta}||| ${cCyan}${MEMO} ${cMagenta}>>>>>>>>>>${cReset}"
+logs_folder="${HOME}/zz00-logs" ; if [ ! -d "${logs_folder}" ]; then cat_and_run "mkdir ${logs_folder}" ; fi
+log_name="${logs_folder}/zz.$(date +"%y%m%d-%H%M%S")__RUNNING_${CMD_NAME}" ; touch ${log_name}
+# ----
 
 cat <<__EOF__
 200527 수
@@ -63,10 +67,6 @@ Waring: Using a password on the command line interface can be insecure.
 mysql_config_editor set --login-path=[접속명칭] --host=[host 정보] --user=[계정명] --password --socket=/tmp/mysql.sock --port=3306
 
 __EOF__
-
-MEMO="login-path 지정하기"
-echo "${cMagenta}>>>>>>>>>>${cGreen} $0 ${cMagenta}||| ${cCyan}${MEMO} ${cMagenta}>>>>>>>>>>${cReset}"
-logs_folder="${HOME}/zz00-logs" ; if [ ! -d "${logs_folder}" ]; then cat_and_run "mkdir ${logs_folder}" ; fi
 
 cat_and_run "mysql_config_editor print --all" "#-- 이전에 선언한 Login PATH"
 
@@ -178,12 +178,9 @@ echo "${cYellow}----> ${cGreen}mysql_config_editor set --login-path=${LOGIN_PATH
 mysql_config_editor set --login-path=${LOGIN_PATH} --host=${DOCKER_NAME} --user=${USER_NAME} --password --port=3306
 echo "${cYellow}<${cMagenta}---- mysql_config_editor set --login-path=${LOGIN_PATH} --host=${DOCKER_NAME} --user=${USER_NAME} --password --port=3306 ${cBlue}#--> 로그인 PATH, 도커 이름, user name 지정.${cReset}"
 
-#----
-
 cat_and_run "mysql_config_editor print --all" "#--> 지정 내역 확인"
 
-touch "${logs_folder}/zz.$(date +"%y%m%d-%H%M%S")..${CMD_NAME}" ; cat_and_run "ls --color ${CMD_DIR}" ; ls --color ${logs_folder}
-
-cat_and_run "mysql --login-path=${LOGIN_PATH} mysql" "#-- mysql 데이터베이스를 엽니다."
-
+# ----
+rm -f ${log_name} ; log_name="${logs_folder}/zz.$(date +"%y%m%d-%H%M%S")__${CMD_NAME}" ; touch ${log_name}
+cat_and_run "ls --color ${CMD_DIR}" ; ls --color ${logs_folder}
 echo "${cRed}<<<<<<<<<<${cBlue} $0 ${cRed}||| ${cMagenta}${MEMO} ${cRed}<<<<<<<<<<${cReset}"

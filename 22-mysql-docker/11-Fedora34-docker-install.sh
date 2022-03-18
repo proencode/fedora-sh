@@ -3,34 +3,38 @@
 cBlack=$(tput bold)$(tput setaf 0); cRed=$(tput bold)$(tput setaf 1); cGreen=$(tput bold)$(tput setaf 2); cYellow=$(tput bold)$(tput setaf 3); cBlue=$(tput bold)$(tput setaf 4); cMagenta=$(tput bold)$(tput setaf 5); cCyan=$(tput bold)$(tput setaf 6); cWhite=$(tput bold)$(tput setaf 7); cReset=$(tput bold)$(tput sgr0); cUp=$(tput cuu 2)
 
 cat_and_run () {
-	echo "${cYellow}----> ${cGreen}$1 ${cCyan}$2${cReset}"; echo "$1" | sh
-	echo "${cYellow}<${cMagenta}---- ${cBlue}$1 $2${cReset}"
+	echo "${cGreen}----> ${cYellow}$1 ${cCyan}$2${cReset}"; echo "$1" | sh
+	echo "${cMagenta}<---- ${cBlue}$1 $2${cReset}"
 }
 cat_and_read () {
-	echo -e "${cYellow}----> ${cGreen}$1 ${cCyan}$2${cRed}\n - -> press ${cCyan}Enter:${cReset}"
+	echo -e "${cGreen}----> ${cYellow}$1 ${cCyan}$2${cGreen}\n----> ${cCyan}press Enter${cReset}:"
 	read a ; echo "${cUp}"; echo "$1" | sh
-	echo "${cYellow}<${cMagenta} - - ${cBlue}press Enter${cRed}: ${cMagenta}$1 $2${cReset}"
+	echo "${cMagenta}<---- ${cBlue}press Enter${cReset}: ${cMagenta}$1 $2${cReset}"
 }
 cat_and_readY () {
-	echo "${cYellow}----> ${cGreen}$1 ${cCyan}$2${cReset}"
+	echo "${cGreen}----> ${cYellow}$1 ${cCyan}$2${cReset}"
 	if [ "x${ALL_INSTALL}" = "xy" ]; then
-		echo "$1" | sh ; echo "${cYellow}<${cMagenta}---- ${cBlue}$1 $2${cReset}"
+		echo "$1" | sh ; echo "${cMagenta}<---- ${cBlue}$1 $2${cReset}"
 	else
-		echo "${cYellow} - -> ${cRed}press ${cCyan}y${cRed} or ${cCyan}Enter${cRed}:${cReset}"; read a; echo "${cUp}"
+		echo "${cGreen}----> ${cRed}press ${cCyan}y${cRed} or Enter${cReset}:"; read a; echo "${cUp}"
 		if [ "x$a" = "xy" ]; then
 			echo "${cRed}-OK-${cReset}"; echo "$1" | sh
 		else
-			echo "${cRed}$1 ${cYellow}--- 작업을 실행하지 않습니다.${cReset}"
+			echo "${cRed}[ ${cYellow}$1 ${cRed}] ${cCyan}<--- 명령을 실행하지 않습니다.${cReset}"
 		fi
-		echo "${cYellow}<${cMagenta} - - ${cBlue}press Enter${cRed}: ${cMagenta}$1 $2${cReset}"
+		echo "${cMagenta}<---- ${cBlue}press Enter${cReset}: ${cMagenta}$1 $2${cReset}"
 	fi
 }
-
 CMD_NAME=`basename $0` # 명령줄에서 실행 프로그램 이름만 꺼냄
 CMD_DIR=${0%/$CMD_NAME} # 실행 이름을 빼고 나머지 디렉토리만 담음
 if [ "x$CMD_DIR" == "x" ] || [ "x$CMD_DIR" == "x$CMD_NAME" ]; then
 	CMD_DIR="."
 fi
+MEMO="Fedora34에 Docker Engine 설치"
+echo "${cMagenta}>>>>>>>>>>${cGreen} $0 ${cMagenta}||| ${cCyan}${MEMO} ${cMagenta}>>>>>>>>>>${cReset}"
+logs_folder="${HOME}/zz00-logs" ; if [ ! -d "${logs_folder}" ]; then cat_and_run "mkdir ${logs_folder}" ; fi
+log_name="${logs_folder}/zz.$(date +"%y%m%d-%H%M%S")__RUNNING_${CMD_NAME}" ; touch ${log_name}
+# ----
 
 # play -q ~/bin/1-bin-scripts/freesound/212541__misstickle__indian-bell-chime.wav & #---- 띠잉~
 # play -q ~/bin/1-bin-scripts/freesound/339816__inspectorj__hand-bells-f-single.wav & #---- 뗑-~
@@ -38,10 +42,6 @@ fi
 # play -q ~/bin/1-bin-scripts/freesound/411459__inspectorj__castanets-multi-a-h1.wav & #---- 캐스터네츠~
 # play -q ~/bin/1-bin-scripts/freesound/513865__wormletter__chime-c.wav & #---- 교회 뎅-
 # play -q ~/bin/1-bin-scripts/freesound/91926__tim-kahn__ding.wav & #---- 딩~
-
-MEMO="Fedora34에 Docker Engine 설치"
-echo "${cMagenta}>>>>>>>>>>${cGreen} $0 ${cMagenta}||| ${cCyan}${MEMO} ${cMagenta}>>>>>>>>>>${cReset}"
-logs_folder="${HOME}/zz00-logs" ; if [ ! -d "${logs_folder}" ]; then cat_and_run "mkdir ${logs_folder}" ; fi
 
 cat_and_run "ls -lZ /usr/lib/systemd/system/containerd.service" "docker.service  docker.socket zvbid.service"
 
@@ -153,6 +153,9 @@ __EOF__
 
 cat_and_run "cd /usr/lib/systemd/system ; sudo ls -lZ containerd.service docker.service  docker.socket zvbid.service"
 
-cat_and_run "sudo docker ps -a ; ls --color ${CMD_DIR}"
-touch "${logs_folder}/zz.$(date +"%y%m%d-%H%M%S")..${CMD_NAME}" ; ls --color ${logs_folder}
+cat_and_run "sudo docker ps -a"
+
+# ----
+rm -f ${log_name} ; log_name="${logs_folder}/zz.$(date +"%y%m%d-%H%M%S")__${CMD_NAME}" ; touch ${log_name}
+cat_and_run "ls --color ${CMD_DIR}" ; ls --color ${logs_folder}
 echo "${cRed}<<<<<<<<<<${cBlue} $0 ${cRed}||| ${cMagenta}${MEMO} ${cRed}<<<<<<<<<<${cReset}"
