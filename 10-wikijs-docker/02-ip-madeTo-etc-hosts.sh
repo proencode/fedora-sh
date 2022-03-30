@@ -4,17 +4,17 @@ cBlack=$(tput bold)$(tput setaf 0); cRed=$(tput bold)$(tput setaf 1); cGreen=$(t
 
 cat_and_run () {
 	echo "${cGreen}----> ${cYellow}$1 ${cCyan}$2${cReset}"; echo "$1" | sh
-	echo "${cMagenta}<---- ${cBlue}$1 $2${cReset}"
+	echo "${cMagenta}<---- ${cBlue}$1 ${cMagenta}$2${cReset}"
 }
 cat_and_read () {
 	echo -e "${cGreen}----> ${cYellow}$1 ${cCyan}$2${cGreen}\n----> ${cCyan}press Enter${cReset}:"
 	read a ; echo "${cUp}"; echo "$1" | sh
-	echo "${cMagenta}<---- ${cBlue}press Enter${cReset}: ${cMagenta}$1 $2${cReset}"
+	echo "${cMagenta}<---- press Enter${cReset}: ${cBlue}$1 ${cMagenta}$2${cReset}"
 }
 cat_and_readY () {
 	echo "${cGreen}----> ${cYellow}$1 ${cCyan}$2${cReset}"
 	if [ "x${ALL_INSTALL}" = "xy" ]; then
-		echo "$1" | sh ; echo "${cMagenta}<---- ${cBlue}$1 $2${cReset}"
+		echo "$1" | sh ; echo "${cMagenta}<---- ${cBlue}$1 ${cMagenta}$2${cReset}"
 	else
 		echo "${cGreen}----> ${cRed}press ${cCyan}y${cRed} or Enter${cReset}:"; read a; echo "${cUp}"
 		if [ "x$a" = "xy" ]; then
@@ -22,7 +22,7 @@ cat_and_readY () {
 		else
 			echo "${cRed}[ ${cYellow}$1 ${cRed}] ${cCyan}<--- 명령을 실행하지 않습니다.${cReset}"
 		fi
-		echo "${cMagenta}<---- ${cBlue}press Enter${cReset}: ${cMagenta}$1 $2${cReset}"
+		echo "${cMagenta}<---- press Enter${cReset}: ${cBlue}$1 ${cMagenta}$2${cReset}"
 	fi
 }
 CMD_NAME=`basename $0` # 명령줄에서 실행 프로그램 이름만 꺼냄
@@ -66,17 +66,16 @@ ${cGreen}----> ${cCyan}press Enter${cReset}:
 __EOF__
 read a
 
-cat_and_run "grep ${this_domain} /etc/hosts" "수정전 도메인 내용"
-ls -lZ /etc/hosts
+cat_and_run "ls -lZ /etc/hosts ; grep ${this_domain} /etc/hosts" "수정전 도메인"
 
 grep -v " ${this_domain}" /etc/hosts > new_etc_hosts
 echo "${this_ip} ${this_domain}" >> new_etc_hosts
 sudo mv new_etc_hosts /etc/hosts
 sudo chown root.root /etc/hosts
-sudo chcon system_u:object_r:net_conf_t:s0 /etc/hosts
+#-- for fedora -- sudo chcon system_u:object_r:net_conf_t:s0 /etc/hosts
 
-cat_and_run "grep ${this_domain} /etc/hosts" "수정 후 도메인 내용"
-ls -lZ /etc/hosts
+cat_and_run "ls -lZ /etc/hosts ; grep ${this_domain} /etc/hosts" "수정 후 도메인"
+cat /etc/hosts
 
 # ----
 rm -f ${log_name} ; log_name="${logs_folder}/zz.$(date +"%y%m%d-%H%M%S")..${CMD_NAME}" ; touch ${log_name}

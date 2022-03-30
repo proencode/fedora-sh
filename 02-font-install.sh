@@ -42,7 +42,7 @@ title_end "임시로 쓸 폴더 확인"
 
 
 title_begin "압축한 파일을 찾아서 폰트 설치"
-font_zip_file=$(pwd)/${CMD_DIR}/font_file_dir/Font-D2-KoPub-jeju-nanum-seoul.7z
+font_zip_file=$(pwd)/${CMD_DIR}/backup_files/Font-D2-KoPub-jeju-nanum-seoul.7z
 if [ -f ${font_zip_file} ]; then
 	cat_and_run "ls ${FONT_DIR}" "폰트 등록전의 폴더 내용"
 	cat_and_run "cd ${FONT_DIR} ; sudo 7za -y x ${font_zip_file}" "폰트 설치"
