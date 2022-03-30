@@ -24,8 +24,9 @@ dGray="${cB}1;30m${cE}"; dRed="${cB}1;31m${cE}"; dGreen="${cB}1;32m${cE}"; dYell
 # '\D' 날짜처리 '{' '}' 사이에 넣는것: %Y=2022 %y=22 %m=01 %d=28 %a=금
 # \u 사용자아이디 \h 호스트이름 \w 현재 디렉토리
 cWhiteGreen="${cB}0;37;42m${cE}"
-PS1="${cGreen}\t${cYellow}\D{%a}${cBlue}\D{%y}-${cGreen}\D{%m-%d} ${dMagenta}\u${cWhite}@${cWhiteGreen}\h${cReset} ${cCyan}\w\n${cCyan}\W${cReset} $ "
-## --g1ssd128-- PS1='\e[0;36m\t\e[0m \e[0;33m\D{%a}\e[0m \D{%Y-%m-%d} \e[01;36m\u\e[01;37m@\e[01;42m\h\e[0m \e[0;32m\w\e[0m\n\e[0;32m\W\e[0m $ ' #-- g1ssd128
+PS1="${cGreen}\t${cYellow}\D{%a}${cCyan}\D{%y}${cMagenta}\D{%m}${cGreen}\D{%d} ${dCyan}\u${cWhite}@${cWhiteGreen}\h${cReset} ${cCyan}\w\n${cCyan}\W${cReset} $ " #-- vfed35 220330
+## PS1="${cGreen}\t${cYellow}\D{%a}${cBlue}\D{%y}-${cGreen}\D{%m-%d} ${dMagenta}\u${cWhite}@${cWhiteGreen}\h${cReset} ${cCyan}\w\n${cCyan}\W${cReset} $ " #-- oldvfed35
+## PS1='\e[0;36m\t\e[0m \e[0;33m\D{%a}\e[0m \D{%Y-%m-%d} \e[01;36m\u\e[01;37m@\e[01;42m\h\e[0m \e[0;32m\w\e[0m\n\e[0;32m\W\e[0m $ ' #-- g1ssd128
 #--
 
 # Uncomment the following line if you don't like systemctl's auto-paging feature:
