@@ -80,21 +80,6 @@ fi
 title_end "vbox 그룹 추가"
 
 
-title_begin "호스트 이름 바꾸기"
-HOSTNAME=$(hostname)
-cat <<__EOF__
-${cCyan}----> 호스트 이름을 바꾸려면 입력하세요: ${cRed}[${cYellow} ${HOSTNAME} ${cRed}]${cReset}
-__EOF__
-read a ; echo "${cUp}"
-if [ "x$a" = "x" ]; then
-	echo "= ${cRed}${HOSTNAME}${cReset} ="
-else
-	echo "= ${cRed}${a}${cReset} ="
-	cat_and_run "sudo hostnamectl set-hostname $a" "호스트 이름을 $a 로 지정합니다."
-fi
-title_end "호스트 이름 바꾸기"
-
-
 #-- cat <<__EOF__
 #-- vi ~/.ssh/config
 #-- Host kaos.kr

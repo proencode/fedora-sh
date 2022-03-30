@@ -6,6 +6,12 @@ cat_and_run () {
 	echo "${cGreen}----> ${cYellow}$1 ${cCyan}$2${cReset}"; echo "$1" | sh
 	echo "${cMagenta}<---- ${cBlue}$1 $2${cReset}"
 }
+title_begin () {
+	echo "${cCyan}----> ${cRed}$1${cReset}"
+}
+title_end () {
+	echo "${cBlue}----> ${cMagenta}$1${cReset}"
+}
 CMD_NAME=`basename $0` # 명령줄에서 실행 프로그램 이름만 꺼냄
 CMD_DIR=${0%/$CMD_NAME} # 실행 이름을 빼고 나머지 디렉토리만 담음
 if [ "x$CMD_DIR" == "x" ] || [ "x$CMD_DIR" == "x$CMD_NAME" ]; then
@@ -17,11 +23,22 @@ logs_folder="${HOME}/zz00-logs" ; if [ ! -d "${logs_folder}" ]; then cat_and_run
 log_name="${logs_folder}/zz.$(date +"%y%m%d-%H%M%S")__RUNNING_${CMD_NAME}" ; touch ${log_name}
 # ----
 
-cat_and_run "sudo dnf -y install vim-enhanced vim-common"
-cat_and_run "git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim"
+
+title_begin "VundleVim 설치"
+echo "${cGreen}----> ${cCyan}https://itlearningcenter.tistory.com/entry/%E3%80%901804-LTS%E3%80%91VIM-Plug-in-%EC%84%A4%EC%B9%98%ED%95%98%EA%B8%B0${cReset}"
+cat_and_run "sudo dnf -y install vim-enhanced vim-common" "vim 설치"
+cat_and_run "git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim" "VundleVim 설치"
+title_begin "VundleVim 설치"
+
+
+title_begin "vi +BundleInstall +qall #-- vi 에 등록"
+vim +BundleInstall +qall
+title_end "vi +BundleInstall +qall #-- vi 에 등록"
+
+
+title_begin "~/.vimrc 만들기"
 now=$(date +"%y%m%d-%H%M%S")
 cat_and_run "mv ~/.vimrc ~/.vimrc-$now"
-
 cat > ~/.vimrc <<__EOF__
 set nocompatible              " be iMproved, required
 filetype off                  " required
@@ -87,12 +104,8 @@ nmap nerd :NERDTreeToggle<CR>
 "
 " at 210422 목 1036 from https://github.com/VundleVim/Vundle.vim
 __EOF__
+title_end "~/.vimrc 만들기"
 
-cat <<__EOF__
-
-vim +BundleInstall +qall #---> 복사, 실행해서 설치합니다.
-
-__EOF__
 
 # ----
 rm -f ${log_name} ; log_name="${logs_folder}/zz.$(date +"%y%m%d-%H%M%S")..${CMD_NAME}" ; touch ${log_name}
