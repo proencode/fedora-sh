@@ -10,7 +10,7 @@ title_begin () {
 	echo "${cCyan}----> ${cRed}$1${cReset}"
 }
 title_end () {
-	echo "${cBlue}----> ${cMagenta}$1${cReset}"
+	echo "${cBlue}<---- ${cMagenta}$1${cReset}"
 }
 CMD_NAME=`basename $0` # 명령줄에서 실행 프로그램 이름만 꺼냄
 CMD_DIR=${0%/$CMD_NAME} # 실행 이름을 빼고 나머지 디렉토리만 담음

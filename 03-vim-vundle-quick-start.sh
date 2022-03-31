@@ -10,7 +10,7 @@ title_begin () {
 	echo "${cCyan}----> ${cRed}$1${cReset}"
 }
 title_end () {
-	echo "${cBlue}----> ${cMagenta}$1${cReset}"
+	echo "${cBlue}<---- ${cMagenta}$1${cReset}"
 }
 CMD_NAME=`basename $0` # 명령줄에서 실행 프로그램 이름만 꺼냄
 CMD_DIR=${0%/$CMD_NAME} # 실행 이름을 빼고 나머지 디렉토리만 담음
@@ -31,15 +31,10 @@ cat_and_run "git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle
 title_begin "VundleVim 설치"
 
 
-title_begin "vi +BundleInstall +qall #-- vi 에 등록"
-vim +BundleInstall +qall
-title_end "vi +BundleInstall +qall #-- vi 에 등록"
-
-
-title_begin "~/.vimrc 만들기"
+title_begin "${HOME}/.vimrc 만들기"
 now=$(date +"%y%m%d-%H%M%S")
-cat_and_run "mv ~/.vimrc ~/.vimrc-$now"
-cat > ~/.vimrc <<__EOF__
+cat_and_run "mv ${HOME}/.vimrc ${HOME}/.vimrc-$now"
+cat > ${HOME}/.vimrc <<__EOF__
 set nocompatible              " be iMproved, required
 filetype off                  " required
 
@@ -104,7 +99,12 @@ nmap nerd :NERDTreeToggle<CR>
 "
 " at 210422 목 1036 from https://github.com/VundleVim/Vundle.vim
 __EOF__
-title_end "~/.vimrc 만들기"
+title_end "${HOME}/.vimrc 만들기"
+
+
+title_begin "vi +BundleInstall +qall #-- vi 에 등록"
+vim +BundleInstall +qall
+title_end "vi +BundleInstall +qall #-- vi 에 등록"
 
 
 # ----
