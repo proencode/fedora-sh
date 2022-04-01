@@ -152,7 +152,7 @@ You will now set up your environment variables for Flutter on Windows:
 
 1. In the next dialog, select the Path variable in the User variables for User section and click the Edit... button:
 
-![Figure2.2-Environment Variables Edit ](/flutter_cookbook_img/figure2.2-environment_variables_vdit.webp)
+![Figure2.2-Environment Variables Edit ](/flutter_cookbook_img/figure2.2-environment_variables_edit.webp)
 
 1. Finally, add the location where you installed Flutter to your path:
 

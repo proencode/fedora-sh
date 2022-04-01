@@ -174,7 +174,7 @@ The setState function tells Flutter that a widget needs to be repainted. In this
 
 The following diagram summarizes how Flutter's render loop is impacted by setState:
 
-![Figure6.2-how Flutter's render loop is ](/flutter_cookbook_img/figure6.2-how_Flutter_s_render_loop_is.webp)
+![Figure6.2-how Flutter's render loop is ](/flutter_cookbook_img/figure6.2-how_flutter_s_render_loop_is.webp)
 
 
 Please note that the closure that you use in setState is completely optional. It's more for code legibility purposes. We could just as easily written the following code and it would have had identical results:

@@ -721,7 +721,7 @@ void main() => runApp(PlanProvider(child: MasterPlanApp()));
 
 The design that we will be aiming for by the end of this chapter can be summarized with this diagram:
 
-![Figure7.5-The design that we will be aiming ](/flutter_cookbook_img/figure7.5-The_design_that_we_will_be_aiming.webp)
+![Figure7.5-The design that we will be aiming ](/flutter_cookbook_img/figure7.5-the_design_that_we_will_be_aiming.webp)
 
 We are beginning to divide the data layer into multiple components that will comprise the n-tier architecture – controllers, services, and repositories. While this diagram shows the full design, we will only be covering one tier at a time. In this recipe, we focused on the controller tier, which can communicate with the view layer via the PlanProvider interface. 
 
