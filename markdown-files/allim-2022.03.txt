@@ -4,6 +4,11 @@
 ## 220324 목
 푸른숲도서관 0950
 
+220112수1020 진접도서관 git 정리 여부 스크립트
+```
+cd ~/proj*; for dir in $(ls -d *); do cd $dir; echo "--$dir--"; git status; git pull; cd ..; done
+```
+
 ## 220323 수
 푸른숲도서관 0930
 

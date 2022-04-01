@@ -14,7 +14,7 @@ Short Description:
 
  
 > 출처: https://www.ddanzi.com/index.php?mid=free&statusList=HOT%2CHOTBEST%2CHOTAC%2CHOTBESTAC&page=3&document_srl=731034674
-> 제목: 작가도 매력적인 파친코 [42] 게제: 04:28:11 저자: 쑥과마눌?
+> 제목: 작가도 매력적인 파친코 [42] 게재: 04:28:11 저자: 쑥과마눌?
 > 옮김: 220401-1129 조회 8926 추천138 비추천0
 
 96년도에 미국에서 공부할 때, 청소년을 위한 문학이라는 강의를 들었어요.
