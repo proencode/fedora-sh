@@ -37,24 +37,35 @@ log_name="${logs_folder}/zz.$(date +"%y%m%d-%H%M%S")__RUNNING_${CMD_NAME}" ; tou
 # ----
 
 if [ "x$1" = "x" ]; then
-	echo "${cRed}!!!! ${cMagenta}----> ${cBlue} 프로그램 이름 다음에 ${cCyan}(저장하기 위한 폴더)${cBlue}를 지정해야 합니다.${cReset}"
-	echo "----> ${cYellow}${0} [백업파일을 저장할 폴더이름]${cReset}"
-	exit
+	rm -f ${log_name}
+	echo "${cRed}!!!! ${cMagenta}----> ${cBlue} 프로그램 이름 다음에 ${cCyan}(백업파일을 저장할 폴더)${cBlue}를 지정해야 합니다.${cReset}"
+	echo "----> ${cYellow}${0} ${cCyan}[ ${cYellow}백업파일을 저장할 폴더이름${cCyan} ] 을 입력하세요.${cReset}"
+	echo "${cRed}<<<<<<<<<<${cBlue} $0 ${cRed}||| ${cMagenta}${MEMO} ${cRed}<<<<<<<<<<${cReset}"
+	exit 1
 fi
 if [ ! -d "$1" ]; then
-	echo "${cRed}!!!! ${cMagenta}----> ${cBlue} 저장하기 위한 ${cCyan}($1)${cBlue} 폴더가 없습니다.${cReset}"
-	echo "----> ${cYellow}${0} [백업파일을 저장할 폴더이름]${cReset}"
-	exit
+	rm -f ${log_name}
+	echo "${cRed}!!!! ${cMagenta}----> ${cBlue} 백업파일을 저장할 ${cCyan}($1)${cBlue} 폴더가 없습니다.${cReset}"
+	echo "----> ${cYellow}${0} ${cCyan}[ ${cYellow}백업파일을 저장할 폴더이름${cCyan} ] 을 입력하세요.${cReset}"
+	echo "${cRed}<<<<<<<<<<${cBlue} $0 ${cRed}||| ${cMagenta}${MEMO} ${cRed}<<<<<<<<<<${cReset}"
+	exit 1
 fi
 
 dir_for_backup="$1"
-sql_7z="wikijs-$(date +%y%m%d_%H%M%S)-$(uname -n).sql.7z"
+sql_7z="yy.wikijs-$(date +%y%m%d_%H%M%S)-$(uname -n).sql.7z"
+
+cat_and_read "# 백업파일을 저장할 폴더가 ${cReset}'''${cYellow}${dir_for_backup}${cReset}'''" "맞으면 [ 엔터 ]를 눌러서 넘어가세요."
 
 cat_and_run "sudo docker ps -a ; sudo docker stop wikijs" "#-- 위키 도커 중단"
-cat_and_run "sudo docker exec wikijsdb pg_dumpall -U wikijs | 7za a -si ${dir_for_backup}/${sql_7z}" "#-- 데이터 백업하기"
+
+cat_and_read "# 비밀번호를 2번 입력해야 합니다." "[ 엔터 ]를 누르세요."
+echo "${cGreen}----> ${cYellow}sudo docker exec wikijsdb pg_dumpall -U wikijs | 7za a -si ${dir_for_backup}/${sql_7z} -p ${cCyan}#-- 데이터 백업하기${cReset}"
+sudo docker exec wikijsdb pg_dumpall -U wikijs | 7za a -si ${dir_for_backup}/${sql_7z} -p
+
 cat_and_run "sudo docker start wikijs ; sudo docker ps -a" "#-- 위키 도커 다시 시작"
+
 
 # ----
 rm -f ${log_name} ; log_name="${logs_folder}/zz.$(date +"%y%m%d-%H%M%S")..${CMD_NAME}" ; touch ${log_name}
-cat_and_run "ls --color ${CMD_DIR}" ; ls --color ${logs_folder}
+cat_and_run "ls --color ${1}" ; ls --color ${logs_folder}
 echo "${cRed}<<<<<<<<<<${cBlue} $0 ${cRed}||| ${cMagenta}${MEMO} ${cRed}<<<<<<<<<<${cReset}"
