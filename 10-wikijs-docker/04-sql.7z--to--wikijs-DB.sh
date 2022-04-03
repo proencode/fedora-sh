@@ -68,7 +68,9 @@ sudo docker exec -it wikijsdb dropdb -U wikijs wiki
 echo "----> sudo docker exec -it wikijsdb createdb -U wikijs wiki #-- DB 만들기"
 sudo docker exec -it wikijsdb createdb -U wikijs wiki
 
-cat_and_run "time 7za x -so ${db_sql_7z} | sudo docker exec -i wikijsdb psql -U wikijs wiki" "#-- 백업파일을 db 에 담기"
+# cat_and_run "time 7za x -so ${db_sql_7z} | sudo docker exec -i wikijsdb psql -U wikijs wiki" "#-- 백업파일을 db 에 담기"
+echo "----> time 7za x -so ${db_sql_7z} | sudo docker exec -i wikijsdb psql -U wikijs wiki #-- 백업파일을 db 에 담기"
+time 7za x -so ${db_sql_7z} | sudo docker exec -i wikijsdb psql -U wikijs wiki
 cat_and_run "sudo docker start wikijs ; sudo docker ps -a" "#-- 위키 도커 다시 시작"
 
 # ----
