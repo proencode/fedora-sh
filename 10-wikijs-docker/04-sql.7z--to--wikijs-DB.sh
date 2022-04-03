@@ -52,24 +52,60 @@ sql_name=$(basename ${db_sql_7z}) # 백업파일 이름만 꺼냄
 dir_for_backup=${db_sql_7z%/$sql_name} # 백업파일 이름을 빼고 나머지 디렉토리만 담음
 cat <<__EOF__
 
-db_sql_7z="$1"
-sql_name=$(basename ${db_sql_7z}) # 백업파일 이름만 꺼냄
-dir_for_backup=${db_sql_7z%/$sql_name} # 백업파일 이름을 빼고 나머지 디렉토리만 담음
-----> Press Enter:
+${cYellow}db_sql_7z="$1"${cReset}
+${cYellow}sql_name=$(basename ${db_sql_7z}) ${cCyan}# 백업파일 이름만 꺼냄${cReset}
+${cYellow}dir_for_backup=${db_sql_7z%/$sql_name} ${cCyan}# 백업파일 이름을 빼고 나머지 디렉토리만 담음${cReset}
+${cGreen}----> ${cCyan}Press Enter${cReset}:
 __EOF__
 read a
 
 cat_and_run "sudo docker ps -a ; sudo docker stop wikijs" "#-- 위키 도커 중단"
 
-current_backup="last-wikijs-$(date +%y%m%d_%H%M%S)-$(uname -n).sql.7z"
-cat_and_run "sudo docker exec wikijsdb pg_dumpall -U wikijs | 7za a -si ${dir_for_backup}/${current_backup}" "#-- 현재의 DB 백업하기"
-echo "----> sudo docker exec -it wikijsdb dropdb -U wikijs wiki #-- DB 삭제하기"
+echo "${cGreen}----> ${cCyan}DB 백업을 하지 않으려면, ' ${cYellow}x${cCyan} ' 를 눌러 주세요.${cReset}"
+read a ; echo "${cUp}"
+echo "${cRed}[ ${cYellow}${a} ${cRed}]${cReset}"
+last_skip="db_backup_ok"
+if [ "x$a" = 'xx' ]; then
+	cat <<__EOF__
+
+
+
+
+
+
+${cRed}!!!! 주의 !!!! 현재 DB 를 다운로드 + 백업하지 않고, 업로드 합니다.${cReset}
+
+${cGreen}----> ${cCyan}press ' ${cYellow}y ${cCyan}' Enter:${cReset}
+__EOF__
+	read a ; echo "${cUp}"
+	echo "${cRed}[ ${cYellow}${a} ${cRed}]${cReset}"
+	if [ "x$a" != "xy" ]; then
+		# ----
+		rm -f ${log_name}
+		echo "${cRed}<<<<<<<<<<${cBlue} $0 ${cRed}||| ${cMagenta}${MEMO} ${cRed}<<<<<<<<<<${cReset}"
+		exit 1
+	fi
+	last_skip="no_backup"
+fi
+
+if [ "x${last_skip}" = "xdb_backup_ok" ]; then
+	current_backup="last-wikijs-$(date +%y%m%d_%H%M%S)-$(uname -n).sql.7z"
+	cat <<__EOF__
+${cGreen}----> ${cYellow}sudo docker exec wikijsdb pg_dumpall -U wikijs | 7za a -si ${dir_for_backup}/${current_backup} -p ${cCyan}#-- 현재의 DB 백업하기
+${cGreen}----> ${cYellow}비밀번호${cCyan}를 입력하세요.${cReset}
+__EOF__
+	sudo docker exec wikijsdb pg_dumpall -U wikijs | 7za a -si ${dir_for_backup}/${current_backup} -p
+fi
+
+
+echo "${cGreen}----> ${cYellow}sudo docker exec -it wikijsdb dropdb -U wikijs wiki ${cCyan}#-- DB 삭제하기${cReset}"
 sudo docker exec -it wikijsdb dropdb -U wikijs wiki
-echo "----> sudo docker exec -it wikijsdb createdb -U wikijs wiki #-- DB 만들기"
+echo "${cGreen}----> ${cYellow}sudo docker exec -it wikijsdb createdb -U wikijs wiki ${cCyan}#-- DB 만들기${cReset}"
 sudo docker exec -it wikijsdb createdb -U wikijs wiki
 
 # cat_and_run "time 7za x -so ${db_sql_7z} | sudo docker exec -i wikijsdb psql -U wikijs wiki" "#-- 백업파일을 db 에 담기"
-echo "----> time 7za x -so ${db_sql_7z} | sudo docker exec -i wikijsdb psql -U wikijs wiki #-- 백업파일을 db 에 담기"
+echo "${cGreen}----> ${cYellow}time 7za x -so ${db_sql_7z} | sudo docker exec -i wikijsdb psql -U wikijs wiki ${cCyan}#-- 백업파일을 db 에 담기${cReset}"
+echo "${cGreen}----> ${cYellow}비밀번호${cCyan}를 입력하세요.${cReset}"
 time 7za x -so ${db_sql_7z} | sudo docker exec -i wikijsdb psql -U wikijs wiki
 cat_and_run "sudo docker start wikijs ; sudo docker ps -a" "#-- 위키 도커 다시 시작"
 

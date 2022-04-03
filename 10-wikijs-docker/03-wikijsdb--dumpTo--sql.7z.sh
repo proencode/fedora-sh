@@ -58,8 +58,8 @@ cat_and_read "# 백업파일을 저장할 폴더가 ${cReset}'''${cYellow}${dir_
 
 cat_and_run "sudo docker ps -a ; sudo docker stop wikijs" "#-- 위키 도커 중단"
 
-cat_and_read "# 비밀번호를 2번 입력해야 합니다." "[ 엔터 ]를 누르세요."
 echo "${cGreen}----> ${cYellow}sudo docker exec wikijsdb pg_dumpall -U wikijs | 7za a -si ${dir_for_backup}/${sql_7z} -p ${cCyan}#-- 데이터 백업하기${cReset}"
+echo "${cGreen}----> ${cYellow}비밀번호${cCyan}를 입력하세요.${cReset}"
 sudo docker exec wikijsdb pg_dumpall -U wikijs | 7za a -si ${dir_for_backup}/${sql_7z} -p
 
 cat_and_run "sudo docker start wikijs ; sudo docker ps -a" "#-- 위키 도커 다시 시작"
