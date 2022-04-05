@@ -36,7 +36,7 @@ logs_folder="${HOME}/zz00-logs" ; if [ ! -d "${logs_folder}" ]; then cat_and_run
 log_name="${logs_folder}/zz.$(date +"%y%m%d-%H%M%S")__RUNNING_${CMD_NAME}" ; touch ${log_name}
 # ----
 
-new_dot_bashrc=$(pwd)/${CMD_DIR}/backup_files/DOTbashrc-vfedora35 #-- 스크립트가 있는 디렉토리에 이 파일이 있어야 한다.
+new_dot_bashrc=$(pwd)/${CMD_DIR}/init_files/DOTbashrc-vfedora35 #-- 스크립트가 있는 디렉토리에 이 파일이 있어야 한다.
 if [ -f ${new_dot_bashrc} ]; then
 	old_files=$(pwd)/${CMD_DIR}/old-files
 	if [ ! -d ${old_files} ]; then
