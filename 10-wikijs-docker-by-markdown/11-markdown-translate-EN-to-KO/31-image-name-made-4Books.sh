@@ -29,9 +29,11 @@ do
 	echo "----> Please_Enter_A_Sentence: [ Figure 는 제외하고, 4.1- 부터 입력 ]"
 	read a
 	if [ "x$a" != "x" ]; then
-		img_name=$(echo "Figure${a,,}" | sed 's/ /_/g') #-- 전부 대문자로 바꾸려면 ${a^^}, 전부 소문자는 ${a,,}
+		img_name=$(echo "figure${a,,}" | sed 's/ /_/g') #-- 전부 대문자로 바꾸려면 ${a^^}, 전부 소문자는 ${a,,}
 		echo " "
-		echo "![ Figure${a} ](/${image_folder}/${img_name}.png .webp)"
+		# echo "![ Figure${a} ](/${image_folder}/${img_name}.png .webp)"
+		echo "![ Figure${a} ](/${image_folder}/"
+		echo "${img_name}.png .webp)"
 		echo " "
 	fi
 done
