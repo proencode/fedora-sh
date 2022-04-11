@@ -52,16 +52,16 @@ if [ ! -d "$1" ]; then
 fi
 
 dir_for_backup="$1"
-markdown_7z="yy.markdown-files-$(date +"%y%m%d-%H%M%S")-$(uname -n).7z"
+markdown_7z="markdown-files-$(date +"%y%m%d-%H%M%S")-$(uname -n).7z"
 
 cat_and_read "# 백업하려는 폴더가 ${cReset}'''${cYellow}${dir_for_backup}${cReset}'''" "맞으면 [ 엔터 ]를 눌러서 넘어가세요."
 cat_and_read "# 백업을 위해 압축시킨 파일은 현재의 폴더 ( $(pwd) )에 저장합니다." "[ 엔터 ]를 누르세요."
 
 cat_and_read "# 비밀번호를 2번 입력해야 합니다." "[ 엔터 ]를 누르세요."
-echo "${cGreen}----> ${cYellow}7za a $(pwd)/${markdown_7z} ${dir_for_backup} -p ${cCyan}#-- 데이터 백업하기${cReset}"
-7za a $(pwd)/${markdown_7z} ${dir_for_backup} -p
+echo "${cGreen}----> ${cYellow}time 7za a $(pwd)/${markdown_7z} ${dir_for_backup} -p -v3900M ${cCyan}#-- 데이터 백업하기${cReset}"
+time 7za a $(pwd)/${markdown_7z} ${dir_for_backup} -p -v3900M
 
 # ----
 rm -f ${log_name} ; log_name="${logs_folder}/zz.$(date +"%y%m%d-%H%M%S")..${CMD_NAME}" ; touch ${log_name}
-cat_and_run "ls --color ${1}" ; ls --color ${logs_folder}
+ls --color ${logs_folder} ; cat_and_run "ls -ltr --color ${pwd}"
 echo "${cRed}<<<<<<<<<<${cBlue} $0 ${cRed}||| ${cMagenta}${MEMO} ${cRed}<<<<<<<<<<${cReset}"
