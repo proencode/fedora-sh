@@ -57,12 +57,12 @@ https://tutorialforlinux.com/2021/10/05/step-by-step-python-3-pip-fedora-35-inst
 __EOF__
 
 if [ "x$1" = "x" ]; then
-	echo "${cRed}!!!! ${cMagenta}----> ${cBlue} 프로그램 이름 다음에 ${cCyan}(마침표로 분리해야 할 md 파일)${cBlue}을 지정해야 합니다.${cReset}"
+	echo "${cRed}!!!! ${cMagenta}----> ${cBlue} 프로그램 이름 다음에 ${cCyan}(마침표 위치에서 줄을 바꾸려는 md 파일)${cBlue}을 지정해야 합니다.${cReset}"
 	echo "----> ${cYellow}${0} [md 파일 이름]${cReset}"
 	exit 1
 fi
 if [ ! -f "$1" ]; then
-	echo "${cRed}!!!! ${cMagenta}----> ${cBlue} 마침표로 분리해야 할 ${cCyan}($1)${cBlue} md 파일이 없습니다.${cReset}"
+	echo "${cRed}!!!! ${cMagenta}----> ${cBlue} 마침표 위치에서 줄을 바꾸려는 ${cCyan}($1)${cBlue} md 파일이 없습니다.${cReset}"
 	echo "----> ${cYellow}${0} [md 파일 이름]${cReset}"
 	exit 1
 fi
@@ -82,11 +82,12 @@ ${cGreen}----> ${cCyan}Press Enter${cReset}:
 __EOF__
 read a
 
-period_file="en_2_ko...${org_name}...md"
-# cat_and_run "cat ${org_dir_name} | sed -e s'/\. /\.\n/g' | sed -e s'/\.$/\.\n/g' > ${period_file}" "마침표 (.) 기준으로 줄을 분리합니다."
-# cat_and_run "cat ${org_dir_name} | sed -e s'/\. /\.\n/g' > ${period_file}" "마침표 (.) 기준으로 줄을 분리합니다."
+period_file="period...${org_name}...md" #-- 원본의 마침표에서 다음줄로 넘어가도록 수정한 파일
+en2ko_file="en2ko...${org_name}...md" #-- 최종 번역 파일
+cat_and_run "cat ${org_dir_name} | sed -e s'/\. /\.\n/g' | sed -e s'/\.$/\.\n/g' > ${period_file}" "마침표 (.) 기준으로 줄을 분리합니다."
+cat_and_run "cat ${org_dir_name} | sed -e s'/\. /\.\n/g' > ${period_file}" "마침표 (.) 기준으로 줄을 분리합니다."
 
-python_name=31-trans-text.py
+python_name=99-trans-text.py
 echo "----> ${python_name} 소스 파일을 만듭니다."
 
 fromColor="${cRed}from${cGreen}" ; toColor="${cRed}to  ${cYellow}" #-- 화면으로 보기 위한것임.
@@ -100,7 +101,8 @@ cat > ${python_name} <<__EOF__
 import googletrans
 translator = googletrans.Translator()
 
-filename="${org_dir_name}"
+# filename="${org_dir_name}"
+filename="${period_file}"
 
 def read_txt (filename):
 	# print (f"filename = {filename}")
@@ -149,10 +151,9 @@ Bash Quick Start Guide 머리말
 
 __EOF__
 
-cat_and_run "cat ${temp2} ${temp1} > ${period_file}" "최종 번역파일 작성"
-cat_and_run "rm -rf ${temp2} ${temp1}" "임시파일 삭제"
+cat_and_run "cat ${temp2} ${temp1} > ${en2ko_file}" "최종 번역파일 작성"
+cat_and_run "rm -rf ${temp2} ${temp1} ${python_name}" "임시파일 삭제"
 
-# translation = translator.translate("This book is designed to develop both server and client for an application. We have used the Kotlin language for both the server and client sides. In this book, Spring will be the server-side application, and Android the client-side application. Our primary focus is on those areas that will be able to help a developer develop a secure application with the latest architecture. This book describes the basics of Kotlin and Spring, which will be of benefit if you are unfamiliar with these platforms. We also designed the chapters for implementing security and database in a project. This book delves into the use of Retrofit for handling HTTP requests and SQLite Room for storing data in an Android device. You will also be able to find a way of how to develop a robust, reactive project. Then, you will learn how to test a project using JUnit and Espresso for developing a less bug-prone and stable project.")
 
 # ----
 # rm -f ${log_name} ; log_name="${logs_folder}/zz.$(date +"%y%m%d-%H%M%S")..${CMD_NAME}" ; touch ${log_name}
