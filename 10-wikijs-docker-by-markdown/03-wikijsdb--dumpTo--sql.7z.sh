@@ -52,7 +52,7 @@ if [ ! -d "$1" ]; then
 fi
 
 dir_for_backup="$1"
-sql_7z="yy.wikijs-$(date +%y%m%d_%H%M%S)-$(uname -n).sql.7z"
+sql_7z="wikijs-$(date +%y%m%d_%H%M%S)-$(uname -n).sql.7z"
 
 cat_and_read "# 백업파일을 저장할 폴더가 ${cReset}'''${cYellow}${dir_for_backup}${cReset}'''" "맞으면 [ 엔터 ]를 눌러서 넘어가세요."
 
