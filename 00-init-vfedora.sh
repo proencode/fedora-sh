@@ -46,7 +46,7 @@ echo "${cMagenta}>>>>>>>>>>${cGreen} $0 ${cMagenta}||| ${cCyan}${MEMO} ${cMagent
 
 title_begin "로그 기록전에 업데이트부터 합니다."
 cat_and_readY "sudo dnf -y update" "'y' 를 눌러서 시스템을 업데이트 하는것이 좋습니다."
-cat_and_readY "sudo reboot" "시스템을 업데이트 한뒤에는, 반드시 'y' 를 눌러서 시스템을 다시 부팅 하세요."
+# cat_and_readY "sudo reboot" "시스템을 업데이트 한뒤에는, 반드시 'y' 를 눌러서 시스템을 다시 부팅 하세요."
 title_end "로그 기록전에 업데이트부터 합니다."
 
 
@@ -109,7 +109,7 @@ title_begin "게스트 확장 CD 이미지 삽입"
 title_begin "VundleVim 설치"
 echo "${cCyan}----> https://itlearningcenter.tistory.com/entry/%E3%80%901804-LTS%E3%80%91VIM-Plug-in-%EC%84%A4%EC%B9%98%ED%95%98%EA%B8%B0${cReset}"
 cat_and_run "git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim" "VundleVim 설치"
-cat_and_run "cp DOTvimrc-vubuntu ~/.vimrc" ".vimrc 설치"
+cat_and_run "cp DOTvimrc-fedora ~/.vimrc" ".vimrc 설치"
 echo "${cGreen}----> ${cYellow}vi +BundleInstall +qall ${cCyan}Bundle 설치${cReset}"
 vim +BundleInstall +qall
 title_end "VundleVim 설치"
@@ -135,6 +135,10 @@ cat <<__EOF__
 __EOF__
 cat_and_readY "git config credential.helper store" "이와 같이 저장합니다."
 title_end "credential.helper 설치"
+
+
+cat_and_readY "sudo reboot" "시스템을 업데이트 한뒤에는, 반드시 'y' 를 눌러서 시스템을 다시 부팅 하세요."
+
 
 # ----
 rm -f ${log_name} ; log_name="${logs_folder}/zz.$(date +"%y%m%d-%H%M%S")..${CMD_NAME}" ; touch ${log_name}
