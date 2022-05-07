@@ -11,15 +11,19 @@ cat_and_read () {
 	read a ; echo "${cUp}"; echo "$1" | sh
 	echo "${cMagenta}<---- ${cBlue}press Enter${cReset}: ${cMagenta}$1 $2${cReset}"
 }
+READ_Y_IS=""
 cat_and_readY () {
 	echo "${cGreen}----> ${cYellow}$1 ${cCyan}$2${cReset}"
 	if [ "x${ALL_INSTALL}" = "xy" ]; then
+		READ_Y_IS="y"
 		echo "$1" | sh ; echo "${cMagenta}<---- ${cBlue}$1 $2${cReset}"
 	else
 		echo "${cGreen}----> ${cRed}press ${cCyan}y${cRed} or Enter${cReset}:"; read a; echo "${cUp}"
 		if [ "x$a" = "xy" ]; then
+			READ_Y_IS="y"
 			echo "${cRed}-OK-${cReset}"; echo "$1" | sh
 		else
+			READ_Y_IS="n"
 			echo "${cRed}[ ${cYellow}$1 ${cRed}] ${cCyan}<--- 명령을 실행하지 않습니다.${cReset}"
 		fi
 		echo "${cMagenta}<---- ${cBlue}press Enter${cReset}: ${cMagenta}$1 $2${cReset}"
@@ -45,9 +49,19 @@ echo "${cMagenta}>>>>>>>>>>${cGreen} $0 ${cMagenta}||| ${cCyan}${MEMO} ${cMagent
 
 
 title_begin "로그 기록전에 업데이트부터 합니다."
-echo "----> sudo 명령시 비번 입력하지 않으려면, sudo vi /etc/sudoers 로 수정합니다."
-cat_and_readY "sudo dnf -y update" "'y' 를 눌러서 시스템을 업데이트 하는것이 좋습니다."
-# cat_and_readY "sudo reboot" "시스템을 업데이트 한뒤에는, 반드시 'y' 를 눌러서 시스템을 다시 부팅 하세요."
+cat_and_readY "sudo vi /etc/sudoers" "sudo 명령시 비번을 일일이 입력하지 않으려면, 'y' 를 눌러서 수정합니다."
+cat_and_readY "sudo dnf -y update" "시간 여유가 되면, 'y' 를 눌러서 시스템을 업데이트 하는것이 좋습니다."
+if [ "x${READ_Y_IS}" = "xy" ]; then
+	cat <<__EOF__
+
+---- 시스템을 업데이트 했으므로,
+---- 시스템을 다시 부팅 하기 위해서는 'y' 를 입력하고,
+---- ---- 다시 부팅한 뒤에는 ${CMD_NAME} 스크립트를 한번 더 실행해야 합니다.
+---- 다시 부팅하지 않으려면, 그냥 Enter 를 입력하세요.
+
+__EOF__
+	cat_and_readY "sudo reboot"
+fi
 title_end "로그 기록전에 업데이트부터 합니다."
 
 
@@ -96,13 +110,17 @@ title_end "vbox 그룹 추가"
 
 
 title_begin "게스트 확장 CD 이미지 삽입"
-echo "${cCyan}---->${cReset}"
-echo "${cCyan}---->${cReset} vfedora 초기화 작업을 진행하기 전에,"
-echo "${cCyan}---->${cReset} 화면 맨 윗줄에 표시된 (파일 , 머신 , 보기 , 입력 , 장치 , 도움말) 메뉴에서,"
-echo "${cCyan}---->${cReset}"
-echo "${cCyan}---->${cReset} [장치] 클릭 >> [게스트 확장 CD 이미지 삽입] 을 클릭하고,"
-echo "${cCyan}---->${cReset} 자동으로 시작하기로 한 프로그램 . . . 실행하시겠습니까? >> [실행] 을 클릭하고,"
-echo "${cCyan}---->${cBlue} ---->${cReset} Do you wish to continue? [yes or no] ${cBlue}>> 나오면 'yes' 를 입력합니다.${cReset}"
+cat <<__EOF__
+
+${cCyan}---->${cReset}
+${cCyan}---->${cReset} vfedora 초기화 작업을 진행하기 전에,
+${cCyan}---->${cReset} 화면 맨 윗줄에 표시된 (파일 , 머신 , 보기 , 입력 , 장치 , 도움말) 메뉴에서,
+${cCyan}---->${cReset}
+${cCyan}---->${cReset} [장치] 클릭 >> [게스트 확장 CD 이미지 삽입] 을 클릭하고,
+${cCyan}---->${cReset} 자동으로 시작하기로 한 프로그램 . . . 실행하시겠습니까? >> [실행] 을 클릭하고,
+${cCyan}---->${cBlue} ---->${cReset} Do you wish to continue? [yes or no] ${cBlue}>> 나오면 'yes' 를 입력합니다.${cReset}
+
+__EOF__
 cat_and_readY "sudo /sbin/rcvboxadd quicksetup all ; sudo /sbin/rcvboxadd setup" "이작업 시작전에  (장치 > 게스트 확장 CD 이미지 삽입 > 오류시 재작업) 을 먼저 끝내야 합니다."
 title_begin "게스트 확장 CD 이미지 삽입"
 
@@ -118,6 +136,7 @@ title_end "VundleVim 설치"
 
 title_begin "credential.helper 설치"
 cat <<__EOF__
+
 #-- github 비번관리
 1. https://github.com 로그인 후,
    1) 우상단 프로필 사진 클릭 > 설정 Setting 클릭
@@ -133,6 +152,7 @@ cat <<__EOF__
           a) git config --global credential.helper ‘cache –timeout=300’ (5분동안만 비번없이 진행한다)
           b) git config --global credential.helper cache (cache 만 지정하면 15분동안 비번없이 진행한다)
           c) git config --global credential.helper store (토큰의 유효기간동안 비번없이 진행한다)
+
 __EOF__
 cat_and_readY "git config credential.helper store" "이와 같이 저장합니다."
 title_end "credential.helper 설치"
