@@ -72,7 +72,7 @@ log_name="${logs_folder}/zz.$(date +"%y%m%d-%H%M%S")__RUNNING_${CMD_NAME}" ; tou
 
 title_begin "vbox 프로그램 설치"
 cat_and_run "sudo dnf -y install make automake autoconf gcc dkms kernel-debug-devel kernel-devel" "커널 컴파일용 프로그램 설치"
-cat_and_run "sudo dnf -y install wget vim-enhanced vim-common mc git p7zip gnome-tweak-tool keepass rclone livecd-tools liveusb-creator" "추가 프로그램 설치"
+cat_and_run "sudo dnf -y install wget vim-enhanced vim-common mc git p7zip gnome-tweak-tool rclone livecd-tools liveusb-creator" "추가 프로그램 설치"
 cat_and_run "rpm -qa | grep kernel | sort | grep kernel" "kernel 버전 확인"
 cat_and_run "sudo systemctl enable sshd ; sudo systemctl start sshd" "sshd 실행"
 title_end "vbox 프로그램 설치"
