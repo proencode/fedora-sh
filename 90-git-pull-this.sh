@@ -11,7 +11,7 @@ cat_and_run () {
 
 cat <<__EOF__
 
-${cYellow}git config --global user.name "yosjeon at $(uname -n)"${cReset}
+${cYellow}git config --global user.name "${USER} at $(uname -n)"${cReset}
 ${cYellow}git config --global user.email "yosjeon@gmail.com"${cReset}
 ${cYellow}git config --global alias.ll "log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit" # ----> 한줄로 로그보기${cReset}
 ${cYellow}git config --global --list${cReset}
