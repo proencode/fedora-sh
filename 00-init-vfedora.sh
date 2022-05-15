@@ -4,19 +4,19 @@ cBlack=$(tput bold)$(tput setaf 0); cRed=$(tput bold)$(tput setaf 1); cGreen=$(t
 
 cat_and_run () {
 	echo "${cGreen}----> ${cYellow}$1 ${cCyan}$2${cReset}"; echo "$1" | sh
-	echo "${cMagenta}<---- ${cBlue}$1 $2${cReset}"
+	echo "${cMagenta}<---- ${cCyan}$1 ${cBlue}$2${cReset}"
 }
 cat_and_read () {
 	echo -e "${cGreen}----> ${cYellow}$1 ${cCyan}$2${cGreen}\n----> ${cCyan}press Enter${cReset}:"
 	read a ; echo "${cUp}"; echo "$1" | sh
-	echo "${cMagenta}<---- ${cBlue}press Enter${cReset}: ${cMagenta}$1 $2${cReset}"
+	echo "${cMagenta}<---- ${cBlue}press Enter${cReset}: ${cCyan}$1 ${cMagenta}$2${cReset}"
 }
 READ_Y_IS=""
 cat_and_readY () {
 	echo "${cGreen}----> ${cYellow}$1 ${cCyan}$2${cReset}"
 	if [ "x${ALL_INSTALL}" = "xy" ]; then
 		READ_Y_IS="y"
-		echo "$1" | sh ; echo "${cMagenta}<---- ${cBlue}$1 $2${cReset}"
+		echo "$1" | sh ; echo "${cMagenta}<---- ${cCyan}$1 ${cBlue}$2${cReset}"
 	else
 		echo "${cGreen}----> ${cRed}press ${cCyan}y${cRed} or Enter${cReset}:"; read a; echo "${cUp}"
 		if [ "x$a" = "xy" ]; then
@@ -26,7 +26,7 @@ cat_and_readY () {
 			READ_Y_IS="n"
 			echo "${cRed}[ ${cYellow}$1 ${cRed}] ${cCyan}<--- 명령을 실행하지 않습니다.${cReset}"
 		fi
-		echo "${cMagenta}<---- ${cBlue}press Enter${cReset}: ${cMagenta}$1 $2${cReset}"
+		echo "${cMagenta}<---- ${cBlue}press Enter${cReset}: ${cCyan}$1 ${cMagenta}$2${cReset}"
 	fi
 }
 title_begin () {
@@ -49,7 +49,7 @@ echo "${cMagenta}>>>>>>>>>>${cGreen} $0 ${cMagenta}||| ${cCyan}${MEMO} ${cMagent
 
 
 title_begin "로그 기록전에 업데이트부터 합니다."
-cat_and_readY "sudo vi /etc/sudoers" "sudo 명령시 비번을 일일이 입력하지 않으려면, 'y' 를 눌러서 수정합니다."
+cat_and_readY "sudo vi /etc/sudoers ; reset" "sudo 명령시 비번을 일일이 입력하지 않으려면, 'y' 를 눌러서 수정합니다."
 cat_and_readY "sudo dnf -y update" "시간 여유가 되면, 'y' 를 눌러서 시스템을 업데이트 하는것이 좋습니다."
 if [ "x${READ_Y_IS}" = "xy" ]; then
 	cat <<__EOF__
