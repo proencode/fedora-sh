@@ -1,0 +1,8 @@
+# Loopback entries; do not change.
+# For historical reasons, localhost precedes localhost.localdomain:
+127.0.0.1   localhost localhost.localdomain localhost4 localhost4.localdomain4
+::1         localhost localhost.localdomain localhost6 localhost6.localdomain6
+# See hosts(5) for proper format and other examples:
+# 192.168.1.10 foo.mydomain.org foo
+# 192.168.1.13 bar.mydomain.org bar
+192.168.10.99 kaos.kr #-- 220517 내부망인 경우임. 외부인 경우에는 현재 ip 인 210.223.11.244 를 쓰거나, 도메인이 등록됐다면 이를 지울것.

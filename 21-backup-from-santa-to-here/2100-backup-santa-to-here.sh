@@ -1,6 +1,56 @@
 #!/bin/sh
+
 #-- ...................... 1........ 2...... 3.... 4.... 5....
 #-- rsync_day_folder_files /var/base cadbase ${y4} ${m2} ${d2}
+
+info_message_show() { #-- crontab 을 위한 아규먼트 설명
+	cat <<__EOF__
+$ cat config #-- CentOS 5 버전 때문에 선언한 것임.
+Host kaos.kr
+	KexAlgorithms +diffie-hellman-group-exchange-sha1,diffie-hellman-group14-sha1,diffie-hellman-group1-sha1
+Host www.kaos.kr
+	KexAlgorithms +diffie-hellman-group-exchange-sha1,diffie-hellman-group14-sha1,diffie-hellman-group1-sha1
+
+$ cat etc_hosts_kaos.kr-made #-- 도메인이 등록되지 않아서 추가한것임. 등록되면 삭제할것.
+# Loopback entries; do not change.
+# For historical reasons, localhost precedes localhost.localdomain:
+127.0.0.1   localhost localhost.localdomain localhost4 localhost4.localdomain4
+::1         localhost localhost.localdomain localhost6 localhost6.localdomain6
+# See hosts(5) for proper format and other examples:
+# 192.168.1.10 foo.mydomain.org foo
+# 192.168.1.13 bar.mydomain.org bar
+192.168.10.99 kaos.kr #-- 220517 내부망인 경우임. 외부인 경우에는 현재 ip 인 210.223.11.244 를 쓰거나, 도메인이 등록됐다면 이를 지울것.
+
+$ cat kaosco.4ssh #-- 백업시 필요한 패스워드
+
+cat crontab-kaos.kr.18022.ksamlab #-- crontab -l 로 등록하고, crontab -l 로 용을 확인한다.
+#----> crontab
+# Example of job definition:
+# .--------------------- minute (0 - 59)
+# |  .------------------ hour (0 - 23)
+# |  |       .---------- day of month (1 - 31)
+# |  |       |  .------- month (1 - 12) OR jan,feb,mar,apr ...
+# |  |       |  |  .---- day of week (0 - 6) (Sunday=0 or 7) OR sun,mon,tue,wed,thu,fri,sat
+# |  |       |  |  |     백업 받는쪽 root 의 crontab 내용
+# *  *       *  *  *  command to be executed
+# 매일 23 시 10 분 부터 백업 시작.
+10 23        *  *  *  /bin/sh /home/santa-backup/${0} /home/santa-backup today
+#---- cron 실행시 옵션 종류 및 지정방법
+# ${0} 1=backup_to_dir 2=arg_year 3=arg_month 4=arg_today #-- 실행시 옵션 종류 및 지정방법
+# ${0} /home/santa-backup today -------- 오늘 전체를 백업한다.
+# ${0} /home/santa-backup month -------- 오늘의 월 전체를 백업한다.
+# ${0} /home/santa-backup year --------- 오늘의 년도 전체를 백업한다.
+# ${0} /home/santa-backup 2018 --------- 지정한 년도만 백업한다.
+# ${0} /home/santa-backup 2019 05 ------ 지정한 년월만 백업한다.
+# ${0} /home/santa-backup 2020 03 28 --- 지정한 날짜만 백업한다.
+# ${0} /home/santa-backup all ---------- 데이터 전체를 백업한다. (백업 받을쪽 남은용량 꼭 확인후 실시할것)
+#<---- crontab
+
+#-- (${0}) (${arg_year}) (${arg_month}) (${arg_today})
+
+----> Enter 'y' for DATA ALL BACKUP.
+__EOF__
+}
 rsync_day_folder_files () {
 	COPY_READY="-NO-"
 	home_dir=${1}
@@ -154,6 +204,14 @@ arg_year=${2}
 arg_month=${3}
 arg_today=${4}
 
+if [ "x${backup_dir}" = "x" ]; then
+	info_message_show #-- crontab 을 위한 아규먼트 설명
+	end_touch="/tmp/error-BACKUP_DIR_NOT_SETTING-$(date +"%y%m%d-%H%M%S")-$(uname -n)"
+	echo "${0}: arg-1 is not dir name '${1}', '${2}', '${3}', '${4}' on ${end_touch}" > ${end_touch}
+	echo "$0 ----> $(cat ${end_touch})"
+	exit -1
+fi
+
 if [ ! -d ${backup_dir} ]; then
 	sudo mkdir -p ${backup_dir}
 	sudo chown -R ${USER}.${USER} ${backup_dir}
@@ -171,45 +229,11 @@ ARG_1_2_3=${arg_year} #-- 첫번째 아규먼트
 
 if [ "x${arg_year}" = "x" ]; then
 	#-- 실행시 인수가 하나도 없으면,
-	cat <<__EOF__
-cat crontab-kaos.kr.18022.ksamlab
-#----> crontab
-# Example of job definition:
-# .--------------------- minute (0 - 59)
-# |  .------------------ hour (0 - 23)
-# |  |       .---------- day of month (1 - 31)
-# |  |       |  .------- month (1 - 12) OR jan,feb,mar,apr ...
-# |  |       |  |  .---- day of week (0 - 6) (Sunday=0 or 7) OR sun,mon,tue,wed,thu,fri,sat
-# |  |       |  |  |     백업 받는쪽 root 의 crontab 내용
-# *  *       *  *  *  command to be executed
-# 매일 23 시 10 분 부터 백업 시작.
-10 23        *  *  *  /bin/sh /home/santa-backup/2100-backup-santa-to-here.sh /home/santa-backup today
-#---- cron 실행시 옵션 종류 및 지정방법
-# $0 today -------- 오늘 전체를 백업한다.
-#  ,,  month -------- 오늘의 월 전체를 백업한다.
-#  ,,  year --------- 오늘의 년도 전체를 백업한다.
-#  ,,  2018 --------- 지정한 년도만 백업한다.
-#  ,,  2019 05 ------ 지정한 년월만 백업한다.
-#  ,,  2020 03 28 --- 지정한 날짜만 백업한다.
-#  ,,  all ---------- 데이터 전체를 백업한다. (백업 받을쪽 남은용량 꼭 확인후 실시할것)
-#-------------------- 전체 백업을 cron 에서는 실행하지 말것.
-#<---- crontab
-
-
-#-- (${0}) 1=backup_to_dir 2=arg_year 3=arg_month 4=arg_today #-- 실행시 옵션 종류 및 지정방법
-#-- (${0}) /home/santa-backup today -------- 오늘 전체를 백업한다.
-#-- (${0}) /home/santa-backup month -------- 오늘의 월 전체를 백업한다.
-#-- (${0}) /home/santa-backup year --------- 오늘의 년도 전체를 백업한다.
-#-- (${0}) /home/santa-backup all ---------- 데이터 전체를 백업한다.
-#-- (${0}) /home/santa-backup -------------- 데이터 전체를 백업하며 화면에 보여준다.
-
-#-- (${0}) (${arg_year}) (${arg_month}) (${arg_today})
-
-----> Enter 'y' for DATA ALL BACKUP.
-__EOF__
-	read a
-
-	RSYNC_HOW=all
+	info_message_show #-- crontab 을 위한 아규먼트 설명
+	end_touch="/tmp/error-NO-ARG-YEAR-$(date +"%y%m%d-%H%M%S")-$(uname -n)"
+	echo "${0}: arg-2 is null '${1}', '${2}', '${3}', '${4}' on ${end_touch}" > ${end_touch}
+	echo "$0 ----> $(cat ${end_touch})"
+	exit -1
 else
 	if [ "x${arg_year}" = "xtoday" ]; then
 		RSYNC_HOW=today
