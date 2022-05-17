@@ -5,21 +5,26 @@
 
 info_message_show() { #-- crontab 을 위한 아규먼트 설명
 	cat <<__EOF__
-$ cat config #-- CentOS 5 버전 때문에 선언한 것임.
+$ cat config # <---- CentOS 5 버전 때문에 선언한 것임.
 Host kaos.kr
 	KexAlgorithms +diffie-hellman-group-exchange-sha1,diffie-hellman-group14-sha1,diffie-hellman-group1-sha1
-	# KexAlgorithms +diffie-hellman-group1-sha1
-	## PubkeyAcceptedKeyTypes=ssh-rsa
-	HostKeyAlgorithms=ssh-dss
+	# User kaosco
+	PubkeyAcceptedAlgorithms +ssh-rsa
+	HostKeyAlgorithms +ssh-dss
+	#HostkeyAlgorithms +ssh-rsa
 Host www.kaos.kr
 	KexAlgorithms +diffie-hellman-group-exchange-sha1,diffie-hellman-group14-sha1,diffie-hellman-group1-sha1
 	# KexAlgorithms +diffie-hellman-group1-sha1
 	## PubkeyAcceptedKeyTypes=ssh-rsa
-Host 192.168.10.99
-	KexAlgorithms +diffie-hellman-group-exchange-sha1,diffie-hellman-group14-sha1,diffie-hellman-group1-sha1
+# Host ssh.dev.azure.com
+#     HostName ssh.dev.azure.com
+#     User git
+#     IdentityFile ~/.ssh/id_rsa
+#     IdentitiesOnly yes
+#     PubkeyAcceptedAlgorithms +ssh-rsa
+#     HostkeyAlgorithms +ssh-rsa
 
-
-$ cat etc_hosts_kaos.kr-made #-- 도메인이 등록되지 않아서 추가한것임. 등록되면 삭제할것.
+$ cat etc_hosts_kaos.kr-made # <---- 도메인이 등록되지 않아서 추가한것임. 등록되면 삭제할것.
 # Loopback entries; do not change.
 # For historical reasons, localhost precedes localhost.localdomain:
 127.0.0.1   localhost localhost.localdomain localhost4 localhost4.localdomain4
@@ -28,8 +33,10 @@ $ cat etc_hosts_kaos.kr-made #-- 도메인이 등록되지 않아서 추가한�
 # 192.168.1.10 foo.mydomain.org foo
 # 192.168.1.13 bar.mydomain.org bar
 192.168.10.99 kaos.kr #-- 220517 내부망인 경우임. 외부인 경우에는 현재 ip 인 210.223.11.244 를 쓰거나, 도메인이 등록됐다면 이를 지울것.
+192.168.10.99 www.kaos.kr #-- 220517 내부망인 경우임. 외부인 경우에는 현재 ip 인 210.223.11.244 를 쓰거나, 도메인이 등록됐다면 이를 지울것.
+# 210.223.11.244 kaos.kr # 도메인이 등록됐다면 이를 지울것.
 
-$ cat kaosco.4ssh #-- 백업시 필요한 패스워드
+$ cat kaosco.4ssh # <---- 백업시 필요한 패스워드
 
 cat crontab-kaos.kr.18022.ksamlab #-- crontab -l 로 등록하고, crontab -l 로 용을 확인한다.
 #----> crontab
@@ -71,10 +78,13 @@ rsync_day_folder_files () {
 		#-- "ok"=오늘만 백업할 경우
 		host_dir=${home_dir}/${this_dir}/${this_year}/${this_month}/${this_today}/ #-- "/" 가 끝에 있다.
 		my_dir=${backup_dir}/${this_dir}/${this_year}/${this_month}/${this_today}
+		echo "66 ---- sshpass -f /home/kaosco/.ssh/kaosco.4ssh ssh -o StrictHostKeyChecking=no kaosco@www.kaos.kr ls ${host_dir})"
 		ls_host=$(sshpass -f /home/kaosco/.ssh/kaosco.4ssh ssh -o StrictHostKeyChecking=no kaosco@www.kaos.kr ls ${host_dir})
+		echo "68 ---- ls_host ${ls_host};"
 		if [ "x${ls_host}" != "x" ]; then
 			COPY_READY="yes"
 		fi
+		echo "72 ---- COPY_READY ${COPY_READY};"
 	else
 	if [ "x${RSYNC_HOW}" = "xmonth" ]; then
 		#-- "ok"=이달만 백업할 경우
@@ -132,10 +142,13 @@ rsync_month_folder_1file () {
 		my_dir=${backup_dir}/${this_dir}/${this_year}/${this_month}
 		#-- 2...3....4..5.....................................
 		#-- db2/2021/08/kaosorder2-db-210805-055001.tar.7z.001
+		echo "127 ---- ls_host=\$(sshpass -f /home/kaosco/.ssh/kaosco.4ssh ssh -o StrictHostKeyChecking=no kaosco@www.kaos.kr ls ${host_dir})"
 		ls_host=$(sshpass -f /home/kaosco/.ssh/kaosco.4ssh ssh -o StrictHostKeyChecking=no kaosco@www.kaos.kr ls ${host_dir})
+		echo "129 ---- ls_host ${ls_host};"
 		if [ "x${ls_host}" != "x" ]; then
 			COPY_READY="yes"
 		fi
+		echo "133 ---- COPY_READY ${COPY_READY};"
 	else
 	if [ "x${RSYNC_HOW}" = "xmonth" ]; then
 		#-- "ok"=이달만 백업할 경우
@@ -287,13 +300,16 @@ fi
 from_date=$(date +"%y%m%d-%H%M%S")
 begin_touch="${backup_log_dir}/rsync_from_${from_date}_${ARG_1_2_3}"
 
+echo "285 ---- touch ${begin_touch};"
 touch ${begin_touch}
 
 # ----
 
 RSYNC_LOG="C"
+echo "291 ---- RSYNC_LOG ${RSYNC_LOG}; rsync_day_folder_files /var/base cadbase ${y4} ${m2} ${d2};"
 rsync_day_folder_files /var/base cadbase ${y4} ${m2} ${d2}
 RSYNC_LOG="${RSYNC_LOG}E"
+echo "294 ---- RSYNC_LOG ${RSYNC_LOG}; rsync_day_folder_files /var/base emailbase ${y4} ${m2} ${d2};"
 rsync_day_folder_files /var/base emailbase ${y4} ${m2} ${d2}
 RSYNC_LOG="${RSYNC_LOG}G"
 rsync_day_folder_files /var/base georaebase ${y4} ${m2} ${d2}
