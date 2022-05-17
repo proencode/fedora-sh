@@ -8,6 +8,7 @@ info_message_show() { #-- crontab 을 위한 아규먼트 설명
 $ cat config #-- CentOS 5 버전 때문에 선언한 것임.
 Host kaos.kr
 	KexAlgorithms +diffie-hellman-group-exchange-sha1,diffie-hellman-group14-sha1,diffie-hellman-group1-sha1
+	# HostKeyAlgorithms=ssh-dss
 Host www.kaos.kr
 	KexAlgorithms +diffie-hellman-group-exchange-sha1,diffie-hellman-group14-sha1,diffie-hellman-group1-sha1
 
