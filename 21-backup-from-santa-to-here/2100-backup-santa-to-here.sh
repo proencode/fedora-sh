@@ -8,9 +8,16 @@ info_message_show() { #-- crontab 을 위한 아규먼트 설명
 $ cat config #-- CentOS 5 버전 때문에 선언한 것임.
 Host kaos.kr
 	KexAlgorithms +diffie-hellman-group-exchange-sha1,diffie-hellman-group14-sha1,diffie-hellman-group1-sha1
-	# HostKeyAlgorithms=ssh-dss
+	# KexAlgorithms +diffie-hellman-group1-sha1
+	## PubkeyAcceptedKeyTypes=ssh-rsa
+	HostKeyAlgorithms=ssh-dss
 Host www.kaos.kr
 	KexAlgorithms +diffie-hellman-group-exchange-sha1,diffie-hellman-group14-sha1,diffie-hellman-group1-sha1
+	# KexAlgorithms +diffie-hellman-group1-sha1
+	## PubkeyAcceptedKeyTypes=ssh-rsa
+Host 192.168.10.99
+	KexAlgorithms +diffie-hellman-group-exchange-sha1,diffie-hellman-group14-sha1,diffie-hellman-group1-sha1
+
 
 $ cat etc_hosts_kaos.kr-made #-- 도메인이 등록되지 않아서 추가한것임. 등록되면 삭제할것.
 # Loopback entries; do not change.

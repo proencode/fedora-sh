@@ -1,8 +1,11 @@
 Host kaos.kr
-	KexAlgorithms +diffie-hellman-group-exchange-sha1,diffie-hellman-group14-sha1,diffie-hellman-group1-sha1
-	# KexAlgorithms +diffie-hellman-group1-sha1
-	## PubkeyAcceptedKeyTypes=ssh-rsa
+KexAlgorithms +diffie-hellman-group-exchange-sha1,diffie-hellman-group14-sha1,diffie-hellman-group1-sha1
+# KexAlgorithms +diffie-hellman-group1-sha1
+## PubkeyAcceptedKeyTypes=ssh-rsa
+HostKeyAlgorithms=ssh-dss
 Host www.kaos.kr
-	KexAlgorithms +diffie-hellman-group-exchange-sha1,diffie-hellman-group14-sha1,diffie-hellman-group1-sha1
-	# KexAlgorithms +diffie-hellman-group1-sha1
-	## PubkeyAcceptedKeyTypes=ssh-rsa
+KexAlgorithms +diffie-hellman-group-exchange-sha1,diffie-hellman-group14-sha1,diffie-hellman-group1-sha1
+# KexAlgorithms +diffie-hellman-group1-sha1
+## PubkeyAcceptedKeyTypes=ssh-rsa
+Host 192.168.10.99
+KexAlgorithms +diffie-hellman-group-exchange-sha1,diffie-hellman-group14-sha1,diffie-hellman-group1-sha1
