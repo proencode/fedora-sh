@@ -5,7 +5,9 @@
 
 info_message_show() { #-- crontab 을 위한 아규먼트 설명
 	cat <<__EOF__
-$ cat config # <---- CentOS 5 버전 때문에 선언한 것임.
+# ....> CentOS 5 버전 때문에 선언한 것임.
+$ cat ~/.ssh/config
+
 Host kaos.kr
 	KexAlgorithms +diffie-hellman-group-exchange-sha1,diffie-hellman-group14-sha1,diffie-hellman-group1-sha1
 	# User kaosco
@@ -24,7 +26,12 @@ Host www.kaos.kr
 #     PubkeyAcceptedAlgorithms +ssh-rsa
 #     HostkeyAlgorithms +ssh-rsa
 
-$ cat etc_hosts_kaos.kr-made # <---- 도메인이 등록되지 않아서 추가한것임. 등록되면 삭제할것.
+# <.... CentOS 5 버전 때문에 선언한 것임.
+
+
+# ::::> 도메인이 등록되지 않아서 추가한것임. 등록되면 삭제할것.
+$ cat /etc/hosts #-- etc_hosts_kaos.kr-made
+
 # Loopback entries; do not change.
 # For historical reasons, localhost precedes localhost.localdomain:
 127.0.0.1   localhost localhost.localdomain localhost4 localhost4.localdomain4
@@ -35,11 +42,18 @@ $ cat etc_hosts_kaos.kr-made # <---- 도메인이 등록되지 않아서 추가�
 192.168.10.99 kaos.kr #-- 220517 내부망인 경우임. 외부인 경우에는 현재 ip 인 210.223.11.244 를 쓰거나, 도메인이 등록됐다면 이를 지울것.
 192.168.10.99 www.kaos.kr #-- 220517 내부망인 경우임. 외부인 경우에는 현재 ip 인 210.223.11.244 를 쓰거나, 도메인이 등록됐다면 이를 지울것.
 # 210.223.11.244 kaos.kr # 도메인이 등록됐다면 이를 지울것.
+# 210.223.11.80 kaos.kr #-- 220518수0940 번개후 공유기,서버,PC 재부팅되고 ip 변경됨.
 
-$ cat kaosco.4ssh # <---- 백업시 필요한 패스워드
+$ cat ~/.ssh/kaosco.4ssh # <---- 백업시 필요한 패스워드
+543254252524
 
-cat crontab-kaos.kr.18022.ksamlab #-- crontab -l 로 등록하고, crontab -l 로 용을 확인한다.
-#----> crontab
+# <:::: 도메인이 등록되지 않아서 추가한것임. 등록되면 삭제할것.
+
+
+#----> 백업 PC 에서 crontab -e 로 등록하고, crontab -l 로 내용을 확인한다.
+cat crontab-kaos.kr.18022.ksamlab
+
+#--> crontab
 # Example of job definition:
 # .--------------------- minute (0 - 59)
 # |  .------------------ hour (0 - 23)
@@ -59,11 +73,41 @@ cat crontab-kaos.kr.18022.ksamlab #-- crontab -l 로 등록하고, crontab -l �
 # ${0} /home/santa-backup 2019 05 ------ 지정한 년월만 백업한다.
 # ${0} /home/santa-backup 2020 03 28 --- 지정한 날짜만 백업한다.
 # ${0} /home/santa-backup all ---------- 데이터 전체를 백업한다. (백업 받을쪽 남은용량 꼭 확인후 실시할것)
-#<---- crontab
+#<-- crontab
+
+#<---- 백업 PC 에서 crontab -e 로 등록하고, crontab -l 로 내용을 확인한다.
+
+
+#====> kaosorder 서버에서 sudo crontab -e 로 등록하고, sudo crontab -l 로 내용을 확인한다.
+sudo crontab -l
+
+#==> crontab
+# Example of job definition:
+# .--------------------- minute (0 - 59)
+# |  .------------------ hour (0 - 23)
+# |  |       .---------- day of month (1 - 31)
+# |  |       |  .------- month (1 - 12) OR jan,feb,mar,apr ...
+# |  |       |  |  .---- day of week (0 - 6) (Sunday=0 or 7) OR sun,mon,tue,wed,thu,fri,sat
+# |  |       |  |  |
+# *  *       *  *  *  command to be executed
+10   22      *  *  *   /bin/sh /root/bin/004-santa-db-to-dropbox.sh
+# |   |       |  |  |
+# *    *       *  *  *  command to be executed
+# */5  13,23   *  *  *   /bin/sh /root/bin/003-santa-log-to-zkdhtm.sh #-- 작업삭제
+# 10   8-21    *  *  *   /bin/sh /root/bin/004-santa-db-to-dropbox.sh # 매일 1시간 간격 백업후 그날의 마지막 백업은 1주 지나면 삭제. #-- 211202 작업삭제
+# 50   5,12,18 *  *  *   /bin/sh /root/bin/005-santa-db-to-email.sh #-- 작업삭제
+# 10   22      *  *  *   /bin/sh /root/bin/005-santa-db-to-email.sh #-- 매일 1회 백업. 211202 삭제 #-- 작업삭제
+# 12   3       *  *  *   /bin/sh /root/bin/006-santa-opt-to-email.sh #-- 작업삭제
+# 12   4       *  *  2-7 /bin/sh /root/bin/007-santa-wiki-to-email.sh #-- 작업삭제
+# 12   1       1  *  *   /bin/sh /root/bin/008-santa-month-opt-to-email.sh #-- 작업삭제
+# 12   0       *  *  *   /bin/sh /root/bin/014-grails-build-all-projects.sh #-- 작업삭제
+#<== crontab
+
+#<==== kaosorder 서버에서 sudo crontab -e 로 등록하고, sudo crontab -l 로 내용을 확인한다.
+
 
 #-- (${0}) (${arg_year}) (${arg_month}) (${arg_today})
 
-----> Enter 'y' for DATA ALL BACKUP.
 __EOF__
 }
 rsync_day_folder_files () {
