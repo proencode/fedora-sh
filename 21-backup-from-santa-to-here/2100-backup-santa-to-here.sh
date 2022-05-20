@@ -363,6 +363,15 @@ rsync_day_folder_files /var/base scanbase ${y4} ${m2} ${d2}
 RSYNC_LOG="${RSYNC_LOG}D"
 rsync_month_folder_1file /var/kaosorder-backup db2 ${y4} ${m2} ${d2} ${y2}
 
+# -----------------
+# for database_name in kaosorder2 kaosoyo
+# db_backup/kaosorder2/2022/05/kaosorder2_220520-234201.sql.7z
+# 	db_backup_dir=/var/db_backup/${database_name}/$(date +"%Y")/$(date +"%m") # 2022/05
+# for database_name in mydb_utf8
+# do
+# 	db_backup_dir=/var/db_backup/${database_name}/$(date +"%Y") # 2022
+# -----------------
+
 rm -f ${begin_touch}
 
 to_time=$(date +"%H%M%S")
