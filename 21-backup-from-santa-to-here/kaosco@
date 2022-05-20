@@ -28,9 +28,7 @@ do
 		rm -f ${db_backup_dir}/${database_name}_$(date +"%y%m%d")* # _220501*
 	else
 		# 년월단위 디렉토리가 없으면, 새로 만든다.
-		mkdir ${db_backup_dir}
-		chown -R $USER_ID.$USER_ID ${db_backup_dir}
-		chmod a+r ${db_backup_dir}
+		mkdir ${db_backup_dir} ; chown -R $USER_ID.$USER_ID ${db_backup_dir}
 	fi
 
 	# ----> 데이터베이스를 덤프하고 압축해서 백업 이미지를 만든다.
@@ -53,9 +51,7 @@ do
 		rm -f ${db_backup_dir}/${database_name}_$(date +"%y%m")* # _2205*
 	else
 		# 년단위 디렉토리가 없으면, 새로 만든다.
-		mkdir ${db_backup_dir}
-		chown -R $USER_ID.$USER_ID ${db_backup_dir}
-		chmod a+r ${db_backup_dir}
+		mkdir ${db_backup_dir} ; chown -R $USER_ID.$USER_ID ${db_backup_dir}
 	fi
 
 	# ----> 데이터베이스를 덤프하고 압축해서 백업 이미지를 만든다.
