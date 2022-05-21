@@ -50,7 +50,7 @@ $ cat ~/.ssh/kaosco.4ssh # <---- 백업시 필요한 패스워드
 # <:::: 도메인이 등록되지 않아서 추가한것임. 등록되면 삭제할것.
 
 
-#----> 백업 PC 에서 crontab -e 로 등록하고, crontab -l 로 내용을 확인한다.
+#----> ksamlib 백업 PC 에서 crontab -e 로 등록하고, crontab -l 로 내용을 확인한다.
 cat crontab-kaos.kr.18022.ksamlab
 
 #--> crontab
@@ -75,10 +75,10 @@ cat crontab-kaos.kr.18022.ksamlab
 # ${0} /home/santa-backup all ---------- 데이터 전체를 백업한다. (백업 받을쪽 남은용량 꼭 확인후 실시할것)
 #<-- crontab
 
-#<---- 백업 PC 에서 crontab -e 로 등록하고, crontab -l 로 내용을 확인한다.
+#<---- ksamlib 백업 PC 에서 crontab -e 로 등록하고, crontab -l 로 내용을 확인한다.
 
 
-#====> kaosorder 서버에서 sudo crontab -e 로 등록하고, sudo crontab -l 로 내용을 확인한다.
+#====> santa 서버에서 sudo crontab -e 로 등록하고, sudo crontab -l 로 내용을 확인한다.
 sudo crontab -l
 
 #==> crontab
@@ -103,7 +103,7 @@ sudo crontab -l
 # 12   0       *  *  *   /bin/sh /root/bin/014-grails-build-all-projects.sh #-- 작업삭제
 #<== crontab
 
-#<==== kaosorder 서버에서 sudo crontab -e 로 등록하고, sudo crontab -l 로 내용을 확인한다.
+#<==== santa 서버에서 sudo crontab -e 로 등록하고, sudo crontab -l 로 내용을 확인한다.
 
 
 #-- (${0}) (${arg_year}) (${arg_month}) (${arg_today})
@@ -169,8 +169,8 @@ rsync_day_folder_files () {
 		RSYNC_LOG="${RSYNC_LOG}."
 	fi
 }
-#-- ........................ 1.................... 2.. 3.... 4.... 5.... 6....
-#-- rsync_month_folder_1file /var/kaosorder-backup db2 ${y4} ${m2} ${d2} ${y2}
+#-- ........................ 1........... 2........................... 3.... 4.... 5.... 6....
+#-- rsync_month_folder_1file /var/base_db kaosorder2/kaosoyo/mydb_utf8 ${y4} ${m2} ${d2} ${y2}
 rsync_month_folder_1file () {
 	COPY_READY="-NO-"
 	home_dir=${1}
@@ -360,17 +360,11 @@ rsync_day_folder_files /var/base georaebase ${y4} ${m2} ${d2}
 RSYNC_LOG="${RSYNC_LOG}S"
 rsync_day_folder_files /var/base scanbase ${y4} ${m2} ${d2}
 
-RSYNC_LOG="${RSYNC_LOG}D"
-rsync_month_folder_1file /var/kaosorder-backup db2 ${y4} ${m2} ${d2} ${y2}
-
-# -----------------
-# for database_name in kaosorder2 kaosoyo
-# db_backup/kaosorder2/2022/05/kaosorder2_220520-234201.sql.7z
-# 	db_backup_dir=/var/db_backup/${database_name}/$(date +"%Y")/$(date +"%m") # 2022/05
-# for database_name in mydb_utf8
-# do
-# 	db_backup_dir=/var/db_backup/${database_name}/$(date +"%Y") # 2022
-# -----------------
+for database_name in kaosorder2 kaosoyo mydb_utf8
+do
+	RSYNC_LOG="${RSYNC_LOG}D"
+	rsync_month_folder_1file /var/base_db ${database_name} ${y4} ${m2} ${d2} ${y2}
+done
 
 rm -f ${begin_touch}
 

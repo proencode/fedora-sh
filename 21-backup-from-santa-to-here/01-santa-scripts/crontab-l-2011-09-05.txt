@@ -1,0 +1,15 @@
+12:09:33 (월) 2011-09-05 root@santa 012345678 ~
+~ # crontab -l
+# Example of job definition:
+# .---------------- minute (0 - 59)
+# |  .------------- hour (0 - 23)
+# |  |  .---------- day of month (1 - 31)
+# |  |  |  .------- month (1 - 12) OR jan,feb,mar,apr ...
+# |  |  |  |  .---- day of week (0 - 6) (Sunday=0 or 7) OR sun,mon,tue,wed,thu,fri,sat
+# |  |  |  |  |
+# *  *  *  *  *  command to be executed
+12   3  *  *  * /root/61-backup-opt-to-mail.sh
+12   4  *  *  2-7 /root/62-backup-wiki-to-mail.sh
+42   5,12,18 * * * /root/49-backup-db-to-mail.sh
+12   1  1  *  * /root/63-backup-month-opt-to-mail.sh
+15,35,55 8-21 * * * /root/bin/303-kaosco-db-to-site-backup.sh

@@ -1,0 +1,22 @@
+# Example of job definition:
+# .--------------------- minute (0 - 59)
+# |  .------------------ hour (0 - 23)
+# |  |       .---------- day of month (1 - 31)
+# |  |       |  .------- month (1 - 12) OR jan,feb,mar,apr ...
+# |  |       |  |  .---- day of week (0 - 6) (Sunday=0 or 7) OR sun,mon,tue,wed,thu,fri,sat
+# |  |       |  |  |
+#-*--*-------*--*--*--command to be executed
+10   22      *  *  *   /bin/sh /root/bin/01-santa-db-to-var-base_db.sh
+50   12      *  *  *   /bin/sh /root/bin/01-santa-db-to-var-base_db.sh
+#-*--*-------*--*--*--command to be executed
+# |   |       |  |  |
+#  |   |       |  |  |
+# */5  13,23   *  *  *   /bin/sh /root/bin/003-santa-log-to-zkdhtm.sh #-- 작업삭제
+# 10   8-21    *  *  *   /bin/sh /root/bin/004-santa-db-to-dropbox.sh # 매일 1시간 간격 백업후 그날의 마지막 백업은 1주 지나면 삭제. #-- 211202 작업삭제
+# 50   5,12,18 *  *  *   /bin/sh /root/bin/005-santa-db-to-email.sh #-- 작업삭제
+# 10   22      *  *  *   /bin/sh /root/bin/005-santa-db-to-email.sh #-- 매일 1회 백업. 211202 삭제 #-- 작업삭제
+# 12   3       *  *  *   /bin/sh /root/bin/006-santa-opt-to-email.sh #-- 작업삭제
+# 12   4       *  *  2-7 /bin/sh /root/bin/007-santa-wiki-to-email.sh #-- 작업삭제
+# 12   1       1  *  *   /bin/sh /root/bin/008-santa-month-opt-to-email.sh #-- 작업삭제
+# 12   0       *  *  *   /bin/sh /root/bin/014-grails-build-all-projects.sh #-- 작업삭제
+# 10   22      *  *  *   /bin/sh /root/bin/004-santa-db-to-dropbox.sh #-- 이름변경
