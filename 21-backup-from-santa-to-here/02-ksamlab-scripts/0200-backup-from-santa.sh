@@ -90,7 +90,8 @@ sudo crontab -l
 # |  |       |  |  .---- day of week (0 - 6) (Sunday=0 or 7) OR sun,mon,tue,wed,thu,fri,sat
 # |  |       |  |  |
 # *  *       *  *  *  command to be executed
-10   22      *  *  *   /bin/sh /root/bin/004-santa-db-to-dropbox.sh
+## 10   22      *  *  *   /bin/sh /root/bin/004-santa-db-to-dropbox.sh
+10   22      *  *  *   /bin/sh /root/bin/004-santa-db-to-var-db_backup.sh
 # |   |       |  |  |
 # *    *       *  *  *  command to be executed
 # */5  13,23   *  *  *   /bin/sh /root/bin/003-santa-log-to-zkdhtm.sh #-- 작업삭제
