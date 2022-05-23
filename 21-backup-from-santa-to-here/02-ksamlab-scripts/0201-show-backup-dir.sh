@@ -50,23 +50,61 @@ y4=$a
 read_and_enter $(date +"%m") "또는, 월을 01 ~ 12 사이에서 ** 두자리로 ** 입력합니다."
 m2=$a
 
-echo "${cGreen}----> ${cYellow}ssh kaosco@kaos.kr ls /var/base/*/${y4}/${m2}/ | tr ':\n' ': ' | sed 's| /var|\n/var|g' echo ''${cReset}"
-ssh kaosco@kaos.kr ls /var/base/*/${y4}/${m2}/ | tr ':\n' ': ' | sed 's| /var|\n/var|g' ; echo ''
+read_and_enter 160 "또는, ls 로 보는 폭을 숫자로 지정합니다."
+wd4ls=$a
 
-cat <<__EOF__
-${cGreen}----> ${cCyan} 다음과 같이 된 경우,${cBlue}
-/var/base/cadbase/2022/05/: 06 10 11 13 16 18 19
-/var/base/emailbase/2022/05/: 06 10 13 16 18 19 20
-/var/base/georaebase/2022/05/: 18
-/var/base/scanbase/2022/05/: 02 03 06 10 11 12 13 14 16 17 20 23
-__EOF__
-read_and_enter "01 01 01 01" "위부터 차례로 보려는 일자 또는 없으면 00 을 입력하세요."
-ilja=($a)
+# ssh kaosco@kaos.kr ls /var/base/*/${y4}/${m2}/ | tr ':\n' ': ' | sed 's| /var|\n/var|g' ; echo ''
 
-echo "${cGreen}----> ${cYellow} ssh kaosco@kaos.kr ls /var/base/cadbase/${y4}/${m2}/${ilja[0]}/  /var/base/emailbase/${y4}/${m2}/${ilja[1]}/  /var/base/georaebase/${y4}/${m2}/${ilja[2]}/  /var/base/scanbase/${y4}/${m2}/${ilja[3]}/ | tr \":\n\" \": \" | sed \"s| /var|\n\n/var|g\" | sed \"s|/:|/:\n|g\" ; echo \"\"${cReset}"
-ssh kaosco@kaos.kr ls /var/base/cadbase/${y4}/${m2}/${ilja[0]}/  /var/base/emailbase/${y4}/${m2}/${ilja[1]}/  /var/base/georaebase/${y4}/${m2}/${ilja[2]}/  /var/base/scanbase/${y4}/${m2}/${ilja[3]}/ | tr ":\n" ": " | sed "s| /var|\n\n/var|g" | sed "s|/:|/:\n|g" ; echo ""
+santa_dir=/var/base
 
-cat_and_run "ls ~/santa-backup/cadbase/${y4}/${m2}/${ilja[0]}/ ~/santa-backup/emailbase/${y4}/${m2}/${ilja[1]}/ ~/santa-backup/georaebase/${y4}/${m2}/${ilja[2]}/ ~/santa-backup/scanbase/${y4}/${m2}/${ilja[3]}/"
+folder_is=cadbase
+iiii=$(sshpass -f /home/kaosco/.ssh/kaosco.4ssh ssh -o StrictHostKeyChecking=no kaosco@kaos.kr ls -r ${santa_dir}/${folder_is}/${y4}/${m2}/)
+jjjj=$(echo $iiii | tr ":\n" ": ") ; ilja=($jjjj) 
+echo "63 ---- ${santa_dir}/${folder_is} ---- ${jjjj} ==== ${ilja[0]} === ;"
+sshpass -f /home/kaosco/.ssh/kaosco.4ssh ssh -o StrictHostKeyChecking=no kaosco@kaos.kr ls -C -w ${wd4ls} ${santa_dir}/${folder_is}/${y4}/${m2}/${ilja[0]}/
+cat_and_run "ls -C -w ${wd4ls} ~/santa-backup/${folder_is}/${y4}/${m2}/${ilja[0]}/ #-- 65"
+
+folder_is=emailbase
+iiii=$(sshpass -f /home/kaosco/.ssh/kaosco.4ssh ssh -o StrictHostKeyChecking=no kaosco@kaos.kr ls -r ${santa_dir}/${folder_is}/${y4}/${m2}/)
+jjjj=$(echo $iiii | tr ":\n" ": ") ; ilja=($jjjj)
+echo "70 ---- ${santa_dir}/${folder_is} ---- ${jjjj} ==== ${ilja[0]} === ;"
+sshpass -f /home/kaosco/.ssh/kaosco.4ssh ssh -o StrictHostKeyChecking=no kaosco@kaos.kr ls -C -w ${wd4ls} ${santa_dir}/${folder_is}/${y4}/${m2}/${ilja[0]}/
+cat_and_run "ls -C -w ${wd4ls} ~/santa-backup/${folder_is}/${y4}/${m2}/${ilja[0]}/ #-- 71"
+
+folder_is=georaebase
+iiii=$(sshpass -f /home/kaosco/.ssh/kaosco.4ssh ssh -o StrictHostKeyChecking=no kaosco@kaos.kr ls -r ${santa_dir}/${folder_is}/${y4}/${m2}/)
+jjjj=$(echo $iiii | tr ":\n" ": ") ; ilja=($jjjj)
+echo "77 ---- ${santa_dir}/${folder_is} ---- ${jjjj} ==== ${ilja[0]} === ;"
+sshpass -f /home/kaosco/.ssh/kaosco.4ssh ssh -o StrictHostKeyChecking=no kaosco@kaos.kr ls -C -w ${wd4ls} ${santa_dir}/${folder_is}/${y4}/${m2}/${ilja[0]}/
+cat_and_run "ls -C -w ${wd4ls} ~/santa-backup/${folder_is}/${y4}/${m2}/${ilja[0]}/ #-- 77"
+
+folder_is=scanbase
+iiii=$(sshpass -f /home/kaosco/.ssh/kaosco.4ssh ssh -o StrictHostKeyChecking=no kaosco@kaos.kr ls -r ${santa_dir}/${folder_is}/${y4}/${m2}/)
+jjjj=$(echo $iiii | tr ":\n" ": ") ; ilja=($jjjj)
+echo "84 ---- ${santa_dir}/${folder_is} ---- ${jjjj} ==== ${ilja[0]} === ;"
+sshpass -f /home/kaosco/.ssh/kaosco.4ssh ssh -o StrictHostKeyChecking=no kaosco@kaos.kr ls -C -w ${wd4ls} ${santa_dir}/${folder_is}/${y4}/${m2}/${ilja[0]}/
+cat_and_run "ls -C -w ${wd4ls} ~/santa-backup/${folder_is}/${y4}/${m2}/${ilja[0]}/ #-- 83"
+
+# cat <<__EOF__
+# ${cGreen}----> ${cCyan} 다음과 같이 된 경우,${cBlue}
+# /var/base/cadbase/2022/05/: 06 10 11 13 16 18 19
+# /var/base/emailbase/2022/05/: 06 10 13 16 18 19 20
+# /var/base/georaebase/2022/05/: 18
+# /var/base/scanbase/2022/05/: 02 03 06 10 11 12 13 14 16 17 20 23
+# __EOF__
+# read_and_enter "01 01 01 01" "위부터 차례로 보려는 일자 또는 없으면 00 을 입력하세요."
+# ilja=($a)
+# 
+# echo "${cGreen}----> ${cYellow} ssh kaosco@kaos.kr ls /var/base/cadbase/${y4}/${m2}/${ilja[0]}/  /var/base/emailbase/${y4}/${m2}/${ilja[1]}/  /var/base/georaebase/${y4}/${m2}/${ilja[2]}/  /var/base/scanbase/${y4}/${m2}/${ilja[3]}/ | tr \":\n\" \": \" | sed \"s| /var|\n\n/var|g\" | sed \"s|/:|/:\n|g\" ; echo \"\"${cReset}"
+# # ssh kaosco@kaos.kr ls -C -w ${wd4ls} /var/base/cadbase/${y4}/${m2}/${ilja[0]}/  /var/base/emailbase/${y4}/${m2}/${ilja[1]}/  /var/base/georaebase/${y4}/${m2}/${ilja[2]}/  /var/base/scanbase/${y4}/${m2}/${ilja[3]}/ | tr "\n:" "\t:" | sed "s|/var|\n\n/var|g" | sed "s|/:|/:\n|g" ; echo ""
+# 
+# 
+# # sshpass -f /home/kaosco/.ssh/kaosco.4ssh ssh -o StrictHostKeyChecking=no kaosco@kaos.kr ls -C -w ${wd4ls} /var/base/cadbase/${y4}/${m2}/${ilja[0]}/  /var/base/emailbase/${y4}/${m2}/${ilja[1]}/  /var/base/georaebase/${y4}/${m2}/${ilja[2]}/  /var/base/scanbase/${y4}/${m2}/${ilja[3]}/ # | tr "\n:" "\t:" | sed "s|/var|\n\n/var|g" | sed "s|/:|/:\n|g" ; echo ""
+# 
+# 
+# 
+# 
+# cat_and_run "ls -C -w ${wd4ls} ~/santa-backup/cadbase/${y4}/${m2}/${ilja[0]}/ ~/santa-backup/emailbase/${y4}/${m2}/${ilja[1]}/ ~/santa-backup/georaebase/${y4}/${m2}/${ilja[2]}/ ~/santa-backup/scanbase/${y4}/${m2}/${ilja[3]}/"
 
 # ----
 ## rm -f ${log_name} ; log_name="${logs_folder}/zz.$(date +"%y%m%d-%H%M%S")..${CMD_NAME}" ; touch ${log_name}
