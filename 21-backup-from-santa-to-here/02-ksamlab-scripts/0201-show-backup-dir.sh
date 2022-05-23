@@ -57,33 +57,26 @@ wd4ls=$a
 
 santa_dir=/var/base
 
-folder_is=cadbase
-iiii=$(sshpass -f /home/kaosco/.ssh/kaosco.4ssh ssh -o StrictHostKeyChecking=no kaosco@kaos.kr ls -r ${santa_dir}/${folder_is}/${y4}/${m2}/)
-jjjj=$(echo $iiii | tr ":\n" ": ") ; ilja=($jjjj) 
-echo "63 ---- ${santa_dir}/${folder_is} ---- ${jjjj} ==== ${ilja[0]} === ;"
-sshpass -f /home/kaosco/.ssh/kaosco.4ssh ssh -o StrictHostKeyChecking=no kaosco@kaos.kr ls -C -w ${wd4ls} ${santa_dir}/${folder_is}/${y4}/${m2}/${ilja[0]}/
-cat_and_run "ls -C -w ${wd4ls} ~/santa-backup/${folder_is}/${y4}/${m2}/${ilja[0]}/ #-- 65"
+read_santa_ksamlib () {
+	folder_is=$1
+	iiii=$(sshpass -f /home/kaosco/.ssh/kaosco.4ssh ssh -o StrictHostKeyChecking=no kaosco@kaos.kr ls -r ${santa_dir}/${folder_is}/${y4}/${m2}/)
+	jjjj=$(echo $iiii | tr ":\n" ": ") ; ilja=($jjjj) 
+	echo "----> ${santa_dir}/${folder_is} ---- ${jjjj} ====> ${ilja[0]}"
+	sshpass -f /home/kaosco/.ssh/kaosco.4ssh ssh -o StrictHostKeyChecking=no kaosco@kaos.kr ls -C -w ${wd4ls} ${santa_dir}/${folder_is}/${y4}/${m2}/${ilja[0]}/
+	local_dir=/home/santa-backup
+	iiii=$(ls -R ${local_dir}/${folder_is}/${y4}/${m2}/)
+	jjjj=$(echo $iiii | tr ":\n" ": ")
+	echo "----> ${local_dir}/${folder_is} ---- ${jjjj} ? ${ilja[0]}"
+	ls -C -w ${wd4ls} ${local_dir}/${folder_is}/${y4}/${m2}/${ilja[0]}/
+}
 
-folder_is=emailbase
-iiii=$(sshpass -f /home/kaosco/.ssh/kaosco.4ssh ssh -o StrictHostKeyChecking=no kaosco@kaos.kr ls -r ${santa_dir}/${folder_is}/${y4}/${m2}/)
-jjjj=$(echo $iiii | tr ":\n" ": ") ; ilja=($jjjj)
-echo "70 ---- ${santa_dir}/${folder_is} ---- ${jjjj} ==== ${ilja[0]} === ;"
-sshpass -f /home/kaosco/.ssh/kaosco.4ssh ssh -o StrictHostKeyChecking=no kaosco@kaos.kr ls -C -w ${wd4ls} ${santa_dir}/${folder_is}/${y4}/${m2}/${ilja[0]}/
-cat_and_run "ls -C -w ${wd4ls} ~/santa-backup/${folder_is}/${y4}/${m2}/${ilja[0]}/ #-- 71"
+read_santa_ksamlib cadbase
 
-folder_is=georaebase
-iiii=$(sshpass -f /home/kaosco/.ssh/kaosco.4ssh ssh -o StrictHostKeyChecking=no kaosco@kaos.kr ls -r ${santa_dir}/${folder_is}/${y4}/${m2}/)
-jjjj=$(echo $iiii | tr ":\n" ": ") ; ilja=($jjjj)
-echo "77 ---- ${santa_dir}/${folder_is} ---- ${jjjj} ==== ${ilja[0]} === ;"
-sshpass -f /home/kaosco/.ssh/kaosco.4ssh ssh -o StrictHostKeyChecking=no kaosco@kaos.kr ls -C -w ${wd4ls} ${santa_dir}/${folder_is}/${y4}/${m2}/${ilja[0]}/
-cat_and_run "ls -C -w ${wd4ls} ~/santa-backup/${folder_is}/${y4}/${m2}/${ilja[0]}/ #-- 77"
+read_santa_ksamlib emailbase
 
-folder_is=scanbase
-iiii=$(sshpass -f /home/kaosco/.ssh/kaosco.4ssh ssh -o StrictHostKeyChecking=no kaosco@kaos.kr ls -r ${santa_dir}/${folder_is}/${y4}/${m2}/)
-jjjj=$(echo $iiii | tr ":\n" ": ") ; ilja=($jjjj)
-echo "84 ---- ${santa_dir}/${folder_is} ---- ${jjjj} ==== ${ilja[0]} === ;"
-sshpass -f /home/kaosco/.ssh/kaosco.4ssh ssh -o StrictHostKeyChecking=no kaosco@kaos.kr ls -C -w ${wd4ls} ${santa_dir}/${folder_is}/${y4}/${m2}/${ilja[0]}/
-cat_and_run "ls -C -w ${wd4ls} ~/santa-backup/${folder_is}/${y4}/${m2}/${ilja[0]}/ #-- 83"
+read_santa_ksamlib georaebase
+
+read_santa_ksamlib scanbase
 
 # cat <<__EOF__
 # ${cGreen}----> ${cCyan} 다음과 같이 된 경우,${cBlue}
