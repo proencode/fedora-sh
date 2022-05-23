@@ -61,7 +61,7 @@ read_santa_ksamlib () {
 	folder_is=$1
 	iiii=$(sshpass -f /home/kaosco/.ssh/kaosco.4ssh ssh -o StrictHostKeyChecking=no kaosco@kaos.kr ls -r ${santa_dir}/${folder_is}/${y4}/${m2}/)
 	kkkk=$(echo $iiii | tr ":\n" ": ") ; ilja=($kkkk) 
-	echo "${cCyan}----> ${cGreen}santa ${cYellow}${ilja[0]} ${cCyan}---- ${kkkk} ---- ${santa_dir}/${folder_is}${cReset}"
+	echo "${cCyan}----> ${cGreen}santa ${y4} ${m2} ${cYellow}${ilja[0]} ${cCyan}---- ${kkkk} ---- ${santa_dir}/${folder_is} ${cReset}"
 	sshpass -f /home/kaosco/.ssh/kaosco.4ssh ssh -o StrictHostKeyChecking=no kaosco@kaos.kr ls -C -w ${wd4ls} ${santa_dir}/${folder_is}/${y4}/${m2}/${ilja[0]}/
 
 	local_dir=/home/santa-backup
