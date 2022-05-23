@@ -61,13 +61,13 @@ read_santa_ksamlib () {
 	folder_is=$1
 	iiii=$(sshpass -f /home/kaosco/.ssh/kaosco.4ssh ssh -o StrictHostKeyChecking=no kaosco@kaos.kr ls -r ${santa_dir}/${folder_is}/${y4}/${m2}/)
 	kkkk=$(echo $iiii | tr ":\n" ": ") ; ilja=($kkkk) 
-	echo "${cCyan}----> ${cGreen}santa ${y4} ${m2} ${cYellow}${ilja[0]} ${cCyan}---- ${kkkk} ---- ${santa_dir}/${folder_is} ${cReset}"
+	echo "${cCyan}----> ${kkkk} ---- ${cGreen} SANTA ${cYellow}${ilja[0]} ${cGreen}${y4} ${m2} ${cCyan} ---- ${santa_dir}/${folder_is} ${cReset}"
 	sshpass -f /home/kaosco/.ssh/kaosco.4ssh ssh -o StrictHostKeyChecking=no kaosco@kaos.kr ls -C -w ${wd4ls} ${santa_dir}/${folder_is}/${y4}/${m2}/${ilja[0]}/
 
 	local_dir=/home/santa-backup
 	iiii=$(ls -r ${local_dir}/${folder_is}/${y4}/${m2}/)
 	kkkk=$(echo $iiii | tr ":\n" ": ")
-	echo "${cBlue}====> ${cMagenta}BACKUP ${cYellow}${ilja[0]} ${cBlue}==== ${kkkk} ==== ${local_dir}/${folder_is}${cReset}"
+	echo "${cBlue}====> ${kkkk} ==== ${cMagenta}BACKUP ${cYellow}${ilja[0]} ${cBlue} ==== ${local_dir}/${folder_is}${cReset}"
 	ls -C -w ${wd4ls} ${local_dir}/${folder_is}/${y4}/${m2}/${ilja[0]}/
 }
 
