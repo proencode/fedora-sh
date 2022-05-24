@@ -60,19 +60,22 @@ cat crontab-kaos.kr.18022.ksamlab
 # |  |       .---------- day of month (1 - 31)
 # |  |       |  .------- month (1 - 12) OR jan,feb,mar,apr ...
 # |  |       |  |  .---- day of week (0 - 6) (Sunday=0 or 7) OR sun,mon,tue,wed,thu,fri,sat
-# |  |       |  |  |     백업 받는쪽 root 의 crontab 내용
-# *  *       *  *  *  command to be executed
-# 매일 23 시 10 분 부터 백업 시작.
-10 23        *  *  *  /bin/sh /home/santa-backup/${0} /home/santa-backup today
-#---- cron 실행시 옵션 종류 및 지정방법
-# ${0} 1=backup_to_dir 2=arg_year 3=arg_month 4=arg_today #-- 실행시 옵션 종류 및 지정방법
-# ${0} /home/santa-backup today -------- 오늘 전체를 백업한다.
-# ${0} /home/santa-backup month -------- 오늘의 월 전체를 백업한다.
-# ${0} /home/santa-backup year --------- 오늘의 년도 전체를 백업한다.
-# ${0} /home/santa-backup 2018 --------- 지정한 년도만 백업한다.
-# ${0} /home/santa-backup 2019 05 ------ 지정한 년월만 백업한다.
-# ${0} /home/santa-backup 2020 03 28 --- 지정한 날짜만 백업한다.
-# ${0} /home/santa-backup all ---------- 데이터 전체를 백업한다. (백업 받을쪽 남은용량 꼭 확인후 실시할것)
+# |  |       |  |  |
+#-*--*-------*--*--*--command to be executed
+10  22       *  *  *  /bin/sh /home/santa-backup/0200-backup-from-santa.sh /home/santa-backup today
+10  23      28  *  *  /bin/sh /home/santa-backup/0200-backup-from-santa.sh /home/santa-backup month
+#-*--*-------*--*--*--command to be executed
+# |  |       |  |  |
+# 매일 1시간 간격 백업후 그날의 마지막 백업은 1주 지나면 삭제.
+# ------------------------- 1=backup_dir ----- 2=arg_year 3=arg_month 4=arg_today
+# 0200-backup-from-santa.sh /home/santa-backup 2018 --------- 지정한 년도만 백업한다.
+# 0200-backup-from-santa.sh /home/santa-backup 2019 05 ------ 지정한 년월만 백업한다.
+# 0200-backup-from-santa.sh /home/santa-backup 2020 03 28 --- 지정한 날짜만 백업한다.
+# 0200-backup-from-santa.sh /home/santa-backup today -------- 오늘 전체를 백업한다.
+# 0200-backup-from-santa.sh /home/santa-backup month -------- 오늘의 월 전체를 백업한다.
+# 0200-backup-from-santa.sh /home/santa-backup year --------- 오늘의 년도 전체를 백업한다.
+# 0200-backup-from-santa.sh /home/santa-backup all ---------- 데이터 전체를 백업한다.
+# 0200-backup-from-santa.sh /home/santa-backup >< >< >< >< >< 첨자가 빠지면 안된다 >< >< >< >< ><
 #<-- crontab
 
 #<---- ksamlib 백업 PC 에서 crontab -e 로 등록하고, crontab -l 로 내용을 확인한다.
@@ -89,19 +92,9 @@ sudo crontab -l
 # |  |       |  .------- month (1 - 12) OR jan,feb,mar,apr ...
 # |  |       |  |  .---- day of week (0 - 6) (Sunday=0 or 7) OR sun,mon,tue,wed,thu,fri,sat
 # |  |       |  |  |
-# *  *       *  *  *  command to be executed
-## 10   22      *  *  *   /bin/sh /root/bin/004-santa-db-to-dropbox.sh
-10   22      *  *  *   /bin/sh /root/bin/004-santa-db-to-var-db_backup.sh
-# |   |       |  |  |
-# *    *       *  *  *  command to be executed
-# */5  13,23   *  *  *   /bin/sh /root/bin/003-santa-log-to-zkdhtm.sh #-- 작업삭제
-# 10   8-21    *  *  *   /bin/sh /root/bin/004-santa-db-to-dropbox.sh # 매일 1시간 간격 백업후 그날의 마지막 백업은 1주 지나면 삭제. #-- 211202 작업삭제
-# 50   5,12,18 *  *  *   /bin/sh /root/bin/005-santa-db-to-email.sh #-- 작업삭제
-# 10   22      *  *  *   /bin/sh /root/bin/005-santa-db-to-email.sh #-- 매일 1회 백업. 211202 삭제 #-- 작업삭제
-# 12   3       *  *  *   /bin/sh /root/bin/006-santa-opt-to-email.sh #-- 작업삭제
-# 12   4       *  *  2-7 /bin/sh /root/bin/007-santa-wiki-to-email.sh #-- 작업삭제
-# 12   1       1  *  *   /bin/sh /root/bin/008-santa-month-opt-to-email.sh #-- 작업삭제
-# 12   0       *  *  *   /bin/sh /root/bin/014-grails-build-all-projects.sh #-- 작업삭제
+#-*--*-------*--*--*--command to be executed
+10   22      *  *  *   /bin/sh /root/bin/0100-santa-db-to-var-base_db.sh
+#-*--*-------*--*--*--command to be executed
 #<== crontab
 
 #<==== santa 서버에서 sudo crontab -e 로 등록하고, sudo crontab -l 로 내용을 확인한다.
