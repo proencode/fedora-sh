@@ -55,50 +55,75 @@ wd4ls=$a
 
 # ssh kaosco@kaos.kr ls /var/base/*/${y4}/${m2}/ | tr ':\n' ': ' | sed 's| /var|\n/var|g' ; echo ''
 
-santa_dir=/var/base
 
-read_santa_ksamlib () {
+read_santa_y4_m2_last_day () {
 	folder_is=$1
-	iiii=$(sshpass -f /home/kaosco/.ssh/kaosco.4ssh ssh -o StrictHostKeyChecking=no kaosco@kaos.kr ls -r ${santa_dir}/${folder_is}/${y4}/${m2}/)
-	kkkk=$(echo $iiii | tr ":\n" ": ") ; ilja=($kkkk) 
-	echo "${cCyan}----> ${kkkk} ---- ${cGreen} SANTA ${cYellow}${ilja[0]} ${cGreen}${y4} ${m2} ${cCyan} ---- ${santa_dir}/${folder_is} ${cReset}"
-	sshpass -f /home/kaosco/.ssh/kaosco.4ssh ssh -o StrictHostKeyChecking=no kaosco@kaos.kr ls -C -w ${wd4ls} ${santa_dir}/${folder_is}/${y4}/${m2}/${ilja[0]}/
+	ls_folders=$(sshpass -f /home/kaosco/.ssh/kaosco.4ssh ssh -o StrictHostKeyChecking=no kaosco@kaos.kr ls ${santa_dir}/${folder_is}/${y4}/${m2}/)
+	ls_OneLine=$(echo $ls_folders | tr ":\n" ": ")
+	#--
+	reverse_folders=$(sshpass -f /home/kaosco/.ssh/kaosco.4ssh ssh -o StrictHostKeyChecking=no kaosco@kaos.kr ls -r ${santa_dir}/${folder_is}/${y4}/${m2}/)
+	reverse_OneLine=$(echo $reverse_folders | tr ":\n" ": ")
+	#--
+	reverse_matrix=($reverse_OneLine) 
+	last_day=${reverse_matrix[0]}
+	#--
+	echo "${cCyan}----> ${ls_OneLine} ${cYellow}${last_day} ${cGreen} ---- SANTA  ${y4} ${m2} ${cCyan} ---- ${santa_dir}/${folder_is} ${cReset}"
+	sshpass -f /home/kaosco/.ssh/kaosco.4ssh ssh -o StrictHostKeyChecking=no kaosco@kaos.kr ls -C -w ${wd4ls} ${santa_dir}/${folder_is}/${y4}/${m2}/${last_day}/
 
-	local_dir=/home/santa-backup
-	iiii=$(ls -r ${local_dir}/${folder_is}/${y4}/${m2}/)
-	kkkk=$(echo $iiii | tr ":\n" ": ")
-	echo "${cBlue}====> ${kkkk} ==== ${cMagenta}BACKUP ${cYellow}${ilja[0]} ${cBlue} ==== ${local_dir}/${folder_is}${cReset}"
-	ls -C -w ${wd4ls} ${local_dir}/${folder_is}/${y4}/${m2}/${ilja[0]}/
+
+	ls_folders=$(ls ${local_dir}/${folder_is}/${y4}/${m2}/)
+	ls_OneLine=$(echo $ls_folders | tr ":\n" ": ")
+	#--
+	reverse_folders=$(ls -r ${local_dir}/${folder_is}/${y4}/${m2}/)
+	reverse_OneLine=$(echo $reverse_folders | tr ":\n" ": ")
+	#--
+	echo "${cMagenta}====> ${ls_OneLine} ${cYellow}${last_day} ${cMagenta} ---- BACKUP ${y4} ${m2} ${cBlue} ---- ${local_dir}/${folder_is} ${cReset}"
+	ls -C -w ${wd4ls} ${local_dir}/${folder_is}/${y4}/${m2}/${last_day}/
 }
 
-read_santa_ksamlib cadbase
 
-read_santa_ksamlib emailbase
+santa_dir=/var/base
+local_dir=/home/santa-backup
 
-read_santa_ksamlib georaebase
+read_santa_y4_m2_last_day cadbase
+read_santa_y4_m2_last_day emailbase
+read_santa_y4_m2_last_day georaebase
+read_santa_y4_m2_last_day scanbase
 
-read_santa_ksamlib scanbase
 
-# cat <<__EOF__
-# ${cGreen}----> ${cCyan} 다음과 같이 된 경우,${cBlue}
-# /var/base/cadbase/2022/05/: 06 10 11 13 16 18 19
-# /var/base/emailbase/2022/05/: 06 10 13 16 18 19 20
-# /var/base/georaebase/2022/05/: 18
-# /var/base/scanbase/2022/05/: 02 03 06 10 11 12 13 14 16 17 20 23
-# __EOF__
-# read_and_enter "01 01 01 01" "위부터 차례로 보려는 일자 또는 없으면 00 을 입력하세요."
-# ilja=($a)
-# 
-# echo "${cGreen}----> ${cYellow} ssh kaosco@kaos.kr ls /var/base/cadbase/${y4}/${m2}/${ilja[0]}/  /var/base/emailbase/${y4}/${m2}/${ilja[1]}/  /var/base/georaebase/${y4}/${m2}/${ilja[2]}/  /var/base/scanbase/${y4}/${m2}/${ilja[3]}/ | tr \":\n\" \": \" | sed \"s| /var|\n\n/var|g\" | sed \"s|/:|/:\n|g\" ; echo \"\"${cReset}"
-# # ssh kaosco@kaos.kr ls -C -w ${wd4ls} /var/base/cadbase/${y4}/${m2}/${ilja[0]}/  /var/base/emailbase/${y4}/${m2}/${ilja[1]}/  /var/base/georaebase/${y4}/${m2}/${ilja[2]}/  /var/base/scanbase/${y4}/${m2}/${ilja[3]}/ | tr "\n:" "\t:" | sed "s|/var|\n\n/var|g" | sed "s|/:|/:\n|g" ; echo ""
-# 
-# 
-# # sshpass -f /home/kaosco/.ssh/kaosco.4ssh ssh -o StrictHostKeyChecking=no kaosco@kaos.kr ls -C -w ${wd4ls} /var/base/cadbase/${y4}/${m2}/${ilja[0]}/  /var/base/emailbase/${y4}/${m2}/${ilja[1]}/  /var/base/georaebase/${y4}/${m2}/${ilja[2]}/  /var/base/scanbase/${y4}/${m2}/${ilja[3]}/ # | tr "\n:" "\t:" | sed "s|/var|\n\n/var|g" | sed "s|/:|/:\n|g" ; echo ""
-# 
-# 
-# 
-# 
-# cat_and_run "ls -C -w ${wd4ls} ~/santa-backup/cadbase/${y4}/${m2}/${ilja[0]}/ ~/santa-backup/emailbase/${y4}/${m2}/${ilja[1]}/ ~/santa-backup/georaebase/${y4}/${m2}/${ilja[2]}/ ~/santa-backup/scanbase/${y4}/${m2}/${ilja[3]}/"
+
+santadb_y4_last_month () {
+	folder_is=$1
+	ls_folders=$(sshpass -f /home/kaosco/.ssh/kaosco.4ssh ssh -o StrictHostKeyChecking=no kaosco@kaos.kr ls ${santa_dir}/${folder_is}/${y4}/)
+	ls_OneLine=$(echo $ls_folders | tr ":\n" ": ")
+	#--
+	reverse_folders=$(sshpass -f /home/kaosco/.ssh/kaosco.4ssh ssh -o StrictHostKeyChecking=no kaosco@kaos.kr ls -r ${santa_dir}/${folder_is}/${y4}/)
+	reverse_OneLine=$(echo $reverse_folders | tr ":\n" ": ")
+	#--
+	reverse_matrix=($reverse_OneLine) 
+	last_month=${reverse_matrix[0]}
+	#--
+	echo "${cCyan}----> ${ls_OneLine} ${cYellow}${last_month} ${cGreen} ---- SANTA  ${y4} ${cCyan} ---- ${santa_dir}/${folder_is} ${cReset}"
+	sshpass -f /home/kaosco/.ssh/kaosco.4ssh ssh -o StrictHostKeyChecking=no kaosco@kaos.kr ls -C -w ${wd4ls} ${santa_dir}/${folder_is}/${y4}/${last_month}/
+
+
+	ls_folders=$(ls ${local_dir}/${folder_is}/${y4}/)
+	ls_OneLine=$(echo $ls_folders | tr ":\n" ": ")
+	#--
+	reverse_folders=$(ls -r ${local_dir}/${folder_is}/${y4}/)
+	reverse_OneLine=$(echo $reverse_folders | tr ":\n" ": ")
+	#--
+	echo "${cMagenta}====> ${ls_OneLine} ${cYellow}${last_month} ${cMagenta} ---- BACKUP ${y4} ${cBlue} ---- ${local_dir}/${folder_is} ${cReset}"
+	ls -C -w ${wd4ls} ${local_dir}/${folder_is}/${y4}/${last_month}/
+}
+
+
+santa_dir=/var/base_db
+
+santadb_y4_last_month kaosorder2
+santadb_y4_last_month kaosoyo
+santadb_y4_last_month mydb_utf8
+
 
 # ----
 ## rm -f ${log_name} ; log_name="${logs_folder}/zz.$(date +"%y%m%d-%H%M%S")..${CMD_NAME}" ; touch ${log_name}

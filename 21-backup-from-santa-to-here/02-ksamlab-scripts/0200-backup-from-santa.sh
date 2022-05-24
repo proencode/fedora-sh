@@ -254,6 +254,7 @@ rsync_month_folder_1file () {
 		if [ ! -d ${my_dir} ]; then
 			mkdir -p ${my_dir}
 		fi
+		### /usr/bin/time -p %E rsync -avzr --delete --rsh="sshpass -f /home/kaosco/.ssh/kaosco.4ssh ssh -o StrictHostKeyChecking=no -l kaosco" kaosco@kaos.kr:${host_dir} ${my_dir} > ${backup_log_dir}/$(date +"%y%m%d-%H%M%S")_kaosorder2.txt
 		rsync -avzr --delete --rsh="sshpass -f /home/kaosco/.ssh/kaosco.4ssh ssh -o StrictHostKeyChecking=no -l kaosco" kaosco@kaos.kr:${host_dir} ${my_dir}
 		RSYNC_LOG="${RSYNC_LOG}o" #-- 복사작업 했음
 	else
@@ -351,21 +352,31 @@ touch ${begin_touch}
 # ----
 
 RSYNC_LOG="C"
-echo "291 ---- RSYNC_LOG ${RSYNC_LOG}; rsync_day_folder_files /var/base cadbase ${y4} ${m2} ${d2};"
+# echo "291 ---- RSYNC_LOG ${RSYNC_LOG}; rsync_day_folder_files /var/base cadbase ${y4} ${m2} ${d2};"
 rsync_day_folder_files /var/base cadbase ${y4} ${m2} ${d2}
 RSYNC_LOG="${RSYNC_LOG}E"
-echo "294 ---- RSYNC_LOG ${RSYNC_LOG}; rsync_day_folder_files /var/base emailbase ${y4} ${m2} ${d2};"
+# echo "294 ---- RSYNC_LOG ${RSYNC_LOG}; rsync_day_folder_files /var/base emailbase ${y4} ${m2} ${d2};"
 rsync_day_folder_files /var/base emailbase ${y4} ${m2} ${d2}
 RSYNC_LOG="${RSYNC_LOG}G"
 rsync_day_folder_files /var/base georaebase ${y4} ${m2} ${d2}
 RSYNC_LOG="${RSYNC_LOG}S"
 rsync_day_folder_files /var/base scanbase ${y4} ${m2} ${d2}
 
-for database_name in kaosorder2 kaosoyo mydb_utf8
-do
-	RSYNC_LOG="${RSYNC_LOG}D"
-	rsync_month_folder_1file /var/base_db ${database_name} ${y4} ${m2} ${d2} ${y2}
-done
+#-- 이 로그를 세분화 하기위해 아래 내용으로 바꾼다.
+#-- for database_name in kaosorder2 kaosoyo mydb_utf8
+#-- do
+#-- 	RSYNC_LOG="${RSYNC_LOG}D"
+#-- 	rsync_month_folder_1file /var/base_db ${database_name} ${y4} ${m2} ${d2} ${y2}
+#-- done
+
+RSYNC_LOG="${RSYNC_LOG}O"
+rsync_month_folder_1file /var/base_db kaosorder2 ${y4} ${m2} ${d2} ${y2}
+
+RSYNC_LOG="${RSYNC_LOG}Y"
+rsync_month_folder_1file /var/base_db kaosoyo ${y4} ${m2} ${d2} ${y2}
+
+RSYNC_LOG="${RSYNC_LOG}M"
+rsync_month_folder_1file /var/base_db mydb_utf8 ${y4} ${m2} ${d2} ${y2}
 
 rm -f ${begin_touch}
 
