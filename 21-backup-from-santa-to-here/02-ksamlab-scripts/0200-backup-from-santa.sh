@@ -297,19 +297,24 @@ if [ "x${arg_year}" = "x" ]; then
 else
 	if [ "x${arg_year}" = "xtoday" ]; then
 		RSYNC_HOW=today
+		ARG_1_2_3="${y4}-${m2}-${d2}_${RSYNC_HOW}"
 	else
 	if [ "x${arg_year}" = "xmonth" ]; then
 		RSYNC_HOW=month
+		ARG_1_2_3="${y4}-${m2}_${RSYNC_HOW}"
 	else
 	if [ "x${arg_year}" = "xyear" ]; then
 		RSYNC_HOW=year
+		ARG_1_2_3="${y4}_${RSYNC_HOW}"
 	else
 	if [ "x${arg_year}" = "xall" ]; then
 		RSYNC_HOW=all
+		ARG_1_2_3="${RSYNC_HOW}"
 	else
 	if [ "${arg_year}" -lt "2000" || "${arg_year}" -gt "2100" ]; then
 		#-- 횡수..
-		RSYNC_HOW=today
+		RSYNC_HOW=UNKNOWN
+		ARG_1_2_3="${RSYNC_HOW}"
 	else
 		y4=${arg_year}
 		y2=${y4:2:2}
