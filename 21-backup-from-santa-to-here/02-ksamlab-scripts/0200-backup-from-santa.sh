@@ -50,37 +50,6 @@ $ cat ~/.ssh/kaosco.4ssh # <---- 백업시 필요한 패스워드
 # <:::: 도메인이 등록되지 않아서 추가한것임. 등록되면 삭제할것.
 
 
-#----> ksamlib 백업 PC 에서 crontab -e 로 등록하고, crontab -l 로 내용을 확인한다.
-cat crontab-kaos.kr.18022.ksamlab
-
-#--> crontab
-# Example of job definition:
-# .--------------------- minute (0 - 59)
-# |  .------------------ hour (0 - 23)
-# |  |       .---------- day of month (1 - 31)
-# |  |       |  .------- month (1 - 12) OR jan,feb,mar,apr ...
-# |  |       |  |  .---- day of week (0 - 6) (Sunday=0 or 7) OR sun,mon,tue,wed,thu,fri,sat
-# |  |       |  |  |
-#-*--*-------*--*--*--command to be executed
-10  22       *  *  *  /bin/sh /home/santa-backup/0200-backup-from-santa.sh /home/santa-backup today
-10  23      28  *  *  /bin/sh /home/santa-backup/0200-backup-from-santa.sh /home/santa-backup month
-#-*--*-------*--*--*--command to be executed
-# |  |       |  |  |
-# 매일 1시간 간격 백업후 그날의 마지막 백업은 1주 지나면 삭제.
-# ------------------------- 1=backup_dir ----- 2=arg_year 3=arg_month 4=arg_today
-# 0200-backup-from-santa.sh /home/santa-backup 2018 --------- 지정한 년도만 백업한다.
-# 0200-backup-from-santa.sh /home/santa-backup 2019 05 ------ 지정한 년월만 백업한다.
-# 0200-backup-from-santa.sh /home/santa-backup 2020 03 28 --- 지정한 날짜만 백업한다.
-# 0200-backup-from-santa.sh /home/santa-backup today -------- 오늘 전체를 백업한다.
-# 0200-backup-from-santa.sh /home/santa-backup month -------- 오늘의 월 전체를 백업한다.
-# 0200-backup-from-santa.sh /home/santa-backup year --------- 오늘의 년도 전체를 백업한다.
-# 0200-backup-from-santa.sh /home/santa-backup all ---------- 데이터 전체를 백업한다.
-# 0200-backup-from-santa.sh /home/santa-backup >< >< >< >< >< 첨자가 빠지면 안된다 >< >< >< >< ><
-#<-- crontab
-
-#<---- ksamlib 백업 PC 에서 crontab -e 로 등록하고, crontab -l 로 내용을 확인한다.
-
-
 #====> santa 서버에서 sudo crontab -e 로 등록하고, sudo crontab -l 로 내용을 확인한다.
 sudo crontab -l
 
@@ -98,6 +67,37 @@ sudo crontab -l
 #<== crontab
 
 #<==== santa 서버에서 sudo crontab -e 로 등록하고, sudo crontab -l 로 내용을 확인한다.
+
+
+#----> ksamlib 백업 PC 에서 crontab -e 로 등록하고, crontab -l 로 내용을 확인한다.
+cat crontab-kaos.kr.18022.ksamlab
+
+#--> crontab
+# Example of job definition:
+# .--------------------- minute (0 - 59)
+# |  .------------------ hour (0 - 23)
+# |  |       .---------- day of month (1 - 31)
+# |  |       |  .------- month (1 - 12) OR jan,feb,mar,apr ...
+# |  |       |  |  .---- day of week (0 - 6) (Sunday=0 or 7) OR sun,mon,tue,wed,thu,fri,sat
+# |  |       |  |  |
+#-*--*-------*--*--*--command to be executed
+50  22       *  *  *  /bin/sh /home/santa-backup/0200-backup-from-santa.sh /home/santa-backup today
+30  23      28  *  *  /bin/sh /home/santa-backup/0200-backup-from-santa.sh /home/santa-backup month
+#-*--*-------*--*--*--command to be executed
+# |  |       |  |  |
+# 매일 1시간 간격 백업후 그날의 마지막 백업은 1주 지나면 삭제.
+# ------------------------- 1=backup_dir ----- 2=arg_year 3=arg_month 4=arg_today
+# 0200-backup-from-santa.sh /home/santa-backup 2018 --------- 지정한 년도만 백업한다.
+# 0200-backup-from-santa.sh /home/santa-backup 2019 05 ------ 지정한 년월만 백업한다.
+# 0200-backup-from-santa.sh /home/santa-backup 2020 03 28 --- 지정한 날짜만 백업한다.
+# 0200-backup-from-santa.sh /home/santa-backup today -------- 오늘 전체를 백업한다.
+# 0200-backup-from-santa.sh /home/santa-backup month -------- 오늘의 월 전체를 백업한다.
+# 0200-backup-from-santa.sh /home/santa-backup year --------- 오늘의 년도 전체를 백업한다.
+# 0200-backup-from-santa.sh /home/santa-backup all ---------- 데이터 전체를 백업한다.
+# 0200-backup-from-santa.sh /home/santa-backup >< >< >< >< >< 첨자가 빠지면 안된다 >< >< >< >< ><
+#<-- crontab
+
+#<---- ksamlib 백업 PC 에서 crontab -e 로 등록하고, crontab -l 로 내용을 확인한다.
 
 
 #-- (${0}) (${arg_year}) (${arg_month}) (${arg_today})
