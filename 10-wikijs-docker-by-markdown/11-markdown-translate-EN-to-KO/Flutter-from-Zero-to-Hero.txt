@@ -1,0 +1,151 @@
+원본 링크: https://medium.com/@NALSengineering/flutter-from-zero-to-hero-part-1-build-your-first-project-88936b59dc7b
+Path:
+medium/FlutterFromZerotoHero/100
+Title:
+101 Introduction to Widgets
+Short Description:
+medium/FlutterFromZerotoHero NALSengineering Apr 12 2022
+
+
+
+
+
+Flutter From Zero to Hero.
+
+101 Introduction to Widgets
+NALSengineering Apr 12 2022 Nguyễn Thành Minh (Android Developer)
+
+# Introduction
+
+Compared to Android(Kotlin) or iOS(Swift), Flutter is much easier to learn and use, it is also suitable for those who have little to no experience in programming. If you are new to programming and find yourself interested in mobile app development, Flutter would be a great place to start. I hope you’ll learn something useful from this series.
+
+# Creating a new Flutter Project
+
+I won’t dive deep into this section since there are already a lot of tutorials for it. In general, you’ll go through 4 main steps:
+
+Download and install one of the following IDEs: Android Studio or VSCode. I am using Android Studio for this series.
+Install Flutter.
+Install Flutter and Dart plugins.
+Creating a new project
+When you’ve successfully created a new project, it should look like this.
+
+Exploring the project
+
+
+Flutter project structure
+This is how a Flutter project is structured.
+
+The most important folder is named “lib” in which Flutter has already created a file named “main.dart”. This is also where we’ll create “.dart” files and write our code.
+There are two more folders named “android” and “ios”. They are the source folders of their respective platforms, Android and iOS. Most of the time, you won’t be touching them at all. However, when there are features that Flutter does not support, you’ll need to work around it by writing ‘native code’ in these folders. Does that mean you’ll have to learn Java/Kotlin or Objective-C/Swift? Not really. Most features are already supported by Flutter, and even for those that aren’t, you can always check on the “pub.dev” library repository.
+“Pubspec.yaml”: This is where you give the project a name, a description, and list out the libraries that you’ll use along with assets such as icons, images, or fonts also used within the project.
+We will go through the other files later.
+In short, we only need to focus on “lib”, “ios”, “android”, “pubspec.yaml”. For today, we’re only focusing on the folder “lib” and the file “main.dart”.
+
+Going through each line of code
+
+Let’s have a look at file “main.dart” inside folder “lib”. Hmm, it seems like a lot of code. Don’t fret. Delete all that code, as we’ll begin with a much simpler example. Complete the following 4 steps:
+
+// Step 1
+import 'package:flutter/material.dart';
+// Step 2
+void main() {
+  // Step 3
+  runApp(
+    MaterialApp(
+      // Step 4
+      home: Text('Hello Flutter!'),
+    ),
+  );
+}
+Now I’ll explain the 4 steps:
+
+Step 1: Import the library flutter/material.dart. This library provides access to the classes Text, MaterialAppand the function runApp. It has more things to offer but we’ll talk about that later on.
+
+Step 2: Declare the main function, this is where the code will be executed first.
+
+Step 3: Call the runApp function where a MaterialApp object is passed as an argument. This will help us run the app on the device.
+
+Step 4: Create a new object Text and pass it as the property home for the object MaterialApp.
+
+MaterialApp and Text are called Widgets. Widgets are crucial to learning because they will help you conquer Flutter. As you dive deeper into Flutter, you’ll see that Widgets are everywhere. As the saying goes, “In Flutter, Everything is Widgets.”
+
+What is a Widget?
+
+Basically, Widgets are Dart classes. They could be a piece of text on the screen, an icon, a button, or a text input. They are not simply a view like Text, Icon, or a group of views (GroupView) but they can be a class to help show/hide views and align views in a GroupView. Even the app itself is a widget (MaterialApp). We continue to explore a few more Widgets to understand them better.
+
+So, let’s try running the project we have just created. Here’s what we get.
+
+
+Hmm, it looks quite terrible. That’s because we didn’t use the widget called Scaffold. That being said, we should insert a Scaffold right after MaterialApp and then finally Text.
+
+To quickly create a Widget that will wrap the widget Text, we move the cursor to the widget Text and click on the Light bulb icon and this dialog should appear:
+
+
+Wrap with Widget
+Choose the option: “Wrap with widget” and hit ‘Enter’. Then enter ‘Scaffold’ and hit ‘Tab’. Finally, replace the property child with body since there is no child property in the constructor of Scaffold. When you’re done, it should look like this:
+
+runApp(
+  MaterialApp(
+    home: Scaffold(
+      body: Text('Hello Flutter!'),
+    ),
+  ),
+);
+Let’s run it again:
+
+
+Scaffold — Text
+Hmm, still rather awful. The reason is because Scaffold took the whole screen as its area, including the status bar. If we want the text to display below the status bar, we need to wrap the widget Text with another widget called SafeArea:
+
+runApp(
+  MaterialApp(
+    home: Scaffold(
+      body: SafeArea(
+        child: Text('Hello Flutter!'),
+      ),
+    ),
+  ),
+);
+Let’s run it again.
+
+
+Scaffold — SafeArea — Text
+Fixed it. But what if we wanted the text to align in the center? We could again wrap the widget Text with another widget called Center.
+
+runApp(
+  MaterialApp(
+    home: Scaffold(
+      body: SafeArea(
+        child: Center(
+          child: Text('Hello Flutter!'),
+        ),
+      ),
+    ),
+  ),
+);
+Let’s run it again.
+
+
+Scaffold — SafeArea — Center — Text
+A simple example that utilizes 5 widgets: MaterialApp, Scaffold, SafeArea, Center, Text. That is how a User Interface (UI) is created in Flutter.
+
+As you can see, widgets are used even for simple tasks like aligning items (widget Center). Just as the saying goes (again):
+
+Flutter: Everything is Widgets.
+
+To conclude, if you want to conquer Flutter, it’s a good idea to learn as many widgets as you can, as well as their important properties such as ‘child’ or ‘color’. You can pretty much create any UIs you want from all of these.
+
+Widgets are vast in quantity and they are all fully documented by Google at here.
+
+We can divide them into 5 main groups:
+
+Value Widgets: they are used to display a kind of data, it could be local data, from the Internet, or inputted by the user. Some notable ones are Text, TextField, Icon, Image, TextButton, etc.
+Layout Widgets: they are used to align and arrange Value Widgets in a layout. For example: Row, Column, Align, Center, etc.
+Animation Widgets: they are used to create animations for your app. For example: Hero, SlideTransition, AnimatedContainer, etc.
+Navigation Widgets: they are used for navigation within the app, such as: BottomNavigationBar, TabBar, AlertDialog, etc.
+Interaction Widgets: they are used to simulate interactions with View, such as: Dismissible, Draggable, GestureDetector, etc.
+This is by no means a comprehensive list of widgets. If you are interested, you may learn more about the series Widget of the Week
+
+Conclusion
+
+In this part of the series, I’ve intentionally left out some terms that may confuse beginners. They are Key, BuildContext, build method, StatelessWidget, StatefulWidget, State. So what exactly are they? I’ll talk about them in the next part of the series.
