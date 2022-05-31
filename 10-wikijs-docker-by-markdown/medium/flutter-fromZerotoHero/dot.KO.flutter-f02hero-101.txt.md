@@ -5,7 +5,7 @@ Title:
 100 Preface
 Short Description:
 Bash Quick Start Guide 머리말
-작성: 2022-05-31 화 15:53:33
+작성: 2022-05-31 화 17:39:52
 
 @ Q -> # 붙이고 줄 띄우기 => 0i# ^[A^M^[
 @ W -> 현 위치에서 Copy 까지 역따옴표 => j0i```^M^/^Copy$^[ddk0C```^M^[
@@ -39,14 +39,16 @@ medium/FlutterFromZerotoHero NALSengineering Apr 12 2022
 
 Flutter From Zero to Hero.
 0에서 영웅으로 플러터.
+![ Figure1.1 Flutter From Zero to Hero LOGO ](/flutter-zero-to-hero/figure1.1_flutter_from_zero_to_hero_logo.png)
+! [그림 1.1 0에서 영웅 로고로 플러터] (/flutter-Zero-to-hero/figure1.1_flutter_from_zero_to_hero_logo.png)
 
-101 Introduction to Widgets
-101 위젯 소개
+# 101 Introduction to Widgets
+# 101 위젯 소개
 NALSengineering Apr 12 2022 Nguyễn Thành Minh (Android Developer)
 Nalsengineering 4 월 12 일 2022 년 Nguyen Thanh Minh (Android 개발자)
 
-# Introduction
-# 소개
+## Introduction
+## 소개
 
 Compared to Android(Kotlin) or iOS(Swift), Flutter is much easier to learn and use, it is also suitable for those who have little to no experience in programming.
 Android (Kotlin) 또는 iOS (SWIFT)와 비교할 때 Flutter는 배우고 사용하기가 훨씬 쉽습니다. 프로그래밍 경험이 거의 없거나 전혀없는 사람들에게도 적합합니다.
@@ -55,40 +57,57 @@ If you are new to programming and find yourself interested in mobile app develop
 I hope you’ll learn something useful from this series.
 이 시리즈에서 유용한 것을 배우기를 바랍니다.
 
-# Creating a new Flutter Project
-# 새로운 플러터 프로젝트 생성
+## Creating a new Flutter Project
+## 새로운 플러터 프로젝트 만들기
 
 I won’t dive deep into this section since there are already a lot of tutorials for it.
 이미 많은 튜토리얼이 있기 때문에이 섹션에 깊이 빠져들지 않을 것입니다.
 In general, you’ll go through 4 main steps:
 일반적으로 4 가지 주요 단계를 거치게됩니다.
 
+1.
+1.
 Download and install one of the following IDEs: Android Studio or VSCode.
 Android Studio 또는 VSCODE의 다음 IDE 중 하나를 다운로드하여 설치하십시오.
 I am using Android Studio for this series.
 이 시리즈에 Android Studio를 사용하고 있습니다.
+2.
+2.
 Install Flutter.
 플러터를 설치하십시오.
+https://docs.flutter.dev/get-started/install
+https://docs.flutter.dev/get-started/install
+3.
+삼.
 Install Flutter and Dart plugins.
 플러터 및 다트 플러그인을 설치하십시오.
-Creating a new project
-새로운 프로젝트 만들기
+https://docs.flutter.dev/get-started/editor#:~:text=Install%20the%20Flutter%20and%20Dart%20plugins
+https://docs.flutter.dev/get-started/editor#:~:text=install%20the%20flutter%20and%20dart%20plugins
+4.
+4.
+Creating a new project https://docs.flutter.dev/development/tools/android-studio#creating-a-new-project
+새로운 프로젝트 만들기 https://docs.flutter.dev/development/tools/android-studio#creating-a-new-project
+
 When you’ve successfully created a new project, it should look like this.
 새로운 프로젝트를 성공적으로 만들었을 때는 다음과 같습니다.
 
-Exploring the project
-프로젝트 탐색
+## Exploring the project
+## 프로젝트 탐색
 
+![ Figure1.2 Flutter project structure ](/flutter-zero-to-hero/figure1.2_flutter_project_structure.png)
+! [그림 1.2 플러터 프로젝트 구조] (/Flutter-Zero-hero/그림 1.2_flutter_project_structure.png)
 
-Flutter project structure
-플러터 프로젝트 구조
 This is how a Flutter project is structured.
 이것이 플러터 프로젝트가 구성되는 방식입니다.
 
+1.
+1.
 The most important folder is named “lib” in which Flutter has already created a file named “main.dart”.
 가장 중요한 폴더는 "lib"로 이름이 붙어 있는데, Flutter는 이미 "main.dart"라는 파일을 만들었습니다.
 This is also where we’ll create “.dart” files and write our code.
 또한“.dart”파일을 작성하고 코드를 작성하는 곳이기도합니다.
+2.
+2.
 There are two more folders named “android” and “ios”.
 "Android"와 "iOS"라는 폴더가 두 개 더 있습니다.
 They are the source folders of their respective platforms, Android and iOS.
@@ -101,17 +120,22 @@ Does that mean you’ll have to learn Java/Kotlin or Objective-C/Swift? Not real
 그것은 당신이 Java/Kotlin 또는 Objective-C/Swift를 배워야한다는 것을 의미합니까?설마.
 Most features are already supported by Flutter, and even for those that aren’t, you can always check on the “pub.dev” library repository.
 대부분의 기능은 이미 Flutter에서 지원되며, 그렇지 않은 기능을 위해서도 항상 "Pub.dev"라이브러리 저장소를 확인할 수 있습니다.
+3.
+삼.
 “Pubspec.yaml”: This is where you give the project a name, a description, and list out the libraries that you’ll use along with assets such as icons, images, or fonts also used within the project.
 "pubspec.yaml": 프로젝트에 이름, 설명을 제공하고 프로젝트 내에서 사용하는 아이콘, 이미지 또는 글꼴과 같은 자산과 함께 사용할 라이브러리를 나열합니다.
+4.
+4.
 We will go through the other files later.
 나중에 다른 파일을 살펴 보겠습니다.
+
 In short, we only need to focus on “lib”, “ios”, “android”, “pubspec.yaml”.
 요컨대, 우리는 "lib", "ios", "android", "pubspec.yaml"에만 집중하면됩니다.
 For today, we’re only focusing on the folder “lib” and the file “main.dart”.
 오늘날 우리는 폴더 "lib"와 "main.dart"파일에만 초점을 맞추고 있습니다.
 
-Going through each line of code
-각 코드 라인을 통과합니다
+## Going through each line of code
+## 각 코드 줄을 통과합니다
 
 Let’s have a look at file “main.dart” inside folder “lib”.
 "main.dart"내부 폴더 "lib"파일을 살펴 보겠습니다.
@@ -124,6 +148,8 @@ Delete all that code, as we’ll begin with a much simpler example.
 Complete the following 4 steps:
 다음 4 단계를 완료하십시오.
 
+```
+```
 // Step 1
 // 1 단계
 import 'package:flutter/material.dart';
@@ -148,6 +174,9 @@ runapp (
 );
 }
 }
+```
+```
+
 Now I’ll explain the 4 steps:
 이제 4 단계를 설명하겠습니다.
 
@@ -178,8 +207,8 @@ As you dive deeper into Flutter, you’ll see that Widgets are everywhere.
 As the saying goes, “In Flutter, Everything is Widgets.”
 “플러터에서는 모든 것이 위젯입니다.”
 
-What is a Widget?
-위젯이란 무엇입니까?
+## What is a Widget?
+## 위젯이란 무엇입니까?
 
 Basically, Widgets are Dart classes.
 기본적으로 위젯은 다트 클래스입니다.
@@ -197,6 +226,8 @@ So, let’s try running the project we have just created.
 Here’s what we get.
 우리가 얻는 것이 있습니다.
 
+![ Figure1.3 just created ](/flutter-zero-to-hero//figure1.3_just_created.png)
+!!
 
 Hmm, it looks quite terrible.
 흠, 그것은 꽤 끔찍해 보인다.

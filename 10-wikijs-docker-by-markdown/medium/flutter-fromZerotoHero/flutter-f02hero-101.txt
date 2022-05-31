@@ -11,40 +11,44 @@ medium/FlutterFromZerotoHero NALSengineering Apr 12 2022
 
 
 Flutter From Zero to Hero.
+![ Figure1.1 Flutter From Zero to Hero LOGO ](/flutter-zero-to-hero/figure1.1_flutter_from_zero_to_hero_logo.png)
 
-101 Introduction to Widgets
+# 101 Introduction to Widgets
 NALSengineering Apr 12 2022 Nguyễn Thành Minh (Android Developer)
 
-# Introduction
+## Introduction
 
 Compared to Android(Kotlin) or iOS(Swift), Flutter is much easier to learn and use, it is also suitable for those who have little to no experience in programming. If you are new to programming and find yourself interested in mobile app development, Flutter would be a great place to start. I hope you’ll learn something useful from this series.
 
-# Creating a new Flutter Project
+## Creating a new Flutter Project
 
 I won’t dive deep into this section since there are already a lot of tutorials for it. In general, you’ll go through 4 main steps:
 
-Download and install one of the following IDEs: Android Studio or VSCode. I am using Android Studio for this series.
-Install Flutter.
-Install Flutter and Dart plugins.
-Creating a new project
+1. Download and install one of the following IDEs: Android Studio or VSCode. I am using Android Studio for this series.
+2. Install Flutter. https://docs.flutter.dev/get-started/install
+3. Install Flutter and Dart plugins. https://docs.flutter.dev/get-started/editor#:~:text=Install%20the%20Flutter%20and%20Dart%20plugins
+4. Creating a new project https://docs.flutter.dev/development/tools/android-studio#creating-a-new-project
+
 When you’ve successfully created a new project, it should look like this.
 
-Exploring the project
+## Exploring the project
 
+![ Figure1.2 Flutter project structure ](/flutter-zero-to-hero/figure1.2_flutter_project_structure.png)
 
-Flutter project structure
 This is how a Flutter project is structured.
 
-The most important folder is named “lib” in which Flutter has already created a file named “main.dart”. This is also where we’ll create “.dart” files and write our code.
-There are two more folders named “android” and “ios”. They are the source folders of their respective platforms, Android and iOS. Most of the time, you won’t be touching them at all. However, when there are features that Flutter does not support, you’ll need to work around it by writing ‘native code’ in these folders. Does that mean you’ll have to learn Java/Kotlin or Objective-C/Swift? Not really. Most features are already supported by Flutter, and even for those that aren’t, you can always check on the “pub.dev” library repository.
-“Pubspec.yaml”: This is where you give the project a name, a description, and list out the libraries that you’ll use along with assets such as icons, images, or fonts also used within the project.
-We will go through the other files later.
+1. The most important folder is named “lib” in which Flutter has already created a file named “main.dart”. This is also where we’ll create “.dart” files and write our code.
+2. There are two more folders named “android” and “ios”. They are the source folders of their respective platforms, Android and iOS. Most of the time, you won’t be touching them at all. However, when there are features that Flutter does not support, you’ll need to work around it by writing ‘native code’ in these folders. Does that mean you’ll have to learn Java/Kotlin or Objective-C/Swift? Not really. Most features are already supported by Flutter, and even for those that aren’t, you can always check on the “pub.dev” library repository.
+3. “Pubspec.yaml”: This is where you give the project a name, a description, and list out the libraries that you’ll use along with assets such as icons, images, or fonts also used within the project.
+4. We will go through the other files later.
+
 In short, we only need to focus on “lib”, “ios”, “android”, “pubspec.yaml”. For today, we’re only focusing on the folder “lib” and the file “main.dart”.
 
-Going through each line of code
+## Going through each line of code
 
 Let’s have a look at file “main.dart” inside folder “lib”. Hmm, it seems like a lot of code. Don’t fret. Delete all that code, as we’ll begin with a much simpler example. Complete the following 4 steps:
 
+```
 // Step 1
 import 'package:flutter/material.dart';
 // Step 2
@@ -57,6 +61,8 @@ void main() {
     ),
   );
 }
+```
+
 Now I’ll explain the 4 steps:
 
 Step 1: Import the library flutter/material.dart. This library provides access to the classes Text, MaterialAppand the function runApp. It has more things to offer but we’ll talk about that later on.
@@ -69,12 +75,13 @@ Step 4: Create a new object Text and pass it as the property home for the object
 
 MaterialApp and Text are called Widgets. Widgets are crucial to learning because they will help you conquer Flutter. As you dive deeper into Flutter, you’ll see that Widgets are everywhere. As the saying goes, “In Flutter, Everything is Widgets.”
 
-What is a Widget?
+## What is a Widget?
 
 Basically, Widgets are Dart classes. They could be a piece of text on the screen, an icon, a button, or a text input. They are not simply a view like Text, Icon, or a group of views (GroupView) but they can be a class to help show/hide views and align views in a GroupView. Even the app itself is a widget (MaterialApp). We continue to explore a few more Widgets to understand them better.
 
 So, let’s try running the project we have just created. Here’s what we get.
 
+![ Figure1.3 just created ](/flutter-zero-to-hero//figure1.3_just_created.png)
 
 Hmm, it looks quite terrible. That’s because we didn’t use the widget called Scaffold. That being said, we should insert a Scaffold right after MaterialApp and then finally Text.
 
