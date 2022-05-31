@@ -82,13 +82,13 @@ ${cGreen}----> ${cCyan}Press Enter${cReset}:
 __EOF__
 read a
 
-# xxx period_file="period...${org_name}...md" #-- 원본의 마침표에서 다음줄로 넘어가도록 수정한 파일
-en2ko_file="kr.${org_name}.md" #-- 최종 번역 파일
-# xxx cat_and_run "cat ${org_dir_name} | sed -e s'/\. /\.\n/g' | sed -e s'/\.$/\.\n/g' > ${period_file}" "마침표 (.) 기준으로 줄을 분리합니다."
-# xxx cat_and_run "cat ${org_dir_name} | sed -e s'/\. /\.\n/g' > ${period_file}" "마침표 (.) 기준으로 줄을 분리합니다."
+period_file="period...${org_name}...md" #-- 원본의 마침표에서 다음줄로 넘어가도록 수정한 파일
+en2ko_file="dot.KO.${org_name}.md" #-- 최종 번역 파일
+cat_and_run "cat ${org_dir_name} | sed -e s'/\. /\.\n/g' | sed -e s'/\.$/\.\n/g' > ${period_file}" "마침표 (.) 기준으로 줄을 분리합니다."
+cat_and_run "cat ${org_dir_name} | sed -e s'/\. /\.\n/g' > ${period_file}" "마침표 (.) 기준으로 줄을 분리합니다."
 
 python_name=99-trans-text.py
-echo "----> (1) ${python_name} 소스 파일을 만듭니다."
+echo "----> ${python_name} 소스 파일을 만듭니다."
 
 fromColor="${cRed}from${cGreen}" ; toColor="${cRed}to  ${cYellow}" #-- 화면으로 보기 위한것임.
 fromColor="from" ; toColor="to  "
@@ -101,7 +101,8 @@ cat > ${python_name} <<__EOF__
 import googletrans
 translator = googletrans.Translator()
 
-filename="${org_name}" # xxx filename="${org_dir_name}" filename="${period_file}"
+# filename="${org_dir_name}"
+filename="${period_file}"
 
 def read_txt (filename):
 	# print (f"filename = {filename}")
@@ -112,12 +113,11 @@ def read_txt (filename):
 
 	for aline_en in str :
 		if len(aline_en) < 2:
-			print (f"${fromColor}{aline_en}${toColor}")
+			# print (f"${fromColor}{aline_en}${toColor}")
 			print (f"")
 		else:
 			aline_ko=translator.translate (aline_en, dest='ko')
 			print (f"${fromColor}{aline_en}${toColor}{aline_ko.text}")
-			print (f"")
 
 	file.close()
 
@@ -125,7 +125,7 @@ read_txt (filename)
 __EOF__
 
 temp1="temp1-$(date +'%y%m%d-%H%M%S')"
-cat_and_run "python ${python_name} > ${temp1}" "(2) 번역"
+cat_and_run "python ${python_name} > ${temp1}" "번역"
 
 temp2="temp2-$(date +'%y%m%d-%H%M%S')"
 cat >${temp2} <<__EOF__
@@ -151,8 +151,8 @@ Bash Quick Start Guide 머리말
 
 __EOF__
 
-cat_and_run "cat ${temp2} ${temp1} > ${en2ko_file}" "(3) 최종 번역파일 작성"
-cat_and_run "rm -rf ${temp2} ${temp1} ${python_name}" "(4) 임시파일 삭제"
+cat_and_run "cat ${temp2} ${temp1} > ${en2ko_file}" "최종 번역파일 작성"
+cat_and_run "rm -rf ${temp2} ${temp1} ${python_name} ${period_file}" "임시파일 삭제"
 
 
 # ----

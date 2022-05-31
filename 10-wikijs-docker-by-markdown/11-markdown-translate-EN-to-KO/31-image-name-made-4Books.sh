@@ -1,40 +1,39 @@
 #!/bin/sh
 
 if [ "x$1" = "x" ]; then
-	image_folder="books_img"
+	image_dir="books_img"
 else
-	image_folder="${1}"
+	image_dir="${1}"
 fi
 
 cat <<__EOF__
-----> Enter image folder name:
-      or just Enter for [ ${image_folder} ]
----->
+----> Enter image folder name: or just Enter for [ ${image_dir} ]
 __EOF__
 read a
 
 if [ "x$a" != "x" ]; then
-	image_folder="$a"
+	image_dir="$a"
 fi
 cat <<__EOF__
-.... Image folder name is [ ${image_folder} ]
-
-
+.... Image folder name is [ ${image_dir} ]
 __EOF__
 
-a="-ok-"
+enter_string="1.1 Flutter From Zero to Hero LOGO"
 
-until [ "x$a" = "x" ]
+until [ "x$enter_string" = "x" ]
 do
-	echo "----> Please_Enter_A_Sentence: [ Figure 는 제외하고, 4.1- 부터 입력 ]"
-	read a
-	if [ "x$a" != "x" ]; then
-		img_name=$(echo "figure${a,,}" | sed 's/ /_/g') #-- 전부 대문자로 바꾸려면 ${a^^}, 전부 소문자는 ${a,,}
-		echo " "
-		# echo "![ Figure${a} ](/${image_folder}/${img_name}.png .webp)"
-		echo "![ Figure${a} ](/${image_folder}/"
-		echo "${img_name}.png .webp)"
-		echo " "
+	cat <<__EOF__
+
+${enter_string} ----> 이와 같이 일련번호와 설명을 다음줄에 입력한다.
+__EOF__
+	read enter_string
+	if [ "x$enter_string" != "x" ]; then
+		img_name=$(echo "figure${enter_string,,}" | sed 's/ /_/g') #-- 전부 대문자로 바꾸려면 ${enter_string^^}, 전부 소문자는 ${enter_string,,}
+		cat <<__EOF__
+
+![ Figure${enter_string} ](/${image_dir}/${img_name}.png .webp)
+----> 윗줄을 복사해서 사용한다.
+__EOF__
 	fi
 done
 echo "----> Thank_you for using $0 ~~~"
