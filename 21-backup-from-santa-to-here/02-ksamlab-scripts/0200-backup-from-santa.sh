@@ -1,10 +1,19 @@
 #!/bin/sh
 
+echois="no" #-- ok | no
+
+echo_is () {
+	if [ "x${echois}" = "xok" ]; then
+		echo "$1"
+	fi
+}
+
 #-- ...................... 1........ 2...... 3.... 4.... 5....
 #-- rsync_day_folder_files /var/base cadbase ${y4} ${m2} ${d2}
 
 info_message_show() { #-- crontab 을 위한 아규먼트 설명
-	cat <<__EOF__
+	if [ "x${echois}" = "xok" ]; then
+		cat <<__EOF__
 # ....> CentOS 5 버전 때문에 선언한 것임.
 $ cat ~/.ssh/config
 
@@ -103,7 +112,9 @@ cat crontab-kaos.kr.18022.ksamlab
 #-- (${0}) (${arg_year}) (${arg_month}) (${arg_today})
 
 __EOF__
+	fi
 }
+
 rsync_day_folder_files () {
 	COPY_READY="-NO-"
 	home_dir=${1}
@@ -116,13 +127,13 @@ rsync_day_folder_files () {
 		#-- "ok"=오늘만 백업할 경우
 		host_dir=${home_dir}/${this_dir}/${this_year}/${this_month}/${this_today}/ #-- "/" 가 끝에 있다.
 		my_dir=${backup_dir}/${this_dir}/${this_year}/${this_month}/${this_today}
-		echo "66 ---- sshpass -f /home/kaosco/.ssh/kaosco.4ssh ssh -o StrictHostKeyChecking=no kaosco@www.kaos.kr ls ${host_dir})"
+		echo_is "128 ---- sshpass -f /home/kaosco/.ssh/kaosco.4ssh ssh -o StrictHostKeyChecking=no kaosco@www.kaos.kr ls ${host_dir})"
 		ls_host=$(sshpass -f /home/kaosco/.ssh/kaosco.4ssh ssh -o StrictHostKeyChecking=no kaosco@www.kaos.kr ls ${host_dir})
-		echo "68 ---- ls_host ${ls_host};"
+		echo_is "130 ---- ls_host ${ls_host};"
 		if [ "x${ls_host}" != "x" ]; then
 			COPY_READY="yes"
 		fi
-		echo "72 ---- COPY_READY ${COPY_READY};"
+		echo_is "134 ---- COPY_READY ${COPY_READY};"
 	else
 	if [ "x${RSYNC_HOW}" = "xmonth" ]; then
 		#-- "ok"=이달만 백업할 경우
@@ -163,8 +174,8 @@ rsync_day_folder_files () {
 		RSYNC_LOG="${RSYNC_LOG}."
 	fi
 }
-#-- ........................ 1........... 2........................... 3.... 4.... 5.... 6....
-#-- rsync_month_folder_1file /var/base_db kaosorder2/kaosoyo/mydb_utf8 ${y4} ${m2} ${d2} ${y2}
+#-- ........................ 1........... 2............................... 3.... 4.... 5.... 6....
+#-- rsync_month_folder_1file /var/base_db kaosorder2 / kaosoyo / mydb_utf8 ${y4} ${m2} ${d2} ${y2}
 rsync_month_folder_1file () {
 	COPY_READY="-NO-"
 	home_dir=${1}
@@ -180,13 +191,13 @@ rsync_month_folder_1file () {
 		my_dir=${backup_dir}/${this_dir}/${this_year}/${this_month}
 		#-- 2...3....4..5.....................................
 		#-- db2/2021/08/kaosorder2-db-210805-055001.tar.7z.001
-		echo "127 ---- ls_host=\$(sshpass -f /home/kaosco/.ssh/kaosco.4ssh ssh -o StrictHostKeyChecking=no kaosco@www.kaos.kr ls ${host_dir})"
+		echo_is "192 ---- ls_host=\$(sshpass -f /home/kaosco/.ssh/kaosco.4ssh ssh -o StrictHostKeyChecking=no kaosco@www.kaos.kr ls ${host_dir})"
 		ls_host=$(sshpass -f /home/kaosco/.ssh/kaosco.4ssh ssh -o StrictHostKeyChecking=no kaosco@www.kaos.kr ls ${host_dir})
-		echo "129 ---- ls_host ${ls_host};"
+		echo_is "194 ---- ls_host ${ls_host};"
 		if [ "x${ls_host}" != "x" ]; then
 			COPY_READY="yes"
 		fi
-		echo "133 ---- COPY_READY ${COPY_READY};"
+		echo_is "198 ---- COPY_READY ${COPY_READY};"
 	else
 	if [ "x${RSYNC_HOW}" = "xmonth" ]; then
 		#-- "ok"=이달만 백업할 경우
@@ -240,7 +251,7 @@ rsync_month_folder_1file () {
 # Q4=${Q3//$Q/Q} #-- '"' >> "Q"
 #
 # touch "${backup_log_dir}/COPY_$Q4"
-#-- echo "rsync -avzr --delete --rsh=\"sshpass -f /home/kaosco/.ssh/kaosco.4ssh ssh -o StrictHostKeyChecking=no -l kaosco\" kaosco@kaos.kr:${host_dir} ${my_dir} #-- ${RSYNC_NOW}" >> ${backup_log_dir}/rsync_${from_date}
+#-- echo_is "252 ---- rsync -avzr --delete --rsh=\"sshpass -f /home/kaosco/.ssh/kaosco.4ssh ssh -o StrictHostKeyChecking=no -l kaosco\" kaosco@kaos.kr:${host_dir} ${my_dir} #-- ${RSYNC_NOW}" >> ${backup_log_dir}/rsync_${from_date}
 
 	if [ "x${COPY_READY}" = "xyes" ]; then
 
@@ -265,7 +276,10 @@ rsync_month_folder_1file () {
 			#-- fi
 
 			# 기존의 백업 이미지를 주단위 디렉토리로 옮긴다.
-			cat_and_run "rclone copy ${from_file} kaos.note:db-backup/${WEEK_DIR}/" "backup to google drive"
+			echo_is "277 ----> rclone delete kaosnote:db-backup/${this_dir}/${WEEK_DIR}/"
+			rclone delete kaosnote:db-backup/${this_dir}/${WEEK_DIR}/
+			echo_is "279 ----> rclone copy ${from_file} kaosnote:db-backup/${WEEK_DIR}/ #-- backup to google drive"
+			rclone copy ${from_file} kaosnote:db-backup/${this_dir}/${WEEK_DIR}/
 
 			#<---- "ok"=오늘만 백업할 경우, 오늘에 해당하는 요일에도 복사해 놓는다.
 		fi
@@ -290,8 +304,8 @@ arg_today=${4}
 if [ "x${backup_dir}" = "x" ]; then
 	info_message_show #-- crontab 을 위한 아규먼트 설명
 	end_touch="/tmp/error-BACKUP_DIR_NOT_SETTING-$(date +"%y%m%d-%H%M%S")-$(uname -n)"
-	echo "${0}: arg-1 is not dir name '${1}', '${2}', '${3}', '${4}' on ${end_touch}" > ${end_touch}
-	echo "$0 ----> $(cat ${end_touch})"
+	echo_is "303 ---- ${0}: arg-1 is not dir name '${1}', '${2}', '${3}', '${4}' on ${end_touch}" > ${end_touch}
+	echo_is "303 ---- $0 ----> $(cat ${end_touch})"
 	exit -1
 fi
 
@@ -314,8 +328,8 @@ if [ "x${arg_year}" = "x" ]; then
 	#-- 실행시 인수가 하나도 없으면,
 	info_message_show #-- crontab 을 위한 아규먼트 설명
 	end_touch="/tmp/error-NO-ARG-YEAR-$(date +"%y%m%d-%H%M%S")-$(uname -n)"
-	echo "${0}: arg-2 is null '${1}', '${2}', '${3}', '${4}' on ${end_touch}" > ${end_touch}
-	echo "$0 ----> $(cat ${end_touch})"
+	echo_is "327 ---- ${0}: arg-2 is null '${1}', '${2}', '${3}', '${4}' on ${end_touch}" > ${end_touch}
+	echo_is "328 ---- $0 ----> $(cat ${end_touch})"
 	exit -1
 else
 	if [ "x${arg_year}" = "xtoday" ]; then
@@ -367,16 +381,16 @@ fi
 from_date=$(date +"%y%m%d-%H%M%S")
 begin_touch="${backup_log_dir}/rsync_from_${from_date}_${ARG_1_2_3}"
 
-echo "285 ---- touch ${begin_touch};"
+echo_is "380 ---- touch ${begin_touch};"
 touch ${begin_touch}
 
 # ----
 
 RSYNC_LOG="C"
-# echo "291 ---- RSYNC_LOG ${RSYNC_LOG}; rsync_day_folder_files /var/base cadbase ${y4} ${m2} ${d2};"
+# echo_is "386 ---- RSYNC_LOG ${RSYNC_LOG}; rsync_day_folder_files /var/base cadbase ${y4} ${m2} ${d2};"
 rsync_day_folder_files /var/base cadbase ${y4} ${m2} ${d2}
 RSYNC_LOG="${RSYNC_LOG}E"
-# echo "294 ---- RSYNC_LOG ${RSYNC_LOG}; rsync_day_folder_files /var/base emailbase ${y4} ${m2} ${d2};"
+# echo_is "389 ---- RSYNC_LOG ${RSYNC_LOG}; rsync_day_folder_files /var/base emailbase ${y4} ${m2} ${d2};"
 rsync_day_folder_files /var/base emailbase ${y4} ${m2} ${d2}
 RSYNC_LOG="${RSYNC_LOG}G"
 rsync_day_folder_files /var/base georaebase ${y4} ${m2} ${d2}
