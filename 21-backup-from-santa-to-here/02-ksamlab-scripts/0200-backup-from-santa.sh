@@ -249,6 +249,27 @@ rsync_month_folder_1file () {
 		fi
 		### /usr/bin/time -p %E rsync -avzr --delete --rsh="sshpass -f /home/kaosco/.ssh/kaosco.4ssh ssh -o StrictHostKeyChecking=no -l kaosco" kaosco@kaos.kr:${host_dir} ${my_dir} > ${backup_log_dir}/$(date +"%y%m%d-%H%M%S")_kaosorder2.txt
 		rsync -avzr --delete --rsh="sshpass -f /home/kaosco/.ssh/kaosco.4ssh ssh -o StrictHostKeyChecking=no -l kaosco" kaosco@kaos.kr:${host_dir} ${my_dir}
+
+		if [ "x${RSYNC_HOW}" = "xtoday" ]; then
+			#----> "ok"=오늘만 백업할 경우, 오늘에 해당하는 요일에도 복사해 놓는다.
+
+			from_file=${backup_dir}/${this_dir}/${this_year}/${this_month}/*${this_y2}${this_month}${this_today}*7z*
+
+			#-- to_dir=${backup_dir}/db_backup/${WEEK_DIR}/ #-- /home/santa-backup / db_backup / [1-7] /
+			#-- if [ -d ${to_dir} ] ; then
+			#-- 	# 주단위 디렉토리가 있으면, 전에 백업했던 이미지를 삭제한다.
+			#-- 	rm -f ${to_dir}/*
+			#-- else
+			#-- 	# 주단위 디렉토리가 없으면, 새로 만든다.
+			#-- 	mkdir ${to_dir} ; chown -R ${USER}.${USER} ${to_dir}
+			#-- fi
+
+			# 기존의 백업 이미지를 주단위 디렉토리로 옮긴다.
+			cat_and_run "rclone copy ${from_file} kaos.note:db-backup/${WEEK_DIR}/" "backup to google drive"
+
+			#<---- "ok"=오늘만 백업할 경우, 오늘에 해당하는 요일에도 복사해 놓는다.
+		fi
+
 		RSYNC_LOG="${RSYNC_LOG}o" #-- 복사작업 했음
 	else
 		RSYNC_LOG="${RSYNC_LOG}." #-- 복사작업 안했음
@@ -256,6 +277,8 @@ rsync_month_folder_1file () {
 }
 
 # ----
+
+WEEK_DIR=$(date +"%w")
 
 backup_dir=${1}
 backup_log_dir=${backup_dir}/logs
