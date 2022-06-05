@@ -1,12 +1,14 @@
 #!/bin/sh
 
 if [ "x$1" = "x" ]; then
-	image_dir="books_img"
+	#-- (대문자, 공백, - 와 _ 제외한 특수문자) 는 안됨 !
+	image_dir="into_a_mobile_wi-fi_hotspot_img"
 else
 	image_dir="${1}"
 fi
 
 cat <<__EOF__
+----> (대문자, 공백, - 와 _ 제외한 특수문자) 는 안됨 !
 ----> Enter image folder name: or just Enter for [ ${image_dir} ]
 __EOF__
 read a
