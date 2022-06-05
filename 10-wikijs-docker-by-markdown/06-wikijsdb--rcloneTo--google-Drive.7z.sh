@@ -48,7 +48,7 @@ ${cGreen}----> ${cYellow}비밀번호${cCyan}를 입력하세요.${cReset}
 __EOF__
 sudo docker exec wikijsdb pg_dumpall -U wikijs | 7za a -si ${dir_for_backup}/${sql_7z} -p
 
-Y4M2WEEK_DIR="wiki.ks/$(date +'%Y/%m/%w')"
+Y4M2WEEK_DIR="wiki.js/$(date +'%Y/%m/%w')"
 
 cat_and_run "rclone lsl yosjeon:${Y4M2WEEK_DIR}/" "#-- 구글 드라이브 ${Y4M2WEEK_DIR} 폴더 입니다."
 
