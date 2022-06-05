@@ -50,13 +50,13 @@ sudo docker exec wikijsdb pg_dumpall -U wikijs | 7za a -si ${dir_for_backup}/${s
 
 Y4M2WEEK_DIR="wiki.ks/$(date +'%Y/%m/%w')"
 
-cat_and_run "rclone ls yosjeon:${Y4M2WEEK_DIR}/" "#-- 구글 드라이브 ${Y4M2WEEK_DIR} 폴더 입니다."
+cat_and_run "rclone lsl yosjeon:${Y4M2WEEK_DIR}/" "#-- 구글 드라이브 ${Y4M2WEEK_DIR} 폴더 입니다."
 
 cat_and_readY "rclone delete yosjeon:${Y4M2WEEK_DIR}/" "#-- 구글 드라이브 ${Y4M2WEEK_DIR} 폴더의 파일들을 모두 삭제할까요 ?"
 
 cat_and_run "rclone copy ${dir_for_backup}/${sql_7z} yosjeon:${Y4M2WEEK_DIR}/" "#-- 백업 파일을 구글 드라이브 ${Y4M2WEEK_DIR} 폴더로 복사합니다."
 
-cat_and_run "rclone ls yosjeon:${Y4M2WEEK_DIR}/" "#-- 구글 드라이브 ${Y4M2WEEK_DIR} 폴더 입니다."
+cat_and_run "rclone lsl yosjeon:${Y4M2WEEK_DIR}/" "#-- 구글 드라이브 ${Y4M2WEEK_DIR} 폴더 입니다."
 
 cat_and_readY "rm -f ${dir_for_backup}/${sql_7z}" "#-- 백업이 끝난 파일을 삭제할까요 ?"
 
