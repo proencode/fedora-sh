@@ -2,29 +2,75 @@
 
 if [ "x$1" = "x" ]; then
 	#-- (대문자, 공백, - 와 _ 제외한 특수문자) 는 안됨 !
-	image_dir="into_a_mobile_wi-fi_hotspot_img"
+	cat <<__EOF__
+[ 1 ] ---- packtpub
+  2   ---- medium
+  3   ---- docker
+  4   ---- howtogeek
+  5   ---- ddanzi
+  6   ---- ysjn
+
+----> [ 1 ~ 6 ] 또는 새로운 분류명을 입력하세요.
+__EOF__
+	read a
+	if [ "x$a" = "x" ]; then
+		publisher="packtpub"
+	else
+	if [ "x$a" = "x1" ]; then
+		publisher="packtpub"
+	else
+	if [ "x$a" = "x2" ]; then
+		publisher="medium"
+	else
+	if [ "x$a" = "x3" ]; then
+		publisher="docker"
+	else
+	if [ "x$a" = "x4" ]; then
+		publisher="howtogeek"
+	else
+	if [ "x$a" = "x5" ]; then
+		publisher="ddanzi"
+	else
+	if [ "x$a" = "x6" ]; then
+		publisher="ysjn"
+	else
+	fi
+	fi
+	fi
+	fi
+	fi
+	fi
+	fi
 else
-	image_dir="${1}"
+	a=""
+	publisher="packtpub"
+
 fi
 
 cat <<__EOF__
-----> (대문자, 공백, - 와 _ 제외한 특수문자) 는 안됨 !
-----> Enter image folder name: or just Enter for [ ${image_dir} ]
+
+----> press Enter: $a [ ${publisher} ]
 __EOF__
 read a
 
-if [ "x$a" != "x" ]; then
-	image_dir="$a"
-fi
 cat <<__EOF__
-.... Image folder name is [ ${image_dir} ]
+----> Book Cover Name: 폴더 이름으로 쓰기 위한것. (대,소문자, 숫자,  ., -, _, 빈칸) 만 쓸 수 있음.
 __EOF__
+read BookCover
+
+if [ "x$1" = "x" ]; then
+	exit 1
+fi
+
+book_cover_dir=$(echo "${BookCover,,}" | sed 's/ /_/g' #-- 소문자로 바꾸고 공백을 밑줄로 바꾼다.
 
 enter_string="1.1 Flutter From Zero to Hero LOGO"
 
 until [ "x$enter_string" = "x" ]
 do
 	cat <<__EOF__
+
+----> (대,소문자, 숫자,  ., -, _, 빈칸) 만 쓸 수 있음.
 
 ${enter_string} ----> 이와 같이 일련번호와 설명을 다음줄에 입력한다.
 __EOF__
