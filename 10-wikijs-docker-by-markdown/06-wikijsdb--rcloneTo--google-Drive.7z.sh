@@ -36,7 +36,10 @@ logs_folder="${HOME}/zz00-logs" ; if [ ! -d "${logs_folder}" ]; then cat_and_run
 log_name="${logs_folder}/zz.$(date +"%y%m%d-%H%M%S")__RUNNING_${CMD_NAME}" ; touch ${log_name}
 # ----
 
-dir_for_backup="${HOME}"
+dir_for_backup="${HOME}/archive"
+if [ ! -f ${dir_for_backup} ]; then
+	cat_and_run "mkdir ${dir_for_backup}" "백업하는 폴더를 새로 만듭니다."
+fi
 
 sql_7z="wikijs-$(date +%y%m%d_%H%M%S)-$(uname -n).sql.7z"
 
