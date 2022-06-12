@@ -32,8 +32,8 @@ if [ "x$CMD_DIR" == "x" ] || [ "x$CMD_DIR" == "x$CMD_NAME" ]; then
 fi
 MEMO="restore sql to wikijsdb"
 echo "${cMagenta}>>>>>>>>>>${cGreen} $0 ${cMagenta}||| ${cCyan}${MEMO} ${cMagenta}>>>>>>>>>>${cReset}"
-logs_folder="${HOME}/zz00-logs" ; if [ ! -d "${logs_folder}" ]; then cat_and_run "mkdir ${logs_folder}" ; fi
-log_name="${logs_folder}/zz.$(date +"%y%m%d-%H%M%S")__RUNNING_${CMD_NAME}" ; touch ${log_name}
+#-- logs_folder="${HOME}/zz00-logs" ; if [ ! -d "${logs_folder}" ]; then cat_and_run "mkdir ${logs_folder}" ; fi
+#-- log_name="${logs_folder}/zz.$(date +"%y%m%d-%H%M%S")__RUNNING_${CMD_NAME}" ; touch ${log_name}
 # ----
 
 if [ "x$1" = "x" ]; then
@@ -49,12 +49,12 @@ fi
 
 db_sql_7z="$1"
 sql_name=$(basename ${db_sql_7z}) # 백업파일 이름만 꺼냄
-dir_for_backup=${db_sql_7z%/$sql_name} # 백업파일 이름을 빼고 나머지 디렉토리만 담음
+sql_dir=${db_sql_7z%/$sql_name} # 백업파일 이름을 빼고 나머지 디렉토리만 담음
 cat <<__EOF__
 
 ${cYellow}db_sql_7z="$1"${cReset}
 ${cYellow}sql_name=$(basename ${db_sql_7z}) ${cCyan}# 백업파일 이름만 꺼냄${cReset}
-${cYellow}dir_for_backup=${db_sql_7z%/$sql_name} ${cCyan}# 백업파일 이름을 빼고 나머지 디렉토리만 담음${cReset}
+${cYellow}sql_dir=${db_sql_7z%/$sql_name} ${cCyan}# 백업파일 이름을 빼고 나머지 디렉토리만 담음${cReset}
 ${cGreen}----> ${cCyan}Press Enter${cReset}:
 __EOF__
 read a
@@ -88,6 +88,11 @@ __EOF__
 	last_skip="no_backup"
 fi
 
+dir_for_backup="${HOME}/archive/wikijs/$(date +%Y)/$(date +%m)/"
+if [ ! -f ${dir_for_backup} ]; then
+	cat_and_run "mkdir -p ${dir_for_backup}" "백업하는 폴더를 새로 만듭니다."
+fi
+
 if [ "x${last_skip}" = "xdb_backup_ok" ]; then
 	current_backup="last-wikijs-$(date +%y%m%d_%H%M%S)-$(uname -n).sql.7z"
 	cat <<__EOF__
@@ -110,6 +115,6 @@ time 7za x -so ${db_sql_7z} | sudo docker exec -i wikijsdb psql -U wikijs wiki
 cat_and_run "sudo docker start wikijs ; sudo docker ps -a" "#-- 위키 도커 다시 시작"
 
 # ----
-rm -f ${log_name} ; log_name="${logs_folder}/zz.$(date +"%y%m%d-%H%M%S")..${CMD_NAME}" ; touch ${log_name}
-cat_and_run "ls --color ${CMD_DIR}" ; ls --color ${logs_folder}
+#-- rm -f ${log_name} ; log_name="${logs_folder}/zz.$(date +"%y%m%d-%H%M%S")..${CMD_NAME}" ; touch ${log_name}
+#-- cat_and_run "ls --color ${CMD_DIR}" ; ls --color ${logs_folder}
 echo "${cRed}<<<<<<<<<<${cBlue} $0 ${cRed}||| ${cMagenta}${MEMO} ${cRed}<<<<<<<<<<${cReset}"
