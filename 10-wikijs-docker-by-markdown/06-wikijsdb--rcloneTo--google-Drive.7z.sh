@@ -36,7 +36,7 @@ echo "${cMagenta}>>>>>>>>>>${cGreen} $0 ${cMagenta}||| ${cCyan}${MEMO} ${cMagent
 #--xx-- log_name="${logs_folder}/zz.$(date +"%y%m%d-%H%M%S")__RUNNING_${CMD_NAME}" ; touch ${log_name}
 # ----
 
-dir_for_backup="${HOME}/archive/wikijs/$(date +%Y)/$(date +%m)/"
+dir_for_backup="${HOME}/archive/wiki.js/$(date +%Y)/$(date +%m)/"
 if [ ! -f ${dir_for_backup} ]; then
 	cat_and_run "mkdir -p ${dir_for_backup}" "백업하는 폴더를 새로 만듭니다."
 fi
