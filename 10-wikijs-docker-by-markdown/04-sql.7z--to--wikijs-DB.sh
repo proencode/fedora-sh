@@ -88,7 +88,7 @@ __EOF__
 	last_skip="no_backup"
 fi
 
-dir_for_backup="${HOME}/archive/wikijs/$(date +%Y)/$(date +%m)/"
+dir_for_backup="${HOME}/archive/wiki.js/$(date +%Y)/$(date +%m)/"
 if [ ! -f ${dir_for_backup} ]; then
 	cat_and_run "mkdir -p ${dir_for_backup}" "백업하는 폴더를 새로 만듭니다."
 fi
