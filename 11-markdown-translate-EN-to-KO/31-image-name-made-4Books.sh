@@ -89,10 +89,10 @@ ${enter_string} ----> 이와 같이 일련번호와 설명을 다음줄에 입�
 __EOF__
 	read enter_string
 	if [ "x$enter_string" != "x" ]; then
-		img_name=$(echo "figure${enter_string,,}" | sed 's/ /_/g') #-- 전부 대문자로 바꾸려면 ${enter_string^^}, 전부 소문자는 ${enter_string,,}
+		img_name=$(echo "${enter_string,,}" | sed 's/ /_/g') #-- 전부 대문자로 바꾸려면 ${enter_string^^}, 전부 소문자는 ${enter_string,,}
 		cat <<__EOF__
 
-![ Figure${enter_string} ](${book_cover_dir}${img_name}.png
+![ ${enter_string} ](${book_cover_dir}${img_name}.png
 ----> 윗줄을 복사해서 사용한다.
 __EOF__
 	fi
