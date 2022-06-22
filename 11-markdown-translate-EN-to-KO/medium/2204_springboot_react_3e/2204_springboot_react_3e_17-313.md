@@ -9,15 +9,16 @@
 ---------- cut line ----------
 
 
+> create: 2022-06-22 수 17:09:15
+> Path: medium/2204_springboot_react_3e/01-000-preface
 > Title: 000 Preface
 > Short Description: By Juha Hinkula Publication date: 4월 2022 Publisher Packt Pages 378 ISBN 9781801816786
 > Link: https://subscription.packtpub.com/book/web-development/9781801816786/pref
 > index: #spring_boot #react
-> create: 2022-06-22 수 15:14:53
-> Path: /medium/2204_springboot_react_3e/01-000_that_are_mentioned_in_the_book
-> Image: /medium/2204_springboot_react_3e/01-000_that_are_mentioned_in_the_book/img
+> Image: medium/2204_springboot_react_3e/img/
 
-![ 01-000 that are mentioned in the book ](/medium/2204_springboot_react_3e/img/01-000_that_are_mentioned_in_the_book.png)
+![ 01-000 that are mentioned in the book ](medium/2204_springboot_react_3e/img/01-000_that_are_mentioned_in_the_book.png)
+
 
 medium/2204-SpringBoot-React-3e/01-000 Preface
 
