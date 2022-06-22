@@ -17,237 +17,132 @@
 > index: #spring_boot #react
 > Image: medium/2204_springboot_react_3e/img/
 
+
+
+# Preface
+
+Getting started with full stack development can be daunting. Even developers who are familiar with the best tools, such as Spring Boot and React, can struggle to nail the basics, let alone master the more advanced elements. If you're one of these developers, this comprehensive guide covers everything you need!
+
+This updated edition of the Full Stack Development with Spring Boot and React book will take you from novice to proficient in this expansive domain. Taking a practical approach, this book will first walk you through the latest Spring Boot features for creating a robust backend, covering everything from setting up the environment and dependency injection to security and testing.
+
+Once this has been covered, you'll advance to React frontend programming. If you've ever wondered about custom Hooks, third-party components, and MUI, this book will demystify all that and much more. You'll explore everything that goes into developing, testing, securing, and deploying your applications using all the latest tools from Spring Boot, React, and other cutting-edge technologies.
+
+By the end of this book, you'll not only have learned the theory of building modern full stack applications but also have developed valuable skills that add value in any setting.
+
+# Who this book is for
+
+This book is for Java developers who are familiar with Spring Boot but don't know where to start when it comes to building full stack applications. You'll also find this book useful if you're a frontend developer with knowledge of JavaScript basics, looking to learn full stack development, or a full stack developer experienced in other technology stacks, looking to learn a new one.
+
+# What this book covers
+
+Chapter 1, Setting Up the Environment and Tools – Backend, explains how to install the software needed for backend development and how to create your first Spring Boot application.
+
+Chapter 2, Understanding Dependency Injection, explains the basics of dependency injection.
+
+Chapter 3, Using JPA to Create and Access a Database, introduces JPA and explains how to create and access databases with Spring Boot.
+
+Chapter 4, Creating a RESTful Web Service with Spring Boot, explains how to create RESTful web services using Spring Data REST.
+
+Chapter 5, Securing and Testing Your Backend, explains how to secure your backend using Spring Security and JWT.
+
+Chapter 6, Setting Up the Environment and Tools – Frontend, explains how to install the software needed for frontend development.
+
+Chapter 7, Getting Started with React, introduces the basics of the React library.
+
+Chapter 8, Consuming the REST API with React, shows how to use REST APIs with React using the Fetch API.
+
+Chapter 9, Useful Third-Party Components for React, demonstrates some useful components that we'll use in our frontend development.
+
+Chapter 10, Setting up the Frontend for Our Spring Boot RESTful Web Service, explains how to set up the React app and Spring Boot backend for frontend development.
+
+Chapter 11, Adding CRUD Functionalities, shows how to implement CRUD functionalities to the React frontend.
+
+Chapter 12, Styling the Frontend with React MUI, shows how to polish the user interface using the React MUI component library.
+
+Chapter 13, Testing Your Frontend, explains the basics of React frontend testing.
+
+Chapter 14, Securing Your Application, explains how to secure the frontend using JWT.
+
+Chapter 15, Deploying Your Application, demonstrates how to deploy an application to Heroku and how to use Docker containers.
+
+Chapter 16, Best Practices, explains the basic technologies that are needed to become a full stack developer and covers some basic best practices for software development.
+
+# To get the most out of this book
+
+You will need Spring Boot version 2.x in this book. There are some major changes in the upcoming Spring Boot version 3 that are mentioned in the book. All code examples are tested using Spring Boot 2.6 and React 18 on Windows. When installing any React libraries, you should check the latest installation command from their documentation and see whether there are any major changes related to the version used in this book.
+
 ![ 01-000 that are mentioned in the book ](medium/2204_springboot_react_3e/img/01-000_that_are_mentioned_in_the_book.png)
 
+If you are using the digital version of this book, we advise you to type the code yourself or access the code from the book's GitHub repository (a link is available in the next section). Doing so will help you avoid any potential errors related to the copying and pasting of code.
 
-medium/2204-SpringBoot-React-3e/01-000 Preface
+# Download the example code files
 
-medium/2204-SpringBoot-React-3e/02-100 Backend Programming with Spring Boot
-medium/2204-SpringBoot-React-3e/03-101 Setting Up the Environment and Tools – Backend
-medium/2204-SpringBoot-React-3e/04-102 Understanding Dependency Injection
-medium/2204-SpringBoot-React-3e/05-103 Using JPA to Create and Access a Database
-medium/2204-SpringBoot-React-3e/06-104 Creating a RESTful Web Service with Spring Boot
-medium/2204-SpringBoot-React-3e/07-105 Securing and Testing Your Backend
-medium/2204-SpringBoot-React-3e/08-200 Frontend Programming with React
-medium/2204-SpringBoot-React-3e/09-206 Setting Up the Environment and Tools – Frontend
-medium/2204-SpringBoot-React-3e/10-207 Getting Started with React
-medium/2204-SpringBoot-React-3e/11-208 Consuming the REST API with React
-medium/2204-SpringBoot-React-3e/12-209 Useful Third-Party Components for React
-medium/2204-SpringBoot-React-3e/13-300 Full Stack Development
-medium/2204-SpringBoot-React-3e/15-311 Adding CRUD Functionalities
-medium/2204-SpringBoot-React-3e/16-312 Styling the Frontend with React MUI
-medium/2204-SpringBoot-React-3e/17-313 Testing Your Frontend
-medium/2204-SpringBoot-React-3e/18-314 Securing Your Application
-medium/2204-SpringBoot-React-3e/19-315 Deploying Your Application
-medium/2204-SpringBoot-React-3e/20-316 Best Practices
-medium/2204-SpringBoot-React-3e/21-400 Assessments
-medium/2204-SpringBoot-React-3e/22-500 Other Books You May Enjoy
+You can download the example code files for this book from GitHub at https://github.com/PacktPublishing/Full-Stack-Development-with-Spring-Boot-and-React. If there's an update to the code, it will be updated in the GitHub repository.
 
+We also have other code bundles from our rich catalog of books and videos available at https://github.com/PacktPublishing/. Check them out!
 
+# Code in Action
 
-1 000 Preface
+The Code in Action videos for this book can be viewed at https://bit.ly/3t3Qe4r .
 
-2 100 Part 1: Backend Programming with Spring Boot
+# Download the color images
 
-3 101 Chapter 1: Setting Up the Environment and Tools – Backend
+We also provide a PDF file that has color images of the screenshots and diagrams used in this book. You can download it here: https://static.packt-cdn.com/downloads/9781801816786_ColorImages.pdf.
 
-Technical requirements
-Installing Eclipse
-Understanding Maven
-Using Spring Initializr
-Installing MariaDB
-Summary
-Questions
-Further reading
+# Conventions used
 
-4 102 Chapter 2: Understanding Dependency Injection
+There are a number of text conventions used throughout this book.
 
-Technical requirements
-Introducing DI
-Using DI in Spring Boot
-Summary
-Questions
-Further reading
+`Code in text`: Indicates code words in text, database table names, folder names, filenames, file extensions, pathnames, dummy URLs, user input, and Twitter handles. Here is an example: "Import `Button` to the `AddCar.js` file."
 
-5 103 Chapter 3: Using JPA to Create and Access a Database
+A block of code is set as follows:
 
-Technical requirements
-Basics of ORM, JPA, and Hibernate
-Creating the entity classes
-Creating CRUD repositories
-Adding relationships between tables
-Setting up a MariaDB database
-Summary
-Questions
-Further reading
+```
+<dependency>
+     <groupId>org.springframework.boot</groupId>
+     <artifactId>spring-boot-starter-web</artifactId>
+</dependency>
+```
 
-6 104 Chapter 4: Creating a RESTful Web Service with Spring Boot
+When we wish to draw your attention to a particular part of a code block, the relevant lines or items are set in bold:
 
-Technical requirements
-Basics of REST
-Creating a RESTful web service
-Using Spring Data REST
-Summary
-Questions
-Further reading
+```
+public class Car { 
+    @Id 
+    @GeneratedValue(strategy=GenerationType.AUTO) 
+    private long id; 
+    private String brand, model, color, registerNumber; 
+    private int year, price; 
+}
+```
 
-7 105 Chapter 5: Securing and Testing Your Backend
+Any command-line input or output is written as follows:
 
-Technical requirements
-Understanding Spring Security
-Securing your backend using a JWT
-Testing in Spring Boot
-Creating unit tests
-Summary
-Questions
-Further reading
+```
+npm install component_name
+```
 
-8 200 Part 2: Frontend Programming with React
+**Bold**: Indicates a new term, an important word, or words that you see onscreen. For instance, words in menus or dialog boxes appear in **bold**. Here is an example: "You can select the **Run** menu and press **Run as** | **Java Application**."
 
-9 206 Chapter 6: Setting Up the Environment and Tools – Frontend
+Tips or Important Notes
 
-Technical requirements
-Installing Node.js
-Installing VS Code
-Creating and running a React app
-Summary
-Questions
-Further reading
+Appear like this.
 
-10 207 Chapter 7: Getting Started with React
+# Get in touch
 
-Technical requirements
-How to create React components
-Useful ES6 features
-JSX and styling
-Props and state
-Stateless components
-Conditional rendering
-React hooks
-Custom hooks
-The Context API
-Handling lists with React
-Handling events with React
-Handling forms with React
-Summary
-Questions
-Further reading
+Feedback from our readers is always welcome.
 
-11 208 Chapter 8: Consuming the REST API with React
+General feedback: If you have questions about any aspect of this book, email us at customercare@packtpub.com and mention the book title in the subject of your message.
 
-Technical requirements
-Using promises
-Using the fetch API
-Using the axios library
-Working on practical examples
-OpenWeatherMap API
-Summary
-Questions
-Further reading
+Errata: Although we have taken every care to ensure the accuracy of our content, mistakes do happen. If you have found a mistake in this book, we would be grateful if you would report this to us. Please visit www.packtpub.com/support/errata and fill in the form.
 
-12 209 Chapter 9: Useful Third-Party Components for React
+Piracy: If you come across any illegal copies of our works in any form on the internet, we would be grateful if you would provide us with the location address or website name. Please contact us at copyright@packt.com with a link to the material.
 
-Technical requirements
-Using third-party React components
-Working with AG Grid
-Using the MUI component library
-Managing routing in React
-Summary
-Questions
-Further reading
+If you are interested in becoming an author: If there is a topic that you have expertise in and you are interested in either writing or contributing to a book, please visit authors.packtpub.com.
 
-13 300 Part 3: Full Stack Development
+# Share Your Thoughts
 
-14 310 Chapter 10: Setting up the Frontend for Our Spring Boot RESTful Web Service
+Once you've read Full Stack Development with Spring Boot and React, we'd love to hear your thoughts! Please select https://www.amazon.in/review/create-review/error?asin=1801816786 for this book and share your feedback.
 
-Technical requirements
-Mocking up the UI
-Preparing the Spring Boot backend
-Creating the React project for the frontend
-Summary
-Questions
-Further reading
+Your review is important to us and the tech community and will help us make sure we're delivering excellent quality content.
 
-15 311 Chapter 11: Adding CRUD Functionalities
-
-Technical requirements
-Creating the list page
-The delete functionality
-The add functionality
-The edit functionality
-Other functionalities
-Summary
-Questions
-Further reading
-
-16 312 Chapter 12: Styling the Frontend with React MUI
-
-Technical requirements
-Using the Button component
-Using icon components
-Using the TextField components
-Summary
-Questions
-Further reading
-
-17 313 Chapter 13: Testing Your Frontend
-
-Technical requirements
-Using Jest
-Firing events in tests
-Understanding snapshot testing
-Summary
-Questions
-Further reading
-
-18 314 Chapter 14: Securing Your Application
-
-Technical requirements
-Securing the backend
-Securing the frontend
-Summary
-Questions
-Further reading
-
-19 315 Chapter 15: Deploying Your Application
-
-Technical requirements
-Deploying the backend
-Deploying the frontend
-Using Docker containers
-Summary
-Questions
-Further reading
-
-20 316 Chapter 16: Best Practices
-
-What to learn next
-Best practices
-Summary
-Questions
-Further reading
-
-21 400 Assessments
-
-Chapter 1
-Chapter 2
-Chapter 3
-Chapter 4
-Chapter 5
-Chapter 6
-Chapter 7
-Chapter 8
-Chapter 9
-Chapter 10
-Chapter 11
-Chapter 12
-Chapter 13
-Chapter 14
-Chapter 15
-Chapter 16
-Why subscribe?
-
-22 500 Other Books You May Enjoy
-
-Packt is searching for authors like you
-Share Your Thoughts
