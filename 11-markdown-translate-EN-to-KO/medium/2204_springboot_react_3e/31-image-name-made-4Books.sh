@@ -168,7 +168,7 @@ __EOF__
 / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / /
 
 @ Q -> # 붙이고 줄 띄우기 => 0i# ^[A^M^[
-@ W -> 현 위치에서 Copy 까지 역따옴표 => j0i\`\`\`^M^/^Copy$^[ddk0C\`\`\`^M^[
+@ W -> 현 위치에서 Copy 까지 역따옴표 => j0i\`\`\`^M^[/^Copy$^[ddk0C\`\`\`^M^[
 @ E -> 찾은 글자 앞뒤로 backtick(\`) 붙이기 => i\`^[/ ^[i\`^[/rrqeEWQRQewreq^[
     마크다운 입력시 vi 커맨드 표시 ; (^{)=Ctrl+[ ; (^M)=Ctrl+M
     인용구 작성시 ; 본문앞에는 꺽쇠 > 붙이고, 스타일 첨가시 끝줄에 종류별 구분을 표시한다.
@@ -189,7 +189,7 @@ __EOF__
 # ${ChapterSeq} ${ChapterName}
 
 
-![ ${image_jemok} ](${chulpansa}/${cheak_jemok}/${img_name}.webp .png .jpg)
+![ ${image_jemok} ](/${chulpansa}/${cheak_jemok}/${img_name}.webp .png .jpg)
 
 / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / /
 ----> 윗줄을 복사해서 사용합니다.

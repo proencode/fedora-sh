@@ -1,4 +1,3 @@
-@ Q -> # 붙이고 줄 띄우기 => 0i# ^[A^M^[
 @ W -> 현 위치에서 Copy 까지 역따옴표 => j0i```^M^/^Copy$^[ddk0C```^M^[
 @ E -> 찾은 글자 앞뒤로 backtick(`) 붙이기 => i`^[/ ^[i`^[/rrqeEWQRQewreq^[
     마크다운 입력시 vi 커맨드 표시 ; (^{)=Ctrl+[ ; (^M)=Ctrl+M
@@ -9,19 +8,24 @@
 ---------- cut line ----------
 
 
-> create: 2022-06-22 수 17:09:15
-> Path: medium/2204_springboot_react_3e/01-000-preface
-> Title: 000 Preface
+> Path: medium/2204_springboot_react_3e/02-100_backend_programming_with_spring_boot
+> Title: 02-100 Backend Programming with Spring Boot
 > Short Description: By Juha Hinkula Publication date: 4월 2022 Publisher Packt Pages 378 ISBN 9781801816786
 > Link: https://subscription.packtpub.com/book/web-development/9781801816786/pref
-> index: #spring_boot #react
-> Image: medium/2204_springboot_react_3e/img/
+> tags: spring_boot react
+> Images: / medium / 2204_springboot_react_3e /
+> create: 2022-06-23 목 04:33:14
 
-![ 01-000 that are mentioned in the book ](medium/2204_springboot_react_3e/img/01-000_that_are_mentioned_in_the_book.png)
+# 02-100 Backend Programming with Spring Boot
+
+
+![ 01-000 that are mentioned in the book ](/medium/2204_springboot_react_3e/01-000_that_are_mentioned_in_the_book.webp .png .jpg)
+
+/ / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / /
+----> 윗줄을 복사해서 사용합니다.
 
 
 medium/2204-SpringBoot-React-3e/01-000 Preface
-
 medium/2204-SpringBoot-React-3e/02-100 Backend Programming with Spring Boot
 medium/2204-SpringBoot-React-3e/03-101 Setting Up the Environment and Tools – Backend
 medium/2204-SpringBoot-React-3e/04-102 Understanding Dependency Injection
