@@ -1,6 +1,14 @@
+0i# A                         ---- @ Q
+j0i```/^Copy$ddk0C```     ---- @ W
+i`/ i`k                       ---- @ E
+i`/,i`k                       ---- @ R
+i`/\.i`k                      ---- @ T
+
 @ Q -> # 붙이고 줄 띄우기 => 0i# ^[A^M^[
 @ W -> 현 위치에서 Copy 까지 역따옴표 => j0i```^M^[/^Copy$^[ddk0C```^M^[
-@ E -> 찾은 글자 앞뒤로 backtick(`) 붙이기 => i`^[/ ^[i`^[/rrqeEWQRQewreq^[
+@ E -> 찾은 글자 앞뒤로 backtick(`) 붙이기 => i`^[/ ^[i`^[k
+@ R -> 찾은 글자 앞뒤로 backtick(`) 붙이기 => i`^[/,^[i`^[k
+@ T -> 찾은 글자 앞뒤로 backtick(`) 붙이기 => i`^[/\.^[i`^[k
     마크다운 입력시 vi 커맨드 표시 ; (^{)=Ctrl+[ ; (^M)=Ctrl+M
     인용구 작성시 ; 본문앞에는 꺽쇠 > 붙이고, 스타일 첨가시 끝줄에 종류별 구분을 표시한다.
     https://docs.requarks.io/en/editors/markdown > Blockquotes > Stylings >
@@ -188,29 +196,29 @@ Perform the following steps to run the Maven project in the Eclipse IDE:
 ![ 101.05 Import wizard Step 1 ](/medium/2204_springboot_react_3e/101.05_import_wizard_step_1.webp)
 
 3. In the first phase, you should select Existing Maven Projects from the list under the Maven folder, and then go to the next phase by pressing the Next > button. The following screenshot shows the second step of the import wizard:
-Figure 1.7 – Import wizard (Step 2)
-Figure 1.7 – Import wizard (Step 2)
 
-In this phase, select the extracted project folder by pressing the Browse... button. Then, Eclipse will find the pom.xml file from the root of your project folder and show it inside the Projects section of the window.
-Press the Finish button to finalize the import. If everything ran correctly, you should see the cardatabase project in the Eclipse IDE Project Explorer. It takes a while before the project is ready because all the dependencies will be downloaded by Maven after importing them. You can see the progress of the dependency download in the bottom-right corner of Eclipse. The following screenshot shows the Eclipse IDE Project Explorer after a successful import:
-Figure 1.8 – Project Explorer
-Figure 1.8 – Project Explorer
+![ 101.06 Import wizard Step 2 ](/medium/2204_springboot_react_3e/101.06_import_wizard_step_2.webp)
 
-Project Explorer also shows the package structure of our project. In the beginning, there is only one package called com.packt.cardatabase. Under that package is our main application class, called CardatabaseApplication.java.
+4. In this phase, select the extracted project folder by pressing the **Browse...** button. Then, Eclipse will find the `pom.xml` file from the root of your project folder and show it inside the **Projects** section of the window.
+5. Press the **Finish** button to finalize the import. If everything ran correctly, you should see the `cardatabase` project in the Eclipse IDE **Project Explorer**. It takes a while before the project is ready because all the dependencies will be downloaded by Maven after importing them. You can see the progress of the dependency download in the bottom-right corner of Eclipse. The following screenshot shows the Eclipse IDE **Project Explorer** after a successful import:
 
-Now, we don't have any functionality in our application, but we can run it and see whether everything has started successfully. To run the project, open the main class by double-clicking on it, as shown in the following screenshot, and then press the Run button in the Eclipse toolbar. Alternatively, you can select the Run menu and press Run as | Java Application:
-Figure 1.9 – Cardatabase project
-Figure 1.9 – Cardatabase project
+![ 101.07 Project Explorer ](/medium/2204_springboot_react_3e/101.07_project_explorer.webp)
 
-You can see the Console view open in Eclipse, and that contains important information about the execution of the project. This is the view where all log texts and error messages appear, so it is really important to check the content of the view when something goes wrong.
+**Project Explorer** also shows the package structure of our project. In the beginning, there is only one package called `com.packt.cardatabase`. Under that package is our main application class, called `CardatabaseApplication.java`.
 
-Now, if the project was executed correctly, you should see the started CardatabaseApplication class in the text at the end of the console. The following screenshot shows the content of the Eclipse console after our Spring Boot project has been started:
+6. Now, we don't have any functionality in our application, but we can run it and see whether everything has started successfully. To run the project, open the main class by double-clicking on it, as shown in the following screenshot, and then press the **Run** button in the Eclipse toolbar. Alternatively, you can select the **Run** menu and press **Run as | Java Application**:
 
-Figure 1.10 – Eclipse console
-Figure 1.10 – Eclipse console
+![ 101.08 Cardatabase project ](/medium/2204_springboot_react_3e/101.08_cardatabase_project.webp)
 
-In the root of our project, there is the pom.xml file, which is the Maven configuration file for our project. If you look at the dependencies inside the file, you can see that there are now dependencies that we selected on the Spring Initializr page. There is also a test dependency included automatically without any selection, as illustrated in the following code snippet:
+You can see the **Console** view open in Eclipse, and that contains important information about the execution of the project. This is the view where all log texts and error messages appear, so it is really important to check the content of the view when something goes wrong.
 
+Now, if the project was executed correctly, you should see the started `CardatabaseApplication` class in the text at the end of the console. The following screenshot shows the content of the Eclipse console after our Spring Boot project has been started:
+
+![ 101.09 Eclipse console ](/medium/2204_springboot_react_3e/101.09_eclipse_console.webp)
+
+In the root of our project, there is the `pom.xml` file, which is the Maven configuration file for our project. If you look at the dependencies inside the file, you can see that there are now dependencies that we selected on the Spring Initializr page. There is also a test dependency included automatically without any selection, as illustrated in the following code snippet:
+
+```
 <dependencies>
     <dependency>
         <groupId>org.springframework.boot</groupId>
@@ -230,18 +238,17 @@ In the root of our project, there is the pom.xml file, which is the Maven config
         <scope>test</scope>
     </dependency>
 </dependencies>
+```
 
-Copy
-In the following chapters, we are going to add more functionality to our application, and then we will add more dependencies manually to the pom.xml file.
+In the following chapters, we are going to add more functionality to our application, and then we will add more dependencies manually to the `pom.xml` file.
 
-Let's look at the Spring Boot main class more carefully. At the beginning of the class, there is the @SpringBootApplication annotation, which is actually a combination of multiple annotations, such as the following:
+Let's look at the Spring Boot main class more carefully. At the beginning of the class, there is the `@SpringBootApplication` annotation, which is actually a combination of multiple annotations, such as the following:
 
-Table 1.1 – SpringBootApplication annotations
+![ 101.10 Table SpringBootApplication annotations ](/medium/2204_springboot_react_3e/101.10_table_springbootapplication_annotations.webp)
 
-Table 1.1 – SpringBootApplication annotations
+The following code snippet shows the Spring Boot application's `main` class:
 
-The following code snippet shows the Spring Boot application's main class:
-
+```
 package com.packt.cardatabase;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.
@@ -253,27 +260,30 @@ public class CardatabaseApplication {
                    (CardatabaseApplication.class, args);
     }
 }
+```
 
-Copy
 The execution of the application starts from the main method, as in standard Java applications.
 
 Important Note
 
 It is recommended that you locate the main application class in the root package above other classes. A common reason for an application not working correctly is due to Spring Boot being unable to find some critical classes.
 
-Spring Boot development tools
-Spring Boot development tools make the application development process simpler. The most important feature of the development tools is automatic restart whenever files on classpath are modified. Projects will include the developer tools if the following dependency is added to the Maven pom.xml file:
+# Spring Boot development tools
 
+Spring Boot development tools make the application development process simpler. The most important feature of the development tools is automatic restart whenever files on `classpath` are modified. Projects will include the developer tools if the following dependency is added to the Maven `pom.xml` file:
+
+```
 <dependency>
     <groupId>org.springframework.boot</groupId>
     <artifactId>spring-boot-devtools</artifactId>
     <scope>runtime</scope>
     <optional>true</optional>
 </dependency>
+```
 
-Copy
-Development tools are disabled when you create a fully-packed production version of your application. The application is automatically restarted when you make changes to your project's classpath files. You can test that by adding one comment line to your main class, as follows:
+Development tools are disabled when you create a fully-packed production version of your application. The application is automatically restarted when you make changes to your project's `classpath` files. You can test that by adding one comment line to your `main` class, as follows:
 
+```
 package com.packt.cardatabase;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.
@@ -286,13 +296,15 @@ public class CardatabaseApplication {
                    (CardatabaseApplication.class, args);
     }
 }
+```
 
-Copy
 After saving the file, you can see in the console that the application has restarted.
 
-Logs and problem solving
+# Logs and problem solving
+
 Logging can be used to monitor your application flow, and it is a good way to capture unexpected errors in your program code. Spring Boot starter packages provide a logback that we can use for logging without any configuration. The following sample code shows how you can use logging:
 
+```
 package com.packt.cardatabase;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -311,76 +323,81 @@ public class CardatabaseApplication {
         logger.info("Application started");
     }
 }
+```
 
-Copy
 The logger.info method prints a logging message in the console. Logging messages can be seen in the console after you run a project, as shown in the following screenshot:
 
-Figure 1.11 – Logging message
-Figure 1.11 – Logging message
+![ 101.11 Logging message ](/medium/2204_springboot_react_3e/101.11_logging_message.webp)
 
-There are seven different levels of logging: TRACE, DEBUG, INFO, WARN, ERROR, FATAL, and OFF. You can configure the level of logging in your Spring Boot application.properties file. The file can be found in the resources folder inside your project, as illustrated in the following screenshot:
+There are seven different levels of logging: `TRACE`, `DEBUG`, `INFO`, `WARN`, `ERROR`, `FATAL`, and `OFF`. You can configure the level of logging in your Spring Boot `application.properties` file. The file can be found in the `resources` folder inside your project, as illustrated in the following screenshot:
 
-Figure 1.12 – Application properties file
-Figure 1.12 – Application properties file
+![ 101.12 Application properties file ](/medium/2204_springboot_react_3e/101.12_application_properties_file.webp)
 
-If we set the logging level to DEBUG, we can see log messages from levels that are log level DEBUG or higher (that is DEBUG, INFO, WARN, and ERROR). In the following example, we set the log level for the root, but you can also set it at the package level:
+If we set the logging level to `DEBUG`, we can see log messages from levels that are log level `DEBUG` or higher (that is `DEBUG`, `INFO`, `WARN`, and `ERROR`). In the following example, we set the log level for the root, but you can also set it at the package level:
 
+```
 logging.level.root=DEBUG
+```
 
-Copy
-Now, when you run the project, you can't see the TRACE messages anymore. That might be a good setting for a development version of your application. The default logging level is INFO if you don't define anything else.
+Now, when you run the project, you can't see the TRACE messages anymore. That might be a good setting for a development version of your application. The default logging level is `INFO` if you don't define anything else.
 
-There is one common failure that you might encounter when running a Spring Boot application. Spring Boot uses Apache Tomcat (http://tomcat.apache.org/) as an application server by default. As a default, Tomcat is running on port 8080. You can change the port in the application.properties file. The following setting will start Tomcat on port 8081:
+There is one common failure that you might encounter when running a Spring Boot application. Spring Boot uses Apache Tomcat (http://tomcat.apache.org/) as an application server by default. As a default, Tomcat is running on port `8080`. You can change the port in the `application.properties` file. The following setting will start Tomcat on port `8081`:
 
+```
 server.port=8081
+```
 
-Copy
 If the port is occupied, the application won't start, and you will see the following message in the console:
 
-Figure 1.13 – Port already in use
-Figure 1.13 – Port already in use
+![ 101.13 Port already in use ](/medium/2204_springboot_react_3e/101.13_port_already_in_use.webp)
 
-If this happens, you will have to stop the process that is listening on port 8080 or use another port in your Spring Boot application.
+If this happens, you will have to stop the process that is listening on port `8080` or use another port in your Spring Boot application.
 
 In the next section, we will install a MariaDB database to use as a database in our backend.
 
-Installing MariaDB
+# Installing MariaDB
+
 In Chapter 3, Using JPA to Create and Access a Database, we are going to use MariaDB, so you will need to install it locally on your computer. MariaDB is a widely used open source relational database. MariaDB is available for Windows and Linux, and you can download the latest stable community version from https://mariadb.com/downloads/. MariaDB is developed under a GNU's Not UNIX (GNU) General Public License version 2 (GPLv2) license. The following steps guides you to install MariaDB:
 
-For Windows, there is the Microsoft Installer (MSI) installer, which we will use here. Download the installer and execute it. Install all features from the installation wizard, as illustrated in the following screenshot:
-Figure 1.14 – MariaDB installation (Step 1)
-Figure 1.14 – MariaDB installation (Step 1)
+1. For Windows, there is the Microsoft Installer (MSI) installer, which we will use here. Download the installer and execute it. Install all features from the installation wizard, as illustrated in the following screenshot:
 
-In the next step, you should give the password for the root user. This password is needed in the next chapter when we'll connect our application to the database. The process is illustrated in the following screenshot:
-Figure 1.15 – MariaDB installation (Step 2)
-Figure 1.15 – MariaDB installation (Step 2)
+![ 101.14 MariaDB installation Step 1 ](/medium/2204_springboot_react_3e/101.14_mariadb_installation_step_1.webp)
 
-In the next phase, we can use the default settings, as illustrated in the following screenshot:
-Figure 1.16 – MariaDB installation (Step 3)
-Figure 1.16 – MariaDB installation (Step 3)
+2. In the next step, you should give the password for the root user. This password is needed in the next chapter when we'll connect our application to the database. The process is illustrated in the following screenshot:
 
-Now, the installation will start, and MariaDB will be installed on your local computer. The installation wizard will install HeidiSQL for us. This is a graphical easy-to-use database client. We will use this to add a new database and make queries to our database. You can also use the Command Prompt included in the installation package.
-Open HeidiSQL and log in using the password that you gave in the installation phase. You should then see the following screen:
-Figure 1.18 – HeidiSQL
-Figure 1.18 – HeidiSQL
+![ 101.15 MariaDB installation Step 2 ](/medium/2204_springboot_react_3e/101.15_mariadb_installation_step_2.webp)
+
+3. In the next phase, we can use the default settings, as illustrated in the following screenshot3. :
+
+![ 101.16 MariaDB installation Step 3 ](/medium/2204_springboot_react_3e/101.16_mariadb_installation_step_3.webp)
+
+4. Now, the installation will start, and MariaDB will be installed on your local computer. The installation wizard will install **HeidiSQL** for us. This is a graphical easy-to-use database client. We will use this to add a new database and make queries to our database. You can also use the Command Prompt included in the installation package.
+5. Open HeidiSQL and log in using the password that you gave in the installation phase. You should then see the following screen:
+
+![ 101.17 HeidiSQL ](/medium/2204_springboot_react_3e/101.17_heidisql.webp)
 
 We now have everything needed to start the implementation of the backend.
 
-Summary
+# Summary
+
 In this chapter, we installed the tools that are needed for backend development with Spring Boot. For Java development, we used the Eclipse IDE, which is a widely used programming IDE. We created a new Spring Boot project by using the Spring Initializr page. After creating the project, it was imported to Eclipse and—finally—executed. We also covered how to solve common problems with Spring Boot and how to find important error and log messages. Finally, we installed a MariaDB database that we are going to use in the following chapters.
 
 In the next chapter, we will understand what dependency injection (DI) is and how it can be used with the Spring Boot framework.
 
-Questions
-What is Spring Boot?
-What is the Eclipse IDE?
-What is Maven?
-How do we create a Spring Boot project?
-How do we run a Spring Boot project?
-How do we use logging with Spring Boot?
-How do we find error and log messages in Eclipse?
-Further reading
+# Questions
+
+1. What is Spring Boot?
+1. What is the Eclipse IDE?
+1. What is Maven?
+1. How do we create a Spring Boot project?
+1. How do we run a Spring Boot project?
+1. How do we use logging with Spring Boot?
+1. How do we find error and log messages in Eclipse?
+
+# Further reading
+
 Packt Publishing has other great resources for learning about Spring Boot, as listed here:
 
-Learning Spring Boot 2.0 - Second Edition by Greg L. Turnquist (https://www.packtpub.com/product/learning-spring-boot-2-0-second-edition/9781786463784)
-Spring 5.0 Projects by Nilang Patel (https://www.packtpub.com/product/spring-5-0-projects/9781788390415)
+- Learning Spring Boot 2.0 - Second Edition by Greg L. Turnquist (https://www.packtpub.com/product/learning-spring-boot-2-0-second-edition/9781786463784)
+- Spring 5.0 Projects by Nilang Patel (https://www.packtpub.com/product/spring-5-0-projects/9781788390415)
+
