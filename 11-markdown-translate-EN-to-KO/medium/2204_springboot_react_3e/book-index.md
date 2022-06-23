@@ -1,5 +1,14 @@
-@ W -> 현 위치에서 Copy 까지 역따옴표 => j0i```^M^/^Copy$^[ddk0C```^M^[
-@ E -> 찾은 글자 앞뒤로 backtick(`) 붙이기 => i`^[/ ^[i`^[/rrqeEWQRQewreq^[
+0i# A                         ---- @ Q
+j0i```/^Copy$ddk0C```     ---- @ W
+i`/ i`k                       ---- @ E
+i`/,i`k                       ---- @ R
+i`/\.i`k                      ---- @ T
+
+@ Q -> # 붙이고 줄 띄우기 => 0i# ^[A^M^[
+@ W -> 현 위치에서 Copy 까지 역따옴표 => j0i```^M^[/^Copy$^[ddk0C```^M^[
+@ E -> 찾은 글자 앞뒤로 backtick(`) 붙이기 => i`^[/ ^[i`^[k
+@ R -> 찾은 글자 앞뒤로 backtick(`) 붙이기 => i`^[/,^[i`^[k
+@ T -> 찾은 글자 앞뒤로 backtick(`) 붙이기 => i`^[/\.^[i`^[k
     마크다운 입력시 vi 커맨드 표시 ; (^{)=Ctrl+[ ; (^M)=Ctrl+M
     인용구 작성시 ; 본문앞에는 꺽쇠 > 붙이고, 스타일 첨가시 끝줄에 종류별 구분을 표시한다.
     https://docs.requarks.io/en/editors/markdown > Blockquotes > Stylings >
@@ -8,21 +17,15 @@
 ---------- cut line ----------
 
 
-> Path: medium/2204_springboot_react_3e/02-100_backend_programming_with_spring_boot
-> Title: 02-100 Backend Programming with Spring Boot
+> Path: medium/2204_springboot_react_3e/03-101_setting_up_the_environment_and_tools
+> Title: 101 Setting Up the Environment and Tools – Backend
 > Short Description: By Juha Hinkula Publication date: 4월 2022 Publisher Packt Pages 378 ISBN 9781801816786
 > Link: https://subscription.packtpub.com/book/web-development/9781801816786/pref
 > tags: spring_boot react
 > Images: / medium / 2204_springboot_react_3e /
-> create: 2022-06-23 목 04:33:14
-
-# 02-100 Backend Programming with Spring Boot
+> create: 2022-06-23 목 04:48:02
 
 
-![ 01-000 that are mentioned in the book ](/medium/2204_springboot_react_3e/01-000_that_are_mentioned_in_the_book.webp .png .jpg)
-
-/ / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / /
-----> 윗줄을 복사해서 사용합니다.
 
 
 medium/2204-SpringBoot-React-3e/01-000 Preface
