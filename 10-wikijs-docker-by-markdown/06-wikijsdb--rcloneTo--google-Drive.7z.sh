@@ -36,35 +36,36 @@ echo "${cMagenta}>>>>>>>>>>${cGreen} $0 ${cMagenta}||| ${cCyan}${MEMO} ${cMagent
 #--xx-- log_name="${logs_folder}/zz.$(date +"%y%m%d-%H%M%S")__RUNNING_${CMD_NAME}" ; touch ${log_name}
 # ----
 
-dir_for_backup="${HOME}/archive/wiki.js/$(date +%Y)/$(date +%m)/"
+Y4M2WEEK_DIR="wiki.js/$(date +'%Y/%m/%a')"
+dir_for_backup="${HOME}/archive/${Y4M2WEEK_DIR}"
 if [ ! -f ${dir_for_backup} ]; then
-	cat_and_run "mkdir -p ${dir_for_backup}" "백업하는 폴더를 새로 만듭니다."
+	cat_and_run "mkdir -p ${dir_for_backup}" "#-- (1) 백업하는 폴더를 새로 만듭니다."
+else
+	echo "#-- (1) 백업하는 폴더: ${dir_for_backup}" 
 fi
 
 sql_7z="wikijs-$(date +%y%m%d_%H%M%S)-$(uname -n).sql.7z"
 
-cat_and_run "sudo docker ps -a ; sudo docker stop wikijs" "#-- 위키 도커 중단"
+cat_and_run "sudo docker ps -a ; sudo docker stop wikijs" "#-- (2) 위키 도커 중단"
 
 cat <<__EOF__
-${cGreen}----> ${cYellow}sudo docker exec wikijsdb pg_dumpall -U wikijs | 7za a -si ${dir_for_backup}/${sql_7z} -p ${cCyan}#-- 데이터 백업하기${cReset}
+${cGreen}----> ${cYellow}sudo docker exec wikijsdb pg_dumpall -U wikijs | 7za a -si ${dir_for_backup}/${sql_7z} -p ${cCyan}#-- (3) 데이터 백업하기${cReset}
 ${cGreen}----> ${cYellow}비밀번호${cCyan}를 입력하세요.${cReset}
 __EOF__
 sudo docker exec wikijsdb pg_dumpall -U wikijs | 7za a -si ${dir_for_backup}/${sql_7z} -p
 
-Y4M2WEEK_DIR="wiki.js/$(date +'%Y/%m/%a')"
+cat_and_run "rclone lsl yosjeon:${Y4M2WEEK_DIR}/" "#-- (4) 구글 드라이브 ${Y4M2WEEK_DIR} 폴더 입니다."
 
-cat_and_run "rclone lsl yosjeon:${Y4M2WEEK_DIR}/" "#-- 구글 드라이브 ${Y4M2WEEK_DIR} 폴더 입니다."
+cat_and_readY "rclone delete yosjeon:${Y4M2WEEK_DIR}/" "#-- (5) 구글 드라이브 ${Y4M2WEEK_DIR} 폴더의 파일들을 모두 삭제할까요 ?"
 
-cat_and_readY "rclone delete yosjeon:${Y4M2WEEK_DIR}/" "#-- 구글 드라이브 ${Y4M2WEEK_DIR} 폴더의 파일들을 모두 삭제할까요 ?"
+cat_and_run "rclone copy ${dir_for_backup}/${sql_7z} yosjeon:${Y4M2WEEK_DIR}/" "#-- (6) 백업 파일을 구글 드라이브 ${Y4M2WEEK_DIR} 폴더로 복사합니다."
 
-cat_and_run "rclone copy ${dir_for_backup}/${sql_7z} yosjeon:${Y4M2WEEK_DIR}/" "#-- 백업 파일을 구글 드라이브 ${Y4M2WEEK_DIR} 폴더로 복사합니다."
+cat_and_run "rclone lsl yosjeon:${Y4M2WEEK_DIR}/" "#-- (7) 구글 드라이브 ${Y4M2WEEK_DIR} 폴더 입니다."
 
-cat_and_run "rclone lsl yosjeon:${Y4M2WEEK_DIR}/" "#-- 구글 드라이브 ${Y4M2WEEK_DIR} 폴더 입니다."
+cat_and_run "ls -l ${dir_for_backup}" "#-- (8) 백업한 파일들니다."
+cat_and_readY "rm -f ${dir_for_backup}/${sql_7z}" "#-- (9) 구글 드라이브로 백업이 끝났으므로, 로컬에 있는 백업 파일을 삭제할까요 ?"
 
-cat_and_run "ls -l ${dir_for_backup}" "백업한 파일들니다."
-cat_and_readY "rm -f ${dir_for_backup}/${sql_7z}" "#-- 구글 드라이브로 백업이 끝났으므로, 로컬에 있는 백업 파일을 삭제할까요 ?"
-
-cat_and_run "sudo docker start wikijs ; sudo docker ps -a" "#-- 위키 도커 다시 시작"
+cat_and_run "sudo docker start wikijs ; sudo docker ps -a" "#-- (10) 위키 도커 다시 시작"
 
 
 # ----
