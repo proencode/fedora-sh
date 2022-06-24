@@ -119,7 +119,7 @@ Dependencies are defined in the `dependencies` section, as shown in the followin
     </properties>
     <dependencies>
     <dependency>
-              
+
          <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web
                     </artifactId>
@@ -132,7 +132,7 @@ Dependencies are defined in the `dependencies` section, as shown in the followin
             <optional>true</optional>
         </dependency>
         <dependency>
-                
+
           <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-test
                     </artifactId>
@@ -142,7 +142,7 @@ Dependencies are defined in the `dependencies` section, as shown in the followin
     <build>
         <plugins>
             <plugin>
-                
+
          <groupId>org.springframework.boot</groupId>
            <artifactId>spring-boot-maven-plugin
                       </artifactId>
@@ -318,7 +318,7 @@ public class CardatabaseApplication {
     private static final Logger logger = 
              LoggerFactory.getLogger
                  (CardatabaseApplication.class);
-     
+
     public static void main(String[] args) {
         SpringApplication.run
                    (CardatabaseApplication.class, args);
