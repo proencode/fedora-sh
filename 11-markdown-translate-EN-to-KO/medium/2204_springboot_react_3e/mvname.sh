@@ -1,7 +1,7 @@
 #!/bin/sh
 
 mvname () {
-	mv 2204_springboot_react_3e_${1}.md ${1}_2204_springboot_react_3e.md
+	echo "xxxx> mv 2204_springboot_react_3e_${1}.md ${1}_2204_springboot_react_3e.md"
 }
 
 mvname 01-000

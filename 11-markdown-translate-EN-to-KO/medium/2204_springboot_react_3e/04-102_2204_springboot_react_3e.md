@@ -1,15 +1,16 @@
-0i# A/---- @ Q
-j0i```/^Copy$ddk0C```/---- @ W
-i`/ i`/---- @ E
-i`/,i`/---- @ R
-i`/\.i`/---- @ T
-i`/)i`/---- @ Y
+0i# A/----------------------xx-- @ Q
+j0i```/^Copy$ddk0C```/--xx-- @ W
+i`/ i`/---------------------xx-- @ E
+i`/,i`/---------------------xx-- @ R
+i`/\.i`/--------------------xx-- @ T
+i`/)i`/---------------------xx-- @ Y
 
 @ Q -> # 붙이고 줄 띄우기 => 0i# ^[A^M^[
 @ W -> 현 위치에서 Copy 까지 역따옴표 => j0i```^M^[/^Copy$^[ddk0C```^M^[
-@ E -> 찾은 글자 앞뒤로 backtick(`) 붙이기 => i`^[/ ^[i`^[/---- @ Q^[
-@ R -> 찾은 글자 앞뒤로 backtick(`) 붙이기 => i`^[/,^[i`^[/---- @ Q^[
-@ T -> 찾은 글자 앞뒤로 backtick(`) 붙이기 => i`^[/\.^[i`^[/---- @ Q^[
+@ E -> 찾은 글자 앞뒤로 backtick(`) 붙이기 => i`^[/ ^[i`^[/---- @ E^[
+@ R -> 찾은 글자 앞뒤로 backtick(`) 붙이기 => i`^[/,^[i`^[/---- @ R^[
+@ T -> 찾은 글자 앞뒤로 backtick(`) 붙이기 => i`^[/\.^[i`^[/---- @ T^[
+@ Y -> 찾은 글자 앞뒤로 backtick(`) 붙이기 => i`^[/)^[i`^[/---- @ Y^[
     마크다운 입력시 vi 커맨드 표시 ; (^{)=Ctrl+[ ; (^M)=Ctrl+M
     인용구 작성시 ; 본문앞에는 꺽쇠 > 붙이고, 스타일 첨가시 끝줄에 종류별 구분을 표시한다.
     https://docs.requarks.io/en/editors/markdown > Blockquotes > Stylings >
@@ -124,7 +125,7 @@ public class Car {
 }
 ```
 
-Java (`javax.annotation`) also provides an @Resource annotation that can be used to inject resources. You can define the name or type of the injected bean when using the @Resource annotation. For example, the following code shows some use cases. Imagine that we have a resource defined as follows:
+Java (`javax.annotation`) also provides an `@Resource` annotation that can be used to inject resources. You can define the name or type of the injected bean when using the `@Resource` annotation. For example, the following code shows some use cases. Imagine that we have a resource defined as follows:
 
 ```
 @Configuration
@@ -137,8 +138,9 @@ public class ConfigFileResource
 }
 ```
 
-We can then inject the bean by using an @Resource annotation:
+We can then inject the bean by using an `@Resource` annotation:
 
+```
 // By bean name
 @Resource(name="configFile")
 private ConfigFile cFile
@@ -146,22 +148,26 @@ OR
 // Without name
 @Resource
 private ConfigFile cFile
+```
 
-Copy
 We have now gone through the basics of DI in Spring Boot. We will put this into practice in the following chapters.
 
-Summary
+# Summary
+
 In this chapter, we learned what DI is. We also learned how to use DI in the Spring Boot framework, which we are using in our backend.
 
 In the next chapter, we will look at how we can use the Java Persistent API (JPA) with Spring Boot and how to set up a MariaDB database. We will also learn about the creation of CRUD repositories and the one-to-many connection between database tables.
 
-Questions
-What is DI?
-How does the @Autowired annotation work in Spring Boot?
-How do you inject resources in Spring Boot?
-Further reading
+# Questions
+
+1. What is DI?
+1. How does the @Autowired annotation work in Spring Boot?
+1. How do you inject resources in Spring Boot?
+
+# Further reading
+
 Packt has other great resources for learning about Spring Boot:
 
-Learning Spring Boot 2.0 (Second Edition) by Greg L. Turnquist (https://www.packtpub.com/product/learning-spring-boot-2-0-second-edition/9781786463784)
-Spring 5.0 Projects by Nilang Patel (https://www.packtpub.com/product/spring-5-0-projects/9781788390415)
+- Learning Spring Boot 2.0 (Second Edition) by Greg L. Turnquist (https://www.packtpub.com/product/learning-spring-boot-2-0-second-edition/9781786463784)
+- Spring 5.0 Projects by Nilang Patel (https://www.packtpub.com/product/spring-5-0-projects/9781788390415)
 
