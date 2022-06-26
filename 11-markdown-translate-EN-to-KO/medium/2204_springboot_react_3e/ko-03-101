@@ -1,0 +1,42 @@
+-> Path: medium/2204_springboot_react_3e/03-101_setting_up_the_environment_and_tools
+-> Title: 101 Setting Up the Environment and Tools – Backend
+-> Short Description: By Juha Hinkula Publication date: 4월 2022 Publisher Packt Pages 378 ISBN 9781801816786
+-> Link: https://subscription.packtpub.com/book/web-development/9781801816786/pref
+-> tags: spring_boot react
+-> Images: / medium / 2204_springboot_react_3e /
+-> create: 2022-06-23 목 04:48:02
+-
+-# Chapter 1: Setting Up the Environment and Tools – Backend 환경 및 도구 설정 - 백엔드
+-
+-In this book, we will learn about full stack development using Spring Boot in the backend and React in the frontend.
+-이 책에서 뭘 배우냐, Full Stack 개발에 대해서인데 Spring Boot 로 백엔드애 쓰는거와 React 로 프론트엔드아 쓰는거지
+-
+-The first half of this book focuses on backend development, and in the second half of the book, we will implement the frontend.
+-책의 앞쪽 반은 백엔드 개발에 초점을 두고 나머지 반은 프론트엔드 구현을 할거야
+-
+-In this chapter, we will set up the environment and tools needed for backend programming with Spring Boot.
+-이 장에서 하려는건 환경과 도구인데 어따 쓰냐면 백엔드 프로그래밍의 Spring Boot 용이지
+-
+-Spring Boot is a modern Java-based backend framework that makes development faster than with traditional Java-based frameworks.
+-Spring Boot 는 최신 Java 기반 백엔드 프레임워크라서 개발이 훨씬 빨라, 전에쓰던 Java 기반 프레임워크보다.
+-
+-With Spring Boot, you can make a standalone web application that has an embedded application server.
+-Spring Boot 를 쓰면 만들수 있는게 스탠드얼론 웹 앱인데 이게 어플리케이션 서버가 내장된 거거든.
+-
+-
+-
+-There are a lot of different integrated development environment (IDE) tools that you can use to develop Spring Boot applications.
+-여기엔 여러가지 통합개발환경 IDE 가 있는데 그거 다 쓸 수 있어 Spring Boot 앱 개발할때.
+-
+-In this chapter, we will install Eclipse, which is an open source IDE for multiple programming languages.
+-이 장에서 이클립스 설치할건데, 그거 오픈소스 IDE고 여러 프로그래밍에 쓸수 있어.
+-
+-We will create our first Spring Boot project by using the Spring Initializr project starter page.
+-이제 만들건 첫번째 Spring Boot 프로젝트고, 뭘로 하냐면 Spring Initalizr 프로젝트 스타터 페이지 를 써.
+-
+-The project is then imported into Eclipse and executed.
+-프로젝트는 일단 이클립스로 임포트한 다음에 실행하자
+-
+-Reading the console log is a crucial skill when developing Spring Boot applications, which we will also cover.
+-콘솔로그 보는건 중요한 기술이거든? Spring Boot 애플리케이션 개발하려면, 그래서 그것도 다룰거야
+

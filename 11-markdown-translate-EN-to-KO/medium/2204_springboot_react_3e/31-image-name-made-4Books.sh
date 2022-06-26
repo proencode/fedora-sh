@@ -4,7 +4,7 @@ BookCover="2204 SpringBoot React 3e"
 ShortDescription="By Juha Hinkula Publication date: 4월 2022 Publisher Packt Pages 378 ISBN 9781801816786"
 ChapterSeq="01-000"
 ChapterName="Preface"
-old_image_jemok="${ChapterSeq} that are mentioned in the book"
+old_image_jemok="${ChapterSeq:3:3}-99 that are mentioned in the book"
 
 # 출판사 이름
 # -----------
@@ -129,6 +129,7 @@ __EOF__
 		# ---------
 
 		ChapterSeq=$a
+		old_image_jemok="${ChapterSeq:3:3}-99 that are mentioned in the book"
 		cat <<__EOF__
 
 ${ChapterName} ----> 이와 같이 챕터의 요약제목을 다음 줄에 입력합니다. [엔터] 만 치면, 끝냅니다.
