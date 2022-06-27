@@ -53,7 +53,7 @@ There are three types of classes in DI:
 - The injector passes the dependency (the service) to the dependent class (the client).
 - The three types of classes in DI are shown in the following diagram:
 
-![ 102.00 three types of classes in DI ](/medium/2204_springboot_react_3e/102.00_three_types_of_classes_in_di.webp)
+![ 102-01 three types of classes in DI ](/medium/2204_springboot_react_3e/102-01_three_types_of_classes_in_di.webp)
 
 DI makes classes loosely coupled. This means that the creation of client dependencies is separated from the client's behavior, which makes unit testing easier.
 

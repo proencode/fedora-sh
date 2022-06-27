@@ -79,7 +79,7 @@ Chapter 16, Best Practices, explains the basic technologies that are needed to b
 
 You will need Spring Boot version 2.x in this book. There are some major changes in the upcoming Spring Boot version 3 that are mentioned in the book. All code examples are tested using Spring Boot 2.6 and React 18 on Windows. When installing any React libraries, you should check the latest installation command from their documentation and see whether there are any major changes related to the version used in this book.
 
-![ 01-000 that are mentioned in the book ](/medium/2204_springboot_react_3e/01-000_that_are_mentioned_in_the_book.png)
+![ 000-01 that are mentioned in the book ](/medium/2204_springboot_react_3e/000-01_that_are_mentioned_in_the_book.png)
 
 If you are using the digital version of this book, we advise you to type the code yourself or access the code from the book's GitHub repository (a link is available in the next section). Doing so will help you avoid any potential errors related to the copying and pasting of code.
 

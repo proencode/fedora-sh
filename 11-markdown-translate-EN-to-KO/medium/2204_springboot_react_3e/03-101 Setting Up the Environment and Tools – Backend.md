@@ -57,13 +57,13 @@ Eclipse is an open source programming IDE developed by the Eclipse Foundation. A
 
 You can either download a ZIP package of Eclipse or an installer package that executes the installation wizard. In the installer, you should select Eclipse IDE for Enterprise Java and Web Developers, as shown in the following screenshot:
 
-![ 101.00 Eclipse installer ](/medium/2204_springboot_react_3e/101.00_eclipse_installer.webp)
+![ 101-01 Eclipse installer ](/medium/2204_springboot_react_3e/101-01_eclipse_installer.webp)
 
 If using the ZIP package, you just have to extract the package to your local disk, and it will contain an executable `eclipse.exe` file that you can run by double-clicking on the file. You should download the Eclipse IDE for Enterprise Java and Web Developers package.
 
 Eclipse is an IDE for multiple programming languages, such as Java, C++, and Python. Eclipse contains different perspectives for your needs, which are a set of views and editors in the Eclipse workbench. The following screenshot shows common perspectives for Java development:
 
-![ 101.01 Eclipse workbench ](/medium/2204_springboot_react_3e/101.01_eclipse_workbench.webp)
+![ 101-02 Eclipse workbench ](/medium/2204_springboot_react_3e/101-02_eclipse_workbench.webp)
 
 On the left-hand side, we have Project Explorer, where we can see our project structure and resources. Project Explorer is also used to open files by double-clicking on them. The files will be opened in the editor, which is located in the middle of the workbench. The Console view can be found in the lower section of the workbench. This view is really important because it shows application logging messages.
 
@@ -166,7 +166,7 @@ To create our project using Spring Initalizr, complete the following steps:
 
 1. Open Spring Initializr by navigating to https://start.spring.io using your web browser. You should then see the following page:
 
-![ 101.02 Spring Initializr ](/medium/2204_springboot_react_3e/101.02_spring_initializr.webp)
+![ 101-03 Spring Initializr ](/medium/2204_springboot_react_3e/101-03_spring_initializr.webp)
 
 2. We will generate a **Maven Project** with **Java** and the latest stable **Spring Boot** version. In the **Group** field, we will define our group ID (`com.packt`) that will also become a base package in our Java project. In the **Artifact** field, we will define an artifact ID (`cardatabase`) that will also be the name of our project in Eclipse.
 
@@ -178,11 +178,11 @@ In the upcoming Spring Boot 3 version, the Java baseline is Java 17. But in this
 
 3. By clicking the **ADD DEPENDENCIES…** button, we will select the starters and dependencies that are needed in our project. Spring Boot provides starter packages that simplify your Maven configuration. Spring Boot starters are actually a set of dependencies that you can include in your project. You can add dependencies by clicking the **ADD DEPENDENCIES…** button in Spring Initializr. We will start our project by selecting two dependencies—**Spring Web** and **Spring Boot DevTools**. You can type the dependencies into the search field or select from a list that appears, as illustrated in the following screenshot:
 
-![ 101.03 Adding dependencies ](/medium/2204_springboot_react_3e/101.03_adding_dependencies.webp)
+![ 101-04 Adding dependencies ](/medium/2204_springboot_react_3e/101-04_adding_dependencies.webp)
 
 The **Spring Boot DevTools** dependency provides us with the Spring Boot developer tools, which provide automatic restart functionality. It makes development much faster because the application is automatically restarted when changes have been saved. The web starter pack is a base for full stack development and provides an embedded Tomcat server. After you have added dependencies, your **Dependencies** section in Spring Initializr should look like this:
 
-![ 101.04 Spring Initializr dependencies ](/medium/2204_springboot_react_3e/101.04_spring_initializr_dependencies.webp)
+![ 101-05 Spring Initializr dependencies ](/medium/2204_springboot_react_3e/101-05_spring_initializr_dependencies.webp)
 
 4. Finally, you have to click on the Generate button, which generates a project starter ZIP package for us.
 
@@ -195,28 +195,28 @@ Perform the following steps to run the Maven project in the Eclipse IDE:
 1. Extract the project ZIP package that we created in the previous topic and open Eclipse.
 2. We are going to import our project into the Eclipse IDE. To start the import process, select the File | Import menu and the import wizard will be opened. The following screenshot shows the first page of the wizard:
 
-![ 101.05 Import wizard Step 1 ](/medium/2204_springboot_react_3e/101.05_import_wizard_step_1.webp)
+![ 101-06 Import wizard Step 1 ](/medium/2204_springboot_react_3e/101-06_import_wizard_step_1.webp)
 
 3. In the first phase, you should select Existing Maven Projects from the list under the Maven folder, and then go to the next phase by pressing the Next > button. The following screenshot shows the second step of the import wizard:
 
-![ 101.06 Import wizard Step 2 ](/medium/2204_springboot_react_3e/101.06_import_wizard_step_2.webp)
+![ 101-07 Import wizard Step 2 ](/medium/2204_springboot_react_3e/101-07_import_wizard_step_2.webp)
 
 4. In this phase, select the extracted project folder by pressing the **Browse...** button. Then, Eclipse will find the `pom.xml` file from the root of your project folder and show it inside the **Projects** section of the window.
 5. Press the **Finish** button to finalize the import. If everything ran correctly, you should see the `cardatabase` project in the Eclipse IDE **Project Explorer**. It takes a while before the project is ready because all the dependencies will be downloaded by Maven after importing them. You can see the progress of the dependency download in the bottom-right corner of Eclipse. The following screenshot shows the Eclipse IDE **Project Explorer** after a successful import:
 
-![ 101.07 Project Explorer ](/medium/2204_springboot_react_3e/101.07_project_explorer.webp)
+![ 101-08 Project Explorer ](/medium/2204_springboot_react_3e/101-08_project_explorer.webp)
 
 **Project Explorer** also shows the package structure of our project. In the beginning, there is only one package called `com.packt.cardatabase`. Under that package is our main application class, called `CardatabaseApplication.java`.
 
 6. Now, we don't have any functionality in our application, but we can run it and see whether everything has started successfully. To run the project, open the main class by double-clicking on it, as shown in the following screenshot, and then press the **Run** button in the Eclipse toolbar. Alternatively, you can select the **Run** menu and press **Run as | Java Application**:
 
-![ 101.08 Cardatabase project ](/medium/2204_springboot_react_3e/101.08_cardatabase_project.webp)
+![ 101-09 Cardatabase project ](/medium/2204_springboot_react_3e/101-09_cardatabase_project.webp)
 
 You can see the **Console** view open in Eclipse, and that contains important information about the execution of the project. This is the view where all log texts and error messages appear, so it is really important to check the content of the view when something goes wrong.
 
 Now, if the project was executed correctly, you should see the started `CardatabaseApplication` class in the text at the end of the console. The following screenshot shows the content of the Eclipse console after our Spring Boot project has been started:
 
-![ 101.09 Eclipse console ](/medium/2204_springboot_react_3e/101.09_eclipse_console.webp)
+![ 101-10 Eclipse console ](/medium/2204_springboot_react_3e/101-10_eclipse_console.webp)
 
 In the root of our project, there is the `pom.xml` file, which is the Maven configuration file for our project. If you look at the dependencies inside the file, you can see that there are now dependencies that we selected on the Spring Initializr page. There is also a test dependency included automatically without any selection, as illustrated in the following code snippet:
 
@@ -246,7 +246,7 @@ In the following chapters, we are going to add more functionality to our applica
 
 Let's look at the Spring Boot main class more carefully. At the beginning of the class, there is the `@SpringBootApplication` annotation, which is actually a combination of multiple annotations, such as the following:
 
-![ 101.10 Table SpringBootApplication annotations ](/medium/2204_springboot_react_3e/101.10_table_springbootapplication_annotations.webp)
+![ 101-11 Table SpringBootApplication annotations ](/medium/2204_springboot_react_3e/101-11_table_springbootapplication_annotations.webp)
 
 The following code snippet shows the Spring Boot application's `main` class:
 
@@ -329,11 +329,11 @@ public class CardatabaseApplication {
 
 The logger.info method prints a logging message in the console. Logging messages can be seen in the console after you run a project, as shown in the following screenshot:
 
-![ 101.11 Logging message ](/medium/2204_springboot_react_3e/101.11_logging_message.webp)
+![ 101-12 Logging message ](/medium/2204_springboot_react_3e/101-12_logging_message.webp)
 
 There are seven different levels of logging: `TRACE`, `DEBUG`, `INFO`, `WARN`, `ERROR`, `FATAL`, and `OFF`. You can configure the level of logging in your Spring Boot `application.properties` file. The file can be found in the `resources` folder inside your project, as illustrated in the following screenshot:
 
-![ 101.12 Application properties file ](/medium/2204_springboot_react_3e/101.12_application_properties_file.webp)
+![ 101-13 Application properties file ](/medium/2204_springboot_react_3e/101-13_application_properties_file.webp)
 
 If we set the logging level to `DEBUG`, we can see log messages from levels that are log level `DEBUG` or higher (that is `DEBUG`, `INFO`, `WARN`, and `ERROR`). In the following example, we set the log level for the root, but you can also set it at the package level:
 
@@ -351,7 +351,7 @@ server.port=8081
 
 If the port is occupied, the application won't start, and you will see the following message in the console:
 
-![ 101.13 Port already in use ](/medium/2204_springboot_react_3e/101.13_port_already_in_use.webp)
+![ 101-14 Port already in use ](/medium/2204_springboot_react_3e/101-14_port_already_in_use.webp)
 
 If this happens, you will have to stop the process that is listening on port `8080` or use another port in your Spring Boot application.
 
@@ -363,20 +363,20 @@ In Chapter 3, Using JPA to Create and Access a Database, we are going to use Mar
 
 1. For Windows, there is the Microsoft Installer (MSI) installer, which we will use here. Download the installer and execute it. Install all features from the installation wizard, as illustrated in the following screenshot:
 
-![ 101.14 MariaDB installation Step 1 ](/medium/2204_springboot_react_3e/101.14_mariadb_installation_step_1.webp)
+![ 101-15 MariaDB installation Step 1 ](/medium/2204_springboot_react_3e/101-15_mariadb_installation_step_1.webp)
 
 2. In the next step, you should give the password for the root user. This password is needed in the next chapter when we'll connect our application to the database. The process is illustrated in the following screenshot:
 
-![ 101.15 MariaDB installation Step 2 ](/medium/2204_springboot_react_3e/101.15_mariadb_installation_step_2.webp)
+![ 101-16 MariaDB installation Step 2 ](/medium/2204_springboot_react_3e/101-16_mariadb_installation_step_2.webp)
 
 3. In the next phase, we can use the default settings, as illustrated in the following screenshot3. :
 
-![ 101.16 MariaDB installation Step 3 ](/medium/2204_springboot_react_3e/101.16_mariadb_installation_step_3.webp)
+![ 101-17 MariaDB installation Step 3 ](/medium/2204_springboot_react_3e/101-17_mariadb_installation_step_3.webp)
 
 4. Now, the installation will start, and MariaDB will be installed on your local computer. The installation wizard will install **HeidiSQL** for us. This is a graphical easy-to-use database client. We will use this to add a new database and make queries to our database. You can also use the Command Prompt included in the installation package.
 5. Open HeidiSQL and log in using the password that you gave in the installation phase. You should then see the following screen:
 
-![ 101.17 HeidiSQL ](/medium/2204_springboot_react_3e/101.17_heidisql.webp)
+![ 101-18 HeidiSQL ](/medium/2204_springboot_react_3e/101-18_heidisql.webp)
 
 We now have everything needed to start the implementation of the backend.
 
