@@ -695,7 +695,7 @@ The database can be created by using HeidiSQL. Open HeidiSQL and follow these st
 
 ![ 103-19 Create new – Database ](/medium/2204_springboot_react_3e/103-19_create_new_–_database.jpg)
 
-Let's name our database `cardb`. After clicking OK, you should see the new `cardb` database in the database list:
+3. Let's name our database `cardb`. After clicking OK, you should see the new `cardb` database in the database list:
 
 ![ 103-20 The cardb database ](/medium/2204_springboot_react_3e/103-20_the_cardb_database.jpg)
 
@@ -746,13 +746,13 @@ Questions
 Answer the following questions to test your knowledge of this chapter:
 
 1. What are ORM, JPA, and Hibernate?
-2. How can you create an entity class?
-3. How can you create `CrudRepository`?
-4. What does `CrudRepository` provide for your application?
-5. How can you create a one-to-many relationship between tables?
-6. How can you add demo data to a database with Spring Boot?
-7. How can you access the H2 console?
-8. How can you connect your Spring Boot application to MariaDB?
+1. How can you create an entity class?
+1. How can you create `CrudRepository`?
+1. What does `CrudRepository` provide for your application?
+1. How can you create a one-to-many relationship between tables?
+1. How can you add demo data to a database with Spring Boot?
+1. How can you access the H2 console?
+1. How can you connect your Spring Boot application to MariaDB?
 
 # Further reading
 

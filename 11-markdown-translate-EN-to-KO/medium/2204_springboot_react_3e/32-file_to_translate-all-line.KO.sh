@@ -67,28 +67,45 @@ if [ ! -f "$1" ]; then
 	exit 1
 fi
 
-cat_and_readY "sudo dnf -y install python3-pip" "pip 설치"
-cat_and_readY "pip install googletrans==4.0.0-rc1" "번역 라이브러리 설치 출처: https://blockdmask.tistory.com/540 [개발자 지망생"
 
 org_dir_name="$1" #-- 원본 파일 폴더/이름
-org_name=$(basename ${org_dir_name}) # 백업파일 이름만 꺼냄
-org_dir=${org_dir_name%/$org_name} # 백업파일 이름을 빼고 나머지 디렉토리만 담음
+
+qq=${org_dir_name:0:1}
+# echo "qq ${qq};"
+if [ "x${qq}" != "x." ]; then
+	if [ "x${qq}" != "x/" ]; then
+		org_dir_name="./${org_dir_name}"
+	fi
+fi
+
+org_name=$(basename "${org_dir_name}") # 백업파일 이름만 꺼냄
+org_dir=${org_dir_name%/"$org_name"} # 백업파일 이름을 빼고 나머지 디렉토리만 담음
+en2ko_file="ko.${org_name}" #-- 최종 번역 파일
+
 cat <<__EOF__
 
-${cYellow}org_dir_name="$1"${cReset}
-${cYellow}org_name=${org_name} ${cCyan}# 원본 파일 이름만 꺼냄${cReset}
-${cYellow}org_dir=${org_dir} ${cCyan}# 원본 파일 이름을 빼고 나머지 디렉토리만 담음${cReset}
+${cCyan}           \$1= ${cYellow}${1} ${cCyan};
+${cCyan} org_dir_name= ${cYellow}${org_dir_name} ${cCyan}; #-- 원본 파일 폴더/이름
+${cCyan}     org_name= ${cYellow}${org_name} ${cCyan}; #-- 백업파일 이름만 꺼냄
+${cCyan}      org_dir= ${cYellow}${org_dir} ${cCyan}; #-- 백업파일 이름을 빼고 나머지 디렉토리만 담음
+${cCyan}   en2ko_file= ${cYellow}${en2ko_file} ${cCyan}; #-- 최종 번역 파일
+
 ${cGreen}----> ${cCyan}Press Enter${cReset}:
 __EOF__
 read a
 
+cat_and_readY "sudo dnf -y install python3-pip" "#----> (1) pip 설치"
+cat_and_readY "pip install googletrans==4.0.0-rc1" "#----> (2) 번역 라이브러리 설치 출처: https://blockdmask.tistory.com/540 [개발자 지망생"
+
+temp_dot_divide="temp_dot-$(date +'%y%m%d-%H%M%S')"
+cat_and_run "cat \"${org_dir_name}\" | sed -e s'/\.$/\.\n/g' | sed -e s'/\. /\.\n/g' > \"${temp_dot_divide}\"" "마침표 (.) 기준으로 줄을 분리합니다."
+
 # xxx period_file="period...${org_name}...md" #-- 원본의 마침표에서 다음줄로 넘어가도록 수정한 파일
-en2ko_file="ko.${org_name}.md" #-- 최종 번역 파일
 # xxx cat_and_run "cat ${org_dir_name} | sed -e s'/\. /\.\n/g' | sed -e s'/\.$/\.\n/g' > ${period_file}" "마침표 (.) 기준으로 줄을 분리합니다."
 # xxx cat_and_run "cat ${org_dir_name} | sed -e s'/\. /\.\n/g' > ${period_file}" "마침표 (.) 기준으로 줄을 분리합니다."
 
 python_name=99-trans-text.py
-echo "----> (1) ${python_name} 소스 파일을 만듭니다."
+echo "#----> (3) ${python_name} 소스 파일을 만듭니다."
 
 fromColor="${cRed}from${cGreen}" ; toColor="${cRed}to  ${cYellow}" #-- 화면으로 보기 위한것임.
 fromColor="from" ; toColor="to  "
@@ -101,7 +118,7 @@ cat > ${python_name} <<__EOF__
 import googletrans
 translator = googletrans.Translator()
 
-filename="${org_name}" # xxx filename="${org_dir_name}" filename="${period_file}"
+filename="${temp_dot_divide}"
 
 def read_txt (filename):
 	# print (f"filename = {filename}")
@@ -124,11 +141,11 @@ def read_txt (filename):
 read_txt (filename)
 __EOF__
 
-temp1="temp1-$(date +'%y%m%d-%H%M%S')"
-cat_and_run "python ${python_name} > ${temp1}" "(2) 번역"
+temp_trans="temp_trans-$(date +'%y%m%d-%H%M%S')"
+cat_and_run "python ${python_name} > ${temp_trans}" "#----> (4) 번역"
 
-cat_and_run "cat header-mark-file ${temp1} > ${en2ko_file}" "(3) 최종 번역파일 작성"
-# cat_and_run "rm -rf ${temp2} ${temp1} ${python_name}" "(4) 임시파일 삭제"
+cat_and_run "cat header-mark-file ${temp_trans} > \"${en2ko_file}\"" "#----> (5) 최종 번역파일 작성"
+cat_and_run "rm -rf ${temp_dot_divide} ${temp_trans} ${python_name}" "#----> (6) 임시파일 삭제"
 
 
 # ----
