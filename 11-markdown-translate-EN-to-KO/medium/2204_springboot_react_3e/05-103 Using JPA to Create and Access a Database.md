@@ -107,14 +107,14 @@ public class Car {
 ```
 
 > Tip
-> 
+>
 > You can use the Ctrl + Shift + O shortcut in Eclipse IDE to import missing packages automatically.
 {.is-success}
 
 > Important Note
-> 
+>
 > This book is based on Spring Boot 2 and the upcoming Spring Boot 3 is using Jakarta EE instead of Java EE. Therefore, you need to replace all javax imports with jakarta if you are using Spring Boot 3.
-> 
+>
 > For example, javax.persistence.Entity is replaced with jakarta.persistence.Entity
 {.is-info}
 
@@ -130,14 +130,14 @@ public class Car {
     @Id
     @GeneratedValue(strategy=GenerationType.AUTO)
     private long id;
-    private String brand, model, color, 
+    private String brand, model, color,
              registerNumber;
     private int year, price;
 }
 ```
 
 > Tip
-> 
+>
 > You can use the Ctrl + Shift + O shortcut in the Eclipse IDE to import missing packages automatically.
 {.is-success}
 
@@ -152,7 +152,7 @@ private String description
 
 8. Finally, we must add getters, setters, and constructors with attributes to the entity class. We don't need an ID field in our constructor due to automatic ID generation. The source code of the `Car` entity class constructors is as follows:
 > Tip
-> 
+>
 > Eclipse provides the automatic addition of getters, setters, and constructors. Activate your cursor inside the class and right-click. From the menu, select **Source | Generate Getters and Setters...** or **Source | Generate Constructor using fields....**
 {.is-success}
 
@@ -167,15 +167,15 @@ public class Car {
     @Id
     @GeneratedValue(strategy=GenerationType.AUTO)
     private long id;
-    private String brand, model, color, 
+    private String brand, model, color,
         registerNumber;
     private int year, price;
-    
+
     public Car() {}
-    
-    public Car(String brand, String model, String 
-        color, 
-             String registerNumber, int year, int 
+
+    public Car(String brand, String model, String
+        color,
+             String registerNumber, int year, int
                  price) {
         super();
         this.brand = brand;
@@ -217,7 +217,7 @@ spring.jpa.show-sql=true
 ```
 
 > Important Note
-> 
+>
 > When you are editing the `application.properties` file, you have to make sure that there are no extra spaces at the end of the lines. Otherwise, the settings won't work. This might happen often when you copy/paste settings.
 {.is-info}
 
@@ -226,13 +226,13 @@ Now, the `car` table is created in the database when we run the application. At 
 ![ 103-04 Car table SQL statements ](/medium/2204_springboot_react_3e/103-04_car_table_sql_statements.webp)
 
 > Important Note
-> 
+>
 > If `spring.datasource.url` is not defined in the `application.properties` file, Spring Boot creates a random data source URL that can be seen in the console when you run the application; for example, `H2 console available at '/h2-console'. Database available at 'jdbc:h2:mem:`b92ad05e-8af4-4c33-b22d-ccbf9ffe491e'.
 {.is-info}
 
 11. The H2 database provides a web-based console that can be used to explore a database and execute SQL statements. To enable the console, we have to add the following lines to the `application.properties` file. The first setting enables the H2 console, while the second defines the path of the H2 console:
 ```
-spring.h2.console.enabled=true 
+spring.h2.console.enabled=true
 spring.h2.console.path=/h2-console
 ```
 
@@ -241,7 +241,7 @@ spring.h2.console.path=/h2-console
 ![ 103-05 H2 console login ](/medium/2204_springboot_react_3e/103-05_h2_console_login.webp)
 
 > Tip
-> 
+>
 > You can also change the H2 database username and password by using the following settings in the `application.properties` file: `spring.datasource.username` and `spring.datasource.password.`
 {.is-success}
 
@@ -288,14 +288,14 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.
 SpringBootApplication;
 @SpringBootApplication
-public class CardatabaseApplication implements CommandLineRunner {    
+public class CardatabaseApplication implements CommandLineRunner {
     public static void main(String[] args) {
         SpringApplication.run
             (CardatabaseApplication.class, args);
     }
     @Override
     public void run(String... args) throws Exception {
-        // Place your code here        
+        // Place your code here
     }
 }
 ```
@@ -303,7 +303,7 @@ public class CardatabaseApplication implements CommandLineRunner {
 4. Next, we have to inject our car repository into the main class to be able to save new car objects to the database. An `@Autowired` annotation is used to enable dependency injection. This allows us to pass dependencies into an object. We will also add a logger to our main class:
 
 ```
-package com.packt.cardatabase;    
+package com.packt.cardatabase;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation
@@ -316,12 +316,12 @@ import com.packt.cardatabase.domain.Car;
 import com.packt.cardatabase.domain.CarRepository;
 @SpringBootApplication
 public class CardatabaseApplication implements CommandLineRunner {
-    private static final Logger logger = 
+    private static final Logger logger =
         LoggerFactory.getLogger(CardatabaseAp
             plication.class);
     @Autowired
     private CarRepository repository;
-    
+
     public static void main(String[] args) {
         SpringApplication.run
             (CardatabaseApplication.class, args);
@@ -339,12 +339,12 @@ public class CardatabaseApplication implements CommandLineRunner {
     // CardataseApplication.java run method
     @Override
     public void run(String... args) throws Exception {
-        repository.save(new Car(“Ford", “Mustang", “Red", 
+        repository.save(new Car(“Ford", “Mustang", “Red",
             “ADF-1121", 2021, 59000));
-        repository.save(new  Car(“Nissan", “Leaf", “White", 
+        repository.save(new  Car(“Nissan", “Leaf", “White",
             “SSJ-3002", 2019, 29000));
-        repository.save(new Car(“Toyota", “Prius", 
-            “Silver", 
+        repository.save(new Car(“Toyota", “Prius",
+            “Silver",
             “KKO-0212", 2020, 39000));
         // Fetch all cars and log to console
         for (Car car : repository.findAll()) {
@@ -373,10 +373,10 @@ public interface CarRepository extends CrudRepository
     <Car, Long> {
     // Fetch cars by brand
     List<Car> findByBrand(String brand);
-    
+
     // Fetch cars by color
     List<Car> findByColor(String color);
-    
+
     // Fetch cars by year
     List<Car> findByYear(int year);
 }
@@ -392,11 +392,11 @@ CrudRepository;
 public interface CarRepository extends CrudRepository
     <Car, Long> {
     // Fetch cars by brand and model
-    List<Car> findByBrandAndModel(String brand, String 
+    List<Car> findByBrandAndModel(String brand, String
         model);
-    
+
     // Fetch cars by brand or color
-    List<Car> findByBrandOrColor(String brand, String 
+    List<Car> findByBrandOrColor(String brand, String
     color);
 }
 ```
@@ -426,7 +426,7 @@ CrudRepository;
 public interface CarRepository extends CrudRepository
     <Car, Long> {
     // Fetch cars by brand using SQL
-    @Query(“select c from Car c where c.brand = ?1") 
+    @Query(“select c from Car c where c.brand = ?1")
     List<Car> findByBrand(String brand);
 }
 ```
@@ -442,7 +442,7 @@ public interface CarRepository extends CrudRepository
     <Car, Long> {
     // Fetch cars by brand using SQL
     @Query(“select c from Car c where c.brand like
-        %?1") 
+        %?1")
     List<Car> findByBrandEndsWith(String brand);
 }
 ```
@@ -453,7 +453,7 @@ Spring Data JPA also provides `PagingAndSortingRepository`, which extends `CrudR
 package com.packt.cardatabase.domain;
 import org.springframework.data.repository.
 PagingAndSortingRepository;
-public interface CarRepository extends 
+public interface CarRepository extends
     PagingAndSortingRepository <Car, Long> {
 }
 ```
@@ -488,7 +488,7 @@ public class Owner {
     @GeneratedValue(strategy=GenerationType.AUTO)
     private long ownerid;
     private String firstname, lastname;
-    
+
     public Owner() {}
     public Owner(String firstname, String lastname) {
         super();
@@ -523,7 +523,7 @@ The following is the source code for `OwnerRepository`:
 package com.packt.cardatabase.domain;
 import org.springframework.data.repository.
 CrudRepository;
-public interface OwnerRepository extends  
+public interface OwnerRepository extends
     CrudRepository<Owner, Long> {
 }
 ```
@@ -558,11 +558,11 @@ public void setOwner(Owner owner)  {
 // Owner.java
 @OneToMany(cascade=CascadeType.ALL, mappedBy="owner")
 private List<Car> cars;
-    
+
 public List<Car> getCars()  {
     return cars;
 }
-    
+
 public void setCars(List<Car> cars)  {
     this.cars = cars;
 }
@@ -578,8 +578,8 @@ When you run the project, by looking in the console, you will see that the relat
 
 ```
 // Car.java constructor
-public Car(String brand, String model, String color, 
-    String registerNumber, int year, int price, Owner 
+public Car(String brand, String model, String color,
+    String registerNumber, int year, int price, Owner
         owner) {
     super();
     this.brand = brand;
@@ -612,23 +612,23 @@ At this point, we must modify the `run` method to save owners and link owners an
 ```
 @Override
 public void run(String... args) throws Exception {
-    // Add owner objects and save these to db 
+    // Add owner objects and save these to db
     Owner owner1 = new Owner(“John" , “Johnson");
     Owner owner2 = new  Owner(“Mary" , “Robinson");
-    orepository.saveAll(Arrays.asList(owner1, 
+    orepository.saveAll(Arrays.asList(owner1,
         owner2));
-    // Add car object and link to owners and save 
+    // Add car object and link to owners and save
        these to db
-    Car car1 = new Car(“Ford", “Mustang", “Red", 
+    Car car1 = new Car(“Ford", “Mustang", “Red",
       “ADF-1121", 2021, 59000, owner1);
-    Car car2 = new Car(“Nissan", “Leaf", “White", 
+    Car car2 = new Car(“Nissan", “Leaf", “White",
       “SSJ-3002", 2019, 29000, owner2);
-    Car car3 = new Car(“Toyota", “Prius", “Silver", 
+    Car car3 = new Car(“Toyota", “Prius", “Silver",
       “KKO-0212", 2020, 39000, owner2);
-    repository.saveAll(Arrays.asList(car1, car2, 
+    repository.saveAll(Arrays.asList(car1, car2,
         car3));
     for (Car car : repository.findAll()) {
-         logger.info(car.getBrand() + “ “ + 
+         logger.info(car.getBrand() + “ “ +
              car.getModel());
     }
 }
@@ -660,15 +660,15 @@ public void setOwners(Set<Owner> owners) {
 ```
 // Owner.java
 @ManyToMany(cascade=CascadeType.PERSIST)
-@JoinTable(name="car_owner", 
-  joinColumns = { @JoinColumn(name="ownerid") }, 
+@JoinTable(name="car_owner",
+  joinColumns = { @JoinColumn(name="ownerid") },
   inverseJoinColumns = { @JoinColumn(name="id") })
 private Set<Car> cars = new HashSet<Car>();
-    
+
 public Set<Car> getCars() {
     return cars;
 }
-    
+
 public void setCars(Set<Car> cars) {
     this.cars = cars;
 }
@@ -711,9 +711,9 @@ The database can be created by using HeidiSQL. Open HeidiSQL and follow these st
 5. In the `application.properties` file, you must define the database connection. First, you must define the database's URL, username, password (defined in Chapter 1, Setting Up the Environment and Tools – Backend), and database driver class:
 
 ```
-spring.datasource.url=jdbc:mariadb://localhost:3306/cardb 
-spring.datasource.username=root 
-spring.datasource.password=YOUR_PASSWORD 
+spring.datasource.url=jdbc:mariadb://localhost:3306/cardb
+spring.datasource.username=root
+spring.datasource.password=YOUR_PASSWORD
 spring.datasource.driver-class-name=org.mariadb.jdbc.Driver
 ```
 
@@ -721,12 +721,12 @@ spring.datasource.driver-class-name=org.mariadb.jdbc.Driver
 
 ```
 spring.datasource.url=jdbc:mariadb:
-//localhost:3306/cardb 
-spring.datasource.username=root 
-spring.datasource.password=YOUR_PASSWORD 
+//localhost:3306/cardb
+spring.datasource.username=root
+spring.datasource.password=YOUR_PASSWORD
 spring.datasource.driver-class-name=
     org.mariadb.jdbc.Driver
-spring.jpa.generate-ddl=true 
+spring.jpa.generate-ddl=true
 spring.jpa.hibernate.ddl-auto=create-drop
 ```
 
