@@ -4,7 +4,7 @@ BookCover="2204 SpringBoot React 3e"
 ShortDescription="By Juha Hinkula Publication date: 4월 2022 Publisher Packt Pages 378 ISBN 9781801816786"
 ChapterSeq="01-000"
 ChapterName="Preface"
-old_image_jemok="${ChapterSeq:3:3}-99 that are mentioned in the book"
+old_image_jemok="99 Spring Boot Data REST resources"
 
 # 출판사 이름
 # -----------
@@ -116,9 +116,9 @@ do
 
 	cat <<__EOF__
 
-AA-BBB ----> AA = '01'로 시작하는 챕터별 전체 일련번호
-             BBB = '0' 섹션 '00' 챕터로 된 코드
-${ChapterSeq} ----> 이와 같이 챕터 번호를 다음 줄에 입력합니다. [엔터] 만 치면, 끝냅니다.
+AA-BBB ----> AA = '01'부터 시작하는 전체 일련번호
+             BBB = '0' 파트 +  '00' 챕터로 된 코드
+${ChapterSeq} ----> 이와 같이 권번호 + 파트+챕터 번호를 다음 줄에 입력합니다. [엔터] 만 치면, 끝냅니다.
 __EOF__
 	read a
 	if [ "x$a" = "x" ]; then
@@ -129,7 +129,7 @@ __EOF__
 		# ---------
 
 		ChapterSeq=$a
-		old_image_jemok="${ChapterSeq:3:3}-99 that are mentioned in the book"
+		old_image_jemok="99 Spring Boot Data REST resources"
 		cat <<__EOF__
 
 ${ChapterName} ----> 이와 같이 챕터의 요약제목을 다음 줄에 입력합니다. [엔터] 만 치면, 끝냅니다.
@@ -150,6 +150,12 @@ __EOF__
 
 ----> (대,소문자, 숫자,  ., -, _, 빈칸) 만 쓸 수 있습니다.
 
+일련번호는 챕터번호 3자리 "${ChapterSeq:3:3}"
+           그림번호 2자리 "99"
+로 만들어지므로, 챕터번호는 쓰지말고, 그림번호 2자리 "99" 와 그림설명 "Spring Boot Data REST resources" 을 합쳐서,
+
+                                      99 Spring Boot Data REST resources <---- 이와같이 입력합니다.
+                
 ${image_jemok} ----> 이와 같이 일련번호와 설명을 다음줄에 입력합니다. [엔터] 만 치면, 챕터 입력으로 갑니다.
 __EOF__
 				read image_jemok
@@ -161,7 +167,7 @@ __EOF__
 __EOF__
 				else
 					old_image_jemok=${image_jemok}
-					img_name=$(echo "${image_jemok,,}" | sed 's/ /_/g') #-- 전부 대문자로 바꾸려면 ${image_jemok^^}, 전부 소문자는 ${image_jemok,,}
+					img_name=$(echo "${ChapterSeq:3:3}-${image_jemok,,}" | sed 's/ /_/g') #-- 전부 대문자로 바꾸려면 ${image_jemok^^}, 전부 소문자는 ${image_jemok,,}
 					chapter_name=$(echo "${ChapterName,,}" | sed 's/ /_/g')
 					cat <<__EOF__
 
@@ -189,8 +195,10 @@ __EOF__
 
 # ${ChapterSeq} ${ChapterName}
 
-
-![ ${image_jemok} ](/${chulpansa}/${cheak_jemok}/${img_name}.webp .png .jpg)
+	${img_name}	
+![ ${ChapterSeq:3:3}-${image_jemok} ](/${chulpansa}/${cheak_jemok}/${img_name}.jpg)	
+	![ ${ChapterSeq:3:3}-${image_jemok} ](/${chulpansa}/${cheak_jemok}/${img_name}.webp)	
+![ ${ChapterSeq:3:3}-${image_jemok} ](/${chulpansa}/${cheak_jemok}/${img_name}.png)	
 
 / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / /
 ----> 윗줄을 복사해서 사용합니다.

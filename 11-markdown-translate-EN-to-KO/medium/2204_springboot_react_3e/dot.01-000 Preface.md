@@ -111,6 +111,7 @@ When installing any React libraries, you should check the latest installation co
 
 
 ![ 000-01 that are mentioned in the book ](/medium/2204_springboot_react_3e/000-01_that_are_mentioned_in_the_book.webp)
+000-01 that are mentioned in the book
 
 If you are using the digital version of this book, we advise you to type the code yourself or access the code from the book's GitHub repository (a link is available in the next section).
 Doing so will help you avoid any potential errors related to the copying and pasting of code.

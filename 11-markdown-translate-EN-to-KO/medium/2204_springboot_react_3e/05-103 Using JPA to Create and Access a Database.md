@@ -87,15 +87,18 @@ Let's look at the following steps to create entity classes:
 2. From this menu, select New | Package. The following screenshot shows how to create a package for entity classes:
 
 ![ 103-01 New package ](/medium/2204_springboot_react_3e/103-01_new_package.jpg)
+103-01 New package
 
 3. We will name our package `com.packt.cardatabase.domain`:
 
 ![ 103-02 New Java Package ](/medium/2204_springboot_react_3e/103-02_new_java_package.jpg)
+103-02 New Java Package
 
 4. Next, we will create our entity class. Activate a new `com.packt.cardatabase.domain` package, right-click it, and select **New | Class** from the menu.
 5. Because we are going to create a car database, the name of the entity class will be `Car`. Type `Car` in the **Name** field and then press the **Finish** button, as shown in the following screenshot:
 
 ![ 103-03 New Java Class ](/medium/2204_springboot_react_3e/103-03_new_java_class.jpg)
+103-03 New Java Class
 
 6. Open the `Car` class file in the editor by double-clicking it in the project explorer. First, we must annotate the class with the `@Entity` annotation. The `@Entity` annotation is imported from the `javax.persistence` package:
 ```
@@ -224,6 +227,7 @@ spring.jpa.show-sql=true
 Now, the `car` table is created in the database when we run the application. At this point, we can see the table creation statements in the console when running the application:
 
 ![ 103-04 Car table SQL statements ](/medium/2204_springboot_react_3e/103-04_car_table_sql_statements.webp)
+103-04 Car table SQL statements
 
 > Important Note
 >
@@ -239,6 +243,7 @@ spring.h2.console.path=/h2-console
 12. You can access the H2 console by navigating to localhost:8080/h2-console using your web browser. Use jdbc:h2:mem:testdb as JDBC URL and leave the Password field empty in the Login window. Press the Connect button to log into the console, as shown in the following screenshot:
 
 ![ 103-05 H2 console login ](/medium/2204_springboot_react_3e/103-05_h2_console_login.webp)
+103-05 H2 console login
 
 > Tip
 >
@@ -248,6 +253,7 @@ spring.h2.console.path=/h2-console
 Now, you can see our `CAR` table in the database. You may notice that the register number has an underscore between the words. The reason for the underscore is the camel case naming of the attribute (`registerNumber`):
 
 ![ 103-06 H2 console ](/medium/2204_springboot_react_3e/103-06_h2_console.webp)
+103-06 H2 console
 
 With that, we have created our first entity class and learned how JPA generates a database table from the entity class. Next, we will create a repository class that provides CRUD operations.
 
@@ -272,12 +278,14 @@ public interface CarRepository extends CrudRepository<Car, Long> {
 The `CrudRepository` interface provides multiple CRUD methods that we can now start to use. The following table lists the most commonly used methods:
 
 ![ 103-07 CRUD methods ](/medium/2204_springboot_react_3e/103-07_crud_methods.webp)
+103-07 CRUD methods
 
 If the method returns only one item, `Optional<T>` is returned instead of `T`. The `Optional` class was introduced in Java 8 SE and is a type of single-value container that either contains a value or doesn't. If there is value, the `isPresent()` method returns `true`; otherwise, it returns `false`. If there is a value, you can get it by using the `get()` method. By using `Optional`, we can prevent null pointer exceptions.
 
 2. After adding the CarRepository class, your project structure should look as follows:
 
 ![ 103-08 Project structure ](/medium/2204_springboot_react_3e/103-08_project_structure.jpg)
+103-08 Project structure
 
 3. Now, we are ready to add some demonstration data to our H2 database. For that, we will use the Spring Boot `CommandLineRunner` interface. The `CommandLineRunner` interface allows us to execute additional code before the application has fully started. Therefore, it is a good point to add demo data to your database. Your Spring Boot application's `main` class implements the `CommandLineRunner` interface. Therefore, we should implement the `run` method, as shown in the following `CardatabaseApplication.java` code:
 
@@ -357,10 +365,12 @@ public class CardatabaseApplication implements CommandLineRunner {
 The `insert` statements and cars we logged can be seen in the Eclipse console once the application has been executed:
 
 ![ 103-09 Insert statements ](/medium/2204_springboot_react_3e/103-09_insert_statements.webp)
+103-09 Insert statements
 
 You can now use the H2 console to fetch cars from the database, as shown in the following screenshot:
 
 ![ 103-10 H2 console – Select cars ](/medium/2204_springboot_react_3e/103-10_h2_console_–_select_cars.webp)
+103-10 H2 console – Select cars
 
 6. You can define your queries in the Spring Data repositories. The query must start with a prefix; for example, `findBy`. After the prefix, you must define the entity class fields that are used in the query. The following is some sample code for three simple queries:
 
@@ -461,6 +471,7 @@ public interface CarRepository extends
 In this case, you now have the two new additional methods that the repository provides:
 
 ![ 103-11 PagingAndSortingRepository methods ](/medium/2204_springboot_react_3e/103-11_pagingandsortingrepository_methods.jpg)
+103-11 PagingAndSortingRepository methods
 
 At this point, we have completed our first database table and we are ready to add relationships between the database tables.
 
@@ -469,6 +480,7 @@ At this point, we have completed our first database table and we are ready to ad
 Next, we create a new table called `owner` that has a one-to-many relationship with the `car` table. In this case, a one-to-many relationship means that the owner can own multiple cars, but a car can only have one owner. The following Unified Modeling Language (UML) diagram shows the relationship between the tables:
 
 ![ 103-12 OneToMany relationship ](/medium/2204_springboot_react_3e/103-12_onetomany_relationship.jpg)
+103-12 OneToMany relationship
 
 The following are the steps to create a new table:
 
@@ -531,10 +543,12 @@ public interface OwnerRepository extends
 2. Now is a good time to check that everything is working. Run the project and check that both database tables have been created and that there are no errors in the console. The following screenshot shows the console messages when the tables are created:
 
 ![ 103-13 The car and owner tables ](/medium/2204_springboot_react_3e/103-13_the_car_and_owner_tables.jpg)
+103-13 The car and owner tables
 
 Now, our domain package contains two entity classes and repositories:
 
 ![ 103-14 Project Explorer ](/medium/2204_springboot_react_3e/103-14_project_explorer.jpg)
+103-14 Project Explorer
 
 3. The one-to-many relationship can be added by using the `@ManyToOne` and `@OneToMany` annotations. In the car entity class, which contains a foreign key, you must define the relationship with the `@ManyToOne` annotation. You should also add the getter and setter for the owner field. It is recommended that you use `FetchType.LAZY` for all associations. For the toMany relationships, that is the default value, but for the toOne relationships, you should define it. `FetchType` defines the strategy for fetching data from the database. The value can be either `EAGER` or `LAZY`. In our case, the lazy strategy means that when the owner is fetched from the database, all the cars associated with the owner will be fetched when needed. Eager means that the cars will be fetched immediately by the owner. The following source code shows how to define a one-to-many relationship in the `Car` class:
 
@@ -573,6 +587,7 @@ The `@OneToMany` annotation has two attributes that we are using. The `cascade` 
 When you run the project, by looking in the console, you will see that the relationship has been created:
 
 ![ 103-15 Console ](/medium/2204_springboot_react_3e/103-15_console.jpg)
+103-15 Console
 
 5. Now, we can add some owners to the database with `CommandLineRunner`. Let's also modify the `Car` entity class constructor and add an `owner` object there:
 
@@ -637,6 +652,7 @@ public void run(String... args) throws Exception {
 Now, if you run the application and fetch cars from the database, you will see that the owners are now linked to the cars:
 
 ![ 103-16 OneToMany relationship ](/medium/2204_springboot_react_3e/103-16_onetomany_relationship.jpg)
+103-16 OneToMany relationship
 
 If you want to create a many-to-many relationship instead, which means, in practice, that an owner can have multiple cars and a car can have multiple owners, you should use the `@ManyToMany` annotation. In our example application, we will use a one-to-many relationship. The code that you have completed here will be needed in the next chapter.
 
@@ -677,10 +693,12 @@ public void setCars(Set<Car> cars) {
 3. Now, if you run the application, there will be a new join table called `car_owner` that is created between the car and owner tables. The join table is a special kind of table that manages the many-to-many relationship between two tables. The join table is defined by using the `@JoinTable` annotation. With this annotation, we can set the name of the join table and join columns. The following screenshot shows the database structure when using a many-to-many relationship:
 
 ![ 103-17 Many-to-many relationship ](/medium/2204_springboot_react_3e/103-17_many-to-many_relationship.jpg)
+103-17 Many-to-many relationship
 
 Now, the database UML diagram looks as follows:
 
 ![ 103-18 database UML diagram looks as ](/medium/2204_springboot_react_3e/103-18_database_uml_diagram_looks_as.jpg)
+103-18 database UML diagram looks as
 
 Now that we have used an in-memory H2 database, we are going to use a MariaDB database instead.
 
@@ -694,10 +712,12 @@ The database can be created by using HeidiSQL. Open HeidiSQL and follow these st
 2. Then, select **Create new | Database**:
 
 ![ 103-19 Create new – Database ](/medium/2204_springboot_react_3e/103-19_create_new_–_database.jpg)
+103-19 Create new – Database
 
-3. Let's name our database `cardb`. After clicking OK, you should see the new `cardb` database in the database list:
+Let's name our database `cardb`. After clicking OK, you should see the new `cardb` database in the database list:
 
 ![ 103-20 The cardb database ](/medium/2204_springboot_react_3e/103-20_the_cardb_database.jpg)
+103-20 The cardb database
 
 4. In Spring Boot, add a MariaDB Java client dependency to the `pom.xml` file and remove the H2 dependency since we don't need it anymore:
 
@@ -733,6 +753,7 @@ spring.jpa.hibernate.ddl-auto=create-drop
 7. Check that the MariaDB database server is running and run your Spring Boot application. After running the application, you should see the tables in MariaDB. You might have to refresh the database tree in HeidiSQL first by pressing the F5 key. The following screenshot shows the HeidiSQL user interface once the database has been created. You can also run SQL queries in HeidiSQL, as shown in the following screenshot:
 
 ![ 103-21 MariaDB cardb ](/medium/2204_springboot_react_3e/103-21_mariadb_cardb.jpg)
+103-21 MariaDB cardb
 
 Now, your application is ready to use with MariaDB.
 
@@ -742,17 +763,18 @@ In this chapter, we used JPA to create our Spring Boot application database. Fir
 
 In the next chapter, we will create a RESTful web service for our backend. We will also look at testing the RESTful web service with the curl command-line tool, and also by using Postman GUI.
 
-Questions
+# Questions
+
 Answer the following questions to test your knowledge of this chapter:
 
 1. What are ORM, JPA, and Hibernate?
-1. How can you create an entity class?
-1. How can you create `CrudRepository`?
-1. What does `CrudRepository` provide for your application?
-1. How can you create a one-to-many relationship between tables?
-1. How can you add demo data to a database with Spring Boot?
-1. How can you access the H2 console?
-1. How can you connect your Spring Boot application to MariaDB?
+2. How can you create an entity class?
+3. How can you create `CrudRepository`?
+4. What does `CrudRepository` provide for your application?
+5. How can you create a one-to-many relationship between tables?
+6. How can you add demo data to a database with Spring Boot?
+7. How can you access the H2 console?
+8. How can you connect your Spring Boot application to MariaDB?
 
 # Further reading
 

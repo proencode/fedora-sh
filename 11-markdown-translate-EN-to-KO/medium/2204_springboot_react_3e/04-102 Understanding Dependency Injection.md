@@ -54,6 +54,7 @@ There are three types of classes in DI:
 - The three types of classes in DI are shown in the following diagram:
 
 ![ 102-01 three types of classes in DI ](/medium/2204_springboot_react_3e/102-01_three_types_of_classes_in_di.webp)
+102-01 three types of classes in DI
 
 DI makes classes loosely coupled. This means that the creation of client dependencies is separated from the client's behavior, which makes unit testing easier.
 
@@ -161,8 +162,8 @@ In the next chapter, we will look at how we can use the Java Persistent API (JPA
 # Questions
 
 1. What is DI?
-1. How does the @Autowired annotation work in Spring Boot?
-1. How do you inject resources in Spring Boot?
+2. How does the @Autowired annotation work in Spring Boot?
+3. How do you inject resources in Spring Boot?
 
 # Further reading
 
