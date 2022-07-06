@@ -14,6 +14,9 @@ if [ "x$1" = "x" ]; then
 	cnt=15
 else
 	cnt=$1
+	if [ "x$2" != "x" ]; then
+		fname=$2.$(date +"%y%m%d")
+	fi
 fi
 now=$(date +"%y%m%d%a%H:%M:%S")
 
