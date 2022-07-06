@@ -42,7 +42,7 @@ if [ -f ${new_dot_bashrc} ]; then
 	if [ ! -d ${old_files} ]; then
 		mkdir ${old_files}
 	fi
-	cat_and_run "mv ~/.bashrc ${old_files}/dOTbashrc-org-$(date +'%y%m%d_%H%M%S')-$(uname -r)" "원래의 .bashrc 파일을 이곳으로 복사합니다."
+	cat_and_run "mv ~/.bashrc ${old_files}/dOTbashrc-original-$(date +'%y%m%d_%H%M%S')-$(uname -r)" "원래의 .bashrc 파일을 이곳으로 복사합니다."
 	cat_and_run "cp ${new_dot_bashrc} ~/.bashrc" "미리 작성했던 파일을 ~/.bashrc 로 복사합니다."
 	cat <<__EOF__
 ${cCyan}----------------${cReset}
