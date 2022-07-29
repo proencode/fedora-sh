@@ -7,5 +7,18 @@ cat_and_run () {
 	echo "${cMagenta}<---- ${cCyan}$1 ${cBlue}$2${cReset}"
 }
 
-cat_and_run "git clone https://github.com/youxinLu/flutter_mall.git 501-flutter_mall" "#-- ${0}"
-ls --color ; cat_and_run "du -sh [5-9]*"
+exam_dir=exam_projects
+if [ ! -d ${HOME}/${exam_dir} ]; then
+	cat_and_run "mkdir ${HOME}/${exam_dir}"
+fi
+
+git_host=github.com/youxinLu
+git_dir=flutter_mall
+
+if [ -d ${HOME}/${exam_dir}/${git_dir} ]; then
+	rm -rf ${HOME}/${exam_dir}/${git_dir}
+fi
+
+cat_and_run "git clone https://${git_host}/${git_dir}.git ${HOME}/${exam_dir}/${git_dir}"
+
+ls --color ; cat_and_run "du -sh ${HOME}/${exam_dir}/* | grep --color ${exam_dir}" "#-- ${0}"

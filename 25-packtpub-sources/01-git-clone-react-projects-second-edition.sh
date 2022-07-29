@@ -8,12 +8,10 @@ cat_and_run () {
 }
 
 exam_dir=exam_projects
-if [ ! -d ${HOME}/${exam_dir} ]; then
-	cat_and_run "mkdir ${HOME}/${exam_dir}"
-fi
+cat_and_run "mkdir ${HOME}/${exam_dir}"
 
-git_host=github.com/arawn
-git_dir=kotlin-spring-example
+git_host=github.com/PacktPublishing
+git_dir=React-Projects-Second-Edition
 
 if [ -d ${HOME}/${exam_dir}/${git_dir} ]; then
 	rm -rf ${HOME}/${exam_dir}/${git_dir}
