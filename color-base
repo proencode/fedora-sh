@@ -3,18 +3,18 @@
 cBlack=$(tput bold)$(tput setaf 0); cRed=$(tput bold)$(tput setaf 1); cGreen=$(tput bold)$(tput setaf 2); cYellow=$(tput bold)$(tput setaf 3); cBlue=$(tput bold)$(tput setaf 4); cMagenta=$(tput bold)$(tput setaf 5); cCyan=$(tput bold)$(tput setaf 6); cWhite=$(tput bold)$(tput setaf 7); cReset=$(tput bold)$(tput sgr0); cUp=$(tput cuu 2)
 
 cat_and_run () {
-	echo "${cGreen}----> ${cYellow}$1 ${cCyan}$2${cReset}"; echo "$1" | sh
-	echo "${cMagenta}<---- ${cBlue}$1 $2${cReset}"
+	echo "${cGreen}----> ${cYellow}$1 ${cCyan}#-- $2${cReset}"; echo "$1" | sh
+	echo "${cMagenta}<---- ${cBlue}$1 #-- $2${cReset}"
 }
 cat_and_read () {
-	echo -e "${cGreen}----> ${cYellow}$1 ${cCyan}$2${cGreen}\n----> ${cCyan}press Enter${cReset}:"
+	echo -e "${cGreen}----> ${cYellow}$1 ${cCyan}#-- $2${cGreen}\n----> ${cCyan}press Enter${cReset}:"
 	read a ; echo "${cUp}"; echo "$1" | sh
-	echo "${cMagenta}<---- ${cBlue}press Enter${cReset}: ${cMagenta}$1 $2${cReset}"
+	echo "${cMagenta}<---- ${cBlue}press Enter${cReset}: ${cMagenta}$1 #-- $2${cReset}"
 }
 cat_and_readY () {
-	echo "${cGreen}----> ${cYellow}$1 ${cCyan}$2${cReset}"
+	echo "${cGreen}----> ${cYellow}$1 ${cCyan}#-- $2${cReset}"
 	if [ "x${ALL_INSTALL}" = "xy" ]; then
-		echo "$1" | sh ; echo "${cMagenta}<---- ${cBlue}$1 $2${cReset}"
+		echo "$1" | sh ; echo "${cMagenta}<---- ${cBlue}$1 #-- $2${cReset}"
 	else
 		echo "${cGreen}----> ${cRed}press ${cCyan}y${cRed} or Enter${cReset}:"; read a; echo "${cUp}"
 		if [ "x$a" = "xy" ]; then
@@ -22,7 +22,7 @@ cat_and_readY () {
 		else
 			echo "${cRed}[ ${cYellow}$1 ${cRed}] ${cCyan}<--- 명령을 실행하지 않습니다.${cReset}"
 		fi
-		echo "${cMagenta}<---- ${cBlue}press Enter${cReset}: ${cMagenta}$1 $2${cReset}"
+		echo "${cMagenta}<---- ${cBlue}press Enter${cReset}: ${cMagenta}$1 #-- $2${cReset}"
 	fi
 }
 CMD_NAME=`basename $0` # 명령줄에서 실행 프로그램 이름만 꺼냄
@@ -32,11 +32,11 @@ if [ "x$CMD_DIR" == "x" ] || [ "x$CMD_DIR" == "x$CMD_NAME" ]; then
 fi
 MEMO="rclone wikijsdb sql.7z to google Drive"
 echo "${cMagenta}>>>>>>>>>>${cGreen} $0 ${cMagenta}||| ${cCyan}${MEMO} ${cMagenta}>>>>>>>>>>${cReset}"
-#--xx-- zz00logs_folder="${HOME}/zz00logs" ; if [ ! -d "${zz00logs_folder}" ]; then cat_and_run "mkdir ${zz00logs_folder}" ; fi
+#--xx-- zz00logs_folder="${HOME}/zz00logs" ; if [ ! -d "${zz00logs_folder}" ]; then cat_and_run "mkdir ${zz00logs_folder}" "로그 폴더" ; fi
 #--xx-- zz00log_name="${zz00logs_folder}/zz.$(date +"%y%m%d-%H%M%S")__RUNNING_${CMD_NAME}" ; touch ${zz00log_name}
 # ----
 #-- sql_7z="wikijs-$(date +%y%m%d_%H%M%S)-$(uname -n).sql.7z"
 # ----
 #--xx-- rm -f ${zz00log_name} ; zz00log_name="${zz00logs_folder}/zz.$(date +"%y%m%d-%H%M%S")..${CMD_NAME}" ; touch ${zz00log_name}
-#--xx-- cat_and_run "ls --color ${1}" ; ls --color ${zz00logs_folder}
+#--xx-- cat_and_run "ls --color ${1}" "프로그램들" ; ls --color ${zz00logs_folder}
 echo "${cRed}<<<<<<<<<<${cBlue} $0 ${cRed}||| ${cMagenta}${MEMO} ${cRed}<<<<<<<<<<${cReset}"
