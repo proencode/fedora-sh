@@ -73,7 +73,10 @@ if [ ! -d ${ytb_conf_dir} ]; then
 	cat_and_run "mkdir ${ytb_conf_dir}"
 fi
 ytb_conf=${ytb_conf_dir}/config
-last_ytb_conf=${ytb_conf_dir}/config-$(date +"%y%m%d-%H%M%S")
+download_dir=${HOME}/utb
+if [ ! -d ${download_dir} ]; then
+	mkdir -p ${download_dir}
+fi
 
 if [ ! -f ${ytb_conf} ]; then
 	cat > ${ytb_conf} <<__EOF__
@@ -83,7 +86,7 @@ if [ ! -f ${ytb_conf} ]; then
 --write-auto-sub
 --embed-subs
 --sub-lang 'en,ko'
---output ~/Downloads/%(title)s-%(id)s.%(ext)s
+--output ~/utb/%(title)s-%(id)s.%(ext)s
 __EOF__
 	cat_and_run "cat ${ytb_conf}"
 fi
