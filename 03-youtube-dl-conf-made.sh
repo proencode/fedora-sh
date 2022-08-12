@@ -73,7 +73,7 @@ if [ ! -d ${ytb_conf_dir} ]; then
 	cat_and_run "mkdir ${ytb_conf_dir}"
 fi
 ytb_conf=${ytb_conf_dir}/config
-download_dir=${HOME}/utb
+download_dir=${HOME}/bada/Downloads
 if [ ! -d ${download_dir} ]; then
 	mkdir -p ${download_dir}
 fi
@@ -86,7 +86,7 @@ if [ ! -f ${ytb_conf} ]; then
 --write-auto-sub
 --embed-subs
 --sub-lang 'en,ko'
---output ~/utb/%(title)s-%(id)s.%(ext)s
+--output ${download_dir}/%(title)s-%(id)s.%(ext)s
 __EOF__
 	cat_and_run "cat ${ytb_conf}"
 fi
@@ -151,7 +151,7 @@ fi
 echo "${cRed}[ ${cReset}${a} ${cRed}] ${cYellow}${OPTVAL}${cReset}"
 
 cat_and_run "youtube-dl ${OPTVAL} ${VIDEO_URL}"
-cat_and_run "ls -l"
+cat_and_run "ls -lh ${download_dir}"
 
 #--xx-- rm -f ${zz00log_name} ; zz00log_name="${zz00logs_folder}/zz.$(date +"%y%m%d-%H%M%S")..${CMD_NAME}" ; touch ${zz00log_name}
 #--xx-- cat_and_run "ls --color ${1}" "프로그램들" ; ls --color ${zz00logs_folder}
