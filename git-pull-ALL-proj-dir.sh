@@ -7,6 +7,7 @@ cat <<__EOF__
 bbop edit2022 에디터 MVGQHT6HGBvKZYEA3Q 대지거퍼 코드네임
 git config --global credential.helper store #-- 토큰의 유효기간동안 비번없이 진행한다.
 ghp_oHVLCLWM8l9Dt0vM5a5VcYrBw1dIvO3Uhl 대소쿠리
+ghp_oqmCyGaHfr0ztUEO4n6AD525xgWGpU02B 육ㅠㅠ
 
 ${cYellow}git config --global user.name "${USER} at $(uname -n)"${cReset}
 ${cYellow}git config --global user.email "yosjeon@gmail.com"${cReset}
