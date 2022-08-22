@@ -188,14 +188,14 @@ if [ "x${ENTER_VALUE}" = "xok" ]; then
 fi
 
 uname_n=$(uname -n)
-yoil_sql_7z=Y${yoil_number1to7}.sql.7z #-- Y[1-7].sql.7z // 요일 표시
-Db_Time_Uname_Yoil_sql7z=${DB_NAME}_${ymd_hm}_${uname_n}${yoil_sql_7z}
+yoil_sql_7z=".${yoil_number1to7}yoil.sql.7z" #-- Y[1-7].sql.7z // 요일 표시
+YOIL_sql7z=${DB_NAME}_${ymd_hm}_${uname_n}${yoil_sql_7z}
 
-this_wol_sql_7z=W${this_wol}.sql.7z #-- W07.sql.7z // 월 표시
-db_nowWOL_sql_7z=${DB_NAME}_${ymd_hm}_${uname_n}${this_wol_sql_7z}
+this_wol_sql_7z=".${this_wol}wol.sql.7z" #-- W07.sql.7z // 월 표시
+WOL_sql7z=${DB_NAME}_${ymd_hm}_${uname_n}${this_wol_sql_7z}
 
-ju_beonho_sql_7z=J${ju_beonho}.sql.7z #-- J01.sql.7z // 1년중 몇번째 주인지 표시
-db_jubeonho_sql_7z=${DB_NAME}_${ymd_hm}_${uname_n}${ju_beonho_sql_7z}
+ju_beonho_sql_7z=".${ju_beonho}ju.sql.7z" #-- J01.sql.7z // 1년중 몇번째 주인지 표시
+JU_sql7z=${DB_NAME}_${ymd_hm}_${uname_n}${ju_beonho_sql_7z}
 
 LOCAL_THIS_YEAR=${LOCAL_FOLDER}/${this_year} #-- 년도 폴더에는 매월 마지막 백업 1개씩만 보관한다.
 
@@ -221,46 +221,53 @@ else
 	showno="1b" ; showqq="보관용 로컬 디렉토리 입니다."
 	show_then_run "ls -l ${LOCAL_THIS_WOL}"
 fi
+if [ ! -d ${LOCAL_THIS_JU} ]; then
+	showno="2a" ; showqq="보관용 로컬 디렉토리를 만듭니다."
+	show_then_run "mkdir -p ${LOCAL_THIS_JU}"
+else
+	showno="2b" ; showqq="보관용 로컬 디렉토리 입니다."
+	show_then_run "ls -l ${LOCAL_THIS_JU}"
+fi
 
 
-showno="2" ; showqq="오늘날짜 클라우드 백업파일이 있는지 확인 합니다."
+showno="3" ; showqq="오늘날짜 클라우드 백업파일이 있는지 확인 합니다."
 show_then_view "REMOTE_SQL_7Z_LIST=\$(/usr/bin/rclone ls ${RCLONE_NAME}:${REMOTE_WOL}/ | grep ${yoil_sql_7z} | awk '{print \$2}')"
 REMOTE_SQL_7Z_LIST=$(/usr/bin/rclone ls ${RCLONE_NAME}:${REMOTE_WOL}/ | grep ${yoil_sql_7z} | awk '{print $2}')
 
 
 if [ "x$REMOTE_SQL_7Z_LIST" != "x" ]; then
-	showno="3a" ; shwo_msg="클라우드에 오늘날짜 백업파일이 있는 경우,"
+	showno="4a" ; shwo_msg="클라우드에 오늘날짜 백업파일이 있는 경우,"
 	show_then_view "mapfile -t Remote_Sql7z_Array <<< \"$REMOTE_SQL_7Z_LIST\""
 	mapfile -t Remote_Sql7z_Array <<< "$REMOTE_SQL_7Z_LIST"
 
 	for val in "${Remote_Sql7z_Array[@]}"
 	do
-		showno="3a1" ; showqq="빈칸 삭제 // https://linuxhint.com/trim_string_bash/"
+		showno="4a1" ; showqq="빈칸 삭제 // https://linuxhint.com/trim_string_bash/"
 		show_then_view "file_name=\$(echo ${val} | sed 's/ *\$//g')"
 		file_name=$(echo ${val} | sed 's/ *$//g')
 
 		OUTRC=$(/usr/bin/rclone deletefile ${RCLONE_NAME}:${REMOTE_WOL}/${file_name})
-		showno="3a2" ; showqq="오늘날짜 클라우드 백업파일을 삭제합니다."
+		showno="4a2" ; showqq="오늘날짜 클라우드 백업파일을 삭제합니다."
 		show_then_view "OUTRC=\$(/usr/bin/rclone deletefile ${RCLONE_NAME}:${REMOTE_WOL}/${file_name}) ${cMagenta}#----${cYellow}${OUTRC}${cMagenta}----"
 		show_then_view "#"
 	done
 else
-	showno="3b" ; showqq="클라우드에는 오늘날짜 백업파일이 없습니다."
+	showno="4b" ; showqq="클라우드에는 오늘날짜 백업파일이 없습니다."
 	show_then_view "#"
 fi
 # echo ">>>> ^C" ; read a
 
-showno="4" ; showqq="오늘날짜 로컬 백업파일을 삭제합니다."
+showno="5" ; showqq="오늘날짜 로컬 백업파일을 삭제합니다."
 show_then_run "rm -f ${LOCAL_THIS_WOL}/*${yoil_sql_7z}"
 
-showno="5" ; showqq="DB 를 로컬에 백업합니다."
+showno="6" ; showqq="DB 를 로컬에 백업합니다."
 ymd_hm=$(date +"%y%m%d%a-%H%M") #-- ymd_hm=$(date +"%y%m%d-%H%M%S")
 #xxx pswd_code="${DB_NAME}${ymd_hm:0:6}" #-- kaosorder2/gate242/wiki + 991231 xxx crontab 으로 실행하므로 보안상 비번을 제외한다.
 if [ "x${DB_TYPE}" = "xmysql" ]; then
-	show_then_run "/usr/bin/mysqldump --login-path=${LOGIN_PATH} --column-statistics=0 ${DB_NAME} | 7za a -si ${LOCAL_THIS_WOL}/${Db_Time_Uname_Yoil_sql7z}" #xxx -p${pswd_code}"
+	show_then_run "/usr/bin/mysqldump --login-path=${LOGIN_PATH} --column-statistics=0 ${DB_NAME} | 7za a -si ${LOCAL_THIS_WOL}/${YOIL_sql7z}" #xxx -p${pswd_code}"
 else
 if [ "x${DB_TYPE}" = "xpgsql" ]; then
-	show_then_run "sudo docker exec wikijsdb pg_dumpall -U wikijs | 7za a -si ${LOCAL_THIS_WOL}/${Db_Time_Uname_Yoil_sql7z}" #xxx -p${pswd_code}"
+	show_then_run "sudo docker exec wikijsdb pg_dumpall -U wikijs | 7za a -si ${LOCAL_THIS_WOL}/${YOIL_sql7z}" #xxx -p${pswd_code}"
 else
 	cat <<__EOF__
 
@@ -270,12 +277,12 @@ __EOF__
 fi
 fi
 
-OUTRC=$(/usr/bin/rclone copy ${LOCAL_THIS_WOL}/${Db_Time_Uname_Yoil_sql7z} ${RCLONE_NAME}:${REMOTE_WOL}/)
-showno="6" ; showqq="로컬 DB 백업파일을 클라우드로 복사합니다."
-show_then_view "OUTRC=\$(/usr/bin/rclone copy ${LOCAL_THIS_WOL}/${Db_Time_Uname_Yoil_sql7z} ${RCLONE_NAME}:${REMOTE_WOL}/) ${cMagenta}#----${cYellow}${OUTRC}${cMagenta}----"
+OUTRC=$(/usr/bin/rclone copy ${LOCAL_THIS_WOL}/${YOIL_sql7z} ${RCLONE_NAME}:${REMOTE_WOL}/)
+showno="7" ; showqq="로컬 DB 백업파일을 클라우드로 복사합니다."
+show_then_view "OUTRC=\$(/usr/bin/rclone copy ${LOCAL_THIS_WOL}/${YOIL_sql7z} ${RCLONE_NAME}:${REMOTE_WOL}/) ${cMagenta}#----${cYellow}${OUTRC}${cMagenta}----"
 
 
-showno="6" ; showqq="${REMOTE_WOL} 월 최근 일주일 백업을 끝냅니다. (${ymd_hm})"
+showno="8" ; showqq="${REMOTE_WOL} 월 최근 일주일 백업을 끝냅니다. (${ymd_hm})"
 show_then_view "#"
 
 
@@ -287,253 +294,139 @@ show_then_view "#"
 show_title "${REMOTE_WOL} 월의 마지막 백업파일을 ${REMOTE_YEAR} 년도로 복사 시작 (${ymd_hm})"
 
 
-showno="11" ; showqq="${this_wol}월 백업파일이 이전에 백업돼 있었는지 확인 합니다."
+showno="9" ; showqq="${this_wol}월 백업파일이 이전에 백업돼 있었는지 확인 합니다."
 show_then_view "REMOTE_SQL_7Z_LIST=\$(/usr/bin/rclone ls ${RCLONE_NAME}:${REMOTE_YEAR}/ | grep ${this_wol_sql_7z} | awk '{print \$2}')"
 REMOTE_SQL_7Z_LIST=$(/usr/bin/rclone ls ${RCLONE_NAME}:${REMOTE_YEAR}/ | grep ${this_wol_sql_7z} | awk '{print $2}')
 
 if [ "x$REMOTE_SQL_7Z_LIST" != "x" ]; then
-	showno="12a" ; shwo_msg="클라우드에 이달 백업파일이 있는 경우,"
+	showno="10a" ; shwo_msg="클라우드에 이달 백업파일이 있는 경우,"
 	show_then_view "mapfile -t Remote_Sql7z_Array <<< \"$REMOTE_SQL_7Z_LIST\""
-#|  	mapfile -t Remote_Sql7z_Array <<< "$REMOTE_SQL_7Z_LIST"
-#|  
-#|  	for val in "${Remote_Sql7z_Array[@]}"
-#|  	do
-#|  		showno="12a1" ; showqq="빈칸 삭제"
-#|  		show_then_view "file_name=\$(echo ${val} | sed 's/ *\$//g')"
-#|  		file_name=$(echo ${val} | sed 's/ *$//g')
-#|  
-#|  		OUTRC=$(/usr/bin/rclone deletefile ${RCLONE_NAME}:${REMOTE_YEAR}/${file_name})
-#|  		showno="12a2" ; showqq="${this_wol}월 백업파일을 삭제합니다."
-#|  		show_then_view "OUTRC=\$(/usr/bin/rclone deletefile ${RCLONE_NAME}:${REMOTE_WOL}/${file_name}) ${cMagenta}#----${cYellow}${OUTRC}${cMagenta}----"
-#|  	done
-#|  else
-#|  	showno="12b" ; showqq="클라우드에는 ${this_wol}월 백업파일이 없습니다."
-#|  	show_then_view "#"
-#|  fi
-#|  
-#|  showno="4" ; showqq="오늘날짜 로컬 백업파일을 삭제합니다."
-#|  show_then_run "rm -f ${LOCAL_THIS_YEAR}/*${this_wol_sql_7z}"
-#|  
-#|  
-#|  
-#|  showno="13" ; showqq="${REMOTE_WOL} 월 백업파일을 ${REMOTE_YEAR} 년도로 복사하는 작업을 시작합니다. (${ymd_hm})"
-#|  show_then_view "#"
-#|  
-#|  
-#|  showno="14" ; showqq="로컬 디렉토리의 월 백업파일을 년도로 복사합니다."
-#|  show_then_run "cp ${LOCAL_THIS_WOL}/${Db_Time_Uname_Yoil_sql7z} ${LOCAL_THIS_YEAR}/${db_nowWOL_sql_7z}"
-#|  
-#|  OUTRC=$(/usr/bin/rclone copy ${LOCAL_THIS_YEAR}/${db_nowWOL_sql_7z} ${RCLONE_NAME}:${REMOTE_YEAR}/)
-#|  showno="14" ; showqq="${this_wol}월 백업파일을 ${this_year}년도 폴더로 복사합니다."
-#|  show_then_view "OUTRC=\$(/usr/bin/rclone copy ${LOCAL_THIS_YEAR}/${db_nowWOL_sql_7z} ${RCLONE_NAME}:${REMOTE_YEAR}/) ${cMagenta}#----${cYellow}${OUTRC}${cMagenta}----"
-#|  
-#|  OUTRC=$(/usr/bin/rclone ls ${RCLONE_NAME}:${REMOTE_YEAR})
-#|  showno="16" ; showqq="폴더 확인"
-#|  show_then_view "OUTRC=\$(/usr/bin/rclone ls ${RCLONE_NAME}:${REMOTE_YEAR}) ${cMagenta}#----${cYellow}${OUTRC}${cMagenta}----"
-#|  
-#|  showno="19" ; showqq="${REMOTE_WOL} 월 백업파일을 ${REMOTE_YEAR} 년도로 복사하는 작업을 끝냅니다. (${ymd_hm})"
-#|  show_then_view "#"
-#|  
-#|  
-#|  #<---- REMOTE / 2022 / 당월 최종 1개
-#|  
-#|  #----> REMOTE / 2022 / ju / 매주 주말 1개
-#|  
-#|  
-#|  #-- db_jubeonho_sql_7z=${DB_NAME}_${ymd_hm}_${uname_n}${ju_beonho_sql_7z}
-#|  
-#|  show_title "${REMOTE_WOL} 월의 마지막 백업파일을 ${REMOTE_JU} 폴더에 J${ju_beonho} 번호로 복사 시작 (${ymd_hm})"
-#|  
-#|  
-#|  showno="11" ; showqq="${this_wol}월 백업파일이 이전에 백업돼 있었는지 확인 합니다."
-#|  show_then_view "REMOTE_SQL_7Z_LIST=\$(/usr/bin/rclone ls ${RCLONE_NAME}:${REMOTE_JU}/ | grep ${ju_beonho_sql_7z} | awk '{print \$2}')"
-#|  REMOTE_SQL_7Z_LIST=$(/usr/bin/rclone ls ${RCLONE_NAME}:${REMOTE_JU}/ | grep ${ju_beonho_sql_7z} | awk '{print $2}')
-#|  
-#|  
-#|  if [ "x$REMOTE_SQL_7Z_LIST" != "x" ]; then
-#|  	showno="12a" ; shwo_msg="클라우드에 이달 백업파일이 있는 경우,"
-#|  	show_then_view "mapfile -t Remote_Sql7z_Array <<< \"$REMOTE_SQL_7Z_LIST\""
-#|  	mapfile -t Remote_Sql7z_Array <<< "$REMOTE_SQL_7Z_LIST"
-#|  
-#|  	for val in "${Remote_Sql7z_Array[@]}"
-#|  	do
-#|  		showno="12a1" ; showqq="빈칸 삭제"
-#|  		show_then_view "file_name=\$(echo ${val} | sed 's/ *\$//g')"
-#|  		file_name=$(echo ${val} | sed 's/ *$//g')
-#|  
-#|  		OUTRC=$(/usr/bin/rclone deletefile ${RCLONE_NAME}:${REMOTE_JU}/${file_name})
-#|  		showno="12a2" ; showqq="${this_wol}월 백업파일을 삭제합니다."
-#|  		show_then_view "OUTRC=\$(/usr/bin/rclone deletefile ${RCLONE_NAME}:${REMOTE_JU}/${file_name}) ${cMagenta}#----${cYellow}${OUTRC}${cMagenta}----"
-#|  	done
-#|  else
-#|  	showno="12b" ; showqq="클라우드에는 ${ju_beonho_sql_7z} 백업파일이 없습니다."
-#|  	show_then_view "#"
-#|  fi
-#|  
-#|  showno="4" ; showqq="오늘날짜 로컬 백업파일을 삭제합니다."
-#|  show_then_run "rm -f ${LOCAL_THIS_JU}/*${ju_beonho_sql_7z}"
-#|  
-#|  
-#|  showno="13" ; showqq="${ju_beonho_sql_7z} 백업파일을 ${REMOTE_JU} 로 복사하는 작업을 시작합니다. (${ymd_hm})"
-#|  show_then_run "cp ${LOCAL_THIS_WOL}/${Db_Time_Uname_Yoil_sql7z} ${LOCAL_THIS_JU}/${db_jubeonho_sql_7z}"
-#|  
-#|  OUTRC=$(/usr/bin/rclone copy ${LOCAL_THIS_JU}/${db_jubeonho_sql_7z} ${RCLONE_NAME}:${REMOTE_JU}/)
-#|  showno="14" ; showqq="${this_wol}월 백업파일을 ${REMOTE_JU} 폴더로 복사합니다."
-#|  show_then_view "OUTRC=\$(/usr/bin/rclone copy ${LOCAL_THIS_JU}/${db_jubeonho_sql_7z} ${RCLONE_NAME}:${REMOTE_JU}/) ${cMagenta}#----${cYellow}${OUTRC}${cMagenta}----"
-#|  
-#|  OUTRC=$(/usr/bin/rclone ls ${RCLONE_NAME}:${REMOTE_JU})
-#|  showno="16" ; showqq="폴더 확인"
-#|  show_then_view "OUTRC=\$(/usr/bin/rclone ls ${RCLONE_NAME}:${REMOTE_JU}) ${cMagenta}#----${cYellow}${OUTRC}${cMagenta}----"
-#|  
-#|  
-#|  showno="19" ; showqq="${REMOTE_WOL} 월의 마지막 백업파일을 ${REMOTE_JU} 폴더에 J${ju_beonho} 번호로 복사하는 작업을 끝냅니다. (${ymd_hm})"
-#|  show_then_view "#"
-#|  
-#|  
-#|  #<---- REMOTE / 2022 / ju / 매주 주말 1개
-#|  
-#|  
-#|  #|====>>
-#|  #|
-#|  14:55:13월220822 fedora@vfc36jj ~/git-projects/fedora-sh/10-wikijs-docker-by-markdown
+	mapfile -t Remote_Sql7z_Array <<< "$REMOTE_SQL_7Z_LIST"
+
+	for val in "${Remote_Sql7z_Array[@]}"
+	do
+		showno="10a1" ; showqq="빈칸 삭제"
+		show_then_view "file_name=\$(echo ${val} | sed 's/ *\$//g')"
+		file_name=$(echo ${val} | sed 's/ *$//g')
+
+		OUTRC=$(/usr/bin/rclone deletefile ${RCLONE_NAME}:${REMOTE_YEAR}/${file_name})
+		showno="10a2" ; showqq="${this_wol}월 백업파일을 삭제합니다."
+		show_then_view "OUTRC=\$(/usr/bin/rclone deletefile ${RCLONE_NAME}:${REMOTE_WOL}/${file_name}) ${cMagenta}#----${cYellow}${OUTRC}${cMagenta}----"
+	done
+else
+	showno="10b" ; showqq="클라우드에는 ${this_wol}월 백업파일이 없습니다."
+	show_then_view "#"
+fi
+
+showno="11" ; showqq="오늘날짜 로컬 백업파일을 삭제합니다."
+show_then_run "rm -f ${LOCAL_THIS_YEAR}/*${this_wol_sql_7z}"
+
+
+
+showno="12" ; showqq="${REMOTE_WOL} 월 백업파일을 ${REMOTE_YEAR} 년도로 복사하는 작업을 시작합니다. (${ymd_hm})"
+show_then_view "#"
+
+
+showno="13" ; showqq="로컬 디렉토리의 월 백업파일을 년도로 복사합니다."
+show_then_run "cp ${LOCAL_THIS_WOL}/${YOIL_sql7z} ${LOCAL_THIS_YEAR}/${WOL_sql7z}"
+
+OUTRC=$(/usr/bin/rclone copy ${LOCAL_THIS_YEAR}/${WOL_sql7z} ${RCLONE_NAME}:${REMOTE_YEAR}/)
+showno="14" ; showqq="${this_wol}월 백업파일을 ${this_year}년도 폴더로 복사합니다."
+show_then_view "OUTRC=\$(/usr/bin/rclone copy ${LOCAL_THIS_YEAR}/${WOL_sql7z} ${RCLONE_NAME}:${REMOTE_YEAR}/) ${cMagenta}#----${cYellow}${OUTRC}${cMagenta}----"
+
+OUTRC=$(/usr/bin/rclone ls ${RCLONE_NAME}:${REMOTE_YEAR})
+showno="15" ; showqq="폴더 확인"
+show_then_view "OUTRC=\$(/usr/bin/rclone ls ${RCLONE_NAME}:${REMOTE_YEAR}) ${cMagenta}#----${cYellow}${OUTRC}${cMagenta}----"
+
+showno="16" ; showqq="${REMOTE_WOL} 월 백업파일을 ${REMOTE_YEAR} 년도로 복사하는 작업을 끝냅니다. (${ymd_hm})"
+show_then_view "#"
+
+
+#<---- REMOTE / 2022 / 당월 최종 1개
+
+#----> REMOTE / 2022 / ju / 매주 주말 1개
+
+
+#-- JU_sql7z=${DB_NAME}_${ymd_hm}_${uname_n}${ju_beonho_sql_7z}
+
+show_title "${REMOTE_WOL} 월의 마지막 백업파일을 ${REMOTE_JU} 폴더에 J${ju_beonho} 번호로 복사 시작 (${ymd_hm})"
+
+
+showno="17" ; showqq="${this_wol}월 백업파일이 이전에 백업돼 있었는지 확인 합니다."
+show_then_view "REMOTE_SQL_7Z_LIST=\$(/usr/bin/rclone ls ${RCLONE_NAME}:${REMOTE_JU}/ | grep ${ju_beonho_sql_7z} | awk '{print \$2}')"
+REMOTE_SQL_7Z_LIST=$(/usr/bin/rclone ls ${RCLONE_NAME}:${REMOTE_JU}/ | grep ${ju_beonho_sql_7z} | awk '{print $2}')
+
+
+if [ "x$REMOTE_SQL_7Z_LIST" != "x" ]; then
+	showno="18a" ; shwo_msg="클라우드에 이달 백업파일이 있는 경우,"
+	show_then_view "mapfile -t Remote_Sql7z_Array <<< \"$REMOTE_SQL_7Z_LIST\""
+	mapfile -t Remote_Sql7z_Array <<< "$REMOTE_SQL_7Z_LIST"
+
+	for val in "${Remote_Sql7z_Array[@]}"
+	do
+		showno="18a1" ; showqq="빈칸 삭제"
+		show_then_view "file_name=\$(echo ${val} | sed 's/ *\$//g')"
+		file_name=$(echo ${val} | sed 's/ *$//g')
+
+		OUTRC=$(/usr/bin/rclone deletefile ${RCLONE_NAME}:${REMOTE_JU}/${file_name})
+		showno="18a2" ; showqq="${this_wol}월 백업파일을 삭제합니다."
+		show_then_view "OUTRC=\$(/usr/bin/rclone deletefile ${RCLONE_NAME}:${REMOTE_JU}/${file_name}) ${cMagenta}#----${cYellow}${OUTRC}${cMagenta}----"
+	done
+else
+	showno="18b" ; showqq="클라우드에는 ${ju_beonho_sql_7z} 백업파일이 없습니다."
+	show_then_view "#"
+fi
+
+showno="19" ; showqq="오늘날짜 로컬 백업파일을 삭제합니다."
+show_then_run "rm -f ${LOCAL_THIS_JU}/*${ju_beonho_sql_7z}"
+
+
+showno="20" ; showqq="${ju_beonho_sql_7z} 백업파일을 ${REMOTE_JU} 로 복사하는 작업을 시작합니다. (${ymd_hm})"
+show_then_run "cp ${LOCAL_THIS_WOL}/${YOIL_sql7z} ${LOCAL_THIS_JU}/${JU_sql7z}"
+
+OUTRC=$(/usr/bin/rclone copy ${LOCAL_THIS_JU}/${JU_sql7z} ${RCLONE_NAME}:${REMOTE_JU}/)
+showno="21" ; showqq="${this_wol}월 백업파일을 ${REMOTE_JU} 폴더로 복사합니다."
+show_then_view "OUTRC=\$(/usr/bin/rclone copy ${LOCAL_THIS_JU}/${JU_sql7z} ${RCLONE_NAME}:${REMOTE_JU}/) ${cMagenta}#----${cYellow}${OUTRC}${cMagenta}----"
+
+OUTRC=$(/usr/bin/rclone ls ${RCLONE_NAME}:${REMOTE_JU})
+showno="22" ; showqq="폴더 확인"
+show_then_view "OUTRC=\$(/usr/bin/rclone ls ${RCLONE_NAME}:${REMOTE_JU}) ${cMagenta}#----${cYellow}${OUTRC}${cMagenta}----"
+
+
+showno="23" ; showqq="${REMOTE_WOL} 월의 마지막 백업파일을 ${REMOTE_JU} 폴더에 J${ju_beonho} 번호로 복사하는 작업을 끝냅니다. (${ymd_hm})"
+show_then_view "#"
+
+
+#<---- REMOTE / 2022 / ju / 매주 주말 1개
+
+
+#|====>>
+#|
+#|  16:32:01월220822 fedora@vfc36jj ~/git-projects/fedora-sh/10-wikijs-docker-by-markdown
 #|  10-wikijs-docker-by-markdown $ sh db-to-cloud.sh wiki ok
 #|      |
 #|      |
-#|      | wiki.js/2022/08 월 최근 일주일 백업을 시작합니다. (220822월-1455)
-#|      |
-#|      |
-#|  ----> mkdir -p /home/fedora/wiki.js/vfc36jj/2022/08 #-- #-- (1a) 보관용 로컬 디렉토리를 만듭니다.
-#|  <---- mkdir -p /home/fedora/wiki.js/vfc36jj/2022/08 #-- #-- (1a) 보관용 로컬 디렉토리를 만듭니다.
-#|  ----> REMOTE_SQL_7Z_LIST=$(/usr/bin/rclone ls yosgc:wiki.js/2022/08/ | grep Y2.sql.7z | awk '{print $2}') #-- (2) 오늘날짜 클라우드 백업파일이 있는지 확인 합니다.
-#|  ----> # #-- (3b) 클라우드에는 오늘날짜 백업파일이 없습니다.
-#|  ----> rm -f /home/fedora/wiki.js/vfc36jj/2022/08/*Y2.sql.7z #-- #-- (4) 오늘날짜 로컬 백업파일을 삭제합니다.
-#|  <---- rm -f /home/fedora/wiki.js/vfc36jj/2022/08/*Y2.sql.7z #-- #-- (4) 오늘날짜 로컬 백업파일을 삭제합니다.
-#|  ----> sudo docker exec wikijsdb pg_dumpall -U wikijs | 7za a -si /home/fedora/wiki.js/vfc36jj/2022/08/wiki_220822월-1455_vfc36jjY2.sql.7z -pwiki220822 #-- #-- (5) DB 를 로컬에 백업합니다.
-#|  
-#|  7-Zip (a) [64] 16.02 : Copyright (c) 1999-2016 Igor Pavlov : 2016-05-21
-#|  p7zip Version 16.02 (locale=ko_KR.UTF-8,Utf16=on,HugeFiles=on,64 bits,1 CPU Intel(R) Core(TM) i5-9500 CPU @ 3.00GHz (906EA),ASM,AES-NI)
-#|  
-#|  Creating archive: /home/fedora/wiki.js/vfc36jj/2022/08/wiki_220822월-1455_vfc36jjY2.sql.7z
-#|  
-#|  Items to compress: 1
-#|  
-#|  
-#|  Files read from disk: 1
-#|  Archive size: 22870266 bytes (22 MiB)
-#|  Everything is Ok
-#|  <---- sudo docker exec wikijsdb pg_dumpall -U wikijs | 7za a -si /home/fedora/wiki.js/vfc36jj/2022/08/wiki_220822월-1455_vfc36jjY2.sql.7z -pwiki220822 #-- #-- (5) DB 를 로컬에 백업합니다.
-#|  ----> OUTRC=$(/usr/bin/rclone copy /home/fedora/wiki.js/vfc36jj/2022/08/wiki_220822월-1455_vfc36jjY2.sql.7z yosgc:wiki.js/2022/08/) #-------- #-- (6) 로컬 DB 백업파일을 클라우드로 복사합니다.
-#|  ----> # #-- (6) wiki.js/2022/08 월 최근 일주일 백업을 끝냅니다. (220822월-1455)
-#|      |
-#|      |
-#|      | wiki.js/2022/08 월의 마지막 백업파일을 wiki.js/2022 년도로 복사 시작 (220822월-1455)
-#|      |
-#|      |
-#|  ----> REMOTE_SQL_7Z_LIST=$(/usr/bin/rclone ls yosgc:wiki.js/2022/ | grep W08.sql.7z | awk '{print $2}') #-- (11) 08월 백업파일이 이전에 백업돼 있었는지 확인 합니다.
-#|  ----> # #-- (12b) 클라우드에는 08월 백업파일이 없습니다.
-#|  ----> # #-- (13) wiki.js/2022/08 월 백업파일을 wiki.js/2022 년도로 복사하는 작업을 시작합니다. (220822월-1455)
-#|  ----> OUTRC=$(/usr/bin/rclone copy yosgc:wiki.js/2022/08/wiki_220822월-1455_vfc36jjY2.sql.7z yosgc:wiki.js/2022/) #-------- #-- (14) 08월 백업파일을 2022년도 폴더로 복사합니다.
-#|  ----> OUTRC=$(/usr/bin/rclone ls yosgc:wiki.js/2022) #---- 22870266 wiki_220822월-1455_vfc36jjY2.sql.7z
-#|   22870266 08/wiki_220822월-1455_vfc36jjY2.sql.7z
-#|   15210922 06/일/wikijs-220612_162203-proenpi.sql.7z
-#|   15210890 06/일/wikijs-220612_161638-proenpi.sql.7z
-#|   15210826 06/일/wikijs-220612_152428-fed36lib.sql.7z
-#|   15209658 06/일/wikijs-220612_135120-proenpi.sql.7z
-#|   22859770 06/화/wikijs-220628_223616-proenpi.sql.7z
-#|   15211258 06/월/wikijs-220613_103609-proenpi.sql.7z
-#|   15221770 06/목/wikijs-220616_180710-proenpi.sql.7z
-#|   23166826 08/일/wikijs-220710_144053-proenpi.sql.7z
-#|   17935194 06/금/wikijs-220624_114502-proenpi.sql.7z
-#|   17886138 06/금/wikijs-220624_113154-proenpi.sql.7z
-#|   17889178 06/금/wikijs-220617_231206-proenpi.sql.7z---- #-- (16) 폴더 확인
-#|  ----> OUTRC=$(/usr/bin/rclone moveto yosgc:wiki.js/2022/wiki_220822월-1455_vfc36jjY2.sql.7z yosgc:wiki.js/2022/wiki_220822월-1455_vfc36jjW08.sql.7z) #-------- #-- (18) 파일 이름을 바꿉니다.
-#|  ----> OUTRC=$(/usr/bin/rclone ls yosgc:wiki.js/2022) #---- 22870266 wiki_220822월-1455_vfc36jjW08.sql.7z
-#|   22870266 08/wiki_220822월-1455_vfc36jjY2.sql.7z
-#|   15210922 06/일/wikijs-220612_162203-proenpi.sql.7z
-#|   15210890 06/일/wikijs-220612_161638-proenpi.sql.7z
-#|   15210826 06/일/wikijs-220612_152428-fed36lib.sql.7z
-#|   15209658 06/일/wikijs-220612_135120-proenpi.sql.7z
-#|   23166826 08/일/wikijs-220710_144053-proenpi.sql.7z
-#|   15221770 06/목/wikijs-220616_180710-proenpi.sql.7z
-#|   22859770 06/화/wikijs-220628_223616-proenpi.sql.7z
-#|   15211258 06/월/wikijs-220613_103609-proenpi.sql.7z
-#|   17935194 06/금/wikijs-220624_114502-proenpi.sql.7z
-#|   17886138 06/금/wikijs-220624_113154-proenpi.sql.7z
-#|   17889178 06/금/wikijs-220617_231206-proenpi.sql.7z---- #-- (18) 년도
-#|  ----> #---- 22870266 wiki_220822월-1455_vfc36jjW08.sql.7z
-#|   22870266 08/wiki_220822월-1455_vfc36jjY2.sql.7z
-#|   15210922 06/일/wikijs-220612_162203-proenpi.sql.7z
-#|   15210890 06/일/wikijs-220612_161638-proenpi.sql.7z
-#|   15210826 06/일/wikijs-220612_152428-fed36lib.sql.7z
-#|   15209658 06/일/wikijs-220612_135120-proenpi.sql.7z
-#|   23166826 08/일/wikijs-220710_144053-proenpi.sql.7z
-#|   15221770 06/목/wikijs-220616_180710-proenpi.sql.7z
-#|   22859770 06/화/wikijs-220628_223616-proenpi.sql.7z
-#|   15211258 06/월/wikijs-220613_103609-proenpi.sql.7z
-#|   17935194 06/금/wikijs-220624_114502-proenpi.sql.7z
-#|   17886138 06/금/wikijs-220624_113154-proenpi.sql.7z
-#|   17889178 06/금/wikijs-220617_231206-proenpi.sql.7z---- #-- (18) 년도
-#|  ----> OUTRC=$(/usr/bin/rclone ls yosgc:wiki.js/2022/08) #---- 22870266 wiki_220822월-1455_vfc36jjY2.sql.7z
-#|   23166826 일/wikijs-220710_144053-proenpi.sql.7z---- #-- (18) 년도
-#|  ----> # #-- (19) wiki.js/2022/08 월 백업파일을 wiki.js/2022 년도로 복사하는 작업을 끝냅니다. (220822월-1455)
-#|      |
-#|      |
-#|      | wiki.js/2022/08 월의 마지막 백업파일을 wiki.js/2022/weeks 폴더에 J34 번호로 복사 시작 (220822월-1455)
-#|      |
-#|      |
-#|  ----> REMOTE_SQL_7Z_LIST=$(/usr/bin/rclone ls yosgc:wiki.js/2022/weeks/ | grep J34.sql.7z | awk '{print $2}') #-- (11) 08월 백업파일이 이전에 백업돼 있었는지 확인 합니다.
-#|  2022/08/22 14:56:50 Failed to ls: directory not found
-#|  ----> # #-- (12b) 클라우드에는 J34.sql.7z 백업파일이 없습니다.
-#|  ----> # #-- (13) J34.sql.7z 백업파일을 wiki.js/2022/weeks 로 복사하는 작업을 시작합니다. (220822월-1455)
-#|  ----> OUTRC=$(/usr/bin/rclone copy yosgc:wiki.js/2022/08/wiki_220822월-1455_vfc36jjY2.sql.7z yosgc:wiki.js/2022/weeks/) #-------- #-- (14) 08월 백업파일을 wiki.js/2022/weeks 폴더로 복사합니다.
-#|  ----> OUTRC=$(/usr/bin/rclone ls yosgc:wiki.js/2022/weeks) #---- 22870266 wiki_220822월-1455_vfc36jjY2.sql.7z---- #-- (16) 폴더 확인
-#|  2022/08/22 14:57:09 ERROR : Google drive root 'wiki.js/2022/weeks/wiki_220822월-1455_vfc36jjJ34.sql.7z': Server side directory move failed: directory not found
-#|  2022/08/22 14:57:09 ERROR : Attempt 1/3 failed with 1 errors and: directory not found
-#|  2022/08/22 14:57:10 ERROR : Google drive root 'wiki.js/2022/weeks/wiki_220822월-1455_vfc36jjJ34.sql.7z': Server side directory move failed: directory not found
-#|  2022/08/22 14:57:10 ERROR : Attempt 2/3 failed with 1 errors and: directory not found
-#|  2022/08/22 14:57:11 ERROR : Google drive root 'wiki.js/2022/weeks/wiki_220822월-1455_vfc36jjJ34.sql.7z': Server side directory move failed: directory not found
-#|  2022/08/22 14:57:11 ERROR : Attempt 3/3 failed with 1 errors and: directory not found
-#|  2022/08/22 14:57:11 Failed to moveto: directory not found
-#|  ----> OUTRC=$(/usr/bin/rclone moveto yosgc:wiki.js/2022/wiki_220822월-1455_vfc36jjY2.sql.7z yosgc:wiki.js/2022/weeks/wiki_220822월-1455_vfc36jjJ34.sql.7z) #-------- #-- (18) 파일 이름을 바꿉니다.
-#|  ----> OUTRC=$(/usr/bin/rclone ls yosgc:wiki.js/2022/weeks) #---- 22870266 wiki_220822월-1455_vfc36jjY2.sql.7z---- #-- (18) 년도
-#|  ----> #---- 22870266 wiki_220822월-1455_vfc36jjY2.sql.7z---- #-- (18) 년도
-#|  ----> # #-- (19) wiki.js/2022/08 월의 마지막 백업파일을 wiki.js/2022/weeks 폴더에 J34 번호로 복사하는 작업을 끝냅니다. (220822월-1455)
-#|  14:57:13월220822 fedora@vfc36jj ~/git-projects/fedora-sh/10-wikijs-docker-by-markdown
-#|  10-wikijs-docker-by-markdown $  vi db-to-cloud.sh
-#|  
-#|  --- 자동-명령 ---
-#|  14:59:27월220822 fedora@vfc36jj ~/git-projects/fedora-sh/10-wikijs-docker-by-markdown
-#|  10-wikijs-docker-by-markdown $  vi db-to-cloud.sh
-#|  
-#|  --- 자동-명령 ---
-#|  15:57:11월220822 fedora@vfc36jj ~/git-projects/fedora-sh/10-wikijs-docker-by-markdown
-#|  10-wikijs-docker-by-markdown $ sh db-to-cloud.sh
-#|  
-#|  db-to-cloud.sh [ DB_NAME ] 을 지정하지 않았으므로 작업을 끝냅니다.
-#|  15:57:15월220822 fedora@vfc36jj ~/git-projects/fedora-sh/10-wikijs-docker-by-markdown
-#|  10-wikijs-docker-by-markdown $ sh db-to-cloud.sh wiki ok
-#|      |
-#|      |
-#|      | wiki.js/2022/08 월 최근 일주일 백업을 시작합니다. (220822월-1557)
+#|      | wiki.js/2022/08 월 최근 일주일 백업을 시작합니다. (220822월-1632)
 #|      |
 #|      |
 #|  ----> ls -l /home/fedora/wiki.js/vfc36jj/2022/08 #-- #-- (1b) 보관용 로컬 디렉토리 입니다.
 #|  합계 22336
-#|  -rw-r--r-- 1 fedora fedora 22870266  8월 22일 14:56 wiki_220822월-1455_vfc36jjY2.sql.7z
+#|  -rw-r--r-- 1 fedora fedora 22870240  8월 22일 16:11 wiki_220822월-1610_vfc36jjY2.sql.7z
 #|  <---- ls -l /home/fedora/wiki.js/vfc36jj/2022/08 #-- #-- (1b) 보관용 로컬 디렉토리 입니다.
-#|  ----> REMOTE_SQL_7Z_LIST=$(/usr/bin/rclone ls yosgc:wiki.js/2022/08/ | grep Y2.sql.7z | awk '{print $2}') #-- (2) 오늘날짜 클라우드 백업파일이 있는지 확인 합니다.
-#|  ----> mapfile -t Remote_Sql7z_Array <<< "wiki_220822월-1455_vfc36jjY2.sql.7z" #-- (3a) 오늘날짜 클라우드 백업파일이 있는지 확인 합니다.
-#|  ----> file_name=$(echo wiki_220822월-1455_vfc36jjY2.sql.7z | sed 's/ *$//g') #-- (3a1) 빈칸 삭제 // https://linuxhint.com/trim_string_bash/
-#|  ----> OUTRC=$(/usr/bin/rclone deletefile yosgc:wiki.js/2022/08/wiki_220822월-1455_vfc36jjY2.sql.7z) #-------- #-- (3a2) 오늘날짜 클라우드 백업파일을 삭제합니다.
-#|  ----> # #-- (3a2) 오늘날짜 클라우드 백업파일을 삭제합니다.
-#|  ----> rm -f /home/fedora/wiki.js/vfc36jj/2022/08/*Y2.sql.7z #-- #-- (4) 오늘날짜 로컬 백업파일을 삭제합니다.
-#|  <---- rm -f /home/fedora/wiki.js/vfc36jj/2022/08/*Y2.sql.7z #-- #-- (4) 오늘날짜 로컬 백업파일을 삭제합니다.
-#|  ----> sudo docker exec wikijsdb pg_dumpall -U wikijs | 7za a -si /home/fedora/wiki.js/vfc36jj/2022/08/wiki_220822월-1557_vfc36jjY2.sql.7z #-- #-- (5) DB 를 로컬에 백업합니다.
+#|  ----> ls -l /home/fedora/wiki.js/vfc36jj/2022/ju #-- #-- (2b) 보관용 로컬 디렉토리 입니다.
+#|  합계 22336
+#|  -rw-r--r-- 1 fedora fedora 22870240  8월 22일 16:11 wiki_220822월-1610_vfc36jjJ34.sql.7z
+#|  <---- ls -l /home/fedora/wiki.js/vfc36jj/2022/ju #-- #-- (2b) 보관용 로컬 디렉토리 입니다.
+#|  ----> REMOTE_SQL_7Z_LIST=$(/usr/bin/rclone ls yosgc:wiki.js/2022/08/ | grep .2yoil.sql.7z | awk '{print $2}') #-- (3) 오늘날짜 클라우드 백업파일이 있는지 확인 합니다.
+#|  ----> # #-- (4b) 클라우드에는 오늘날짜 백업파일이 없습니다.
+#|  ----> rm -f /home/fedora/wiki.js/vfc36jj/2022/08/*.2yoil.sql.7z #-- #-- (5) 오늘날짜 로컬 백업파일을 삭제합니다.
+#|  <---- rm -f /home/fedora/wiki.js/vfc36jj/2022/08/*.2yoil.sql.7z #-- #-- (5) 오늘날짜 로컬 백업파일을 삭제합니다.
+#|  ----> sudo docker exec wikijsdb pg_dumpall -U wikijs | 7za a -si /home/fedora/wiki.js/vfc36jj/2022/08/wiki_220822월-1632_vfc36jj.2yoil.sql.7z #-- #-- (6) DB 를 로컬에 백업합니다.
 #|  
 #|  7-Zip (a) [64] 16.02 : Copyright (c) 1999-2016 Igor Pavlov : 2016-05-21
 #|  p7zip Version 16.02 (locale=ko_KR.UTF-8,Utf16=on,HugeFiles=on,64 bits,1 CPU Intel(R) Core(TM) i5-9500 CPU @ 3.00GHz (906EA),ASM,AES-NI)
 #|  
-#|  Creating archive: /home/fedora/wiki.js/vfc36jj/2022/08/wiki_220822월-1557_vfc36jjY2.sql.7z
+#|  Creating archive: /home/fedora/wiki.js/vfc36jj/2022/08/wiki_220822월-1632_vfc36jj.2yoil.sql.7z
 #|  
 #|  Items to compress: 1
 #|  
@@ -541,64 +434,44 @@ if [ "x$REMOTE_SQL_7Z_LIST" != "x" ]; then
 #|  Files read from disk: 1
 #|  Archive size: 22870240 bytes (22 MiB)
 #|  Everything is Ok
-#|  <---- sudo docker exec wikijsdb pg_dumpall -U wikijs | 7za a -si /home/fedora/wiki.js/vfc36jj/2022/08/wiki_220822월-1557_vfc36jjY2.sql.7z #-- #-- (5) DB 를 로컬에 백업합니다.
-#|  ----> OUTRC=$(/usr/bin/rclone copy /home/fedora/wiki.js/vfc36jj/2022/08/wiki_220822월-1557_vfc36jjY2.sql.7z yosgc:wiki.js/2022/08/) #-------- #-- (6) 로컬 DB 백업파일을 클라우드로 복사합니다.
-#|  ----> # #-- (6) wiki.js/2022/08 월 최근 일주일 백업을 끝냅니다. (220822월-1557)
+#|  <---- sudo docker exec wikijsdb pg_dumpall -U wikijs | 7za a -si /home/fedora/wiki.js/vfc36jj/2022/08/wiki_220822월-1632_vfc36jj.2yoil.sql.7z #-- #-- (6) DB 를 로컬에 백업합니다.
+#|  ----> OUTRC=$(/usr/bin/rclone copy /home/fedora/wiki.js/vfc36jj/2022/08/wiki_220822월-1632_vfc36jj.2yoil.sql.7z yosgc:wiki.js/2022/08/) #-------- #-- (7) 로컬 DB 백업파일을 클라우드로 복사합니다.
+#|  ----> # #-- (8) wiki.js/2022/08 월 최근 일주일 백업을 끝냅니다. (220822월-1632)
 #|      |
 #|      |
-#|      | wiki.js/2022/08 월의 마지막 백업파일을 wiki.js/2022 년도로 복사 시작 (220822월-1557)
+#|      | wiki.js/2022/08 월의 마지막 백업파일을 wiki.js/2022 년도로 복사 시작 (220822월-1632)
 #|      |
 #|      |
-#|  ----> REMOTE_SQL_7Z_LIST=$(/usr/bin/rclone ls yosgc:wiki.js/2022/ | grep W08.sql.7z | awk '{print $2}') #-- (11) 08월 백업파일이 이전에 백업돼 있었는지 확인 합니다.
-#|  ----> mapfile -t Remote_Sql7z_Array <<< "wiki_220822월-1455_vfc36jjW08.sql.7z" #-- (12a) 08월 백업파일이 이전에 백업돼 있었는지 확인 합니다.
-#|  ----> file_name=$(echo wiki_220822월-1455_vfc36jjW08.sql.7z | sed 's/ *$//g') #-- (12a1) 빈칸 삭제
-#|  ----> OUTRC=$(/usr/bin/rclone deletefile yosgc:wiki.js/2022/08/wiki_220822월-1455_vfc36jjW08.sql.7z) #-------- #-- (12a2) 08월 백업파일을 삭제합니다.
-#|  ----> rm -f /home/fedora/wiki.js/vfc36jj/2022/*W08.sql.7z #-- #-- (4) 오늘날짜 로컬 백업파일을 삭제합니다.
-#|  <---- rm -f /home/fedora/wiki.js/vfc36jj/2022/*W08.sql.7z #-- #-- (4) 오늘날짜 로컬 백업파일을 삭제합니다.
-#|  ----> # #-- (13) wiki.js/2022/08 월 백업파일을 wiki.js/2022 년도로 복사하는 작업을 시작합니다. (220822월-1557)
-#|  ----> cp /home/fedora/wiki.js/vfc36jj/2022/08/wiki_220822월-1557_vfc36jjY2.sql.7z /home/fedora/wiki.js/vfc36jj/2022/wiki_220822월-1557_vfc36jjW08.sql.7z #-- #-- (14) 로컬 디렉토리의 월 백업파일을 년도로 복사합니다.
-#|  <---- cp /home/fedora/wiki.js/vfc36jj/2022/08/wiki_220822월-1557_vfc36jjY2.sql.7z /home/fedora/wiki.js/vfc36jj/2022/wiki_220822월-1557_vfc36jjW08.sql.7z #-- #-- (14) 로컬 디렉토리의 월 백업파일을 년도로 복사합니다.
-#|  ----> OUTRC=$(/usr/bin/rclone copy /home/fedora/wiki.js/vfc36jj/2022/wiki_220822월-1557_vfc36jjW08.sql.7z yosgc:wiki.js/2022/) #-------- #-- (14) 08월 백업파일을 2022년도 폴더로 복사합니다.
-#|  ----> OUTRC=$(/usr/bin/rclone ls yosgc:wiki.js/2022) #---- 22870240 wiki_220822월-1557_vfc36jjW08.sql.7z
-#|   22870240 08/wiki_220822월-1557_vfc36jjY2.sql.7z
-#|   22870266 weeks/wiki_220822월-1455_vfc36jjY2.sql.7z
-#|   15210922 06/일/wikijs-220612_162203-proenpi.sql.7z
-#|   15210890 06/일/wikijs-220612_161638-proenpi.sql.7z
-#|   15210826 06/일/wikijs-220612_152428-fed36lib.sql.7z
-#|   15209658 06/일/wikijs-220612_135120-proenpi.sql.7z
-#|   22859770 06/화/wikijs-220628_223616-proenpi.sql.7z
-#|   17935194 06/금/wikijs-220624_114502-proenpi.sql.7z
-#|   17886138 06/금/wikijs-220624_113154-proenpi.sql.7z
-#|   17889178 06/금/wikijs-220617_231206-proenpi.sql.7z
-#|   15221770 06/목/wikijs-220616_180710-proenpi.sql.7z
-#|   23166826 08/일/wikijs-220710_144053-proenpi.sql.7z
-#|   15211258 06/월/wikijs-220613_103609-proenpi.sql.7z---- #-- (16) 폴더 확인
-#|  ----> # #-- (19) wiki.js/2022/08 월 백업파일을 wiki.js/2022 년도로 복사하는 작업을 끝냅니다. (220822월-1557)
+#|  ----> REMOTE_SQL_7Z_LIST=$(/usr/bin/rclone ls yosgc:wiki.js/2022/ | grep .08wol.sql.7z | awk '{print $2}') #-- (9) 08월 백업파일이 이전에 백업돼 있었는지 확인 합니다.
+#|  ----> # #-- (10b) 클라우드에는 08월 백업파일이 없습니다.
+#|  ----> rm -f /home/fedora/wiki.js/vfc36jj/2022/*.08wol.sql.7z #-- #-- (11) 오늘날짜 로컬 백업파일을 삭제합니다.
+#|  <---- rm -f /home/fedora/wiki.js/vfc36jj/2022/*.08wol.sql.7z #-- #-- (11) 오늘날짜 로컬 백업파일을 삭제합니다.
+#|  ----> # #-- (12) wiki.js/2022/08 월 백업파일을 wiki.js/2022 년도로 복사하는 작업을 시작합니다. (220822월-1632)
+#|  ----> cp /home/fedora/wiki.js/vfc36jj/2022/08/wiki_220822월-1632_vfc36jj.2yoil.sql.7z /home/fedora/wiki.js/vfc36jj/2022/wiki_220822월-1632_vfc36jj.08wol.sql.7z #-- #-- (13) 로컬 디렉토리의 월 백업파일을 년도로 복사합니다.
+#|  <---- cp /home/fedora/wiki.js/vfc36jj/2022/08/wiki_220822월-1632_vfc36jj.2yoil.sql.7z /home/fedora/wiki.js/vfc36jj/2022/wiki_220822월-1632_vfc36jj.08wol.sql.7z #-- #-- (13) 로컬 디렉토리의 월 백업파일을 년도로 복사합니다.
+#|  ----> OUTRC=$(/usr/bin/rclone copy /home/fedora/wiki.js/vfc36jj/2022/wiki_220822월-1632_vfc36jj.08wol.sql.7z yosgc:wiki.js/2022/) #-------- #-- (14) 08월 백업파일을 2022년도 폴더로 복사합니다.
+#|  ----> OUTRC=$(/usr/bin/rclone ls yosgc:wiki.js/2022) #---- 22870240 wiki_220822월-1632_vfc36jj.08wol.sql.7z
+#|   22870240 wiki_220822월-1610_vfc36jjW08.sql.7z
+#|   22870240 08/wiki_220822월-1632_vfc36jj.2yoil.sql.7z
+#|   22870240 08/wiki_220822월-1610_vfc36jjY2.sql.7z
+#|   22870240 ju/wiki_220822월-1610_vfc36jjJ34.sql.7z---- #-- (15) 폴더 확인
+#|  ----> # #-- (16) wiki.js/2022/08 월 백업파일을 wiki.js/2022 년도로 복사하는 작업을 끝냅니다. (220822월-1632)
 #|      |
 #|      |
-#|      | wiki.js/2022/08 월의 마지막 백업파일을 wiki.js/2022/ju 폴더에 J34 번호로 복사 시작 (220822월-1557)
+#|      | wiki.js/2022/08 월의 마지막 백업파일을 wiki.js/2022/ju 폴더에 J34 번호로 복사 시작 (220822월-1632)
 #|      |
 #|      |
-#|  ----> REMOTE_SQL_7Z_LIST=$(/usr/bin/rclone ls yosgc:wiki.js/2022/ju/ | grep J34.sql.7z | awk '{print $2}') #-- (11) 08월 백업파일이 이전에 백업돼 있었는지 확인 합니다.
-#|  2022/08/22 15:58:54 Failed to ls: directory not found
-#|  ----> # #-- (12b) 클라우드에는 J34.sql.7z 백업파일이 없습니다.
-#|  ----> rm -f /home/fedora/wiki.js/vfc36jj/2022/ju/*J34.sql.7z #-- #-- (4) 오늘날짜 로컬 백업파일을 삭제합니다.
-#|  <---- rm -f /home/fedora/wiki.js/vfc36jj/2022/ju/*J34.sql.7z #-- #-- (4) 오늘날짜 로컬 백업파일을 삭제합니다.
-#|  ----> cp /home/fedora/wiki.js/vfc36jj/2022/08/wiki_220822월-1557_vfc36jjY2.sql.7z /home/fedora/wiki.js/vfc36jj/2022/ju/wiki_220822월-1557_vfc36jjJ34.sql.7z #-- #-- (13) J34.sql.7z 백업파일을 wiki.js/2022/ju 로 복사하는 작업을 시작합니다. (220822월-1557)
-#|  cp: '/home/fedora/wiki.js/vfc36jj/2022/ju/wiki_220822월-1557_vfc36jjJ34.sql.7z' 일반 파일을 만들 수 없습니다: 그런 파일이나 디렉터리가 없습니다
-#|  <---- cp /home/fedora/wiki.js/vfc36jj/2022/08/wiki_220822월-1557_vfc36jjY2.sql.7z /home/fedora/wiki.js/vfc36jj/2022/ju/wiki_220822월-1557_vfc36jjJ34.sql.7z #-- #-- (13) J34.sql.7z 백업파일을 wiki.js/2022/ju 로 복사하는 작업을 시작합니다. (220822월-1557)
-#|  2022/08/22 15:58:58 ERROR : Local file system at /home/fedora/wiki.js/vfc36jj/2022/ju/wiki_220822월-1557_vfc36jjJ34.sql.7z: error reading source root directory: directory not found
-#|  2022/08/22 15:58:58 ERROR : Attempt 1/3 failed with 1 errors and: directory not found
-#|  2022/08/22 15:58:58 ERROR : Local file system at /home/fedora/wiki.js/vfc36jj/2022/ju/wiki_220822월-1557_vfc36jjJ34.sql.7z: error reading source root directory: directory not found
-#|  2022/08/22 15:58:58 ERROR : Attempt 2/3 failed with 1 errors and: directory not found
-#|  2022/08/22 15:58:58 ERROR : Local file system at /home/fedora/wiki.js/vfc36jj/2022/ju/wiki_220822월-1557_vfc36jjJ34.sql.7z: error reading source root directory: directory not found
-#|  2022/08/22 15:58:58 ERROR : Attempt 3/3 failed with 1 errors and: directory not found
-#|  2022/08/22 15:58:58 Failed to copy: directory not found
-#|  ----> OUTRC=$(/usr/bin/rclone copy /home/fedora/wiki.js/vfc36jj/2022/ju/wiki_220822월-1557_vfc36jjJ34.sql.7z yosgc:wiki.js/2022/ju/) #-------- #-- (14) 08월 백업파일을 wiki.js/2022/ju 폴더로 복사합니다.
-#|  2022/08/22 15:59:02 Failed to ls: directory not found
-#|  ----> OUTRC=$(/usr/bin/rclone ls yosgc:wiki.js/2022/ju) #-------- #-- (16) 폴더 확인
-#|  ----> # #-- (19) wiki.js/2022/08 월의 마지막 백업파일을 wiki.js/2022/ju 폴더에 J34 번호로 복사하는 작업을 끝냅니다. (220822월-1557)
-#|  15:59:02월220822 fedora@vfc36jj ~/git-projects/fedora-sh/10-wikijs-docker-by-markdown
+#|  ----> REMOTE_SQL_7Z_LIST=$(/usr/bin/rclone ls yosgc:wiki.js/2022/ju/ | grep .34ju.sql.7z | awk '{print $2}') #-- (17) 08월 백업파일이 이전에 백업돼 있었는지 확인 합니다.
+#|  ----> # #-- (18b) 클라우드에는 .34ju.sql.7z 백업파일이 없습니다.
+#|  ----> rm -f /home/fedora/wiki.js/vfc36jj/2022/ju/*.34ju.sql.7z #-- #-- (19) 오늘날짜 로컬 백업파일을 삭제합니다.
+#|  <---- rm -f /home/fedora/wiki.js/vfc36jj/2022/ju/*.34ju.sql.7z #-- #-- (19) 오늘날짜 로컬 백업파일을 삭제합니다.
+#|  ----> cp /home/fedora/wiki.js/vfc36jj/2022/08/wiki_220822월-1632_vfc36jj.2yoil.sql.7z /home/fedora/wiki.js/vfc36jj/2022/ju/wiki_220822월-1632_vfc36jj.34ju.sql.7z #-- #-- (20) .34ju.sql.7z 백업파일을 wiki.js/2022/ju 로 복사하는 작업을 시작합니다. (220822월-1632)
+#|  <---- cp /home/fedora/wiki.js/vfc36jj/2022/08/wiki_220822월-1632_vfc36jj.2yoil.sql.7z /home/fedora/wiki.js/vfc36jj/2022/ju/wiki_220822월-1632_vfc36jj.34ju.sql.7z #-- #-- (20) .34ju.sql.7z 백업파일을 wiki.js/2022/ju 로 복사하는 작업을 시작합니다. (220822월-1632)
+#|  ----> OUTRC=$(/usr/bin/rclone copy /home/fedora/wiki.js/vfc36jj/2022/ju/wiki_220822월-1632_vfc36jj.34ju.sql.7z yosgc:wiki.js/2022/ju/) #-------- #-- (21) 08월 백업파일을 wiki.js/2022/ju 폴더로 복사합니다.
+#|  ----> OUTRC=$(/usr/bin/rclone ls yosgc:wiki.js/2022/ju) #---- 22870240 wiki_220822월-1632_vfc36jj.34ju.sql.7z
+#|   22870240 wiki_220822월-1610_vfc36jjJ34.sql.7z---- #-- (22) 폴더 확인
+#|  ----> # #-- (23) wiki.js/2022/08 월의 마지막 백업파일을 wiki.js/2022/ju 폴더에 J34 번호로 복사하는 작업을 끝냅니다. (220822월-1632)
+#|  16:33:44월220822 fedora@vfc36jj ~/git-projects/fedora-sh/10-wikijs-docker-by-markdown
 #|  10-wikijs-docker-by-markdown $
 #|
 #|<<====
