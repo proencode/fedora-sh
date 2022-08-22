@@ -54,9 +54,29 @@ this_year=$(date +%Y) #-- 2022
 this_wol=$(date +%m) #-- 07
 ymd_hm=$(date +"%y%m%d%a-%H%M") #-- ymd_hm=$(date +"%y%m%d-%H%M%S")
 
-week_no0=$(date +%u) #------------ 일0 월1 화2 수3 목4 금5 토6
-week_no1=$(( ${week_no0} + 1 )) #-- 1   2   3   4   5   6   7   #--
-# yoil_atog=$(echo "abcdefg" | cut -c ${week_no1}) #---- 요일 a...g 일...토
+yoil_number0to6=$(date +%u) #------------ 일0 월1 화2 수3 목4 금5 토6
+yoil_number1to7=$(( ${yoil_number0to6} + 1 )) #-- 1   2   3   4   5   6   7   #--
+# yoil_atog=$(echo "abcdefg" | cut -c ${yoil_number1to7}) #---- 요일 a...g 일...토
+ju_beonho=$(date +%U) #-- 1년중 몇번째 주인지 표시.
+#--
+#-- date -date '31 Dec 2021' _%Y-%m-%d__%V-V_%U-U
+#--
+#--      일    월    화    수    목    금    토
+#--      12/26 12/27 12/28 12/29 12/30 12/31 1/1
+#-- %U---52----52----52----52----52----52--( 00 )
+#--      52    52    52    52    52    52    52---%V
+#--      1/2   1/3   1/4   1/5   1/6   1/7   1/8
+#-- %U---01----01----01----01----01----01----01
+#--    ( 52 )  01    01    01    01    01    01---%V
+#--
+#--      일    월    화    수    목    금    토
+#--      1/23  1/24  1/25  1/26  1/27  1/28  1/29  
+#-- %U---04----04----04----04----04----04----04
+#--      04    04    04    04    04    04    04---%V
+#--      1/30  1/31  2/1   2/2   2/3   2/4   2/5
+#-- %U---05----05----05----05----05----05----05
+#--    ( 04 )  05    05    05    05    05    05---%V
+#-- 
 
 if [ "x$1" = "x" ]; then
 	cat <<__EOF__
@@ -157,7 +177,7 @@ if [ "x${ENTER_VALUE}" = "xok" ]; then
 fi
 
 uname_n=$(uname -n)
-yoil_sql_7z=Y${week_no1}.sql.7z #-- Y[1-7].sql.7z // 요일 표시
+yoil_sql_7z=Y${yoil_number1to7}.sql.7z #-- Y[1-7].sql.7z // 요일 표시
 Db_Time_Uname_Yoil_sql7z=${DB_NAME}_${ymd_hm}_${uname_n}${yoil_sql_7z}
 
 this_wol_sql_7z=W${this_wol}.sql.7z #-- *"W07.sql.7z" // 월 표시
@@ -172,10 +192,10 @@ REMOTE_YEAR=wiki.js/${this_year}
 REMOTE_WOL=${REMOTE_FOLDER}/${this_wol} #-- rclone 명령으로 보내는 원격 저장소의 데이터베이스구분/년/월 폴더이름
 
 
-#---->
+#----> REMOTE / 2022 / 08 / 최근 1주일치
 
 
-show_title "${REMOTE_WOL} 월 최근 일주일 백업을 시작니다. (${ymd_hm})"
+show_title "${REMOTE_WOL} 월 최근 일주일 백업을 시작합니다. (${ymd_hm})"
 
 
 if [ ! -d ${LOCAL_THIS_WOL} ]; then
@@ -229,8 +249,9 @@ showno="6" ; showqq="${REMOTE_WOL} 월 최근 일주일 백업을 끝냅니다. 
 show_then_view "#"
 
 
-#<----
-#---->
+#<---- REMOTE / 2022 / 08 / 최근 1주일치
+
+#----> REMOTE / 2022 / 당월 최종 1개
 
 
 show_title "${REMOTE_WOL} 월의 마지막 백업파일을 ${REMOTE_YEAR} 년도로 복사 시작 (${ymd_hm})"
@@ -292,8 +313,12 @@ showno="19" ; showqq="${REMOTE_WOL} 월 백업파일을 ${REMOTE_YEAR} 년도로
 show_then_view "#"
 
 
-#<----
-#---->
+#<---- REMOTE / 2022 / 당월 최종 1개
+
+#----> REMOTE / 2022 / week / 매주 주말 1개
+
+
+#<---- REMOTE / 2022 / week / 매주 주말 1개
 
 
 #|====>>
