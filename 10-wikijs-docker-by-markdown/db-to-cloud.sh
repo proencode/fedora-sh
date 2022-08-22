@@ -56,26 +56,36 @@ ymd_hm=$(date +"%y%m%d%a-%H%M") #-- ymd_hm=$(date +"%y%m%d-%H%M%S")
 
 yoil_number0to6=$(date +%u) #------------ 일0 월1 화2 수3 목4 금5 토6
 yoil_number1to7=$(( ${yoil_number0to6} + 1 )) #-- 1   2   3   4   5   6   7   #--
-# yoil_atog=$(echo "abcdefg" | cut -c ${yoil_number1to7}) #---- 요일 a...g 일...토
-ju_beonho=$(date +%U) #-- 1년중 몇번째 주인지 표시.
+# yoil_atog=$(echo "abcdefg" | cut -c ${yoil_number1to7}) #---- 요일 a...g 일...토 #-- XX
+ju_beonho=$(date +%V) #-- 1년중 몇번째 주인지 표시. V: 그해의 첫번째 월요일부터 01주, 첫번째 월요일 이전은 새해라도 전해 마지막 주 번째로 한다. (월요일부터 일요일까지 호번)
 #--
 #-- date -date '31 Dec 2021' _%Y-%m-%d__%V-V_%U-U
+#--
+#--    월    화    수    목    금    토    일
+#--    12/27 12/28 12/29 12/30 12/31 1/1   1/2
+#--    52____52____52____52____52____52____52____%V
+#--    1/3   1/4   1/5   1/6   1/7   1/8   1/9
+#--    01____01____01____01____01____01____01____%V
+#--
+#--    월    화    수    목    금    토    일
+#--    1/24  1/25  1/26  1/27  1/28  1/29  1/30
+#--    04____04____04____04____04____04____04____%V
+#--    1/31  2/1   2/2   2/3   2/4   2/5   2/6
+#--    05____05____05____05____05____05____05____%V
+#--
+#-- U: 그해의 첫번째 일요일부터 01주, 그해 1일부터 첫번째 토요일까지는 00주로 한다. 연말,연초만 한개의 주가 마지막 주와 00 주로 나뉘어지고 나머지는 일요일 기준 일련번호.
 #--
 #--      일    월    화    수    목    금    토
 #--      12/26 12/27 12/28 12/29 12/30 12/31 1/1
 #-- %U---52----52----52----52----52----52--( 00 )
-#--      52    52    52    52    52    52    52---%V
 #--      1/2   1/3   1/4   1/5   1/6   1/7   1/8
 #-- %U---01----01----01----01----01----01----01
-#--    ( 52 )  01    01    01    01    01    01---%V
 #--
 #--      일    월    화    수    목    금    토
 #--      1/23  1/24  1/25  1/26  1/27  1/28  1/29  
 #-- %U---04----04----04----04----04----04----04
-#--      04    04    04    04    04    04    04---%V
 #--      1/30  1/31  2/1   2/2   2/3   2/4   2/5
 #-- %U---05----05----05----05----05----05----05
-#--    ( 04 )  05    05    05    05    05    05---%V
 #-- 
 
 if [ "x$1" = "x" ]; then
@@ -89,23 +99,23 @@ fi
 if [ "x$1" = "xkaosorder" ]; then
 	DB_NAME="$1" #-- 백업할 데이터베이스 이름
 	LOGIN_PATH="kaoslog" #-- 데이터베이스 로그인 패쓰
-	LOCAL_FOLDER="${HOME}/gate242/${HOSTNAME}" #-- 백업파일을 임시로 저장할 로컬 저장소의 디렉토리 이름
-	REMOTE_FOLDER="gate242db" #-- 원격 저장소의 첫번째 폴더 이름
-	RCLONE_NAME="swlgc" #-- rclone 이름
+	LOCAL_FOLDER="${HOME}/kaosorder/${HOSTNAME}" #-- 백업파일을 임시로 저장할 로컬 저장소의 디렉토리 이름
+	REMOTE_FOLDER="kaosorder" #-- 원격 저장소의 첫번째 폴더 이름
+	RCLONE_NAME="kngc" #-- rclone 이름 kaos.notegc
 else
 if [ "x$1" = "xgate242" ]; then
 	DB_NAME="$1" #-- 백업할 데이터베이스 이름
 	LOGIN_PATH="swlog" #-- 데이터베이스 로그인 패쓰
 	LOCAL_FOLDER="${HOME}/gate242/${HOSTNAME}" #-- 백업파일을 임시로 저장할 로컬 저장소의 디렉토리 이름
-	REMOTE_FOLDER="gate242db" #-- 원격 저장소의 첫번째 폴더 이름
-	RCLONE_NAME="swlgc" #-- rclone 이름
+	REMOTE_FOLDER="gate242" #-- 원격 저장소의 첫번째 폴더 이름
+	RCLONE_NAME="swlgc" #-- rclone 이름 seowontire.libgc
 else
 if [ "x$1" = "xwiki" ]; then
 	DB_NAME="$1" #-- 백업할 데이터베이스 이름
 	LOGIN_PATH="wikipsql" #-- 데이터베이스 로그인 패쓰 ;;; pgsql 이라서 쓰지는 않음.
 	LOCAL_FOLDER="${HOME}/wiki.js/${HOSTNAME}" #-- 백업파일을 임시로 저장할 로컬 저장소의 디렉토리 이름
 	REMOTE_FOLDER="wiki.js" #-- 원격 저장소의 첫번째 폴더 이름
-	RCLONE_NAME="yosgc" #-- rclone 이름
+	RCLONE_NAME="yosgc" #-- rclone 이름 yosjeongc
 else
 	cat <<__EOF__
 
@@ -147,7 +157,7 @@ if [ "x$1" = "xhelp" ]; then
 	cat <<__EOF__
 #-- 1		2		3		4		5		6
 #-- DB_NAME	LOGIN_PATH	LOCAL_FOLDER	REMOTE_FOLDER	RCLONE_NAME	SHOW OK?
-#-- kaosorder2	kaosgc		/home/kaosdb	kaosdb		kngc		ok/""
+#-- kaosorder2	kaosgc		/home/kaosdb	kaosorder	kngc		ok/""
 #-- gate242	swlgc		/home/gate242	gate242		swlgc		ok/""
 #-- wiki	wikipsql	/home/wiki.js	wiki.js		yosgc		ok/""
 #--
@@ -180,16 +190,21 @@ uname_n=$(uname -n)
 yoil_sql_7z=Y${yoil_number1to7}.sql.7z #-- Y[1-7].sql.7z // 요일 표시
 Db_Time_Uname_Yoil_sql7z=${DB_NAME}_${ymd_hm}_${uname_n}${yoil_sql_7z}
 
-this_wol_sql_7z=W${this_wol}.sql.7z #-- *"W07.sql.7z" // 월 표시
+this_wol_sql_7z=W${this_wol}.sql.7z #-- W07.sql.7z // 월 표시
 db_nowWOL_sql_7z=${DB_NAME}_${ymd_hm}_${uname_n}${this_wol_sql_7z}
+
+ju_beonho_sql_7z=J${ju_beonho}.sql.7z #-- J01.sql.7z // 1년중 몇번째 주인지 표시
+db_jubeonho_sql_7z=${DB_NAME}_${ymd_hm}_${uname_n}${ju_beonho_sql_7z}
 
 LOCAL_THIS_YEAR=${LOCAL_FOLDER}/${this_year} #-- 년도 폴더에는 매월 마지막 백업 1개씩만 보관한다.
 
 LOCAL_THIS_WOL=${LOCAL_THIS_YEAR}/${this_wol} #-- 년.월별 폴더에는 이달의 마지막 1주일치만 보관한다.
-LOCAL_THIS_WEEK=${LOCAL_THIS_YEAR}/weeks #-- 년도의 weeks 폴더에는 매주 마지막 백업 1개씩만 보관한다.
+LOCAL_THIS_WEEKS=${LOCAL_THIS_YEAR}/weeks #-- 년도의 weeks 폴더에는 매주 마지막 백업 1개씩만 보관한다.
 
-REMOTE_YEAR=wiki.js/${this_year}
-REMOTE_WOL=${REMOTE_FOLDER}/${this_wol} #-- rclone 명령으로 보내는 원격 저장소의 데이터베이스구분/년/월 폴더이름
+REMOTE_YEAR=${REMOTE_FOLDER}/${this_year}
+
+REMOTE_WOL=${REMOTE_YEAR}/${this_wol} #-- rclone 명령으로 보내는 원격 저장소의 데이터베이스구분/년/월 폴더이름
+REMOTE_WEEKS=${REMOTE_YEAR}/weeks #-- rclone 명령으로 보내는 원격 저장소의 데이터베이스구분/년/weeks 폴더이름
 
 
 #----> REMOTE / 2022 / 08 / 최근 1주일치
@@ -315,10 +330,68 @@ show_then_view "#"
 
 #<---- REMOTE / 2022 / 당월 최종 1개
 
-#----> REMOTE / 2022 / week / 매주 주말 1개
+#----> REMOTE / 2022 / weeks / 매주 주말 1개
 
 
-#<---- REMOTE / 2022 / week / 매주 주말 1개
+#-- db_jubeonho_sql_7z=${DB_NAME}_${ymd_hm}_${uname_n}${ju_beonho_sql_7z}
+
+show_title "${REMOTE_WOL} 월의 마지막 백업파일을 ${REMOTE_WEEKS} 폴더에 J${ju_beonho} 번호로 복사 시작 (${ymd_hm})"
+
+
+showno="11" ; showqq="${this_wol}월 백업파일이 이전에 백업돼 있었는지 확인 합니다."
+show_then_view "REMOTE_SQL_7Z_LIST=\$(/usr/bin/rclone ls ${RCLONE_NAME}:${REMOTE_WEEKS}/ | grep ${ju_beonho_sql_7z} | awk '{print \$2}')"
+REMOTE_SQL_7Z_LIST=$(/usr/bin/rclone ls ${RCLONE_NAME}:${REMOTE_WEEKS}/ | grep ${ju_beonho_sql_7z} | awk '{print $2}')
+
+
+if [ "x$REMOTE_SQL_7Z_LIST" != "x" ]; then
+	showno="12a" ; shwo_msg="클라우드에 이달 백업파일이 있는 경우,"
+	show_then_view "mapfile -t Remote_Sql7z_Array <<< \"$REMOTE_SQL_7Z_LIST\""
+	mapfile -t Remote_Sql7z_Array <<< "$REMOTE_SQL_7Z_LIST"
+
+	for val in "${Remote_Sql7z_Array[@]}"
+	do
+		showno="12a1" ; showqq="빈칸 삭제"
+		show_then_view "file_name=\$(echo ${val} | sed 's/ *\$//g')"
+		file_name=$(echo ${val} | sed 's/ *$//g')
+
+		OUTRC=$(/usr/bin/rclone deletefile ${RCLONE_NAME}:${REMOTE_WEEKS}/${file_name})
+		showno="12a2" ; showqq="${this_wol}월 백업파일을 삭제합니다."
+		show_then_view "OUTRC=\$(/usr/bin/rclone deletefile ${RCLONE_NAME}:${REMOTE_WEEKS}/${file_name}) ${cMagenta}#----${cYellow}${OUTRC}${cMagenta}----"
+	done
+else
+	showno="12b" ; showqq="클라우드에는 ${ju_beonho_sql_7z} 백업파일이 없습니다."
+	show_then_view "#"
+fi
+
+
+
+showno="13" ; showqq="${ju_beonho_sql_7z} 백업파일을 ${REMOTE_WEEKS} 로 복사하는 작업을 시작합니다. (${ymd_hm})"
+show_then_view "#"
+
+
+OUTRC=$(/usr/bin/rclone copy ${RCLONE_NAME}:${REMOTE_WOL}/${Db_Time_Uname_Yoil_sql7z} ${RCLONE_NAME}:${REMOTE_WEEKS}/)
+showno="14" ; showqq="${this_wol}월 백업파일을 ${REMOTE_WEEKS} 폴더로 복사합니다."
+show_then_view "OUTRC=\$(/usr/bin/rclone copy ${RCLONE_NAME}:${REMOTE_WOL}/${Db_Time_Uname_Yoil_sql7z} ${RCLONE_NAME}:${REMOTE_WEEKS}/) ${cMagenta}#----${cYellow}${OUTRC}${cMagenta}----"
+
+OUTRC=$(/usr/bin/rclone ls ${RCLONE_NAME}:${REMOTE_WEEKS})
+showno="16" ; showqq="폴더 확인"
+show_then_view "OUTRC=\$(/usr/bin/rclone ls ${RCLONE_NAME}:${REMOTE_WEEKS}) ${cMagenta}#----${cYellow}${OUTRC}${cMagenta}----"
+
+OUTRC=$(/usr/bin/rclone moveto ${RCLONE_NAME}:${REMOTE_YEAR}/${Db_Time_Uname_Yoil_sql7z} ${RCLONE_NAME}:${REMOTE_WEEKS}/${db_jubeonho_sql_7z})
+showno="18" ; showqq="파일 이름을 바꿉니다."
+show_then_view "OUTRC=\$(/usr/bin/rclone moveto ${RCLONE_NAME}:${REMOTE_YEAR}/${Db_Time_Uname_Yoil_sql7z} ${RCLONE_NAME}:${REMOTE_WEEKS}/${db_jubeonho_sql_7z}) ${cMagenta}#----${cYellow}${OUTRC}${cMagenta}----"
+
+OUTRC=$(/usr/bin/rclone ls ${RCLONE_NAME}:${REMOTE_WEEKS})
+showno="18" ; showqq="년도"
+show_then_view "OUTRC=\$(/usr/bin/rclone ls ${RCLONE_NAME}:${REMOTE_WEEKS}) ${cMagenta}#----${cYellow}${OUTRC}${cMagenta}----"
+show_then_view "${cMagenta}#----${cYellow}${OUTRC}${cMagenta}----"
+
+
+showno="19" ; showqq="${REMOTE_WOL} 월의 마지막 백업파일을 ${REMOTE_WEEKS} 폴더에 J${ju_beonho} 번호로 복사하는 작업을 끝냅니다. (${ymd_hm})"
+show_then_view "#"
+
+
+#<---- REMOTE / 2022 / weeks / 매주 주말 1개
 
 
 #|====>>
