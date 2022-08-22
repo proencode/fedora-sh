@@ -18,7 +18,7 @@ zz00log_name="${zz00logs_folder}/zz.$(date +"%y%m%d-%H%M%S")__RUNNING_${CMD_NAME
 
 port_no=5800
 db_folder=/home/docker/pgsql
-wiki_conf_dir=/home/docker/wikijs.conf
+wiki_conf_dir=/home/docker/wiki.js
 
 if [ ! -d ${db_folder} ]; then
 	cat_and_run "sudo mkdir -p ${db_folder}"
