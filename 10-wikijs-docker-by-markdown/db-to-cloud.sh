@@ -54,9 +54,9 @@ this_year=$(date +%Y) #-- 2022
 this_wol=$(date +%m) #-- 07
 ymd_hm=$(date +"%y%m%d%a-%H%M") #-- ymd_hm=$(date +"%y%m%d-%H%M%S")
 
-week_no=$(date +%u) #------------ 일0 월1 화2 수3 목4 금5 토6
-week_no=$(( ${week_no} + 1 )) #-- 1   2   3   4   5   6   7   #--
-yoil_atog=$(echo "abcdefg" | cut -c ${week_no}) 
+week_no0=$(date +%u) #------------ 일0 월1 화2 수3 목4 금5 토6
+week_no1=$(( ${week_no0} + 1 )) #-- 1   2   3   4   5   6   7   #--
+# yoil_atog=$(echo "abcdefg" | cut -c ${week_no1}) #---- 요일 a...g 일...토
 
 if [ "x$1" = "x" ]; then
 	cat <<__EOF__
@@ -157,18 +157,19 @@ if [ "x${ENTER_VALUE}" = "xok" ]; then
 fi
 
 uname_n=$(uname -n)
-db_NOWyoil_sql_7z=${DB_NAME}_${ymd_hm}_${uname_n}${yoil_atog}.sql.7z #-- *"[a-g].sql.7z" // 요일 표시
-this_wol_sql_7z="${this_wol}.sql.7z"
-db_nowWOL_sql_7z=${DB_NAME}_${ymd_hm}_${uname_n}.${this_wol_sql_7z} #-- *".07.sql.7z" // 월 표시
+yoil_sql_7z=Y${week_no1}.sql.7z #-- Y[1-7].sql.7z // 요일 표시
+Db_Time_Uname_Yoil_sql7z=${DB_NAME}_${ymd_hm}_${uname_n}${yoil_sql_7z}
+
+this_wol_sql_7z=W${this_wol}.sql.7z #-- *"W07.sql.7z" // 월 표시
+db_nowWOL_sql_7z=${DB_NAME}_${ymd_hm}_${uname_n}${this_wol_sql_7z}
 
 LOCAL_THIS_YEAR=${LOCAL_FOLDER}/${this_year} #-- 년도 폴더에는 매월 마지막 백업 1개씩만 보관한다.
+
 LOCAL_THIS_WOL=${LOCAL_THIS_YEAR}/${this_wol} #-- 년.월별 폴더에는 이달의 마지막 1주일치만 보관한다.
 LOCAL_THIS_WEEK=${LOCAL_THIS_YEAR}/weeks #-- 년도의 weeks 폴더에는 매주 마지막 백업 1개씩만 보관한다.
 
 REMOTE_YEAR=wiki.js/${this_year}
 REMOTE_WOL=${REMOTE_FOLDER}/${this_wol} #-- rclone 명령으로 보내는 원격 저장소의 데이터베이스구분/년/월 폴더이름
-
-rclone_name=yosgc #-- 원격 저장소인 yosjeongc 를 연결하기 위해 rclone 에서 쓰는 이름
 
 
 #---->
@@ -187,8 +188,8 @@ fi
 
 
 showno="2" ; showqq="오늘날짜 클라우드 백업파일이 있는지 확인 합니다."
-show_then_view "REMOTE_SQL_7Z_LIST=\$(/usr/bin/rclone ls ${rclone_name}:${REMOTE_WOL}/ | grep ${yoil_atog}.sql.7z | awk '{print \$2}')"
-REMOTE_SQL_7Z_LIST=$(/usr/bin/rclone ls ${rclone_name}:${REMOTE_WOL}/ | grep ${yoil_atog}.sql.7z | awk '{print $2}')
+show_then_view "REMOTE_SQL_7Z_LIST=\$(/usr/bin/rclone ls ${RCLONE_NAME}:${REMOTE_WOL}/ | grep ${yoil_sql_7z} | awk '{print \$2}')"
+REMOTE_SQL_7Z_LIST=$(/usr/bin/rclone ls ${RCLONE_NAME}:${REMOTE_WOL}/ | grep ${yoil_sql_7z} | awk '{print $2}')
 
 
 if [ "x$REMOTE_SQL_7Z_LIST" != "x" ]; then
@@ -202,9 +203,9 @@ if [ "x$REMOTE_SQL_7Z_LIST" != "x" ]; then
 		show_then_view "file_name=\$(echo ${val} | sed 's/ *\$//g')"
 		file_name=$(echo ${val} | sed 's/ *$//g')
 
-		OUTRC=$(/usr/bin/rclone deletefile ${rclone_name}:${REMOTE_WOL}/${file_name})
+		OUTRC=$(/usr/bin/rclone deletefile ${RCLONE_NAME}:${REMOTE_WOL}/${file_name})
 		showno="3a2" ; showqq="오늘날짜 클라우드 백업파일을 삭제합니다."
-		show_then_view "OUTRC=\$(/usr/bin/rclone deletefile ${rclone_name}:${REMOTE_WOL}/${file_name}) ${cMagenta}#----${cYellow}${OUTRC}${cMagenta}----"
+		show_then_view "OUTRC=\$(/usr/bin/rclone deletefile ${RCLONE_NAME}:${REMOTE_WOL}/${file_name}) ${cMagenta}#----${cYellow}${OUTRC}${cMagenta}----"
 		show_then_view "#"
 	done
 else
@@ -214,14 +215,14 @@ fi
 # echo ">>>> ^C" ; read a
 
 showno="4" ; showqq="오늘날짜 로컬 백업파일을 삭제합니다."
-show_then_run "rm -f ${LOCAL_THIS_WOL}/*${yoil_atog}.sql.7z"
+show_then_run "rm -f ${LOCAL_THIS_WOL}/*${yoil_sql_7z}"
 
 showno="5" ; showqq="DB 를 로컬에 백업합니다."
-show_then_run "/usr/bin/mysqldump --login-path=${LOGIN_PATH} --column-statistics=0 ${DB_NAME} | 7za a -si ${LOCAL_THIS_WOL}/${db_NOWyoil_sql_7z}"
+show_then_run "/usr/bin/mysqldump --login-path=${LOGIN_PATH} --column-statistics=0 ${DB_NAME} | 7za a -si ${LOCAL_THIS_WOL}/${Db_Time_Uname_Yoil_sql7z}"
 
-OUTRC=$(/usr/bin/rclone copy ${LOCAL_THIS_WOL}/${db_NOWyoil_sql_7z} ${rclone_name}:${REMOTE_WOL}/)
+OUTRC=$(/usr/bin/rclone copy ${LOCAL_THIS_WOL}/${Db_Time_Uname_Yoil_sql7z} ${RCLONE_NAME}:${REMOTE_WOL}/)
 showno="6" ; showqq="로컬 DB 백업파일을 클라우드로 복사합니다."
-show_then_view "OUTRC=\$(/usr/bin/rclone copy ${LOCAL_THIS_WOL}/${db_NOWyoil_sql_7z} ${rclone_name}:${REMOTE_WOL}/) ${cMagenta}#----${cYellow}${OUTRC}${cMagenta}----"
+show_then_view "OUTRC=\$(/usr/bin/rclone copy ${LOCAL_THIS_WOL}/${Db_Time_Uname_Yoil_sql7z} ${RCLONE_NAME}:${REMOTE_WOL}/) ${cMagenta}#----${cYellow}${OUTRC}${cMagenta}----"
 
 
 showno="6" ; showqq="${REMOTE_WOL} 월 최근 일주일 백업을 끝냅니다. (${ymd_hm})"
@@ -236,8 +237,8 @@ show_title "${REMOTE_WOL} 월의 마지막 백업파일을 ${REMOTE_YEAR} 년도
 
 
 showno="11" ; showqq="${this_wol}월 백업파일이 이전에 백업돼 있었는지 확인 합니다."
-show_then_view "REMOTE_SQL_7Z_LIST=\$(/usr/bin/rclone ls ${rclone_name}:${REMOTE_YEAR}/ | grep ${this_wol_sql_7z} | awk '{print \$2}')"
-REMOTE_SQL_7Z_LIST=$(/usr/bin/rclone ls ${rclone_name}:${REMOTE_YEAR}/ | grep ${this_wol_sql_7z} | awk '{print $2}')
+show_then_view "REMOTE_SQL_7Z_LIST=\$(/usr/bin/rclone ls ${RCLONE_NAME}:${REMOTE_YEAR}/ | grep ${this_wol_sql_7z} | awk '{print \$2}')"
+REMOTE_SQL_7Z_LIST=$(/usr/bin/rclone ls ${RCLONE_NAME}:${REMOTE_YEAR}/ | grep ${this_wol_sql_7z} | awk '{print $2}')
 
 
 if [ "x$REMOTE_SQL_7Z_LIST" != "x" ]; then
@@ -251,9 +252,9 @@ if [ "x$REMOTE_SQL_7Z_LIST" != "x" ]; then
 		show_then_view "file_name=\$(echo ${val} | sed 's/ *\$//g')"
 		file_name=$(echo ${val} | sed 's/ *$//g')
 
-		OUTRC=$(/usr/bin/rclone deletefile ${rclone_name}:${REMOTE_YEAR}/${file_name})
+		OUTRC=$(/usr/bin/rclone deletefile ${RCLONE_NAME}:${REMOTE_YEAR}/${file_name})
 		showno="12a2" ; showqq="${this_wol}월 백업파일을 삭제합니다."
-		show_then_view "OUTRC=\$(/usr/bin/rclone deletefile ${rclone_name}:${REMOTE_WOL}/${file_name}) ${cMagenta}#----${cYellow}${OUTRC}${cMagenta}----"
+		show_then_view "OUTRC=\$(/usr/bin/rclone deletefile ${RCLONE_NAME}:${REMOTE_WOL}/${file_name}) ${cMagenta}#----${cYellow}${OUTRC}${cMagenta}----"
 	done
 else
 	showno="12b" ; showqq="클라우드에는 ${this_wol}월 백업파일이 없습니다."
@@ -266,25 +267,25 @@ showno="13" ; showqq="${REMOTE_WOL} 월 백업파일을 ${REMOTE_YEAR} 년도로
 show_then_view "#"
 
 
-OUTRC=$(/usr/bin/rclone copy ${rclone_name}:${REMOTE_WOL}/${db_NOWyoil_sql_7z} ${rclone_name}:${REMOTE_YEAR}/)
+OUTRC=$(/usr/bin/rclone copy ${RCLONE_NAME}:${REMOTE_WOL}/${Db_Time_Uname_Yoil_sql7z} ${RCLONE_NAME}:${REMOTE_YEAR}/)
 showno="14" ; showqq="${this_wol}월 백업파일을 ${this_year}년도 폴더로 복사합니다."
-show_then_view "OUTRC=\$(/usr/bin/rclone copy ${rclone_name}:${REMOTE_WOL}/${db_NOWyoil_sql_7z} ${rclone_name}:${REMOTE_YEAR}/) ${cMagenta}#----${cYellow}${OUTRC}${cMagenta}----"
+show_then_view "OUTRC=\$(/usr/bin/rclone copy ${RCLONE_NAME}:${REMOTE_WOL}/${Db_Time_Uname_Yoil_sql7z} ${RCLONE_NAME}:${REMOTE_YEAR}/) ${cMagenta}#----${cYellow}${OUTRC}${cMagenta}----"
 
-OUTRC=$(/usr/bin/rclone ls ${rclone_name}:${REMOTE_YEAR})
+OUTRC=$(/usr/bin/rclone ls ${RCLONE_NAME}:${REMOTE_YEAR})
 showno="16" ; showqq="폴더 확인"
-show_then_view "OUTRC=\$(/usr/bin/rclone ls ${rclone_name}:${REMOTE_YEAR}) ${cMagenta}#----${cYellow}${OUTRC}${cMagenta}----"
+show_then_view "OUTRC=\$(/usr/bin/rclone ls ${RCLONE_NAME}:${REMOTE_YEAR}) ${cMagenta}#----${cYellow}${OUTRC}${cMagenta}----"
 
-OUTRC=$(/usr/bin/rclone moveto ${rclone_name}:${REMOTE_YEAR}/${db_NOWyoil_sql_7z} ${rclone_name}:${REMOTE_YEAR}/${db_nowWOL_sql_7z})
+OUTRC=$(/usr/bin/rclone moveto ${RCLONE_NAME}:${REMOTE_YEAR}/${Db_Time_Uname_Yoil_sql7z} ${RCLONE_NAME}:${REMOTE_YEAR}/${db_nowWOL_sql_7z})
 showno="18" ; showqq="파일 이름을 바꿉니다."
-show_then_view "OUTRC=\$(/usr/bin/rclone moveto ${rclone_name}:${REMOTE_YEAR}/${db_NOWyoil_sql_7z} ${rclone_name}:${REMOTE_YEAR}/${db_nowWOL_sql_7z}) ${cMagenta}#----${cYellow}${OUTRC}${cMagenta}----"
+show_then_view "OUTRC=\$(/usr/bin/rclone moveto ${RCLONE_NAME}:${REMOTE_YEAR}/${Db_Time_Uname_Yoil_sql7z} ${RCLONE_NAME}:${REMOTE_YEAR}/${db_nowWOL_sql_7z}) ${cMagenta}#----${cYellow}${OUTRC}${cMagenta}----"
 
-OUTRC=$(/usr/bin/rclone ls ${rclone_name}:${REMOTE_YEAR})
+OUTRC=$(/usr/bin/rclone ls ${RCLONE_NAME}:${REMOTE_YEAR})
 showno="18" ; showqq="년도"
-show_then_view "OUTRC=\$(/usr/bin/rclone ls ${rclone_name}:${REMOTE_YEAR}) ${cMagenta}#----${cYellow}${OUTRC}${cMagenta}----"
+show_then_view "OUTRC=\$(/usr/bin/rclone ls ${RCLONE_NAME}:${REMOTE_YEAR}) ${cMagenta}#----${cYellow}${OUTRC}${cMagenta}----"
 show_then_view "${cMagenta}#----${cYellow}${OUTRC}${cMagenta}----"
 
-OUTRC=$(/usr/bin/rclone ls ${rclone_name}:${REMOTE_WOL})
-show_then_view "OUTRC=\$(/usr/bin/rclone ls ${rclone_name}:${REMOTE_WOL}) ${cMagenta}#----${cYellow}${OUTRC}${cMagenta}----"
+OUTRC=$(/usr/bin/rclone ls ${RCLONE_NAME}:${REMOTE_WOL})
+show_then_view "OUTRC=\$(/usr/bin/rclone ls ${RCLONE_NAME}:${REMOTE_WOL}) ${cMagenta}#----${cYellow}${OUTRC}${cMagenta}----"
 
 
 showno="19" ; showqq="${REMOTE_WOL} 월 백업파일을 ${REMOTE_YEAR} 년도로 복사하는 작업을 끝냅니다. (${ymd_hm})"
