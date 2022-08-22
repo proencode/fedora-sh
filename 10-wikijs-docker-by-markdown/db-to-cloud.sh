@@ -10,7 +10,11 @@ source ${CMD_DIR}/color_base #-- cBlack cRed cGreen cYellow cBlue cMagenta cCyan
 #----
 
 show_then_run () {
-	if [ "x$show_ok" = "xok" ]; then cat_and_run "$1" "#-- (${showno}) ${showqq}" ; fi
+	if [ "x$show_ok" = "xok" ]; then
+		cat_and_run "$1" "#-- (${showno}) ${showqq}"
+	else
+		echo "$1" | sh
+	fi
 }
 show_then_view () {
 	if [ "x$show_ok" = "xok" ]; then echo "${cGreen}----> $1 ${cCyan}#-- (${showno}) ${showqq}${cReset}" ; fi
