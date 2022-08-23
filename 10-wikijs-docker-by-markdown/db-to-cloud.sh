@@ -106,11 +106,11 @@ __EOF__
 fi
 if [ "x$1" = "xhelp" ]; then
 	cat <<__EOF__
-#-- 1		2		3		4		5		6
-#-- DB_NAME	LOGIN_PATH	LOCAL_FOLDER	REMOTE_FOLDER	RCLONE_NAME	SHOW OK?
-#-- kaosorder2	kaosgc		/home/kaosdb	kaosorder	kngc		ok/""
-#-- gate242	swlgc		/home/gate242	gate242		swlgc		ok/""
-#-- wiki	wikipsql	/home/wiki.js	wiki.js		yosgc		ok/""
+#-- 1		2		3		4		5		6	-not use-
+#-- DB_NAME	LOGIN_PATH	LOCAL_FOLDER	REMOTE_FOLDER	RCLONE_NAME	OK?	USER
+#-- kaosorder2	kaosgc		docker/kaosdb	kaosorder	kngc		ok/""	kaosorder2/
+#-- gate242	swlgc		docker/gate242	gate242		swlgc		ok/""	gateroot/
+#-- wiki	-not use-	docker/wiki.js	wiki.js		yosgc		ok/""	wiki/
 #--
 #-- dbname	"" #-- 지정한 데이터베이스로 진행합니다.
 #-- dbname	"ok" #-- 지정한 데이터베이스로 진행하면서 과정을 보여줍니다.
