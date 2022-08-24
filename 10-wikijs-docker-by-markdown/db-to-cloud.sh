@@ -225,17 +225,13 @@ show_title "${REMOTE_WOL} 월 최근 일주일 백업을 시작합니다. (${ymd
 if [ ! -d ${LOCAL_THIS_WOL} ]; then
 	showno="1a" ; showqq="보관용 로컬 디렉토리를 만듭니다."
 	show_then_run "mkdir -p ${LOCAL_THIS_WOL}"
-else
-	showno="1b" ; showqq="보관용 로컬 디렉토리 입니다."
-	show_then_run "ls -l ${LOCAL_THIS_WOL}"
 fi
 if [ ! -d ${LOCAL_THIS_JU} ]; then
-	showno="2a" ; showqq="보관용 로컬 디렉토리를 만듭니다."
+	showno="1b" ; showqq="보관용 로컬 디렉토리를 만듭니다."
 	show_then_run "mkdir -p ${LOCAL_THIS_JU}"
-else
-	showno="2b" ; showqq="보관용 로컬 디렉토리 입니다."
-	show_then_run "ls -l ${LOCAL_THIS_JU}"
 fi
+showno="2" ; showqq="보관용 로컬 디렉토리 입니다."
+show_then_run "ls -lR ${LOCAL_THIS_YEAR}"
 
 
 showno="3" ; showqq="오늘날짜 클라우드 백업파일이 있는지 확인 합니다."
@@ -396,10 +392,10 @@ OUTRC=$(/usr/bin/rclone copy ${LOCAL_THIS_JU}/${JU_sql7z} ${RCLONE_NAME}:${REMOT
 showno="21" ; showqq="${this_wol}월 백업파일을 ${REMOTE_JU} 폴더로 복사합니다."
 show_then_view "OUTRC=\$(/usr/bin/rclone copy ${LOCAL_THIS_JU}/${JU_sql7z} ${RCLONE_NAME}:${REMOTE_JU}/) ${cMagenta}#----${cYellow}${OUTRC}${cMagenta}----"
 
-OUTRC=$(/usr/bin/rclone ls ${RCLONE_NAME}:${REMOTE_JU})
-showno="22" ; showqq="폴더 확인"
-show_then_view "OUTRC=\$(/usr/bin/rclone ls ${RCLONE_NAME}:${REMOTE_JU}) ${cMagenta}#----${cYellow}${OUTRC}${cMagenta}----"
-
+showno="22a" ; showqq="보관용 로컬 디렉토리 입니다."
+show_then_run "ls -lR ${LOCAL_THIS_YEAR}"
+showno="22b" ; showqq="원격 디렉토리 입니다."
+show_then_run "/usr/bin/rclone lsl ${RCLONE_NAME}:${REMOTE_YEAR}"
 
 showno="23" ; showqq="${REMOTE_WOL} 월의 마지막 백업파일을 ${REMOTE_JU} 폴더에 J${ju_beonho} 번호로 복사하는 작업을 끝냅니다. (${ymd_hm})"
 show_then_view "#"
