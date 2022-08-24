@@ -62,6 +62,7 @@ __EOF__
 this_year=$(date +%Y) #-- 2022
 this_wol=$(date +%m) #-- 07
 ymd_hm=$(date +"%y%m%d%a-%H%M") #-- ymd_hm=$(date +"%y%m%d-%H%M%S")
+pswd_ym=$(date +"%y%m")
 
 yoil_number0to6=$(date +%u) #------------ 일0 월1 화2 수3 목4 금5 토6
 yoil_number1to7=$(( ${yoil_number0to6} + 1 )) #-- 1   2   3   4   5   6   7   #--
@@ -99,25 +100,18 @@ ju_beonho=$(date +%V) #-- 1년중 몇번째 주인지 표시. V: 그해의 첫�
 
 if [ "x$1" = "x" ]; then
 	cat <<__EOF__
-
-${cYellow}${CMD_NAME} ${cMagenta}[ DB_NAME ] 을 지정하지 않았으므로 작업을 끝냅니다.${cReset}
-__EOF__
-	exit -1
-fi
-if [ "x$1" = "xhelp" ]; then
-	cat <<__EOF__
 #-- 1		2		3		4		5		6	-not use-
 #-- DB_NAME	DB_LOGIN_PATH	LOCAL_FOLDER	REMOTE_FOLDER	RCLONE_NAME	OK?	DB_USER_NAME
-#-- kaosorder2	kaosgc		docker/kaosdb	kaosorder	kngc		ok/""	kaosorder2 카오스
-#-- gate242	swlgc		docker/gate242	gate242		swlgc		ok/""	gateroot 서원
-#-- wiki	-not use-	docker/wiki.js	wiki.js		yosgc		ok/""	wiki
+#-- kaosorder2	kaosgc		backup/kaosdb	kaosorder	kngc		ok/""	kaosorder2 (카오스)
+#-- gate242	swlgc		backup/gatedb	gate242		swlgc		ok/""	gateroot (서원)
+#-- wiki	-not use-	backup/wikidb	wiki.js		yosgc		ok/""	wiki (wiki.js)
 #--
 #-- db_name	"" #-- 지정한 데이터베이스로 진행합니다.
 #-- db_name	"ok" #-- 지정한 데이터베이스로 진행하면서 과정을 보여줍니다.
 #-- db_name	"enter" #-- 조건값을 터미널에서 입력하도록 합니다. 진행 과정도 보여줍니다.
-#-- "help" #-- 쓸수 있는 DB_NAME 을 보야주고 끝냅i니다.
 #--
-#-- "" #-- \$1 을 지정하지 않았으므로 바로 종료힙니다.
+
+${cYellow}${CMD_NAME} ${cMagenta}[ DB_NAME ] 을 지정하지 않았으므로 작업을 끝냅니다.${cReset}
 __EOF__
 	exit -1
 fi
@@ -125,26 +119,29 @@ fi
 if [ "x$1" = "xkaosorder" ]; then
 	DB_NAME="$1" #-- 백업할 데이터베이스 이름
 	LOGIN_PATH="kaoslog" #-- 데이터베이스 로그인 패쓰
-	LOCAL_FOLDER="${HOME}/kaosorder/${HOSTNAME}" #-- 백업파일을 임시로 저장할 로컬 저장소의 디렉토리 이름
+	LOCAL_FOLDER="${HOME}/backup/kaosdb" #-- 백업파일을 임시로 저장할 로컬 저장소의 디렉토리 이름
 	REMOTE_FOLDER="kaosorder" #-- 원격 저장소의 첫번째 폴더 이름
 	RCLONE_NAME="kngc" #-- rclone 이름 kaos.notegc
 	DB_TYPE="mysql"
+	PSWD_GEN_CODE="zkdhtm${pswd_ym}"
 else
 if [ "x$1" = "xgate242" ]; then
 	DB_NAME="$1" #-- 백업할 데이터베이스 이름
 	LOGIN_PATH="swlog" #-- 데이터베이스 로그인 패쓰
-	LOCAL_FOLDER="${HOME}/gate242/${HOSTNAME}" #-- 백업파일을 임시로 저장할 로컬 저장소의 디렉토리 이름
+	LOCAL_FOLDER="${HOME}/backup/gatedb" #-- 백업파일을 임시로 저장할 로컬 저장소의 디렉토리 이름
 	REMOTE_FOLDER="gate242" #-- 원격 저장소의 첫번째 폴더 이름
 	RCLONE_NAME="swlgc" #-- rclone 이름 seowontire.libgc
 	DB_TYPE="mysql"
+	PSWD_GEN_CODE="tjdnjs${pswd_ym}"
 else
 if [ "x$1" = "xwiki" ]; then
 	DB_NAME="$1" #-- 백업할 데이터베이스 이름
 	LOGIN_PATH="wikipsql" #-- 데이터베이스 로그인 패쓰 ;;; pgsql 이라서 쓰지는 않음.
-	LOCAL_FOLDER="${HOME}/wiki.js/${HOSTNAME}" #-- 백업파일을 임시로 저장할 로컬 저장소의 디렉토리 이름
+	LOCAL_FOLDER="${HOME}/backup/wikidb" #-- 백업파일을 임시로 저장할 로컬 저장소의 디렉토리 이름
 	REMOTE_FOLDER="wiki.js" #-- 원격 저장소의 첫번째 폴더 이름
 	RCLONE_NAME="yosgc" #-- rclone 이름 yosjeongc
 	DB_TYPE="pgsql"
+	PSWD_GEN_CODE="dnlzl${pswd_ym}"
 else
 	cat <<__EOF__
 
@@ -275,10 +272,10 @@ showno="6" ; showqq="DB 를 로컬에 백업합니다."
 ymd_hm=$(date +"%y%m%d%a-%H%M") #-- ymd_hm=$(date +"%y%m%d-%H%M%S")
 #xxx pswd_code="${DB_NAME}${ymd_hm:0:6}" #-- kaosorder2/gate242/wiki + 991231 xxx crontab 으로 실행하므로 보안상 비번을 제외한다.
 if [ "x${DB_TYPE}" = "xmysql" ]; then
-	show_then_run "/usr/bin/mysqldump --login-path=${LOGIN_PATH} --column-statistics=0 ${DB_NAME} | 7za a -si ${LOCAL_THIS_WOL}/${YOIL_sql7z}" #xxx -p${pswd_code}"
+	show_then_run "/usr/bin/mysqldump --login-path=${LOGIN_PATH} --column-statistics=0 ${DB_NAME} | 7za a -si ${LOCAL_THIS_WOL}/${YOIL_sql7z} -p${PSWD_GEN_CODE}"
 else
 if [ "x${DB_TYPE}" = "xpgsql" ]; then
-	show_then_run "sudo docker exec wikijsdb pg_dumpall -U wikijs | 7za a -si ${LOCAL_THIS_WOL}/${YOIL_sql7z}" #xxx -p${pswd_code}"
+	show_then_run "sudo docker exec wikijsdb pg_dumpall -U wikijs | 7za a -si ${LOCAL_THIS_WOL}/${YOIL_sql7z} -p${PSWD_GEN_CODE}"
 else
 	cat <<__EOF__
 
