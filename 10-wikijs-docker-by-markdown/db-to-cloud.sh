@@ -107,14 +107,14 @@ fi
 if [ "x$1" = "xhelp" ]; then
 	cat <<__EOF__
 #-- 1		2		3		4		5		6	-not use-
-#-- DB_NAME	LOGIN_PATH	LOCAL_FOLDER	REMOTE_FOLDER	RCLONE_NAME	OK?	USER
-#-- kaosorder2	kaosgc		docker/kaosdb	kaosorder	kngc		ok/""	kaosorder2/
-#-- gate242	swlgc		docker/gate242	gate242		swlgc		ok/""	gateroot/
-#-- wiki	-not use-	docker/wiki.js	wiki.js		yosgc		ok/""	wiki/
+#-- DB_NAME	DB_LOGIN_PATH	LOCAL_FOLDER	REMOTE_FOLDER	RCLONE_NAME	OK?	DB_USER_NAME
+#-- kaosorder2	kaosgc		docker/kaosdb	kaosorder	kngc		ok/""	kaosorder2 카오스
+#-- gate242	swlgc		docker/gate242	gate242		swlgc		ok/""	gateroot 서원
+#-- wiki	-not use-	docker/wiki.js	wiki.js		yosgc		ok/""	wiki
 #--
-#-- dbname	"" #-- 지정한 데이터베이스로 진행합니다.
-#-- dbname	"ok" #-- 지정한 데이터베이스로 진행하면서 과정을 보여줍니다.
-#-- dbname	"enter" #-- 조건값을 터미널에서 입력하도록 합니다. 진행 과정도 보여줍니다.
+#-- db_name	"" #-- 지정한 데이터베이스로 진행합니다.
+#-- db_name	"ok" #-- 지정한 데이터베이스로 진행하면서 과정을 보여줍니다.
+#-- db_name	"enter" #-- 조건값을 터미널에서 입력하도록 합니다. 진행 과정도 보여줍니다.
 #-- "help" #-- 쓸수 있는 DB_NAME 을 보야주고 끝냅i니다.
 #--
 #-- "" #-- \$1 을 지정하지 않았으므로 바로 종료힙니다.
