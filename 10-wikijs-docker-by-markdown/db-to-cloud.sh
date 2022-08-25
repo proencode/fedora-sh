@@ -62,6 +62,7 @@ __EOF__
 this_year=$(date +%Y) #-- 2022
 this_wol=$(date +%m) #-- 07
 ymd_hm=$(date +"%y%m%d%a-%H%M") #-- ymd_hm=$(date +"%y%m%d-%H%M%S")
+pswd_ym=$(date +"%y%m")
 
 yoil_number0to6=$(date +%u) #------------ 일0 월1 화2 수3 목4 금5 토6
 yoil_number1to7=$(( ${yoil_number0to6} + 1 )) #-- 1   2   3   4   5   6   7   #--
@@ -99,25 +100,18 @@ ju_beonho=$(date +%V) #-- 1년중 몇번째 주인지 표시. V: 그해의 첫�
 
 if [ "x$1" = "x" ]; then
 	cat <<__EOF__
+#-- 1		2		3		4		5		6	-not use-
+#-- DB_NAME	DB_LOGIN_PATH	LOCAL_FOLDER	REMOTE_FOLDER	RCLONE_NAME	OK?	DB_USER_NAME
+#-- kaosorder2	kaosgc		backup/kaosdb	kaosorder	kngc		ok/""	kaosorder2 (카오스)
+#-- gate242	swlgc		backup/gatedb	gate242		swlgc		ok/""	gateroot (서원)
+#-- wiki	-not use-	backup/wikidb	wiki.js		yosgc		ok/""	wiki (wiki.js)
+#--
+#-- db_name	"" #-- 지정한 데이터베이스로 진행합니다.
+#-- db_name	"ok" #-- 지정한 데이터베이스로 진행하면서 과정을 보여줍니다.
+#-- db_name	"enter" #-- 조건값을 터미널에서 입력하도록 합니다. 진행 과정도 보여줍니다.
+#--
 
 ${cYellow}${CMD_NAME} ${cMagenta}[ DB_NAME ] 을 지정하지 않았으므로 작업을 끝냅니다.${cReset}
-__EOF__
-	exit -1
-fi
-if [ "x$1" = "xhelp" ]; then
-	cat <<__EOF__
-#-- 1		2		3		4		5		6	-not use-
-#-- DB_NAME	LOGIN_PATH	LOCAL_FOLDER	REMOTE_FOLDER	RCLONE_NAME	OK?	USER
-#-- kaosorder2	kaosgc		docker/kaosdb	kaosorder	kngc		ok/""	kaosorder2/
-#-- gate242	swlgc		docker/gate242	gate242		swlgc		ok/""	gateroot/
-#-- wiki	-not use-	docker/wiki.js	wiki.js		yosgc		ok/""	wiki/
-#--
-#-- dbname	"" #-- 지정한 데이터베이스로 진행합니다.
-#-- dbname	"ok" #-- 지정한 데이터베이스로 진행하면서 과정을 보여줍니다.
-#-- dbname	"enter" #-- 조건값을 터미널에서 입력하도록 합니다. 진행 과정도 보여줍니다.
-#-- "help" #-- 쓸수 있는 DB_NAME 을 보야주고 끝냅i니다.
-#--
-#-- "" #-- \$1 을 지정하지 않았으므로 바로 종료힙니다.
 __EOF__
 	exit -1
 fi
@@ -125,26 +119,29 @@ fi
 if [ "x$1" = "xkaosorder" ]; then
 	DB_NAME="$1" #-- 백업할 데이터베이스 이름
 	LOGIN_PATH="kaoslog" #-- 데이터베이스 로그인 패쓰
-	LOCAL_FOLDER="${HOME}/kaosorder/${HOSTNAME}" #-- 백업파일을 임시로 저장할 로컬 저장소의 디렉토리 이름
+	LOCAL_FOLDER="${HOME}/backup/kaosdb" #-- 백업파일을 임시로 저장할 로컬 저장소의 디렉토리 이름
 	REMOTE_FOLDER="kaosorder" #-- 원격 저장소의 첫번째 폴더 이름
 	RCLONE_NAME="kngc" #-- rclone 이름 kaos.notegc
 	DB_TYPE="mysql"
+	PSWD_GEN_CODE="zkdhtm${pswd_ym}"
 else
 if [ "x$1" = "xgate242" ]; then
 	DB_NAME="$1" #-- 백업할 데이터베이스 이름
 	LOGIN_PATH="swlog" #-- 데이터베이스 로그인 패쓰
-	LOCAL_FOLDER="${HOME}/gate242/${HOSTNAME}" #-- 백업파일을 임시로 저장할 로컬 저장소의 디렉토리 이름
+	LOCAL_FOLDER="${HOME}/backup/gatedb" #-- 백업파일을 임시로 저장할 로컬 저장소의 디렉토리 이름
 	REMOTE_FOLDER="gate242" #-- 원격 저장소의 첫번째 폴더 이름
 	RCLONE_NAME="swlgc" #-- rclone 이름 seowontire.libgc
 	DB_TYPE="mysql"
+	PSWD_GEN_CODE="tjdnjs${pswd_ym}"
 else
 if [ "x$1" = "xwiki" ]; then
 	DB_NAME="$1" #-- 백업할 데이터베이스 이름
 	LOGIN_PATH="wikipsql" #-- 데이터베이스 로그인 패쓰 ;;; pgsql 이라서 쓰지는 않음.
-	LOCAL_FOLDER="${HOME}/wiki.js/${HOSTNAME}" #-- 백업파일을 임시로 저장할 로컬 저장소의 디렉토리 이름
+	LOCAL_FOLDER="${HOME}/backup/wikidb" #-- 백업파일을 임시로 저장할 로컬 저장소의 디렉토리 이름
 	REMOTE_FOLDER="wiki.js" #-- 원격 저장소의 첫번째 폴더 이름
 	RCLONE_NAME="yosgc" #-- rclone 이름 yosjeongc
 	DB_TYPE="pgsql"
+	PSWD_GEN_CODE="dnlzl${pswd_ym}"
 else
 	cat <<__EOF__
 
@@ -228,17 +225,13 @@ show_title "${REMOTE_WOL} 월 최근 일주일 백업을 시작합니다. (${ymd
 if [ ! -d ${LOCAL_THIS_WOL} ]; then
 	showno="1a" ; showqq="보관용 로컬 디렉토리를 만듭니다."
 	show_then_run "mkdir -p ${LOCAL_THIS_WOL}"
-else
-	showno="1b" ; showqq="보관용 로컬 디렉토리 입니다."
-	show_then_run "ls -l ${LOCAL_THIS_WOL}"
 fi
 if [ ! -d ${LOCAL_THIS_JU} ]; then
-	showno="2a" ; showqq="보관용 로컬 디렉토리를 만듭니다."
+	showno="1b" ; showqq="보관용 로컬 디렉토리를 만듭니다."
 	show_then_run "mkdir -p ${LOCAL_THIS_JU}"
-else
-	showno="2b" ; showqq="보관용 로컬 디렉토리 입니다."
-	show_then_run "ls -l ${LOCAL_THIS_JU}"
 fi
+showno="2" ; showqq="보관용 로컬 디렉토리 입니다."
+show_then_run "ls -lR ${LOCAL_THIS_YEAR}"
 
 
 showno="3" ; showqq="오늘날짜 클라우드 백업파일이 있는지 확인 합니다."
@@ -275,10 +268,10 @@ showno="6" ; showqq="DB 를 로컬에 백업합니다."
 ymd_hm=$(date +"%y%m%d%a-%H%M") #-- ymd_hm=$(date +"%y%m%d-%H%M%S")
 #xxx pswd_code="${DB_NAME}${ymd_hm:0:6}" #-- kaosorder2/gate242/wiki + 991231 xxx crontab 으로 실행하므로 보안상 비번을 제외한다.
 if [ "x${DB_TYPE}" = "xmysql" ]; then
-	show_then_run "/usr/bin/mysqldump --login-path=${LOGIN_PATH} --column-statistics=0 ${DB_NAME} | 7za a -si ${LOCAL_THIS_WOL}/${YOIL_sql7z}" #xxx -p${pswd_code}"
+	show_then_run "/usr/bin/mysqldump --login-path=${LOGIN_PATH} --column-statistics=0 ${DB_NAME} | 7za a -si ${LOCAL_THIS_WOL}/${YOIL_sql7z} -p${PSWD_GEN_CODE}"
 else
 if [ "x${DB_TYPE}" = "xpgsql" ]; then
-	show_then_run "sudo docker exec wikijsdb pg_dumpall -U wikijs | 7za a -si ${LOCAL_THIS_WOL}/${YOIL_sql7z}" #xxx -p${pswd_code}"
+	show_then_run "sudo docker exec wikijsdb pg_dumpall -U wikijs | 7za a -si ${LOCAL_THIS_WOL}/${YOIL_sql7z} -p${PSWD_GEN_CODE}"
 else
 	cat <<__EOF__
 
@@ -399,10 +392,10 @@ OUTRC=$(/usr/bin/rclone copy ${LOCAL_THIS_JU}/${JU_sql7z} ${RCLONE_NAME}:${REMOT
 showno="21" ; showqq="${this_wol}월 백업파일을 ${REMOTE_JU} 폴더로 복사합니다."
 show_then_view "OUTRC=\$(/usr/bin/rclone copy ${LOCAL_THIS_JU}/${JU_sql7z} ${RCLONE_NAME}:${REMOTE_JU}/) ${cMagenta}#----${cYellow}${OUTRC}${cMagenta}----"
 
-OUTRC=$(/usr/bin/rclone ls ${RCLONE_NAME}:${REMOTE_JU})
-showno="22" ; showqq="폴더 확인"
-show_then_view "OUTRC=\$(/usr/bin/rclone ls ${RCLONE_NAME}:${REMOTE_JU}) ${cMagenta}#----${cYellow}${OUTRC}${cMagenta}----"
-
+showno="22a" ; showqq="보관용 로컬 디렉토리 입니다."
+show_then_run "ls -lR ${LOCAL_THIS_YEAR}"
+showno="22b" ; showqq="원격 디렉토리 입니다."
+show_then_run "/usr/bin/rclone lsl ${RCLONE_NAME}:${REMOTE_YEAR}"
 
 showno="23" ; showqq="${REMOTE_WOL} 월의 마지막 백업파일을 ${REMOTE_JU} 폴더에 J${ju_beonho} 번호로 복사하는 작업을 끝냅니다. (${ymd_hm})"
 show_then_view "#"
