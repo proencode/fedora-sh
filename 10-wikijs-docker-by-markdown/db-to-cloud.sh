@@ -51,14 +51,6 @@ __EOF__
 }
 #<--- value
 
-# * * * * *  수행할 명령어
-# ┬ ┬ ┬ ┬ ┬
-# │ │ │ │ └─ 요일 (0 - 6) (0:일요일, 1:월요일, 2:화요일, …, 6:토요일)
-# │ │ │ └─ 월 (1 - 12)
-# │ │ └─일 (1 - 31)
-# │ └─ 시 (0 - 23)
-# └─ 분 (0 - 59) 출처: https://kibua20.tistory.com/89 [모바일 SW 개발자가 운영하는 블로그:티스토리]
-
 this_year=$(date +%Y) #-- 2022
 this_wol=$(date +%m) #-- 07
 ymd_hm=$(date +"%y%m%d%a-%H%M") #-- ymd_hm=$(date +"%y%m%d-%H%M%S")
@@ -97,6 +89,79 @@ ju_beonho=$(date +%V) #-- 1년중 몇번째 주인지 표시. V: 그해의 첫�
 #--      1/30  1/31  2/1   2/2   2/3   2/4   2/5
 #-- %U---05----05----05----05----05----05----05
 #-- 
+
+#|  proenpi@proenpi-4b:~$ echo "proenpi  ALL=(ALL) NOPASSWD:ALL" | sudo tee /etc/sudoers.d/proenpi
+#|  [sudo] proenpi 암호: 
+#|  proenpi  ALL=(ALL) NOPASSWD:ALL
+#|  proenpi@proenpi-4b:~$ cat /etc/sudoers.d/
+#|  README   proenpi  
+#|  proenpi@proenpi-4b:~$ cat /etc/sudoers.d/proenpi 
+#|  proenpi  ALL=(ALL) NOPASSWD:ALL
+#|  proenpi@proenpi-4b:~$ cat /etc/sudoers
+#|  cat: /etc/sudoers: 허가 거부
+#|  proenpi@proenpi-4b:~$ sudo cat /etc/sudoers
+#|  #
+#|  # This file MUST be edited with the 'visudo' command as root.
+#|  #
+#|  # Please consider adding local content in /etc/sudoers.d/ instead of
+#|  # directly modifying this file.
+#|  #
+#|  # See the man page for details on how to write a sudoers file.
+#|  #
+#|  Defaults	env_reset
+#|  Defaults	mail_badpass
+#|  Defaults	secure_path="/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/snap/bin"
+#|  Defaults	use_pty
+#|  
+#|  # This preserves proxy settings from user environments of root
+#|  # equivalent users (group sudo)
+#|  #Defaults:%sudo env_keep += "http_proxy https_proxy ftp_proxy all_proxy no_proxy"
+#|  
+#|  # This allows running arbitrary commands, but so does ALL, and it means
+#|  # different sudoers have their choice of editor respected.
+#|  #Defaults:%sudo env_keep += "EDITOR"
+#|  
+#|  # Completely harmless preservation of a user preference.
+#|  #Defaults:%sudo env_keep += "GREP_COLOR"
+#|  
+#|  # While you shouldn't normally run git as root, you need to with etckeeper
+#|  #Defaults:%sudo env_keep += "GIT_AUTHOR_* GIT_COMMITTER_*"
+#|  
+#|  # Per-user preferences; root won't have sensible values for them.
+#|  #Defaults:%sudo env_keep += "EMAIL DEBEMAIL DEBFULLNAME"
+#|  
+#|  # "sudo scp" or "sudo rsync" should be able to use your SSH agent.
+#|  #Defaults:%sudo env_keep += "SSH_AGENT_PID SSH_AUTH_SOCK"
+#|  
+#|  # Ditto for GPG agent
+#|  #Defaults:%sudo env_keep += "GPG_AGENT_INFO"
+#|  
+#|  # Host alias specification
+#|  
+#|  # User alias specification
+#|  
+#|  # Cmnd alias specification
+#|  
+#|  # User privilege specification
+#|  root	ALL=(ALL:ALL) ALL
+#|  
+#|  # Members of the admin group may gain root privileges
+#|  %admin ALL=(ALL) ALL
+#|  
+#|  # Allow members of group sudo to execute any command
+#|  %sudo	ALL=(ALL:ALL) ALL
+#|  
+#|  # See sudoers(5) for more information on "@include" directives:
+#|  
+#|  @includedir /etc/sudoers.d
+#|  proenpi@proenpi-4b:~$ sudo whoami
+#|  root
+#|  proenpi@proenpi-4b:~$ crontab -l
+#|  #--분--시--일--월--요일 (0:일 1:월 2:화 … 6:토)   명령어 
+#|  01  12  *  *  *  /bin/sh /home/proenpi/backup/wikidb/db-to-cloud.sh wiki >/dev/null 2>&1
+#|  02  17  *  *  *  /bin/sh /home/proenpi/backup/wikidb/db-to-cloud.sh wiki >/dev/null 2>&1
+#|  03  22  *  *  *  /bin/sh /home/proenpi/backup/wikidb/db-to-cloud.sh wiki >/dev/null 2>&1
+
 
 if [ "x$1" = "x" ]; then
 	cat <<__EOF__
@@ -406,76 +471,99 @@ show_then_view "#"
 
 #|====>>
 #|
-#|  16:32:01월220822 fedora@vfc36jj ~/git-projects/fedora-sh/10-wikijs-docker-by-markdown
-#|  10-wikijs-docker-by-markdown $ sh db-to-cloud.sh wiki ok
+#|  proenpi@proenpi-4b:~/git-projects/ubuntu-sh/10-wikijs-docker$ sh db-to-cloud.sh wiki ok
 #|      |
 #|      |
-#|      | wiki.js/2022/08 월 최근 일주일 백업을 시작합니다. (220822월-1632)
+#|      | wiki.js/2022/08 월 최근 일주일 백업을 시작합니다. (220824수-1959)
 #|      |
 #|      |
-#|  ----> ls -l /home/fedora/wiki.js/vfc36jj/2022/08 #-- #-- (1b) 보관용 로컬 디렉토리 입니다.
+#|  ----> ls -lR /home/proenpi/backup/wikidb/2022 #-- #-- (2) 보관용 로컬 디렉토리 입니다.
+#|  /home/proenpi/backup/wikidb/2022:
+#|  합계 22344
+#|  drwxrwxr-x 2 proenpi proenpi     4096  8월 24 19:58 08
+#|  drwxrwxr-x 2 proenpi proenpi     4096  8월 24 19:01 ju
+#|  -rw-rw-r-- 1 proenpi proenpi 22871514  8월 24 19:01 wiki_220824수-1859_proenpi-4b.08wol.sql.7z
+#|  
+#|  /home/proenpi/backup/wikidb/2022/08:
+#|  합계 0
+#|  
+#|  /home/proenpi/backup/wikidb/2022/ju:
 #|  합계 22336
-#|  -rw-r--r-- 1 fedora fedora 22870240  8월 22일 16:11 wiki_220822월-1610_vfc36jjY2.sql.7z
-#|  <---- ls -l /home/fedora/wiki.js/vfc36jj/2022/08 #-- #-- (1b) 보관용 로컬 디렉토리 입니다.
-#|  ----> ls -l /home/fedora/wiki.js/vfc36jj/2022/ju #-- #-- (2b) 보관용 로컬 디렉토리 입니다.
-#|  합계 22336
-#|  -rw-r--r-- 1 fedora fedora 22870240  8월 22일 16:11 wiki_220822월-1610_vfc36jjJ34.sql.7z
-#|  <---- ls -l /home/fedora/wiki.js/vfc36jj/2022/ju #-- #-- (2b) 보관용 로컬 디렉토리 입니다.
-#|  ----> REMOTE_SQL_7Z_LIST=$(/usr/bin/rclone ls yosgc:wiki.js/2022/08/ | grep .2yoil.sql.7z | awk '{print $2}') #-- (3) 오늘날짜 클라우드 백업파일이 있는지 확인 합니다.
+#|  -rw-rw-r-- 1 proenpi proenpi 22871514  8월 24 19:01 wiki_220824수-1859_proenpi-4b.34ju.sql.7z
+#|  <---- ls -lR /home/proenpi/backup/wikidb/2022 #-- #-- (2) 보관용 로컬 디렉토리 입니다.
+#|  ----> REMOTE_SQL_7Z_LIST=$(/usr/bin/rclone ls yosgc:wiki.js/2022/08/ | grep .4yoil.sql.7z | awk '{print $2}') #-- (3) 오늘날짜 클라우드 백업파일이 있는지 확인 합니다.
 #|  ----> # #-- (4b) 클라우드에는 오늘날짜 백업파일이 없습니다.
-#|  ----> rm -f /home/fedora/wiki.js/vfc36jj/2022/08/*.2yoil.sql.7z #-- #-- (5) 오늘날짜 로컬 백업파일을 삭제합니다.
-#|  <---- rm -f /home/fedora/wiki.js/vfc36jj/2022/08/*.2yoil.sql.7z #-- #-- (5) 오늘날짜 로컬 백업파일을 삭제합니다.
-#|  ----> sudo docker exec wikijsdb pg_dumpall -U wikijs | 7za a -si /home/fedora/wiki.js/vfc36jj/2022/08/wiki_220822월-1632_vfc36jj.2yoil.sql.7z #-- #-- (6) DB 를 로컬에 백업합니다.
+#|  ----> rm -f /home/proenpi/backup/wikidb/2022/08/*.4yoil.sql.7z #-- #-- (5) 오늘날짜 로컬 백업파일을 삭제합니다.
+#|  <---- rm -f /home/proenpi/backup/wikidb/2022/08/*.4yoil.sql.7z #-- #-- (5) 오늘날짜 로컬 백업파일을 삭제합니다.
+#|  ----> sudo docker exec wikijsdb pg_dumpall -U wikijs | 7za a -si /home/proenpi/backup/wikidb/2022/08/wiki_220824수-1959_proenpi-4b.4yoil.sql.7z -pdnlzl2208 #-- #-- (6) DB 를 로컬에 백업합니다.
 #|  
 #|  7-Zip (a) [64] 16.02 : Copyright (c) 1999-2016 Igor Pavlov : 2016-05-21
-#|  p7zip Version 16.02 (locale=ko_KR.UTF-8,Utf16=on,HugeFiles=on,64 bits,1 CPU Intel(R) Core(TM) i5-9500 CPU @ 3.00GHz (906EA),ASM,AES-NI)
+#|  p7zip Version 16.02 (locale=ko_KR.UTF-8,Utf16=on,HugeFiles=on,64 bits,4 CPUs LE)
 #|  
-#|  Creating archive: /home/fedora/wiki.js/vfc36jj/2022/08/wiki_220822월-1632_vfc36jj.2yoil.sql.7z
+#|  Creating archive: /home/proenpi/backup/wikidb/2022/08/wiki_220824수-1959_proenpi-4b.4yoil.sql.7z
 #|  
 #|  Items to compress: 1
 #|  
 #|  
 #|  Files read from disk: 1
-#|  Archive size: 22870240 bytes (22 MiB)
+#|  Archive size: 22871514 bytes (22 MiB)
 #|  Everything is Ok
-#|  <---- sudo docker exec wikijsdb pg_dumpall -U wikijs | 7za a -si /home/fedora/wiki.js/vfc36jj/2022/08/wiki_220822월-1632_vfc36jj.2yoil.sql.7z #-- #-- (6) DB 를 로컬에 백업합니다.
-#|  ----> OUTRC=$(/usr/bin/rclone copy /home/fedora/wiki.js/vfc36jj/2022/08/wiki_220822월-1632_vfc36jj.2yoil.sql.7z yosgc:wiki.js/2022/08/) #-------- #-- (7) 로컬 DB 백업파일을 클라우드로 복사합니다.
-#|  ----> # #-- (8) wiki.js/2022/08 월 최근 일주일 백업을 끝냅니다. (220822월-1632)
+#|  <---- sudo docker exec wikijsdb pg_dumpall -U wikijs | 7za a -si /home/proenpi/backup/wikidb/2022/08/wiki_220824수-1959_proenpi-4b.4yoil.sql.7z -pdnlzl2208 #-- #-- (6) DB 를 로컬에 백업합니다.
+#|  ----> OUTRC=$(/usr/bin/rclone copy /home/proenpi/backup/wikidb/2022/08/wiki_220824수-1959_proenpi-4b.4yoil.sql.7z yosgc:wiki.js/2022/08/) #-------- #-- (7) 로컬 DB 백업파일을 클라우드로 복사합니다.
+#|  ----> # #-- (8) wiki.js/2022/08 월 최근 일주일 백업을 끝냅니다. (220824수-1959)
 #|      |
 #|      |
-#|      | wiki.js/2022/08 월의 마지막 백업파일을 wiki.js/2022 년도로 복사 시작 (220822월-1632)
+#|      | wiki.js/2022/08 월의 마지막 백업파일을 wiki.js/2022 년도로 복사 시작 (220824수-1959)
 #|      |
 #|      |
 #|  ----> REMOTE_SQL_7Z_LIST=$(/usr/bin/rclone ls yosgc:wiki.js/2022/ | grep .08wol.sql.7z | awk '{print $2}') #-- (9) 08월 백업파일이 이전에 백업돼 있었는지 확인 합니다.
-#|  ----> # #-- (10b) 클라우드에는 08월 백업파일이 없습니다.
-#|  ----> rm -f /home/fedora/wiki.js/vfc36jj/2022/*.08wol.sql.7z #-- #-- (11) 오늘날짜 로컬 백업파일을 삭제합니다.
-#|  <---- rm -f /home/fedora/wiki.js/vfc36jj/2022/*.08wol.sql.7z #-- #-- (11) 오늘날짜 로컬 백업파일을 삭제합니다.
-#|  ----> # #-- (12) wiki.js/2022/08 월 백업파일을 wiki.js/2022 년도로 복사하는 작업을 시작합니다. (220822월-1632)
-#|  ----> cp /home/fedora/wiki.js/vfc36jj/2022/08/wiki_220822월-1632_vfc36jj.2yoil.sql.7z /home/fedora/wiki.js/vfc36jj/2022/wiki_220822월-1632_vfc36jj.08wol.sql.7z #-- #-- (13) 로컬 디렉토리의 월 백업파일을 년도로 복사합니다.
-#|  <---- cp /home/fedora/wiki.js/vfc36jj/2022/08/wiki_220822월-1632_vfc36jj.2yoil.sql.7z /home/fedora/wiki.js/vfc36jj/2022/wiki_220822월-1632_vfc36jj.08wol.sql.7z #-- #-- (13) 로컬 디렉토리의 월 백업파일을 년도로 복사합니다.
-#|  ----> OUTRC=$(/usr/bin/rclone copy /home/fedora/wiki.js/vfc36jj/2022/wiki_220822월-1632_vfc36jj.08wol.sql.7z yosgc:wiki.js/2022/) #-------- #-- (14) 08월 백업파일을 2022년도 폴더로 복사합니다.
-#|  ----> OUTRC=$(/usr/bin/rclone ls yosgc:wiki.js/2022) #---- 22870240 wiki_220822월-1632_vfc36jj.08wol.sql.7z
-#|   22870240 wiki_220822월-1610_vfc36jjW08.sql.7z
-#|   22870240 08/wiki_220822월-1632_vfc36jj.2yoil.sql.7z
-#|   22870240 08/wiki_220822월-1610_vfc36jjY2.sql.7z
-#|   22870240 ju/wiki_220822월-1610_vfc36jjJ34.sql.7z---- #-- (15) 폴더 확인
-#|  ----> # #-- (16) wiki.js/2022/08 월 백업파일을 wiki.js/2022 년도로 복사하는 작업을 끝냅니다. (220822월-1632)
+#|  ----> mapfile -t Remote_Sql7z_Array <<< "wiki_220824수-1859_proenpi-4b.08wol.sql.7z" #-- (10a) 08월 백업파일이 이전에 백업돼 있었는지 확인 합니다.
+#|  ----> file_name=$(echo wiki_220824수-1859_proenpi-4b.08wol.sql.7z | sed 's/ *$//g') #-- (10a1) 빈칸 삭제
+#|  ----> OUTRC=$(/usr/bin/rclone deletefile yosgc:wiki.js/2022/08/wiki_220824수-1859_proenpi-4b.08wol.sql.7z) #-------- #-- (10a2) 08월 백업파일을 삭제합니다.
+#|  ----> rm -f /home/proenpi/backup/wikidb/2022/*.08wol.sql.7z #-- #-- (11) 오늘날짜 로컬 백업파일을 삭제합니다.
+#|  <---- rm -f /home/proenpi/backup/wikidb/2022/*.08wol.sql.7z #-- #-- (11) 오늘날짜 로컬 백업파일을 삭제합니다.
+#|  ----> # #-- (12) wiki.js/2022/08 월 백업파일을 wiki.js/2022 년도로 복사하는 작업을 시작합니다. (220824수-1959)
+#|  ----> cp /home/proenpi/backup/wikidb/2022/08/wiki_220824수-1959_proenpi-4b.4yoil.sql.7z /home/proenpi/backup/wikidb/2022/wiki_220824수-1959_proenpi-4b.08wol.sql.7z #-- #-- (13) 로컬 디렉토리의 월 백업파일을 년도로 복사합니다.
+#|  <---- cp /home/proenpi/backup/wikidb/2022/08/wiki_220824수-1959_proenpi-4b.4yoil.sql.7z /home/proenpi/backup/wikidb/2022/wiki_220824수-1959_proenpi-4b.08wol.sql.7z #-- #-- (13) 로컬 디렉토리의 월 백업파일을 년도로 복사합니다.
+#|  ----> OUTRC=$(/usr/bin/rclone copy /home/proenpi/backup/wikidb/2022/wiki_220824수-1959_proenpi-4b.08wol.sql.7z yosgc:wiki.js/2022/) #-------- #-- (14) 08월 백업파일을 2022년도 폴더로 복사합니다.
+#|  ----> OUTRC=$(/usr/bin/rclone ls yosgc:wiki.js/2022) #---- 22871514 wiki_220824수-1959_proenpi-4b.08wol.sql.7z
+#|   22871514 ju/wiki_220824수-1859_proenpi-4b.34ju.sql.7z
+#|   22871514 08/wiki_220824수-1959_proenpi-4b.4yoil.sql.7z---- #-- (15) 폴더 확인
+#|  ----> # #-- (16) wiki.js/2022/08 월 백업파일을 wiki.js/2022 년도로 복사하는 작업을 끝냅니다. (220824수-1959)
 #|      |
 #|      |
-#|      | wiki.js/2022/08 월의 마지막 백업파일을 wiki.js/2022/ju 폴더에 J34 번호로 복사 시작 (220822월-1632)
+#|      | wiki.js/2022/08 월의 마지막 백업파일을 wiki.js/2022/ju 폴더에 J34 번호로 복사 시작 (220824수-1959)
 #|      |
 #|      |
 #|  ----> REMOTE_SQL_7Z_LIST=$(/usr/bin/rclone ls yosgc:wiki.js/2022/ju/ | grep .34ju.sql.7z | awk '{print $2}') #-- (17) 08월 백업파일이 이전에 백업돼 있었는지 확인 합니다.
-#|  ----> # #-- (18b) 클라우드에는 .34ju.sql.7z 백업파일이 없습니다.
-#|  ----> rm -f /home/fedora/wiki.js/vfc36jj/2022/ju/*.34ju.sql.7z #-- #-- (19) 오늘날짜 로컬 백업파일을 삭제합니다.
-#|  <---- rm -f /home/fedora/wiki.js/vfc36jj/2022/ju/*.34ju.sql.7z #-- #-- (19) 오늘날짜 로컬 백업파일을 삭제합니다.
-#|  ----> cp /home/fedora/wiki.js/vfc36jj/2022/08/wiki_220822월-1632_vfc36jj.2yoil.sql.7z /home/fedora/wiki.js/vfc36jj/2022/ju/wiki_220822월-1632_vfc36jj.34ju.sql.7z #-- #-- (20) .34ju.sql.7z 백업파일을 wiki.js/2022/ju 로 복사하는 작업을 시작합니다. (220822월-1632)
-#|  <---- cp /home/fedora/wiki.js/vfc36jj/2022/08/wiki_220822월-1632_vfc36jj.2yoil.sql.7z /home/fedora/wiki.js/vfc36jj/2022/ju/wiki_220822월-1632_vfc36jj.34ju.sql.7z #-- #-- (20) .34ju.sql.7z 백업파일을 wiki.js/2022/ju 로 복사하는 작업을 시작합니다. (220822월-1632)
-#|  ----> OUTRC=$(/usr/bin/rclone copy /home/fedora/wiki.js/vfc36jj/2022/ju/wiki_220822월-1632_vfc36jj.34ju.sql.7z yosgc:wiki.js/2022/ju/) #-------- #-- (21) 08월 백업파일을 wiki.js/2022/ju 폴더로 복사합니다.
-#|  ----> OUTRC=$(/usr/bin/rclone ls yosgc:wiki.js/2022/ju) #---- 22870240 wiki_220822월-1632_vfc36jj.34ju.sql.7z
-#|   22870240 wiki_220822월-1610_vfc36jjJ34.sql.7z---- #-- (22) 폴더 확인
-#|  ----> # #-- (23) wiki.js/2022/08 월의 마지막 백업파일을 wiki.js/2022/ju 폴더에 J34 번호로 복사하는 작업을 끝냅니다. (220822월-1632)
-#|  16:33:44월220822 fedora@vfc36jj ~/git-projects/fedora-sh/10-wikijs-docker-by-markdown
-#|  10-wikijs-docker-by-markdown $
+#|  ----> mapfile -t Remote_Sql7z_Array <<< "wiki_220824수-1859_proenpi-4b.34ju.sql.7z" #-- (18a) 08월 백업파일이 이전에 백업돼 있었는지 확인 합니다.
+#|  ----> file_name=$(echo wiki_220824수-1859_proenpi-4b.34ju.sql.7z | sed 's/ *$//g') #-- (18a1) 빈칸 삭제
+#|  ----> OUTRC=$(/usr/bin/rclone deletefile yosgc:wiki.js/2022/ju/wiki_220824수-1859_proenpi-4b.34ju.sql.7z) #-------- #-- (18a2) 08월 백업파일을 삭제합니다.
+#|  ----> rm -f /home/proenpi/backup/wikidb/2022/ju/*.34ju.sql.7z #-- #-- (19) 오늘날짜 로컬 백업파일을 삭제합니다.
+#|  <---- rm -f /home/proenpi/backup/wikidb/2022/ju/*.34ju.sql.7z #-- #-- (19) 오늘날짜 로컬 백업파일을 삭제합니다.
+#|  ----> cp /home/proenpi/backup/wikidb/2022/08/wiki_220824수-1959_proenpi-4b.4yoil.sql.7z /home/proenpi/backup/wikidb/2022/ju/wiki_220824수-1959_proenpi-4b.34ju.sql.7z #-- #-- (20) .34ju.sql.7z 백업파일을 wiki.js/2022/ju 로 복사하는 작업을 시작합니다. (220824수-1959)
+#|  <---- cp /home/proenpi/backup/wikidb/2022/08/wiki_220824수-1959_proenpi-4b.4yoil.sql.7z /home/proenpi/backup/wikidb/2022/ju/wiki_220824수-1959_proenpi-4b.34ju.sql.7z #-- #-- (20) .34ju.sql.7z 백업파일을 wiki.js/2022/ju 로 복사하는 작업을 시작합니다. (220824수-1959)
+#|  ----> OUTRC=$(/usr/bin/rclone copy /home/proenpi/backup/wikidb/2022/ju/wiki_220824수-1959_proenpi-4b.34ju.sql.7z yosgc:wiki.js/2022/ju/) #-------- #-- (21) 08월 백업파일을 wiki.js/2022/ju 폴더로 복사합니다.
+#|  ----> ls -lR /home/proenpi/backup/wikidb/2022 #-- #-- (22a) 보관용 로컬 디렉토리 입니다.
+#|  /home/proenpi/backup/wikidb/2022:
+#|  합계 22344
+#|  drwxrwxr-x 2 proenpi proenpi     4096  8월 24 19:59 08
+#|  drwxrwxr-x 2 proenpi proenpi     4096  8월 24 20:02 ju
+#|  -rw-rw-r-- 1 proenpi proenpi 22871514  8월 24 20:01 wiki_220824수-1959_proenpi-4b.08wol.sql.7z
+#|  
+#|  /home/proenpi/backup/wikidb/2022/08:
+#|  합계 22336
+#|  -rw-rw-r-- 1 proenpi proenpi 22871514  8월 24 20:01 wiki_220824수-1959_proenpi-4b.4yoil.sql.7z
+#|  
+#|  /home/proenpi/backup/wikidb/2022/ju:
+#|  합계 22336
+#|  -rw-rw-r-- 1 proenpi proenpi 22871514  8월 24 20:02 wiki_220824수-1959_proenpi-4b.34ju.sql.7z
+#|  <---- ls -lR /home/proenpi/backup/wikidb/2022 #-- #-- (22a) 보관용 로컬 디렉토리 입니다.
+#|  ----> /usr/bin/rclone lsl yosgc:wiki.js/2022 #-- #-- (22b) 원격 디렉토리 입니다.
+#|   22871514 2022-08-24 20:01:51.272000000 wiki_220824수-1959_proenpi-4b.08wol.sql.7z
+#|   22871514 2022-08-24 20:02:24.240000000 ju/wiki_220824수-1959_proenpi-4b.34ju.sql.7z
+#|   22871514 2022-08-24 20:01:29.309000000 08/wiki_220824수-1959_proenpi-4b.4yoil.sql.7z
+#|  <---- /usr/bin/rclone lsl yosgc:wiki.js/2022 #-- #-- (22b) 원격 디렉토리 입니다.
+#|  ----> # #-- (23) wiki.js/2022/08 월의 마지막 백업파일을 wiki.js/2022/ju 폴더에 J34 번호로 복사하는 작업을 끝냅니다. (220824수-1959)
 #|
 #|<<====
