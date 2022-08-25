@@ -290,13 +290,13 @@ JU_sql7z=${DB_NAME}_${ymd_hm}_${uname_n}${ju_beonho_sql_7z}
 
 LOCAL_THIS_YEAR=${LOCAL_FOLDER}/${this_year} #-- 년도 폴더에는 매월 마지막 백업 1개씩만 보관한다.
 
-LOCAL_YOIL=${LOCAL_THIS_YEAR}/yoil #-- 년도의 yoil 폴더에는 최근 1주일치만 보관한다.
-LOCAL_JU=${LOCAL_THIS_YEAR}/ju #-- 년도의 ju 폴더에는 매주 마지막 백업 1개씩만 보관한다.
+LOCAL_YOIL=${LOCAL_THIS_YEAR}/1_7yoil #-- 년도의 yoil 폴더에는 최근 1주일치만 보관한다.
+LOCAL_JU=${LOCAL_THIS_YEAR}/01_53ju #-- 년도의 ju 폴더에는 매주 마지막 백업 1개씩만 보관한다.
 
 REMOTE_YEAR=${REMOTE_FOLDER}/${this_year}
 
-REMOTE_YOIL=${REMOTE_YEAR}/yoil #-- rclone 명령으로 보내는 원격 저장소의 데이터베이스구분/년eh/last7 폴더이름
-REMOTE_JU=${REMOTE_YEAR}/ju #-- rclone 명령으로 보내는 원격 저장소의 데이터베이스구분/년eh/sunday 폴더이름
+REMOTE_YOIL=${REMOTE_YEAR}/1_7yoil #-- rclone 명령으로 보내는 원격 저장소의 데이터베이스구분/년eh/last7 폴더이름
+REMOTE_JU=${REMOTE_YEAR}/01_53ju #-- rclone 명령으로 보내는 원격 저장소의 데이터베이스구분/년eh/sunday 폴더이름
 
 
 #----> REMOTE / 2022 / 08 / 최근 1주일치
