@@ -147,13 +147,46 @@ ju_beonho=$(date +%V) #-- 1년중 몇번째 주인지 표시. V: 월요일마다
 #|  02  17  *  *  *  /bin/sh /home/proenpi/backup/wikidb/db-to-cloud.sh wiki >/dev/null 2>&1
 #|  03  22  *  *  *  /bin/sh /home/proenpi/backup/wikidb/db-to-cloud.sh wiki >/dev/null 2>&1
 
+#|  13:26:35목22-08-25 yosjn@g1ssd128 ~/backup/gatedb
+#|  gatedb $ crontab -l
+#|  # Example of job definition:
+#|  # .---------------- minute (0 - 59)
+#|  # |   .------------- hour (0 - 23)
+#|  # |   |    .--------- day of month (1 - 31)
+#|  # |   |    |  .------- month (1 - 12) OR jan,feb,mar,apr ...
+#|  # |   |    |  |  .----- day of week (0 - 6) (Sunday=0 or 7) OR sun,mon,tue,wed,thu,fri,sat
+#|  # |   |    |  |  |
+#|  # *   *    *  *  *    command to be executed
+#|  # *   *    *  *  *    # DB backup to cloud
+#|  # 15  12,19    *  *  *    /bin/sh /home/vbox/gdrive/999-rclone-yossc-download.sh
+#|  # 02  6,12,21 *  *  1-6  /bin/sh /root/bin/1-bin-scripts/002-swtire60-db-to-dropbox.sh
+#|  # 12  12,15,18,21   *  *  *    /bin/sh /root/bin/1-bin-scripts/035-gmail-copyto-db.sh 1
+#|  # 12  0,3,6,9       *  *  *    /bin/sh /root/bin/1-bin-scripts/035-gmail-copyto-db.sh 2
+#|  # 42  18    *  *  *    /bin/sh /root/bin/1-bin-scripts/035-gmail-copyto-db.sh 7
+#|  # 58  12  11  02  *    /bin/sh /root/bin/1-bin-scripts/021-bbox-ftp-main.sh
+#|  # *   *    *  *  *
+#|  #xxx 10    22   *  *  *    /bin/sh /home/vbox/gdrive/backup-gate242db.sh
+#|  # *   *    *  *  *
+#|  01  22  *  *  *  /bin/sh /home/yosjn/backup/gatedb/db-to-cloud.sh gatedb >/dev/null 2>&1
+#|  13:26:42목22-08-25 yosjn@g1ssd128 ~/backup/gatedb
+#|  gatedb $ 
+
+#|  13:42:32목22-08-25 yosjn@g1ssd128 ~/backup/gatedb
+#|  gatedb $ ls -l
+#|  합계 36
+#|  drwxr-xr-x. 4 yosjn yosjn  4096  8월 25 13:37 2022
+#|  -rw-rw-r--. 1 yosjn yosjn  2230  8월 25 13:28 color_base
+#|  -rw-rw-r--. 1 yosjn yosjn 28037  8월 25 13:33 db-to-cloud.sh
+#|  13:42:37목22-08-25 yosjn@g1ssd128 ~/backup/gatedb
+#|  gatedb $ 
+
 
 if [ "x$1" = "x" ]; then
 	cat <<__EOF__
 #-- 1		2		3		4		5		6	-not use-
 #-- DB_NAME	DB_LOGIN_PATH	LOCAL_FOLDER	REMOTE_FOLDER	RCLONE_NAME	OK?	DB_USER_NAME
-#-- kaosorder2	kaosgc		backup/kaosdb	kaosorder	kngc		ok/""	kaosorder2 (카오스)
-#-- gate242	swlgc		backup/gatedb	gate242		swlgc		ok/""	gateroot (서원)
+#-- kaosorder2	kaoslog		backup/kaosdb	kaosorder	kngc		ok/""	kaosorder2 (카오스)
+#-- gate242	swlog		backup/gatedb	gate242		swlgc		ok/""	gateroot (서원)
 #-- wiki	-not use-	backup/wikidb	wiki.js		yosgc		ok/""	wiki (wiki.js)
 #--
 #-- db_name	"" #-- 지정한 데이터베이스로 진행합니다.
