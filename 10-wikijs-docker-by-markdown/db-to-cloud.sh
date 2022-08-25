@@ -59,105 +59,90 @@ pswd_ym=$(date +"%y%m")
 yoil_number0to6=$(date +%u) #------------ 일0 월1 화2 수3 목4 금5 토6
 yoil_number1to7=$(( ${yoil_number0to6} + 1 )) #-- 1   2   3   4   5   6   7   #--
 # yoil_atog=$(echo "abcdefg" | cut -c ${yoil_number1to7}) #---- 요일 a...g 일...토 #-- XX
-ju_beonho=$(date +%V) #-- 1년중 몇번째 주인지 표시. V: 그해의 첫번째 월요일부터 01주, 첫번째 월요일 이전은 새해라도 전해 마지막 주 번째로 한다. (월요일부터 일요일까지 호번)
-#--
-#-- date -date '31 Dec 2021' _%Y-%m-%d__%V-V_%U-U
-#--
-#--    월    화    수    목    금    토    일
-#--    12/27 12/28 12/29 12/30 12/31 1/1   1/2
-#--    52____52____52____52____52____52____52____%V
-#--    1/3   1/4   1/5   1/6   1/7   1/8   1/9
-#--    01____01____01____01____01____01____01____%V
-#--
-#--    월    화    수    목    금    토    일
-#--    1/24  1/25  1/26  1/27  1/28  1/29  1/30
-#--    04____04____04____04____04____04____04____%V
-#--    1/31  2/1   2/2   2/3   2/4   2/5   2/6
-#--    05____05____05____05____05____05____05____%V
-#--
-#-- U: 그해의 첫번째 일요일부터 01주, 그해 1일부터 첫번째 토요일까지는 00주로 한다. 연말,연초만 한개의 주가 마지막 주와 00 주로 나뉘어지고 나머지는 일요일 기준 일련번호.
-#--
-#--      일    월    화    수    목    금    토
-#--      12/26 12/27 12/28 12/29 12/30 12/31 1/1
-#-- %U---52----52----52----52----52----52--( 00 )
-#--      1/2   1/3   1/4   1/5   1/6   1/7   1/8
-#-- %U---01----01----01----01----01----01----01
-#--
-#--      일    월    화    수    목    금    토
-#--      1/23  1/24  1/25  1/26  1/27  1/28  1/29  
-#-- %U---04----04----04----04----04----04----04
-#--      1/30  1/31  2/1   2/2   2/3   2/4   2/5
-#-- %U---05----05----05----05----05----05----05
-#-- 
+ju_beonho=$(date +%V) #-- 1년중 몇번째 주인지 표시. V: 월요일마다 하나씩 증가한다. U: 일요일마다 하나씩 증가한다.
 
+#|  cat date.sh #-- 주 표시 보여주기 스크립트
+#|  
+#|  #!/bin/sh
+#|  
+#|  echo "date --date='31 Dec 2020' +\"U_%U  %Y-%m-%d %a  V %V\""
+#|  echo ""
+#|  
+#|  for day in 26 27 28 29 30 31
+#|  do
+#|  	date --date="${day} Dec 2020" +"U_%U  %Y-%m-%d %a  V %V"
+#|  done
+#|  
+#|  for day in 1 2 3 4 5 6
+#|  do
+#|  	date --date="${day} Jan 2021" +"U_%U  %Y-%m-%d %a  V %V"
+#|  done
+#|  
+#|  sh date.sh #-- 주 표시 보여주기
+#|  
+#|  date --date='31 Dec 2020' +"U_%U  %Y-%m-%d %a  V %V"
+#|  
+#|  U_51  2020-12-26 토  V 52
+#|  U(52) 2020-12-27 일  V 52
+#|  U_52  2020-12-28 월  V(53)
+#|  U_52  2020-12-29 화  V 53
+#|  U_52  2020-12-30 수  V 53
+#|  U_52  2020-12-31 목  V 53
+#|  
+#|  U(00) 2021-01-01 금  V 53
+#|  U_00  2021-01-02 토  V 53
+#|  U(01) 2021-01-03 일  V 53
+#|  U_01  2021-01-04 월  V(01)
+#|  U_01  2021-01-05 화  V 01
+#|  U_01  2021-01-06 수  V 01
+
+#|  %U=일...토 의 주 번호, 1월의 첫날이 일요일이 아니면 그 주의 순서 번호는 00 이 된다.
+#|  
+#|  |일 |월 |화 |수 |목 |금| 토 | %U 일요일 기준 |
+#|  |:-:|:-:|:-:|:-:|:-:|:-:|:-:|---|
+#|  |29 |30 |31 |1  |2  |3  |4  |<-- 12월과 1월 |
+#|  |52 |52 |52 |00 |00 |00 |00 |<-- U 기준 주 순서  |
+#|  |5  |6  |7  |8  |9  |10 |11 |<-- 12월과 1월 |
+#|  |01 |01 |01 |01 |01 |01 |01 |<-- U 기준 주 순서  |
+#|  
+#|  %V=월요일부터 일요일까지의 주 번호, 1월 1일부터 주의 순서가 01 이 되고, 그 이전은 작년 말일의 주의 순서를 따른다.
+#|  
+#|  |일 |월 |화 |수 |목 |금| 토 | %V 월요일 기준 |
+#|  |:-:|:-:|:-:|:-:|:-:|:-:|:-:|---|
+#|  |29 |30 |31 |1  |2  |3  |4  |<-- 12월과 1월 |
+#|  |52 |01 |01 |01 |01 |01 |01 |<-- V 기준 주 순서  |
+#|  |5  |6  |7  |8  |9  |10 |11 |<-- 12월과 1월 |
+#|  |01 |02 |02 |02 |02 |02 |02 |<-- V 기준 주 순서  |
+#|  
+#|  일요일 대신에 월요일을 주의 첫날로 두면 이해하기 쉽다.
+#|  
+#|  |   |월 |화 |수 |목 |금| 토| 일| %V 월요일 기준 |
+#|  |:-:|:-:|:-:|:-:|:-:|:-:|:-:|:-:|---|
+#|  |   |30 |31 |1  |2  |3  |4  |5  |<-- 12월과 1월 |
+#|  |   |01 |01 |01 |01 |01 |01 |01 |<-- 주의 번호  |
+#|  |   |6  |7  |8  |9  |10 |11 |12 |<-- 12월과 1월 |
+#|  |   |02 |02 |02 |02 |02 |02 |02 |<-- 주의 번호  |
+
+
+#|  #-- ubuntu 22.04 에서 /etc/sudoers.d 디렉토리 밑에 사용자의 권한을 지정하는 내용을  proenpi 사용자 이름으로 만든다.
+#|  
 #|  proenpi@proenpi-4b:~$ echo "proenpi  ALL=(ALL) NOPASSWD:ALL" | sudo tee /etc/sudoers.d/proenpi
-#|  [sudo] proenpi 암호: 
+#|  [sudo] proenpi 암호:
 #|  proenpi  ALL=(ALL) NOPASSWD:ALL
+#|  
+#|  #-- 파일이 만들어졌는지 내용을 확인한다.
+#|  
 #|  proenpi@proenpi-4b:~$ cat /etc/sudoers.d/
-#|  README   proenpi  
-#|  proenpi@proenpi-4b:~$ cat /etc/sudoers.d/proenpi 
+#|  README   proenpi
+#|  proenpi@proenpi-4b:~$ cat /etc/sudoers.d/proenpi
 #|  proenpi  ALL=(ALL) NOPASSWD:ALL
-#|  proenpi@proenpi-4b:~$ cat /etc/sudoers
-#|  cat: /etc/sudoers: 허가 거부
-#|  proenpi@proenpi-4b:~$ sudo cat /etc/sudoers
-#|  #
-#|  # This file MUST be edited with the 'visudo' command as root.
-#|  #
-#|  # Please consider adding local content in /etc/sudoers.d/ instead of
-#|  # directly modifying this file.
-#|  #
-#|  # See the man page for details on how to write a sudoers file.
-#|  #
-#|  Defaults	env_reset
-#|  Defaults	mail_badpass
-#|  Defaults	secure_path="/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/snap/bin"
-#|  Defaults	use_pty
-#|  
-#|  # This preserves proxy settings from user environments of root
-#|  # equivalent users (group sudo)
-#|  #Defaults:%sudo env_keep += "http_proxy https_proxy ftp_proxy all_proxy no_proxy"
-#|  
-#|  # This allows running arbitrary commands, but so does ALL, and it means
-#|  # different sudoers have their choice of editor respected.
-#|  #Defaults:%sudo env_keep += "EDITOR"
-#|  
-#|  # Completely harmless preservation of a user preference.
-#|  #Defaults:%sudo env_keep += "GREP_COLOR"
-#|  
-#|  # While you shouldn't normally run git as root, you need to with etckeeper
-#|  #Defaults:%sudo env_keep += "GIT_AUTHOR_* GIT_COMMITTER_*"
-#|  
-#|  # Per-user preferences; root won't have sensible values for them.
-#|  #Defaults:%sudo env_keep += "EMAIL DEBEMAIL DEBFULLNAME"
-#|  
-#|  # "sudo scp" or "sudo rsync" should be able to use your SSH agent.
-#|  #Defaults:%sudo env_keep += "SSH_AGENT_PID SSH_AUTH_SOCK"
-#|  
-#|  # Ditto for GPG agent
-#|  #Defaults:%sudo env_keep += "GPG_AGENT_INFO"
-#|  
-#|  # Host alias specification
-#|  
-#|  # User alias specification
-#|  
-#|  # Cmnd alias specification
-#|  
-#|  # User privilege specification
-#|  root	ALL=(ALL:ALL) ALL
-#|  
-#|  # Members of the admin group may gain root privileges
-#|  %admin ALL=(ALL) ALL
-#|  
-#|  # Allow members of group sudo to execute any command
-#|  %sudo	ALL=(ALL:ALL) ALL
-#|  
-#|  # See sudoers(5) for more information on "@include" directives:
-#|  
-#|  @includedir /etc/sudoers.d
 #|  proenpi@proenpi-4b:~$ sudo whoami
 #|  root
+#|  
+#|  #-- root 권한으로 만들어졌으므로, 압호를 넣지 않고 sudo 로 명령하는 사용자의 스크립트를 쓸수 있다.
+#|  
 #|  proenpi@proenpi-4b:~$ crontab -l
-#|  #--분--시--일--월--요일 (0:일 1:월 2:화 … 6:토)   명령어 
+#|  #--분--시--일--월--요일 (0:일 1:월 2:화 … 6:토)   명령어
 #|  01  12  *  *  *  /bin/sh /home/proenpi/backup/wikidb/db-to-cloud.sh wiki >/dev/null 2>&1
 #|  02  17  *  *  *  /bin/sh /home/proenpi/backup/wikidb/db-to-cloud.sh wiki >/dev/null 2>&1
 #|  03  22  *  *  *  /bin/sh /home/proenpi/backup/wikidb/db-to-cloud.sh wiki >/dev/null 2>&1
