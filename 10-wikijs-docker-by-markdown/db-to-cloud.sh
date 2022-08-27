@@ -5,51 +5,15 @@ CMD_DIR=${0%/$CMD_NAME} # 실행 이름을 빼고 나머지 디렉토리만 담�
 if [ "x$CMD_DIR" == "x" ] || [ "x$CMD_DIR" == "x$CMD_NAME" ]; then
 	CMD_DIR="."
 fi
-source ${CMD_DIR}/color_base #-- cBlack cRed cGreen cYellow cBlue cMagenta cCyan cWhite cReset cUp cat_and_run cat_and_read cat_and_readY
+source ${HOME}/lib/color_base #-- cBlack cRed cGreen cYellow cBlue cMagenta cCyan cWhite cReset cUp
+# ~/lib/color_base 220827-0920 cat_and_run cat_and_run_cr cat_and_read cat_and_readY view_and_read show_then_run show_then_view show_title value_keyin () {
 
+MEMO="cron job"
+## echo "${cMagenta}>>>>>>>>>>${cGreen} $0 ${cMagenta}||| ${cCyan}${MEMO} ${cMagenta}>>>>>>>>>>${cReset}"
+#--xx-- zz00logs_folder="${HOME}/zz00logs" ; if [ ! -d "${zz00logs_folder}" ]; then cat_and_run "mkdir ${zz00logs_folder}" "로그 폴더" ; fi
+#--xx-- zz00log_name="${zz00logs_folder}/zz.$(date +"%y%m%d-%H%M%S")__RUNNING_${CMD_NAME}" ; touch ${zz00log_name}
 #----
 
-show_then_run () {
-	if [ "x$show_ok" = "xok" ]; then
-		cat_and_run "$1" "#-- (${showno}) ${showqq}"
-	else
-		echo "$1" | sh
-	fi
-}
-show_then_view () {
-	if [ "x$show_ok" = "xok" ]; then echo "${cGreen}----> $1 ${cCyan}#-- (${showno}) ${showqq}${cReset}" ; fi
-}
-show_title () {
-	if [ "x$show_ok" = "xok" ]; then
-		cat <<__EOF__
-    ${cGreen}|
-    |
-    | ${cCyan}$1
-    ${cGreen}|
-    |${cReset}
-__EOF__
-	fi
-}
-#---> value_keyin "LOGIN_PATH" "${LOGIN_PATH}" "데이터베이스의 로그인 패쓰 를 입력하세요."
-value_keyin () {
-	FIELD_NAME=$1
-	FIELD_VALUE=$2
-	FIELD_TITLE=$3
-	cat <<__EOF__
-
-${cGreen}----> ${FIELD_TITLE}[ ${cCyan}${FIELD_VALUE} ${cGreen}]${cReset}
-__EOF__
-	read return_value
-
-	if [ "x$return_value" = "x" ]; then
-		return_value="${FIELD_VALUE}"
-	fi
-	cat <<__EOF__
-${cUp}${cCyan}${FIELD_NAME}: ${cRed} ${cYellow}${return_value} ${cRed}]
-
-__EOF__
-}
-#<--- value
 
 this_year=$(date +%Y) #-- 2022
 this_wol=$(date +%m) #-- 07
@@ -59,7 +23,7 @@ pswd_ym=$(date +"%y%m")
 yoil_number0to6=$(date +%u) #------------ 일0 월1 화2 수3 목4 금5 토6
 yoil_number1to7=$(( ${yoil_number0to6} + 1 )) #-- 1   2   3   4   5   6   7   #--
 # yoil_atog=$(echo "abcdefg" | cut -c ${yoil_number1to7}) #---- 요일 a...g 일...토 #-- XX
-ju_beonho=$(date +%V) #-- 1년중 몇번째 주인지 표시. V: 월요일마다 하나씩 증가한다. U: 일요일마다 하나씩 증가한다.
+ju_beonho=$(date +%V) #-- 1년중 몇번째 주인지 표시. V: 월요일마다 하나씩 증가한다. U: 1월1일=일요일: 01, 아니면: 00. 일요일마다 하나씩 증가한다.
 
 #|  cat date.sh #-- 주 표시 보여주기 스크립트
 #|  
@@ -101,27 +65,27 @@ ju_beonho=$(date +%V) #-- 1년중 몇번째 주인지 표시. V: 월요일마다
 #|  |일 |월 |화 |수 |목 |금| 토 | %U 일요일 기준 |
 #|  |:-:|:-:|:-:|:-:|:-:|:-:|:-:|---|
 #|  |29 |30 |31 |1  |2  |3  |4  |<-- 12월과 1월 |
-#|  |52 |52 |52 |00 |00 |00 |00 |<-- U 기준 주 순서  |
+#|  |52 |52 |52 |00 |00 |00 |00 |<-- U |
 #|  |5  |6  |7  |8  |9  |10 |11 |<-- 12월과 1월 |
-#|  |01 |01 |01 |01 |01 |01 |01 |<-- U 기준 주 순서  |
+#|  |01 |01 |01 |01 |01 |01 |01 |<-- U |
 #|  
 #|  %V=월요일부터 일요일까지의 주 번호, 1월 1일부터 주의 순서가 01 이 되고, 그 이전은 작년 말일의 주의 순서를 따른다.
 #|  
 #|  |일 |월 |화 |수 |목 |금| 토 | %V 월요일 기준 |
 #|  |:-:|:-:|:-:|:-:|:-:|:-:|:-:|---|
 #|  |29 |30 |31 |1  |2  |3  |4  |<-- 12월과 1월 |
-#|  |52 |01 |01 |01 |01 |01 |01 |<-- V 기준 주 순서  |
+#|  |52 |01 |01 |01 |01 |01 |01 |<-- V |
 #|  |5  |6  |7  |8  |9  |10 |11 |<-- 12월과 1월 |
-#|  |01 |02 |02 |02 |02 |02 |02 |<-- V 기준 주 순서  |
+#|  |01 |02 |02 |02 |02 |02 |02 |<-- V |
 #|  
 #|  일요일 대신에 월요일을 주의 첫날로 두면 이해하기 쉽다.
 #|  
 #|  |   |월 |화 |수 |목 |금| 토| 일| %V 월요일 기준 |
 #|  |:-:|:-:|:-:|:-:|:-:|:-:|:-:|:-:|---|
 #|  |   |30 |31 |1  |2  |3  |4  |5  |<-- 12월과 1월 |
-#|  |   |01 |01 |01 |01 |01 |01 |01 |<-- 주의 번호  |
+#|  |   |01 |01 |01 |01 |01 |01 |01 |<-- V |
 #|  |   |6  |7  |8  |9  |10 |11 |12 |<-- 12월과 1월 |
-#|  |   |02 |02 |02 |02 |02 |02 |02 |<-- 주의 번호  |
+#|  |   |02 |02 |02 |02 |02 |02 |02 |<-- V |
 
 
 #|  #-- ubuntu 22.04 에서 /etc/sudoers.d 디렉토리 밑에 사용자의 권한을 지정하는 내용을  proenpi 사용자 이름으로 만든다.
@@ -202,7 +166,7 @@ fi
 if [ "x$1" = "xkaosorder" ]; then
 	DB_NAME="$1" #-- 백업할 데이터베이스 이름
 	LOGIN_PATH="kaoslog" #-- 데이터베이스 로그인 패쓰
-	LOCAL_FOLDER="${HOME}/backup/kaosdb" #-- 백업파일을 임시로 저장할 로컬 저장소의 디렉토리 이름
+	LOCAL_FOLDER="${HOME}/backup/kaosdb" #-- 백업파일을 일시적으로 저장하는 로컬 저장소의 디렉토리 이름
 	REMOTE_FOLDER="kaosorder" #-- 원격 저장소의 첫번째 폴더 이름
 	RCLONE_NAME="kngc" #-- rclone 이름 kaos.notegc
 	DB_TYPE="mysql"
@@ -211,7 +175,7 @@ else
 if [ "x$1" = "xgate242" ]; then
 	DB_NAME="$1" #-- 백업할 데이터베이스 이름
 	LOGIN_PATH="swlog" #-- 데이터베이스 로그인 패쓰
-	LOCAL_FOLDER="${HOME}/backup/gatedb" #-- 백업파일을 임시로 저장할 로컬 저장소의 디렉토리 이름
+	LOCAL_FOLDER="${HOME}/backup/gatedb" #-- 백업파일을 일시적으로 저장하는 로컬 저장소의 디렉토리 이름
 	REMOTE_FOLDER="gate242" #-- 원격 저장소의 첫번째 폴더 이름
 	RCLONE_NAME="swlgc" #-- rclone 이름 seowontire.libgc
 	DB_TYPE="mysql"
@@ -220,7 +184,7 @@ else
 if [ "x$1" = "xwiki" ]; then
 	DB_NAME="$1" #-- 백업할 데이터베이스 이름
 	LOGIN_PATH="wikipsql" #-- 데이터베이스 로그인 패쓰 ;;; pgsql 이라서 쓰지는 않음.
-	LOCAL_FOLDER="${HOME}/backup/wikidb" #-- 백업파일을 임시로 저장할 로컬 저장소의 디렉토리 이름
+	LOCAL_FOLDER="${HOME}/backup/wikidb" #-- 백업파일을 일시적으로 저장하는 로컬 저장소의 디렉토리 이름
 	REMOTE_FOLDER="wiki.js" #-- 원격 저장소의 첫번째 폴더 이름
 	RCLONE_NAME="yosgc" #-- rclone 이름 yosjeongc
 	DB_TYPE="pgsql"
@@ -485,6 +449,10 @@ show_then_view "#"
 
 
 #<---- REMOTE / 2022 / ju / 매주 주말 1개
+
+#--xx-- rm -f ${zz00log_name} ; zz00log_name="${zz00logs_folder}/zz.$(date +"%y%m%d-%H%M%S")..${CMD_NAME}" ; touch ${zz00log_name}
+#--xx-- cat_and_run "ls --color ${1}" "프로그램들" ; ls --color ${zz00logs_folder}
+## echo "${cRed}<<<<<<<<<<${cBlue} $0 ${cRed}||| ${cMagenta}${MEMO} ${cRed}<<<<<<<<<<${cReset}"
 
 
 #|====>>

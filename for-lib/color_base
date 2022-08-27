@@ -57,3 +57,45 @@ __EOF__
 #-- view_and_read "user 비번" "${is_password}"
 #-- PSWDforUSER=$read_val
 
+show_then_run () {
+	if [ "x$show_ok" = "xok" ]; then
+		cat_and_run "$1" "#-- (${showno}) ${showqq}"
+	else
+		echo "$1" | sh
+	fi
+}
+show_then_view () {
+	if [ "x$show_ok" = "xok" ]; then echo "${cGreen}----> $1 ${cCyan}#-- (${showno}) ${showqq}${cReset}" ; fi
+}
+show_title () {
+	if [ "x$show_ok" = "xok" ]; then
+		cat <<__EOF__
+    ${cGreen}|
+    |
+    | ${cCyan}$1
+    ${cGreen}|
+    |${cReset}
+__EOF__
+	fi
+}
+#---> value_keyin "LOGIN_PATH" "${LOGIN_PATH}" "데이터베이스의 로그인 패쓰 를 입력하세요."
+value_keyin () {
+	FIELD_NAME=$1
+	FIELD_VALUE=$2
+	FIELD_TITLE=$3
+	cat <<__EOF__
+
+${cGreen}----> ${FIELD_TITLE}[ ${cCyan}${FIELD_VALUE} ${cGreen}]${cReset}
+__EOF__
+	read return_value
+
+	if [ "x$return_value" = "x" ]; then
+		return_value="${FIELD_VALUE}"
+	fi
+	cat <<__EOF__
+${cUp}${cCyan}${FIELD_NAME}: ${cRed} ${cYellow}${return_value} ${cRed}]
+
+__EOF__
+}
+#<--- value_keyin
+# ~/lib/color_base 220827-0920 cat_and_run cat_and_run_cr cat_and_read cat_and_readY view_and_read show_then_run show_then_view show_title value_keyin () {
