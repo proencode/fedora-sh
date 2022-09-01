@@ -86,7 +86,7 @@ cat_and_run "sudo docker-compose ps" "(8) 실행중인 작업을 확인합니다
 cat_and_run "ifconfig | grep enp -A1 ; ifconfig | grep wlp -A1" "(9) ip 를 확인합니다."
 cat_and_run "ifconfig | grep enp -A1 | tail -1 | awk '{print \$2\":${port_no}\"}'" "(10) ethernet"
 cat_and_run "ifconfig | grep wlp -A1 | tail -1 | awk '{print \$2\":${port_no}\"}'" "(11) wifi"
-cat_and_run "sudo docker-compose up --force-recreate &" "(12) 도커 실행"
+cat_and_run "cd ${wiki_conf_dir} ; sudo docker-compose up --force-recreate &" "(12) 도커 실행"
 cat_and_run "sudo docker-compose ps -a" "(13) 모든 작업을 확인합니다."
 
 

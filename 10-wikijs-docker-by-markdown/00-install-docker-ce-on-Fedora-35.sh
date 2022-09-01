@@ -40,8 +40,8 @@ cat_and_run "sudo systemctl status docker" "(7) 도커의 상태를 확인합니
 cat_and_readY "sudo usermod -aG docker $(whoami) ; newgrp docker" "(8) Docker 그룹은 만들었지만 사용자를 추가하지는 않았으며, sudo 없이 docker 명령을 실행하기 위해, 이 그룹에 사용자를 추가합니다."
 cat_and_run "sudo docker version" "(9) 도커 버전"
 
-cat_and_run "sudo docker pull alpine" "(10) 설치 확인을 위해, 테스트 도커를 다운로드해 봅니다."
-cat_and_run "sudo docker run -it --rm alpine /bin/sh" "(11) 확인을 위해 'apk update' 와 'exit' 를 입력하세요."
+cat_and_readY "sudo docker pull alpine" "(10) 설치 확인을 위해, 테스트 도커를 다운로드해 봅니다."
+cat_and_readY "sudo docker run -it --rm alpine /bin/sh" "(11) 확인을 위해 'apk update' 와 'exit' 를 입력하세요."
 
 
 # ----
