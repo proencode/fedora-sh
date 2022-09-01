@@ -1,0 +1,197 @@
+13:15:10 목 2022-09-01 hnfedora@fedora ~/git-projects/fedora-sh/10-wikijs-docker-by-markdown
+10-wikijs-docker-by-markdown $ rclone config
+2022/09/01 13:15:18 NOTICE: Config file "/home/hnfedora/.config/rclone/rclone.conf" not found - using defaults
+No remotes found - make a new one
+n) New remote
+s) Set configuration password
+q) Quit config
+n/s/q> n
+name> yosgc
+Option Storage.
+Type of storage to configure.
+Enter a string value. Press Enter for the default ("").
+Choose a number from below, or type in your own value.
+ 1 / 1Fichier
+   \ "fichier"
+ 2 / Alias for an existing remote
+   \ "alias"
+ 3 / Amazon Drive
+   \ "amazon cloud drive"
+ 4 / Amazon S3 Compliant Storage Providers including AWS, Alibaba, Ceph, Digital Ocean, Dreamhost, IBM COS, Minio, SeaweedFS, and Tencent COS
+   \ "s3"
+ 5 / Backblaze B2
+   \ "b2"
+ 6 / Better checksums for other remotes
+   \ "hasher"
+ 7 / Box
+   \ "box"
+ 8 / Cache a remote
+   \ "cache"
+ 9 / Citrix Sharefile
+   \ "sharefile"
+10 / Compress a remote
+   \ "compress"
+11 / Dropbox
+   \ "dropbox"
+12 / Encrypt/Decrypt a remote
+   \ "crypt"
+13 / Enterprise File Fabric
+   \ "filefabric"
+14 / FTP Connection
+   \ "ftp"
+15 / Google Cloud Storage (this is not Google Drive)
+   \ "google cloud storage"
+16 / Google Drive
+   \ "drive"
+17 / Google Photos
+   \ "google photos"
+18 / Hadoop distributed file system
+   \ "hdfs"
+19 / Hubic
+   \ "hubic"
+20 / In memory object storage system.
+   \ "memory"
+21 / Jottacloud
+   \ "jottacloud"
+22 / Koofr
+   \ "koofr"
+23 / Local Disk
+   \ "local"
+24 / Mail.ru Cloud
+   \ "mailru"
+25 / Mega
+   \ "mega"
+26 / Microsoft Azure Blob Storage
+   \ "azureblob"
+27 / Microsoft OneDrive
+   \ "onedrive"
+28 / OpenDrive
+   \ "opendrive"
+29 / OpenStack Swift (Rackspace Cloud Files, Memset Memstore, OVH)
+   \ "swift"
+30 / Pcloud
+   \ "pcloud"
+31 / Put.io
+   \ "putio"
+32 / QingCloud Object Storage
+   \ "qingstor"
+33 / SSH/SFTP Connection
+   \ "sftp"
+34 / Sia Decentralized Cloud
+   \ "sia"
+35 / Sugarsync
+   \ "sugarsync"
+36 / Tardigrade Decentralized Cloud Storage
+   \ "tardigrade"
+37 / Transparently chunk/split large files
+   \ "chunker"
+38 / Union merges the contents of several upstream fs
+   \ "union"
+39 / Uptobox
+   \ "uptobox"
+40 / Webdav
+   \ "webdav"
+41 / Yandex Disk
+   \ "yandex"
+42 / Zoho
+   \ "zoho"
+43 / http Connection
+   \ "http"
+44 / premiumize.me
+   \ "premiumizeme"
+45 / seafile
+   \ "seafile"
+Storage> drive
+Option client_id.
+Google Application Client Id
+Setting your own is recommended.
+See https://rclone.org/drive/#making-your-own-client-id for how to create your own.
+If you leave this blank, it will use an internal key which is low performance.
+Enter a string value. Press Enter for the default ("").
+client_id> 
+Option client_secret.
+OAuth Client Secret.
+Leave blank normally.
+Enter a string value. Press Enter for the default ("").
+client_secret> 
+Option scope.
+Scope that rclone should use when requesting access from drive.
+Enter a string value. Press Enter for the default ("").
+Choose a number from below, or type in your own value.
+ 1 / Full access all files, excluding Application Data Folder.
+   \ "drive"
+ 2 / Read-only access to file metadata and file contents.
+   \ "drive.readonly"
+   / Access to files created by rclone only.
+ 3 | These are visible in the drive website.
+   | File authorization is revoked when the user deauthorizes the app.
+   \ "drive.file"
+   / Allows read and write access to the Application Data folder.
+ 4 | This is not visible in the drive website.
+   \ "drive.appfolder"
+   / Allows read-only access to file metadata but
+ 5 | does not allow any access to read or download file content.
+   \ "drive.metadata.readonly"
+scope> 1
+Option root_folder_id.
+ID of the root folder.
+Leave blank normally.
+Fill in to access "Computers" folders (see docs), or for rclone to use
+a non root folder as its starting point.
+Enter a string value. Press Enter for the default ("").
+root_folder_id> 
+Option service_account_file.
+Service Account Credentials JSON file path.
+Leave blank normally.
+Needed only if you want use SA instead of interactive login.
+Leading `~` will be expanded in the file name as will environment variables such as `${RCLONE_CONFIG_DIR}`.
+Enter a string value. Press Enter for the default ("").
+service_account_file> 
+Edit advanced config?
+y) Yes
+n) No (default)
+y/n> 
+Use auto config?
+ * Say Y if not sure
+ * Say N if you are working on a remote or headless machine
+
+y) Yes (default)
+n) No
+y/n> 
+2022/09/01 13:15:45 NOTICE: If your browser doesn't open automatically go to the following link: http://127.0.0.1:53682/auth?state=FZnt_p02jzbN8eca8w1sGw
+2022/09/01 13:15:45 NOTICE: Log in and authorize rclone for access
+2022/09/01 13:15:45 NOTICE: Waiting for code...
+2022/09/01 13:17:18 NOTICE: Got code
+Configure this as a Shared Drive (Team Drive)?
+
+y) Yes
+n) No (default)
+y/n> 
+--------------------
+[yosgc]
+type = drive
+scope = drive
+token = {"access_token":"ya259.a0AVA9y1u3vDYb8d_60phjx787ZFmyyoM3fZQsyIANtjun6XU7W39kPxbnpy8dXaNHL6ANS0xj6ShfCzaQzg3k9rYfzIJyFoqsNaEF7OynjBMU2L_A19OiYbvMW8KzT8ryVKw0pLECSHgUcnpXd58l-J5xsDQSb94G8daCgYKATASAQASFQE65dr8LYzQOLTx9c5ejIVsLuuruw01683","token_type":"Bearer","refresh_token":"1//00ebDEzXHBRrqyCgYIARAAGA4SNw2F-L19IrvBJoc5cPFXk2o0oVewx6ZBXhc8gU8I-p5BLCjHZQEXkU58Y_w0YQMUyyJ8Bf3B2IY2V-x1HK80","expiry":"2022-09-01T14:17:17.900089039+09:00"}
+team_drive = 
+--------------------
+y) Yes this is OK (default)
+e) Edit this remote
+d) Delete this remote
+y/e/d> 
+Current remotes:
+
+Name                 Type
+====                 ====
+yosgc                drive
+
+e) Edit existing remote
+n) New remote
+d) Delete remote
+r) Rename remote
+c) Copy remote
+s) Set configuration password
+q) Quit config
+e/n/d/r/c/s/q> q
+13:17:44 목 2022-09-01 hnfedora@fedora ~/git-projects/fedora-sh/10-wikijs-docker-by-markdown
+10-wikijs-docker-by-markdown $ 
+

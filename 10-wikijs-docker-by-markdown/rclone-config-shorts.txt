@@ -1,0 +1,42 @@
+$ rclone config
+ ===============
+No remotes found - make a new one
+n) New remote
+s) Set configuration password
+q) Quit config
+n/s/q> n
+      === (새로운 리모트 만들기)
+name> abcdefg
+     ========= (rclone 사용할 이름)
+Storage> drive
+        ======= (Google Drive 로 지정)
+client_id> 
+          ---
+scope> 1
+      === (지정)
+root_folder_id> 
+               ---
+service_account_file> 
+                     ---
+Edit advanced config?
+y/n> 
+    ---
+Use auto config?
+y/n> 
+    --- (브라우저가 뜨면,
+	Google 계정으로 로그인 >
+	계정에 액세스하려고 합니다 emails 주소 확인후 [취소] [허용] 선택.
+	끝내면 된다)
+Configure this as a Shared Drive (Team Drive)?
+y/n> 
+    ---
+y/e/d> 
+      ---
+Current remotes:
+
+Name                 Type
+====                 ====
+abcdefg              drive
+
+e/n/d/r/c/s/q> q
+              ===
