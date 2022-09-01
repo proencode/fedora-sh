@@ -16,14 +16,14 @@ zz00log_name="${zz00logs_folder}/zz.$(date +"%y%m%d-%H%M%S")__RUNNING_${CMD_NAME
 # ----
 
 
-db_sql_7z="$1"
-if [ "x${db_seq_7z}" = "x" ]; then
-	echo "${cRed}!!!! ${cMagenta}----> ${cBlue} 프로그램 이름 다음에 ${cCyan}(DB 에 업로드하기 위한 백업파일)${cBlue}을 지정해야 합니다.${cReset}"
-	echo "----> ${cYellow}${0} [업로드 할 백업파일]${cReset}"
+db_sql_7z=$1
+if [ "x${db_sql_7z}" = "x" ]; then
+	echo "${cRed}!!!! ${cMagenta}----> ${cBlue} 프로그램 이름 다음에 ${cCyan}(DB 에 업로드하기 위한 백업파일=${db_sql_7z})${cBlue}을 지정해야 합니다.${cReset}"
+	echo "----> ${cYellow}${0} [\$1 $1: 업로드 할 백업파일]${cReset}"
 	exit
 fi
-if [ ! -f "${db_seq_7z}" ]; then
-	echo "${cRed}!!!! ${cMagenta}----> ${cBlue} DB 에 업로드하기 위한 ${cCyan}(${db_seq_7z})${cBlue} 백업파일이 없습니다.${cReset}"
+if [ ! -f "${db_sql_7z}" ]; then
+	echo "${cRed}!!!! ${cMagenta}----> ${cBlue} DB 에 업로드하기 위한 ${cCyan}(${db_sql_7z})${cBlue} 백업파일이 없습니다.${cReset}"
 	echo "----> ${cYellow}${0} [업로드 할 백업파일]${cReset}"
 	exit
 fi
@@ -32,14 +32,14 @@ sql_name=$(basename ${db_sql_7z}) # 백업파일 이름만 꺼냄
 sql_dir=${db_sql_7z%/$sql_name} # 백업파일 이름을 빼고 나머지 디렉토리만 담음
 cat <<__EOF__
 
-${cYellow}db_sql_7z="${db_seq_7z}"${cReset}
+${cYellow}db_sql_7z="${db_sql_7z}"${cReset}
 ${cYellow}sql_name=$(basename ${db_sql_7z}) ${cCyan}# 백업파일 이름만 꺼냄${cReset}
 ${cYellow}sql_dir=${db_sql_7z%/$sql_name} ${cCyan}# 백업파일 이름을 빼고 나머지 디렉토리만 담음${cReset}
 ${cGreen}----> ${cCyan}Press Enter${cReset}:
 __EOF__
 read a
 
-cat_and_run "sudo docker ps -a ; sudo docker stop wikijs" "(1) 위키 도커 중단"
+cat_and_run "sudo docker ps -a ; sudo docker stop wikijs ; sudo docker ps -a" "(1) 위키 도커 중단"
 
 
 #----> (1) 현재의 DB 를 last_backup 으로 백업
@@ -75,7 +75,7 @@ fi
 
 DB_NAME="wiki" #-- 백업할 데이터베이스 이름
 LOGIN_PATH="wikipsql" #-- 데이터베이스 로그인 패쓰 ;;; pgsql 이라서 쓰지는 않음.
-LOCAL_FOLDER="${HOME}/backup/wikidb" #-- 백업파일을 일시적으로 저장하는 로컬 저장소의 디렉토리 이름
+LOCAL_FOLDER="${HOME}/backup/wiki.js" #-- 백업파일을 일시적으로 저장하는 로컬 저장소의 디렉토리 이름
 REMOTE_FOLDER="wiki.js" #-- 원격 저장소의 첫번째 폴더 이름
 RCLONE_NAME="yosgc" #-- rclone 이름 yosjeongc
 DB_TYPE="pgsql"
@@ -106,8 +106,10 @@ fi
 #----> (2) sql.7z 로 백업한 파일을 DN 에 리스토어
 
 
-cat_and_run "sudo docker exec -it wikijsdb dropdb -U wikijs wiki" "(5) DB 삭제하기"
-cat_and_run "sudo docker exec -it wikijsdb createdb -U wikijs wiki" "(6) DB 만들기"
+echo "#-- cat_and_run \"sudo docker exec -it wikijsdb dropdb -U wikijs wiki\" \"(5) DB 삭제하기"
+sudo docker exec -it wikijsdb dropdb -U wikijs wiki ; echo "#-- (5) DB 삭제하기"
+echo "#-- cat_and_run \"sudo docker exec -it wikijsdb createdb -U wikijs wiki\" \"(6) DB 만들기"
+sudo docker exec -it wikijsdb createdb -U wikijs wiki ; echo "#-- (6) DB 만들기"
 
 cat <<__EOF__
 

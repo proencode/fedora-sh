@@ -41,7 +41,10 @@ else
 	cat_and_run "sudo ls -lZ ${wiki_conf_dir}" "(3) 위키설정용 폴더가 있습니다."
 fi
 
-cat > ${wiki_conf_dir}/docker-compose.yml <<__EOF__
+echo "----> cd ${wiki_conf_dir} #-- 이 디렉토리로 가서 나머지 작업을 진행합니다."
+cd ${wiki_conf_dir}
+
+cat > docker-compose.yml <<__EOF__
 version: "3"
 services:
 
@@ -86,7 +89,7 @@ cat_and_run "sudo docker-compose ps" "(8) 실행중인 작업을 확인합니다
 cat_and_run "ifconfig | grep enp -A1 ; ifconfig | grep wlp -A1" "(9) ip 를 확인합니다."
 cat_and_run "ifconfig | grep enp -A1 | tail -1 | awk '{print \$2\":${port_no}\"}'" "(10) ethernet"
 cat_and_run "ifconfig | grep wlp -A1 | tail -1 | awk '{print \$2\":${port_no}\"}'" "(11) wifi"
-cat_and_run "cd ${wiki_conf_dir} ; sudo docker-compose up --force-recreate &" "(12) 도커 실행"
+cat_and_run "sudo docker-compose up --force-recreate &" "(12) 도커 실행"
 cat_and_run "sudo docker-compose ps -a" "(13) 모든 작업을 확인합니다."
 
 
