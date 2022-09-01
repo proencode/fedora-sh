@@ -20,7 +20,7 @@ dir_for_backup="$1"
 if [ "x${dir_for_backup}" = "x" ]; then
 	rm -f ${zz00log_name}
 	echo "${cRed}!!!! ${cMagenta}----> ${cBlue} 프로그램 이름 다음에 ${cCyan}(백업파일을 저장할 폴더)${cBlue}를 지정해야 합니다.${cReset}"
-	echo "----> ${cYellow}${0} ${cCyan}[ ${cYellow}백업파일을 저장할 폴더이름${cCyan} ] 을 입력하세요.${cReset}"
+	echo "----> ${cYellow}${0} ${cCyan}[ ${cYellow}백업파일을 저장할 폴더이름${cCyan} ] 을 ${cMagenta}/home/backup${cCyan} 처럼 입력하세요.${cReset}"
 	echo "${cRed}<<<<<<<<<<${cBlue} $0 ${cRed}||| ${cMagenta}${MEMO} ${cRed}<<<<<<<<<<${cReset}"
 	exit 1
 fi
