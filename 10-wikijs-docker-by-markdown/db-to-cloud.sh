@@ -244,7 +244,7 @@ fi
 
 if [ ! -d ${LOCAL_FOLDER} ];then
 	showno="0" ; showqq="보관용 로컬 디렉토리를 만듭니다."
-	show_then_run "sudo mkdir ${LOCAL_FOLDER} ; sudo chown ${USER}.${USER} ${LOCAL_FOLDER}"
+	show_then_run "sudo mkdir -p ${LOCAL_FOLDER} ; sudo chown ${USER}.${USER} ${LOCAL_FOLDER}"
 fi
 uname_n=$(uname -n)
 yoil_sql_7z=".${yoil_number1to7}yoil.sql.7z" #-- Y[1-7].sql.7z // 요일 표시
@@ -461,5 +461,121 @@ show_then_view "#"
 
 #|====>>
 #|
+#|  proenpi@proenpi4b:~/git-projects/fedora-sh/10-wikijs-docker-by-markdown$ sh db-to-cloud.sh wiki ok
+#|  ----> sudo mkdir -p /home/backup/wikidb ; sudo chown proenpi.proenpi /home/backup/wikidb #-- #-- (0) 보관용 로컬 디렉토리를 만듭니다.
+#|  <---- sudo mkdir -p /home/backup/wikidb ; sudo chown proenpi.proenpi /home/backup/wikidb #-- #-- (0) 보관용 로컬 디렉토리를 만듭니다.
+#|      |
+#|      |
+#|      | 2022/09 최근 일주일 백업을 시작합니다. (220901목-1653)
+#|      |
+#|      |
+#|  ----> mkdir -p /home/backup/wikidb/2022/1_7yoil #-- #-- (1a) 보관용 로컬 디렉토리를 만듭니다.
+#|  <---- mkdir -p /home/backup/wikidb/2022/1_7yoil #-- #-- (1a) 보관용 로컬 디렉토리를 만듭니다.
+#|  ----> mkdir -p /home/backup/wikidb/2022/01_53ju #-- #-- (1b) 보관용 로컬 디렉토리를 만듭니다.
+#|  <---- mkdir -p /home/backup/wikidb/2022/01_53ju #-- #-- (1b) 보관용 로컬 디렉토리를 만듭니다.
+#|  ----> ls -lR /home/backup/wikidb/2022 #-- #-- (2) 보관용 로컬 디렉토리 입니다.
+#|  /home/backup/wikidb/2022:
+#|  합계 8
+#|  drwxrwxr-x 2 proenpi proenpi 4096  9월  1 16:53 01_53ju
+#|  drwxrwxr-x 2 proenpi proenpi 4096  9월  1 16:53 1_7yoil
+#|  
+#|  /home/backup/wikidb/2022/01_53ju:
+#|  합계 0
+#|  
+#|  /home/backup/wikidb/2022/1_7yoil:
+#|  합계 0
+#|  <---- ls -lR /home/backup/wikidb/2022 #-- #-- (2) 보관용 로컬 디렉토리 입니다.
+#|  ----> REMOTE_SQL_7Z_LIST=$(/usr/bin/rclone ls yosgc:wiki.js/2022/1_7yoil/ | grep .5yoil.sql.7z | awk '{print $2}') #-- (3) 오늘날짜 클라우드 백업파일이 있는지 확인 합니다.
+#|  ----> mapfile -t Remote_Sql7z_Array <<< "wiki_220901목-1613_proenpi4b.5yoil.sql.7z" #-- (4a) 오늘날짜 클라우드 백업파일이 있는지 확인 합니다.
+#|  ----> file_name=$(echo wiki_220901목-1613_proenpi4b.5yoil.sql.7z | sed 's/ *$//g') #-- (4a1) 빈칸 삭제 // https://linuxhint.com/trim_string_bash/
+#|  ----> OUTRC=$(/usr/bin/rclone deletefile yosgc:wiki.js/2022/1_7yoil/wiki_220901목-1613_proenpi4b.5yoil.sql.7z) #-------- #-- (4a2) 오늘날짜 클라우드 백업파일을 삭제합니다.
+#|  ----> # #-- (4a2) 오늘날짜 클라우드 백업파일을 삭제합니다.
+#|  ----> rm -f /home/backup/wikidb/2022/1_7yoil/*.5yoil.sql.7z #-- #-- (5) 오늘날짜 로컬 백업파일을 삭제합니다.
+#|  <---- rm -f /home/backup/wikidb/2022/1_7yoil/*.5yoil.sql.7z #-- #-- (5) 오늘날짜 로컬 백업파일을 삭제합니다.
+#|  ----> sudo docker exec wikijsdb pg_dumpall -U wikijs | 7za a -si /home/backup/wikidb/2022/1_7yoil/wiki_220901목-1653_proenpi4b.5yoil.sql.7z -pdnlzl2209 #-- #-- (6) DB 를 로컬에 백업합니다.
+#|  
+#|  7-Zip (a) [64] 16.02 : Copyright (c) 1999-2016 Igor Pavlov : 2016-05-21
+#|  p7zip Version 16.02 (locale=ko_KR.UTF-8,Utf16=on,HugeFiles=on,64 bits,4 CPUs LE)
+#|  
+#|  Creating archive: /home/backup/wikidb/2022/1_7yoil/wiki_220901목-1653_proenpi4b.5yoil.sql.7z
+#|  
+#|  Items to compress: 1
+#|  
+#|  
+#|  Files read from disk: 1
+#|  Archive size: 22883786 bytes (22 MiB)
+#|  Everything is Ok
+#|  <---- sudo docker exec wikijsdb pg_dumpall -U wikijs | 7za a -si /home/backup/wikidb/2022/1_7yoil/wiki_220901목-1653_proenpi4b.5yoil.sql.7z -pdnlzl2209 #-- #-- (6) DB 를 로컬에 백업합니다.
+#|  ----> OUTRC=$(/usr/bin/rclone copy /home/backup/wikidb/2022/1_7yoil/wiki_220901목-1653_proenpi4b.5yoil.sql.7z yosgc:wiki.js/2022/1_7yoil/) #-------- #-- (7) 로컬 DB 백업파일을 클라우드로 복사합니다.
+#|  ----> # #-- (8) wiki.js/2022/1_7yoil 월 최근 일주일 백업을 끝냅니다. (220901목-1653)
+#|      |
+#|      |
+#|      | wiki.js/2022/1_7yoil 월의 마지막 백업파일을 wiki.js/2022 년도로 복사 시작 (220901목-1653)
+#|      |
+#|      |
+#|  ----> REMOTE_SQL_7Z_LIST=$(/usr/bin/rclone ls yosgc:wiki.js/2022/ | grep .09wol.sql.7z | awk '{print $2}') #-- (9) 09월 백업파일이 이전에 백업돼 있었는지 확인 합니다.
+#|  ----> mapfile -t Remote_Sql7z_Array <<< "wiki_220901목-1613_proenpi4b.09wol.sql.7z" #-- (10a) 09월 백업파일이 이전에 백업돼 있었는지 확인 합니다.
+#|  ----> file_name=$(echo wiki_220901목-1613_proenpi4b.09wol.sql.7z | sed 's/ *$//g') #-- (10a1) 빈칸 삭제
+#|  ----> OUTRC=$(/usr/bin/rclone deletefile yosgc:wiki.js/2022/1_7yoil/wiki_220901목-1613_proenpi4b.09wol.sql.7z) #-------- #-- (10a2) 09월 백업파일을 삭제합니다.
+#|  ----> rm -f /home/backup/wikidb/2022/*.09wol.sql.7z #-- #-- (11) 오늘날짜 로컬 백업파일을 삭제합니다.
+#|  <---- rm -f /home/backup/wikidb/2022/*.09wol.sql.7z #-- #-- (11) 오늘날짜 로컬 백업파일을 삭제합니다.
+#|  ----> # #-- (12) wiki.js/2022/1_7yoil 월 백업파일을 wiki.js/2022 년도로 복사하는 작업을 시작합니다. (220901목-1653)
+#|  ----> cp /home/backup/wikidb/2022/1_7yoil/wiki_220901목-1653_proenpi4b.5yoil.sql.7z /home/backup/wikidb/2022/wiki_220901목-1653_proenpi4b.09wol.sql.7z #-- #-- (13) 로컬 디렉토리의 월 백업파일을 년도로 복사합니다.
+#|  <---- cp /home/backup/wikidb/2022/1_7yoil/wiki_220901목-1653_proenpi4b.5yoil.sql.7z /home/backup/wikidb/2022/wiki_220901목-1653_proenpi4b.09wol.sql.7z #-- #-- (13) 로컬 디렉토리의 월 백업파일을 년도로 복사합니다.
+#|  ----> OUTRC=$(/usr/bin/rclone copy /home/backup/wikidb/2022/wiki_220901목-1653_proenpi4b.09wol.sql.7z yosgc:wiki.js/2022/) #-------- #-- (14) 09월 백업파일을 2022년도 폴더로 복사합니다.
+#|  ----> OUTRC=$(/usr/bin/rclone ls yosgc:wiki.js/2022) #---- 22883786 wiki_220901목-1653_proenpi4b.09wol.sql.7z
+#|   22882714 wiki_220831수-2203_proenpi-4b.08wol.sql.7z
+#|   22883786 01_53ju/wiki_220901목-1613_proenpi4b.35ju.sql.7z
+#|   22873498 01_53ju/wiki_220828일-2201_proenpi-4b.34ju.sql.7z
+#|   22883786 1_7yoil/wiki_220901목-1653_proenpi4b.5yoil.sql.7z
+#|   22882714 1_7yoil/wiki_220831수-2203_proenpi-4b.4yoil.sql.7z
+#|   22877482 1_7yoil/wiki_220830화-1802_proenpi-4b.3yoil.sql.7z
+#|   22875354 1_7yoil/wiki_220829월-1701_proenpi-4b.2yoil.sql.7z
+#|   22873498 1_7yoil/wiki_220828일-2201_proenpi-4b.8yoil.sql.7z
+#|   22871402 1_7yoil/wiki_220826금-2201_proenpi-4b.6yoil.sql.7z---- #-- (15) 폴더 확인
+#|  ----> # #-- (16) wiki.js/2022/1_7yoil 월 백업파일을 wiki.js/2022 년도로 복사하는 작업을 끝냅니다. (220901목-1653)
+#|      |
+#|      |
+#|      | wiki.js/2022/1_7yoil 월의 마지막 백업파일을 wiki.js/2022/01_53ju 폴더에 J35 번호로 복사 시작 (220901목-1653)
+#|      |
+#|      |
+#|  ----> REMOTE_SQL_7Z_LIST=$(/usr/bin/rclone ls yosgc:wiki.js/2022/01_53ju/ | grep .35ju.sql.7z | awk '{print $2}') #-- (17) 09월 백업파일이 이전에 백업돼 있었는지 확인 합니다.
+#|  ----> mapfile -t Remote_Sql7z_Array <<< "wiki_220901목-1613_proenpi4b.35ju.sql.7z" #-- (18a) 09월 백업파일이 이전에 백업돼 있었는지 확인 합니다.
+#|  ----> file_name=$(echo wiki_220901목-1613_proenpi4b.35ju.sql.7z | sed 's/ *$//g') #-- (18a1) 빈칸 삭제
+#|  ----> OUTRC=$(/usr/bin/rclone deletefile yosgc:wiki.js/2022/01_53ju/wiki_220901목-1613_proenpi4b.35ju.sql.7z) #-------- #-- (18a2) 09월 백업파일을 삭제합니다.
+#|  ----> rm -f /home/backup/wikidb/2022/01_53ju/*.35ju.sql.7z #-- #-- (19) 오늘날짜 로컬 백업파일을 삭제합니다.
+#|  <---- rm -f /home/backup/wikidb/2022/01_53ju/*.35ju.sql.7z #-- #-- (19) 오늘날짜 로컬 백업파일을 삭제합니다.
+#|  ----> cp /home/backup/wikidb/2022/1_7yoil/wiki_220901목-1653_proenpi4b.5yoil.sql.7z /home/backup/wikidb/2022/01_53ju/wiki_220901목-1653_proenpi4b.35ju.sql.7z #-- #-- (20) .35ju.sql.7z 백업파일을 wiki.js/2022/01_53ju 로 복사하는 작업을 시작합니다. (220901목-1653)
+#|  <---- cp /home/backup/wikidb/2022/1_7yoil/wiki_220901목-1653_proenpi4b.5yoil.sql.7z /home/backup/wikidb/2022/01_53ju/wiki_220901목-1653_proenpi4b.35ju.sql.7z #-- #-- (20) .35ju.sql.7z 백업파일을 wiki.js/2022/01_53ju 로 복사하는 작업을 시작합니다. (220901목-1653)
+#|  ----> OUTRC=$(/usr/bin/rclone copy /home/backup/wikidb/2022/01_53ju/wiki_220901목-1653_proenpi4b.35ju.sql.7z yosgc:wiki.js/2022/01_53ju/) #-------- #-- (21) 09월 백업파일을 wiki.js/2022/01_53ju 폴더로 복사합니다.
+#|  ----> ls -lR /home/backup/wikidb/2022 #-- #-- (22a) 보관용 로컬 디렉토리 입니다.
+#|  /home/backup/wikidb/2022:
+#|  합계 22356
+#|  drwxrwxr-x 2 proenpi proenpi     4096  9월  1 16:55 01_53ju
+#|  drwxrwxr-x 2 proenpi proenpi     4096  9월  1 16:53 1_7yoil
+#|  -rw-rw-r-- 1 proenpi proenpi 22883786  9월  1 16:55 wiki_220901목-1653_proenpi4b.09wol.sql.7z
+#|  
+#|  /home/backup/wikidb/2022/01_53ju:
+#|  합계 22348
+#|  -rw-rw-r-- 1 proenpi proenpi 22883786  9월  1 16:55 wiki_220901목-1653_proenpi4b.35ju.sql.7z
+#|  
+#|  /home/backup/wikidb/2022/1_7yoil:
+#|  합계 22348
+#|  -rw-rw-r-- 1 proenpi proenpi 22883786  9월  1 16:55 wiki_220901목-1653_proenpi4b.5yoil.sql.7z
+#|  <---- ls -lR /home/backup/wikidb/2022 #-- #-- (22a) 보관용 로컬 디렉토리 입니다.
+#|  ----> /usr/bin/rclone lsl yosgc:wiki.js/2022 #-- #-- (22b) 원격 디렉토리 입니다.
+#|   22883786 2022-09-01 16:55:20.569000000 wiki_220901목-1653_proenpi4b.09wol.sql.7z
+#|   22882714 2022-08-31 22:05:16.559000000 wiki_220831수-2203_proenpi-4b.08wol.sql.7z
+#|   22883786 2022-09-01 16:55:02.417000000 1_7yoil/wiki_220901목-1653_proenpi4b.5yoil.sql.7z
+#|   22882714 2022-08-31 22:04:48.075000000 1_7yoil/wiki_220831수-2203_proenpi-4b.4yoil.sql.7z
+#|   22877482 2022-08-30 18:04:09.527000000 1_7yoil/wiki_220830화-1802_proenpi-4b.3yoil.sql.7z
+#|   22875354 2022-08-29 17:02:56.517000000 1_7yoil/wiki_220829월-1701_proenpi-4b.2yoil.sql.7z
+#|   22873498 2022-08-28 22:02:52.845000000 1_7yoil/wiki_220828일-2201_proenpi-4b.8yoil.sql.7z
+#|   22871402 2022-08-26 22:02:53.161000000 1_7yoil/wiki_220826금-2201_proenpi-4b.6yoil.sql.7z
+#|   22883786 2022-09-01 16:55:45.549000000 01_53ju/wiki_220901목-1653_proenpi4b.35ju.sql.7z
+#|   22873498 2022-08-28 22:03:27.952000000 01_53ju/wiki_220828일-2201_proenpi-4b.34ju.sql.7z
+#|  <---- /usr/bin/rclone lsl yosgc:wiki.js/2022 #-- #-- (22b) 원격 디렉토리 입니다.
+#|  ----> # #-- (23) wiki.js/2022/1_7yoil 월의 마지막 백업파일을 wiki.js/2022/01_53ju 폴더에 J35 번호로 복사하는 작업을 끝냅니다. (220901목-1653)
+#|  proenpi@proenpi4b:~/git-projects/fedora-sh/10-wikijs-docker-by-markdown$
 #|
 #|<<====
