@@ -1,0 +1,655 @@
+`날짜 역순` 으로 `한달치만` 기록하고, 달이 바뀌면 다음과 같이 처리한다.
+1. Page Action > Move/Rename > Pages 에서 옮기려는 "2022-08 일지" 클릭 > 아랫쪽 `[en v]`옆 Path에 "/ ilji/2208" 입력 > `[v Select]` 클릭해서 파일 이름을 바꾼다.
+2. 다시 불러오기 `Ctrl + R` 하면, 윗작업의 결과로 "/ home" 파일이 "/ ilji/2208" 파일로 바뀌었기 때문에 "/ home" 파일이 없으므로, 나온 화면에서 `[+ CREATE HOME PAGE]` 를 누른 다음, Title: "2022-09 일지" Short: "작성중" Path: "/ home" 으로 지정해서 "/ home" 파일을 새로 만든다.
+3. HP ENVY-7640 printer 인쇄시 (레이아웃 `세로방향` / 설정 더보기 > 용지 크기 (`A4`) / 시트당 페이지 수 (`1`) / 여백 맞춤 > 상하 `10m/m`, 좌우 `5m/m` / 양면 `[v]`양면에 인쇄 / `[-]` 위로 넘김)
+
+
+# 220831 수
+1020 푸른숲도서관
+
+- 최민희 알려드립니다.
+이재명대표 중앙당에 지시
+1. 사내 당원존 설치
+당원 자유출입, 활용공간, 개방화장실 포함 마련
+2. 전저당원증 도입
+당원존 출입활용, 당내행사 우선신청
+3. 당직자 업무연락처 공개
+중앙당, 시도당 홈페이지 당직자 이름, 직책, 담당업무, 당사 전화번호
+-더민주 공보국-
+
+- 최강욱의원 윤리위원회 궤변과 이중잣대 규탄 청원동의 5만명 초과
+
+- 개딸 1명 8월 활동 보고 15:15:08개딸부대 https://www.ddanzi.com/index.php?mid=free&statusList=HOT%2CHOTBEST%2CHOTAC%2CHOTBESTAC&document_srl=748454209
+
+- (NHK 오늘) 일본 100년 역사에서
+가장 싫어하는 한국인 1위 문재인
+가장 경계해야 할 한국인 1위 이재명
+
+## wiki.js 설치
+
+#### 1. docker-ce 를 fedora 에 설치하기
+
+1. 시스템을 최신으로 업데이트 한다.
+```
+sudo dnf -y update #-- (1) 시스템을 업데이트 합니다.
+```
+
+2. Fedora 리파지토리를 시스템에 추가한 다음이라야 docker 를 설치할 수 있다.
+```
+sudo dnf -y install dnf-plugin-core #-- (2) Fedora 리파지토리를 시스템에 추가합니다.
+sudo tee /etc/yum.repos.d/docker-ce.repo <<__EOF__
+[docker-ce-stable]
+name=Docker CE Stable - \$basearch
+baseurl=https://download.docker.com/linux/fedora/35/\$basearch/stable
+enabled=1
+gpgcheck=1
+gpgkey=https://download.docker.com/linux/fedora/gpg
+__EOF__
+```
+
+3. Docker CE 를 Fedora 에 설치한다.
+```
+sudo dnf makecache #-- (3) Docker CE 를 Fedora 에 설치합니다.
+sudo dnf -y install docker-ce docker-ce-cli containerd.io #-- (4)
+sudo systemctl enable --now docker #-- (5) Docker 가 설치됐으므로, 도커 서비스를 실행합니다.
+sudo systemctl status docker #-- (6) 도커의 상태를 확인합니다.
+sudo docker version #-- (7) 도커 버전을 확인합니다.
+```
+
+4. sudo 를 쓰지 않고도 처리토록 하거나 설치확인을 위해 테스트하는 생략 가능한 스크립트.
+```
+sudo usermod -aG docker $(whoami) ; newgrp docker #-- (8) Docker 그룹은 만들었지만 사용자를 추가하지는 않았으며, sudo 없이 docker 명령을 실행하기 위해, 이 그룹에 사용자를 추가합니다.
+sudo docker pull alpine #-- (9) 설치 확인을 위해, 테스트 도커를 다운로드해 봅니다.
+sudo docker run -it --rm alpine /bin/sh #-- (10) 확인을 위해 'apk update' 와 'exit' 를 입력하세요.
+```
+
+#### 2. 도커 컴포즈를 빌드하기
+
+1. wiki.js 를 위한 데이터베이스로 포스트그레스 (postgres DB) 를 선택했으므로, 이것을 보관할 디렉토리를 만들고, wiki.js 설정을 위한 파일을 보관할 디렉토리도 만든다.
+```
+db_folder=/home/docker/pgsql
+if [ ! -d ${db_folder} ]; then
+		sudo mkdir -p ${db_folder}
+		sudo chcon -R system_u:object_r:container_file_t:s0 ${db_folder}
+		sudo chown -R systemd-coredump.ssh_keys ${db_folder}
+		ls -lZ ${db_folder} #-- (1) 데이터베이스 폴더를 만들었습니다.
+else
+		rm -f ${zz00log_name}
+		echo "!!!! ----> (2) ${db_folder} 디렉토리가 '있으'므로, 확인후 삭제하고 다시 시작하세요."
+ 		exit 1
+fi
+
+wiki_conf_dir=/home/docker/wiki.js        
+if [ ! -d ${wiki_conf_dir} ]; then
+		sudo mkdir -p ${wiki_conf_dir}
+    sudo chown -R ${USER}.${USER} ${wiki_conf_dir} #-- (3) 위키설정용 폴더를 만들었습니다.
+else
+		sudo ls -lZ ${wiki_conf_dir} #-- (4) 위키설정용 폴더가 이미 있습니다.
+fi
+```
+
+2. 도커 컴포즈를 실행하기 위한 설정파일을 만든다.
+```
+port_no=5800
+db_folder=/home/docker/pgsql
+wiki_conf_dir=/home/docker/wiki.js
+
+cat > ${wiki_conf_dir}/docker-compose.yml <<__EOF__
+version: "3"
+services:
+
+  db:
+    image: postgres:11-alpine
+    environment:
+      POSTGRES_DB: wiki
+      POSTGRES_PASSWORD: wikijsrocks
+      POSTGRES_USER: wikijs
+    logging:
+      driver: "none"
+    restart: unless-stopped
+    volumes:
+      - ${db_folder}:/var/lib/postgresql/data
+    container_name:
+      wikijsdb
+
+  wiki:
+    image: requarks/wiki:2
+    depends_on:
+      - db
+    environment:
+      DB_TYPE: postgres
+      DB_HOST: db
+      DB_PORT: 5432
+      DB_USER: wikijs
+      DB_PASS: wikijsrocks
+      DB_NAME: wiki
+    restart: unless-stopped
+    ports:
+      - "${port_no}:3000"
+    container_name:
+      wikijs
+__EOF__
+
+```
+
+3. 도커 컴포즈 를 빌드한다.
+```
+sudo dnf -y install docker-compose #-- (1) Docker Compose 를 설치합니다.
+rpm -qi docker-compose #-- (2) 설치된것을 확인합니다.
+sudo docker ps -a #-- (3) 도커에 어떤 작업이 돌아가고 있는지 확인합니다.
+
+sudo docker-compose pull wiki #-- (4) 도커 컴포즈 wiki 를 빌드합니다.
+
+sudo docker-compose ps #--(5) 실행중인 도커 작업을 확인합니다.
+ifconfig | grep enp -A1 ; ifconfig | grep wlp -A1 #-- (6) ip 를 확인합니다.
+ifconfig | grep enp -A1 | tail -1 | awk '{print \$2\":${port_no}\"}' #-- (7) ethernet
+ifconfig | grep wlp -A1 | tail -1 | awk '{print \$2\":${port_no}\"}' #-- (8) wifi
+sudo docker-compose up --force-recreate & #-- (9) 빌드한 도커 컴포즈를 실행합니다.
+sudo docker-compose ps -a #-- (10) 도커 컴포즈에서 실행되고 있는 모든 작업을 확인합니다.
+```
+
+4. 위키서버가 시작되면 브라우저에서 이와같이 입력하면 된다.
+```
+localhost:${port_no}
+```
+
+## wiki.js 클라우드 백업하기
+
+```
+sudo docker ps -a ; sudo docker stop wikijs #- (1) 위키 도커를 중단합니다.
+#-
+DB_NAME="wiki" #- (2) 백업할 데이터베이스 이름
+LOCAL_FOLDER="/home/backup/wikidb" #- 백업파일을 일시적으로 저장하는 로컬 저장소의 디렉토리 이름
+if [ ! -d ${LOCAL_FOLDER} ];then
+	sudo mkdir -p ${LOCAL_FOLDER} ; sudo chown ${USER}.${USER} ${LOCAL_FOLDER} ; echo "#-- 보관용 ${LOCAL_FOLDER} 로컬 디렉토리를 만듭니다."
+fi
+REMOTE_FOLDER="wiki.js" #- 원격 저장소의 첫번째 폴더 이름
+RCLONE_NAME="yosgc" #- rclone 이름
+this_year=$(date +%Y) #- 2022
+this_wol=$(date +%m) #- 07
+ymd_hm=$(date +"%y%m%d%a-%H%M")
+pswd_ym=$(date +"%y%m")
+yoil_number0to6=$(date +%u) #- (3) 일0 월1 화2 수3 목4 금5 토6
+yoil_number1to7=$(( ${yoil_number0to6} + 1 )) #- 1 2 3 4 5 6 7
+ju_beonho=$(date +%V) #- 1년중 몇번째 주인지 표시.
+#- V: 월요일마다 하나씩 증가한다.
+#- U: (1월1일이 일요일 이면 01, 아니면 00), 일요일마다 하나씩 증가한다.
+#-
+yoil_sql_7z=".${yoil_number1to7}yoil.sql.7z" #- (4) 요일 표시
+uname_n=$(uname -n)
+YOIL_sql7z=${DB_NAME}_${ymd_hm}_${uname_n}${yoil_sql_7z}
+this_wol_sql_7z=".${this_wol}wol.sql.7z" #- 월 표시
+WOL_sql7z=${DB_NAME}_${ymd_hm}_${uname_n}${this_wol_sql_7z}
+ju_beonho_sql_7z=".${ju_beonho}ju.sql.7z" #- 1년중 몇번째 주인지 표시
+JU_sql7z=${DB_NAME}_${ymd_hm}_${uname_n}${ju_beonho_sql_7z}
+#-
+LOCAL_THIS_YEAR=${LOCAL_FOLDER}/${this_year} #- (5) 년도 폴더에는 매월 마지막 백업 1개씩만 보관한다.
+LOCAL_YOIL=${LOCAL_THIS_YEAR}/1_7yoil #- 년도의 yoil 폴더에는 최근 1주일치만 보관한다.
+LOCAL_JU=${LOCAL_THIS_YEAR}/01_53ju #- 년도의 ju 폴더에는 매주 마지막 백업 1개씩만 보관한다.
+#-
+REMOTE_YEAR=${REMOTE_FOLDER}/${this_year}
+REMOTE_YOIL=${REMOTE_YEAR}/1_7yoil #- rclone 명령으로 보내는 원격 저장소의 데이터베이스구분/년도/last7 폴더이름
+REMOTE_JU=${REMOTE_YEAR}/01_53ju #- rclone 명령으로 보내는 원격 저장소의 데이터베이스구분/년도/sunday 폴더이름
+if [ ! -d ${LOCAL_YOIL} ]; then
+	mkdir -p ${LOCAL_YOIL} #-- 보관용 로컬 디렉토리를 만듭니다.
+fi
+if [ ! -d ${LOCAL_JU} ]; then
+	mkdir -p ${LOCAL_JU} #-- 보관용 로컬 디렉토리를 만듭니다.
+fi
+ls -lR ${LOCAL_THIS_YEAR} ; echo "#-- (6) 보관용 로컬 디렉토리 입니다."
+#-
+#- 오늘의 요일 이름으로 된 지난백업 삭제
+#-
+rm -f ${LOCAL_YOIL}/*${yoil_sql_7z} ; echo "#-- (7) 전에 보관한 오늘의 요일 이름으로 된 로컬 백업파일을 삭제합니다."
+REMOTE_SQL_7Z_LIST=$(/usr/bin/rclone ls ${RCLONE_NAME}:${REMOTE_YOIL}/ | grep ${yoil_sql_7z} | awk '{print $2}') #- 전에 보관한 오늘 요일이름의 백업파일이 클라우드에 있는지 확인합니다.
+if [ "x$REMOTE_SQL_7Z_LIST" != "x" ]; then
+	mapfile -t Remote_Sql7z_Array <<< "$REMOTE_SQL_7Z_LIST" #- 전에 보관한 오늘 요일이름의 클라우드 백업파일이 있는 경우,
+	for val in "${Remote_Sql7z_Array[@]}"
+	do
+		file_name=$(echo ${val} | sed 's/ *$//g') #- 빈칸 삭제 // https://linuxhint.com/trim_string_bash/
+		/usr/bin/rclone deletefile ${RCLONE_NAME}:${REMOTE_YOIL}/${file_name} ; echo "#-- (8) 전에 보관한 오늘 요일이름의 클라우드 백업파일을 삭제합니다."
+	done
+fi
+#-
+#- DB 백업
+#-
+ymd_hm=$(date +"%y%m%d%a-%H%M")
+cat <<__EOF__
+---->
+----> (10) wili.js 데이터베이스를 백업하기 위해서 아래에 ---비밀번호--- 를 입력하세요.
+---->
+__EOF__
+sudo docker exec wikijsdb pg_dumpall -U wikijs | 7za a -si ${LOCAL_YOIL}/${YOIL_sql7z} -p ; echo "#-- (9) 오늘 요일이름의 로컬 보관장소에 백업합니다."
+/usr/bin/rclone copy ${LOCAL_YOIL}/${YOIL_sql7z} ${RCLONE_NAME}:${REMOTE_YOIL}/ ; echo "#-- (10) 오늘 요일이름의 파일을 클라우드로 복사합니다."
+/usr/bin/rclone ls ${RCLONE_NAME}:${REMOTE_YOIL} ; echo "#-- (11) 오늘 요일이름의 백업 확인"
+#-
+#- 오늘의 월 이름으로 된 지난백업 삭제
+#-
+rm -f ${LOCAL_THIS_YEAR}/*${this_wol_sql_7z} ; echo "#-- (12) 전에 보관한 월이름의 로컬 백업파일을 삭제합니다."
+REMOTE_SQL_7Z_LIST=$(/usr/bin/rclone ls ${RCLONE_NAME}:${REMOTE_YEAR}/ | grep ${this_wol_sql_7z} | awk '{print $2}') #- 전에 보관한 월이름의 백업파일이 클라우드에 있는지 확인 합니다.
+if [ "x$REMOTE_SQL_7Z_LIST" != "x" ]; then
+	mapfile -t Remote_Sql7z_Array <<< "$REMOTE_SQL_7Z_LIST"
+	for val in "${Remote_Sql7z_Array[@]}"
+	do
+		file_name=$(echo ${val} | sed 's/ *$//g') #- 빈칸 삭제
+		/usr/bin/rclone deletefile ${RCLONE_NAME}:${REMOTE_YEAR}/${file_name} ; echo "#-- (13) 전에 보관한 월이름의 클라우드 백업파일을 삭제합니다."
+	done
+fi
+#-
+#- 오늘의 월 이름으로 복사
+#-
+cp ${LOCAL_YOIL}/${YOIL_sql7z} ${LOCAL_THIS_YEAR}/${WOL_sql7z} ; echo "#-- (14) 오늘 요일이름의 파일을 월 이름으로 바꾸어 로컬의 년도폴더에 복사합니다."
+/usr/bin/rclone copy ${LOCAL_THIS_YEAR}/${WOL_sql7z} ${RCLONE_NAME}:${REMOTE_YEAR}/ ; echo "#-- (15) 이달 백업파일을 년도 폴더에 복사합니다."
+/usr/bin/rclone ls ${RCLONE_NAME}:${REMOTE_YEAR} ; echo "#-- (16) 폴더 확인"
+#-
+#- 오늘의 이번주 일련번호 이름으로 된 지난백업 삭제
+#-
+rm -f ${LOCAL_JU}/*${ju_beonho_sql_7z} ; echo "#-- (17) 전에 보관한 이번주 번호 로컬 백업파일을 삭제합니다."
+REMOTE_SQL_7Z_LIST=$(/usr/bin/rclone ls ${RCLONE_NAME}:${REMOTE_JU}/ | grep ${ju_beonho_sql_7z} | awk '{print \$2}') #- 전에 보관한 이번주 번호 백업파일이 클라우드에 있는지 확인 합니다.
+if [ "x$REMOTE_SQL_7Z_LIST" != "x" ]; then
+	mapfile -t Remote_Sql7z_Array <<< "$REMOTE_SQL_7Z_LIST"
+	for val in "${Remote_Sql7z_Array[@]}"
+	do
+		file_name=$(echo ${val} | sed 's/ *$//g') #- 빈칸 삭제
+		/usr/bin/rclone deletefile ${RCLONE_NAME}:${REMOTE_JU}/${file_name} ; echo "#-- (18) 전에 보관한 이번주 번호의 클라우드 백업파일을 삭제합니다."
+	done
+fi
+#-
+#- 오늘의 이번주 번호 이름으로 복사
+#-
+cp ${LOCAL_YOIL}/${YOIL_sql7z} ${LOCAL_JU}/${JU_sql7z} ; echo "#-- (19) 오늘 요일이름의 파일을 이번주 번호 이름으로 바꾸어 로컬의 주번호 폴더에 복사합니다."
+/usr/bin/rclone copy ${LOCAL_JU}/${JU_sql7z} ${RCLONE_NAME}:${REMOTE_JU}/) ; echo "#-- (20) ${this_wol}월 백업파일을 ${REMOTE_JU} 폴더로 복사합니다."
+#-
+ls -lR ${LOCAL_THIS_YEAR} ; echo "#-- (21) 보관용 로컬 폴더입니다."
+/usr/bin/rclone lsl ${RCLONE_NAME}:${REMOTE_YEAR} ; echo "#-- (22) 클라우드 폴더입니다."
+#-
+sudo docker start wikijs ; sudo docker ps -a ; echo "#-- (23) 위키 도커를 다시 시작합니다."
+```
+
+# 220830 화
+0920 진접도서관 비
+
+
+## Windows 공유위해 네트워크와 공유 폴더 설정하기
+
+#### 1. VirtualBox관리자에서 네트워크와 공유 폴더를 추가한다.
+
+1. Windows 에서,
+1. VirtualBox관리자의 왼쪽 ***QQfedora*** 를 클릭해서 선택하고,
+1. 오른쪽 [`네트워크`] 선택
+	1. 오른쪽 네트워크 아래에 있는 [`어댑터 2`] 선택
+	1. [`내트워크 어댑터 사용하기`] 클릭해서 선택
+	1. 아랫줄 다음에 연결됨 에서, [`호스트 전용 어댑터`] 선택
+	1. 왼쪽 메뉴에서 [`공유 폴더`] 선택
+	1. 공유 폴더(F)의 맨 오른쪽에서 +가 붙은 그림이 있는 [`+ 폴더아이콘`] 클릭
+		1. 공유 추가 에서 > 폴더 경로 > 아래 화살표 클릭 > [`기타`] 선택
+		1. 내 PC > 다운로드 선택하고 [`폴더 선택`] 클릭
+		1. 자동 마운트 에 체크하고 > [`확인`] 클릭
+	1. 네트워크, 공유폴더 설정이 끝났으므로 아래의 [`확인`] 클릭
+
+#### 2. 가상 시스템 그룹 vboxsf 를 추가한다.
+
+1. QQfedora 에서,
+1. 가상 시스템 그룹 이름인 `vboxsf` 를 /etc/group 에 지정한다
+```
+is_group=$(grep vboxsf /etc/group | grep ${USER})
+if [ "x${is_group}" = "x" ]; then
+	grep vboxsf /etc/group #-- vboxsf 그룹이 user 에게 지정되지 않았습니다.
+	sudo gpasswd -a ${USER} vboxsf #-- vboxsf 그룹을 추가합니다.
+	grep vboxsf /etc/group #-- vboxsf 그룹이 user 에게 지정되었습니다.
+fi
+```
+3. 작업이 끝났으므로 `[(^) 컴퓨터 끄기 / 로그아웃]` > `[컴퓨터 끄기]` > `[컴퓨터 끄기]` 와 같이 가상 시스템을 끝내고, 다시 부팅한다.
+4. 가상 시스템 맨윗줄의 메뉴중 **파일** / **머신** / **보기** / **입력** / `장치` > `게스트 확장 CD 이미지 삽입` > 
+	자동으로 시작하기로 한 프로그램 . . . 
+	실행하시겠습니까? > `[실행]` 클릭
+  1. 자동으로 시작되지 않으면, 터미널에서 다음과 같이 입력한다.
+```
+sudo sh /run/media/fedora/VBox_GAs_6.1.36/VBoxLinuxAdditions.run
+```
+5. Do you wish to continue? `[yes or no]` > yes 인 경우
+```
+sudo /sbin/rcvboxadd quicksetup all
+ls -l /media/sf_Downloads/ #--- 다운로드 폴더를 보여준다
+```
+
+#### 3. 게스트 확장 CD 꺼내기
+
+1. Windows 에서,
+1. VirtualBox관리자의 왼쪽 ***QQfedora*** 를 클릭해서 선택하고,
+
+1. 화면 맨윗줄 오른쪽 끝의 `ko` 옆에 있는 `옮 <))  (^)` 클릭 >
+1. `[(^) 컴퓨터 끄기 / 로그아웃]` > `[컴퓨터 끄기]` > `[컴퓨터 끄기]`
+1. 오른쪽 `[저장소]` 선택
+	1. `[컨트롤러 IDE]` 아래 `[VBoxGuestAdditions.iso]` 클릭
+	1. 오른쪽 속성 끝에 있는 CD 아이콘 클릭
+	1. `[가상 드라이브에서 디스크 꺼내기]` 클릭 > `[확인]`
+
+#### 4. vdi 파일 압축
+
+1. 파일 탐색기에서 `fedora.vdi` 파일을 오른쪽 마우스 클릭
+2. 나열된 선택 중에서 `7-zip` 에 마우스를 대고 > `압축 파일에 추가` 클릭
+	-> 윈도우11 인 경우, `더 많은 옵션 표시` 클릭하고 `7-zip` > `압축 파일에 추가` 클릭
+3. `압축파일(A)` 에서 `fedora36.01-terminal-220831.7z` 와 같이 지정하고,
+4. `볼륨 나누기, 바이트(V)` => `3900M` (USB 에 담기 위해서)
+	`암호화` > `암호입력` => QQQQ (압축해제시 사용)
+  `[v] 암호 보기` > `[확인]` 클릭해서 압축한다.
+  
+# 220829 월
+0940 진접도서관
+
+```
+[ysfedora@fedora git-projects]$ git clone https://yosjeon@bitbucket.org/yosjeon/kaosorder.git
+'kaosorder'에 복제합니다...
+Password for 'https://yosjeon@bitbucket.org': 
+remote: Bitbucket Cloud recently stopped supporting account passwords for Git authentication.
+remote: See our community post for more details: https://atlassian.community/t5/x/x/ba-p/1948231
+remote: App passwords are recommended for most use cases and can be created in your Personal settings:
+remote: https://bitbucket.org/account/settings/app-passwords/
+fatal: Authentication failed for 'https://bitbucket.org/yosjeon/kaosorder.git/'
+[ysfedora@fedora git-projects]$ 
+```
+
+Atlassian 지원 비트버킷 Bitbucket Cloud에서 계획 및 설정 관리 SSH 및 2단계 인증 구성 데이터 센터 및 서버
+SSH 키 설정 https://support.atlassian.com/bitbucket-cloud/docs/set-up-an-ssh-key/
+
+#-- key 생성
+```
+ssh-keygen -t rsa -b 4096 -C " my @ mail.com "
+```
+#-- ssh-agent 를 쓸 경우
+```
+eval $(ssh-agent) 
+ssh-add ~/.ssh/<private_key_file>      
+```
+
+## Fedora 00-init 설치후 작업
+
+### 첫 터미널 실행
+
+1. 맨윗줄의 메뉴중 **파일** / **머신** / **보기** / **입력** / `장치` > `클립보드 공유` > `양방향` 클릭해서 선택한다.
+1. 맨윗줄의 메뉴에서 `보기` > `전체 화면 모드` 선택 > 바꾸려면 화면 바닥 중앙에 마우스를 대면 선택 메뉴가 나온다.
+	이것이 불편하면, 화면 최상단 `_ ㅁ x` 에서 `ㅁ`최대화 를 누른다. 
+1. 맨 윗줄 오른쪽 끝의 `ko` 옆에 있는 `옮 <))  (^)` 클릭 > `설정` 클릭 >
+	`키보드` 클릭 > 윗줄 가운데 `입력 소스` 에서, 한국어 (Hangul) 을 첫번째로 놓기 위해 >
+	`세로점세개` 클릭 > `위로 이동` 클릭 > 첫줄로 올라간다.
+1. `ko` 클릭 > `한국어 (Hangul)` 클릭 > ko 가 EN 으로 바뀐다.
+1. `EN` 또는 `한` 클릭 > `설정` 클릭 > iBus 한글 설정 화면이 나오면 >
+	`[v] 단어 단위로 입력` 클릭
+  `[ ] 자동 순서 교정` 클릭해서 체크를 뺀다.
+1. `한영 전환키`의 `[추가]` 클릭 > 한글키 누르면 (Alt_R) 표시됨 >
+	`[확인]` 클릭
+1. 터미널에서 알파벳 치다가 한글키 (Alt키) 치면 한글로 나온다.
+
+### 한글폰트 설치
+
+#### 1. 폰트 설치하기 전에 프로그램을 업데이트하고, 임시 디렉토리를 만든다.
+```
+sudo time dnf -y update #-- 푸른숲도서관 36.00 처음 설치후 400.37user 61.14system 14:50.64elapsed 51%CPU
+mkdir ~/tmp ; cd ~/tmp #-- (0) 임시 디렉토리를 만든다.
+```
+
+#### 2. D2Coding 폰트를 설치한다.
+```
+sudo ls -l /usr/share/fonts/D2Coding #-- (11) 폴더를 비운다
+sudo rm -rf /usr/share/fonts/D2Coding #-- (11)
+sudo mkdir /usr/share/fonts/D2Coding #-- (11)
+time wget --no-check-certificate --content-disposition https://github.com/naver/d2codingfont/releases/download/VER1.3.2/D2Coding-Ver1.3.2-20180524.zip #-- (12) 폰트 내려받기
+time 7za x D2Coding-Ver1.3.2-20180524.zip #-- (13) 폰트 압축해제
+
+#|  ----> 이때,
+#|  bash: 7za: 명령을 찾을 수 없습니다...
+#|  'p7zip' 명령을 제공하는 '7za' 꾸러미를 설치하시겠습니까? [N/y]
+#|  ----> 라고 나오면, [y 엔터] 를 눌러서 설치하고 진행하면 된다.
+
+sudo mv D2Coding/* /usr/share/fonts/D2Coding/ #-- (14) 파일들을 옮김
+sudo chown -R root.root /usr/share/fonts/D2Coding #-- (15) 소유자를 root.root 로 지정.
+sudo chmod 755 /usr/share/fonts/D2Coding #-- (16) 폴더의 모드를 rwxr-xr-x 로 지정.
+sudo chmod 644 -R /usr/share/fonts/D2Coding/* #-- (17) 모든 파일을 rw-로 지정.
+sudo ls -l /usr/share/fonts/ | grep D2Coding ; sudo ls -l /usr/share/fonts/D2Coding #-- (18) 복사내역 확인
+rm -rf * #-- (19) 나머지 필요없는 파일을 삭제함.
+```
+
+#### 3. Seoul 폰트를 설치한다.
+```
+sudo ls -l /usr/share/fonts/seoul ; sudo rm -rf /usr/share/fonts/seoul ; sudo mkdir /usr/share/fonts/seoul #-- (21) 폴더를 비운다
+time wget --no-check-certificate --content-disposition https://www.seoul.go.kr/upload/seoul/font/seoul_font.zip #-- (22) 폰트 내려받기
+time 7za x seoul_font.zip #-- (23) 폰트 압축해제
+sudo mv */Seoul*.ttf /usr/share/fonts/seoul/ #-- (24) 파일들을 옮김
+sudo chown -R root.root /usr/share/fonts/seoul #-- (25) 소유자를 root.root 로 지정.
+sudo chmod 755 /usr/share/fonts/seoul #-- (26) 폴더의 모드를 rwxr-xr-x 로 지정.
+sudo chmod 644 -R /usr/share/fonts/seoul/* #-- (27) 모든 파일을 rw-로 지정.
+sudo ls -l /usr/share/fonts/ | grep seoul ; sudo ls -l /usr/share/fonts/seoul #-- (28) 복사내역 확인
+rm -rf * #-- (29) 나머지 필요없는 파일을 삭제함.
+```
+
+#### 4. Google-Chrome 을 설치한다.
+```
+sudo time dnf -y install fedora-workstation-repositories #-- 3rd Party 저장소 설치
+sudo time dnf config-manager --set-enabled google-chrome #-- Google 크롬 리포지토리를 활성화합니다.
+sudo time dnf -y install google-chrome-stable #-- 크롬 설치
+```
+
+#### 5. 프로그램을 추가로 설치한다.
+```
+sudo time dnf -y install make automake autoconf gcc dkms kernel-debug-devel kernel-devel #-- 커널 컴파일용 프로그램 설치
+sudo time dnf -y install wget vim-enhanced vim-common mc git p7zip gnome-tweak-tool rclone livecd-tools liveusb-creator #-- 추가 프로그램 설치
+rpm -qa | grep kernel | sort | grep kernel #-- kernel 버전 확인
+sudo systemctl enable sshd ; sudo systemctl start sshd #-- sshd 실행
+
+#---> https://itlearningcenter.tistory.com/entry/%E3%80%901804-LTS%E3%80%91VIM-Plug-in-%EC%84%A4%EC%B9%98%ED%95%98%EA%B8%B0$
+time git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim #--VundleVim 설치
+rsync -avzr -e 'ssh -p 13022' yos@proen.duckdns.org:/opt/usb22/yscart* . #-- 연결하시겠습니까 에 yes, 그리고 비먼 입력.
+mv yscartDOTbashrc ~/.bashrc
+mv yscartDOTvimrc ~/.vimrc
+vim +BundleInstall +qall #-- 엔터 입력후 Bundle 설치
+```
+
+#### 6. 요일 표시 및 Caps Lock 키 사용 안 함
+
+1. 윈도우 키 눌러서 `현재 활동` 으로 들어가서 > 점 아홉개 있는 `프로그램 표시` 클릭
+2. 나열된 아이콘들 중에서 `유틸리티` 클릭 > `유틸리티` 중에서 `기능 개선` 클릭
+3. 왼쪽의 메뉴에서 > `최상위 표시줄` 클릭 > `요일` 의 `(O--)` 클릭해서 맨윗줄 날짜에 요일을 표시하도록 `(--O)` 로 만든다.
+4. 왼쪽의 메뉴에서 > `키보드와 마우스` 클릭
+	 `키보드` 제목의 메뉴중 `바로가기 키 개요` 에서 `추가 배치 옵션` 클릭
+5. `추가 배치 옵션` 에서 `|> Caps Lock 키 동작` 클릭 > `사용 안함` 을 `(O) Caps Lock 키 사용 안 함` 으로 바꾼다.
+
+#### 7. sudo 처리시 매번 비번을 입력하지 않으려면
+
+1. /etc/sudoers 파일을 수정한다.
+```
+vi /etc/sudoers
+```
+2. vi 명령어로 G10kyyp 입력해서 복사후
+	3cw%hnfedora[ESC] 를 입력해서, 
+  리마크 문자 # 을 빼고, 실제 유저 아이디로 바꾼다.
+```
+# %wheel        ALL=(ALL)       NOPASSWD: ALL
+%hnfedora       ALL=(ALL)       NOPASSWD: ALL #-- 여기에 추가
+```
+
+# 220825 목
+1030 푸른숲도서관
+
+
+# 220824 수
+1010 푸른숲도서관
+
+
+# 220823 화
+1020 푸른숲도서관
+
+| DB_NAME | kaosorder2 | gate242 | wiki |
+|:---:|---|---|---|
+| LOGIN_PATH | kaosgc | swlgc | 쓰지 않음 |
+| LOCAL_FOLDER | docker/kaosdb | docker/gate242 | docker/wiki.js |
+| REMOTE_FOLDER | kaosorder | gate242 | wiki.js |
+| RCLONE_NAME | kngc | swlgc | yosgc |
+| DB_USER_NAME | kaosorder2 | gateroot | wiki |
+
+1. wiki docker build
+2. tomcat manager 에서 gate242 업로드해서 추가
+3. mysql 에서 user 추가, database 만들기, 서버에서 초기화 옵션 지정
+
+# 220822 월
+0900 진접도서관 순옥전화발신 하계동
+
+10x54x32 서랍장 부피
+ubuntu 에서,
+sudo apt install net-tools
+ifconfig | grep -B1 inet\ 
+
+date --date '26 dec 2019' +"%U_U__%Y-%m-%d(%a)__%V_V"
+
+%U=일...토 의 주 번호, 1월의 첫날이 일요일이 아니면 그 주의 순서 번호는 00 이 된다.
+
+|일 |월 |화 |수 |목 |금| 토 | %U 일요일 기준 |
+|:-:|:-:|:-:|:-:|:-:|:-:|:-:|---|
+|29 |30 |31 |1  |2  |3  |4  |<-- 12월과 1월 |
+|52 |52 |52 |00 |00 |00 |00 |<-- U 기준 주 순서  |
+|5  |6  |7  |8  |9  |10 |11 |<-- 12월과 1월 |
+|01 |01 |01 |01 |01 |01 |01 |<-- U 기준 주 순서  |
+
+%V=월...일 의 주 번호, 1월 1일부터 주의 순서가 01 이 되고, 그 이전은 작년 말일의 주의 순서를 따른다.
+
+|일 |월 |화 |수 |목 |금| 토 | %V 월요일 기준 |
+|:-:|:-:|:-:|:-:|:-:|:-:|:-:|---|
+|29 |30 |31 |1  |2  |3  |4  |<-- 12월과 1월 |
+|52 |01 |01 |01 |01 |01 |01 |<-- V 기준 주 순서  |
+|5  |6  |7  |8  |9  |10 |11 |<-- 12월과 1월 |
+|01 |02 |02 |02 |02 |02 |02 |<-- V 기준 주 순서  |
+
+월요일을 주의 첫날로 두면 이해하기 쉽다.
+
+|   |월 |화 |수 |목 |금| 토| 일| %V 월요일 기준 |
+|:-:|:-:|:-:|:-:|:-:|:-:|:-:|:-:|---|
+|   |30 |31 |1  |2  |3  |4  |5  |<-- 12월과 1월 |
+|   |01 |01 |01 |01 |01 |01 |01 |<-- 주의 번호  |
+|   |6  |7  |8  |9  |10 |11 |12 |<-- 12월과 1월 |
+|   |02 |02 |02 |02 |02 |02 |02 |<-- 주의 번호  |
+
+```
+date --date '26 dec 2019' +"%U_U__%Y-%m-%d(%a)__%V_V"
+51_U__2019-12-26(목)__52_V
+51_U__2019-12-27(금)__52_V
+51_U__2019-12-28(토)__52_V
+52_U__2019-12-29(일)__52_V
+52_U__2019-12-30(월)__01_V
+52_U__2019-12-31(화)__01_V
+00_U__2020-01-01(수)__01_V
+00_U__2020-01-02(목)__01_V
+00_U__2020-01-03(금)__01_V
+00_U__2020-01-04(토)__01_V
+01_U__2020-01-05(일)__01_V
+01_U__2020-01-06(월)__02_V
+01_U__2020-01-07(화)__02_V
+```
+
+# 220818 목
+0940 푸른숲도서관
+
+Fedora 가상 시스템 설치
+- http://proen.duckdns.org:15800/en/ysjn/virtualbox_fedora
+- http://192.168.219.158:5800/en/ysjn/virtualbox_fedora
+
+### docker-compose wiki.js 설치
+출처: https://computingforgeeks.com/install-and-use-docker-compose-on-fedora/
+
+>1. 변수 선언
+```
+port_no=5800
+db_folder=/home/docker/pgsql
+wiki_conf_dir=/home/docker/wikijs
+```
+
+>2. 폴더 만들기
+```
+mkdir -p $db_folder
+mkdir -p ${wiki_conf_dir}
+
+ls -l ${db_folder}
+ls -l ${wiki_conf_dir}
+```
+
+>3. 설정 파일 만들기
+```
+cd ${wiki_conf_dir}
+```
+```
+cat > docker-compose.yml <<__EOF__
+version: "3"
+services:
+
+  db:
+    image: postgres:11-alpine
+    environment:
+      POSTGRES_DB: wiki
+      POSTGRES_PASSWORD: wikijsrocks
+      POSTGRES_USER: wikijs
+    logging:
+      driver: "none"
+    restart: unless-stopped
+    volumes:
+      - ${db_folder}:/var/lib/postgresql/data
+    container_name:
+      wikijsdb
+
+  wiki:
+    image: requarks/wiki:2
+    depends_on:
+      - db
+    environment:
+      DB_TYPE: postgres
+      DB_HOST: db
+      DB_PORT: 5432
+      DB_USER: wikijs
+      DB_PASS: wikijsrocks
+      DB_NAME: wiki
+    restart: unless-stopped
+    ports:
+      - "${port_no}:3000"
+    container_name:
+      wikijs
+__EOF__
+```
+
+>4. Docker Compose 설치
+```
+sudo dnf -y install docker-compose #-- 설치
+rpm -qi docker-compose #-- 설치화인
+sudo docker ps -a #-- 실행중인 도커가 있는지 확인
+sudo docker-compose pull wiki #-- 위키 도커 이미지를 가져오기
+sudo docker-compose ps -a #-- 실행중인 도커 컴포즈가 있는지 확인
+```
+
+### Github 에러 해결법 fatal: Authentication failed for ~
+출처: https://wotres.tistory.com/entry/Github-%EC%97%90%EB%9F%AC-%ED%95%B4%EA%B2%B0%EB%B2%95-Authentication-failed-for-use-a-personal-access-token-instead
+
+1. github.com
+2. 오른쪽 위 정보 아이콘 > Settings 클릭
+3. Setting 페이지에서 왼쪽 아래 Developer Settings 클릭
+4. Personal access tokens 클릭 > Generate new token 클릭
+5. Note: [개발중1인용], Expiration [60일간], Select scopes: repo 에 체크 > 제일 아래 Generate Token 클릭
+6. 토큰이 나타나면 바로 복사해야 함. 다시는 안나온다.
+7. 로컬 컴퓨터에 등록
+```
+git config --global user.name ‘아이디’
+git config --global user.password ‘복사한 토큰’
+```
+8. git pull 로 테스트
+
+# 220817 수
+1000 푸른숲도서관
+
+1password 구독해지완료
+proen.158 id수정
+
+# 220810 수
+1010 푸른술도서관
+
+> 9837-2323 김선교공장장 전화옴
+> 서원 신규거래처에서 폐기물운반허가증 차에 붙은거 말고 서류요청
+> 서류없이 차에 붙은 원형 허가증만 받은상태
+> 담당 임수연씨 남양주시청가서 서류 발급받기로 함
+
+
