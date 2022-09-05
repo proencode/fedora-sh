@@ -1,0 +1,194 @@
+for val in 1 3 5 7 9
+----> time 7za a -ptest -mx=1 Big_programs-mx1-220905.7z [LW]*
+
+7-Zip (a) [64] 16.02 : Copyright (c) 1999-2016 Igor Pavlov : 2016-05-21
+p7zip Version 16.02 (locale=ko_KR.UTF-8,Utf16=on,HugeFiles=on,64 bits,4 CPUs Intel(R) Core(TM) i5-6200U CPU @ 2.30GHz (406E3),ASM,AES-NI)
+
+Scanning the drive:
+2 folders, 15 files, 1879526812 bytes (1793 MiB)
+
+Creating archive: Big_programs-mx1-220905.7z
+
+Items to compress: 17
+
+
+Files read from disk: 14
+Archive size: 1871409103 bytes (1785 MiB)
+Everything is Ok
+----> time 7za a -ptest -mx=1 Download-bada-mx1-220905.7z bada
+
+7-Zip (a) [64] 16.02 : Copyright (c) 1999-2016 Igor Pavlov : 2016-05-21
+p7zip Version 16.02 (locale=ko_KR.UTF-8,Utf16=on,HugeFiles=on,64 bits,4 CPUs Intel(R) Core(TM) i5-6200U CPU @ 2.30GHz (406E3),ASM,AES-NI)
+
+Scanning the drive:
+4 folders, 41 files, 309667366 bytes (296 MiB)
+
+Creating archive: Download-bada-mx1-220905.7z
+
+Items to compress: 45
+
+
+Files read from disk: 41
+Archive size: 180903360 bytes (173 MiB)
+Everything is Ok
+----> time 7za a -ptest -mx=3 Big_programs-mx3-220905.7z [LW]*
+
+7-Zip (a) [64] 16.02 : Copyright (c) 1999-2016 Igor Pavlov : 2016-05-21
+p7zip Version 16.02 (locale=ko_KR.UTF-8,Utf16=on,HugeFiles=on,64 bits,4 CPUs Intel(R) Core(TM) i5-6200U CPU @ 2.30GHz (406E3),ASM,AES-NI)
+
+Scanning the drive:
+2 folders, 15 files, 1879526812 bytes (1793 MiB)
+
+Creating archive: Big_programs-mx3-220905.7z
+
+Items to compress: 17
+
+
+Files read from disk: 14
+Archive size: 1870522781 bytes (1784 MiB)
+Everything is Ok
+----> time 7za a -ptest -mx=3 Download-bada-mx3-220905.7z bada
+
+7-Zip (a) [64] 16.02 : Copyright (c) 1999-2016 Igor Pavlov : 2016-05-21
+p7zip Version 16.02 (locale=ko_KR.UTF-8,Utf16=on,HugeFiles=on,64 bits,4 CPUs Intel(R) Core(TM) i5-6200U CPU @ 2.30GHz (406E3),ASM,AES-NI)
+
+Scanning the drive:
+4 folders, 41 files, 309667366 bytes (296 MiB)
+
+Creating archive: Download-bada-mx3-220905.7z
+
+Items to compress: 45
+
+
+Files read from disk: 41
+Archive size: 174204380 bytes (167 MiB)
+Everything is Ok
+----> time 7za a -ptest -mx=5 Big_programs-mx5-220905.7z [LW]*
+
+7-Zip (a) [64] 16.02 : Copyright (c) 1999-2016 Igor Pavlov : 2016-05-21
+p7zip Version 16.02 (locale=ko_KR.UTF-8,Utf16=on,HugeFiles=on,64 bits,4 CPUs Intel(R) Core(TM) i5-6200U CPU @ 2.30GHz (406E3),ASM,AES-NI)
+
+Scanning the drive:
+2 folders, 15 files, 1879526812 bytes (1793 MiB)
+
+Creating archive: Big_programs-mx5-220905.7z
+
+Items to compress: 17
+
+
+Files read from disk: 14
+Archive size: 1869309003 bytes (1783 MiB)
+Everything is Ok
+----> time 7za a -ptest -mx=5 Download-bada-mx5-220905.7z bada
+
+7-Zip (a) [64] 16.02 : Copyright (c) 1999-2016 Igor Pavlov : 2016-05-21
+p7zip Version 16.02 (locale=ko_KR.UTF-8,Utf16=on,HugeFiles=on,64 bits,4 CPUs Intel(R) Core(TM) i5-6200U CPU @ 2.30GHz (406E3),ASM,AES-NI)
+
+Scanning the drive:
+4 folders, 41 files, 309667366 bytes (296 MiB)
+
+Creating archive: Download-bada-mx5-220905.7z
+
+Items to compress: 45
+
+
+Files read from disk: 41
+Archive size: 159793244 bytes (153 MiB)
+Everything is Ok
+----> time 7za a -ptest -mx=7 Big_programs-mx7-220905.7z [LW]*
+
+7-Zip (a) [64] 16.02 : Copyright (c) 1999-2016 Igor Pavlov : 2016-05-21
+p7zip Version 16.02 (locale=ko_KR.UTF-8,Utf16=on,HugeFiles=on,64 bits,4 CPUs Intel(R) Core(TM) i5-6200U CPU @ 2.30GHz (406E3),ASM,AES-NI)
+
+Scanning the drive:
+2 folders, 15 files, 1879526812 bytes (1793 MiB)
+
+Creating archive: Big_programs-mx7-220905.7z
+
+Items to compress: 17
+
+
+Files read from disk: 14
+Archive size: 1864768554 bytes (1779 MiB)
+Everything is Ok
+----> time 7za a -ptest -mx=7 Download-bada-mx7-220905.7z bada
+
+7-Zip (a) [64] 16.02 : Copyright (c) 1999-2016 Igor Pavlov : 2016-05-21
+p7zip Version 16.02 (locale=ko_KR.UTF-8,Utf16=on,HugeFiles=on,64 bits,4 CPUs Intel(R) Core(TM) i5-6200U CPU @ 2.30GHz (406E3),ASM,AES-NI)
+
+Scanning the drive:
+4 folders, 41 files, 309667366 bytes (296 MiB)
+
+Creating archive: Download-bada-mx7-220905.7z
+
+Items to compress: 45
+
+
+Files read from disk: 41
+Archive size: 154199629 bytes (148 MiB)
+Everything is Ok
+----> time 7za a -ptest -mx=9 Big_programs-mx9-220905.7z [LW]*
+
+7-Zip (a) [64] 16.02 : Copyright (c) 1999-2016 Igor Pavlov : 2016-05-21
+p7zip Version 16.02 (locale=ko_KR.UTF-8,Utf16=on,HugeFiles=on,64 bits,4 CPUs Intel(R) Core(TM) i5-6200U CPU @ 2.30GHz (406E3),ASM,AES-NI)
+
+Scanning the drive:
+2 folders, 15 files, 1879526812 bytes (1793 MiB)
+
+Creating archive: Big_programs-mx9-220905.7z
+
+Items to compress: 17
+
+
+Files read from disk: 14
+Archive size: 1864761180 bytes (1779 MiB)
+Everything is Ok
+----> time 7za a -ptest -mx=9 Download-bada-mx9-220905.7z bada
+
+7-Zip (a) [64] 16.02 : Copyright (c) 1999-2016 Igor Pavlov : 2016-05-21
+p7zip Version 16.02 (locale=ko_KR.UTF-8,Utf16=on,HugeFiles=on,64 bits,4 CPUs Intel(R) Core(TM) i5-6200U CPU @ 2.30GHz (406E3),ASM,AES-NI)
+
+Scanning the drive:
+4 folders, 41 files, 309667366 bytes (296 MiB)
+
+Creating archive: Download-bada-mx9-220905.7z
+
+Items to compress: 45
+
+
+Files read from disk: 41
+Archive size: 154195871 bytes (148 MiB)
+Everything is Ok
+val="NONE"
+----> time 7za a -ptest Big_programs-mxNONE-220905.7z [LW]*
+
+7-Zip (a) [64] 16.02 : Copyright (c) 1999-2016 Igor Pavlov : 2016-05-21
+p7zip Version 16.02 (locale=ko_KR.UTF-8,Utf16=on,HugeFiles=on,64 bits,4 CPUs Intel(R) Core(TM) i5-6200U CPU @ 2.30GHz (406E3),ASM,AES-NI)
+
+Scanning the drive:
+2 folders, 15 files, 1879526812 bytes (1793 MiB)
+
+Creating archive: Big_programs-mxNONE-220905.7z
+
+Items to compress: 17
+
+
+Files read from disk: 14
+Archive size: 1869309003 bytes (1783 MiB)
+Everything is Ok
+----> time 7za a -ptest Download-bada-mxNONE-220905.7z bada
+
+7-Zip (a) [64] 16.02 : Copyright (c) 1999-2016 Igor Pavlov : 2016-05-21
+p7zip Version 16.02 (locale=ko_KR.UTF-8,Utf16=on,HugeFiles=on,64 bits,4 CPUs Intel(R) Core(TM) i5-6200U CPU @ 2.30GHz (406E3),ASM,AES-NI)
+
+Scanning the drive:
+4 folders, 41 files, 309667366 bytes (296 MiB)
+
+Creating archive: Download-bada-mxNONE-220905.7z
+
+Items to compress: 45
+
+
+Files read from disk: 41
+Archive size: 159793245 bytes (153 MiB)
+Everything is Ok

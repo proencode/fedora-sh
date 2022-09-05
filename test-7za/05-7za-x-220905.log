@@ -1,0 +1,341 @@
+15:45:43 월 2022-09-05 yos@yscart ~/Test-Vdi/test-7za
+test-7za $ sh 03-ext-time-test.sh 
+----> cd tstdir ; time 7za x -ptest ../Big_programs-mx1-220905-2m30.924s.7z ; cd ../
+
+7-Zip (a) [64] 16.02 : Copyright (c) 1999-2016 Igor Pavlov : 2016-05-21
+p7zip Version 16.02 (locale=ko_KR.UTF-8,Utf16=on,HugeFiles=on,64 bits,4 CPUs Intel(R) Core(TM) i5-6200U CPU @ 2.30GHz (406E3),ASM,AES-NI)
+
+Scanning the drive for archives:
+1 file, 1871409103 bytes (1785 MiB)
+
+Extracting archive: ../Big_programs-mx1-220905-2m30.924s.7z
+--
+Path = ../Big_programs-mx1-220905-2m30.924s.7z
+Type = 7z
+Physical Size = 1871409103
+Headers Size = 911
+Method = LZMA2:16 BCJ 7zAES
+Solid = +
+Blocks = 9
+
+Everything is Ok                                    
+
+Folders: 2
+Files: 15
+Size:       1879526812
+Compressed: 1871409103
+
+real	0m17.438s
+user	0m7.249s
+sys	0m1.443s
+----> cd tstdir ; time 7za x -ptest ../Big_programs-mx3-220905-4m11.982s.7z ; cd ../
+
+7-Zip (a) [64] 16.02 : Copyright (c) 1999-2016 Igor Pavlov : 2016-05-21
+p7zip Version 16.02 (locale=ko_KR.UTF-8,Utf16=on,HugeFiles=on,64 bits,4 CPUs Intel(R) Core(TM) i5-6200U CPU @ 2.30GHz (406E3),ASM,AES-NI)
+
+Scanning the drive for archives:
+1 file, 1870522781 bytes (1784 MiB)
+
+Extracting archive: ../Big_programs-mx3-220905-4m11.982s.7z
+--
+Path = ../Big_programs-mx3-220905-4m11.982s.7z
+Type = 7z
+Physical Size = 1870522781
+Headers Size = 877
+Method = LZMA2:20 BCJ 7zAES
+Solid = +
+Blocks = 7
+
+Everything is Ok                                    
+
+Folders: 2
+Files: 15
+Size:       1879526812
+Compressed: 1870522781
+
+real	0m34.033s
+user	0m8.622s
+sys	0m2.696s
+----> cd tstdir ; time 7za x -ptest ../Big_programs-mx5-220905-3m41.003s.7z ; cd ../
+
+7-Zip (a) [64] 16.02 : Copyright (c) 1999-2016 Igor Pavlov : 2016-05-21
+p7zip Version 16.02 (locale=ko_KR.UTF-8,Utf16=on,HugeFiles=on,64 bits,4 CPUs Intel(R) Core(TM) i5-6200U CPU @ 2.30GHz (406E3),ASM,AES-NI)
+
+Scanning the drive for archives:
+1 file, 1869309003 bytes (1783 MiB)
+
+Extracting archive: ../Big_programs-mx5-220905-3m41.003s.7z
+--
+Path = ../Big_programs-mx5-220905-3m41.003s.7z
+Type = 7z
+Physical Size = 1869309003
+Headers Size = 779
+Method = LZMA2:24 BCJ 7zAES
+Solid = +
+Blocks = 2
+
+Everything is Ok                                    
+
+Folders: 2
+Files: 15
+Size:       1879526812
+Compressed: 1869309003
+
+real	0m48.730s
+user	0m9.024s
+sys	0m2.460s
+----> cd tstdir ; time 7za x -ptest ../Big_programs-mx7-220905-7m3.329s.7z ; cd ../
+
+7-Zip (a) [64] 16.02 : Copyright (c) 1999-2016 Igor Pavlov : 2016-05-21
+p7zip Version 16.02 (locale=ko_KR.UTF-8,Utf16=on,HugeFiles=on,64 bits,4 CPUs Intel(R) Core(TM) i5-6200U CPU @ 2.30GHz (406E3),ASM,AES-NI)
+
+Scanning the drive for archives:
+1 file, 1864768554 bytes (1779 MiB)
+
+Extracting archive: ../Big_programs-mx7-220905-7m3.329s.7z
+--
+Path = ../Big_programs-mx7-220905-7m3.329s.7z
+Type = 7z
+Physical Size = 1864768554
+Headers Size = 778
+Method = LZMA2:26 BCJ 7zAES
+Solid = +
+Blocks = 2
+
+Everything is Ok                                    
+
+Folders: 2
+Files: 15
+Size:       1879526812
+Compressed: 1864768554
+
+real	0m35.152s
+user	0m9.173s
+sys	0m2.145s
+----> cd tstdir ; time 7za x -ptest ../Big_programs-mx9-220905-7m3.157s.7z ; cd ../
+
+7-Zip (a) [64] 16.02 : Copyright (c) 1999-2016 Igor Pavlov : 2016-05-21
+p7zip Version 16.02 (locale=ko_KR.UTF-8,Utf16=on,HugeFiles=on,64 bits,4 CPUs Intel(R) Core(TM) i5-6200U CPU @ 2.30GHz (406E3),ASM,AES-NI)
+
+Scanning the drive for archives:
+1 file, 1864761180 bytes (1779 MiB)
+
+Extracting archive: ../Big_programs-mx9-220905-7m3.157s.7z
+--
+Path = ../Big_programs-mx9-220905-7m3.157s.7z
+Type = 7z
+Physical Size = 1864761180
+Headers Size = 860
+Method = LZMA2:26 LZMA:20 BCJ2 7zAES
+Solid = +
+Blocks = 2
+
+Everything is Ok                                    
+
+Folders: 2
+Files: 15
+Size:       1879526812
+Compressed: 1864761180
+
+real	0m26.152s
+user	0m10.470s
+sys	0m1.798s
+----> cd tstdir ; time 7za x -ptest ../Big_programs-mxNONE-220905-4m0.480s.7z ; cd ../
+
+7-Zip (a) [64] 16.02 : Copyright (c) 1999-2016 Igor Pavlov : 2016-05-21
+p7zip Version 16.02 (locale=ko_KR.UTF-8,Utf16=on,HugeFiles=on,64 bits,4 CPUs Intel(R) Core(TM) i5-6200U CPU @ 2.30GHz (406E3),ASM,AES-NI)
+
+Scanning the drive for archives:
+1 file, 1869309003 bytes (1783 MiB)
+
+Extracting archive: ../Big_programs-mxNONE-220905-4m0.480s.7z
+--
+Path = ../Big_programs-mxNONE-220905-4m0.480s.7z
+Type = 7z
+Physical Size = 1869309003
+Headers Size = 779
+Method = LZMA2:24 BCJ 7zAES
+Solid = +
+Blocks = 2
+
+Everything is Ok                                    
+
+Folders: 2
+Files: 15
+Size:       1879526812
+Compressed: 1869309003
+
+real	0m30.053s
+user	0m9.211s
+sys	0m2.498s
+----> cd tstdir ; time 7za x -ptest ../Download-bada-mx1-220905-0m14.008s.7z ; cd ../
+
+7-Zip (a) [64] 16.02 : Copyright (c) 1999-2016 Igor Pavlov : 2016-05-21
+p7zip Version 16.02 (locale=ko_KR.UTF-8,Utf16=on,HugeFiles=on,64 bits,4 CPUs Intel(R) Core(TM) i5-6200U CPU @ 2.30GHz (406E3),ASM,AES-NI)
+
+Scanning the drive for archives:
+1 file, 180903360 bytes (173 MiB)
+
+Extracting archive: ../Download-bada-mx1-220905-0m14.008s.7z
+--
+Path = ../Download-bada-mx1-220905-0m14.008s.7z
+Type = 7z
+Physical Size = 180903360
+Headers Size = 1360
+Method = LZMA2:16 BCJ 7zAES
+Solid = +
+Blocks = 18
+
+Everything is Ok                                                             
+
+Folders: 4
+Files: 41
+Size:       309667366
+Compressed: 180903360
+
+real	0m14.223s
+user	0m6.211s
+sys	0m0.326s
+----> cd tstdir ; time 7za x -ptest ../Download-bada-mx3-220905-0m24.873s.7z ; cd ../
+
+7-Zip (a) [64] 16.02 : Copyright (c) 1999-2016 Igor Pavlov : 2016-05-21
+p7zip Version 16.02 (locale=ko_KR.UTF-8,Utf16=on,HugeFiles=on,64 bits,4 CPUs Intel(R) Core(TM) i5-6200U CPU @ 2.30GHz (406E3),ASM,AES-NI)
+
+Scanning the drive for archives:
+1 file, 174204380 bytes (167 MiB)
+
+Extracting archive: ../Download-bada-mx3-220905-0m24.873s.7z
+--
+Path = ../Download-bada-mx3-220905-0m24.873s.7z
+Type = 7z
+Physical Size = 174204380
+Headers Size = 1100
+Method = LZMA2:20 BCJ 7zAES
+Solid = +
+Blocks = 3
+
+Everything is Ok                                                        
+
+Folders: 4
+Files: 41
+Size:       309667366
+Compressed: 174204380
+
+real	0m5.516s
+user	0m5.366s
+sys	0m0.267s
+----> cd tstdir ; time 7za x -ptest ../Download-bada-mx5-220905-0m51.817s.7z ; cd ../
+
+7-Zip (a) [64] 16.02 : Copyright (c) 1999-2016 Igor Pavlov : 2016-05-21
+p7zip Version 16.02 (locale=ko_KR.UTF-8,Utf16=on,HugeFiles=on,64 bits,4 CPUs Intel(R) Core(TM) i5-6200U CPU @ 2.30GHz (406E3),ASM,AES-NI)
+
+Scanning the drive for archives:
+1 file, 159793244 bytes (153 MiB)
+
+Extracting archive: ../Download-bada-mx5-220905-0m51.817s.7z
+--
+Path = ../Download-bada-mx5-220905-0m51.817s.7z
+Type = 7z
+Physical Size = 159793244
+Headers Size = 1084
+Method = LZMA2:24 BCJ 7zAES
+Solid = +
+Blocks = 2
+
+Everything is Ok                                                         
+
+Folders: 4
+Files: 41
+Size:       309667366
+Compressed: 159793244
+
+real	0m6.159s
+user	0m4.729s
+sys	0m0.261s
+----> cd tstdir ; time 7za x -ptest ../Download-bada-mx7-220905-1m32.249s.7z ; cd ../
+
+7-Zip (a) [64] 16.02 : Copyright (c) 1999-2016 Igor Pavlov : 2016-05-21
+p7zip Version 16.02 (locale=ko_KR.UTF-8,Utf16=on,HugeFiles=on,64 bits,4 CPUs Intel(R) Core(TM) i5-6200U CPU @ 2.30GHz (406E3),ASM,AES-NI)
+
+Scanning the drive for archives:
+1 file, 154199629 bytes (148 MiB)
+
+Extracting archive: ../Download-bada-mx7-220905-1m32.249s.7z
+--
+Path = ../Download-bada-mx7-220905-1m32.249s.7z
+Type = 7z
+Physical Size = 154199629
+Headers Size = 1085
+Method = LZMA2:26 BCJ 7zAES
+Solid = +
+Blocks = 2
+
+Everything is Ok                                                        
+
+Folders: 4
+Files: 41
+Size:       309667366
+Compressed: 154199629
+
+real	0m4.655s
+user	0m4.429s
+sys	0m0.327s
+----> cd tstdir ; time 7za x -ptest ../Download-bada-mx9-220905-1m32.886s.7z ; cd ../
+
+7-Zip (a) [64] 16.02 : Copyright (c) 1999-2016 Igor Pavlov : 2016-05-21
+p7zip Version 16.02 (locale=ko_KR.UTF-8,Utf16=on,HugeFiles=on,64 bits,4 CPUs Intel(R) Core(TM) i5-6200U CPU @ 2.30GHz (406E3),ASM,AES-NI)
+
+Scanning the drive for archives:
+1 file, 154195871 bytes (148 MiB)
+
+Extracting archive: ../Download-bada-mx9-220905-1m32.886s.7z
+--
+Path = ../Download-bada-mx9-220905-1m32.886s.7z
+Type = 7z
+Physical Size = 154195871
+Headers Size = 1167
+Method = LZMA2:26 LZMA:20 BCJ2 7zAES
+Solid = +
+Blocks = 2
+
+Everything is Ok                                                        
+
+Folders: 4
+Files: 41
+Size:       309667366
+Compressed: 154195871
+
+real	0m4.609s
+user	0m4.601s
+sys	0m0.331s
+----> cd tstdir ; time 7za x -ptest ../Download-bada-mxNONE-220905-0m55.167s.7z ; cd ../
+
+7-Zip (a) [64] 16.02 : Copyright (c) 1999-2016 Igor Pavlov : 2016-05-21
+p7zip Version 16.02 (locale=ko_KR.UTF-8,Utf16=on,HugeFiles=on,64 bits,4 CPUs Intel(R) Core(TM) i5-6200U CPU @ 2.30GHz (406E3),ASM,AES-NI)
+
+Scanning the drive for archives:
+1 file, 159793245 bytes (153 MiB)
+
+Extracting archive: ../Download-bada-mxNONE-220905-0m55.167s.7z
+--
+Path = ../Download-bada-mxNONE-220905-0m55.167s.7z
+Type = 7z
+Physical Size = 159793245
+Headers Size = 1085
+Method = LZMA2:24 BCJ 7zAES
+Solid = +
+Blocks = 2
+
+Everything is Ok                                                         
+
+Folders: 4
+Files: 41
+Size:       309667366
+Compressed: 159793245
+
+real	0m4.896s
+user	0m4.737s
+sys	0m0.261s
+15:49:39 월 2022-09-05 yos@yscart ~/Test-Vdi/test-7za
+test-7za $ 
+
