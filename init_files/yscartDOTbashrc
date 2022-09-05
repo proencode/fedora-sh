@@ -30,7 +30,6 @@ unset rc
 # export JAVA_HOME=/usr/local/share/java/latest # export JAVA_HOME=/usr/lib/jvm/java # export PATH=${JAVA_HOME}/bin:${PATH}
 # export CLASSPATH=${JAVA_HOME}/lib/tools.jar:/usr/share/java/javax.mail.jar:/usr/share/java/mysql-connector-java.jar:.
 # export PATH=${PATH}:${HOME}/bin:.
-# export EDITOR=vi
 # # PS1='\e[01;32m\t\e[0m (\e[01;33m\D{%a}\e[0m\D{) %Y-%m-%d} \e[01;31m\u\e[0m@\e[01;36m\h\e[0m \w\n\W \$ '
 # for g1 # PS1='\e[01;36m\t\e[0m \e[01;33m(\e[0m\e[01;32m\D{%a}\e[0m\e[01;33m)\e[0m \D{%Y-%m-%d} \e[01;36m\u\e[01;37m@\e[01;42m\h\e[0m \w\n\W $ '
 # for candy # PS1='\e[01;36m\t\e[0m (\e[01;33m\D{%a}\e[0m\D{) %Y-%m-%d} \e[01;33m\u\e[0m@\e[01;44m\h\e[0m \w\n\W $ '
@@ -42,15 +41,11 @@ unset rc
 # PS1='\e[0;32m\t\e[0m \e[0;33m\D{%a}\e[0;36m \D{%Y-%m-%d} \e[0;32m\u\e[0;33m@\e[0;32m\h\e[0m \e[0;36m\w\e[0m\n\W $ '
 PS1='\e[0;32m\t\e[0m \e[0;33m\D{%a}\e[0;36m \D{%Y-%m-%d} \e[0;35m\u\e[0;33m@\e[0;32m\h\e[0m \e[0;33m\w\e[0m\n\W $ '
 
+# cBlack=$(tput bold)$(tput setaf 0); cRed=$(tput bold)$(tput setaf 1); cGreen=$(tput bold)$(tput setaf 2); cYellow=$(tput bold)$(tput setaf 3); cBlue=$(tput bold)$(tput setaf 4); cMagenta=$(tput bold)$(tput setaf 5); cCyan=$(tput bold)$(tput setaf 6); cWhite=$(tput bold)$(tput setaf 7); cReset=$(tput bold)$(tput sgr0); cUp=$(tput cuu 2)
+
+export EDITOR=vi
+
 # ----------------------
 alias rm='rm -i'
 alias cp='cp -i'
 alias mv='mv -i'
-
-#THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
-export SDKMAN_DIR="/home/yos/.sdkman"
-[[ -s "/home/yos/.sdkman/bin/sdkman-init.sh" ]] && source "/home/yos/.sdkman/bin/sdkman-init.sh"
-
-export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
