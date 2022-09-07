@@ -1,6 +1,6 @@
 # wiki.js 설치
 
-## 1. docker-ce 를 fedora 에 설치하기
+## 1. docker-ce 설치하기
 
 1. 시스템을 최신으로 업데이트 한다.
 ```
@@ -38,7 +38,7 @@ sudo docker pull alpine ; echo "#-- (4-2) 설치 확인을 위해, 테스트 도
 sudo docker run -it --rm alpine /bin/sh ; echo "#-- (4-3) 확인을 위해 'apk update' 와 'exit' 를 입력하세요."
 ```
 
-## 2. 도커 컴포즈를 빌드하기
+## 2. 도커 컴포즈 빌드하기
 
 1. wiki.js 를 위한 데이터베이스로 포스트그레스 (postgres DB) 를 선택했으므로, 이것을 보관할 디렉토리를 만들고, wiki.js 설정을 위한 파일을 보관할 디렉토리도 만든다.
 ```
@@ -134,9 +134,9 @@ cat <<__EOF__
 __EOF__
 ```
 
-# rclone 으로 구글 드라이브 사용하기
+# sh 로 구글 드라이브 사용하기
 
-1. 구글 드라이브를 Fedora 에서 쓰기 위해서는 google drive 를 연결하는 이름을 만들어야 한다.
+1. 구글 드라이브를 터미널에서 쉘 명령으로 쓰기 위해서는 google drive 와 연결하는 이름을 만들어야 한다.
 ```
 rclone config #-- (1) 구글 드라이브를 fedora 에서 쓰기 위한 설정작업을 시작합니다.
 ```
@@ -252,7 +252,9 @@ e/n/d/r/c/s/q> q
               ===
 ```
 
-# wiki.js 단순백업 보관하기
+# wiki.js 직접 백업하기
+
+- 다음 스크립트를 터미널에서 직접 복붙해서, wiki.js 데이터베이스를 로컬 폴더에 백업합니다.
 
 ```
 DB_NAME="wiki" #- 백업할 데이터베이스 이름
@@ -290,7 +292,104 @@ ls -lR ${LOCAL_Y2M2} ; echo "#-- (6) 보관용 로컬 폴더입니다."
 sudo docker start wikijs ; sudo docker ps -a ; echo "#-- (9) 위키 도커를 다시 시작합니다."
 ```
 
+# wiki.js 직접 리스토어 하기
+
+- 다음 스크립트를 터미널에서 직접 복붙해서, 전에 받았던 백업파일을 wiki.js 데이터베이스에 리스토어 합니다.
+
+```
+cat <<__EOF__
+#-
+#- 리스토어 할 sql.7z 파일 위치 및 이름을 [ /media/sf_Downloads/wiki_220906화-1802_proenpi4b.36ju.sql.7z ] 처럼 입력하세요.
+#- ---->
+__EOF__
+read db_sql_7z
+if [ "x${db_sql_7z}" = "x" ]; then
+	cat <<__EOF__
+# !
+# ! wiki.js 데이터베이스에 리스토어 하기 위한 백업파일 이름을 지정해야 합니다.
+# !
+__EOF__
+	exit 1
+fi
+if [ ! -f "${db_sql_7z}" ]; then
+	cat <<__EOF__
+# !
+# ! --${db_sql_7z}-- 백업파일이 없습니다.
+# !
+__EOF__
+	exit 2
+fi
+cat <<__EOF__
+#-
+#- 현재 운영중인 데이터베이스를 백업하려고 합니다.
+#- 만일 백업할 필요가 없다면 ' n ' 을 눌러 주세요.
+#-      ^^^^^^^^^^^^^^^^^^^^  ===
+#- ---->
+__EOF__
+read a ; echo "[ $a ]"
+last_skip="db_backup_ok"
+if [ "x$a" = 'xn' ]; then
+	cat <<__EOF__
+#-
+#-
+#-
+#- !!!! 주의 !!!! 현재 운영중인 데이터베이스를 ' 다운로드 + 백업 ' 하지 않고, 이전의 백업을 리스토어 합니다.
+#-
+#- ----> 맞으면 ' y ' 를 눌러 주세요.
+__EOF__
+	read a ; echo "[ $a ]"
+	if [ "x$a" != "xy" ]; then
+		exit 3
+	fi
+	last_skip="no_backup"
+fi
+DB_NAME="wiki" #-- 백업할 데이터베이스 이름
+LOGIN_PATH="wikipsql" #-- 데이터베이스 로그인 패쓰 ;;; pgsql 이라서 쓰지는 않음.
+LOCAL_FOLDER="/home/backup/wiki.js" #-- 백업파일을 일시적으로 저장하는 로컬 저장소의 디렉토리 이름
+REMOTE_FOLDER="wiki.js" #-- 원격 저장소의 첫번째 폴더 이름
+RCLONE_NAME="yosgc" #-- rclone 이름 yosjeongc
+DB_TYPE="pgsql"
+dir_for_backup=${LOCAL_FOLDER}/last_backup #-- 백업을 리스토어 하기전, 현재DB 백업하는 로컬 저장소
+if [ ! -f ${dir_for_backup} ]; then
+	sudo mkdir -p ${dir_for_backup} ; sudo chown ${USER}.${USER} ${dir_for_backup} ; echo "#-- (1) 현재 운영중인 DB 를 백업하는 로컬 저장소 만듭니다."
+fi
+
+sudo docker ps -a ; sudo docker stop wikijs ; sudo docker ps -a ; echo "#-- (2) 백업을 위해 wiki.js 도커를 중단합니다."
+
+if [ "x${last_skip}" = "xdb_backup_ok" ]; then
+	current_backup="last-wikijs-$(date +%y%m%d_%H%M%S)-$(uname -n).sql.7z"
+	cat <<__EOF__
+#-
+#-- (3) 지정한 백업파일을 DB 서버에 리스토어 하기전에, 현재 운영중인 DB 를 먼저 백업합니다.
+#-                                          ^^^^^^^^^^
+#- 백업시 --비밀번호-- 를 입력하세요.
+#- ---->
+__EOF__
+	sudo docker exec wikijsdb pg_dumpall -U wikijs | time 7za a -si ${dir_for_backup}/${current_backup} -p ; echo "#-- (4) 현재 운영중인 DB 를 먼저 ${dir_for_backup} 에 백업합니다."
+fi
+sudo docker exec -it wikijsdb dropdb -U wikijs wiki ; echo "#-- (5) 데이터베이스를 삭제합니다."
+sudo docker exec -it wikijsdb createdb -U wikijs wiki ; echo "#-- (6) 데이터베이스를 새로 만듭니다."
+cat <<__EOF__
+#-
+#-- (7) 지정한 백업파일을 DB 서버에 리스토어 합니다.
+#-                                 ^^^^^^^^^^
+#- 백업시 --비밀번호-- 를 입력하세요.
+#- ---->
+__EOF__
+time 7za x -so ${db_sql_7z} | sudo docker exec -i wikijsdb psql -U wikijs wiki ; echo "#-- (8) 백업파일을 DB 에 리스토어 합니다."
+sudo docker start wikijs ; sudo docker ps -a ; echo "#-- (9) 중단했던 wiki.js 도커를 다시 시작합니다."
+```
+
+
 # wiki.js 클라우드에 백업하기
+
+- 다음 스크립트를 터미널에서 직접 복붙해서, wiki.js 데이터베이스를 로컬 폴더에 백업하고, 클라우드 계정에도 복사한다.
+- `2022` 처럼 년도로 된 폴더 안에 다음과 같이 들어있다.
+	1. 일요일부터 토요일까지 최근 1주일간 받아놓은 `1_7yoil` 폴더,
+	2. 금년의 1주 부터 마지막 주까지 매주마다 마지막으로 받은 `01_53ju` 폴더,
+  3. 월이름으로 된 마지막으로 받은 1개 백업 파일.
+
+>  클라우드 백업시 삭제한 파일도 휴지통에 1개월간 보관하므로, 업로드와 삭제를 반복하는 경우 모두 저장공간을 차지한다. 그래서 수시로 클라우드에 들어가 휴지통 비우기를 해서, 용량이 꽉 차서 백업이 안되는데도 모르고 있는 경우가 없도록 해야 한다.
 
 ```
 sudo docker ps -a ; sudo docker stop wikijs ; echo "#-- (1-1) 위키 도커를 중단합니다."
