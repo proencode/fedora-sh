@@ -1,3 +1,25 @@
+@ Q -> # 붙이고 줄 띄우기 => 0i# ^[A^M^[
+@ W -> 현 위치에서 Copy 까지 역따옴표 => j0i```^M^[/^Copy$^[ddk0C```^M^[
+@ E -> 찾은 글자 앞뒤로 backtick(`) 붙이기 => i`^[/ ^[i`^[/rrqeEWQRQewreq^[
+    마크다운 입력시 vi 커맨드 표시 ; (^{)=Ctrl+[ ; (^M)=Ctrl+M
+    인용구 작성시 ; 본문앞에는 꺽쇠 > 붙이고, 스타일 첨가시 끝줄에 종류별 구분을 표시한다.
+    https://docs.requarks.io/en/editors/markdown > Blockquotes > Stylings >
+    blue= {.is-info} ; green= {.is-success} ; yellow= {.is-warning} ; red= {.is-danger}
+
+---------- cut line ----------
+
+
+> Path: packtpub/2206_building_games_with_flutter/01-000_preface
+> Title: 01-000 Preface
+> Short Description: By Paul Teale Publication date: 6월 2022 Publisher Packt Pages 224 ISBN 9781801816984
+> Link: https://subscription.packtpub.com/book/web-development/9781801816786/pref
+> tags: spring_boot react
+> Images: / packtpub / 2206_building_games_with_flutter /
+> create: 2022-09-08 목 14:24:59
+
+# 01-000 Preface
+
+
 
 
 
@@ -41,7 +63,7 @@ You will be expected to have some knowledge of Flutter and Dart but no knowledge
 
 It's assumed that you have a good knowledge of your development tool of choice, such as Visual Studio Code.
 
-B17699_Preface_Table.jpg
+![ 01-000 Covered in the book ](/packtpub/2206_building_games_with_flutter_img/01-000_covered_in_the_book.webp .png .jpg)
 
 If you are using the digital version of this book, we advise you to type the code yourself or access the code from the book's GitHub repository (a link is available in the next section). Doing so will help you avoid any potential errors related to the copying and pasting of code.
 
