@@ -12,18 +12,21 @@ old_image_jemok="${ChapterSeq} that are mentioned in the book"
 if [ "x$1" = "x" ]; then
 	#-- (대문자, 공백, - 와 _ 제외한 특수문자) 는 안됨 !
 	cat <<__EOF__
-  1   ---- packtpub
-[ 2 ] ---- medium
+${cCyan}
+출판사 이름
+
+${cRed}[ ${cYellow}1 ${cRed}] ${cCyan}---- packtpub
+  2   ---- medium
   3   ---- docker
   4   ---- howtogeek
   5   ---- ddanzi
   6   ---- ysjn
 
-----> [ 1 ~ 6 ] 또는 새로운 분류명을 입력하세요.
+${cGreen}----> ${cRed}[ ${cYellow}1 ~ 6 ${cRed}]${cCyan} 또는 새로운 [ 출판사 분류명 ] 을 입력하세요.${cReset}
 __EOF__
 	read a
 	if [ "x$a" = "x" ]; then
-		publisher="medium"
+		publisher="packtpub"
 	else
 	if [ "x$a" = "x1" ]; then
 		publisher="packtpub"
@@ -52,7 +55,7 @@ __EOF__
 	fi
 	fi
 else
-	a="cmd에서지정"
+	a="cmd 에서 지정"
 	publisher="$1"
 
 fi
@@ -60,8 +63,9 @@ fi
 chulpansa=$(echo "${publisher,,}" | sed 's/ /_/g') #-- 소문자로 바꾸고 공백을 밑줄로 바꾼다.
 
 cat <<__EOF__
+----
 
-----> 출판사 지정이 맞으면, press Enter: $a ... ${publisher} [ ${chulpansa} ]
+${cGreen}----> ${cBlue}출판사 지정이 ${cRed}[ ${cYellow}$a ${cRed}] ${cCyan}${publisher} --> ${chulpansa} ${cBlue}맞으면 엔터를 누르세요.${cReset}
 __EOF__
 read a
 
@@ -69,7 +73,9 @@ read a
 # -------
 
 cat <<__EOF__
-----> 폴더 이름으로 쓰기 위한 책 제목: (대,소문자, 숫자,  ., -, _, 빈칸) 만 쓸 수 있습니다. [ ${BookCover} ]
+----
+
+${cGreen}----> ${cBlue}폴더 이름으로 쓰기 위한 ${cCyan}책 제목 ${cBlue}Title: (${cMagenta}대,소문자, 숫자,  ., -, _, 빈칸${cBlue}) 만 쓸 수 있습니다. ${cRed}[ ${cYellow}${BookCover} ${cRed}]${cReset}
 __EOF__
 read a
 
@@ -82,7 +88,7 @@ cheak_jemok=$(echo "${BookCover,,}" | sed 's/ /_/g') #-- 소문자로 바꾸고 
 
 cat <<__EOF__
 
-----> 책 제목이 맞으면, press Enter: ${BookCover} [ ${chulpansa}/${cheak_jemok} ]
+${cGreen}----> ${cBlue}책 제목 ${cCyan}${BookCover} --> ${chulpansa} / ${check_jemk} ${cBlue}맞으면 엔터를 누르세요.${cReset}
 __EOF__
 read a
 
@@ -90,7 +96,9 @@ read a
 # ---------
 
 cat <<__EOF__
-----> Short Description: (대,소문자, 숫자,  ., -, _, 빈칸) 만 쓸 수 있습니다. [ ${ShortDescription} ]
+----
+
+${cGreen}----> ${cCyan}설명 요약 ${cBlue}Short Description: (${cMagenta}대,소문자, 숫자,  ., -, _, 빈칸${cBlue}) 만 쓸 수 있습니다. ${cRed}[ ${cYellow}${ShortDescription} ${cRed}]${cReset}
 __EOF__
 read a
 
@@ -101,7 +109,7 @@ ShortDescription=$a
 
 cat <<__EOF__
 
-----> 설명 요약이 맞으면, press Enter: [ ${ShortDescription} ]
+${cGreen}----> ${cBlue}설명 요약 ${cCyan}${ShortDescription} ${cBlue}맞으면 엔터를 누르세요.${cReset}
 __EOF__
 read a
 
@@ -111,27 +119,25 @@ read a
 
 until [ "x$ChapterSeq" = "x" ]
 do
-	# 챕터 번호
-	# ---------
-
 	cat <<__EOF__
-
-AA-BBB ----> AA = '01'로 시작하는 챕터별 전체 일련번호
-             BBB = '0' 섹션 '00' 챕터로 된 코드
-${ChapterSeq} ----> 이와 같이 챕터 번호를 다음 줄에 입력합니다. [엔터] 만 치면, 끝냅니다.
+${cGreen}
+챕터  번호
++--------+
+| AA-BBB | AA = '01'로 시작하는 챕터별 전체 일련번호
+|        | BBB = '0' 섹션 '00' 챕터로 된 코드
++--------+${cReset}
+${ChapterSeq} ${cGreen}----> ${cCyan}이와 같이 챕터 번호를 다음 줄에 입력합니다. ${cRed}[ ${cYellow}엔터 ${cRed}]${cCyan} 만 누르면 이 작업을 끝냅니다.${cReset}
 __EOF__
 	read a
 	if [ "x$a" = "x" ]; then
 		ChapterSeq="" #-- 끝낸다.
 		ChapterName=""
 	else
-		# 챕터 이름
-		# ---------
-
 		ChapterSeq=$a
 		cat <<__EOF__
-
-${ChapterName} ----> 이와 같이 챕터의 요약제목을 다음 줄에 입력합니다. [엔터] 만 치면, 끝냅니다.
+${cBlue}챕터  이름
+==========${cReset}
+${ChapterName} ${cGreen}----> ${cCyan}이와 같이 챕터의 요약제목을 다음 줄에 입력합니다. ${cRed}[ ${cYellow}엔터 ${cRed}]${cBlue} 만 누르면 ${cCyan}챕터 번호 ${cBlue}입력으로 돌아갑니다.${cReset}
 __EOF__
 		read a
 		if [ "x$a" = "x" ]; then
@@ -147,9 +153,9 @@ __EOF__
 			do
 				cat <<__EOF__
 
-----> (대,소문자, 숫자,  ., -, _, 빈칸) 만 쓸 수 있습니다.
+${cGreen}----> ${cBlue}(${cCyan}대,소문자, 숫자,  ., -, _, 빈칸${cBlue}) 만 쓸 수 있습니다.${cReset}
 
-${image_jemok} ----> 이와 같이 일련번호와 설명을 다음줄에 입력합니다. [엔터] 만 치면, 챕터 입력으로 갑니다.
+${image_jemok} ${cGreen}----> ${cBlue}이와 같이 ${cCyan}일련번호와 설명${cBlue}을 다음줄에 입력합니다. ${cRed}[ ${cYellow}엔터 ${cRed}]${cBlue} 만 누르면 ${cCyan}챕터 번호 ${cBlue}입력으로 돌아갑니다.${cReset}
 __EOF__
 				read image_jemok
 				if [ "x$image_jemok" = "x" ]; then
@@ -163,10 +169,9 @@ __EOF__
 					img_name=$(echo "${image_jemok,,}" | sed 's/ /_/g') #-- 전부 대문자로 바꾸려면 ${image_jemok^^}, 전부 소문자는 ${image_jemok,,}
 					chapter_name=$(echo "${ChapterName,,}" | sed 's/ /_/g')
 					cat <<__EOF__
-
-
+${cBlue}
 / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / /
-
+${cReset}
 @ Q -> # 붙이고 줄 띄우기 => 0i# ^[A^M^[
 @ W -> 현 위치에서 Copy 까지 역따옴표 => j0i\`\`\`^M^[/^Copy$^[ddk0C\`\`\`^M^[
 @ E -> 찾은 글자 앞뒤로 backtick(\`) 붙이기 => i\`^[/ ^[i\`^[/rrqeEWQRQewreq^[
@@ -190,8 +195,9 @@ __EOF__
 
 
 ![ ${image_jemok} ](/${chulpansa}/${cheak_jemok}/${img_name}.webp .png .jpg)
-
+${cMagenta}
 / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / /
+${cReset}
 ----> 윗줄을 복사해서 사용합니다.
 __EOF__
 				fi
