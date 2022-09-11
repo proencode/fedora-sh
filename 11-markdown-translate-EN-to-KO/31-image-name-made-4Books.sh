@@ -20,34 +20,30 @@ source ${HOME}/lib/color_base #-- cBlack cRed cGreen cYellow cBlue cMagenta cCya
 #echo "${cRed}<<<<<<<<<<${cBlue} $0 ${cRed}||| ${cMagenta}${MEMO} ${cRed}<<<<<<<<<<${cReset}"
 
 
-	publisher="${1}"
+if [ "x$1" != "x" ]; then
+	publisher="$1"
 else
 	publisher="packtpub"
-
-if [ "x$1" != "x" ]; then
-	BookCover="$1"
+fi
+if [ "x$2" != "x" ]; then
+	BookCover="$2"
 else
 	BookCover="2206_building_games_with_flutter"
 fi
-if [ "x$2" != "x" ]; then
-	ShortDescription="$2"
+if [ "x$3" != "x" ]; then
+	ShortDescription="$3"
 else
 	ShortDescription="By Paul Teale Publication date: 6월 2022 Publisher Packt Pages 224 ISBN 9781801816984"
 fi
-if [ "x$3" != "x" ]; then
-	ChapterSeq="$3"
+if [ "x$4" != "x" ]; then
+	ChapterSeq="$4"
 else
 	ChapterSeq="01-000"
 fi
-if [ "x$4" != "x" ]; then
-	ChapterName="$4"
+if [ "x$5" != "x" ]; then
+	ChapterName="$5"
 else
 	ChapterName="Preface"
-fi
-if [ "x$5" != "x" ]; then
-	old_image_jemok="$5"
-else
-	old_image_jemok="${ChapterSeq} Building_games_with_flutter"
 fi
 if [ "x$6" != "x" ]; then
 	https_line="$6"
@@ -59,18 +55,19 @@ if [ "x$7" != "x" ]; then
 else
 	tags="spring_boot react"
 fi
+old_image_jemok="이미지 제목을 넣어주세요"
 
 cat <<__EOF__
 
-${cBlue}${CMD_NAME} ${cRed} publisher ${cMagenta} BookCover ${cRed} ShortDescription ${cMagenta} ChapterSeq ${cRed} ChapterName ${cMagenta} old_image_jemok ${cRed} https_line ${cMagenta} tags ${cReset}
-${cCyan}BookCover="${BookCover}"
-ShortDescription="${ShortDescription}"
-ChapterSeq="${ChapterSeq}"
-ChapterName="${ChapterName}"
-old_image_jemok="${old_image_jemok}"
-https_line="${https_line}"
-tags="${tags}"
-${cBlue}${CMD_NAME} ${yellow}"${cRed}${publisher}${cYellow}" "${cMagenta}${BookCover}${cYellow}" "${cRed}${ShortDescription}${cYellow}" "${cMagenta}${ChapterSeq}${cYellow}" "${cRed}${ChapterName}${cYellow}" "${cMagenta}${old_image_jemok}${cYellow}" "${cRed}${https_line}${cYellow}" "${cMagenta}${tags}${cYellow}"${cReset}
+${cBlue}${CMD_NAME} ${cRed}"publisher"  ${cMagenta}"BookCover"  ${cRed}"ShortDescription"  ${cMagenta}"ChapterSeq"  ${cRed}"ChapterName"  ${cMagenta}"old_image_jemok"  ${cRed}"https_line"  ${cMagenta}"tags"
+${cRed}publisher="${publisher}"
+${cRed}BookCover="${BookCover}"
+${cMagenta}ShortDescription="${ShortDescription}"
+${cRed}ChapterSeq="${ChapterSeq}"
+${cMagenta}ChapterName="${ChapterName}"
+${cMagenta}https_line="${https_line}"
+${cRed}tags="${tags}"
+${cBlue}${CMD_NAME} ${cRed}"${publisher}"  ${cMagenta}"${BookCover}"  ${cRed}"${ShortDescription}"  ${cMagenta}"${ChapterSeq}"  ${cRed}"${ChapterName}"  ${cMagenta}"${old_image_jemok}"  ${cRed}"${https_line}"  ${cMagenta}"${tags}"
 
 __EOF__
 
@@ -89,6 +86,7 @@ ${cRed}[ ${cYellow}1 ${cRed}] ${cCyan}---- packtpub
   4   ---- howtogeek
   5   ---- ddanzi
   6   ---- ysjn
+  7   ---- gihyo.jp
 
 ${cGreen}----> ${cCyan}출판사 이름 ${cRed}[ ${cGreen}1 ~ 6 ${cRed}]${cCyan} 또는 새로운 ${cRed}[ ${cGreen}출판사 분류명 ${cRed}] ${cCyan}을 입력하세요.${cReset}
 __EOF__
@@ -105,6 +103,7 @@ __EOF__
 	if [ "x$a" = "x3" ]; then
 		publisher="docker"
 	else
+
 	if [ "x$a" = "x4" ]; then
 		publisher="howtogeek"
 	else
@@ -114,10 +113,15 @@ __EOF__
 	if [ "x$a" = "x6" ]; then
 		publisher="ysjn"
 	else
+	if [ "x$a" = "x7" ]; then
+		publisher="gihyo.jp"
+	else
 		publisher="$a"
 	fi
 	fi
 	fi
+	fi
+
 	fi
 	fi
 	fi
@@ -172,6 +176,44 @@ cat <<__EOF__
 ${cGreen}----> ${cBlue}설명 요약이 ${cRed}[ ${cYellow}${ShortDescription} ${cRed}] ${cBlue}맞으면 엔터를 누르세요.${cReset}
 __EOF__
 read a
+
+# 원본 링크
+# ---------
+
+cat <<__EOF__
+${cGreen}----> ${cCyan}원본 링크 ${cRed}[ ${cGreen}${https_line} ${cRed}] (${cMagenta}대,소문자, 숫자,  ., -, _, 빈칸${cBlue}) 만 쓸 수 있습니다.${cReset}
+__EOF__
+read a
+
+if [ "x$a" = "x" ]; then
+	a=${https_line}
+fi
+https_line=$a
+
+cat <<__EOF__
+${cGreen}----> ${cBlue}원본 링크가 ${cRed}[ ${cYellow}${https_line} ${cRed}] ${cBlue}맞으면 엔터를 누르세요.${cReset}
+__EOF__
+read a
+
+# 태그
+# ---------
+
+cat <<__EOF__
+${cGreen}----> ${cCyan}태그 ${cRed}[ ${cGreen}${tags} ${cRed}] (${cMagenta}대,소문자, 숫자,  ., -, _, 빈칸${cBlue}) 만 쓸 수 있습니다.${cReset}
+__EOF__
+read a
+
+if [ "x$a" = "x" ]; then
+	a=${tags}
+fi
+tags=$a
+
+cat <<__EOF__
+${cGreen}----> ${cBlue}태그가 ${cRed}[ ${cYellow}${tags} ${cRed}] ${cBlue}맞으면 엔터를 누르세요.${cReset}
+__EOF__
+read a
+
+
 
 # ChapterSeq="01-000"
 # ChapterName="Preface"
@@ -244,8 +286,8 @@ ${cReset}
 > Path: ${chulpansa}/${cheak_jemok}/${ChapterSeq}_${chapter_name}
 > Title: ${ChapterSeq} ${ChapterName}
 > Short Description: ${ShortDescription}
-> Link: https://subscription.packtpub.com/book/web-development/9781801816786/pref
-> tags: spring_boot react
+> Link: ${https_line}
+> tags: ${tags}
 > Images: / ${chulpansa} / ${cheak_jemok} /
 > create: $(date +'%Y-%m-%d %a %H:%M:%S')
 
