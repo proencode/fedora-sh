@@ -1,5 +1,94 @@
 
 
+
+
+1 부 코틀린　시작하기
+
+제 1 장　Kotlin을 추천하는 이유
+1　왜 Kotlin이 탄생했는가?
+2　Kotlin으로 무엇을 만들 수 있습니까? ~서버 측에서의 이용 의의
+3　코드의 안전성을 높이는 Kotlin의 형태와 Null 비허용/허용
+4　환경 구축 및 첫 프로그램 실행
+5　Kotlin의 기본 구문
+
+제 2 장　다양한 Kotlin의 기능
+1　if, when 문을 식으로 취급 코드를 간단하게 할 수 있다
+2　속성 정의에서 접근자 메서드(getter, setter)가 더 이상 필요하지 않음
+3　데이터 클래스에서 보일러 플레이트를 줄일 수 있습니다.
+4　기본 인수와 명명된 인수로 함수 호출을 단순화할 수 있습니다.
+5　함수형과 고층함수, 타입 별칭으로 로직을 재이용하기 쉽게 할 수 있다
+6　확장 기능으로 유연하게 로직 추가
+7　범위 함수를 사용하여 객체에 대한 처리를 단순화할 수 있습니다.
+8　연산자 오버로드로 클래스에 대한 연산자 처리를 구현할 수 있습니다.
+9　대리자로 중복 처리를 위임할 수 있습니다.
+10　충실한 컬렉션 라이브러리로 컬렉션에 대한 처리를 간단하게 할 수 있다
+11　코루틴으로 비동기 처리를 구현할 수 있습니다.
+
+3 장 Java와 Kotlin　의 상호 호환성이 기존 자산을 활용
+1　Java 코드 호출
+2　Java 라이브러리 호출
+3　Java 클래스를 상속하고 Kotlin에서 구현
+4　Java와 상호 호출 할 때의 특별한 예
+5　Java 코드를 Kotlin 코드로 변환
+
+2 부 Kotlin 에서　서버측 개발
+
+제 4 장　웹 애플리케이션 개발의 기반이 되는 Spring Boot 도입
+1　Spring Boot 소개
+2　Spring Boot에서 REST API 구현
+3　Spring Framework DI 사용
+
+5 장 O　/R 매퍼를 사용하여 데이터베이스에 연결
+1　MyBatis란?
+2　Docker로 MySQL 환경 구축
+3　MyBatis 도입
+4　MyBatis에서 CRUD 만들기
+5　Spring Boot에서 MyBatis 사용
+
+제 6 장　Spring Boot와 MyBatis에서 도서 관리 시스템 웹 애플리케이션 개발
+1　책 관리 시스템 사양
+2　애플리케이션 구성
+3　프로젝트 환경 구축
+4　검색계 기능(일람 취득, 상세 취득)의 API 구현
+5　갱신계 기능(등록, 갱신, 삭제)의 API 구현
+
+제 7 장　서적 관리 시스템의 기능 확대
+1　Spring Security에서 사용자 인증, 권한 부여 메커니즘 구현
+2　대출, 반환 기능의 API 구현
+3　Spring AOP에서 로그 출력
+
+8 장 JUnit　에서 단위 테스트 구현
+1　JUnit 도입
+2　JUnit에서 웹 애플리케이션 단위 테스트
+
+3 부 Kotlin　에서 다양한 프레임워크를 사용해보기
+
+제 9 장　고속 통신 프레임워크 gRPC
+1　gRPC란?
+2　gRPC 도입
+3　Spring Boot에서 gRPC Kotlin 서버 측 프로그램 구현
+
+제 10 장　Kotlin의 웹 프레임워크 Ktor
+1　Ktor란?
+2　Ktor 도입
+3　REST API 구현
+4　인증 메커니즘 구현
+
+제 11 장　Kotlin제 O/R매퍼 Exposed
+1　Exposed란?
+2　Exposed 도입
+3　DSL과 DAO 각각의 구현 방법
+4　DAO에서 CRUD 만들기
+
+제 12 장　Kotlin의 테스팅 프레임워크 Kotest, MockK
+1　Kotest란?
+2　Kotest 도입
+3　여러 코딩 스타일(Spec)로 단위 테스트 작성
+4　데이터 구동 테스트 사용
+5　MockK를 사용하여 모형화
+
+
+
 #### 사용하기 전에 반드시 읽어주십시오.
 
 본서는 종이 서적 「Kotlin 서버 측 프로그래밍 실천 개발」(ISBN978-4-297-11859-4)을 바탕으로 제작한 전자 서적입니다. 종이 서적과는 디자인이나 레이아웃이 다르고 보이는 단말에 의해 표시가 다른 경우가 있습니다. 디스플레이 설정은 터미널의 표준 설정을 권장합니다. 전송 후에 보충 정정 등으로 데이터를 재배포하는 경우가 있습니다. 갱신 방법은 구입처의 전자서점의 헬프등을 확인해 주십시오.
@@ -84,76 +173,3 @@ https://github.com/n-takehata/kotlin-server-side-programming-practice
 
 https://gihyo.jp/book/2021/978-4-297-11859-4
 
-#### 목차
-소개
-1 부 코틀린　시작하기
-제 1 장　Kotlin을 추천하는 이유
-1　왜 Kotlin이 탄생했는가?
-2　Kotlin으로 무엇을 만들 수 있습니까? ~서버 측에서의 이용 의의
-3　코드의 안전성을 높이는 Kotlin의 형태와 Null 비허용/허용
-4　환경 구축 및 첫 프로그램 실행
-5　Kotlin의 기본 구문
-제 2 장　다양한 Kotlin의 기능
-1　if, when 문을 식으로 취급 코드를 간단하게 할 수 있다
-2　속성 정의에서 접근자 메서드(getter, setter)가 더 이상 필요하지 않음
-3　데이터 클래스에서 보일러 플레이트를 줄일 수 있습니다.
-4　기본 인수와 명명된 인수로 함수 호출을 단순화할 수 있습니다.
-5　함수형과 고층함수, 타입 별칭으로 로직을 재이용하기 쉽게 할 수 있다
-6　확장 기능으로 유연하게 로직 추가
-7　범위 함수를 사용하여 객체에 대한 처리를 단순화할 수 있습니다.
-8　연산자 오버로드로 클래스에 대한 연산자 처리를 구현할 수 있습니다.
-9　대리자로 중복 처리를 위임할 수 있습니다.
-10　충실한 컬렉션 라이브러리로 컬렉션에 대한 처리를 간단하게 할 수 있다
-11　코루틴으로 비동기 처리를 구현할 수 있습니다.
-3 장 Java와 Kotlin　의 상호 호환성이 기존 자산을 활용
-1　Java 코드 호출
-2　Java 라이브러리 호출
-3　Java 클래스를 상속하고 Kotlin에서 구현
-4　Java와 상호 호출 할 때의 특별한 예
-5　Java 코드를 Kotlin 코드로 변환
-2 부 Kotlin 에서　서버측 개발
-제 4 장　웹 애플리케이션 개발의 기반이 되는 Spring Boot 도입
-1　Spring Boot 소개
-2　Spring Boot에서 REST API 구현
-3　Spring Framework DI 사용
-5 장 O　/R 매퍼를 사용하여 데이터베이스에 연결
-1　MyBatis란?
-2　Docker로 MySQL 환경 구축
-3　MyBatis 도입
-4　MyBatis에서 CRUD 만들기
-5　Spring Boot에서 MyBatis 사용
-제 6 장　Spring Boot와 MyBatis에서 도서 관리 시스템 웹 애플리케이션 개발
-1　책 관리 시스템 사양
-2　애플리케이션 구성
-3　프로젝트 환경 구축
-4　검색계 기능(일람 취득, 상세 취득)의 API 구현
-5　갱신계 기능(등록, 갱신, 삭제)의 API 구현
-제 7 장　서적 관리 시스템의 기능 확대
-1　Spring Security에서 사용자 인증, 권한 부여 메커니즘 구현
-2　대출, 반환 기능의 API 구현
-3　Spring AOP에서 로그 출력
-8 장 JUnit　에서 단위 테스트 구현
-1　JUnit 도입
-2　JUnit에서 웹 애플리케이션 단위 테스트
-3 부 Kotlin　에서 다양한 프레임워크를 사용해보기
-제 9 장　고속 통신 프레임워크 gRPC
-1　gRPC란?
-2　gRPC 도입
-3　Spring Boot에서 gRPC Kotlin 서버 측 프로그램 구현
-제 10 장　Kotlin의 웹 프레임워크 Ktor
-1　Ktor란?
-2　Ktor 도입
-3　REST API 구현
-4　인증 메커니즘 구현
-제 11 장　Kotlin제 O/R매퍼 Exposed
-1　Exposed란?
-2　Exposed 도입
-3　DSL과 DAO 각각의 구현 방법
-4　DAO에서 CRUD 만들기
-제 12 장　Kotlin의 테스팅 프레임워크 Kotest, MockK
-1　Kotest란?
-2　Kotest 도입
-3　여러 코딩 스타일(Spec)로 단위 테스트 작성
-4　데이터 구동 테스트 사용
-5　MockK를 사용하여 모형화
-인덱스
