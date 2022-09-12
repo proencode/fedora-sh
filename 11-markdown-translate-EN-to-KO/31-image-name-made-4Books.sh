@@ -279,6 +279,10 @@ ${cReset}
     인용구 작성시 ; 본문앞에는 꺽쇠 > 붙이고, 스타일 첨가시 끝줄에 종류별 구분을 표시한다.
     https://docs.requarks.io/en/editors/markdown > Blockquotes > Stylings >
     blue= {.is-info} ; green= {.is-success} ; yellow= {.is-warning} ; red= {.is-danger}
+@ Q -> 빈 줄에 블록 시작하기 => 0C\`\`\`^[^Mk0
+@ W -> 줄 앞에 > 나오면 안되므로 블록 마감하고 > 앞에 - 끼우기 => 0i\`\`\`^M-^[^M0i\`\`\`^[0
+@ E -> 줄 아래에 블록 마감하고 한줄 더 띄우기 => 0^Mi\`\`\`^M^M^[kk
+@ A -> 이 줄을 타이틀로 만들기 => 0i#### ^[^M^[
 
 ---------- cut line ----------
 

@@ -1,4 +1,5 @@
 
+9,$s/　/ /g
 
 15:00:49 일 2022-09-11 yos@yscart ~/git-projects/fedora-sh/10-wikijs-docker-by-markdown/markdown-files/Kotlin_서버사이드_프로그래밍_실천개발-epub
 Kotlin_서버사이드_프로그래밍_실천개발-epub $ sh ~/lib/lib-run-ibus.sh 
@@ -24,17 +25,17 @@ Kotlin_서버사이드_프로그래밍_실천개발-epub $
 
 
 
+004 Spring Boot 도입
 
-
-# 제2부 Kotline 서버사이드 개발
-
-## 제4장　웹 애플리케이션 개발의 기반이 되는 Spring Boot 도입
+> 제2부 Kotline 서버사이드 개발
+>
+> 제4장 웹 애플리케이션 개발의 기반이 되는 Spring Boot 도입
 
 이 장에서는 Spring Boot라는 프레임워크를 사용하여 웹 애플리케이션의 서버측 프로그램을 구현하는 방법을 설명합니다. Kotlin에서 웹 애플리케이션을 개발할 때 프레임워크를 사용하는 것이 필수적입니다. 다양한 프레임워크 중에서도 Spring Boot는 특히 메이저가 되고 있어, 제6장으로부터 개발하는 실천의 어플리케이션에서도 사용하고 있어, 아키텍쳐의 베이스가 되는 지식이 되어 옵니다. 여기까지의 장은 Kotlin이라고 하는 언어 자체에 대한 설명이었습니다만, 여기에서 드디어 「서버 측 Kotlin」의 개발을 체감해 주셨으면 합니다.
 
-### 1　Spring Boot 소개
+# 1. Spring Boot 소개
 
-#### Spring Boot란?
+## Spring Boot란?
 
 Spring Boot Note 1 은 웹 애플리케이션 프레임워크 중 하나입니다. Java의 프레임워크로서 가장 주요한 것의 하나로, 많은 서버 어플리케이션으로 사용되고 있습니다.
 
@@ -42,11 +43,11 @@ Spring Framework 주2 라고 하는 프레임워크가 있어, 원래는 DI(Depe
 
 그 다양한 프레임워크를 개별적으로 사용하는 것이 아니라, 정리해 사용하기 쉬운 형태로 해 웹 어플리케이션 개발을 간단하게 할 수 있도록 한 것이 Spring Boot가 됩니다.
 
-#### Spring Framework의 Kotlin 지원
+## Spring Framework의 Kotlin 지원
 
 Spring Framework는 5계에서 공식적으로 Kotlin 대응을 시작하고 있습니다. Spring Boot에서 말하면 2계가 Spring Framework 5계에 대응한 버전입니다. 4계 이전의 버전에서도 사용할 수 있습니다만, 프레임워크측의 코어인 부분에서도 Kotlin에서의 이용을 상정해 대응해 주는 것으로, 보다 사용하기 쉬워집니다. 또, 향후의 Kotlin, Spring Framework 각각의 업데이트에 즈음해도, 동작의 보증이 보다 강해져 갈 것으로 기대됩니다.
 
-#### Spring Initializr에서 프로젝트의 병아리 만들기
+## Spring Initializr에서 프로젝트의 병아리 만들기
 
 먼저 Kotlin을 사용한 Spring Boot 프로젝트를 만듭니다. Spring Boot에는 Spring Initializr 주 4 라는 사이트가 준비되어 있으며 여기에서 프로젝트병아리히나모양가타만들 수 있습니다. 다음 항목을 입력하고 [GENERATE] 버튼을 누르면 설정한 항목에 따른 프로젝트의 zip이 다운로드됩니다( 그림 4.1 ).
 
@@ -68,7 +69,7 @@ Spring Framework는 5계에서 공식적으로 Kotlin 대응을 시작하고 있
 
 Spring Boot에서는 다른 라이브러리와 프레임워크를 함께 사용하기 위한 종속성을 추가해주는 starter라고 불리는 모듈이 준비되어 있습니다. Dependencies에서 선택하면 프로젝트를 만들 때 미리 종속성을 추가할 수 있습니다. 여기에서는 Spring MVC, Jackson과 같은 Web API 개발에 필요한 프레임워크를 사용하기 위한 Spring Web과 템플릿 엔진인 Thymeleaf를 선택하고 있습니다. 추가한 종속성에 대해서는 나중에 프로젝트 내용을 보면서 다시 설명합니다.
 
-#### 만든 프로젝트 배포
+## 만든 프로젝트 배포
 
 Spring Initializr에서 demo.zip이라는 파일이 다운로드되었다고 생각합니다. 이 파일을 원하는 곳에 배포하십시오. 그런 다음 확장된 파일을 IntelliJ IDEA에서 엽니다. 메뉴에서 [File] → [Open]을 선택하고 확장 된 demo 디렉토리 바로 아래에있는 build.gradle.kts를 엽니 다 ( 그림 4.2 ).
 
@@ -82,7 +83,7 @@ Project 보기에는 그림 4.4 와 같은 파일이 표시되어 있다고 생�
 
 그림 4.4 프로젝트의 폴더 및 파일
 
-#### build.gradle.kts──Kotlin으로 작성된 Gradle 구성 파일 확인
+## build.gradle.kts──Kotlin으로 작성된 Gradle 구성 파일 확인
 
 프로젝트 바로 아래에 있는 build.gradle.kts를 엽니다. 제1장의 「4.환경 구축과 최초의 프로그램의 실행」에서 조금 소개했습니다만, Kotlin으로 기술된 Gradle의 설정 파일입니다. 현재 Spring Initializr에서 Kotlin을 선택하여 만들어진 프로젝트는이 build.gradle.kts가 사용됩니다.
 
@@ -158,7 +159,7 @@ id(""org.jetbrains.kotlin.plugin.spring") version "1.4.30"
 
 Gradle에서 Kotlin 프로젝트를 빌드하고 Kotlin에서 Spring Boot를 사용하는 데 필요합니다.
 
-##### dependencies - 애플리케이션에서 사용하는 종속성
+### dependencies - 애플리케이션에서 사용하는 종속성
 
 Listing 4.1.1 의 18-25 행의 dependencies 블록은 애플리케이션에 필요한 종속성을 추가한다. Spring Initializr에서 생성 할 때 두 개의 종속성을 추가했으므로 여기에 반영됩니다. 19, 20행째가 그 해당 개소입니다. 각각 다음과 같은 역할이 됩니다.
 
@@ -171,7 +172,7 @@ jackson-module-kotlin 은 JSON을 직렬화하고 deserialize하는 Jackson 주 
 
 spring-boot-starter-test 는 테스트 모듈입니다. Spring Boot 애플리케이션의 테스트 코드를 구현할 수 있습니다 (이 장에서는 사용하지 않음).
 
-#### 생성된 Spring Boot 애플리케이션 시작
+## 생성된 Spring Boot 애플리케이션 시작
 
 이 프로젝트의 Spring Boot 응용 프로그램을 시작합니다. DemoApplication.kt라는 파일을 열면 Listing 4.1.3 의 내용의 코드가 된다.
 
@@ -210,7 +211,7 @@ IntelliJ IDEA에서 시작하면 응용 프로그램이 중지되면 오른쪽 �
 
 명령으로 시작한 경우 Mac에서는 control + C , Windows에서는 Ctrl + C 를 시작하는 터미널에서 입력하면 중지 할 수 있습니다.
 
-#### 테스트 페이지 작성 및 동작 확인
+## 테스트 페이지 작성 및 동작 확인
 
 응용 프로그램이 시작되었지만 라우팅이 아무 것도 구성되지 않았기 때문에 어디에도 액세스할 수 없습니다. 테스트 페이지를 표시하는 프로그램을 작성합니다. 프로젝트의 src/main/kotlin 디렉토리의 com.example.demo 패키지 아래에 Listing 4.1.6 의 HelloController 클래스를 생성한다.
 
@@ -269,11 +270,11 @@ class HelloController {
 
 이제 이 클래스에 정의된 라우팅에 대한 액세스는 반드시 /hello 가 붙는 형태가 됩니다. index 는 @GetMapping 에서 /world 를 지정하므로 경로는 /hello/world입니다. 이제 경로를 클래스와 함수의 계층 구조로 정의하고 공통화할 수 있습니다.
 
-### 2　Spring Boot에서 REST API 구현
+# 2. Spring Boot에서 REST API 구현
 
 JSON에서 요청, 응답을 교환하는 소위 REST API를 만듭니다.
 
-#### 쿼리 문자열로 요청 받기
+## 쿼리 문자열로 요청 받기
 
 먼저 Listing 4.2.1 의 클래스를 작성한다.
 
@@ -308,7 +309,7 @@ $ curl http://localhost:8080/greeter/hello?name=Naoto
 
 데이터 클래스의 속성 이름과 값을 사용하여 JSON으로 반환되는 것을 볼 수 있습니다.
 
-#### 경로 매개변수로 요청 수신
+## 경로 매개변수로 요청 수신
 
 GreeterController 클래스에 Listing 4.2.4 의 함수를 추가한다.
 
@@ -330,7 +331,7 @@ $ curl http://localhost:8080/greeter/hello/Kotlin
 {"message":"Hello Kotlin"}
 ```
 
-#### JSON으로 요청 받기
+## JSON으로 요청 받기
 
 요청도 JSON에서 수신하려면 Listing 4.2.6 과 같이 구현한다. 여기도 GreeterController 클래스에 함수를 추가하십시오.
 
@@ -357,11 +358,11 @@ $ curl -H 'Content-Type:application/json' -X POST -d '{"name":"Kotlin"}' http://
 {"message":"Hello Kotlin"}
 ```
 
-### 3　Spring Framework DI 사용
+# 3. Spring Framework DI 사용
 
 이 장의 시작 부분에서 조금 썼지만 Spring Framework의 주요 기능으로 DI가 있습니다. Spring Framework를 사용하면 반드시 말해도 좋을 정도로 사용하는 기능으로, 그 구현 방법에 대해서도 몇 가지 패턴이 있으므로, 여기에서 설명해 갑니다.
 
-#### DI란?
+## DI란?
 
 DI는 Dependency Injection(의존성 주입)의 약자입니다. 말이 어렵기 때문에 조금 이해하기 어렵지만, 간단히 말하면 각 클래스에서 사용하는 객체의 생성을 자동화해주는 것입니다. 예를 들어, Listing 4.3.1 과 같은 코드가 있다고 가정한다.
 
@@ -413,7 +414,7 @@ Spring Framework를 사용한 구현에서는, 인터페이스에 대한 구현 
 
 또, 구현 클래스에는 @Component 어노테이션이 붙어 있습니다. 이것은 DI의 대상인 것을 나타내는 어노테이션으로, 후술하는 각종 인젝션의 처리로 대상 클래스로 하기 위한 것이 됩니다. 이 설명뿐이라고 잘 모르겠다고 생각하기 때문에, 실제의 DI를 사용한 구현과 아울러 설명해 갑니다.
 
-#### 생성자 주입
+## 생성자 주입
 
 Spring Framework는 여러 가지 DI 방법을 제공합니다. 우선은 가장 자주(잘) 사용되는 생성자 인젝션으로부터입니다. 이것은 Spring Framework로 추천하는 방법입니다.
 
@@ -449,7 +450,7 @@ $ curl http://localhost:8080/greeter/hello/byservice/Spring
 {"message":"Hello Spring"}
 ```
 
-#### 필드 주입
+## 필드 주입
 
 다음은 필드 주입입니다. Listing 4.3.5 에서는 생성자에 작성된 greeter 의 정의를 Listing 4.3.8 과 같이 클래스의 필드로 정의하도록 작성한다.
 
@@ -469,7 +470,7 @@ class GreeterController {
 
 또 다른 포인트는 lateinit var 로 정의하는 것입니다. 이 필드에의 인젝션은, 변수의 로드와 동시에 초기화되는 것이 아니고, 나중에 인젝션되기 때문에 var 로서 정의해 둘 필요가 있기 (위해)때문에입니다.
 
-#### 세터 인젝션
+## 세터 인젝션
 
 또 하나, 세터 인젝션이라는 방법도 있습니다. 이것은 주입 대상 필드와 그에 대한 세터를 정의하여 주입하는 방법입니다. Kotlin의 경우는 필드를 var 로 정의하는 것과 동시에 세터도 만들어지므로, Listing 4.3.9 와 같이 쓰는 방법이 됩니다.
 
@@ -490,7 +491,7 @@ class GreeterController {
 
 확장 속성에서 사용자 지정 세터를 정의하고 이에 @Autowired 어노테이션을 추가합니다. 그러나 사용자 정의 setter를 정의하면 lateinit 한정자를 사용할 수 없으므로 초기화가 필요합니다. 그 때문에 필드의 형태도 Null 허가로 정의하고 있어 호출시도 Null 체크등의 대응이 필요하게 됩니다.
 
-#### 하나의 인터페이스에 대해 여러 클래스가 있는 경우
+## 하나의 인터페이스에 대해 여러 클래스가 있는 경우
 
 여기까지 소개한 예는 인터페이스에 대해 하나의 구현 클래스만 있었지만, 여러 구현 클래스가 있는 경우 Spring Framework 측에서 어떤 클래스를 주입할지 판별할 수 없습니다. 따라서 어떤 클래스를 주입할 것인지 명시적으로 정의해야 합니다.
 
@@ -537,7 +538,7 @@ class GreeterController(
 
 여기에서는 생성자 인젝션을 사용하여 설명했지만, 필드 인젝션, 세터 인젝션을 사용하는 경우도 마찬가지입니다.
 
-#### 기본적으로 생성자 주입 사용
+## 기본적으로 생성자 주입 사용
 
 현재 Spring Framework에서는 기본적으로 생성자 주입을 사용하는 것이 좋습니다. 주로 다음과 같은 이유가 됩니다.
 
@@ -551,31 +552,31 @@ class GreeterController(
 6장부터 연습의 응용 프로그램 개발에서도 모든 생성자 주입을 사용합니다. 많은 코드로 본장에서 소개한 기술이 나오므로, 확실히 기억해 두어 주셨으면 합니다.
 
 
-주1 　 https://spring.io/projects/spring-boot
+주1   https://spring.io/projects/spring-boot
 
 ( 본문으로 돌아가기 )
 
-주2 　 https://spring.io/projects/spring-framework
+주2   https://spring.io/projects/spring-framework
 
 ( 본문으로 돌아가기 )
 
-주3 　 https://spring.io/projects
+주3   https://spring.io/projects
 
 ( 본문으로 돌아가기 )
 
-주4 　 https://start.spring.io/
+주4   https://start.spring.io/
 
 ( 본문으로 돌아가기 )
 
-주5 　 https://www.thymeleaf.org/
+주5   https://www.thymeleaf.org/
 
 ( 본문으로 돌아가기 )
 
-주6 　 https://github.com/FasterXML/jackson
+주6   https://github.com/FasterXML/jackson
 
 ( 본문으로 돌아가기 )
 
-주7　 main 함수의 실행 방법은 제1장의 「4. 환경 구축과 최초의 프로그램의 실행」을 참조.
+주7  main 함수의 실행 방법은 제1장의 「4. 환경 구축과 최초의 프로그램의 실행」을 참조.
 
 ( 본문으로 돌아가기 )
 

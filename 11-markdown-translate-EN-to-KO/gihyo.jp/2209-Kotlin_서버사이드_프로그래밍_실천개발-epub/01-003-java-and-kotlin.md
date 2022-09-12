@@ -1,15 +1,16 @@
 
+9,$s/　/ /g
 0C```^[^Mk0 ------- @ Q
 0i```^M-^[^M0i```^[0 ------- @ W
 0^Mi```^M^M^[kk ------- @ E
 0i#### ^[^M^[ ------- @ A
 
 
-## 제3장 Java와 Kotlin　의 상호 호환성이 기존 자산을 활용
+제3장 Java와 Kotlin 의 상호 호환성이 기존 자산을 활용
 
 1장의 시작 부분에서도 설명했지만 Kotlin은 Java와 상호 호환되는 언어입니다. Kotlin에서 Java, Java에서 Kotlin을 호출할 수 있으며, 두 언어를 동일한 프로젝트에서 공존할 수 있습니다. 물론 Kotlin만으로 구현하는 것도 가능합니다만, Java를 사용하고 있던 조직이라면 오랫동안 개발해 온 자산을 활용할 수 있다는 것은 큰 이점입니다. 이 장에서는 주로 Kotlin에서 Java를 사용하는 방법을 중심으로 Java와의 상호 이용에 대해 설명합니다.
 
-### 1　Java 코드 호출
+# 1. Java 코드 호출
 
 먼저 Kotlin에서 Java 코드를 실행해 보겠습니다. 1장에서 작성한 프로젝트에서 src/main 아래에 java라는 디렉토리를 작성하십시오. src/main 디렉토리를 마우스 오른쪽 버튼으로 클릭하고 [New] → [Directory]를 선택하고 이름을 입력하여 만들 수 있습니다. 그리고 src/main/java 아래에 Java 클래스를 만듭니다. Java 파일은 IntelliJ IDEA에서 대상 디렉토리 (여기서는 src / main / java)를 마우스 오른쪽 버튼으로 클릭하고 [New] → [Java Class]를 선택하여 만들 수 있습니다 ( 그림 3.1 ).
 
@@ -73,7 +74,7 @@ public class JavaMain {
 
 여기도 Java 클래스를 호출하는 것과 비슷한 방법으로 Kotlin의 코드를 호출 할 수 있습니다. Java는 처리를 구현할 때 반드시 클래스가 필요하기 때문에, main 메소드만을 구현한 클래스를 사용한 샘플이 되고 있습니다.
 
-### 2　Java 라이브러리 호출
+# 2. Java 라이브러리 호출
 
 Kotlin에서 기존 Java 라이브러리를 호출하는 것도 물론 가능합니다. Listing 3.2.1 을 보라.
 
@@ -108,11 +109,11 @@ fun main() {
 
 LocalDateTime 형의 프로퍼티를 가지는 데이터 클래스 Time 를 작성해, LocalDateTime.now 함수로 현재 일시를 설정한 인스턴스를 생성해, 출력하고 있습니다.
 
-### 3　Java 클래스를 상속하고 Kotlin에서 구현
+# 3. Java 클래스를 상속하고 Kotlin에서 구현
 
 Kotlin과 Java의 상호 운용은 인스턴스의 생성이나 메소드의 호출 뿐만이 아니라, 기존의 Java의 클래스를 상속해 Kotlin로 구현할 수도 있습니다.
 
-#### 클래스 상속
+## 클래스 상속
 
 우선, Listing 3.3.1 의 Java의 AnimalJava 클래스를 작성한다.
 
@@ -187,11 +188,11 @@ greeter.hello()
 Hello.
 ```
 
-### 4　Java와 상호 호출 할 때의 특별한 예
+# 4. Java와 상호 호출 할 때의 특별한 예
 
 Java와 Kotlin에서 상호 호출을 할 때, 기본적으로는 각각의 언어로 쓰고 있을 때와 같은 글쓰기로 구현할 수 있습니다. 다만, 쓰는 방법이나 거동이 특수한 형태가 되는 케이스도 있습니다. 여기에서는 주로 Kotlin에서 Java를 호출하는 경우의 특별한 점에 대해 몇 가지 소개합니다.
 
-#### 게터, 세터
+## 게터, 세터
 
 Listing 3.4.1 과 같은 Java 클래스가 있다고 가정한다.
 
@@ -243,7 +244,7 @@ Kotlin 의 데이터 클래스 등 을 사용했을 때 와 마찬가지로 속�
 
 이와 같이 Kotlin에서의 기법에 맞추어 쓸 수 있는(Java의 클래스만 getter , setter 를 부르는 등 하지 않아도 된다) 것도, 공존을 시키기 쉽게 하고 있습니다.
 
-#### SAM(Single Abstract Method) 변환
+## SAM(Single Abstract Method) 변환
 
 제2장에서는 함수형과 고층 함수에 대해서 설명했습니다만, Java에는 함수형이 존재하지 않습니다. 대신 "함수 인터페이스"라는 기능이 있습니다. 이것은 "단일 메소드가 있는 인터페이스(SAM 인터페이스)"를 정의하여 함수 유형처럼 취급할 수 있는 기능입니다.
 
@@ -296,7 +297,7 @@ fun main() {
 4
 ```
 
-#### 동반자 개체
+## 동반자 개체
 
 Kotlin은 클래스에 정적 변수와 함수를 정의 할 때 Listing 3.4.6 과 같이 companion 객체 를 사용한다.
 
@@ -349,7 +350,7 @@ public static void main(String[] args) {
 }
 ```
 
-### 5　Java 코드를 Kotlin 코드로 변환
+# 5. Java 코드를 Kotlin 코드로 변환
 
 IntelliJ IDEA에는 Java 코드를 Kotlin으로 변환하는 기능이 있습니다. Listing 3.5.1 과 같이 Java에서 Hello World 코드를 준비한다.
 

@@ -1,22 +1,18 @@
-
-
-# 제1부 Kotlin 입문
-
-## 제1장　Kotlin을 추천하는 이유
+5,$s/　/ /g
 
 이 장에서는 Kotlin의 기초에 대해 설명합니다. 언어의 생생함이나 서버 측에서의 이용 의의, 특징적인 기능이나 기본적인 구문 등, 우선은 Kotlin이라고 하는 언어 그 자체에 대해 알 수 있으면 좋겠습니다.
 
-### 1　왜 Kotlin이 탄생했는가?
+# 1. 왜 Kotlin이 탄생했는가?
 
 Kotlin은 IntelliJ IDEA와 같은 IDE(Integrated Development Environment, 통합 개발 환경)로 유명한 JetBrains가 개발한 프로그래밍 언어입니다. 정식 버전의 1.0 릴리스는 2016년 2월과 비교적 새로운 언어가 됩니다.
 
-JVM상에서 움직이는, 이른바 JVM언어 주1 의 일종입니다. JetBrains사의 Kotlin 개발 멤버가 집필하고 있는 서적 「Kotlin 인 액션」주2 에서도 소개되고 있습니다만, 원래는 JetBrains사의 Java로 개발을 하고 있는 팀이, C#로 개발을 해 .NET 팀을 부러워하고 Java를 대신하는 현대적인 언어로 개발했다는 ​​이야기가 있습니다. 그 때문에 Java와 비교해 심플한 구문이 되고 있거나, 함수형이나 코루틴 등 최근의 언어로 자주 볼 수 있는 기능도 제대로 들어가 있어, 개발 효율이나 시스템의 품질 담보의 면에서도 매우 뛰어난 것에 되어 있습니다.
+JVM상에서 움직이는, 이른바 JVM언어 주1 의 일종입니다. JetBrains사의 Kotlin 개발 멤버가 집필하고 있는 서적 「Kotlin 인 액션」주2 에서도 소개되고 있습니다만, 원래는 JetBrains사의 Java로 개발을 하고 있는 팀이, C#로 개발을 해 .NET 팀을 부러워하고 Java를 대신하는 현대적인 언어로 개발했다는 이야기가 있습니다. 그 때문에 Java와 비교해 심플한 구문이 되고 있거나, 함수형이나 코루틴 등 최근의 언어로 자주 볼 수 있는 기능도 제대로 들어가 있어, 개발 효율이나 시스템의 품질 담보의 면에서도 매우 뛰어난 것에 되어 있습니다.
 
 또한 JetBrains는 IntelliJ IDEA를 비롯한 Java로 Java를 개발했으며 많은 Java 자산을 보유하고 있습니다. 따라서 자산을 잃는 것은 생산성 저하로 이어질 수 있다고 생각하고 자바와의 상호 운용이 가능하다는 것을 전제 조건으로 삼았다. 따라서 Kotlin은 Java와의 상호 호환성이 있으며 원래 Java를 사용하는 프로젝트에서는 특히 사용 가치가 높은 언어입니다.
 
-### 2　Kotlin으로 무엇을 만들 수 있습니까? ~서버 측에서의 이용 의의
+# 2. Kotlin으로 무엇을 만들 수 있습니까? 서버 측에서의 이용 의의
 
-#### 다양한 플랫폼에서 사용할 수 있는 Kotlin
+## 다양한 플랫폼에서 사용할 수 있는 Kotlin
 
 Kotlin의 사용 장면으로서 가장 유명한 것은 Android 앱의 개발이라고 생각합니다. 2017년에 진행된 Google I/O에서 Android의 공식 개발 언어로 지원한다고 Google이 발표했습니다. 게다가 2년 후의 Google I/O 2019에서는 추천 언어로서 Kotlin 퍼스트를 강하게 해 나가는 것이 발표되어, 향후도 일반적으로 사용되어 갈 것으로 생각됩니다.
 
@@ -24,7 +20,7 @@ Kotlin의 사용 장면으로서 가장 유명한 것은 Android 앱의 개발�
 
 그 안에서 Android에서의 개발과 함께 일반적인 사용 지점으로 꼽히는 것이 서버 측 개발입니다.
 
-#### 서버측에서의 사용의의
+## 서버측에서의 사용의의
 
 전술의 서적 「Kotlin 인 액션」에서도,
 
@@ -45,9 +41,9 @@ Kotlin을 사용하는 가장 일반적인 장면은 다음 두 가지입니다.
 
 게다가, Java와의 상호 호환성은 앞서 언급했지만, Java의 가장 주요한 프레임워크인 Spring Framework가 Kotlin을 지원하는 것도 들 수 있습니다. 새로운 언어를 사용할 때, 아무래도 프레임워크나 그 주변의 에코시스템은 발전 도상으로, 헤매어 버리는 경우도 많습니다. 그런 가운데 Spring Framework라는 검증된 프레임워크가 선택사항으로 존재하는 것은 매우 큰 일입니다. 물론 Kotlin제의 프레임워크도 개발되고 있어, 향후 그쪽도 발전해 한층 더 질 높은 개발을 할 수 있게 되어 가는 것에의 기대도 큽니다.
 
-### 3　코드의 안전성을 높이는 Kotlin의 형태와 Null 비허용/허용
+# 3. 코드의 안전성을 높이는 Kotlin의 형태와 Null 비허용/허용
 
-#### Kotlin의 Null 안전이란?
+## Kotlin의 Null 안전이란?
 
 앞서 언급했지만 Kotlin의 언어 사양의 주요 특징 중 하나는 Null 안전 을 포함합니다. Kotlin의 기능으로 큰 장점이되는 부분이므로 먼저 소개합니다. 목록 1.3.1 을 보라.
 
@@ -91,7 +87,7 @@ fun printMessageLength3(message: String?) {
 ```
 이 ?: 를 엘비스 연산자라고 하며, 어느 값이 null이었을 경우에만 실행하는 처리를 쓰는 경우에 간단하게 기술할 수 있습니다.
 
-#### 인수의 널 허용, 비허용 불일치 방지
+## 인수의 널 허용, 비허용 불일치 방지
 
 또, 예를 들어 같은 String형에서도, ? 가 붙지 않은 Null 비허용의 String는 String?의 서브 타입으로서 취급됩니다. 따라서 String 유형을 String 유형의 인수에 전달할 수 있지만 String 유형을 String 유형의 인수에 전달할 수는 없습니다. 이러한 형태는 함수의 인수나 반환값의 형태로서도 사용할 수 있어 인수나 함수의 실행 결과의 전달에서도 Null 허용, 비허용의 설정의 불일치를 막을 수 있습니다. 목록 1.3.5 의 코드를 보라.
 
@@ -114,6 +110,7 @@ fun execute(userId: Int?) {
         createUser(userId)
     }
 }
+```
 
 목록 1.3.7
 ```
@@ -123,7 +120,7 @@ fun execute(userId: Int) {
 ```
 이와 같이 Kotlin에서는, 타입 레벨에서 Null 비허용/허용을 명시해, 컴파일로 체크해 주기 때문에, 인수로 값을 건네줄 때의 Null 비허용/허용의 부정합도 실장시에 막아, 안전하게 유지해 합니다. 이로 인해 결함을 줄이는 것은 물론, 테스트 공수의 경감이나 엔지니어가 실장이나 리뷰시에 Null의 취급을 강하게 의식하지 않아도 되기 때문에 개발 효율의 향상에도 연결됩니다.
 
-#### 안전 호출, 강제 언랩으로 Null 체크 없이 실행하는 것도 가능
+## 안전 호출, 강제 언랩으로 Null 체크 없이 실행하는 것도 가능
 
 if 문을 작성하지 않고 Null 허용 유형의 변수를 처리하는 방법이 있습니다. 하나는 「안전 호출」이라고 하고, 리스트 1.3.8 과 같이 변수의 뒤에 ? 를 붙여 호출하는 방법입니다.
 
@@ -157,11 +154,11 @@ fun printMessageLength(message: String?) {
 
 다만, 이 방법은 null가 들어갔을 경우에는 런타임에 에러가 되기 때문에, 별로 바람직하지 않습니다. 사양상 확실히 null이 들어오지 않는 경우에만 사용할 수 있습니다.
 
-### 4　환경 구축 및 첫 프로그램 실행
+# 4. 환경 구축 및 첫 프로그램 실행
 
 여기에서 실제로 Kotlin을 실행해 나가기 위한 환경 구축을 합니다. 이 문서에서는 기본적으로 JetBrains의 IDE 인 IntelliJ IDEA를 사용하여 코드를 구현합니다.
 
-#### IntelliJ IDEA 설치
+## IntelliJ IDEA 설치
 
 - 설치(Mac)
 
@@ -211,7 +208,7 @@ fun printMessageLength(message: String?) {
 
 그림 1.12 IntelliJ IDEA 플러그인 다운로드
 
-#### Kotlin 프로젝트 만들기
+## Kotlin 프로젝트 만들기
 
 모든 설정이 끝나면 그림 1.13 의 화면이 표시되므로 New Project를 선택하여 프로젝트를 만듭니다.
 
@@ -240,7 +237,7 @@ Kotlin에서는 개발 시 JDK(Java Development Kit)가 필요하며 이 프로�
 
 그림 1.17 IntelliJ IDEA 프로젝트 작성 완료
 
-#### 첫 프로그램 실행
+## 첫 프로그램 실행
 
 프로젝트가 생성되면 그림 1.18 과 같이 왼쪽에 프로젝트 뷰가 표시됩니다. 열 때 표시되지 않으면 화면 왼쪽의 "1:Project"를 누르십시오.
 
@@ -266,7 +263,7 @@ fun main() {
 
 성공적으로 실행되면 화면 하단의 Run 보기에 "Hello Kotlin."이 표시됩니다. 이것으로 Kotlin 실행 환경의 준비가 완료됩니다.
 
-#### build.gradle.kts 정보
+## build.gradle.kts 정보
 
 작성한 프로젝트를 보면 바로 아래 디렉토리에 build.gradle.kts라는 파일이 있다고 생각합니다. 이것은 Gradle 주 9 라는 도구의 구성 파일입니다. Gradle은 Kotlin 및 Java와 같은 응용 프로그램의 빌드 도구로 빌드에 필요한 라이브러리를 설정하고 작업을 정의할 수 있습니다. 원래는 Groovy로 작성하는 도구이었지만 Kotlin DSL이라는 Kotlin으로 작성할 수있는 방법이 있습니다 (Groovy의 경우 .kts 확장명이 없음).
 
@@ -277,10 +274,11 @@ Listing 1.4.2
 dependencies {
     // 여기에 라이브러리 및 프레임워크 종속성을 추가합니다.
 }
+```
 
 dependencies 라는 블록을 추가하고 있습니다. 이것은 사용하는 프레임워크나 라이브러리의 종속성을 기술하는 블록으로, 이후의 해설 중에서 필요한 것을 수시로 추가해 갑니다.
 
-#### 이 문서에서 샘플 코드 실행 정보
+## 이 문서에서 샘플 코드 실행 정보
 
 이 문서의 샘플 코드는 기본적으로 main 함수의 처리를 다시 작성하여 실행할 수 있습니다. 또한 앞서 언급했듯이 파일은 기본적으로 src / main / kotlin 디렉토리 아래에 생성됩니다. 단지 몇 가지 패턴이 있으므로 여기에서 먼저 해설하겠습니다. 이러한 패턴과는 다른 형태로 실행하는 예외적인 것에 관해서는, 매번 본문안에서 기술의 방법을 설명합니다.
 
@@ -385,11 +383,11 @@ IntelliJ IDEA에서는 import가 필요한 코드의 해당 부분이 컴파일 
 
 일부 이 기능만으로는 보완할 수 없는 것이 있어, 그 경우는 각 샘플 코드안에 import문도 포함해 기재해, 해설 중에서도 그 취지를 기술하고 있습니다.
 
-### 5　Kotlin의 기본 구문
+# 5. Kotlin의 기본 구문
 
 여기에서는 Kotlin의 기본 구문에 대해 소개합니다. 이 책은 프로그래밍 경험자를 대상으로 하기 때문에 프로그래밍 언어의 기본 구문과 크게 다르지 않은 것에 대해서는 간략한 설명을 한다. Kotlin의 특징적인 구문, 기능에 대해서는 다음 장에서 별도로 소개합니다.
 
-#### 변수
+## 변수
 
 Kotlin의 변수 정의는 Listing 1.5.1 과 같이 선두에 val , var 중 하나를 붙여 선언한다.
 
@@ -417,7 +415,7 @@ val id: Int = 100
 var name: String = "Takehata"
 ```
 
-#### 기능
+## 기능
 
 Kotlin의 함수는 Listing 1.5.4 와 같이 작성한다.
 
@@ -446,7 +444,7 @@ fun displayMessage(message: String): Unit {
 }
 ```
 
-#### 분기
+### 분기
 
 - 문자라면
 
@@ -514,7 +512,7 @@ when {
 }
 ```
 
-#### 반복
+## 반복
 
 반복 처리도 다른 언어와 마찬가지로 while 문, for 문, do while 문 등이 있습니다. 여기에서는 while 문, for 문에 대해 소개합니다.
 
@@ -605,7 +603,7 @@ i is 6
 i is 10
 ```
 
-#### 클래스
+## 클래스
 
 Kotlin 클래스의 정의와 상속의 사용법에 관한 것입니다. 상속시 몇 가지 한정자를 사용할 수 있으므로 그쪽도 함께 소개합니다.
 
@@ -655,7 +653,7 @@ val human = Human("Takehata")
 human.showName()
 ```
 
-#### 상속
+## 상속
 
 클래스의 상속에 관한 것입니다. 아울러 상속을 제한하는 기능인, 실드 클래스에 대해서도 설명합니다.
 
@@ -725,7 +723,7 @@ class IosPlatform: Platform() {
 }
 ```
 
-#### 인터페이스
+## 인터페이스
 
 인터페이스 정의는 클래스와 비슷하지만 Listing 1.5.24 와 같이 interface 를 사용하여 인터페이스 이름을 선언하고 그 안의 블록에서 함수를 정의한다.
 
@@ -747,7 +745,7 @@ class GreeterImpl: Greeter {
 }
 ```
 
-#### 컬렉션
+## 컬렉션
 
 Kotlin에는 List, Map, Set 등의 컬렉션이 있습니다. 이 3개의 컬렉션에 대해서, 간단하게 사용법을 소개합니다.
 
@@ -901,38 +899,39 @@ Unresolved reference: add
 
 
 
-참고 1　 다른 JVM 언어로는 Scala, Groovy 등이 있습니다.
+참고 1  다른 JVM 언어로는 Scala, Groovy 등이 있습니다.
 
 ( 본문으로 돌아가기 )
 
-주 2　 Dmitry Jemerov, Svetlana Isakova, 나가사와 타로, 후지와라 세이, 야마모토 준헤이, yy_yank 감역, 마이 네비게이션 출판, 2017년
+주 2  Dmitry Jemerov, Svetlana Isakova, 나가사와 타로, 후지와라 세이, 야마모토 준헤이, yy_yank 감역, 마이 네비게이션 출판, 2017년
 
 ( 본문으로 돌아가기 )
 
-注3 　 https://kotlinlang.org/docs/native-overview.html
+注3   https://kotlinlang.org/docs/native-overview.html
 
 ( 본문으로 돌아가기 )
 
-주 4 　 https://kotlinlang.org/docs/js-overview.html
+주 4   https://kotlinlang.org/docs/js-overview.html
 
 ( 본문으로 돌아가기 )
 
-注5 　 https://kotlinlang.org/docs/multiplatform.html
+注5   https://kotlinlang.org/docs/multiplatform.html
 
 ( 본문으로 돌아가기 )
 
-注6 　 https://www.jetbrains.com/ja-jp/idea/download/#section=mac
+注6   https://www.jetbrains.com/ja-jp/idea/download/#section=mac
 
 ( 본문으로 돌아가기 )
 
-注7 　 https://www.jetbrains.com/ja-jp/idea/download/#section=windows
+注7   https://www.jetbrains.com/ja-jp/idea/download/#section=windows
 
 ( 본문으로 돌아가기 )
 
-注8 　 https://aws.amazon.com/jp/corretto/
+注8   https://aws.amazon.com/jp/corretto/
 
 ( 본문으로 돌아가기 )
 
-注9 　 https://gradle.org/
+注9   https://gradle.org/
 
 ( 본문으로 돌아가기 )
+
