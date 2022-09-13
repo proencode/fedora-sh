@@ -101,9 +101,9 @@ __EOF__
 	read a
 	if [ "x$a" = "x" ]; then
 		publisher="packtpub"
-		echo "${cGreen}${minus_mark:0:3}${cReset}"
+		echo "${cUp}" ; echo "${cMagenta}${minus_mark:0:3}${cReset}"
 	else
-		echo "${cBlue}${equal_mark:0:${#a}}${cReset}"
+		echo "${cMagenta}${equal_mark:0:${#a}}${cReset}"
 		if [ "x$a" = "x1" ]; then
 			publisher="packtpub"
 		else
@@ -151,9 +151,9 @@ ${cGreen}----> ${cBlue}출판사 이름이 ${cRed}[ ${cYellow}${chulpansa} ${cRe
 __EOF__
 read a
 if [ "x$a" = "x" ]; then
-	echo "${cGreen}${minus_mark:0:3}${cReset}"
+	echo "${cUp}" ; echo "${cMagenta}${minus_mark:0:3}${cReset}" #-- echo "${cUp}${cMagenta}${minus_mark:0:3}${cReset}" #-- 안됨
 else
-	echo "${cBlue}${equal_mark:0:${#a}}${cReset}"
+	echo "${cMagenta}${equal_mark:0:${#a}}${cReset}"
 fi
 
 # 책 제목
@@ -164,9 +164,9 @@ ${cGreen}----> ${cCyan}폴더 이름으로 쓰기 위한 책 제목 Title: ${cRe
 __EOF__
 read a
 if [ "x$a" = "x" ]; then
-	echo "${cUp}${cGreen}${minus_mark:0:3}${cReset}"
+	echo "${cUp}" ; echo "${cMagenta}${minus_mark:0:3}${cReset}"
 else
-	echo "${cUp}${cBlue}${equal_mark:0:${#a}}${cReset}"
+	echo "${cMagenta}${equal_mark:0:${#a}}${cReset}"
 fi
 
 if [ "x$a" = "x" ]; then
@@ -181,9 +181,9 @@ ${cGreen}----> ${cBlue}책 제목이 ${cRed}[ ${cYellow}${chulpansa} / ${cheak_j
 __EOF__
 read a
 if [ "x$a" = "x" ]; then
-	echo "${cUp}${cGreen}${minus_mark:0:3}${cReset}"
+	echo "${cUp}" ; echo "${cMagenta}${minus_mark:0:3}${cReset}"
 else
-	echo "${cUp}${cBlue}${equal_mark:0:${#a}}${cReset}"
+	echo "${cMagenta}${equal_mark:0:${#a}}${cReset}"
 fi
 
 # 설명 요약
@@ -194,9 +194,9 @@ ${cGreen}----> ${cCyan}설명 요약 Short Description: ${cRed}[ ${cGreen}${Shor
 __EOF__
 read a
 if [ "x$a" = "x" ]; then
-	echo "${cUp}${cGreen}${minus_mark:0:3}${cReset}"
+	echo "${cUp}" ; echo "${cMagenta}${minus_mark:0:3}${cReset}"
 else
-	echo "${cUp}${cBlue}${equal_mark:0:${#a}}${cReset}"
+	echo "${cMagenta}${equal_mark:0:${#a}}${cReset}"
 fi
 
 if [ "x$a" = "x" ]; then
@@ -209,9 +209,9 @@ ${cGreen}----> ${cBlue}설명 요약이 ${cRed}[ ${cYellow}${ShortDescription} $
 __EOF__
 read a
 if [ "x$a" = "x" ]; then
-	echo "${cUp}${cGreen}${minus_mark:0:3}${cReset}"
+	echo "${cUp}" ; echo "${cMagenta}${minus_mark:0:3}${cReset}"
 else
-	echo "${cUp}${cBlue}${equal_mark:0:${#a}}${cReset}"
+	echo "${cMagenta}${equal_mark:0:${#a}}${cReset}"
 fi
 
 # 원본 링크
@@ -222,9 +222,9 @@ ${cGreen}----> ${cCyan}원본 링크 ${cRed}[ ${cGreen}${https_line} ${cRed}] ($
 __EOF__
 read a
 if [ "x$a" = "x" ]; then
-	echo "${cUp}${cGreen}${minus_mark:0:3}${cReset}"
+	echo "${cUp}" ; echo "${cMagenta}${minus_mark:0:3}${cReset}"
 else
-	echo "${cUp}${cBlue}${equal_mark:0:${#a}}${cReset}"
+	echo "${cMagenta}${equal_mark:0:${#a}}${cReset}"
 fi
 
 if [ "x$a" = "x" ]; then
@@ -237,9 +237,9 @@ ${cGreen}----> ${cBlue}원본 링크가 ${cRed}[ ${cYellow}${https_line} ${cRed}
 __EOF__
 read a
 if [ "x$a" = "x" ]; then
-	echo "${cUp}${cGreen}${minus_mark:0:3}${cReset}"
+	echo "${cUp}" ; echo "${cMagenta}${minus_mark:0:3}${cReset}"
 else
-	echo "${cUp}${cBlue}${equal_mark:0:${#a}}${cReset}"
+	echo "${cMagenta}${equal_mark:0:${#a}}${cReset}"
 fi
 
 # 태그
@@ -250,9 +250,9 @@ ${cGreen}----> ${cCyan}태그 ${cRed}[ ${cGreen}${tags} ${cRed}] (${cMagenta}대
 __EOF__
 read a
 if [ "x$a" = "x" ]; then
-	echo "${cUp}${cGreen}${minus_mark:0:3}${cReset}"
+	echo "${cUp}" ; echo "${cMagenta}${minus_mark:0:3}${cReset}"
 else
-	echo "${cUp}${cBlue}${equal_mark:0:${#a}}${cReset}"
+	echo "${cMagenta}${equal_mark:0:${#a}}${cReset}"
 fi
 
 if [ "x$a" = "x" ]; then
@@ -265,9 +265,9 @@ ${cGreen}----> ${cBlue}태그가 ${cRed}[ ${cYellow}${tags} ${cRed}] ${cBlue}맞
 __EOF__
 read a
 if [ "x$a" = "x" ]; then
-	echo "${cUp}${cGreen}${minus_mark:0:3}${cReset}"
+	echo "${cUp}" ; echo "${cMagenta}${minus_mark:0:3}${cReset}"
 else
-	echo "${cUp}${cBlue}${equal_mark:0:${#a}}${cReset}"
+	echo "${cMagenta}${equal_mark:0:${#a}}${cReset}"
 fi
 
 
@@ -287,11 +287,11 @@ ${cGreen}----> ${cCyan}챕터 번호를 ${cRed}[ ${cGreen}${ChapterSeq} ${cRed}]
 __EOF__
 	read a
 	if [ "x$a" = "x" ]; then
-		echo "${cUp}${cGreen}${minus_mark:0:3}${cReset}"
+		echo "${cUp}" ; echo "${cMagenta}${minus_mark:0:3}${cReset}"
 		ChapterSeq="" #-- 끝낸다.
 		ChapterName=""
 	else
-		echo "${cUp}${cBlue}${equal_mark:0:${#a}}${cReset}"
+		echo "${cMagenta}${equal_mark:0:${#a}}${cReset}"
 		ChapterSeq=$a
 		cat <<__EOF__
 ${cBlue}챕터  이름
@@ -300,11 +300,11 @@ ${cGreen}----> ${cCyan}챕터의 요약제목을 ${cRed}[ ${cGreen}${ChapterName
 __EOF__
 		read a
 		if [ "x$a" = "x" ]; then
-			echo "${cUp}${cGreen}${minus_mark:0:3}${cReset}"
+			echo "${cUp}" ; echo "${cMagenta}${minus_mark:0:3}${cReset}"
 			ChapterSeq="" #-- 끝낸다.
 			ChapterName=""
 		else
-			echo "${cUp}${cBlue}${equal_mark:0:${#a}}${cReset}"
+			echo "${cMagenta}${equal_mark:0:${#a}}${cReset}"
 			# 이미지 제목
 			# -----------
 
@@ -320,14 +320,14 @@ ${cCyan}----> ${cMagenta}이미지별 일련번호 (${cRed}00-000${cMagenta}) �
 __EOF__
 				read image_jemok
 				if [ "x$image_jemok" = "x" ]; then
-					echo "${cUp}${cGreen}${minus_mark:0:3}${cReset}"
+					echo "${cUp}" ; echo "${cMagenta}${minus_mark:0:3}${cReset}"
 					cat <<__EOF__
 
 
 
 __EOF__
 				else
-					echo "${cUp}${cBlue}${equal_mark:0:${#image_jemok}}${cReset}"
+					echo "${cMagenta}${equal_mark:0:${#image_jemok}}${cReset}"
 					old_image_jemok=${image_jemok}
 					img_name=$(echo "${image_jemok,,}" | sed 's/ /_/g') #-- 전부 대문자로 바꾸려면 ${image_jemok^^}, 전부 소문자는 ${image_jemok,,}
 					chapter_name=$(echo "${ChapterName,,}" | sed 's/ /_/g')
@@ -361,7 +361,8 @@ ${cReset}
 # ${ChapterSeq} ${ChapterName}
 
 
-![ ${image_jemok} ](/${chulpansa}/${cheak_jemok}_img/${img_name})
+![ ${image_jemok} ](/${chulpansa}/${cheak_jemok}_img/${img_name}
+)
 ${cBlue}
 / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / /
 ${cMagenta}

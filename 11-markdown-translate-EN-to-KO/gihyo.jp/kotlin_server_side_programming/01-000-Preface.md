@@ -267,7 +267,8 @@ Preface
 # 01-001 Preface
 
 
-![ 01-001 IntelliJ IDEA Download.png ](/gihyo.jp/kotlin_server_side_programming_img/01-001_intellij_idea_download.png)
+![ 01-001 IntelliJ IDEA Download.png ](/gihyo.jp/kotlin_server_side_programming_img/01-001_intellij_idea_download.png
+)
 
 / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / /
 
