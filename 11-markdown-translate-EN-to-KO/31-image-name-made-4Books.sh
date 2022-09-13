@@ -59,16 +59,16 @@ old_image_jemok="이미지 제목을 넣어주세요"
 
 cat <<__EOF__
 
-${cBlue}${CMD_NAME} ${cRed}"publisher"  ${cMagenta}"BookCover"  ${cRed}"ShortDescription"  ${cMagenta}"ChapterSeq"  ${cRed}"ChapterName"  ${cMagenta}"old_image_jemok"  ${cRed}"https_line"  ${cMagenta}"tags"
-${cRed}publisher="${publisher}"
-${cRed}BookCover="${BookCover}"
-${cMagenta}ShortDescription="${ShortDescription}"
-${cRed}ChapterSeq="${ChapterSeq}"
-${cMagenta}ChapterName="${ChapterName}"
-${cMagenta}https_line="${https_line}"
-${cRed}tags="${tags}"
 ${cBlue}${CMD_NAME} ${cRed}"${publisher}"  ${cMagenta}"${BookCover}"  ${cRed}"${ShortDescription}"  ${cMagenta}"${ChapterSeq}"  ${cRed}"${ChapterName}"  ${cMagenta}"${old_image_jemok}"  ${cRed}"${https_line}"  ${cMagenta}"${tags}"
-
+publisher="${cRed}${publisher}${cBlue}"
+BookCover="${cMagenta}${BookCover}${cBlue}"
+ShortDescription="${cRed}${ShortDescription}${cBlue}"
+ChapterSeq="${cMagenta}${ChapterSeq}${cBlue}"
+ChapterName="${cRed}${ChapterName}${cBlue}"
+old_image_jemok="${cMagenta}${old_image_jemok}${cBlue}"
+https_line="${cRed}${https_line}${cBlue}"
+tags="${cMagenta}${tags}${cBlue}"
+${cReset}
 __EOF__
 
 # 01-000 Preface
