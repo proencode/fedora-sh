@@ -185,3 +185,99 @@ https://github.com/n-takehata/kotlin-server-side-programming-practice
 https://gihyo.jp/book/2021/978-4-297-11859-4
 
 
+# .md 파일의 그림 번호를 만들어주는 작업
+
+편의를 위해 조건을 미리 입력한 gihyo-kotlin-image-name-made.sh 스크립트를 사용하였다.
+
+```
+12:23:09 화 2022-09-13 yos@yosfedora ~/git-projects/fedora-sh/11-markdown-translate-EN-to-KO/gihyo.jp/2209-Kotlin_서버사이드_프로그래밍_실천개발-epub
+2209-Kotlin_서버사이드_프로그래밍_실천개발-epub $ sh gihyo-kotlin-image-name-made.sh
+----> sh ../../31-image-name-made-4Books.sh "gihyo.jp" "Kotlin Server Side Programming" "By 다케하타 나오토 date: 210414 Publisher 기술평론사 전자판 ISBN978-4-297-11859-4" "01-000" "Preface" "Figure 1.1 IntelliJ IDEA Download.png" "https://gihyo.jp/book/2021/978-4-297-11859-4" "kotlin spring boot"
+
+31-image-name-made-4Books.sh "gihyo.jp"  "Kotlin Server Side Programming"  "By 다케하타 나오토 date: 210414 Publisher 기술평론사 전자판 ISBN978-4-297-11859-4"  "01-000"  "Preface"  "Figure 1.1 IntelliJ IDEA Download.png"  "https://gihyo.jp/book/2021/978-4-297-11859-4"  "kotlin spring boot"
+
+publisher="gihyo.jp"
+BookCover="Kotlin Server Side Programming"
+ShortDescription="By 다케하타 나오토 date: 210414 Publisher 기술평론사 전자판 ISBN978-4-297-11859-4"
+ChapterSeq="01-000"
+ChapterName="Preface"
+old_image_jemok="Figure 1.1 IntelliJ IDEA Download.png"
+https_line="https://gihyo.jp/book/2021/978-4-297-11859-4"
+tags="kotlin spring boot"
+
+----> 출판사 이름이 [ gihyo.jp ] 맞으면 엔터를 누르세요.
+
+----> 폴더 이름으로 쓰기 위한 책 제목 Title: [ Kotlin Server Side Programming ] (대,소문자, 숫자,  ., -, _, 빈칸) 만 쓸 수 있습니다.
+
+----> 책 제목이 [ gihyo.jp / kotlin_server_side_programming ] 맞으면 엔터를 누르세요.
+
+----> 설명 요약 Short Description: [ By 다케하타 나오토 date: 210414 Publisher 기술평론사 전자판 ISBN978-4-297-11859-4 ] (대,소문자, 숫자,  ., -, _, 빈칸) 만 쓸 수 있습니다.
+
+----> 설명 요약이 [ By 다케하타 나오토 date: 210414 Publisher 기술평론사 전자판 ISBN978-4-297-11859-4 ] 맞으면 엔터를 누르세요.
+
+----> 원본 링크 [ https://gihyo.jp/book/2021/978-4-297-11859-4 ] (대,소문자, 숫자,  ., -, _, 빈칸) 만 쓸 수 있습니다.
+
+----> 원본 링크가 [ https://gihyo.jp/book/2021/978-4-297-11859-4 ] 맞으면 엔터를 누르세요.
+
+----> 태그 [ kotlin spring boot ] (대,소문자, 숫자,  ., -, _, 빈칸) 만 쓸 수 있습니다.
+
+----> 태그가 [ kotlin spring boot ] 맞으면 엔터를 누르세요.
+
++--------+ 챕터  번호
+| AA-BBB | AA = '01'로 시작하는 챕터별 전체 일련번호
+|        | BBB = '0' 섹션 '00' 챕터로 된 코드
++--------+
+----> 챕터 번호를 [ 01-000 ] 이와 같이 다음 줄에 입력합니다. [ 엔터 ] 만 누르면 이 작업을 끝냅니다.
+01-001
+챕터  이름
+==========
+----> 챕터의 요약제목을 [ Preface ] 이와 같이 다음 줄에 입력합니다. [ 엔터 ] 만 누르면 챕터 번호 입력으로 돌아갑니다.
+Preface
+
+----> 이미지의 제목 입력 (대,소문자, 숫자,  ., -, _, 빈칸) 만 쓸 수 있습니다.
+
+----> 이미지별 일련번호 (00-000) 와 이미지에 대한 설명을 [ Figure 1.1 IntelliJ IDEA Download.png ] 이와 같이 다음줄에 입력합니다. [ 엔터 ] 만 누르면 챕터 번호 입력으로 돌아갑니다.
+01-001 IntelliJ IDEA Download.png
+
+/ / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / /
+
+@ Q -> # 붙이고 줄 띄우기 => 0i# ^[A^M^[
+@ W -> 현 위치에서 Copy 까지 역따옴표 => j0i```^M^[/^Copy$^[ddk0C```^M^[
+@ E -> 찾은 글자 앞뒤로 backtick(`) 붙이기 => i`^[/ ^[i`^[/rrqeEWQRQewreq^[
+    마크다운 입력시 vi 커맨드 표시 ; (^{)=Ctrl+[ ; (^M)=Ctrl+M
+    인용구 작성시 ; 본문앞에는 꺽쇠 > 붙이고, 스타일 첨가시 끝줄에 종류별 구분을 표시한다.
+    https://docs.requarks.io/en/editors/markdown > Blockquotes > Stylings >
+    blue= {.is-info} ; green= {.is-success} ; yellow= {.is-warning} ; red= {.is-danger}
+@ Q -> 빈 줄에 블록 시작하기 => 0C```^[^Mk0
+@ W -> 줄 앞에 > 나오면 안되므로 블록 마감하고 > 앞에 - 끼우기 => 0i```^M-^[^M0i```^[0
+@ E -> 줄 아래에 블록 마감하고 한줄 더 띄우기 => 0^Mi```^M^M^[kk
+@ A -> 이 줄을 타이틀로 만들기 => 0i#### ^[^M^[
+
+---------- cut line ----------
+
+
+> Path: gihyo.jp/kotlin_server_side_programming/01-001_preface
+> Title: 01-001 Preface
+> Short Description: By 다케하타 나오토 date: 210414 Publisher 기술평론사 전자판 ISBN978-4-297-11859-4
+> Link: https://gihyo.jp/book/2021/978-4-297-11859-4
+> tags: kotlin spring boot
+> Images: / gihyo.jp / kotlin_server_side_programming /
+> create: 2022-09-13 화 12:23:52
+
+# 01-001 Preface
+
+
+![ 01-001 IntelliJ IDEA Download.png ](/gihyo.jp/kotlin_server_side_programming_img/01-001_intellij_idea_download.png)
+
+/ / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / /
+
+----> 윗줄을 복사해서 사용합니다.
+
+
+----> 이미지의 제목 입력 (대,소문자, 숫자,  ., -, _, 빈칸) 만 쓸 수 있습니다.
+
+----> 이미지별 일련번호 (00-000) 와 이미지에 대한 설명을 [ 01-001 IntelliJ IDEA Download.png ] 이와 같이 다음줄에 입력합니다. [ 엔터 ] 만 누르면 챕터 번호 입력으로 돌아갑니다.
+^C
+12:23:58 화 2022-09-13 yos@yosfedora ~/git-projects/fedora-sh/11-markdown-translate-EN-to-KO/gihyo.jp/2209-Kotlin_서버사이드_프로그래밍_실천개발-epub
+2209-Kotlin_서버사이드_프로그래밍_실천개발-epub $ 
+```
