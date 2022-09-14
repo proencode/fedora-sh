@@ -327,14 +327,6 @@ __EOF__
 					img_name=$(echo "${image_jemok,,}" | sed 's/ /_/g') #-- 전부 대문자로 바꾸려면 ${image_jemok^^}, 전부 소문자는 ${image_jemok,,}
 					chapter_name=$(echo "${ChapterName,,}" | sed 's/ /_/g')
 					cat <<__EOF__
-
-${cBlue}====> ${cMagenta}[ ${cGreen}${image_jemok} ${cMagenta}] ${cBlue}이미지 파일의 이름을 정했습니다.${cReset}
-__EOF__
-					read a
-					if [ "x$a" = "x" ]; then
-						echo "${cUp}"
-					fi
-					cat <<__EOF__
       ${cRed}[ ${cYellow}${image_jemok} ${cRed}]
 
 ${cBlue}
@@ -366,7 +358,7 @@ ${cReset}
 # ${ChapterSeq} ${ChapterName}
 
 
-![ ${image_jemok} ](/${chulpansa}/${cheak_jemok}_img/${img_name}
+![ ${image_jemok} ]( /${chulpansa}/${cheak_jemok}_img/${img_name}
 )
 ${cBlue}
 / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / /
