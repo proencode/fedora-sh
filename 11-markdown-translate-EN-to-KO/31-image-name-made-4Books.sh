@@ -93,7 +93,7 @@ ${cRed}[ ${cCyan}1 ${cRed}] ${cBlue}---- packtpub
   6   ---- ysjn
   7   ---- gihyo.jp
 
-${cGreen}----> ${cCyan}출판사 이름 ${cRed}[ ${cGreen}1 ~ 6 ${cRed}]${cCyan} 또는 새로운 ${cRed}[ dkfvkqpt ${cGreen}출판사 분류명 ${cRed}] ${cCyan}을 입력하세요.${cReset}
+${cGreen}----> ${cCyan}출판사 이름 ${cRed}[ ${cGreen}1 ~ 6 ${cRed}]${cCyan} 또는 새로운 ${cRed}[ ${cMagenta}= 알파벳만 = ${cGreen}출판사 분류명 ${cRed}] ${cCyan}을 입력하세요.${cReset}
 __EOF__
 	read a
 	if [ "x$a" = "x" ]; then
@@ -144,9 +144,8 @@ publish_no=$a
 chulpansa=$(echo "${publisher,,}" | sed 's/ /_/g') #-- 소문자로 바꾸고 공백을 밑줄로 바꾼다.
 
 cat <<__EOF__
-${cRed}[ ${cGreen}${publish_no} ${cRed}: ${cGreen}${publisher} ${cRed}]
 
-${cGreen}----> ${cBlue}출판사 이름이 ${cRed}[ ${cCyan}${chulpansa} ${cRed}] ${cBlue}맞으면 엔터를 누르세요.${cReset}
+${cBlue}====> ${cMagenta}[ ${cGreen}${chulpansa} ${cMagenta}] ${cBlue}출판사 이름을 정했습니다.${cReset}
 __EOF__
 read a
 if [ "x$a" = "x" ]; then
@@ -157,113 +156,100 @@ fi
 # -------
 
 cat <<__EOF__
-${cRed}[ ${cYellow}${chulpansa} ${cRed}]
+${cRed}[ ${cBlue}${publish_no} ${cYellow}${publisher} ${cBlue}= ${cYellow}${chulpansa} ${cRed}]
 
-${cGreen}----> ${cCyan}폴더 이름으로 쓰기 위한 책 제목 Title: ${cRed}[ ${cGreen}${BookCover} ${cRed}] (${cMagenta}대,소문자, 숫자,  ., -, _, 빈칸${cBlue}) 만 쓸 수 있습니다.${cReset}
+${cGreen}----> ${cCyan}폴더 이름으로 쓰기 위한 책 제목 Title: ${cRed}[ ${cGreen}${BookCover} ${cRed}] ${cMagenta}= 알파벳만 = ${cBlue}(${cMagenta}대소문자 숫자 . - _ 빈칸${cBlue})${cReset}
 __EOF__
 read a
 if [ "x$a" = "x" ]; then
-	a=${BookCover}
 	echo "${cUp}"
+	a=${BookCover}
 fi
 BookCover=$a
-echo "${cRed}[ ${cYellow}${BookCover} ${cRed}]${cReset}"
 
 cheak_jemok=$(echo "${BookCover,,}" | sed 's/ /_/g') #-- 소문자로 바꾸고 공백을 밑줄로 바꾼다.
 
 cat <<__EOF__
-${cGreen}----> ${cBlue}책 제목이 ${cRed}[ ${cYellow}${chulpansa} / ${cheak_jemok} ${cRed}] ${cBlue}맞으면 엔터를 누르세요.${cReset}
+
+${cBlue}====> ${cMagenta}[ ${cGreen}${chulpansa} ${cBlue}/ ${cGreen}${cheak_jemok} ${cBlue}책 제목: ${cGreen}${BookCover} ${cMagenta}] ${cBlue}책 제목을 정했습니다.${cReset}
 __EOF__
 read a
 if [ "x$a" = "x" ]; then
-	echo "${cUp}" ; echo "${cMagenta}${minus_mark:0:3}${cReset}"
-else
-	echo "${cMagenta}${equal_mark:0:${#a}}${cReset}"
+	echo "${cUp}"
 fi
 
 # 설명 요약
 # ---------
 
 cat <<__EOF__
-${cGreen}----> ${cCyan}설명 요약 Short Description: ${cRed}[ ${cGreen}${ShortDescription} ${cRed}] (${cMagenta}대,소문자, 숫자,  ., -, _, 빈칸${cBlue}) 만 쓸 수 있습니다.${cReset}
+      ${cRed}[ ${cYellow}${chulpansa} ${cBlue}/ ${cYellow}${cheak_jemok} ${cBlue}책 제목: ${cYellow}${BookCover} ${cRed}]
+
+${cGreen}----> ${cCyan}설명 요약 Short Description: ${cRed}[ ${cGreen}${ShortDescription} ${cRed}] ${cMagenta} ~ 한글영문 ~ ${cBlue}(${cMagenta} 숫자 . - _ 빈칸${cBlue})${cReset}
 __EOF__
 read a
 if [ "x$a" = "x" ]; then
-	echo "${cUp}" ; echo "${cMagenta}${minus_mark:0:3}${cReset}"
-else
-	echo "${cMagenta}${equal_mark:0:${#a}}${cReset}"
-fi
-
-if [ "x$a" = "x" ]; then
+	echo "${cUp}"
 	a=${ShortDescription}
 fi
 ShortDescription=$a
 
 cat <<__EOF__
-${cGreen}----> ${cBlue}설명 요약이 ${cRed}[ ${cYellow}${ShortDescription} ${cRed}] ${cBlue}맞으면 엔터를 누르세요.${cReset}
+
+${cBlue}====> ${cMagenta}[ ${cGreen}${ShortDescription} ${cMagenta}] ${cBlue}설명 요약을 정했습니다.${cReset}
 __EOF__
 read a
 if [ "x$a" = "x" ]; then
-	echo "${cUp}" ; echo "${cMagenta}${minus_mark:0:3}${cReset}"
-else
-	echo "${cMagenta}${equal_mark:0:${#a}}${cReset}"
+	echo "${cUp}"
 fi
 
 # 원본 링크
 # ---------
 
 cat <<__EOF__
-${cGreen}----> ${cCyan}원본 링크 ${cRed}[ ${cGreen}${https_line} ${cRed}] (${cMagenta}대,소문자, 숫자,  ., -, _, 빈칸${cBlue}) 만 쓸 수 있습니다.${cReset}
+      ${cRed}[ ${cYellow}${ShortDescription} ${cRed}]
+
+${cGreen}----> ${cCyan}원본 링크 ${cRed}[ ${cGreen}${https_line} ${cRed}] ${cMagenta}= 알파벳만 = ${cBlue}(${cMagenta}https:// 대소문자 숫자 . - _ 빈칸${cBlue})${cReset}
 __EOF__
 read a
 if [ "x$a" = "x" ]; then
-	echo "${cUp}" ; echo "${cMagenta}${minus_mark:0:3}${cReset}"
-else
-	echo "${cMagenta}${equal_mark:0:${#a}}${cReset}"
-fi
-
-if [ "x$a" = "x" ]; then
+	echo "${cUp}"
 	a=${https_line}
 fi
 https_line=$a
 
 cat <<__EOF__
-${cGreen}----> ${cBlue}원본 링크가 ${cRed}[ ${cYellow}${https_line} ${cRed}] ${cBlue}맞으면 엔터를 누르세요.${cReset}
+
+${cBlue}====> ${cMagenta}[ ${cGreen}${https_line} ${cMagenta}] ${cBlue}원본 링크를 정했습니다.${cReset}
 __EOF__
 read a
 if [ "x$a" = "x" ]; then
-	echo "${cUp}" ; echo "${cMagenta}${minus_mark:0:3}${cReset}"
-else
-	echo "${cMagenta}${equal_mark:0:${#a}}${cReset}"
+	echo "${cUp}"
 fi
 
 # 태그
 # ---------
 
 cat <<__EOF__
-${cGreen}----> ${cCyan}태그 ${cRed}[ ${cGreen}${tags} ${cRed}] (${cMagenta}대,소문자, 숫자,  ., -, _, 빈칸${cBlue}) 만 쓸 수 있습니다.${cReset}
+      ${cRed}[ ${cYellow}${https_line} ${cRed}]
+
+${cGreen}----> ${cCyan}태그 ${cRed}[ ${cGreen}${tags} ${cRed}] ${cMagenta}= 알파벳만 = ${cBlue}(${cMagenta}대소문자 숫자 . - _ 빈칸${cBlue})${cReset}
 __EOF__
 read a
 if [ "x$a" = "x" ]; then
-	echo "${cUp}" ; echo "${cMagenta}${minus_mark:0:3}${cReset}"
-else
-	echo "${cMagenta}${equal_mark:0:${#a}}${cReset}"
-fi
-
-if [ "x$a" = "x" ]; then
 	a=${tags}
+	echo "${cUp}"
 fi
 tags=$a
 
 cat <<__EOF__
-${cGreen}----> ${cBlue}태그가 ${cRed}[ ${cYellow}${tags} ${cRed}] ${cBlue}맞으면 엔터를 누르세요.${cReset}
+
+${cBlue}====> ${cMagenta}[ ${cGreen}${tags} ${cMagenta}] ${cBlue}태그를 정했습니다..${cReset}
 __EOF__
 read a
 if [ "x$a" = "x" ]; then
-	echo "${cUp}" ; echo "${cMagenta}${minus_mark:0:3}${cReset}"
-else
-	echo "${cMagenta}${equal_mark:0:${#a}}${cReset}"
+	echo "${cUp}"
 fi
+echo "      ${cRed}[ ${cYellow}${tags} ${cRed}]${cReset}"
 
 
 
@@ -274,59 +260,83 @@ fi
 until [ "x$ChapterSeq" = "x" ]
 do
 	cat <<__EOF__
-${cGreen}+--------+ 챕터  번호
-| AA-BBB | AA = '01'로 시작하는 챕터별 전체 일련번호
-|        | BBB = '0' 섹션 '00' 챕터로 된 코드
-+--------+
+
+
+
+${cBlue}==========   [ AA-bcc ] 'AA' 전체 일련번호 | 'b' 섹션 'ccc 챕터로 된 코드
+챕터  번호   [ Abb ]    'A' 섹션 'bb' 챕터로 된 코드
+==========
 ${cGreen}----> ${cCyan}챕터 번호를 ${cRed}[ ${cGreen}${ChapterSeq} ${cRed}] ${cCyan}이와 같이 다음 줄에 입력합니다. ${cRed}[ ${cGreen}엔터 ${cRed}]${cCyan} 만 누르면 이 작업을 끝냅니다.${cReset}
 __EOF__
 	read a
 	if [ "x$a" = "x" ]; then
-		echo "${cUp}" ; echo "${cMagenta}${minus_mark:0:3}${cReset}"
+		echo "${cUp}"
 		ChapterSeq="" #-- 끝낸다.
 		ChapterName=""
 	else
-		echo "${cMagenta}${equal_mark:0:${#a}}${cReset}"
 		ChapterSeq=$a
 		cat <<__EOF__
-${cBlue}챕터  이름
-==========${cReset}
-${cGreen}----> ${cCyan}챕터의 요약제목을 ${cRed}[ ${cGreen}${ChapterName} ${cRed}] ${cCyan}이와 같이 다음 줄에 입력합니다. ${cRed}[ ${cGreen}엔터 ${cRed}]${cBlue} 만 누르면 ${cCyan}챕터 번호 ${cBlue}입력으로 돌아갑니다.${cReset}
+
+${cBlue}====> ${cMagenta}[ ${cGreen}${ChapterSeq} ${cMagenta}] ${cBlue}챕터 번호를 정했습니다.${cReset}
+__EOF__
+read a
+if [ "x$a" = "x" ]; then
+	echo "${cUp}"
+fi
+		cat <<__EOF__
+      ${cRed}[ ${cYellow}${ChapterSeq} ${cRed}]
+
+${cBlue}==========
+챕터  이름
+==========
+${cGreen}----> ${cCyan}${ChapterSeq} 챕터의 요약제목 을 ${cRed}[ ${cGreen}${ChapterName} ${cRed}] ${cCyan}이와 같이 다음 줄에 입력합니다. ${cRed}[ ${cGreen}엔터 ${cRed}]${cBlue} 만 누르면 ${cCyan}이 작업을 끝냅니다.${cReset}
 __EOF__
 		read a
 		if [ "x$a" = "x" ]; then
-			echo "${cUp}" ; echo "${cMagenta}${minus_mark:0:3}${cReset}"
+			echo "${cUp}"
 			ChapterSeq="" #-- 끝낸다.
 			ChapterName=""
 		else
-			echo "${cMagenta}${equal_mark:0:${#a}}${cReset}"
+			ChapterName=$a
+			cat <<__EOF__
+
+${cBlue}====> ${cMagenta}[ ${cGreen}${ChapterName} ${cMagenta}] ${cBlue}챕터 이름을 정했습니다.${cReset}
+__EOF__
+			read a
+			if [ "x$a" = "x" ]; then
+				echo "${cUp}"
+			fi
+			cat <<__EOF__
+      ${cRed}[ ${cYellow}${ChapterName} ${cRed}]
+__EOF__
 			# 이미지 제목
 			# -----------
 
-			ChapterName=$a
 			image_jemok=${old_image_jemok}
 			until [ "x$image_jemok" = "x" ]
 			do
 				cat <<__EOF__
 
-${cCyan}----> ${cMagenta}이미지의 제목 입력 (${cCyan}대,소문자, 숫자,  ., -, _, 빈칸${cMagenta}) 만 쓸 수 있습니다.${cReset}
+${cCyan}----> ${cMagenta}이미지 파일의 이름 ${cMagenta}${cMagenta}= 알파벳만 = ${cBlue}(${cMagenta}대소문자 숫자 . - _ 빈칸${cBlue})${cReset}
 
 ${cCyan}----> ${cMagenta}이미지별 일련번호 (${cRed}00-000${cMagenta}) 와 이미지에 대한 설명을 ${cRed}[ ${cGreen}${image_jemok} ${cRed}] ${cMagenta}이와 같이 다음줄에 입력합니다. ${cRed}[ ${cGreen}엔터 ${cRed}]${cMagenta} 만 누르면 ${cCyan}챕터 번호 ${cMagenta}입력으로 돌아갑니다.${cReset}
 __EOF__
 				read image_jemok
-				if [ "x$image_jemok" = "x" ]; then
-					echo "${cUp}" ; echo "${cMagenta}${minus_mark:0:3}${cReset}"
-					cat <<__EOF__
-
-
-
-__EOF__
-				else
-					echo "${cMagenta}${equal_mark:0:${#image_jemok}}${cReset}"
+				if [ "x$image_jemok" != "x" ]; then
 					old_image_jemok=${image_jemok}
 					img_name=$(echo "${image_jemok,,}" | sed 's/ /_/g') #-- 전부 대문자로 바꾸려면 ${image_jemok^^}, 전부 소문자는 ${image_jemok,,}
 					chapter_name=$(echo "${ChapterName,,}" | sed 's/ /_/g')
 					cat <<__EOF__
+
+${cBlue}====> ${cMagenta}[ ${cGreen}${image_jemok} ${cMagenta}] ${cBlue}이미지 파일의 이름을 정했습니다.${cReset}
+__EOF__
+					read a
+					if [ "x$a" = "x" ]; then
+						echo "${cUp}"
+					fi
+					cat <<__EOF__
+      ${cRed}[ ${cYellow}${image_jemok} ${cRed}]
+
 ${cBlue}
 / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / /
 ${cReset}
@@ -360,7 +370,7 @@ ${cReset}
 )
 ${cBlue}
 / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / /
-${cMagenta}
+${cBlue}
 ----> 윗줄을 복사해서 사용합니다.
 ${cReset}
 __EOF__
