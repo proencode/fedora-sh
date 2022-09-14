@@ -91,7 +91,7 @@ ${cRed}[ ${cCyan}1 ${cRed}] ${cBlue}---- packtpub
   4   ---- howtogeek
   5   ---- ddanzi
   6   ---- ysjn
-  7   ---- gihyo.jp
+  7   ---- gihyo
 
 ${cGreen}----> ${cCyan}출판사 이름 ${cRed}[ ${cGreen}1 ~ 6 ${cRed}]${cCyan} 또는 새로운 ${cRed}[ ${cMagenta}= 알파벳만 = ${cGreen}출판사 분류명 ${cRed}] ${cCyan}을 입력하세요.${cReset}
 __EOF__
@@ -121,7 +121,7 @@ __EOF__
 		else
 
 		if [ "x$a" = "x7" ]; then
-			publisher="gihyo.jp"
+			publisher="gihyo"
 		else
 			publisher="$a"
 		fi
