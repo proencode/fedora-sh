@@ -20,9 +20,6 @@ source ${HOME}/lib/color_base #-- cBlack cRed cGreen cYellow cBlue cMagenta cCya
 #echo "${cRed}<<<<<<<<<<${cBlue} $0 ${cRed}||| ${cMagenta}${MEMO} ${cRed}<<<<<<<<<<${cReset}"
 
 
-minus_mark="----------"
-equal_mark="=========="
-
 if [ "x$1" != "x" ]; then
 	publisher="$1"
 else
@@ -88,7 +85,7 @@ if [ "x$1" = "x" ]; then
 	#-- (대문자, 공백, - 와 _ 제외한 특수문자) 는 안됨 !
 	cat <<__EOF__
 
-${cRed}[ ${cYellow}1 ${cRed}] ${cCyan}---- packtpub
+${cRed}[ ${cCyan}1 ${cRed}] ${cBlue}---- packtpub
   2   ---- medium
   3   ---- docker
   4   ---- howtogeek
@@ -96,14 +93,13 @@ ${cRed}[ ${cYellow}1 ${cRed}] ${cCyan}---- packtpub
   6   ---- ysjn
   7   ---- gihyo.jp
 
-${cGreen}----> ${cCyan}출판사 이름 ${cRed}[ ${cGreen}1 ~ 6 ${cRed}]${cCyan} 또는 새로운 ${cRed}[ ${cGreen}출판사 분류명 ${cRed}] ${cCyan}을 입력하세요.${cReset}
+${cGreen}----> ${cCyan}출판사 이름 ${cRed}[ ${cGreen}1 ~ 6 ${cRed}]${cCyan} 또는 새로운 ${cRed}[ dkfvkqpt ${cGreen}출판사 분류명 ${cRed}] ${cCyan}을 입력하세요.${cReset}
 __EOF__
 	read a
 	if [ "x$a" = "x" ]; then
 		publisher="packtpub"
-		echo "${cUp}" ; echo "${cMagenta}${minus_mark:0:3}${cReset}"
+		echo "${cUp}"
 	else
-		echo "${cMagenta}${equal_mark:0:${#a}}${cReset}"
 		if [ "x$a" = "x1" ]; then
 			publisher="packtpub"
 		else
@@ -143,36 +139,35 @@ else
 	publisher="$1"
 
 fi
+publish_no=$a
 
 chulpansa=$(echo "${publisher,,}" | sed 's/ /_/g') #-- 소문자로 바꾸고 공백을 밑줄로 바꾼다.
 
 cat <<__EOF__
-${cGreen}----> ${cBlue}출판사 이름이 ${cRed}[ ${cYellow}${chulpansa} ${cRed}] ${cBlue}맞으면 엔터를 누르세요.${cReset}
+${cRed}[ ${cGreen}${publish_no} ${cRed}: ${cGreen}${publisher} ${cRed}]
+
+${cGreen}----> ${cBlue}출판사 이름이 ${cRed}[ ${cCyan}${chulpansa} ${cRed}] ${cBlue}맞으면 엔터를 누르세요.${cReset}
 __EOF__
 read a
 if [ "x$a" = "x" ]; then
-	echo "${cUp}" ; echo "${cMagenta}${minus_mark:0:3}${cReset}" #-- echo "${cUp}${cMagenta}${minus_mark:0:3}${cReset}" #-- 안됨
-else
-	echo "${cMagenta}${equal_mark:0:${#a}}${cReset}"
+	echo "${cUp}"
 fi
 
 # 책 제목
 # -------
 
 cat <<__EOF__
+${cRed}[ ${cYellow}${chulpansa} ${cRed}]
+
 ${cGreen}----> ${cCyan}폴더 이름으로 쓰기 위한 책 제목 Title: ${cRed}[ ${cGreen}${BookCover} ${cRed}] (${cMagenta}대,소문자, 숫자,  ., -, _, 빈칸${cBlue}) 만 쓸 수 있습니다.${cReset}
 __EOF__
 read a
 if [ "x$a" = "x" ]; then
-	echo "${cUp}" ; echo "${cMagenta}${minus_mark:0:3}${cReset}"
-else
-	echo "${cMagenta}${equal_mark:0:${#a}}${cReset}"
-fi
-
-if [ "x$a" = "x" ]; then
 	a=${BookCover}
+	echo "${cUp}"
 fi
 BookCover=$a
+echo "${cRed}[ ${cYellow}${BookCover} ${cRed}]${cReset}"
 
 cheak_jemok=$(echo "${BookCover,,}" | sed 's/ /_/g') #-- 소문자로 바꾸고 공백을 밑줄로 바꾼다.
 
