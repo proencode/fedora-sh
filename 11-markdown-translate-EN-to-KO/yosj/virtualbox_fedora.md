@@ -305,9 +305,9 @@ fi
 4. 가상 시스템 맨윗줄의 메뉴중 **파일** / **머신** / **보기** / **입력** / `장치` > `게스트 확장 CD 이미지 삽입` > 
 	자동으로 시작하기로 한 프로그램 . . . 
 	실행하시겠습니까? > `[실행]` 클릭
-  1. 자동으로 시작되지 않으면, 터미널에서 다음과 같이 입력한다.
+  ==> 자동으로 시작되지 않으면, 터미널에서 다음과 같이 입력한다.
 ```
-sudo sh /run/media/${USER}/VBox_GAs_6.1.36/VBoxLinuxAdditions.run ; echo "sudo /sbin/rcvboxadd quicksetup all #-- (20-4) Do you wish to continue? `[yes or no]` 가 나오면, yes 입력후, 이 명령을 직접 입력해야 합니다."
+sudo sh /run/media/${USER}/VBox_GAs_*/VBoxLinuxAdditions.run ; echo "sudo /sbin/rcvboxadd quicksetup all #-- (20-4) Do you wish to continue? '[yes or no]' 가 나오면, yes 입력후, 이 명령을 직접 입력해야 합니다."
 ```
 5. Do you wish to continue? `[yes or no]` > yes 인 경우
 ```
@@ -326,7 +326,36 @@ ls -l /media/sf_Downloads/ ; echo "#-- (20-5) 다운로드 폴더를 보여줍�
 	1. 오른쪽 속성 끝에 있는 CD 아이콘 클릭
 	1. `[가상 드라이브에서 디스크 꺼내기]` 클릭 > `[확인]`
 
-## 23. vdi 파일 압축
+## 23. 공유폴더에서 읽기/쓰기 문제
+
+### Windows 에 Fedora 버추얼박스를 설치하고, 공유폴더를 사용할때, 종종 권한때문에 읽기/쓰기 문제가 생기는 경우,
+1. 현재 마우트된 유폴더의 소유 사용자계정과 그룹을 확인하면,
+```
+$ ls -al /media
+합계 24
+drwxr-xr-x. 1 root root       24  9월 15일 13:11 .
+dr-xr-xr-x. 1 root root      158  9월  5일 11:43 ..
+drwxrwxrwx. 1 root vboxsf  24576  9월 15일 11:47 sf_Downloads
+```
+2. 지금 로그인 되어있는 계정의 UID와 GID를 확인한다. (보통 1000 이 할당된다.)
+```
+$ id
+uid=1000(yos) gid=1000(yos) groups=1000(yos),10(wheel),981(vboxsf) context=unconfined_u:unconfined_r:unconfined_t:s0-s0:c0.c1023
+```
+3. 이제 공유폴더를 다음과 같이 uid 와 gid 를 지정해서 다시 마운트한다.
+```
+sudo mount -t vboxsf -o remount,uid=1000,gid=1000,rw wind /media/sf_Downloads
+```
+4. 제대로 수정이 됐는지 확인한다.
+```
+$ ls -al /media/
+합계 24
+drwxr-xr-x. 1 root root    24  9월 15일 13:11 .
+dr-xr-xr-x. 1 root root   158  9월  5일 11:43 ..
+drwxrwxrwx. 1 yos  yos  24576  9월 15일 11:47 sf_Downloads
+```
+
+## 24. vdi 파일 압축
 
 1. Windows의 파일 탐색기에서 `yosjfedora.vdi` 파일을 오른쪽 마우스 클릭
 2. 나열된 선택 중에서 `7-zip` 에 마우스를 대고 > `압축 파일에 추가` 클릭
