@@ -26,14 +26,14 @@
 
 
 
-# 제6장　Spring Boot와 MyBatis에서 도서 관리 시스템 웹 애플리케이션 개발
+# 제6장 Spring Boot와 MyBatis에서 도서 관리 시스템 웹 애플리케이션 개발
 
 제 5 장까지, 서버 측 Kotlin에서 개발에 필요한 주요 기술 요소에 대한 설명이 끝났습니다. 이 장에서는 지금까지 설명한 요소를 사용하여 실용적인 응용 프로그램을 만듭니다. 제6장에서 Spring Boot와 MyBatis를 사용한 웹 애플리케이션을 작성하고, 제7장에서 인증·인가, 제8장에서 단위 테스트의 구현을 하고, 보다 실제의 제품과 같은 형태에 접근해 갑니다.
 
 그 베이스가 되는 부분을 작성하는 것이 본장입니다. 우선은 여기까지의 장에서 얻은 지식을 사용해 실천적인 아키텍쳐의 어플리케이션을 작성해, 한층 더 이해를 깊게 해 주셨으면 합니다.
 
 
-## 1　책 관리 시스템 사양
+## 1. 책 관리 시스템 사양
 
 이 장에서는 서버 측 Kotlin의 실용적인 구현 방법을 배우기 위해 책 관리 시스템을 사용하는 샘플 응용 프로그램을 작성합니다. 이는 조직에서 소유한 도서 정보와 대출 및 반환 상태를 관리하는 애플리케이션의 이미지입니다.
 
@@ -68,7 +68,7 @@
 #### 대출, 반환
 책의 대출, 반환을 하는 기능입니다. 책에끈끈생성하는 대출 정보의 등록, 삭제를 실행합니다. 이것은 모든 사용자가 수행할 수 있는 기능입니다.
 
-## 2　애플리케이션 구성
+## 2. 애플리케이션 구성
 
 다음으로 이 애플리케이션에서 사용하는 기술 스택, 아키텍처 등에 대해 설명합니다.
 
@@ -107,7 +107,7 @@
 
 각 계층 구조의 개요는 표 6.1 과 같습니다.
 
-![ Table 601 Layer ]( /gihyo/kotlin_server_side_programming_img/table_601_layer.webp
+![ table 601 Layer ]( /gihyo/kotlin_server_side_programming_img/table_601_layer.webp
 )
 
 
@@ -115,7 +115,8 @@
 
 이 계층 구조를 참고로 본 장의 샘플에서는 표 6.2 와 같은 형태로 계층을 정의하고 있습니다.
 
-표 6.2
+![ table 602 Layer Define ]( /gihyo/kotlin_server_side_programming_img/table_602_layer_define.webp
+)
 
 | 계층 | 패키지 | 주요 코드 |
 |:-----|:-------|:----------|
@@ -136,7 +137,8 @@
 
 Vue.js에서는 SPA를 프런트 엔드 서버로 시작하고 각 페이지로의 라우팅도 정의할 수 있습니다. 프런트 엔드 및 서버측 구성 이미지는 그림 6.2 와 같습니다.
 
-그림 6.2 프론트엔드 와 서버 구성.jpeg
+![ 602 Frontend and Server ]( /gihyo/kotlin_server_side_programming_img/602_frontend_and_server.webp
+)
 
 Vue.js 서버는 8081 포트이고 Spring Boot 서버는 8080 포트에서 시작됩니다.
 
@@ -144,7 +146,7 @@ Vue.js 서버는 8081 포트이고 Spring Boot 서버는 8080 포트에서 시�
 
 나중에 프런트 엔드 샘플 코드로 시작하는 것은이 Vue.js 서버의 일부입니다.
 
-## 3　프로젝트 환경 구축
+## 3. 프로젝트 환경 구축
 
 응용 프로그램 프로젝트를 만듭니다. 이 섹션에서는 Spring Boot 응용 프로그램을 만들고 종속성을 추가하고 다양한 코드를 생성합니다.
 
@@ -152,7 +154,8 @@ Vue.js 서버는 8081 포트이고 Spring Boot 서버는 8080 포트에서 시�
 
 먼저 Spring Boot 응용 프로그램의 프로젝트를 만듭니다. 지금까지 소개 한 것과 마찬가지로 Spring Initializr를 사용합니다 ( 그림 6.3 ).
 
-그림 6.3 Spring Initializr
+![ 603 Spring Initializr ]( /gihyo/kotlin_server_side_programming_img/603_spring_initializr.webp
+)
 
 프로젝트에서 설정한 항목은 다음과 같습니다.
 
@@ -177,7 +180,11 @@ Vue.js 서버는 8081 포트이고 Spring Boot 서버는 8080 포트에서 시�
 
 방금 만든 프로젝트를 다운로드하고 확장하고 Gradle에 몇 가지 종속성을 추가합니다. 추가한 build.gradle.kts 전체 코드는 Listing 6.3.1 이다.
 
-Listing 6.3.1
+![ list 631 build.gradle.kts ]( /gihyo/kotlin_server_side_programming_img/list_631_build.gradle.kts.webp
+)
+
+Listing 6.3.1 build.gradle.kts
+
 ```
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
@@ -394,7 +401,10 @@ user 테이블에 패스워드로서 등록하고 있는 값은, bcrypt 의 알�
 
 작성한 테이블에 대해 MyBatis Generator에서 코드 생성을 합니다. 앞의 build.gradle.kts에서 설정했듯이 /src/main/resources 아래에 generatorConfig.xml이라는 구성 파일을 만듭니다 ( Listing 6.3.13 ).
 
-Listing 6.3.13
+![ list 6313 config ]( /gihyo/kotlin_server_side_programming_img/list_6313_config.webp
+)
+
+Listing 6.3.13 config
 ```
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DICTYPE generatorConfiguration PUBLIC "-//mybatis.org//DTD
@@ -533,13 +543,14 @@ $ npm run dev
 
 이제 프런트 엔드 Vue 애플리케이션이 시작되었습니다. 시작시 로그에 출력되었지만 8081 포트를 사용하고 있습니다. http://localhost:8081에 액세스하고 그림 6.4 와 같은 화면이 표시되면 성공합니다.
 
-Figure_6.4_frontend_vue_start.jpeg
+![ 604 vue frontend start ]( /gihyo/kotlin_server_side_programming_img/604_vue_frontend_start.webp
+)
 
 동작 확인용의 샘플 때문에, 레이아웃이나 화면 천이등은 상당히 간략화하고 있습니다. 작성한 API를 프런트 엔드에서 실행하여 쉽게 움직이고 싶은 분은 이용하십시오. 후술하는 각 기능의 항목에서 소통의 순서도 설명합니다.
 
 그러면 이후 각 API의 구현을 소개합니다.
 
-## 4　검색계 기능(일람 취득, 상세 취득)의 API 구현
+## 4. 검색계 기능(일람 취득, 상세 취득)의 API 구현
 
 여기에서는 검색계 기능의 API를 구현해 갑니다. 검색 시스템 기능은 모든 권한의 사용자가 실행할 수 있습니다.
 
@@ -560,7 +571,8 @@ Repository 인터페이스, RepositoryImpl 클래스는 데이터베이스 관�
 
 목록 획득 API를 사용하는 화면 이미지는 그림 6.5 입니다.
 
-Figure 6.5 book list
+![ 605 book list ]( /gihyo/kotlin_server_side_programming_img/605_book_list.webp
+)
 
 이 화면에서,
 
@@ -881,7 +893,9 @@ Listing 6.4.15
 
 그림 6.6 과 같은 화면이 표시되면 성공입니다.
 
-Figure 6.6 book list
+![ 606 book list ]( /gihyo/kotlin_server_side_programming_img/606_book_list.webp
+)
+
 
 ### 상세 취득 기능의 구현
 
@@ -891,7 +905,8 @@ Figure 6.6 book list
 
 상세 검색 API를 사용하는 화면 이미지는 그림 6.7 입니다.
 
-Figure 6.7 book detail
+![ 607 book detail ]( /gihyo/kotlin_server_side_programming_img/607_book_detail.webp
+)
 
 책의 정보로서,
 
@@ -1027,9 +1042,10 @@ $ curl http://localhost:8080/book/detail/200
 
 그림 6.8 과 같은 화면이 표시되면 성공입니다.
 
-Figure 6.8 detail book
+![ 608 detail book ]( /gihyo/kotlin_server_side_programming_img/608_detail_book.webp
+)
 
-## 5　갱신계 기능(등록, 갱신, 삭제)의 API 구현
+## 5. 갱신계 기능(등록, 갱신, 삭제)의 API 구현
 
 여기에서 업데이트 시스템 기능의 API를 구현합니다. 업데이트 시스템 기능은 관리자 권한만 실행할 수 있습니다. 그 때문에, 같은 서적 데이터에 대한 조작입니다만, 검색계 기능이란 Controller나 Service의 클래스를 나누어 구현합니다.
 
@@ -1043,7 +1059,8 @@ Figure 6.8 detail book
 
 등록 API를 사용하는 화면 이미지는 그림 6.9 입니다.
 
-Figure 6.9 book register
+![ 609 book register ]( /gihyo/kotlin_server_side_programming_img/609_book_register.webp
+)
 
 책의 마스터 정보인,
 
@@ -1177,11 +1194,13 @@ $ curl http://localhost:8080/book/list
 
 완성된 API를 프런트 엔드와 소통합니다. 서버와 프런트 엔드 응용 프로그램이 모두 실행되면 브라우저에서 http://localhost:8081/admin/book/register로 이동합니다. 그림 6.10 과 같은 등록 페이지가 표시됩니다.
 
-Figure 6.10 book register
+![ 610 book register ]( /gihyo/kotlin_server_side_programming_img/610_book_register.webp
+)
 
 그리고 내용을 입력하고 [등록] 버튼을 눌러 그림 6.11 과 같은 화면이 표시되면 성공합니다.
 
-Figure 6.11 register completed
+![ 611 register completed ]( /gihyo/kotlin_server_side_programming_img/611_register_completed.webp
+)
 
 ### 업데이트 기능 구현
 
@@ -1191,7 +1210,8 @@ Figure 6.11 register completed
 
 업데이트 API를 사용하는 화면 이미지는 그림 6.12 입니다.
 
-Figure 6.12 book update
+![ 612 book update ]( /gihyo/kotlin_server_side_programming_img/612_book_update.webp
+)
 
 업데이트할 책 정보가 표시됩니다. 변경하려는 항목의 값을 수정하고 [갱신] 버튼을 누르면 실행됩니다. 등록 화면과 비슷한 형태이지만 책 ID는 변경할 수 없게 되어 있습니다.
 
@@ -1275,11 +1295,13 @@ $ curl http://localhost:8080/book/detail/300
 
 완성된 API를 프런트 엔드와 소통합니다. 서버와 프런트 엔드 응용 프로그램이 모두 시작된 상태에서 브라우저에서 http://localhost:8081/admin/book/update/400으로 이동하십시오 (400 부분은 업데이트 할 레코드의 ID이므로 필요합니다. 따라서 업데이트하려는 대상 값으로 변경하십시오.) 그림 6.13 과 같은 도서 업데이트 페이지가 표시됩니다.
 
-Figure 6.13 book update
+![ 613 book update ]( /gihyo/kotlin_server_side_programming_img/613_book_update.webp
+)
 
 그리고 갱신하고 싶은 항목의 내용을 변경하고 [갱신] 버튼을 눌러 그림 6.14 와 같은 화면이 표시되면 성공입니다.
 
-Figure 6.14 update completed
+![ 614 update completed ]( /gihyo/kotlin_server_side_programming_img/614_update_completed.webp
+)
 
 ### 삭제 기능 구현
 
@@ -1289,9 +1311,11 @@ Figure 6.14 update completed
 
 삭제 API를 사용하는 화면 이미지는 그림 6.15 , 그림 6.16 입니다.
 
-Figure 6.15 delete ok then ok
+![ 615 delete ok then ok ]( /gihyo/kotlin_server_side_programming_img/615_delete_ok_then_ok.webp
+)
 
-Figure 6.16 delete ok
+![ 616 delete ok ]( /gihyo/kotlin_server_side_programming_img/616_delete_ok.webp
+)
 
 도서 목록 화면, 도서 상세 화면에서 [삭제] 링크를 누르면 확인 팝업이 표시되고 [OK] 버튼을 누르면 실행됩니다.
 
@@ -1365,21 +1389,22 @@ $ curl http://localhost:8080/book/list
 
 완성된 API를 프런트 엔드와 소통합니다. 서버와 프런트 엔드 응용 프로그램이 모두 실행된 상태에서 브라우저에서 http://localhost:8081/book/list로 이동하여 책 중 하나에서 삭제 링크를 누르십시오. 그림 6.17 과 같이 삭제 확인 팝업이 나타납니다.
 
-Figure 6.17 delete front end
+![ 617 delete front end ]( /gihyo/kotlin_server_side_programming_img/617_delete_front_end.webp
+)
 
 [OK]를 눌러 그림 6.18 과 같은 화면이 표시되면 성공합니다.
 
-Figure 6.18 delete ok
+Figure 618 delete ok
 
-주1 　 https://jeffreypalermo.com/2008/07/the-onion-architecture-part-1/
-
-( 본문으로 돌아가기 )
-
-주2 　 https://github.com/n-takehata/kotlin-server-side-programming-practice
+주1 https://jeffreypalermo.com/2008/07/the-onion-architecture-part-1/
 
 ( 본문으로 돌아가기 )
 
-주3　 제5장의 「3.MyBatis의 도입」을 참조.
+주2 https://github.com/n-takehata/kotlin-server-side-programming-practice
+
+( 본문으로 돌아가기 )
+
+주3 제5장의 「3.MyBatis의 도입」을 참조.
 
 ( 본문으로 돌아가기 )
 
