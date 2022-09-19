@@ -131,12 +131,12 @@
   - 다음의 명령을 터미널에서 입력해서 한글처리 프로그램을 실행한다.
 ```
 echo "" ; echo "" ; echo ""
-echo "#-- (3) 화면에 EN 또는 한 이나 ko 표시가 없는 경우에 사용합니다."
+echo "#-- (12-1) 화면에 EN 또는 한 이나 ko 표시가 없는 경우에 사용합니다."
 echo "#----> press Enter:" ; read a
-echo "#-- (3-1) ibus exit --> 한글입력 프로그램을 종료합니다."
+echo "#-- (12-2) ibus exit --> 한글입력 프로그램을 종료합니다."
 ibus exit
 echo "#----> press Enter:" ; read a
-echo "#-- (3-2) ibus-daemon & --> 한글입력 프로그램을 백그라운드로 실행합니다."
+echo "#-- (12-3) ibus-daemon & --> 한글입력 프로그램을 백그라운드로 실행합니다."
 ibus-daemon &
 ```
 1. 맨윗줄 오른쪽 끝에 있는 `ko  옮  <))  (^)` 클릭 > `설정` 클릭
@@ -158,40 +158,40 @@ ibus-daemon &
 #### 1. 폰트 설치하기 전에 프로그램을 업데이트하고, 임시 디렉토리를 만든다.
 ```
 echo "" ; echo "" ; echo ""
-sudo time dnf -y update ; echo "#-- (1-1) 푸른숲도서관 36.00 처음 설치후 400.37user 61.14system 14:50.64elapsed 51%CPU"
-mkdir ~/tmp ; cd ~/tmp echo "#-- (1-2) 임시 디렉토리를 만듭니다."
+sudo time dnf -y update ; echo "#-- (131-1) 푸른숲도서관 36.00 처음 설치후 400.37user 61.14system 14:50.64elapsed 51%CPU"
+mkdir ~/tmp ; cd ~/tmp echo "#-- (131-2) 임시 디렉토리를 만듭니다."
 ```
 
 #### 2. D2Coding 폰트를 설치한다.
 ```
-sudo ls -l /usr/share/fonts/D2Coding ; sudo rm -rf /usr/share/fonts/D2Coding ; sudo mkdir /usr/share/fonts/D2Coding ; echo "#-- (2-1) 폴더를 지우고 새로 만듭니다."
-time wget --no-check-certificate --content-disposition https://github.com/naver/d2codingfont/releases/download/VER1.3.2/D2Coding-Ver1.3.2-20180524.zip ; echo "#-- (2-2) 폰트 내려받기"
-time 7za x D2Coding-Ver1.3.2-20180524.zip ; echo "#-- (2-3) 폰트 압축해제"
+sudo ls -l /usr/share/fonts/D2Coding ; sudo rm -rf /usr/share/fonts/D2Coding ; sudo mkdir /usr/share/fonts/D2Coding ; echo "#-- (132-1) 폴더를 지우고 새로 만듭니다."
+time wget --no-check-certificate --content-disposition https://github.com/naver/d2codingfont/releases/download/VER1.3.2/D2Coding-Ver1.3.2-20180524.zip ; echo "#-- (132-2) 폰트 내려받기"
+time 7za x D2Coding-Ver1.3.2-20180524.zip ; echo "#-- (132-3) 폰트 압축해제"
 
 #|  ----> 이때,
 #|  bash: 7za: 명령을 찾을 수 없습니다...
 #|  'p7zip' 명령을 제공하는 '7za' 꾸러미를 설치하시겠습니까? [N/y]
 #|  ----> 라고 나오면, [y 엔터] 를 눌러서 설치하고 진행하면 된다.
 
-sudo mv D2Coding/* /usr/share/fonts/D2Coding/ ; echo "#-- (2-4) 폰트를 옮깁니다."
-sudo chown -R root.root /usr/share/fonts/D2Coding ; echo "#-- (2-5) 소유자를 root.root 로 지정합니다."
-sudo chmod 755 /usr/share/fonts/D2Coding ; echo "#-- (2-6) 폴더의 모드를 rwxr-xr-x 로 지정합니다."
-sudo chmod 644 -R /usr/share/fonts/D2Coding/* ; echo "#-- (2-7) 모든 파일을 rw-로 지정합니다."
-sudo ls -l /usr/share/fonts/ | grep D2Coding ; sudo ls -l /usr/share/fonts/D2Coding ; echo "#-- (2-8) 복사내역 확인"
-rm -rf * ; echo "#-- (2-9) 나머지 필요없는 파일을 삭제합니다."
+sudo mv D2Coding/* /usr/share/fonts/D2Coding/ ; echo "#-- (132-4) 폰트를 옮깁니다."
+sudo chown -R root.root /usr/share/fonts/D2Coding ; echo "#-- (132-5) 소유자를 root.root 로 지정합니다."
+sudo chmod 755 /usr/share/fonts/D2Coding ; echo "#-- (132-6) 폴더의 모드를 rwxr-xr-x 로 지정합니다."
+sudo chmod 644 -R /usr/share/fonts/D2Coding/* ; echo "#-- (132-7) 모든 파일을 rw-로 지정합니다."
+sudo ls -l /usr/share/fonts/ | grep D2Coding ; sudo ls -l /usr/share/fonts/D2Coding ; echo "#-- (132-8) 복사내역 확인"
+rm -rf * ; echo "#-- (132-9) 나머지 필요없는 파일을 삭제합니다."
 ```
 
 #### 3. Seoul 폰트를 설치한다.
 ```
-sudo ls -l /usr/share/fonts/seoul ; sudo rm -rf /usr/share/fonts/seoul ; sudo mkdir /usr/share/fonts/seoul ; echo "#-- (3-1) 폴더를 지우고 새로 만듭니다."
-time wget --no-check-certificate --content-disposition https://www.seoul.go.kr/upload/seoul/font/seoul_font.zip ; echo "#-- (3-2) 폰트 내려받기"
-time 7za x seoul_font.zip ; echo "#-- (3-3) 폰트 압축해제"
-sudo mv */Seoul*.ttf /usr/share/fonts/seoul/ ; echo "#-- (3-4) 폰트를 옮깁니다."
-sudo chown -R root.root /usr/share/fonts/seoul ; echo "#-- (3-5) 소유자를 root.root 로 지정합니다."
-sudo chmod 755 /usr/share/fonts/seoul ; echo "#-- (3-6) 폴더의 모드를 rwxr-xr-x 로 지정합니다."
-sudo chmod 644 -R /usr/share/fonts/seoul/* ; echo "#-- (3-7) 모든 파일을 rw-로 지정합니다."
-sudo ls -l /usr/share/fonts/ | grep D2Coding ; sudo ls -l /usr/share/fonts/D2Coding ; sudo ls -l /usr/share/fonts/ | grep seoul ; sudo ls -l /usr/share/fonts/seoul ; echo "#-- (3-8) 복사내역 확인"
-rm -rf * ; echo "#-- (3-9) 나머지 필요없는 파일을 삭제합니다."
+sudo ls -l /usr/share/fonts/seoul ; sudo rm -rf /usr/share/fonts/seoul ; sudo mkdir /usr/share/fonts/seoul ; echo "#-- (133-1) 폴더를 지우고 새로 만듭니다."
+time wget --no-check-certificate --content-disposition https://www.seoul.go.kr/upload/seoul/font/seoul_font.zip ; echo "#-- (133-2) 폰트 내려받기"
+time 7za x seoul_font.zip ; echo "#-- (13-33) 폰트 압축해제"
+sudo mv */Seoul*.ttf /usr/share/fonts/seoul/ ; echo "#-- (133-4) 폰트를 옮깁니다."
+sudo chown -R root.root /usr/share/fonts/seoul ; echo "#-- (133-5) 소유자를 root.root 로 지정합니다."
+sudo chmod 755 /usr/share/fonts/seoul ; echo "#-- (133-6) 폴더의 모드를 rwxr-xr-x 로 지정합니다."
+sudo chmod 644 -R /usr/share/fonts/seoul/* ; echo "#-- (133-7) 모든 파일을 rw-로 지정합니다."
+sudo ls -l /usr/share/fonts/ | grep D2Coding ; sudo ls -l /usr/share/fonts/D2Coding ; sudo ls -l /usr/share/fonts/ | grep seoul ; sudo ls -l /usr/share/fonts/seoul ; echo "#-- (133-8) 복사내역 확인"
+rm -rf * ; echo "#-- (133-9) 나머지 필요없는 파일을 삭제합니다."
 ```
 
 ## 14. 터미널에 한글폰트 적용하기
@@ -207,20 +207,20 @@ rm -rf * ; echo "#-- (3-9) 나머지 필요없는 파일을 삭제합니다."
 
 ## 15. Google-Chrome 설치
 ```
-sudo time dnf -y install fedora-workstation-repositories ; echo "#-- (14-1) 3rd Party 저장소 설치"
-sudo time dnf config-manager --set-enabled google-chrome ; echo "#-- (14-2) Google 크롬 리포지토리를 활성화합니다."
+sudo time dnf -y install fedora-workstation-repositories ; echo "#-- (15-1) 3rd Party 저장소 설치"
+sudo time dnf config-manager --set-enabled google-chrome ; echo "#-- (15-2) Google 크롬 리포지토리를 활성화합니다."
 sudo time dnf -y install google-chrome-stable ; echo "#-- (14-3) 구글 크롬을 설치합니다."
 ```
 
 ## 16. 기타 프로그램 추가 설치
 ```
-sudo time dnf -y install make automake autoconf gcc dkms kernel-debug-devel kernel-devel ; echo "#-- (15-1) 커널 컴파일용 프로그램 설치"
-sudo time dnf -y install wget vim-enhanced vim-common mc git p7zip gnome-tweak-tool rclone livecd-tools liveusb-creator ; echo "#-- (15-2) 추가 프로그램을 설치합니다."
-rpm -qa | grep kernel | sort | grep kernel ; echo "#-- (15-3) kernel 버전 확인"
-sudo systemctl enable sshd ; sudo systemctl start sshd ; echo "#-- (15-4) sshd 데몬을 등록하고 실행합니다."
+sudo time dnf -y install make automake autoconf gcc dkms kernel-debug-devel kernel-devel ; echo "#-- (16-1) 커널 컴파일용 프로그램 설치"
+sudo time dnf -y install wget vim-enhanced vim-common mc git p7zip gnome-tweak-tool rclone livecd-tools liveusb-creator webp-pixbuf-loader ; echo "#-- (16-2) 추가 프로그램을 설치합니다."
+rpm -qa | grep kernel | sort | grep kernel ; echo "#-- (16-3) kernel 버전 확인"
+sudo systemctl enable sshd ; sudo systemctl start sshd ; echo "#-- (16-4) sshd 데몬을 등록하고 실행합니다."
 
 #-> https://itlearningcenter.tistory.com/entry/%E3%80%901804-LTS%E3%80%91VIM-Plug-in-%EC%84%A4%EC%B9%98%ED%95%98%EA%B8%B0$
-time git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim ; echo "#-- (15-5) VundleVim 설치"
+time git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim ; echo "#-- (16-5) VundleVim 설치"
 cat <<__EOF__
 #-
 #- .bashrc .vimrc 를 복사하기 위해, "연결하시겠습니까" 에 yes 입력하고, 비번을 입력하세요.
@@ -234,7 +234,7 @@ cat <<__EOF__
 #- Bundle을 설치하기 위해 엔터를 입력하세요.
 #-
 __EOF__
-vim +BundleInstall +qall ; echo "#-- (15-6) Bundle 프로그램을 설치합니다."
+vim +BundleInstall +qall ; echo "#-- (16-6) Bundle 프로그램을 설치합니다."
 ```
 
 ## 17. 요일 표시 및 Caps Lock 키 사용 안 함
@@ -295,9 +295,9 @@ PS1='\e[0;32m\t\e[0m \e[0;33m\D{%a}\e[0;36m \D{%Y-%m-%d} \e[0;35m\u\e[0;33m@\e[0
 ```
 is_group=$(grep vboxsf /etc/group | grep ${USER})
 if [ "x${is_group}" = "x" ]; then
-	grep vboxsf /etc/group ; echo "#-- (20-1) vboxsf 그룹이 user 에게 지정되지 않았습니다."
-	sudo gpasswd -a ${USER} vboxsf ; echo "#-- (20-2) vboxsf 그룹을 추가합니다."
-	grep vboxsf /etc/group ; echo "#-- (20-3) vboxsf 그룹이 user 에게 지정되었습니다."
+	grep vboxsf /etc/group ; echo "#-- (21-1) vboxsf 그룹이 user 에게 지정되지 않았습니다."
+	sudo gpasswd -a ${USER} vboxsf ; echo "#-- (21-2) vboxsf 그룹을 추가합니다."
+	grep vboxsf /etc/group ; echo "#-- (21-3) vboxsf 그룹이 user 에게 지정되었습니다."
 fi
 ```
 3. 작업이 끝났으므로 `[(^) 컴퓨터 끄기 / 로그아웃]` > `[컴퓨터 끄기]` > `[컴퓨터 끄기]` 와 같이 가상 시스템을 끝내고, 다시 부팅한다.
@@ -306,12 +306,12 @@ fi
 	실행하시겠습니까? > `[실행]` 클릭
   ==> 자동으로 시작되지 않으면, 터미널에서 다음과 같이 입력한다.
 ```
-sudo sh /run/media/${USER}/VBox_GAs_*/VBoxLinuxAdditions.run ; echo "sudo /sbin/rcvboxadd quicksetup all #-- (20-4) Do you wish to continue? '[yes or no]' 가 나오면, yes 입력후, 이 명령을 직접 입력해야 합니다."
+sudo sh /run/media/${USER}/VBox_GAs_*/VBoxLinuxAdditions.run ; echo "sudo /sbin/rcvboxadd quicksetup all #-- (21-4) Do you wish to continue? '[yes or no]' 가 나오면, yes 입력후, 이 명령을 직접 입력해야 합니다."
 ```
 5. Do you wish to continue? `[yes or no]` > yes 인 경우
 ```
 sudo /sbin/rcvboxadd quicksetup all
-ls -l /media/sf_Downloads/ ; echo "#-- (20-5) 다운로드 폴더를 보여줍니다."
+ls -l /media/sf_Downloads/ ; echo "#-- (21-5) 다운로드 폴더를 보여줍니다."
 ```
 
 ## 22. 게스트 확장 CD 꺼내기

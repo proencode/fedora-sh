@@ -23,9 +23,32 @@ Kotlin_서버사이드_프로그래밍_실천개발-epub $
 
 
 
+@ Q -> # 붙이고 줄 띄우기 => 0i# ^[A^M^[
+@ W -> 현 위치에서 Copy 까지 역따옴표 => j0i```^M^[/^Copy$^[ddk0C```^M^[
+@ E -> 찾은 글자 앞뒤로 backtick(`) 붙이기 => i`^[/ ^[i`^[/rrqeEWQRQewreq^[
+    마크다운 입력시 vi 커맨드 표시 ; (^{)=Ctrl+[ ; (^M)=Ctrl+M
+    인용구 작성시 ; 본문앞에는 꺽쇠 > 붙이고, 스타일 첨가시 끝줄에 종류별 구분을 표시한다.
+    https://docs.requarks.io/en/editors/markdown > Blockquotes > Stylings >
+    blue= {.is-info} ; green= {.is-success} ; yellow= {.is-warning} ; red= {.is-danger}
+@ Q -> 빈 줄에 블록 시작하기 => 0C```^[^Mk0
+@ W -> 줄 앞에 > 나오면 안되므로 블록 마감하고 > 앞에 - 끼우기 => 0i```^M-^[^M0i```^[0
+@ E -> 줄 아래에 블록 마감하고 한줄 더 띄우기 => 0^Mi```^M^M^[kk
+@ A -> 이 줄을 타이틀로 만들기 => 0i#### ^[^M^[
+
+---------- cut line ----------
 
 
-004 Spring Boot 도입
+> Path: gihyo/kotlin_server_side_programming/02-004
+> Title: 004 Spring Boot 도입
+> Short Description: By 다케하타 나오토 date: 210414 Publisher 기술평론사 전자판 ISBN978-4-297-11859-4
+> Link: https://gihyo.jp/book/2021/978-4-297-11859-4
+> tags: kotlin spring boot
+> Images: / gihyo / kotlin_server_side_programming /
+> create: 2022-09-19 월 15:28:09
+
+
+
+
 
 > 제2부 Kotline 서버사이드 개발
 >
@@ -47,7 +70,7 @@ Spring Framework 주2 라고 하는 프레임워크가 있어, 원래는 DI(Depe
 
 Spring Framework는 5계에서 공식적으로 Kotlin 대응을 시작하고 있습니다. Spring Boot에서 말하면 2계가 Spring Framework 5계에 대응한 버전입니다. 4계 이전의 버전에서도 사용할 수 있습니다만, 프레임워크측의 코어인 부분에서도 Kotlin에서의 이용을 상정해 대응해 주는 것으로, 보다 사용하기 쉬워집니다. 또, 향후의 Kotlin, Spring Framework 각각의 업데이트에 즈음해도, 동작의 보증이 보다 강해져 갈 것으로 기대됩니다.
 
-## Spring Initializr에서 프로젝트의 병아리 만들기
+## Spring Initializr 에서 프로젝트의 병아리 만들기
 
 먼저 Kotlin을 사용한 Spring Boot 프로젝트를 만듭니다. Spring Boot에는 Spring Initializr 주 4 라는 사이트가 준비되어 있으며 여기에서 프로젝트병아리히나모양가타만들 수 있습니다. 다음 항목을 입력하고 [GENERATE] 버튼을 누르면 설정한 항목에 따른 프로젝트의 zip이 다운로드됩니다( 그림 4.1 ).
 
@@ -57,13 +80,14 @@ Spring Framework는 5계에서 공식적으로 Kotlin 대응을 시작하고 있
 - Project Metadata -- 만들 프로젝트의 다양한 설정
 - Dependencies -- 추가할 종속성
 
-그림 4.1 Spring Initializr
+![ 401 Spring Initializr ]( /gihyo/kotlin_server_side_programming_img/401_spring_initializr.webp
+)
 
 이 설명서의 샘플에서는 다음 설정으로 설정했습니다.
 
 - 프로젝트: Gradle
 - 언어: 코틀린
-- Spring Boot: 2.4.3(글쓰기 시 ​​기본값)
+- Spring Boot: 2.4.3(글쓰기 시 기본값)
 - Project Metadata: 모두 기본값
 - 종속성: Spring Web、Thymeleaf
 
@@ -71,19 +95,22 @@ Spring Boot에서는 다른 라이브러리와 프레임워크를 함께 사용�
 
 ## 만든 프로젝트 배포
 
-Spring Initializr에서 demo.zip이라는 파일이 다운로드되었다고 생각합니다. 이 파일을 원하는 곳에 배포하십시오. 그런 다음 확장된 파일을 IntelliJ IDEA에서 엽니다. 메뉴에서 [File] → [Open]을 선택하고 확장 된 demo 디렉토리 바로 아래에있는 build.gradle.kts를 엽니 다 ( 그림 4.2 ).
+Spring Initializr에서 demo.zip이라는 파일이 다운로드되었다고 생각합니다. 이 파일을 원하는 곳에 배포하십시오. 그런 다음 확장된 파일을 IntelliJ IDEA에서 엽니다. 메뉴에서 [File] → [Open]을 선택하고 확장 된 demo 디렉토리 바로 아래에있는 build.gradle.kts를 엽니다 ( 그림 4.2 ).
 
-그림 4.2 File-Open
+![ 402 File Open ]( /gihyo/kotlin_server_side_programming_img/402_file_open.webp
+)
 
 그림 4.3 과 같은 팝업이 열리므로 [Open as Project]를 누르십시오. 이제 IntelliJ IDEA에서 Gradle 프로젝트로 demo가 열립니다.
 
-그림 4.3 Open as Project
+![ 403 Open as Projects ]( /gihyo/kotlin_server_side_programming_img/403_open_as_projects.webp
+)
 
 Project 보기에는 그림 4.4 와 같은 파일이 표시되어 있다고 생각합니다.
 
-그림 4.4 프로젝트의 폴더 및 파일
+![ 404 File of Project ]( /gihyo/kotlin_server_side_programming_img/404_file_of_project.webp
+)
 
-## build.gradle.kts──Kotlin으로 작성된 Gradle 구성 파일 확인
+## build.gradle.kts - Kotlin으로 작성된 Gradle 구성 파일 확인
 
 프로젝트 바로 아래에 있는 build.gradle.kts를 엽니다. 제1장의 「4.환경 구축과 최초의 프로그램의 실행」에서 조금 소개했습니다만, Kotlin으로 기술된 Gradle의 설정 파일입니다. 현재 Spring Initializr에서 Kotlin을 선택하여 만들어진 프로젝트는이 build.gradle.kts가 사용됩니다.
 
@@ -131,13 +158,13 @@ Project 보기에는 그림 4.4 와 같은 파일이 표시되어 있다고 생�
 
 4~7행의 Kotlin, Spring Boot 등의 버전은, 작성시의 지정이나, 그 시점에서의 최신 버전의 상황에 따라 바뀝니다. 주요 사항에 대해 몇 가지 설명합니다.
 
-- plugins──Gradle 작업에 사용할 플러그인
+- plugins - Gradle 작업에 사용할 플러그인
 
 Listing 4.1.1 의 3-8 행의 plugins 블록은 사용할 Gradle 플러그인을 정의한다.
 
 첫째, 다음 두 가지는 Spring Boot 관련 플러그인입니다.
 
-- 아이디("org.springframework.boot")
+- id("org.springframework.boot")
 - id("io.spring.dependency-management")
 
 org.springframework.boot 는 Spring Boot 애플리케이션을 Gradle에서 실행하는 데 필요합니다. 아래에 설명하는 bootRun이라는 부팅 작업을 제공합니다.
@@ -146,7 +173,7 @@ io.spring.dependency-management 는 종속성 관리를 지원하는 플러그�
 
 둘째, 다음 두 가지는 Kotlin 관련 플러그인입니다.
 
-- 코틀린("jvm")
+- kotlin("jvm")
 - kotlin("플러그인.스프링")
 
 id 가 아닌 kotlin 이라는 함수로 묶는 것은 Kotlin DSL의 독자적인 설명입니다. Kotlin 관련 플러그인의 설명을 단순화하기위한 것이며 실제로는 목록 4.1.2 와 비슷한 의미입니다.
@@ -154,12 +181,12 @@ id 가 아닌 kotlin 이라는 함수로 묶는 것은 Kotlin DSL의 독자적�
 목록 4.1.2
 ```
 id("org.jetbrains.kotlin.jvm") version "1.4.30"
-id(""org.jetbrains.kotlin.plugin.spring") version "1.4.30"
+id("org.jetbrains.kotlin.plugin.spring") version "1.4.30"
 ```
 
 Gradle에서 Kotlin 프로젝트를 빌드하고 Kotlin에서 Spring Boot를 사용하는 데 필요합니다.
 
-### dependencies - 애플리케이션에서 사용하는 종속성
+## dependencies - 애플리케이션에서 사용하는 종속성
 
 Listing 4.1.1 의 18-25 행의 dependencies 블록은 애플리케이션에 필요한 종속성을 추가한다. Spring Initializr에서 생성 할 때 두 개의 종속성을 추가했으므로 여기에 반영됩니다. 19, 20행째가 그 해당 개소입니다. 각각 다음과 같은 역할이 됩니다.
 
@@ -203,11 +230,13 @@ INFO 60701 --- [           main] com.example.demo.DemoApplicationKt       : Star
 $ ./gradlew bootRun
 ```
 
-그림 4.5 application-bootRun 선택
+![ 405 Select application bootRun ]( /gihyo/kotlin_server_side_programming_img/405_select_application_bootrun.webp
+)
 
 IntelliJ IDEA에서 시작하면 응용 프로그램이 중지되면 오른쪽 상단에 표시된 사각형 정지 버튼 (시작 중에 빨간색으로 표시됨)을 누릅니다 ( 그림 4.6 ).
 
-그림 4.6 사각형 정지 버튼
+![ 406 stop button ]( /gihyo/kotlin_server_side_programming_img/406_stop_button.webp
+)
 
 명령으로 시작한 경우 Mac에서는 control + C , Windows에서는 Ctrl + C 를 시작하는 터미널에서 입력하면 중지 할 수 있습니다.
 
@@ -249,7 +278,8 @@ ${message} 로 작성하면 HelloController 에서 설정한 message 속성의 �
 
 응용 프로그램을 다시 시작하고 http://localhost:8080에 액세스하면 그림 4.7 의 화면이 표시됩니다.
 
-그림 4.7 응용 프로그램 시작
+![ 407 Hello World ]( /gihyo/kotlin_server_side_programming_img/407_hello_world.webp
+)
 
 라우팅에서 설정한 루트 경로에 액세스하고 message 속성에 설정한 Hello World! 가 표시됩니다. 이제 Spring Boot 애플리케이션의 동작을 확인할 수 있었습니다.
 
@@ -391,7 +421,7 @@ class Executor(private val greeter: Greeter) {
 
 또한 Spring Framework에서 DI 한 객체는 싱글 톤이됩니다. 응용 프로그램이 시작될 때 생성되며 DI 컨테이너라는 영역에 등록되어 사용됩니다. 처리가 실행될 때마다 인스턴스가 생성되는 일이 없어져, 메모리 효율의 면 등에서도 유효하게 됩니다.
 
-#### DI 대상 클래스 만들기
+## DI 대상 클래스 만들기
 
 우선, DI의 대상이 되는 인터페이스, 클래스를 작성합니다. Listing 4.3.3 의 인터페이스와 그것을 구현한 Listing 4.3.4 의 클래스를 생성한다.
 

@@ -6,7 +6,34 @@
 0i#### ^[^M^[ ------- @ A
 
 
-제3장 Java와 Kotlin 의 상호 호환성이 기존 자산을 활용
+@ Q -> # 붙이고 줄 띄우기 => 0i# ^[A^M^[
+@ W -> 현 위치에서 Copy 까지 역따옴표 => j0i```^M^[/^Copy$^[ddk0C```^M^[
+@ E -> 찾은 글자 앞뒤로 backtick(`) 붙이기 => i`^[/ ^[i`^[/rrqeEWQRQewreq^[
+    마크다운 입력시 vi 커맨드 표시 ; (^{)=Ctrl+[ ; (^M)=Ctrl+M
+    인용구 작성시 ; 본문앞에는 꺽쇠 > 붙이고, 스타일 첨가시 끝줄에 종류별 구분을 표시한다.
+    https://docs.requarks.io/en/editors/markdown > Blockquotes > Stylings >
+    blue= {.is-info} ; green= {.is-success} ; yellow= {.is-warning} ; red= {.is-danger}
+@ Q -> 빈 줄에 블록 시작하기 => 0C```^[^Mk0
+@ W -> 줄 앞에 > 나오면 안되므로 블록 마감하고 > 앞에 - 끼우기 => 0i```^M-^[^M0i```^[0
+@ E -> 줄 아래에 블록 마감하고 한줄 더 띄우기 => 0^Mi```^M^M^[kk
+@ A -> 이 줄을 타이틀로 만들기 => 0i#### ^[^M^[
+
+---------- cut line ----------
+
+
+> Path: gihyo/kotlin_server_side_programming/01-003_003_java_와_kotlin_의_상호_호환성
+> Title: 01-003 003 Java 와 Kotlin 의 상호 호환성
+> Short Description: By 다케하타 나오토 date: 210414 Publisher 기술평론사 전자판 ISBN978-4-297-11859-4
+> Link: https://gihyo.jp/book/2021/978-4-297-11859-4
+> tags: kotlin spring boot
+> Images: / gihyo / kotlin_server_side_programming /
+> create: 2022-09-19 월 15:03:35
+
+
+========== start ==========
+
+
+> 제3장 Java와 Kotlin 의 상호 호환성이 기존 자산을 활용
 
 1장의 시작 부분에서도 설명했지만 Kotlin은 Java와 상호 호환되는 언어입니다. Kotlin에서 Java, Java에서 Kotlin을 호출할 수 있으며, 두 언어를 동일한 프로젝트에서 공존할 수 있습니다. 물론 Kotlin만으로 구현하는 것도 가능합니다만, Java를 사용하고 있던 조직이라면 오랫동안 개발해 온 자산을 활용할 수 있다는 것은 큰 이점입니다. 이 장에서는 주로 Kotlin에서 Java를 사용하는 방법을 중심으로 Java와의 상호 이용에 대해 설명합니다.
 
@@ -14,11 +41,13 @@
 
 먼저 Kotlin에서 Java 코드를 실행해 보겠습니다. 1장에서 작성한 프로젝트에서 src/main 아래에 java라는 디렉토리를 작성하십시오. src/main 디렉토리를 마우스 오른쪽 버튼으로 클릭하고 [New] → [Directory]를 선택하고 이름을 입력하여 만들 수 있습니다. 그리고 src/main/java 아래에 Java 클래스를 만듭니다. Java 파일은 IntelliJ IDEA에서 대상 디렉토리 (여기서는 src / main / java)를 마우스 오른쪽 버튼으로 클릭하고 [New] → [Java Class]를 선택하여 만들 수 있습니다 ( 그림 3.1 ).
 
-그림 3.1 Java 클래스 만들기
+![ 301 new Java Class ]( /gihyo/kotlin_server_side_programming_img/301_new_java_class.webp
+)
 
 원하는 이름 (여기서 HelloByJava)을 입력하면 ( 그림 3.2 ) 같은 이름의 클래스가있는 파일이 만들어집니다. 이 장의 모든 코드는 Java의 경우 src / main / java, Kotlin의 경우 src / main / kotlin 아래에 작성됩니다.
 
-그림 3.2 클래스 이름 지정
+![ 302 input class name ]( /gihyo/kotlin_server_side_programming_img/302_input_class_name.webp
+)
 
 그리고 Listing 3.1.1 의 코드를 작성한다.
 
@@ -366,11 +395,15 @@ public class Hello {
 
 그리고 그림 3.3 과 같이 대상 파일을 마우스 오른쪽 버튼으로 클릭하고 "Convert Java File to Kotlin File"을 선택하면 Kotlin 코드로 변환이 수행됩니다.
 
-그림 3.3 대상파일을 Kotlin 코드로 변환
+![ 303 Convert Java File to Kotlin File ]( /gihyo/kotlin_server_side_programming_img/303_convert_java_file_to_kotlin_file.webp
+)
+
 
 그림 3.4 와 같이 Hello가 Kotlin이되어 있음을 알 수 있습니다 (파일 이름 옆의 아이콘에 Kotlin 로고가있는 것은 Kotlin의 파일입니다).
 
-그림 3.4 아이콘이 Kotlin 으로 표시됨
+![ 304 Kotlin Icon is Kotlin file ]( /gihyo/kotlin_server_side_programming_img/304_kotlin_icon_is_kotlin_file.webp
+)
+
 
 IntelliJ IDEA에서 확장자가 숨겨져 있기 때문에 이해하기 어렵지만 Mac의 Finder, Windows 탐색기 또는 터미널 응용 프로그램에서 보면 확장자가 .java에서 .kt로 변경되는 것을 볼 수 있습니다. 합니다. 열면 목록 3.5.2 와 같은 코드입니다.
 
@@ -426,4 +459,5 @@ class UserJava {
 이 정도의 심플한 코드라면 어느 정도 정확하게 변환해 줍니다만, 복잡한 코드가 되어 오면 잘못되어 컴파일 에러가 남은 코드가 되는 경우도 있습니다.
 
 그러나, 예를 들면 Java의 코드를 Kotlin에 이행하고 싶을 때에 일단 변환해 일부 에러가 나오는 개소만 수정하면, 0으로부터 재작성하는 것보다는 상당히 편해집니다. 또, Java로 구현하고 있는 샘플을 우선 변환해 Kotlin의 구현을 보거나, 참고로 사용할 수도 있습니다. Java와의 상호 운용을 보조해 주는 기능으로서는, 특히 Kotlin에 익숙하지 않은 최초의 가운데는, 편리한 것이 아닐까 생각합니다.
+
 

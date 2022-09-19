@@ -1,4 +1,3 @@
-5,$s/　/ /g
 
 이 장에서는 Kotlin의 기초에 대해 설명합니다. 언어의 생생함이나 서버 측에서의 이용 의의, 특징적인 기능이나 기본적인 구문 등, 우선은 Kotlin이라고 하는 언어 그 자체에 대해 알 수 있으면 좋겠습니다.
 
@@ -164,7 +163,8 @@ fun printMessageLength(message: String?) {
 
 공식 사이트 주 6 에서 최신 버전의 dmg 파일을 다운로드합니다. 그림 1.1 의 화면에서 [다운로드] 버튼을 누릅니다. 무료 버전인 '커뮤니티'로 문제 없습니다.
 
-그림 1.1 IntelliJ IDEA 다운로드
+![ 01-001 IntelliJ IDEA Download ]![ 01-001_intellij_idea_download.webp ]( /gihyo/kotlin_server_side_programming_img/01-001_intellij_idea_download.webp )
+
 
 다운로드한 dmg 파일을 실행하여 원하는 위치에 설치합니다.
 
@@ -172,27 +172,31 @@ fun printMessageLength(message: String?) {
 
 공식 사이트 주 7 에서 최신 버전의 exe 파일을 다운로드합니다. 그림 1.2 의 화면에서 [다운로드] 버튼을 누릅니다. 무료 버전인 '커뮤니티'로 문제 없습니다.
 
-그림 1.2 IntelliJ IDEA 다운로드
+![ 01-002 select community version ]( /gihyo/kotlin_server_side_programming_img/01-002_select_community_version.webp )
 
 다운로드한 exe 파일을 실행합니다. 몇 가지 설정이 표시되지만 모두 기본 상태에서 [Next]로 진행하여 문제가 없습니다 ( 그림 1.3 ~ 그림 1.5 ).
 
-그림 1.3 IntelliJ IDEA Community Edtion Setup 환영
+![ 01-003 start Setup.webp ]( /gihyo/kotlin_server_side_programming_img/01-003_start_setup.webp
+)
 
-그림 1.4 IntelliJ IDEA 설치 장소 지정
+![ 01-004 Destination Folder.webp ]( /gihyo/kotlin_server_side_programming_img/01-004_destination_folder.webp
+)
 
-그림 1.5 IntelliJ IDEA 설치 옵션
+![ 01-005 Configure.webp ]( /gihyo/kotlin_server_side_programming_img/01-005_configure.webp
+)
 
-그림 1.6 의 화면에서 [Install]을 눌러 설치를 시작합니다.
-
-그림 1.6 IntelliJ IDEA 시작 메뉴 선택
+![ 01-006 start Install.webp ]( /gihyo/kotlin_server_side_programming_img/01-006_start_install.webp
+)
 
 설치 중에는 그림 1.7 의 화면이 표시되므로 조금 기다립니다.
 
-그림 1.7 IntelliJ IDEA 설치하고 있습니다
+![ 01-007 Extract.webp ]( /gihyo/kotlin_server_side_programming_img/01-007_extract.webp
+)
 
 완료되면 그림 1.8 의 화면이 표시되므로 "Run IntelliJ IDEA Community Edition"을 체크하고 [Finish]를 누르면 설치한 IntelliJ IDEA가 시작됩니다.
 
-그림 1.8 IntelliJ IDEA 설치 완료
+![ 01-008 to Finish.webp ]( /gihyo/kotlin_server_side_programming_img/01-008_to_finish.webp
+)
 
 - IntelliJ IDEA 시작
 
@@ -200,19 +204,24 @@ fun printMessageLength(message: String?) {
 
 설치한 IntelliJ IDEA CE.app를 시작합니다. 테마나 플러그인 등 일부 설정 화면( 그림 1.9~그림 1.12 )이 표시되므로 필요에 따라 설정해 주십시오. Kotlin은 기본 상태로 사용할 수 있으므로 모두 그대로 상태로 진행해도 문제 없습니다.
 
-그림 1.9 IntelliJ IDEA UI 테마 지정
+![ 01-009 Set UI theme.webp ]( /gihyo/kotlin_server_side_programming_img/01-009_set_ui_theme.webp
+)
 
-그림 1.10 IntelliJ IDEA 런처 스크립트 생성
+![ 01-010 Create Launcher Scripts.webp ]( /gihyo/kotlin_server_side_programming_img/01-010_create_launcher_scripts.webp
+)
 
-그림 1.11 IntelliJ IDEA 태스크에 맞추어 설정
+![ 01-011 Tune IDEA to your tasks.webp ]( /gihyo/kotlin_server_side_programming_img/01-011_tune_idea_to_your_tasks.webp
+)
 
-그림 1.12 IntelliJ IDEA 플러그인 다운로드
+![ 01-012 Download featured plugins.webp ]( /gihyo/kotlin_server_side_programming_img/01-012_download_featured_plugins.webp
+)
 
 ## Kotlin 프로젝트 만들기
 
 모든 설정이 끝나면 그림 1.13 의 화면이 표시되므로 New Project를 선택하여 프로젝트를 만듭니다.
 
-그림 1.13 IntelliJ IDEA 시작 화면
+![ 01-013 start New Project.webp ]( /gihyo/kotlin_server_side_programming_img/01-013_start_new_project.webp
+)
 
 그림 1.14 의 화면에서 왼쪽 프로젝트 유형 목록에서 "Kotlin"을 선택하고 다음 설정을 지정하십시오.
 
@@ -222,32 +231,39 @@ fun printMessageLength(message: String?) {
 - 빌드 시스템: Gradle Kotlin
 - 프로젝트 JDK: corretto-11
 
-그림 1.14 IntelliJ IDEA 새 프로젝트 지정
+![ 01-014 select Kotlin.webp ]( /gihyo/kotlin_server_side_programming_img/01-014_select_kotlin.webp
+)
 
 Kotlin에서는 개발 시 JDK(Java Development Kit)가 필요하며 이 프로젝트에서 사용하는 버전을 Project JDK에서 지정합니다. 이 책에서는 corretto-11(Amazon Corretto 버전 11 참고 8 참조)을 사용합니다. 만약 표시되지 않는 경우는 그림 1.15 와 같이 「Download JDK...」를 선택하면 그림 1.16 의 다이얼로그가 표시되므로, 아래와 같이 선택해 주세요.
 
 - 버전: 11
 - Vendor: Amazon Corretto(그림 1.16에 표시된 내용은 작성 시점의 최신 버전)
 
-그림 1.15 IntelliJ IDEA JDK 다운로드
+![ 01-015 Download JDK.webp ]( /gihyo/kotlin_server_side_programming_img/01-015_download_jdk.webp
+)
 
-그림 1.16 IntelliJ IDEA JDK 선택 다이얼로그
+![ 01-016 select and Download.webp ]( /gihyo/kotlin_server_side_programming_img/01-016_select_and_download.webp
+)
 
 [Next]를 눌러 다음으로 진행하면 그림 1.17 과 같은 화면이 표시되므로 [Finish]를 눌러 프로젝트 작성을 완료합니다.
 
-그림 1.17 IntelliJ IDEA 프로젝트 작성 완료
+![ 01-017 Finish to Project ok.webp ]( /gihyo/kotlin_server_side_programming_img/01-017_finish_to_project_ok.webp
+)
 
 ## 첫 프로그램 실행
 
 프로젝트가 생성되면 그림 1.18 과 같이 왼쪽에 프로젝트 뷰가 표시됩니다. 열 때 표시되지 않으면 화면 왼쪽의 "1:Project"를 누르십시오.
 
-그림 1.18 IntelliJ IDEA 프로젝트 뷰
+![ 01-018 Project View.webp ]( /gihyo/kotlin_server_side_programming_img/01-018_project_view.webp
+)
 
 그런 다음 src / main / kotlin 디렉토리를 마우스 오른쪽 버튼으로 클릭하고 [New] → [Kotlin Class / File]을 선택하고 ( 그림 1.19 ), 그림 1.20 의 대화 상자에 임의의 이름 (그림에서는 Example)을 입력하여 파일 작성하십시오. Class, Interface 등도 선택할 수 있습니다만, 여기에서는 「File」을 선택합니다. Kotlin 파일은 기본적으로이 src / main / kotlin 아래에 생성됩니다.
 
-그림 1.19 IntelliJ IDEA Kotlin File 선택
+![ 01-019 New Kortlin Files.webp ]( /gihyo/kotlin_server_side_programming_img/01-019_new_kortlin_files.webp
+)
 
-그림 1.20 IntelliJ IDEA 파일 이름 입력
+![ 01-020 select File.webp ]( /gihyo/kotlin_server_side_programming_img/01-020_select_file.webp
+)
 
 작성한 파일에 목록 1.4.1 의 코드를 작성하십시오.
 
@@ -259,7 +275,8 @@ fun main() {
 ```
 그리고 IntelliJ IDEA로 1행째의 왼쪽에 표시되어 있는 재생 버튼의 아이콘을 누르고, 「Run 'ExampleKt'」를 선택하면 main 함수가 실행됩니다( 그림 1.21 ).
 
-그림 1.21 IntelliJ IDEA 파일을 실행하기
+![ 01-021 run ExampleKt.webp ]( /gihyo/kotlin_server_side_programming_img/01-021_run_examplekt.webp
+)
 
 성공적으로 실행되면 화면 하단의 Run 보기에 "Hello Kotlin."이 표시됩니다. 이것으로 Kotlin 실행 환경의 준비가 완료됩니다.
 
@@ -376,9 +393,9 @@ import io.ktor.application.call
 
 IntelliJ IDEA에서는 import가 필요한 코드의 해당 부분이 컴파일 에러로 적자로 표시되고 커서를 맞추면 그림 1.22 와 같이 "Unresolved reference" 라는 에러가 표시됩니다. 여기서 Mac의 경우 [`option'] + [`Enter'] , Windows의 경우 [`Alt'] + [`Enter'] 를 누르면 그림 1.23 과 같이 솔루션의 액션 후보가 나오므로 "Import"를 선택하면 필요한 import 문 추가 해줍니다.
 
-그림 1.22 IntelliJ IDEA 해결되지 않은 참조문 있음
+![ 01-022 Unresolved 01-023 Import.webp ]( /gihyo/kotlin_server_side_programming_img/01-022_unresolved_01-023_import.webp
+)
 
-그림 1.23 IntelliJ IDEA 실행 선택
 여기에서는 Example 클래스의 import 문을 추가하고 있습니다.
 
 일부 이 기능만으로는 보완할 수 없는 것이 있어, 그 경우는 각 샘플 코드안에 import문도 포함해 기재해, 해설 중에서도 그 취지를 기술하고 있습니다.
@@ -899,39 +916,39 @@ Unresolved reference: add
 
 
 
-참고 1  다른 JVM 언어로는 Scala, Groovy 등이 있습니다.
+참고 1　 다른 JVM 언어로는 Scala, Groovy 등이 있습니다.
 
 ( 본문으로 돌아가기 )
 
-주 2  Dmitry Jemerov, Svetlana Isakova, 나가사와 타로, 후지와라 세이, 야마모토 준헤이, yy_yank 감역, 마이 네비게이션 출판, 2017년
+주 2　 Dmitry Jemerov, Svetlana Isakova, 나가사와 타로, 후지와라 세이, 야마모토 준헤이, yy_yank 감역, 마이 네비게이션 출판, 2017년
 
 ( 본문으로 돌아가기 )
 
-注3   https://kotlinlang.org/docs/native-overview.html
+注3 　 https://kotlinlang.org/docs/native-overview.html
 
 ( 본문으로 돌아가기 )
 
-주 4   https://kotlinlang.org/docs/js-overview.html
+주 4 　 https://kotlinlang.org/docs/js-overview.html
 
 ( 본문으로 돌아가기 )
 
-注5   https://kotlinlang.org/docs/multiplatform.html
+注5 　 https://kotlinlang.org/docs/multiplatform.html
 
 ( 본문으로 돌아가기 )
 
-注6   https://www.jetbrains.com/ja-jp/idea/download/#section=mac
+注6 　 https://www.jetbrains.com/ja-jp/idea/download/#section=mac
 
 ( 본문으로 돌아가기 )
 
-注7   https://www.jetbrains.com/ja-jp/idea/download/#section=windows
+注7 　 https://www.jetbrains.com/ja-jp/idea/download/#section=windows
 
 ( 본문으로 돌아가기 )
 
-注8   https://aws.amazon.com/jp/corretto/
+注8 　 https://aws.amazon.com/jp/corretto/
 
 ( 본문으로 돌아가기 )
 
-注9   https://gradle.org/
+注9 　 https://gradle.org/
 
 ( 본문으로 돌아가기 )
 

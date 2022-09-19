@@ -358,7 +358,7 @@ ${cReset}
 # ${ChapterSeq} ${ChapterName}
 
 
-![ ${image_jemok} ]( /${chulpansa}/${cheak_jemok}_img/${img_name}
+![ ${image_jemok} ]( /${chulpansa}/${cheak_jemok}_img/${img_name}.webp
 )
 ${cBlue}
 / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / /

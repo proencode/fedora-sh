@@ -3,8 +3,8 @@
 0C```^[^Mk0 ------- @ Q
 0i```^M-^[^M0i```^[0 ------- @ W
 0^Mi```^M^M^[kk ------- @ E
-0i#### ^[$a^M^[ ------- @ A
-0i##### ^[$a^M^[ ------- @ S
+0i### ^[$a^M^[ ------- @ A
+0i#### ^[$a^M^[ ------- @ S
 
 
 30,$s/Kotlin入門/Kotlin입문/g
@@ -21,21 +21,25 @@
 30,$s/注/주/g
 
 
+006 Spring Boot 와 MyBatis
 
-## 제6장　Spring Boot와 MyBatis에서 도서 관리 시스템 웹 애플리케이션 개발
+
+
+
+# 제6장　Spring Boot와 MyBatis에서 도서 관리 시스템 웹 애플리케이션 개발
 
 제 5 장까지, 서버 측 Kotlin에서 개발에 필요한 주요 기술 요소에 대한 설명이 끝났습니다. 이 장에서는 지금까지 설명한 요소를 사용하여 실용적인 응용 프로그램을 만듭니다. 제6장에서 Spring Boot와 MyBatis를 사용한 웹 애플리케이션을 작성하고, 제7장에서 인증·인가, 제8장에서 단위 테스트의 구현을 하고, 보다 실제의 제품과 같은 형태에 접근해 갑니다.
 
 그 베이스가 되는 부분을 작성하는 것이 본장입니다. 우선은 여기까지의 장에서 얻은 지식을 사용해 실천적인 아키텍쳐의 어플리케이션을 작성해, 한층 더 이해를 깊게 해 주셨으면 합니다.
 
 
-### 1　책 관리 시스템 사양
+## 1　책 관리 시스템 사양
 
 이 장에서는 서버 측 Kotlin의 실용적인 구현 방법을 배우기 위해 책 관리 시스템을 사용하는 샘플 응용 프로그램을 작성합니다. 이는 조직에서 소유한 도서 정보와 대출 및 반환 상태를 관리하는 애플리케이션의 이미지입니다.
 
 먼저 시스템의 기능과 사양을 설명합니다.
 
-#### 구현할 기능
+### 구현할 기능
 
 기능으로서, 이하의 것을 구현해 갑니다.
 
@@ -49,26 +53,26 @@
 - 대출
 - 반환
 
-##### 로그인, 세션 관리, 권한 관리
+#### 로그인, 세션 관리, 권한 관리
 
 사용하는 사용자의 로그인, 세션 관리 및 권한 관리 기능입니다. ID, 비밀번호를 입력한 로그인과 로그인한 사용자의 권한에 따라 기능 제한을 구현합니다.
 
-##### 책의 일람 취득, 상세 취득
+#### 책의 일람 취득, 상세 취득
 
 책의 일람, 상세 정보를 취득하는 기능입니다. 리스트에서 모든 책의 리스트를 표시하고, 책명을 선택하면 상세 표시의 화면으로 천이합니다. 이것은 모든 사용자가 수행할 수 있는 기능입니다.
 
-##### 도서 정보 등록, 업데이트, 삭제
+#### 도서 정보 등록, 업데이트, 삭제
 
 서적 정보를 등록, 갱신, 삭제하는 기능입니다. 여기는 관리자 권한의 사용자만 실행할 수 있는 기능입니다.
 
-##### 대출, 반환
+#### 대출, 반환
 책의 대출, 반환을 하는 기능입니다. 책에끈끈생성하는 대출 정보의 등록, 삭제를 실행합니다. 이것은 모든 사용자가 수행할 수 있는 기능입니다.
 
-### 2　애플리케이션 구성
+## 2　애플리케이션 구성
 
 다음으로 이 애플리케이션에서 사용하는 기술 스택, 아키텍처 등에 대해 설명합니다.
 
-#### 사용하는 기술 스택
+### 사용하는 기술 스택
 
 주요 기술 스택으로 다음을 채용하고 있습니다.
 
@@ -81,7 +85,7 @@
 
 여기까지 소개해 온 Kotlin, Spring Boot, MyBatis를 중심으로 한 구현입니다. 데이터베이스는 Docker 이미지에서 생성하고 시작한 MySQL을 사용합니다. 또한 7장에서 작성하는 인증 처리에서 사용하기 때문에 Redis도 마찬가지로 Docker 이미지를 사용하여 작성, 기동합니다.
 
-#### 양파 아키텍처를 기반으로 한 설계
+### 양파 아키텍처를 기반으로 한 설계
 
 이 응용 프로그램은 양파 아키텍처를 기반으로 설계되었습니다.
 
@@ -89,10 +93,8 @@
 
 그림 6.1 (출처: Jeffrey Palermo 『The Onion Architecture : part 1』 July 29, 2008, https://jeffreypalermo.com/2008/07/the-onion-architecture-part-1/)
 
-그림 6.1 양파 아키텍쳐.jpeg
-
- Kotlin_서버사이드_프로그래밍_실천개발-epub_img
-
+![ 601 Onion Architecture ]( /gihyo/kotlin_server_side_programming_img/601_onion_architecture.webp
+)
 （https://jeffreypalermo.com/2008/07/the-onion-architecture-part-1/）
 
 그림 6.1 의 화살표로 표시된 것처럼 그림의 외부 계층에서 내부 계층에만 의존하는 형태가 되며 역방향 및 가로 계층(예: User Interface에서 Infrastructure)에 대한 액세스를 금지합니다.
@@ -105,16 +107,9 @@
 
 각 계층 구조의 개요는 표 6.1 과 같습니다.
 
-표 6.1
+![ Table 601 Layer ]( /gihyo/kotlin_server_side_programming_img/table_601_layer.webp
+)
 
-| 계층 | 개요 |
-|:-----|:-----|
-| User Interface | 프레젠테이션 |
-| Infrastructure | I/O 기술스택 (데이터베이스 등) |
-| Application Service | 각 기능별 처리 (유즈 케이스) |
-| Domain Service | 도메인 비즈니스 로직 |
-| Domaim Model | 도메인 모델 |
-| Tests | 테스트 코드 |
 
 자세한 것은 이 아키텍처를 제창한 Jeffrey Palermo씨의 블로그 주1 등을 참고해 주세요.
 
@@ -135,7 +130,7 @@
 
 각 계층의 관계나, 각각의 클래스의 역할등은 구현의 설명을 하면서 보충해 갑니다.
 
-#### 프런트 엔드 기술에 Vue.js 채택
+### 프런트 엔드 기술에 Vue.js 채택
 
 프런트 엔드 기술에는 Vue.js를 사용하여 SPA(Single Page Application)를 실현하고 있습니다. 서버 측 Kotlin의 이야기에서 벗어나기 때문에, 후술하는 환경 구축의 부분 이외는 설명을 생략합니다. 본서에서 공개하는 샘플 프로젝트상에는 한가지의 구현이 들어가 있으므로, 화면과의 연결에는 그쪽을 이용해 주세요. 샘플 프로젝트를 시작하는 방법은 나중에 설명합니다.
 
@@ -149,11 +144,11 @@ Vue.js 서버는 8081 포트이고 Spring Boot 서버는 8080 포트에서 시�
 
 나중에 프런트 엔드 샘플 코드로 시작하는 것은이 Vue.js 서버의 일부입니다.
 
-### 3　프로젝트 환경 구축
+## 3　프로젝트 환경 구축
 
 응용 프로그램 프로젝트를 만듭니다. 이 섹션에서는 Spring Boot 응용 프로그램을 만들고 종속성을 추가하고 다양한 코드를 생성합니다.
 
-#### 애플리케이션 프로젝트 생성
+### 애플리케이션 프로젝트 생성
 
 먼저 Spring Boot 응용 프로그램의 프로젝트를 만듭니다. 지금까지 소개 한 것과 마찬가지로 Spring Initializr를 사용합니다 ( 그림 6.3 ).
 
@@ -178,7 +173,7 @@ Vue.js 서버는 8081 포트이고 Spring Boot 서버는 8080 포트에서 시�
 
 주로 말하면 Package name에서 프로젝트의 베이스가 되는 패키지명을 지정하고 있어, main 함수가 들어간 클래스 파일(○○Application.kt)도 이 패키지 아래에 배치됩니다. 또, Java는 사용하는 JDK의 버젼으로, 11(글쓰기 시점에서의 안정판)을 지정하고 있습니다.
 
-#### build.gradle.kts에 종속성 추가
+### build.gradle.kts에 종속성 추가
 
 방금 만든 프로젝트를 다운로드하고 확장하고 Gradle에 몇 가지 종속성을 추가합니다. 추가한 build.gradle.kts 전체 코드는 Listing 6.3.1 이다.
 
@@ -236,7 +231,7 @@ mybatisGenerator {
 
 기본적으로 제4장, 제5장에서도 설명한 내용입니다만, 주된 내용을 간단하게 해설합니다.
 
-##### plugins - Gradle 작업에 사용할 플러그인
+#### plugins - Gradle 작업에 사용할 플러그인
 
 플러그인 블록에서 필요한 플러그인을 추가합니다.
 
@@ -253,7 +248,7 @@ plugins {
 
 4장에서 설명한 Spring Boot 애플리케이션에 필요한 두 개의 플러그인과 Kotlin 관련 플러그인 2개, 5장에서 설명한 MyBatisGenerator 플러그인입니다. com.arenagod.gradle.MybatisGenerator 는 Spring Initializr에서 생성한 프로젝트의 파일에 추가해야 합니다.
 
-##### dependencies - 애플리케이션에서 사용하는 종속성
+#### dependencies - 애플리케이션에서 사용하는 종속성
 
 dependencies 블록의 내용입니다. 먼저 Listing 6.3.3 이 4장에서 설명한 Kotlin, Spring Boot와 관련된 종속성이다.
 
@@ -279,7 +274,7 @@ mybatisGenerator("org.mybatis.generator:mybatis-generator-core:1.4.0") // 추가
 
 mybatis-dynamic-sql , mysql-connector-java , mybatis-generator-core 를 추가하고 있습니다. 각각 MyBatis Dynamic SQL과 MySQL Connector/J, MyBatis Generator를 사용하기 위해 필요합니다.
 
-##### mybatisGenerator - MyBatis Generator에서 코드 생성하는 태스크의 설정
+#### mybatisGenerator - MyBatis Generator에서 코드 생성하는 태스크의 설정
 
 마지막으로 mybatisGenerator 블록에서 MyBatis Generator에서 코드 생성 태스크에 관한 설정을하고 있습니다 ( 목록 6.3.5 ).
 
@@ -294,11 +289,11 @@ mybatisGenerator {
 
 5장에서 설명한 것처럼 generatorConfig.xml이라는 파일을 구성 파일로 지정합니다.
 
-#### MySQL 환경 구축
+### MySQL 환경 구축
 
 다음으로, MySQL의 환경 구축을 합니다. MySQL의 기동, 데이타베이스의 작성, 테스트 데이터의 투입을 해 개발에 필요한 데이타베이스 관련의 준비를 합니다.
 
-##### Docker로 시작한 MySQL 지속성
+#### Docker로 시작한 MySQL 지속성
 
 지금까지도 Docker 이미지를 사용하여 시작한 MySQL을 사용해 왔습니다만, Docker의 컨테이너를 재기동하면 데이터가 사라져 버렸습니다. 그래서 이 장에서는 데이터의 지속성을 한 컨테이너를 사용하여 개발해 나갈 것입니다.
 
@@ -332,7 +327,7 @@ $ docker-compose up -d
 
 이제 MySQL 컨테이너가 시작됩니다. 이 컨테이너를 삭제하고 다시 시작해도 데이터를 남길 수 있습니다. 이 문서의 본문에서 벗어나므로 파일에 대한 자세한 설명은 생략하지만 volumes 에서 지정한 경로의 디렉토리에 컨테이너에서 만든 데이터가 저장됩니다. 이 예에서는 docker-compose.yml이 있는 디렉토리 아래에 db라는 디렉토리가 만들어지고 데이터를 저장하기 위한 파일이 작성됩니다.
 
-##### 응용 프로그램에서 사용할 데이터베이스 만들기
+#### 응용 프로그램에서 사용할 데이터베이스 만들기
 
 기동한 MySQL에, 어플리케이션에 필요한 데이타베이스와 테스트 데이터를 작성해 갑니다.
 
@@ -395,7 +390,7 @@ insert into user values(1, 'admin@test.com', '$2a$10$.kLvZAQfzNvFFlXzaQmwdeUoq2y
 
 user 테이블에 패스워드로서 등록하고 있는 값은, bcrypt 의 알고리즘으로 해시화된 것이 되어 있습니다. 제 7 장의 로그인 기능의 구현에 대해 설명합니다만, 시큐리티상의 관점에서 패스워드는 모두 해시화된 형태로 취급합니다. 테스트 데이터를 추가하는 경우 마찬가지로 해시된 암호를 설정해야 합니다. 작성 방법은 샘플 프로젝트 주 2 의 README에 기재되어 있으므로 그쪽을 참조하십시오.
 
-#### MyBatis의 코드 생성
+### MyBatis의 코드 생성
 
 작성한 테이블에 대해 MyBatis Generator에서 코드 생성을 합니다. 앞의 build.gradle.kts에서 설정했듯이 /src/main/resources 아래에 generatorConfig.xml이라는 구성 파일을 만듭니다 ( Listing 6.3.13 ).
 
@@ -488,7 +483,7 @@ user 테이블의 컬럼 role_type 에 첨부하는 프로퍼티 roleType 가, R
 
 테이블 이름이 있는 xxxxDynamicSqlSupport.kt, xxxxMapper.kt, xxxxMapperExtensions.kt, xxxxRecord.kt입니다. 각 역할은 5장에서 설명한 것과 동일합니다.
 
-#### application.yml에서 데이터베이스 및 Jackson 설정
+### application.yml에서 데이터베이스 및 Jackson 설정
 
 src/main/resources 아래에 또 하나, 이쪽도 제5장의 「5. Spring Boot에서 MyBatis 사용하기」에서 해설한, application.yml를 작성해 데이타베이스에의 접속 정보등을 기술합니다 ( Listing 6.3.17 ).
 
@@ -506,7 +501,7 @@ spring:
 
 datasource 에서 데이터베이스 연결 정보를 설정하는 것 외에도 jackson 에서 Jackson에 대한 설정을 포함합니다. property-naming-strategy 에서 변환 소스, 변환 대상 JSON 속성의 명명 규칙을 지정합니다. 여기에서는 SNAKE_CASE 를 지정하고 있기 때문에, 요청, 응답으로 취급하는 JSON의 프로퍼티은 스네이크 케이스가 됩니다. 예를 들어 Kotlin의 코드 측면에서 bookId 라는 이름으로 정의한 경우 JSON에서 book_id 로 처리됩니다. 또한 여기에서도 5장의 설명과 마찬가지로 application.properties가 작성된 경우 삭제하십시오.
 
-#### 프런트 엔드 환경 구축
+### 프런트 엔드 환경 구축
 
 프런트 엔드 Vue.js 환경을 구축합니다. 먼저 다음 리포지토리를 Clone하고 터미널에서 디렉토리 아래 part2 / front / book-manager로 이동하십시오 ( 명령 6.3.18 ).
 
@@ -544,11 +539,11 @@ Figure_6.4_frontend_vue_start.jpeg
 
 그러면 이후 각 API의 구현을 소개합니다.
 
-### 4　검색계 기능(일람 취득, 상세 취득)의 API 구현
+## 4　검색계 기능(일람 취득, 상세 취득)의 API 구현
 
 여기에서는 검색계 기능의 API를 구현해 갑니다. 검색 시스템 기능은 모든 권한의 사용자가 실행할 수 있습니다.
 
-#### 목록 취득 기능 구현
+### 목록 취득 기능 구현
 
 우선은 일람 취득 기능의 구현입니다. 기능의 구현과 아울러, 이 어플리케이션의 아키텍쳐에서의 구현 방법에 대해서도 소개해 갑니다.
 
@@ -561,7 +556,7 @@ Figure_6.4_frontend_vue_start.jpeg
 
 Repository 인터페이스, RepositoryImpl 클래스는 데이터베이스 관련 처리, Service 클래스는 비즈니스 로직, Controller 클래스는 라우팅이나 파라미터의 전달 등의 역할을 담당합니다. 각각의 세세한 역할이나 의미는 후술의 구현에 해설합니다.
 
-##### 화면 이미지
+#### 화면 이미지
 
 목록 획득 API를 사용하는 화면 이미지는 그림 6.5 입니다.
 
@@ -580,7 +575,7 @@ Figure 6.5 book list
 
 도 필요합니다.
 
-##### 여러 테이블을 JOIN하는 Mapper 만들기
+#### 여러 테이블을 JOIN하는 Mapper 만들기
 
 이 API에서는 앞서 설명한 책의 정보와 함께 대출 상황을 취득할 필요가 있기 때문에, 책의 마스터 정보인 book 테이블과 대출 상황을 관리하고 있는 rental 테이블을 JOIN하여 데이터를 취득하는 쿼리 필요합니다. 지금까지 쿼리의 실행은 MyBatis Generator에서 생성한 Mapper의 함수를 사용해 왔습니다만, JOIN 등, 생성된 함수에서는 실현할 수 없는 쿼리를 사용하는 경우, 스스로 커스터마이즈한 Mapper를 작성할 필요가 있습니다.
 
@@ -698,7 +693,7 @@ from , leftJoin 은 각각 FROM 절과 JOIN 절을 지정합니다. 각각 테�
 
 MyBatis Dynamic SQL을 사용하면 함수를 체인하고 중첩하여 JOIN과 같은 복잡한 쿼리를 실행할 수 있습니다. 지금까지는 MyBatis Generator에서 생성된 함수에서의 쿼리만을 사용해 왔지만, 스스로 쿼리를 작성하는 경우도 매우 직관적입니다.
 
-##### Repository 구현
+#### Repository 구현
 
 먼저 Repository 구현입니다. Repository는 디자인 패턴의 일종으로 데이터베이스 조작의 논리를 추상화하는 역할을 담당합니다. 먼저 Listing 6.4.5 , Listing 6.4.6 의 Book 클래스, Rental 클래스와 두 개의 데이터 클래스를 속성으로 가진 Listing 6.4.7 의 BookWithRental 클래스를 생성한다.
 
@@ -785,7 +780,7 @@ Interface를 사용하여 구현하면 데이터베이스 관련 구현을 BookR
 
 또, @Repository 라고 하는 어노테이션을 부여하고 있습니다만, 이쪽은 제4장에서 해설한 @Component 와 같이 DI의 대상인 것을 나타내는 어노테이션입니다. BookRepositoryImpl 클래스와 같이 데이터베이스 액세스 처리를 담당하는 클래스에 사용합니다. 본서에서의 사용법에서는 @Component 를 사용한 경우와 거동은 변하지 않습니다만, 후술하는 @Service 도 포함한 클래스의 역할 마다 주석을 나누어 두는 것으로, 제7장에서 소개하는 AOP를 사용할 때 등 에 대상 클래스를 분류하기 쉬워지고 유연성이 높아집니다.
 
-##### 서비스 구현
+#### 서비스 구현
 
 다음 으로 Service 클래스의 구현입니다. Listing 6.4.10 의 클래스를 생성한다.
 
@@ -805,7 +800,7 @@ Service는 Repository에서 데이터 조작 처리 등을 사용하여 비즈�
 
 @Service 어노테이션은 @Repository 와 마찬가지로 DI 대상으로 하기 위한 것으로, BookService 클래스와 같이 비즈니스 로직의 처리를 담당하는 클래스에 사용합니다.
 
-##### 컨트롤러 구현
+#### 컨트롤러 구현
 
 마지막으로 Controller의 구현입니다. 여기는 API의 라우팅이나 클라이언트로부터의 파라미터를 받아서 Service의 로직을 실행하는 계층이 됩니다.
 
@@ -855,7 +850,7 @@ class BookController(
 
 이것으로 리스트 취득 기능의 API가 완성되었습니다.
 
-##### 동작 확인
+#### 동작 확인
 
 응용 프로그램 시작은 bootRun 작업을 수행합니다. 터미널에서 명령 6.4.13 의 명령을 실행하거나 IntelliJ IDEA의 Gradle 뷰에서 [Tasks] → [application] → [bootRun]을 선택하여 실행하십시오.
 
@@ -880,7 +875,7 @@ Listing 6.4.15
 
 아직 대출중인 정보가 없기 때문에 is_rental 에는 false가 들어 있습니다.
 
-##### 프런트 엔드와의 소통
+#### 프런트 엔드와의 소통
 
 완성된 API를 프런트 엔드와 소통합니다. 서버와 프런트 엔드 응용 프로그램이 모두 실행되면 브라우저에서 http://localhost:8081/book/list로 이동합니다. 책 목록 페이지에 액세스하고 그 중 Ajax에서 방금 만든 목록 획득 API가 호출됩니다.
 
@@ -888,11 +883,11 @@ Listing 6.4.15
 
 Figure 6.6 book list
 
-#### 상세 취득 기능의 구현
+### 상세 취득 기능의 구현
 
 이어서 상세 취득 기능의 구현입니다. 책의 ID를 요청 매개변수로 받고 책에 대한 자세한 정보를 반환합니다.
 
-##### 화면 이미지
+#### 화면 이미지
 
 상세 검색 API를 사용하는 화면 이미지는 그림 6.7 입니다.
 
@@ -906,7 +901,7 @@ Figure 6.7 book detail
 
 를 표시합니다. 또, 리스트 화면과 같은 갱신, 삭제의 링크에 가세해, 대출의 링크(대출 가능의 경우만 표시)도 배치되고 있습니다.
 
-##### Mapper 구현
+#### Mapper 구현
 
 먼저 BookWithRentalMapper 인터페이스에 Listing 6.4.16 의 selectOne 함수를 추가한다.
 
@@ -936,7 +931,7 @@ fun BookWithRentalMapper.selectByPrimaryKey(id_: Long): BookWithRentalRecord? {
 
 select 함수와 마찬가지로 book 테이블과 rental 테이블을 JOIN 한 쿼리를 발행하고 있지만, where 에서 id 를 지정하고 있습니다. 그리고 방금 추가한 selectOne 함수를 호출하여 단일 레코드의 결과를 반환합니다.
 
-##### Repository 구현
+#### Repository 구현
 
 다음 Repository 구현입니다. BookRepository 인터페이스에 Listing 6.4.18 , BookRepositoryImpl 클래스에 Listing 6.4.19 의 함수를 추가한다.
 
@@ -956,7 +951,7 @@ Mapper에 추가한 selectByPrimaryKey 함수를 호출하고 데이터를 검�
 
 안전 호출과 let 을 결합하여 데이터를 얻을 수 없으면 null을 반환합니다. 이 데이터 취득의 가부(null인가 아닌가)에 의해 반환하는 값을 바꾸는 것은, let 의 흔한 사용법의 하나입니다.
 
-##### 서비스 구현
+#### 서비스 구현
 
 BookService 클래스에 Listing 6.4.20 의 함수를 추가한다.
 
@@ -971,7 +966,7 @@ BookRepository 의 findWithRental 함수를 호출하여 도서 정보를 가져
 
 Kotlin에서는, `if (hoge != null)` 로 기술하는 처리는 전술의 안전 호출과 let 의 조합, `if (hoge == null)` .
 
-##### 컨트롤러 구현
+#### 컨트롤러 구현
 
 응답 매개변수 유형으로 BookForm.kt에 Listing 6.4.21 의 데이터 클래스를 추가한다. 도서 정보 외에 대여중인 사용자 ID, 대여 날짜 및 시간, 반환 예정 날짜 및 시간 정보를 보유하고 있습니다.
 
@@ -1014,7 +1009,7 @@ fun getDetail(@PathVariable("book_id") bookId: Long): GetBookDetailResponse {
 
 /detail 이라는 경로에서 book_id 를 경로 매개 변수로 받고 서비스 처리를 호출하고 결과를 GetBookDetailResponse 로 변환하고 반환합니다.
 
-##### 동작 확인
+#### 동작 확인
 
 터미널에서 명령 6.4.23 의 curl 명령을 실행합니다.
 
@@ -1026,7 +1021,7 @@ $ curl http://localhost:8080/book/detail/200
 
 도서 상세 정보를 가진 JSON이 반환되면 성공합니다. 대여되지 않은 책의 경우 rental_info 는 null입니다.
 
-##### 프런트 엔드와의 소통
+#### 프런트 엔드와의 소통
 
 완성된 API를 프런트 엔드와 소통합니다. 서버와 프런트 엔드 응용 프로그램이 모두 실행되면 브라우저에서 http://localhost:8081/book/detail/200에 액세스하십시오. 도서 목록의 페이지로 이동하여 고급 검색 API가 호출됩니다.
 
@@ -1034,17 +1029,17 @@ $ curl http://localhost:8080/book/detail/200
 
 Figure 6.8 detail book
 
-### 5　갱신계 기능(등록, 갱신, 삭제)의 API 구현
+## 5　갱신계 기능(등록, 갱신, 삭제)의 API 구현
 
 여기에서 업데이트 시스템 기능의 API를 구현합니다. 업데이트 시스템 기능은 관리자 권한만 실행할 수 있습니다. 그 때문에, 같은 서적 데이터에 대한 조작입니다만, 검색계 기능이란 Controller나 Service의 클래스를 나누어 구현합니다.
 
 또한, 권한에 의한 액세스의 제한에 대해서는 제7장에서 구현하기 때문에, 이 장의 시점에서는 모든 유저가 실행할 수 있는 것이 됩니다.
 
-#### 등록 기능 구현
+### 등록 기능 구현
 
 우선 등록 기능의 구현입니다.
 
-##### 화면 이미지
+#### 화면 이미지
 
 등록 API를 사용하는 화면 이미지는 그림 6.9 입니다.
 
@@ -1059,7 +1054,7 @@ Figure 6.9 book register
 
 를 입력하고 [등록] 버튼을 누르면 실행됩니다.
 
-##### Repository 구현
+#### Repository 구현
 
 BookRepository 인터페이스에 Listing 6.5.1 의 함수를 추가한다.
 
@@ -1099,7 +1094,7 @@ Book 클래스를 인수로 받아 MyBatis의 Record 클래스로 변환한 객�
 
 import문을 추가하고 있는 이유는 insert 함수가 BookMapper 클래스와 BookWithRentalMapperExtentions.kt 둘 다에 존재하며, import 문을 쓰지 않으면 BookMapper 클래스의 함수가 호출되어 컴파일 오류가 되기 때문입니다.
 
-##### 서비스 구현
+#### 서비스 구현
 
 앞서 언급했듯이 검색 시스템 기능과는 별도의 Service 클래스에서 구현합니다. Listing 6.5.5 와 같이 AdminBookService 라는 클래스를 만들고 register 함수를 추가한다.
 
@@ -1121,7 +1116,7 @@ class AdminBookService(
 
 @Transactional 어노테이션은 Spring Framework에서 제공하는 트랜잭션 관리 기능을 활성화합니다. 부여한 함수내의 처리에 대해서 트랜잭션(transaction)를 붙여, 처리가 정상적으로 끝나면 커밋, 예외가 발생했을 경우는 롤백합니다.
 
-##### 컨트롤러 구현
+#### 컨트롤러 구현
 
 Controller의 구현입니다. 요청 매개변수 유형으로 BookForm.kt에 Listing 6.5.6 의 데이터 클래스를 추가한다.
 
@@ -1161,7 +1156,7 @@ class AdminBookController(
 
 register 함수는 /register 라는 경로에서 RegisterBookRequest 유형에 해당하는 JSON을 매개 변수로 사용하고 Book 클래스의 인스턴스를 생성하여 Service 처리를 호출합니다.
 
-##### 동작 확인
+#### 동작 확인
 
 터미널에서 명령 6.5.8 의 curl 명령을 실행합니다.
 
@@ -1178,7 +1173,7 @@ $ curl http://localhost:8080/book/list
 {"book_list":[{"id":100,"title":"Kotlin입문","author":"코틀리니","is_rental":false},{"id":200,"title":"Java입문","author":"자바니","is_rental":false},{"id":300,"title":"Spring入門","author":"スプリング太郎","is_rental":false}]}
 ```
 
-##### 프런트 엔드와의 소통
+#### 프런트 엔드와의 소통
 
 완성된 API를 프런트 엔드와 소통합니다. 서버와 프런트 엔드 응용 프로그램이 모두 실행되면 브라우저에서 http://localhost:8081/admin/book/register로 이동합니다. 그림 6.10 과 같은 등록 페이지가 표시됩니다.
 
@@ -1188,11 +1183,11 @@ Figure 6.10 book register
 
 Figure 6.11 register completed
 
-#### 업데이트 기능 구현
+### 업데이트 기능 구현
 
 다음은 업데이트 기능의 구현입니다. 이쪽은 등록 처리와 닮아 있어 심플한 것이 되어 있습니다.
 
-##### 화면 이미지
+#### 화면 이미지
 
 업데이트 API를 사용하는 화면 이미지는 그림 6.12 입니다.
 
@@ -1200,7 +1195,7 @@ Figure 6.12 book update
 
 업데이트할 책 정보가 표시됩니다. 변경하려는 항목의 값을 수정하고 [갱신] 버튼을 누르면 실행됩니다. 등록 화면과 비슷한 형태이지만 책 ID는 변경할 수 없게 되어 있습니다.
 
-##### Repository 구현
+#### Repository 구현
 
 BookRepository 인터페이스에 Listing 6.5.10 , BookRepositoryImpl 클래스에 Listing 6.5.11 함수를 추가한다.
 
@@ -1218,7 +1213,7 @@ override fun update(id: Long, title: String?, author: String?, releaseDate: Loca
 
 book 테이블의 각 열의 업데이트 후 값을 인수로 받고 기본 키를 사용하여 업데이트합니다. id 이외의 인수가 Null 허용이 되는 것은, 갱신이 필요한 컬럼만 값이 설정되기 때문입니다. null가 들어온 컬럼은 갱신되지 않습니다.
 
-##### 서비스 구현
+#### 서비스 구현
 
 AdminBookService 클래스에 목록 6.5.12 의 함수를 추가합니다.
 
@@ -1233,7 +1228,7 @@ fun update(bookId: Long, title: String?, author: String?, releaseDate: LocalDate
 
 findWithRental 함수에서 도서 정보를 검색하고, 존재하지 않으면 예외를 던지고, 존재하는 경우 bookRepository 의 update 함수를 호출하여 업데이트합니다.
 
-##### 컨트롤러 구현
+#### 컨트롤러 구현
 
 요청 매개변수 유형으로 BookForm.kt에 Listing 6.5.13 의 데이터 클래스를 추가한다.
 
@@ -1259,7 +1254,7 @@ fun update(@RequestBody request: UpdateBookRequest) {
 
 /update 라는 경로에서 UpdateBookRequest 형식에 해당하는 JSON을 매개 변수로 받아서 서비스 처리를 호출합니다.
 
-##### 동작 확인
+#### 동작 확인
 
 터미널에서 명령 6.5.15 의 curl 명령을 실행합니다. 여기에서는 방금 등록한 id 가 300인 책의 타이틀을 변경하고 있습니다.
 
@@ -1276,7 +1271,7 @@ $ curl http://localhost:8080/book/detail/300
 {"id":300,"title":"Spring Boot入門","author":"スプリング太郎","release_date":"2001-03-21","rental_info":null}
 ```
 
-##### 프런트 엔드와의 소통
+#### 프런트 엔드와의 소통
 
 완성된 API를 프런트 엔드와 소통합니다. 서버와 프런트 엔드 응용 프로그램이 모두 시작된 상태에서 브라우저에서 http://localhost:8081/admin/book/update/400으로 이동하십시오 (400 부분은 업데이트 할 레코드의 ID이므로 필요합니다. 따라서 업데이트하려는 대상 값으로 변경하십시오.) 그림 6.13 과 같은 도서 업데이트 페이지가 표시됩니다.
 
@@ -1286,11 +1281,11 @@ Figure 6.13 book update
 
 Figure 6.14 update completed
 
-#### 삭제 기능 구현
+### 삭제 기능 구현
 
 다음은 삭제 기능입니다. 이제 책 데이터에 대한 기능은 마지막입니다.
 
-##### 화면 이미지
+#### 화면 이미지
 
 삭제 API를 사용하는 화면 이미지는 그림 6.15 , 그림 6.16 입니다.
 
@@ -1300,7 +1295,7 @@ Figure 6.16 delete ok
 
 도서 목록 화면, 도서 상세 화면에서 [삭제] 링크를 누르면 확인 팝업이 표시되고 [OK] 버튼을 누르면 실행됩니다.
 
-##### Repository 구현
+#### Repository 구현
 
 BookRepository 인터페이스에 Listing 6.5.17 , BookRepositoryImpl 클래스에 Listing 6.5.18 의 함수를 추가한다.
 
@@ -1318,7 +1313,7 @@ override fun delete(id: Long) {
 
 삭제하려는 레코드의 ID 를 받고 기본 키를 사용하여 삭제합니다. 삭제하려면 Mapper의 deleteByPrimaryKey 함수를 사용합니다.
 
-##### 서비스 구현
+#### 서비스 구현
 
 AdminBookService 클래스에 목록 6.5.19 의 함수를 추가합니다.
 
@@ -1333,7 +1328,7 @@ fun delete(bookId: Long) {
 
 업데이트 기능과 마찬가지로 findWithRental 함수에서 도서 정보를 검색하고 존재하지 않으면 예외를 던지고 있습니다. 존재하는 경우 bookRepository 의 delete 함수를 호출하여 삭제합니다.
 
-##### 컨트롤러 구현
+#### 컨트롤러 구현
 
 AdminBookController 클래스에 목록 6.5.20 의 함수를 추가합니다.
 
@@ -1347,7 +1342,7 @@ fun delete(@PathVariable("book_id") bookId: Long) {
 
 /delete 라는 경로에서 삭제할 레코드의 id 를 경로 매개 변수로 받아서 서비스 처리를 호출합니다. id 만을 요청 매개변수로 수신하고 응답이 없으므로 BookForm.kt에 클래스 추가가 없습니다.
 
-##### 동작 확인
+#### 동작 확인
 
 터미널에서 명령 6.5.21 의 curl 명령을 실행합니다. ID 가 300인 책의 데이터를 삭제 중입니다.
 
@@ -1366,7 +1361,7 @@ $ curl http://localhost:8080/book/list
 
 이제 책 데이터에 대한 각종 조작을 하는 API를 구현할 수 있었습니다.
 
-##### 프런트 엔드와의 소통
+#### 프런트 엔드와의 소통
 
 완성된 API를 프런트 엔드와 소통합니다. 서버와 프런트 엔드 응용 프로그램이 모두 실행된 상태에서 브라우저에서 http://localhost:8081/book/list로 이동하여 책 중 하나에서 삭제 링크를 누르십시오. 그림 6.17 과 같이 삭제 확인 팝업이 나타납니다.
 
