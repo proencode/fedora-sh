@@ -61,18 +61,19 @@ else
 	tags="spring_boot react"
 fi
 
+# ${cBlue}${CMD_NAME} ${cRed}"${publisher}"  ${cMagenta}"${BookCover}"  ${cRed}"${ShortDescription}"  ${cMagenta}"${ChapterSeq}"  ${cRed}"${ChapterName}"  ${cMagenta}"${old_image_jemok}"  ${cRed}"${https_line}"  ${cMagenta}"${tags}"
+
 cat <<__EOF__
 
-${cBlue}${CMD_NAME} ${cRed}"${publisher}"  ${cMagenta}"${BookCover}"  ${cRed}"${ShortDescription}"  ${cMagenta}"${ChapterSeq}"  ${cRed}"${ChapterName}"  ${cMagenta}"${old_image_jemok}"  ${cRed}"${https_line}"  ${cMagenta}"${tags}"
-
-publisher="${cRed}${publisher}${cBlue}"
-BookCover="${cMagenta}${BookCover}${cBlue}"
+${cBlue}
+       publisher="${cRed}${publisher}${cBlue}"
+       BookCover="${cMagenta}${BookCover}${cBlue}"
 ShortDescription="${cRed}${ShortDescription}${cBlue}"
-ChapterSeq="${cMagenta}${ChapterSeq}${cBlue}"
-ChapterName="${cRed}${ChapterName}${cBlue}"
-old_image_jemok="${cMagenta}${old_image_jemok}${cBlue}"
-https_line="${cRed}${https_line}${cBlue}"
-tags="${cMagenta}${tags}${cBlue}"
+      ChapterSeq="${cMagenta}${ChapterSeq}${cBlue}"
+     ChapterName="${cRed}${ChapterName}${cBlue}"
+ old_image_jemok="${cMagenta}${old_image_jemok}${cBlue}"
+      https_line="${cRed}${https_line}${cBlue}"
+            tags="${cMagenta}${tags}${cBlue}"
 ${cReset}
 __EOF__
 
@@ -158,7 +159,7 @@ fi
 cat <<__EOF__
 ${cRed}[ ${cBlue}${publish_no} ${cYellow}${publisher} ${cBlue}= ${cYellow}${chulpansa} ${cRed}]
 
-${cGreen}----> ${cCyan}폴더 이름으로 쓰기 위한 책 제목 Title: ${cRed}[ ${cGreen}${BookCover} ${cRed}] ${cMagenta}= 알파벳만 = ${cBlue}(${cMagenta}대소문자 숫자 . - _ 빈칸${cBlue})${cReset}
+${cGreen}----> (1) ${cCyan}폴더 이름으로 쓰기 위한 책 제목 Title: ${cRed}[ ${cGreen}${BookCover} ${cRed}] ${cMagenta}= 알파벳만 = ${cBlue}(${cMagenta}대소문자 숫자 . - _ 빈칸${cBlue})${cReset}
 __EOF__
 read a
 if [ "x$a" = "x" ]; then
@@ -184,7 +185,7 @@ fi
 cat <<__EOF__
       ${cRed}[ ${cYellow}${chulpansa} ${cBlue}/ ${cYellow}${cheak_jemok} ${cBlue}책 제목: ${cYellow}${BookCover} ${cRed}]
 
-${cGreen}----> ${cCyan}설명 요약 Short Description: ${cRed}[ ${cGreen}${ShortDescription} ${cRed}] ${cMagenta} ~ 한글영문 ~ ${cBlue}(${cMagenta} 숫자 . - _ 빈칸${cBlue})${cReset}
+${cGreen}----> (2) ${cCyan}설명 요약 Short Description: ${cRed}[ ${cGreen}${ShortDescription} ${cRed}] ${cMagenta} ~ 한글영문 ~ ${cBlue}(${cMagenta} 숫자 . - _ 빈칸${cBlue})${cReset}
 __EOF__
 read a
 if [ "x$a" = "x" ]; then
@@ -208,7 +209,7 @@ fi
 cat <<__EOF__
       ${cRed}[ ${cYellow}${ShortDescription} ${cRed}]
 
-${cGreen}----> ${cCyan}원본 링크 ${cRed}[ ${cGreen}${https_line} ${cRed}] ${cMagenta}= 알파벳만 = ${cBlue}(${cMagenta}https:// 대소문자 숫자 . - _ 빈칸${cBlue})${cReset}
+${cGreen}----> (3) ${cCyan}원본 링크 ${cRed}[ ${cGreen}${https_line} ${cRed}] ${cMagenta}= 알파벳만 = ${cBlue}(${cMagenta}https:// 대소문자 숫자 . - _ 빈칸${cBlue})${cReset}
 __EOF__
 read a
 if [ "x$a" = "x" ]; then
@@ -232,7 +233,7 @@ fi
 cat <<__EOF__
       ${cRed}[ ${cYellow}${https_line} ${cRed}]
 
-${cGreen}----> ${cCyan}태그 ${cRed}[ ${cGreen}${tags} ${cRed}] ${cMagenta}= 알파벳만 = ${cBlue}(${cMagenta}대소문자 숫자 . - _ 빈칸${cBlue})${cReset}
+${cGreen}----> (4) ${cCyan}태그 ${cRed}[ ${cGreen}${tags} ${cRed}] ${cMagenta}= 알파벳만 = ${cBlue}(${cMagenta}대소문자 숫자 . - _ 빈칸${cBlue})${cReset}
 __EOF__
 read a
 if [ "x$a" = "x" ]; then
@@ -266,11 +267,14 @@ do
 ${cBlue}==========   [ AA-bcc ] 'AA' 전체 일련번호 | 'b' 섹션 'ccc 챕터로 된 코드
 챕터  번호   [ Abb ]    'A' 섹션 'bb' 챕터로 된 코드
 ==========
-${cGreen}----> ${cCyan}챕터 번호를 ${cRed}[ ${cGreen}${ChapterSeq} ${cRed}] ${cCyan}이와 같이 다음 줄에 입력합니다. ${cRed}[ ${cGreen}엔터 ${cRed}]${cCyan} 만 누르면 이 작업을 끝냅니다.${cReset}
+${cYellow}>>>>> (5) ${cCyan}챕터 번호를 ${cRed}[ ${cGreen}${ChapterSeq} ${cRed}] ${cCyan}이와 같이 다음 줄에 입력합니다. ${cRed}[ ${cGreen}exit ${cRed}]${cCyan} 인 경우, 이 작업을 끝냅니다.${cReset}
 __EOF__
 	read a
 	if [ "x$a" = "x" ]; then
 		echo "${cUp}"
+		a=$ChapterSeq #-- 엔터인 경우, ChapterSeq 원래값을 그대로 갖게 하려고.
+	fi
+	if [ "x$a" = "xexit" ]; then #-- 'exit' 를 입력하면 끝낸다.
 		ChapterSeq="" #-- 끝낸다.
 		ChapterName=""
 	else
@@ -289,11 +293,14 @@ fi
 ${cBlue}==========
 챕터  이름
 ==========
-${cGreen}----> ${cCyan}${ChapterSeq} 챕터의 요약제목 을 ${cRed}[ ${cGreen}${ChapterName} ${cRed}] ${cCyan}이와 같이 다음 줄에 입력합니다. ${cRed}[ ${cGreen}엔터 ${cRed}]${cBlue} 만 누르면 ${cCyan}이 작업을 끝냅니다.${cReset}
+${cYellow}>>>>> (6) ${cCyan}${ChapterSeq} 챕터의 요약제목 을 ${cRed}[ ${cGreen}${ChapterName} ${cRed}] ${cCyan}이와 같이 다음 줄에 입력합니다. ${cRed}[ ${cGreen}exit ${cRed}]${cBlue} 인 경우, ${cCyan}이 작업을 끝냅니다.${cReset}
 __EOF__
 		read a
 		if [ "x$a" = "x" ]; then
 			echo "${cUp}"
+			a=$ChapterName
+		fi
+		if [ "x$a" = "xexit" ]; then
 			ChapterSeq="" #-- 끝낸다.
 			ChapterName=""
 		else
@@ -313,16 +320,22 @@ __EOF__
 			# -----------
 
 			image_jemok=${old_image_jemok}
-			until [ "x$image_jemok" = "x" ]
+			until [ "x$image_jemok" = "xexit" ]
 			do
 				cat <<__EOF__
 
 ${cCyan}----> ${cMagenta}이미지 파일의 이름 ${cMagenta}${cMagenta}= 알파벳만 = ${cBlue}(${cMagenta}대소문자 숫자 . - _ 빈칸${cBlue})${cReset}
 
-${cCyan}----> ${cMagenta}이미지별 일련번호 (${cRed}00-000${cMagenta}) 와 이미지에 대한 설명을 ${cRed}[ ${cGreen}${image_jemok} ${cRed}] ${cMagenta}이와 같이 다음줄에 입력합니다. ${cRed}[ ${cGreen}엔터 ${cRed}]${cMagenta} 만 누르면 ${cCyan}챕터 번호 ${cMagenta}입력으로 돌아갑니다.${cReset}
+${cYellow}>>>>> (7) ${cMagenta}이미지 일련번호 + 설명 을 ${cRed}[ ${cGreen}${image_jemok} ${cRed}] ${cMagenta}이와 같이 다음줄에 입력합니다.
+${cYellow}>>>>>     ${cRed}[ ${cGreen}exit ${cRed}]${cMagenta} 인 경우, ${cCyan}챕터 번호 ${cMagenta}입력으로 돌아갑니다.
+${cYellow}>>>>>     ${cBlue}확장자를 무조건 ${cYellow}.webp${cMagenta} 로 붙여주므로, 이게 아니면 해당 타입까지 써주고, 결과를 수정하면 됩니다.${cReset}
 __EOF__
 				read image_jemok
-				if [ "x$image_jemok" != "x" ]; then
+				if [ "x$image_jemok" = "x" ]; then
+					echo "${cUp}"
+					image_jemok=${old_image_jemok}
+				fi
+				if [ "x$image_jemok" != "xexit" ]; then
 					old_image_jemok=${image_jemok}
 					img_name=$(echo "${image_jemok,,}" | sed 's/ /_/g') #-- 전부 대문자로 바꾸려면 ${image_jemok^^}, 전부 소문자는 ${image_jemok,,}
 					chapter_name=$(echo "${ChapterName,,}" | sed 's/ /_/g')
