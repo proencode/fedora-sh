@@ -35,25 +35,26 @@
 
 
 
-# 5장 O/R 매퍼를 사용하여 데이터베이스에 연결
+
+> 5장 O/R 매퍼를 사용하여 데이터베이스에 연결
 
 관계형 데이터베이스는 많은 웹 애플리케이션의 서버 측 개발에 사용되는 미들웨어입니다. 그것을 프로그램에서 취급하기 위한 프레임워크인 O/R 매퍼도 매우 중요한 요소가 되어 옵니다. 다음의 6장부터 작성하는 실천의 어플리케이션에서도 사용하고 있습니다. 이 장에서는 MySQL로 구축한 데이터베이스에 대해 O/R 매퍼의 MyBatis를 사용하여 Kotlin에서 액세스하는 코드를 구현하고 Kotlin에서의 데이터베이스 처리를 배워 주시면 좋겠습니다.
 
-## 1. MyBatis란?
+# 1. MyBatis란?
 
 MyBatis는 Java로 만든 O / R 매퍼 중 하나입니다. 원래는 XML에 SQL을 작성하고 코드에서 정의한 함수와끈끈첨부즈하는 것으로 SQL의 발행이나, 데이타베이스의 조작을 실현하는 것이었습니다.
 
 최근 버전(글쓰기 시점에서 최신 버전은 3.5.6)에서는 MyBatis Dynamic SQL이라는 코드상에서 쿼리를 구축할 수 있는 방식이 추가되어 있으며, 그 실행에 필요한 코드를 Kotlin에서 생성하는 Generator도 준비되어 있습니다. 있습니다. 그 때문에 원래 Java제입니다만, Kotlin으로부터도 취급하기 쉬운 O/R매퍼가 되고 있습니다.
 
-## 2. Docker로 MySQL 환경 구축
+# 2. Docker로 MySQL 환경 구축
 
 MyBatis를 사용할 때 먼저 로컬 환경에서 데이터베이스를 사용할 수 있습니다. 이번에 사용하는 것은 MySQL입니다.
 
-### Docker Desktop 설치
+## Docker Desktop 설치
 
 로컬에 MySQL을 직접 설치하는 것이 아니라, Docker의 컨테이너를 시작하는 형태로 준비합니다. 따라서 먼저 Docker Desktop을 설치하십시오.
 
-#### 설치 프로그램 다운로드
+### 설치 프로그램 다운로드
 
 Docker 공식 사이트의 다운로드 페이지 주 1 로 가면 그림 5.1 과 같은 화면이 표시되므로 Mac의 경우 "Docker Desktop for Mac", Windows의 경우 "Docker Desktop for Windows"를 선택합니다.
 
@@ -72,7 +73,7 @@ Docker 공식 사이트의 다운로드 페이지 주 1 로 가면 그림 5.1 �
 
 그림 5.2 , 5.3 은 Mac 화면을 사용하고 있지만 Windows의 경우 각각 "for Mac" 부분이 "for Windows"로되어 있습니다.
 
-#### Mac에서 설치, 시작
+### Mac에서 설치, 시작
 
 다운로드한 dmg 파일을 열면 그림 5.4 의 화면이 표시되므로 Docker.app를 Applications 디렉토리로 드래그 앤 드롭합니다.
 
@@ -86,7 +87,7 @@ Docker 공식 사이트의 다운로드 페이지 주 1 로 가면 그림 5.1 �
 ![ 505 Docker Desktop is running ]( /gihyo/kotlin_server_side_programming_img/505_docker_desktop_is_running.webp
 )
 
-#### Windows에서 설치, 시작
+### Windows에서 설치, 시작
 
 다운로드한 exe 파일을 열면 그림 5.6 과 같은 화면이 나타납니다. Install required Windows components for WSL 2의 선택을 취소하고 [OK]를 누릅니다.
 
@@ -103,7 +104,7 @@ Docker 공식 사이트의 다운로드 페이지 주 1 로 가면 그림 5.1 �
 ![ 508 Docker running ]( /gihyo/kotlin_server_side_programming_img/508_docker_running.webp
 )
 
-### MySQL 컨테이너 시작
+## MySQL 컨테이너 시작
 
 터미널 소프트웨어(Mac에서는 터미널, Windows에서는 명령 프롬프트 또는 PowerShell 등)에서 명령 5.2.1 의 명령을 실행합니다. 커멘드의 상세한 설명은 생략합니다만, root 유저의 패스워드를 「mysql」, 포트가 「3306」으로 「mysql」라고 하는 컨테이너를, MySQL의 Docker 이미지를 사용해 기동하고 있습니다.
 
@@ -125,7 +126,7 @@ $ docker container run --rm -d -e MYSQL_ROOT_PASSWORD=mysql -p 3306:3306 --name 
 $ mysql -h 127.0.0.1 --port 3306 -uroot -pmysql
 ```
 
-### 데이터베이스, 테이블 만들기
+## 데이터베이스, 테이블 만들기
 
 로그인에 성공하면 이 장에서 사용할 데이터베이스와 테이블을 만듭니다. 먼저 example이라는 이름으로 데이터베이스를 만들고 ( 명령 5.2.4 ) 전환합니다 ( 명령 5.2.5 ).
 
@@ -172,11 +173,11 @@ Select 문으로 데이터가 들어 있는지 확인하고 데이터베이스 �
 
 이후의 설명에 관해서는, Mac의 환경을 사용해 진행해 갑니다.
 
-## 3. MyBatis 도입
+# 3. MyBatis 도입
 
 그런 다음 MyBatis를 사용하여 프로젝트를 만듭니다. 1장에서 소개한 절차에 따라 IntelliJ IDEA에서 Kotlin 프로젝트를 만듭니다. 반대로 몇 가지 설정을 추가합니다.
 
-### build.gradle.kts에 종속성 추가
+## build.gradle.kts에 종속성 추가
 
 build.gradle.kts에 몇 가지 설명을 추가합니다. 먼저 plugins 블록에 목록 5.3.1 의 행을 추가한다.
 
@@ -246,11 +247,11 @@ mybatisGenerator {
 }
 ```
 
-### MyBatis Generator를 사용한 코드 생성
+## MyBatis Generator를 사용한 코드 생성
 
 MyBatis에서는 데이터베이스의 테이블 구조와 함께 여러 파일을 만들어야합니다. 이러한 코드를 만들기 위해 위의 build.gradle.kts 설명에서도 작성한 MyBatis Generator를 사용합니다.
 
-#### 구성 파일 추가
+### 구성 파일 추가
 
 프로젝트의 src/main/resources 아래에 generatorConfig.xml이라는 이름으로 목록 5.3.5 의 내용을 가진 파일을 생성한다.
 
@@ -301,7 +302,7 @@ MyBatis Generator를 실행하기 위한 설정 파일이 됩니다. 몇 가지 
 
 마지막으로 29행 <table tableName="user"/> 에서 대상 테이블 이름을 지정했습니다. 테이블을 추가하는 경우 이 테이블 요소를 추가하여 대응할 수 있습니다. 또한 <table tableName="%"/> 및 와일드카드를 지정하여 대상 데이터베이스의 모든 테이블에 대해 실행할 수 있습니다.
 
-#### 코드 생성 수행
+### 코드 생성 수행
 
 터미널에서 명령 5.3.6 의 명령을 실행하거나 IntelliJ IDEA의 Gradle 뷰에서 [Tasks] → [other] → [mbGenerator]로 "MyBatisGenerator"의 태스크를 실행합니다.
 
@@ -412,7 +413,7 @@ fun UserMapper.insert(record: UserRecord) =
 
 이러한 자동 생성 파일은 기본적으로 손을 넣지 않습니다. 이 안에 있는 인터페이스나 함수를 호출해 쿼리의 실행 처리를 구현하는 형태가 됩니다. 다음은 그 호출측의 처리의 구현을 소개합니다.
 
-## 4. MyBatis에서 CRUD 만들기
+# 4. MyBatis에서 CRUD 만들기
 
 사전 준비가 길어졌습니다만, 드디어 MyBatis를 사용한 데이터베이스에 액세스하는 CRUD(Create=Insert, Read=Select, Update, Delete)를 구현합니다. 그 전에는 다른 구성 파일이 필요하고 src/main/resources 아래에 mybatis-config.xml이라는 이름으로 목록 5.4.1 의 내용을 가진 파일을 생성한다.
 
@@ -457,11 +458,11 @@ mybatis-config.xml 파일을 읽고 SqlSessionFactory 라는 인터페이스 객
 
 파일을 읽는 데 사용하는 Resources 클래스는 같은 이름의 여러 개가 존재하기 때문에 혼동 스럽습니다.이 프로세스에서는 org.apache.ibatis.io.Resources 를 가져옵니다.
 
-### Select 구현 방법
+## Select 구현 방법
 
 이제 쿼리 실행 처리에 대한 설명으로 들어갑니다. 우선은 Select 문입니다.
 
-#### 기본 키 검색
+### 기본 키 검색
 
 Select 문을 실행하는 프로세스는 몇 가지 패턴이 있지만, 우선은 가장 간단한 기본 키 검색 처리부터입니다. 목록 5.4.3 을 보라.
 
@@ -484,7 +485,7 @@ use 블록의 처리에서 쿼리를 실행하고 있습니다. openSession 에 
 
 이렇게 openSession 에서 세션을 시작하고 필요한 테이블의 Mapper 객체를 가져오고 쿼리를 실행하는 함수를 호출하는 것이 MyBatis를 사용한 데이터베이스 연결 처리의 일련의 흐름입니다.
 
-#### Where 절에서 검색
+### Where 절에서 검색
 
 다음은 기본 키 이외의 열을 조건으로 지정한 검색입니다. 목록 5.4.4 와 같이 구현하면 where 절에서 검색 조건을 지정할 수 있다.
 
@@ -540,7 +541,7 @@ createSessionFactory().openSession().use { session ->
 select id, name, age, profile from user where age >= 25;
 ```
 
-#### count 사용
+### count 사용
 
 Select 문에서 또 하나 count 를 소개합니다. SQL의 count 함수에 해당하는 처리가 됩니다. 목록 5.4.8 을 보라.
 
@@ -580,11 +581,11 @@ createSessionFactory().openSession().use { session ->
 
 모든 레코드의 수인 3이 결과로 돌아왔습니다.
 
-### Insert 구현 방법
+## Insert 구현 방법
 
 다음은 Insert입니다. 단일 레코드, 복수 레코드로 다른 함수가 준비되어 있으므로 각각 소개합니다.
 
-#### 단일 레코드 Insert
+### 단일 레코드 Insert
 
 목록 5.4.10 을 보라.
 
@@ -615,7 +616,7 @@ insert 함수를 실행한 후 커밋을 실행하고 있습니다. SqlSession �
 ![ 5411 select from user ]( /gihyo/kotlin_server_side_programming_img/5411_select_from_user.webp
 )
 
-#### 다중 레코드 Insert
+### 다중 레코드 Insert
 
 목록 5.4.12 와 같이 insertMultiple 을 사용하여 여러 레코드를 함께 Insert할 수 있다.
 
@@ -642,11 +643,11 @@ createSessionFactory().openSession().use { session ->
 ![ 5413 select from user ]( /gihyo/kotlin_server_side_programming_img/5413_select_from_user.webp
 )
 
-### Update 구현 방법
+## Update 구현 방법
 
 다음은 Update입니다. 여기도 여러 종류 있기 때문에 각각 설명합니다.
 
-#### 기본 키를 검색 조건으로 레코드 업데이트
+### 기본 키를 검색 조건으로 레코드 업데이트
 
 목록 5.4.14 를 보라.
 
@@ -674,7 +675,7 @@ updateByPrimaryKeySelective 함수는 테이블의 Record 객체를 인수로 �
 
 Selective 가 붙지 않는 updateByPrimaryKey 라는 함수도 있고, 그 쪽을 사용하면 모든 열을 인수의 Record 객체의 값으로 갱신합니다 (값이 설정되어 있지 않은 열은 null로 갱신하려고합니다).
 
-#### 기본 키 이외의 열을 검색 조건으로 레코드 업데이트 (Record 개체를 사용하지 않는 경우)
+### 기본 키 이외의 열을 검색 조건으로 레코드 업데이트 (Record 개체를 사용하지 않는 경우)
 
 Record 객체를 사용하지 않고 목록 5.4.16 과 같이 업데이트할 수도 있다.
 
@@ -703,7 +704,7 @@ set(profile).equalTo("Hey") 로 profile 를 「Hey」라고 하는 캐릭터 라
 ![ 5417 select from user ]( /gihyo/kotlin_server_side_programming_img/5417_select_from_user.webp
 )
 
-#### 기본 키 이외의 열을 검색 조건으로 레코드 업데이트 (Record 개체 사용)
+### 기본 키 이외의 열을 검색 조건으로 레코드 업데이트 (Record 개체 사용)
 
 기본 키 이외의 열을 조건으로 한 업데이트에서도 Record 객체를 사용할 수 있습니다. 목록 5.4.18 을 보라.
 
@@ -732,11 +733,11 @@ updateSelectiveColumns 함수에 Record 객체를 전달하고 where 함수에�
 
 updateSelectiveColumns 대신 updateAllColumns 라는 함수를 사용하여 모든 열을 Record 객체의 값으로 업데이트할 수 있습니다.
 
-### Delete 구현 방법
+## Delete 구현 방법
 
 마지막으로 Delete입니다. 이쪽도 기본 키와 그 이외를 조건으로 한 경우의 구현을 소개합니다.
 
-#### 기본 키를 검색 조건으로 레코드 삭제
+### 기본 키를 검색 조건으로 레코드 삭제
 
 목록 5.4.20 을 보라.
 
@@ -761,7 +762,7 @@ Delete는 간단하며 deleteByPrimaryKey 함수에 삭제할 레코드의 기�
 ![ 5421 select from user ]( /gihyo/kotlin_server_side_programming_img/5421_select_from_user.webp
 )
 
-#### 기본 키 이외의 열을 검색 조건으로 레코드 삭제
+### 기본 키 이외의 열을 검색 조건으로 레코드 삭제
 
 기본 키 이외의 열을 조건으로 하는 경우도 Delete는 간단하고, delete 함수에 where 함수로 조건을 지정한 람다 식을 건네줄 뿐입니다 ( 목록 5.4.22 ).
 
@@ -791,13 +792,13 @@ createSessionFactory().openSession().use { session ->
 
 이제 이른바 CRUD를 만들기 위해 각 쿼리를 실행하는 방법을 한 가지 소개했습니다. 다음은 MyBatis를 Spring Boot와 함께 사용하는 방법을 보여줍니다.
 
-## 5. Spring Boot에서 MyBatis 사용
+# 5. Spring Boot에서 MyBatis 사용
 
 4장에서 만든 demo 프로젝트의 Spring Boot 애플리케이션에 MyBatis를 추가하는 형태로 소개합니다.
 
-### 설정 파일 작성, 코드 생성
+## 설정 파일 작성, 코드 생성
 
-#### build.gradle.kts에 종속성 추가
+### build.gradle.kts에 종속성 추가
 
 프로젝트 build.gradle.kts에 몇 가지 설정을 추가합니다. 위의 MyBatis에서 CRUD를 만들 때와 비슷한 설명을 추가합니다. 먼저 plugins 블록에 목록 5.5.1 을, 파일 끝에 목록 5.5.2 를 추가하십시오. MyBatis Generator에 관한 설명입니다.
 
@@ -826,7 +827,7 @@ mybatisGenerator("org.mybatis.generator:mybatis-generator-core:1.4.0")
 
 포인트로서는 mybatis-spring-boot-starter 를 추가하고 있는 점입니다. 제4장에서 Spring Boot에는 다른 라이브러리나 프레임워크를 함께 사용하기 위한 의존관계를 추가해 주는 starter가 준비되어 있다고 설명했습니다만, 이쪽도 그 일종으로 MyBatis에 대응한 starter에 되어 있습니다. MyBatis에 대한 라이브러리도 여기에 포함되어 있으며 목록 5.3.4 에서 추가하고 있던 org.mybatis : mybatis 는 필요하지 않습니다. Spring Initializr에서 프로젝트를 만들 때 추가하는 Dependencies에서도 선택할 수 있습니다.
 
-#### 구성 파일 추가
+### 구성 파일 추가
 
 데이터베이스의 접속처 정보 등을 쓴 설정 파일도 마찬가지로 추가합니다. src/main/resources 아래에 목록 5.5.4 의 내용으로 generatorConfig.xml을 생성한다.
 
@@ -880,13 +881,13 @@ application.yml은 Spring Framework에서 사용하는 설정을 설명하는 �
 
 또한 프로젝트를 만들 때 application.properties라는 파일이 있으면 해당 파일을 삭제하고 application.yml을 만듭니다. Spring Boot는 Properties, YAML 어느 형식에서도 설정을 정의할 수 있습니다만, 현재는 YAML을 사용하는 경우가 많기 때문에 본서에서도 이쪽을 사용하고 있습니다.
 
-#### 코드 생성
+### 코드 생성
 
 모든 설정을 작성했으면 mbGenerator 태스크(이 장, 3. "MyBatis 소개"의 "코드 생성 실행" 참조)를 사용하여 코드를 생성합니다. com.example.demo 아래에 database 패키지가 만들어지고 그 아래에 user 테이블에 대한 각 파일이 생성됩니다.
 
-### MySQL 데이터를 조작하는 API 생성
+## MySQL 데이터를 조작하는 API 생성
 
-#### Mapper 객체를 DI로 사용하여 Select API 구현
+### Mapper 객체를 DI로 사용하여 Select API 구현
 
 com.example.demo 패키지 아래에 목록 5.5.6 의 Controller 클래스를 생성한다.
 
@@ -921,7 +922,7 @@ $ curl http://localhost:8080/user/select/100
 
 ID100에 해당하는 레코드의 객체가 JSON에서 반환되었음을 알 수 있습니다.
 
-#### Insert API 추가
+### Insert API 추가
 
 또 다른 API를 만들어 보겠습니다. 이번에는 user 테이블에 Insert를 실행하는 API입니다. 등록 처리이므로 POST 메소드의 API를 작성합니다. 요청, 응답 클래스는 목록 5.5.8 과 같이 생성된다.
 
@@ -980,4 +981,5 @@ $ curl http://localhost:8080/user/select/106
 주2 리소스(파일이나 커넥션 등)의 오브젝트를 사용한 후 반자동으로 해제하는 디자인 패턴.
 
 ( 본문으로 돌아가기 )
+
 
