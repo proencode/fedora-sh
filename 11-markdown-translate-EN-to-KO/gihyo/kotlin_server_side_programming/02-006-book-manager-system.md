@@ -1424,7 +1424,8 @@ $ curl http://localhost:8080/book/list
 
 [OK]를 눌러 그림 6.18 과 같은 화면이 표시되면 성공합니다.
 
-Figure 618 delete ok
+![ 618_delete_ok ]( /gihyo/kotlin_server_side_programming_img/618_delete_ok.webp
+)
 
 주1 https://jeffreypalermo.com/2008/07/the-onion-architecture-part-1/
 
