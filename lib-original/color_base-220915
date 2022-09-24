@@ -3,28 +3,28 @@
 cBlack=$(tput bold)$(tput setaf 0); cRed=$(tput bold)$(tput setaf 1); cGreen=$(tput bold)$(tput setaf 2); cYellow=$(tput bold)$(tput setaf 3); cBlue=$(tput bold)$(tput setaf 4); cMagenta=$(tput bold)$(tput setaf 5); cCyan=$(tput bold)$(tput setaf 6); cWhite=$(tput bold)$(tput setaf 7); cReset=$(tput bold)$(tput sgr0); cUp=$(tput cuu 2)
 
 cat_and_run () {
-	echo "${cGreen}----> ${cYellow}$1 ${cGreen}#-- ${cCyan}$2${cReset}"; echo "$1" | sh
+	echo "${cGreen}----> ${cYellow}$1 ${cCyan}#-- $2${cReset}"; echo "$1" | sh
 	echo "${cMagenta}<---- ${cBlue}$1 #-- $2${cReset}"
 }
 cat_and_run_cr () { #-- for grails
-	echo "${cGreen}----> ${cYellow}$1 ${cGreen}#-- ${cCyan}$2${cReset}"; echo "--"; echo "$1" | sh
+	echo "${cGreen}----> ${cYellow}$1 ${cCyan}#-- $2${cReset}"; echo "--"; echo "$1" | sh
 	echo "${cMagenta}<---- ${cBlue}$1 #-- $2${cReset}"
 }
 cat_and_read () {
-	echo -e "${cGreen}----> ${cYellow}$1 ${cGreen}#-- ${cCyan}$2\n${cGreen}----> press Enter${cReset}:"
+	echo -e "${cGreen}----> ${cYellow}$1 ${cCyan}#-- $2${cGreen}\n----> ${cCyan}press Enter${cReset}:"
 	read a ; echo "${cUp}"; echo "$1" | sh
 	echo "${cMagenta}<---- ${cBlue}press Enter${cReset}: ${cMagenta}$1 #-- $2${cReset}"
 }
 cat_and_readY () {
-	echo "${cGreen}----> ${cYellow}$1 ${cGreen}#-- $2${cReset}"
+	echo "${cGreen}----> ${cYellow}$1 ${cCyan}#-- $2${cReset}"
 	if [ "x${ALL_INSTALL}" = "xy" ]; then
 		echo "$1" | sh ; echo "${cMagenta}<---- ${cBlue}$1 #-- $2${cReset}"
 	else
-		echo "${cGreen}----> ${cRed}press ${cGreen}y${cRed} or Enter${cReset}:"; read a; echo "${cUp}"
+		echo "${cGreen}----> ${cRed}press ${cCyan}y${cRed} or Enter${cReset}:"; read a; echo "${cUp}"
 		if [ "x$a" = "xy" ]; then
 			echo "${cRed}-OK-${cReset}"; echo "$1" | sh
 		else
-			echo "${cRed}[ ${cGreen}$1 ${cRed}] ${cGreen}<--- 명령을 실행하지 않습니다.${cReset}"
+			echo "${cRed}[ ${cGreen}$1 ${cRed}] ${cCyan}<--- 명령을 실행하지 않습니다.${cReset}"
 		fi
 		echo "${cMagenta}<---- ${cBlue}press Enter${cReset}: ${cMagenta}$1 #-- $2${cReset}"
 	fi
@@ -35,7 +35,7 @@ view_and_read () {
 	do
 		cat <<__EOF__
 
-${cGreen}----> ${cGreen}$1 ${cRed}[ ${cYellow}$2 ${cRed}]${cReset}
+${cGreen}----> ${cCyan}$1 ${cRed}[ ${cYellow}$2 ${cRed}]${cReset}
 __EOF__
 		read read_val ; echo "${cUp}"
 		if [ "x$read_val" = "x" ]; then
@@ -65,7 +65,7 @@ show_then_run () {
 	fi
 }
 show_then_view () {
-	if [ "x$show_ok" = "xok" ]; then echo "${cGreen}----> ${cCyan}$1 #-- (${showno}) ${showqq}${cReset}" ; fi
+	if [ "x$show_ok" = "xok" ]; then echo "${cGreen}----> $1 ${cCyan}#-- (${showno}) ${showqq}${cReset}" ; fi
 }
 show_title () {
 	if [ "x$show_ok" = "xok" ]; then
