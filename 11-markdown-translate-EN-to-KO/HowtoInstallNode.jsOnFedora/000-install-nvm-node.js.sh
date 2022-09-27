@@ -5,6 +5,7 @@ MEMO="nvm node.js 설치"
 echo "${cMagenta}>>>>>>>>>>${cGreen} $0 ${cMagenta}||| ${cCyan}${MEMO} ${cMagenta}>>>>>>>>>>${cReset}"
 
 cat_and_run "curl https://raw.githubusercontent.com/creationix/nvm/master/install.sh | bash" "(1) nvm 설치"
+source ~/.bashrc
 cat_and_run "source ~/.bashrc ; nvm install v16.17" "(1) node.js 설치"
 
 echo "${cGreen}----> ${cYellow}cat > http_demo_server.js <<__EOF__ ${cCyan}#-- (2) 데모 http 서버를 위한 파일을 만듭니다.${cReset}"
@@ -23,6 +24,6 @@ ${cYellow}__EOF__${cGreen}
 중단하려면, Ctrl + C 를 누르세요.${cReset}
 
 __EOF__
-cat_and_run "node --inspect http_demo_server.js" "(3) 데모 http 서버 실행"
+cat_and_run "source ~/.bashrc ; node --inspect http_demo_server.js" "(3) 데모 http 서버 실행"
 
 echo "${cRed}<<<<<<<<<<${cBlue} $0 ${cRed}||| ${cMagenta}${MEMO} ${cRed}<<<<<<<<<<${cReset}"
