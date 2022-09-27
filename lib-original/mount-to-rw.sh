@@ -1,13 +1,9 @@
 #!/bin/sh
 
-CMD_NAME=`basename $0` # 명령줄에서 실행 프로그램 이름만 꺼냄
-CMD_DIR=${0%/$CMD_NAME} # 실행 이름을 빼고 나머지 디렉토리만 담음
-if [ "x$CMD_DIR" == "x" ] || [ "x$CMD_DIR" == "x$CMD_NAME" ]; then
-	CMD_DIR="."
-fi
-source ${HOME}/lib/color_base #-- cBlack cRed cGreen cYellow cBlue cMagenta cCyan cWhite cReset cUp
-# ~/lib/color_base 220827-0920 cat_and_run cat_and_run_cr cat_and_read cat_and_readY view_and_read show_then_run show_then_view show_title value_keyin () {
-
+source ${HOME}/lib/color_base
+zz00log_name="${CMD_DIR}/zz.$(date +"%y%m%d%a%H:%M:%S")__RUNNING_${CMD_NAME}" ; touch ${zz00log_name} #-- 작업진행 시작
+MEMO="r/w 할수 있도록 마운트 하기"
+echo "${cMagenta}>>>>>>>>>>${cGreen} $0 ${cMagenta}||| ${cCyan}${MEMO} ${cMagenta}>>>>>>>>>>${cReset}"
 
 cat_and_run "ls -l /media | grep sf_" "출처: https://forums.virtualbox.org/viewtopic.php?t=79965"
 echo ""
@@ -35,3 +31,7 @@ gid 와 mid 가 모두 1000 이 아니면,
 uid 와 gid 를 1000 대신 직접 넣어야 합니다.
 __EOF__
 cat_and_readY "sudo mount -t vboxsf -o remount,uid=1000,gid=1000,rw wind /media/sf_Downloads" "remount 를 하려면, 'y' 를 입력하세요."
+
+echo "${cRed}<<<<<<<<<<${cBlue} $0 ${cRed}||| ${cMagenta}${MEMO} ${cRed}<<<<<<<<<<${cReset}"
+rm -f ${zz00log_name} ; zz00log_name="${CMD_DIR}/zz.$(date +"%y%m%d%a%H:%M:%S")..${CMD_NAME}" ; touch ${zz00log_name} #-- 작업 마무리
+ls --color ${CMD_DIR}/zz.*
