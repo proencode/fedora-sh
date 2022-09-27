@@ -7,7 +7,6 @@ echo "${cMagenta}>>>>>>>>>>${cGreen} $0 ${cMagenta}||| ${cCyan}${MEMO} ${cMagent
 
 
 cat_and_run "mkdir noConfig ; cd noConfig" "(1) Vue CLI with no configuration"
-mkdir noConfig ; cd noConfig
 cat_and_run "code ." "(2) start VS Code"
 
 

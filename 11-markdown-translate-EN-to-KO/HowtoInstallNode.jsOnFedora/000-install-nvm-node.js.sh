@@ -26,8 +26,8 @@ ${cYellow}__EOF__${cGreen}
 ${cYellow}source ~/.bashrc ${cMagenta}#-- ${cRed}이 작업이 끝나면, ${cMagenta}프롬프트에서 이 명령을 입력해야 합니다.${cReset}
 
 __EOF__
-cat_and_run "source ~/.bashrc ; node --inspect http_demo_server.js" "(3) 데모 http 서버 실행"
-
 echo "${cRed}<<<<<<<<<<${cBlue} $0 ${cRed}||| ${cMagenta}${MEMO} ${cRed}<<<<<<<<<<${cReset}"
 rm -f ${zz00log_name} ; zz00log_name="${CMD_DIR}/zz.$(date +"%y%m%d%a%H:%M:%S")..${CMD_NAME}" ; touch ${zz00log_name} #-- 작업 마무리
 ls --color ${CMD_DIR}/zz.*
+
+cat_and_run "source ~/.bashrc ; node --inspect http_demo_server.js" "(3) 데모 http 서버 실행"
