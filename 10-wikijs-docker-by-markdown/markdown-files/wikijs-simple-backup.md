@@ -14,7 +14,7 @@ if [ ! -d ${LOCAL_Y2M2} ]; then
 fi
 ls -lR ${LOCAL_Y2M2} ; echo "#-- (3) 보관용 로컬 디렉토리 입니다."
 #-
-REMOTE_FOLDER="simple_wiki.js" #- 원격 저장소의 첫번째 폴더 이름
+REMOTE_FOLDER="11-simple_wiki.js" #- 원격 저장소의 첫번째 폴더 이름
 RCLONE_NAME="yosgc" #- rclone 이름
 REMOTE_Y2M2=${REMOTE_FOLDER}/${this_y4m2}
 #-
