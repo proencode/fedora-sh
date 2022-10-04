@@ -832,16 +832,19 @@ display_10_first_integers();
 
 In the preceding code, the function is called three times in succession, which displays the list of the first 10 integers as many times. The order of the calls is indicated before each list as follows:
 
-Figure 1.20 – Successive calls to the display_10_first_integers() function
+![ 0219 1.20 Successive calls to the display_10_function ](/packtpub/javascript_from_frontend_to_backend_img/0219_1.20_successive_calls_to_the_display_10_function.webp
+)
 Figure 1.20 – Successive calls to the display_10_first_integers() function
 
-Function calculating the sum of the first 10 integers
-We now want to create a function that calculates the sum of the first 10 integers, that is, 1+2+3+4+5+6+7+8+9+10. The result is 55. This will allow us to show how a function can return a result to the outside (that is, to the program that uses it). Here, the function should return 55.
+## Function calculating the sum of the first 10 integers
 
-Let’s call the function add_10_first_integers(). This can be written as follows:
+We now want to create a function that calculates the sum of the first 10 integers, that is, `1+2+3+4+5+6+7+8+9+10`. The result is `55`. This will allow us to show how a function can return a result to the outside (that is, to the program that uses it). Here, the function should return `55`.
+
+Let’s call the function `add_10_first_integers()`. This can be written as follows:
 
 Function that adds the first 10 integers
 
+```
 // function definition
 function add_10_first_integers() {
   var total = 0;
@@ -851,22 +854,24 @@ function add_10_first_integers() {
 // function call
 var total = add_10_first_integers();
 console.log("Total = " + total);
+```
 
-Copy
-We define the total variable in the function. This variable is a local variable to the function because it is defined using the var or let keyword. This allows this total variable to not be the same as the one defined outside the function, even if the names are the same.
+We define the `total` variable in the function. This variable is a local variable to the function because it is defined using the `var` or `let` keyword. This allows this `total` variable to not be the same as the one defined outside the function, even if the names are the same.
 
-Note
+### Note
 
-If the total variable in the function was not defined using the var or let keyword, it would create a so-called global variable that would be directly accessible even outside the function. This is not good programming because you want to use global variables as little as possible.
+If the `total` variable in the function was not defined using the `var` or `let` keyword, it would create a so-called global variable that would be directly accessible even outside the function. This is not good programming because you want to use global variables as little as possible.
 
-The function uses a for() loop to add the first 10 integers, then returns that total using the return keyword. This keyword makes it possible to make accessible, outside the function, the value of any variable, in our example, the total variable.
+The function uses a `for()` loop to add the first 10 integers, then returns that total using the `return` keyword. This keyword makes it possible to make accessible, outside the function, the value of any variable, in our example, the `total` variable.
 
 Let’s run the previous program. We should see the following output:
 
-Figure 1.21 – Calculation of the sum of the first 10 integers
+![ 0220 1.21 Calculation of the sum of the first 10 integers ](/packtpub/javascript_from_frontend_to_backend_img/0220_1.21_calculation_of_the_sum_of_the_first_10_integers.webp
+)
 Figure 1.21 – Calculation of the sum of the first 10 integers
 
-Function calculating the sum of the first N integers
+# Function calculating the sum of the first N integers
+
 The previous function is not very useful because it always returns the same result. A more useful function would be to calculate the sum of the first N integers, knowing that N can be different each time the function is called.
 
 N would in this case be a parameter of the function. Its value is indicated in parentheses when using the function.
