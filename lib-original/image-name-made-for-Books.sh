@@ -328,6 +328,8 @@ __EOF__
 					old_image_jemok=${image_jemok}
 					img_name=$(echo "${image_jemok,,}" | sed 's/ /_/g') #-- 전부 대문자로 바꾸려면 ${image_jemok^^}, 전부 소문자는 ${image_jemok,,}
 					chapter_name=$(echo "${ChapterName,,}" | sed 's/ /_/g')
+					SeqName="${ChapterSeq} ${ChapterName}"
+					thisFileName=$(echo "${SeqName,,}" | sed 's/ /_/g') #-- 소문자로 바꾸고 공백을 밑줄로 바꾼다.
 					cat <<__EOF__
       ${cRed}[ ${cYellow}${image_jemok} ${cRed}]
 
@@ -358,6 +360,7 @@ ${cReset}
 > Short Description: ${ShortDescription}
 > Path: ${chulpansa}/${cheak_jemok}/${ChapterSeq}_${chapter_name}
 > tags: ${tags}
+> this File Name: ${thisFileName}.md
 
 > Chapter Name: ${ChapterSeq} ${ChapterName}
 > Link: ${https_line}
