@@ -1333,9 +1333,9 @@ It is possible to specify arguments for the `resolve()` and `reject()` methods. 
 
 Note
 
-Notice that the reject() function is not used in our example because no error cases can occur here. The resolve() function must, however, be called; otherwise, the then() method will never be executed.
+Notice that the `reject()` function is not used in our example because no error cases can occur here. The `resolve()` function must, however, be called; otherwise, the `then()` method will never be executed.
 
-The time() function is used to display the times of each process to check that the execution is correct.
+The `time()` function is used to display the times of each process to check that the execution is correct.
 
 ![ 0335 2.36 Using the then method ](/packtpub/javascript_from_frontend_to_backend_img/0335_2.36_using_the_then_method.webp
 )
@@ -1343,11 +1343,11 @@ Figure 2.36 – Using the then() method
 
 This brings us to the end of the chapter.
 
-Summary
+## Summary
 
 In this chapter, we went through advanced concepts related to JavaScript.
 
-We learned how to use classes and objects, particularly the Array and String classes. We also saw how to delay the execution of instructions.
+We learned how to use classes and objects, particularly the `Array` and `String` classes. We also saw how to delay the execution of instructions.
 
 In the rest of the book, we will discover the use of the Vue.js JavaScript library associated with the client side of application development.
 
