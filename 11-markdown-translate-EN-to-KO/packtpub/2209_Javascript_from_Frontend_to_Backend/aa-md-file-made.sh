@@ -19,13 +19,17 @@ file_Made () {
 
 	cat <<__EOF__ | tee "${small_Jemok}.md"
 
+@ 1 -> # 붙이고 줄 띄우기 => 0i# ^[A^M^[
+@ 2 -> # 붙이고 줄 띄우기 => 0i## ^[A^M^[
+@ 3 -> # 붙이고 줄 띄우기 => 0i### ^[A^M^[
 @ Q -> # 붙이고 줄 띄우기 => 0i# ^[A^M^[
 @ W -> 현 위치에서 Copy 까지 역따옴표 => j0i\`\`\`^M^[/^Copy$^[ddk0C\`\`\`^M^[
 @ E -> 찾은 글자 ~ SPACE 앞뒤로 backtick(\`) 붙이기 => i\`^[/ ^[i\`^[/EEEEEEEEEE^[
-@ R -> 찾은 글자 ~ POINT 앞뒤로 backtick(\`) 붙이기 => i\`^[/.^[i\`^[/RRRRRRRRRR^[
+@ R -> 찾은 글자 ~ POINT 앞뒤로 backtick(\`) 붙이기 => i\`^[/\.^[i\`^[/RRRRRRRRRR^[
 @ T -> 찾은 글자 ~ COMMA 앞뒤로 backtick(\`) 붙이기 => i\`^[/,^[i\`^[/TTTTTTTTTT^[
-@ Y -> 찾은 글자 ~ COLON 앞뒤로 backtick(\`) 붙이기 => i\`^[/;^[i\`^[/YYYYYYYYYY^[
+@ Y -> 찾은 글자 ~   ;   앞뒤로 backtick(\`) 붙이기 => i\`^[/;^[i\`^[/YYYYYYYYYY^[
 @ U -> 찾은 글자~닫은괄호앞뒤로 backtick(\`) 붙이기 => i\`^[/)^[i\`^[/UUUUUUUUUU^[
+@ I -> 찾은 글자 ~ COLON 앞뒤로 backtick(\`) 붙이기 => i\`^[/:^[i\`^[/CCCCCCCCCC^[
 
 @ A -> 빈 줄에 블록 시작하기 => 0C\`\`\`^[^Mk0
 @ S -> 줄 앞에 > 나오면 안되므로 블록 마감하고 > 앞에 - 끼우기 => 0i\`\`\`^M-^[^M0i\`\`\`^[0
@@ -59,16 +63,16 @@ __EOF__
 #--
 file_Made "00" "Preface"
 file_Made "01" "P1 JavaScript Syntax"
-file_Made "02" "Exploring the Core Concepts of JavaScript"
-file_Made "03" "Exploring the Advanced Concepts of JavaScript"
+file_Made "02" "C1 Exploring the Core Concepts of JavaScript"
+file_Made "03" "C2 Exploring the Advanced Concepts of JavaScript"
 file_Made "04" "P2 JavaScript on the Client-Side"
-file_Made "05" "Getting Started with Vue.js"
-file_Made "06" "Advanced Concepts of Vue.js"
-file_Made "07" "Managing a List with Vue.js"
+file_Made "05" "C3 Getting Started with Vue.js"
+file_Made "06" "C4 Advanced Concepts of Vue.js"
+file_Made "07" "C5 Managing a List with Vue.js"
 file_Made "08" "P3 JavaScript on the Server-Side"
-file_Made "09" "Creating and Using Node.js Modules"
-file_Made "10" "Using Express with Node.js"
-file_Made "11" "Using MongoDB with Node.js"
-file_Made "12" "Integrating Vue.js with Node.js"
-file_Made "13" "Other Books You May Enjoy"
+file_Made "09" "C6 Creating and Using Node.js Modules"
+file_Made "10" "C7 Using Express with Node.js"
+file_Made "11" "C8 Using MongoDB with Node.js"
+file_Made "12" "C9 Integrating Vue.js with Node.js"
+file_Made "13" "C10 Other Books You May Enjoy"
 #--

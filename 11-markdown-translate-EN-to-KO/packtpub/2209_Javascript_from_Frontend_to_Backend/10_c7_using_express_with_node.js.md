@@ -19,17 +19,17 @@
 ---------- cut line ----------
 
 
-> Title: 09 Creating and Using Node.js Modules
+> Title: 10 C7 Using Express with Node.js
 > Short Description: Publication date: 7월 2022 Publisher: Packt Pages: 336 ISBN: 9781801070317
-> Path: packtpub/javascript_from_frontend_to_backend/09_creating_and_using_node.js_modules
+> Path: packtpub/javascript_from_frontend_to_backend/10_c7_using_express_with_node.js
 > tags: vue.js node.js
 > Book Name: JavaScript from Frontend to Backend
 > Link: https://subscription.packtpub.com/book/web-development/9781801070317/4
-> create: 2022-10-04 화 15:33:42
+> create: 2022-10-05 수 14:00:42
 > Images: /packtpub/javascript_from_frontend_to_backend_img/
-> .md Name: 09_creating_and_using_node.js_modules.md
+> .md Name: 10_c7_using_express_with_node.js.md
 
-# 09 Creating and Using Node.js Modules
+# 10 C7 Using Express with Node.js
 
 
 

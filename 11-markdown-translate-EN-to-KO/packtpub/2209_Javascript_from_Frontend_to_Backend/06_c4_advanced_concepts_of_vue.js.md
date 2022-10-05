@@ -19,17 +19,17 @@
 ---------- cut line ----------
 
 
-> Title: 05 Getting Started with Vue.js
+> Title: 06 C4 Advanced Concepts of Vue.js
 > Short Description: Publication date: 7월 2022 Publisher: Packt Pages: 336 ISBN: 9781801070317
-> Path: packtpub/javascript_from_frontend_to_backend/05_getting_started_with_vue.js
+> Path: packtpub/javascript_from_frontend_to_backend/06_c4_advanced_concepts_of_vue.js
 > tags: vue.js node.js
 > Book Name: JavaScript from Frontend to Backend
 > Link: https://subscription.packtpub.com/book/web-development/9781801070317/4
-> create: 2022-10-04 화 15:33:42
+> create: 2022-10-05 수 14:00:42
 > Images: /packtpub/javascript_from_frontend_to_backend_img/
-> .md Name: 05_getting_started_with_vue.js.md
+> .md Name: 06_c4_advanced_concepts_of_vue.js.md
 
-# 05 Getting Started with Vue.js
+# 06 C4 Advanced Concepts of Vue.js
 
 
 

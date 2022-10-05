@@ -19,17 +19,17 @@
 ---------- cut line ----------
 
 
-> Title: 08 P3 JavaScript on the Server-Side
+> Title: 07 C5 Managing a List with Vue.js
 > Short Description: Publication date: 7월 2022 Publisher: Packt Pages: 336 ISBN: 9781801070317
-> Path: packtpub/javascript_from_frontend_to_backend/08_p3_javascript_on_the_server-side
+> Path: packtpub/javascript_from_frontend_to_backend/07_c5_managing_a_list_with_vue.js
 > tags: vue.js node.js
 > Book Name: JavaScript from Frontend to Backend
 > Link: https://subscription.packtpub.com/book/web-development/9781801070317/4
 > create: 2022-10-05 수 14:00:42
 > Images: /packtpub/javascript_from_frontend_to_backend_img/
-> .md Name: 08_p3_javascript_on_the_server-side.md
+> .md Name: 07_c5_managing_a_list_with_vue.js.md
 
-# 08 P3 JavaScript on the Server-Side
+# 07 C5 Managing a List with Vue.js
 
 
 

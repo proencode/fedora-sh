@@ -19,17 +19,17 @@
 ---------- cut line ----------
 
 
-> Title: 07 Managing a List with Vue.js
+> Title: 11 C8 Using MongoDB with Node.js
 > Short Description: Publication date: 7월 2022 Publisher: Packt Pages: 336 ISBN: 9781801070317
-> Path: packtpub/javascript_from_frontend_to_backend/07_managing_a_list_with_vue.js
+> Path: packtpub/javascript_from_frontend_to_backend/11_c8_using_mongodb_with_node.js
 > tags: vue.js node.js
 > Book Name: JavaScript from Frontend to Backend
 > Link: https://subscription.packtpub.com/book/web-development/9781801070317/4
-> create: 2022-10-04 화 15:33:42
+> create: 2022-10-05 수 14:00:42
 > Images: /packtpub/javascript_from_frontend_to_backend_img/
-> .md Name: 07_managing_a_list_with_vue.js.md
+> .md Name: 11_c8_using_mongodb_with_node.js.md
 
-# 07 Managing a List with Vue.js
+# 11 C8 Using MongoDB with Node.js
 
 
 
