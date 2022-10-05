@@ -41,3 +41,4 @@ figure_title_made "02" "17" "1.18 Using a function to display numbers from 1 to 
 figure_title_made "02" "18" "1.19 Call of the display_10_first_integers function"
 figure_title_made "02" "19" "1.20 Successive calls to the display_10_function"
 figure_title_made "02" "20" "1.21 Calculation of the sum of the first 10 integers"
+figure_title_made "02" "21" "1.22 Calculation of the sum of"

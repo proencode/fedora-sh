@@ -19,6 +19,7 @@
 ---------- cut line ----------
 
 
+
 > Title: 02 Exploring the Core Concepts of JavaScript
 > Short Description: Publication date: 7월 2022 Publisher: Packt Pages: 336 ISBN: 9781801070317
 > Path: packtpub/javascript_from_frontend_to_backend/02_exploring_the_core_concepts_of_javascript
@@ -29,7 +30,7 @@
 > Images: /packtpub/javascript_from_frontend_to_backend_img/
 > .md Name: 02_exploring_the_core_concepts_of_javascript.md
 
-# Chapter 1: Exploring the Core Concepts of JavaScript
+## Chapter 1: Exploring the Core Concepts of JavaScript
 
 The JavaScript language was created (in the mid-1990s) to be executed in internet browsers, in order to make websites more fluid. It was originally used to control what was entered into input forms. For example, it was used to do the following:
 
@@ -168,7 +169,7 @@ Figure 1.1 – Displaying a message in the browser window
 
 The JavaScript code present in the `<script>` tag ran when the HTML page was loaded. The message indicated in the `alert()` function is therefore displayed. A click on the OK button validates the message displayed and continues the execution of the JavaScript code. As we can see, there is nothing more in the program; the program ends immediately by displaying a blank page on the screen (because no HTML code is inserted into the page).
 
-## Writing JavaScript code to an external file
+### Writing JavaScript code to an external file
 
 Rather than integrating the JavaScript code directly into the HTML file, we can put it in an external file, then insert this file into our HTML file by indicating its name in the `src` attribute of the `<script>` tag.
 
@@ -256,7 +257,7 @@ The message is displayed in the lower part of the browser window.
 
 Now that we have learned how to run a JavaScript program in a browser, let’s move on to learning how to run a JavaScript program on a Node.js server.
 
-# Running a JavaScript program on a Node.js server
+## Running a JavaScript program on a Node.js server
 
 To run a JavaScript program on a Node.js server, you must first install the Node.js server. To install, simply go to https://nodejs.org/ and download and install the server. Note that if you are using macOS, Node.js is already installed.
 
@@ -302,7 +303,7 @@ Of course, it is not advisable to make such voluntary changes in our programs, a
 
 Now let’s learn how to define a variable. We will do so using one of the following keywords: `const`, `var`, or `let`.
 
-# Using the const keyword
+## Using the const keyword
 
 The `const` keyword is used to define a variable whose value will be constant. Any subsequent attempt to change the value will produce an error.
 
@@ -340,7 +341,7 @@ Figure 1.5 – Error when modifying a constant value
 
 As we can see from the preceding figure, the first display of the constant `c1` displays the value **12**, while the second display does not occur because an error occurred before (while trying to change the value of a constant). Therefore, a value defined by the `const` keyword should not be modified.
 
-# Using the var keyword
+## Using the var keyword
 
 Another way to define a variable (whose value can be modified) is to use the `var` keyword. Let’s see how using the following code example:
 
@@ -407,7 +408,7 @@ Figure 1.7 – Running the program under Node.js
 
 We learned about the `const` and `var` keywords for defining variables; all that remains is for us to learn how to use the `let` keyword.
 
-# Using the let keyword
+## Using the let keyword
 
 To understand the use of the `let` keyword and see the difference from the `var` keyword, we must use braces in our programs. Braces are used to create program blocks in which instructions are inserted, in particular after the conditional `if` and `else` instructions (which we will see in the Writing conditions section).
 
@@ -458,7 +459,7 @@ Figure 1.9 – The same results on the Node.js server
 
 As we can see in the preceding screen, the variable c, defined by `let` in a block, becomes unknown outside the block.
 
-# What if we don’t use var or let to define a variable?
+## What if we don’t use var or let to define a variable?
 
 It is possible not to use the `var` or `let` keywords to define a variable. We can simply write the variable’s name followed by its value (separated by the sign `=`). Let’s see how using the following example:
 
@@ -477,7 +478,7 @@ In the preceding example, where the variables are initialized without being prec
 
 It is strongly advised to use as few global variables as possible in the programs, as this complicates the design and debugging of the programs that contain them.
 
-# What is an uninitialized variable worth?
+## What is an uninitialized variable worth?
 
 Each of the preceding variables was declared by initializing its value, with the `=` sign, which is the assignment sign. Let’s see what happens if we don’t assign any value to the variable, but just declare it using `var` or `let` as follows:
 
@@ -528,7 +529,7 @@ JavaScript obviously allows you to write conditions in programs. The condition i
 - If the condition is `true`, the statement (or block in braces) that follows is executed.
 - If the condition is `false`, the statement (or block) following the `else` keyword (if present) will be executed.
 
-# Forms of writing instructions
+## Forms of writing instructions
 
 We can use the following forms to express the conditions:
 
@@ -605,7 +606,7 @@ Figure 1.12 – Running the else part of the test
 
 We have seen how to execute one part of the code or another depending on a condition. Let’s now study how to write more complex conditions than those written previously.
 
-# Expressions used to write conditions
+## Expressions used to write conditions
 
 The condition written previously is a simple test of equality between two values. But the test to write can sometimes be more complex. The goal is to have the final result of the condition, which is `true` or `false`, which will then make it possible for the system to decide the next course of action.
 
@@ -624,7 +625,7 @@ else console.log("condition a == 12 || b > 50 is false");
 
 In the preceding code, since the variable `b` is greater than 50, the condition is `true`, as seen in Figure 1.13.
 
-Note
+### Note
 
 In an OR condition, it suffices that one of the conditions is `true` for the final condition to be `true`.
 
@@ -638,7 +639,7 @@ By default, the condition expressed in `if(condition)` is compared with the valu
 
 It is sometimes necessary to chain several tests in a row, depending on the results of the previous tests. We then have a succession of tests, called cascade tests.
 
-# Nested test suites
+## Nested test suites
 
 It is possible to chain tests in the processes to be performed. Here is an example:
 
@@ -676,7 +677,7 @@ Two types of processing loops are possible in JavaScript:
 
 Let’s take a look at these two types of loops.
 
-# Loops with while()
+## Loops with while()
 
 The `while(condition)` instruction allows you to repeat the instruction (or the block of instructions) that follows. As long as the condition is `true`, the statement (or block) is executed. It stops when the condition becomes `false`.
 
@@ -727,7 +728,7 @@ The result is displayed similarly in the browser console:
 )
 Figure 1.16 – Displaying numbers from 0 to 5 in the browser console
 
-# Loops with for()
+## Loops with for()
 
 Another widely used form of loop is one with a `for()` statement. It simplifies the writing of the previous loop by reducing the number of instructions to write.
 
@@ -870,18 +871,19 @@ Let’s run the previous program. We should see the following output:
 )
 Figure 1.21 – Calculation of the sum of the first 10 integers
 
-# Function calculating the sum of the first N integers
+## Function calculating the sum of the first N integers
 
-The previous function is not very useful because it always returns the same result. A more useful function would be to calculate the sum of the first N integers, knowing that N can be different each time the function is called.
+The previous function is not very useful because it always returns the same result. A more useful function would be to calculate the sum of the first `N` integers, knowing that `N` can be different each time the function is called.
 
-N would in this case be a parameter of the function. Its value is indicated in parentheses when using the function.
+`N` would in this case be a parameter of the function. Its value is indicated in parentheses when using the function.
 
-Let’s call the add_N_first_integers()function to calculate this sum. The N parameter would be indicated in parentheses following the function name. A function can use several parameters, and it suffices to indicate them in succession, separated by a comma. In our example, a single parameter is enough.
+Let’s call the `add_N_first_integers()` function to calculate this sum. The `N` parameter would be indicated in parentheses following the function name. A function can use several parameters, and it suffices to indicate them in succession, separated by a comma. In our example, a single parameter is enough.
 
-Let’s write the add_N_first_integers(n)function and use that to calculate the sum of the first 10, then 25, then 100 integers. The values 10, 25, and 100 will be used as parameters during successive calls to the function and will replace the parameter n indicated in the definition of the function:
+Let’s write the `add_N_first_integers(n)` function and use that to calculate the sum of the first 10, then 25, then 100 integers. The values 10, 25, and 100 will be used as parameters during successive calls to the function and will replace the parameter `n` indicated in the definition of the function:
 
 Function that adds the first N integers
 
+```
 // function definition
 function add_N_first_integers(n) {
   var total = 0;
@@ -897,16 +899,18 @@ console.log("Total of the first 25 integers = " + total_25);
 // calculation of the first 100 integers
 var total_100 = add_N_first_integers(100);
 console.log("Total of the first 100 integers = " + total_100);
+```
 
-Copy
-The add_N_first_integers(n) function is very similar to the add_10_first_integers() function written earlier. It uses the parameter n indicated between the parentheses and does not loop from 0 to 10 as before, but from 0 to n. Depending on the value of n that will be used when calling the function, the loop will thus be different, and the result returned by the function as well.
+The `add_N_first_integers(n)` function is very similar to the `add_10_first_integers()` function written earlier. It uses the parameter`` n indicated between the parentheses and does not loop from `0` to `10` as before, but from `0` to `n`. Depending on the value of `n` that will be used when calling the function, the loop will thus be different, and the result returned by the function as well.
 
-When calling the function, it passes the parameters 10, 25, then 100 as desired. The result is returned by the function’s total variable, and then used by the total_10, total_25, and total_100 variables outside the function:
+When calling the function, it passes the parameters `10`, `25`, then `100` as desired. The result is returned by the function’s `total` variable, and then used by the `total_10`, `total_25`, and `total_100` variables outside the function:
 
+![ 0221 1.22 Calculation of the sum of ](/packtpub/javascript_from_frontend_to_backend_img/0221_1.22_calculation_of_the_sum_of.webp
+)
 Figure 1.22 – Calculation of the sum of the first 10, then 25, then 100 integers
-Figure 1.22 – Calculation of the sum of the first 10, then 25, then 100 integers
 
-Summary
+# Summary
+
 The basic features of JavaScript have been covered in this chapter: variables with different types, conditional tests, loops, and functions. They are used on the client side and on the server side.
 
 In the next chapter, we’ll take a look at some more in-depth features of JavaScript, such as object-oriented programming with JavaScript.
