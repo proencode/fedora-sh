@@ -63,6 +63,9 @@ __EOF__
 }
 
 #--
+#-- file_Made "00 부터 매기는 권번호" "보여주기 위한 제목" \
+#--	"이전 페이지 링크 또는 Begin" \
+#--	"이후 페이지 링크 또는 End"
 # file_Made "00" "Preface" \
 #	"Begin" \
 #	"[ 01 P1 JavaScript Syntax ](/packtpub/javascript_from_frontend_to_backend/01_p1_javascript_syntax)"
