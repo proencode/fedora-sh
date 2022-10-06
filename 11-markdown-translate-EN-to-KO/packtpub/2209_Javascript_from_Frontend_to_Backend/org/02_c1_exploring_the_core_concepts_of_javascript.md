@@ -18,19 +18,9 @@
 
 ---------- cut line ----------
 
+> [ 01 P1 JavaScript Syntax ](/packtpub/javascript_from_frontend_to_backend/01_p1_javascript_syntax) <---> [ 03 C2 Exploring the Advanced Concepts of JavaScript ](/packtpub/javascript_from_frontend_to_backend/03_c2_exploring_the_advanced_concepts_of_javascript)
 
-
-> Title: 02 Exploring the Core Concepts of JavaScript
-> Short Description: Publication date: 7월 2022 Publisher: Packt Pages: 336 ISBN: 9781801070317
-> Path: packtpub/javascript_from_frontend_to_backend/02_exploring_the_core_concepts_of_javascript
-> tags: vue.js node.js
-> Book Name: JavaScript from Frontend to Backend
-> Link: https://subscription.packtpub.com/book/web-development/9781801070317/4
-> create: 2022-10-04 화 15:33:42
-> Images: /packtpub/javascript_from_frontend_to_backend_img/
-> .md Name: 02_exploring_the_core_concepts_of_javascript.md
-
-## Chapter 1: Exploring the Core Concepts of JavaScript
+# Chapter 1: Exploring the Core Concepts of JavaScript
 
 The JavaScript language was created (in the mid-1990s) to be executed in internet browsers, in order to make websites more fluid. It was originally used to control what was entered into input forms. For example, it was used to do the following:
 
@@ -914,4 +904,18 @@ Figure 1.22 – Calculation of the sum of the first 10, then 25, then 100 intege
 The basic features of JavaScript have been covered in this chapter: variables with different types, conditional tests, loops, and functions. They are used on the client side and on the server side.
 
 In the next chapter, we’ll take a look at some more in-depth features of JavaScript, such as object-oriented programming with JavaScript.
+
+
+
+> [ 01 P1 JavaScript Syntax ](/packtpub/javascript_from_frontend_to_backend/01_p1_javascript_syntax) <---> [ 03 C2 Exploring the Advanced Concepts of JavaScript ](/packtpub/javascript_from_frontend_to_backend/03_c2_exploring_the_advanced_concepts_of_javascript)
+>
+> Title: 02 Exploring the Core Concepts of JavaScript
+> Short Description: Publication date: 7월 2022 Publisher: Packt Pages: 336 ISBN: 9781801070317
+> Path: packtpub/javascript_from_frontend_to_backend/02_exploring_the_core_concepts_of_javascript
+> tags: vue.js node.js
+> Book Name: JavaScript from Frontend to Backend
+> Link: https://subscription.packtpub.com/book/web-development/9781801070317/4
+> create: 2022-10-04 화 15:33:42
+> Images: /packtpub/javascript_from_frontend_to_backend_img/
+> .md Name: 02_exploring_the_core_concepts_of_javascript.md
 

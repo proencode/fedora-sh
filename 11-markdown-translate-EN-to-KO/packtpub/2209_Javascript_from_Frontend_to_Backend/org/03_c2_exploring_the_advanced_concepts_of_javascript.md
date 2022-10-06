@@ -20,18 +20,9 @@ i`/:i`/YiiYYYYYYYYY
 
 ---------- cut line ----------
 
+> [ 02 C1 Exploring the Core Concepts of JavaScript ](/packtpub/javascript_from_frontend_to_backend/02_c1_exploring_the_core_concepts_of_javascript) <---> [ 04 P2 JavaScript on the Client-Side ](/packtpub/javascript_from_frontend_to_backend/04_p2_javascript_on_the_client-side)
 
-> Title: 03 C2 Exploring the Advanced Concepts of JavaScript
-> Short Description: Publication date: 7월 2022 Publisher: Packt Pages: 336 ISBN: 9781801070317
-> Path: packtpub/javascript_from_frontend_to_backend/03_c2_exploring_the_advanced_concepts_of_javascript
-> tags: vue.js node.js
-> Book Name: JavaScript from Frontend to Backend
-> Link: https://subscription.packtpub.com/book/web-development/9781801070317/4
-> create: 2022-10-05 수 14:00:42
-> Images: /packtpub/javascript_from_frontend_to_backend_img/
-> .md Name: 03_c2_exploring_the_advanced_concepts_of_javascript.md
-
-## 03 Chapter 2: Exploring the Advanced Concepts of JavaScript
+# 03 Chapter 2: Exploring the Advanced Concepts of JavaScript
 
 In this chapter, we will explore the advanced features of JavaScript, such as object-oriented programming. We will also study two types of objects that are widely used in JavaScript: arrays and strings. Finally, we will see how JavaScript allows you to trigger deferred processing, using so-called callback functions.
 
@@ -1352,4 +1343,18 @@ We learned how to use classes and objects, particularly the `Array` and `String`
 In the rest of the book, we will discover the use of the Vue.js JavaScript library associated with the client side of application development.
 
 We will see how the knowledge obtained here will allow us to use this language in aspects of client-side and then server-side programming.
+
+
+
+> [ 02 C1 Exploring the Core Concepts of JavaScript ](/packtpub/javascript_from_frontend_to_backend/02_c1_exploring_the_core_concepts_of_javascript) <---> [ 04 P2 JavaScript on the Client-Side ](/packtpub/javascript_from_frontend_to_backend/04_p2_javascript_on_the_client-side)
+>
+> Title: 03 C2 Exploring the Advanced Concepts of JavaScript
+> Short Description: Publication date: 7월 2022 Publisher: Packt Pages: 336 ISBN: 9781801070317
+> Path: packtpub/javascript_from_frontend_to_backend/03_c2_exploring_the_advanced_concepts_of_javascript
+> tags: vue.js node.js
+> Book Name: JavaScript from Frontend to Backend
+> Link: https://subscription.packtpub.com/book/web-development/9781801070317/4
+> create: 2022-10-05 수 14:00:42
+> Images: /packtpub/javascript_from_frontend_to_backend_img/
+> .md Name: 03_c2_exploring_the_advanced_concepts_of_javascript.md
 

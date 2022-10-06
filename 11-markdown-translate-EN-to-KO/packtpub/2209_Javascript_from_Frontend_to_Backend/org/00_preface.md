@@ -18,18 +18,9 @@
 
 ---------- cut line ----------
 
+> Begin <---> [ 01 P1 JavaScript Syntax ](/packtpub/javascript_from_frontend_to_backend/01_p1_javascript_syntax)
 
-> Title: 00 Preface
-> Short Description: Publication date: 7월 2022 Publisher: Packt Pages: 336 ISBN: 9781801070317
-> Path: packtpub/javascript_from_frontend_to_backend/00_preface
-> tags: vue.js node.js
-> Book Name: JavaScript from Frontend to Backend
-> Link: https://subscription.packtpub.com/book/web-development/9781801070317/4
-> create: 2022-10-04 화 14:32:37
-> Images: /packtpub/javascript_from_frontend_to_backend_img/
-> .md Name: 00_preface.md
-
-# 00 Preface
+# Preface
 
 JavaScript is the most widely used programming language in the world. It has numerous libraries and modules and a dizzying array of need-to-know topics. Picking a starting point can be difficult. This concise, practical guide will get you up to speed in next to no time.
 
@@ -38,30 +29,29 @@ JavaScript is the most widely used programming language in the world. It has num
 This book is for JavaScript developers looking to strengthen their core JavaScript concepts and implement them in building full stack apps.
 
 # What this book covers
+[ Chapter 1 ](/packtpub/javascript_from_frontend_to_backend/02_c1_exploring_the_core_concepts_of_javascript), Exploring the Core Concepts of JavaScript, is where you discover how to use variables, conditions, and loops in JavaScript.
 
-Chapter 1, Exploring the Core Concepts of JavaScript, is where you discover how to use variables, conditions, and loops in JavaScript.
+[ Chapter 2 ](/packtpub/javascript_from_frontend_to_backend/03_c2_exploring_the_advanced_concepts_of_javascript), Exploring the Advanced Concepts of JavaScript, is where you learn how to use object-oriented programming in JavaScript.
 
-Chapter 2, Exploring the Advanced Concepts of JavaScript, is where you learn how to use object-oriented programming in JavaScript.
+[ Chapter 3 ](/packtpub/javascript_from_frontend_to_backend/05_c3_getting_started_with_vue.js), Getting Started withVue.js, is where you learn the basics of Vue.js, with components and directives.
 
-Chapter 3, Getting Started withVue.js, is where you learn the basics of Vue.js, with components and directives.
+[ Chapter 4 ](/packtpub/javascript_from_frontend_to_backend/06_c4_advanced_concepts_of_vue.js), Advanced Concepts of Vue.js, is where you explore in-depth Vue.js with communication between components and visual effects.
 
-Chapter 4, Advanced Concepts of Vue.js, is where you explore in-depth Vue.js with communication between components and visual effects.
+[ Chapter 5 ](/packtpub/javascript_from_frontend_to_backend/07_c5_managing_a_list_with_vue.js), Managing a List with Vue.js, is where you learn how to build a full project with Vue.js.
 
-Chapter 5, Managing a List with Vue.js, is where you learn how to build a full project with Vue.js.
+[ Chapter 6 ](/packtpub/javascript_from_frontend_to_backend/09_c6_creating_and_using_node.js_modules), Creating and Using Node.js Modules, is where you learn the basics of Node.js programming with modules.
 
-Chapter 6, Creating and Using Node.js Modules, is where you learn the basics of Node.js programming with modules.
+[ Chapter 7 ](/packtpub/javascript_from_frontend_to_backend/10_c7_using_express_with_node.js), Using Express with Node.js, is where you explore the main library used to build Node.js applications.
 
-Chapter 7, Using Express with Node.js, is where you explore the main library used to build Node.js applications.
+[ Chapter 8 ](/packtpub/javascript_from_frontend_to_backend/11_c8_using_mongodb_with_node.js), Using MongoDB with Node.js, is where you learn how to use the MongoDB database with Node.js using the Mongoose module.
 
-Chapter 8, Using MongoDB with Node.js, is where you learn how to use the MongoDB database with Node.js using the Mongoose module.
-
-Chapter 9, Integrating Vue.js with Node.js, is where you learn how to build a full project integrating Vue.js and Node.js.
+[ Chapter 9 ](/packtpub/javascript_from_frontend_to_backend/12_c9_integrating_vue.js_with_node.js), Integrating Vue.js with Node.js, is where you learn how to build a full project integrating Vue.js and Node.js.
 
 # To get the most out of this book
 
 Prior knowledge of HTML and CSS is a must for this book.
 
-![ 00-00 covered in the book ]( /packtpub/javascript_from_frontend_to_backend_img/0000_covered_in_the_book.webp
+![ 00-00 covered in the book ](/packtpub/javascript_from_frontend_to_backend_img/0000_covered_in_the_book.webp
 )
 
 If you are using the digital version of this book, we advise you to type the code yourself or access the code from the book’s GitHub repository (a link is available in the next section). Doing so will help you avoid any potential errors related to the copying and pasting of code.
@@ -124,4 +114,18 @@ Feedback from our readers is always welcome.
 Once you’ve read JavaScript from Frontend to Backend, we’d love to hear your thoughts! Please click here to go straight to the Amazon review page https://packt.link/QUTSC for this book and share your feedback.
 
 Your review is important to us and the tech community and will help us make sure we’re delivering excellent quality content.
+
+
+
+> Begin <---> [ 01 P1 JavaScript Syntax ](/packtpub/javascript_from_frontend_to_backend/01_p1_javascript_syntax)
+>
+> Title: 00 Preface
+> Short Description: Publication date: 7월 2022 Publisher: Packt Pages: 336 ISBN: 9781801070317
+> Path: packtpub/javascript_from_frontend_to_backend/00_preface
+> tags: vue.js node.js
+> Book Name: JavaScript from Frontend to Backend
+> Link: https://subscription.packtpub.com/book/web-development/9781801070317/4
+> create: 2022-10-04 화 14:32:37
+> Images: /packtpub/javascript_from_frontend_to_backend_img/
+> .md Name: 00_preface.md
 

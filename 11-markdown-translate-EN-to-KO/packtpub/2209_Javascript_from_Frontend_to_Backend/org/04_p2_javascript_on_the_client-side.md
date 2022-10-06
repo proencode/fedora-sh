@@ -19,22 +19,29 @@
 
 ---------- cut line ----------
 
-> [ 09 C6 Creating and Using Node.js Modules ](/packtpub/javascript_from_frontend_to_backend/09_c6_creating_and_using_node.js_modules) <---> [ 11 C8 Using MongoDB with Node.js ](/packtpub/javascript_from_frontend_to_backend/11_c8_using_mongodb_with_node.js)
+> [ 03 C2 Exploring the Advanced Concepts of JavaScript ](/packtpub/javascript_from_frontend_to_backend/03_c2_exploring_the_advanced_concepts_of_javascript) <---> [ 05 C3 Getting Started with Vue.js ](/packtpub/javascript_from_frontend_to_backend/05_c3_getting_started_with_vue.js)
 
-# 10 C7 Using Express with Node.js
+# Part 2: JavaScript on the Client-Side
+
+In this part, we discover the use of JavaScript in a browser (so-called client-side). We will learn how to use the Vue.js library to build JavaScript apps on the client-side. We also build a list management application (small but representative of the reality).
+
+This section comprises the following chapters:
+
+[ Chapter 3 ](/packtpub/javascript_from_frontend_to_backend/05_c3_getting_started_with_vue.js), Getting Started with Vue.js
+[ Chapter 4 ](/packtpub/javascript_from_frontend_to_backend/06_c4_advanced_concepts_of_vue.js), Advanced concepts of Vue.js
+[ Chapter 5 ](/packtpub/javascript_from_frontend_to_backend/07_c5_managing_a_list_with_vue.js), Managing a list with Vue.js
 
 
 
-
-> [ 09 C6 Creating and Using Node.js Modules ](/packtpub/javascript_from_frontend_to_backend/09_c6_creating_and_using_node.js_modules) <---> [ 11 C8 Using MongoDB with Node.js ](/packtpub/javascript_from_frontend_to_backend/11_c8_using_mongodb_with_node.js)
+> [ 03 C2 Exploring the Advanced Concepts of JavaScript ](/packtpub/javascript_from_frontend_to_backend/03_c2_exploring_the_advanced_concepts_of_javascript) <---> [ 05 C3 Getting Started with Vue.js ](/packtpub/javascript_from_frontend_to_backend/05_c3_getting_started_with_vue.js)
 >
-> Title: 10 C7 Using Express with Node.js
+> Title: 04 P2 JavaScript on the Client-Side
 > Short Description: Publication date: 7월 2022 Publisher: Packt Pages: 336 ISBN: 9781801070317
-> Path: packtpub/javascript_from_frontend_to_backend/10_c7_using_express_with_node.js
+> Path: packtpub/javascript_from_frontend_to_backend/04_p2_javascript_on_the_client-side
 > tags: vue.js node.js
 > Book Name: JavaScript from Frontend to Backend
 > Link: https://subscription.packtpub.com/book/web-development/9781801070317/4
-> create: 2022-10-06 목 13:09:22
+> create: 2022-10-06 목 12:24:55
 > Images: /packtpub/javascript_from_frontend_to_backend_img/
-> .md Name: 10_c7_using_express_with_node.js.md
+> .md Name: 04_p2_javascript_on_the_client-side.md
 

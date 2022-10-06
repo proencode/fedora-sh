@@ -1,11 +1,12 @@
 
-@ Q -> # 붙이고 줄 띄우기 => 0i# ^[A^M^[
+@ Q -> # 붙이고 줄 띄우기 => 0i### ^[A^M^[
 @ W -> 현 위치에서 Copy 까지 역따옴표 => j0i```^M^[/^Copy$^[ddk0C```^M^[
 @ E -> 찾은 글자 ~ SPACE 앞뒤로 backtick(`) 붙이기 => i`^[/ ^[i`^[/EEEEEEEEEE^[
-@ R -> 찾은 글자 ~ POINT 앞뒤로 backtick(`) 붙이기 => i`^[/.^[i`^[/RRRRRRRRRR^[
+@ R -> 찾은 글자 ~ POINT 앞뒤로 backtick(`) 붙이기 => i`^[/\.^[i`^[/RRRRRRRRRR^[
 @ T -> 찾은 글자 ~ COMMA 앞뒤로 backtick(`) 붙이기 => i`^[/,^[i`^[/TTTTTTTTTT^[
-@ Y -> 찾은 글자 ~ COLON 앞뒤로 backtick(`) 붙이기 => i`^[/;^[i`^[/YYYYYYYYYY^[
+@ Y -> 찾은 글자 ~   ;   앞뒤로 backtick(`) 붙이기 => i`^[/;^[i`^[/YYYYYYYYYY^[
 @ U -> 찾은 글자~닫은괄호앞뒤로 backtick(`) 붙이기 => i`^[/)^[i`^[/UUUUUUUUUU^[
+@ I -> 찾은 글자 ~ COLON 앞뒤로 backtick(`) 붙이기 => i`^[/:^[i`^[/CCCCCCCCCC^[
 
 @ A -> 빈 줄에 블록 시작하기 => 0C```^[^Mk0
 @ S -> 줄 앞에 > 나오면 안되므로 블록 마감하고 > 앞에 - 끼우기 => 0i```^M-^[^M0i```^[0
@@ -18,18 +19,22 @@
 
 ---------- cut line ----------
 
+> [ 08 P3 JavaScript on the Server-Side ](/packtpub/javascript_from_frontend_to_backend/08_p3_javascript_on_the_server-side) <---> [ 10 C7 Using Express with Node.js ](/packtpub/javascript_from_frontend_to_backend/10_c7_using_express_with_node.js)
 
+# 09 C6 Creating and Using Node.js Modules
+
+
+
+
+> [ 08 P3 JavaScript on the Server-Side ](/packtpub/javascript_from_frontend_to_backend/08_p3_javascript_on_the_server-side) <---> [ 10 C7 Using Express with Node.js ](/packtpub/javascript_from_frontend_to_backend/10_c7_using_express_with_node.js)
+>
 > Title: 09 C6 Creating and Using Node.js Modules
 > Short Description: Publication date: 7월 2022 Publisher: Packt Pages: 336 ISBN: 9781801070317
 > Path: packtpub/javascript_from_frontend_to_backend/09_c6_creating_and_using_node.js_modules
 > tags: vue.js node.js
 > Book Name: JavaScript from Frontend to Backend
 > Link: https://subscription.packtpub.com/book/web-development/9781801070317/4
-> create: 2022-10-05 수 14:00:42
+> create: 2022-10-06 목 13:09:22
 > Images: /packtpub/javascript_from_frontend_to_backend_img/
 > .md Name: 09_c6_creating_and_using_node.js_modules.md
-
-# 09 C6 Creating and Using Node.js Modules
-
-
 

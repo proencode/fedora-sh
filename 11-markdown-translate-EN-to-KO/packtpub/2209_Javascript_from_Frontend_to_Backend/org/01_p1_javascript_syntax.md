@@ -18,7 +18,21 @@
 
 ---------- cut line ----------
 
+> [ 00 Preface ](/packtpub/javascript_from_frontend_to_backend/00_preface) <---> [ 02 C1 Exploring the Core Concepts of JavaScript ](/packtpub/javascript_from_frontend_to_backend/02_c1_exploring_the_core_concepts_of_javascript)
 
+# Part 1: JavaScript Syntax
+
+This part explains the basics you need to know to use JavaScript on the client or on the server. It explains the syntax and the main data types that can be used in JavaScript.
+
+This section comprises the following chapters:
+
+[ Chapter 1 ](/packtpub/javascript_from_frontend_to_backend/02_c1_exploring_the_core_concepts_of_javascript), Exploring the Core Concepts of JavaScript
+[ Chapter 2 ](/packtpub/javascript_from_frontend_to_backend/03_c2_exploring_the_advanced_concepts_of_javascript), Exploring the Advanced Concepts of JavaScript
+
+
+
+> [ 00 Preface ](/packtpub/javascript_from_frontend_to_backend/00_preface) <---> [ 02 C1 Exploring the Core Concepts of JavaScript ](/packtpub/javascript_from_frontend_to_backend/02_c1_exploring_the_core_concepts_of_javascript)
+>
 > Title: 01 P1 JavaScript Syntax
 > Short Description: Publication date: 7월 2022 Publisher: Packt Pages: 336 ISBN: 9781801070317
 > Path: packtpub/javascript_from_frontend_to_backend/01_p1_javascript_syntax
@@ -28,13 +42,4 @@
 > create: 2022-10-04 화 15:11:07
 > Images: /packtpub/javascript_from_frontend_to_backend_img/
 > .md Name: 01_p1_javascript_syntax.md
-
-# Part 1: JavaScript Syntax
-
-This part explains the basics you need to know to use JavaScript on the client or on the server. It explains the syntax and the main data types that can be used in JavaScript.
-
-This section comprises the following chapters:
-
-> Chapter 1, Exploring the Core Concepts of JavaScript
-> Chapter 2, Exploring the Advanced Concepts of JavaScript
 
