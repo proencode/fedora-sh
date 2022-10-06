@@ -420,31 +420,36 @@ In the preceding code, to import the `counter.js` file and use the corresponding
 
 ## Using HTTP Instead of the FILE Protocol
 
-However, as we use the import of JavaScript modules, it is necessary to run our application on an HTTP server, and no longer with a simple drag and drop as before. Hence the use of the URL that begins with http://localhost. If you need to know how to install an HTTP server, you can, for example, use the documentation here: https://developer.mozilla.org/en-US/docs/Learn/Common_questions/set_up_a_local_testing_server.
+However, as we use the import of JavaScript modules, it is necessary to run our application on an HTTP server, and no longer with a simple drag and drop as before. Hence the use of the URL that begins with `http://localhost`. If you need to know how to install an HTTP server, you can, for example, use the documentation here: https://developer.mozilla.org/en-US/docs/Learn/Common_questions/set_up_a_local_testing_server.
 
 In the following figure, we can see that creating a component directly in the HTML page or in an external file produces the same result:
 
-Figure 3.7 – Execution of the HTML file on an HTTP server (here, localhost)
+![ 0406 3.7 Execution of the HTML file on ](/packtpub/javascript_from_frontend_to_backend_img/0406_3.7_execution_of_the_html_file_on.webp
+)
 Figure 3.7 – Execution of the HTML file on an HTTP server (here, localhost)
 
 The current component only has a simple reactive variable. It is possible, in a component, to add methods to it that will be used in the component. Now let’s take a look at how to do it.
 
-Adding methods in components
-We have seen how to create reactive variables in a component, using the data section of the component. It is also possible to create methods in a component that can be used in the component template.
+# Adding methods in components
+
+We have seen how to create reactive variables in a component, using the `data` section of the component. It is also possible to create methods in a component that can be used in the component template.
 
 There are two ways to add methods to a component:
 
-The first is to define the method in the methods section of the component.
-The second is to create a so-called computed property that will be defined in the computed section of the component.
+- The first is to define the method in the `methods` section of the component.
+- The second is to create a so-called `computed` property that will be defined in the computed section of the component.
+
 Let’s look at these two ways to do it.
 
-Defining methods in the methods section
-For each incrementation of the counter, it should be necessary to display the time at which it occurs. A time() function would be very useful in the component, allowing us to display the time in the form HH:MM:SS. This time() function will be defined in the methods section of the component.
+## Defining methods in the methods section
 
-The <counter> component is modified to integrate the display of the time at the beginning of the line. We can achieve all this using the following code:
+For each incrementation of the counter, it should be necessary to display the time at which it occurs. A `time()` function would be very useful in the component, allowing us to display the time in the form HH:MM:SS. This `time()` function will be defined in the `methods` section of the component.
+
+The `<counter>` component is modified to integrate the display of the time at the beginning of the line. We can achieve all this using the following code:
 
 <counter> component displaying time (counter.js file)
 
+```
 const Counter = {
   data() {
     return {
@@ -473,26 +478,29 @@ const Counter = {
   }
 }
 export default Counter;
+```
 
-Copy
-In the preceding code, the time() method is defined in the methods section and is then directly used in the component template within the double braces {{ and }}.
+In the preceding code, the `time()` method is defined in the `methods` section and is then directly used in the component template within the double braces `{{` and `}}`.
 
-A method defined in the methods section can use the other methods of this section or the reactive variables of the data section by prefixing them with the this keyword.
+A method defined in the `methods` section can use the other methods of this section or the reactive variables of the `data` section by prefixing them with the `this` keyword.
 
 The result is displayed in the following figure:
 
-Figure 3.8 – Time display in the component
+![ 0407 3.8 Time display in the component ](/packtpub/javascript_from_frontend_to_backend_img/0407_3.8_time_display_in_the_component.webp
+)
 Figure 3.8 – Time display in the component
 
 Vue.js allows you to define, in the form of methods, new variables that will be reactive. They are called computed properties. Let’s see how to create and use them.
 
-Defining computed properties in the computed section
+## Defining computed properties in the computed section
+
 A computed property is similar to a reactive variable. It is the result of the calculation performed on one or more reactive variables, and it will also be reactive. Any modification to one of the reactive variables associated with this computed property will cause it to be modified immediately.
 
-Let’s create a countX2 property that calculates double the count variable as follows:
+Let’s create a `countX2` property that calculates double the `count` variable as follows:
 
 Defining a computed property countX2 in the component (counter.js file)
 
+```
 const Counter = {
   data() {
     return {
@@ -526,24 +534,27 @@ const Counter = {
   }
 }
 export default Counter;
+```
 
-Copy
 The output of the preceding code will look as follows:
 
-Figure 3.9 – Using a computed property
+![ 0408 3.9 Using a computed property ](/packtpub/javascript_from_frontend_to_backend_img/0408_3.9_using_a_computed_property.webp
+)
 Figure 3.9 – Using a computed property
 
-In the preceding figure, we can see the modification of the count variable. Every second leads to the automatic modification of the countX2 variable thanks to its definition in the computed section.
+In the preceding figure, we can see the modification of the `count` variable. Every second leads to the automatic modification of the `countX2` variable thanks to its definition in the `computed` section.
 
 We have seen how to define methods and reactive variables in a component. Now let’s see how to pass parameters to a component, using the component’s attributes for this.
 
-Using attributes in components
-Attributes in a component allow it to pass parameters for its use. For example, we could use in the <counter> component a start attribute indicating at what value we start counting. If this attribute is not indicated, it is considered to be 0 (that is, counting starts at 0 as in the preceding code example).
+# Using attributes in components
 
-For a component to be able to employ attributes during its use, it suffices to indicate the name of the attributes in the props section of the component. The component can access the attribute value using the this keyword (for example, this.start to access the start attribute in the component). We can see this in action in the following code:
+Attributes in a component allow it to pass parameters for its use. For example, we could use in the `<counter>` component a `start` attribute indicating at what value we start counting. If this attribute is not indicated, it is considered to be 0 (that is, counting starts at 0 as in the preceding code example).
+
+For a component to be able to employ attributes during its use, it suffices to indicate the name of the attributes in the `props` section of the component. The component can access the attribute value using the `this` keyword (for example, `this.start` to access the `start` attribute in the component). We can see this in action in the following code:
 
 Using the start attribute in the component (index.html file)
 
+```
 <html>
   <head>
     <meta charset="utf-8" />
@@ -569,12 +580,13 @@ Using the start attribute in the component (index.html file)
   </script>
   
 </html>
+```
 
-Copy
-In the following code, the attribute is passed when using the component, as is traditionally done in HTML. The value of the attribute here will be a character string "10" and not the value 10:
+In the following code, the attribute is passed when using the component, as is traditionally done in HTML. The value of the attribute here will be a character string `"10"` and not the value `10`:
 
 Setting the start attribute in the <counter> component (counter.js file)
 
+```
 const Counter = {
   data() {
     return {
@@ -613,95 +625,107 @@ const Counter = {
   ]
 }
 export default Counter;
+```
 
-Copy
-In the preceding code, notice the use of the parseInt() function (defined as standard in JavaScript) to retrieve the value of this.start in integer form. Indeed, the attributes are transmitted in the form of character strings, hence the need to transform this.start into an integer value.
+In the preceding code, notice the use of the `parseInt()` function (defined as standard in JavaScript) to retrieve the value of `this.start` in integer form. Indeed, the attributes are transmitted in the form of character strings, hence the need to transform `this.start` into an integer value.
 
-It is possible to avoid transforming the attribute value into an integer value. All you have to do is indicate when using the attribute that you want to keep the JavaScript value and not the character string. We prefix the name of the attribute with the character :, for example, :start='10'. In this case, the value 10 will be transmitted and not the string "10".
+It is possible to avoid transforming the attribute value into an integer value. All you have to do is indicate when using the attribute that you want to keep the JavaScript value and not the character string. We prefix the name of the attribute with the character :, for example, `:start='10'`. In this case, the value `10` will be transmitted and not the string `"10"`.
 
 This makes it possible to be able to transmit in the attributes any types of values: numeric values, character strings, arrays, or objects.
 
-In the following figure we can see the counter has started from the value indicated in the start attribute:
+In the following figure we can see the counter has started from the value indicated in the `start` attribute:
 
-Figure 3.10 – Using the start attribute in the component
+![ 0409 3.10 Using the start attribute in ](/packtpub/javascript_from_frontend_to_backend_img/0409_3.10_using_the_start_attribute_in.webp
+)
 Figure 3.10 – Using the start attribute in the component
 
 We have therefore seen how to create new attributes in a component. Vue.js has specific attributes as standard, which can be used in all components. These specific attributes, created by Vue.js, are called directives. We will study them now.
 
-Using directives
+# Using directives
+
 Vue.js improves the writing of HTML code by offering to write its own components, as we have seen in the preceding section. The framework also makes it easier to write basic HTML code by adding new attributes to the HTML elements or to the components created. These new attributes are called directives.
 
 Note
 
-Directives are used exclusively in HTML elements or created components, that is, in the template section of components.
+Directives are used exclusively in HTML elements or created components, that is, in the `template` section of components.
 
-Their name begins with v-, so as not to be confused with other existing HTML attributes. The main directives are v-if, v-else, v-show, v-for, and v-model. They will be explained now.
+Their name begins with v-, so as not to be confused with other existing HTML attributes. The main directives are `v-if`, `v-else`, `v-show`, `v-for`, and `v-model`. They will be explained now.
 
-The v-if and v-else directives
-The v-if directive is used to specify a condition. If true, the HTML element (or component) will be inserted into the HTML page. Otherwise, it will not be present.
+## The v-if and v-else directives
 
-Let’s use the v-if directive to indicate that we want to display the value of the counter only for values less than or equal to 20. As soon as the value 20 is exceeded, the counter is no longer displayed.
+The `v-if` directive is used to specify a condition. If true, the HTML element (or component) will be inserted into the HTML page. Otherwise, it will not be present.
 
-In the following snippet, we have only indicated the code of the template section of the component, knowing that the rest is not modified:
+Let’s use the `v-if` directive to indicate that we want to display the value of the counter only for values less than or equal to 20. As soon as the value 20 is exceeded, the counter is no longer displayed.
+
+In the following snippet, we have only indicated the code of the `template` section of the component, knowing that the rest is not modified:
 
 Using the v-if directive
 
+```
 template : `
   {{time()}} &nbsp;&nbsp;
   <span v-if='count<=20'>The counter is: {{count}}</span>
 `,
+```
 
-Copy
-Using backticks ' and ' to define the template avoids having to manage the concatenation of character strings on several lines.
+Using backticks `'` and `'` to define the template avoids having to manage the concatenation of character strings on several lines.
 
-The <span> element on which the v-if directive is applied will be included in the HTML page only if the following condition is true: if count<=20. Beyond 20, only the time will be displayed without the counter value.
+The `<span>` element on which the `v-if` directive is applied will be included in the HTML page only if the following condition is true: if `count<=20`. Beyond 20, only the time will be displayed without the counter value.
 
 As long as the counter is less than or equal to 20, it is displayed as follows:
 
-Figure 3.11 – Display of the counter whose value is less than 20
+![ 0410 3.11 Display of the counter whose ](/packtpub/javascript_from_frontend_to_backend_img/0410_3.11_display_of_the_counter_whose.webp
+)
 Figure 3.11 – Display of the counter whose value is less than 20
 
 When the counter exceeds the value 20, it is no longer displayed:
 
-Figure 3.12 – Display as soon as the counter exceeds the value 20
+![ 0411 3.12 Display as soon as the counter ](/packtpub/javascript_from_frontend_to_backend_img/0411_3.12_display_as_soon_as_the_counter.webp
+)
 Figure 3.12 – Display as soon as the counter exceeds the value 20
 
-The v-else directive is used to indicate an alternative when the condition expressed in v-if is false. The element on which the v-else directive is used will be inserted into the HTML page if the condition expressed in v-if is false.
+The `v-else` directive is used to indicate an alternative when the condition expressed in `v-if` is `false`. The element on which the `v-else` directive is used will be inserted into the HTML page if the condition expressed in `v-if` is `false`.
 
-Let’s use the v-else directive to display another message when the counter exceeds the value 20:
+Let’s use the `v-else` directive to display another message when the counter exceeds the value 20:
 
 Using the v-else directive
 
+```
 template : `
   {{time()}} &nbsp;&nbsp;
   <span v-if='count<=20'>The counter is: {{count}}</span>
   <span v-else>The counter has exceeded 20, it is: 
   {{count}}</span>
 `,
+```
 
-Copy
 When the counter exceeds the value 20, we now get the following:
 
+![ 0412 3.13 Counter having exceeded the ](/packtpub/javascript_from_frontend_to_backend_img/0412_3.13_counter_having_exceeded_the.webp
+)
 Figure 3.13 – Counter having exceeded the value 20
-Figure 3.13 – Counter having exceeded the value 20
 
-The v-show directive
-The v-show directive is similar to the v-if directive. A condition is given next. If the condition is true, the element that uses the directive is displayed; otherwise, it is not.
+## The v-show directive
 
-The difference from the v-if directive is that the element, if not displayed, is only hidden, but it is still inserted into the page. Whereas with the v-if directive, the element is not inserted (if the condition is false).
+The `v-show` directive is similar to the `v-if` directive. A condition is given next. If the condition is `true`, the element that uses the directive is displayed; otherwise, it is not.
 
-The v-for directive
-The v-for directive allows you to loop over a set of elements or over the properties of an object. For each iteration of the loop, it inserts the HTML element on which the directive is positioned.
+The difference from the `v-if` directive is that the element, if not displayed, is only hidden, but it is still inserted into the page. Whereas with the `v-if` directive, the element is not inserted (if the condition is `false`).
 
-Let us assume the <counter> component is a set of counters associated with the variable counts, which is a JavaScript array. Each counter is, in our example, a character string (for example, "Counter 1"), and we want to display the whole in the form of a list (see the following code snippets).
+## The v-for directive
 
-Let’s look at the two possible forms of the v-for directive.
+The `v-for` directive allows you to loop over a set of elements or over the properties of an object. For each iteration of the loop, it inserts the HTML element on which the directive is positioned.
 
-Using the directive v-for=”count in counts”
-Let’s use the first form of the v-for directive. It allows access to each element of the array indicated in the directive (in our example, the JavaScript counts array):
+Let us assume the `<counter>` component is a set of counters associated with the variable `counts`, which is a JavaScript array. Each counter is, in our example, a character string (for example, `"Counter 1"`), and we want to display the whole in the form of a list (see the following code snippets).
+
+Let’s look at the two possible forms of the `v-for` directive.
+
+### Using the directive v-for=”count in counts”
+
+Let’s use the first form of the `v-for` directive. It allows access to each element of the array indicated in the directive (in our example, the JavaScript `counts` array):
 
 Displaying counters as a list (counter.js file)
 
+```
 const Counter = {
   data() {
     return {
@@ -718,18 +742,21 @@ const Counter = {
   `,
 }
 export default Counter;
+```
 
-Copy
-In the preceding code, we have positioned the v-for directive on the element that we want to repeat (in this case, the <li> element). The value associated with the v-for directive is a character string of the form "count in counts", knowing that counts is the variable on which we are iterating. The count variable thus corresponds to each of the elements of the counts array:
+In the preceding code, we have positioned the `v-for` directive on the element that we want to repeat (in this case, the `<li>` element). The value associated with the `v-for` directive is a character string of the form `"count in counts"`, knowing that `counts` is the variable on which we are iterating. The `count` variable thus corresponds to each of the elements of the `counts` array:
 
+![ 0413 3.14 Using the v-for directive ](/packtpub/javascript_from_frontend_to_backend_img/0413_3.14_using_the_v-for_directive.webp
+)
 Figure 3.14 – Using the v-for directive
-Figure 3.14 – Using the v-for directive
 
-Using the directive v-for=”(count, index) in counts”
+### Using the directive v-for=”(count, index) in counts”
+
 A second form of the v-for directive gives access to each element of the array as before, but also to its index (starting from 0):
 
 Displaying counters and their index (counter.js file)
 
+```
 const Counter = {
   data() {
     return {
@@ -746,38 +773,43 @@ const Counter = {
   `,
 }
 export default Counter;
+```
 
-Copy
 On running the preceding code, the following is displayed:
 
+![ 0414 3.15 Using index in the v-for directive ](/packtpub/javascript_from_frontend_to_backend_img/0414_3.15_using_index_in_the_v-for_directive.webp
+)
 Figure 3.15 – Using index in the v-for directive
-Figure 3.15 – Using index in the v-for directive
+
+### Using the key attribute with the v-for directive
+
+The `v-for` directive can also be used to display large lists, for which reactivity must be maintained. That is, changing the reactive variable specified in the `v-for` directive should update the corresponding displayed list.
+
+To perform the update as quickly as possible, Vue.js uses a special attribute (to be used only for this specific case) named `key`. This attribute can be positioned after the `v-for` directive. Its value must be unique for each item in the list. For example, the value of the index being unique for each list element can be used as a value in the `key` attribute:
 
 Using the key attribute with the v-for directive
-The v-for directive can also be used to display large lists, for which reactivity must be maintained. That is, changing the reactive variable specified in the v-for directive should update the corresponding displayed list.
 
-To perform the update as quickly as possible, Vue.js uses a special attribute (to be used only for this specific case) named key. This attribute can be positioned after the v-for directive. Its value must be unique for each item in the list. For example, the value of the index being unique for each list element can be used as a value in the key attribute:
-
-Using the key attribute with the v-for directive
-
+```
 <li v-for="(count, index) in counts" :key="index">
+```
 
-Copy
-In the preceding code, the value of the attribute is a JavaScript expression (the variable index). We use :key and not just key; otherwise, the attribute would constantly have the string "index" as its value (instead of the value of the variable index).
+In the preceding code, the value of the attribute is a JavaScript expression (the variable `index`). We use `:key` and not just `key`; otherwise, the attribute would constantly have the string `"index"` as its value (instead of the value of the variable `index`).
 
-Of course, adding the key attribute does not produce any display changes, but the performance will be visible on subsequent changes to the displayed list (it helps Vue.js to keep track of the element and prevent unnecessary re-rendering).
+Of course, adding the `key` attribute does not produce any display changes, but the performance will be visible on subsequent changes to the displayed list (it helps Vue.js to keep track of the element and prevent unnecessary re-rendering).
 
-The v-model directive
-The v-model directive is used to manage form elements during an interaction (input in a field, a click on a checkbox or radio button, the choice of an element in a list).
+## The v-model directive
 
-The v-model directive is used to immediately retrieve the result of input or selection in a reactive variable without having to perform any particular processing. It’s the v-model directive that performs this update (of the reactive variable) for us.
+The `v-model` directive is used to manage form elements during an interaction (input in a field, a click on a checkbox or radio button, the choice of an element in a list).
 
-We use the v-model directive in the form v-model="varname", where varname is the name of a reactive variable that will be updated on input or selection.
+The `v-model` directive is used to immediately retrieve the result of input or selection in a reactive variable without having to perform any particular processing. It’s the `v-model` directive that performs this update (of the reactive variable) for us.
 
-Let’s use the v-model directive in a form input field. To clearly see what happens with or without its use, we display two input fields: one managed without v-model, the other with:
+We use the `v-model` directive in the form `v-model="varname"`, where `varname` is the name of a reactive variable that will be updated on input or selection.
+
+Let’s use the `v-model` directive in a form input field. To clearly see what happens with or without its use, we display two input fields: one managed without `v-model`, the other with:
 
 Using the v-model directive in an input field (counter.js file)
 
+```
 const Counter = {
   data() {
     return {
@@ -794,33 +826,38 @@ const Counter = {
   `,
 }
 export default Counter;
+```
 
-Copy
 Here are some notes on the preceding program:
 
-The first <input> field does not use v-model, but only uses the value attribute, which will be updated based on the count variable.
-The second <input> field uses the v-model directive associated with the same count variable.
-The value of the count variable is displayed after the two input fields.
-When the program is launched, the value of the reactive variable count is transferred to the value attribute of the first input field, as well as to the second. This produces the initialization of the contents of the two input fields as seen here:
+- The first `<input>` field does not use `v-model`, but only uses the `value` attribute, which will be updated based on the `count` variable.
+- The second `<input>` field uses the `v-model` directive associated with the same `count` variable.
+- The value of the `count` variable is displayed after the two input fields.
 
+When the program is launched, the value of the reactive variable `count` is transferred to the `value` attribute of the first input field, as well as to the second. This produces the initialization of the contents of the two input fields as seen here:
+
+![ 0415 3.16 Display when starting the program ](/packtpub/javascript_from_frontend_to_backend_img/0415_3.16_display_when_starting_the_program.webp
+)
 Figure 3.16 – Display when starting the program
-Figure 3.16 – Display when starting the program
 
-If we change the contents of the first input field (which is not used with v-model), we will see something like this:
+If we change the contents of the first input field (which is not used with `v-model`), we will see something like this:
 
+![ 0416 3.17 Editing an input field without v-model ](/packtpub/javascript_from_frontend_to_backend_img/0416_3.17_editing_an_input_field_without_v-model.webp
+)
 Figure 3.17 – Editing an input field without v-model
-Figure 3.17 – Editing an input field without v-model
 
-Note that modifying the input field (without v-model) has no effect on the reactive variable associated with it.
+Note that modifying the input field (without `v-model`) has no effect on the reactive variable associated with it.
 
-Now let’s modify the contents of the second input field, managed by v-model:
+Now let’s modify the contents of the second input field, managed by `v-model`:
 
+![ 0417 3.18 Editing an input field with v-model ](/packtpub/javascript_from_frontend_to_backend_img/0417_3.18_editing_an_input_field_with_v-model.webp
+)
 Figure 3.18 – Editing an input field with v-model
-Figure 3.18 – Editing an input field with v-model
 
-We now see that the use of v-model causes the immediate modification of the reactive variable to which it is associated, which then causes the modification of the value attribute of the first input field (because it is linked to the reactive variable).
+We now see that the use of `v-model` causes the immediate modification of the reactive variable to which it is associated, which then causes the modification of the `value` attribute of the first input field (because it is linked to the reactive variable).
 
-Summary
+# Summary
+
 In this chapter, we have mainly studied how to create a component and methods or attributes associated with it.
 
 It is now necessary to study how to manage the actions of the user in a component, then how to assemble the components to form an application.
