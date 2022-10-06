@@ -414,7 +414,7 @@ Importing the component into the program (index.html file)
 
 In the preceding code, to import the `counter.js` file and use the corresponding component, the following takes place:
 
-- The type="module" attribute is indicated in the <script> tag. This allows the use of the import statement in the JavaScript statements of the <script> tag.
+- The type="module" attribute is indicated in the `<script>` tag. This allows the use of the import statement in the JavaScript statements of the `<script>` tag.
 - We use the import statement to import the corresponding module.
 - We declare the imported components in the new components section. Components are declared as an object. The names of the properties in this object correspond to the name used by the component in the templates (<counter> or <Counter>), while the values correspond to the name of the imported component (Counter).
 
