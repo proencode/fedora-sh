@@ -1,5 +1,5 @@
 #!/bin/sh
-#
+
 Publisher="packtpub" #-- (1) 출판사
 BookCover="JavaScript from Frontend to Backend" #-- (2) 책 제목
 ShortDescription="Publication date: 7월 2022 Publisher: Packt Pages: 336 ISBN: 9781801070317" #-- (3) 저자등 설명
@@ -62,6 +62,27 @@ file_Made () {
 __EOF__
 }
 
+#-- 링크를 만든다.
+JemokMade () {
+	#-- 다음 페이지가 있으면,
+	#-- 현재 페이지를 만들어낸다.
+	if [ "x${PrevSeq}" = "xSKIP" ]; then
+		PrevLink="$PrevName"
+	else
+		PrevJemok="${PrevSeq} ${PrevName}"
+		small_PrevJemok=$(echo "${PrevJemok,,}" | sed 's/ /_/g')
+		PrevLink="[ ${PrevJemok} ](/${small_Publisher}/${small_BookCover}/${small_PrevJemok})"
+	fi
+
+	if [ "x${NextSeq}" = "xSKIP" ]; then
+		NextLink="$NextName"
+	else
+		NextJemok="${NextSeq} ${NextName}"
+		small_NextJemok=$(echo "${NextJemok,,}" | sed 's/ /_/g')
+		NextLink="[ ${NextJemok} ](/${small_Publisher}/${small_BookCover}/${small_NextJemok})"
+	fi
+}
+
 #--
 #-- file_Made "00 부터 매기는 권번호" "보여주기 위한 제목" \
 #--	"이전 페이지 링크 또는 Begin" \
@@ -77,9 +98,32 @@ NextName=""
 md_Create () {
 	TitleSeq=$1 #-- 권 번호
 	TitleName=$2 #-- wiki.js 왼쪽에 표시할 챕터 제목
-	if [ "x$NextSeq" != "x" ]; then
-		#-- 다음 페이지가 있으면,
-		#-- 현재 페이지를 만들어낸다.
+	if [ "x$NextSeq" = "x" ]; then
+		if [ "x$PrevSeq" = "x" ]; then
+			#-- 이전 페이지가 없으면, 이전 페이지로 담는다.
+			PrevSeq=$TitleSeq
+			PrevName=$TitleName
+		else
+		if [ "x$CurrentSeq" = "x" ]; then
+			#-- 현재 페이지가 없으면, 현재 페이지로 담는다.
+			CurrentSeq=$TitleSeq
+			CurrentName=$TitleName
+		else
+		# if [ "x$NextSeq" = "x" ]; then
+			#-- 다음 페이지가 없으면, 다음 페이지로 담는다.
+			NextSeq=$TitleSeq
+			NextName=$TitleName
+		# fi
+		fi
+		fi
+	else
+		#-- 링크를 만든다.
+		JemokMade
+
+		if [ "x${NextSeq}" != "xSKIP" ]; then
+			file_Made "${CurrentSeq}" "${CurrentName}" "${PrevLink}" "${NextLink}"
+		fi
+
 		PrevSeq=$CurrentSeq
 		PrevName=$CurrentName
 		CurrentSeq=$NextSeq
@@ -87,57 +131,18 @@ md_Create () {
 		NextSeq=$TitleSeq
 		NextName=$TitleName
 
-		if [ "x${PrevSeq}" = "xSKIP" ]; then
-			PrevJemok="${PrevName}"
-		else
-			PrevJemok="${PrevSeq} ${PrevName}"
-		fi
-		small_PrevJemok=$(echo "${PrevJemok,,}" | sed 's/ /_/g')
-		PrevLink="[ ${PrevJemok} ](/${small_Publisher}/${small_BookCover}/${small_PrevJemok})"
-
 		if [ "x${NextSeq}" = "xSKIP" ]; then
-			NextJemok="${NextName}"
-		else
-			NextJemok="${NextSeq} ${NextName}"
-		fi
-		small_NextJemok=$(echo "${NextJemok,,}" | sed 's/ /_/g')
-		NextLink="[ ${NextJemok} ](/${small_Publisher}/${small_BookCover}/${small_NextJemok})"
+			#-- 링크를 만든다.
+			JemokMade
 
-		#-- file_Made "00 부터 매기는 권번호" "보여주기 위한 제목" \
-		#--	"이전 페이지 링크 또는 Begin" "이후 페이지 링크 또는 End"
-		# file_Made "00" "Preface" \
-		# 	"Begin" "[ 01 P1 JavaScript Syntax ](/packtpub/javascript_from_frontend_to_backend/01_p1_javascript_syntax)"
-		if [ "x${NextSeq}" != "xSKIP" ]; then
-			file_Made "${CurrentSeq}" "${CurrentName}" \
-				"${PrevLink}" "${NextLink}"
-		fi
-	else
-		if [ "x$PrevSeq" = "x" ]; then
-			#-- 이전 페이지가 없으면, 이전 페이지로 담는다.
-			PrevSeq=$TitleSeq
-			PrevName=$TitleSeq
-		else
-		if [ "x$CurrentSeq" = "x" ]; then
-			#-- 현재 페이지가 없으면, 현재 페이지로 담는다.
-			PrevSeq=$CurrentSeq
-			PrevName=$CurrentSeq
-			CurrentSeq=$TitleSeq
-			CurrentName=$TitleSeq
-		else
-		# if [ "x$NextSeq" = "x" ]; then
-			#-- 다음 페이지가 없으면, 다음 페이지로 담는다.
-			PrevSeq=$CurrentSeq
-			PrevName=$CurrentSeq
-			CurrentSeq=$NextrSeq
-			CurrentName=$NextrSeq
-			NextSeq=$TitleSeq
-			NextName=$TitleSeq
-		# fi
-		fi
+			file_Made "${CurrentSeq}" "${CurrentName}" "${PrevLink}" "${NextLink}"
 		fi
 	fi
 }
 
+#-- md_Create "권 번호" "wiki.js 왼쪽에 표시할 챕터 제목"
+#-- 첫줄에는 "SKIP" "Begin" , 끝줄에는 "SKIP" "End" 로 표시한다.
+#--
 md_Create "SKIP" "Begin"
 md_Create "00" "Preface"
 md_Create "01" "P1 JavaScript Syntax"
