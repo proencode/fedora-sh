@@ -19,22 +19,32 @@
 
 ---------- cut line ----------
 
-> [ 11 C8 Using MongoDB with Node.js ](/packtpub/javascript_from_frontend_to_backend/11_c8_using_mongodb_with_node.js) <---> [ 13 P4 Other Books You May Enjoy ](/packtpub/javascript_from_frontend_to_backend/13_p4_other_books_you_may_enjoy)
+> [ 07 C5 Managing a List with Vue.js ](/packtpub/javascript_from_frontend_to_backend/07_c5_managing_a_list_with_vue.js) <---> [ 09 C6 Creating and Using Node.js Modules ](/packtpub/javascript_from_frontend_to_backend/09_c6_creating_and_using_node.js_modules)
 
-# 12 C9 Integrating Vue.js with Node.js
+# Part 3: JavaScript on the Server-Side
+
+This part is about using JavaScript in a Node.js server. It explains the use of modules such as Express (to quickly create a Node. js-based web application using the MVC pattern) and the MongoDB database.
+
+We end our study by building an application on a single page (this principle is called Single Page Application) which is written with Vue.js on the client-side, and with Node.js, Express and MongoDB on the server-side. The purpose of this book is to enable you to know how to make this type of application.
+
+This section comprises the following chapters:
+
+Chapter 6, Creating and Using Node.js Modules
+Chapter 7, Using Express with Node.js
+Chapter 8, Using MongoDB with Node.js
+Chapter 9, Integrating Vue.js with Node.js
 
 
 
-
-> [ 11 C8 Using MongoDB with Node.js ](/packtpub/javascript_from_frontend_to_backend/11_c8_using_mongodb_with_node.js) <---> [ 13 P4 Other Books You May Enjoy ](/packtpub/javascript_from_frontend_to_backend/13_p4_other_books_you_may_enjoy)
+> [ 07 C5 Managing a List with Vue.js ](/packtpub/javascript_from_frontend_to_backend/07_c5_managing_a_list_with_vue.js) <---> [ 09 C6 Creating and Using Node.js Modules ](/packtpub/javascript_from_frontend_to_backend/09_c6_creating_and_using_node.js_modules)
 >
-> Title: 12 C9 Integrating Vue.js with Node.js
+> Title: 08 P3 JavaScript on the Server-Side
 > Short Description: Publication date: 7월 2022 Publisher: Packt Pages: 336 ISBN: 9781801070317
-> Path: packtpub/javascript_from_frontend_to_backend/12_c9_integrating_vue.js_with_node.js
+> Path: packtpub/javascript_from_frontend_to_backend/08_p3_javascript_on_the_server-side
 > tags: vue.js node.js
 > Book Name: JavaScript from Frontend to Backend
 > Link: https://subscription.packtpub.com/book/web-development/9781801070317/4
 > create: 2022-10-07 금 13:20:55
 > Images: /packtpub/javascript_from_frontend_to_backend_img/
-> .md Name: 12_c9_integrating_vue.js_with_node.js.md
+> .md Name: 08_p3_javascript_on_the_server-side.md
 
