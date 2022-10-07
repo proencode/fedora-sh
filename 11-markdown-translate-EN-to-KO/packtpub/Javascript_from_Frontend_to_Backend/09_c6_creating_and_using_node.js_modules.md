@@ -27,80 +27,95 @@ Modules are at the heart of Node.js. They correspond to JavaScript files and can
 
 There are three kinds of modules:
 
-Modules that we write ourselves for our applications.
-Modules internal to Node.js and usable directly.
-Modules that can be downloaded from the internet using a utility called npm (npm stands for Node.js package manager). This npm utility is installed with Node.js itself.
+- Modules that we write ourselves for our applications.
+- Modules internal to Node.js and usable directly.
+- Modules that can be downloaded from the internet using a utility called `npm` (npm stands for Node.js package manager). This `npm` utility is installed with Node.js itself.
+
 In this chapter, we will learn how to create and use these different types of modules.
 
-Regardless of the type of modules used, the require(moduleName) instruction (see below) allows the module called moduleName to be included in the current file. The functionalities of the module will then be accessible.
+Regardless of the type of modules used, the `require(moduleName)` instruction (see below) allows the module called `moduleName` to be included in the current file. The functionalities of the module will then be accessible.
 
 Here are the topics covered in this chapter:
 
-Using our own modules
-Using internal Node.js...
-Technical requirements
+- Using our own modules
+- Using internal Node.js...
+
+# Technical requirements
+
 You can find the code files for this chapter on GitHub at: https://github.com/PacktPublishing/JavaScript-from-Frontend-to-Backend/blob/main/Chapter%206.zip.
 
-Creating and using our own modules
+# Creating and using our own modules
+
 In this example, we use two modules, each corresponding to a JavaScript file:
 
-The first module (here named test.js) will be the main file of our application, the one we execute using the node test.js command in a command window.
-The second module (here named module1.js) will be the one we want to use in our main test.js module. The module1.js module will then be enriched to show how its functionalities are accessible outside the module (and will therefore be used in the main test.js module).
+- The first module (here named `test.js`) will be the main file of our application, the one we execute using the `node test.js` command in a command window.
+- The second module (here named `module1.js`) will be the one we want to use in our main `test.js` module. The `module1.js` module will then be enriched to show how its functionalities are accessible outside the module (and will therefore be used in the main `test.js` module).
+
 Let’s go ahead and create these two modules.
 
-Creating a module
-Here is the content of the two files, module1.js and test.js:
+## Creating a module
+
+Here is the content of the two files, `module1.js` and `test.js`:
 
 module1.js file
 
+```
 console.log("module1.js is loaded");
+```
 
-Copy
-The module currently has a simple console.log() statement. The module will then be enriched. The main module test.js is the following:
+The module currently has a simple `console.log()` statement. The module will then be enriched. The main module test.js is the following:
 
 test.js file
 
+```
 var mod1 = require("./module1.js");  
 // or require("./module1...
+```
 
-Copy
-Using internal Node.js modules
-Node.js already has internal modules. They can also be used with the require(moduleName) instruction seen previously.
+# Using internal Node.js modules
 
-Let’s look at an example of an internal module. There is, for example, the "fs" module in the Node.js system. The name "fs" is short for file system. This module allows you to interact with the internal file system of Node.js.
+Node.js already has internal modules. They can also be used with the `require(moduleName)` instruction seen previously.
 
-Now, we will use the "fs" module to read the contents of a file.
+Let’s look at an example of an internal module. There is, for example, the `"fs"` module in the Node.js system. The name `"fs"` is short for file system. This module allows you to interact with the internal file system of Node.js.
 
-Reading the contents of a file
-Let’s use the "fs" module to read the file named file1.txt located in the current directory (where the test.js file is located). Here are the contents of this file:
+Now, we will use the `"fs"` module to read the contents of a file.
+
+## Reading the contents of a file
+
+Let’s use the `"fs"` module to read the file named `file1.txt` located in the current directory (where the `test.js` file is located). Here are the contents of this file:
 
 file1.txt file (in the directory where test.js is located)
 
+```
 This is the content
 of the file file1.txt
 located in
 the current directory.
+```
 
-Copy
-The program that uses the "fs" module and displays the contents of the file is as follows:
+The program that uses the `"fs"` module and displays the contents of the file is as follows:
 
 Reading and displaying the contents of the file...
 
-Using downloaded modules with npm
-In addition to the modules internal to Node.js, it is possible to import modules from the internet using the npm utility provided with Node.js.
+# Using downloaded modules with npm
 
-For this, the npm command is used (in a command interpreter) by indicating arguments that allow you to perform the corresponding actions on the imported modules.
+In addition to the modules internal to Node.js, it is possible to import modules from the internet using the `npm` utility provided with Node.js.
 
-Using the npm command
-Here are some common uses of the npm command:
+For this, the `npm` command is used (in a command interpreter) by indicating arguments that allow you to perform the corresponding actions on the imported modules.
 
-npm install moduleName: Installs the indicated module in the local node_modules directory. The module will only be accessible for the current application and not for other applications (unless it is installed again).
-npm install moduleName -g: Installs the specified module in the global node_modules directory. The -g option allows you to indicate that this module can be accessed by other applications because it is installed in the node_modules directory of Node.js (globally).
-npm link moduleName: It is possible that a module installed globally (with the -g...
-Summary
+## Using the npm command
+
+Here are some common uses of the `npm` command:
+
+- `npm install moduleName`: Installs the indicated module in the local `node_modules` directory. The module will only be accessible for the current application and not for other applications (unless it is installed again).
+- `npm install moduleName -g`: Installs the specified module in the global `node_modules` directory. The `-g` option allows you to indicate that this module can be accessed by other applications because it is installed in the `node_modules` directory of Node.js (globally).
+- `npm link moduleName`: It is possible that a module installed globally (with the `-g`...
+
+# Summary
+
 We have seen in this chapter how to create and use modules with Node.js, which are the essential components of programs created with Node.js.
 
-Whether the module is created by us, is an internal Node.js module, or is a module downloaded with npm, its use is the same in all cases. We use the require(moduleName) instruction and with the value returned in a variable, we access the functionality of the module.
+Whether the module is created by us, is an internal Node.js module, or is a module downloaded with `npm`, its use is the same in all cases. We use the `require(moduleName)` instruction and with the value returned in a variable, we access the functionality of the module.
 
 Next, we are going to study the Express module, which is one of the main modules used with Node.js, allowing us to easily structure our applications according to the rules of the MVC model, currently widely used.
 
