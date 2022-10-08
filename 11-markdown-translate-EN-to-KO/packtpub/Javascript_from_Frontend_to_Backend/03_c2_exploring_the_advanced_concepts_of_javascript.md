@@ -21,7 +21,7 @@
 
 > [ 02 C1 Exploring the Core Concepts of JavaScript ](/packtpub/javascript_from_frontend_to_backend/02_c1_exploring_the_core_concepts_of_javascript) <---> [ 04 P2 JavaScript on the Client-Side ](/packtpub/javascript_from_frontend_to_backend/04_p2_javascript_on_the_client-side)
 
-# 03 Chapter 2: Exploring the Advanced Concepts of JavaScript
+# Chapter 2: Exploring the Advanced Concepts of JavaScript
 
 In this chapter, we will explore the advanced features of JavaScript, such as object-oriented programming. We will also study two types of objects that are widely used in JavaScript: arrays and strings. Finally, we will see how JavaScript allows you to trigger deferred processing, using so-called callback functions.
 
@@ -35,11 +35,11 @@ In this chapter, we’ll be covering the following topics:
 
 All these topics are fundamental to building JavaScript applications. Let’s start now!
 
-# Technical requirements
+# 1. Technical requirements
 
 You can find the code files for this chapter on GitHub at: https://github.com/PacktPublishing/JavaScript-from-Frontend-to-Backend/blob/main/Chapter%202.zip.
 
-# Classes and objects
+# 2. Classes and objects
 
 The notion of classes and objects is fundamental to programming languages. JavaScript allows them to be used as well.
 
@@ -51,7 +51,7 @@ Note that the class name traditionally begins with an uppercase letter.
 
 An object, on the other hand, will be a particular element of a class (this element will be also called an instance). For example, among all the people of the class `Person`, the person identified by his name “Clinton” and his first name “Bill” represents a particular object of the class `Person`. This object can be associated, for example, with the variable `p` in the program. We can thus create variables to identify each object associated with the class.
 
-## Defining a class
+## 2-1. Defining a class
 
 The question to ask yourself when creating a class is what actions you want to perform on the type of data it represents.
 
@@ -74,7 +74,7 @@ class Person {
 
 This definition of the `Person` class will not be very useful for now, because no properties or methods are defined inside it. We will see later how to improve it.
 
-## Creating an object by using a class
+## 2-2. Creating an object by using a class
 
 Once the class is defined, we can create objects associated with this class. For this, we use the keyword `new` followed by the name of the class. This creates a variable that represents an object of that class:
 
@@ -123,7 +123,7 @@ Figure 2.2 – Creating an object in the browser
 
 We find the display of braces, which symbolizes the display of a JavaScript object.
 
-## Creating an object without using a class
+## 2-3. Creating an object without using a class
 
 It is possible to create an object without having created a class first. All you have to do is use the notation with the braces { and }.
 
@@ -140,7 +140,7 @@ This will create the object `p` with the `lastname` and `firstname` properties. 
 
 Now let’s see how to improve the `Person` class previously created by adding properties and methods to it.
 
-## Adding properties to a class
+## 2-4. Adding properties to a class
 
 A person has, in our example, a last name, a first name, and an age. We will create these three properties for people of the `Person` class.
 
@@ -188,7 +188,7 @@ Figure 2.4 – Properties with default values
 
 A class has properties, but also methods. Now let’s see how to add methods to a class.
 
-## Adding methods to a class
+## 2-5. Adding methods to a class
 
 You can add methods to a class. Objects created from the class (with `new`) will be able to use these methods directly.
 
@@ -229,7 +229,7 @@ Figure 2.5 – Using the display() method
 
 The `display()` method displays `firstname` and `lastname` of the person associated with the variable `p`, but since `lastname` and `firstname` have been initialized to an empty string, no last name or first name is displayed. Let’s look at how to modify the value of a property.
 
-## Changing an object’s property values
+## 2-6. Changing an object’s property values
 
 You can modify the value of the properties of an object by using these properties directly, for example, `p.lastname` allows you to read or modify the value of the `lastname` property for the object `p`:
 
@@ -269,7 +269,7 @@ We modified the value of the `lastname` and `firstname` properties of the object
 
 This modification of property values is done after the object `p` is created. It is possible to do this modification during the very creation of the object, in the `new` instruction. This requires defining a method called `constructor()`, which allows this initialization.
 
-## Using the class constructor
+## 2-7. Using the class constructor
 
 The `constructor()` method is called the constructor of the class. It is automatically called during each `new` statement if the `constructor()` method exists in the class. We define it in a class if we want to perform a specific process each time an object is created in this class.
 
@@ -344,7 +344,7 @@ Figure 2.8 – The person’s age is now transmitted
 
 We have seen how to create an object, by directly defining its properties and methods using a class. However, we can also create an object from another object. Let’s see how to do it.
 
-## Merging one object with another
+## 2-8. Merging one object with another
 
 There may be cases when you want to create a new object from an old object. Let’s see how to do this.
 
@@ -403,13 +403,13 @@ var p2 = { ...p, city : "Washington" };
 
 Now that we have looked at classes and objects and how to work with them, let’s take a look at an important class object: the Array class.
 
-# Arrays
+# 3. Arrays
 
 Arrays store a collection of data, ordered according to their index. The index is also called the index of the array. It starts at 0 and scales up to the total number of elements in the array, minus 1 (0 to n-1).
 
 Let’s learn how to create an array first.
 
-## Creating an array
+## 3-1. Creating an array
 
 An array corresponds in JavaScript to an `Array` class object. We therefore create an array using the `new Array` instruction.
 
@@ -417,7 +417,7 @@ However, since arrays are widely used in JavaScript programs, it is also possibl
 
 Let’s take a detailed look at these two ways to create an array (with brackets and with the `Array` class).
 
-### Creating an array using square brackets [ and ]
+### (31-1) Creating an array using square brackets [ and ]
 
 The easiest and fastest way to create an array is to use the bracket notation:
 
@@ -436,7 +436,7 @@ Figure 2.10 – Elements inserted into an array
 
 Note that it is possible to create an empty array (without any elements). We write this as `[]`, without indicating any element inside the square brackets. It will then be possible to add elements to this array.
 
-### Creating an array using the Array class
+### (31-2) Creating an array using the Array class
 
 You can also use the `Array` class to create an array. The `Array` class includes a constructor in which we indicate the list of array elements, each separated from the next by a comma.
 
@@ -470,7 +470,7 @@ Figure 2.12 – Creating an empty array [ ]
 
 Now that we’ve seen how to create an array, let’s see how to access each of its elements.
 
-## Accessing array elements
+## 3-2. Accessing array elements
 
 In previous programs, we displayed the entire array, using the `console.log(tab)` statement. It is possible to access each element of the array separately. Each element can be accessed as follows:
 
@@ -480,7 +480,7 @@ In previous programs, we displayed the entire array, using the `console.log(tab)
 
 Let’s take a look at each of these three ways.
 
-### Accessing an element by index
+### (32-1) Accessing an element by index
 
 Let’s take the previous array of five elements, that is, `tab = ["Element 1", "Element 2", "Element 3", "Element 4", "Element 5"]`:
 
@@ -534,7 +534,7 @@ Figure 2.14 – Modifying array elements
 
 Next, we will look at accessing an element with a `for()` or `while()` loop.
 
-### Accessing an element with a for() or while() loop
+### (32-2) Accessing an element with a for() or while() loop
 
 The `for()` and `while()` loops already studied in the previous chapter allow you to browse all the elements of an array. The index of the loop starts at 0 (to access the first element of the array, the one with index 0) and ends at the last index of the array.
 
@@ -557,11 +557,11 @@ Figure 2.15 – Accessing array elements with a for() loop
 
 Next, we will look at accessing an element with the `forEach(callback)` method.
 
-### Accessing an element with the forEach(callback) method
+### (32-3) Accessing an element with the forEach(callback) method
 
 The `forEach(callback)` method is a method defined by JavaScript on the `Array` class. It is used to browse the elements of an array by transmitting each of the elements of the array to a function passed as a parameter. The function indicated as a parameter therefore has access to each element of the array (and to its index if necessary).
 
-### Callback Function
+### (32-4) Callback Function
 
 The principle of indicating a function in the parameters of a method is very common in JavaScript. The function in the parameters is known as a callback function, which means that the actual processing to be executed is that indicated in the callback function.
 
@@ -627,7 +627,7 @@ Conversely, the `forEach()` method provides the callback function indicated in p
 
 We have seen how to create an array, then how to access each of its elements. Let’s look at how to add new elements to the array.
 
-## Adding items to the array
+## 3-3. Adding items to the array
 
 Once the array has been created (empty or not), it is possible to add elements to it. We will mainly use one of the two following techniques:
 
@@ -636,13 +636,13 @@ Once the array has been created (empty or not), it is possible to add elements t
 
 Now let’s take a look at these two techniques.
 
-### Adding an element by index
+### (33-1) Adding an element by index
 
 This corresponds to the assignment `tab[i] = value`. We used it in the previous section by writing `tab[10] = "Element 9"`.
 
 Note simply that if the index used is greater than the current number of elements in the array, this enlarges the array by creating elements initialized to the value `undefined`. And if the index used is less than the number of elements in the array, it modifies the current value of the targeted element.
 
-### Adding an element using the push() method
+### (33-2) Adding an element using the push() method
 
 The `push()` method is defined in the `Array` class. It allows you to add a new element to an array without worrying about the insertion index because it automatically inserts the element at the end of the array:
 
@@ -672,7 +672,7 @@ Figure 2.18 – Adding an element using the push() method
 
 We know how to add and modify elements in an array. All that remains is to know how to delete elements from an array.
 
-## Deleting array elements
+## 3-4. Deleting array elements
 
 JavaScript allows us to delete array elements in two ways:
 
@@ -681,7 +681,7 @@ JavaScript allows us to delete array elements in two ways:
 
 Let’s examine these two possibilities now.
 
-### Deleting an element value (without deleting the element from the array)
+### (34-1) Deleting an element value (without deleting the element from the array)
 
 We use the `delete` keyword to delete the value of an element in an array. For example, `delete tab[0]` deletes the value of the element with index 0 in the array `tab`, by assigning it the value `undefined`. The element is not removed from the array, which still has the same number of elements as before:
 
@@ -715,7 +715,7 @@ Note that if instead of using `delete tab[0]`, we use `tab[0] = undefined`, the 
 
 Now let’s look at the second method for removing the element from the array.
 
-### Deleting an element from an array
+### (34-2) Deleting an element from an array
 
 Using the `delete` keyword does not delete the element from the array, which retains the same number of elements.
 
@@ -751,11 +751,11 @@ Figure 2.20 – Deletion of element with index 0
 
 We have seen how to add and delete elements in an array. Now let’s see how to extract a new array from the elements present in the current array.
 
-## Filtering elements in an array
+## 3-5. Filtering elements in an array
 
 It is common to filter the elements of an array, for example, to keep only certain elements or to return new ones. The `Array`` class has two methods - `filter(callback)` and `map(callback)` - that allow us to return a new array according to our conditions.
 
-### Using the filter(callback) method
+### (35-1) Using the filter(callback) method
 
 The `tab.filter(callback)` method returns a new array while keeping only the desired elements of the `tab` array.
 
@@ -784,7 +784,7 @@ Figure 2.21 – Using the filter() method
 
 This brings us to the end of the filter() method.
 
-### Using the map(callback) method
+### (35-2) Using the map(callback) method
 
 The `tab.map(callback)` method is used to return a new array from the elements of the initial `tab` array. Each element of the initial array is passed to the `callback function of the form callback(element, index)`, which must return for each element a new element that will replace the original element.
 
@@ -813,11 +813,11 @@ Figure 2.22 – Using the map() method
 
 We have studied in this section the use of objects of the `Array` class. Another class of objects is also widely used with JavaScript: character strings, which are represented by the `String` class. Now let’s see how to use objects of the `String` class.
 
-# Character strings
+# 4. Character strings
 
 Strings are widely used in programming languages. They are used to represent text entered by a user or text that will be displayed to a user.
 
-## Creating a character string
+## 4-1. Creating a character string
 
 A character string is represented by an object of class `String`. But since character strings are widely used in JavaScript, the language allows them to be used by surrounding them with double quotes `"` and `"` or single quotes `'` and `'`. It is also possible, for certain uses, to use backticks (reverse quotation marks `'` and `'`).
 
@@ -827,7 +827,7 @@ The string literal must in this case begin and end with the same type of quotes.
 
 Now let’s see how to create a string using these various methods.
 
-### Creating a string literal using double or single quotes
+### (41-1) Creating a string literal using double or single quotes
 
 The easiest way to create a string literal is to use the single or double quote notation:
 
@@ -857,7 +857,7 @@ Advantage of Having the Option to Use Single/Double Quotation Marks
 
 The advantage of having the possibility of using single or double quotes is visible if the string itself contains quotes. For example, if the string is `"I'll love JavaScript"`, using single quotes to create the string will produce an error because the string will be assumed to end with the apostrophe in the word `I'll`. In this case, you must use double quotes to avoid the error.
 
-### Creating a string literal using backticks
+### (41-2) Creating a string literal using backticks
 
 You can also use backticks. This is useful in special cases where you want to use the value of variables in character strings in a simpler way.
 
@@ -924,11 +924,11 @@ Figure 2.26 – Using the length property of the String class
 
 Regardless of how the string is created, its length is the same (here, 20 characters). We have seen how to create a character string, now let’s see how to access the characters that compose it.
 
-## Accessing characters in a string
+## 4-2. Accessing characters in a string
 
 The `String` class defines methods for accessing characters in the string. These are, in particular, the `charAt(index)` and `slice(start, end)` methods. `charAt(index)` is used to retrieve the character located at the index indicated in the string, starting from index 0. The maximum index is that associated with the value of the `length` property, reduced by 1. `slice(start, end)` breaks the string into a substring, by extracting the characters that go from the `start` index (included) to the `end` index (excluded).
 
-### Using the charAt(index) method
+### (42-1) Using the charAt(index) method
 
 Let’s use the `charAt(index)` method to display the characters of a string, one by one:
 
@@ -937,7 +937,7 @@ Displaying characters from a string
 ```
 var s = "Hello";
 console.log("s =", s);
-for (var i = 0; i <s.length; i++) console.log(`s.charAt(${i}) = ${s.charAt(i)}`);
+for (var i = 0; i &gt;s.length; i++) console.log(s.charAt(${i}) = ${s.charAt(i)});
 ```
 
 Notice the use of reverse quotes to display the result string.
@@ -950,7 +950,7 @@ Figure 2.27 – Using the charAt() method
 
 Now, let’s look at the `slice(start, end)` method.
 
-### Using the slice(start, end) method
+### (42-2) Using the slice(start, end) method
 
 The preceding `charAt(index)` method retrieves a single character from the string, while the `slice(start, end)` method can retrieve several consecutive ones:
 
@@ -981,7 +981,7 @@ Figure 2.28 – Using the slice() method
 
 Now that we have seen how to get the characters that make up the string, let’s look at how to modify the string.
 
-## Modifying a character string
+## 4-3. Modifying a character string
 
 To modify a string, there is only one possibility: you have to construct a new one from it. The original string cannot be changed directly.
 
@@ -989,7 +989,7 @@ For this, we will use the previous `slice()` and `charAt()` methods, which will 
 
 But to search or modify parts of character strings, it is better to use regular expressions. We study them below.
 
-## Using regular expressions
+## 4-4. Using regular expressions
 
 Regular expressions are related to strings. They are used to check whether a string has a certain format (for example, the format of an email, of a telephone number, and so on), or to replace the characters that are in this format with others.
 
@@ -997,11 +997,11 @@ For this, the `String` class has the `match(regexp)` method to check whether a c
 
 In both methods, the `regexp` parameter corresponds to a regular expression, the meaning of which we will study next.
 
-### Checking whether a string has a given format
+### (44-1) Checking whether a string has a given format
 
 The `match(regexp)` method is used to check whether the character string on which the method is used is in the format indicated in `regexp`. The `regexp` parameter is called a regular expression.
 
-### Regular Expressions
+### (44-2) Regular Expressions
 
 A regular expression is a sequence of characters surrounded by `/` and `/`, for example, `/abc/`. The regular expression `/abc/` means that we are looking for the sequence of characters `abc` in the character string. If the string contains the sequence `abc`, the `match(/abc/)` method returns this sequence of characters as a result, otherwise it returns the value `null`.
 
@@ -1052,7 +1052,7 @@ Writing a regular expression can sometimes be complex to formulate. The site htt
 
 A regular expression can also modify parts of character strings, using the `replace()` method.
 
-### Replacing a part of a string with a given format
+### (44-3) Replacing a part of a string with a given format
 
 The `replace(regexp, str)` method is used to replace the part of the string having the format of the regular expression `regexp` with the string `str`. It returns a new string, and the original one is not modified. If the format indicated by the regular expression is not found, the original string is returned with no modifications.
 
@@ -1093,13 +1093,13 @@ Figure 2.30 – Using the replace() method
 
 All executions of previous programs were executed immediately. We are now going to study how to perform deferred processing over time.
 
-# Multitasking in JavaScript
+# 5. Multitasking in JavaScript
 
 When you start coding in JavaScript, a question often comes up: is it possible to perform several processes simultaneously (what is called multitasking in computing)? This would be useful if a process to be executed will take a long time, so as not to block other equally urgent processes.
 
 JavaScript does not allow several processing operations to be carried out simultaneously. On the other hand, it is possible not to block the program (both on the client side in the browser, and on the server side with Node.js) by using the callback function (which we have already talked about when studying the `forEach()` method in the **Accessing an element with the forEach(callback) method** section).
 
-### Callback Function
+## 5-1. Callback Function
 
 A callback function corresponds to a processing function used as parameters of a JavaScript method or function. The callback function will be executed at the desired time by the method or function that uses it.
 
@@ -1107,7 +1107,7 @@ Node.js makes extensive use of this feature. For example, when reading a file, t
 
 JavaScript defines as standard two main functions that use this callback function concept: the `setTimeout()` and `setInterval()` functions. Both these use a callback function as a parameter. We’ll describe these two functions next.
 
-## Using the setTimeout() function
+## 5-2. Using the setTimeout() function
 
 The `setTimeout(callback, timeout)` function is used to position a processing function (the `callback` function) that will be executed when the time period expressed by `timeout` (in milliseconds) has elapsed.
 
@@ -1178,7 +1178,7 @@ Figure 2.33 – Displaying the time when messages are displayed in the console
 
 We can clearly see that the callback function is executed at the end of the 5-second period indicated in the parameter of the `setTimeout()` function.
 
-## Using the setInterval() function
+## 5-3. Using the setInterval() function
 
 The `setInterval(callback, timeout)` function is similar to the `setTimeout()` function seen previously. But instead of executing the callback function only once at the end of the delay (as the `setTimeout()` function does), the `setInterval()` function executes the callback function repeatedly by setting a new delay at the end of it. The callback function is therefore executed at regular intervals. The only way to stop this cycle is to use the `clearInterval()` function.
 
@@ -1216,7 +1216,7 @@ Figure 2.34 – Incrementing a counter every second
 
 The counter increments every second, indefinitely. To stop this endless cycle, you have to use a new JavaScript function, which is clearInterval().
 
-## Using the clearInterval() function
+## 5-4. Using the clearInterval() function
 
 The `clearInterval(timer)` function is used to stop the cycle started during the `setInterval()` instruction.
 
@@ -1263,13 +1263,13 @@ Figure 2.35 – Timer stops after 5 counts
 
 The callback function that is used in the `setTimeout()` or `setInterval()` functions is included directly in the parameters of each function. JavaScript makes it easier to write callback functions by using a new type of object called a promise.
 
-# Using promises
+# 6. Using promises
 
 Promises are another way to use callback functions. Rather than integrating the callback function into the method call (as a parameter), we use it as a parameter of the new `then(callback)` method. This simplifies the reading of JavaScript code in case it uses callback functions.
 
 For an object to use the `then(callback)` method, it must be a `Promise` class object. The `Promise` class is a class defined in JavaScript language.
 
-### The Promise Class
+## 6-1. The Promise Class
 
 A `Promise` class object uses a callback function of the form `callback(resolve, reject)` as a parameter of its constructor.
 
@@ -1333,7 +1333,7 @@ Figure 2.36 – Using the then() method
 
 This brings us to the end of the chapter.
 
-## Summary
+# 7. Summary
 
 In this chapter, we went through advanced concepts related to JavaScript.
 

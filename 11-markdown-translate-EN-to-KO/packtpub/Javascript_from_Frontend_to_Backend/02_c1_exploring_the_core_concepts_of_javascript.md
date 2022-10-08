@@ -47,7 +47,7 @@ In this chapter, we will cover the following topics:
 - Creating processing loops
 - Using functions
 
-# Technical requirements
+# 1. Technical requirements
 
 To develop in JavaScript, and write and then run the programs in this book, you will need the following:
 
@@ -59,7 +59,7 @@ To develop in JavaScript, and write and then run the programs in this book, you 
 
 Let’s now begin our discovery of JavaScript, by studying the different types of variables it offers us.
 
-# Types of variables used in JavaScript
+# 2. Types of variables used in JavaScript
 
 Like any language, JavaScript allows you to create variables that will be used to manipulate data. JavaScript is a very simple language so, for example, data types are very basic. We will thus have the following as the main data types:
 
@@ -71,21 +71,21 @@ Like any language, JavaScript allows you to create variables that will be used t
 
 Let’s take a quick look at these different types of data.
 
-## Numerical values
+## 2-1. Numerical values
 
 Numerical values can be positive or negative and even in decimal form (for example, 0, -10, 10.45). All mathematical numbers called real numbers comprise numerical values or data points.
 
-## Boolean values
+## 2-2. Boolean values
 
 These are of course the two Boolean values—true or false—that are found in most languages. These values are used to express conditions: if the condition is true, then we perform a particular process, otherwise, we perform an alternative one. The result of the condition is therefore a true or false value, which is symbolized by the two values `true` and `false`.
 
 We will see how to express conditions in the Writing conditions section, later in this chapter.
 
-## Character strings
+## 2-3. Character strings
 
 Character strings refer to values such as `"a"`, `"abc"`, or `"Hello, how are you?"`. An empty character string will be represented by `""` (consecutive quotes with nothing inside). Note that you can use double quotes (`"`) or single quotes (`'`). Thus, the string `"abc"` can also be written as `'abc'` (with single quotes).
 
-## Arrays
+## 2-4. Arrays
 
 Arrays, such as `[10, "abc", -36]`, can contain values of any type, like here where we have both numeric values and character strings. An empty array will be represented by `[]`, which means that it contains no value.
 
@@ -96,7 +96,7 @@ The values stored in an array are accessed by means of an index, varying from 0 
 - `tab[2]` will allow access to the third and last element of the array: `-36`.
 - Note that it is possible to add elements to an array, even if it is empty. So, if we access index 3 of the previous array `tab`, we can write `tab[3] = "def"`. The array `tab` will therefore now be `[10, "abc", -36, "def"]`.
 
-## Objects
+## 2-5. Objects
 
 Objects are similar to arrays. They are used to store arbitrary information, for example, the values `43`, `"Clinton"`, and `"Bill"`. But unlike arrays that use indexes, you must specify a name to access each of these values. This name is called the key, which thus allows access to the value it represents.
 
@@ -114,11 +114,11 @@ Finally, there are empty objects, such as those containing no key (therefore no 
 
 Now that we have seen the main variable types used in JavaScript, let’s see how to use them to define variables in our programs.
 
-# Running a JavaScript program
+# 3. Running a JavaScript program
 
 JavaScript is a language that can be executed in a browser (Edge, Chrome, Firefox, Safari, and so on) or on a server with Node.js installed. Let’s see how to write JavaScript programs for these two types of configurations.
 
-## Running a JavaScript program in a browser
+## 3-1. Running a JavaScript program in a browser
 
 To run a JavaScript program in a browser, you must insert the JavaScript code into an HTML file. This HTML file will then be displayed in the browser, which will cause the execution of the JavaScript code included in the file.
 
@@ -160,7 +160,7 @@ Figure 1.1 – Displaying a message in the browser window
 
 The JavaScript code present in the `<script>` tag ran when the HTML page was loaded. The message indicated in the `alert()` function is therefore displayed. A click on the OK button validates the message displayed and continues the execution of the JavaScript code. As we can see, there is nothing more in the program; the program ends immediately by displaying a blank page on the screen (because no HTML code is inserted into the page).
 
-### Writing JavaScript code to an external file
+### (31-1) Writing JavaScript code to an external file
 
 Rather than integrating the JavaScript code directly into the HTML file, we can put it in an external file, then insert this file into our HTML file by indicating its name in the `src` attribute of the `<script>` tag.
 
@@ -197,7 +197,7 @@ In the rest of our examples, we will mainly use the insertion of the JavaScript 
 
 Let’s now explain another way to display messages, without blocking the program as before with the `alert(message)` function.
 
-### Using the console.log() method instead of the alert() function
+### (31-2) Using the console.log() method instead of the alert() function
 
 The `alert()` function used earlier displays a window on the HTML page, and the JavaScript program hangs waiting for the user to click the OK button in the window. Thus, the function requires the intervention of the user to continue the execution of the program.
 
@@ -248,7 +248,7 @@ The message is displayed in the lower part of the browser window.
 
 Now that we have learned how to run a JavaScript program in a browser, let’s move on to learning how to run a JavaScript program on a Node.js server.
 
-## Running a JavaScript program on a Node.js server
+## 3-2. Running a JavaScript program on a Node.js server
 
 To run a JavaScript program on a Node.js server, you must first install the Node.js server. To install, simply go to https://nodejs.org/ and download and install the server. Note that if you are using macOS, Node.js is already installed.
 
@@ -278,13 +278,13 @@ We see that the message is displayed directly in the command interpreter.
 
 In the previous examples, we have written JavaScript code that runs both on the client side (the browser) and on the server side. The question that can be asked is: can the same code run in exactly the same way on the client side and on the server side?
 
-## Differences between JavaScript code written for the browser and the server
+## 3-3. Differences between JavaScript code written for the browser and the server
 
 Although the two pieces of code are similar, we cannot say that they are the same, because the issues to be managed are different in the two cases. Indeed, on the client side, we will mainly want to manage the user interface with JavaScript, while on the server side, we will rather want to manage files or databases. So, the libraries to use in these two cases will not be the same.
 
 On the other hand, we find in both cases the same basic language, which is the JavaScript language that we will be describing now.
 
-# Declaring variables in JavaScript
+# 4. Declaring variables in JavaScript
 
 Variables of the types previously described under the Types of variables used in JavaScript section, as we know, consist of numerical values, Boolean values, character strings, arrays, and objects.
 
@@ -294,7 +294,7 @@ Of course, it is not advisable to make such voluntary changes in our programs, a
 
 Now let’s learn how to define a variable. We will do so using one of the following keywords: `const`, `var`, or `let`.
 
-## Using the const keyword
+## 4-1. Using the const keyword
 
 The `const` keyword is used to define a variable whose value will be constant. Any subsequent attempt to change the value will produce an error.
 
@@ -332,7 +332,7 @@ Figure 1.5 – Error when modifying a constant value
 
 As we can see from the preceding figure, the first display of the constant `c1` displays the value **12**, while the second display does not occur because an error occurred before (while trying to change the value of a constant). Therefore, a value defined by the `const` keyword should not be modified.
 
-## Using the var keyword
+## 4-2. Using the var keyword
 
 Another way to define a variable (whose value can be modified) is to use the `var` keyword. Let’s see how using the following code example:
 
@@ -399,7 +399,7 @@ Figure 1.7 – Running the program under Node.js
 
 We learned about the `const` and `var` keywords for defining variables; all that remains is for us to learn how to use the `let` keyword.
 
-## Using the let keyword
+## 4-3. Using the let keyword
 
 To understand the use of the `let` keyword and see the difference from the `var` keyword, we must use braces in our programs. Braces are used to create program blocks in which instructions are inserted, in particular after the conditional `if` and `else` instructions (which we will see in the Writing conditions section).
 
@@ -450,7 +450,7 @@ Figure 1.9 – The same results on the Node.js server
 
 As we can see in the preceding screen, the variable c, defined by `let` in a block, becomes unknown outside the block.
 
-## What if we don’t use var or let to define a variable?
+## 4-4. What if we don’t use var or let to define a variable?
 
 It is possible not to use the `var` or `let` keywords to define a variable. We can simply write the variable’s name followed by its value (separated by the sign `=`). Let’s see how using the following example:
 
@@ -469,7 +469,7 @@ Note
 
 It is strongly advised to use as few global variables as possible in the programs, as this complicates the design and debugging of the programs that contain them.
 
-## What is an uninitialized variable worth?
+## 4-5. What is an uninitialized variable worth?
 
 Each of the preceding variables was declared by initializing its value, with the `=` sign, which is the assignment sign. Let’s see what happens if we don’t assign any value to the variable, but just declare it using `var` or `let` as follows:
 
@@ -513,14 +513,14 @@ The `undefined` value is also associated with an uninitialized variable if using
 
 We now know how to define variables in JavaScript. To create useful JavaScript programs, you have to write sequences of instructions. One of the most used instructions allows you to write conditional tests with the `if` statement, which we will talk about next.
 
-# Writing conditions for conditional tests
+# 5. Writing conditions for conditional tests
 
 JavaScript obviously allows you to write conditions in programs. The condition is expressed through the `if (condition)` statement:
 
 - If the condition is `true`, the statement (or block in braces) that follows is executed.
 - If the condition is `false`, the statement (or block) following the `else` keyword (if present) will be executed.
 
-## Forms of writing instructions
+## 5-1. Forms of writing instructions
 
 We can use the following forms to express the conditions:
 
@@ -596,7 +596,7 @@ Figure 1.12 – Running the else part of the test
 
 We have seen how to execute one part of the code or another depending on a condition. Let’s now study how to write more complex conditions than those written previously.
 
-## Expressions used to write conditions
+## 5-2. Expressions used to write conditions
 
 The condition written previously is a simple test of equality between two values. But the test to write can sometimes be more complex. The goal is to have the final result of the condition, which is `true` or `false`, which will then make it possible for the system to decide the next course of action.
 
@@ -629,7 +629,7 @@ By default, the condition expressed in `if(condition)` is compared with the valu
 
 It is sometimes necessary to chain several tests in a row, depending on the results of the previous tests. We then have a succession of tests, called cascade tests.
 
-## Nested test suites
+## 5-3. Nested test suites
 
 It is possible to chain tests in the processes to be performed. Here is an example:
 
@@ -656,7 +656,7 @@ Figure 1.14 – Test nesting
 
 We learned about writing conditions in JavaScript programs. We are now going to learn how to write processing loops, which make it possible to write the instructions in the program only once. These instructions can, however, be executed as many times as necessary.
 
-# Creating processing loops
+# 6. Creating processing loops
 
 It is sometimes necessary to repeat an instruction (or a block of instructions) several times. Rather than writing it several times in the program, we put it in a processing loop. These instructions will be repeated as many times as necessary.
 
@@ -667,7 +667,7 @@ Two types of processing loops are possible in JavaScript:
 
 Let’s take a look at these two types of loops.
 
-## Loops with while()
+## 6-1. Loops with while()
 
 The `while(condition)` instruction allows you to repeat the instruction (or the block of instructions) that follows. As long as the condition is `true`, the statement (or block) is executed. It stops when the condition becomes `false`.
 
@@ -718,7 +718,7 @@ The result is displayed similarly in the browser console:
 )
 Figure 1.16 – Displaying numbers from 0 to 5 in the browser console
 
-## Loops with for()
+## 6-2. Loops with for()
 
 Another widely used form of loop is one with a `for()` statement. It simplifies the writing of the previous loop by reducing the number of instructions to write.
 
@@ -744,7 +744,7 @@ Figure 1.17 – Loop with the for() statement
 
 In this section, we learned how to write sequences of statements that will be executed multiple times, using the `while()` and `for()` statements. Now let’s look at how to group statements together, using what are called functions.
 
-# Using functions
+# 7. Using functions
 
 A function is used to give a name to a block of instructions so that it can be used in different places in the program. In general, in a function, we group a set of instructions that are used to carry out a particular task, for example:
 
@@ -754,7 +754,7 @@ A function is used to give a name to a block of instructions so that it can be u
 
 The functions described above are very simple but show that the role of functions is to encapsulate any process by summarizing in one sentence what is expected of this process. The name given to the function symbolizes the action expected in return, which allows the developer to easily understand the sequence of instructions (including for an external developer who has not participated in the development). Let’s discuss the three functions we listed one by one.
 
-## Function displaying the list of the first 10 integers
+## 7-1. Function displaying the list of the first 10 integers
 
 Let’s write the first function, which displays the list of the first 10 integers. We will call this function `display_10_first_integers()`. The name must be as explicit as possible because a JavaScript program is composed of many functions whose names must be unique in the program (if two function names are the same, only the last one is taken into account because it overwrites the former).
 
@@ -827,7 +827,7 @@ In the preceding code, the function is called three times in succession, which d
 )
 Figure 1.20 – Successive calls to the display_10_first_integers() function
 
-## Function calculating the sum of the first 10 integers
+## 7-2. Function calculating the sum of the first 10 integers
 
 We now want to create a function that calculates the sum of the first 10 integers, that is, `1+2+3+4+5+6+7+8+9+10`. The result is `55`. This will allow us to show how a function can return a result to the outside (that is, to the program that uses it). Here, the function should return `55`.
 
@@ -861,7 +861,7 @@ Let’s run the previous program. We should see the following output:
 )
 Figure 1.21 – Calculation of the sum of the first 10 integers
 
-## Function calculating the sum of the first N integers
+## 7-3. Function calculating the sum of the first N integers
 
 The previous function is not very useful because it always returns the same result. A more useful function would be to calculate the sum of the first `N` integers, knowing that `N` can be different each time the function is called.
 
@@ -899,7 +899,7 @@ When calling the function, it passes the parameters `10`, `25`, then `100` as de
 )
 Figure 1.22 – Calculation of the sum of the first 10, then 25, then 100 integers
 
-# Summary
+# 8. Summary
 
 The basic features of JavaScript have been covered in this chapter: variables with different types, conditional tests, loops, and functions. They are used on the client side and on the server side.
 
