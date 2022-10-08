@@ -1,13 +1,12 @@
 
 @ Q -> # 붙이고 줄 띄우기 => 0i# ^[A^M^[
 @ W -> 현 위치에서 Copy 까지 역따옴표 => j0i```^M^[/^Copy$^[ddk0C```^M^[
-@ E -> 찾은 글자 ~ SPACE 앞뒤로 backtick(`) 붙이기 => i`^[/ ^[i`^[/EEEaEEEEEEE^[
-@ R -> 찾은 글자 ~ POINT 앞뒤로 backtick(`) 붙이기 => i`^[/.^[i`^[/RRRaRRRRRRR^[
-@ T -> 찾은 글자 ~ COMMA 앞뒤로 backtick(`) 붙이기 => i`^[/,^[i`^[/TTTaTTTTTTT^[
-@ Y -> 찾은 글자 ~   ;   앞뒤로 backtick(`) 붙이기 => i`^[/;^[i`^[/YYYaYYYYYYY^[
-@ U -> 찾은 글자~닫은괄호앞뒤로 backtick(`) 붙이기 => i`^[/)^[i`^[/UUUaUUUUUUU^[
-@ I -> 찾은 글자 ~ COLON 앞뒤로 backtick(`) 붙이기 => i`^[/:^[i`^[/YYYaYYYYYYY^[
-i`/:i`/YiiYYYYYYYYY
+@ E -> 찾은 글자 ~ SPACE 앞뒤로 backtick(`) 붙이기 => i`^[/ ^[i`^[/EEEEEEEEEE^[
+@ R -> 찾은 글자 ~ POINT 앞뒤로 backtick(`) 붙이기 => i`^[/.^[i`^[/RRRRRRRRRR^[
+@ T -> 찾은 글자 ~ COMMA 앞뒤로 backtick(`) 붙이기 => i`^[/,^[i`^[/TTTTTTTTTT^[
+@ Y -> 찾은 글자 ~   ;   앞뒤로 backtick(`) 붙이기 => i`^[/;^[i`^[/YYYYYYYYYY^[
+@ U -> 찾은 글자~닫은괄호앞뒤로 backtick(`) 붙이기 => i`^[/)^[i`^[/UUUUUUUUUU^[
+@ I -> 찾은 글자 ~ COLON 앞뒤로 backtick(`) 붙이기 => i`^[/:^[i`^[/YYYYYYYYYY^[
 
 @ A -> 빈 줄에 블록 시작하기 => 0C```^[^Mk0
 @ S -> 줄 앞에 > 나오면 안되므로 블록 마감하고 > 앞에 - 끼우기 => 0i```^M-^[^M0i```^[0
@@ -710,7 +709,7 @@ Figure 2.19 – Deleting the value of the element with index 0
 
 We see that the `for()` loop displays the `undefined` value of the element, while the `forEach()` method no longer displays the element because its value has been deleted.
 
-### Note
+Note
 
 Note that if instead of using `delete tab[0]`, we use `tab[0] = undefined`, the `forEach()` method displays the element at index 0 as the first element of the array, because the value of the element has not actually been deleted but rather assigned to a new value, which here is `undefined`.
 
@@ -822,7 +821,7 @@ Strings are widely used in programming languages. They are used to represent tex
 
 A character string is represented by an object of class `String`. But since character strings are widely used in JavaScript, the language allows them to be used by surrounding them with double quotes `"` and `"` or single quotes `'` and `'`. It is also possible, for certain uses, to use backticks (reverse quotation marks `'` and `'`).
 
-## Note
+Note
 
 The string literal must in this case begin and end with the same type of quotes.
 

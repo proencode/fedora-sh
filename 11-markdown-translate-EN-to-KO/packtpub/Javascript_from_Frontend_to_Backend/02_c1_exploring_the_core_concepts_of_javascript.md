@@ -1,11 +1,12 @@
 
 @ Q -> # 붙이고 줄 띄우기 => 0i# ^[A^M^[
 @ W -> 현 위치에서 Copy 까지 역따옴표 => j0i```^M^[/^Copy$^[ddk0C```^M^[
-@ E -> 찾은 글자 ~ SPACE 앞뒤로 backtick(`) 붙이기 => i`^[/ ^[i`^[/EEEaEEEEEEE^[
-@ R -> 찾은 글자 ~ POINT 앞뒤로 backtick(`) 붙이기 => i`^[/.^[i`^[/RRRaRRRRRRR^[
-@ T -> 찾은 글자 ~ COMMA 앞뒤로 backtick(`) 붙이기 => i`^[/,^[i`^[/TTTaTTTTTTT^[
-@ Y -> 찾은 글자 ~ COLON 앞뒤로 backtick(`) 붙이기 => i`^[/;^[i`^[/YYYaYYYYYYY^[
-@ U -> 찾은 글자~닫은괄호앞뒤로 backtick(`) 붙이기 => i`^[/)^[i`^[/UUUaUUUUUUU^[
+@ E -> 찾은 글자 ~ SPACE 앞뒤로 backtick(`) 붙이기 => i`^[/ ^[i`^[/EEEEEEEEEE^[
+@ R -> 찾은 글자 ~ POINT 앞뒤로 backtick(`) 붙이기 => i`^[/.^[i`^[/RRRRRRRRRR^[
+@ T -> 찾은 글자 ~ COMMA 앞뒤로 backtick(`) 붙이기 => i`^[/,^[i`^[/TTTTTTTTTT^[
+@ Y -> 찾은 글자 ~   ;   앞뒤로 backtick(`) 붙이기 => i`^[/;^[i`^[/YYYYYYYYYY^[
+@ U -> 찾은 글자~닫은괄호앞뒤로 backtick(`) 붙이기 => i`^[/)^[i`^[/UUUUUUUUUU^[
+@ I -> 찾은 글자 ~ COLON 앞뒤로 backtick(`) 붙이기 => i`^[/:^[i`^[/YYYYYYYYYY^[
 
 @ A -> 빈 줄에 블록 시작하기 => 0C```^[^Mk0
 @ S -> 줄 앞에 > 나오면 안되므로 블록 마감하고 > 앞에 - 끼우기 => 0i```^M-^[^M0i```^[0
@@ -188,7 +189,7 @@ index.html file
 </html>
 ```
 
-### Note
+Note
 
 Notice the use of the `<script>` and `</script>` tags. They are contiguous (that is, they have no spaces or newlines between them), which is necessary for this code to work.
 
@@ -202,7 +203,7 @@ The `alert()` function used earlier displays a window on the HTML page, and the 
 
 An alternative makes it possible to use a display without blocking the execution of the program. This is the display in the console, using the `console.log()` method.
 
-### Note
+Note
 
 The `console.log()` form of writing means that we use the `log()` method, which is associated with the `console` object. This will be explained in detail in the following chapter.
 
@@ -225,7 +226,7 @@ index.html file using console.log() method
 </html>
 ```
 
-### Note
+Note
 
 The use of comments in the JavaScript program requires placing `//` before what needs to be commented out (on the same line). You can also comment out several lines by enclosing them with `/*` at the beginning and `*/` at the end.
 
@@ -233,7 +234,7 @@ Let’s run this program by pressing the F5 key on the keyboard to refresh the w
 
 Indeed, the message is only displayed in the console. The console is only visible if you press the F12 key (and can be removed by pressing F12 again).
 
-### Note
+Note
 
 You can go to the site https://balsamiq.com/support/faqs/browserconsole/, which explains how to display the console in the event that the F12 key is inoperative.
 
@@ -299,7 +300,7 @@ The `const` keyword is used to define a variable whose value will be constant. A
 
 Let’s define the constant variable `c1` having the value `12`. Let’s try to modify the value by assigning it a new value: an error will be displayed in the console:
 
-### Note
+Note
 
 To say that we are defining a constant variable is an abuse of language. We should rather say that we are defining a constant value.
 
@@ -359,7 +360,7 @@ Definitions of several variables
 
 We defined the variables `a`, `b`, `s1`, and `firstname` by preceding them with the keyword `var` and assigning them a default value. The variable `c` corresponds to the addition of the variables `a` and `b`.
 
-### Note
+Note
 
 The name of a variable consists of alphanumeric characters but must start with an alphabetic character. Lowercase and uppercase are important in writing the variable name (variables’ names are case sensitive). Thus, the variable `a` is different from the variable `A`.
 
@@ -464,7 +465,7 @@ console.log("b = " + b);    // displays the value 56
 
 In the preceding example, where the variables are initialized without being preceded by `var` or `let`, these variables are global variables. As soon as they are initialized, they become accessible everywhere else in the program. This will become apparent when we study the functions in the Using functions section of this chapter.
 
-### Note
+Note
 
 It is strongly advised to use as few global variables as possible in the programs, as this complicates the design and debugging of the programs that contain them.
 
@@ -496,7 +497,7 @@ In the preceding code, we have defined two variables, `a` and `b` – one using 
 
 The result displayed in this case for these uninitialized variables is a JavaScript value called `undefined`. This corresponds to the value of a variable that does not yet have a value. The `undefined` value is an important keyword in the JavaScript language.
 
-### Note
+Note
 
 The variables `a` and `b` are not initialized, and it is necessary to declare them using `var` or `let`. Indeed, you cannot simply write `a;` or `b;` as this would cause a runtime error.
 
@@ -506,7 +507,7 @@ Let’s run the preceding program in the browser and observe the results display
 )
 Figure 1.10 – An uninitialized variable is undefined
 
-### Note
+Note
 
 The `undefined` value is also associated with an uninitialized variable if using server-side JavaScript with Node.js.
 
@@ -560,7 +561,7 @@ else {
 }
 ```
 
-### Note
+Note
 
 If the process to be executed includes several instructions, these instructions are grouped together in a block surrounded by braces. A block can consist of only one statement, even if, as in this case, the block is optional (no need for braces).
 
@@ -577,10 +578,9 @@ else console.log("a is not 12");
 
 In the preceding code, the condition is expressed in the form `a == 12`. Indeed, it is customary to test the equality between two values by means of the sign `=` repeated twice successively (hence `==`).
 
-### Note
+Note
 
 We use `==` for equality, `!=` for difference, `>` or `>=` to check superiority, and `<` or <= to check inferiority.
-```
 
 In the preceding code, since the variable `a` is `12`, the following result can be seen:
 
@@ -615,7 +615,7 @@ else console.log("condition a == 12 || b > 50 is false");
 
 In the preceding code, since the variable `b` is greater than 50, the condition is `true`, as seen in Figure 1.13.
 
-### Note
+Note
 
 In an OR condition, it suffices that one of the conditions is `true` for the final condition to be `true`.
 
@@ -849,7 +849,7 @@ console.log("Total = " + total);
 
 We define the `total` variable in the function. This variable is a local variable to the function because it is defined using the `var` or `let` keyword. This allows this `total` variable to not be the same as the one defined outside the function, even if the names are the same.
 
-### Note
+Note
 
 If the `total` variable in the function was not defined using the `var` or `let` keyword, it would create a so-called global variable that would be directly accessible even outside the function. This is not good programming because you want to use global variables as little as possible.
 
@@ -891,7 +891,7 @@ var total_100 = add_N_first_integers(100);
 console.log("Total of the first 100 integers = " + total_100);
 ```
 
-The `add_N_first_integers(n)` function is very similar to the `add_10_first_integers()` function written earlier. It uses the parameter`` n indicated between the parentheses and does not loop from `0` to `10` as before, but from `0` to `n`. Depending on the value of `n` that will be used when calling the function, the loop will thus be different, and the result returned by the function as well.
+The `add_N_first_integers(n)` function is very similar to the `add_10_first_integers()` function written earlier. It uses the parameter `n` indicated between the parentheses and does not loop from `0` to `10` as before, but from `0` to `n`. Depending on the value of `n` that will be used when calling the function, the loop will thus be different, and the result returned by the function as well.
 
 When calling the function, it passes the parameters `10`, `25`, then `100` as desired. The result is returned by the function’s `total` variable, and then used by the `total_10`, `total_25`, and `total_100` variables outside the function:
 

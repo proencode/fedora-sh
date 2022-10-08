@@ -112,12 +112,14 @@ def read_txt (filename):
 
 	for aline_en in str :
 		if len(aline_en) < 2:
-			print (f"${fromColor}{aline_en}${toColor}")
-			print (f"")
+			print (f"{aline_en}")
+			# print (f"${fromColor}{aline_en}${toColor}")
+			# print (f"")
 		else:
 			aline_ko=translator.translate (aline_en, dest='ko')
-			print (f"${fromColor}{aline_en}${toColor}{aline_ko.text}")
-			print (f"")
+			print (f"{aline_en}{aline_ko.text}")
+			# print (f"${fromColor}{aline_en}${toColor}{aline_ko.text}")
+			# print (f"")
 
 	file.close()
 
