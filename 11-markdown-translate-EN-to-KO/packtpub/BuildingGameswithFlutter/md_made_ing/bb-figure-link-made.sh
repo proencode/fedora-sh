@@ -17,12 +17,12 @@ __EOF__
 	read a
 }
 
-Publisher="packtpub" #-- (1) 출판사
-BookCover="Building Games with Flutter" #-- (2) 책 제목
+Publisher="packtpub" #-- (1) 출판사 --
+BookCover="JavaScript from Frontend to Backend" #-- (2) 책 제목 --
 small_Publisher=$(echo "${Publisher,,}" | sed 's/ /_/g')
 small_BookCover=$(echo "${BookCover,,}" | sed 's/ /_/g')
 
-#------------------SEQ--FIG--MEMO----------------
+#----------- (3) 권번호, 사진번호, 사진제목 및 설명 중 일부 --
 figure_title_made "00" "00" "Preface_Table"
 
 figure_title_made "04" "00" "3.1 Our protagonist"

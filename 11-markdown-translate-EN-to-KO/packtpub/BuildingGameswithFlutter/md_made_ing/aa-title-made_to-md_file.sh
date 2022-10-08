@@ -1,10 +1,10 @@
 #!/bin/sh
 
-Publisher="packtpub" #-- (1) 출판사
-BookCover="Building Games with Flutter" #-- (2) 책 제목
-ShortDescription="Publication date: 6월 2022 Publisher Packt Pages 224 ISBN 9781801816984" #-- (3) 저자등 설명
-tags="flutter game" #-- (4) 찾기 위한 태그
-https_line="https://subscription.packtpub.com/book/game-development/9781801816984/6" #-- (5) 출판사 홈체이지 링크
+Publisher="packtpub" #-- (1) 출판사 --
+BookCover="JavaScript from Frontend to Backend" #-- (2) 책 제목 --
+ShortDescription="Publication date: 7월 2022 Publisher: Packt Pages: 336 ISBN: 9781801070317" #-- (3) 저자등 설명 --
+tags="vue.js node.js" #-- (4) 찾기 위한 태그 --
+https_line="https://subscription.packtpub.com/book/web-development/9781801070317/4" #-- (5) 출판사 홈체이지 링크 --
 
 small_Publisher=$(echo "${Publisher,,}" | sed 's/ /_/g')
 small_BookCover=$(echo "${BookCover,,}" | sed 's/ /_/g')
@@ -43,7 +43,7 @@ file_Made () {
 > ${link_box}
 
 # ${ChapterSeq} ${ChapterName}
-
+#----> 본문을 기재하는 위치.
 
 
 
@@ -83,17 +83,9 @@ JemokMade () {
 	fi
 }
 
-#--
-#-- file_Made "00 부터 매기는 권번호" "보여주기 위한 제목" \
-#--	"이전 페이지 링크 또는 Begin" \
-#--	"이후 페이지 링크 또는 End"
-
-PrevSeq=""
-PrevName=""
-CurrentSeq=""
-CurrentName=""
-NextSeq=""
-NextName=""
+PrevSeq="" ; PrevName=""
+CurrentSeq="" ; CurrentName=""
+NextSeq="" ; NextName=""
 
 md_Create () {
 	TitleSeq=$1 #-- 권 번호
@@ -101,18 +93,15 @@ md_Create () {
 	if [ "x$NextSeq" = "x" ]; then
 		if [ "x$PrevSeq" = "x" ]; then
 			#-- 이전 페이지가 없으면, 이전 페이지로 담는다.
-			PrevSeq=$TitleSeq
-			PrevName=$TitleName
+			PrevSeq=$TitleSeq ; PrevName=$TitleName
 		else
 		if [ "x$CurrentSeq" = "x" ]; then
 			#-- 현재 페이지가 없으면, 현재 페이지로 담는다.
-			CurrentSeq=$TitleSeq
-			CurrentName=$TitleName
+			CurrentSeq=$TitleSeq ; CurrentName=$TitleName
 		else
 		# if [ "x$NextSeq" = "x" ]; then
 			#-- 다음 페이지가 없으면, 다음 페이지로 담는다.
-			NextSeq=$TitleSeq
-			NextName=$TitleName
+			NextSeq=$TitleSeq ; NextName=$TitleName
 		# fi
 		fi
 		fi
@@ -124,12 +113,9 @@ md_Create () {
 			file_Made "${CurrentSeq}" "${CurrentName}" "${PrevLink}" "${NextLink}"
 		fi
 
-		PrevSeq=$CurrentSeq
-		PrevName=$CurrentName
-		CurrentSeq=$NextSeq
-		CurrentName=$NextName
-		NextSeq=$TitleSeq
-		NextName=$TitleName
+		PrevSeq=$CurrentSeq ; PrevName=$CurrentName
+		CurrentSeq=$NextSeq ; CurrentName=$NextName
+		NextSeq=$TitleSeq ; NextName=$TitleName
 
 		if [ "x${NextSeq}" = "xSKIP" ]; then
 			#-- 링크를 만든다.
@@ -140,6 +126,7 @@ md_Create () {
 	fi
 }
 
+#-- (6) 권번호와 파트/팹터 별 제목 --
 #-- md_Create "권 번호" "wiki.js 왼쪽에 표시할 챕터 제목"
 #-- 첫줄에는 "SKIP" "Begin" , 끝줄에는 "SKIP" "End" 로 표시한다.
 #--
