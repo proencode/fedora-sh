@@ -20,8 +20,7 @@ this_wol=$(date +%m) #-- 07
 ymd_hm=$(date +"%y%m%d%a-%H%M") #-- ymd_hm=$(date +"%y%m%d-%H%M%S")
 pswd_ym=$(date +"%y%m")
 
-yoil_number0to6=$(date +%u) #------------ 일0 월1 화2 수3 목4 금5 토6
-yoil_number1to7=$(( ${yoil_number0to6} + 1 )) #-- 1   2   3   4   5   6   7   #--
+yoil_number1to7=$(date +%u) #------------ 월1 화2 수3 목4 금5 토6 일7
 # yoil_atog=$(echo "abcdefg" | cut -c ${yoil_number1to7}) #---- 요일 a...g 일...토 #-- XX
 ju_beonho=$(date +%V) #-- 1년중 몇번째 주인지 표시. V: 월요일마다 하나씩 증가한다. U: 1월1일=일요일: 01, 아니면: 00. 일요일마다 하나씩 증가한다.
 
