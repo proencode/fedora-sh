@@ -1117,9 +1117,13 @@ Processing instructions after a delay of 5 seconds
 
 ```
 console.log("Before setTimeout()");
-setTimeout(function() {
-  console.log("In the callback function");
-}, 5000);  // 5000 milliseconds, or 5 seconds
+setTimeout(
+  function() {
+    console.log("In the callback function");
+  }
+  ,
+  5000
+); // 5000 milliseconds, or 5 seconds
 console.log("After setTimeout()");
 ```
 
@@ -1149,9 +1153,12 @@ Displaying the time when messages are posted
 
 ```
 console.log(time(), "Before setTimeout()");
-setTimeout(function() {
-  console.log(time(), "In the callback function");
-}, 5000);   // 5000 = 5 seconds
+setTimeout(
+  function() {
+    console.log(time(), "In the callback function");
+  },
+  5000
+); // 5000 = 5 seconds
 console.log(time(), "After setTimeout()");
 function time() {
  // return time as HH:MM:SS
@@ -1184,12 +1191,9 @@ We can clearly see that the callback function is executed at the end of the 5-se
 ```
 console.log(time(), "Before setTimeout()");
 
-setTimeout(
-    function() {
+setTimeout(function() {
         console.log(time(), "In the callback function");
-    }
-    , 5000
-); // 5000 = 5 seconds
+    }, 5000); // 5000 = 5 seconds
 
 console.log(time(), "After setTimeout()");
 
