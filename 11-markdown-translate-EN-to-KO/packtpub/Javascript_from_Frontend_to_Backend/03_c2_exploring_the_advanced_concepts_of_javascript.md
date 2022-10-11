@@ -753,7 +753,7 @@ We have seen how to add and delete elements in an array. Now let’s see how to 
 
 ## 3-5. Filtering elements in an array
 
-It is common to filter the elements of an array, for example, to keep only certain elements or to return new ones. The `Array`` class has two methods - `filter(callback)` and `map(callback)` - that allow us to return a new array according to our conditions.
+It is common to filter the elements of an array, for example, to keep only certain elements or to return new ones. The `Array` class has two methods - `filter(callback)` and `map(callback)` - that allow us to return a new array according to our conditions.
 
 ### (35-1) Using the filter(callback) method
 
@@ -786,7 +786,7 @@ This brings us to the end of the filter() method.
 
 ### (35-2) Using the map(callback) method
 
-The `tab.map(callback)` method is used to return a new array from the elements of the initial `tab` array. Each element of the initial array is passed to the `callback function of the form callback(element, index)`, which must return for each element a new element that will replace the original element.
+The `tab.map(callback)` method is used to return a new array from the elements of the initial `tab` array. Each element of the initial array is passed to the callback function of the form `callback(element, index)`, which must return for each element a new element that will replace the original element.
 
 Let’s use the `map(callback)` method to return a new array in which all elements have been capitalized:
 
@@ -937,7 +937,7 @@ Displaying characters from a string
 ```
 var s = "Hello";
 console.log("s =", s);
-for (var i = 0; i &gt;s.length; i++) console.log(s.charAt(${i}) = ${s.charAt(i)});
+for (var i = 0; i <s.length; i++) console.log(`s.charAt(${i}) = ${s.charAt(i)}`);
 ```
 
 Notice the use of reverse quotes to display the result string.
@@ -991,7 +991,7 @@ But to search or modify parts of character strings, it is better to use regular 
 
 ## 4-4. Using regular expressions
 
-Regular expressions are related to strings. They are used to check whether a string has a certain format (for example, the format of an email, of a telephone number, and so on), or to replace the characters that are in this format with others.
+`Regular expressions` Regular expressions are related to strings. They are used to check whether a string has a certain format (for example, the format of an email, of a telephone number, and so on), or to replace the characters that are in this format with others.
 
 For this, the `String` class has the `match(regexp)` method to check whether a character string has a given format and the `replace(regexp, str)` method to replace the part of the string in this format with the new string `str`.
 
@@ -1177,6 +1177,45 @@ We now get the following:
 Figure 2.33 – Displaying the time when messages are displayed in the console
 
 We can clearly see that the callback function is executed at the end of the 5-second period indicated in the parameter of the `setTimeout()` function.
+
+### (52-1) Example of adding a date.
+
+`$ cat ~/tt.js`
+```
+console.log(time(), "Before setTimeout()");
+
+setTimeout(
+    function() {
+        console.log(time(), "In the callback function");
+    }
+    , 5000
+); // 5000 = 5 seconds
+
+console.log(time(), "After setTimeout()");
+
+function time() {
+ // return time as HH:MM:SS
+ var date = new Date();
+ var y4 = date.getFullYear();
+ var mm = date.getMonth() + 1;
+ var dd = date.getDate();
+ if (mm < 10) mm = "0" + mm;
+ if (dd < 10) dd = "0" + dd;
+ var hour = date.getHours();
+ var min = date.getMinutes();
+ var sec = date.getSeconds();
+ if (hour < 10) hour = "0" + hour;
+ if (min < 10) min = "0" + min;
+ if (sec < 10) sec = "0" + sec;
+ return "" + y4 + "-" + mm + "-" + dd + " " + hour + ":" + min + ":" + sec + " ";
+}
+```
+`$ node ~/tt.js`
+```
+2022-10-11 16:47:42  Before setTimeout()
+2022-10-11 16:47:42  After setTimeout()
+2022-10-11 16:47:47  In the callback function
+```
 
 ## 5-3. Using the setInterval() function
 
