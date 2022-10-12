@@ -20,7 +20,7 @@ for (var i = 32; i < 128; i++) {
 }
 
 for (var k = 0; k < inputSort.length; k++) {
-    pswdbar [inputSort.charCodeAt (k)] = " ." // 있는글자이므로 " ." 으로 표시한다. // https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/String/charCodeAt
+    // pswdbar [inputSort.charCodeAt (k)] = " ." // 있는글자이므로 " ." 으로 표시한다. // https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/String/charCodeAt
     findbar [inputSort.charCodeAt (k)] = "_" + inputSort [k]; // 있는글자이므로 해당글자를 써준다.
 }
 
