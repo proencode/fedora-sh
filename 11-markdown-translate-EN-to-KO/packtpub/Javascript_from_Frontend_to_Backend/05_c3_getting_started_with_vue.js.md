@@ -43,11 +43,11 @@ In this chapter, we will cover the following main topics:
 - Using attributes in components
 - Using directives
 
-# Technical requirements
+# 1. Technical requirements
 
 You can find the code files for this chapter on GitHub at: https://github.com/PacktPublishing/JavaScript-from-Frontend-to-Backend/blob/main/Chapter%203.zip.
 
-# Using Vue.js in an HTML page
+# 2. Using Vue.js in an HTML page
 
 To use Vue.js in an HTML page, simply insert the library file into it using the `<script>` tag.
 
@@ -78,7 +78,7 @@ Figure 3.1 – Displaying the Vue.js version number
 
 Now that we have integrated Vue.js into our HTML page, let’s go about creating our first application.
 
-# Creating our first Vue.js application
+# 3. Creating our first Vue.js application
 
 Once Vue.js has been inserted into the HTML page, you must define the HTML elements of the page in which Vue.js will be used.
 
@@ -129,7 +129,7 @@ Thus, to manage an entire HTML page with Vue.js, just indicate in the `<body>` p
 
 Now let’s see how to use an important concept of Vue.js, which is the correspondence between the variables defined in the program and their display on the HTML page. This concept is called reactivity.
 
-# Using reactivity
+# 4. Using reactivity
 
 One of the objectives of Vue.js is to separate the management of the display (the **view**) and that of the data (the **model**). This is the concept that is frequently found in what is called the **Model View Controller (MVC)** model.
 
@@ -229,7 +229,7 @@ Figure 3.4 – Incrementing a reactive variable
 
 The previous program is very simple, but in reality, applications are of course more complex. As such, it is necessary to break down an application into small pieces, which will then be assembled. Now let’s learn how to write one of the small pieces of an application, called a component.
 
-# Creating our first component
+# 5. Creating our first component
 
 Let’s see how to use Vue.js to create our own components.
 
@@ -245,7 +245,7 @@ For example, if a list of elements is displayed on the HTML page, each element�
 
 You can create the component directly into the HTML page or include it from an external file. Let’s look at these two ways to do it.
 
-## Inserting a component in the application file
+## 5-1. Inserting a component in the application file
 
 A component can simply be embedded in the main application Vue.js file. Just use the `app.component(name, options)` method to create it as follows. The variable `app` corresponds to the object returned by `Vue.createApp()`:
 
@@ -348,7 +348,7 @@ On running the preceding code, you will see the following output:
 )
 Figure 3.6 – Incrementing the counter in the component
 
-## Inserting a component from an external file
+## 5-2. Inserting a component from an external file
 
 Rather than defining the component directly in the HTML page, it is preferable to define it in an external file. The component can be used in the HTML page thanks to the inclusion of the external file in the HTML page. For this, we use the concept of modules provided by JavaScript.
 
@@ -418,7 +418,7 @@ In the preceding code, to import the `counter.js` file and use the corresponding
 - We use the import statement to import the corresponding module.
 - We declare the imported components in the new components section. Components are declared as an object. The names of the properties in this object correspond to the name used by the component in the templates (<counter> or <Counter>), while the values correspond to the name of the imported component (Counter).
 
-## Using HTTP Instead of the FILE Protocol
+## 5-3. Using HTTP Instead of the FILE Protocol
 
 However, as we use the import of JavaScript modules, it is necessary to run our application on an HTTP server, and no longer with a simple drag and drop as before. Hence the use of the URL that begins with `http://localhost`. If you need to know how to install an HTTP server, you can, for example, use the documentation here: https://developer.mozilla.org/en-US/docs/Learn/Common_questions/set_up_a_local_testing_server.
 
@@ -430,7 +430,7 @@ Figure 3.7 – Execution of the HTML file on an HTTP server (here, localhost)
 
 The current component only has a simple reactive variable. It is possible, in a component, to add methods to it that will be used in the component. Now let’s take a look at how to do it.
 
-# Adding methods in components
+# 6. Adding methods in components
 
 We have seen how to create reactive variables in a component, using the `data` section of the component. It is also possible to create methods in a component that can be used in the component template.
 
@@ -441,7 +441,7 @@ There are two ways to add methods to a component:
 
 Let’s look at these two ways to do it.
 
-## Defining methods in the methods section
+## 6-1. Defining methods in the methods section
 
 For each incrementation of the counter, it should be necessary to display the time at which it occurs. A `time()` function would be very useful in the component, allowing us to display the time in the form HH:MM:SS. This `time()` function will be defined in the `methods` section of the component.
 
@@ -492,7 +492,7 @@ Figure 3.8 – Time display in the component
 
 Vue.js allows you to define, in the form of methods, new variables that will be reactive. They are called computed properties. Let’s see how to create and use them.
 
-## Defining computed properties in the computed section
+## 6-2. Defining computed properties in the computed section
 
 A computed property is similar to a reactive variable. It is the result of the calculation performed on one or more reactive variables, and it will also be reactive. Any modification to one of the reactive variables associated with this computed property will cause it to be modified immediately.
 
@@ -546,7 +546,7 @@ In the preceding figure, we can see the modification of the `count` variable. Ev
 
 We have seen how to define methods and reactive variables in a component. Now let’s see how to pass parameters to a component, using the component’s attributes for this.
 
-# Using attributes in components
+# 7. Using attributes in components
 
 Attributes in a component allow it to pass parameters for its use. For example, we could use in the `<counter>` component a `start` attribute indicating at what value we start counting. If this attribute is not indicated, it is considered to be 0 (that is, counting starts at 0 as in the preceding code example).
 
@@ -641,7 +641,7 @@ Figure 3.10 – Using the start attribute in the component
 
 We have therefore seen how to create new attributes in a component. Vue.js has specific attributes as standard, which can be used in all components. These specific attributes, created by Vue.js, are called directives. We will study them now.
 
-# Using directives
+# 8. Using directives
 
 Vue.js improves the writing of HTML code by offering to write its own components, as we have seen in the preceding section. The framework also makes it easier to write basic HTML code by adding new attributes to the HTML elements or to the components created. These new attributes are called directives.
 
@@ -651,7 +651,7 @@ Directives are used exclusively in HTML elements or created components, that is,
 
 Their name begins with v-, so as not to be confused with other existing HTML attributes. The main directives are `v-if`, `v-else`, `v-show`, `v-for`, and `v-model`. They will be explained now.
 
-## The v-if and v-else directives
+## 8-1. The v-if and v-else directives
 
 The `v-if` directive is used to specify a condition. If true, the HTML element (or component) will be inserted into the HTML page. Otherwise, it will not be present.
 
@@ -705,13 +705,13 @@ When the counter exceeds the value 20, we now get the following:
 )
 Figure 3.13 – Counter having exceeded the value 20
 
-## The v-show directive
+## 8-2. The v-show directive
 
 The `v-show` directive is similar to the `v-if` directive. A condition is given next. If the condition is `true`, the element that uses the directive is displayed; otherwise, it is not.
 
 The difference from the `v-if` directive is that the element, if not displayed, is only hidden, but it is still inserted into the page. Whereas with the `v-if` directive, the element is not inserted (if the condition is `false`).
 
-## The v-for directive
+## 8-3. The v-for directive
 
 The `v-for` directive allows you to loop over a set of elements or over the properties of an object. For each iteration of the loop, it inserts the HTML element on which the directive is positioned.
 
@@ -719,7 +719,7 @@ Let us assume the `<counter>` component is a set of counters associated with the
 
 Let’s look at the two possible forms of the `v-for` directive.
 
-### Using the directive v-for=”count in counts”
+### (83-1) Using the directive v-for=”count in counts”
 
 Let’s use the first form of the `v-for` directive. It allows access to each element of the array indicated in the directive (in our example, the JavaScript `counts` array):
 
@@ -750,7 +750,7 @@ In the preceding code, we have positioned the `v-for` directive on the element t
 )
 Figure 3.14 – Using the v-for directive
 
-### Using the directive v-for=”(count, index) in counts”
+### (83-2) Using the directive v-for=”(count, index) in counts”
 
 A second form of the v-for directive gives access to each element of the array as before, but also to its index (starting from 0):
 
@@ -781,7 +781,7 @@ On running the preceding code, the following is displayed:
 )
 Figure 3.15 – Using index in the v-for directive
 
-### Using the key attribute with the v-for directive
+### (83-3) Using the key attribute with the v-for directive
 
 The `v-for` directive can also be used to display large lists, for which reactivity must be maintained. That is, changing the reactive variable specified in the `v-for` directive should update the corresponding displayed list.
 
@@ -797,7 +797,7 @@ In the preceding code, the value of the attribute is a JavaScript expression (th
 
 Of course, adding the `key` attribute does not produce any display changes, but the performance will be visible on subsequent changes to the displayed list (it helps Vue.js to keep track of the element and prevent unnecessary re-rendering).
 
-## The v-model directive
+## 8-4. The v-model directive
 
 The `v-model` directive is used to manage form elements during an interaction (input in a field, a click on a checkbox or radio button, the choice of an element in a list).
 
@@ -856,7 +856,7 @@ Figure 3.18 – Editing an input field with v-model
 
 We now see that the use of `v-model` causes the immediate modification of the reactive variable to which it is associated, which then causes the modification of the `value` attribute of the first input field (because it is linked to the reactive variable).
 
-# Summary
+# 9. Summary
 
 In this chapter, we have mainly studied how to create a component and methods or attributes associated with it.
 
