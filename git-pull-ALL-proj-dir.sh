@@ -10,7 +10,7 @@ source ${HOME}/lib/color_base #-- cBlack cRed cGreen cYellow cBlue cMagenta cCya
 
 cat <<__EOF__
 ${cYellow}git config --global credential.helper store${cReset}
-${cYellow}git config --global user.password "MVGQHT6HGBvKZYEA3Q" #-- bbop대지둘코드네임${cReset}
+${cYellow}git config --global user.password "ATBBn9e5ZGpH6qk8yNbXfMUfeGe49D6AB2" #-- bbop대아투코드네임${cReset}
 ${cYellow}git config --global user.name "${USER} at $(uname -n)" #-- 아이버스${cReset}
 ${cYellow}git config --global user.email "yosjeon@gmail.com" #-- 데몬&${cReset}
 ${cYellow}git config --global user.password "ghp_LXVMgJ7YJe16DqPvj4m5Xf26nqqMwh2i0" #--깃헙대이지6신공 221117${cReset}
