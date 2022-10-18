@@ -1,0 +1,686 @@
+"Account","Login Name","Password","Web Site","Comments"
+"서원서버관리","","","","newjin@newjin.sc
+노트진2019*
+192.168.0.14
+
+docker 에서
+dns
+gatedb
+tomcat
+서버로 운영
+
+공유기
+192.168.0.1
+admin
+manager@2012
+포트포워딩 관리
+
+"
+"쇼핑","","","","3pbinder.com
+yosjeon
+쓰리피2021별
+
+yosjeongc 파티전2010별
+
+라즈베리파이4B 케이스
+shop.inux3d.com/en
+yosjeongc
+아이넥스2021별
+
+오늘의집 ysjeon555@naver.com  / $오늘의집2012#
+서랍장
+
+프랭클린플래너
+yosjeon
+ㅍ프랭클린@2012
+
+인터파크
+newtron
+뉴트론815
+
+기상청 기상자료개방포털
+yosjeon@gmail.com
+기상청2020@
+
+지마켓
+yosjeongc
+ㅈ지마켓2013
+광복절
+"
+"기부","","","","국경없는의사회
+정기 10,000
+yosjeon
+꾹경2020*"
+"SNS","","","","트위터
+yosjeon@gmail.com
+구글기억
+
+ysjeon555@naver.com 네이버트윗*2021
+
+페이스북 Face몰라2021*
+
+yseokjeongc
+석전2021*
+
+태블릿용
+ysjeon555nc
+Yseok Jeon
+
+질병관리청앱
+yosjeon
+질병별2021
+
+
+"
+"HP","yosjeon@gmail.com","dpdlclvl2021*","login3.id.hp.com",""
+"질병관리청","yosjeon","wlfqudrhkdfl*2021","nip.kdca.go.kr",""
+"토스","","6511m","",""
+"candy","seowon","2012*Nae","","루트도같음"
+"jspwiki","admin","2017@Myadmin","www.swtr.kr:1161","092 docker jspwiki"
+"erpnext","ys@seowontire.com","2012@erp","www.swtr.kr:4747","ERPNext
+sudo docker exec -ti erpnext cat /root/frappe_passwords.txt - - - press Enter:
+Frappe password: SzmTPfC1gyYKsM8V
+MariaDB root password: Qa1YTRWplJeNGOme
+Administrator password: pSfwSDLuix4KA7zZ
+"
+"gigabyte G3","","","","원드라이브 ys@서원 마소MS2012@
+"
+"진접 인증서","","","","국세청e세로용
+전자세금인증서
+인증-116 진접농협 351-0940-2123-43
+5704 통신비밀A5704  서원진접*2019
+1905갱신
+
+범용인증서
+인증-919 진접농협철스크랩
+301-3733-4627-81
+
+서원진접*2010
+
+철 스크랩
+진접사업자 132-23-64993
+통장 swtire6/서원진접2011
+
+allbaro.or.kr 
+진접올바로 swjin/진접@2017 (116)"
+"가산 인증서","","","","가산농협 356-0298-4854-23
+인증-075 서원가산*2011
+가산사업자 132-29-65672
+통장 swtire5/서원가산2011
+
+allbaro.or.kr 
+가산올바로 seowontire2/포천2017@
+"
+"구별내 인증서","","","","구별내농협 204017-56-093916"
+"Gate242 앱","","","","djemals 서원2015 ROLE_EXPORT
+
+seowon 서원2015
+
+ys 11
+kj 2021
+"
+"비번관리","","","","핸폰 kt pass 998100
+
+워크넷 swjin $서원2018
+
+ys@seowontire.com 아이나비 서원2018
+
+"
+"사회통합프로그램","","","","02-2643-2583
+
+자혼
+fayziev5811 / fayzI5811*
+서울시 동작구 숭실대
+
+"
+"이메일 비번관리","","","","ys.seowon@seowontire.com / 다음번3927@
+
+yos / *데이타2019A
+
+"
+"네트워크 구조","","","","192.168.0.1 진접서원 사무실 공유기 admin/매니저@2012
+0.8 candy db,서버 백업
+0.9 giga 서버 호스트"
+"드롭박스","","hful9WogjWwBlqLR7WGm","","HP PC 드롭박스
+as@seowontire.com 드롭박스@2017
+
+서원 드롭박스
+ys@seowontire.com 드롭박스@2012
+
+비트버킷
+yosjeon@gmail.com  삐트버킷@2012
+gate242, gate301,
+
+네이버 드롭박스
+ysjeon555@naver.com  쓰크립트@2012
+
+"
+"CCTV","","","","주소창 kcctv.kr
+마이페이지 > 로그인
+seowon1 / 몰라2017
+HD-SDI, A-HD FullHD 200만화소 모니터링 바로가기
+내장비 목록 > 연결
+접속하기 > 실시간영상 > 녹화검색
+"
+"공유기","","","","192.168.0.1
+admin 매니저@2012
+
+2GHz swtr 무선공유 산토끼*1434
+
+5GHz swtr5G 무선공유
+귀뚜라미@499 중지함
+
+게스트 무선
+seowonTire 20189981
+
+포트포워딩
+http 80 > 0.9 80
+https 443 > 0.9 443
+smtp 25 > 0.9 25
+dns 53 > 0.9 53
+ssh 578 > 0.9 22
+vnc 5901 > 0.9 5901
+
+alfresco 1434 > 0.8 1434
+erpnext 4747 > 0.8 4747
+jspwiki 2008 > 0.8 2008
+
+cctv 9010 > 0.132 9010
+cctv1 85 > 0.132 85"
+"NAS-1","","","","sagiga.swtr.kr
+admin 나스원
+user1 유저원
+"
+"공유 윈도우 Z:","","","","\\\\GIGABYTE\\scan
+seowon 쌈바*2012"
+"데이터공유","","","","gigaresilio rlrkfptlffldh@2017
+"
+"Resilio-sync","","","","giga.swtr.kr
+gigaresilio / 기가레실리오@2017
+localhost:8888
+
+candy.swtr.kr
+resilio / 레실리오2012 localhost:8888
+
+"
+"통화매니저","","","","통화매니저 kt pc폰 biz
+ys@seowontire.com
+$wha1902#
+
+"
+"노트북","","","","N1 lenovo fedora29 
+seowon $JJ#2019sw
+"
+"서버","","","","ssh -Y -p 578 yosjn@www.seowontire.co.kr 서원2020* 200515
+yosjn@seowontire.duckdns.org 서원2020별
+112.161.160.10
+G1 gigabyte fedora server"
+"nas-1","admin","wjdqlfflwl@2016","192.168.219.128","nas1 정빌리지 입주 2016년"
+"Resilio-sync 4 G32","yosgiga32","2012*Nae","","기가바이트 #32"
+"코드값","","","","nas-1 정빌리지@2016
+
+강남갔던제비 *2018 또왔네!
+
+"
+"가산 공유기","","","","admin 건담@2017
+무선 seowon super*8970"
+"대기 환경기술인","","","","170328 kepaedu.or.kr
+환경보전협회
+신소현 471117 0-8313-4560 seowontire@daum.net swso 2017환경
+
+191030 전용석등록
+swjn 2019@환경
+"
+"차량 위치 추적","swtire4627","#sw5284628$","s1.u-vis.com","차량별 위치추적 시스템"
+"파일캐스트","yosjeon@gmail.com","Vkdlfzotmxm2","filecast.co.kr",""
+"아이핀Siren24","yosjeon24","PiZg,gTb\\it1h%6lwpVh","aname.siren24.com","아이핀 싸이렌24"
+"서울특별시","seowontire","Tjdnftl@2017","www.seoul.go.kr","서울시 홈페이지 통합회원"
+"고용노동부 One-ID","newtron3","Dnjzmspt@2012","ims.work.go.kr","고용노동부"
+"도레지","ysjeon","ㄷ도레지@2021","doregi.com",""
+"한강유역환경청","","","","natastat.kr 화학물질안전원
+swpochn
+A포천*2019
+보물1호?
+서원포천
+
+"
+"지마켓","yosjeon","Wlakzpt2013","gmarket.co.kr",""
+"와디즈","yosjeon@gmail.com","dhkelwm@2017","www.wadiz.kr","크라우드펀딩 와디즈"
+"킥스타터","yosjeon@gmail.com","zlrtmxkxm@2012","www.kickstarter.com","킥스타터"
+"카시오랜드","yosjeon","Zktldh@2017","http://www.akibada.com","카시오 키보드 신디사이저"
+"팩트펍","yosjeon@gmail.com","Vorxmvjq*2015","packtpub.com",""
+"11번가","seowontire","tjdnjs@2017","www.11st.co.kr",""
+"쇼핑 로그인","","","","리디북스
+yosjeon / ㄹ리디*2020
+
+예스24 yes24
+yosjeon
+예스24@2022
+
+교보문고
+yosjeon
+교보핫2020별
+
+yosjeon 교보2020별
+yos gmail
+쿠팡2018
+
+yos gmail
+쿠텐2018
+
+yosjeon
+텐바이텐
+u1ok2020
+10x10
+
+아마존 amazone.com
+yos gmail
+ㅇ아마존별2015
+y116124273103
+
+개인통관고유부호
+P 1700 1809 2959
+
+"
+"성원애드피아 수거증","","","","s4627 / ㅇ애드피아@2013
+seowontire / $서원2017#"
+"나비엠알오","","","","navimro.com
+seowontire@daum.net
+서원2017"
+"Xmind","yosjeon","Dprtm@2017","www.xmind.net","XMind 클라우드"
+"도커 허브","yosjeon","Ehzjgjqm@2012","hub.docker.com","도커허브사용"
+"산업안전협회","seowontire","tjdnjs2012","edu.safety.or.kr",""
+"고용노동부 워크넷","newtron3","Dnjzmspt@2012","www.work.go.kr","www.hrd.go.kr  에 로그인 할때 사용함."
+"위험성평가","seowontire","dnlgjatjdvudrk2017","kras.kosha.or.kr","위험성평가5단계방법전용석"
+"사이버환경교육센터","swso","2017ghksrud","epa.ecoedu.go.kr","신소현 씨  170614 소음진동 환경기술인 과정 010-8313-4560"
+"Hello Coding","yosjeon@gmail.com","Akaahtm@2017","training.mammothinteractive.com","킥스타터 헬로 코딩 서포터"
+"킥스타터 사이트","","","","learn. courses.miguelgrinberg.com
+yos.gmail
+ㄱ그린버그@2018
+ ㅋ킥스타트@2012
+"
+"감사합니다. as","as@seowontire.com","Rkatk2012@qufso","gmail.com","as 공동메일"
+"감사합니다 info","info@seowontire.com","Dkfflawjdqh2012@","gmail.com","info 공동메일"
+"사라메일","sara1205@seowontire.com","151007","gmail.com","전사라"
+"이상문이사메일","sm@seowontire.com","4936$Qkfmsdnvus","gmail.com","수출관리"
+"전영문대표","ym@seowontire.com","tkfk2009","gmail.com","사라"
+"com 관리","ys.seowon@seowontire.com","ekdmaqjs3927@","gmail.com","구글 서비스 관리자
+admin.google.com/seowontire.com/AdminHome 에서 관리한다."
+"전용석","ys@seowontire.com","2016@gksqkxkdRnadldjfk","gmail.com","서원사무실 기본아이디
+dropbox 및 paper 도 연결"
+"사진 백업","zzpicture@seowontire.com","tjdnjstkwls2013","gmail.com","사진 백업용 메일"
+"공용 메일","seowontire@daum.net","qnvud2017@Tire","mail.daum.net","사무실 수신용 공용 메일"
+"이남진","true@seowontire.com","true@2019","","수출업무용, 3328,ys@지정"
+"회사이메일+gdrive","","","","nj / *날2019운#자!
+gdrive rclone 날짜별 스캔보관 / 운행일지 / 자동차등록증
+
+acc@seowontire.com  2019어카운팅
+
+"
+"yosjeon","yosjeon@gmail.com","Wlapdlf2006","gmail.com","^지메일엔 시작한해"
+"gmail 계정","","","","yosjeon / 찌메일2006
+
+ysbookjgc/북스2019 > yosj@github.com
+
+
+"
+"윈도우8용","seowontire@outlook.kr","wlstj@2019","outlook.kr","서원노트 윈8 설치시 사용한 아웃룩 계정."
+"네이버 메일","ysjeon555","$spdlqj191931#","mail.naver.com","이메일용"
+"KEB하나카드","","","",""
+"KDB산업은행","","","www.kdb.co.kr",""
+"MG새마을","","","",""
+"KBstar국민","","","",""
+"전북","","","",""
+"PayPal","yosjeon@gmail.com","Vpdlvkf2014","","페이팔"
+"농협","","","","ysjeon555
+nong2021#
+
+511032-52-040366
+
+애들이보고싶어#9
+"
+"카카오뱅크","","","","24568
+190112 2.50%
+카페인증
+
+"
+"giga 루트","root","2012*Nae","","혼동이 돼서 같이 사용함."
+"비트버킷 ","yosjeon@gmail.com","Qlxmqjzlt@2012","https://bitbucket.org/account/signin/","gate242
+gate301"
+"서원 드롭박스","ys@seowontire.com","emfhqqkrtm2012","www.dropbox.com","데이터 백업 스크립트 정리"
+"카오스 드롭박스","yosjeon@gmail.com","Zkdhtm@2010","www.dropbox.com","데이터백업
+말도안돼새번호!
+"
+"네이버 드롭박스","ysjeon555@naver.com","Tmzmflqxm@2012","www.dropbox.com","스크립트 보관"
+"HP PC 드롭박스","as@seowontire.com","드롭박스@2017","","사무실 HP PC용 드롭박스"
+"ID card","","","",""
+"E-Mail","","","",""
+"Wireless LAN","","","",""
+"Secure note","","","",""
+"Credit card","","","",""
+"Membership","","","",""
+"어드민","djemals","tjdnjs2015","www.swtr.kr","어드민 계정"
+"수출담당","ys","11","","수출담당 전용석
+ROLE_EXPORT"
+"회계담당","yh","dus2017","","회계담당 김연희"
+"부동산 은행동","","","","0-9579-4047 광주 태평양부동산
+031-747-5200
+0-5162-8884 대박부동산 
+성남시 중원구 은행2동 1546
+
+170830수
+국민 048 24 0460 247 김동훈 500만계약금
+"
+"현대103-201","","","","proeng2 프로엔2107
+
+u+Net3AFB wifi 공유기
+600 0000 525
+
+개인통관고유부호
+P 1700 1809 2959
+amazon.com
+070-4333-5635 씨앤아이합동관세사무소
+
+마스터카드 master card
+3387
+12/2023
+비자카드 visa card
+9886
+03/2022
+
+win8owner@outlook.kr 윈8오너 윈팔오너2020* 571230
+
+opensource.com
+yosjeon
+오픈소스@2021
+
+"
+"카카오톡","","","","yosjeon@gmail.com ㅋ카톡@2012 카톡로그인
+카카오페이
+카페이2021*
+
+다음 이메일 카톡연동
+yosjeon555
+ㅋ카톡@2012
+
+
+"
+"도서관","","","","국립중앙도서관
+nl.go.kr
+yosjeon
+도서관!2020
+"
+"청소기","","","","에이스전자 1566-4370
+간이청소기
+200512화 수리"
+"메가 MEGA.nz","","","","ysjeon555@naver.com 
+music@2020
+전 음악
+"
+"행복","","","","동행복권 ㄷ동복@2020"
+"홈택스","","","","hometax.go.kr
+yosjeon
+홈택스2020*
+"
+"정빌리지 306호","","","","광릉내로30번길 4-15
+161010
+보증금 500만원
+우리 1002-146-978757 정영배
+306월세 30만원
+306관리 1만+수도요금
+2019-2,3월공제후 정산완료함"
+"PC ID","","","","NAS-1
+admin 정빌리지@2016
+Thinkpad
+login molla2011
+coast
+yosj 2012*Nae
+NAS-2
+
+192.168.219.1
+admin 
+"
+"서버","","","","kaosco 데시스2010
+root 산타카오스2010
+ys 카오스2010
+"
+"이메일","","","","kaos.note@gmail.com / 이세기@2010
+kaosorder 에서 메일발송관리 카오스2010
+"
+"카오스 드롭박스","","lVOcGvlZjPsnLPnZBOQz","","yosjeon@gmail.com / ㅋ카오스@2010
+"
+"클라우드 서비스","","","","hp 프린터용 HP Smart
+yosjeongc
+에이치피2021별
+
+g32wd1t@outlook.com
+2048*Nae
+19581230 0468
+8972 pin
+서강 서울 쫑
+
+넷플릭스 netfliyosjeongc 9981 200730
+
+팟빵 podbbang.com
+ysjeon@naver.com
+팟빵2021*
+
+정부24
+gov.kr yosjeon / 꼬브*2019
+공인인증서로 로그인
+
+seowontire@daum.net
+부평2017@Tire
+
+onedrive
+yos $1434빠리짱#
+
+mega.nz yosjeongc $10년뒤까다로운빠리짱180505#
+윈도우리눅스공용
+
+mega.nz yossc 바게뜨$500
+
+mega.nz ys@seowon $서원빠리짱업무180507#
+서원데이터백업
+
+mega.nz megasc 메가sync*2019
+서원메가공유용 계정
+
+mega.nz ym@seowon $떼구시깔파181015#
+
+1. 서버 업로드용 디렉토리
+2. 스캔결과 임시보관 디렉토리
+
+bugzilla.redhat.com
+yos gmail
+^버그질라@2012
+
+ionic.io yosjeongc
+ㅇ아이오닉@2012
+
+github.com yosjeon / ㄱ깃허브@2012
+yszen / 
+^북제이2019
+
+pythonanywhere.com yosjeongc 파이썬@2012
+
+learn. courses.miguelgrinberg.com
+yosgeongc
+ㄱ그린버그@2018
+ ㅋ킥스타트@2012
+
+coa fit 320178 코아핏
+
+tpnote@outlook.kr
+$651101하늘이#
+씽크패드 노트북용 윈도우 계정
+현 2012별내 이고 핀 49368972
+
+씽크패드 ThinkPad 노트북 윈도우
+tpnote@outlook.com
+9981
+
+hub.docker.com
+yosjeon 
+ㄷ도커허브@2012
+
+G1 giga swti ㅈ진접@2012
+수리중
+
+G2 candy yosj 캔디짱*2012
+
+LE santa seowon 싼타#2012
+
+G32 proen yos 2012*Nae
+
+tanzi 딴지!2012
+
+ipTIME A604 공유기
+admin 매니저@2012
+swtr 산토끼*1434
+seowonTire 2.4 GHz
+게스트 네트워크
+20189981
+"
+"G32 gigabyte 로컬","","","","2368 ghost proen yosj@gm 고스트빌@2018
+
+"
+"G3 pc windows","","","","로그인 ys@seowontire.com 
+G3피씨윈@2018
+
+핀 49368972
+
+"
+"백신","","","","McAfee yosjeon@gmail.com $매까피2018#
+T7SL5G2N8959DZM
+"
+"에버노트","","","","yosjeon지메일 / ㅇ에버노트!2019
+
+ys서원 / ㅇ에버노트@2012
+"
+"국경없는 의사회","","","",""
+"Qoo10 쿠텐","yosjeon@gmail.com","znxps2018","qoo10.com",""
+"더불어민주당","yosjeon","ejqnfdj2021*","theminjoo.kr",""
+"서원.립","seowontire.lib","tjdnjs2021*","gmail.com","데이터 백업용"
+"전.도서관","yosj.lib","wjseh2021*","gmail.com","백업용 계정"
+"gmail 계정","","KBHaf5lkz8foLkBn0bfL","","seowontire.lib@gc 서원2021* 서원테이터 백업용
+
+yosjeon@gc ^에버노트@2012
+yosjeon@gc $10년뒤까다로운빠리짱180505# mega.nz
+
+yosj.lib@gc 전도2021* 도서 백업용
+
+yosjeon / ^깃허브@2012 ---- github.com
+yszen / ^북제이2019 ---- github.com
+
+tpnote@outlook.com / 9981 ---- $651101하늘이# ---- 씽크패드노트북
+윈도우계정 > 2012별내 PIN 49368972
+
+yseokjeon@gc
+
+ys@kaos.co.kr ^카오스2021* ---- 구글 드라이브 카오스
+
+seowontire@outlook.kr / 진서@2019
+
+win8owner / 윈팔오너2020*
+"
+"후원계좌","","","","yosjeon / 민주2020?
+더불어민주당
+
+박용진의원 농협 301-0192-4685-21
+
+월드비전
+
+시민의눈
+yosjeon
+남양주참피온
+씨눈2020*
+1901-2010 5천으로조정
+
+"
+"한살림","newtron365","gkstkf2021*","shop.hansalim.or.kr","조합원가입"
+"현대 공유기","","","","5B40 #600 000
+g32wd1t
+192.168.219.218
+528 TCP 22
+8086 TCP 8086
+"
+"이케아","yosjeon@gmail.com","Dlzpdk2021*","ikea.com/kr/ko/","이케아 쇼핑몰"
+"리브로피아","yosjeon@gmail.com","flqmfh2021","",""
+"국회","yosjeon","$2020rnrghl#","assembly.go.kr","국회민원"
+"네이버 이메일","ysjeon555","2019@Spdlqj","naver..com",""
+"팟빵 월말김어준","ysjeon@naver.com","vktQkd2021*","podbang.com","100m전, 실제 이메일이 아님"
+"진접푸른숲도서관","전층wifi","jjgw5321","null",""
+"딴지일보","tanzi","Ekswl!2012","ddanzi.com",""
+"봉하장날","yosjeon","bonghagoogle2006","m.bongha.net","봉하쌀 220504 크롬에 저장함"
+"도레지닷컴","ysjeon","From2012*","doregi.com","도메인관리"
+"MEGA drive","","","","
+win8ownerok
+윈팔오너2020별
+
+yssc /
+$서원빠리짱업무180507#
+13G
+
+yseokjeongc
+
+yskaos.kr ^카오스2021별
+
+ymsc /
+$떼구시깔파181015#
+
+yossc / 
+바게뜨$500
+677M
+
+yosj.libgc
+전도2021별
+
+seowontire.libgc 
+서원2021별
+
+megasc / 
+3.4G
+
+yosjeon555dn / 
+555다음메가2021별
+1.2M
+
+ysjeon555nc / music@2020
+1.7G
+
+yosjeongc / 
+^에버노트@2012
+11G
+"
+"진접도서관","yosjeon","wlswjq2022","lib.nyj.go.kr/jinjeop","14152119013491"
+"Ubuntu One","yosjeon","dnqnsxndnjs2107","",""
+"kaos.db","","zkdhtnelql2108","gmail.com",""
+"ysjeon555 mega","ysjeon555@daum.net","oekdma2108","mega.nz",""
+"Mega yosjeon555dn","yosjeon555@daum.net","oekdma2108","mega.nz","서원 또는 카오스"
+"daum.net > kakao.com","yosjeon@gmail.com","Zkxhr@2012","accounts.kakao.com","통합 아이디, 카카오계정으로 로그인"
+"박시영닷컴","yosjeon@gmail.com","Qkrtldud.com","parksiyoung.com",""
+"네이버","ysjeon555","2019@Spdlqj","",""
+"MS 원드라이브","yosjeon@gmail.com","$1434QkflWkd#","",""
+"정의기억연대 ","yosjeon","wjddmldus2021*","mrmweb.hsit.co.kr/v2/Member/MemberInfo.aspx","정기후원회원"
+"잡아바","yosjeon@gmail.com","5QkflWkd!","www.jobaba.net","my생일 2차"
+"레노버V15노트북","ysnote@outlook.kr","","","돈꿔주9!
+ysjeon555@naver.com
+8972 핀
+레노버V15 노트북 청년몰"
+"팩트펍","yosjeon@gmail.com","Vorxmvjq*2015","",""
+"더치트","yosjeon@gmail.com","ejWlxm2021!","",""
+"오 펜카페!","yosjeon","5Vpszkvp!","",""
+"FLO","ysjeon555@naver.com","","",""
+"MEGA ysjeon555nc","ysjeon555@naver.com","music@2020","",""
+"daum.net","yosjeon555","Zkxhr@2012","",""
+"Github.com","proencode","vmfhdps2021","",""
+"ICbanQ 라즈베리파이 4B","yosjeon@gmail.com","dkdlTlqkdzm2","icbanq.com",""
+"Mit technology review","yosjeon@gmail.com","Xpzmshffhwl2022*","technologyreview.com",""
+"아웃룩 박스365","qkrtm365@outlook.kr","Qkrtm2022*","outlook.kr","VirtualBox win10 원드라이브용 계정"
+"공유계정","hdapt.lib","$guseo2022#","gmail.com","현대 파일공유용 계정"
+"RapberryPi4B proen","proen","$qnghkfwhf103201#","","부활절기록"
+"TBS","tanzzi","tbsxkswl365*","tbs.seoul.kr","자게 이용"
+"유튜브 구독","yosjeon@gmail.com","","",""
+"KB국민","","","","yosjeon 인증2110별 명생"
+"디바이스마트","","","devicemart.co.kr","네이버 계정으로 로그인"
