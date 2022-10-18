@@ -13,7 +13,7 @@ ${cYellow}git config --global credential.helper store${cReset}
 ${cYellow}git config --global user.password "MVGQHT6HGBvKZYEA3Q" #-- bbop대지둘코드네임${cReset}
 ${cYellow}git config --global user.name "${USER} at $(uname -n)" #-- 아이버스${cReset}
 ${cYellow}git config --global user.email "yosjeon@gmail.com" #-- 데몬&${cReset}
-${cYellow}git config --global user.password "ghp_oqmCyGaHfr0ztUEO4n6AD525xgWGpU02B" #--깃헙육ㅠㅠ신공 221017${cReset}
+${cYellow}git config --global user.password "ghp_LXVMgJ7YJe16DqPvj4m5Xf26nqqMwh2i0" #--깃헙대이지6신공 221117${cReset}
 ${cYellow}git config --global alias.ll "log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit" # ----> 한줄로 로그보기${cReset}
 ${cYellow}git config --global --list${cReset}
 __EOF__
