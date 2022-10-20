@@ -9,7 +9,7 @@ source ${HOME}/lib/color_base #-- cBlack cRed cGreen cYellow cBlue cMagenta cCya
 # ~/lib/color_base 220827-0920 cat_and_run cat_and_run_cr cat_and_read cat_and_readY view_and_read show_then_run show_then_view show_title value_keyin () {
 
 cat <<__EOF__
-2. atyosjswlib 격화소양 i6ytjwudrk 촉견폐일소액구 
+2. atyosjswlib 격화소양 i6ytjwudrk 촉견폐일소액구 kaosdesysclubi 씨큐둘째프로젝트 3rhg5vyrr
 ${cYellow}git config --global credential.helper store${cReset}
 ${cYellow}git config --global user.password "ATBBn9e5ZGpH6qk8yNbXfMUfeGe49D6AB2" #-- bbop대아투코드네임${cReset}
 ${cYellow}git config --global user.name "${USER} at $(uname -n)" #-- 아이버스${cReset}
