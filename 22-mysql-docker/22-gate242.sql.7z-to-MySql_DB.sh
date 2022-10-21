@@ -96,7 +96,7 @@ if [ "x$CMD_DIR" == "x" ] || [ "x$CMD_DIR" == "x$CMD_NAME" ]; then
 fi
 MEMO="DB ${db_sql_7z} 업로드"
 echo "${cMagenta}>>>>>>>>>>${cGreen} $0 ${cMagenta}||| ${cCyan}${MEMO} ${cMagenta}>>>>>>>>>>${cReset}"
-logs_folder="${HOME}/zz00-logs" ; if [ ! -d "${logs_folder}" ]; then cat_and_run "mkdir ${logs_folder}" ; fi
+logs_folder="${HOME}/zz00logs" ; if [ ! -d "${logs_folder}" ]; then cat_and_run "mkdir ${logs_folder}" ; fi
 log_name="${logs_folder}/zz.$(date +"%y%m%d-%H%M%S")__RUNNING_${CMD_NAME}" ; touch ${log_name}
 # ----
 
@@ -279,7 +279,7 @@ if [ "x${DOCKER_NAME}" = "xksammy" ]; then
 else
 if [ "x${DOCKER_NAME}" = "xgatedb" ]; then
 	ding_play 6 #-- 1=띠잉~ 2=뗑-~ 3=데에엥~~ 4=캐스터네츠 5=교회차임 6=딩~
-	cat_and_run "mysql --login-path=${LOGIN_PATH} ${DB_NAME} -vvv -e \"select max(id) as id, max(y4mmdd), max(workday), count(*) as 'rowis 4 only' from gt_wonjang where rowis=4 ; select max(id) as id, max(y4mmdd), max(workday), count(*) as 'total count' from gt_wonjang\""
+	cat_and_run "mysql --login-path=${LOGIN_PATH} ${DB_NAME} -vvv -e \"select concat(min(id),' / ',max(id)) as id, concat(min(y4mmdd),' / ',max(y4mmdd)) as y4mmdd, concat(min(workday),' / ',max(workday)) as workday, count(*) as 'rowis 4 only' from gt_wonjang where rowis=4 ; select concat(min(id),' / ',max(id)) as id, concat(min(y4mmdd),' / ',max(y4mmdd)) as y4mmdd, concat(min(workday),' / ',max(workday)) as workday, count(*) as 'total count' from gt_wonjang\""
 	ding_play 4 #-- 1=띠잉~ 2=뗑-~ 3=데에엥~~ 4=캐스터네츠 5=교회차임 6=딩~
 else
 if [ "x${DOCKER_NAME}" = "xkordmy" ]; then
