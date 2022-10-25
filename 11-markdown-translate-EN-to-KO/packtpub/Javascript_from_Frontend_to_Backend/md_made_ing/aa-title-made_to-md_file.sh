@@ -50,10 +50,11 @@ file_Made () {
 
 > ${link_box}
 >
-> Title: ${ChapterSeq} ${ChapterName}
-> Short Description: ${ShortDescription}
-> Path: ${small_Publisher}/${small_BookCover}/${small_Jemok}
-> tags: ${tags}
+> (1) Path: ${small_Publisher}/${small_BookCover}/${small_Jemok}
+> (2) Markdown
+> (3) Title: ${ChapterSeq} ${ChapterName}
+> (4) Short Description: ${ShortDescription}
+> (5) tags: ${tags}
 > Book Name: ${BookCover}
 > Link: ${https_line}
 > create: $(date +'%Y-%m-%d %a %H:%M:%S')

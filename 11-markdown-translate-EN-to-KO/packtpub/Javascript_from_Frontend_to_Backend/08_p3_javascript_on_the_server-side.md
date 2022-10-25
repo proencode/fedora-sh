@@ -29,10 +29,10 @@ We end our study by building an application on a single page (this principle is 
 
 This section comprises the following chapters:
 
-Chapter 6, Creating and Using Node.js Modules
-Chapter 7, Using Express with Node.js
-Chapter 8, Using MongoDB with Node.js
-Chapter 9, Integrating Vue.js with Node.js
+[ Chapter 6 ](/packtpub/javascript_from_frontend_to_backend/09_c6_creating_and_using_node.js_modules), Creating and Using Node.js Modules
+[ Chapter 7 ](/packtpub/javascript_from_frontend_to_backend/10_c7_using_express_with_node.js), Using Express with Node.js
+[ Chapter 8 ](/packtpub/javascript_from_frontend_to_backend/11_c8_using_mongodb_with_node.js), Using MongoDB with Node.js
+[ Chapter 9 ](/packtpub/javascript_from_frontend_to_backend/12_c9_integrating_vue.js_with_node.js), Integrating Vue.js with Node.js
 
 
 
