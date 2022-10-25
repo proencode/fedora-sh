@@ -655,10 +655,11 @@ All that’s left is to see how to interconnect a client side made with Vue.js a
 
 > [ 10 C7 Using Express with Node.js ](/packtpub/javascript_from_frontend_to_backend/10_c7_using_express_with_node.js) <---> [ 12 C9 Integrating Vue.js with Node.js ](/packtpub/javascript_from_frontend_to_backend/12_c9_integrating_vue.js_with_node.js)
 >
-> Title: 11 C8 Using MongoDB with Node.js
-> Short Description: Publication date: 7월 2022 Publisher: Packt Pages: 336 ISBN: 9781801070317
-> Path: packtpub/javascript_from_frontend_to_backend/11_c8_using_mongodb_with_node.js
-> tags: vue.js node.js
+> (1) Path: packtpub/javascript_from_frontend_to_backend/11_c8_using_mongodb_with_node.js
+> (2) Markdown
+> (3) Title: 11 C8 Using MongoDB with Node.js
+> (4) Short Description: Publication date: 7월 2022 Publisher: Packt Pages: 336 ISBN: 9781801070317
+> (5) tags: vue.js node.js
 > Book Name: JavaScript from Frontend to Backend
 > Link: https://subscription.packtpub.com/book/web-development/9781801070317/4
 > create: 2022-10-07 금 13:20:55
