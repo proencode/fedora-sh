@@ -318,10 +318,10 @@ showno="6" ; showqq="DB 를 로컬에 백업합니다."
 ymd_hm=$(date +"%y%m%d%a-%H%M") #-- ymd_hm=$(date +"%y%m%d-%H%M%S")
 #xxx pswd_code="${DB_NAME}${ymd_hm:0:6}" #-- kaosorder2/gate242/wiki + 991231 xxx crontab 으로 실행하므로 보안상 비번을 제외한다.
 if [ "x${DB_TYPE}" = "xmysql" ]; then
-	show_then_run "/usr/bin/mysqldump --login-path=${LOGIN_PATH} --column-statistics=0 ${DB_NAME} | 7za a -si ${LOCAL_YOIL}/${YOIL_sql7z} -p${PSWD_GEN_CODE}"
+	show_then_run "/usr/bin/mysqldump --login-path=${LOGIN_PATH} --column-statistics=0 ${DB_NAME} | 7za a -mx=9 -si ${LOCAL_YOIL}/${YOIL_sql7z} -p${PSWD_GEN_CODE}"
 else
 if [ "x${DB_TYPE}" = "xpgsql" ]; then
-	show_then_run "sudo docker exec wikijsdb pg_dumpall -U wikijs | 7za a -si ${LOCAL_YOIL}/${YOIL_sql7z} -p${PSWD_GEN_CODE}"
+	show_then_run "sudo docker exec wikijsdb pg_dumpall -U wikijs | 7za a -mx=9 -si ${LOCAL_YOIL}/${YOIL_sql7z} -p${PSWD_GEN_CODE}"
 else
 	cat <<__EOF__
 

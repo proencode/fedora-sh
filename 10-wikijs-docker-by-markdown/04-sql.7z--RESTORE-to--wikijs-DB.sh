@@ -114,7 +114,7 @@ cat <<__EOF__
 
 ${cGreen}----> ${cYellow}time 7za x -so ${db_sql_7z} | sudo docker exec -i wikijsdb psql -U wikijs wiki ${cCyan}#-- (7) 백업파일을 DB 에 리스토어하기
 
-${cRed}----> ${cYellow}비밀번호${cRed}를 입력하세요.${cReset}
+${cRed}----> 백업할때 입력한 ${cYellow}비밀번호${cRed}를 입력하세요.${cReset}
 
 __EOF__
 time 7za x -so ${db_sql_7z} | sudo docker exec -i wikijsdb psql -U wikijs wiki
