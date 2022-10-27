@@ -5,7 +5,7 @@ MEMO="백업했던 sql.7z 파일을 서버의 wikijsdb 에 업로드하기"
 cat <<__EOF__
 ${cMagenta}>>>>>>>>>>${cGreen} $0 ${cMagenta}||| ${cCyan}${MEMO} ${cMagenta}>>>>>>>>>>${cReset}
 __EOF__
-zz00logs_folder="${HOME}/zz00logs" ; if [ ! -d "${zz00logs_folder}" ]; then chdRun "mkdir ${zz00logs_folder}" "로그 폴더" ; fi
+zz00logs_folder="${HOME}/zz00logs" ; if [ ! -d "${zz00logs_folder}" ]; then cmdRun "mkdir ${zz00logs_folder}" "로그 폴더" ; fi
 zz00log_name="${zz00logs_folder}/zz.$(date +"%y%m%d%a-%H%M%S")__RUNNING_${CMD_NAME}" ; touch ${zz00log_name}
 # ----
 
@@ -33,7 +33,7 @@ ${cGreen}----> ${cCyan}Press Enter${cReset}:
 __EOF__
 read a
 
-chdRun "sudo docker ps -a ; sudo docker stop wikijs ; sudo docker ps -a" "(1) 위키 도커 중단"
+cmdRun "sudo docker ps -a ; sudo docker stop wikijs ; sudo docker ps -a" "(1) 위키 도커 중단"
 
 
 echoSeq "현재의 DB 를 last_backup 으로 백업"
@@ -75,7 +75,7 @@ DB_TYPE="pgsql"
 
 dir_for_backup=${LOCAL_FOLDER}/last_backup #-- 백업을 리스토어 하기전, 현재DB 백업하는 로컬 저장소
 if [ ! -f ${dir_for_backup} ]; then
-	chdRun "sudo mkdir -p ${dir_for_backup} ; sudo chown ${USER}.${USER} ${dir_for_backup}" "(3) 백업을 리스토어 하기전, 현재DB 백업하는 로컬 저장소 만들기"
+	cmdRun "sudo mkdir -p ${dir_for_backup} ; sudo chown ${USER}.${USER} ${dir_for_backup}" "(3) 백업을 리스토어 하기전, 현재DB 백업하는 로컬 저장소 만들기"
 fi
 
 
@@ -96,10 +96,10 @@ echoSeq ""
 
 echoSeq "sql.7z 로 백업한 파일을 DN 에 리스토어"
 
-echo "#-- \"sudo docker exec -it wikijsdb dropdb -U wikijs wiki\" \"(5) DB 삭제하기"
-sudo docker exec -it wikijsdb dropdb -U wikijs wiki ; echo "#-- (5) DB 삭제하기"
-echo "#-- \"sudo docker exec -it wikijsdb createdb -U wikijs wiki\" \"(6) DB 만들기"
-sudo docker exec -it wikijsdb createdb -U wikijs wiki ; echo "#-- (6) DB 만들기"
+cmdRun "sudo docker exec -it wikijsdb dropdb -U wikijs wiki" "(5) DB 삭제하기"
+# sudo docker exec -it wikijsdb dropdb -U wikijs wiki ; echo "#-- (5) DB 삭제하기"
+cmdRun "sudo docker exec -it wikijsdb createdb -U wikijs wiki" "(6) DB 만들기"
+# sudo docker exec -it wikijsdb createdb -U wikijs wiki ; echo "#-- (6) DB 만들기"
 
 cat <<__EOF__
 
@@ -110,7 +110,7 @@ ${cRed}----> 백업할때 입력한 ${cYellow}비밀번호${cRed}를 입력하�
 __EOF__
 time 7za x -so ${db_sql_7z} | sudo docker exec -i wikijsdb psql -U wikijs wiki
 
-chdRun "sudo docker start wikijs ; sudo docker ps -a" "(8) 위키 도커 다시 시작"
+cmdRun "sudo docker start wikijs ; sudo docker ps -a" "(8) 위키 도커 다시 시작"
 
 echoSeq ""
 

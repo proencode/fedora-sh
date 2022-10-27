@@ -6,7 +6,7 @@ cat <<__EOF__
 ${cMagenta}>>>>>>>>>>${cGreen} $0 ${cMagenta}||| ${cCyan}${MEMO} ${cMagenta}>>>>>>>>>>${cReset}
 출처: Install Visual Studio Code on Fedora 36/35/34/33/32 By Josphat Mutai - July 14, 2022 https://computingforgeeks.com/install-visual-studio-code-on-fedora/
 __EOF__
-zz00logs_folder="${HOME}/zz00logs" ; if [ ! -d "${zz00logs_folder}" ]; then echoRun "mkdir ${zz00logs_folder}" "로그 폴더" ; fi
+zz00logs_folder="${HOME}/zz00logs" ; if [ ! -d "${zz00logs_folder}" ]; then cmdRun "mkdir ${zz00logs_folder}" "로그 폴더" ; fi
 zz00log_name="${zz00logs_folder}/zz.$(date +"%y%m%d%a-%H%M%S")__RUNNING_${CMD_NAME}" ; touch ${zz00log_name}
 # ----
 

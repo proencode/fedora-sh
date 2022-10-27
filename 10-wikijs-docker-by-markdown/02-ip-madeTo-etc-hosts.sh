@@ -5,12 +5,12 @@ MEMO="도커 ip 와 그 이름을 /etc/hosts 에 지정합니다."
 cat <<__EOF__
 ${cMagenta}>>>>>>>>>>${cGreen} $0 ${cMagenta}||| ${cCyan}${MEMO} ${cMagenta}>>>>>>>>>>${cReset}
 __EOF__
-zz00logs_folder="${HOME}/zz00logs" ; if [ ! -d "${zz00logs_folder}" ]; then echoRun "mkdir ${zz00logs_folder}" "로그 폴더" ; fi
+zz00logs_folder="${HOME}/zz00logs" ; if [ ! -d "${zz00logs_folder}" ]; then cmdRun "mkdir ${zz00logs_folder}" "로그 폴더" ; fi
 zz00log_name="${zz00logs_folder}/zz.$(date +"%y%m%d%a-%H%M%S")__RUNNING_${CMD_NAME}" ; touch ${zz00log_name}
 # ----
 
 
-echoRun "ifconfig | grep -B1 inet\ " "(1) 외부로 서비스 하기위한 enp0s8 의 ip 번호를 보여줍니다."
+cmdRun "ifconfig | grep -B1 inet\ " "(1) 외부로 서비스 하기위한 enp0s8 의 ip 번호를 보여줍니다."
 cat <<__EOF__
 
 ${cGreen}----> ${cCyan}지정할 ip 번호를 입력하세요. ${cBlue} 위에서 enp0s8 등으로 RUNNING 된 inet 을 입력합니다.${cReset}
@@ -41,7 +41,7 @@ ${cGreen}----> ${cCyan}press Enter${cReset}:
 __EOF__
 read a
 
-echoRun "ls -lZ /etc/hosts ; grep ${this_domain} /etc/hosts" "(2) 수정전 도메인"
+cmdRun "ls -lZ /etc/hosts ; grep ${this_domain} /etc/hosts" "(2) 수정전 도메인"
 
 grep -v " ${this_domain}" /etc/hosts > new_etc_hosts
 echo "${this_ip} ${this_domain}" >> new_etc_hosts
@@ -49,8 +49,8 @@ sudo mv new_etc_hosts /etc/hosts
 sudo chown root.root /etc/hosts
 #-- for fedora -- sudo chcon system_u:object_r:net_conf_t:s0 /etc/hosts
 
-echoRun "ls -lZ /etc/hosts ; grep ${this_domain} /etc/hosts" "(3) 수정 후 도메인"
-echoRun "cat /etc/hosts"
+cmdRun "ls -lZ /etc/hosts ; grep ${this_domain} /etc/hosts" "(3) 수정 후 도메인"
+cmdRun "cat /etc/hosts"
 
 
 # ----
