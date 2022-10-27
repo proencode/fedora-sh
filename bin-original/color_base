@@ -31,7 +31,7 @@ eSq=0
 eSqMsg=""
 echoSeq () {
 	if [ "x$1" = "x" ]; then
-		echo "${cMagenta}(${eSq}) ${cBlue}${eSqMsg}${cReset}"
+		echo "${cRed}(${eSq}) ${cBlue}${eSqMsg}${cReset}"
 	else
 		eSq=$(( ${eSq} + 1 ))
 		echo "${cMagenta}(${eSq}) ${cCyan}$1${cReset}"

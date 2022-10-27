@@ -44,13 +44,13 @@ echo "${cRed}[ ${cYellow}${a} ${cRed}]${cReset}"
 last_skip="db_backup_ok"
 if [ "x$a" = 'xn' ]; then
 	cat <<__EOF__
+${cRed}# |
 # |
 # |
 # |
 # |
 # |
-# |
-${cRed}!!!! 주의 !!!! 현재 DB 를 다운로드 + 백업하지 않고, 업로드 합니다.${cReset}
+!!!! 주의 !!!! 현재 DB 를 다운로드 + 백업하지 않고, 업로드 합니다.${cReset}
 
 ${cGreen}----> ${cCyan}press ' ${cYellow}y ${cCyan}' Enter:${cReset}
 __EOF__
@@ -96,10 +96,10 @@ echoSeq ""
 
 echoSeq "sql.7z 로 백업한 파일을 DN 에 리스토어"
 
-cmdRun "sudo docker exec -it wikijsdb dropdb -U wikijs wiki" "(5) DB 삭제하기"
-# sudo docker exec -it wikijsdb dropdb -U wikijs wiki ; echo "#-- (5) DB 삭제하기"
-cmdRun "sudo docker exec -it wikijsdb createdb -U wikijs wiki" "(6) DB 만들기"
-# sudo docker exec -it wikijsdb createdb -U wikijs wiki ; echo "#-- (6) DB 만들기"
+echo "sudo docker exec -it wikijsdb dropdb -U wikijs wiki --- (5) DB 삭제하기"
+sudo docker exec -it wikijsdb dropdb -U wikijs wiki ; echo "#-- (5) DB 삭제하기"
+echo "sudo docker exec -it wikijsdb createdb -U wikijs wiki --- (6) DB 만들기"
+sudo docker exec -it wikijsdb createdb -U wikijs wiki ; echo "#-- (6) DB 만들기"
 
 cat <<__EOF__
 
