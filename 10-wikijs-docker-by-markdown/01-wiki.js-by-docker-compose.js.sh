@@ -1,44 +1,40 @@
 #!/bin/sh
 
-CMD_NAME=`basename $0` # 명령줄에서 실행 프로그램 이름만 꺼냄
-CMD_DIR=${0%/$CMD_NAME} # 실행 이름을 빼고 나머지 디렉토리만 담음
-if [ "x$CMD_DIR" == "x" ] || [ "x$CMD_DIR" == "x$CMD_NAME" ]; then
-	CMD_DIR="."
-fi
-source ${HOME}/lib/color_base #-- cBlack cRed cGreen cYellow cBlue cMagenta cCyan cWhite cReset cUp
-# ~/lib/color_base 220827-0920 cat_and_run cat_and_run_cr cat_and_read cat_and_readY view_and_read show_then_run show_then_view show_title value_keyin () {
-
-
+source ${HOME}/bin/color_base #-- 221027목-1257 CMD_DIR CMD_NAME cmdRun cmdCont cmdYenter echoSeq 
 MEMO="docker-compose wiki.js 설치"
 cat <<__EOF__
 ${cMagenta}>>>>>>>>>>${cGreen} $0 ${cMagenta}||| ${cCyan}${MEMO} ${cMagenta}>>>>>>>>>>${cReset}
 출처: https://computingforgeeks.com/install-and-use-docker-compose-on-fedora/
 __EOF__
-echo "${cRed}<<<<<<<<<<${cBlue} $0 ${cRed}||| ${cMagenta}${MEMO} ${cRed}<<<<<<<<<<${cReset}"
-zz00logs_folder="${HOME}/zz00logs" ; if [ ! -d "${zz00logs_folder}" ]; then cat_and_run "mkdir ${zz00logs_folder}" "로그 폴더" ; fi
-zz00log_name="${zz00logs_folder}/zz.$(date +"%y%m%d-%H%M%S")__RUNNING_${CMD_NAME}" ; touch ${zz00log_name}
+zz00logs_folder="${HOME}/zz00logs" ; if [ ! -d "${zz00logs_folder}" ]; then cmdRun "mkdir ${zz00logs_folder}" "로그 폴더" ; fi
+zz00log_name="${zz00logs_folder}/zz.$(date +"%y%m%d%a-%H%M%S")__RUNNING_${CMD_NAME}" ; touch ${zz00log_name}
 # ----
 
 
 port_no=5800
 db_folder=/home/docker/pgsql
 wiki_conf_dir=/home/docker/wiki.js
+cat <<__EOF__
+port_no = ${port_no};
+db_folder = ${db_folder};
+wiki_conf_dir = ${wiki_conf_dir};
+__EOF__
 
 if [ ! -d ${db_folder} ]; then
-	cat_and_run "sudo mkdir -p ${db_folder}"
-	cat_and_run "sudo chcon -R system_u:object_r:container_file_t:s0 ${db_folder}"
-	cat_and_run "sudo chown -R systemd-coredump.ssh_keys ${db_folder}"
-	cat_and_run "ls -lZ ${db_folder}" "(1) 데이터베이스 폴더를 만들었습니다."
+	cmdRun "sudo mkdir -p ${db_folder}"
+	cmdRun "sudo chcon -R system_u:object_r:container_file_t:s0 ${db_folder}"
+	cmdRun "sudo chown -R systemd-coredump.ssh_keys ${db_folder}"
+	cmdRun "ls -lZ ${db_folder}" "(1) 데이터베이스 폴더를 만들었습니다."
 else
 	rm -f ${zz00log_name}
-	echo "${cRed}!!!!${cMagenta} ----> ${cCyan}${db_folder}${cReset} 디렉토리가 있으므로, 확인후 삭제하고 다시 시작하세요."
+	echo "${cRed}!!!!${cMagenta} ----> (2) ${cCyan}${db_folder}${cReset} 디렉토리가 있으므로, 확인후 삭제하고 다시 시작하세요."
 	exit 1
 fi
 
 if [ ! -d ${wiki_conf_dir} ]; then
-	cat_and_run "sudo mkdir -p ${wiki_conf_dir} ; sudo chown -R ${USER}.${USER} ${wiki_conf_dir}" "(2) 위키설정용 폴더를 만들었습니다."
+	cmdRun "sudo mkdir -p ${wiki_conf_dir} ; sudo chown -R ${USER}.${USER} ${wiki_conf_dir}" "(3) 위키설정용 폴더를 만들었습니다."
 else
-	cat_and_run "sudo ls -lZ ${wiki_conf_dir}" "(3) 위키설정용 폴더가 있습니다."
+	cmdRun "sudo ls -lZ ${wiki_conf_dir}" "(4) 위키설정용 폴더가 있습니다."
 fi
 
 echo "----> cd ${wiki_conf_dir} #-- 이 디렉토리로 가서 나머지 작업을 진행합니다."
@@ -80,26 +76,26 @@ services:
       wikijs
 __EOF__
 
-cat_and_run "sudo dnf -y install docker-compose" "(3) Docker Compose 설치"
-cat_and_run "rpm -qi docker-compose" "(4) 설치 확인"
-cat_and_run "sudo docker ps -a" "(6) 도커 확인"
-cat_and_run "sudo docker-compose pull wiki" "(7) 도커 컴포즈 빌드"
+cmdRun "sudo dnf -y install docker-compose" "(5) Docker Compose 설치"
+cmdRun "rpm -qi docker-compose" "(6) 설치 확인"
+cmdRun "sudo docker ps -a" "(7) 도커 확인"
+cmdRun "sudo docker-compose pull wiki" "(8) 도커 컴포즈 빌드"
 
-cat_and_run "sudo docker-compose ps" "(8) 실행중인 작업을 확인합니다."
-cat_and_run "ifconfig | grep enp -A1 ; ifconfig | grep wlp -A1" "(9) ip 를 확인합니다."
-cat_and_run "ifconfig | grep enp -A1 | tail -1 | awk '{print \$2\":${port_no}\"}'" "(10) ethernet"
-cat_and_run "ifconfig | grep wlp -A1 | tail -1 | awk '{print \$2\":${port_no}\"}'" "(11) wifi"
-cat_and_run "sudo docker-compose up --force-recreate &" "(12) 도커 실행"
-cat_and_run "sudo docker-compose ps -a" "(13) 모든 작업을 확인합니다."
+cmdRun "sudo docker-compose ps" "(9) 실행중인 작업을 확인합니다."
+cmdRun "ifconfig | grep enp -A1 ; ifconfig | grep wlp -A1" "(10) ip 를 확인합니다."
+cmdRun "ifconfig | grep enp -A1 | tail -1 | awk '{print \$2\":${port_no}\"}'" "(11) ethernet"
+cmdRun "ifconfig | grep wlp -A1 | tail -1 | awk '{print \$2\":${port_no}\"}'" "(12) wifi"
+cmdYenter "sudo docker-compose up --force-recreate &" "(13) 도커 실행"
+cmdRun "sudo docker-compose ps -a" "(14) 모든 작업을 확인합니다."
 
 
 # ----
-rm -f ${zz00log_name} ; zz00log_name="${zz00logs_folder}/zz.$(date +"%y%m%d-%H%M%S")..${CMD_NAME}" ; touch ${zz00log_name}
-cat_and_run "ls --color ${1}" "프로그램들" ; ls --color ${zz00logs_folder}
-echo "${cRed}<<<<<<<<<<${cBlue} $0 ${cRed}||| ${cMagenta}${MEMO} ${cRed}<<<<<<<<<<${cReset}"
+rm -f ${zz00log_name} ; zz00log_name="${zz00logs_folder}/zz.$(date +"%y%m%d%a-%H%M%S")..${CMD_NAME}" ; touch ${zz00log_name}
+ls --color ${zz00logs_folder}
+cat <<__EOF__
+${cRed}<<<<<<<<<<${cBlue} $0 ${cRed}||| ${cMagenta}${MEMO} ${cRed}<<<<<<<<<<${cReset}
+출처: https://computingforgeeks.com/install-and-use-docker-compose-on-fedora/
 
-
-cat  <<__EOF__
 
 ${cCyan}#--- 출처: https://wiki.js.org/
 ${cRed}+----------------+${cReset}

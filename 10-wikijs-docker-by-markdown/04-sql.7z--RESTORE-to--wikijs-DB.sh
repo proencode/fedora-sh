@@ -1,18 +1,12 @@
 #!/bin/sh
 
-CMD_NAME=`basename $0` # 명령줄에서 실행 프로그램 이름만 꺼냄
-CMD_DIR=${0%/$CMD_NAME} # 실행 이름을 빼고 나머지 디렉토리만 담음
-if [ "x$CMD_DIR" == "x" ] || [ "x$CMD_DIR" == "x$CMD_NAME" ]; then
-	CMD_DIR="."
-fi
-source ${HOME}/lib/color_base #-- cBlack cRed cGreen cYellow cBlue cMagenta cCyan cWhite cReset cUp
-# ~/lib/color_base 220827-0920 cat_and_run cat_and_run_cr cat_and_read cat_and_readY view_and_read show_then_run show_then_view show_title value_keyin () {
-
-
+source ${HOME}/bin/color_base #-- 221027목-1257 CMD_DIR CMD_NAME cmdRun cmdCont cmdYenter echoSeq 
 MEMO="백업했던 sql.7z 파일을 서버의 wikijsdb 에 업로드하기"
-echo "${cMagenta}>>>>>>>>>>${cGreen} $0 ${cMagenta}||| ${cCyan}${MEMO} ${cMagenta}>>>>>>>>>>${cReset}"
-zz00logs_folder="${HOME}/zz00logs" ; if [ ! -d "${zz00logs_folder}" ]; then cat_and_run "mkdir ${zz00logs_folder}" "로그 폴더" ; fi
-zz00log_name="${zz00logs_folder}/zz.$(date +"%y%m%d-%H%M%S")__RUNNING_${CMD_NAME}" ; touch ${zz00log_name}
+cat <<__EOF__
+${cMagenta}>>>>>>>>>>${cGreen} $0 ${cMagenta}||| ${cCyan}${MEMO} ${cMagenta}>>>>>>>>>>${cReset}
+__EOF__
+zz00logs_folder="${HOME}/zz00logs" ; if [ ! -d "${zz00logs_folder}" ]; then chdRun "mkdir ${zz00logs_folder}" "로그 폴더" ; fi
+zz00log_name="${zz00logs_folder}/zz.$(date +"%y%m%d%a-%H%M%S")__RUNNING_${CMD_NAME}" ; touch ${zz00log_name}
 # ----
 
 
@@ -39,11 +33,10 @@ ${cGreen}----> ${cCyan}Press Enter${cReset}:
 __EOF__
 read a
 
-cat_and_run "sudo docker ps -a ; sudo docker stop wikijs ; sudo docker ps -a" "(1) 위키 도커 중단"
+chdRun "sudo docker ps -a ; sudo docker stop wikijs ; sudo docker ps -a" "(1) 위키 도커 중단"
 
 
-#----> (1) 현재의 DB 를 last_backup 으로 백업
-
+echoSeq "현재의 DB 를 last_backup 으로 백업"
 
 echo "${cGreen}----> ${cCyan}(2) 현재의 DB 를 last_backup 으로 백업하지 않으려면, ' ${cYellow}n${cCyan} ' 을 눌러 주세요.${cReset}"
 read a ; echo "${cUp}"
@@ -51,12 +44,12 @@ echo "${cRed}[ ${cYellow}${a} ${cRed}]${cReset}"
 last_skip="db_backup_ok"
 if [ "x$a" = 'xn' ]; then
 	cat <<__EOF__
-
-
-
-
-
-
+# |
+# |
+# |
+# |
+# |
+# |
 ${cRed}!!!! 주의 !!!! 현재 DB 를 다운로드 + 백업하지 않고, 업로드 합니다.${cReset}
 
 ${cGreen}----> ${cCyan}press ' ${cYellow}y ${cCyan}' Enter:${cReset}
@@ -82,7 +75,7 @@ DB_TYPE="pgsql"
 
 dir_for_backup=${LOCAL_FOLDER}/last_backup #-- 백업을 리스토어 하기전, 현재DB 백업하는 로컬 저장소
 if [ ! -f ${dir_for_backup} ]; then
-	cat_and_run "sudo mkdir -p ${dir_for_backup} ; sudo chown ${USER}.${USER} ${dir_for_backup}" "(3) 백업을 리스토어 하기전, 현재DB 백업하는 로컬 저장소 만들기"
+	chdRun "sudo mkdir -p ${dir_for_backup} ; sudo chown ${USER}.${USER} ${dir_for_backup}" "(3) 백업을 리스토어 하기전, 현재DB 백업하는 로컬 저장소 만들기"
 fi
 
 
@@ -98,16 +91,14 @@ __EOF__
 	sudo docker exec wikijsdb pg_dumpall -U wikijs | 7za a -si ${dir_for_backup}/${current_backup} -p
 fi
 
-
-#<---- (1) 현재의 DB 를 last_backup 으로 백업
-
-
-#----> (2) sql.7z 로 백업한 파일을 DN 에 리스토어
+echoSeq ""
 
 
-echo "#-- cat_and_run \"sudo docker exec -it wikijsdb dropdb -U wikijs wiki\" \"(5) DB 삭제하기"
+echoSeq "sql.7z 로 백업한 파일을 DN 에 리스토어"
+
+echo "#-- \"sudo docker exec -it wikijsdb dropdb -U wikijs wiki\" \"(5) DB 삭제하기"
 sudo docker exec -it wikijsdb dropdb -U wikijs wiki ; echo "#-- (5) DB 삭제하기"
-echo "#-- cat_and_run \"sudo docker exec -it wikijsdb createdb -U wikijs wiki\" \"(6) DB 만들기"
+echo "#-- \"sudo docker exec -it wikijsdb createdb -U wikijs wiki\" \"(6) DB 만들기"
 sudo docker exec -it wikijsdb createdb -U wikijs wiki ; echo "#-- (6) DB 만들기"
 
 cat <<__EOF__
@@ -119,13 +110,14 @@ ${cRed}----> 백업할때 입력한 ${cYellow}비밀번호${cRed}를 입력하�
 __EOF__
 time 7za x -so ${db_sql_7z} | sudo docker exec -i wikijsdb psql -U wikijs wiki
 
-cat_and_run "sudo docker start wikijs ; sudo docker ps -a" "(8) 위키 도커 다시 시작"
+chdRun "sudo docker start wikijs ; sudo docker ps -a" "(8) 위키 도커 다시 시작"
 
-
-#<---- (2) sql.7z 로 백업한 파일을 DN 에 리스토어
+echoSeq ""
 
 
 # ----
-rm -f ${zz00log_name} ; zz00log_name="${zz00logs_folder}/zz.$(date +"%y%m%d-%H%M%S")..${CMD_NAME}" ; touch ${zz00log_name}
-cat_and_run "ls --color ${1}" "프로그램들" ; ls --color ${zz00logs_folder}
-echo "${cRed}<<<<<<<<<<${cBlue} $0 ${cRed}||| ${cMagenta}${MEMO} ${cRed}<<<<<<<<<<${cReset}"
+rm -f ${zz00log_name} ; zz00log_name="${zz00logs_folder}/zz.$(date +"%y%m%d%a-%H%M%S")..${CMD_NAME}" ; touch ${zz00log_name}
+ls --color ${zz00logs_folder}
+cat <<__EOF__
+${cRed}<<<<<<<<<<${cBlue} $0 ${cRed}||| ${cMagenta}${MEMO} ${cRed}<<<<<<<<<<${cReset}
+__EOF__
