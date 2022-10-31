@@ -18,7 +18,7 @@ for dir in $(ls -d *)
 do
 	if [ -d ${dir} ]; then
 		cd ${dir}
-		echo "${cYellow}----> ${dir}${cReset}"
+		echo "${cMagenta}----> ${dir}${cReset}"
 		git status ; echo -e "${cGreen}$(git pull)\n${cCyan}$(git ll -1)${cReset}"
 		cd ..
 	else
