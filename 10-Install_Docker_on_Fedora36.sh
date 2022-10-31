@@ -9,6 +9,25 @@ zz00logs_folder="${HOME}/zz00logs" ; if [ ! -d "${zz00logs_folder}" ]; then cmdR
 zz00log_name="${zz00logs_folder}/zz.$(date +"%y%m%d%a-%H%M%S")__RUNNING_${CMD_NAME}" ; touch ${zz00log_name}
 # ----
 
+docker_ok=$(rpm -qa | grep docker-ce-)
+if [ "x$docker_ok" != "x" ]; then
+	cat <<__EOF__
+${cMagenta}---->
+${cYellow}${docker_ok}
+${cMagenta}<---- ${cGreen}이와같이 설치되어 있습니다.
+
+${cCyan}계속 하려면 ${cRed}'${cYellow}y${cRed}' ${cCyan}를 입력하세요.${cReset}
+__EOF__
+	read a
+	if [ "x$a" != "xy" ]; then
+		rm -f ${zz00log_name}
+		ls --color ${zz00logs_folder}
+		cat <<__EOF__
+${cRed}<<<<<<<<<<${cBlue} $0 ${cRed}||| ${cMagenta}${MEMO} ${cRed}<<<<<<<<<<${cReset}
+__EOF__
+		exit 1
+	fi
+fi
 
 echoSeq "Install all available updates & reboot the system."
 cmdRun "sudo dnf update -y"
