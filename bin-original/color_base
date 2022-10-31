@@ -16,22 +16,22 @@ allYn="n"
 cmdYenter () {
 	echo "${cCyan}----> ${cYellow}$1 ${cGreen}#-- ${cCyan}$2${cReset}"
 	if [ "x${allYn}" = "xy" ]; then
-		echo "$1" | sh ; echo "${cGreen}<---- ${cBlue}$1 ${cGreen}#-- $2${cReset}"
+		echo "$1" | sh ; echo "${cGreen}<---- ${cBlue}$1 ${cMagenta}#-- $2${cReset}"
 	else
 		echo "${cCyan}----> ${cRed}press ${cCyan}'${cYellow}y${cCyan}'${cRed} or Enter${cReset}:"; read a; echo "${cUp}"
 		if [ "x$a" = "xy" ]; then
 			echo "${cRed}-OK-${cReset}"; echo "$1" | sh
+			echo "${cGreen}<---- ${cBlue}$1 press 'y' or Enter: ${cMagenta}#-- $2${cReset}"
 		else
-			echo "${cRed}[ ${cGreen}$1 ${cRed}] ${cGreen}<--- 명령을 실행하지 않습니다.${cReset}"
+			echo "${cRed}[ ${cBlue}$1 ${cRed}] ${cMagenta}<--- 명령을 실행하지 않습니다.${cReset}"
 		fi
-		echo "${cGreen}<---- ${cBlue}$1 ${cGreen}press 'y' or Enter${cReset}: ${cGreen}#-- $2${cReset}"
 	fi
 }
 eSq=0
 eSqMsg=""
 echoSeq () {
 	if [ "x$1" = "x" ]; then
-		echo "${cRed}(${eSq}) ${cBlue}${eSqMsg}${cReset}"
+		echo "${cBlue}(${eSq}) ${eSqMsg}${cReset}" ; echo "${cBlue}#--${cReset}"
 	else
 		eSq=$(( ${eSq} + 1 ))
 		echo "${cMagenta}(${eSq}) ${cCyan}$1${cReset}"
