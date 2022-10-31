@@ -103,5 +103,5 @@ ${cRed}|                |${cReset}
 ${cRed}| ${cReset}localhost:${port_no} ${cRed}| ${cGreen}#--- 위키서버가 실행되면 브라우저에서 이와같이 입력합니다.
 ${cRed}|                |${cReset}
 ${cRed}+----------------+${cReset}
-${cCyan}cd ${wiki_conf_dir} ; sudo docker-compose down #--- 작업을 중단하려면, 입력합니다. ${cReset}
+${cCyan}cd ${wiki_conf_dir} ; sudo docker-compose down #--- Enter 키를 눌러보세요. ${cReset}
 __EOF__
