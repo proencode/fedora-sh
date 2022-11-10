@@ -10,7 +10,7 @@
 1. 익스텐션 - Layer on top of web
 https://wikidocs.net/book/7550
 
-## a. 북미종전선언 10월초 가능성 220930a
+## (30a) 북미종전선언 10월초 가능성
 
 - `(18a) 북미종전선언 10월초 가능성` 에서 복사하고 추가함.
 
@@ -19,7 +19,7 @@ https://wikidocs.net/book/7550
 {.is-info}
 
 
-### 한반도 평화 논의
+## 한반도 평화 논의
 
 `53-07-27` 한국전쟁 휴전협정 마크 웨인 클라크-펑더화이-김일성
 `72-07-04` 7·4 남북 공동 성명 이후락-김일성
@@ -27,7 +27,7 @@ https://wikidocs.net/book/7550
 `00-06-13` 2000년 남북정상회담 김대중-김정일 `00-06-15` 6·15 남북 공동선언 김대중-김정일
 `07-10-02` 2007년 남북정상회담 노무현-김정일 `07-10-04` 10·4 남북정상선언 노무현-김정일
 
-### 2018
+## 2018
 
 `18-04-01` 봄이 온다 > 평양 > 남북합동 콘서트
 대한민국측 조용필, 이선희, 윤도현, 백지영, 레드벨벳. 북측 삼지연관현악단, 현송월
@@ -42,7 +42,7 @@ https://wikidocs.net/book/7550
 싱가포르 공동성명, 남북 북미간 약속에 기초한 외교와 대화 = 한반도 비핵화, 항구적 평화정착 이루는데 필수적 ==> 공동의 믿을을 재확인
 `18-09-18` 2018년 제3차 남북정상회담
 
-### 2019
+## 2019
 
 `19-02-26` 2019년 2월 북미정상회담 > 김정은-도날드 트럼프 > 베트남 하노이, 메트로 폴 호텔
 `19-06-30` 2019년 6월 북미정상회담 > 트럼프-김정은 > 판문점
@@ -198,7 +198,7 @@ mbc - 위험요소 생기든 헌귝 벙어하겠다 의지 헌신 보여주는�
 8/4 펠로시 판문점 방문
 316 324 54 525 ICBM
 
-## b. 코로나-19 대응 220930b
+## 코로나-19 대응
 
 질병관리본부는 2017년부터 메르스같은 원인불명의 병증을 보이는 환자가 발생했을때 검체를 확보한 뒤 어떻게 대처해야되는가를 가지고 여러가지 가상 시나리오와 그 대응책 프로토콜을 만들기 시작
 
@@ -228,7 +228,7 @@ mbc - 위험요소 생기든 헌귝 벙어하겠다 의지 헌신 보여주는�
 2020년 8월 14일 사랑제일교회발 집단 감염
 2020년 11월 14일부터는 일일 확진자 수가 200명
 
-## c. 비즈니스 웹 구축방법 (1/5) 주간지 Freelancer.com 22-09-27 220930c
+## (30b) 비즈니스 웹사이트를 구축하는 방법(1/5) 주간지 Freelancer.com 22-09-27
 
 귀하의 비즈니스를 위한 성공적인 웹사이트 구축을 위한 완전한 엔드 투 엔드 프로세스를 배우십시오.
 안녕.  비즈니스 세계는 지난 20년 동안 극적으로 변화했습니다. 오늘날의 비즈니스 세계에서 비즈니스 웹사이트 없이 판매를 하는 것은 거의 불가능합니다.
@@ -242,7 +242,7 @@ mbc - 위험요소 생기든 헌귝 벙어하겠다 의지 헌신 보여주는�
 
 무려 70~80%의 사람들이 구매하거나 방문하기 전에 회사를 검색합니다.
 
-### (1) 웹사이트 구축 계획
+### (30b-1) 웹사이트 구축 계획 
 
 이것은 대부분의 비즈니스 소유자가 망쳐 놓는 포인트입니다. 그들은 먼저 실행 계획을 세우지 않고 웹사이트 디자인 모형으로 바로 뛰어듭니다.
 전체 프로젝트가 원활하게 실행되도록 하려면 최소한 기본 계획부터 시작해야 합니다.
@@ -261,7 +261,7 @@ mbc - 위험요소 생기든 헌귝 벙어하겠다 의지 헌신 보여주는�
 
 아이디어를 머릿속에서 종이로 꺼내기 위해 가능한 한 간단하게 이러한 질문에 답하는 것으로 시작해야 합니다. 이것은 프로젝트의 기간을 추정하는 데 도움이 될 뿐만 아니라 다른 사람에게 아웃소싱해야 하는 어려운 작업을 발견하는 데도 도움이 됩니다.
 
-### (2) 빌딩 블록 설정
+### (30b-2) 빌딩 블록 설정
 
 웹사이트 제작을 가능하게 하는 데 필요한 3가지 필수 구성 요소가 있습니다.각각에 대해 살펴보겠습니다.
 
@@ -281,13 +281,13 @@ mbc - 위험요소 생기든 헌귝 벙어하겠다 의지 헌신 보여주는�
 
 귀하의 비즈니스에 가장 적합한 사이트를 구축하는 방법에 대한 많은 자습서가 있는 웹사이트 플랫폼이 많이 있습니다. 따라서 여기를 클릭하여 제안 사항을 확인 하거나 프로젝트를 게시하여 프리랜서를 고용하여 귀하를 위한 플랫폼을 구축하십시오 .
 
-### (3) 준비 사이트 설정
+### (30b-3) 준비 사이트 설정
 
 웹사이트를 수정하거나 새로운 기능을 실험할 때 실제 웹사이트에서 작업해서는 안 됩니다. 문제가 발생하면 웹사이트가 중단되어 모든 트래픽이 차단되고 웹사이트를 다시 시작하고 실행하기 위해 분주합니다.
 
 대신, 항상 별도의 준비 환경에서 설정된 웹 사이트의 복제 버전에서 작업해야 합니다. 이 스테이징 환경에서 변경한 사항은 라이브 사이트에 영향을 미치지 않으며, 준비가 되면 인터넷 사용을 중단하지 않고 이 스테이징 웹사이트를 라이브 환경으로 푸시할 수 있습니다.
 
-### (4) 귀하의 웹사이트에 대한 소셜 로그인
+### (30b-4) 귀하의 웹사이트에 대한 소셜 로그인
 
 사용자의 86%는 웹사이트에서 새 계정을 만들어야 하는 불편을 겪고 있으므로 회원 웹사이트를 만들 경우 소셜 로그인 옵션을 사용하여 로그인 절차를 간소화해야 합니다.
 
@@ -297,17 +297,17 @@ mbc - 위험요소 생기든 헌귝 벙어하겠다 의지 헌신 보여주는�
 
 이것을 습관적인 UX 관행으로 채택해야 하며, 항상 모든 프로세스를 최소한의 단계로 단순화하는 것을 목표로 해야 합니다.
 
-### (5) SSL 인증서 설치
+### (30b-5) SSL 인증서 설치
 
 SSL(보안 소켓 레이어) 인증서는 웹사이트에 제출된 모든 정보를 암호화합니다. 여기에는 연락처 양식, 주문 양식 및 신용 카드 데이터가 포함됩니다.
 
 사용자 데이터를 정중하게 처리하기 때문에 Google은 SSL 인증서가 있는 웹사이트에 우선권을 부여하므로 Google에서 좋은 순위를 얻으려면 SSL 인증서를 받아야 합니다. 
 
-### (6) 웹사이트 백업/보안 방화벽 설정 및 구성 
+### (30b-6) 웹사이트 백업/보안 방화벽 설정 및 구성 
 
 보안 침해로 인해 데이터가 손상되고 웹사이트를 만드는 데 드는 노력이 무효화되는 것을 방지하려면 사이버 공격으로부터 자신을 보호해야 합니다.
 
-### (7) 웹 관리자 암호를 안전하게 유지 
+### (30b-7) 웹 관리자 암호를 안전하게 유지 
 
 웹 보안 솔루션이 아무리 정교해도 로그인 자격 증명이 약하면 무용지물입니다. 실제로 2019년 데이터 침해 정보 보고서(Data Breach Information Report)에 따르면 보안 침해의 80%는 취약한 암호로 인한 것입니다.
 
@@ -321,7 +321,7 @@ SSL(보안 소켓 레이어) 인증서는 웹사이트에 제출된 모든 정�
 
 실제로 기억할 어려운 암호를 찾는 방법이 있습니다. 자연스럽게 단어, 숫자 및 기호를 포함하는 당신의 삶에 대한 짧은 사실을 생각하는 것으로 시작하십시오. 구체적일수록 더 좋습니다.
 
-### (8) 비즈니스 이메일 계정 설정
+### (30b-8) 비즈니스 이메일 계정 설정
 
 비즈니스를 대표하는 비즈니스 이메일 계정을 만드는 것도 중요합니다.
  
@@ -340,7 +340,7 @@ SSL(보안 소켓 레이어) 인증서는 웹사이트에 제출된 모든 정�
 1. 크롬 개발자모드 HTML, CSS 활용편 (웹브라우저, Chrome, HTML, CSS) 조회수 7,980회  2017. 5. 29. https://www.youtube.com/watch?v=VmeO92e96RM
 1. 강경화 외교부장관 미2사단/한미연합사단 방문 (2017. 6. 25.) https://www.youtube.com/watch?v=CS7clVgjBcU 
 
-## a. google 크롬에서, 220929a
+## (29a) google 크롬에서,
 
 1. 파일을 열려면 ==> 주소창에서 `C:` 또는 `/home` 또는 [`Ctrl`] + `O`
 1. 주소창 바로가기 ==> [`F6`] 또는 [`Alt`] + `D`
@@ -351,7 +351,7 @@ c. [`F12`]
 d. 브라우저에서 버튼등 확인할 부분을 오른클릭 > 검사 클릭 > 해당 요소가 선택돼 있음
 1. Chrome 단축키 https://support.google.com/chrome/answer/157179?hl=ko&co=GENIE.Platform%3DDesktop
 
-## b. 이승만 평가 220929b
+## (29b) 이승만 평가
 
 1. 1901년 4월 19일자 제국신문 논설 中
 
@@ -436,7 +436,7 @@ Vue CLI 3 Quick Start Guide
 1. mega.yosjeon555nc 에서 wd4tb 로 옮기고 삭제할것 정리
 1. dropbox 다시 조정
 
-## a. Node.js를 Fedora 36/35/34에 설치하는 방법 220924a
+## (24a) Node.js를 Fedora 36/35/34에 설치하는 방법
 
 > TecAdmin: How To Install Node.js on Fedora 36/35/34
 > / Home / Programming / Nodejs / How To Install Node.js on Fedora 36/35/34
@@ -452,11 +452,11 @@ Vue CLI 3 Quick Start Guide
 1. 공식 저장소에서 Node.js 설치
 1. NVM을 사용하여 Node.js 설치
 
-### (1) 전제 조건
+### (24a-1) 전제 조건
 
 sudo 권한 있는 계정으로 Fedora 시스템에 대한 쉘 액세스 권한이 이미 있다고 가정합니다. Fedora 시스템에 로그인하고 터미널을 엽니다.
 
-### (2) 방법 1 – 기본 패키지 저장소에서 Node.js 설치
+### (24a-2) 방법 1 – 기본 패키지 저장소에서 Node.js 설치
 
 Fedora 기본 패키지 저장소에는 안정적인 버전의 Node.js가 포함되어 있습니다. 최신 버전은 아니지만 안정적인 릴리스가 되어 작업에 사용할 수 있습니다.
 
@@ -471,7 +471,7 @@ sudo dnf install nodejs
 node -v 
 ```
 
-### (3) 방법 2 – 공식 저장소에서 Node.js 설치
+### (24a-3) 방법 2 – 공식 저장소에서 Node.js 설치
 
 Node.js의 공식 팀은 Fedora 시스템에 최신 패키지를 설치하기 위한 저장소를 제공합니다. 시스템에 설치할 Node.js의 최신 또는 안정 버전 중에서 선택할 수 있습니다. 이 튜토리얼을 작성하는 동안 NodeJs 17은 최신 릴리스이고 Node.js 16은 사용 가능한 안정적인 버전입니다.
 
@@ -507,7 +507,7 @@ NPM 버전을 확인하려면:
 npm --version 
 ```
 
-### (4) 방법 3 – NVM을 통해 Fedora에 Node.js 설치
+### (24a-4) 방법 3 – NVM을 통해 Fedora에 Node.js 설치
 
 NVM은 단일 시스템에서 여러 Node.js 버전을 관리하는 데 사용되는 노드 버전 관리자입니다. NVM을 사용하면 모든 버전의 Node.js를 설치할 수 있습니다.
 
@@ -528,7 +528,7 @@ nvm install v16.14
 ```
 nvm에 대한 자세한 내용 및 지침은 이 자습서 를 따르십시오. 을 따르십시오 .
 
-### (5) 데모 HTTP 서버 실행(선택 사항)
+### (24a-5) 데모 HTTP 서버 실행(선택 사항)
 이것은 선택적 단계입니다. node.js 설치를 테스트하려면. "Welcome Node.js" 문자를 보여주는 웹 서버를 만들어 봅시다. demo_server.js 파일을 만듭니다.
 
 ```
@@ -558,18 +558,18 @@ Server running at http://127.0.0.1:3001/
 ```
 웹 서버는 포트 3001에서 시작되었습니다. 이제 브라우저에서 http://127.0.0.1:3001/ URL에 액세스합니다.
 
-### (6) 결론
+### (24a-6) 결론
 
 이 튜토리얼은 Fedora Linux 시스템에 Node.js를 설치하는 데 도움이 되었습니다. 또한 Node.js를 사용하여 웹 서버를 생성하는 작은 스크립트를 제공했습니다.
 
-## b. Vue.js 3 By Example 220924b
+## (24b) Vue.js 3 By Example
 
 > Vue.js 3 By Example
 > By John Au-Yeung Publication date: 2021-04 Publisher Packt Pages 320 ISBN 9781838826345
 > https://subscription.packtpub.com/book/web-development/9781838826345/1/ch01lvl1sec04/setting-up-the-vue-project-with-the-vue-cli-and-script-tag
 {.is-info}
 
-### 이 책에 대해
+### (24b-1) 이 책에 대해
 거대한 생태계와 폭넓은 채택으로 Vue는 애플리케이션 개발 시 사용하기 쉽기 때문에 최고의 프레임워크 중 하나입니다. 그러나 Vue.js 개발자 지망생이 생태계를 이해하고 의미 있는 애플리케이션을 구축하는 것은 어려울 수 있습니다.
 이 책은 Vue를 효과적으로 활용하여 최신 버전인 Vue 3.0을 사용하여 인상적인 앱을 빠르게 개발하는 방법을 이해하는 데 도움이 됩니다.
 이 책은 Vue 3의 기본 사항을 이해하고 구성 요소 및 지시문과 같은 기능을 탐색하여 간단한 응용 프로그램을 만드는 데 도움이 되는 예제 기반 접근 방식을 사용합니다. 그런 다음 Jest 및 Vue Test Utils를 사용하여 앱을 테스트하는 방법을 학습하여 앱 구축 기술을 향상시킵니다. 진행하면서 Vue 3로 웹이 아닌 앱을 작성하는 방법, Electron 플러그인으로 플랫폼 간 데스크톱 앱을 만드는 방법, Vue와 Ionic으로 다목적 모바일 앱을 빌드하는 방법을 이해하게 됩니다. 또한 GraphQL API와 잘 상호 작용하는 Vue 3로 웹 앱을 개발할 수 있습니다. 마지막으로 Vue 3와 Laravel을 사용하여 실시간 커뮤니케이션을 수행하는 채팅 앱을 빌드합니다.
@@ -593,12 +593,12 @@ yarn set version stable
 time /c/Program\ Files/7-Zip/7z.exe x yos*001
 ```
 
-## a. Dropbox 220923a
+## (23a) Dropbox 
 
 >  https://tutorialforlinux.com/2022/04/18/step-by-step-dropbox-fedora-36-installation-guide/2/
 {.is-info}
 
-### (1) 가입
+### (23a-1) 가입
 
 1. 브라우저에서, https://dropbox.com 으로 들어가서,
 1. "`Dropbox는 서비스를 제공하고, 개선하고, 보호하고, 홍보하는 데 쿠키를 사용합니다.`" 라는 설명에서,
@@ -622,11 +622,11 @@ time /c/Program\ Files/7-Zip/7z.exe x yos*001
 "이메일 주소를 인증하세요" 제목의 메일에서,
 [`인증`] 을 클릭.
 
-### (2) 브라우저로 Dropbox 를 사용하려면,
+### (23a-2) 브라우저로 Dropbox 를 사용하려면,
 
 브라우저에서, https://dropbox.com 으로 들어가서 로그인하면 바로 쓸 수 있다.
 
-### (3) Fedora36 에서 사용하려면,
+### (23a-3) Fedora36 에서 사용하려면,
 
 1. RPM Fusion 리포지토리 를 활성화 (Enabling) 한다.
 ```
@@ -668,11 +668,11 @@ drwx------. 1 yos yos   194  9월 23일 14:16 Dropbox
 # 220921 수
 0940 진접도서관
 
-## a. medium 220921a
+## (21a) medium
 1. Spring 이 Vert.x 보다 빠른 이유는 무엇입니까?
 https://betterprogramming.pub/why-spring-is-faster-than-vert-x-bc09b436021d
 
-## b. VNC Server 220921b
+## (21b) VNC Server
 ```
 echo "#--" ; echo "#--" ; echo "#--" ; echo "#--"
 sudo time -f %E dnf install tigervnc-server ; echo "#-- (10) 프로그램 설치 $(date +%y-%m-%d%a%H:%M:%S)"
@@ -691,7 +691,7 @@ __EOF__
 vncpasswd ; echo "#-- (14) 비밀번호 등록 $(date +%y-%m-%d%a%H:%M:%S)"
 ```
 
-### (1) Configuring VNC Server
+### (21b-1) Configuring VNC Server
 
 1. /etc/tigervnc/vncserver.users 파일에 port_number 와 사용자 id 를 등록한다.
 ```
@@ -749,7 +749,7 @@ vncpasswd
 __EOF__
 vncpasswd ; echo "220921수 VNC configure $(date +%y-%m-%d%a%H:%M:%S)"
 ```
-### (2) Running VNC Server
+### (21b-2) Running VNC Server
 - `vnc 서버` 시작
 ```
 #-- systemctl start vncserver@:display_number.service
@@ -768,17 +768,17 @@ systemctl enable vncserver@:display_number.service ; echo "#-- (22) 시스템 �
 systemctl disable vncserver@:display_number.service ; echo "#-- (23) vnc 자동시작 취소함 $(date +%y-%m-%d%a%H:%M:%S)"
 ```
 
-### (3) Installing VNC Viewer
+### (21b-3) Installing VNC Viewer
 
 ```
 sudo dnf install tigervnc ; echo "#-- (30) vnc 뷰어 설치 $(date +%y-%m-%d%a%H:%M:%S)"
 ```
 
-### (4) Connecting to VNC Server
+### (21b-4) Connecting to VNC Server
 
 VNC 는 통신할때 외부공격에 대한 보안이 없는 일반 텍스트 네트워크 프로토콜이므로, 다음의 SSH 를 통한 연결방식을 사용해야 한다.
 
-### (5) Connecting to VNC Server Using SSH
+### (21b-5) Connecting to VNC Server Using SSH
 
 1. SSH 를 통해서 VNC 서버와 연결하기 위해, 다음과 같이 시작한다.
 ```
@@ -798,7 +798,7 @@ https://medium.com/@auth0/vue-js-spring-boot-kotlin-and-graphql-building-modern-
 # 220919 월
 1010 진접도서관
 
-## a. 1440 Daily Digest 220919a
+## (19a) 1440 Daily Digest
 
 1. 석기 시대 수술 고고학자들은 약 31,000년 전에 수행 된 복잡한 절단 의 증거 동남아시아 보르네오 섬의 외딴 동굴에 묻힌 젊은 수렵채집인의 것 이 개인이 10세에서 14세 사이에 절차를 거쳐 20세까지 살았고 묻힌 것으로 추정. 약 12,000년 전인 신석기 혁명 전까지 인간은 복잡한 의료 절차를 수행할 도구와 의학적 지식이 부족하다고 믿었습니다
 1. 모든 프로그래머가 알아야 할 40가지 알고리즘 - Second Edition 
@@ -825,7 +825,7 @@ https://www.youtube.com/watch?v=bi8Mo7aZ8bM
 1. 대중적이진 않지만 놓치기 아쉬운 미드 10
 https://www.ddanzi.com/index.php?mid=free&statusList=HOT%2CHOTBEST%2CHOTAC%2CHOTBESTAC&document_srl=750129300
 
-- 북미종전선언 10월초 가능성 220918a > 옮겨 고쳐씀 >  북미종전선언 10월초 가능성 220930a
+- (18a) 북미종전선언 10월초 가능성 > 옮겨 고쳐씀 >  (30a) 북미종전선언 10월초 가능성
 
 # 220916 금
 1010 푸른숲도서관
@@ -834,7 +834,7 @@ https://www.ddanzi.com/index.php?mid=free&statusList=HOT%2CHOTBEST%2CHOTAC%2CHOT
 
 🐈🐾
  
-## a. 특별 할인 가맹점 220916a
+## (16a) 특별 할인 가맹점
 
 1. 메뉴경로 : 홈 > 분야별 정보 > 취업/경제 > 남양주사랑상품권 특별할인가맹점 소개 nyj.go.kr/main/3734
 남양주사랑상품권 특별할인가맹점 목록 > [목록 미리보기] [목록 다운받기] --> 액셀파일로 다운로드
@@ -865,9 +865,9 @@ https://www.ddanzi.com/index.php?mid=free&statusList=HOT%2CHOTBEST%2CHOTAC%2CHOT
 1. 여벌로 --> 파일 크기가 훨씬 작은 타입인 .webp 로 만들기 위해 `01-오남읍 양지로278길 35-3`**.webp** 를 파일 이름으로 한번더 저장.
 1. [Ctrl] + [W] 닫기 > [Alt] + [D] 바뀐 내용 버리기 로 삭제
 
-## b. 가맹점위치 지도만들기 220916b
+## (16b) 가맹점위치 지도만들기
 
-### (1) 소재지 주소별로 지도를 찾기 위해 액셀 파일에서 주소를 정리한다.
+### (16b-1) 소재지 주소별로 지도를 찾기 위해 액셀 파일에서 주소를 정리한다.
 
 1. 남양주사랑상품권 특별할인가맹점 목록 nyj.go.kr/main/3734 를 열고-->
 1. [목록 미리보기] [목록 다운받기] > 액셀파일로 다운로드
@@ -885,7 +885,7 @@ https://www.ddanzi.com/index.php?mid=free&statusList=HOT%2CHOTBEST%2CHOTAC%2CHOT
 |오남읍 양지로278번길 35-3 | 33 | 오남읍 양지로278번길 35-3 =만복보쌈33- | 만복보쌈 |
 |오남읍 양지로281번길 12, 1층 | 34 |오남읍 양지로281번길 12 =알통떡강정34- |	이승윤의알통떡강정
 
-### (2) 주소를 보고 지도를 다운받는 작업을 반복한다.
+### (16b-2) 주소를 보고 지도를 다운받는 작업을 반복한다.
 
 1. 액셀에서 -->
 1. H (파일이름으로 쓸 주소등) 칼럼을 [Ctrl] + [`C`] 복사
@@ -910,7 +910,7 @@ https://www.ddanzi.com/index.php?mid=free&statusList=HOT%2CHOTBEST%2CHOTAC%2CHOT
 1. 한번 더 [Ctrl] + [Shift] + [`E`] 눌러서 > 파일 이름의 끝을 `.webp` 로 바꾸고 > [`Enter`] 로 저장한다.
 1. .png 와 .webp 를 저장했으므로, [Ctrl] + [`W`] 닫기 > [Alt] + [`D`] 바뀐 내용 버리기
 
-## c. gimp
+## (16c) gimp
 
 (220811 목 메모)
 
@@ -977,7 +977,7 @@ https://daviesmediadesign.com/ko/top-10-gimp-tutorials-on-youtube/
 20. 김프 Q & A 2020 https://youtu.be/Cl2Ox7IH5TM
 김프에 대한 질문이 더 있습니까? 내 채널에서 구독자가 제기 한 질문에 대한 답변이 2020 년의 Q & A를 확인하세요.
 
-## d. Tutorial
+## (16d) Tutorial
 
 1. 초보자 사진 편집 기본 자습서 Beginner Photo Editing Basics Tutorial - Gimp https://youtu.be/NcIPME9X_r4
 2. 초보자 용 김프 101 튜토리얼 : 기본 사항 익히기 GIMP 101 Tutorial for Beginners: Learning the Basics https://youtu.be/P143GdVeMjE
@@ -1068,10 +1068,9 @@ WiFi MAC 주소: DC:DC:E2:E2:BB
 1. gihyo-kostlin-spring-boot,building-games-with-flutter, gimp inkscape 정리, URl-or-FlowChart 네트워크,
 1. 자전거 물청소, 7일 시장옷, 
 
-## a. Medium 220914a
+## (14a) Medium
 
-### (1) Trends in Software Development 2022
-https://medium.com/geekculture/trends-in-software-development-2022-650ddef6e14f
+### (14a-1) Trends in Software Development 2022 https://medium.com/geekculture/trends-in-software-development-2022-650ddef6e14f
 1. 관찰성 [추적, 모니터링 및 로깅]이 중요
 1. "서버리스" 및 "서버 기반" 접근 방식을 모두 사용
 1. 컨테이너, Kubernetes는 뜨거운 기술
@@ -1088,14 +1087,14 @@ https://medium.com/geekculture/trends-in-software-development-2022-650ddef6e14f
 1. 요즘 TensorFlow가 널리 사용
 1. 훌륭한 장기 고용 전략은 후배를 고용하고 훈련시키는 것
 
-### (2) GPT-3을 미세 조정하여 챗봇 애플리케이션 https://medium.com/geekculture/a-chatbot-application-by-finetuning-gpt-3-2682aad25356
+### (14a-2) GPT-3을 미세 조정하여 챗봇 애플리케이션 https://medium.com/geekculture/a-chatbot-application-by-finetuning-gpt-3-2682aad25356
 
 1. GPT 모델과 오픈AI API  
 1. GPT 모델에서 추론
 1. 챗봇용 Finetune GPT 모델
 1. 챗봇 애플리케이션 생성
 
-### (3) 스프링 부트에 대한 인기 있는 질문 https://salithachathuranga94.medium.com/popular-questions-on-spring-boot-d6493cdddbc2
+### (14a-3) 스프링 부트에 대한 인기 있는 질문 https://salithachathuranga94.medium.com/popular-questions-on-spring-boot-d6493cdddbc2
 
 1. 스프링 부트의 기능 = 자동 구성, 임베디드 Tomcat 웹 서버, 스타터 POM, 액추에이터 API, 스프링 이니셜라이저, 
 2. "@SpringBootApplication" 주석이 내부적으로 어떻게 작동하나.
@@ -1140,8 +1139,7 @@ application.properties/yml 파일에서 구성 정의 — 예: 데이터베이�
 원하는 대로 최종 사용자에게 오류를 반환하는 논리를 만들고, 이 로직 내에서 예외 메시지를 추출할 수 있다.
 20. "@Entity"와 "@Table" 주석의 차이점은
 
-### (4) Spring Boot, MongoDB 및 Docker를 사용하여 REST API 배포
-https://salithachathuranga94.medium.com/deploy-rest-api-using-spring-boot-mongodb-and-docker-e7ab620b24d6
+### (14a-4) Spring Boot, MongoDB 및 Docker를 사용하여 REST API 배포 https://salithachathuranga94.medium.com/deploy-rest-api-using-spring-boot-mongodb-and-docker-e7ab620b24d6
 
 # 220913 화
 0920 진접도서관
@@ -1173,7 +1171,7 @@ money="string value" ; echo "( ${stick} ) #-- \${stick}" ; echo "( ${money} ) #-
 
 1. 미국 - 노동없는 유토피아로 전진 > 대신 > 경제, 기후변화로 일자리 증발을 경험. 1979-2019 근로자 생산성 `69.6%` 상승 > 시급 `11.6%` 상승
 
-## a. Dzone 220908a
+## (08a) Dzone
 
 1. 개발자 코딩 - 로컬 개발환경 > 프로덕션 환경 > 컨테이너와 도커
 컨테이너화 된 앱을 생성+배포+관리 하는 오픈된 플랫폼
@@ -1227,7 +1225,7 @@ Total size: 2.615 GiB (2807522223 Byte)
 1. 태풍 흰남노 제주-부산 오늘밤 통과 예보, 매미에 필적
 1. 박구용교수 민주당최고 요청수락. - 고사했다고 함.
 
-## a. rclone 으로 구글 드라이브 사용하기 220905a
+## (05a) rclone 으로 구글 드라이브 사용하기
 
 1. 구글 드라이브를 Fedora 에서 쓰기 위해서는 google drive 를 연결하는 이름을 만들어야 한다.
 ```
@@ -1350,7 +1348,7 @@ e/n/d/r/c/s/q> q
 
 - 백업파일 리스토어 수정
 
-## a. wiki.js 단순백업 보관하기 220902a
+## (02a) wiki.js 단순백업 보관하기
 ```
 echo "#--" ; echo "#--" ; echo "#--" ; echo "#--"
 DB_NAME="wiki" #- 백업할 데이터베이스 이름

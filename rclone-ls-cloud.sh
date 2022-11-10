@@ -1,7 +1,13 @@
 #!/bin/sh
 
 source ${HOME}/bin/color_base #-- 221027목-1257 CMD_DIR CMD_NAME cmdRun cmdCont cmdYenter echoSeq 
-MEMO="클라우드 백업내용 보기"
+if [ "x$1" = "x" ]; then
+	that_year=$(date +"%Y")
+	MEMO="클라우드 ${that_year} 년도 백업 확인"
+else
+	that_year=$1
+	MEMO="클라우드 ${cYellow}${that_year}${cMagenta} 년도 백업 확인"
+fi
 cat <<__EOF__
 ${cMagenta}>>>>>>>>>>${cGreen} $0 ${cMagenta}||| ${cCyan}${MEMO} ${cMagenta}>>>>>>>>>>${cReset}
 __EOF__
@@ -10,15 +16,17 @@ __EOF__
 # ----
 
 
-that_year=$(date +"%Y")
-echo "${cYellow}----> rclone lsl yosjgc:11-wiki.js/2022/ --include \"/wiki*\" | sort -k4${cGreen}"
-rclone lsl yosjgc:11-wiki.js/2022/ --include "/wiki*" | sort -k4
-echo "${cCyan}$(rclone lsl yosjgc:11-wiki.js/2022/ --include '*ju/wiki*' | sort -k4)"
-echo "${cGreen}$(rclone lsl yosjgc:11-wiki.js/2022/ --include '*yoil/wiki*' | sort -k4)"
-echo "${cYellow}----> rclone lsl swlibgc:gate242/2022/ --include \"/gate242*\" | sort -k4${cBlue}"
-rclone lsl swlibgc:gate242/2022/ --include "/gate242*" | sort -k4
-echo "${cYellow}----> rclone lsl kaosngc:db-backup/kaosorder2/ --include \"/[km]*\" | sort -k4${cCyan}"
-rclone lsl kaosngc:db-backup/kaosorder2/ --include "/[km]*" | sort -k4
+#-- LsVal="lsl" ; KeyVal="4"
+LsVal="ls" ; KeyVal="2"
+
+echo "${cYellow}----> rclone ${LsVal} yosjgc:11-wiki.js/${that_year}/ --include \"/wiki*\" | sort -k${KeyVal}${cGreen}"
+rclone ${LsVal} yosjgc:11-wiki.js/${that_year}/ --include "/wiki*" | sort -k${KeyVal}
+echo "${cCyan}$(rclone ${LsVal} yosjgc:11-wiki.js/${that_year}/ --include '*ju/wiki*' | sort -k${KeyVal})"
+echo "${cGreen}$(rclone ${LsVal} yosjgc:11-wiki.js/${that_year}/ --include '*yoil/wiki*' | sort -k${KeyVal})"
+echo "${cYellow}----> rclone ${LsVal} swlibgc:gate242/${that_year}/ --include \"/gate242*\" | sort -k${KeyVal}${cBlue}"
+rclone ${LsVal} swlibgc:gate242/${that_year}/ --include "/gate242*" | sort -k${KeyVal}
+echo "${cYellow}----> rclone ${LsVal} kaosngc:db-backup/kaosorder2/ --include \"/[km]*\" | sort -k${KeyVal}${cCyan}"
+rclone ${LsVal} kaosngc:db-backup/kaosorder2/ --include "/[km]*" | sort -k${KeyVal}
 
 
 # ----
