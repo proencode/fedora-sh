@@ -4,7 +4,7 @@ cBlack=$(tput bold)$(tput setaf 0); cRed=$(tput bold)$(tput setaf 1); cGreen=$(t
 
 cat <<__EOF__
 ssh -oHostKeyAlgorithms=+ssh-dss -Y -p2022 kaoscOKr
-rsync -avzr --delete -e 'ssh -oHostKeyAlgorithms=+ssh-dss -p 2022' --exclude=target/classes kaoscOKr:dir/ ./ XXX #-- 받을때
+rsync -avzr --delete -e 'ssh -oHostKeyAlgorithms=+ssh-dss -p 2022' --exclude=target/classes kaoscOKr:dir/ ./ #-- 받을때
 2. atyosjswlib 격화소양 i6ytjwudrk 촉견폐일소액구 kaosdesysclubi 씨큐둘째프로젝트 3rhg5vyrr
 ${cYellow}git config --global credential.helper store${cReset}
 ${cYellow}git config --global user.password "ATBBn9e5ZGpH6qk8yNbXfMUfeGe49D6AB2" #-- bbop대아투코드네임${cReset}
