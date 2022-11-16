@@ -65,7 +65,7 @@ if [ "x$a" = "x2" ]; then
 	USER_NAME=kordroot
 else
 	#-- default: 1
-	DOCKER_DB_NAME=gatedb
+	DOCKER_DB_NAME=mysqldb
 	NEW_DATABASE=gate242
 	USER_NAME=gateroot
 fi
@@ -83,8 +83,7 @@ fi
 
 #--
 
-# DATABASE_FOLDER=${HOME}/docker-data/database/${DOCKER_DB_NAME}
-DATABASE_FOLDER=/home/docker-data/database/${DOCKER_DB_NAME}
+DATABASE_FOLDER=/home/docker/${DOCKER_DB_NAME}
 
 if [ ! -d ${DATABASE_FOLDER} ]; then
 	echo "----> ${cGreen}sudo mkdir -p ${DATABASE_FOLDER}${cReset}"
