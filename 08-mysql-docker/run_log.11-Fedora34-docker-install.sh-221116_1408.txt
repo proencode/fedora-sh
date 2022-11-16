@@ -1,0 +1,882 @@
+14:08:03수221116 yosj@vFedora37 ~/git-projects/fedora-sh/08-mysql-docker
+08-mysql-docker $ sh 11-Fedora34-docker-install.sh 
+>>>>>>>>>> 11-Fedora34-docker-install.sh ||| Fedora34에 Docker Engine 설치 >>>>>>>>>>
+----> ls -lZ /usr/lib/systemd/system/containerd.service docker.service  docker.socket zvbid.service
+ls: '/usr/lib/systemd/system/containerd.service'에 접근할 수 없음: 그런 파일이나 디렉터리가 없습니다
+<---- ls -lZ /usr/lib/systemd/system/containerd.service docker.service  docker.socket zvbid.service
+----> sudo dnf -y remove docker docker-client docker-client-latest docker-common docker-latest docker-latest-logrotate docker-logrotate docker-selinux docker-engine-selinux docker-engine 이러한 패키지가 설치되어 있지 않다고 나와도 괜찮습니다.
+일치하는 인수가 없습니다: docker
+일치하는 인수가 없습니다: docker-client
+일치하는 인수가 없습니다: docker-client-latest
+일치하는 인수가 없습니다: docker-common
+일치하는 인수가 없습니다: docker-latest
+일치하는 인수가 없습니다: docker-latest-logrotate
+일치하는 인수가 없습니다: docker-logrotate
+일치하는 인수가 없습니다: docker-engine-selinux
+일치하는 인수가 없습니다: docker-engine
+종속성이 해결되었습니다.
+============================================================================================================================================
+ 꾸러미                                               구조             버전                                        레포지터리          크기
+============================================================================================================================================
+삭제 중:
+ container-selinux                                    noarch           2:2.191.0-1.fc37                            @@System            59 k
+종속 꾸러미지 제거:
+ flatpak-selinux                                      noarch           1.14.0-2.fc37                               @@System            12 k
+ gnome-boxes                                          x86_64           43.1-1.fc37                                 @@System           6.1 M
+ livecd-tools                                         x86_64           1:31.0-2.fc37                               @@System           206 k
+ selinux-policy-targeted                              noarch           37.14-1.fc37                                @@System            18 M
+사용하지 않는 종속 꾸러미 제거:
+ SDL2_image                                           x86_64           2.6.1-1.fc37                                @@System           201 k
+ capstone                                             x86_64           4.0.2-10.fc37                               @@System            13 M
+ corosynclib                                          x86_64           3.1.6-4.fc37                                @@System           159 k
+ cyrus-sasl                                           x86_64           2.1.28-8.fc37                               @@System           150 k
+ device-mapper-multipath-libs                         x86_64           0.9.0-3.fc37                                @@System           894 k
+ dumpet                                               x86_64           2.1-25.fc37                                 @@System            43 k
+ edk2-ovmf                                            noarch           20220826gitba0e0e4c6a17-1.fc37              @@System            23 M
+ fmt                                                  x86_64           9.1.0-1.fc37                                @@System           358 k
+ genisoimage                                          x86_64           1.1.11-50.fc37                              @@System           1.1 M
+ glusterfs                                            x86_64           10.3-1.fc37                                 @@System           2.7 M
+ glusterfs-cli                                        x86_64           10.3-1.fc37                                 @@System           480 k
+ glusterfs-client-xlators                             x86_64           10.3-1.fc37                                 @@System           3.7 M
+ glusterfs-fuse                                       x86_64           10.3-1.fc37                                 @@System           564 k
+ gnutls-dane                                          x86_64           3.7.8-3.fc37                                @@System            57 k
+ gnutls-utils                                         x86_64           3.7.8-3.fc37                                @@System           1.3 M
+ gperftools-libs                                      x86_64           2.9.1-4.fc37                                @@System           1.4 M
+ highway                                              x86_64           1.0.1-1.fc37                                @@System           1.8 M
+ iproute-tc                                           x86_64           5.18.0-2.fc37                               @@System           938 k
+ ipxe-roms-qemu                                       noarch           20220210-2.git64113751.fc37                 @@System           2.7 M
+ jxl-pixbuf-loader                                    x86_64           1:0.7.0-3.fc37                              @@System           119 k
+ kde-filesystem                                       x86_64           4-68.fc37                                   @@System           4.6 k
+ kf5-filesystem                                       x86_64           5.99.0-1.fc37                               @@System             0  
+ libburn                                              x86_64           1.5.4-5.fc37                                @@System           369 k
+ libcacard                                            x86_64           3:2.8.1-3.fc37                              @@System           120 k
+ libfdt                                               x86_64           1.6.1-5.fc37                                @@System            58 k
+ libgfapi0                                            x86_64           10.3-1.fc37                                 @@System           217 k
+ libgfrpc0                                            x86_64           10.3-1.fc37                                 @@System           252 k
+ libgfxdr0                                            x86_64           10.3-1.fc37                                 @@System            86 k
+ libglusterd0                                         x86_64           10.3-1.fc37                                 @@System            21 k
+ libglusterfs0                                        x86_64           10.3-1.fc37                                 @@System           1.1 M
+ libiscsi                                             x86_64           1.19.0-6.fc37                               @@System           223 k
+ libisoburn                                           x86_64           1.5.4-5.fc37                                @@System           1.0 M
+ libisofs                                             x86_64           1.5.4-4.fc37                                @@System           487 k
+ libjxl                                               x86_64           1:0.7.0-3.fc37                              @@System           3.1 M
+ libnfs                                               x86_64           4.0.0-7.fc37                                @@System           431 k
+ libphodav                                            x86_64           3.0-3.fc37                                  @@System           145 k
+ libpmem                                              x86_64           1.12.0-1.fc37                               @@System           395 k
+ libpmemobj                                           x86_64           1.12.0-1.fc37                               @@System           380 k
+ libqb                                                x86_64           2.0.6-3.fc37                                @@System           212 k
+ librados2                                            x86_64           2:17.2.5-1.fc37                             @@System            11 M
+ librbd1                                              x86_64           2:17.2.5-1.fc37                             @@System            11 M
+ librdmacm                                            x86_64           41.0-1.fc37                                 @@System           151 k
+ libssh                                               x86_64           0.10.4-2.fc37                               @@System           512 k
+ libssh-config                                        noarch           0.10.4-2.fc37                               @@System           277  
+ libssh2                                              x86_64           1.10.0-5.fc37                               @@System           277 k
+ libtpms                                              x86_64           0.9.5-2.fc37                                @@System           971 k
+ libusal                                              x86_64           1.1.11-50.fc37                              @@System           469 k
+ libvirt-daemon                                       x86_64           8.6.0-4.fc37                                @@System           1.7 M
+ libvirt-daemon-config-network                        x86_64           8.6.0-4.fc37                                @@System           470  
+ libvirt-daemon-driver-interface                      x86_64           8.6.0-4.fc37                                @@System           606 k
+ libvirt-daemon-driver-network                        x86_64           8.6.0-4.fc37                                @@System           716 k
+ libvirt-daemon-driver-nodedev                        x86_64           8.6.0-4.fc37                                @@System           671 k
+ libvirt-daemon-driver-nwfilter                       x86_64           8.6.0-4.fc37                                @@System           701 k
+ libvirt-daemon-driver-qemu                           x86_64           8.6.0-4.fc37                                @@System           2.7 M
+ libvirt-daemon-driver-secret                         x86_64           8.6.0-4.fc37                                @@System           598 k
+ libvirt-daemon-driver-storage                        x86_64           8.6.0-4.fc37                                @@System             0  
+ libvirt-daemon-driver-storage-core                   x86_64           8.6.0-4.fc37                                @@System           785 k
+ libvirt-daemon-driver-storage-disk                   x86_64           8.6.0-4.fc37                                @@System            32 k
+ libvirt-daemon-driver-storage-gluster                x86_64           8.6.0-4.fc37                                @@System            40 k
+ libvirt-daemon-driver-storage-iscsi                  x86_64           8.6.0-4.fc37                                @@System            24 k
+ libvirt-daemon-driver-storage-iscsi-direct           x86_64           8.6.0-4.fc37                                @@System            32 k
+ libvirt-daemon-driver-storage-logical                x86_64           8.6.0-4.fc37                                @@System            32 k
+ libvirt-daemon-driver-storage-mpath                  x86_64           8.6.0-4.fc37                                @@System            16 k
+ libvirt-daemon-driver-storage-rbd                    x86_64           8.6.0-4.fc37                                @@System            44 k
+ libvirt-daemon-driver-storage-scsi                   x86_64           8.6.0-4.fc37                                @@System            24 k
+ libvirt-daemon-driver-storage-sheepdog               x86_64           8.6.0-4.fc37                                @@System            20 k
+ libvirt-daemon-driver-storage-zfs                    x86_64           8.6.0-4.fc37                                @@System            24 k
+ libvirt-daemon-kvm                                   x86_64           8.6.0-4.fc37                                @@System             0  
+ libvirt-gconfig                                      x86_64           4.0.0-6.fc37                                @@System           393 k
+ libvirt-glib                                         x86_64           4.0.0-6.fc37                                @@System           215 k
+ libvirt-gobject                                      x86_64           4.0.0-6.fc37                                @@System           236 k
+ libvirt-libs                                         x86_64           8.6.0-4.fc37                                @@System            24 M
+ libwsman1                                            x86_64           2.7.1-7.fc37                                @@System           359 k
+ linux-atm-libs                                       x86_64           2.5.1-33.fc37                               @@System            73 k
+ livecd-iso-to-mediums                                x86_64           1:31.0-2.fc37                               @@System           156 k
+ lorax                                                x86_64           37.8-1.fc37                                 @@System           691 k
+ lorax-templates-generic                              x86_64           37.8-1.fc37                                 @@System           109 k
+ lttng-ust                                            x86_64           2.13.3-3.fc37                               @@System           1.1 M
+ lzop                                                 x86_64           1.04-9.fc37                                 @@System           107 k
+ mdevctl                                              x86_64           1.2.0-1.fc37                                @@System           1.9 M
+ numactl-libs                                         x86_64           2.0.14-6.fc37                               @@System            54 k
+ numad                                                x86_64           0.5-37.20150602git.fc37                     @@System            60 k
+ pbzip2                                               x86_64           1.1.13-7.fc37                               @@System           105 k
+ python-imgcreate-sysdeps                             x86_64           1:31.0-2.fc37                               @@System             0  
+ python3-imgcreate                                    x86_64           1:31.0-2.fc37                               @@System           473 k
+ python3-librepo                                      x86_64           1.14.4-1.fc37                               @@System           183 k
+ python3-pycdio                                       x86_64           2.1.0-9.fc37                                @@System           562 k
+ python3-urlgrabber                                   noarch           4.1.0-11.fc37                               @@System           566 k
+ qemu-audio-alsa                                      x86_64           2:7.0.0-10.fc37                             @@System            29 k
+ qemu-audio-dbus                                      x86_64           2:7.0.0-10.fc37                             @@System            29 k
+ qemu-audio-jack                                      x86_64           2:7.0.0-10.fc37                             @@System            25 k
+ qemu-audio-oss                                       x86_64           2:7.0.0-10.fc37                             @@System            21 k
+ qemu-audio-pa                                        x86_64           2:7.0.0-10.fc37                             @@System            29 k
+ qemu-audio-sdl                                       x86_64           2:7.0.0-10.fc37                             @@System            25 k
+ qemu-audio-spice                                     x86_64           2:7.0.0-10.fc37                             @@System            20 k
+ qemu-block-curl                                      x86_64           2:7.0.0-10.fc37                             @@System            41 k
+ qemu-block-dmg                                       x86_64           2:7.0.0-10.fc37                             @@System            16 k
+ qemu-block-gluster                                   x86_64           2:7.0.0-10.fc37                             @@System            41 k
+ qemu-block-iscsi                                     x86_64           2:7.0.0-10.fc37                             @@System            55 k
+ qemu-block-nfs                                       x86_64           2:7.0.0-10.fc37                             @@System            38 k
+ qemu-block-rbd                                       x86_64           2:7.0.0-10.fc37                             @@System            42 k
+ qemu-block-ssh                                       x86_64           2:7.0.0-10.fc37                             @@System            43 k
+ qemu-char-baum                                       x86_64           2:7.0.0-10.fc37                             @@System            20 k
+ qemu-char-spice                                      x86_64           2:7.0.0-10.fc37                             @@System            21 k
+ qemu-common                                          x86_64           2:7.0.0-10.fc37                             @@System           1.4 M
+ qemu-device-display-qxl                              x86_64           2:7.0.0-10.fc37                             @@System            92 k
+ qemu-device-display-vhost-user-gpu                   x86_64           2:7.0.0-10.fc37                             @@System           263 k
+ qemu-device-display-virtio-gpu                       x86_64           2:7.0.0-10.fc37                             @@System            65 k
+ qemu-device-display-virtio-gpu-ccw                   x86_64           2:7.0.0-10.fc37                             @@System            16 k
+ qemu-device-display-virtio-gpu-gl                    x86_64           2:7.0.0-10.fc37                             @@System            39 k
+ qemu-device-display-virtio-gpu-pci                   x86_64           2:7.0.0-10.fc37                             @@System            16 k
+ qemu-device-display-virtio-gpu-pci-gl                x86_64           2:7.0.0-10.fc37                             @@System            16 k
+ qemu-device-display-virtio-vga                       x86_64           2:7.0.0-10.fc37                             @@System            17 k
+ qemu-device-display-virtio-vga-gl                    x86_64           2:7.0.0-10.fc37                             @@System            16 k
+ qemu-device-usb-host                                 x86_64           2:7.0.0-10.fc37                             @@System            54 k
+ qemu-device-usb-redirect                             x86_64           2:7.0.0-10.fc37                             @@System            70 k
+ qemu-device-usb-smartcard                            x86_64           2:7.0.0-10.fc37                             @@System            34 k
+ qemu-img                                             x86_64           2:7.0.0-10.fc37                             @@System           9.1 M
+ qemu-kvm                                             x86_64           2:7.0.0-10.fc37                             @@System             0  
+ qemu-pr-helper                                       x86_64           2:7.0.0-10.fc37                             @@System           921 k
+ qemu-system-x86                                      x86_64           2:7.0.0-10.fc37                             @@System             0  
+ qemu-system-x86-core                                 x86_64           2:7.0.0-10.fc37                             @@System            33 M
+ qemu-ui-curses                                       x86_64           2:7.0.0-10.fc37                             @@System            49 k
+ qemu-ui-egl-headless                                 x86_64           2:7.0.0-10.fc37                             @@System            16 k
+ qemu-ui-gtk                                          x86_64           2:7.0.0-10.fc37                             @@System            87 k
+ qemu-ui-opengl                                       x86_64           2:7.0.0-10.fc37                             @@System            33 k
+ qemu-ui-sdl                                          x86_64           2:7.0.0-10.fc37                             @@System            46 k
+ qemu-ui-spice-app                                    x86_64           2:7.0.0-10.fc37                             @@System            16 k
+ qemu-ui-spice-core                                   x86_64           2:7.0.0-10.fc37                             @@System            69 k
+ qemu-virtiofsd                                       x86_64           2:7.0.0-10.fc37                             @@System           278 k
+ rpm-plugin-selinux                                   x86_64           4.18.0-1.fc37                               @@System            16 k
+ seabios-bin                                          noarch           1.16.0-2.fc37                               @@System           916 k
+ seavgabios-bin                                       noarch           1.16.0-2.fc37                               @@System           328 k
+ selinux-policy                                       noarch           37.14-1.fc37                                @@System            25 k
+ sgabios-bin                                          noarch           1:0.20180715git-9.fc37                      @@System           4.0 k
+ sheepdog                                             x86_64           1.0.1-18.fc37                               @@System           736 k
+ spice-glib                                           x86_64           0.41-4.fc37                                 @@System           1.2 M
+ spice-gtk3                                           x86_64           0.41-4.fc37                                 @@System           299 k
+ spice-server                                         x86_64           0.15.1-1.fc37                               @@System           1.2 M
+ swtpm                                                x86_64           0.7.3-2.20220427gitf2268ee.fc37             @@System           217 k
+ swtpm-libs                                           x86_64           0.7.3-2.20220427gitf2268ee.fc37             @@System            99 k
+ swtpm-tools                                          x86_64           0.7.3-2.20220427gitf2268ee.fc37             @@System           278 k
+ syslinux                                             x86_64           6.04-0.23.fc37                              @@System           1.1 M
+ syslinux-extlinux                                    x86_64           6.04-0.23.fc37                              @@System           208 k
+ syslinux-extlinux-nonlinux                           noarch           6.04-0.23.fc37                              @@System           983 k
+ syslinux-nonlinux                                    noarch           6.04-0.23.fc37                              @@System           1.6 M
+ systemd-container                                    x86_64           251.8-586.fc37                              @@System           1.3 M
+ trousers                                             x86_64           0.3.15-7.fc37                               @@System           362 k
+ usbredir                                             x86_64           0.12.0-3.fc37                               @@System           115 k
+ virglrenderer                                        x86_64           0.9.1-4.20210420git36391559.fc37            @@System           467 k
+ xen-libs                                             x86_64           4.16.2-2.fc37                               @@System           1.8 M
+ xen-licenses                                         x86_64           4.16.2-2.fc37                               @@System           409 k
+ xorriso                                              x86_64           1.5.4-5.fc37                                @@System           335 k
+ xz-lzma-compat                                       x86_64           5.2.5-10.fc37                               @@System            33 k
+ zfs-fuse                                             x86_64           0.7.2.2-23.fc37                             @@System           6.7 M
+
+연결 요약
+============================================================================================================================================
+삭제  160 꾸러미
+
+사용 가능한 공간 : 217 M
+연결 확인 실행 중
+연결 확인에 성공했습니다.
+연결 시험 실행 중
+연결 시험에 성공했습니다.
+연결 실행 중
+  준비 중           :                                                                                                                   1/1 
+  삭제 중           : container-selinux-2:2.191.0-1.fc37.noarch                                                                       1/160 
+  스크립트릿 실행 중: container-selinux-2:2.191.0-1.fc37.noarch                                                                       1/160 
+  삭제 중           : livecd-tools-1:31.0-2.fc37.x86_64                                                                               2/160 
+  삭제 중           : python3-imgcreate-1:31.0-2.fc37.x86_64                                                                          3/160 
+  삭제 중           : flatpak-selinux-1.14.0-2.fc37.noarch                                                                            4/160 
+  스크립트릿 실행 중: flatpak-selinux-1.14.0-2.fc37.noarch                                                                            4/160 
+  삭제 중           : gnome-boxes-43.1-1.fc37.x86_64                                                                                  5/160 
+  삭제 중           : libvirt-gobject-4.0.0-6.fc37.x86_64                                                                             6/160 
+  삭제 중           : libvirt-daemon-kvm-8.6.0-4.fc37.x86_64                                                                          7/160 
+  삭제 중           : libvirt-daemon-driver-storage-8.6.0-4.fc37.x86_64                                                               8/160 
+  스크립트릿 실행 중: libvirt-daemon-driver-qemu-8.6.0-4.fc37.x86_64                                                                  9/160 
+Removed "/etc/systemd/system/multi-user.target.wants/virtqemud.service".
+Removed "/etc/systemd/system/sockets.target.wants/virtlockd.socket".
+Removed "/etc/systemd/system/sockets.target.wants/virtlogd.socket".
+Removed "/etc/systemd/system/sockets.target.wants/virtqemud-admin.socket".
+Removed "/etc/systemd/system/sockets.target.wants/virtqemud-ro.socket".
+Removed "/etc/systemd/system/sockets.target.wants/virtqemud.socket".
+
+  삭제 중           : libvirt-daemon-driver-qemu-8.6.0-4.fc37.x86_64                                                                  9/160 
+  스크립트릿 실행 중: libvirt-daemon-driver-nodedev-8.6.0-4.fc37.x86_64                                                              10/160 
+Removed "/etc/systemd/system/sockets.target.wants/virtnodedevd.socket".
+
+  삭제 중           : libvirt-daemon-driver-nodedev-8.6.0-4.fc37.x86_64                                                              10/160 
+  스크립트릿 실행 중: libvirt-daemon-driver-interface-8.6.0-4.fc37.x86_64                                                            11/160 
+Removed "/etc/systemd/system/sockets.target.wants/virtinterfaced.socket".
+
+  삭제 중           : libvirt-daemon-driver-interface-8.6.0-4.fc37.x86_64                                                            11/160 
+  스크립트릿 실행 중: libvirt-daemon-driver-nwfilter-8.6.0-4.fc37.x86_64                                                             12/160 
+Removed "/etc/systemd/system/sockets.target.wants/virtnwfilterd.socket".
+
+  삭제 중           : libvirt-daemon-driver-nwfilter-8.6.0-4.fc37.x86_64                                                             12/160 
+  스크립트릿 실행 중: libvirt-daemon-driver-secret-8.6.0-4.fc37.x86_64                                                               13/160 
+Removed "/etc/systemd/system/sockets.target.wants/virtsecretd.socket".
+
+  삭제 중           : libvirt-daemon-driver-secret-8.6.0-4.fc37.x86_64                                                               13/160 
+  삭제 중           : libvirt-daemon-driver-storage-gluster-8.6.0-4.fc37.x86_64                                                      14/160 
+  삭제 중           : glusterfs-cli-10.3-1.fc37.x86_64                                                                               15/160 
+  삭제 중           : libvirt-daemon-driver-storage-rbd-8.6.0-4.fc37.x86_64                                                          16/160 
+  삭제 중           : glusterfs-fuse-10.3-1.fc37.x86_64                                                                              17/160 
+  삭제 중           : glusterfs-10.3-1.fc37.x86_64                                                                                   18/160 
+경고: 파일 metrics: 제거 실패: 그런 파일이나 디렉터리가 없습니다
+
+  스크립트릿 실행 중: glusterfs-10.3-1.fc37.x86_64                                                                                   18/160 
+  삭제 중           : libvirt-daemon-driver-storage-zfs-8.6.0-4.fc37.x86_64                                                          19/160 
+  삭제 중           : libvirt-daemon-driver-storage-iscsi-direct-8.6.0-4.fc37.x86_64                                                 20/160 
+  삭제 중           : libvirt-daemon-driver-storage-scsi-8.6.0-4.fc37.x86_64                                                         21/160 
+  삭제 중           : libvirt-daemon-driver-storage-sheepdog-8.6.0-4.fc37.x86_64                                                     22/160 
+  삭제 중           : spice-gtk3-0.41-4.fc37.x86_64                                                                                  23/160 
+  삭제 중           : spice-glib-0.41-4.fc37.x86_64                                                                                  24/160 
+  스크립트릿 실행 중: sheepdog-1.0.1-18.fc37.x86_64                                                                                  25/160 
+  삭제 중           : sheepdog-1.0.1-18.fc37.x86_64                                                                                  25/160 
+  스크립트릿 실행 중: sheepdog-1.0.1-18.fc37.x86_64                                                                                  25/160 
+  삭제 중           : libvirt-daemon-driver-storage-disk-8.6.0-4.fc37.x86_64                                                         26/160 
+  삭제 중           : libvirt-daemon-driver-storage-iscsi-8.6.0-4.fc37.x86_64                                                        27/160 
+  삭제 중           : libvirt-daemon-driver-storage-logical-8.6.0-4.fc37.x86_64                                                      28/160 
+  삭제 중           : libvirt-daemon-driver-storage-mpath-8.6.0-4.fc37.x86_64                                                        29/160 
+  스크립트릿 실행 중: libvirt-daemon-driver-storage-core-8.6.0-4.fc37.x86_64                                                         30/160 
+Removed "/etc/systemd/system/sockets.target.wants/virtstoraged.socket".
+
+  삭제 중           : libvirt-daemon-driver-storage-core-8.6.0-4.fc37.x86_64                                                         30/160 
+  삭제 중           : jxl-pixbuf-loader-1:0.7.0-3.fc37.x86_64                                                                        31/160 
+  삭제 중           : libvirt-daemon-config-network-8.6.0-4.fc37.x86_64                                                              32/160 
+  삭제 중           : qemu-kvm-2:7.0.0-10.fc37.x86_64                                                                                33/160 
+  삭제 중           : qemu-system-x86-2:7.0.0-10.fc37.x86_64                                                                         34/160 
+  삭제 중           : livecd-iso-to-mediums-1:31.0-2.fc37.x86_64                                                                     35/160 
+  삭제 중           : python-imgcreate-sysdeps-1:31.0-2.fc37.x86_64                                                                  36/160 
+  삭제 중           : lorax-37.8-1.fc37.x86_64                                                                                       37/160 
+  삭제 중           : lorax-templates-generic-37.8-1.fc37.x86_64                                                                     38/160 
+  삭제 중           : python3-urlgrabber-4.1.0-11.fc37.noarch                                                                        39/160 
+  스크립트릿 실행 중: libvirt-daemon-driver-network-8.6.0-4.fc37.x86_64                                                              40/160 
+Removed "/etc/systemd/system/sockets.target.wants/virtnetworkd.socket".
+
+  삭제 중           : libvirt-daemon-driver-network-8.6.0-4.fc37.x86_64                                                              40/160 
+  스크립트릿 실행 중: libvirt-daemon-driver-network-8.6.0-4.fc37.x86_64                                                              40/160 
+  스크립트릿 실행 중: libvirt-daemon-8.6.0-4.fc37.x86_64                                                                             41/160 
+Removed "/etc/systemd/system/sockets.target.wants/virtproxyd.socket".
+
+  삭제 중           : libvirt-daemon-8.6.0-4.fc37.x86_64                                                                             41/160 
+  스크립트릿 실행 중: libvirt-daemon-8.6.0-4.fc37.x86_64                                                                             41/160 
+  삭제 중           : qemu-system-x86-core-2:7.0.0-10.fc37.x86_64                                                                    42/160 
+  삭제 중           : qemu-device-display-qxl-2:7.0.0-10.fc37.x86_64                                                                 43/160 
+  삭제 중           : qemu-audio-spice-2:7.0.0-10.fc37.x86_64                                                                        44/160 
+  스크립트릿 실행 중: xorriso-1.5.4-5.fc37.x86_64                                                                                    45/160 
+  삭제 중           : xorriso-1.5.4-5.fc37.x86_64                                                                                    45/160 
+  삭제 중           : qemu-block-gluster-2:7.0.0-10.fc37.x86_64                                                                      46/160 
+  삭제 중           : libgfapi0-10.3-1.fc37.x86_64                                                                                   47/160 
+  삭제 중           : glusterfs-client-xlators-10.3-1.fc37.x86_64                                                                    48/160 
+  삭제 중           : libisoburn-1.5.4-5.fc37.x86_64                                                                                 49/160 
+  삭제 중           : qemu-block-ssh-2:7.0.0-10.fc37.x86_64                                                                          50/160 
+  삭제 중           : qemu-block-rbd-2:7.0.0-10.fc37.x86_64                                                                          51/160 
+  삭제 중           : librbd1-2:17.2.5-1.fc37.x86_64                                                                                 52/160 
+  스크립트릿 실행 중: librbd1-2:17.2.5-1.fc37.x86_64                                                                                 52/160 
+  삭제 중           : librados2-2:17.2.5-1.fc37.x86_64                                                                               53/160 
+  스크립트릿 실행 중: librados2-2:17.2.5-1.fc37.x86_64                                                                               53/160 
+  삭제 중           : lttng-ust-2.13.3-3.fc37.x86_64                                                                                 54/160 
+  삭제 중           : libpmemobj-1.12.0-1.fc37.x86_64                                                                                55/160 
+  삭제 중           : qemu-device-usb-redirect-2:7.0.0-10.fc37.x86_64                                                                56/160 
+  삭제 중           : qemu-ui-sdl-2:7.0.0-10.fc37.x86_64                                                                             57/160 
+  삭제 중           : qemu-ui-spice-app-2:7.0.0-10.fc37.x86_64                                                                       58/160 
+  삭제 중           : qemu-char-spice-2:7.0.0-10.fc37.x86_64                                                                         59/160 
+  삭제 중           : qemu-ui-spice-core-2:7.0.0-10.fc37.x86_64                                                                      60/160 
+  삭제 중           : swtpm-tools-0.7.3-2.20220427gitf2268ee.fc37.x86_64                                                             61/160 
+  삭제 중           : swtpm-0.7.3-2.20220427gitf2268ee.fc37.x86_64                                                                   62/160 
+  스크립트릿 실행 중: swtpm-0.7.3-2.20220427gitf2268ee.fc37.x86_64                                                                   62/160 
+  삭제 중           : swtpm-libs-0.7.3-2.20220427gitf2268ee.fc37.x86_64                                                              63/160 
+  삭제 중           : gnutls-utils-3.7.8-3.fc37.x86_64                                                                               64/160 
+  삭제 중           : libvirt-glib-4.0.0-6.fc37.x86_64                                                                               65/160 
+  삭제 중           : libvirt-libs-8.6.0-4.fc37.x86_64                                                                               66/160 
+  스크립트릿 실행 중: genisoimage-1.1.11-50.fc37.x86_64                                                                              67/160 
+  삭제 중           : genisoimage-1.1.11-50.fc37.x86_64                                                                              67/160 
+  스크립트릿 실행 중: selinux-policy-37.14-1.fc37.noarch                                                                             68/160 
+  삭제 중           : selinux-policy-37.14-1.fc37.noarch                                                                             68/160 
+  스크립트릿 실행 중: selinux-policy-37.14-1.fc37.noarch                                                                             68/160 
+  삭제 중           : SDL2_image-2.6.1-1.fc37.x86_64                                                                                 69/160 
+  삭제 중           : libjxl-1:0.7.0-3.fc37.x86_64                                                                                   70/160 
+  삭제 중           : syslinux-extlinux-6.04-0.23.fc37.x86_64                                                                        71/160 
+  삭제 중           : qemu-block-iscsi-2:7.0.0-10.fc37.x86_64                                                                        72/160 
+  삭제 중           : libiscsi-1.19.0-6.fc37.x86_64                                                                                  73/160 
+  스크립트릿 실행 중: libiscsi-1.19.0-6.fc37.x86_64                                                                                  73/160 
+  삭제 중           : qemu-block-nfs-2:7.0.0-10.fc37.x86_64                                                                          74/160 
+  삭제 중           : qemu-device-display-vhost-user-gpu-2:7.0.0-10.fc37.x86_64                                                      75/160 
+  삭제 중           : qemu-device-display-virtio-gpu-gl-2:7.0.0-10.fc37.x86_64                                                       76/160 
+  삭제 중           : qemu-device-usb-smartcard-2:7.0.0-10.fc37.x86_64                                                               77/160 
+  삭제 중           : qemu-pr-helper-2:7.0.0-10.fc37.x86_64                                                                          78/160 
+  삭제 중           : qemu-ui-egl-headless-2:7.0.0-10.fc37.x86_64                                                                    79/160 
+  삭제 중           : qemu-ui-gtk-2:7.0.0-10.fc37.x86_64                                                                             80/160 
+  삭제 중           : libglusterd0-10.3-1.fc37.x86_64                                                                                81/160 
+  삭제 중           : syslinux-extlinux-nonlinux-6.04-0.23.fc37.noarch                                                               82/160 
+  삭제 중           : libgfrpc0-10.3-1.fc37.x86_64                                                                                   83/160 
+  삭제 중           : libgfxdr0-10.3-1.fc37.x86_64                                                                                   84/160 
+  삭제 중           : libglusterfs0-10.3-1.fc37.x86_64                                                                               85/160 
+  삭제 중           : syslinux-6.04-0.23.fc37.x86_64                                                                                 86/160 
+  삭제 중           : qemu-ui-opengl-2:7.0.0-10.fc37.x86_64                                                                          87/160 
+  삭제 중           : libssh-0.10.4-2.fc37.x86_64                                                                                    88/160 
+  삭제 중           : xen-libs-4.16.2-2.fc37.x86_64                                                                                  89/160 
+  삭제 중           : iproute-tc-5.18.0-2.fc37.x86_64                                                                                90/160 
+  삭제 중           : qemu-audio-alsa-2:7.0.0-10.fc37.x86_64                                                                         91/160 
+  삭제 중           : qemu-audio-dbus-2:7.0.0-10.fc37.x86_64                                                                         92/160 
+  삭제 중           : qemu-audio-jack-2:7.0.0-10.fc37.x86_64                                                                         93/160 
+  삭제 중           : qemu-audio-oss-2:7.0.0-10.fc37.x86_64                                                                          94/160 
+  삭제 중           : qemu-audio-pa-2:7.0.0-10.fc37.x86_64                                                                           95/160 
+  삭제 중           : qemu-audio-sdl-2:7.0.0-10.fc37.x86_64                                                                          96/160 
+  삭제 중           : qemu-block-curl-2:7.0.0-10.fc37.x86_64                                                                         97/160 
+  삭제 중           : qemu-block-dmg-2:7.0.0-10.fc37.x86_64                                                                          98/160 
+  삭제 중           : qemu-char-baum-2:7.0.0-10.fc37.x86_64                                                                          99/160 
+  삭제 중           : qemu-device-display-virtio-gpu-2:7.0.0-10.fc37.x86_64                                                         100/160 
+  삭제 중           : qemu-device-display-virtio-gpu-ccw-2:7.0.0-10.fc37.x86_64                                                     101/160 
+  삭제 중           : qemu-device-display-virtio-gpu-pci-2:7.0.0-10.fc37.x86_64                                                     102/160 
+  삭제 중           : qemu-device-display-virtio-gpu-pci-gl-2:7.0.0-10.fc37.x86_64                                                  103/160 
+  삭제 중           : qemu-device-display-virtio-vga-2:7.0.0-10.fc37.x86_64                                                         104/160 
+  삭제 중           : qemu-device-display-virtio-vga-gl-2:7.0.0-10.fc37.x86_64                                                      105/160 
+  삭제 중           : qemu-device-usb-host-2:7.0.0-10.fc37.x86_64                                                                   106/160 
+  삭제 중           : qemu-ui-curses-2:7.0.0-10.fc37.x86_64                                                                         107/160 
+  삭제 중           : qemu-common-2:7.0.0-10.fc37.x86_64                                                                            108/160 
+  삭제 중           : corosynclib-3.1.6-4.fc37.x86_64                                                                               109/160 
+  삭제 중           : ipxe-roms-qemu-20220210-2.git64113751.fc37.noarch                                                             110/160 
+  삭제 중           : xen-licenses-4.16.2-2.fc37.x86_64                                                                             111/160 
+  삭제 중           : libssh-config-0.10.4-2.fc37.noarch                                                                            112/160 
+  삭제 중           : syslinux-nonlinux-6.04-0.23.fc37.noarch                                                                       113/160 
+  삭제 중           : selinux-policy-targeted-37.14-1.fc37.noarch                                                                   114/160 
+  스크립트릿 실행 중: selinux-policy-targeted-37.14-1.fc37.noarch                                                                   114/160 
+  삭제 중           : kde-filesystem-4-68.fc37.x86_64                                                                               115/160 
+  삭제 중           : kf5-filesystem-5.99.0-1.fc37.x86_64                                                                           116/160 
+  삭제 중           : edk2-ovmf-20220826gitba0e0e4c6a17-1.fc37.noarch                                                               117/160 
+  삭제 중           : seabios-bin-1.16.0-2.fc37.noarch                                                                              118/160 
+  삭제 중           : seavgabios-bin-1.16.0-2.fc37.noarch                                                                           119/160 
+  삭제 중           : sgabios-bin-1:0.20180715git-9.fc37.noarch                                                                     120/160 
+  삭제 중           : libqb-2.0.6-3.fc37.x86_64                                                                                     121/160 
+  삭제 중           : linux-atm-libs-2.5.1-33.fc37.x86_64                                                                           122/160 
+  삭제 중           : gperftools-libs-2.9.1-4.fc37.x86_64                                                                           123/160 
+  삭제 중           : device-mapper-multipath-libs-0.9.0-3.fc37.x86_64                                                              124/160 
+  삭제 중           : libcacard-3:2.8.1-3.fc37.x86_64                                                                               125/160 
+  삭제 중           : virglrenderer-0.9.1-4.20210420git36391559.fc37.x86_64                                                         126/160 
+  삭제 중           : libnfs-4.0.0-7.fc37.x86_64                                                                                    127/160 
+  삭제 중           : librdmacm-41.0-1.fc37.x86_64                                                                                  128/160 
+  삭제 중           : highway-1.0.1-1.fc37.x86_64                                                                                   129/160 
+  삭제 중           : libusal-1.1.11-50.fc37.x86_64                                                                                 130/160 
+  스크립트릿 실행 중: cyrus-sasl-2.1.28-8.fc37.x86_64                                                                               131/160 
+  삭제 중           : cyrus-sasl-2.1.28-8.fc37.x86_64                                                                               131/160 
+  스크립트릿 실행 중: cyrus-sasl-2.1.28-8.fc37.x86_64                                                                               131/160 
+  삭제 중           : numactl-libs-2.0.14-6.fc37.x86_64                                                                             132/160 
+  삭제 중           : libssh2-1.10.0-5.fc37.x86_64                                                                                  133/160 
+  삭제 중           : libwsman1-2.7.1-7.fc37.x86_64                                                                                 134/160 
+  삭제 중           : gnutls-dane-3.7.8-3.fc37.x86_64                                                                               135/160 
+  삭제 중           : libtpms-0.9.5-2.fc37.x86_64                                                                                   136/160 
+  스크립트릿 실행 중: trousers-0.3.15-7.fc37.x86_64                                                                                 137/160 
+  삭제 중           : trousers-0.3.15-7.fc37.x86_64                                                                                 137/160 
+  스크립트릿 실행 중: trousers-0.3.15-7.fc37.x86_64                                                                                 137/160 
+  삭제 중           : spice-server-0.15.1-1.fc37.x86_64                                                                             138/160 
+  삭제 중           : usbredir-0.12.0-3.fc37.x86_64                                                                                 139/160 
+  삭제 중           : libpmem-1.12.0-1.fc37.x86_64                                                                                  140/160 
+  삭제 중           : fmt-9.1.0-1.fc37.x86_64                                                                                       141/160 
+  삭제 중           : libburn-1.5.4-5.fc37.x86_64                                                                                   142/160 
+  삭제 중           : libisofs-1.5.4-4.fc37.x86_64                                                                                  143/160 
+  삭제 중           : capstone-4.0.2-10.fc37.x86_64                                                                                 144/160 
+  삭제 중           : libfdt-1.6.1-5.fc37.x86_64                                                                                    145/160 
+  스크립트릿 실행 중: numad-0.5-37.20150602git.fc37.x86_64                                                                          146/160 
+  삭제 중           : numad-0.5-37.20150602git.fc37.x86_64                                                                          146/160 
+  스크립트릿 실행 중: numad-0.5-37.20150602git.fc37.x86_64                                                                          146/160 
+  삭제 중           : pbzip2-1.1.13-7.fc37.x86_64                                                                                   147/160 
+  삭제 중           : python3-librepo-1.14.4-1.fc37.x86_64                                                                          148/160 
+  삭제 중           : python3-pycdio-2.1.0-9.fc37.x86_64                                                                            149/160 
+  삭제 중           : xz-lzma-compat-5.2.5-10.fc37.x86_64                                                                           150/160 
+  삭제 중           : dumpet-2.1-25.fc37.x86_64                                                                                     151/160 
+  삭제 중           : qemu-virtiofsd-2:7.0.0-10.fc37.x86_64                                                                         152/160 
+  삭제 중           : qemu-img-2:7.0.0-10.fc37.x86_64                                                                               153/160 
+  삭제 중           : libphodav-3.0-3.fc37.x86_64                                                                                   154/160 
+  스크립트릿 실행 중: zfs-fuse-0.7.2.2-23.fc37.x86_64                                                                               155/160 
+  삭제 중           : zfs-fuse-0.7.2.2-23.fc37.x86_64                                                                               155/160 
+  스크립트릿 실행 중: zfs-fuse-0.7.2.2-23.fc37.x86_64                                                                               155/160 
+Removing files since we removed the last package
+
+  삭제 중           : mdevctl-1.2.0-1.fc37.x86_64                                                                                   156/160 
+  삭제 중           : lzop-1.04-9.fc37.x86_64                                                                                       157/160 
+  삭제 중           : systemd-container-251.8-586.fc37.x86_64                                                                       158/160 
+  삭제 중           : libvirt-gconfig-4.0.0-6.fc37.x86_64                                                                           159/160 
+  삭제 중           : rpm-plugin-selinux-4.18.0-1.fc37.x86_64                                                                       160/160 
+  스크립트릿 실행 중: rpm-plugin-selinux-4.18.0-1.fc37.x86_64                                                                       160/160 
+  확인 중           : SDL2_image-2.6.1-1.fc37.x86_64                                                                                  1/160 
+  확인 중           : capstone-4.0.2-10.fc37.x86_64                                                                                   2/160 
+  확인 중           : container-selinux-2:2.191.0-1.fc37.noarch                                                                       3/160 
+  확인 중           : corosynclib-3.1.6-4.fc37.x86_64                                                                                 4/160 
+  확인 중           : cyrus-sasl-2.1.28-8.fc37.x86_64                                                                                 5/160 
+  확인 중           : device-mapper-multipath-libs-0.9.0-3.fc37.x86_64                                                                6/160 
+  확인 중           : dumpet-2.1-25.fc37.x86_64                                                                                       7/160 
+  확인 중           : edk2-ovmf-20220826gitba0e0e4c6a17-1.fc37.noarch                                                                 8/160 
+  확인 중           : flatpak-selinux-1.14.0-2.fc37.noarch                                                                            9/160 
+  확인 중           : fmt-9.1.0-1.fc37.x86_64                                                                                        10/160 
+  확인 중           : genisoimage-1.1.11-50.fc37.x86_64                                                                              11/160 
+  확인 중           : glusterfs-10.3-1.fc37.x86_64                                                                                   12/160 
+  확인 중           : glusterfs-cli-10.3-1.fc37.x86_64                                                                               13/160 
+  확인 중           : glusterfs-client-xlators-10.3-1.fc37.x86_64                                                                    14/160 
+  확인 중           : glusterfs-fuse-10.3-1.fc37.x86_64                                                                              15/160 
+  확인 중           : gnome-boxes-43.1-1.fc37.x86_64                                                                                 16/160 
+  확인 중           : gnutls-dane-3.7.8-3.fc37.x86_64                                                                                17/160 
+  확인 중           : gnutls-utils-3.7.8-3.fc37.x86_64                                                                               18/160 
+  확인 중           : gperftools-libs-2.9.1-4.fc37.x86_64                                                                            19/160 
+  확인 중           : highway-1.0.1-1.fc37.x86_64                                                                                    20/160 
+  확인 중           : iproute-tc-5.18.0-2.fc37.x86_64                                                                                21/160 
+  확인 중           : ipxe-roms-qemu-20220210-2.git64113751.fc37.noarch                                                              22/160 
+  확인 중           : jxl-pixbuf-loader-1:0.7.0-3.fc37.x86_64                                                                        23/160 
+  확인 중           : kde-filesystem-4-68.fc37.x86_64                                                                                24/160 
+  확인 중           : kf5-filesystem-5.99.0-1.fc37.x86_64                                                                            25/160 
+  확인 중           : libburn-1.5.4-5.fc37.x86_64                                                                                    26/160 
+  확인 중           : libcacard-3:2.8.1-3.fc37.x86_64                                                                                27/160 
+  확인 중           : libfdt-1.6.1-5.fc37.x86_64                                                                                     28/160 
+  확인 중           : libgfapi0-10.3-1.fc37.x86_64                                                                                   29/160 
+  확인 중           : libgfrpc0-10.3-1.fc37.x86_64                                                                                   30/160 
+  확인 중           : libgfxdr0-10.3-1.fc37.x86_64                                                                                   31/160 
+  확인 중           : libglusterd0-10.3-1.fc37.x86_64                                                                                32/160 
+  확인 중           : libglusterfs0-10.3-1.fc37.x86_64                                                                               33/160 
+  확인 중           : libiscsi-1.19.0-6.fc37.x86_64                                                                                  34/160 
+  확인 중           : libisoburn-1.5.4-5.fc37.x86_64                                                                                 35/160 
+  확인 중           : libisofs-1.5.4-4.fc37.x86_64                                                                                   36/160 
+  확인 중           : libjxl-1:0.7.0-3.fc37.x86_64                                                                                   37/160 
+  확인 중           : libnfs-4.0.0-7.fc37.x86_64                                                                                     38/160 
+  확인 중           : libphodav-3.0-3.fc37.x86_64                                                                                    39/160 
+  확인 중           : libpmem-1.12.0-1.fc37.x86_64                                                                                   40/160 
+  확인 중           : libpmemobj-1.12.0-1.fc37.x86_64                                                                                41/160 
+  확인 중           : libqb-2.0.6-3.fc37.x86_64                                                                                      42/160 
+  확인 중           : librados2-2:17.2.5-1.fc37.x86_64                                                                               43/160 
+  확인 중           : librbd1-2:17.2.5-1.fc37.x86_64                                                                                 44/160 
+  확인 중           : librdmacm-41.0-1.fc37.x86_64                                                                                   45/160 
+  확인 중           : libssh-0.10.4-2.fc37.x86_64                                                                                    46/160 
+  확인 중           : libssh-config-0.10.4-2.fc37.noarch                                                                             47/160 
+  확인 중           : libssh2-1.10.0-5.fc37.x86_64                                                                                   48/160 
+  확인 중           : libtpms-0.9.5-2.fc37.x86_64                                                                                    49/160 
+  확인 중           : libusal-1.1.11-50.fc37.x86_64                                                                                  50/160 
+  확인 중           : libvirt-daemon-8.6.0-4.fc37.x86_64                                                                             51/160 
+  확인 중           : libvirt-daemon-config-network-8.6.0-4.fc37.x86_64                                                              52/160 
+  확인 중           : libvirt-daemon-driver-interface-8.6.0-4.fc37.x86_64                                                            53/160 
+  확인 중           : libvirt-daemon-driver-network-8.6.0-4.fc37.x86_64                                                              54/160 
+  확인 중           : libvirt-daemon-driver-nodedev-8.6.0-4.fc37.x86_64                                                              55/160 
+  확인 중           : libvirt-daemon-driver-nwfilter-8.6.0-4.fc37.x86_64                                                             56/160 
+  확인 중           : libvirt-daemon-driver-qemu-8.6.0-4.fc37.x86_64                                                                 57/160 
+  확인 중           : libvirt-daemon-driver-secret-8.6.0-4.fc37.x86_64                                                               58/160 
+  확인 중           : libvirt-daemon-driver-storage-8.6.0-4.fc37.x86_64                                                              59/160 
+  확인 중           : libvirt-daemon-driver-storage-core-8.6.0-4.fc37.x86_64                                                         60/160 
+  확인 중           : libvirt-daemon-driver-storage-disk-8.6.0-4.fc37.x86_64                                                         61/160 
+  확인 중           : libvirt-daemon-driver-storage-gluster-8.6.0-4.fc37.x86_64                                                      62/160 
+  확인 중           : libvirt-daemon-driver-storage-iscsi-8.6.0-4.fc37.x86_64                                                        63/160 
+  확인 중           : libvirt-daemon-driver-storage-iscsi-direct-8.6.0-4.fc37.x86_64                                                 64/160 
+  확인 중           : libvirt-daemon-driver-storage-logical-8.6.0-4.fc37.x86_64                                                      65/160 
+  확인 중           : libvirt-daemon-driver-storage-mpath-8.6.0-4.fc37.x86_64                                                        66/160 
+  확인 중           : libvirt-daemon-driver-storage-rbd-8.6.0-4.fc37.x86_64                                                          67/160 
+  확인 중           : libvirt-daemon-driver-storage-scsi-8.6.0-4.fc37.x86_64                                                         68/160 
+  확인 중           : libvirt-daemon-driver-storage-sheepdog-8.6.0-4.fc37.x86_64                                                     69/160 
+  확인 중           : libvirt-daemon-driver-storage-zfs-8.6.0-4.fc37.x86_64                                                          70/160 
+  확인 중           : libvirt-daemon-kvm-8.6.0-4.fc37.x86_64                                                                         71/160 
+  확인 중           : libvirt-gconfig-4.0.0-6.fc37.x86_64                                                                            72/160 
+  확인 중           : libvirt-glib-4.0.0-6.fc37.x86_64                                                                               73/160 
+  확인 중           : libvirt-gobject-4.0.0-6.fc37.x86_64                                                                            74/160 
+  확인 중           : libvirt-libs-8.6.0-4.fc37.x86_64                                                                               75/160 
+  확인 중           : libwsman1-2.7.1-7.fc37.x86_64                                                                                  76/160 
+  확인 중           : linux-atm-libs-2.5.1-33.fc37.x86_64                                                                            77/160 
+  확인 중           : livecd-iso-to-mediums-1:31.0-2.fc37.x86_64                                                                     78/160 
+  확인 중           : livecd-tools-1:31.0-2.fc37.x86_64                                                                              79/160 
+  확인 중           : lorax-37.8-1.fc37.x86_64                                                                                       80/160 
+  확인 중           : lorax-templates-generic-37.8-1.fc37.x86_64                                                                     81/160 
+  확인 중           : lttng-ust-2.13.3-3.fc37.x86_64                                                                                 82/160 
+  확인 중           : lzop-1.04-9.fc37.x86_64                                                                                        83/160 
+  확인 중           : mdevctl-1.2.0-1.fc37.x86_64                                                                                    84/160 
+  확인 중           : numactl-libs-2.0.14-6.fc37.x86_64                                                                              85/160 
+  확인 중           : numad-0.5-37.20150602git.fc37.x86_64                                                                           86/160 
+  확인 중           : pbzip2-1.1.13-7.fc37.x86_64                                                                                    87/160 
+  확인 중           : python-imgcreate-sysdeps-1:31.0-2.fc37.x86_64                                                                  88/160 
+  확인 중           : python3-imgcreate-1:31.0-2.fc37.x86_64                                                                         89/160 
+  확인 중           : python3-librepo-1.14.4-1.fc37.x86_64                                                                           90/160 
+  확인 중           : python3-pycdio-2.1.0-9.fc37.x86_64                                                                             91/160 
+  확인 중           : python3-urlgrabber-4.1.0-11.fc37.noarch                                                                        92/160 
+  확인 중           : qemu-audio-alsa-2:7.0.0-10.fc37.x86_64                                                                         93/160 
+  확인 중           : qemu-audio-dbus-2:7.0.0-10.fc37.x86_64                                                                         94/160 
+  확인 중           : qemu-audio-jack-2:7.0.0-10.fc37.x86_64                                                                         95/160 
+  확인 중           : qemu-audio-oss-2:7.0.0-10.fc37.x86_64                                                                          96/160 
+  확인 중           : qemu-audio-pa-2:7.0.0-10.fc37.x86_64                                                                           97/160 
+  확인 중           : qemu-audio-sdl-2:7.0.0-10.fc37.x86_64                                                                          98/160 
+  확인 중           : qemu-audio-spice-2:7.0.0-10.fc37.x86_64                                                                        99/160 
+  확인 중           : qemu-block-curl-2:7.0.0-10.fc37.x86_64                                                                        100/160 
+  확인 중           : qemu-block-dmg-2:7.0.0-10.fc37.x86_64                                                                         101/160 
+  확인 중           : qemu-block-gluster-2:7.0.0-10.fc37.x86_64                                                                     102/160 
+  확인 중           : qemu-block-iscsi-2:7.0.0-10.fc37.x86_64                                                                       103/160 
+  확인 중           : qemu-block-nfs-2:7.0.0-10.fc37.x86_64                                                                         104/160 
+  확인 중           : qemu-block-rbd-2:7.0.0-10.fc37.x86_64                                                                         105/160 
+  확인 중           : qemu-block-ssh-2:7.0.0-10.fc37.x86_64                                                                         106/160 
+  확인 중           : qemu-char-baum-2:7.0.0-10.fc37.x86_64                                                                         107/160 
+  확인 중           : qemu-char-spice-2:7.0.0-10.fc37.x86_64                                                                        108/160 
+  확인 중           : qemu-common-2:7.0.0-10.fc37.x86_64                                                                            109/160 
+  확인 중           : qemu-device-display-qxl-2:7.0.0-10.fc37.x86_64                                                                110/160 
+  확인 중           : qemu-device-display-vhost-user-gpu-2:7.0.0-10.fc37.x86_64                                                     111/160 
+  확인 중           : qemu-device-display-virtio-gpu-2:7.0.0-10.fc37.x86_64                                                         112/160 
+  확인 중           : qemu-device-display-virtio-gpu-ccw-2:7.0.0-10.fc37.x86_64                                                     113/160 
+  확인 중           : qemu-device-display-virtio-gpu-gl-2:7.0.0-10.fc37.x86_64                                                      114/160 
+  확인 중           : qemu-device-display-virtio-gpu-pci-2:7.0.0-10.fc37.x86_64                                                     115/160 
+  확인 중           : qemu-device-display-virtio-gpu-pci-gl-2:7.0.0-10.fc37.x86_64                                                  116/160 
+  확인 중           : qemu-device-display-virtio-vga-2:7.0.0-10.fc37.x86_64                                                         117/160 
+  확인 중           : qemu-device-display-virtio-vga-gl-2:7.0.0-10.fc37.x86_64                                                      118/160 
+  확인 중           : qemu-device-usb-host-2:7.0.0-10.fc37.x86_64                                                                   119/160 
+  확인 중           : qemu-device-usb-redirect-2:7.0.0-10.fc37.x86_64                                                               120/160 
+  확인 중           : qemu-device-usb-smartcard-2:7.0.0-10.fc37.x86_64                                                              121/160 
+  확인 중           : qemu-img-2:7.0.0-10.fc37.x86_64                                                                               122/160 
+  확인 중           : qemu-kvm-2:7.0.0-10.fc37.x86_64                                                                               123/160 
+  확인 중           : qemu-pr-helper-2:7.0.0-10.fc37.x86_64                                                                         124/160 
+  확인 중           : qemu-system-x86-2:7.0.0-10.fc37.x86_64                                                                        125/160 
+  확인 중           : qemu-system-x86-core-2:7.0.0-10.fc37.x86_64                                                                   126/160 
+  확인 중           : qemu-ui-curses-2:7.0.0-10.fc37.x86_64                                                                         127/160 
+  확인 중           : qemu-ui-egl-headless-2:7.0.0-10.fc37.x86_64                                                                   128/160 
+  확인 중           : qemu-ui-gtk-2:7.0.0-10.fc37.x86_64                                                                            129/160 
+  확인 중           : qemu-ui-opengl-2:7.0.0-10.fc37.x86_64                                                                         130/160 
+  확인 중           : qemu-ui-sdl-2:7.0.0-10.fc37.x86_64                                                                            131/160 
+  확인 중           : qemu-ui-spice-app-2:7.0.0-10.fc37.x86_64                                                                      132/160 
+  확인 중           : qemu-ui-spice-core-2:7.0.0-10.fc37.x86_64                                                                     133/160 
+  확인 중           : qemu-virtiofsd-2:7.0.0-10.fc37.x86_64                                                                         134/160 
+  확인 중           : rpm-plugin-selinux-4.18.0-1.fc37.x86_64                                                                       135/160 
+  확인 중           : seabios-bin-1.16.0-2.fc37.noarch                                                                              136/160 
+  확인 중           : seavgabios-bin-1.16.0-2.fc37.noarch                                                                           137/160 
+  확인 중           : selinux-policy-37.14-1.fc37.noarch                                                                            138/160 
+  확인 중           : selinux-policy-targeted-37.14-1.fc37.noarch                                                                   139/160 
+  확인 중           : sgabios-bin-1:0.20180715git-9.fc37.noarch                                                                     140/160 
+  확인 중           : sheepdog-1.0.1-18.fc37.x86_64                                                                                 141/160 
+  확인 중           : spice-glib-0.41-4.fc37.x86_64                                                                                 142/160 
+  확인 중           : spice-gtk3-0.41-4.fc37.x86_64                                                                                 143/160 
+  확인 중           : spice-server-0.15.1-1.fc37.x86_64                                                                             144/160 
+  확인 중           : swtpm-0.7.3-2.20220427gitf2268ee.fc37.x86_64                                                                  145/160 
+  확인 중           : swtpm-libs-0.7.3-2.20220427gitf2268ee.fc37.x86_64                                                             146/160 
+  확인 중           : swtpm-tools-0.7.3-2.20220427gitf2268ee.fc37.x86_64                                                            147/160 
+  확인 중           : syslinux-6.04-0.23.fc37.x86_64                                                                                148/160 
+  확인 중           : syslinux-extlinux-6.04-0.23.fc37.x86_64                                                                       149/160 
+  확인 중           : syslinux-extlinux-nonlinux-6.04-0.23.fc37.noarch                                                              150/160 
+  확인 중           : syslinux-nonlinux-6.04-0.23.fc37.noarch                                                                       151/160 
+  확인 중           : systemd-container-251.8-586.fc37.x86_64                                                                       152/160 
+  확인 중           : trousers-0.3.15-7.fc37.x86_64                                                                                 153/160 
+  확인 중           : usbredir-0.12.0-3.fc37.x86_64                                                                                 154/160 
+  확인 중           : virglrenderer-0.9.1-4.20210420git36391559.fc37.x86_64                                                         155/160 
+  확인 중           : xen-libs-4.16.2-2.fc37.x86_64                                                                                 156/160 
+  확인 중           : xen-licenses-4.16.2-2.fc37.x86_64                                                                             157/160 
+  확인 중           : xorriso-1.5.4-5.fc37.x86_64                                                                                   158/160 
+  확인 중           : xz-lzma-compat-5.2.5-10.fc37.x86_64                                                                           159/160 
+  확인 중           : zfs-fuse-0.7.2.2-23.fc37.x86_64                                                                               160/160 
+
+제거되었습니다:
+  SDL2_image-2.6.1-1.fc37.x86_64                                     capstone-4.0.2-10.fc37.x86_64                                         
+  container-selinux-2:2.191.0-1.fc37.noarch                          corosynclib-3.1.6-4.fc37.x86_64                                       
+  cyrus-sasl-2.1.28-8.fc37.x86_64                                    device-mapper-multipath-libs-0.9.0-3.fc37.x86_64                      
+  dumpet-2.1-25.fc37.x86_64                                          edk2-ovmf-20220826gitba0e0e4c6a17-1.fc37.noarch                       
+  flatpak-selinux-1.14.0-2.fc37.noarch                               fmt-9.1.0-1.fc37.x86_64                                               
+  genisoimage-1.1.11-50.fc37.x86_64                                  glusterfs-10.3-1.fc37.x86_64                                          
+  glusterfs-cli-10.3-1.fc37.x86_64                                   glusterfs-client-xlators-10.3-1.fc37.x86_64                           
+  glusterfs-fuse-10.3-1.fc37.x86_64                                  gnome-boxes-43.1-1.fc37.x86_64                                        
+  gnutls-dane-3.7.8-3.fc37.x86_64                                    gnutls-utils-3.7.8-3.fc37.x86_64                                      
+  gperftools-libs-2.9.1-4.fc37.x86_64                                highway-1.0.1-1.fc37.x86_64                                           
+  iproute-tc-5.18.0-2.fc37.x86_64                                    ipxe-roms-qemu-20220210-2.git64113751.fc37.noarch                     
+  jxl-pixbuf-loader-1:0.7.0-3.fc37.x86_64                            kde-filesystem-4-68.fc37.x86_64                                       
+  kf5-filesystem-5.99.0-1.fc37.x86_64                                libburn-1.5.4-5.fc37.x86_64                                           
+  libcacard-3:2.8.1-3.fc37.x86_64                                    libfdt-1.6.1-5.fc37.x86_64                                            
+  libgfapi0-10.3-1.fc37.x86_64                                       libgfrpc0-10.3-1.fc37.x86_64                                          
+  libgfxdr0-10.3-1.fc37.x86_64                                       libglusterd0-10.3-1.fc37.x86_64                                       
+  libglusterfs0-10.3-1.fc37.x86_64                                   libiscsi-1.19.0-6.fc37.x86_64                                         
+  libisoburn-1.5.4-5.fc37.x86_64                                     libisofs-1.5.4-4.fc37.x86_64                                          
+  libjxl-1:0.7.0-3.fc37.x86_64                                       libnfs-4.0.0-7.fc37.x86_64                                            
+  libphodav-3.0-3.fc37.x86_64                                        libpmem-1.12.0-1.fc37.x86_64                                          
+  libpmemobj-1.12.0-1.fc37.x86_64                                    libqb-2.0.6-3.fc37.x86_64                                             
+  librados2-2:17.2.5-1.fc37.x86_64                                   librbd1-2:17.2.5-1.fc37.x86_64                                        
+  librdmacm-41.0-1.fc37.x86_64                                       libssh-0.10.4-2.fc37.x86_64                                           
+  libssh-config-0.10.4-2.fc37.noarch                                 libssh2-1.10.0-5.fc37.x86_64                                          
+  libtpms-0.9.5-2.fc37.x86_64                                        libusal-1.1.11-50.fc37.x86_64                                         
+  libvirt-daemon-8.6.0-4.fc37.x86_64                                 libvirt-daemon-config-network-8.6.0-4.fc37.x86_64                     
+  libvirt-daemon-driver-interface-8.6.0-4.fc37.x86_64                libvirt-daemon-driver-network-8.6.0-4.fc37.x86_64                     
+  libvirt-daemon-driver-nodedev-8.6.0-4.fc37.x86_64                  libvirt-daemon-driver-nwfilter-8.6.0-4.fc37.x86_64                    
+  libvirt-daemon-driver-qemu-8.6.0-4.fc37.x86_64                     libvirt-daemon-driver-secret-8.6.0-4.fc37.x86_64                      
+  libvirt-daemon-driver-storage-8.6.0-4.fc37.x86_64                  libvirt-daemon-driver-storage-core-8.6.0-4.fc37.x86_64                
+  libvirt-daemon-driver-storage-disk-8.6.0-4.fc37.x86_64             libvirt-daemon-driver-storage-gluster-8.6.0-4.fc37.x86_64             
+  libvirt-daemon-driver-storage-iscsi-8.6.0-4.fc37.x86_64            libvirt-daemon-driver-storage-iscsi-direct-8.6.0-4.fc37.x86_64        
+  libvirt-daemon-driver-storage-logical-8.6.0-4.fc37.x86_64          libvirt-daemon-driver-storage-mpath-8.6.0-4.fc37.x86_64               
+  libvirt-daemon-driver-storage-rbd-8.6.0-4.fc37.x86_64              libvirt-daemon-driver-storage-scsi-8.6.0-4.fc37.x86_64                
+  libvirt-daemon-driver-storage-sheepdog-8.6.0-4.fc37.x86_64         libvirt-daemon-driver-storage-zfs-8.6.0-4.fc37.x86_64                 
+  libvirt-daemon-kvm-8.6.0-4.fc37.x86_64                             libvirt-gconfig-4.0.0-6.fc37.x86_64                                   
+  libvirt-glib-4.0.0-6.fc37.x86_64                                   libvirt-gobject-4.0.0-6.fc37.x86_64                                   
+  libvirt-libs-8.6.0-4.fc37.x86_64                                   libwsman1-2.7.1-7.fc37.x86_64                                         
+  linux-atm-libs-2.5.1-33.fc37.x86_64                                livecd-iso-to-mediums-1:31.0-2.fc37.x86_64                            
+  livecd-tools-1:31.0-2.fc37.x86_64                                  lorax-37.8-1.fc37.x86_64                                              
+  lorax-templates-generic-37.8-1.fc37.x86_64                         lttng-ust-2.13.3-3.fc37.x86_64                                        
+  lzop-1.04-9.fc37.x86_64                                            mdevctl-1.2.0-1.fc37.x86_64                                           
+  numactl-libs-2.0.14-6.fc37.x86_64                                  numad-0.5-37.20150602git.fc37.x86_64                                  
+  pbzip2-1.1.13-7.fc37.x86_64                                        python-imgcreate-sysdeps-1:31.0-2.fc37.x86_64                         
+  python3-imgcreate-1:31.0-2.fc37.x86_64                             python3-librepo-1.14.4-1.fc37.x86_64                                  
+  python3-pycdio-2.1.0-9.fc37.x86_64                                 python3-urlgrabber-4.1.0-11.fc37.noarch                               
+  qemu-audio-alsa-2:7.0.0-10.fc37.x86_64                             qemu-audio-dbus-2:7.0.0-10.fc37.x86_64                                
+  qemu-audio-jack-2:7.0.0-10.fc37.x86_64                             qemu-audio-oss-2:7.0.0-10.fc37.x86_64                                 
+  qemu-audio-pa-2:7.0.0-10.fc37.x86_64                               qemu-audio-sdl-2:7.0.0-10.fc37.x86_64                                 
+  qemu-audio-spice-2:7.0.0-10.fc37.x86_64                            qemu-block-curl-2:7.0.0-10.fc37.x86_64                                
+  qemu-block-dmg-2:7.0.0-10.fc37.x86_64                              qemu-block-gluster-2:7.0.0-10.fc37.x86_64                             
+  qemu-block-iscsi-2:7.0.0-10.fc37.x86_64                            qemu-block-nfs-2:7.0.0-10.fc37.x86_64                                 
+  qemu-block-rbd-2:7.0.0-10.fc37.x86_64                              qemu-block-ssh-2:7.0.0-10.fc37.x86_64                                 
+  qemu-char-baum-2:7.0.0-10.fc37.x86_64                              qemu-char-spice-2:7.0.0-10.fc37.x86_64                                
+  qemu-common-2:7.0.0-10.fc37.x86_64                                 qemu-device-display-qxl-2:7.0.0-10.fc37.x86_64                        
+  qemu-device-display-vhost-user-gpu-2:7.0.0-10.fc37.x86_64          qemu-device-display-virtio-gpu-2:7.0.0-10.fc37.x86_64                 
+  qemu-device-display-virtio-gpu-ccw-2:7.0.0-10.fc37.x86_64          qemu-device-display-virtio-gpu-gl-2:7.0.0-10.fc37.x86_64              
+  qemu-device-display-virtio-gpu-pci-2:7.0.0-10.fc37.x86_64          qemu-device-display-virtio-gpu-pci-gl-2:7.0.0-10.fc37.x86_64          
+  qemu-device-display-virtio-vga-2:7.0.0-10.fc37.x86_64              qemu-device-display-virtio-vga-gl-2:7.0.0-10.fc37.x86_64              
+  qemu-device-usb-host-2:7.0.0-10.fc37.x86_64                        qemu-device-usb-redirect-2:7.0.0-10.fc37.x86_64                       
+  qemu-device-usb-smartcard-2:7.0.0-10.fc37.x86_64                   qemu-img-2:7.0.0-10.fc37.x86_64                                       
+  qemu-kvm-2:7.0.0-10.fc37.x86_64                                    qemu-pr-helper-2:7.0.0-10.fc37.x86_64                                 
+  qemu-system-x86-2:7.0.0-10.fc37.x86_64                             qemu-system-x86-core-2:7.0.0-10.fc37.x86_64                           
+  qemu-ui-curses-2:7.0.0-10.fc37.x86_64                              qemu-ui-egl-headless-2:7.0.0-10.fc37.x86_64                           
+  qemu-ui-gtk-2:7.0.0-10.fc37.x86_64                                 qemu-ui-opengl-2:7.0.0-10.fc37.x86_64                                 
+  qemu-ui-sdl-2:7.0.0-10.fc37.x86_64                                 qemu-ui-spice-app-2:7.0.0-10.fc37.x86_64                              
+  qemu-ui-spice-core-2:7.0.0-10.fc37.x86_64                          qemu-virtiofsd-2:7.0.0-10.fc37.x86_64                                 
+  rpm-plugin-selinux-4.18.0-1.fc37.x86_64                            seabios-bin-1.16.0-2.fc37.noarch                                      
+  seavgabios-bin-1.16.0-2.fc37.noarch                                selinux-policy-37.14-1.fc37.noarch                                    
+  selinux-policy-targeted-37.14-1.fc37.noarch                        sgabios-bin-1:0.20180715git-9.fc37.noarch                             
+  sheepdog-1.0.1-18.fc37.x86_64                                      spice-glib-0.41-4.fc37.x86_64                                         
+  spice-gtk3-0.41-4.fc37.x86_64                                      spice-server-0.15.1-1.fc37.x86_64                                     
+  swtpm-0.7.3-2.20220427gitf2268ee.fc37.x86_64                       swtpm-libs-0.7.3-2.20220427gitf2268ee.fc37.x86_64                     
+  swtpm-tools-0.7.3-2.20220427gitf2268ee.fc37.x86_64                 syslinux-6.04-0.23.fc37.x86_64                                        
+  syslinux-extlinux-6.04-0.23.fc37.x86_64                            syslinux-extlinux-nonlinux-6.04-0.23.fc37.noarch                      
+  syslinux-nonlinux-6.04-0.23.fc37.noarch                            systemd-container-251.8-586.fc37.x86_64                               
+  trousers-0.3.15-7.fc37.x86_64                                      usbredir-0.12.0-3.fc37.x86_64                                         
+  virglrenderer-0.9.1-4.20210420git36391559.fc37.x86_64              xen-libs-4.16.2-2.fc37.x86_64                                         
+  xen-licenses-4.16.2-2.fc37.x86_64                                  xorriso-1.5.4-5.fc37.x86_64                                           
+  xz-lzma-compat-5.2.5-10.fc37.x86_64                                zfs-fuse-0.7.2.2-23.fc37.x86_64                                       
+
+완료되었습니다!
+<---- sudo dnf -y remove docker docker-client docker-client-latest docker-common docker-latest docker-latest-logrotate docker-logrotate docker-selinux docker-engine-selinux docker-engine 이러한 패키지가 설치되어 있지 않다고 나와도 괜찮습니다.
+----> ls -lZ /usr/lib/systemd/system/containerd.service  docker.service  docker.socket zvbid.service
+ls: '/usr/lib/systemd/system/containerd.service'에 접근할 수 없음: 그런 파일이나 디렉터리가 없습니다
+<---- ls -lZ /usr/lib/systemd/system/containerd.service  docker.service  docker.socket zvbid.service
+210513 목 1051 : https://docs.docker.com/engine/install/fedora/
+
+저장소 설정
+
+설치 dnf-plugins-core와 설정 (당신의 DNF 저장소를 관리 할 수있는 명령을 제공합니다) 패키지 안정의 저장소.
+----> sudo dnf -y install dnf-plugins-core 
+마지막 메타자료 만료확인 1:45:57 이전인: 2022년 11월 16일 (수) 오후 12시 22분 57초.
+꾸러미 dnf-plugins-core-4.3.1-1.fc37.noarch가 이미 설치되어 있습니다.
+종속성이 해결되었습니다.
+처리가 필요하지 않습니다.
+완료되었습니다!
+<---- sudo dnf -y install dnf-plugins-core 
+----> ls -lZ /usr/lib/systemd/system/containerd.service  docker.service  docker.socket zvbid.service
+ls: '/usr/lib/systemd/system/containerd.service'에 접근할 수 없음: 그런 파일이나 디렉터리가 없습니다
+<---- ls -lZ /usr/lib/systemd/system/containerd.service  docker.service  docker.socket zvbid.service
+----> sudo dnf config-manager --add-repo https://download.docker.com/linux/fedora/docker-ce.repo 
+다음 위치에서 레포 추가 : https://download.docker.com/linux/fedora/docker-ce.repo
+<---- sudo dnf config-manager --add-repo https://download.docker.com/linux/fedora/docker-ce.repo 
+----> ls -lZ /usr/lib/systemd/system/containerd.service  docker.service  docker.socket zvbid.service
+ls: '/usr/lib/systemd/system/containerd.service'에 접근할 수 없음: 그런 파일이나 디렉터리가 없습니다
+<---- ls -lZ /usr/lib/systemd/system/containerd.service  docker.service  docker.socket zvbid.service
+
+선택 사항 : 야간 또는 테스트 저장소를 활성화 합니다.
+
+이러한 리포지토리는 docker.repo위 파일에 포함되어 있지만 기본적으로 비활성화되어 있습니다.
+안정적인 저장소와 함께 활성화 할 수 있습니다. 다음 명령은 야간 저장소를 활성화 합니다.
+
+#-- sudo dnf config-manager --set-enabled docker-ce-nightly
+
+테스트 채널 을 활성화하려면 다음 명령을 실행하십시오.
+
+#-- sudo dnf config-manager --set-enabled docker-ce-test
+
+--set-disabled 플래그 와 함께 dnf config-manager 명령을 실행 하여 야간 또는 테스트 저장소를 비활성화 할 수 있습니다.
+다시 활성화하려면 --set-enabled 플래그를 사용하십시오.
+다음 명령은 야간 저장소를 비활성화 합니다.
+
+#-- sudo dnf config-manager --set-disabled docker-ce-nightly
+
+야간 및 테스트 채널에 대해 알아보십시오 .
+
+Docker Engine 설치
+==================
+
+최신 버전 도커 엔진 및 containerd 를 설치합니다. 또는 특정 버전을 설치하려면 다음 단계로 이동합니다.
+----> sudo dnf -y install docker-ce docker-ce-cli containerd.io 
+Docker CE Stable - x86_64                                                                                    32 kB/s | 8.7 kB     00:00    
+종속성이 해결되었습니다.
+============================================================================================================================================
+ 꾸러미                                    구조                   버전                               레포지터리                        크기
+============================================================================================================================================
+설치 중:
+ containerd.io                             x86_64                 1.6.9-3.1.fc37                     docker-ce-stable                  32 M
+ docker-ce                                 x86_64                 3:20.10.21-3.fc37                  docker-ce-stable                  21 M
+ docker-ce-cli                             x86_64                 1:20.10.21-3.fc37                  docker-ce-stable                  29 M
+종속 꾸러미 설치 중:
+ container-selinux                         noarch                 2:2.191.0-1.fc37                   updates                           50 k
+ docker-ce-rootless-extras                 x86_64                 20.10.21-3.fc37                    docker-ce-stable                 3.7 M
+ flatpak-selinux                           noarch                 1.14.0-2.fc37                      fedora                            23 k
+ libcgroup                                 x86_64                 3.0-1.fc37                         fedora                            74 k
+ rpm-plugin-selinux                        x86_64                 4.18.0-1.fc37                      fedora                            20 k
+ selinux-policy                            noarch                 37.14-1.fc37                       updates                           76 k
+ selinux-policy-targeted                   noarch                 37.14-1.fc37                       updates                          6.6 M
+취약한 종속 꾸러미 설치 중:
+ docker-scan-plugin                        x86_64                 0.21.0-3.fc37                      docker-ce-stable                 3.8 M
+
+연결 요약
+============================================================================================================================================
+설치  11 꾸러미
+
+총계 내려받기 크기: 96 M
+설치된 크기 : 369 M
+꾸러미 내려받기 중:
+(1/11): docker-ce-20.10.21-3.fc37.x86_64.rpm                                                                7.4 MB/s |  21 MB     00:02    
+(2/11): docker-ce-cli-20.10.21-3.fc37.x86_64.rpm                                                            9.2 MB/s |  29 MB     00:03    
+(3/11): docker-ce-rootless-extras-20.10.21-3.fc37.x86_64.rpm                                                5.1 MB/s | 3.7 MB     00:00    
+(4/11): docker-scan-plugin-0.21.0-3.fc37.x86_64.rpm                                                         8.6 MB/s | 3.8 MB     00:00    
+(5/11): flatpak-selinux-1.14.0-2.fc37.noarch.rpm                                                            117 kB/s |  23 kB     00:00    
+(6/11): containerd.io-1.6.9-3.1.fc37.x86_64.rpm                                                             8.1 MB/s |  32 MB     00:03    
+(7/11): rpm-plugin-selinux-4.18.0-1.fc37.x86_64.rpm                                                          75 kB/s |  20 kB     00:00    
+(8/11): libcgroup-3.0-1.fc37.x86_64.rpm                                                                     213 kB/s |  74 kB     00:00    
+(9/11): selinux-policy-37.14-1.fc37.noarch.rpm                                                              141 kB/s |  76 kB     00:00    
+(10/11): container-selinux-2.191.0-1.fc37.noarch.rpm                                                         85 kB/s |  50 kB     00:00    
+(11/11): selinux-policy-targeted-37.14-1.fc37.noarch.rpm                                                    4.7 MB/s | 6.6 MB     00:01    
+--------------------------------------------------------------------------------------------------------------------------------------------
+합계                                                                                                         15 MB/s |  96 MB     00:06     
+Docker CE Stable - x86_64                                                                                    10 kB/s | 1.6 kB     00:00    
+GPG키 0x621E9F35 가져오는 중:
+사용자 ID : "Docker Release (CE rpm) <docker@docker.com>"
+지문: 060A 61C5 1B55 8A7F 742B 77AA C52F EB6B 621E 9F35
+출처 : https://download.docker.com/linux/fedora/gpg
+키 가져오기에 성공했습니다
+연결 확인 실행 중
+연결 확인에 성공했습니다.
+연결 시험 실행 중
+연결 시험에 성공했습니다.
+연결 실행 중
+  스크립트릿 실행 중: selinux-policy-targeted-37.14-1.fc37.noarch                                                                       1/1 
+  준비 중           :                                                                                                                   1/1 
+  설치 중           : selinux-policy-37.14-1.fc37.noarch                                                                               1/11 
+  스크립트릿 실행 중: selinux-policy-37.14-1.fc37.noarch                                                                               1/11 
+Failed to resolve roletype statement at /var/lib/selinux/targeted/tmp/modules/200/flatpak/cil:2
+Failed to resolve AST
+/usr/sbin/semodule:  Failed!
+
+  스크립트릿 실행 중: selinux-policy-targeted-37.14-1.fc37.noarch                                                                      2/11 
+  설치 중           : selinux-policy-targeted-37.14-1.fc37.noarch                                                                      2/11 
+  스크립트릿 실행 중: selinux-policy-targeted-37.14-1.fc37.noarch                                                                      2/11 
+  스크립트릿 실행 중: container-selinux-2:2.191.0-1.fc37.noarch                                                                        3/11 
+  설치 중           : container-selinux-2:2.191.0-1.fc37.noarch                                                                        3/11 
+  스크립트릿 실행 중: container-selinux-2:2.191.0-1.fc37.noarch                                                                        3/11 
+  설치 중           : docker-scan-plugin-0.21.0-3.fc37.x86_64                                                                          4/11 
+  스크립트릿 실행 중: docker-scan-plugin-0.21.0-3.fc37.x86_64                                                                          4/11 
+  설치 중           : docker-ce-cli-1:20.10.21-3.fc37.x86_64                                                                           5/11 
+  스크립트릿 실행 중: docker-ce-cli-1:20.10.21-3.fc37.x86_64                                                                           5/11 
+  설치 중           : containerd.io-1.6.9-3.1.fc37.x86_64                                                                              6/11 
+  스크립트릿 실행 중: containerd.io-1.6.9-3.1.fc37.x86_64                                                                              6/11 
+  설치 중           : libcgroup-3.0-1.fc37.x86_64                                                                                      7/11 
+  설치 중           : docker-ce-rootless-extras-20.10.21-3.fc37.x86_64                                                                 8/11 
+  스크립트릿 실행 중: docker-ce-rootless-extras-20.10.21-3.fc37.x86_64                                                                 8/11 
+  설치 중           : docker-ce-3:20.10.21-3.fc37.x86_64                                                                               9/11 
+  스크립트릿 실행 중: docker-ce-3:20.10.21-3.fc37.x86_64                                                                               9/11 
+  설치 중           : flatpak-selinux-1.14.0-2.fc37.noarch                                                                            10/11 
+  스크립트릿 실행 중: flatpak-selinux-1.14.0-2.fc37.noarch                                                                            10/11 
+  설치 중           : rpm-plugin-selinux-4.18.0-1.fc37.x86_64                                                                         11/11 
+  스크립트릿 실행 중: selinux-policy-targeted-37.14-1.fc37.noarch                                                                     11/11 
+  스크립트릿 실행 중: container-selinux-2:2.191.0-1.fc37.noarch                                                                       11/11 
+  스크립트릿 실행 중: rpm-plugin-selinux-4.18.0-1.fc37.x86_64                                                                         11/11 
+  확인 중           : containerd.io-1.6.9-3.1.fc37.x86_64                                                                              1/11 
+  확인 중           : docker-ce-3:20.10.21-3.fc37.x86_64                                                                               2/11 
+  확인 중           : docker-ce-cli-1:20.10.21-3.fc37.x86_64                                                                           3/11 
+  확인 중           : docker-ce-rootless-extras-20.10.21-3.fc37.x86_64                                                                 4/11 
+  확인 중           : docker-scan-plugin-0.21.0-3.fc37.x86_64                                                                          5/11 
+  확인 중           : flatpak-selinux-1.14.0-2.fc37.noarch                                                                             6/11 
+  확인 중           : libcgroup-3.0-1.fc37.x86_64                                                                                      7/11 
+  확인 중           : rpm-plugin-selinux-4.18.0-1.fc37.x86_64                                                                          8/11 
+  확인 중           : container-selinux-2:2.191.0-1.fc37.noarch                                                                        9/11 
+  확인 중           : selinux-policy-37.14-1.fc37.noarch                                                                              10/11 
+  확인 중           : selinux-policy-targeted-37.14-1.fc37.noarch                                                                     11/11 
+
+설치되었습니다:
+  container-selinux-2:2.191.0-1.fc37.noarch   containerd.io-1.6.9-3.1.fc37.x86_64                docker-ce-3:20.10.21-3.fc37.x86_64       
+  docker-ce-cli-1:20.10.21-3.fc37.x86_64      docker-ce-rootless-extras-20.10.21-3.fc37.x86_64   docker-scan-plugin-0.21.0-3.fc37.x86_64  
+  flatpak-selinux-1.14.0-2.fc37.noarch        libcgroup-3.0-1.fc37.x86_64                        rpm-plugin-selinux-4.18.0-1.fc37.x86_64  
+  selinux-policy-37.14-1.fc37.noarch          selinux-policy-targeted-37.14-1.fc37.noarch       
+
+완료되었습니다!
+<---- sudo dnf -y install docker-ce docker-ce-cli containerd.io 
+----> ls -lZ /usr/lib/systemd/system/containerd.service  docker.service  docker.socket zvbid.service
+-rw-r--r--. 1 root root unconfined_u:object_r:container_unit_file_t:s0 1264 10월 25일  23:31 /usr/lib/systemd/system/containerd.service
+<---- ls -lZ /usr/lib/systemd/system/containerd.service  docker.service  docker.socket zvbid.service
+
+GPG 키를 수락하라는 메시지가 표시되면 지문이 일치하는지 확인하고
+
+060A 61C5 1B55 8A7F 742B 77AA C52F EB6B 621E 9F35
+
+일치하는 경우 수락합니다.
+
+Docker 저장소가 여러 개 있습니까?
+
+여러 Docker 리포지토리가 활성화 된 경우 dnf install또는 dnf update명령에 버전을 지정하지 않고 설치하거나 업데이트하면 항상 가능한 가장 높은 버전이 설치되므로 안정성 요구 사항에 적합하지 않을 수 있습니다.
+
+Docker가 설치되었지만 시작되지 않았습니다. docker그룹이 생성되어 있지만 사용자는 그룹에 추가되지 않습니다.
+
+특정 버전 의 Docker Engine 을 설치하려면 저장소에서 사용 가능한 버전을 나열한 후 다음을 선택하고 설치하십시오.
+
+ㅏ. 저장소에서 사용 가능한 버전을 나열하고 정렬합니다. 이 예에서는 버전 번호별로 결과를 가장 높은 값에서 가장 낮은 값으로 정렬하고 잘립니다.
+
+#-- dnf list docker-ce  --showduplicates | sort -r
+
+반환되는 목록은 활성화 된 저장소에 따라 다르며 Fedora 버전에 따라 다릅니다 ( .fc28이 예 에서 접미사로 표시됨).
+
+비. 정규화 된 패키지 이름으로 특정 버전을 설치합니다. 패키지 이름 ( docker-ce)과 첫 번째 하이픈까지의 버전 문자열 (두 번째 열)을 하이픈 ( -)으로 구분합니다 ( 예 :) docker-ce-3:18.09.1.
+
+#--  sudo dnf -y install docker-ce-<VERSION_STRING> docker-ce-cli-<VERSION_STRING> containerd.io
+
+Docker가 설치되었지만 시작되지 않았습니다. docker그룹이 생성되어 있지만 사용자는 그룹에 추가되지 않습니다.
+
+Docker를 시작하십시오.
+----> sudo systemctl start docker ; sudo systemctl enable docker 
+Created symlink /etc/systemd/system/multi-user.target.wants/docker.service → /usr/lib/systemd/system/docker.service.
+<---- sudo systemctl start docker ; sudo systemctl enable docker 
+----> ls -lZ /usr/lib/systemd/system/containerd.service  docker.service  docker.socket zvbid.service
+-rw-r--r--. 1 root root unconfined_u:object_r:container_unit_file_t:s0 1264 10월 25일  23:31 /usr/lib/systemd/system/containerd.service
+<---- ls -lZ /usr/lib/systemd/system/containerd.service  docker.service  docker.socket zvbid.service
+hello-world 이미지 를 실행하여 Docker Engine이 올바르게 설치되었는지 확인하십시오 .
+----> ls -lZ /usr/lib/systemd/system/containerd.service  docker.service  docker.socket zvbid.service
+-rw-r--r--. 1 root root unconfined_u:object_r:container_unit_file_t:s0 1264 10월 25일  23:31 /usr/lib/systemd/system/containerd.service
+<---- ls -lZ /usr/lib/systemd/system/containerd.service  docker.service  docker.socket zvbid.service
+이 명령어는 테스트 이미지를 다운로드하고 컨테이너에서 실행합니다. 컨테이너가 실행되면 정보 메시지를 인쇄하고 종료합니다.
+
+Docker Engine이 설치되어 실행 중입니다. sudoDocker 명령을 실행 하려면을 사용해야 합니다. 권한이없는 사용자가 Docker 명령 및 기타 선택적 구성 단계를 실행할 수 있도록 Linux 사후 설치 를 계속 합니다.
+
+sudo systemctl status docker
+
+sudo systemctl start docker
+sudo systemctl enable docker
+
+sudo docker run hello-world #------- 도커 실행 테스트입니다.
+
+----> cd /usr/lib/systemd/system ; sudo ls -lZ containerd.service docker.service  docker.socket zvbid.service 
+ls: 'zvbid.service'에 접근할 수 없음: 그런 파일이나 디렉터리가 없습니다
+-rw-r--r--. 1 root root unconfined_u:object_r:container_unit_file_t:s0 1264 10월 25일  23:31 containerd.service
+-rw-r--r--. 1 root root unconfined_u:object_r:container_unit_file_t:s0 1709 10월 26일  03:01 docker.service
+-rw-r--r--. 1 root root unconfined_u:object_r:container_unit_file_t:s0  175 10월 26일  03:01 docker.socket
+<---- cd /usr/lib/systemd/system ; sudo ls -lZ containerd.service docker.service  docker.socket zvbid.service 
+----> sudo docker ps -a 
+CONTAINER ID   IMAGE     COMMAND   CREATED   STATUS    PORTS     NAMES
+<---- sudo docker ps -a 
+----> ls --color . 
+10----.only-1-time-in-server.----  15-reset-to-etc-hosts.sh           60----.check.----          66-select-ord-bill.sh
+11-Fedora34-docker-install.sh      16-login-path-setting.sh           61-check-gate242.sh        67-desc-table-to-form.sh
+12-Only-1.time-install-mysql.sh    20----.dump-restore.----           63-mysql-ksam21-select.sh  68-sql-select-file-made.sh
+13----.install-mysql.----          21-mysqldump-to-gate242.sql.7z.sh  64-select-ord.sh           99-67-desc-tablesin_ksam21-211107.txt
+14-mysql-docker-run.sh             22-gate242.sql.7z-to-MySql_DB.sh   65-edit-ord.sh
+<---- ls --color . 
+zz.221116-140759__RUNNING_11-Fedora34-docker-install.sh  zz.221116-141152..11-Fedora34-docker-install.sh
+<<<<<<<<<< 11-Fedora34-docker-install.sh ||| Fedora34에 Docker Engine 설치 <<<<<<<<<<
+14:11:52수221116 yosj@vFedora37 ~/git-projects/fedora-sh/08-mysql-docker
+08-mysql-docker $ 
+

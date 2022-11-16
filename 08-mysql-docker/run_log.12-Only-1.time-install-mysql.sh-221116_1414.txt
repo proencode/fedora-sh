@@ -1,0 +1,77 @@
+14:14:06수221116 yosj@vFedora37 ~/git-projects/fedora-sh/08-mysql-docker
+08-mysql-docker $ sh 12-Only-1.time-install-mysql.sh 
+>>>>>>>>>> 12-Only-1.time-install-mysql.sh ||| MySQL 도커와 연결하기 전에, 먼저 로컬에 mysql 을 설치합니다. >>>>>>>>>>
+----> rpm -qa | grep mysql | sort 
+<---- rpm -qa | grep mysql | sort 
+----> rpm -qa | grep mariadb | sort 
+mariadb-connector-c-3.2.7-2.fc37.x86_64
+mariadb-connector-c-config-3.2.7-2.fc37.noarch
+<---- rpm -qa | grep mariadb | sort 
+----> sudo dnf -y install community-mysql-common community-mysql mariadb-common 
+마지막 메타자료 만료확인 0:05:15 이전인: 2022년 11월 16일 (수) 오후 02시 08분 56초.
+종속성이 해결되었습니다.
+============================================================================================================================================
+ 꾸러미                                    구조                      버전                                  레포지터리                  크기
+============================================================================================================================================
+설치 중:
+ community-mysql                           x86_64                    8.0.31-1.fc37                         updates                    3.0 M
+ community-mysql-common                    x86_64                    8.0.31-1.fc37                         updates                     77 k
+ mariadb-common                            x86_64                    3:10.5.16-3.fc37                      fedora                      36 k
+
+연결 요약
+============================================================================================================================================
+설치  3 꾸러미
+
+총계 내려받기 크기: 3.1 M
+설치된 크기 : 60 M
+꾸러미 내려받기 중:
+(1/3): mariadb-common-10.5.16-3.fc37.x86_64.rpm                                                             223 kB/s |  36 kB     00:00    
+(2/3): community-mysql-common-8.0.31-1.fc37.x86_64.rpm                                                       59 kB/s |  77 kB     00:01    
+(3/3): community-mysql-8.0.31-1.fc37.x86_64.rpm                                                             103 kB/s | 3.0 MB     00:29    
+--------------------------------------------------------------------------------------------------------------------------------------------
+합계                                                                                                        103 kB/s | 3.1 MB     00:30     
+연결 확인 실행 중
+연결 확인에 성공했습니다.
+연결 시험 실행 중
+연결 시험에 성공했습니다.
+연결 실행 중
+  준비 중           :                                                                                                                   1/1 
+  설치 중           : community-mysql-common-8.0.31-1.fc37.x86_64                                                                       1/3 
+  설치 중           : community-mysql-8.0.31-1.fc37.x86_64                                                                              2/3 
+  설치 중           : mariadb-common-3:10.5.16-3.fc37.x86_64                                                                            3/3 
+  스크립트릿 실행 중: mariadb-common-3:10.5.16-3.fc37.x86_64                                                                            3/3 
+  확인 중           : mariadb-common-3:10.5.16-3.fc37.x86_64                                                                            1/3 
+  확인 중           : community-mysql-8.0.31-1.fc37.x86_64                                                                              2/3 
+  확인 중           : community-mysql-common-8.0.31-1.fc37.x86_64                                                                       3/3 
+
+설치되었습니다:
+  community-mysql-8.0.31-1.fc37.x86_64       community-mysql-common-8.0.31-1.fc37.x86_64       mariadb-common-3:10.5.16-3.fc37.x86_64      
+
+완료되었습니다!
+<---- sudo dnf -y install community-mysql-common community-mysql mariadb-common 
+----> rpm -qa | grep mysql | sort 
+community-mysql-8.0.31-1.fc37.x86_64
+community-mysql-common-8.0.31-1.fc37.x86_64
+<---- rpm -qa | grep mysql | sort 
+----> rpm -qa | grep mariadb | sort 
+mariadb-common-10.5.16-3.fc37.x86_64
+mariadb-connector-c-3.2.7-2.fc37.x86_64
+mariadb-connector-c-config-3.2.7-2.fc37.noarch
+<---- rpm -qa | grep mariadb | sort 
+----> sudo systemctl enable docker 
+<---- sudo systemctl enable docker 
+----> sudo systemctl start docker 
+<---- sudo systemctl start docker 
+----> ls --color . 
+10----.only-1-time-in-server.----  15-reset-to-etc-hosts.sh           60----.check.----          66-select-ord-bill.sh
+11-Fedora34-docker-install.sh      16-login-path-setting.sh           61-check-gate242.sh        67-desc-table-to-form.sh
+12-Only-1.time-install-mysql.sh    20----.dump-restore.----           63-mysql-ksam21-select.sh  68-sql-select-file-made.sh
+13----.install-mysql.----          21-mysqldump-to-gate242.sql.7z.sh  64-select-ord.sh           99-67-desc-tablesin_ksam21-211107.txt
+14-mysql-docker-run.sh             22-gate242.sql.7z-to-MySql_DB.sh   65-edit-ord.sh             run_log.11-Fedora34-docker-install.sh.txt
+<---- ls --color . 
+zz.221116-140759__RUNNING_11-Fedora34-docker-install.sh  zz.221116-141448..12-Only-1.time-install-mysql.sh
+zz.221116-141152..11-Fedora34-docker-install.sh
+<<<<<<<<<< 12-Only-1.time-install-mysql.sh ||| MySQL 도커와 연결하기 전에, 먼저 로컬에 mysql 을 설치합니다. <<<<<<<<<<
+14:14:49수221116 yosj@vFedora37 ~/git-projects/fedora-sh/08-mysql-docker
+08-mysql-docker $ 
+
