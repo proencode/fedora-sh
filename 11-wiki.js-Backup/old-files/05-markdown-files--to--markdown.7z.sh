@@ -58,8 +58,8 @@ cat_and_read "# 백업하려는 폴더가 ${cReset}'''${cYellow}${dir_for_backup
 cat_and_read "# 백업을 위해 압축시킨 파일은 현재의 폴더 ( $(pwd) )에 저장합니다." "[ 엔터 ]를 누르세요."
 
 cat_and_read "# 비밀번호를 2번 입력해야 합니다." "[ 엔터 ]를 누르세요."
-echo "${cGreen}----> ${cYellow}time 7za a $(pwd)/${markdown_7z} ${dir_for_backup} -p -v3900M ${cCyan}#-- 데이터 백업하기${cReset}"
-time 7za a $(pwd)/${markdown_7z} ${dir_for_backup} -p -v3900M
+echo "${cGreen}----> ${cYellow}time 7za a -mx=9 $(pwd)/${markdown_7z} ${dir_for_backup} -p -v3900M ${cCyan}#-- 데이터 백업하기${cReset}"
+time 7za a -mx=9 $(pwd)/${markdown_7z} ${dir_for_backup} -p -v3900M
 
 # ----
 rm -f ${log_name} ; log_name="${logs_folder}/zz.$(date +"%y%m%d-%H%M%S")..${CMD_NAME}" ; touch ${log_name}

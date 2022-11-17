@@ -135,7 +135,7 @@ play -q ~/bin/1-bin-scripts/freesound/411090__inspectorj__wind-chime-gamelan-gon
 	play -q ~/bin/1-bin-scripts/freesound/513865__wormletter__chime-c.wav &
 	date ; sync ; date
 play -q ~/bin/1-bin-scripts/freesound/411090__inspectorj__wind-chime-gamelan-gong-a.wav &
-	cat_and_read "time 7za a ~/${ymd}-kaosco-backup.7z ../kaosco-backup > ../${ymd}-kaosco-backup.zip.time"
+	cat_and_read "time 7za a -mx=9 ~/${ymd}-kaosco-backup.7z ../kaosco-backup > ../${ymd}-kaosco-backup.zip.time"
 	play -q ~/bin/1-bin-scripts/freesound/513865__wormletter__chime-c.wav &
 	date ; sync ; date
 play -q ~/bin/1-bin-scripts/freesound/411090__inspectorj__wind-chime-gamelan-gong-a.wav &
@@ -156,9 +156,9 @@ cat_and_run "date ; sync ; date" "${cBlue}딩~${cReset}"
 
 play -q ~/bin/1-bin-scripts/freesound/411090__inspectorj__wind-chime-gamelan-gong-a.wav & #---- 데에엥~~
 if [ "x${zip_y}" == "xy" ]; then
-	cat_and_read "time 7za a ~/${ymd}-kaosco-backup.7z ../kaosco-backup > ../${ymd}-kaosco-backup.zip.time"
+	cat_and_read "time 7za a -mx=9 ~/${ymd}-kaosco-backup.7z ../kaosco-backup > ../${ymd}-kaosco-backup.zip.time"
 else
-	cat_and_run "time 7za a ~/${ymd}-kaosco-backup.7z ../kaosco-backup > ../${ymd}-kaosco-backup.zip.time"
+	cat_and_run "time 7za a -mx=9 ~/${ymd}-kaosco-backup.7z ../kaosco-backup > ../${ymd}-kaosco-backup.zip.time"
 fi
 play -q ~/bin/1-bin-scripts/freesound/513865__wormletter__chime-c.wav & #---- 교회 뎅-
 cat_and_run "date ; sync ; date" "${cBlue}딩~${cReset}"

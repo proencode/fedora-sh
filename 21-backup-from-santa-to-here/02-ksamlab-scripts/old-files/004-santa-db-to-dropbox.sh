@@ -53,7 +53,7 @@ do
 NOW=`date +"%y%m%d-%H%M%S"`
 
 	# ----> 데이터베이스를 덤프하고 압축해서 백업 이미지를 만든다.
-	/usr/bin/mysqldump $database_name -u $DB_USER -p$DB_PSWD -h $(hostname) | /usr/bin/7za a -ptjdnjs${PASSWD} -si ${database_name}_${NOW}.sql.7z
+	/usr/bin/mysqldump $database_name -u $DB_USER -p$DB_PSWD -h $(hostname) | /usr/bin/7za a -mx=9 -ptjdnjs${PASSWD} -si ${database_name}_${NOW}.sql.7z
 NOW=`date +"%y%m%d-%H%M%S"`
 	chown -R $USER_ID:$USER_ID ${database_name}_${NOW}.sql.7z
 NOW=`date +"%y%m%d-%H%M%S"`
@@ -95,7 +95,7 @@ do
 
 	# ----> 데이터베이스를 덤프하고 압축해서 백업 이미지를 만든다.
 	chmod a+r ${database_name}_${NOW}.sql.7z
-	/usr/bin/mysqldump $database_name -u $DB_USER -p$DB_PSWD -h $(hostname) | /usr/bin/7za a -ptjdnjs${PASSWD} -si ${database_name}_${NOW}.sql.7z
+	/usr/bin/mysqldump $database_name -u $DB_USER -p$DB_PSWD -h $(hostname) | /usr/bin/7za a -mx=9 -ptjdnjs${PASSWD} -si ${database_name}_${NOW}.sql.7z
 	chown -R $USER_ID:$USER_ID ${database_name}_${NOW}.sql.7z
 	chmod a+r ${database_name}_${NOW}.sql.7z
 	# <---- 데이터베이스를 덤프하고 압축해서 백업 이미지를 만든다.

@@ -39,7 +39,7 @@ do
 
 	# ----> 데이터베이스를 덤프하고 압축해서 백업 이미지를 만든다.
 	db_sql_7z=${db_backup_dir}/${database_name}_$(date +"%y%m%d-%H%M%S").sql.7z
-	/usr/bin/mysqldump ${database_name} -u $DB_USER -p$DB_PSWD -h $(hostname) | /usr/bin/7za a -p${PASSWD} -si ${db_sql_7z}
+	/usr/bin/mysqldump ${database_name} -u $DB_USER -p$DB_PSWD -h $(hostname) | /usr/bin/7za a -mx=9 -p${PASSWD} -si ${db_sql_7z}
 	chown -R $USER_ID:$USER_ID ${db_sql_7z}
 	chmod a+r ${db_sql_7z}
 	# <---- 데이터베이스를 덤프하고 압축해서 백업 이미지를 만든다.

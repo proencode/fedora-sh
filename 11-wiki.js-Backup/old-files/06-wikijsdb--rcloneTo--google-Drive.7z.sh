@@ -49,10 +49,10 @@ sql_7z="wikijs-$(date +%y%m%d_%H%M%S)-$(uname -n).sql.7z"
 cat_and_run "sudo docker ps -a ; sudo docker stop wikijs" "#-- (2) 위키 도커 중단"
 
 cat <<__EOF__
-${cGreen}----> ${cYellow}sudo docker exec wikijsdb pg_dumpall -U wikijs | 7za a -si ${dir_for_backup}/${sql_7z} -p ${cCyan}#-- (3) 데이터 백업하기${cReset}
+${cGreen}----> ${cYellow}sudo docker exec wikijsdb pg_dumpall -U wikijs | 7za a -mx=9 -si ${dir_for_backup}/${sql_7z} -p ${cCyan}#-- (3) 데이터 백업하기${cReset}
 ${cGreen}----> ${cYellow}비밀번호${cCyan}를 입력하세요.${cReset}
 __EOF__
-sudo docker exec wikijsdb pg_dumpall -U wikijs | 7za a -si ${dir_for_backup}/${sql_7z} -p
+sudo docker exec wikijsdb pg_dumpall -U wikijs | 7za a -mx=9 -si ${dir_for_backup}/${sql_7z} -p
 
 cat_and_run "rclone lsl yosjeon:${Y4M2WEEK_DIR}/" "#-- (4) 구글 드라이브 ${Y4M2WEEK_DIR} 폴더 입니다."
 

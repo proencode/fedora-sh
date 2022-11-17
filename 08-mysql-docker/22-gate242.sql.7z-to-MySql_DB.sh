@@ -254,7 +254,7 @@ fi
 if [ "x${last_skip}" = "xno" ]; then
 	ding_play 6 #-- 1=띠잉~ 2=뗑-~ 3=데에엥~~ 4=캐스터네츠 5=교회차임 6=딩~
 	NOW_UNAME=$(date +"%y%m%d-%H%M%S")_$(uname -n)
-	cat_and_run "time /usr/bin/mysqldump --login-path=${LOGIN_PATH} --column-statistics=0 ${DB_NAME} | 7za a -si ${db_7z_dir}/last-${DB_NAME}_${NOW_UNAME}.sql.7z" "#--> 현재 db 를 백업하기"
+	cat_and_run "time /usr/bin/mysqldump --login-path=${LOGIN_PATH} --column-statistics=0 ${DB_NAME} | 7za a -mx=9 -si ${db_7z_dir}/last-${DB_NAME}_${NOW_UNAME}.sql.7z" "#--> 현재 db 를 백업하기"
 
 	cat_and_run "ls -hltr --color ${db_7z_dir}/${DB_NAME}_*.sql.7z | tail -10"
 fi

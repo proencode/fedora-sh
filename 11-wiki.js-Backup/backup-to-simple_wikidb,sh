@@ -27,7 +27,7 @@ cat <<__EOF__
 #- (4) wili.js 데이터베이스를 백업하기 위해서 아래에 ---비밀번호--- 를 입력하세요.
 #-
 __EOF__
-sudo docker exec wikijsdb pg_dumpall -U wikijs | 7za a -si ${LOCAL_Y2M2}/${DB_sql7z} -p ; echo "#-- (5) 오늘 요일이름의 로컬 보관장소에 백업합니다."
+sudo docker exec wikijsdb pg_dumpall -U wikijs | 7za a -mx=9 -si ${LOCAL_Y2M2}/${DB_sql7z} -p ; echo "#-- (5) 오늘 요일이름의 로컬 보관장소에 백업합니다."
 ls -lR ${LOCAL_Y2M2} ; echo "#-- (6) 보관용 로컬 폴더입니다."
 /usr/bin/rclone copy ${LOCAL_Y2M2}/${DB_sql7z} ${RCLONE_NAME}:${REMOTE_Y2M2}/ ; echo "#-- (7) 오늘 요일이름의 파일을 클라우드로 복사합니다."
 /usr/bin/rclone lsl ${RCLONE_NAME}:${REMOTE_Y2M2} ; echo "#-- (8) 클라우드 폴더입니다."

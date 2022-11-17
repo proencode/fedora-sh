@@ -34,12 +34,12 @@ sql_7z="wikijs-$(date +%y%m%d_%H%M%S)-$(uname -n).sql.7z"
 
 cat <<__EOF__
 
-${cGreen}----> ${cYellow}sudo docker exec wikijsdb pg_dumpall -U wikijs | 7za a -si -mx=9 ${dir_for_backup}/${sql_7z} -p ${cCyan}#-- (3) 데이터 백업하기${cReset}
+${cGreen}----> ${cYellow}sudo docker exec wikijsdb pg_dumpall -U wikijs | 7za a -mx=9 -si ${dir_for_backup}/${sql_7z} -p ${cCyan}#-- (3) 데이터 백업하기${cReset}
 
 ${cRed}----> ${cYellow}비밀번호${cRed}를 입력하세요.${cReset}
 
 __EOF__
-sudo docker exec wikijsdb pg_dumpall -U wikijs | 7za a -si -mx=9 ${dir_for_backup}/${sql_7z} -p
+sudo docker exec wikijsdb pg_dumpall -U wikijs | 7za a -mx=9 -si ${dir_for_backup}/${sql_7z} -p
 
 cmdRun "sudo docker start wikijs ; sudo docker ps -a" "(4) 위키 도커 다시 시작"
 
