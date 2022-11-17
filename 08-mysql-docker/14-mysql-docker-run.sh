@@ -89,7 +89,7 @@ if [ ! -d ${DATABASE_FOLDER} ]; then
 	echo "----> ${cGreen}sudo mkdir -p ${DATABASE_FOLDER}${cReset}"
 	sudo mkdir -p ${DATABASE_FOLDER}
 	cat_and_run "sudo chcon -R system_u:object_r:container_file_t:s0 ${DATABASE_FOLDER}"
-	cat_and_run "sudo chown -R systemd-coredump.ssh_keys ${DATABASE_FOLDER}"
+	cat_and_run "sudo chown -R systemd-coredump:ssh_keys ${DATABASE_FOLDER}"
 	cat_and_run "ls -lZ ${DATABASE_FOLDER}" "디렉토리를 만들었습니다."
 else
 	cat_and_run "ls -l ${DATABASE_FOLDER}"

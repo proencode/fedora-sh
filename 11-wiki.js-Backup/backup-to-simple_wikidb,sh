@@ -5,7 +5,7 @@ DB_NAME="wiki" #- 백업할 데이터베이스 이름
 sudo docker ps -a ; sudo docker stop wikijs ; echo "#-- (1) 위키 도커를 중단합니다."
 LOCAL_FOLDER="/home/backup/simple_wikidb" #- 보관용 로컬 저장소
 if [ ! -d ${LOCAL_FOLDER} ]; then
-    sudo mkdir -p ${LOCAL_FOLDER} ; sudo chown ${USER}.${USER} ${LOCAL_FOLDER}
+    sudo mkdir -p ${LOCAL_FOLDER} ; sudo chown ${USER}:${USER} ${LOCAL_FOLDER}
 fi
 this_y4m2=$(date +%Y)-$(date +%m) #- 2022-08
 LOCAL_Y2M2=${LOCAL_FOLDER}/${this_y4m2}

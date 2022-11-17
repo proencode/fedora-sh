@@ -75,7 +75,7 @@ DB_TYPE="pgsql"
 
 dir_for_backup=${LOCAL_FOLDER}/last_backup #-- 백업을 리스토어 하기전, 현재DB 백업하는 로컬 저장소
 if [ ! -f ${dir_for_backup} ]; then
-	cmdRun "sudo mkdir -p ${dir_for_backup} ; sudo chown ${USER}.${USER} ${dir_for_backup}" "(3) 백업을 리스토어 하기전, 현재DB 백업하는 로컬 저장소 만들기"
+	cmdRun "sudo mkdir -p ${dir_for_backup} ; sudo chown ${USER}:${USER} ${dir_for_backup}" "(3) 백업을 리스토어 하기전, 현재DB 백업하는 로컬 저장소 만들기"
 fi
 
 

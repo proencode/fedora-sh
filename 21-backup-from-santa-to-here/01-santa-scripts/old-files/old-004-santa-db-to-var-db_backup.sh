@@ -29,14 +29,14 @@ do
 	else
 		# 년월단위 디렉토리가 없으면, 새로 만든다.
 		mkdir ${db_backup_dir}
-		chown -R $USER_ID.$USER_ID ${db_backup_dir}
+		chown -R $USER_ID:$USER_ID ${db_backup_dir}
 		chmod a+r ${db_backup_dir}
 	fi
 
 	# ----> 데이터베이스를 덤프하고 압축해서 백업 이미지를 만든다.
 	db_sql_7z=${db_backup_dir}/${database_name}_$(date +"%y%m%d-%H%M%S").sql.7z
 	/usr/bin/mysqldump ${database_name} -u $DB_USER -p$DB_PSWD -h $(hostname) | /usr/bin/7za a -p${PASSWD} -si ${db_sql_7z}
-	chown -R $USER_ID.$USER_ID ${db_sql_7z}
+	chown -R $USER_ID:$USER_ID ${db_sql_7z}
 	chmod a+r ${db_sql_7z}
 	# <---- 데이터베이스를 덤프하고 압축해서 백업 이미지를 만든다.
 done
@@ -54,14 +54,14 @@ do
 	else
 		# 년단위 디렉토리가 없으면, 새로 만든다.
 		mkdir ${db_backup_dir}
-		chown -R $USER_ID.$USER_ID ${db_backup_dir}
+		chown -R $USER_ID:$USER_ID ${db_backup_dir}
 		chmod a+r ${db_backup_dir}
 	fi
 
 	# ----> 데이터베이스를 덤프하고 압축해서 백업 이미지를 만든다.
 	db_sql_7z=${db_backup_dir}/${database_name}_$(date +"%y%m%d-%H%M%S").sql.7z
 	/usr/bin/mysqldump ${database_name} -u $DB_USER -p$DB_PSWD -h $(hostname) | /usr/bin/7za a -p${PASSWD} -si ${db_sql_7z}
-	chown -R $USER_ID.$USER_ID ${db_sql_7z}
+	chown -R $USER_ID:$USER_ID ${db_sql_7z}
 	chmod a+r ${db_sql_7z}
 	# <---- 데이터베이스를 덤프하고 압축해서 백업 이미지를 만든다.
 done
@@ -125,7 +125,7 @@ select max(created_at), max(id), count(*), 'kaosorder2 yukaimage' as table_name 
 
 " >> $log_txt_file
 
-chown -R $USER_ID.$USER_ID $log_txt_file
+chown -R $USER_ID:$USER_ID $log_txt_file
 chmod a+r $log_txt_file
 # <---- 데이터베이스의 상태를 저장하는 파일
 
@@ -158,6 +158,6 @@ select max(updated_at), max(created_at), max(id), count(*), 'kaosoyo yowondan' a
 
 " >> $log_txt_file
 
-chown -R $USER_ID.$USER_ID $log_txt_file
+chown -R $USER_ID:$USER_ID $log_txt_file
 chmod a+r $log_txt_file
 # <---- 데이터베이스의 상태를 저장하는 파일

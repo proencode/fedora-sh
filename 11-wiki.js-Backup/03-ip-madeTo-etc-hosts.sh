@@ -46,7 +46,7 @@ cmdRun "ls -lZ /etc/hosts ; grep ${this_domain} /etc/hosts" "(2) 수정전 도�
 grep -v " ${this_domain}" /etc/hosts > new_etc_hosts
 echo "${this_ip} ${this_domain}" >> new_etc_hosts
 sudo mv new_etc_hosts /etc/hosts
-sudo chown root.root /etc/hosts
+sudo chown root:root /etc/hosts
 #-- for fedora -- sudo chcon system_u:object_r:net_conf_t:s0 /etc/hosts
 
 cmdRun "ls -lZ /etc/hosts ; grep ${this_domain} /etc/hosts" "(3) 수정 후 도메인"
