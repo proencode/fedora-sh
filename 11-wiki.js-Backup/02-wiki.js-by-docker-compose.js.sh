@@ -23,7 +23,7 @@ __EOF__
 if [ ! -d ${db_folder} ]; then
 	cmdRun "sudo mkdir -p ${db_folder}"
 	cmdRun "sudo chcon -R system_u:object_r:container_file_t:s0 ${db_folder}"
-	cmdRun "sudo chown -R systemd-coredump.ssh_keys ${db_folder}"
+	cmdRun "sudo chown -R systemd-coredump:ssh_keys ${db_folder}"
 	cmdRun "ls -lZ ${db_folder}" "(1) 데이터베이스 폴더를 만들었습니다."
 else
 	rm -f ${zz00log_name}
@@ -32,7 +32,7 @@ else
 fi
 
 if [ ! -d ${wiki_conf_dir} ]; then
-	cmdRun "sudo mkdir -p ${wiki_conf_dir} ; sudo chown -R ${USER}.${USER} ${wiki_conf_dir}" "(3) 위키설정용 폴더를 만들었습니다."
+	cmdRun "sudo mkdir -p ${wiki_conf_dir} ; sudo chown -R ${USER}:${USER} ${wiki_conf_dir}" "(3) 위키설정용 폴더를 만들었습니다."
 else
 	cmdRun "sudo ls -lZ ${wiki_conf_dir}" "(4) 위키설정용 폴더가 있습니다."
 fi

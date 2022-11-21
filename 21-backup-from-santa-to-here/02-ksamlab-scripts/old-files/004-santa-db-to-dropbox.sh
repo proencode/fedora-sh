@@ -11,7 +11,7 @@ CLOUD_DIR="kaos.kr/Dropbox/2-site-backup/$USER_ID"
 # cd $USER_HOME
 if [ ! -d $CLOUD_DIR ] ; then
 	# 클라우드 디렉토리가 없으면, 새로 만든다.
-	mkdir -p $CLOUD_DIR ; chown -R $USER_ID.$USER_ID $CLOUD_DIR
+	mkdir -p $CLOUD_DIR ; chown -R $USER_ID:$USER_ID $CLOUD_DIR
 fi
 # 클라우드 디렉토리 위에서 백업 작업을 한다.
 cd $CLOUD_DIR
@@ -30,7 +30,7 @@ PASSWD=$(date +"%Y%m")
 
 
 CLOUD_DIR="kaos.kr/Dropbox/2-site-backup/$USER_ID"
-	mkdir -p $CLOUD_DIR ; chown -R $USER_ID.$USER_ID $CLOUD_DIR
+	mkdir -p $CLOUD_DIR ; chown -R $USER_ID:$USER_ID $CLOUD_DIR
 
 
 
@@ -46,16 +46,16 @@ do
 		rm -f $DB_BACKUP_DIR/${database_name}_$(date +"%y%m%d")* # _2205
 	else
 		# 년월단위 디렉토리가 없으면, 새로 만든다.
-		mkdir $DB_BACKUP_DIR ; chown -R $USER_ID.$USER_ID $DB_BACKUP_DIR
+		mkdir $DB_BACKUP_DIR ; chown -R $USER_ID:$USER_ID $DB_BACKUP_DIR
 	fi
 
 	DB_SQL_7Z=${DB_BACKUP_DIR}/${database_name}_${NOW}.sql.7z
 NOW=`date +"%y%m%d-%H%M%S"`
 
 	# ----> 데이터베이스를 덤프하고 압축해서 백업 이미지를 만든다.
-	/usr/bin/mysqldump $database_name -u $DB_USER -p$DB_PSWD -h $(hostname) | /usr/bin/7za a -ptjdnjs${PASSWD} -si ${database_name}_${NOW}.sql.7z
+	/usr/bin/mysqldump $database_name -u $DB_USER -p$DB_PSWD -h $(hostname) | /usr/bin/7za a -mx=9 -ptjdnjs${PASSWD} -si ${database_name}_${NOW}.sql.7z
 NOW=`date +"%y%m%d-%H%M%S"`
-	chown -R $USER_ID.$USER_ID ${database_name}_${NOW}.sql.7z
+	chown -R $USER_ID:$USER_ID ${database_name}_${NOW}.sql.7z
 NOW=`date +"%y%m%d-%H%M%S"`
 	chmod a+r ${database_name}_${NOW}.sql.7z
 NOW=`date +"%y%m%d-%H%M%S"`
@@ -68,7 +68,7 @@ NOW=`date +"%y%m%d-%H%M%S"`
 		rm -f $DB_BACKUP_DIR/${database_name}_*
 	else
 		# db 백업 디렉토리가 없으면, 새로 만든다.
-		mkdir $DB_BACKUP_DIR ; chown -R $USER_ID.$USER_ID $DB_BACKUP_DIR
+		mkdir $DB_BACKUP_DIR ; chown -R $USER_ID:$USER_ID $DB_BACKUP_DIR
 	fi
 	cp ${database_name}_${NOW}.sql.7z $DB_BACKUP_DIR # db 백업 디렉토리로 복사한다.
 NOW=`date +"%y%m%d-%H%M%S"`
@@ -88,15 +88,15 @@ do
 		rm -f $DB_BACKUP_DIR/${database_name}_*
 	else
 		# 월단위 디렉토리가 없으면, 새로 만든다.
-		mkdir $DB_BACKUP_DIR ; chown -R $USER_ID.$USER_ID $DB_BACKUP_DIR
+		mkdir $DB_BACKUP_DIR ; chown -R $USER_ID:$USER_ID $DB_BACKUP_DIR
 	fi
 	# 기존의 백업 이미지를 주단위 디렉토리로 옮긴다.
 
 
 	# ----> 데이터베이스를 덤프하고 압축해서 백업 이미지를 만든다.
 	chmod a+r ${database_name}_${NOW}.sql.7z
-	/usr/bin/mysqldump $database_name -u $DB_USER -p$DB_PSWD -h $(hostname) | /usr/bin/7za a -ptjdnjs${PASSWD} -si ${database_name}_${NOW}.sql.7z
-	chown -R $USER_ID.$USER_ID ${database_name}_${NOW}.sql.7z
+	/usr/bin/mysqldump $database_name -u $DB_USER -p$DB_PSWD -h $(hostname) | /usr/bin/7za a -mx=9 -ptjdnjs${PASSWD} -si ${database_name}_${NOW}.sql.7z
+	chown -R $USER_ID:$USER_ID ${database_name}_${NOW}.sql.7z
 	chmod a+r ${database_name}_${NOW}.sql.7z
 	# <---- 데이터베이스를 덤프하고 압축해서 백업 이미지를 만든다.
 
@@ -107,7 +107,7 @@ do
 		rm -f $DB_BACKUP_DIR/${database_name}_*
 	else
 		# db 백업 디렉토리가 없으면, 새로 만든다.
-		mkdir $DB_BACKUP_DIR ; chown -R $USER_ID.$USER_ID $DB_BACKUP_DIR
+		mkdir $DB_BACKUP_DIR ; chown -R $USER_ID:$USER_ID $DB_BACKUP_DIR
 	fi
 	cp ${database_name}_${NOW}.sql.7z $DB_BACKUP_DIR # db 백업 디렉토리로 복사한다.
 
@@ -194,5 +194,5 @@ select max(updated_at), max(created_at), max(id), count(*), 'kaosoyo yowondan' a
 
 " >> $LOG_FILE
 
-chown -R $USER_ID.$USER_ID $LOG_FILE
+chown -R $USER_ID:$USER_ID $LOG_FILE
 chmod a+r $LOG_FILE

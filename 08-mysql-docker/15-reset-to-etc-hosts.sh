@@ -89,7 +89,7 @@ else
 			grep -v " ${DOCKER_NAME}" /etc/hosts > new_etc_hosts
 			echo "${DB_IP} ${DOCKER_NAME}" >> new_etc_hosts
 			sudo mv new_etc_hosts /etc/hosts
-			sudo chown root.root /etc/hosts
+			sudo chown root:root /etc/hosts
 			sudo chcon system_u:object_r:net_conf_t:s0 /etc/hosts
 
 			cat_and_run "grep ${DOCKER_NAME} /etc/hosts ; ls -lZ /etc/hosts" "/etc/hosts 수정 후 내용"

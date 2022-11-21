@@ -177,10 +177,10 @@ ding_play 6 #-- 1=띠잉~ 2=뗑-~ 3=데에엥~~ 4=캐스터네츠 5=교회차임
 
 db_now_sql_7z=${DB_NAME}_$(date +"%y%m%d-%H%M%S")_${uname_n}.sql.7z
 
-# cat_and_run "time /usr/bin/mysqldump --login-path=${LOGINPATH_NAME} --column-statistics=0 ${DB_NAME} | 7za a -si ${BACKUP_DIR}/${db_now_sql_7z}" "db 백업받기"
+# cat_and_run "time /usr/bin/mysqldump --login-path=${LOGINPATH_NAME} --column-statistics=0 ${DB_NAME} | 7za a -mx=9 -si ${BACKUP_DIR}/${db_now_sql_7z}" "db 백업받기"
 # BACKUP_DIR 을 MEGA Cloud 로 쓰는 경우, 파일이 생성되면서 클라우드에 실시간 저장이 되어서
 # 한단계 아래인 HOST_DIR 에 저장을 먼저 하고, 저장이 끝난 다음에 BACKUP_DIR 로 옮기도록 하였다.
-cat_and_run "time /usr/bin/mysqldump --login-path=${LOGINPATH_NAME} --column-statistics=0 ${DB_NAME} | 7za a -si ${HOST_DIR}/${db_now_sql_7z}" "db 백업받기"
+cat_and_run "time /usr/bin/mysqldump --login-path=${LOGINPATH_NAME} --column-statistics=0 ${DB_NAME} | 7za a -mx=9 -si ${HOST_DIR}/${db_now_sql_7z}" "db 백업받기"
 cat_and_run "mv ${HOST_DIR}/${db_now_sql_7z} ${BACKUP_DIR}/${db_now_sql_7z}" "백업파일을 클라우드 연결점인 최종 위치로 옮김"
 
 cat_and_run "ls -hltr --color ${BACKUP_DIR}/${DB_NAME}_*.sql.7z | tail -10" "새로 만들어진 백업파일"

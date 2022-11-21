@@ -272,7 +272,7 @@ rsync_month_folder_1file () {
 			#-- 	rm -f ${to_dir}/*
 			#-- else
 			#-- 	# 주단위 디렉토리가 없으면, 새로 만든다.
-			#-- 	mkdir ${to_dir} ; chown -R ${USER}.${USER} ${to_dir}
+			#-- 	mkdir ${to_dir} ; chown -R ${USER}:${USER} ${to_dir}
 			#-- fi
 
 			# 기존의 백업 이미지를 주단위 디렉토리로 옮긴다.
@@ -311,7 +311,7 @@ fi
 
 if [ ! -d ${backup_dir} ]; then
 	sudo mkdir -p ${backup_dir}
-	sudo chown -R ${USER}.${USER} ${backup_dir}
+	sudo chown -R ${USER}:${USER} ${backup_dir}
 fi
 if [ ! -d ${backup_log_dir} ]; then
 	mkdir -p ${backup_log_dir}

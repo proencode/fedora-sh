@@ -1,0 +1,7 @@
+proenpi@proenpi4b:~/git-projects$ crontab -l
+#--분--시--일--월--요일 (0:일 1:월 2:화 … 6:토)   명령어 
+03  11  *  *  *  /bin/sh /home/backup/wikidb/db-to-cloud.sh wiki >/dev/null 2>&1
+03  15  *  *  *  /bin/sh /home/backup/wikidb/db-to-cloud.sh wiki >/dev/null 2>&1
+03  19  *  *  *  /bin/sh /home/backup/wikidb/db-to-cloud.sh wiki >/dev/null 2>&1
+03  23  *  *  *  /bin/sh /home/backup/wikidb/db-to-cloud.sh wiki >/dev/null 2>&1
+

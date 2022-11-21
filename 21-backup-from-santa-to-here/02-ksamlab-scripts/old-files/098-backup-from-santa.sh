@@ -166,7 +166,7 @@ backup_log_dir=${backup_dir}/logs
 
 if [ ! -d ${backup_dir} ]; then
 	sudo mkdir -p ${backup_dir}
-	sudo chown -R ${USER}.${USER} ${backup_dir}
+	sudo chown -R ${USER}:${USER} ${backup_dir}
 fi
 if [ ! -d ${backup_log_dir} ]; then
 	mkdir -p ${backup_log_dir}

@@ -39,8 +39,8 @@ if [ ${y2m2} -gt $yy01 ] && [ ${y2m2} -lt $yy12 ]; then
 	# 	rm -f ksamlab_rsync_${y2m2}.7z
 	# fi
 	#-- 두번이상 하면 7z 파일에 중복돼 만들어진다.
-	echo "----> ls -l rsync_${y2m2}* | 7za a -si ksamlab_rsync_${y2m2}-$(date +'%y%m%d_%H%M%S').7z ; ls -l k* #-- 삭제할때, rm -f rsync_${y2m2}*"
-	ls -l rsync_${y2m2}* | 7za a -si ksamlab_rsync_${y2m2}-$(date +'%y%m%d_%H%M%S').7z ; ls -l ksamlab_rsync_*
+	echo "----> ls -l rsync_${y2m2}* | 7za a -mx=9 -si ksamlab_rsync_${y2m2}-$(date +'%y%m%d_%H%M%S').7z ; ls -l k* #-- 삭제할때, rm -f rsync_${y2m2}*"
+	ls -l rsync_${y2m2}* | 7za a -mx=9 -si ksamlab_rsync_${y2m2}-$(date +'%y%m%d_%H%M%S').7z ; ls -l ksamlab_rsync_*
 	if [ ! -d old_${y2m2} ]; then
 		mkdir old_${y2m2}
 	fi

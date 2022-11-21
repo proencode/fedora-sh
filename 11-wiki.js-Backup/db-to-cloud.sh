@@ -243,7 +243,7 @@ fi
 
 if [ ! -d ${LOCAL_FOLDER} ];then
 	showno="0" ; showqq="보관용 로컬 디렉토리를 만듭니다."
-	show_then_run "sudo mkdir -p ${LOCAL_FOLDER} ; sudo chown ${USER}.${USER} ${LOCAL_FOLDER}"
+	show_then_run "sudo mkdir -p ${LOCAL_FOLDER} ; sudo chown ${USER}:${USER} ${LOCAL_FOLDER}"
 fi
 uname_n=$(uname -n)
 yoil_sql_7z=".${yoil_number1to7}yoil.sql.7z" #-- Y[1-7].sql.7z // 요일 표시

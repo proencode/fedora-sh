@@ -75,7 +75,7 @@ DB_TYPE="pgsql"
 
 dir_for_backup=${LOCAL_FOLDER}/last_backup #-- 백업을 리스토어 하기전, 현재DB 백업하는 로컬 저장소
 if [ ! -f ${dir_for_backup} ]; then
-	cmdRun "sudo mkdir -p ${dir_for_backup} ; sudo chown ${USER}.${USER} ${dir_for_backup}" "(3) 백업을 리스토어 하기전, 현재DB 백업하는 로컬 저장소 만들기"
+	cmdRun "sudo mkdir -p ${dir_for_backup} ; sudo chown ${USER}:${USER} ${dir_for_backup}" "(3) 백업을 리스토어 하기전, 현재DB 백업하는 로컬 저장소 만들기"
 fi
 
 
@@ -83,12 +83,12 @@ if [ "x${last_skip}" = "xdb_backup_ok" ]; then
 	current_backup="last-wikijs-$(date +%y%m%d_%H%M%S)-$(uname -n).sql.7z"
 	cat <<__EOF__
 
-${cGreen}----> ${cYellow}sudo docker exec wikijsdb pg_dumpall -U wikijs | 7za a -si ${dir_for_backup}/${current_backup} -p ${cCyan}#-- (4) 지정한 백업파일을 DB 서버에 리스토어 하기전에, 현재의 DB 를 먼저 백업합니다.
+${cGreen}----> ${cYellow}sudo docker exec wikijsdb pg_dumpall -U wikijs | 7za a -mx=9 -si ${dir_for_backup}/${current_backup} -p ${cCyan}#-- (4) 지정한 백업파일을 DB 서버에 리스토어 하기전에, 현재의 DB 를 먼저 백업합니다.
 
 ${cRed}----> ${cYellow}비밀번호${cRed}를 입력하세요.${cReset}
 
 __EOF__
-	sudo docker exec wikijsdb pg_dumpall -U wikijs | 7za a -si ${dir_for_backup}/${current_backup} -p
+	sudo docker exec wikijsdb pg_dumpall -U wikijs | 7za a -mx=9 -si ${dir_for_backup}/${current_backup} -p
 fi
 
 echoSeq ""
