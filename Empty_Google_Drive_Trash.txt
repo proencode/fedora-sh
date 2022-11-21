@@ -1,0 +1,30 @@
+https://forum.rclone.org/t/empty-google-drive-trash/14331
+
+실행할 명령은 다음과 같습니다( --dry-run먼저 모든 것을 확인하기 위해 첫 번째 실행에 추가하여 삭제할 항목을 알 수 있음).
+
+rclone delete gdrive-root: --drive-trashed-only --drive-use-trash=false --verbose=2 --fast-list
+
+
+gdrive-root: 자체 클라이언트/키가 있고 폴더 ID가 없는 사용자 지정 원격(구글 드라이브의 루트에서 실행)
+
+--drive-trashed-only: 이것은 절대적으로 중요합니다. 드라이브에서 삭제되었을 때와 동일한 폴더 구조의 휴지통에 있는 파일과만 상호 작용합니다.
+
+--drive-use-trash=false: 또한 중요합니다. 파일을 삭제할 때 드라이브 휴지통을 사용하지 않기 때문입니다. 기본적으로 Google 드라이브 리모컨은 삭제된 파일을 Google 드라이브 휴지통으로 보냅니다. 분명히 휴지통을 비우고 싶기 때문에 거짓 플래그는 이 기본 옵션을 무시합니다.
+
+--fast-list: 메모리에 있는 파일 목록을 빌드합니다. 적은 트랜잭션(API 사용에 좋음)을 사용하지만 조금 더 많은 메모리를 사용합니다.
+
+--verbose=2: 진행 상황을 시각적으로 확인하는 데 유용한 작업의 자세한 출력을 인쇄합니다.
+
+이것을 실행한 후, 나는 쓰레기에 불과한 3tb의 데이터를 비웠다. 휴지통을 비워야 하는 분들께 도움이 되었으면 합니다.
+
+
+
+다음을 사용할 수 있습니다.
+
+rclone cleanup remote:
+
+https://rclone.org/commands/rclone_cleanup/
+
+
+
+
