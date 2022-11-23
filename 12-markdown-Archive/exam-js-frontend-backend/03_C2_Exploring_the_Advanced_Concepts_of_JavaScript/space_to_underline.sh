@@ -11,7 +11,7 @@ source ${HOME}/bin/color_base #-- 221027목-1257 CMD_DIR CMD_NAME cmdRun cmdCont
 
 
 if [ "x$2" = "x" ]; then
-	echo "${cRed}!!!!> ${cGreen}$0 ${cMagenta}[${cGreen}스크립트의 일련번호${cMagenta}] [${cGreen}이름을 위한 메세지${cMagenta}] ${cBlue}----> 이와 같이 입력해야 합니다.${cReset}"
+	echo "${cRed}!!!!> ${cYellow}$0 스크립트의_일련번호 \"${cYellow}이름을 위한 메세지\" ${cBlue}----> 이와 같이 입력해야 합니다.${cReset}"
 	exit 1
 fi
 
@@ -25,7 +25,9 @@ vi ${aname}
 
 if [ -f ${aname} ]; then
 	cmdRun "node ${aname}" "자바스크립트를 실행합니다."
-	cmdRun "cat ${aname}" "입력한 자바스크립트 내용"
+	echo "${cMagenta}----> cat ${aname} #-- 입력한 자바스크립트 내용${cReset}"
+	cat ${aname}
+	echo "${cBlue}<---- cat ${aname} #-- 입력한 자바스크립트 내용${cReset}"
 	ls
 fi
 
