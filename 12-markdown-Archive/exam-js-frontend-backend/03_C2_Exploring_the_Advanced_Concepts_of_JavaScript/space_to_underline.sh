@@ -28,7 +28,7 @@ if [ -f ${aname} ]; then
 	echo "${cMagenta}----> cat ${aname} #-- 입력한 자바스크립트 내용${cReset}"
 	cat ${aname}
 	echo "${cBlue}<---- cat ${aname} #-- 입력한 자바스크립트 내용${cReset}"
-	ls
+	ls | tail -4
 fi
 
 
