@@ -1,0 +1,21 @@
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <script src="https://unpkg.com/vue@next"></script>
+  </head>
+  <body>
+    <div id="itisapp">First div</div>
+    <div>The rest of the page is not managed by
+    Vue.js</div>
+  </body>
+
+  <script>
+    var app = Vue.createApp({
+      template : "This div is managed with Vue.js"
+    });
+    // mount the Vue.js application on the <div> having the
+    // id "app"
+    var vm = app.mount("div#itisapp");
+</script>
+
+</html>
