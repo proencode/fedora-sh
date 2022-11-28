@@ -5,6 +5,7 @@
   </head>
   <body>
     <div id="app"></div>
+    <div>--- 4304_F---Incrementing_count_variable_every_second.html ---</div>
   </body>
 
   <script>
@@ -19,6 +20,10 @@
       }
     });
     var vm = app.mount("div#app");
+
+    setInterval(function() {
+      vm.count += 1;
+    }, 1000);
 </script>
 
 </html>
