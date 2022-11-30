@@ -1,4 +1,16 @@
-https://forum.rclone.org/t/empty-google-drive-trash/14331
+
+Empty Google Drive Trash https://forum.rclone.org/t/empty-google-drive-trash/14331
+Howto Guides Feb 2020 - Sep 2020
+
+### jiru Feb '20
+
+내 Google 드라이브 휴지통을 비운 경험을 공유하고 싶었습니다. 휴지통을 비우는 Google의 UI 방법은 끔찍하고 특히 rclone을 사용하는 사람들에게는 매우 부족합니다.
+
+이 cleanup명령은 도움을 주기 위해 rclone으로 구현되었습니다. 기본적으로 드라이브 DELETEapi 명령을 사용하며 여기에서 시연할 수 있습니다. https://developers.google.com/drive/api/v2/reference/files/emptyTrash?apix=true#try-it 87
+
+나는 이 명령을 사용했고 약간은 효과가 있었지만 Nick(rclone의 개발자)조차도 이 포럼의 다른 게시물에 대해 아무도 무슨 일이 일어나고 있는지 또는 때때로 작동하지 않는 이유에 대해 댓글을 달았습니다. 예를 들어 Google의 개발자 포털(위 링크)에서 직접 DELETE 명령을 시도했는데 휴지통이 비워지지 않았습니다. cleanup명령 과 동일합니다 . rclone의 잘못이 아니라 단순한 삭제 아이디어에 대한 Google의 잘못된 구현입니다.
+
+하지만 저에게 맞는 솔루션을 찾았습니다(그러나 많은 API 요청을 사용할 수 있고 속도가 제한될 수 있으므로 주의하세요.) 고유한 비밀/키 를 사용하고 별도의 비밀/키/프로젝트를 사용하는 것이 좋습니다. 프로덕션 rclone 설정에 사용하는 것에서.
 
 실행할 명령은 다음과 같습니다( --dry-run먼저 모든 것을 확인하기 위해 첫 번째 실행에 추가하여 삭제할 항목을 알 수 있음).
 
@@ -17,7 +29,9 @@ gdrive-root: 자체 클라이언트/키가 있고 폴더 ID가 없는 사용자 
 
 이것을 실행한 후, 나는 쓰레기에 불과한 3tb의 데이터를 비웠다. 휴지통을 비워야 하는 분들께 도움이 되었으면 합니다.
 
+1 Reply 2
 
+### Animosity022 > jiru Feb '20
 
 다음을 사용할 수 있습니다.
 
@@ -25,6 +39,239 @@ rclone cleanup remote:
 
 https://rclone.org/commands/rclone_cleanup/
 
+1 Reply
+
+### jiru 1 > Animosity022 Feb '20
+
+jiru:
+	이 cleanup명령은 도움을 주기 위해 rclone으로 구현되었습니다.
+	나는 이 명령을 사용했고 약간은 효과가 있었지만 Nick(rclone의 개발자)조차도 이 포럼의 다른 게시물에 대해 아무도 무슨 일이 일어나고 있는지 또는 때때로 작동하지 않는 이유에 대해 댓글을 달았습니다.
+
+언급했듯이 나는 그것을 사용하지만 거의 일주일 동안 cron 작업에 대한 명령을 실행한 후에도 내 드라이브 쓰레기는 여전히 수천 개의 파일로 방대했습니다. 일주일 후에 내 쓰레기의 약 2%만 제거했습니다. 그런데 내 게시물에 있는 명령을 실행한 후 약 2분 만에 98%를 삭제했습니다.
+
+편집: 내 원래 게시물을 더 명확히 하기 위해 cleanup/delete API 명령을 통해 휴지통을 비울 수 없는 것은 rclone의 잘못이 아닙니다. 개발자 포털에 있는 Google의 지침을 따랐습니다. 좋은 반응으로 완료되었지만 모든 파일이 남아있었습니다. 따라서 문제는 rclone 외부에서 반복 가능하므로 확실히 rclone의 잘못이 아닙니다. 위에 게시된 내 명령은 드라이브 파일을 우회하면서 단순히 파일을 열거하고 삭제하는 해결 방법에 가깝습니다.
+
+1 Reply 1
+
+### Animosity022 > jiru Feb '20
+
+I think the issue might be more related to running it multiple times maybe?
+
+I cleaned a few thousand files in 5 minutes as I checked back on it.
+
+Are you using a team drive or regular drive?
+
+1 Reply
+
+### jiru > Animosity022 Feb '20
+
+Regular. And the interval was daily.
+
+### ncw > Nick Craig-Wood Feb '20
+
+For me, rclone cleapup has always worked eventually but has taken some time (hours)! I typically just run it once then wait.
+
+I haven't deleted that much data though.
+
+1 Reply
+
+### jiru > ncw Feb '20
+
+I haven't deleted that much data though.
+
+@ncw, I figured that has to do with it. I just got impatient :slight_smile: and I gave this a shot. Worked quickly and effectively. Do you think you could create a --force-cleanup flag for the cleanup command? So something like this:
+
+rclone cleanup gdrive: --force-cleanup
+
+If the forced flag is used, it flips the cleanup command to a delete command with the trash options. So basically a shortcut.
+
+1 Reply
+
+### Animosity022 > jiru Feb '20
+
+That's a great idea. Can you tag a new issue on github for it?
+
+1 Reply 1
+
+### jiru > Animosity022 Feb '20
+
+added issue #3964 96
+
+### 3 MONTHS LATER
+### ferferga May '20
+
+@jiru I tried your implementation, however, it doesn't remove the folders. I don't know if I just need to still be patient with them, but are they deleted succesfully to you?
+
+1 Reply
+
+### jiru > ferferga May '20
+
+Some questions/assumptions:
+
+Is your remote: the root of the google drive?
+
+Did you get any output on the screen (if you set it to verbose=2)
+
+It did delete folders for me.
+
+1 Reply
+
+### ferferga > jiru May '20
+
+Yes, it's the root of my drive.
+
+For the files, yes, not for folders.
+
+Replacing delete with ls returns no results as well.
+
+EDIT: Tried latest beta with same results. Also, do you have a team drive to test? Or everything was tested in normal drives?
+
+Can you, please, try to create an empty folder, send it to trash and see if you can delete it? (Because I think that, in my case, rclone deleted all the files contained in those folders first, so the folders are sitting just empty on my trash)
+
+1 Reply
+
+#### ferferga > ferferga May '20
+
+rmdir doesn't work as well, it's returning 403 (Forbidden) errors
+
+### 26 DAYS LATER
+### Roshanconnor > Roshan Jun '20
+
+Your method is so awesome
+I had around 100k files in my trashed (around 20 TB I think)
+It took some time..but it did the job neatly
+rclone cleanup never did the job for me
+
+2 Replies
+
+### Lex > Roshanconnor Jun '20
+
+FWIW
+Here is a script that dedupes, removes empty dirs and deletes trash. If you put this in crontab it will keep all/selected remotes nice and clean.
+
+GitHub 88lex/cleanremotes 125
+Contribute to 88lex/cleanremotes development by creating an account on GitHub.
+
+2 Replies 1
+
+### 3 MONTHS LATER
+### CLOSED ON SEP 16, '20
+
+This topic was automatically closed 90 days after the last reply. New replies are no longer allowed.
+
+
+Reply
 
 
 
+
+
+
+
+### jiru > Roshanconnor Jun '20
+
+Glad it worked for you! Go comment on the issue (linked above) to get some traction on the feature request.
+
+1
+
+### Roshanconnor Roshan > Lex Jun '20
+
+Hi..do you mind explaining this line pls
+"cleanremotes accepts a command line filter now. e.g. ./cleanremotes tv will only clean remotes that have tv in them"
+Did you mean all the remote names having a word called tv in them?
+
+1 Reply
+
+### 11110 cgking > Lex Jun '20
+
+Using the delete command, 403, API quota error appears, how can I solve it?
+
+1 Reply
+
+### asdffdsa jojothehumanmonkey 2 > 11110 Jun '20
+
+what was the command you used?
+what is the exact error message?
+
+1 Reply
+
+### 11110 cgking > asdffdsa Jun '20
+
+rclone delete [p#1 用户名]: --drive-trashed-only --drive-use-trash=false --verbose=2 --fast-list
+''
+2020/06/13 23:30:12 DEBUG : pacer: low level retry 1/10 (error googleapi: Error 403: User Rate Limit Exceeded. Rate of requests for user exceed configured project quota. You may consider re-evaluating expected per-user traffic to the API and adjust project quota limits accordingly. You may monitor aggregate quota usage and adjust limits in the API Console: https://console.developers.google.com/apis/api/drive.googleapis.com/quotas?project=202264815644, userRateLimitExceeded)
+2020/06/13 23:30:12 DEBUG : pacer: Rate limited, increasing sleep to 1.770183715s
+2020/06/13 23:30:12 DEBUG : pacer: Reducing sleep to 0s
+''
+
+### asdffdsa jojothehumanmonkey 1 Jun '20
+
+i assume that you created your own id, not using the shared id.
+https://rclone.org/drive/#making-your-own-client-id 11
+
+1 Reply
+
+### 11110 cgking > asdffdsa Jun '20
+
+In other words, regardless of this prompt, after the command is executed, the trash can is emptied.
+
+### asdffdsa jojothehumanmonkey 1 Jun '20
+
+i am not a gdrive expert.
+
+you would have to read the log to see if the command completed or not.
+i think it should complete.
+
+rclone sees the message from google and increases the sleep period.
+then rclone reduces the sleep period back to zero.
+https://developers.google.com/drive/api/v3/handle-errors#exponential-backoff 4
+
+are you using your own client id?
+
+https://developers.google.com/drive/api/v3/handle-errors#resolve_a_403_error_user_rate_limit_exceeded 5
+
+1 Reply
+
+### 11110 cgking > asdffdsa Jun '20
+
+thank you for your reply，This is where I am confused. No matter if I use my own ID or a public ID, 403 will appear, and note that it is a 403 that is constantly scrolling across the screen
+
+1 Reply
+
+### Animosity022 > 11110 Jun '20
+
+403s are normal if you are hitting more than 10 API hits per second. It's Google API telling you to slow down, which is fine.
+
+You'd have to post the whole log to see if there is an issue.
+
+### Lex > Roshanconnor Jun '20
+
+Roshanconnor:
+	Did you mean all the remote names having a word called tv in them?
+
+Exactly. It uses a filter (optional) to limit which remotes are cleaned. e.g. say you have 3 remotes
+
+my_movies, my_tv: and photos:
+
+./cleanremotes my would clean both my_tv: and my_movies:
+./cleanremotes tv would only clean my_tv:
+./cleanremotes alone will clean all remotes in your rclone config
+
+cgking, if you want to reduce the messages run ./cleanremotes tv -q ... the -q flag will limit messages to only critical ones.
+
+1 Reply 1
+
+### Roshanconnor Roshan > Lex Jun '20
+
+Thank you so much
+Thats explained well
+
+
+
+### 3 MONTHS LATER
+### CLOSED ON SEP 16, '20
+
+This topic was automatically closed 90 days after the last reply. New replies are no longer allowed.
+
+
+Reply
