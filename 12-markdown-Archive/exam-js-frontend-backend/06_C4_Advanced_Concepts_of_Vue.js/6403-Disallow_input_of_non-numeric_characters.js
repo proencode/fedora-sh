@@ -6,14 +6,14 @@ const Counter = {
     }
   },
   template : `
-  ===> (6403-Disallow_input.js)
+  ===> (6403_F-Disallow.js) ===>
     <br>===> 카운트 (100 보다 작아야 한다):
     <br>===> <input type="text" :value="count"
         @blur="valid($event)"
         @keydown="verif($event)"/>
     <br>===> 카운트 = {{count}}
     <br> <span>{{message}}</span>
-    (6403) <===
+    <=== (6403_F-) <===
   `,
   methods : {
     valid(event) {

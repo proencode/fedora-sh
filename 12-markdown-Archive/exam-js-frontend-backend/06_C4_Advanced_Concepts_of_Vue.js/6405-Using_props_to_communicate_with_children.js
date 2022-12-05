@@ -18,12 +18,12 @@ const Counters = {
   },
   template : `
      <div v-for="i in NB">
-	===> (6405-Using_props.js)
+	===> (6405_F-Using.js) ===>
         <br>===> 카운터 {{i}} : <counter @add="add($event)"
         @sub="sub($event)" /> <===
      </div>
      <br>===> 합계 : {{total}} <===
-     (6405) <===
+     <=== (6405_F-) <===
   `,
   methods : {
     add(value) {

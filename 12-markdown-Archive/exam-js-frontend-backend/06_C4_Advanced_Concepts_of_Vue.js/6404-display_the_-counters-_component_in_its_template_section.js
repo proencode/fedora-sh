@@ -9,7 +9,7 @@ const Counters = {
     Counter:Counter
   },
   template : `
-  ===> (6404-display_.js)
+  ===> (6404_F-display.js) ===>
   <br>===> 카운터 1 : <counter @add="add($event)"
       @sub="sub($event)" /> <===
   <br>===> 카운터 2 : <counter @add="add($event)"
@@ -17,7 +17,7 @@ const Counters = {
   <br>===> 카운터 3 : <counter @add="add($event)"
       @sub="sub($event)" /> <===
   <br>===> 합계 : {{total}} <===
-  (6404) <===
+  <=== (6404_F-) <===
   `,
   methods : {
     add(value) {
