@@ -6,12 +6,12 @@ const Counter = {
     }
   },
   template : `
-  ====> 6402-Display_an_error_message_if_the_counter_is_greater_than_100.js ===>
-    <br>====> 카운트 값 (100 보다 작아야 한다): <input type="text"
+  ===> (6402-Display_an_error.js)
+    <br>===> 카운트 값 (100 보다 작아야 한다): <input type="text"
     :value="count" @blur="moyamoya($event)" />
-    <br>====> 카운트 = {{count}}
+    <br>===> 카운트 = {{count}}
     <br> <span>{{message}}</span>
-    <===
+    (6402) <===
   `,
   methods : {
     moyamoya(eeevvvnnnttt) {

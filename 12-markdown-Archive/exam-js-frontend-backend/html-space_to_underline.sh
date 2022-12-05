@@ -25,7 +25,7 @@ vi ${aname}
 
 if [ -f ${aname} ]; then
 	cmdRun "cat ${aname}" "입력한 자바스크립트 내용"
-	chdRun "firefox localhost:9999/${aname} &" "브라우저에서 확인"
+	cmdRun "firefox localhost:9999/${aname} &" "브라우저에서 확인"
 	ls | tail -4
 fi
 

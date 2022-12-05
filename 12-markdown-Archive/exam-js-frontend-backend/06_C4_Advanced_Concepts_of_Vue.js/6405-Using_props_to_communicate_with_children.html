@@ -5,18 +5,21 @@
   </head>
   <body>
     <div id="app"></div>
-    <div>--- (6401_F-Increment_counter_count.html) ---</div>
   </body>
 
   <script type="module">
 
-    import Counter from "./6401-Increment_counter_count.js";
+    import Counters from "./6405-Using_props_to_communicate_with_children.js";
 
     var app = Vue.createApp({
       components : {
-        Counter:Counter
+        Counters:Counters
       },
-      template : "<counter start='10' />"
+      template : `
+      ---> (6405-Using_props_to_communicate_with_children.html)
+      <br>---> <counters nb="5" /> <---
+      (6405) <---
+      `,
     });
 
     var vm = app.mount("div#app");

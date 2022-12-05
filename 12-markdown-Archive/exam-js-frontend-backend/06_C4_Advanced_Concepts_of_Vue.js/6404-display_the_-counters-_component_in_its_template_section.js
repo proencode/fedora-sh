@@ -9,14 +9,15 @@ const Counters = {
     Counter:Counter
   },
   template : `
-  ***> 6404-display_the_-counters-_component_in_its_template_section.js ***>
-  <br>***> 카운터 1 : <counter @add="add($event)"
-      @sub="sub($event)" /> <***
-  <br>***> 카운터 2 : <counter @add="add($event)"
-      @sub="sub($event)" /> <***
-  <br>***> 카운터 3 : <counter @add="add($event)"
-      @sub="sub($event)" /> <***
-  <br>***> 합계 : {{total}} <***
+  ===> (6404-display_.js)
+  <br>===> 카운터 1 : <counter @add="add($event)"
+      @sub="sub($event)" /> <===
+  <br>===> 카운터 2 : <counter @add="add($event)"
+      @sub="sub($event)" /> <===
+  <br>===> 카운터 3 : <counter @add="add($event)"
+      @sub="sub($event)" /> <===
+  <br>===> 합계 : {{total}} <===
+  (6404) <===
   `,
   methods : {
     add(value) {
