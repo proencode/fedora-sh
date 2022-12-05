@@ -6,12 +6,13 @@ const Counter = {
     }
   },
   template : `
-  === 6404a-display_the_-counters-_component_in_its_template_section.js ===
-    <input type="text" v-model="count"
+  ===> 6404-counter.js ===>
+  <input type="text" v-model="count"
        @keydown="verif($event)"
        @input="calcul()"
        @focus="focus()"
        @blur="blur()" />
+  <====
   `,
   methods : {
     verif(event) {

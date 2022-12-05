@@ -5,13 +5,11 @@ const Counter = {
     }
   },
   template : `
-  === 6401_F-Increment_counter_count.js ===<br>
-    <button @click="count++">Increment counter by
-    count++</button>
-       &nbsp;&nbsp; count = {{count}} <br><br>
-    <button @click="incr()">Increment counter by
-    incr()</button>
-      &nbsp;&nbsp; count = {{count}}
+  ===> 6401_F-Increment_counter_count.js ===>
+    <br>====> <button @click="count++">count++ 로 카운트 증가</button> &nbsp;&nbsp; 카운트 = {{count}}
+    <br>====> <button @click="incr()">incr() 로 카운트 증가</button>
+    <br>====> 카운트 = {{count}}
+    <===
   `,
   methods : {
     incr() {

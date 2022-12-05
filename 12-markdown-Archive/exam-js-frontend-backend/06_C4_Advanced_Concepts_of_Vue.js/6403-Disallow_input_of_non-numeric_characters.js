@@ -6,13 +6,14 @@ const Counter = {
     }
   },
   template : `
-  === 6403-Disallow_input_of_non-numeric_characters.js ===
-    count (less than 100):
-    <input type="text" :value="count" @blur="valid($event)"
-    @keydown="verif($event)"/>
-      &nbsp;&nbsp; count = {{count}}
-    <br><br>
-    <span>{{message}}</span>
+  ===> 6403-Disallow_input_of_non-numeric_characters.js ===>
+    <br>====> 카운트 (100 보다 작아야 한다):
+    <br>====> <input type="text" :value="count"
+        @blur="valid($event)"
+        @keydown="verif($event)"/>
+    <br>====> 카운트 = {{count}}
+    <br> <span>{{message}}</span>
+    <===
   `,
   methods : {
     valid(event) {

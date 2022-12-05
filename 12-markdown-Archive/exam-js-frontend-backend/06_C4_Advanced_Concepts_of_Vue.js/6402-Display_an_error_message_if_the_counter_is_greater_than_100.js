@@ -6,12 +6,12 @@ const Counter = {
     }
   },
   template : `
-  ==== 6402-Display_an_error_message_if_the_counter_is_greater_than_100.js ===
-    count (less than 100): <input type="text"
+  ====> 6402-Display_an_error_message_if_the_counter_is_greater_than_100.js ===>
+    <br>====> 카운트 값 (100 보다 작아야 한다): <input type="text"
     :value="count" @blur="moyamoya($event)" />
-     &nbsp;&nbsp; count = {{count}}
-    <br><br>
-    <span>{{message}}</span>
+    <br>====> 카운트 = {{count}}
+    <br> <span>{{message}}</span>
+    <===
   `,
   methods : {
     moyamoya(eeevvvnnnttt) {
@@ -19,7 +19,7 @@ const Counter = {
                           // before each check
       if (eeevvvnnnttt.target.value < 100) this.count =
       eeevvvnnnttt.target.value;
-      else this.message = "Error: count " + eeevvvnnnttt.target.value + " must be less than 100";
+      else this.message = "*** 오류! : 카운트 " + eeevvvnnnttt.target.value + " 는 100 보다 작아야 한다. ***";
     }
   }
 }
