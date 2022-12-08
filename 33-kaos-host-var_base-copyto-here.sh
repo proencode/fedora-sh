@@ -22,32 +22,40 @@ cat <<__EOF__
 년도 4자리를 입력하세요.
 ----> [${y4}]
 __EOF__
-read a
+read a ; echo "${cUp}"
 if [ "x$a" = "x" ]; then
 	a=$y4
 fi
 y4=$a
-echo "${cRed}[ ${cYellow}${y4} ${cRed}]${cReset}"
-
 cat <<__EOF__
+${cRed}[ ${cYellow}${y4} ${cRed}]${cReset}
+
 월 2자리를 입력하세요.
 ----> [${m2}]
 __EOF__
-read a
+read a ; echo "${cUp}"
 if [ "x$a" = "x" ]; then
 	a=$m2
 fi
 m2=$a
-echo "${cRed}[ ${cYellow}${m2} ${cRed}]${cReset}"
+cat <<__EOF__
+${cRed}[ ${cYellow}${m2} ${cRed}]${cReset}
+
+__EOF__
+
+opt_var_base_dir="/opt/kaos_var_base"
+if [ ! -d ${opt_var_base_dir} ]; then
+	cmdRun "sudo mkdir ${opt_var_base_dir} ; sudo chown -R ${USER}:${USER} ${opt_var_base_dir}" "백업할 디렉토리를 만듭니다."
+fi
 
 for basename in cadbase emailbase georaebase scanbase
-	local_dir="${HOME}/wind_bada/Downloads/var_base/${basename}/${y4}/${m2}"
+do
+	local_dir="${opt_var_base_dir}/${basename}/${y4}/${m2}"
 	if [ ! -d ${local_dir} ]; then
 		cmdRun "mkdir -p ${local_dir}" "년월지정 디렉토리를 만듭니다."
 	fi
 	cmdRun "rsync -avzr --delete -e 'ssh -oHostKeyAlgorithms=+ssh-dss -p 2022' kaosco@kaos.kr:/var/base/${basename}/${y4}/${m2}/ ${local_dir}/" "원격 파일을 로컬 백업으로 복사합니다."
-
-cmdRun "ls ${local_dir}" "복사한 내역을 확인합니다."
+done
 
 
 # ----
