@@ -24,7 +24,7 @@ if [ "x$a" = "x" ]; then
 fi
 y4=$a
 
-opt_var_base_dir="/opt/kaos_var_base"
+opt_var_base_dir="/opt/kaos_backup/kaos_var_base"
 if [ ! -d ${opt_var_base_dir} ]; then
 	echo "!!!!> ${opt_var_base_dir} 디렉토리가 없습니다."
 	exit -1
@@ -37,7 +37,6 @@ do
 	do
 		local_dir="${base_dir}/${y4}/${m2}"
 		if [ -d ${local_dir} ]; then
-			$(date +"%y%m%d%a-%H%M%S")
 			cmdRun "cd ${local_dir}; ls -lR > ../${basename}-${y4}-${m2}-$(date +%y%m%d%a-%H%M%S).ls-lR"
 			cmdRun "cd ${local_dir}; 7za a -mx=9 ../${basename}-${y4}-${m2}-$(date +%y%m%d%a-%H%M%S).7z *" "${y4}-${m2} 데이터를 압축합니다."
 		fi
