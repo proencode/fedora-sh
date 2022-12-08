@@ -1,7 +1,7 @@
 #!/bin/sh
 
 source ${HOME}/bin/color_base #-- 221027목-1257 CMD_DIR CMD_NAME cmdRun cmdCont cmdYenter echoSeq 
-MEMO="HOST order file copyto here"
+MEMO="kaos 백업자료 압축하기"
 cat <<__EOF__
 ${cMagenta}>>>>>>>>>>${cGreen} $0 ${cMagenta}||| ${cCyan}${MEMO} ${cMagenta}>>>>>>>>>>${cReset}
 __EOF__
@@ -10,7 +10,6 @@ __EOF__
 # ----
 
 y4=$(date +%Y) #-- 2022
-
 if [ "x$1" != "x" ]; then
 	y4=$1
 fi
@@ -33,12 +32,19 @@ fi
 
 for basename in cadbase emailbase georaebase scanbase
 do
-	local_dir="${home_dir}/${basename}/${y4}"
-	if [ ! -d ${local_dir} ]; then
-		cmdRun "mkdir -p ${local_dir}" "년월지정 디렉토리를 만듭니다."
-	fi
-	cmdRun "rsync -avzr --delete -e 'ssh -oHostKeyAlgorithms=+ssh-dss -p 2022' kaosco@kaos.kr:/var/base/${basename}/${y4}/ ${local_dir}/" "원격 파일을 로컬 백업으로 복사합니다."
+	base_dir="${home_dir}/${basename}"
+	for m2 in 01 02 03 04 05 06 07 08 09 10 11 12
+	do
+		local_dir="${base_dir}/${y4}/${m2}"
+		if [ -d ${local_dir} ]; then
+			cmdRun "cd ${local_dir}; ls -lR > ../${basename}-${y4}-${m2}-$(date +%y%m%d%a-%H%M%S).ls-lR"
+			cmdRun "cd ${local_dir}; 7za a -mx=9 ../${basename}-${y4}-${m2}-$(date +%y%m%d%a-%H%M%S).7z *" "${y4}-${m2} 데이터를 압축합니다."
+		fi
+	done
 done
+
+cmdRun "cd ${home_dir}; sh ${HOME}/bin/du-sh-sort-hr.sh" "디렉토리별 사이즈 확인"
+cmdRun "rclone copy ${home_dir} kaosb4mi:${kaos_var_base}" "클라우드로 복사합니다."
 
 
 # ----
