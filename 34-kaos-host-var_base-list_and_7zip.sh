@@ -24,15 +24,15 @@ if [ "x$a" = "x" ]; then
 fi
 y4=$a
 
-opt_var_base_dir="/opt/kaos_backup/kaos_var_base"
-if [ ! -d ${opt_var_base_dir} ]; then
-	echo "!!!!> ${opt_var_base_dir} 디렉토리가 없습니다."
-	exit -1
+kaos_var_base="kaos_var_base"
+home_dir="/opt/kaos_backup/${kaos_var_base}"
+if [ ! -d ${home_dir} ]; then
+	cmdRun "sudo mkdir -p ${home_dir} ; sudo chown -R yosj:yosj ${home_dir}" "(1) 디렉토리를 새로 만듭니다."
 fi
 
 for basename in cadbase emailbase georaebase scanbase
 do
-	base_dir="${opt_var_base_dir}/${basename}"
+	base_dir="${home_dir}/${basename}"
 	for m2 in 01 02 03 04 05 06 07 08 09 10 11 12
 	do
 		local_dir="${base_dir}/${y4}/${m2}"
@@ -42,6 +42,9 @@ do
 		fi
 	done
 done
+
+cmdRun "cd ${home_dir}; sh ${HOME}/bin/du-sh-sort-hr.sh" "디렉토리별 사이즈 확인"
+cmdRun "rclone copy ${home_dir} kaosb4mi:${kaos_var_base}" "클라우드로 복사합니다."
 
 
 # ----
