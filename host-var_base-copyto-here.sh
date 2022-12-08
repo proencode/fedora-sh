@@ -40,12 +40,11 @@ fi
 m2=$a
 echo "${cRed}[ ${cYellow}${m2} ${cRed}]${cReset}"
 
-local_dir="${HOME}/wind_bada/Downloads/var_base/${y4}/${m2}"
-if [ ! -d ${local_dir} ]; then
-	cmdRun "mkdir -p ${local_dir}" "년월지정 디렉토리를 만듭니다."
-fi
-
 for basename in cadbase emailbase georaebase scanbase
+	local_dir="${HOME}/wind_bada/Downloads/var_base/${basename}/${y4}/${m2}"
+	if [ ! -d ${local_dir} ]; then
+		cmdRun "mkdir -p ${local_dir}" "년월지정 디렉토리를 만듭니다."
+	fi
 	cmdRun "rsync -avzr --delete -e 'ssh -oHostKeyAlgorithms=+ssh-dss -p 2022' kaosco@kaos.kr:/var/base/${basename}/${y4}/${m2}/ ${local_dir}/" "원격 파일을 로컬 백업으로 복사합니다."
 
 cmdRun "ls ${local_dir}" "복사한 내역을 확인합니다."
