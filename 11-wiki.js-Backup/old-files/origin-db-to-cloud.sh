@@ -1,55 +1,19 @@
 #!/bin/sh
 
-source ${HOME}/bin/color_base #-- 221027목-1257 CMD_DIR CMD_NAME cmdRun cmdCont cmdYenter echoSeq 
-show_then_run () {
-	if [ "x$show_ok" = "xok" ]; then
-		cat_and_run "$1" "#-- (${showno}) ${showqq}"
-	else
-		echo "$1" | sh
-	fi
-}
-show_then_view () {
-	if [ "x$show_ok" = "xok" ]; then echo "${cGreen}----> $1 ${cCyan}#-- (${showno}) ${showqq}${cReset}" ; fi
-}
-show_title () {
-	if [ "x$show_ok" = "xok" ]; then
-		cat <<__EOF__
-    ${cGreen}|
-    |
-    | ${cCyan}$1
-    ${cGreen}|
-    |${cReset}
-__EOF__
-	fi
-}
-#---> value_keyin "LOGIN_PATH" "${LOGIN_PATH}" "데이터베이스의 로그인 패쓰 를 입력하세요."
-value_keyin () {
-	FIELD_NAME=$1
-	FIELD_VALUE=$2
-	FIELD_TITLE=$3
-	cat <<__EOF__
-
-${cGreen}----> ${FIELD_TITLE}[ ${cCyan}${FIELD_VALUE} ${cGreen}]${cReset}
-__EOF__
-	read return_value
-
-	if [ "x$return_value" = "x" ]; then
-		return_value="${FIELD_VALUE}"
-	fi
-	cat <<__EOF__
-${cUp}${cCyan}${FIELD_NAME}: ${cRed} ${cYellow}${return_value} ${cRed}]
-
-__EOF__
-}
-#<--- value
+CMD_NAME=`basename $0` # 명령줄에서 실행 프로그램 이름만 꺼냄
+CMD_DIR=${0%/$CMD_NAME} # 실행 이름을 빼고 나머지 디렉토리만 담음
+if [ "x$CMD_DIR" == "x" ] || [ "x$CMD_DIR" == "x$CMD_NAME" ]; then
+	CMD_DIR="."
+fi
+source ${HOME}/lib/color_base #-- cBlack cRed cGreen cYellow cBlue cMagenta cCyan cWhite cReset cUp
+# ~/lib/color_base 220827-0920 cat_and_run cat_and_run_cr cat_and_read cat_and_readY view_and_read show_then_run show_then_view show_title value_keyin () {
 
 MEMO="cron job"
-# cat <<__EOF__
-# ${cMagenta}>>>>>>>>>>${cGreen} $0 ${cMagenta}||| ${cCyan}${MEMO} ${cMagenta}>>>>>>>>>>${cReset}
-# __EOF__
-# zz00logs_folder="${HOME}/zz00logs" ; if [ ! -d "${zz00logs_folder}" ]; then cmdRun "mkdir ${zz00logs_folder}" "로그 폴더" ; fi
-# zz00log_name="${zz00logs_folder}/zz.$(date +"%y%m%d%a-%H%M%S")__RUNNING_${CMD_NAME}" ; touch ${zz00log_name}
-# ----
+## echo "${cMagenta}>>>>>>>>>>${cGreen} $0 ${cMagenta}||| ${cCyan}${MEMO} ${cMagenta}>>>>>>>>>>${cReset}"
+#--xx-- zz00logs_folder="${HOME}/zz00logs" ; if [ ! -d "${zz00logs_folder}" ]; then cat_and_run "mkdir ${zz00logs_folder}" "로그 폴더" ; fi
+#--xx-- zz00log_name="${zz00logs_folder}/zz.$(date +"%y%m%d-%H%M%S")__RUNNING_${CMD_NAME}" ; touch ${zz00log_name}
+#----
+
 
 this_year=$(date +%Y) #-- 2022
 this_wol=$(date +%m) #-- 07
@@ -59,6 +23,125 @@ pswd_ym=$(date +"%y%m")
 yoil_number1to7=$(date +%u) #------------ 월1 화2 수3 목4 금5 토6 일7
 # yoil_atog=$(echo "abcdefg" | cut -c ${yoil_number1to7}) #---- 요일 a...g 일...토 #-- XX
 ju_beonho=$(date +%V) #-- 1년중 몇번째 주인지 표시. V: 월요일마다 하나씩 증가한다. U: 1월1일=일요일: 01, 아니면: 00. 일요일마다 하나씩 증가한다.
+
+#|  cat date.sh #-- 주 표시 보여주기 스크립트
+#|  
+#|  #!/bin/sh
+#|  
+#|  echo "date --date='31 Dec 2020' +\"U_%U  %Y-%m-%d %a  V %V\""
+#|  echo ""
+#|  
+#|  for day in 26 27 28 29 30 31
+#|  do
+#|  	date --date="${day} Dec 2020" +"U_%U  %Y-%m-%d %a  V %V"
+#|  done
+#|  
+#|  for day in 1 2 3 4 5 6
+#|  do
+#|  	date --date="${day} Jan 2021" +"U_%U  %Y-%m-%d %a  V %V"
+#|  done
+#|  
+#|  sh date.sh #-- 주 표시 보여주기
+#|  
+#|  date --date='31 Dec 2020' +"U_%U  %Y-%m-%d %a  V %V"
+#|  
+#|  U_51  2020-12-26 토  V 52
+#|  U(52) 2020-12-27 일  V 52
+#|  U_52  2020-12-28 월  V(53)
+#|  U_52  2020-12-29 화  V 53
+#|  U_52  2020-12-30 수  V 53
+#|  U_52  2020-12-31 목  V 53
+#|  
+#|  U(00) 2021-01-01 금  V 53
+#|  U_00  2021-01-02 토  V 53
+#|  U(01) 2021-01-03 일  V 53
+#|  U_01  2021-01-04 월  V(01)
+#|  U_01  2021-01-05 화  V 01
+#|  U_01  2021-01-06 수  V 01
+
+#|  %U=일...토 의 주 번호, 1월의 첫날이 일요일이 아니면 그 주의 순서 번호는 00 이 된다.
+#|  
+#|  |일 |월 |화 |수 |목 |금| 토 | %U 일요일 기준 |
+#|  |:-:|:-:|:-:|:-:|:-:|:-:|:-:|---|
+#|  |29 |30 |31 |1  |2  |3  |4  |<-- 12월과 1월 |
+#|  |52 |52 |52 |00 |00 |00 |00 |<-- U |
+#|  |5  |6  |7  |8  |9  |10 |11 |<-- 12월과 1월 |
+#|  |01 |01 |01 |01 |01 |01 |01 |<-- U |
+#|  
+#|  %V=월요일부터 일요일까지의 주 번호, 1월 1일부터 주의 순서가 01 이 되고, 그 이전은 작년 말일의 주의 순서를 따른다.
+#|  
+#|  |일 |월 |화 |수 |목 |금| 토 | %V 월요일 기준 |
+#|  |:-:|:-:|:-:|:-:|:-:|:-:|:-:|---|
+#|  |29 |30 |31 |1  |2  |3  |4  |<-- 12월과 1월 |
+#|  |52 |01 |01 |01 |01 |01 |01 |<-- V |
+#|  |5  |6  |7  |8  |9  |10 |11 |<-- 12월과 1월 |
+#|  |01 |02 |02 |02 |02 |02 |02 |<-- V |
+#|  
+#|  일요일 대신에 월요일을 주의 첫날로 두면 이해하기 쉽다.
+#|  
+#|  |   |월 |화 |수 |목 |금| 토| 일| %V 월요일 기준 |
+#|  |:-:|:-:|:-:|:-:|:-:|:-:|:-:|:-:|---|
+#|  |   |30 |31 |1  |2  |3  |4  |5  |<-- 12월과 1월 |
+#|  |   |01 |01 |01 |01 |01 |01 |01 |<-- V |
+#|  |   |6  |7  |8  |9  |10 |11 |12 |<-- 12월과 1월 |
+#|  |   |02 |02 |02 |02 |02 |02 |02 |<-- V |
+
+
+#|  #-- ubuntu 22.04 에서 /etc/sudoers.d 디렉토리 밑에 사용자의 권한을 지정하는 내용을  proenpi 사용자 이름으로 만든다.
+#|  
+#|  proenpi@proenpi-4b:~$ echo "proenpi  ALL=(ALL) NOPASSWD:ALL" | sudo tee /etc/sudoers.d/proenpi
+#|  [sudo] proenpi 암호:
+#|  proenpi  ALL=(ALL) NOPASSWD:ALL
+#|  
+#|  #-- 파일이 만들어졌는지 내용을 확인한다.
+#|  
+#|  proenpi@proenpi-4b:~$ cat /etc/sudoers.d/
+#|  README   proenpi
+#|  proenpi@proenpi-4b:~$ cat /etc/sudoers.d/proenpi
+#|  proenpi  ALL=(ALL) NOPASSWD:ALL
+#|  proenpi@proenpi-4b:~$ sudo whoami
+#|  root
+#|  
+#|  #-- root 권한으로 만들어졌으므로, 압호를 넣지 않고 sudo 로 명령하는 사용자의 스크립트를 쓸수 있다.
+#|  
+#|  proenpi@proenpi-4b:~$ crontab -l
+#|  #--분--시--일--월--요일 (0:일 1:월 2:화 … 6:토)   명령어
+#|  01  12  *  *  *  /bin/sh /home/proenpi/backup/wiki.js/db-to-cloud.sh wiki >/dev/null 2>&1
+#|  02  17  *  *  *  /bin/sh /home/proenpi/backup/wiki.js/db-to-cloud.sh wiki >/dev/null 2>&1
+#|  03  22  *  *  *  /bin/sh /home/proenpi/backup/wiki.js/db-to-cloud.sh wiki >/dev/null 2>&1
+
+#|  13:26:35목22-08-25 yosjn@g1ssd128 ~/backup/gatedb
+#|  gatedb $ crontab -l
+#|  # Example of job definition:
+#|  # .---------------- minute (0 - 59)
+#|  # |   .------------- hour (0 - 23)
+#|  # |   |    .--------- day of month (1 - 31)
+#|  # |   |    |  .------- month (1 - 12) OR jan,feb,mar,apr ...
+#|  # |   |    |  |  .----- day of week (0 - 6) (Sunday=0 or 7) OR sun,mon,tue,wed,thu,fri,sat
+#|  # |   |    |  |  |
+#|  # *   *    *  *  *    command to be executed
+#|  # *   *    *  *  *    # DB backup to cloud
+#|  # 15  12,19    *  *  *    /bin/sh /home/vbox/gdrive/999-rclone-yossc-download.sh
+#|  # 02  6,12,21 *  *  1-6  /bin/sh /root/bin/1-bin-scripts/002-swtire60-db-to-dropbox.sh
+#|  # 12  12,15,18,21   *  *  *    /bin/sh /root/bin/1-bin-scripts/035-gmail-copyto-db.sh 1
+#|  # 12  0,3,6,9       *  *  *    /bin/sh /root/bin/1-bin-scripts/035-gmail-copyto-db.sh 2
+#|  # 42  18    *  *  *    /bin/sh /root/bin/1-bin-scripts/035-gmail-copyto-db.sh 7
+#|  # 58  12  11  02  *    /bin/sh /root/bin/1-bin-scripts/021-bbox-ftp-main.sh
+#|  # *   *    *  *  *
+#|  #xxx 10    22   *  *  *    /bin/sh /home/vbox/gdrive/backup-gate242db.sh
+#|  # *   *    *  *  *
+#|  01  22  *  *  *  /bin/sh /home/yosjn/backup/gatedb/db-to-cloud.sh gatedb >/dev/null 2>&1
+#|  13:26:42목22-08-25 yosjn@g1ssd128 ~/backup/gatedb
+#|  gatedb $ 
+
+#|  13:42:32목22-08-25 yosjn@g1ssd128 ~/backup/gatedb
+#|  gatedb $ ls -l
+#|  합계 36
+#|  drwxr-xr-x. 4 yosjn yosjn  4096  8월 25 13:37 2022
+#|  -rw-rw-r--. 1 yosjn yosjn  2230  8월 25 13:28 color_base
+#|  -rw-rw-r--. 1 yosjn yosjn 28037  8월 25 13:33 db-to-cloud.sh
+#|  13:42:37목22-08-25 yosjn@g1ssd128 ~/backup/gatedb
+#|  gatedb $ 
 
 
 if [ "x$1" = "x" ]; then
@@ -175,13 +258,7 @@ JU_sql7z=${DB_NAME}_${ymd_hm}_${uname_n}${ju_beonho_sql_7z}
 LOCAL_THIS_YEAR=${LOCAL_FOLDER}/${this_year} #-- 년도 폴더에는 매월 마지막 백업 1개씩만 보관한다.
 
 LOCAL_YOIL=${LOCAL_THIS_YEAR}/1_7yoil #-- 년도의 yoil 폴더에는 최근 1주일치만 보관한다.
-if [ ! -d ${LOCAL_YOIL} ]; then
-	sudo mkdir -p ${LOCAL_YOIL} ; sudo chown ${USER}:${USER} ${LOCAL_YOIL}
-fi
 LOCAL_JU=${LOCAL_THIS_YEAR}/01_53ju #-- 년도의 ju 폴더에는 매주 마지막 백업 1개씩만 보관한다.
-if [ ! -d ${LOCAL_JU} ]; then
-	sudo mkdir -p ${LOCAL_JU} ; sudo chown ${USER}:${USER} ${LOCAL_JU}
-fi
 
 REMOTE_YEAR=${REMOTE_FOLDER}/${this_year}
 
@@ -376,9 +453,6 @@ show_then_view "#"
 
 #<---- REMOTE / 2022 / ju / 매주 주말 1개
 
-# ----
-# rm -f ${zz00log_name} ; zz00log_name="${zz00logs_folder}/zz.$(date +"%y%m%d%a-%H%M%S")..${CMD_NAME}" ; touch ${zz00log_name}
-# ls --color ${zz00logs_folder}
-# cat <<__EOF__
-# ${cRed}<<<<<<<<<<${cBlue} $0 ${cRed}||| ${cMagenta}${MEMO} ${cRed}<<<<<<<<<<${cReset}
-# __EOF__
+#--xx-- rm -f ${zz00log_name} ; zz00log_name="${zz00logs_folder}/zz.$(date +"%y%m%d-%H%M%S")..${CMD_NAME}" ; touch ${zz00log_name}
+#--xx-- cat_and_run "ls --color ${1}" "프로그램들" ; ls --color ${zz00logs_folder}
+## echo "${cRed}<<<<<<<<<<${cBlue} $0 ${cRed}||| ${cMagenta}${MEMO} ${cRed}<<<<<<<<<<${cReset}"
