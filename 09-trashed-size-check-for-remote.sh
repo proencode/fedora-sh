@@ -111,36 +111,36 @@ a_site_check () {
 #	fi
 	out_v=""
 	if [ "x$about_Total" != "xNO_DATA" ]; then
-		out_v="${out_v}${about_Total} | ${size_Total} ${measure_Total} | "
+		out_v="${out_v}${about_Total} ${size_Total} ${measure_Total} | "
 	else
-		out_v="${out_v}total | ${size_Total} ${measure_Total} | "
+		out_v="${out_v}- | "
 	fi
 	if [ "x$about_Used" != "xNO_DATA" ]; then
-		out_v="${out_v}${about_Used} | ${size_Used} ${measure_Used} | "
+		out_v="${out_v}${about_Used} ${size_Used} ${measure_Used} | "
 	else
-		out_v="${out_v}used | ${size_Used} ${measure_Used} | "
+		out_v="${out_v}- | "
 	fi
 	if [ "x$about_Free" != "xNO_DATA" ]; then
-		out_v="${out_v}${about_Free} | ${size_Free} ${measure_Free} | "
+		out_v="${out_v}${about_Free} ${size_Free} ${measure_Free} | "
 	else
-		out_v="${out_v}free | ${size_Free} ${measure_Free} | "
+		out_v="${out_v}- | "
 	fi
 	if [ "x$about_Trashed" != "xNO_DATA" ]; then
-		out_v="${out_v}${about_Trashed} | ${size_Trashed} ${measure_Trashed} | "
+		out_v="${out_v}${about_Trashed} ${size_Trashed} ${measure_Trashed} | "
 	else
-		out_v="${out_v}trashed | ${size_Trashed} ${measure_Trashed} | "
+		out_v="${out_v}- | "
 	fi
 	if [ "x$about_Other" != "xNO_DATA" ]; then
-		out_v="${out_v}${about_Other} | ${size_Other} ${measure_Other} | "
+		out_v="${out_v}${about_Other} ${size_Other} ${measure_Other} | "
 	else
-		out_v="${out_v}other | ${size_Other} ${measure_Other} | "
+		out_v="${out_v}- | "
 	fi
 	echo "| ${remote_host}: | ${out_v}"
 }
 
 echo ""
-echo "| remote_host: | about | size | about | size | about | size | about | size | about | size |"
-echo "|----|----|----|----|----|----|----|----|----|----|----|"
+echo "| remote_host: | total | used | free | trashed | other |"
+echo "|:---:|:---:|:---:|:---:|:---:|:---:|"
 
 for hostname in kaosbmi  kaosb2mi  kaosb3mi  kaosb4mi yosjgc  kaosngc  swlibgc  ysj5ncmi
 do
