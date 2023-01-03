@@ -45,7 +45,7 @@ i`/:i`/CCCCCCCCCC
 0i#### 
 ---------- cut line ----------
 
-> [ 06 C4 Advanced Concepts of Vue.js ](/packtpub/javascript_from_frontend_to_backend/06_c4_advanced_concepts_of_vue.js) <---> [ 08 P3 JavaScript on the Server-Side ](/packtpub/javascript_from_frontend_to_backend/08_p3_javascript_on_the_server-side)
+> [ 06 C4 Advanced Concepts of Vue.js ](/packtpub/javascript_from_frontend_to_backend/06_c4_advanced_concepts_of_vue_js) <---> [ 08 P3 JavaScript on the Server-Side ](/packtpub/javascript_from_frontend_to_backend/08_p3_javascript_on_the_server-side)
 
 # Chapter 5: Managing a List with Vue.js
 
@@ -114,7 +114,7 @@ We have administered here a list of elements on which we have performed basic op
 
 Using HTTP Protocol
 
-This application uses a PHP server to work because the `import` of JavaScript modules with the JavaScript import statement only works under the HTTP protocol. We will see in the next part (Chapter 9, Integrating Vue.js with Node.js) how to use a Node.js server to also make it work, by coupling it in addition with a MongoDB database.
+This application uses a PHP server to work because the `import` of JavaScript modules with the JavaScript import statement only works under the HTTP protocol. We will see in the next part (Chapter 9, Integrating Vue.js with Node_js) how to use a Node.js server to also make it work, by coupling it in addition with a MongoDB database.
 
 We have described the operation of the application, and the sequence of the various windows. Now let’s see how to build this application with Vue.js. We first explain how the application can be broken down into different components.
 
@@ -765,7 +765,7 @@ In the next few chapters, we will see how to use Node.js to connect our applicat
 
 
 
-> [ 06 C4 Advanced Concepts of Vue.js ](/packtpub/javascript_from_frontend_to_backend/06_c4_advanced_concepts_of_vue.js) <---> [ 08 P3 JavaScript on the Server-Side ](/packtpub/javascript_from_frontend_to_backend/08_p3_javascript_on_the_server-side)
+> [ 06 C4 Advanced Concepts of Vue.js ](/packtpub/javascript_from_frontend_to_backend/06_c4_advanced_concepts_of_vue_js) <---> [ 08 P3 JavaScript on the Server-Side ](/packtpub/javascript_from_frontend_to_backend/08_p3_javascript_on_the_server-side)
 >
 > Title: 07 C5 Managing a List with Vue.js
 > Short Description: Publication date: 7월 2022 Publisher: Packt Pages: 336 ISBN: 9781801070317

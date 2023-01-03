@@ -19,7 +19,7 @@
 
 ---------- cut line ----------
 
-> [ 03 C2 Exploring the Advanced Concepts of JavaScript ](/packtpub/javascript_from_frontend_to_backend/03_c2_exploring_the_advanced_concepts_of_javascript) <---> [ 05 C3 Getting Started with Vue.js ](/packtpub/javascript_from_frontend_to_backend/05_c3_getting_started_with_vue.js)
+> [ 03 C2 Exploring the Advanced Concepts of JavaScript ](/packtpub/javascript_from_frontend_to_backend/03_c2_exploring_the_advanced_concepts_of_javascript) <---> [ 05 C3 Getting Started with Vue.js ](/packtpub/javascript_from_frontend_to_backend/05_c3_getting_started_with_vue_js)
 
 # Part 2: JavaScript on the Client-Side
 
@@ -27,13 +27,13 @@ In this part, we discover the use of JavaScript in a browser (so-called client-s
 
 This section comprises the following chapters:
 
-[ Chapter 3 ](/packtpub/javascript_from_frontend_to_backend/05_c3_getting_started_with_vue.js), Getting Started with Vue.js
-[ Chapter 4 ](/packtpub/javascript_from_frontend_to_backend/06_c4_advanced_concepts_of_vue.js), Advanced concepts of Vue.js
-[ Chapter 5 ](/packtpub/javascript_from_frontend_to_backend/07_c5_managing_a_list_with_vue.js), Managing a list with Vue.js
+[ Chapter 3 ](/packtpub/javascript_from_frontend_to_backend/05_c3_getting_started_with_vue_js), Getting Started with Vue.js
+[ Chapter 4 ](/packtpub/javascript_from_frontend_to_backend/06_c4_advanced_concepts_of_vue_js), Advanced concepts of Vue.js
+[ Chapter 5 ](/packtpub/javascript_from_frontend_to_backend/07_c5_managing_a_list_with_vue_js), Managing a list with Vue.js
 
 
 
-> [ 03 C2 Exploring the Advanced Concepts of JavaScript ](/packtpub/javascript_from_frontend_to_backend/03_c2_exploring_the_advanced_concepts_of_javascript) <---> [ 05 C3 Getting Started with Vue.js ](/packtpub/javascript_from_frontend_to_backend/05_c3_getting_started_with_vue.js)
+> [ 03 C2 Exploring the Advanced Concepts of JavaScript ](/packtpub/javascript_from_frontend_to_backend/03_c2_exploring_the_advanced_concepts_of_javascript) <---> [ 05 C3 Getting Started with Vue.js ](/packtpub/javascript_from_frontend_to_backend/05_c3_getting_started_with_vue_js)
 >
 > Title: 04 P2 JavaScript on the Client-Side
 > Short Description: Publication date: 7월 2022 Publisher: Packt Pages: 336 ISBN: 9781801070317

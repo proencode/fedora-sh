@@ -19,7 +19,7 @@
 
 ---------- cut line ----------
 
-> [ 05 C3 Getting Started with Vue.js ](/packtpub/javascript_from_frontend_to_backend/05_c3_getting_started_with_vue.js) <---> [ 07 C5 Managing a List with Vue.js ](/packtpub/javascript_from_frontend_to_backend/07_c5_managing_a_list_with_vue.js)
+> [ 05 C3 Getting Started with Vue.js ](/packtpub/javascript_from_frontend_to_backend/05_c3_getting_started_with_vue_js) <---> [ 07 C5 Managing a List with Vue.js ](/packtpub/javascript_from_frontend_to_backend/07_c5_managing_a_list_with_vue_js)
 
 # Chapter 4: Advanced Concepts of Vue.js
 
@@ -1049,7 +1049,7 @@ Finally, to produce visual effects, all you have to do is write the CSS classes 
 In the next chapter, we will see an example of an application that allows us to put into practice the elements studied in the previous chapters.
 
 
-> [ 05 C3 Getting Started with Vue.js ](/packtpub/javascript_from_frontend_to_backend/05_c3_getting_started_with_vue.js) <---> [ 07 C5 Managing a List with Vue.js ](/packtpub/javascript_from_frontend_to_backend/07_c5_managing_a_list_with_vue.js)
+> [ 05 C3 Getting Started with Vue.js ](/packtpub/javascript_from_frontend_to_backend/05_c3_getting_started_with_vue_js) <---> [ 07 C5 Managing a List with Vue.js ](/packtpub/javascript_from_frontend_to_backend/07_c5_managing_a_list_with_vue_js)
 >
 > Title: 06 C4 Advanced Concepts of Vue.js
 > Short Description: Publication date: 7월 2022 Publisher: Packt Pages: 336 ISBN: 9781801070317

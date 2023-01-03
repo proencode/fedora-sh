@@ -19,7 +19,7 @@
 
 ---------- cut line ----------
 
-> [ 12 C9 Integrating Vue.js with Node.js ](/packtpub/javascript_from_frontend_to_backend/12_c9_integrating_vue.js_with_node.js) <---> End
+> [ 12 C9 Integrating Vue.js with Node.js ](/packtpub/javascript_from_frontend_to_backend/12_c9_integrating_vue_js_with_node_js) <---> End
 
 # Other Books You May Enjoy
 
@@ -83,7 +83,7 @@ Figure https://static.packt-cdn.com/products/9781801070317/graphics/image/B17416
 
 
 
-> [ 12 C9 Integrating Vue.js with Node.js ](/packtpub/javascript_from_frontend_to_backend/12_c9_integrating_vue.js_with_node.js) <---> End
+> [ 12 C9 Integrating Vue.js with Node.js ](/packtpub/javascript_from_frontend_to_backend/12_c9_integrating_vue_js_with_node_js) <---> End
 >
 > (1) Path: packtpub/javascript_from_frontend_to_backend/13_p4_other_books_you_may_enjoy
 > (2) Markdown (Plain Text Formatting)

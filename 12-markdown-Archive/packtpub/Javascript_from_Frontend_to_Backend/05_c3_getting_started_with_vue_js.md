@@ -19,7 +19,7 @@
 
 ---------- cut line ----------
 
-> [ 04 P2 JavaScript on the Client-Side ](/packtpub/javascript_from_frontend_to_backend/04_p2_javascript_on_the_client-side) <---> [ 06 C4 Advanced Concepts of Vue.js ](/packtpub/javascript_from_frontend_to_backend/06_c4_advanced_concepts_of_vue.js)
+> [ 04 P2 JavaScript on the Client-Side ](/packtpub/javascript_from_frontend_to_backend/04_p2_javascript_on_the_client-side) <---> [ 06 C4 Advanced Concepts of Vue.js ](/packtpub/javascript_from_frontend_to_backend/06_c4_advanced_concepts_of_vue_js)
 
 # Chapter 3: Getting Started with Vue.js
 
@@ -72,8 +72,7 @@ Displaying Vue.js version number (index.html file)
 
 If Vue.js is accessible in the page, the `Vue` object provides access to the version number in its `version` property as we can see in the following figure:
 
-![ 0400 3.1 Displaying the Vue.js version ](/packtpub/javascript_from_frontend_to_backend_img/0400_3.1_displaying_the_vue.js_version.webp
-)
+![ 0400 3.1 Displaying the Vue.js version ](/packtpub/javascript_from_frontend_to_backend_img/0400_3.1_displaying_the_vue.js_version.webp)
 Figure 3.1 – Displaying the Vue.js version number
 
 Now that we have integrated Vue.js into our HTML page, let’s go about creating our first application.
@@ -119,8 +118,7 @@ In the preceding code, we have used the `Vue.createApp(options)` method defined 
 
 Let’s run the previous program; we should see the following output:
 
-![ 0401 3.2 First Vue.js app ](/packtpub/javascript_from_frontend_to_backend_img/0401_3.2_first_vue.js_app.webp
-)
+![ 0401 3.2 First Vue.js app ](/packtpub/javascript_from_frontend_to_backend_img/0401_3.2_first_vue.js_app.webp)
 Figure 3.2 – First Vue.js app
 
 On the preceding screen, we can see the result of using Vue.js on the page. The content of the first <div> is replaced by the template written in the `options` parameter of the `Vue.createApp(options)` method. The second `<div>` is not transformed.
@@ -864,11 +862,11 @@ It is now necessary to study how to manage the actions of the user in a componen
 
 
 
-> [ 04 P2 JavaScript on the Client-Side ](/packtpub/javascript_from_frontend_to_backend/04_p2_javascript_on_the_client-side) <---> [ 06 C4 Advanced Concepts of Vue.js ](/packtpub/javascript_from_frontend_to_backend/06_c4_advanced_concepts_of_vue.js)
+> [ 04 P2 JavaScript on the Client-Side ](/packtpub/javascript_from_frontend_to_backend/04_p2_javascript_on_the_client-side) <---> [ 06 C4 Advanced Concepts of Vue.js ](/packtpub/javascript_from_frontend_to_backend/06_c4_advanced_concepts_of_vue_js)
 >
 > Title: 05 C3 Getting Started with Vue.js
 > Short Description: Publication date: 7월 2022 Publisher: Packt Pages: 336 ISBN: 9781801070317
-> Path: packtpub/javascript_from_frontend_to_backend/05_c3_getting_started_with_vue.js
+> Path: packtpub/javascript_from_frontend_to_backend/05_c3_getting_started_with_vue_js
 > tags: vue.js node.js
 > Book Name: JavaScript from Frontend to Backend
 > Link: https://subscription.packtpub.com/book/web-development/9781801070317/4

@@ -19,7 +19,7 @@
 
 ---------- cut line ----------
 
-> [ 11 C8 Using MongoDB with Node.js ](/packtpub/javascript_from_frontend_to_backend/11_c8_using_mongodb_with_node.js) <---> [ 13 P4 Other Books You May Enjoy ](/packtpub/javascript_from_frontend_to_backend/13_p4_other_books_you_may_enjoy)
+> [ 11 C8 Using MongoDB with Node.js ](/packtpub/javascript_from_frontend_to_backend/11_c8_using_mongodb_with_node_js) <---> [ 13 P4 Other Books You May Enjoy ](/packtpub/javascript_from_frontend_to_backend/13_p4_other_books_you_may_enjoy)
 
 # Chapter 9: Integrating Vue.js with Node.js
 
@@ -1282,7 +1282,7 @@ At www.packt.com, you can also read a collection of free technical articles, sig
 
 
 
-> [ 11 C8 Using MongoDB with Node.js ](/packtpub/javascript_from_frontend_to_backend/11_c8_using_mongodb_with_node.js) <---> [ 13 P4 Other Books You May Enjoy ](/packtpub/javascript_from_frontend_to_backend/13_p4_other_books_you_may_enjoy)
+> [ 11 C8 Using MongoDB with Node.js ](/packtpub/javascript_from_frontend_to_backend/11_c8_using_mongodb_with_node_js) <---> [ 13 P4 Other Books You May Enjoy ](/packtpub/javascript_from_frontend_to_backend/13_p4_other_books_you_may_enjoy)
 >
 > (1) Path: packtpub/javascript_from_frontend_to_backend/12_c9_integrating_vuejs_with_nodejs
 > (2) Markdown

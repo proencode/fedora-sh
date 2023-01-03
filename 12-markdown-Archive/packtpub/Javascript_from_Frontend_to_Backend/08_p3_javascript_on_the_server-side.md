@@ -19,7 +19,7 @@
 
 ---------- cut line ----------
 
-> [ 07 C5 Managing a List with Vue.js ](/packtpub/javascript_from_frontend_to_backend/07_c5_managing_a_list_with_vue.js) <---> [ 09 C6 Creating and Using Node.js Modules ](/packtpub/javascript_from_frontend_to_backend/09_c6_creating_and_using_node.js_modules)
+> [ 07 C5 Managing a List with Vue.js ](/packtpub/javascript_from_frontend_to_backend/07_c5_managing_a_list_with_vue_js) <---> [ 09 C6 Creating and Using Node.js Modules ](/packtpub/javascript_from_frontend_to_backend/09_c6_creating_and_using_node_js_modules)
 
 # Part 3: JavaScript on the Server-Side
 
@@ -29,14 +29,14 @@ We end our study by building an application on a single page (this principle is 
 
 This section comprises the following chapters:
 
-[ Chapter 6 ](/packtpub/javascript_from_frontend_to_backend/09_c6_creating_and_using_node.js_modules), Creating and Using Node.js Modules
-[ Chapter 7 ](/packtpub/javascript_from_frontend_to_backend/10_c7_using_express_with_node.js), Using Express with Node.js
-[ Chapter 8 ](/packtpub/javascript_from_frontend_to_backend/11_c8_using_mongodb_with_node.js), Using MongoDB with Node.js
-[ Chapter 9 ](/packtpub/javascript_from_frontend_to_backend/12_c9_integrating_vue.js_with_node.js), Integrating Vue.js with Node.js
+[ Chapter 6 ](/packtpub/javascript_from_frontend_to_backend/09_c6_creating_and_using_node_js_modules), Creating and Using Node.js Modules
+[ Chapter 7 ](/packtpub/javascript_from_frontend_to_backend/10_c7_using_express_with_node_js), Using Express with Node.js
+[ Chapter 8 ](/packtpub/javascript_from_frontend_to_backend/11_c8_using_mongodb_with_node_js), Using MongoDB with Node.js
+[ Chapter 9 ](/packtpub/javascript_from_frontend_to_backend/12_c9_integrating_vue_js_with_node_js), Integrating Vue.js with Node.js
 
 
 
-> [ 07 C5 Managing a List with Vue.js ](/packtpub/javascript_from_frontend_to_backend/07_c5_managing_a_list_with_vue.js) <---> [ 09 C6 Creating and Using Node.js Modules ](/packtpub/javascript_from_frontend_to_backend/09_c6_creating_and_using_node.js_modules)
+> [ 07 C5 Managing a List with Vue.js ](/packtpub/javascript_from_frontend_to_backend/07_c5_managing_a_list_with_vue_js) <---> [ 09 C6 Creating and Using Node.js Modules ](/packtpub/javascript_from_frontend_to_backend/09_c6_creating_and_using_node_js_modules)
 >
 > Title: 08 P3 JavaScript on the Server-Side
 > Short Description: Publication date: 7월 2022 Publisher: Packt Pages: 336 ISBN: 9781801070317

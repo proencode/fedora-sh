@@ -33,19 +33,19 @@ This book is for JavaScript developers looking to strengthen their core JavaScri
 
 [ Chapter 2 ](/packtpub/javascript_from_frontend_to_backend/03_c2_exploring_the_advanced_concepts_of_javascript), Exploring the Advanced Concepts of JavaScript, is where you learn how to use object-oriented programming in JavaScript.
 
-[ Chapter 3 ](/packtpub/javascript_from_frontend_to_backend/05_c3_getting_started_with_vue.js), Getting Started withVue.js, is where you learn the basics of Vue.js, with components and directives.
+[ Chapter 3 ](/packtpub/javascript_from_frontend_to_backend/05_c3_getting_started_with_vue_js), Getting Started withVue.js, is where you learn the basics of Vue.js, with components and directives.
 
-[ Chapter 4 ](/packtpub/javascript_from_frontend_to_backend/06_c4_advanced_concepts_of_vue.js), Advanced Concepts of Vue.js, is where you explore in-depth Vue.js with communication between components and visual effects.
+[ Chapter 4 ](/packtpub/javascript_from_frontend_to_backend/06_c4_advanced_concepts_of_vue_js), Advanced Concepts of Vue.js, is where you explore in-depth Vue.js with communication between components and visual effects.
 
-[ Chapter 5 ](/packtpub/javascript_from_frontend_to_backend/07_c5_managing_a_list_with_vue.js), Managing a List with Vue.js, is where you learn how to build a full project with Vue.js.
+[ Chapter 5 ](/packtpub/javascript_from_frontend_to_backend/07_c5_managing_a_list_with_vue_js), Managing a List with Vue.js, is where you learn how to build a full project with Vue.js.
 
-[ Chapter 6 ](/packtpub/javascript_from_frontend_to_backend/09_c6_creating_and_using_node.js_modules), Creating and Using Node.js Modules, is where you learn the basics of Node.js programming with modules.
+[ Chapter 6 ](/packtpub/javascript_from_frontend_to_backend/09_c6_creating_and_using_node_js_modules), Creating and Using Node.js Modules, is where you learn the basics of Node.js programming with modules.
 
-[ Chapter 7 ](/packtpub/javascript_from_frontend_to_backend/10_c7_using_express_with_node.js), Using Express with Node.js, is where you explore the main library used to build Node.js applications.
+[ Chapter 7 ](/packtpub/javascript_from_frontend_to_backend/10_c7_using_express_with_node_js), Using Express with Node.js, is where you explore the main library used to build Node.js applications.
 
-[ Chapter 8 ](/packtpub/javascript_from_frontend_to_backend/11_c8_using_mongodb_with_node.js), Using MongoDB with Node.js, is where you learn how to use the MongoDB database with Node.js using the Mongoose module.
+[ Chapter 8 ](/packtpub/javascript_from_frontend_to_backend/11_c8_using_mongodb_with_node_js), Using MongoDB with Node.js, is where you learn how to use the MongoDB database with Node.js using the Mongoose module.
 
-[ Chapter 9 ](/packtpub/javascript_from_frontend_to_backend/12_c9_integrating_vue.js_with_node.js), Integrating Vue.js with Node.js, is where you learn how to build a full project integrating Vue.js and Node.js.
+[ Chapter 9 ](/packtpub/javascript_from_frontend_to_backend/12_c9_integrating_vue_js_with_node_js), Integrating Vue.js with Node.js, is where you learn how to build a full project integrating Vue.js and Node.js.
 
 # To get the most out of this book
 

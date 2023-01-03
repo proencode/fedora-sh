@@ -19,7 +19,7 @@
 
 ---------- cut line ----------
 
-> [ 09 C6 Creating and Using Node.js Modules ](/packtpub/javascript_from_frontend_to_backend/09_c6_creating_and_using_node.js_modules) <---> [ 11 C8 Using MongoDB with Node.js ](/packtpub/javascript_from_frontend_to_backend/11_c8_using_mongodb_with_node.js)
+> [ 09 C6 Creating and Using Node.js Modules ](/packtpub/javascript_from_frontend_to_backend/09_c6_creating_and_using_node_js_modules) <---> [ 11 C8 Using MongoDB with Node.js ](/packtpub/javascript_from_frontend_to_backend/11_c8_using_mongodb_with_node_js)
 
 # Chapter 7: Using Express with Node.js
 
@@ -518,15 +518,15 @@ Indeed, data management is often done using the **MongoDB** database, the use of
 
 
 
-> [ 09 C6 Creating and Using Node.js Modules ](/packtpub/javascript_from_frontend_to_backend/09_c6_creating_and_using_node.js_modules) <---> [ 11 C8 Using MongoDB with Node.js ](/packtpub/javascript_from_frontend_to_backend/11_c8_using_mongodb_with_node.js)
+> [ 09 C6 Creating and Using Node.js Modules ](/packtpub/javascript_from_frontend_to_backend/09_c6_creating_and_using_node_js_modules) <---> [ 11 C8 Using MongoDB with Node.js ](/packtpub/javascript_from_frontend_to_backend/11_c8_using_mongodb_with_node_js)
 >
 > Title: 10 C7 Using Express with Node.js
 > Short Description: Publication date: 7월 2022 Publisher: Packt Pages: 336 ISBN: 9781801070317
-> Path: packtpub/javascript_from_frontend_to_backend/10_c7_using_express_with_node.js
+> Path: packtpub/javascript_from_frontend_to_backend/10_c7_using_express_with_node_js
 > tags: vue.js node.js
 > Book Name: JavaScript from Frontend to Backend
 > Link: https://subscription.packtpub.com/book/web-development/9781801070317/4
 > create: 2022-10-07 금 13:20:55
 > Images: /packtpub/javascript_from_frontend_to_backend_img/
-> .md Name: 10_c7_using_express_with_node.js.md
+> .md Name: 10_c7_using_express_with_node_js.md
 

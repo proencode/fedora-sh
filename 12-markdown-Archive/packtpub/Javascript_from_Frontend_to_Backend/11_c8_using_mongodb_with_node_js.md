@@ -19,7 +19,7 @@
 
 ---------- cut line ----------
 
-> [ 10 C7 Using Express with Node.js ](/packtpub/javascript_from_frontend_to_backend/10_c7_using_express_with_node.js) <---> [ 12 C9 Integrating Vue.js with Node.js ](/packtpub/javascript_from_frontend_to_backend/12_c9_integrating_vue.js_with_node.js)
+> [ 10 C7 Using Express with Node.js ](/packtpub/javascript_from_frontend_to_backend/10_c7_using_express_with_node_js) <---> [ 12 C9 Integrating Vue.js with Node.js ](/packtpub/javascript_from_frontend_to_backend/12_c9_integrating_vue_js_with_node_js)
 
 # Chapter 8: Using MongoDB with Node.js
 
@@ -653,7 +653,7 @@ All that’s left is to see how to interconnect a client side made with Vue.js a
 
 
 
-> [ 10 C7 Using Express with Node.js ](/packtpub/javascript_from_frontend_to_backend/10_c7_using_express_with_node.js) <---> [ 12 C9 Integrating Vue.js with Node.js ](/packtpub/javascript_from_frontend_to_backend/12_c9_integrating_vue.js_with_node.js)
+> [ 10 C7 Using Express with Node.js ](/packtpub/javascript_from_frontend_to_backend/10_c7_using_express_with_node_js) <---> [ 12 C9 Integrating Vue.js with Node.js ](/packtpub/javascript_from_frontend_to_backend/12_c9_integrating_vue_js_with_node_js)
 >
 > (1) Path: packtpub/javascript_from_frontend_to_backend/11_c8_using_mongodb_with_node.js
 > (2) Markdown
