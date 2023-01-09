@@ -41,7 +41,7 @@ fi
 
 MEMO="rclone 디렉토리 마운트 하기"
 echo -e "\n${cRed}>>>>>>>>>>${cYellow} $0 ${cGreen}||| ${cMagenta}${MEMO} ${cRed}>>>>>>>>>>${cReset}"
-## logs_folder="${HOME}/zz00-logs" ; if [ ! -d "${logs_folder}" ]; then cat_and_run "mkdir ${logs_folder}" ; fi
+## logs_folder="${HOME}/zz00logs" ; if [ ! -d "${logs_folder}" ]; then cat_and_run "mkdir ${logs_folder}" ; fi
 ## log_name="${logs_folder}/zz.$(date +"%y%m%d-%H%M%S")__RUNNING_${CMD_NAME}" ; touch ${log_name}
 # ----
 
