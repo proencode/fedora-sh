@@ -10,13 +10,14 @@ __EOF__
 # ----
 
 
+cmdRun "rclone size yosjgc:"
+cmdRun "rclone size kaosngc:"
+cmdRun "rclone size swlibgc:"
+cmdRun "rclone size ysj5ncmi:"
 cmdRun "rclone size kaosb2mi:"
 cmdRun "rclone size kaosb3mi:"
 cmdRun "rclone size kaosb4mi:"
 cmdRun "rclone size kaosbmi:"
-cmdRun "rclone size kaosngc:"
-cmdRun "rclone size swlibgc:"
-cmdRun "rclone size yosjgc:"
 
 
 # ----
