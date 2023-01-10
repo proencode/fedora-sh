@@ -31,10 +31,10 @@ __EOF__
 fi
 
 echoSeq "Install all available updates & reboot the system." #--->
-cmdYenter "sudo dnf update" "(0) 시스템을 업데이트 하려면 'y' 를 입력하세요."
+cmdYenter "sudo dnf update -y" "(0) 시스템을 업데이트 하려면 'y' 를 입력하세요."
 cmdYenter "sudo reboot" "(1) 시스템을 다시 부팅하려면, 'y' 를 눌러주세요."
 cmdRun "rpm -qa | grep docker" "(2) 이전 버전이 있는지 확인합니다."
-cmdYenter "sudo dnf remove docker docker-client docker-client-latest docker-common docker-latest docker-latest-logrotate docker-logrotate docker-selinux docker-engine-selinux docker-engine" "(3) 이전 버전을 삭제하고 다시 설치하려면 'y' 를 눌러주세요."
+cmdYenter "sudo dnf remove -y docker docker-client docker-client-latest docker-common docker-latest docker-latest-logrotate docker-logrotate docker-selinux docker-engine-selinux docker-engine" "(3) 이전 버전을 삭제하고 다시 설치하려면 'y' 를 눌러주세요."
 echoSeq "" #<---
 
 echoSeq "Enable Docker CE Official Repository" #--->
