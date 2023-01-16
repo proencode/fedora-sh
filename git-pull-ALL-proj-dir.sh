@@ -16,7 +16,7 @@ ${cYellow}git config --global --list${cReset}
 ${cYellow}git config --global credential.helper store${cReset}
 __EOF__
 
-cd ~/git-projects
+cd ~/git-projects*
 for dir in $(ls -d *)
 do
 	if [ -d ${dir} ]; then
