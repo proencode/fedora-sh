@@ -50,7 +50,7 @@ You can download the latest code samples for this chapter from the book’s offi
 
 Imagine being able to write code in one language/framework and deploy it on six different platforms, with some of those platforms having completely different setups in terms of both UI and UX. This has been made possible by Flutter in a way that allows developers to respect the norms of each platform, enriching developers with the tools and techniques to develop on each of these platforms with a native feel. A cross-platform development framework has been needed by developers for a long time now, because of the high costs and length of development time for native code on each platform. Many frameworks have tried, but none of them have succeeded in the way that Flutter has. Flutter has worked openly in the community in close connection with developers to resolve their issues and problems. Focusing both on the developer experience as well as the native feel and performance of applications, Flutter has become a great tool for cross-platform application development.
 
-![ 0200 Figure 1.1 – Flutter, a cross-platform UI framework ](/packtpub/taking_flutter_to_the_web_img/0200_figure_1.1_–_flutter,_a_cross-platform_ui_framework.webp
+![ 0200 Figure 1.1 – Flutter, a cross-platform UI framework ](/packtpub/taking_flutter_to_the_web_img/0200_figure_1.1_–_flutter__a_cross-platform_ui_framework.webp
 )
 Figure 1.1 – Flutter, a cross-platform UI framework
 
