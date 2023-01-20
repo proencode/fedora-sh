@@ -42,5 +42,9 @@ small_BookCover=$(echo "${BookCover,,}" | sed 's/ /_/g')
 # figure_title_made "04" "05" "Figure 3.6 – Top navigation on a large screen"
 # figure_title_made "04" "06" "Figure 3.7 – Side navigation on a small screen"
 
-figure_title_made "05" "00" "Figure 4.1 – Flutter architecture layers"
-figure_title_made "05" "01" "Figure 4.2 – Flutter web layered architecture"
+# figure_title_made "05" "00" "Figure 4.1 – Flutter architecture layers"
+# figure_title_made "05" "01" "Figure 4.2 – Flutter web layered architecture"
+
+figure_title_made "07" "00" "Figure 5.1 – About page"
+figure_title_made "07" "02" "Figure 5.2 – Named URL route"
+figure_title_made "07" "03" "Figure 5.3 – Navigator 2.0"
