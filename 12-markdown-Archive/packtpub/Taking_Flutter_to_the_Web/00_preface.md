@@ -31,37 +31,37 @@ This book is intended for Flutter mobile developers and Dart programmers who wan
 
 # What this book covers
 
-[ Chapter 1 ](
+[ Chapter 1 ](/packtpub/taking_flutter_to_the_web/02_c1_getting_started_with_flutter_on_the_web
 ), Getting Started with Flutter on the Web, introduces the Flutter ecosystem and the web as a part of that ecosystem. It also makes clear why we should learn Flutter on the web and what benefits it can add. Finally, it describes what types of web apps should and shouldn’t be built with Flutter. You will also get to know some real-world Flutter web applications.
 
-[ Chapter 2 ](
+[ Chapter 2 ](/packtpub/taking_flutter_to_the_web/03_c2_creating_your_first_web_app
 ), Creating Your First Web App, will describe how to start a Flutter project with web platform support. We will build and run a Flutter project on the web using Flutter widgets. This will be a dynamic and responsive app that interacts with its audience.
 
-[ Chapter 3 ](
+[ Chapter 3 ](/packtpub/taking_flutter_to_the_web/04_c3_building_responsive_and_adaptive_designs
 ), Building Responsive and Adaptive Designs, will teach us that the web has a huge number of target devices of different screen sizes and densities. As Flutter is cross-platform, each platform needs to have a native feel. This chapter covers the concept of adaptive and responsive design, which lets us just build apps that are responsive and adaptive to the platform – the web.
 
-[ Chapter 4 ](
+[ Chapter 4 ](/packtpub/taking_flutter_to_the_web/06_c4_flutter_web_under_the_hood
 ), Flutter Web under the Hood, will look at how Flutter renders its widgets as web apps. Understanding these inner workings will help us build better web apps using Flutter.
 
-[ Chapter 5 ](
+[ Chapter 5 ](/packtpub/taking_flutter_to_the_web/07_c5_understanding_routes_and_navigation
 ), Understanding Routes and Navigation, will detail how to use routes and navigation in Flutter on the web. This chapter will cover navigation with a special focus on how this occurs on the web. You will see how to use declarative navigation and understand its benefits.
 
-[ Chapter 6 ](
+[ Chapter 6 ](/packtpub/taking_flutter_to_the_web/08_c6_architecting_and_organizing
 ), Architecting and Organizing, will cover the need for proper architecture and we will learn about simple yet scalable architecture. This chapter discusses why scalable architecture is important and how you can organize files and folders to make it easier to scale and work. You will understand the MVVM architecture, which is simple yet scalable, and see how to practically apply it in an application.
 
-[ Chapter 7 ](
+[ Chapter 7 ](/packtpub/taking_flutter_to_the_web/10_c7_implementing_persistence
 ), Implementing Persistence, will teach us how to save data locally using various options – simple key-value storage, or more advanced object storage. You will discover how to persist simple key-value data, which is useful for user settings, and how to use the offline storage for caching, as well as key-value data using HiveDB.
 
-[ Chapter 8 ](
+[ Chapter 8 ](/packtpub/taking_flutter_to_the_web/11_c8_state_management_in_flutter
 ), State Management in Flutter, will outline the basics of state management, as well as covering how to use Riverpod as a state management solution. You will discover the importance of state management and the various options available for it.
 
-[ Chapter 9 ](
+[ Chapter 9 ](/packtpub/taking_flutter_to_the_web/12_c9_integrating_appwrite
 ), Integrating Appwrite, will teach us how to integrate Appwrite, an open source BaaS for web and mobile applications with services such as Authentication, Database, Cloud Functions, and more.
 
-[ Chapter 10 ](
+[ Chapter 10 ](/packtpub/taking_flutter_to_the_web/13_c10_firebase_integration
 ), Firebase Integration, will detail how to integrate and use Firebase solutions to build dynamic web apps using Flutter. We will cover the authentication part, wherein we will be able to authenticate users. We will see how to implement Firestore to save and load dynamic content.
 
-[ Chapter 11 ](
+[ Chapter 11 ](/packtpub/taking_flutter_to_the_web/14_c11_building_and_deploying_a_flutter_web_application
 ), Building and Deploying a Flutter Web Application, will expand upon the concepts required to build and deploy web apps developed with Flutter. In this final chapter, we will also learn how to automate our task of building and deploy web apps using CI/CD.
 
 # To get the most out of this book
@@ -77,7 +77,7 @@ We assume you have basic knowledge and understanding of the following:
 
 To gain the most benefits, it is always advised to practice by following along with the lessons. When the lesson is code-heavy, it is advised to keep calm and proceed one step at a time.
 
-![ 0000 Preface ](/packtpub/taking_flutter_to_the_web_img/0000_preface.webp
+![ 0000 Preface ](/packtpub/taking_flutter_to_the_web/0000_preface.webp
 )
 0000_preface.webp
 

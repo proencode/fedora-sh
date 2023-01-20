@@ -29,9 +29,9 @@ This part comprises the following chapters:
 
 - [ Chapter 1 ](/packtpub/taking_flutter_to_the_web/02_c1_getting_started_with_flutter_on_the_web
 ), Getting Started with Flutter on the Web
-- [ Chapter 2 ](
+- [ Chapter 2 ](/packtpub/taking_flutter_to_the_web/03_c2_creating_your_first_web_app
 ), Creating Your First Web App
-- [ Chapter 3 ](
+- [ Chapter 3 ](/packtpub/taking_flutter_to_the_web/04_c3_building_responsive_and_adaptive_designs
 ), Building Responsive and Adaptive Design
 
 
