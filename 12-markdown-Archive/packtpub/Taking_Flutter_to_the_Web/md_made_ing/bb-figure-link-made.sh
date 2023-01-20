@@ -18,7 +18,8 @@ __EOF__
 }
 
 Publisher="packtpub" #-- (1) 출판사 --
-BookCover="JavaScript from Frontend to Backend" #-- (2) 책 제목 --
+BookCover="Taking Flutter to the Web" #-- (2) 책 제목 --
+
 small_Publisher=$(echo "${Publisher,,}" | sed 's/ /_/g')
 small_BookCover=$(echo "${BookCover,,}" | sed 's/ /_/g')
 

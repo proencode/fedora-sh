@@ -27,9 +27,12 @@ In this part of the book, you will be introduced to the web platform and the imp
 
 This part comprises the following chapters:
 
-Chapter 1, Getting Started with Flutter on the Web
-Chapter 2, Creating Your First Web App
-Chapter 3, Building Responsive and Adaptive Design
+- [ Chapter 1 ](/packtpub/taking_flutter_to_the_web/02_c1_getting_started_with_flutter_on_the_web
+), Getting Started with Flutter on the Web
+- [ Chapter 2 ](
+), Creating Your First Web App
+- [ Chapter 3 ](
+), Building Responsive and Adaptive Design
 
 
 
