@@ -22,7 +22,20 @@
 > [ 04 C3 Building Responsive and Adaptive Designs ](/packtpub/taking_flutter_to_the_web/04_c3_building_responsive_and_adaptive_designs) <---> [ 06 C4 Flutter Web under the Hood ](/packtpub/taking_flutter_to_the_web/06_c4_flutter_web_under_the_hood)
 
 # 05 P2 Flutter Web under the Hood
-#----> 본문을 기재하는 위치.
+
+In this part, you will learn how to build scalable web apps with the native look and feel of the web platform using Flutter.
+
+This part comprises the following chapters:
+
+- [ Chapter 4 ](/packtpub/taking_flutter_to_the_web/06_c4_flutter_web_under_the_hood
+)
+, Flutter Web under the Hood
+- [ Chapter 5 ](/packtpub/taking_flutter_to_the_web/07_c5_understanding_routes_and_navigation
+)
+, Understanding Routes and Navigation
+- [ Chapter 6 ](/packtpub/taking_flutter_to_the_web/08_c6_architecting_and_organizing
+)
+, Architecting and Organizing
 
 
 
