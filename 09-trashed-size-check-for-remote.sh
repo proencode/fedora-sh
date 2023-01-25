@@ -138,7 +138,9 @@ a_site_check () {
 	echo "| ${remote_host}: | ${out_v}"
 }
 
+this_time=$(date +'%Y-%m-%d %a %H:%M:%S')
 echo ""
+echo "# rclone: ${this_time}"
 echo "| remote_host: | total | used | free | trashed | other |"
 echo "|:---:|:---:|:---:|:---:|:---:|:---:|"
 
@@ -146,7 +148,7 @@ for hostname in kaosbmi  kaosb2mi  kaosb3mi  kaosb4mi yosjgc  kaosngc  swlibgc  
 do
 	a_site_check ${hostname}
 done
-echo "Date: $(date +'%Y-%m-%d %a %H:%M:%S')"
+# echo "Date: ${this_time}"
 echo ""
 
 
