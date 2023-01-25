@@ -50,7 +50,7 @@ echo "${cMagenta}>>>>>>>>>>${cGreen} $0 ${cMagenta}||| ${cCyan}${MEMO} ${cMagent
 
 title_begin "로그 기록전에 업데이트부터 합니다."
 cat_and_readY "sudo vi /etc/sudoers ; reset" "sudo 명령시 비번을 일일이 입력하지 않으려면, 'y' 를 눌러서 수정합니다."
-cat_and_readY "sudo dnf -y update" "시간 여유가 되면, 'y' 를 눌러서 시스템을 업데이트 하는것이 좋습니다."
+cat_and_readY "time sudo dnf -y update" "시간 여유가 되면, 'y' 를 눌러서 시스템을 업데이트 하는것이 좋습니다."
 if [ "x${READ_Y_IS}" = "xy" ]; then
 	cat <<__EOF__
 
@@ -71,8 +71,8 @@ log_name="${logs_folder}/zz.$(date +"%y%m%d-%H%M%S")__RUNNING_${CMD_NAME}" ; tou
 
 
 title_begin "vbox 프로그램 설치"
-cat_and_run "sudo dnf -y install make automake autoconf gcc dkms kernel-debug-devel kernel-devel" "커널 컴파일용 프로그램 설치"
-cat_and_run "sudo dnf -y install wget vim-enhanced vim-common mc git p7zip gnome-tweak-tool rclone livecd-tools liveusb-creator" "추가 프로그램 설치"
+cat_and_run "time sudo dnf -y install make automake autoconf gcc dkms kernel-debug-devel kernel-devel" "커널 컴파일용 프로그램 설치"
+cat_and_run "time sudo dnf -y install wget vim-enhanced vim-common mc git p7zip gnome-tweak-tool rclone livecd-tools liveusb-creator" "추가 프로그램 설치"
 cat_and_run "rpm -qa | grep kernel | sort | grep kernel" "kernel 버전 확인"
 cat_and_run "sudo systemctl enable sshd ; sudo systemctl start sshd" "sshd 실행"
 title_end "vbox 프로그램 설치"
