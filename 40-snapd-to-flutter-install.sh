@@ -11,32 +11,30 @@ __EOF__
 
 
 cmdRun "rpm -qa | grep java | sort | grep java" "(1) 설치돼 있는java 확인"
-cmdYenter "sudo dnf install java-17-openjdk-devel" "(2) java 17 설치"
-cmdRun "sudo dnf install snapd" "(3) snapd 설치"
+cmdYenter "sudo dnf install -y java-17-openjdk-devel" "(2) java 17 설치"
+cmdRun "sudo dnf -y install snapd" "(3) snapd 설치"
 cmdRun "sudo ln -s /var/lib/snapd/snap /snap" "(4) /snap 으로 소프트링크 지정"
-cmdRun "sudo snap install hello-world" "(5) snap 확인을 위해 hello-world 를 시험설치"
+cmdCont "sudo snap install hello-world" "(5) 잠시 기다린 후, snap 확인을 위해 hello-world 를 시험설치"
 cat <<__EOF__
 ${cCyan}
-(6) 터미널을 따로 열어서, 아래의 둘중 하나를 실행해서 android-studio 룰 설치해야 합니다.
+(6) ${cMagenta}터미널을 따로 열어서${cCyan}, 아래의 둘중 하나를 실행해서 android-studio 룰 설치해야 합니다.
 
-1) snap 으로 android-studio 를 설치하는 경우: 속도가 느리지만 업그레이드가 편함.
+	1) snap 으로 android-studio 를 설치하고 실행하는 경우: 속도가 느리지만 업그레이드가 편함.
 ${cYellow}
-sudo snap install android-studio --classic
+	time sudo snap install android-studio --classic ; android-studio
 ${cCyan}
 또는,
-2) https://developer.android.com/studio 에서 다운로드 받는 경우: 홈에서 다운로드 받은 파일을 지정함.
+	2) https://developer.android.com/studio 에서 다운로드 받고 실행하는 경우: 홈에서 다운로드 받은 파일을 지정함.
 ${cYellow}
-tar xf  ${cMagenta}~/wind_bada/Downloads/android-studio-2022.1.1.19-linux.tar.gz
-${cGreen}
-----> 설치가 끝나면, ${cRed}'${cYellow}y${cRed}' ${cCyan}를 눌러 주세요.${cReset}
+	tar xf ${cMagenta}~/wind_bada/Downloads/android-studio-2022.1.1.19-linux.tar.gz ; android-studio
+${cCyan}
+----> android-studio 초기작업이 ${cMagenta}끝난 뒤에, ${cYellow}새로운 터미널에서 ${cCyan}다음의 세 작업을 실행해 주세요.
+${cYellow}
+sudo snap install flutter --classic ${cBlue}#-- (7) flutter 설치${cYellow}
+flutter sdk-path ${cBlue}#-- (8) flutter 의 sdk path 확인하거나 다운로드 하기${cYellow}
+flutter doctor ${cBlue}#-- (9) flutter 정상작동 확인${cReset}
+
 __EOF__
-read a
-if [ "x$a" != "xy" ]; then
-	exit -1
-fi
-cmdRun "sudo snap install flutter --classic" "(7) flutter 설치"
-cmdRun "flutter sdk-path" "(8) flutter 의 sdk path 확인하거나 다운로드 하기"
-cmdRun "flutter doctor" "(9) flutter 정상작동 확인"
 
 
 # ----

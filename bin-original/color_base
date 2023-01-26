@@ -8,9 +8,9 @@ cmdRun () {
 	echo "${cGreen}<---- ${cBlue}$1 ${cGreen}#-- $2${cReset}"
 }
 cmdCont () {
-	echo -e "${cCyan}----> ${cYellow}$1 ${cGreen}#-- ${cCyan}$2\n${cMagenta}----> Enter to continue${cReset}:"
+	echo -e "${cCyan}----> ${cYellow}$1 ${cGreen}#-- ${cCyan}$2\n----> ${cMagenta}Enter ${cGreen}to continue${cReset}:"
 	read a ; echo "${cUp}"; echo "$1" | sh
-	echo "${cGreen}<---- ${cBlue}$1 ${cGreen}Enter to continue${cReset}: ${cGreen}#-- $2${cReset}"
+	echo "${cGreen}<---- ${cBlue}$1 ${cGreen}#-- $2${cReset}"
 }
 allYn="n"
 cmdYenter () {
