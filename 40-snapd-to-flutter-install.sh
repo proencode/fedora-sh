@@ -21,15 +21,16 @@ ${cCyan}
 
 	1) snap 으로 android-studio 를 설치하고 실행하는 경우: 속도가 느리지만 업그레이드가 편함.
 ${cYellow}
-	time sudo snap install android-studio --classic ; android-studio
+	time sudo snap install android-studio --classic ${cMagenta}#-- 새로운 창에서 실행해야 한다.
 ${cCyan}
 또는,
 	2) https://developer.android.com/studio 에서 다운로드 받고 실행하는 경우: 홈에서 다운로드 받은 파일을 지정함.
 ${cYellow}
-	tar xf ${cMagenta}~/wind_bada/Downloads/android-studio-2022.1.1.19-linux.tar.gz ; android-studio
+	tar xf ${cMagenta}~/wind_bada/Downloads/android-studio-2022.1.1.19-linux.tar.gz ${cMagenta}#-- 새로운 창에서 실행해야 한다.
 ${cCyan}
 ----> android-studio 초기작업이 ${cMagenta}끝난 뒤에, ${cYellow}새로운 터미널에서 ${cCyan}다음의 세 작업을 실행해 주세요.
-${cBlue}
+${cYellow}
+	android-studio ${cMagenta}#-- 새로운 창에서 실행해야 한다.${cBlue}
 	echo "";echo "#-- (7) flutter 설치";echo "#-- sudo snap install flutter --classic";echo ""
 ${cYellow}sudo snap install flutter --classic ${cBlue};echo "";echo "#-- (7) flutter 설치";echo ""
 	echo "";echo "#-- (8) flutter 의 sdk path 확인하거나 다운로드 하기";echo "#-- flutter sdk-path";echo ""
