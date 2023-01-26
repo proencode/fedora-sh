@@ -26,17 +26,22 @@ ${cCyan}
 또는,
 	2) https://developer.android.com/studio 에서 다운로드 받고 실행하는 경우: 홈에서 다운로드 받은 파일을 지정함.
 ${cYellow}
-	tar xf ${cMagenta}~/wind_bada/Downloads/android-studio-2022.1.1.19-linux.tar.gz ${cMagenta}#-- 새로운 창에서 실행해야 한다.
+	cd ~/ ; tar xf ${cMagenta}~/wind_bada/Downloads/android-studio-2022.1.1.19-linux.tar.gz ${cMagenta}#-- 새로운 창에서 실행해야 한다.
 ${cCyan}
-----> android-studio 초기작업이 ${cMagenta}끝난 뒤에, ${cYellow}새로운 터미널에서 ${cCyan}다음의 세 작업을 실행해 주세요.
+(7) ${cMagenta}또다른 터미널을 열어서${cCyan}, android-studio 초기작업을 실행한다.
 ${cYellow}
-	android-studio ${cMagenta}#-- 새로운 창에서 실행해야 한다.${cBlue}
-	echo "";echo "#-- (7) flutter 설치";echo "#-- sudo snap install flutter --classic";echo ""
-${cYellow}sudo snap install flutter --classic ${cBlue};echo "";echo "#-- (7) flutter 설치";echo ""
-	echo "";echo "#-- (8) flutter 의 sdk path 확인하거나 다운로드 하기";echo "#-- flutter sdk-path";echo ""
-${cYellow}flutter sdk-path ${cBlue};echo "";echo "#-- (8) flutter 의 sdk path 확인하거나 다운로드 하기";echo ""
-	echo "";echo "#-- (9) flutter 정상작동 확인";echo "#-- flutter doctor";echo ""
-${cYellow}flutter doctor ${cBlue};echo "";echo "#-- (9) flutter 정상작동 확인";echo ""
+	android-studio ${cMagenta}#-- android-studio 실행후, 첫화면에서 More Action 클릭 > SDK manager > SDK Tools > Command Tools 선택해서 설치
+${cCyan}
+(8) ${cMagenta}터미널을 하나 더 열어서${cCyan}, 다음의 세 작업을 동시에 실행한다.
+${cBlue}
+	echo "";echo "#-- (9) flutter 설치";echo "#-- sudo snap install flutter --classic";echo ""${cYellow}
+	sudo snap install flutter --classic ${cBlue};echo "";echo "#== (9) flutter 설치";echo "#== sudo snap install flutter --classic";echo ""
+	echo "";echo "#-- (10) flutter 의 sdk path 확인하거나 다운로드 하기";echo "#-- flutter sdk-path";echo ""${cYellow}
+	flutter sdk-path ${cBlue};echo "";echo "#== (10) flutter 의 sdk path 확인하거나 다운로드 하기";echo "#== flutter sdk-path";echo ""
+	echo "";echo "#-- (11) flutter 정상작동 확인";echo "#-- flutter doctor";echo ""${cYellow}
+	flutter doctor ${cBlue};echo "";echo "#== (11) flutter 정상작동 확인";echo "#== flutter doctor";echo ""
+	echo "";echo "#-- (12) flutter 라이선스 확인";echo "#-- flutter doctor --android-licenses";echo ""${cYellow}
+	flutter doctor --android-licenses ${cBlue};echo "";echo "#== (12) flutter 라이선스 확인";echo "#== flutter doctor --android-licenses";echo ""
 ${cReset}
 __EOF__
 
