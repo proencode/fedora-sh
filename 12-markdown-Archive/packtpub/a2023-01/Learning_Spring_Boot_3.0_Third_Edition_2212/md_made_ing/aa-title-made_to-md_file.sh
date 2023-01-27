@@ -1,11 +1,10 @@
-
 #!/bin/sh
 
 Publisher="packtpub" #-- (1) 출판사 --
-BookCover="JavaScript from Frontend to Backend" #-- (2) 책 제목 --
-ShortDescription="Publication date: 7월 2022 Publisher: Packt Pages: 336 ISBN: 9781801070317" #-- (3) 저자등 설명 --
-tags="vue.js node.js" #-- (4) 찾기 위한 태그 --
-https_line="https://subscription.packtpub.com/book/web-development/9781801070317/4" #-- (5) 출판사 홈체이지 링크 --
+BookCover="Learning Spring Boot 3.0 - Third Edition" #-- (2) 책 제목 --
+ShortDescription="Publication date: 12월 2022 Publisher Packt Pages 270 ISBN 9781803233307" #-- (3) 저자등 설명 --
+tags="spring boot" #-- (4) 찾기 위한 태그 --
+https_line="https://subscription.packtpub.com/book/web-development/9781803233307/pref" #-- (5) 출판사 홈체이지 링크 --
 
 small_Publisher=$(echo "${Publisher,,}" | sed 's/ /_/g' | sed 's/./_/g')
 small_BookCover=$(echo "${BookCover,,}" | sed 's/ /_/g' | sed 's/./_/g')
@@ -134,18 +133,21 @@ md_Create () {
 #--
 md_Create "SKIP" "Begin"
 md_Create "00" "Preface"
-md_Create "01" "P1 JavaScript Syntax"
-md_Create "02" "C1 Exploring the Core Concepts of JavaScript"
-md_Create "03" "C2 Exploring the Advanced Concepts of JavaScript"
-md_Create "04" "P2 JavaScript on the Client-Side"
-md_Create "05" "C3 Getting Started with Vue.js"
-md_Create "06" "C4 Advanced Concepts of Vue.js"
-md_Create "07" "C5 Managing a List with Vue.js"
-md_Create "08" "P3 JavaScript on the Server-Side"
-md_Create "09" "C6 Creating and Using Node.js Modules"
-md_Create "10" "C7 Using Express with Node.js"
-md_Create "11" "C8 Using MongoDB with Node.js"
-md_Create "12" "C9 Integrating Vue.js with Node.js"
-md_Create "13" "P4 Other Books You May Enjoy"
+md_Create "01" "P1 The Basics of Spring Boot"
+md_Create "02" "C1 Core Features of Spring Boot"
+md_Create "03" "P2 Creating an Application with Spring Boot"
+md_Create "04" "C2 Creating a Web Application with Spring Boot"
+md_Create "05" "C3 Querying for Data with Spring Boot"
+md_Create "06" "C4 Securing an Application with Spring Boot"
+md_Create "07" "C5 Testing with Spring Boot"
+md_Create "08" "P3 Releasing an Application with Spring Boot"
+md_Create "09" "C6 Configuring an Application with Spring Boot"
+md_Create "10" "C7 Releasing an Application with Spring Boot"
+md_Create "11" "C8 Going Native with Spring Boot"
+md_Create "12" "P4 Scaling an Application with Spring Boot"
+md_Create "13" "C9 Writing Reactive Web Controllers"
+md_Create "14" "C10 Working with Data Reactively"
+md_Create "15" "Index"
+md_Create "16" "Other Books You May Enjoy"
 md_Create "SKIP" "End"
 #--
