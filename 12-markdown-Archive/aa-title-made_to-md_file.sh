@@ -1,13 +1,13 @@
 #!/bin/sh
 
 Publisher="packtpub" #-- (1) 출판사 --
-BookCover="Learn Spring for Android Application Development" #-- (2) 책 제목 --
-ShortDescription="Publication date: 1월 2019 Publisher Packt Pages 392 ISBN 9781789349252" #-- (3) 저자등 설명 --
-tags="spring android" #-- (4) 찾기 위한 태그 --
-https_line="https://subscription.packtpub.com/book/application-development/9781789349252/1" #-- (5) 출판사 홈체이지 링크 --
+BookCover="Building Applications with Spring 5 and Vue.js 2" #-- (2) 책 제목 --
+ShortDescription="Publication date: 10월 2018 Publisher Packt Pages 590 ISBN 9781788836968" #-- (3) 저자등 설명 --
+tags="spring vue.js" #-- (4) 찾기 위한 태그 --
+https_line="https://subscription.packtpub.com/book/application-development/9781788836968/2" #-- (5) 출판사 홈체이지 링크 --
 
-small_Publisher=$(echo "${Publisher,,}" | sed 's/ /_/g')
-small_BookCover=$(echo "${BookCover,,}" | sed 's/ /_/g')
+small_Publisher=$(echo "${Publisher,,}" | sed 's/ /_/g' | sed 's/./_/g')
+small_BookCover=$(echo "${BookCover,,}" | sed 's/ /_/g' | sed 's/./_/g')
 
 #-- file_Made "01" "P1 JavaScript Syntax"
 file_Made () {
@@ -16,7 +16,7 @@ file_Made () {
 	link_box="$3 <---> $4"
 
 	Jemok="${ChapterSeq} ${ChapterName}"
-	small_Jemok=$(echo "${Jemok,,}" | sed 's/ /_/g')
+	small_Jemok=$(echo "${Jemok,,}" | sed 's/ /_/g' | sed 's/./_/g')
 
 	cat <<__EOF__ | tee "${small_Jemok}.md"
 
@@ -71,7 +71,7 @@ JemokMade () {
 		PrevLink="$PrevName"
 	else
 		PrevJemok="${PrevSeq} ${PrevName}"
-		small_PrevJemok=$(echo "${PrevJemok,,}" | sed 's/ /_/g')
+		small_PrevJemok=$(echo "${PrevJemok,,}" | sed 's/ /_/g' | sed 's/./_/g')
 		PrevLink="[ ${PrevJemok} ](/${small_Publisher}/${small_BookCover}/${small_PrevJemok})"
 	fi
 
@@ -79,7 +79,7 @@ JemokMade () {
 		NextLink="$NextName"
 	else
 		NextJemok="${NextSeq} ${NextName}"
-		small_NextJemok=$(echo "${NextJemok,,}" | sed 's/ /_/g')
+		small_NextJemok=$(echo "${NextJemok,,}" | sed 's/ /_/g' | sed 's/./_/g')
 		NextLink="[ ${NextJemok} ](/${small_Publisher}/${small_BookCover}/${small_NextJemok})"
 	fi
 }
@@ -132,19 +132,24 @@ md_Create () {
 #-- 첫줄에는 "SKIP" "Begin" , 끝줄에는 "SKIP" "End" 로 표시한다.
 #--
 md_Create "SKIP" "Begin"
-md_Create "00" "Preface"
-md_Create "01" "P1 JavaScript Syntax"
-md_Create "01" "C1 About the Environment"
-md_Create "02" "C2 Overview of Kotlin"
-md_Create "03" "C3 Overview of Spring Framework"
-md_Create "04" "C4 Spring Modules for Android"
-md_Create "05" "C5 Securing Applications with Spring Security"
-md_Create "06" "C6 Accessing the Database"
-md_Create "07" "C7 Concurrency"
-md_Create "08" "C8 Reactive Programming"
-md_Create "09" "C9 Creating an Application"
-md_Create "10" "C10 Testing an Application"
-md_Create "11" "Assessments"
-md_Create "12" "Other Books You May Enjoy"
+md_Create "00" "Title Page"
+md_Create "01" "Preface"
+md_Create "02" "C01 Modern Web Application Development"
+md_Create "03" "C02 Vue.js 2 - It Works in the Way You Expected"
+md_Create "04" "C03 Spring 5 - The Right Stack for the Job at Hand"
+md_Create "05" "C04 TaskAgile - A Trello-like Task Management Tool"
+md_Create "06" "C05 Data Modeling - Designing the Foundation of the Application"
+md_Create "07" "C06 Code Design - Designing for Stability and Extensibility"
+md_Create "08" "C07 RESTful API Design - Building Language Between Frontend and Backend"
+md_Create "09" "C08 Creating the Application Scaffold - Taking off Like a Rocket"
+md_Create "10" "C09 Forms and Validation - Starting with the Register Page"
+md_Create "11" "C10 Spring Security - Making Our Application Secure"
+md_Create "12" "C11 State Management and i18n - Building a Home Page"
+md_Create "13" "C12 Flexbox Layout and Real-Time Updates with WebSocket - Creating Boards"
+md_Create "14" "C13 File Processing and Scalability - Playing with Cards"
+md_Create "15" "C14 Health Checking, System Monitoring - Getting Ready for Production"
+md_Create "16" "C15 Deploying to the Cloud with Jenkins - Ship It Continuously"
+md_Create "17" "Other Books You May Enjoy"
+md_Create "18" "Index"
 md_Create "SKIP" "End"
 #--
