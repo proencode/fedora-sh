@@ -9,6 +9,7 @@ https_line="https://subscription.packtpub.com/book/web-development/9781801070317
 
 small_Publisher=$(echo "${Publisher,,}" | sed 's/ /_/g' | sed 's/./_/g')
 small_BookCover=$(echo "${BookCover,,}" | sed 's/ /_/g' | sed 's/./_/g')
+mkdir ${small_BookCover}_img/
 
 #-- file_Made "01" "P1 JavaScript Syntax"
 file_Made () {
