@@ -96,6 +96,10 @@ cat <<__EOF__
 
 # https://ytdl-org.github.io/youtube-dl/download.html
 
+sh 03-youtube-dl-conf-made.sh https://youtu.be/7zKxrCqwbyc #--자막만 다운로드
+grep -v "00:" ytb제목-7zKxrCqwbyc.ko.vtt | grep -v "^$" | grep -v "^ $" | uniq > aa-ytb제목-7zKxrCqwbyc.ko.vtt #-- 내용정리
+rclone copy --include "aa-*" ./ yosjgc:youtube/ #--파일이름이 aa- 인것만 복사
+
 $0 $1 (${VIDEO_URL})
 
 0... 어떤 자막이 있는지 확인하기
@@ -121,7 +125,7 @@ if [ "x${a}" = "x1" ]; then
 	OPTVAL="--sub-lang ko --skip-download"
 else
 if [ "x${a}" = "x2" ]; then
-	OPTVAL="--sub-lang ko -x --audio-format mp3"
+	OPTVAL="-x --audio-format mp3"
 else
 if [ "x${a}" = "x3" ]; then
 	OPTVAL="--sub-lang ko "
