@@ -1,0 +1,11 @@
+About this Book
+Using a shared codebase in addition to an extensive range of tools in the Flutter ecosystem optimized for browsers, the Flutter framework has expanded to enable you to bring your mobile apps to the web. You’ll find out how web developers can leverage the Flutter framework for web apps with this hands-on guide.
+
+Taking Flutter to the Web will help you learn all about the Flutter ecosystem by covering the tools and project structure that allows you to easily integrate Flutter into your web stack. You’ll understand the concepts of cross-platform UI development and how they can be applied to web platforms. As you explore Flutter on the web, you'll become well-versed with using Flutter as an alternative UI platform for building adaptive and responsive designs for web apps.
+
+By the end of this Flutter book, you'll have built and deployed a complete Flutter app for the web and have a roadmap ready to target the web for your existing Flutter mobile apps.
+
+Publication date: 10월 2022
+Publisher Packt
+Pages 206
+ISBN 9781801817714
