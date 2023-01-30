@@ -83,7 +83,6 @@ is_group=$(grep vboxsf /etc/group | grep ${USER})
 if [ "x${is_group}" = "x" ]; then
 	cat_and_run "grep vboxsf /etc/group" "vboxsf 그룹이 user 에게 지정되지 않았습니다."
 	cat_and_run "sudo gpasswd -a ${USER} vboxsf ; grep vboxsf /etc/group" "vboxsf 그룹을 추가합니다."
-	cat_and_run "grep vboxsf /etc/group" "vboxsf 그룹이 user 에게 지정되었습니다."
 	echo "${cGreen}----> ${cCyan}vboxsf 그룹에 ${USER} 사용자가 추가됐다면, '${cYellow}y${cCyan}' 를 눌러서 이 시스템을 다시 시작해야 합니다.${cReset}"
 	read a ; echo "${cUp}"
 	if [ "x$a" = "xy" ]; then
