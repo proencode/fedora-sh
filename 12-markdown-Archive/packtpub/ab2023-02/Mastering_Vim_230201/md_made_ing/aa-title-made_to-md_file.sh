@@ -6,8 +6,8 @@ ShortDescription="Publication date: 11월 2018 Publisher Packt Pages 330 ISBN 97
 tags="vim" #-- (4) 찾기 위한 태그 --
 https_line="https://subscription.packtpub.com/book/application-development/9781789341096/pref" #-- (5) 출판사 홈체이지 링크 --
 
-small_Publisher=$(echo "${Publisher,,}" | sed 's/ /_/g' | sed 's/./_/g')
-small_BookCover=$(echo "${BookCover,,}" | sed 's/ /_/g' | sed 's/./_/g')
+small_Publisher=$(echo "${Publisher,,}" | sed 's/ /_/g' | sed 's/\./_/g')
+small_BookCover=$(echo "${BookCover,,}" | sed 's/ /_/g' | sed 's/\./_/g')
 mkdir ${small_BookCover}_img/
 
 #-- file_Made "01" "P1 JavaScript Syntax"
@@ -17,12 +17,7 @@ file_Made () {
 	link_box="$3 <---> $4"
 
 	Jemok="${ChapterSeq} ${ChapterName}"
-	small_Jemok=$(echo "${Jemok,,}" | sed 's/ /_/g' | sed 's/./_/g')
-cat <<__EOF__
-Jemok ${Jemok} ;
-small_Jemok ${small_Jemok} ;
-__EOF__
-read a
+	small_Jemok=$(echo "${Jemok,,}" | sed 's/ /_/g' | sed 's/\./_/g')
 	cat <<__EOF__ | tee "${small_Jemok}.md"
 
 @ Q -> # 붙이고 줄 띄우기 => 0i### ^[A^M^[
@@ -76,7 +71,7 @@ JemokMade () {
 		PrevLink="$PrevName"
 	else
 		PrevJemok="${PrevSeq} ${PrevName}"
-		small_PrevJemok=$(echo "${PrevJemok,,}" | sed 's/ /_/g' | sed 's/./_/g')
+		small_PrevJemok=$(echo "${PrevJemok,,}" | sed 's/ /_/g' | sed 's/\./_/g')
 		PrevLink="[ ${PrevJemok} ](/${small_Publisher}/${small_BookCover}/${small_PrevJemok})"
 	fi
 
@@ -84,7 +79,7 @@ JemokMade () {
 		NextLink="$NextName"
 	else
 		NextJemok="${NextSeq} ${NextName}"
-		small_NextJemok=$(echo "${NextJemok,,}" | sed 's/ /_/g' | sed 's/./_/g')
+		small_NextJemok=$(echo "${NextJemok,,}" | sed 's/ /_/g' | sed 's/\./_/g')
 		NextLink="[ ${NextJemok} ](/${small_Publisher}/${small_BookCover}/${small_NextJemok})"
 	fi
 }

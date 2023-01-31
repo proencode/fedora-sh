@@ -7,8 +7,8 @@ ShortDescription="Publication date: 7월 2022 Publisher: Packt Pages: 336 ISBN: 
 tags="vue.js node.js" #-- (4) 찾기 위한 태그 --
 https_line="https://subscription.packtpub.com/book/web-development/9781801070317/4" #-- (5) 출판사 홈체이지 링크 --
 
-small_Publisher=$(echo "${Publisher,,}" | sed 's/ /_/g' | sed 's/./_/g')
-small_BookCover=$(echo "${BookCover,,}" | sed 's/ /_/g' | sed 's/./_/g')
+small_Publisher=$(echo "${Publisher,,}" | sed 's/ /_/g' | sed 's/\./_/g')
+small_BookCover=$(echo "${BookCover,,}" | sed 's/ /_/g' | sed 's/\./_/g')
 mkdir ${small_BookCover}_img/
 
 #-- file_Made "01" "P1 JavaScript Syntax"
@@ -18,7 +18,7 @@ file_Made () {
 	link_box="$3 <---> $4"
 
 	Jemok="${ChapterSeq} ${ChapterName}"
-	small_Jemok=$(echo "${Jemok,,}" | sed 's/ /_/g' | sed 's/./_/g')
+	small_Jemok=$(echo "${Jemok,,}" | sed 's/ /_/g' | sed 's/\./_/g')
 
 	cat <<__EOF__ | tee "${small_Jemok}.md"
 
@@ -73,7 +73,7 @@ JemokMade () {
 		PrevLink="$PrevName"
 	else
 		PrevJemok="${PrevSeq} ${PrevName}"
-		small_PrevJemok=$(echo "${PrevJemok,,}" | sed 's/ /_/g' | sed 's/./_/g')
+		small_PrevJemok=$(echo "${PrevJemok,,}" | sed 's/ /_/g' | sed 's/\./_/g')
 		PrevLink="[ ${PrevJemok} ](/${small_Publisher}/${small_BookCover}/${small_PrevJemok})"
 	fi
 
@@ -81,7 +81,7 @@ JemokMade () {
 		NextLink="$NextName"
 	else
 		NextJemok="${NextSeq} ${NextName}"
-		small_NextJemok=$(echo "${NextJemok,,}" | sed 's/ /_/g' | sed 's/./_/g')
+		small_NextJemok=$(echo "${NextJemok,,}" | sed 's/ /_/g' | sed 's/\./_/g')
 		NextLink="[ ${NextJemok} ](/${small_Publisher}/${small_BookCover}/${small_NextJemok})"
 	fi
 }
