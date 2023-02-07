@@ -38,4 +38,10 @@ echoSeq () {
 		eSqMsg=$1
 	fi
 }
-#-- source ${HOME}/bin/color_base #-- 221027목-1257 CMD_DIR CMD_NAME cmdRun cmdCont cmdYenter echoSeq 
+cmdTTbegin () {
+	echo "${cCyan}----> ${cRed}$1${cReset}"
+}
+cmdTTend () {
+	echo "${cBlue}<---- ${cMagenta}$1${cReset}"
+}
+#-- source ${HOME}/bin/color_base #-- 230207화-1201 CMD_DIR CMD_NAME cmdRun cmdCont cmdYenter echoSeq cmdTTbegin cmdTTend

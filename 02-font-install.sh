@@ -24,7 +24,8 @@ log_name="${logs_folder}/zz.$(date +"%y%m%d-%H%M%S")__RUNNING_${CMD_NAME}" ; tou
 # ----
 
 title_begin "임시로 쓸 폴더 확인"
-if [ "x$1" = "x" ]; then
+temp_folder=$1
+if [ "x${temp_folder}" = "x" ]; then
 	echo "${cRed}!!!! ${cMagenta}----> ${cBlue} 프로그램 이름 다음에 ${cCyan}저장하기 위해 ${cYellow}/media/sf_Downloads/ 등 ${cBlue}폴더 이름을 지정해야 합니다.${cReset}"
 	echo "${cRed}----> ${cYellow}${0} ${cRed}[ ${cReset}임시파일을 저장할 폴더이름 ${cCyan}ex) ${cYellow}~/00-mega-yssc/Downloads ${cRed}]${cReset}"
 	rm -f ${log_name} ; log_name="${logs_folder}/zz.$(date +"%y%m%d-%H%M%S")..${CMD_NAME}__TEMP_FOLDER_PLEASE" ; touch ${log_name}
@@ -32,16 +33,16 @@ if [ "x$1" = "x" ]; then
 	echo "${cRed}<<<<<<<<<<${cBlue} $0 ${cRed}||| ${cMagenta}${MEMO} ${cRed}<<<<<<<<<<${cReset}"
 	exit 0
 fi
-if [ ! -d "$1" ]; then
-	echo "${cRed}!!!! ${cMagenta}----> ${cBlue} 저장하기 위한 ${cCyan}( ${cYellow}$1 ${cCyan})${cBlue} 폴더가 없습니다.${cReset}"
+if [ ! -d "${temp_folder}" ]; then
+	echo "${cRed}!!!! ${cMagenta}----> ${cBlue} 저장하기 위한 ${cCyan}( ${cYellow}${temp_folder} ${cCyan})${cBlue} 폴더가 없습니다.${cReset}"
 	echo "${cRed}----> ${cYellow}${0} ${cRed}[ ${cReset}임시파일을 저장할 폴더이름 ${cCyan}ex) ${cYellow}~/00-mega-yssc/Downloads ${cRed}]${cReset}"
-	rm -f ${log_name} ; log_name="${logs_folder}/zz.$(date +"%y%m%d-%H%M%S")..${CMD_NAME}__TEMP_FOLDER_$1_NOT_FOUND" ; touch ${log_name}
+	rm -f ${log_name} ; log_name="${logs_folder}/zz.$(date +"%y%m%d-%H%M%S")..${CMD_NAME}__TEMP_FOLDER_${temp_folder}_NOT_FOUND" ; touch ${log_name}
 	cat_and_run "ls --color ${CMD_DIR}" ; ls --color ${logs_folder}
 	echo "${cRed}<<<<<<<<<<${cBlue} $0 ${cRed}||| ${cMagenta}${MEMO} ${cRed}<<<<<<<<<<${cReset}"
 	exit 0
 fi
 FONT_DIR=/usr/share/fonts #-- 폰트 폴더
-TEMPfontDIR="$1/temp_fonts"
+TEMPfontDIR="${temp_folder}/temp_fonts"
 WGET="wget --no-check-certificate --content-disposition"
 cat_and_run "rm -rf ${TEMPfontDIR} ; mkdir ${TEMPfontDIR}" "임시로 쓰는 폴더를 새로 만듭니다."
 title_end "임시로 쓸 폴더 확인"

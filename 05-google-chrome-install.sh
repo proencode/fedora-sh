@@ -17,9 +17,9 @@ logs_folder="${HOME}/zz00logs" ; if [ ! -d "${logs_folder}" ]; then cat_and_run 
 log_name="${logs_folder}/zz.$(date +"%y%m%d-%H%M%S")__RUNNING_${CMD_NAME}" ; touch ${log_name}
 # ----
 
-cat_and_run "sudo dnf -y install fedora-workstation-repositories" "3rd Party 저장소 설치"
+cat_and_run "sudo dnf install -y fedora-workstation-repositories" "3rd Party 저장소 설치"
 cat_and_run "sudo dnf config-manager --set-enabled google-chrome" "Google 크롬 리포지토리를 활성화합니다."
-cat_and_run "sudo dnf -y install google-chrome-stable" "마지막으로 Chrome을 설치합니다."
+cat_and_run "sudo dnf install-y  google-chrome-stable" "마지막으로 Chrome을 설치합니다."
 
 # ----
 rm -f ${log_name} ; log_name="${logs_folder}/zz.$(date +"%y%m%d-%H%M%S")..${CMD_NAME}" ; touch ${log_name}
