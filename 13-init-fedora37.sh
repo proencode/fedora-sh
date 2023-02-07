@@ -91,6 +91,7 @@ cmdRun "rpm -qa | grep kernel | sort | grep kernel" "kernel 버전 확인"
 cmdRun "sudo systemctl enable sshd ; sudo systemctl start sshd" "sshd 실행"
 cmdTTend "(2) vbox 프로그램 설치"
 
+# ---- ----
 
 cmdTTbegin "(3) vbox 그룹 추가"
 is_group=$(grep vboxsf /etc/group | grep ${USER})
@@ -107,6 +108,7 @@ if [ "x${is_group}" = "x" ]; then
 fi
 cmdTTend "(3) vbox 그룹 추가"
 
+# ---- ----
 
 #-- cat <<__EOF__
 #-- vi ~/.ssh/config
@@ -135,17 +137,24 @@ ${cCyan}---->${cBlue} ---->${cReset} Do you wish to continue? [yes or no] ${cBlu
 
 __EOF__
 cmdYenter "sudo /sbin/rcvboxadd quicksetup all ; sudo /sbin/rcvboxadd setup" "이작업 시작전에  (장치 > 게스트 확장 CD 이미지 삽입 > 오류시 재작업) 을 먼저 끝내야 합니다."
+cmdRun "ln -s /media/sf_Downloads/bada/ ~/wind_bada" "윈도우의 다운로드 폴더를 ~/wind_data 로 연결합니다."
+cmdRun "ls -l ~/" "Windows 링크가 만들어져 있는지 확인해야 합니다."
+cmdRun "ls -l ~/wind_bada/" "Windows 폴더가 보이는지 확인해야 합니다."
 cmdTTbegin "(4) 게스트 확장 CD 이미지 삽입"
 
+# ---- ----
 
 cmdTTbegin "(5) VundleVim 설치"
 echo "${cCyan}----> https://itlearningcenter.tistory.com/entry/%E3%80%901804-LTS%E3%80%91VIM-Plug-in-%EC%84%A4%EC%B9%98%ED%95%98%EA%B8%B0${cReset}"
 cmdRun "git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim" "VundleVim 설치"
-#-- cmdRun "cp init_files/DOTvimrc-fedora ~/.vimrc" ".vimrc 설치"
+#xxx-- cmdRun "cp init_files/DOTvimrc-fedora ~/.vimrc" ".vimrc 설치"
+old_files_dir="${HOME}/bin/old_files"
+if [ ! -d ${old_files_dir} ]; then
+	mkdir -p ${old_files_dir}
+fi
 new_DOT_vimrc=$(pwd)/${CMD_DIR}/init_files/DOTvimrc #-- 스크립트가 있는 디렉토리에 이 파일이 있어야 한다.
 if [ ! -f ${new_DOT_vimrc} ]; then
-	new_DOT_vimrc=~/DOTvimrc-vfedora37 #-- 스크립트가 있는 디렉토리에 이 파일이 있어야 한다.
-	old_files=~/old-files
+	new_DOT_vimrc=${old_files_dir}/DOTvimrc #-- 스크립트가 있는 디렉토리에 이 파일이 있어야 한다.
 	cat <<__EOF__ | tee ${new_DOT_vimrc}
 set nocompatible              " be iMproved, required
 filetype off                  " required
@@ -209,30 +218,22 @@ nmap nerd :NERDTreeToggle<CR>
 " see :h vundle for more details or wiki for FAQ
 " Put your non-Plugin stuff after this line
 "
-" at 210422 목 1036 from https://github.com/VundleVim/Vundle.vim
+" 210422 목 1036 from https://github.com/VundleVim/Vundle.vim
+" at dOTvimrc-original-$(date +'%y%m%d%a_%H%M%S')-$(uname -r)
 __EOF__
 fi
 
-old_files=$(pwd)/${CMD_DIR}/old-files
-if [ ! -d ${old_files} ]; then
-	mkdir ${old_files}
-fi
-
 if [ -f ~/.vimrc ]; then
-	cmdRun "mv ~/.vimrc ${old_files}/dOTvimrc-original-$(date +'%y%m%d%a_%H%M%S')-$(uname -r)" "원래의 .vimrc 파일을 이곳으로 복사합니다."
+	cmdRun "mv ~/.vimrc ${old_files_dir}/dOTvimrc-original-$(date +'%y%m%d%a_%H%M%S')-$(uname -r)" "원래의 .vimrc 파일을 이곳으로 복사합니다."
 fi
 cmdRun "cp ${new_DOT_vimrc} ~/.vimrc" "미리 작성했던 파일을 ~/.vimrc 로 복사합니다."
-
-
-
-
-
 
 
 echo "${cGreen}----> ${cYellow}vi +BundleInstall +qall ${cCyan}Bundle 설치${cReset}"
 vim +BundleInstall +qall
 cmdTTend "(5) VundleVim 설치"
 
+# ---- ----
 
 cmdTTbegin "(6) credential.helper 설치"
 cat <<__EOF__
@@ -256,7 +257,6 @@ cat <<__EOF__
 __EOF__
 cmdYenter "git config credential.helper store" "이와 같이 저장합니다."
 cmdTTend "(6) credential.helper 설치"
-
 cmdYenter "sudo reboot" "시스템을 업데이트 한뒤에는, 반드시 'y' 를 눌러서 시스템을 다시 부팅 하세요."
 
 # ---- ----
@@ -278,34 +278,34 @@ cmdTTend "(7) 호스트 이름 바꾸기"
 # ---- ----
 
 cmdTTbegin "(8) 한글 폰트파일 설치를 위해 임시로 쓸 폴더 확인"
-temp_folder=~/wind_bada/Downloads
-if [ ! -d ${temp_folder} ]; then
-	temp_folder=~/temp_folder
-	mkdir ${temp_folder}
+wind_down_dir=~/wind_bada/Downloads
+TEMPfontDIR="${wind_down_dir}/temp_fonts"
+if [ ! -d ${TEMPfontDIR} ]; then
+	TEMPfontDIR="${HOME}/bin/temp"
+	mkdir -p ${TEMPfontDIR}
 fi
-FONT_DIR=/usr/share/fonts #-- 폰트 폴더
-TEMPfontDIR="${temp_folder}/temp_fonts"
 WGET="wget --no-check-certificate --content-disposition"
-cmdRun "rm -rf ${TEMPfontDIR} ; mkdir ${TEMPfontDIR}" "임시로 쓰는 폴더를 새로 만듭니다."
+cmdRun "rm -rf ${TEMPfontDIR} ; mkdir -p ${TEMPfontDIR}" "임시로 쓰는 폴더를 새로 만듭니다."
 cmdTTend "(8) 한글 폰트파일 설치를 위해 임시로 쓸 폴더 확인"
 
 
-#-- cmdTTbegin "압축한 파일을 찾아서 폰트 설치"
-#-- font_zip_file=$(pwd)/${CMD_DIR}/init_files/Font-D2-KoPub-jeju-nanum-seoul.7z
-#-- if [ -f ${font_zip_file} ]; then
-#-- 	cmdRun "ls ${FONT_DIR}" "폰트 등록전의 폴더 내용"
-#-- 	cmdRun "cd ${FONT_DIR} ; sudo 7za -y x ${font_zip_file}" "폰트 설치"
-#-- 	cmdRun "ls ${FONT_DIR}" "폰트 등록후의 폴더 내용"
-#-- 	cmdTTend "압축한 파일을 찾아서 폰트 설치"
-#-- 	# ----
-#-- 	rm -f ${log_name} ; log_name="${logs_folder}/zz.$(date +"%y%m%d-%H%M%S")..${CMD_NAME}" ; touch ${log_name}
-#-- 	cmdRun "ls --color ${CMD_DIR}" ; ls --color ${logs_folder}
-#-- 	echo "${cRed}<<<<<<<<<<${cBlue} $0 ${cRed}||| ${cMagenta}${MEMO} ${cRed}<<<<<<<<<<${cReset}"
-#-- 	exit 0
-#-- else
-#-- 	echo "!!!! ${cRed}----> ${cBlue}압축한 파일이 없습니다.${cReset}"
-#-- fi
-#-- cmdTTend "압축한 파일을 찾아서 폰트 설치"
+cmdTTbegin "(9) 압축한 파일을 찾아서 폰트 설치"
+font_zip_file=$(pwd)/${CMD_DIR}/init_files/Font-D2-KoPub-jeju-nanum-seoul.7z
+FONT_DIR=/usr/share/fonts #-- 폰트 폴더
+if [ -f ${font_zip_file} ]; then
+	cmdRun "ls ${FONT_DIR}" "폰트 등록전의 폴더 내용"
+	cmdRun "cd ${FONT_DIR} ; sudo 7za -y x ${font_zip_file}" "폰트 설치"
+	cmdRun "ls ${FONT_DIR}" "폰트 등록후의 폴더 내용"
+	cmdTTend "압축한 파일을 찾아서 폰트 설치"
+	# ----
+	rm -f ${log_name} ; log_name="${logs_folder}/zz.$(date +"%y%m%d-%H%M%S")..${CMD_NAME}" ; touch ${log_name}
+	cmdRun "ls --color ${CMD_DIR}" ; ls --color ${logs_folder}
+	echo "${cRed}<<<<<<<<<<${cBlue} $0 ${cRed}||| ${cMagenta}${MEMO} ${cRed}<<<<<<<<<<${cReset}"
+	exit 0
+else
+	echo "!!!! ${cRed}----> ${cBlue}압축한 파일이 없습니다.${cReset}"
+fi
+cmdTTend "(9) 압축한 파일을 찾아서 폰트 설치"
 
 
 cmdTTbegin "(9) D2Coding 폰트 설치"
@@ -347,7 +347,6 @@ cmdTTbegin "(12) 새로운 .bashrc 만들기"
 new_dot_bashrc=$(pwd)/${CMD_DIR}/init_files/DOTbashrc-vfedora37 #-- 스크립트가 있는 디렉토리에 이 파일이 있어야 한다.
 if [ ! -f ${new_dot_bashrc} ]; then
 	new_dot_bashrc=~/DOTbashrc-vfedora37 #-- 스크립트가 있는 디렉토리에 이 파일이 있어야 한다.
-	old_files=~/old-files
 	cat <<__EOF__ | tee ${new_dot_bashrc}
 # .bashrc
 
@@ -402,12 +401,9 @@ alias cp='cp -i'
 alias mv='mv -i'
 __EOF__
 fi
-if [ ! -d ${old_files} ]; then
-	mkdir ${old_files}
-fi
 
 if [ -f ~/.bashrc ]; then
-	cmdRun "mv ~/.bashrc ${old_files}/dOTbashrc-original-$(date +'%y%m%d%a_%H%M%S')-$(uname -r)" "원래의 .bashrc 파일을 이곳으로 복사합니다."
+	cmdRun "mv ~/.bashrc ${old_files_dir}/dOTbashrc-original-$(date +'%y%m%d%a_%H%M%S')-$(uname -r)" "원래의 .bashrc 파일을 이곳으로 복사합니다."
 fi
 cmdRun "cp ${new_dot_bashrc} ~/.bashrc" "미리 작성했던 파일을 ~/.bashrc 로 복사합니다."
 cat <<__EOF__
