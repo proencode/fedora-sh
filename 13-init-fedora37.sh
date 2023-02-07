@@ -162,8 +162,184 @@ __EOF__
 cmdYenter "git config credential.helper store" "이와 같이 저장합니다."
 cmdTTend "credential.helper 설치"
 
-
 cmdYenter "sudo reboot" "시스템을 업데이트 한뒤에는, 반드시 'y' 를 눌러서 시스템을 다시 부팅 하세요."
+
+# ---- ----
+
+cmdTTbegin "호스트 이름 바꾸기"
+HOSTNAME=$(hostname)
+cat <<__EOF__
+${cCyan}----> 호스트 이름을 바꾸려면 입력하세요: ${cRed}[${cYellow} ${HOSTNAME} ${cRed}]${cReset}
+__EOF__
+read a ; echo "${cUp}"
+if [ "x$a" = "x" ]; then
+	echo "= ${cRed}${HOSTNAME}${cReset} ="
+else
+	echo "= ${cRed}${a}${cReset} ="
+	cat_and_run "sudo hostnamectl set-hostname $a" "호스트 이름을 $a 로 지정합니다."
+fi
+cmdTTend "호스트 이름 바꾸기"
+
+# ---- ----
+
+cmdTTbegin "한글 폰트파일 설치를 위해 임시로 쓸 폴더 확인"
+temp_folder=~/wind_bada/Downloads
+if [ ! -d ${temp_folder} ]; then
+	temp_folder=~/temp_folder
+	mkdir ${temp_folder}
+fi
+FONT_DIR=/usr/share/fonts #-- 폰트 폴더
+TEMPfontDIR="${temp_folder}/temp_fonts"
+WGET="wget --no-check-certificate --content-disposition"
+cmdRun "rm -rf ${TEMPfontDIR} ; mkdir ${TEMPfontDIR}" "임시로 쓰는 폴더를 새로 만듭니다."
+cmdTTend "한글 폰트파일 설치를 위해 임시로 쓸 폴더 확인"
+
+
+#-- cmdTTbegin "압축한 파일을 찾아서 폰트 설치"
+#-- font_zip_file=$(pwd)/${CMD_DIR}/init_files/Font-D2-KoPub-jeju-nanum-seoul.7z
+#-- if [ -f ${font_zip_file} ]; then
+#-- 	cmdRun "ls ${FONT_DIR}" "폰트 등록전의 폴더 내용"
+#-- 	cmdRun "cd ${FONT_DIR} ; sudo 7za -y x ${font_zip_file}" "폰트 설치"
+#-- 	cmdRun "ls ${FONT_DIR}" "폰트 등록후의 폴더 내용"
+#-- 	cmdTTend "압축한 파일을 찾아서 폰트 설치"
+#-- 	# ----
+#-- 	rm -f ${log_name} ; log_name="${logs_folder}/zz.$(date +"%y%m%d-%H%M%S")..${CMD_NAME}" ; touch ${log_name}
+#-- 	cmdRun "ls --color ${CMD_DIR}" ; ls --color ${logs_folder}
+#-- 	echo "${cRed}<<<<<<<<<<${cBlue} $0 ${cRed}||| ${cMagenta}${MEMO} ${cRed}<<<<<<<<<<${cReset}"
+#-- 	exit 0
+#-- else
+#-- 	echo "!!!! ${cRed}----> ${cBlue}압축한 파일이 없습니다.${cReset}"
+#-- fi
+#-- cmdTTend "압축한 파일을 찾아서 폰트 설치"
+
+
+cmdTTbegin "D2Coding 폰트 설치"
+FONT_HOST="https://github.com/naver/d2codingfont/releases/download/VER1.3.2"
+FONT_NAME="D2Coding-Ver1.3.2-20180524.zip"
+LOCAL_DIR="${FONT_DIR}/D2Coding"
+
+cmdRun "cd ${TEMPfontDIR} ; ${WGET} ${FONT_HOST}/${FONT_NAME}" "폰트 내려받기"
+cmdRun "sudo rm -rf ${LOCAL_DIR}*" "기존 폴더 삭제"
+cmdRun "cd ${TEMPfontDIR} ; 7za x ${FONT_NAME}" "폰트 압축해제"
+cmdRun "cd ${TEMPfontDIR} ; sudo chown -R root:root D2Coding ; sudo mv D2Coding ${FONT_DIR}/ ; sudo chmod 755 -R ${LOCAL_DIR} ; sudo chmod 644 ${LOCAL_DIR}/*" "폰트 설치"
+cmdRun "cd ${LOCAL_DIR} ; sudo mv D2Coding-Ver1.3.2-20180524.ttc D2Coding.ttc ; sudo mv D2Coding-Ver1.3.2-20180524.ttf D2Coding.ttf ; sudo mv D2CodingBold-Ver1.3.2-20180524.ttf D2CodingBold.ttf" "폰트 파일이름을 수정합니다."
+cmdTTend "D2Coding 폰트 설치"
+
+
+cmdTTbegin "seoul 폰트 설치"
+cmdRun "sudo rm -rf ${TEMPfontDIR} ; mkdir ${TEMPfontDIR}" "임시폴더 다시만들고,"
+FONT_HOST="https://www.seoul.go.kr/upload/seoul/font"
+FONT_NAME="seoul_font.zip" #-- 파일을 한글코드로 된 폴더에 담아서 압축했기 때문에, 풀면 fedora35 에서 깨진 글자로 나온다.
+LOCAL_DIR="${FONT_DIR}/seoul"
+
+cmdRun "cd ${TEMPfontDIR} ; ${WGET} ${FONT_HOST}/${FONT_NAME}" "폰트 내려받기"
+cmdRun "sudo rm -rf ${LOCAL_DIR} ; sudo mkdir ${LOCAL_DIR}" "폴더 만들기"
+cmdRun "cd ${TEMPfontDIR} ; ls -l ; 7za x ${FONT_NAME}" "폰트 압축해제"
+cmdRun "cd ${TEMPfontDIR} ; sudo mv */Seoul*.ttf ${LOCAL_DIR}/ ; sudo chmod 644 ${LOCAL_DIR}/*" "폰트 설치"
+cmdTTend "seoul 폰트 설치"
+
+
+cmdTTbegin "폰트 설치 확인"
+cmdRun "ls -ltr --color ${FONT_DIR}" "시간역순 font 디렉토리"
+cmdRun "ls --color ${FONT_DIR}/D2Coding*" "d2coding 설치 확인"
+cmdRun "ls --color ${FONT_DIR}/seoul*" "seoul 설치 확인"
+cmdRun "sudo rm -rf ${TEMPfontDIR}" "임시폴더 삭제"
+cmdTTend "폰트 설치 확인"
+
+# ---- ----
+
+cmdTTbegin "새로운 .bashrc 만들기"
+new_dot_bashrc=$(pwd)/${CMD_DIR}/init_files/DOTbashrc-vfedora37 #-- 스크립트가 있는 디렉토리에 이 파일이 있어야 한다.
+if [ ! -f ${new_dot_bashrc} ]; then
+	cat <<__EOF__ | tee ${new_dot_bashrc}
+# .bashrc
+
+# Source global definitions
+if [ -f /etc/bashrc ]; then
+	. /etc/bashrc
+fi
+
+# User specific environment
+if ! [[ "\$PATH" =~ "\$HOME/.local/bin:\$HOME/bin:" ]]
+then
+    PATH="\$HOME/.local/bin:\$HOME/bin:\$PATH"
+fi
+export PATH
+
+#--
+cB="\\[\\e[" ;cE="\\]" #-- 색깔 시작과 끝 표시
+# 색깔지정의 구조: '\\[' + '\\e[' + '첫번째 1,2글자:글자형태' + '두번째 2글자:색깔' + '세번째 2글자:색깔' + 'm' + '\\]'
+# 첫번째 => 0:보통 1:굵게 2:흐림 3:이탤릭 4:밑줄 5:깜빡거림 6 7:반전 8 9:글자에 줄긋기 10:
+# 두번째/세번째의 앞글자 => 3x:글자색 4x:바탕색
+# 두번째/세번째의 뒷글자 => x0:회 x1:빨 x2:초 x3:노 x4:청 x5:보 x6:파 x7:흰
+cGray="\${cB}0;30m\${cE}"; cRed="\${cB}0;31m\${cE}"; cGreen="\${cB}0;32m\${cE}"; cYellow="\${cB}0;33m\${cE}"; cBlue="\${cB}0;34m\${cE}"; cMagenta="\${cB}0;35m\${cE}"; cCyan="\${cB}0;36m\${cE}"; cWhite="\${cB}0;37m\${cE}"; cReset="\${cB}0m\${cE}" #-- 보통 글자색
+dGray="\${cB}1;30m\${cE}"; dRed="\${cB}1;31m\${cE}"; dGreen="\${cB}1;32m\${cE}"; dYellow="\${cB}1;33m\${cE}"; dBlue="\${cB}1;34m\${cE}"; dMagenta="\${cB}1;35m\${cE}"; dCyan="\${cB}1;36m\${cE}"; dWhite="\${cB}1;37m\${cE}"; #-- 굵은 글자색
+# '\\t' 12:34:56 시분초
+# '\\D' 날짜처리 '{' '}' 사이에 넣는것: %Y=2022 %y=22 %m=01 %d=28 %a=금
+# \\u 사용자아이디 \\h 호스트이름 \\w 현재 디렉토리
+## cWhiteGreen="\${cB}0;37;42m\${cE}"
+cBlackGreen="\${cB}0;30;42m\${cE}"
+# PS1="\${cGreen}\\t\${cYellow}\\D{%a}\${cCyan}\\D{%y}\${cMagenta}\\D{%m}\${cGreen}\\D{%d} \${dCyan}\\u\${cWhite}@\${cBlackGreen}\\h\${cReset} \${cCyan}\\w\\n\${cCyan}\\W\${cReset} \$ " #-- vfed35 220330
+PS1="\${cGreen}\\t\${cRed}\\D{%a}\${cMagenta}\\D{%y}\${cCyan}\\D{%m}\${cYellow}\\D{%d} \${dCyan}\\u\${cWhite}@\${cGreen}\\h\${cReset} \${cCyan}\\w\\n\${cCyan}\\W\${cReset} $ " #-- vfed35 220330
+## PS1="\${cGreen}\\t\${cYellow}\\D{%a}\${cBlue}\\D{%y}-\${cGreen}\\D{%m-%d} \${dMagenta}\\u\${cWhite}@\${cWhiteGreen}\\h\${cReset} \${cCyan}\\w\\\n\${cCyan}\\W\${cReset} $ " #-- oldvfed35
+## PS1='\e[0;36m\\t\\e[0m \\e[0;33m\\D{%a}\\e[0m \\D{%Y-%m-%d} \\e[01;36m\\u\\e[01;37m@\\e[01;42m\\h\\e[0m \\e[0;32m\\w\\e[0m\\n\\e[0;32m\\W\\e[0m $ ' #-- g1ssd128
+#--
+
+# Uncomment the following line if you don't like systemctl's auto-paging feature:
+# export SYSTEMD_PAGER=
+
+# User specific aliases and functions
+if [ -d ~/.bashrc.d ]; then
+	for rc in ~/.bashrc.d/*; do
+		if [ -f "\$rc" ]; then
+			. "\$rc"
+		fi
+	done
+fi
+
+unset rc
+
+# ----------------------
+alias rm='rm -i'
+alias cp='cp -i'
+alias mv='mv -i'
+__EOF__
+fi
+
+old_files=$(pwd)/${CMD_DIR}/old-files
+if [ ! -d ${old_files} ]; then
+	mkdir ${old_files}
+fi
+cat_and_run "mv ~/.bashrc ${old_files}/dOTbashrc-original-$(date +'%y%m%d_%H%M%S')-$(uname -r)" "원래의 .bashrc 파일을 이곳으로 복사합니다."
+cat_and_run "cp ${new_dot_bashrc} ~/.bashrc" "미리 작성했던 파일을 ~/.bashrc 로 복사합니다."
+cat <<__EOF__
+${cCyan}
+터미널을 새로 열고, ${cYellow}source ~/.bashrc ${cCyan}#--- 이 명령으로 프롬프트를 새로 지정하세요.
+${cGreen}----> press Enter:${cReset}
+__EOF__
+read a
+cmdTTend "새로운 .bashrc 만들기"
+
+# ---- ----
+
+cmdTTbegin "구글 크롬 브라우저 설치"
+cmdRun "sudo dnf install -y fedora-workstation-repositories" "3rd Party 저장소 설치"
+cmdRun "sudo dnf config-manager --set-enabled google-chrome" "Google 크롬 리포지토리를 활성화합니다."
+cmdRun "sudo dnf install-y  google-chrome-stable" "마지막으로 Chrome을 설치합니다."
+cmdTTend "구글 크롬 브라우저 설치"
+
+# ---- ----
+
+cmdTTbegin "rclone 사이즈 확인"
+cmdRun "rclone about yosjgc:"
+cmdRun "rclone about kaosngc:"
+cmdRun "rclone about swlibgc:"
+cmdRun "rclone about ysj5ncmi:"
+cmdRun "rclone about kaosbmi:"
+cmdRun "rclone about kaosb2mi:"
+cmdRun "rclone about kaosb3mi:"
+cmdRun "rclone about kaosb4mi:"
+cmdTTend "rclone 사이즈 확인"
 
 
 # ----
