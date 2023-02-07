@@ -280,32 +280,33 @@ cmdTTend "(7) 호스트 이름 바꾸기"
 cmdTTbegin "(8) 한글 폰트파일 설치를 위해 임시로 쓸 폴더 확인"
 wind_down_dir=~/wind_bada/Downloads
 TEMPfontDIR="${wind_down_dir}/temp_fonts"
-if [ ! -d ${TEMPfontDIR} ]; then
-	TEMPfontDIR="${HOME}/bin/temp"
-	mkdir -p ${TEMPfontDIR}
+if [ ! -d ${wind_down_dir} ]; then
+	TEMPfontDIR="${HOME}/bin/temp_fonts"
 fi
+mkdir -p ${TEMPfontDIR}
+
 WGET="wget --no-check-certificate --content-disposition"
 cmdRun "rm -rf ${TEMPfontDIR} ; mkdir -p ${TEMPfontDIR}" "임시로 쓰는 폴더를 새로 만듭니다."
 cmdTTend "(8) 한글 폰트파일 설치를 위해 임시로 쓸 폴더 확인"
 
 
-cmdTTbegin "(9) 압축한 파일을 찾아서 폰트 설치"
+# cmdTTbegin "(9) 압축한 파일을 찾아서 폰트 설치"
 font_zip_file=$(pwd)/${CMD_DIR}/init_files/Font-D2-KoPub-jeju-nanum-seoul.7z
 FONT_DIR=/usr/share/fonts #-- 폰트 폴더
-if [ -f ${font_zip_file} ]; then
-	cmdRun "ls ${FONT_DIR}" "폰트 등록전의 폴더 내용"
-	cmdRun "cd ${FONT_DIR} ; sudo 7za -y x ${font_zip_file}" "폰트 설치"
-	cmdRun "ls ${FONT_DIR}" "폰트 등록후의 폴더 내용"
-	cmdTTend "압축한 파일을 찾아서 폰트 설치"
-	# ----
-	rm -f ${log_name} ; log_name="${logs_folder}/zz.$(date +"%y%m%d-%H%M%S")..${CMD_NAME}" ; touch ${log_name}
-	cmdRun "ls --color ${CMD_DIR}" ; ls --color ${logs_folder}
-	echo "${cRed}<<<<<<<<<<${cBlue} $0 ${cRed}||| ${cMagenta}${MEMO} ${cRed}<<<<<<<<<<${cReset}"
-	exit 0
-else
-	echo "!!!! ${cRed}----> ${cBlue}압축한 파일이 없습니다.${cReset}"
-fi
-cmdTTend "(9) 압축한 파일을 찾아서 폰트 설치"
+# if [ -f ${font_zip_file} ]; then
+# 	cmdRun "ls ${FONT_DIR}" "폰트 등록전의 폴더 내용"
+# 	cmdRun "cd ${FONT_DIR} ; sudo 7za -y x ${font_zip_file}" "폰트 설치"
+# 	cmdRun "ls ${FONT_DIR}" "폰트 등록후의 폴더 내용"
+# 	cmdTTend "압축한 파일을 찾아서 폰트 설치"
+# 	# ----
+# 	rm -f ${log_name} ; log_name="${logs_folder}/zz.$(date +"%y%m%d-%H%M%S")..${CMD_NAME}" ; touch ${log_name}
+# 	cmdRun "ls --color ${CMD_DIR}" ; ls --color ${logs_folder}
+# 	echo "${cRed}<<<<<<<<<<${cBlue} $0 ${cRed}||| ${cMagenta}${MEMO} ${cRed}<<<<<<<<<<${cReset}"
+# 	exit 0
+# else
+# 	echo "!!!! ${cRed}----> ${cBlue}압축한 파일이 없습니다.${cReset}"
+# fi
+# cmdTTend "(9) 압축한 파일을 찾아서 폰트 설치"
 
 
 cmdTTbegin "(9) D2Coding 폰트 설치"
