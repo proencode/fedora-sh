@@ -39,10 +39,18 @@ echoSeq () {
 	fi
 }
 cmdTTbegin () {
-	echo "${cCyan}----> ${cRed}$1${cReset}"
+	cat <<__EOF__
+${cBlue}#---- ----
+v  ${cRed}$1${cBlue}
+v${cReset}
+__EOF__
 }
 cmdTTend () {
-	echo "${cBlue}<---- ${cMagenta}$1${cReset}"
+	cat <<__EOF__
+${cBlue}^
+^  ${cMagenta}$1${cBlue}
+#---- ----${cReset}
+__EOF__
 }
 #-- source ${HOME}/bin/color_base #-- 230207화1201 CMD_DIR CMD_NAME cmdRun cmdCont cmdYenter echoSeq cmdTTbegin cmdTTend
 
@@ -50,11 +58,11 @@ cmdTTend () {
 # ${cReset}"
 # echo "${cBlue}<---- ${cMagenta}
 # ${cReset}"
-MEMO="VirtualBox용 프로그램 설치"
+MEMO="Fedora 업데이트"
 echo "${cMagenta}>>>>>>>>>>${cGreen} $0 ${cMagenta}||| ${cCyan}${MEMO} ${cMagenta}>>>>>>>>>>${cReset}"
 
 
-cmdTTbegin "로그 기록전에 업데이트부터 합니다."
+cmdTTbegin "(1) 시스템 업데이트"
 cmdYenter "sudo vi /etc/sudoers ; reset" "sudo 명령시 비번을 일일이 입력하지 않으려면, 'y' 를 눌러서 수정합니다."
 cmdYenter "time sudo dnf update -y" "시간 여유가 되면, 'y' 를 눌러서 시스템을 업데이트 하는것이 좋습니다."
 if [ "x${READ_Y_IS}" = "xy" ]; then
@@ -68,7 +76,7 @@ if [ "x${READ_Y_IS}" = "xy" ]; then
 __EOF__
 	cmdYenter "sudo reboot"
 fi
-cmdTTend "로그 기록전에 업데이트부터 합니다."
+cmdTTend "(1) 시스템 업데이트"
 
 
 logs_folder="${HOME}/zz00logs" ; if [ ! -d "${logs_folder}" ]; then cmdRun "mkdir ${logs_folder}" ; fi
@@ -76,15 +84,15 @@ log_name="${logs_folder}/zz.$(date +"%y%m%d-%H%M%S")__RUNNING_${CMD_NAME}" ; tou
 # ----
 
 
-cmdTTbegin "vbox 프로그램 설치"
+cmdTTbegin "(2) vbox 프로그램 설치"
 cmdRun "time sudo dnf -y install make automake autoconf gcc dkms kernel-debug-devel kernel-devel" "커널 컴파일용 프로그램 설치"
 cmdRun "time sudo dnf -y install wget vim-enhanced vim-common mc git p7zip gnome-tweak-tool rclone livecd-tools liveusb-creator" "추가 프로그램 설치"
 cmdRun "rpm -qa | grep kernel | sort | grep kernel" "kernel 버전 확인"
 cmdRun "sudo systemctl enable sshd ; sudo systemctl start sshd" "sshd 실행"
-cmdTTend "vbox 프로그램 설치"
+cmdTTend "(2) vbox 프로그램 설치"
 
 
-cmdTTbegin "vbox 그룹 추가"
+cmdTTbegin "(3) vbox 그룹 추가"
 is_group=$(grep vboxsf /etc/group | grep ${USER})
 if [ "x${is_group}" = "x" ]; then
 	cmdRun "grep vboxsf /etc/group" "vboxsf 그룹이 user 에게 지정되지 않았습니다."
@@ -97,7 +105,7 @@ if [ "x${is_group}" = "x" ]; then
 		sudo reboot
 	fi
 fi
-cmdTTend "vbox 그룹 추가"
+cmdTTend "(3) vbox 그룹 추가"
 
 
 #-- cat <<__EOF__
@@ -114,7 +122,7 @@ cmdTTend "vbox 그룹 추가"
 #-- __EOF__
 
 
-cmdTTbegin "게스트 확장 CD 이미지 삽입"
+cmdTTbegin "(4) 게스트 확장 CD 이미지 삽입"
 cat <<__EOF__
 
 ${cCyan}---->${cReset}
@@ -127,19 +135,106 @@ ${cCyan}---->${cBlue} ---->${cReset} Do you wish to continue? [yes or no] ${cBlu
 
 __EOF__
 cmdYenter "sudo /sbin/rcvboxadd quicksetup all ; sudo /sbin/rcvboxadd setup" "이작업 시작전에  (장치 > 게스트 확장 CD 이미지 삽입 > 오류시 재작업) 을 먼저 끝내야 합니다."
-cmdTTbegin "게스트 확장 CD 이미지 삽입"
+cmdTTbegin "(4) 게스트 확장 CD 이미지 삽입"
 
 
-cmdTTbegin "VundleVim 설치"
+cmdTTbegin "(5) VundleVim 설치"
 echo "${cCyan}----> https://itlearningcenter.tistory.com/entry/%E3%80%901804-LTS%E3%80%91VIM-Plug-in-%EC%84%A4%EC%B9%98%ED%95%98%EA%B8%B0${cReset}"
 cmdRun "git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim" "VundleVim 설치"
-cmdRun "cp init_files/DOTvimrc-fedora ~/.vimrc" ".vimrc 설치"
+#-- cmdRun "cp init_files/DOTvimrc-fedora ~/.vimrc" ".vimrc 설치"
+new_DOT_vimrc=$(pwd)/${CMD_DIR}/init_files/DOTvimrc #-- 스크립트가 있는 디렉토리에 이 파일이 있어야 한다.
+if [ ! -f ${new_DOT_vimrc} ]; then
+	new_DOT_vimrc=~/DOTvimrc-vfedora37 #-- 스크립트가 있는 디렉토리에 이 파일이 있어야 한다.
+	old_files=~/old-files
+	cat <<__EOF__ | tee ${new_DOT_vimrc}
+set nocompatible              " be iMproved, required
+filetype off                  " required
+
+" set the runtime path to include Vundle and initialize
+set rtp+=~/.vim/bundle/Vundle.vim
+set cursorline
+set number
+call vundle#begin()
+" alternatively, pass a path where Vundle should install plugins
+"call vundle#begin('~/some/path/here')
+
+" let Vundle manage Vundle, required
+Plugin 'VundleVim/Vundle.vim'
+Plugin 'vim-airline/vim-airline'
+" 파일 트리 (:NERDTree 로 실행)
+Plugin 'scrooloose/nerdtree'
+autocmd VimEnter  NERDTree
+" 코드 문법체크 (vim-airline 와 연동
+"" Plugin 'scrooloose/syntastic'
+" 칼라테마 (http://vimcolors.com/ 에서 종류 확인 가능)
+" Plugin 'nanotech/jellybeans.vim'
+" 자동완성 기능 (Ctrl+P 안눌러도 자동으로 나타나게)
+"" Plugin 'AutoComplPop'
+" 열리있는 소스파일의 클래스, 함수, 변수 정보 창 - Tag List
+"" Plugin 'taglist-plus'
+"" call vundle#end()            " required
+"" filetype plugin indent on    " required
+
+" The following are examples of different formats supported.
+" Keep Plugin commands between vundle#begin/end.
+" plugin on GitHub repo
+Plugin 'tpope/vim-fugitive'
+" plugin from http://vim-scripts.org/vim/scripts.html
+" Plugin 'L9'
+" Git plugin not hosted on GitHub
+"-- Plugin 'git://git.wincent.com/command-t.git'
+" git repos on your local machine (i.e. when working on your own plugin)
+"-- Plugin 'file:///home/gmarik/path/to/plugin'
+" The sparkup vim script is in a subdirectory of this repo called vim.
+" Pass the path to set the runtimepath properly.
+Plugin 'rstacruz/sparkup', {'rtp': 'vim/'}
+" Install L9 and avoid a Naming conflict if you've already installed a
+" different version somewhere else.
+" Plugin 'ascenator/L9', {'name': 'newL9'}
+
+" All of your Plugins must be added before the following line
+call vundle#end()            " required
+filetype plugin indent on    " required
+" nerd 입력하면 수행됨.
+nmap nerd :NERDTreeToggle<CR>
+" To ignore plugin indent changes, instead use:
+"filetype plugin on
+"
+" Brief help
+" :PluginList       - lists configured plugins
+" :PluginInstall    - installs plugins; append `!` to update or just :PluginUpdate
+" :PluginSearch foo - searches for foo; append `!` to refresh local cache
+" :PluginClean      - confirms removal of unused plugins; append `!` to auto-approve removal
+"
+" see :h vundle for more details or wiki for FAQ
+" Put your non-Plugin stuff after this line
+"
+" at 210422 목 1036 from https://github.com/VundleVim/Vundle.vim
+__EOF__
+fi
+
+old_files=$(pwd)/${CMD_DIR}/old-files
+if [ ! -d ${old_files} ]; then
+	mkdir ${old_files}
+fi
+
+if [ -f ~/.vimrc ]; then
+	cmdRun "mv ~/.vimrc ${old_files}/dOTvimrc-original-$(date +'%y%m%d%a_%H%M%S')-$(uname -r)" "원래의 .vimrc 파일을 이곳으로 복사합니다."
+fi
+cmdRun "cp ${new_DOT_vimrc} ~/.vimrc" "미리 작성했던 파일을 ~/.vimrc 로 복사합니다."
+
+
+
+
+
+
+
 echo "${cGreen}----> ${cYellow}vi +BundleInstall +qall ${cCyan}Bundle 설치${cReset}"
 vim +BundleInstall +qall
-cmdTTend "VundleVim 설치"
+cmdTTend "(5) VundleVim 설치"
 
 
-cmdTTbegin "credential.helper 설치"
+cmdTTbegin "(6) credential.helper 설치"
 cat <<__EOF__
 
 #-- github 비번관리
@@ -160,13 +255,13 @@ cat <<__EOF__
 
 __EOF__
 cmdYenter "git config credential.helper store" "이와 같이 저장합니다."
-cmdTTend "credential.helper 설치"
+cmdTTend "(6) credential.helper 설치"
 
 cmdYenter "sudo reboot" "시스템을 업데이트 한뒤에는, 반드시 'y' 를 눌러서 시스템을 다시 부팅 하세요."
 
 # ---- ----
 
-cmdTTbegin "호스트 이름 바꾸기"
+cmdTTbegin "(7) 호스트 이름 바꾸기"
 HOSTNAME=$(hostname)
 cat <<__EOF__
 ${cCyan}----> 호스트 이름을 바꾸려면 입력하세요: ${cRed}[${cYellow} ${HOSTNAME} ${cRed}]${cReset}
@@ -176,13 +271,13 @@ if [ "x$a" = "x" ]; then
 	echo "= ${cRed}${HOSTNAME}${cReset} ="
 else
 	echo "= ${cRed}${a}${cReset} ="
-	cat_and_run "sudo hostnamectl set-hostname $a" "호스트 이름을 $a 로 지정합니다."
+	cmdRun "sudo hostnamectl set-hostname $a" "호스트 이름을 $a 로 지정합니다."
 fi
-cmdTTend "호스트 이름 바꾸기"
+cmdTTend "(7) 호스트 이름 바꾸기"
 
 # ---- ----
 
-cmdTTbegin "한글 폰트파일 설치를 위해 임시로 쓸 폴더 확인"
+cmdTTbegin "(8) 한글 폰트파일 설치를 위해 임시로 쓸 폴더 확인"
 temp_folder=~/wind_bada/Downloads
 if [ ! -d ${temp_folder} ]; then
 	temp_folder=~/temp_folder
@@ -192,7 +287,7 @@ FONT_DIR=/usr/share/fonts #-- 폰트 폴더
 TEMPfontDIR="${temp_folder}/temp_fonts"
 WGET="wget --no-check-certificate --content-disposition"
 cmdRun "rm -rf ${TEMPfontDIR} ; mkdir ${TEMPfontDIR}" "임시로 쓰는 폴더를 새로 만듭니다."
-cmdTTend "한글 폰트파일 설치를 위해 임시로 쓸 폴더 확인"
+cmdTTend "(8) 한글 폰트파일 설치를 위해 임시로 쓸 폴더 확인"
 
 
 #-- cmdTTbegin "압축한 파일을 찾아서 폰트 설치"
@@ -213,44 +308,46 @@ cmdTTend "한글 폰트파일 설치를 위해 임시로 쓸 폴더 확인"
 #-- cmdTTend "압축한 파일을 찾아서 폰트 설치"
 
 
-cmdTTbegin "D2Coding 폰트 설치"
+cmdTTbegin "(9) D2Coding 폰트 설치"
 FONT_HOST="https://github.com/naver/d2codingfont/releases/download/VER1.3.2"
 FONT_NAME="D2Coding-Ver1.3.2-20180524.zip"
 LOCAL_DIR="${FONT_DIR}/D2Coding"
 
-cmdRun "cd ${TEMPfontDIR} ; ${WGET} ${FONT_HOST}/${FONT_NAME}" "폰트 내려받기"
+cmdYenter "cd ${TEMPfontDIR} ; ${WGET} ${FONT_HOST}/${FONT_NAME}" "폰트 내려받기"
 cmdRun "sudo rm -rf ${LOCAL_DIR}*" "기존 폴더 삭제"
 cmdRun "cd ${TEMPfontDIR} ; 7za x ${FONT_NAME}" "폰트 압축해제"
 cmdRun "cd ${TEMPfontDIR} ; sudo chown -R root:root D2Coding ; sudo mv D2Coding ${FONT_DIR}/ ; sudo chmod 755 -R ${LOCAL_DIR} ; sudo chmod 644 ${LOCAL_DIR}/*" "폰트 설치"
 cmdRun "cd ${LOCAL_DIR} ; sudo mv D2Coding-Ver1.3.2-20180524.ttc D2Coding.ttc ; sudo mv D2Coding-Ver1.3.2-20180524.ttf D2Coding.ttf ; sudo mv D2CodingBold-Ver1.3.2-20180524.ttf D2CodingBold.ttf" "폰트 파일이름을 수정합니다."
-cmdTTend "D2Coding 폰트 설치"
+cmdTTend "(9) D2Coding 폰트 설치"
 
 
-cmdTTbegin "seoul 폰트 설치"
+cmdTTbegin "(10) seoul 폰트 설치"
 cmdRun "sudo rm -rf ${TEMPfontDIR} ; mkdir ${TEMPfontDIR}" "임시폴더 다시만들고,"
 FONT_HOST="https://www.seoul.go.kr/upload/seoul/font"
 FONT_NAME="seoul_font.zip" #-- 파일을 한글코드로 된 폴더에 담아서 압축했기 때문에, 풀면 fedora35 에서 깨진 글자로 나온다.
 LOCAL_DIR="${FONT_DIR}/seoul"
 
-cmdRun "cd ${TEMPfontDIR} ; ${WGET} ${FONT_HOST}/${FONT_NAME}" "폰트 내려받기"
+cmdYenter "cd ${TEMPfontDIR} ; ${WGET} ${FONT_HOST}/${FONT_NAME}" "폰트 내려받기"
 cmdRun "sudo rm -rf ${LOCAL_DIR} ; sudo mkdir ${LOCAL_DIR}" "폴더 만들기"
 cmdRun "cd ${TEMPfontDIR} ; ls -l ; 7za x ${FONT_NAME}" "폰트 압축해제"
 cmdRun "cd ${TEMPfontDIR} ; sudo mv */Seoul*.ttf ${LOCAL_DIR}/ ; sudo chmod 644 ${LOCAL_DIR}/*" "폰트 설치"
-cmdTTend "seoul 폰트 설치"
+cmdTTend "(10) seoul 폰트 설치"
 
 
-cmdTTbegin "폰트 설치 확인"
+cmdTTbegin "(11) 폰트 설치 확인"
 cmdRun "ls -ltr --color ${FONT_DIR}" "시간역순 font 디렉토리"
 cmdRun "ls --color ${FONT_DIR}/D2Coding*" "d2coding 설치 확인"
 cmdRun "ls --color ${FONT_DIR}/seoul*" "seoul 설치 확인"
 cmdRun "sudo rm -rf ${TEMPfontDIR}" "임시폴더 삭제"
-cmdTTend "폰트 설치 확인"
+cmdTTend "(11) 폰트 설치 확인"
 
 # ---- ----
 
-cmdTTbegin "새로운 .bashrc 만들기"
+cmdTTbegin "(12) 새로운 .bashrc 만들기"
 new_dot_bashrc=$(pwd)/${CMD_DIR}/init_files/DOTbashrc-vfedora37 #-- 스크립트가 있는 디렉토리에 이 파일이 있어야 한다.
 if [ ! -f ${new_dot_bashrc} ]; then
+	new_dot_bashrc=~/DOTbashrc-vfedora37 #-- 스크립트가 있는 디렉토리에 이 파일이 있어야 한다.
+	old_files=~/old-files
 	cat <<__EOF__ | tee ${new_dot_bashrc}
 # .bashrc
 
@@ -305,32 +402,33 @@ alias cp='cp -i'
 alias mv='mv -i'
 __EOF__
 fi
-
-old_files=$(pwd)/${CMD_DIR}/old-files
 if [ ! -d ${old_files} ]; then
 	mkdir ${old_files}
 fi
-cat_and_run "mv ~/.bashrc ${old_files}/dOTbashrc-original-$(date +'%y%m%d_%H%M%S')-$(uname -r)" "원래의 .bashrc 파일을 이곳으로 복사합니다."
-cat_and_run "cp ${new_dot_bashrc} ~/.bashrc" "미리 작성했던 파일을 ~/.bashrc 로 복사합니다."
+
+if [ -f ~/.bashrc ]; then
+	cmdRun "mv ~/.bashrc ${old_files}/dOTbashrc-original-$(date +'%y%m%d%a_%H%M%S')-$(uname -r)" "원래의 .bashrc 파일을 이곳으로 복사합니다."
+fi
+cmdRun "cp ${new_dot_bashrc} ~/.bashrc" "미리 작성했던 파일을 ~/.bashrc 로 복사합니다."
 cat <<__EOF__
 ${cCyan}
 터미널을 새로 열고, ${cYellow}source ~/.bashrc ${cCyan}#--- 이 명령으로 프롬프트를 새로 지정하세요.
 ${cGreen}----> press Enter:${cReset}
 __EOF__
 read a
-cmdTTend "새로운 .bashrc 만들기"
+cmdTTend "(12) 새로운 .bashrc 만들기"
 
 # ---- ----
 
-cmdTTbegin "구글 크롬 브라우저 설치"
+cmdTTbegin "(13) 구글 크롬 브라우저 설치"
 cmdRun "sudo dnf install -y fedora-workstation-repositories" "3rd Party 저장소 설치"
 cmdRun "sudo dnf config-manager --set-enabled google-chrome" "Google 크롬 리포지토리를 활성화합니다."
-cmdRun "sudo dnf install-y  google-chrome-stable" "마지막으로 Chrome을 설치합니다."
-cmdTTend "구글 크롬 브라우저 설치"
+cmdRun "sudo dnf install -y google-chrome-stable" "마지막으로 Chrome을 설치합니다."
+cmdTTend "(13) 구글 크롬 브라우저 설치"
 
 # ---- ----
 
-cmdTTbegin "rclone 사이즈 확인"
+cmdTTbegin "(14) rclone 사이즈 확인"
 cmdRun "rclone about yosjgc:"
 cmdRun "rclone about kaosngc:"
 cmdRun "rclone about swlibgc:"
@@ -339,7 +437,7 @@ cmdRun "rclone about kaosbmi:"
 cmdRun "rclone about kaosb2mi:"
 cmdRun "rclone about kaosb3mi:"
 cmdRun "rclone about kaosb4mi:"
-cmdTTend "rclone 사이즈 확인"
+cmdTTend "(14) rclone 사이즈 확인"
 
 
 # ----
