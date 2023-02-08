@@ -306,42 +306,40 @@ if [ -f ${font_zip_file} ]; then
 	cmdRun "ls ${FONT_DIR}" "폰트 등록전의 폴더 내용"
 	cmdRun "cd ${FONT_DIR} ; sudo 7za -y x ${font_zip_file}" "폰트 설치"
 	cmdRun "ls ${FONT_DIR}" "폰트 등록후의 폴더 내용"
-	cmdTTend "압축한 파일을 찾아서 폰트 설치"
-	# ----
-	rm -f ${log_name} ; log_name="${logs_folder}/zz.$(date +"%y%m%d-%H%M%S")..${CMD_NAME}" ; touch ${log_name}
-	cmdRun "ls --color ${CMD_DIR}" ; ls --color ${logs_folder}
-	echo "${cRed}<<<<<<<<<<${cBlue} $0 ${cRed}||| ${cMagenta}${MEMO} ${cRed}<<<<<<<<<<${cReset}"
-	exit 0
+#--	cmdTTend "압축한 파일을 찾아서 폰트 설치"
+#--	# ----
+#--	rm -f ${log_name} ; log_name="${logs_folder}/zz.$(date +"%y%m%d-%H%M%S")..${CMD_NAME}" ; touch ${log_name}
+#--	cmdRun "ls --color ${CMD_DIR}" ; ls --color ${logs_folder}
+#--	echo "${cRed}<<<<<<<<<<${cBlue} $0 ${cRed}||| ${cMagenta}${MEMO} ${cRed}<<<<<<<<<<${cReset}"
+#--	exit 0
 else
 	echo "!!!! ${cRed}----> ${cBlue}압축한 파일이 없습니다.${cReset}"
+	cmdTTend "(9) 압축한 파일을 찾아서 폰트 설치"
+	cmdTTbegin "(10-1) D2Coding 폰트 설치"
+	FONT_HOST="https://github.com/naver/d2codingfont/releases/download/VER1.3.2"
+	FONT_NAME="D2Coding-Ver1.3.2-20180524.zip"
+	LOCAL_DIR="${FONT_DIR}/D2Coding"
+	
+	cmdYenter "cd ${bin_temp_fonts_dir} ; ${WGET} ${FONT_HOST}/${FONT_NAME}" "폰트 내려받기"
+	cmdRun "sudo rm -rf ${LOCAL_DIR}*" "기존 폴더 삭제"
+	cmdRun "cd ${bin_temp_fonts_dir} ; 7za x ${FONT_NAME}" "폰트 압축해제"
+	cmdRun "cd ${bin_temp_fonts_dir} ; sudo chown -R root:root D2Coding ; sudo mv D2Coding ${FONT_DIR}/ ; sudo chmod 755 -R ${LOCAL_DIR} ; sudo chmod 644 ${LOCAL_DIR}/*" "폰트 설치"
+	cmdRun "cd ${LOCAL_DIR} ; sudo mv D2Coding-Ver1.3.2-20180524.ttc D2Coding.ttc ; sudo mv D2Coding-Ver1.3.2-20180524.ttf D2Coding.ttf ; sudo mv D2CodingBold-Ver1.3.2-20180524.ttf D2CodingBold.ttf" "폰트 파일이름을 수정합니다."
+	cmdTTend "(10-1) D2Coding 폰트 설치"
+	
+	
+	cmdTTbegin "(10-2) seoul 폰트 설치"
+	cmdRun "sudo rm -rf ${bin_temp_fonts_dir} ; mkdir ${bin_temp_fonts_dir}" "임시폴더 다시만들고,"
+	FONT_HOST="https://www.seoul.go.kr/upload/seoul/font"
+	FONT_NAME="seoul_font.zip" #-- 파일을 한글코드로 된 폴더에 담아서 압축했기 때문에, 풀면 fedora35 에서 깨진 글자로 나온다.
+	LOCAL_DIR="${FONT_DIR}/seoul"
+	
+	cmdYenter "cd ${bin_temp_fonts_dir} ; ${WGET} ${FONT_HOST}/${FONT_NAME}" "폰트 내려받기"
+	cmdRun "sudo rm -rf ${LOCAL_DIR} ; sudo mkdir ${LOCAL_DIR}" "폴더 만들기"
+	cmdRun "cd ${bin_temp_fonts_dir} ; ls -l ; 7za x ${FONT_NAME}" "폰트 압축해제"
+	cmdRun "cd ${bin_temp_fonts_dir} ; sudo mv */Seoul*.ttf ${LOCAL_DIR}/ ; sudo chmod 644 ${LOCAL_DIR}/*" "폰트 설치"
+	cmdTTend "(10-2) seoul 폰트 설치"
 fi
-cmdTTend "(9) 압축한 파일을 찾아서 폰트 설치"
-
-
-# cmdTTbegin "(9) D2Coding 폰트 설치"
-# FONT_HOST="https://github.com/naver/d2codingfont/releases/download/VER1.3.2"
-# FONT_NAME="D2Coding-Ver1.3.2-20180524.zip"
-# LOCAL_DIR="${FONT_DIR}/D2Coding"
-# 
-# cmdYenter "cd ${bin_temp_fonts_dir} ; ${WGET} ${FONT_HOST}/${FONT_NAME}" "폰트 내려받기"
-# cmdRun "sudo rm -rf ${LOCAL_DIR}*" "기존 폴더 삭제"
-# cmdRun "cd ${bin_temp_fonts_dir} ; 7za x ${FONT_NAME}" "폰트 압축해제"
-# cmdRun "cd ${bin_temp_fonts_dir} ; sudo chown -R root:root D2Coding ; sudo mv D2Coding ${FONT_DIR}/ ; sudo chmod 755 -R ${LOCAL_DIR} ; sudo chmod 644 ${LOCAL_DIR}/*" "폰트 설치"
-# cmdRun "cd ${LOCAL_DIR} ; sudo mv D2Coding-Ver1.3.2-20180524.ttc D2Coding.ttc ; sudo mv D2Coding-Ver1.3.2-20180524.ttf D2Coding.ttf ; sudo mv D2CodingBold-Ver1.3.2-20180524.ttf D2CodingBold.ttf" "폰트 파일이름을 수정합니다."
-# cmdTTend "(9) D2Coding 폰트 설치"
-# 
-# 
-# cmdTTbegin "(10) seoul 폰트 설치"
-# cmdRun "sudo rm -rf ${bin_temp_fonts_dir} ; mkdir ${bin_temp_fonts_dir}" "임시폴더 다시만들고,"
-# FONT_HOST="https://www.seoul.go.kr/upload/seoul/font"
-# FONT_NAME="seoul_font.zip" #-- 파일을 한글코드로 된 폴더에 담아서 압축했기 때문에, 풀면 fedora35 에서 깨진 글자로 나온다.
-# LOCAL_DIR="${FONT_DIR}/seoul"
-# 
-# cmdYenter "cd ${bin_temp_fonts_dir} ; ${WGET} ${FONT_HOST}/${FONT_NAME}" "폰트 내려받기"
-# cmdRun "sudo rm -rf ${LOCAL_DIR} ; sudo mkdir ${LOCAL_DIR}" "폴더 만들기"
-# cmdRun "cd ${bin_temp_fonts_dir} ; ls -l ; 7za x ${FONT_NAME}" "폰트 압축해제"
-# cmdRun "cd ${bin_temp_fonts_dir} ; sudo mv */Seoul*.ttf ${LOCAL_DIR}/ ; sudo chmod 644 ${LOCAL_DIR}/*" "폰트 설치"
-# cmdTTend "(10) seoul 폰트 설치"
 
 
 cmdTTbegin "(11) 폰트 설치 확인"
