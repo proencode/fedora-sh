@@ -61,7 +61,6 @@ __EOF__
 MEMO="Fedora 업데이트"
 echo "${cMagenta}>>>>>>>>>>${cGreen} $0 ${cMagenta}||| ${cCyan}${MEMO} ${cMagenta}>>>>>>>>>>${cReset}"
 
-
 cmdTTbegin "(1) 시스템 업데이트"
 cmdYenter "sudo vi /etc/sudoers ; reset" "sudo 명령시 비번을 일일이 입력하지 않으려면, 'y' 를 눌러서 수정합니다."
 cmdYenter "time sudo dnf update -y" "시간 여유가 되면, 'y' 를 눌러서 시스템을 업데이트 하는것이 좋습니다."
@@ -136,25 +135,34 @@ ${cCyan}---->${cReset} 자동으로 시작하기로 한 프로그램 . . . 실�
 ${cCyan}---->${cBlue} ---->${cReset} Do you wish to continue? [yes or no] ${cBlue}>> 나오면 'yes' 를 입력합니다.${cReset}
 
 __EOF__
+windows_bada_dir="${HOME}/wind_bada"
 cmdYenter "sudo /sbin/rcvboxadd quicksetup all ; sudo /sbin/rcvboxadd setup" "이작업 시작전에  (장치 > 게스트 확장 CD 이미지 삽입 > 오류시 재작업) 을 먼저 끝내야 합니다."
-cmdRun "ln -s /media/sf_Downloads/bada/ ~/wind_bada" "윈도우의 다운로드 폴더를 ~/wind_data 로 연결합니다."
-cmdRun "ls -l ~/" "Windows 링크가 만들어져 있는지 확인해야 합니다."
-cmdRun "ls -l ~/wind_bada/" "Windows 폴더가 보이는지 확인해야 합니다."
-cmdTTbegin "(4) 게스트 확장 CD 이미지 삽입"
+cmdRun "df -h" "윈도우 폴더가 마운트 되었는지 확인합니다."
+cmdRun "ln -s /media/sf_Downloads/bada/ ${windows_bada_dir}" "윈도우의 다운로드 폴더를 ${windows_bada_dir} 로 연결합니다."
+cmdRun "ls -l ${HOME}" "Windows 링크가 만들어져 있는지 확인해야 합니다."
+cmdRun "ls -l ${windows_bada_dir}/" "Windows 폴더 내용이 보이는지 확인해야 합니다."
+cmdTTend "(4) 게스트 확장 CD 이미지 삽입"
 
 # ---- ----
 
 cmdTTbegin "(5) VundleVim 설치"
 echo "${cCyan}----> https://itlearningcenter.tistory.com/entry/%E3%80%901804-LTS%E3%80%91VIM-Plug-in-%EC%84%A4%EC%B9%98%ED%95%98%EA%B8%B0${cReset}"
-cmdRun "git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim" "VundleVim 설치"
-#xxx-- cmdRun "cp init_files/DOTvimrc-fedora ~/.vimrc" ".vimrc 설치"
-old_files_dir="${HOME}/bin/old_files"
-if [ ! -d ${old_files_dir} ]; then
-	mkdir -p ${old_files_dir}
+cmdCont "git clone https://github.com/VundleVim/Vundle.vim.git ${HOME}/.vim/bundle/Vundle.vim" "VundleVim 설치"
+#xxx-- cmdRun "cp init_files/DOTvimrc-fedora ${HOME}/.vimrc" ".vimrc 설치"
+
+bin_init_files_dir="${HOME}/bin/init_files"
+if [ ! -d ${bin_init_files_dir} ]; then
+	mkdir -p ${bin_init_files_dir}
 fi
+
+bin_old_files_dir="${HOME}/bin/old_files"
+if [ ! -d ${bin_old_files_dir} ]; then
+	mkdir -p ${bin_old_files_dir}
+fi
+
 new_DOT_vimrc=$(pwd)/${CMD_DIR}/init_files/DOTvimrc #-- 스크립트가 있는 디렉토리에 이 파일이 있어야 한다.
 if [ ! -f ${new_DOT_vimrc} ]; then
-	new_DOT_vimrc=${old_files_dir}/DOTvimrc #-- 스크립트가 있는 디렉토리에 이 파일이 있어야 한다.
+	new_DOT_vimrc=${bin_init_files_dir}/DOTvimrc #-- 스크립트가 있는 디렉토리에 이 파일이 있어야 한다.
 	cat <<__EOF__ | tee ${new_DOT_vimrc}
 set nocompatible              " be iMproved, required
 filetype off                  " required
@@ -219,14 +227,14 @@ nmap nerd :NERDTreeToggle<CR>
 " Put your non-Plugin stuff after this line
 "
 " 210422 목 1036 from https://github.com/VundleVim/Vundle.vim
-" at dOTvimrc-original-$(date +'%y%m%d%a_%H%M%S')-$(uname -r)
+" at dOTvimrc-old-$(date +'%y%m%d%a_%H%M%S')-$(uname -r)
 __EOF__
 fi
 
-if [ -f ~/.vimrc ]; then
-	cmdRun "mv ~/.vimrc ${old_files_dir}/dOTvimrc-original-$(date +'%y%m%d%a_%H%M%S')-$(uname -r)" "원래의 .vimrc 파일을 이곳으로 복사합니다."
+if [ -f ${HOME}/.vimrc ]; then
+	cmdRun "mv ${HOME}/.vimrc ${bin_old_files_dir}/dOTvimrc-old-$(date +'%y%m%d%a_%H%M%S')-$(uname -r)" "원래의 .vimrc 파일을 이곳으로 복사합니다."
 fi
-cmdRun "cp ${new_DOT_vimrc} ~/.vimrc" "미리 작성했던 파일을 ~/.vimrc 로 복사합니다."
+cmdRun "cp ${new_DOT_vimrc} ${HOME}/.vimrc" "미리 작성했던 파일을 ${HOME}/.vimrc 로 복사합니다."
 
 
 echo "${cGreen}----> ${cYellow}vi +BundleInstall +qall ${cCyan}Bundle 설치${cReset}"
@@ -278,68 +286,69 @@ cmdTTend "(7) 호스트 이름 바꾸기"
 # ---- ----
 
 cmdTTbegin "(8) 한글 폰트파일 설치를 위해 임시로 쓸 폴더 확인"
-wind_down_dir=~/wind_bada/Downloads
-TEMPfontDIR="${wind_down_dir}/temp_fonts"
-if [ ! -d ${wind_down_dir} ]; then
-	TEMPfontDIR="${HOME}/bin/temp_fonts"
+wind_bada_Downloads_dir=${windows_bada_dir}/Downloads
+bin_temp_fonts_dir=${wind_bada_Downloads_dir}/temp_fonts
+if [ ! -d ${wind_bada_Downloads_dir} ]; then
+	bin_temp_fonts_dir=${HOME}/bin/temp_fonts
 fi
-mkdir -p ${TEMPfontDIR}
+mkdir -p ${bin_temp_fonts_dir}
 
 WGET="wget --no-check-certificate --content-disposition"
-cmdRun "rm -rf ${TEMPfontDIR} ; mkdir -p ${TEMPfontDIR}" "임시로 쓰는 폴더를 새로 만듭니다."
+cmdRun "rm -rf ${bin_temp_fonts_dir} ; mkdir -p ${bin_temp_fonts_dir}" "임시로 쓰는 폴더를 새로 만듭니다."
 cmdTTend "(8) 한글 폰트파일 설치를 위해 임시로 쓸 폴더 확인"
 
 
-# cmdTTbegin "(9) 압축한 파일을 찾아서 폰트 설치"
+cmdTTbegin "(9) 압축한 파일을 찾아서 폰트 설치"
+font_zip_file=$(pwd)/${CMD_DIR}/init_files/Font-D2-KoPub-jeju-nanum-seoul.7z
 font_zip_file=$(pwd)/${CMD_DIR}/init_files/Font-D2-KoPub-jeju-nanum-seoul.7z
 FONT_DIR=/usr/share/fonts #-- 폰트 폴더
-# if [ -f ${font_zip_file} ]; then
-# 	cmdRun "ls ${FONT_DIR}" "폰트 등록전의 폴더 내용"
-# 	cmdRun "cd ${FONT_DIR} ; sudo 7za -y x ${font_zip_file}" "폰트 설치"
-# 	cmdRun "ls ${FONT_DIR}" "폰트 등록후의 폴더 내용"
-# 	cmdTTend "압축한 파일을 찾아서 폰트 설치"
-# 	# ----
-# 	rm -f ${log_name} ; log_name="${logs_folder}/zz.$(date +"%y%m%d-%H%M%S")..${CMD_NAME}" ; touch ${log_name}
-# 	cmdRun "ls --color ${CMD_DIR}" ; ls --color ${logs_folder}
-# 	echo "${cRed}<<<<<<<<<<${cBlue} $0 ${cRed}||| ${cMagenta}${MEMO} ${cRed}<<<<<<<<<<${cReset}"
-# 	exit 0
-# else
-# 	echo "!!!! ${cRed}----> ${cBlue}압축한 파일이 없습니다.${cReset}"
-# fi
-# cmdTTend "(9) 압축한 파일을 찾아서 폰트 설치"
+if [ -f ${font_zip_file} ]; then
+	cmdRun "ls ${FONT_DIR}" "폰트 등록전의 폴더 내용"
+	cmdRun "cd ${FONT_DIR} ; sudo 7za -y x ${font_zip_file}" "폰트 설치"
+	cmdRun "ls ${FONT_DIR}" "폰트 등록후의 폴더 내용"
+	cmdTTend "압축한 파일을 찾아서 폰트 설치"
+	# ----
+	rm -f ${log_name} ; log_name="${logs_folder}/zz.$(date +"%y%m%d-%H%M%S")..${CMD_NAME}" ; touch ${log_name}
+	cmdRun "ls --color ${CMD_DIR}" ; ls --color ${logs_folder}
+	echo "${cRed}<<<<<<<<<<${cBlue} $0 ${cRed}||| ${cMagenta}${MEMO} ${cRed}<<<<<<<<<<${cReset}"
+	exit 0
+else
+	echo "!!!! ${cRed}----> ${cBlue}압축한 파일이 없습니다.${cReset}"
+fi
+cmdTTend "(9) 압축한 파일을 찾아서 폰트 설치"
 
 
-cmdTTbegin "(9) D2Coding 폰트 설치"
-FONT_HOST="https://github.com/naver/d2codingfont/releases/download/VER1.3.2"
-FONT_NAME="D2Coding-Ver1.3.2-20180524.zip"
-LOCAL_DIR="${FONT_DIR}/D2Coding"
-
-cmdYenter "cd ${TEMPfontDIR} ; ${WGET} ${FONT_HOST}/${FONT_NAME}" "폰트 내려받기"
-cmdRun "sudo rm -rf ${LOCAL_DIR}*" "기존 폴더 삭제"
-cmdRun "cd ${TEMPfontDIR} ; 7za x ${FONT_NAME}" "폰트 압축해제"
-cmdRun "cd ${TEMPfontDIR} ; sudo chown -R root:root D2Coding ; sudo mv D2Coding ${FONT_DIR}/ ; sudo chmod 755 -R ${LOCAL_DIR} ; sudo chmod 644 ${LOCAL_DIR}/*" "폰트 설치"
-cmdRun "cd ${LOCAL_DIR} ; sudo mv D2Coding-Ver1.3.2-20180524.ttc D2Coding.ttc ; sudo mv D2Coding-Ver1.3.2-20180524.ttf D2Coding.ttf ; sudo mv D2CodingBold-Ver1.3.2-20180524.ttf D2CodingBold.ttf" "폰트 파일이름을 수정합니다."
-cmdTTend "(9) D2Coding 폰트 설치"
-
-
-cmdTTbegin "(10) seoul 폰트 설치"
-cmdRun "sudo rm -rf ${TEMPfontDIR} ; mkdir ${TEMPfontDIR}" "임시폴더 다시만들고,"
-FONT_HOST="https://www.seoul.go.kr/upload/seoul/font"
-FONT_NAME="seoul_font.zip" #-- 파일을 한글코드로 된 폴더에 담아서 압축했기 때문에, 풀면 fedora35 에서 깨진 글자로 나온다.
-LOCAL_DIR="${FONT_DIR}/seoul"
-
-cmdYenter "cd ${TEMPfontDIR} ; ${WGET} ${FONT_HOST}/${FONT_NAME}" "폰트 내려받기"
-cmdRun "sudo rm -rf ${LOCAL_DIR} ; sudo mkdir ${LOCAL_DIR}" "폴더 만들기"
-cmdRun "cd ${TEMPfontDIR} ; ls -l ; 7za x ${FONT_NAME}" "폰트 압축해제"
-cmdRun "cd ${TEMPfontDIR} ; sudo mv */Seoul*.ttf ${LOCAL_DIR}/ ; sudo chmod 644 ${LOCAL_DIR}/*" "폰트 설치"
-cmdTTend "(10) seoul 폰트 설치"
+# cmdTTbegin "(9) D2Coding 폰트 설치"
+# FONT_HOST="https://github.com/naver/d2codingfont/releases/download/VER1.3.2"
+# FONT_NAME="D2Coding-Ver1.3.2-20180524.zip"
+# LOCAL_DIR="${FONT_DIR}/D2Coding"
+# 
+# cmdYenter "cd ${bin_temp_fonts_dir} ; ${WGET} ${FONT_HOST}/${FONT_NAME}" "폰트 내려받기"
+# cmdRun "sudo rm -rf ${LOCAL_DIR}*" "기존 폴더 삭제"
+# cmdRun "cd ${bin_temp_fonts_dir} ; 7za x ${FONT_NAME}" "폰트 압축해제"
+# cmdRun "cd ${bin_temp_fonts_dir} ; sudo chown -R root:root D2Coding ; sudo mv D2Coding ${FONT_DIR}/ ; sudo chmod 755 -R ${LOCAL_DIR} ; sudo chmod 644 ${LOCAL_DIR}/*" "폰트 설치"
+# cmdRun "cd ${LOCAL_DIR} ; sudo mv D2Coding-Ver1.3.2-20180524.ttc D2Coding.ttc ; sudo mv D2Coding-Ver1.3.2-20180524.ttf D2Coding.ttf ; sudo mv D2CodingBold-Ver1.3.2-20180524.ttf D2CodingBold.ttf" "폰트 파일이름을 수정합니다."
+# cmdTTend "(9) D2Coding 폰트 설치"
+# 
+# 
+# cmdTTbegin "(10) seoul 폰트 설치"
+# cmdRun "sudo rm -rf ${bin_temp_fonts_dir} ; mkdir ${bin_temp_fonts_dir}" "임시폴더 다시만들고,"
+# FONT_HOST="https://www.seoul.go.kr/upload/seoul/font"
+# FONT_NAME="seoul_font.zip" #-- 파일을 한글코드로 된 폴더에 담아서 압축했기 때문에, 풀면 fedora35 에서 깨진 글자로 나온다.
+# LOCAL_DIR="${FONT_DIR}/seoul"
+# 
+# cmdYenter "cd ${bin_temp_fonts_dir} ; ${WGET} ${FONT_HOST}/${FONT_NAME}" "폰트 내려받기"
+# cmdRun "sudo rm -rf ${LOCAL_DIR} ; sudo mkdir ${LOCAL_DIR}" "폴더 만들기"
+# cmdRun "cd ${bin_temp_fonts_dir} ; ls -l ; 7za x ${FONT_NAME}" "폰트 압축해제"
+# cmdRun "cd ${bin_temp_fonts_dir} ; sudo mv */Seoul*.ttf ${LOCAL_DIR}/ ; sudo chmod 644 ${LOCAL_DIR}/*" "폰트 설치"
+# cmdTTend "(10) seoul 폰트 설치"
 
 
 cmdTTbegin "(11) 폰트 설치 확인"
 cmdRun "ls -ltr --color ${FONT_DIR}" "시간역순 font 디렉토리"
 cmdRun "ls --color ${FONT_DIR}/D2Coding*" "d2coding 설치 확인"
 cmdRun "ls --color ${FONT_DIR}/seoul*" "seoul 설치 확인"
-cmdRun "sudo rm -rf ${TEMPfontDIR}" "임시폴더 삭제"
+cmdRun "sudo rm -rf ${bin_temp_fonts_dir}" "임시폴더 삭제"
 cmdTTend "(11) 폰트 설치 확인"
 
 # ---- ----
@@ -347,7 +356,7 @@ cmdTTend "(11) 폰트 설치 확인"
 cmdTTbegin "(12) 새로운 .bashrc 만들기"
 new_dot_bashrc=$(pwd)/${CMD_DIR}/init_files/DOTbashrc-vfedora37 #-- 스크립트가 있는 디렉토리에 이 파일이 있어야 한다.
 if [ ! -f ${new_dot_bashrc} ]; then
-	new_dot_bashrc=~/DOTbashrc-vfedora37 #-- 스크립트가 있는 디렉토리에 이 파일이 있어야 한다.
+	new_dot_bashrc=${bin_init_files_dir}/DOTbashrc-vfedora37 #-- 스크립트가 있는 디렉토리에 이 파일이 있어야 한다.
 	cat <<__EOF__ | tee ${new_dot_bashrc}
 # .bashrc
 
@@ -403,13 +412,13 @@ alias mv='mv -i'
 __EOF__
 fi
 
-if [ -f ~/.bashrc ]; then
-	cmdRun "mv ~/.bashrc ${old_files_dir}/dOTbashrc-original-$(date +'%y%m%d%a_%H%M%S')-$(uname -r)" "원래의 .bashrc 파일을 이곳으로 복사합니다."
+if [ -f ${HOME}/.bashrc ]; then
+	cmdRun "mv ${HOME}/.bashrc ${bin_old_files_dir}/dOTbashrc-old-$(date +'%y%m%d%a_%H%M%S')-$(uname -r)" "원래의 .bashrc 파일을 이곳으로 복사합니다."
 fi
-cmdRun "cp ${new_dot_bashrc} ~/.bashrc" "미리 작성했던 파일을 ~/.bashrc 로 복사합니다."
+cmdRun "cp ${new_dot_bashrc} ${HOME}/.bashrc" "미리 작성했던 파일을 ${HOME}/.bashrc 로 복사합니다."
 cat <<__EOF__
 ${cCyan}
-터미널을 새로 열고, ${cYellow}source ~/.bashrc ${cCyan}#--- 이 명령으로 프롬프트를 새로 지정하세요.
+터미널을 새로 열고, ${cYellow}source ${HOME}/.bashrc ${cCyan}#--- 이 명령으로 프롬프트를 새로 지정하세요.
 ${cGreen}----> press Enter:${cReset}
 __EOF__
 read a
