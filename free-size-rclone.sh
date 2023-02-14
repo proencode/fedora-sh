@@ -18,6 +18,8 @@ cmdRun "rclone size kaosb2mi:"
 cmdRun "rclone size kaosb3mi:"
 cmdRun "rclone size kaosb4mi:"
 cmdRun "rclone size kaosbmi:"
+cmdRun "rclone size tpnotemi:"
+cmdRun "rclone size tpnote2mi:"
 
 
 # ----
