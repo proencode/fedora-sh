@@ -441,6 +441,8 @@ cmdRun "rclone about kaosbmi:"
 cmdRun "rclone about kaosb2mi:"
 cmdRun "rclone about kaosb3mi:"
 cmdRun "rclone about kaosb4mi:"
+cmdRun "rclone about tpnotemi:"
+cmdRun "rclone about tpnote2mi:"
 cmdTTend "(14) rclone 사이즈 확인"
 
 

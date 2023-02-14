@@ -17,6 +17,8 @@ cloud_names=("yosjgc"
 	"kaosb2mi"
 	"kaosb3mi"
 	"kaosb4mi"
+	"tpnotemi"
+	"tpnote2mi"
 )
 if [ "x$1" = "x" ]; then
 	cat <<__EOF__
