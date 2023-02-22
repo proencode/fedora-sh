@@ -1,26 +1,18 @@
-Featured
-Topics
-Newsletters
-Events
-Podcasts
-My account
-MIT Technology Review
-Featured
-Topics
-Newsletters
-Events
-Podcasts
-My account
+> ![ 2023-1.2 cover ](/mit_tech_review/2023/0216/jf23_cover-16x9-1.webp)
 TECH POLICY
-How K-pop stans are shaping elections around the globe
+
+# How K-pop stans are shaping elections around the globe
+
 BTS Army and other K-pop fandoms are using the strategies they perfected by promoting their favorite bands to get political.
 
-By Soo Younarchive page
-February 16, 2023
-&quot;&quot;
-Fans of the K-pop band BTS, wearing masks with band members’ faces and flashing the finger heart gesture, protest at the COP27 climate change conference in Egypt in 2022.
-GEHAD HAMDY/PICTURE-ALLIANCE/DPA/AP IMAGES
-Less than a month before Chile’s presidential election on December 19, 2021, Constanza Jorquera, an associate researcher at the Chilean Korean Study Center at the University of Santiago, Chile, feared that her country’s future—and her own rights—hung in the balance.
+#### By Soo Youn February 16, 2023
+
+> ![ Fans of the K-pop band BTS ](/mit_tech_review/2023/0216/ap22314487357999-crop.webp)
+> Fans of the K-pop band BTS, wearing masks with band members’ faces and flashing the finger heart gesture, protest at the COP27 climate change conference in Egypt in 2022.
+> GEHAD HAMDY/PICTURE-ALLIANCE/DPA/AP IMAGES
+
+### Less than a month before Chile’s presidential election on December 19, 2021, Constanza Jorquera,
+an associate researcher at the Chilean Korean Study Center at the University of Santiago, Chile, feared that her country’s future—and her own rights—hung in the balance.
 
 The right-wing candidate, a 55-year-old former congressman named Jose Antonio Kast, had won the first of two rounds of voting on a platform advocating corporate tax cuts, a border wall to deter immigrants, restrictions on abortion, and an end to gay marriage and the Women’s Ministry. Kast drew comparisons to Donald Trump and Jair Bolsonaro, then the far-right populist president of Brazil.
 
@@ -41,13 +33,14 @@ With three weeks until the election, the newly organized “Kpopers for Boric”
 
 K-pop fans in the US had made headlines in 2020 when they reserved tickets for one of Donald Trump’s rallies and then neglected to show up—leaving the president to face a nearly empty auditorium. During America’s civil unrest after Minnesota police killed George Floyd on camera, BTS donated $1 million to Black Lives Matter; its fandom, known as BTS Army, matched the donation in 24 hours. 
 
-“K-pop fans are global citizens. We have the power to make idols and groups popular. We should use that same power for our political issues and causes.”
+## “K-pop fans are global citizens. We have the power to make idols and groups popular. We should use that same power for our political issues and causes.”
 
 Fans have also foiled white supremacist attempts to spread hate speech on Twitter, hijacking the White Lives Matter hashtag with K-pop GIFs and memes. When the Dallas Police Department asked the public to submit videos of protesters through an app, fans bombarded it with clips of their idols; it was shortly taken offline for “technical difficulties.”  
 
 And that’s just in the US. Around the world, K-poppers have organized acts of civil resistance, often campaigning against the creep of increasingly authoritarian regimes. Fandoms have learned how to quickly and effectively use their digital skills to advocate for social change and pursue political goals. 
 
-How K-pop fans organize
+### How K-pop fans organize
+
 BTS started as a hip-hop-based crew of underdogs and became a global pop sensation, evoking comparisons to the Beatles. The BTS Army—an acronym for “Adorable Representative M.C. for Youth”—is a phenomenon in and of itself, seemingly unprecedented in reach and influence. 
 
 It’s hard to measure exactly how big the fandom is, but some estimates say between 50 and 100 million. Army is, in other words, about the size of Germany—easily the largest fan group in K-pop. It was powerful enough to turn seven young men who mostly sing and rap in Korean into the best-selling band in the world in less than a decade.
@@ -59,10 +52,11 @@ When BTS debuted in 2013, their independent label, Big Hit Entertainment, couldn
 
 The group’s songs and public statements urged tolerance, equality, and diversity. That message resonated with K-pop fans, who are often women, LGBTQ, people of color, or from other marginalized groups.
 
-Related Story
-Protesters pass near a police car in Beijing
-How Telegram groups can be used by police to find protesters
-Lessons learned from China’s White Paper Protests.
+> Related Story
+> https://wp.technologyreview.com/wp-content/uploads/2023/02/AP22331657529469-crop.jpeg?fit=424,238
+> ![ Protesters pass near a police car in Beijing ](/mit_tech_review/2023/0216/ap22331657529469-crop.webp)
+> How Telegram groups can be used by police to find protesters https://www.technologyreview.com/2023/02/08/1067976/telegram-groups-police-china-protesters/
+> Lessons learned from China’s White Paper Protests.
 
 Fans were also drawn to the camaraderie and relationships between the BTS members. Unlike K-pop groups formed through the major music labels, which projected an image of perfection, BTS was candid, its members showing their daily lives and struggles through livestreams that could go on for hours. No one else built such close relationships with fans. And their presence online meant the group cultivated those fans all over the world. 
 
@@ -89,7 +83,8 @@ The campaign helped contribute to a record-setting level in the number of young 
 
 For Jorquera, the message is clear: “People should know they have the power to change an election. Everything is free. You don’t need resources. What you need is solidarity.”
 
-It’s not all hits
+### It’s not all hits
+
 K-pop-led political campaigns don’t always win the day, though. 
 
 Last July, in a lecture hall at Hankuk University in Seoul, three Filipino academics spoke about BTS Army’s efforts to support Leni Robredo in the recent presidential race in the Philippines. She lost to Ferdinand “Bongbong” Marcos Jr. (whose campaign also used BTS images and memes online)—a devastating result for the presenters. 
@@ -103,9 +98,11 @@ I thought about Atis and her colleagues when I was in Busan, South Korea, in Oct
 
 Outside a pop-up exhibition, I spoke to three fans from the Philippines and asked about the recent election there. They were Marcos supporters and said they did not approve of campaigns mixing politics with K-pop. 
 
-sign reading "Today we Vote" on the side of a building
-In Brazil, the group Army Help the Planet launched the “Tira o Título ARMY” or “Go Get Your Voter ID, ARMY” campaign to encourage young people there to register to vote.
-@ARMY_HTP VIA TWITTER
+> https://wp.technologyreview.com/wp-content/uploads/2023/02/ARMY_HTP.jpeg?w=900
+> ![ sign reading "Today we Vote" on the side of a building In Brazil ](/mit_tech_review/2023/0216/army_htp.webp)
+> sign reading "Today we Vote" on the side of a building In Brazil, the group Army Help the Planet launched the “Tira o Título ARMY” or “Go Get Your Voter ID, ARMY” campaign to encourage young people there to register to vote.
+> @ARMY_HTP VIA TWITTER
+
 A week after the concert, I went to Magnate, a café owned by the father of one of the BTS members. I offered to take a photo for three women, all 30-year-old engineers living in Singapore, who were on a BTS-themed pilgrimage through South Korea. They were originally from Myanmar but couldn’t go back to their own country, they said, because they’d been flagged as pro-democracy supporters by the military junta currently in power.
 
 As two more of their friends joined us for cake and tea, the women told me about their exiled life, relating how BTS had helped them cope with depression. For BTS members’ birthdays, they organize events with other fans to send money to orphanages, nursing homes, and the pro-democracy party in their country.
@@ -122,5 +119,4 @@ This story was updated to correct the spelling of Leni Robredo's first name.
 
 Soo Youn is a freelance journalist who worked at Reuters and ABC News and contributes regularly to the Washington Post, the Guardian, and NBC News.
 
-hide
 by Soo Youn
