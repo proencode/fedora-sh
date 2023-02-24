@@ -86,6 +86,9 @@ log_name="${logs_folder}/zz.$(date +"%y%m%d-%H%M%S")__RUNNING_${CMD_NAME}" ; tou
 cmdTTbegin "(2) vbox 프로그램 설치"
 cmdRun "time sudo dnf -y install make automake autoconf gcc dkms kernel-debug-devel kernel-devel" "커널 컴파일용 프로그램 설치"
 cmdRun "time sudo dnf -y install wget vim-enhanced vim-common mc git p7zip gnome-tweak-tool rclone livecd-tools liveusb-creator" "추가 프로그램 설치"
+cmdRun "sudo dnf install snapd" "snap 설치하기"
+cmdRun "sudo ln -s /var/lib/snapd/snap /snap" "snap 설치시 추가작업"
+cmdRun "curl -s "https://get.sdkman.io" | bash" "sdkman 설치하기"
 cmdRun "rpm -qa | grep kernel | sort | grep kernel" "kernel 버전 확인"
 cmdRun "sudo systemctl enable sshd ; sudo systemctl start sshd" "sshd 실행"
 cmdTTend "(2) vbox 프로그램 설치"
@@ -147,7 +150,8 @@ cmdTTend "(4) 게스트 확장 CD 이미지 삽입"
 
 cmdTTbegin "(5) VundleVim 설치"
 echo "${cCyan}----> https://itlearningcenter.tistory.com/entry/%E3%80%901804-LTS%E3%80%91VIM-Plug-in-%EC%84%A4%EC%B9%98%ED%95%98%EA%B8%B0${cReset}"
-cmdCont "git clone https://github.com/VundleVim/Vundle.vim.git ${HOME}/.vim/bundle/Vundle.vim" "VundleVim 설치"
+# cmdCont "git clone https://github.com/VundleVim/Vundle.vim.git ${HOME}/.vim/bundle/Vundle.vim" "VundleVim 설치"
+cmdCont "git clone https://github.com/susabolca/Vundle.vim ${HOME}/.vim/bundle/Vundle.vim" "VundleVim 설치"
 #xxx-- cmdRun "cp init_files/DOTvimrc-fedora ${HOME}/.vimrc" ".vimrc 설치"
 
 bin_init_files_dir="${HOME}/bin/init_files"
@@ -176,7 +180,8 @@ call vundle#begin()
 "call vundle#begin('~/some/path/here')
 
 " let Vundle manage Vundle, required
-Plugin 'VundleVim/Vundle.vim'
+Plugin 'susabolca/Vundle.vim'
+" Plugin 'VundleVim/Vundle.vim'
 Plugin 'vim-airline/vim-airline'
 " 파일 트리 (:NERDTree 로 실행)
 Plugin 'scrooloose/nerdtree'
@@ -226,6 +231,7 @@ nmap nerd :NERDTreeToggle<CR>
 " see :h vundle for more details or wiki for FAQ
 " Put your non-Plugin stuff after this line
 "
+" 230224 금 1416 from https://github.com/susabolca/Vundle.vim
 " 210422 목 1036 from https://github.com/VundleVim/Vundle.vim
 " at dOTvimrc-old-$(date +'%y%m%d%a_%H%M%S')-$(uname -r)
 __EOF__
@@ -445,6 +451,7 @@ cmdRun "rclone about tpnotemi:"
 cmdRun "rclone about tpnote2mi:"
 cmdTTend "(14) rclone 사이즈 확인"
 
+cmdYenter "sudo snap install intellij-idea-community --classic" "snap 으로 intellij-idea-community 버전 설치하기"
 
 # ----
 rm -f ${log_name} ; log_name="${logs_folder}/zz.$(date +"%y%m%d-%H%M%S")..${CMD_NAME}" ; touch ${log_name}
