@@ -86,9 +86,6 @@ log_name="${logs_folder}/zz.$(date +"%y%m%d-%H%M%S")__RUNNING_${CMD_NAME}" ; tou
 cmdTTbegin "(2) vbox 프로그램 설치"
 cmdRun "time sudo dnf -y install make automake autoconf gcc dkms kernel-debug-devel kernel-devel" "커널 컴파일용 프로그램 설치"
 cmdRun "time sudo dnf -y install wget vim-enhanced vim-common mc git p7zip gnome-tweak-tool rclone livecd-tools liveusb-creator" "추가 프로그램 설치"
-cmdRun "sudo dnf install snapd" "snap 설치하기"
-cmdRun "sudo ln -s /var/lib/snapd/snap /snap" "snap 설치시 추가작업"
-cmdRun "curl -s "https://get.sdkman.io" | bash" "sdkman 설치하기"
 cmdRun "rpm -qa | grep kernel | sort | grep kernel" "kernel 버전 확인"
 cmdRun "sudo systemctl enable sshd ; sudo systemctl start sshd" "sshd 실행"
 cmdTTend "(2) vbox 프로그램 설치"
@@ -166,7 +163,7 @@ fi
 
 new_DOT_vimrc=$(pwd)/${CMD_DIR}/init_files/DOTvimrc #-- 스크립트가 있는 디렉토리에 이 파일이 있어야 한다.
 if [ ! -f ${new_DOT_vimrc} ]; then
-	new_DOT_vimrc=${bin_init_files_dir}/DOTvimrc #-- 스크립트가 있는 디렉토리에 이 파일이 있어야 한다.
+	new_DOT_vimrc=${bin_init_files_dir}/DOTvimrc
 	cat <<__EOF__ | tee ${new_DOT_vimrc}
 set nocompatible              " be iMproved, required
 filetype off                  " required
@@ -420,6 +417,26 @@ if [ -f ${HOME}/.bashrc ]; then
 	cmdRun "mv ${HOME}/.bashrc ${bin_old_files_dir}/dOTbashrc-old-$(date +'%y%m%d%a_%H%M%S')-$(uname -r)" "원래의 .bashrc 파일을 이곳으로 복사합니다."
 fi
 cmdRun "cp ${new_dot_bashrc} ${HOME}/.bashrc" "미리 작성했던 파일을 ${HOME}/.bashrc 로 복사합니다."
+cmdRun "tail -9 ~/.bashrc ; tail -9 ~/.zshrc"
+cmdYenter "sudo dnf install snapd -y" "snap 설치하기"
+cmdRun "tail -9 ~/.bashrc ; tail -9 ~/.zshrc"
+cmdRun "ls -l --color /snap" "snap 링크 설치 확인"
+cmdRun "sudo ln -s /var/lib/snapd/snap /snap" "snap 설치시 추가작업"
+cmdRun "ls -l --color /snap" "snap 링크 설치 확인"
+
+cmdRun "tail -9 ~/.bashrc ; tail -9 ~/.zshrc"
+cmdYenter "curl -s \"https://get.sdkman.io\" | bash" "sdkman 설치하기"
+cmdRun "tail -9 ~/.bashrc ; tail -9 ~/.zshrc"
+cat <<__EOF__
+# ------------------------------------------------------------
+# sdkman 설치후에는 다음 명령을 터미널에서 직접 실행해야 합니다.
+
+source "/home/yosj/.sdkman/bin/sdkman-init.sh"
+
+# ----> press Enter:
+__EOF__
+read a
+
 cat <<__EOF__
 ${cCyan}
 터미널을 새로 열고, ${cYellow}source ${HOME}/.bashrc ${cCyan}#--- 이 명령으로 프롬프트를 새로 지정하세요.
