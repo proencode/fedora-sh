@@ -70,7 +70,7 @@ DB_NAME="wiki" #-- 백업할 데이터베이스 이름
 LOGIN_PATH="wikipsql" #-- 데이터베이스 로그인 패쓰 ;;; pgsql 이라서 쓰지는 않음.
 LOCAL_FOLDER="/home/backup/wiki.js" #-- 백업파일을 일시적으로 저장하는 로컬 저장소의 디렉토리 이름
 REMOTE_FOLDER="wiki.js" #-- 원격 저장소의 첫번째 폴더 이름
-RCLONE_NAME="yosgc" #-- rclone 이름 yosjeongc
+RCLONE_NAME="yosjgc" #-- rclone 이름 yosjeongc
 DB_TYPE="pgsql"
 
 dir_for_backup=${LOCAL_FOLDER}/last_backup #-- 백업을 리스토어 하기전, 현재DB 백업하는 로컬 저장소

@@ -115,7 +115,7 @@ if [ "x$1" = "x" ]; then
 #-- DB_NAME	DB_LOGIN_PATH	LOCAL_FOLDER	REMOTE_FOLDER	RCLONE_NAME	OK?	DB_USER_NAME
 #-- kaosorder2	kaoslog		kaosdb		11-kaosorder	kngc		ok/""	kaosorder2 (카오스)
 #-- gate242	swlog		gatedb		11-gate242	swlgc		ok/""	gateroot (서원)
-#-- wiki	not--use	wikidb		11-wiki.js	yosgc		ok/""	wiki (wiki.js)
+#-- wiki	not--use	wikidb		11-wiki.js	yosjgc		ok/""	wiki (wiki.js)
 #--
 #-- db_name	"" #-- 지정한 데이터베이스로 진행합니다.
 #-- db_name	"ok" #-- 지정한 데이터베이스로 진행하면서 과정을 보여줍니다.
@@ -150,7 +150,7 @@ if [ "x$1" = "xwiki" ]; then
 	LOGIN_PATH="wikipsql" #-- 데이터베이스 로그인 패쓰 ;;; pgsql 이라서 쓰지는 않음.
 	LOCAL_FOLDER="wikidb" #-- 백업파일을 일시적으로 저장하는 로컬 저장소의 디렉토리 이름
 	REMOTE_FOLDER="11-wiki.js" #-- 원격 저장소의 첫번째 폴더 이름
-	RCLONE_NAME="yosgc" #-- rclone 이름 yosjeongc
+	RCLONE_NAME="yosjgc" #-- rclone 이름 yosjeongc
 	DB_TYPE="pgsql"
 	PSWD_GEN_CODE="dnlzl${pswd_ym}"
 else
