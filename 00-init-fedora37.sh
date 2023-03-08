@@ -376,6 +376,7 @@ then
     PATH="/snap/intellij-idea-community/current/bin/:\$HOME/bin:\$PATH" #-- intellij IDEA
 fi
 export PATH
+export EXINIT='set nomore'
 
 #--
 cB="\\[\\e[" ;cE="\\]" #-- 색깔 시작과 끝 표시
@@ -414,6 +415,8 @@ unset rc
 alias rm='rm -i'
 alias cp='cp -i'
 alias mv='mv -i'
+alias more='more -e'
+alias ll 'ls -l --color=auto'
 __EOF__
 fi
 
