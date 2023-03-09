@@ -371,10 +371,6 @@ if ! [[ "\$PATH" =~ "\$HOME/.local/bin:\$HOME/bin:" ]]
 then
     PATH="\$HOME/.local/bin:\$HOME/bin:\$PATH"
 fi
-if ! [[ "\$PATH" =~ "/snap/intellij-idea-community/current/bin/:\$HOME/bin:" ]]
-then
-    PATH="/snap/intellij-idea-community/current/bin/:\$HOME/bin:\$PATH" #-- intellij IDEA
-fi
 export PATH
 export EXINIT='set nomore'
 
