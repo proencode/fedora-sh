@@ -30,7 +30,7 @@ __EOF__
 fi
 
 echoSeq "Install all available updates & reboot the system."
-cmdRun "sudo dnf update -y"
+cmdYenter "sudo dnf update -y"
 cmdYenter "sudo reboot" "시스템을 다시 부팅하려면, 'y' 를 눌러주세요."
 echoSeq ""
 
