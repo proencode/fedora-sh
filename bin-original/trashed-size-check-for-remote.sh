@@ -144,7 +144,7 @@ echo "# rclone: ${this_time}"
 echo "| remote_host: | total | used | free | trashed | other |"
 echo "|:---:|:---:|:---:|:---:|:---:|:---:|"
 
-for hostname in kaosbmi  kaosb2mi  kaosb3mi  kaosb4mi  kaosngc  swlibgc  tpnotemi  tpnote2mi  yosjgc  ysj5ncmi
+for hostname in kaosb1mi  kaosb2mi  kaosb3mi  kaosb4mi  kaosngc  swlibgc  tpnote1mi  tpnote2mi  y5dnmi  y5ncmi  yosjgc
 do
 	a_site_check ${hostname}
 done
