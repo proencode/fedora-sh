@@ -66,9 +66,9 @@ if [ "x$1" = "x" ]; then
 #-- !		!		/opt/ 아래	gc:/ 아래	!		!	not--use
 #-- 1		2		3		4		5		6	not--use
 #-- DB_NAME	DB_LOGIN_PATH	LOCAL_FOLDER	REMOTE_FOLDER	RCLONE_NAME	OK?	DB_USER_NAME
-#-- kaosorder2	kaoslog		backup/kaosdb	backup/kaosdb	kaosngc		ok/""	kaosorder2 (카오스)
+#-- kaosorder2	kaoslog		backup/kaosdb	kaosdb		kaosngc		ok/""	kaosorder2 (카오스)
 #-- gate242	swlog		backup/gatedb	11-gate242	swlibgc		ok/""	gateroot (서원)
-#-- wiki	not--use	backup/wikidb	backup/wikidb	yosjgc		ok/""	wiki (wiki.js)
+#-- wiki	not--use	backup/wikidb	wikijsdb	yosjgc		ok/""	wiki (wiki.js)
 #--
 #-- db_name	"" #-- 지정한 데이터베이스로 진행합니다.
 #-- db_name	"ok" #-- 지정한 데이터베이스로 진행하면서 과정을 보여줍니다.
@@ -84,7 +84,7 @@ if [ "x$1" = "xkaosorder" ]; then
 	DB_NAME="$1" #-- 백업할 데이터베이스 이름
 	LOGIN_PATH="kaoslog" #-- 데이터베이스 로그인 패쓰
 	LOCAL_FOLDER="/home/backup/kaosdb" #-- 백업파일을 일시적으로 저장하는 로컬 저장소의 디렉토리 이름
-	REMOTE_FOLDER="backup/kaosdb" #-- 원격 저장소의 첫번째 폴더 이름
+	REMOTE_FOLDER="kaosdb" #-- 원격 저장소의 첫번째 폴더 이름
 	RCLONE_NAME="kaosngc" #-- rclone 이름 kaos.notegc
 	DB_TYPE="mysql"
 	PSWD_GEN_CODE="zkdhtm${pswd_ym}"
@@ -102,7 +102,7 @@ if [ "x$1" = "xwiki" ]; then
 	DB_NAME="$1" #-- 백업할 데이터베이스 이름
 	LOGIN_PATH="wikipsql" #-- 데이터베이스 로그인 패쓰 ;;; pgsql 이라서 쓰지는 않음.
 	LOCAL_FOLDER="/home/backup/wikidb" #-- 백업파일을 일시적으로 저장하는 로컬 저장소의 디렉토리 이름
-	REMOTE_FOLDER="backup/wikidb" #-- 원격 저장소의 첫번째 폴더 이름
+	REMOTE_FOLDER="wikijsdb" #-- 원격 저장소의 첫번째 폴더 이름
 	RCLONE_NAME="yosjgc" #-- rclone 이름 yosjeongc
 	DB_TYPE="pgsql"
 	PSWD_GEN_CODE="dnlzl${pswd_ym}"
