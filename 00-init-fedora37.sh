@@ -115,15 +115,7 @@ log_name="${logs_folder}/zz.$(date +"%y%m%d-%H%M%S")__RUNNING_${CMD_NAME}" ; tou
 cmdTTbegin "(2) vbox 프로그램 설치"
 
 update_start
-
 cmdRun "time sudo dnf install make automake autoconf gcc dkms kernel-debug-devel kernel-devel wget vim-enhanced vim-common mc git p7zip gnome-tweak-tool rclone livecd-tools liveusb-creator -y" "커널 컴파일 및 추가 프로그램 설치"
-
-cmdYenter "sudo dnf install snapd keepass gimp -y" "snap keepass gimp 설치합니다."
-
-cmdRun "sudo dnf install fedora-workstation-repositories -y" "3rd Party 저장소 설치"
-cmdRun "sudo dnf config-manager --set-enabled google-chrome" "Google 크롬 리포지토리를 활성화합니다."
-cmdRun "sudo dnf install google-chrome-stable -y" "마지막으로 Chrome을 설치합니다."
-
 update_stop
 
 cmdRun "rpm -qa | grep kernel | sort | grep kernel" "kernel 버전 확인"
@@ -326,6 +318,10 @@ else
 fi
 cmdTTend "(7) 호스트 이름 바꾸기"
 
+update_start
+cmdYenter "sudo dnf install snapd keepassxc fedora-workstation-repositories -y" "snap keepassxc 3rd Party 저장소 설치"
+update_stop
+
 # ---- ----
 
 cmdTTbegin "(8) 한글 폰트파일 설치를 위해 임시로 쓸 폴더 확인"
@@ -489,6 +485,12 @@ read a
 cmdTTend "(12) 새로운 .bashrc 만들기"
 
 # ---- ----
+
+update_start
+cmdYenter "sudo dnf install snapd keepassxc fedora-workstation-repositories -y" "snap keepassxc 3rd Party 저장소 설치"
+cmdRun "sudo dnf config-manager --set-enabled google-chrome" "Google 크롬 리포지토리를 활성화합니다."
+cmdRun "sudo dnf install google-chrome-stable -y" "마지막으로 Chrome을 설치합니다."
+update_stop
 
 # cmdTTbegin "(14) rclone 사이즈 확인"
 # cmdRun "rclone about yosjgc:"
