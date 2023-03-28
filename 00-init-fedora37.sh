@@ -320,6 +320,8 @@ cmdTTend "(7) 호스트 이름 바꾸기"
 
 update_start
 cmdYenter "sudo dnf install snapd keepassxc fedora-workstation-repositories -y" "snap keepassxc 3rd Party 저장소 설치"
+cmdRun "sudo dnf config-manager --set-enabled google-chrome" "Google 크롬 리포지토리를 활성화합니다."
+cmdRun "sudo dnf install google-chrome-stable -y" "마지막으로 Chrome을 설치합니다."
 update_stop
 
 # ---- ----
@@ -485,12 +487,6 @@ read a
 cmdTTend "(12) 새로운 .bashrc 만들기"
 
 # ---- ----
-
-update_start
-cmdYenter "sudo dnf install snapd keepassxc fedora-workstation-repositories -y" "snap keepassxc 3rd Party 저장소 설치"
-cmdRun "sudo dnf config-manager --set-enabled google-chrome" "Google 크롬 리포지토리를 활성화합니다."
-cmdRun "sudo dnf install google-chrome-stable -y" "마지막으로 Chrome을 설치합니다."
-update_stop
 
 # cmdTTbegin "(14) rclone 사이즈 확인"
 # cmdRun "rclone about yosjgc:"
