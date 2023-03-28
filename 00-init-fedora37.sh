@@ -54,6 +54,35 @@ __EOF__
 }
 #-- source ${HOME}/bin/color_base #-- 230207화1201 CMD_DIR CMD_NAME cmdRun cmdCont cmdYenter echoSeq cmdTTbegin cmdTTend
 
+update_start () {
+	cat <<__EOF__
+${cBlue}
+프로그램 업데이트를 ${cYellow}진행 ${cBlue}해야 하므로, ${cYellow}/etc/dnf/dnf.conf ${cBlue}파일에 ${cYellow}## exclude=* ${cBlue}로 지정을 해야 합니다.
+
+${cGreen}$(sudo cat /etc/dnf/dnf.conf)${cBlue}
+
+----> ${cCyan}press Enter:${cReset}
+__EOF__
+	read a
+
+	sudo vi /etc/dnf/dnf.conf
+	cmdRun "sudo grep "exclude=" /etc/dnf/dnf.conf" "프로그램 업데이트 차단 (exclude=*) 이 아니고, 진행 (## exclude=*) 해야 합니다."
+}
+update_stop () {
+	cat <<__EOF__
+${cBlue}
+프로그램 업데이트를 ${cRed}중단 ${cBlue}해야 하므로, ${cRed}/etc/dnf/dnf.conf ${cBlue}파일에 ${cRed}exclude=* ${cBlue}로 차단 해야 합니다.
+
+${cGreen}$(sudo cat /etc/dnf/dnf.conf)${cBlue}
+
+----> ${cCyan}press Enter:${cReset}
+__EOF__
+	read a
+
+	sudo vi /etc/dnf/dnf.conf
+	cmdRun "sudo grep "exclude=" /etc/dnf/dnf.conf" "프로그램 업데이트 진행 (## exclude=*) 이 아니고, 차단 (exclude=*) 해야 합니다."
+}
+
 # echo "${cCyan}----> ${cRed}
 # ${cReset}"
 # echo "${cBlue}<---- ${cMagenta}
@@ -84,8 +113,13 @@ log_name="${logs_folder}/zz.$(date +"%y%m%d-%H%M%S")__RUNNING_${CMD_NAME}" ; tou
 
 
 cmdTTbegin "(2) vbox 프로그램 설치"
-cmdRun "time sudo dnf -y install make automake autoconf gcc dkms kernel-debug-devel kernel-devel" "커널 컴파일용 프로그램 설치"
-cmdRun "time sudo dnf -y install wget vim-enhanced vim-common mc git p7zip gnome-tweak-tool rclone livecd-tools liveusb-creator" "추가 프로그램 설치"
+
+update_start
+
+cmdRun "time sudo dnf -y install make automake autoconf gcc dkms kernel-debug-devel kernel-devel wget vim-enhanced vim-common mc git p7zip gnome-tweak-tool rclone livecd-tools liveusb-creator" "커널 컴파일 및 추가 프로그램 설치"
+
+update_stop
+
 cmdRun "rpm -qa | grep kernel | sort | grep kernel" "kernel 버전 확인"
 cmdRun "sudo systemctl enable sshd ; sudo systemctl start sshd" "sshd 실행"
 cmdTTend "(2) vbox 프로그램 설치"
@@ -247,28 +281,28 @@ cmdTTend "(5) VundleVim 설치"
 # ---- ----
 
 cmdTTbegin "(6) credential.helper 설치"
-cat <<__EOF__
-
-#-- github 비번관리
-1. https://github.com 로그인 후,
-   1) 우상단 프로필 사진 클릭 > 설정 Setting 클릭
-   2) 좌 사이드바에서 개발자 설정 Developer setting 클릭
-   3) 개인 액세스 토큰 Personal access token 클릭
-   4) 새 토큰 생성 Generate new token 클릭 > 권한에서 저장소 액세스 repo 선택
-   5) 토큰 생성 Generate token
-   6) 토큰을 복사한다.
-2. 저장소 repository 복사.
-   1) git clone https://proencode@github.com/proencode/fedira-sh.git
-      (1) 이때 비밀번호를 물어오면 토큰을 입력한다.
-      (2) 위 비번을 저장하기 위해 다음 명령을 실행한다.
-          a) git config --global credential.helper ‘cache –timeout=300’ (5분동안만 비번없이 진행한다)
-          b) git config --global credential.helper cache (cache 만 지정하면 15분동안 비번없이 진행한다)
-          c) git config --global credential.helper store (토큰의 유효기간동안 비번없이 진행한다)
-
-__EOF__
-cmdYenter "git config credential.helper store" "이와 같이 저장합니다."
-cmdTTend "(6) credential.helper 설치"
-cmdYenter "sudo reboot" "시스템을 업데이트 한뒤에는, 반드시 'y' 를 눌러서 시스템을 다시 부팅 하세요."
+#--- cat <<__EOF__
+#--- 
+#--- #-- github 비번관리
+#--- 1. https://github.com 로그인 후,
+#---    1) 우상단 프로필 사진 클릭 > 설정 Setting 클릭
+#---    2) 좌 사이드바에서 개발자 설정 Developer setting 클릭
+#---    3) 개인 액세스 토큰 Personal access token 클릭
+#---    4) 새 토큰 생성 Generate new token 클릭 > 권한에서 저장소 액세스 repo 선택
+#---    5) 토큰 생성 Generate token
+#---    6) 토큰을 복사한다.
+#--- 2. 저장소 repository 복사.
+#---    1) git clone https://proencode@github.com/proencode/fedira-sh.git
+#---       (1) 이때 비밀번호를 물어오면 토큰을 입력한다.
+#---       (2) 위 비번을 저장하기 위해 다음 명령을 실행한다.
+#---           a) git config --global credential.helper ‘cache –timeout=300’ (5분동안만 비번없이 진행한다)
+#---           b) git config --global credential.helper cache (cache 만 지정하면 15분동안 비번없이 진행한다)
+#---           c) git config --global credential.helper store (토큰의 유효기간동안 비번없이 진행한다)
+#--- 
+#--- __EOF__
+#--- cmdYenter "git config credential.helper store" "이와 같이 저장합니다."
+#--- cmdTTend "(6) credential.helper 설치"
+#--- cmdYenter "sudo reboot" "시스템을 업데이트 한뒤에는, 반드시 'y' 를 눌러서 시스템을 다시 부팅 하세요."
 
 # ---- ----
 
@@ -421,7 +455,11 @@ if [ -f ${HOME}/.bashrc ]; then
 fi
 cmdRun "cp ${new_dot_bashrc} ${HOME}/.bashrc" "미리 작성했던 파일을 ${HOME}/.bashrc 로 복사합니다."
 cmdRun "tail -9 ~/.bashrc ; tail -9 ~/.zshrc"
+
+update_start
 cmdYenter "sudo dnf install snapd -y" "snap 설치하기"
+update_stop
+
 cmdRun "tail -9 ~/.bashrc ; tail -9 ~/.zshrc"
 cmdRun "ls -l --color /snap" "snap 링크 설치 확인"
 cmdRun "sudo ln -s /var/lib/snapd/snap /snap" "snap 설치시 추가작업"
@@ -451,27 +489,29 @@ cmdTTend "(12) 새로운 .bashrc 만들기"
 # ---- ----
 
 cmdTTbegin "(13) 구글 크롬 브라우저 설치"
+update_start
 cmdRun "sudo dnf install -y fedora-workstation-repositories" "3rd Party 저장소 설치"
 cmdRun "sudo dnf config-manager --set-enabled google-chrome" "Google 크롬 리포지토리를 활성화합니다."
 cmdRun "sudo dnf install -y google-chrome-stable" "마지막으로 Chrome을 설치합니다."
+update_stop
 cmdTTend "(13) 구글 크롬 브라우저 설치"
 
 # ---- ----
 
-cmdTTbegin "(14) rclone 사이즈 확인"
-cmdRun "rclone about yosjgc:"
-cmdRun "rclone about kaosngc:"
-cmdRun "rclone about swlibgc:"
-cmdRun "rclone about ysj5ncmi:"
-cmdRun "rclone about kaosbmi:"
-cmdRun "rclone about kaosb2mi:"
-cmdRun "rclone about kaosb3mi:"
-cmdRun "rclone about kaosb4mi:"
-cmdRun "rclone about tpnotemi:"
-cmdRun "rclone about tpnote2mi:"
-cmdTTend "(14) rclone 사이즈 확인"
-
-cmdYenter "sudo snap install intellij-idea-community --classic" "snap 으로 intellij-idea-community 버전 설치하기"
+# cmdTTbegin "(14) rclone 사이즈 확인"
+# cmdRun "rclone about yosjgc:"
+# cmdRun "rclone about kaosngc:"
+# cmdRun "rclone about swlibgc:"
+# cmdRun "rclone about ysj5ncmi:"
+# cmdRun "rclone about kaosbmi:"
+# cmdRun "rclone about kaosb2mi:"
+# cmdRun "rclone about kaosb3mi:"
+# cmdRun "rclone about kaosb4mi:"
+# cmdRun "rclone about tpnotemi:"
+# cmdRun "rclone about tpnote2mi:"
+# cmdTTend "(14) rclone 사이즈 확인"
+# 
+# cmdYenter "sudo snap install intellij-idea-community --classic" "snap 으로 intellij-idea-community 버전 설치하기"
 
 # ----
 rm -f ${log_name} ; log_name="${logs_folder}/zz.$(date +"%y%m%d-%H%M%S")..${CMD_NAME}" ; touch ${log_name}
