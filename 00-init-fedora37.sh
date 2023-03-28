@@ -116,7 +116,13 @@ cmdTTbegin "(2) vbox 프로그램 설치"
 
 update_start
 
-cmdRun "time sudo dnf -y install make automake autoconf gcc dkms kernel-debug-devel kernel-devel wget vim-enhanced vim-common mc git p7zip gnome-tweak-tool rclone livecd-tools liveusb-creator" "커널 컴파일 및 추가 프로그램 설치"
+cmdRun "time sudo dnf install make automake autoconf gcc dkms kernel-debug-devel kernel-devel wget vim-enhanced vim-common mc git p7zip gnome-tweak-tool rclone livecd-tools liveusb-creator -y" "커널 컴파일 및 추가 프로그램 설치"
+
+cmdYenter "sudo dnf install snapd keepass gimp -y" "snap keepass gimp 설치합니다."
+
+cmdRun "sudo dnf install fedora-workstation-repositories -y" "3rd Party 저장소 설치"
+cmdRun "sudo dnf config-manager --set-enabled google-chrome" "Google 크롬 리포지토리를 활성화합니다."
+cmdRun "sudo dnf install google-chrome-stable -y" "마지막으로 Chrome을 설치합니다."
 
 update_stop
 
@@ -456,10 +462,6 @@ fi
 cmdRun "cp ${new_dot_bashrc} ${HOME}/.bashrc" "미리 작성했던 파일을 ${HOME}/.bashrc 로 복사합니다."
 cmdRun "tail -9 ~/.bashrc ; tail -9 ~/.zshrc"
 
-update_start
-cmdYenter "sudo dnf install snapd -y" "snap 설치하기"
-update_stop
-
 cmdRun "tail -9 ~/.bashrc ; tail -9 ~/.zshrc"
 cmdRun "ls -l --color /snap" "snap 링크 설치 확인"
 cmdRun "sudo ln -s /var/lib/snapd/snap /snap" "snap 설치시 추가작업"
@@ -485,16 +487,6 @@ ${cGreen}----> press Enter:${cReset}
 __EOF__
 read a
 cmdTTend "(12) 새로운 .bashrc 만들기"
-
-# ---- ----
-
-cmdTTbegin "(13) 구글 크롬 브라우저 설치"
-update_start
-cmdRun "sudo dnf install -y fedora-workstation-repositories" "3rd Party 저장소 설치"
-cmdRun "sudo dnf config-manager --set-enabled google-chrome" "Google 크롬 리포지토리를 활성화합니다."
-cmdRun "sudo dnf install -y google-chrome-stable" "마지막으로 Chrome을 설치합니다."
-update_stop
-cmdTTend "(13) 구글 크롬 브라우저 설치"
 
 # ---- ----
 
