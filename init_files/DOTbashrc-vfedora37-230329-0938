@@ -10,7 +10,7 @@ fi
 # then
 #     PATH="$HOME/.local/bin:$HOME/bin:$PATH"
 # fi
-for bin_path in $HOME/.local/bin $HOME/android-studio/bin $HOME/idea-IC-223.8836.41/bin
+for bin_path in $HOME/.local/bin $HOME/studio_bin $HOME/ii_bin
 do
 	if ! [[ "$PATH" =~ "$bin_path" ]]
 	then
