@@ -83,7 +83,7 @@ fi
 if [ "x$1" = "xkaosorder" ]; then
 	DB_NAME="$1" #-- 백업할 데이터베이스 이름
 	LOGIN_PATH="kaoslog" #-- 데이터베이스 로그인 패쓰
-	LOCAL_FOLDER="/home/backup/kaosdb" #-- 백업파일을 일시적으로 저장하는 로컬 저장소의 디렉토리 이름
+	LOCAL_FOLDER="backup/kaosdb" #-- 백업파일을 일시적으로 저장하는 로컬 저장소의 디렉토리 이름
 	REMOTE_FOLDER="kaosdb" #-- 원격 저장소의 첫번째 폴더 이름
 	RCLONE_NAME="kaosngc" #-- rclone 이름 kaos.notegc
 	DB_TYPE="mysql"
@@ -92,7 +92,7 @@ else
 if [ "x$1" = "xgate242" ]; then
 	DB_NAME="$1" #-- 백업할 데이터베이스 이름
 	LOGIN_PATH="swlog" #-- 데이터베이스 로그인 패쓰
-	LOCAL_FOLDER="/home/backup/gatedb" #-- 백업파일을 일시적으로 저장하는 로컬 저장소의 디렉토리 이름
+	LOCAL_FOLDER="backup/gatedb" #-- 백업파일을 일시적으로 저장하는 로컬 저장소의 디렉토리 이름
 	REMOTE_FOLDER="11-gate242" #-- 원격 저장소의 첫번째 폴더 이름
 	RCLONE_NAME="swlibgc" #-- rclone 이름 seowontire.libgc
 	DB_TYPE="mysql"
@@ -101,7 +101,7 @@ else
 if [ "x$1" = "xwiki" ]; then
 	DB_NAME="$1" #-- 백업할 데이터베이스 이름
 	LOGIN_PATH="wikipsql" #-- 데이터베이스 로그인 패쓰 ;;; pgsql 이라서 쓰지는 않음.
-	LOCAL_FOLDER="/home/backup/wikidb" #-- 백업파일을 일시적으로 저장하는 로컬 저장소의 디렉토리 이름
+	LOCAL_FOLDER="backup/wikidb" #-- 백업파일을 일시적으로 저장하는 로컬 저장소의 디렉토리 이름
 	REMOTE_FOLDER="wikijsdb" #-- 원격 저장소의 첫번째 폴더 이름
 	RCLONE_NAME="yosjgc" #-- rclone 이름 yosjeongc
 	DB_TYPE="pgsql"
@@ -148,7 +148,7 @@ if [ "x${ENTER_VALUE}" = "xok" ]; then
 	value_keyin "LOGIN_PATH" "${LOGIN_PATH}" "데이터베이스의 로그인 패쓰 를 입력하세요."
 	LOGIN_PATH="${return_value}"
 
-	value_keyin "LOCAL_FOLDER" "${LOCAL_FOLDER}" "백업파일을 임시로 저장할 로컬 저장소의 디렉토리 이름을 입력하세요."
+	value_keyin "LOCAL_FOLDER" "${LOCAL_FOLDER}" "백업파일을 임시로 저장할 로컬 저장소의 /opt 아래에 있는 디렉토리 이름을 입력하세요."
 	LOCAL_FOLDER="${return_value}"
 
 	value_keyin "REMOTE_FOLDER" "${REMOTE_FOLDER}" "원격 저장소의 첫번째 폴더 이름을 입력하세요."
