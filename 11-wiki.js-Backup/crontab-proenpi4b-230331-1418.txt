@@ -1,0 +1,8 @@
+# m h  dom mon dow   command
+#--분--시--일--월--요일 (0:일 1:월 2:화 … 6:토)   명령어 
+03  11  *  *  *  /bin/sh /opt/backup/wikidb/db-to-cloud.sh wiki >/dev/null 2>&1
+03  15  *  *  *  /bin/sh /opt/backup/wikidb/db-to-cloud.sh wiki >/dev/null 2>&1
+03  19  *  *  *  /bin/sh /opt/backup/wikidb/db-to-cloud.sh wiki >/dev/null 2>&1
+35  21  *  *  *  /bin/sh /opt/backup/kaosdb/copy-from-kaoskr-cegs-Y4M2D2.sh >/dev/null 2>&1
+03  23  *  *  *  /bin/sh /opt/backup/wikidb/db-to-cloud.sh wiki >/dev/null 2>&1
+#
