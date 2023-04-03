@@ -93,7 +93,7 @@ alias mv='mv -i'
 __EOF__
 fi
 
-old_files=$(pwd)/${CMD_DIR}/old-files
+old_files=$(pwd)/${CMD_DIR}/old_files
 if [ ! -d ${old_files} ]; then
 	mkdir ${old_files}
 fi
