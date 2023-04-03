@@ -16,7 +16,7 @@ __EOF__
 if [ "x$1" = "xwiki" ]; then
 	echo "${cRed}----> 완료까지 1분정도 기다려 주세요. <----${cReset}"
 fi
-for hostname in kaosbmi  kaosb2mi  kaosb3mi  kaosb4mi  yosjgc  kaosngc  swlibgc  tpnotemi  tpnote2mi  ysj5ncmi
+for hostname in kaos1mi  kaos2mi  kaos3mi  kaos4mi  yosjgc  kaosngc  swlibgc  tpnote1mi  tpnote2mi  y5dnmi  y5ncmi  yosjgc
 do
 	if [ "x$1" = "xwiki" ]; then
 		#-- 이 스크립트 실행시 "wiki" 파라미터를 추가하면, 결과를 wiki.js 마크다운으로 보여준다.
