@@ -59,6 +59,7 @@ alias rm='rm -i'
 alias cp='cp -i'
 alias mv='mv -i'
 alias more='more -e'
+alias ls='ls --color=auto'
 alias ll='ls -l --color=auto'
 
 export NVM_DIR="$HOME/.nvm"
