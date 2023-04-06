@@ -1,0 +1,100 @@
+# 1. 비번스킵
+
+sudo vi /etc/sudoers # G10kyyp2xwcw<USERNAME><ESC>:x!<ENTER>
+
+## 1.1 호스트 이름을 vFed37 로 바꾼다
+
+sudo hostnamectl set-hostname vFed37
+
+## 1.2 Google 크롬 리포지토리 활성화
+
+sudo dnf config-manager --set-enabled google-chrome
+
+
+
+# 2. 추가로 프로그램 설치
+
+sudo dnf install make automake autoconf gcc dkms \
+    kernel-debug-devel kernel-devel wget vim-enhanced vim-common \
+    mc git p7zip gnome-tweak-tool rclone \
+    snapd keepassxc fedora-workstation-repositories \
+    google-chrome-stable \
+    livecd-tools liveusb-creator -y
+
+## 2.1 커널 버전 확인
+
+rpm -qa | grep kernel | sort | grep kernel
+
+## 2.2 원격 셀 sshd 실행
+
+sudo systemctl enable sshd
+sudo systemctl start sshd
+
+
+
+# 3. vbox 그룹 추가
+
+grep vboxsf /etc/group | grep ${USER}
+grep vboxsf /etc/group
+
+## 3.1 vboxsf 그룹 추가하고 다시 확인
+
+sudo gpasswd -a ${USER} vboxsf
+grep vboxsf /etc/group
+
+## 3.2 vboxsf 그룹에 사용자가 추가됐다면, 이 시스템을 다시 시작해야 한다.
+
+sudo reboot
+
+
+# 4. 게스트 확장 CD 이미지 삽입
+
+vfedora 초기화 작업을 진행하기 전에,
+화면 맨 윗줄에 표시된 (파일 , 머신 , 보기 , 입력 , 장치 , 도움말) 메뉴에서,
+
+[장치] 클릭 >> [게스트 확장 CD 이미지 삽입] 을 클릭하고,
+자동으로 시작하기로 한 프로그램 . . . 실행하시겠습니까? >> [실행] 을 클릭.
+
+## 4.1 윈도우에서 탐색기 창을 열고, "다운로드" 폴더에 "bada" 라는 폴더를 새로 만든다.
+
+## 4.2 자동시작 프로그램을 실행한다.
+
+sudo /sbin/rcvboxadd quicksetup all ; sudo /sbin/rcvboxadd setup
+
+## 4.3 윈도우와 연결하는 폴더를 ${HOME}/wind_bada 라는 이름으로 연결한다.
+
+ln -s /media/sf_Downloads/bada/ ${HOME}/wind_bada
+
+## 4.4 호스트(host) 인 윈도우 폴더가 게스트i(guest) 인 fedora 에 마운트 되었는지 확인한다.
+
+ls -l ${HOME}
+ls -l ~/wind_data
+
+
+
+# 5. VundleVim 설치
+
+git clone https://github.com/susabolca/Vundle.vim ${HOME}/.vim/bundle/Vundle.vim
+
+## 5.1 proen 서버에 미리 만들어둔 파일을 ${HOME} 디렉토리로 복사한다.
+
+rsync -avzr -e 'ssh -p 15822' proenpi@proen.duckdns.org:archive/DOTbashrc* ~/.bashrc
+rsync -avzr -e 'ssh -p 15822' proenpi@proen.duckdns.org:archive/DOTvimrc* ~/.vimrc
+
+## 5.2 Bundle 을 설치한다
+
+vim +BundleInstall +qall
+
+
+# 6. 한글 폰트파일 설치
+
+sudo rsync -avzr -e 'ssh -p 15822' proenpi@proen.duckdns.org:archive/Font*.7z /usr/share/fonts/
+
+## 6.1 snap 링크 설치 확인
+
+sudo ln -s /var/lib/snapd/snap /snap
+ls -l --color /snap
+
+## 6.2 sdkman 설치
+
+curl -s \"https://get.sdkman.io\" | bash
