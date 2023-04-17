@@ -143,9 +143,9 @@ echo "# rclone: $(uname -n) $(date +'%Y-%m-%d %a %H:%M:%S')"
 echo "| remote_host: | total | used | free | trashed | other |"
 echo "|:---:|:---:|:---:|:---:|:---:|:---:|"
 
-for hostname in kaos1mi  kaos2mi  kaos3mi  kaos4mi  kaosngc  swlibgc  tpnote1mi  tpnote2mi  y5dnmi  y5ncmi  yosjgc
+for cloud_name in kaos1mi  kaos2mi  kaos3mi  kaos4mi  kaosngc  swlibgc  tpnote1mi  tpnote2mi  tpnote3mi  y5dnmi  y5ncmi  yosjgc  ysw10mi
 do
-	a_site_check ${hostname}
+	a_site_check ${cloud_name}
 done
 echo ""
 

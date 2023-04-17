@@ -10,17 +10,11 @@ __EOF__
 # ----
 
 
-cmdRun "rclone size yosjgc:"
-cmdRun "rclone size kaosngc:"
-cmdRun "rclone size swlibgc:"
-cmdRun "rclone size ysj5ncmi:"
-cmdRun "rclone size kaosb2mi:"
-cmdRun "rclone size kaosb3mi:"
-cmdRun "rclone size kaosb4mi:"
-cmdRun "rclone size kaosbmi:"
-cmdRun "rclone size tpnotemi:"
-cmdRun "rclone size tpnote2mi:"
-
+for cloud_name in kaos1mi  kaos2mi  kaos3mi  kaos4mi  kaosngc  swlibgc  tpnote1mi  tpnote2mi  tpnote3mi  y5dnmi  y5ncmi  yosjgc  ysw10mi
+do
+	cmdRun "rclone lsd ${cloud_name}: ; rclone size ${cloud_name}:"
+done
+echo ""
 
 # ----
 # rm -f ${zz00log_name} ; zz00log_name="${zz00logs_folder}/zz.$(date +"%y%m%d%a-%H%M%S")..${CMD_NAME}" ; touch ${zz00log_name}
