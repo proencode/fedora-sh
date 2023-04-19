@@ -405,10 +405,18 @@ if [ -f /etc/bashrc ]; then
 fi
 
 # User specific environment
-if ! [[ "\$PATH" =~ "\$HOME/.local/bin:\$HOME/bin:" ]]
-then
-    PATH="\$HOME/.local/bin:\$HOME/bin:\$PATH"
-fi
+# if ! [[ "\$PATH" =~ "\$HOME/.local/bin:\$HOME/bin:" ]]
+# then
+#     PATH="\$HOME/.local/bin:\$HOME/bin:\$PATH"
+# fi
+for bin_path in   \$HOME/.local   \$HOME/link_studio   \$HOME/link_idea
+do
+	if ! [[ "\$PATH" =~ "\$bin_path" ]]
+	then
+		PATH="\$PATH:\$bin_path/bin"
+	fi
+done
+
 export PATH
 export EXINIT='set nomore'
 
@@ -426,9 +434,9 @@ dGray="\${cB}1;30m\${cE}"; dRed="\${cB}1;31m\${cE}"; dGreen="\${cB}1;32m\${cE}";
 ## cWhiteGreen="\${cB}0;37;42m\${cE}"
 cBlackGreen="\${cB}0;30;42m\${cE}"
 # PS1="\${cGreen}\\t\${cYellow}\\D{%a}\${cCyan}\\D{%y}\${cMagenta}\\D{%m}\${cGreen}\\D{%d} \${dCyan}\\u\${cWhite}@\${cBlackGreen}\\h\${cReset} \${cCyan}\\w\\n\${cCyan}\\W\${cReset} \$ " #-- vfed35 220330
-PS1="\${cGreen}\\t\${cRed}\\D{%a}\${cMagenta}\\D{%y}\${cCyan}\\D{%m}\${cYellow}\\D{%d} \${dCyan}\\u\${cWhite}@\${cGreen}\\h\${cReset} \${cCyan}\\w\\n\${cCyan}\\W\${cReset} $ " #-- vfed35 220330
-## PS1="\${cGreen}\\t\${cYellow}\\D{%a}\${cBlue}\\D{%y}-\${cGreen}\\D{%m-%d} \${dMagenta}\\u\${cWhite}@\${cWhiteGreen}\\h\${cReset} \${cCyan}\\w\\\n\${cCyan}\\W\${cReset} $ " #-- oldvfed35
-## PS1='\e[0;36m\\t\\e[0m \\e[0;33m\\D{%a}\\e[0m \\D{%Y-%m-%d} \\e[01;36m\\u\\e[01;37m@\\e[01;42m\\h\\e[0m \\e[0;32m\\w\\e[0m\\n\\e[0;32m\\W\\e[0m $ ' #-- g1ssd128
+PS1="\${cGreen}\\t\${cRed}\\D{%a}\${cCyan}\\D{%y}\${cYellow}\\D{%m}\${cMagenta}\\D{%d} \${dCyan}\\u\${cWhite}@\${cGreen}\\h\${cReset} \${cCyan}\\w\\n\${cCyan}\\W\${cReset} \$ " #-- vfed35 220330
+## PS1="\${cGreen}\\t\${cYellow}\\D{%a}\${cBlue}\\D{%y}-\${cGreen}\\D{%m-%d} \${dMagenta}\\u\${cWhite}@\${cWhiteGreen}\\h\${cReset} \${cCyan}\\w\\\\n\${cCyan}\\W\${cReset} \$ " #-- oldvfed35
+## PS1='\\e[0;36m\\t\\e[0m \\e[0;33m\\D{%a}\\e[0m \\D{%Y-%m-%d} \\e[01;36m\\u\\e[01;37m@\\e[01;42m\\h\\e[0m \\e[0;32m\\w\\e[0m\\n\\e[0;32m\\W\\e[0m \$ ' #-- g1ssd128
 #--
 
 # Uncomment the following line if you don't like systemctl's auto-paging feature:
@@ -450,7 +458,12 @@ alias rm='rm -i'
 alias cp='cp -i'
 alias mv='mv -i'
 alias more='more -e'
+alias ls='ls --color=auto'
 alias ll='ls -l --color=auto'
+
+#? THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
+#? export SDKMAN_DIR="\$HOME/.sdkman"
+#? [[ -s "\$HOME/.sdkman/bin/sdkman-init.sh" ]] && source "\$HOME/.sdkman/bin/sdkman-init.sh"
 __EOF__
 fi
 
@@ -489,19 +502,24 @@ cmdTTend "(12) 새로운 .bashrc 만들기"
 # ---- ----
 
 # cmdTTbegin "(14) rclone 사이즈 확인"
-# cmdRun "rclone about yosjgc:"
-# cmdRun "rclone about kaosngc:"
-# cmdRun "rclone about swlibgc:"
-# cmdRun "rclone about ysj5ncmi:"
-# cmdRun "rclone about kaosbmi:"
-# cmdRun "rclone about kaosb2mi:"
-# cmdRun "rclone about kaosb3mi:"
-# cmdRun "rclone about kaosb4mi:"
-# cmdRun "rclone about tpnotemi:"
-# cmdRun "rclone about tpnote2mi:"
+# for cloud_name in kaos1mi  kaos2mi  kaos3mi  kaos4mi  kaosngc  swlibgc  tpn1mi  tpn2mi  tpn3mi  y5dnmi  y5ncmi  yosjgc  ysw10mi
+# do
+# 	cmdRun "rclone lsd ${cloud_name}: ; rclone size ${cloud_name}:"
+# done
 # cmdTTend "(14) rclone 사이즈 확인"
 # 
 # cmdYenter "sudo snap install intellij-idea-community --classic" "snap 으로 intellij-idea-community 버전 설치하기"
+cat <<__EOF__
+
+for cloud_name in kaos1mi  kaos2mi  kaos3mi  kaos4mi  kaosngc  swlibgc  tpn1mi  tpn2mi  tpn3mi  y5dnmi  y5ncmi  yosjgc  ysw10mi ; do echo ${cloud_name} ; rclone size ${cloud_name}: ; done
+
+java --version ; sdk i java 8.0.362-tem ; java --version
+
+gimp
+
+----> android-studio, intellij-idea 는 별도로 설치해야 합니다.
+
+__EOF__
 
 # ----
 rm -f ${log_name} ; log_name="${logs_folder}/zz.$(date +"%y%m%d-%H%M%S")..${CMD_NAME}" ; touch ${log_name}
