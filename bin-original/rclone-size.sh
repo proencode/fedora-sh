@@ -10,7 +10,7 @@ __EOF__
 # ----
 
 
-for cloud_name in kaos1mi  kaos2mi  kaos3mi  kaos4mi  kaosngc  swlibgc  tpnote1mi  tpnote2mi  tpnote3mi  y5dnmi  y5ncmi  yosjgc  ysw10mi
+for cloud_name in kaos1mi  kaos2mi  kaos3mi  kaos4mi  kaosngc  swlibgc  tpn1mi  tpn2mi  tpn3mi  y5dnmi  y5ncmi  yosjgc  ysw10mi
 do
 	cmdRun "rclone lsd ${cloud_name}: ; rclone size ${cloud_name}:"
 done
