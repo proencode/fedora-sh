@@ -22,6 +22,8 @@ done
 ls_dir=s12-rclone_ls_${ymda_hms}
 echo "----> ls -l ${local_dir} > ${ls_dir}.ll"
 ls -l ${local_dir} > ${ls_dir}.ll
+
+ls_dir=s13-rclone_ls_${ymda_hms}
 echo "----> 7za a -mx=9 ${ls_dir}.7z ${local_dir}"
 7za a -mx=9 ${ls_dir}.7z ${local_dir}
 ls --color
