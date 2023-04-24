@@ -10,8 +10,8 @@ for cloud_name in kaos1mi  kaos2mi  kaos3mi  kaos4mi  kaosngc  swlibgc  tpnote1m
 do
 	ymda_hms=$(date +"%y%m%d%a-%H%M%S")
 
-	echo "----> rclone ls ${cloud_name}: | sort -k2 - >> ${local_dir}/${cloud_name}-${ymda_hms}.ls"
-	echo "----> rclone ls ${cloud_name}: | sort -k2 - >> ${local_dir}/${cloud_name}-${ymda_hms}.ls" > ${local_dir}/${cloud_name}-${ymda_hms}.ls
+	echo "----> rclone ls ${cloud_name}: | sort -k2 - > ${local_dir}/${cloud_name}-${ymda_hms}.ls"
+	echo "----> rclone ls ${cloud_name}: | sort -k2 - > ${local_dir}/${cloud_name}-${ymda_hms}.ls" > ${local_dir}/${cloud_name}-${ymda_hms}.ls
 	rclone ls ${cloud_name}: | sort -k2 - >> ${local_dir}/${cloud_name}-${ymda_hms}.ls
 
 	echo "----> rclone size ${cloud_name}: >> ${local_dir}/${cloud_name}-${ymda_hms}.ls"
