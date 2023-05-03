@@ -57,7 +57,7 @@ __EOF__
 update_start () {
 	cat <<__EOF__
 ${cYellow}
-/etc/dnf/dnf.conf ${cBlue}파일에 ${cCyan}# exclude=* # 샵 붙여서 업데이트 허가 ${cBlue}로 업데이트를 ${cYellow}허가${cBlue}해야 합니다.
+/etc/dnf/dnf.conf ${cBlue}파일에 ${cCyan}#exclude=* # 샵 붙여서 업데이트 허가 ${cBlue}로 업데이트를 ${cYellow}허가${cBlue}해야 합니다.
 
 ${cGreen}$(sudo cat /etc/dnf/dnf.conf)${cBlue}
 
@@ -71,7 +71,7 @@ __EOF__
 update_stop () {
 	cat <<__EOF__
 ${cYellow}
-/etc/dnf/dnf.conf ${cBlue}파일에 ${cCyan}exclude=* # 샵 붙여서 업데이트 허가 ${cBlue}로 업데이트를 ${cMagenta}중지${cBlue}해야 합니다.
+/etc/dnf/dnf.conf ${cBlue}파일에 ${cCyan}exclude=* # 샵을 떼어내서 업데이트 중지 ${cBlue}로 업데이트를 ${cMagenta}중지${cBlue}해야 합니다.
 
 ${cGreen}$(sudo cat /etc/dnf/dnf.conf)${cBlue}
 
