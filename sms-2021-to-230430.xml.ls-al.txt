@@ -1,0 +1,10 @@
+합계 2304952
+drwxr-xr-x. 1 yosj yosj       282  5월  4일  13:21 .
+drwx------. 1 yosj yosj      1338  5월  4일  13:12 ..
+-rw-r--r--. 1 yosj yosj         0  5월  4일  13:21 ls-al.txt
+-rw-r--r--. 1 yosj yosj 385128253 2021년 12월  5일 sms-20211205032452.xml
+-rw-r--r--. 1 yosj yosj 295960576  5월  4일  13:09 sms-20211212002643.xml
+-rw-r--r--. 1 yosj yosj 397460765  4월 13일  08:53 sms-20230410144637.xml
+-rw-r--r--. 1 yosj yosj 397482578  4월 16일  00:28 sms-20230416001810.xml
+-rw-r--r--. 1 yosj yosj 397502852  4월 23일  01:21 sms-20230423011118.xml
+-rw-r--r--. 1 yosj yosj 397525229  4월 30일  01:49 sms-20230430013914.xml
