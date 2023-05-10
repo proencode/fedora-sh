@@ -25,11 +25,11 @@ STR_02=$(echo ${str_01,,})
 #-- bash3.x 인 경우: STR_02=$(echo ${str_01} | tr '[A-Z]' '[a-z]')
 
 #-- "str_03 " == 특수문자 삭제하거나 변경
-str_03=$(echo ${STR_02} | sed 's/(//g' | sed 's/)//g' | sed 's/;//g' | sed 's/<//g' | sed 's/>//g' | sed 's/[//g' | sed 's/]//g')
+str_03=$(echo ${STR_02} | sed 's/(/./g' | sed 's/)/./g' | sed 's/;/./g' | sed 's/</./g' | sed 's/>/./g' | sed 's/\[/./g' | sed 's/\]/./g' | sed 's/\//./g' | sed 's/+/./g')
 cat <<__EOF__
 
 ${cBlue}${original_file_name} ${cYellow}---->
 
 ${cRed}${str_03}
-
+${cReset}
 __EOF__
