@@ -1,0 +1,146 @@
+-rwxr-xr-x  1 yos yos 3.2K 2022년 10월  3일 072-euckr_to_utf8.smi.sh
+-rw-r--r--  1 yos yos 3.1G 2022년 10월 23일 6언더그라운드.mkv
+-rw-r--r--  1 yos yos 107M 2022년  7월 26일 FileCast_downloader.exe
+-rw-r--r--  1 yos yos 3.9G 2021년  9월 25일 Free_Guy.mkv
+-rw-r--r--  1 yos yos 3.9G  4월 27일  18:34 The.Mandalorian.S03.mkv
+-rw-r--r--. 1 yos yos 3.4G 2021년  5월 11일 러브 액츄얼리_HD_NEW_ll.mp4
+-rw-r--r--. 1 yos yos 3.2G 2021년  1월 31일 미드나이트_스카이.mkv
+-rw-r--r--  1 yos yos 3.3G  3월 19일  19:31 스파이.mkv
+-rwxr-xr-x  1 yos yos 3.1G  2월 26일  17:28 인사이드_맨.2006.1080p.BluRay.H264.AAC.mp4
+-rw-r--r--  1 yos yos 1.7G 2022년  5월  5일 해일로6.mkv
+-rw-r--r--. 1 yos yos 2.8G 2021년  1월 31일 히든_피규어스.mkv
+
+80일간의세계일주.1956:
+합계 2.3G
+-rw-r--r--  1 yos yos  60K  5월 14일  20:47 3-80.smi
+-rw-r--r--. 1 yos yos 699M 2020년  6월 17일 80일간의세계일주.Around.The.World.In.Eighty.Days.1956.DVDRip.Xvid.AC3-NDRT.CD1.avi
+-rw-r--r--  1 yos yos  60K 2022년  4월 16일 80일간의세계일주.Around.The.World.In.Eighty.Days.1956.DVDRip.Xvid.AC3-NDRT.CD1.smi
+-rw-r--r--. 1 yos yos  54K 2020년  6월 17일 80일간의세계일주.Around.The.World.In.Eighty.Days.1956.DVDRip.Xvid.AC3-NDRT.CD1.smi-original-euckr
+-rw-r--r--. 1 yos yos 699M 2020년  6월 17일 80일간의세계일주.Around.The.World.In.Eighty.Days.1956.DVDRip.Xvid.AC3-NDRT.CD2.avi
+-rw-r--r--  1 yos yos  66K 2022년  4월 16일 80일간의세계일주.Around.The.World.In.Eighty.Days.1956.DVDRip.Xvid.AC3-NDRT.CD2.smi
+-rw-r--r--. 1 yos yos  59K 2020년  6월 17일 80일간의세계일주.Around.The.World.In.Eighty.Days.1956.DVDRip.Xvid.AC3-NDRT.CD2.smi-original-euckr
+-rw-r--r--. 1 yos yos 698M 2020년  6월 17일 80일간의세계일주.Around.The.World.In.Eighty.Days.1956.DVDRip.Xvid.AC3-NDRT.CD3.avi
+-rw-r--r--  1 yos yos  60K 2022년  4월 16일 80일간의세계일주.Around.The.World.In.Eighty.Days.1956.DVDRip.Xvid.AC3-NDRT.CD3.smi
+-rw-r--r--. 1 yos yos  54K 2020년  6월 17일 80일간의세계일주.Around.The.World.In.Eighty.Days.1956.DVDRip.Xvid.AC3-NDRT.CD3.smi-original-euckr
+-rw-r--r--  1 yos yos  52M 12월 25일  11:43 80일간의세계일주1956-1.mp3
+-rw-r--r--  1 yos yos  52M 12월 25일  11:47 80일간의세계일주1956-2.mp3
+-rw-r--r--  1 yos yos  64M 12월 25일  11:49 80일간의세계일주1956-3.mp3
+-rw-r--r--  1 yos yos    0  5월 14일  21:30 <SYNC Start="1556926"
+-rw-r--r--  1 yos yos    0  5월 14일  23:54 <SYNC Start=1556926
+-rw-r--r--  1 yos yos  179  5월 14일  21:32 a-read.sh
+-rw-r--r--  1 yos yos  536 12월 25일  11:49 memo-vlc-for-movie-mp3-221225.txt
+
+black-블랙호크다운:
+합계 4.4G
+-rw-r--r-- 1 yos yos 4.4G 2022년 10월  3일 Black.Hawk.Down.2001.720p.BluRay.x264-BKL.mkv
+-rw-r--r-- 1 yos yos 128K 2022년 10월  3일 Black.Hawk.Down.2001.720p.BluRay.x264-BKL.smi
+-rw-r--r-- 1 yos yos 117K 2022년 10월  3일 Black.Hawk.Down.2001.720p.BluRay.x264-BKL.smi-original-euckr
+
+jok-조커:
+합계 4.3G
+-rwxrwx--- 1 yos vboxsf 4.3G 2022년  9월 28일 jok-조커.mkv
+
+mid-미드웨이.1976:
+합계 1.4G
+-rw-r--r-- 1 yos yos 685M 2022년 10월  3일 Midway.1976.DVDRip.XviD.CD1-neunggum.avi
+-rw-r--r-- 1 yos yos  69K 2022년 10월  3일 Midway.1976.DVDRip.XviD.CD1-neunggum.smi
+-rw-r--r-- 1 yos yos 686M 2022년 10월  3일 Midway.1976.DVDRip.XviD.CD2-neunggum.avi
+-rw-r--r-- 1 yos yos  49K 2022년 10월  3일 Midway.1976.DVDRip.XviD.CD2-neunggum.smi
+
+wa_와호장룡(2000)_3:
+합계 2.1G
+-rw-r--r-- 1 yos yos 701M  2월  9일  18:27 Wo.hu.cang.long.2000.SC.DVDrip.XviD.DTS.CD1-WAF.avi
+-rw-r--r-- 1 yos yos  41K  2월  9일  18:24 Wo.hu.cang.long.2000.SC.DVDrip.XviD.DTS.CD1-WAF.smi
+-rw-r--r-- 1 yos yos 700M  2월  9일  18:27 Wo.hu.cang.long.2000.SC.DVDrip.XviD.DTS.CD2-WAF.avi
+-rw-r--r-- 1 yos yos  37K  2월  9일  18:24 Wo.hu.cang.long.2000.SC.DVDrip.XviD.DTS.CD2-WAF.smi
+-rw-r--r-- 1 yos yos 701M  2월  9일  18:27 Wo.hu.cang.long.2000.SC.DVDrip.XviD.DTS.CD3-WAF.avi
+-rw-r--r-- 1 yos yos  27K  2월  9일  18:27 Wo.hu.cang.long.2000.SC.DVDrip.XviD.DTS.CD3-WAF.smi
+
+네고시에이터.1998:
+합계 0
+drwxrwxrwx 1 yos yos 480 2022년  8월 15일 The.Negotiator.1998.720p.BRRip.x264-x0r
+drwxrwxrwx 1 yos yos 570 2022년  8월 15일 네고시에이터.The.Negotiator.1998.BRRip.H264.AAC.5.1ch Gopo
+
+네고시에이터.1998/The.Negotiator.1998.720p.BRRip.x264-x0r:
+합계 2.4G
+-rwxrwxrwx 1 yos yos 2.4G 2014년 12월 10일 The.Negotiator.1998.720p.BRRip.x264-x0r.mkv
+-rwxrwxrwx 1 yos yos   95 2014년 12월 10일 The.Negotiator.1998.720p.BRRip.x264-x0r.nfo
+-rw-r--r-- 1 yos yos 207K 2022년  8월 15일 The.Negotiator.1998.720p.BRRip.x264-x0r.smi
+-rwxrwxrwx 1 yos yos 190K 2014년 12월 10일 The.Negotiator.1998.720p.BRRip.x264-x0r.smi-original-euckr
+-rwxrwxrwx 1 yos yos  352 2014년 12월 10일 Torrent-Downloaded-From-ExtraTorrent.cc.txt
+-rwxrwxrwx 1 yos yos 8.6K 2014년 12월 10일 readme.txt
+
+네고시에이터.1998/네고시에이터.The.Negotiator.1998.BRRip.H264.AAC.5.1ch Gopo:
+합계 2.3G
+-rwxrwxrwx 1 yos yos 2.3G 2014년 12월 16일 The.Negotiator.1998.BRRip.H264.AAC.5.1ch.Gopo.mp4
+-rw-r--r-- 1 yos yos 207K 2022년  8월 15일 The.Negotiator.1998.BRRip.H264.AAC.5.1ch.Gopo.smi
+-rwxrwxrwx 1 yos yos 190K 2014년 12월 16일 The.Negotiator.1998.BRRip.H264.AAC.5.1ch.Gopo.smi-original-euckr
+-rwxrwxrwx 1 yos yos 129K 2014년 12월 16일 The.Negotiator.1998.BRRip.H264.AAC.5.1ch.Gopo.srt
+-rwxrwxrwx 1 yos yos 207K 2018년  5월 20일 negotiator.1998.smi
+-rwxrwxrwx 1 yos yos 207K 2018년  7월  7일 utf-8-The.Negotiator.1998.BRRip.H264.AAC.5.1ch.Gopo.smi
+
+단편대작-Tears_of_Steel-2012:
+합계 974M
+-rw-r--r-- 1 yos yos 974M  3월 19일  19:50 Tears of Steel 2012 Blu-ray 1080p DTS multisub-HighCode.mkv
+-rw-r--r-- 1 yos yos 8.3K  3월 19일  19:49 Tears of Steel 2012 Blu-ray 1080p DTS multisub-HighCode.smi
+
+애수-비비안_리-로버트_테일러-1940:
+합계 1.1G
+-rw-r--r-- 1 yos yos 177K  3월 19일  19:45 1353407200.jpg
+-rw-r--r-- 1 yos yos  43K  3월 19일  19:45 45e23_1353407200.jpg
+-rw-r--r-- 1 yos yos 1.1G  3월 19일  19:47 Waterloo.Bridge.1940.x264.tRuAVC.mkv
+-rw-r--r-- 1 yos yos 153K  3월 19일  19:45 Waterloo.Bridge.1940.x264.tRuAVC.smi
+-rw-r--r-- 1 yos yos  71K  3월 19일  19:45 movie_image.jpg
+-rw-r--r-- 1 yos yos  26K  3월 19일  19:45 movie_image1.jpg
+
+에일리언2:
+합계 2.5G
+-rw-r--r--. 1 yos yos 2.5G 2011년  9월 28일 Alien 2 Special Edition 1986 720p BDRip x264-HDLiTE.mp4
+-rw-r--r--  1 yos yos 188K 2022년  5월  5일 Alien 2 Special Edition 1986 720p BDRip x264-HDLiTE.smi
+-rw-r--r--. 1 yos yos 171K 2011년  9월 28일 Alien 2 Special Edition 1986 720p BDRip x264-HDLiTE.smi-original-euckr
+
+여인의향기-1992:
+합계 2.1G
+-rwxr-xr-x 1 yos yos 701M  2월 26일  16:56 Scent.Of.A.Woman.1992.DVDrip.AC3.2CH.CD1-WAF.avi
+-rwxr-xr-x 1 yos yos  72K  2월 26일  16:54 Scent.Of.A.Woman.1992.DVDrip.AC3.2CH.CD1-WAF.smi
+-rwxr-xr-x 1 yos yos 701M  2월 26일  16:57 Scent.Of.A.Woman.1992.DVDrip.AC3.2CH.CD2-WAF.avi
+-rwxr-xr-x 1 yos yos  69K  2월 26일  16:54 Scent.Of.A.Woman.1992.DVDrip.AC3.2CH.CD2-WAF.smi
+-rwxr-xr-x 1 yos yos 701M  2월 26일  16:57 Scent.Of.A.Woman.1992.DVDrip.AC3.2CH.CD3-WAF.avi
+-rwxr-xr-x 1 yos yos  57K  2월 26일  16:54 Scent.Of.A.Woman.1992.DVDrip.AC3.2CH.CD3-WAF.smi
+-rwxr-xr-x 1 yos yos  88K  2월 26일  16:56 U4cb5_1376715264.jpg
+
+오블리비언 톰 쿠르즈:
+합계 2.9G
+-rwxrwxrwx 1 yos yos  96K 2019년  5월  5일 Oblivion.2013.1080p.BluRay.x264-utf8.smi
+-rwxrwxrwx 1 yos yos 2.9G 2017년  1월 21일 Oblivion.2013.1080p.BluRay.x264.mp4
+-rw-r--r-- 1 yos yos  96K 2022년  8월 15일 Oblivion.2013.1080p.BluRay.x264.smi
+-rwxrwxrwx 1 yos yos  89K 2017년  1월 21일 Oblivion.2013.1080p.BluRay.x264.smi-original-euckr
+-rwxrwxrwx 1 yos yos 3.5K 2017년  1월 22일 Thumbs.db
+
+이상한_나라의_앨리스-2010:
+합계 1.5G
+-rw-r--r-- 1 yos yos 1.5G  3월 19일  19:36 A.2010.480p.BRRip.XviD.AC3-ViSiON.avi
+-rw-r--r-- 1 yos yos  96K  3월 19일  19:34 A.2010.480p.BRRip.XviD.AC3-ViSiON.smi
+
+전쟁의_시작:
+합계 3.0G
+-rw-r--r-- 1 yos yos 3.0G 2022년 10월  3일 dmymydm546.mkv
+
+쥬라기월드 - 도미니언 (확장판):
+합계 2.6G
+-rw-r--r-- 1 yos yos 2.6G  4월 27일  18:55 Jurassic.World.3.Dominion.2022.EXTENDED.1080p.BluRay.x265-RARBG.mp4
+-rw-r--r-- 1 yos yos 192K  4월 27일  18:51 Jurassic.World.3.Dominion.2022.EXTENDED.1080p.BluRay.x265-RARBG.smi
+
+코드_네임_쉐도우-잭라이언.캐빈코스트너:
+합계 8.8G
+-rwxr-xr-x 1 yos yos 4.4G  2월 26일  14:48 코드_내임_쉐도우.mkv
+-rwxr-xr-x 1 yos yos 141K  2월 26일  14:39 코드_내임_쉐도우.smi
+-rwxr-xr-x 1 yos yos 4.4G  2월 26일  14:48 코드_네임_쉐도우.mkv
+-rwxr-xr-x 1 yos yos 141K  2월 26일  14:39 코드_네임_쉐도우.smi
+
+터미네이터2.2013-11.감독판:
+합계 2.3G
+-rw-r--r--. 1 yos yos 2.3G 2019년  6월  6일 Terminator 2 [1991 Bluray 720p DTS x264 AAC 6ch] Judgment Day.mp4
+-rw-r--r--. 1 yos yos 199K 2021년  1월 31일 Terminator 2 [1991 Bluray 720p DTS x264 AAC 6ch] Judgment Day.smi
+-rw-r--r--. 1 yos yos 189K 2019년  6월  6일 Terminator 2 [1991 Bluray 720p DTS x264 AAC 6ch] Judgment Day.smi-original-euckr
+-rw-r--r--. 1 yos yos 199K 2019년  6월  7일 utf8-Terminator 2 [1991 Bluray 720p DTS x264 AAC 6ch] Judgment Day.SMI
