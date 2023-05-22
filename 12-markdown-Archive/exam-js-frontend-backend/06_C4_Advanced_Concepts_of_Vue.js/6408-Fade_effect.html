@@ -1,0 +1,62 @@
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <script src="https://unpkg.com/vue@next"></script>
+
+    <style type="text/css">
+      .fade-leave-from {
+        opacity: 1;
+        background-color:#FFCCCC;
+      }
+      .fade-leave-to {
+        opacity: 0;
+        background-color:black;
+      }
+      .fade-leave-active {
+        transition: all 2s;
+      }
+
+      .fade-enter-from {
+        opacity: 0;
+        background-color:#FFCCCC;
+      }
+      .fade-enter-to {
+        opacity: 1;
+        background-color:black;
+      }
+      .fade-enter-active {
+        transition: opacity 2s, background-color 2s;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="app"></div>
+    <div>--- (6408_F-Fade_effect.html) ---</div>
+  </body>
+
+  <script>
+
+    var app = Vue.createApp({
+      data() {
+        return {
+          show: true
+        }
+      },
+      template : `
+      ---> (6408_F-Fade.html) --->
+        <button @click="show=!show">Produce the
+        effect</button>
+        <transition name="fade">
+          <p v-if="show">
+            Paragraph 1
+          </p>
+        </transition>
+      <--- (6408_F-) <---
+      `,
+    });
+
+    var vm = app.mount("div#app");
+
+  </script>
+
+</html>

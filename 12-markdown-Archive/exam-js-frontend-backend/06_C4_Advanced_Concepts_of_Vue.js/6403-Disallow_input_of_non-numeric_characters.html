@@ -1,0 +1,26 @@
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <script src="https://unpkg.com/vue@next"></script>
+  </head>
+  <body>
+    <div id="app"></div>
+    <div>--- (6403_F-Disallow_input_of_non-numeric_characters.html) ---</div>
+  </body>
+
+  <script type="module">
+
+    import Counter from "./6403-Disallow_input_of_non-numeric_characters.js";
+
+    var app = Vue.createApp({
+      components : {
+        Counter:Counter
+      },
+      template : "<counter start='10' />"
+    });
+
+    var vm = app.mount("div#app");
+
+  </script>
+
+</html>

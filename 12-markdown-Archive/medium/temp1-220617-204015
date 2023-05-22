@@ -1,0 +1,87 @@
+Thiago Evoá Sep 15, 2021 Creating an end-to-end project, from Node.js backend to Flutter app.
+2021 년 9 월 15 일 Thiago Evoá Node.js Backend에서 Flutter App에 이르기까지 엔드 투 엔드 프로젝트 생성.
+
+https://thiagoevoa.medium.com/creating-an-end-to-end-project-from-node-js-backend-to-flutter-app-a8df8ffdde5b
+https://thiagoevoa.medium.com/creating-an-end-to-end-project-from-backend-backend-to-flutter-app-p8ffdde5b
+
+
+
+
+Hello dev, sometimes I read some posts in different social media groups asking if is possible to use a [Flutter](https://flutter.dev/) project with any other technology as back-end besides [Firebase](https://firebase.google.com/), and I still get surprised because as far as I know, a front-end or an app does not depend from a single back-end technology.
+Hello Dev, 때로는 다른 소셜 미디어 그룹의 일부 게시물을 읽었습니다./Firebase.google.com/), 그리고 내가 아는 한, 프론트 엔드 또는 앱이 단일 백엔드 기술에 의존하지 않기 때문에 여전히 놀랐습니다.
+
+
+
+
+So, because of that I’ll create two different projects using these two technologies mentioned on the title, and connect each other via HTTP protocol. And just to clarify I wont implement a difficult project, instead I’ll show the concept that you can pretty much use and adapt to your project.
+따라서 제목에 언급 된이 두 기술을 사용하여 두 가지 다른 프로젝트를 만들고 HTTP 프로토콜을 통해 서로 연결합니다.그리고 어려운 프로젝트를 구현하지 않을 것이라는 점을 명확히하기 위해 프로젝트에 거의 사용하고 적응할 수 있다는 개념을 보여 드리겠습니다.
+
+
+
+
+# Node.js Back-end server
+# node.js 백엔드 서버
+
+
+
+
+As a back-end we could use any other technology as I mentioned above, however I’ll use [Node.js](https://nodejs.org/en/) because I know a little about it and it’s easy to setup the environment and implement the solution.
+위에서 언급 한 바와 같이 다른 기술을 사용할 수는 있지만 [node.js] (https://nodejs.org/en/)를 조금 알고 설정하기 쉽기 때문에 [node.js] (https://nodejs.org/en/)를 사용할 수 있습니다.환경과 솔루션을 구현합니다.
+
+
+
+
+In my case I’m using a MacOS so I’ll install the Node.js using Homebrew, and if you are using Linux you can do the same, but if you are using Windows take a look how to install using Chocolatey. And one more thing, download the vsCode to help writing the code and make sure to install these plugging marked as red in the image bellow.
+내 경우에는 MacOS를 사용하여 Homebrew를 사용하여 Node.js를 설치하고 Linux를 사용하는 경우 동일한 작업을 수행 할 수 있지만 Windows를 사용하는 경우 Chocolatey를 사용하여 설치하는 방법을 살펴보십시오.한 가지 더, VSCODE를 다운로드하여 코드 작성에 도움이되고 이미지 벨로우즈에 빨간색으로 표시된 플러그를 설치하십시오.
+
+
+
+
+![ Figure.11 to install these plugging marked as red ](/medium/2109/nodejs_flutter/figure.11_to_install_these_plugging_marked_as_red.png)
+! [그림 .11은 빨간색으로 표시된이 플러그를 설치하려면] (/medium/2109/nodejs_flutter/figh.11_to_install_these_these_plugging_marked_as_red.png)
+
+
+
+
+After setup the development environment, open the terminal and create a folder with you project name, in my case I called it as “test_http”, and to do that I just run the command “mkdir test_http”.
+개발 환경을 설정 한 후 터미널을 열고 프로젝트 이름으로 폴더를 만들었습니다. 제 경우에는 "test_http"라고 불렀으며, 그렇게하기 위해 "mkdir test_http"명령을 실행하십시오.
+
+
+
+
+Then go inside this folder using the command “cd test_http”, and run the command “npm init -y” to create the Node.js project, and then open the project in the vsCode, and now you probably have something like this.
+그런 다음 "CD Test_http"명령을 사용 하여이 폴더 내부로 이동하여 "NPM init -y"명령을 실행하여 Node.js 프로젝트를 작성한 다음 VSCODE에서 프로젝트를 열면 이제 이와 같은 정보가있을 수 있습니다.
+
+
+
+
+![ Figure.12 Node.js project creation ](/medium/2109/nodejs_flutter/figure.12_node.js_project_creation.png)
+!!
+
+
+
+
+To give a quickly explanation, this package.json file is responsible for to have all the meta-data project configuration and also manage the dependencies that we may need to install.
+신속하게 설명하기 위해이 package.json 파일은 모든 메타 데이터 프로젝트 구성을 갖고 설치해야 할 종속성을 관리해야합니다.
+
+
+
+
+And talking about dependencies, let’s install the one that’s going to help create the back-end server. So to do that, on the vsCode open the terminal and run the command “npm install express”, and then change the “script” property like the image bellow, because this “script” property is responsible for executing the project.
+그리고 종속성에 대해 이야기하면 백엔드 서버를 만드는 데 도움이되는 것을 설치합시다.따라서 VSCODE에서 터미널을 열고 "NPM Install Express"명령을 실행 한 다음이 "스크립트"속성이 프로젝트 실행을 담당하기 때문에 이미지 Bellow와 같은 "스크립트"속성을 변경하십시오.
+
+
+
+
+![ Figure.13 package.json ](/medium/2109/nodejs_flutter/figure.13_package.json.png)
+! [그림 .13 package.json] (/medium/2109/nodejs_flutter/fighn.13_package.json.png)
+
+s
+에스
+
+Now is time to code, and as you can see I created the “server.js” file, and you should to the same, and copy this code like the image bellow.
+이제 코딩 할 시간이며 보시다시피 "Server.js"파일을 만들었고 동일하게 사용하고 이미지 벨로우즈처럼이 코드를 복사해야합니다.
+
+
+
+

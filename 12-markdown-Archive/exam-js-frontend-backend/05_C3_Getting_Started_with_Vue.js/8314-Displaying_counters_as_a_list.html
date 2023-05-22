@@ -1,0 +1,26 @@
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <script src="https://unpkg.com/vue@next"></script>
+  </head>
+  <body>
+    <div id="app"></div>
+    <div>--- 8314_F---Displaying_counters_as_a_list.html ---</div>
+  </body>
+
+  <script type="module">
+
+    import Counter from "./8314-Displaying_counters_as_a_list.js";
+
+    var app = Vue.createApp({
+      components : {
+        Counter:Counter
+      },
+      template : "<counter start='10' />"
+    });
+
+    var vm = app.mount("div#app");
+
+  </script>
+
+</html>
