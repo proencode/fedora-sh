@@ -15,10 +15,10 @@ cmdCont () {
 	read a ; echo "${cUp}"; echo "$1" | sh
 	echo "${cGreen}<---- ${cBlue}$1 ${cGreen}Enter to continue${cReset}: ${cGreen}#-- $2${cReset}"
 }
-allYn="n"
+ALL_INSTALL="n"
 cmdYenter () {
 	echo "${cCyan}----> ${cYellow}$1 ${cGreen}#-- ${cCyan}$2${cReset}"
-	if [ "x${allYn}" = "xy" ]; then
+	if [ "x${ALL_INSTALL}" = "xy" ]; then
 		echo "$1" | sh ; echo "${cGreen}<---- ${cBlue}$1 ${cMagenta}#-- $2${cReset}"
 	else
 		echo "${cCyan}----> ${cRed}press ${cCyan}'${cYellow}y${cCyan}'${cRed} or Enter${cReset}:"; read a; echo "${cUp}"
