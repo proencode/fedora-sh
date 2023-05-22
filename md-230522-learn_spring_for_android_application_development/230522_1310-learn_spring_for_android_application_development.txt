@@ -1,4 +1,7 @@
-aLearn Spring for Android Application Development
+
+link: https://subscription.packtpub.com/book/programming/9781789349252/pref/preflvl1sec05/get-in-touch
+
+title: Learn Spring for Android Application Development
 5 (1 reviews total)
 By S. M. Mohi Us Sunnat, Igor Kucherenko
 $38.99
