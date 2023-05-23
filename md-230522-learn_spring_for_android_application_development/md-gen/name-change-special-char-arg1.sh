@@ -13,13 +13,12 @@ cut_some_char () {
 	new_name=$(echo ${str_02} | sed 's/(/./g' | sed 's/)/./g' | sed 's/;/./g' | sed 's/</./g' | sed 's/>/./g' | sed 's/\[/./g' | sed 's/\]/./g' | sed 's/\//./g' | sed 's/+/./g')
 }
 
-cmdRun "ls -l" "수정 전"
-find ./ -type f | while read file_name
-do
-	if [ "${file_name:(-4)}" = ".pdf" ]; then
-		original_file_name=${file_name:2} #-- 'find ./' 했으므로 '쩜' 과 '슬레시' 두 글자를 뺀다.
-		cut_some_char
-		cmdRun "mv '${original_file_name}' $(date +'%y%m%d_%H%M')-${new_name}" "이름에서 특수문자를 바꾸고 앞에 변경일시를 붙입니다."
-	fi
-done
-cmdRun "ls -l" "수정 후"
+if [ "x$1" = "x" ]; then
+	echo "----> $0 file_name 을 지정해야 합니다."
+else
+	cmdRun "ls -l" "수정 전"
+	original_file_name="$1"
+	cut_some_char
+	cmdRun "mv '${original_file_name}' ${new_name}" "이름에서 특수문자를 바꾸고 앞에 변경일시를 붙입니다."
+	cmdRun "ls -l" "수정 후"
+fi

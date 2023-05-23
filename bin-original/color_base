@@ -61,4 +61,16 @@ ding_play () {
 # ding_play 1 #-- 1=딩~ 2=캐스터네츠~ 3=뗅- 4=띠일~ 5=데에엥~~ 6=교회 뎅-
 # $PLAY_OK="ok" #-- 인 경우만 사용할수 있다.
 
-#-- source ${HOME}/bin/color_base #-- 230514일 1423 CMD_DIR CMD_NAME cmdRun cmdCont cmdYenter echoSeq cmdTTbegin cmdTTend ding_play
+change_special_char () {
+	#-- " str_01 " == 빈칸을 밑줄로.
+	local str_01=$(echo ${original_file_name} | sed 's/ /_/g')
+	#-- " str_02 " == 대문자를 소문자로.
+	# https://varie.tistory.com/entry/Bash%EC%89%98%EC%97%90%EC%84%9C-%ED%8C%8C%EC%9D%BC%EB%AA%85-%EC%9D%BC%EA%B4%84-%EB%8C%80%EC%86%8C%EB%AC%B8%EC%9E%90-%EB%B3%80%ED%99%98
+	local str_02=$(echo ${str_01,,})
+	#-- 소문자를 대문자로 바꿀때는: str_02=$(echo ${str_01^^})
+	#-- bash3.x 인 경우: str_02=$(echo ${str_01} | tr '[A-Z]' '[a-z]')
+	#-- "str_03 " == 특수문자 삭제하거나 변경
+	new_name=$(echo ${str_02} | sed 's/(/./g' | sed 's/)/./g' | sed 's/;/./g' | sed 's/</./g' | sed 's/>/./g' | sed 's/\[/./g' | sed 's/\]/./g' | sed 's/\//./g' | sed 's/+/./g' | sed 's/,/./g')
+}
+
+#-- source ${HOME}/bin/color_base #-- 230524수 0828 CMD_DIR CMD_NAME cmdRun cmdCont cmdYenter echoSeq cmdTTbegin cmdTTend ding_play change_special_char () <== original_file_name ==> new_name
