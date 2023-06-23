@@ -38,10 +38,10 @@ seqno="(1-3)"
 cat <<__EOF__
 
 ${cRed}${seqno} ${cCyan}/etc/httpd/conf/httpd.conf 구성 파일을 열고 서버 이름을 다음과 같이 지정합니다.${cGreen}
-ServerName ysjn.duckdns.org:2080${cYellow}
-           ################ ####
-           |||||||||||||||| ++++---- 포트번호 (2080).
-	   ++++++++++++++++--------- 서버의 이름을 지정 (ysjn.duckdns.org)${cGreen}
+ServerName wpress.vbox.jj:80${cYellow}
+           ############## ##
+           |||||||||||||| ++---- 포트번호 (80).
+	   ++++++++++++++------- 서버의 이름을 지정 (wpress.vbox.jj)${cGreen}
 ...
 <Directory "/var/www/html">
     ...
@@ -146,11 +146,11 @@ ${cRed}${seqno} ${cCyan}IP 와 서버 이름을 지정합니다.${cGreen}
 127.0.0.1   localhost localhost.localdomain localhost4 localhost4.localdomain4
 ::1         localhost localhost.localdomain localhost6 localhost6.localdomain6
 
-192.168.219.101  ysjn.duckdns.org${cYellow}
-                 ################
-		 ++++++++++++++++---- TLS 암호화를 하기위해 필요한 IP 와 서버이름${cCyan}
+192.168.219.101  wpress.vbox.jj${cYellow}
+                 ##############
+		 ++++++++++++++---- TLS 암호화를 하기위해 필요한 IP 와 서버이름${cCyan}
 
-이제 웹 브라우저를 열고 주소 표시줄에 http://ysjn.duckdns.org 또는 localhost 을 입력하십시오.
+이제 웹 브라우저를 열고 주소 표시줄에 http://wpress.vbox.jj 또는 localhost 을 입력하십시오.
 ${cReset}
 __EOF__
 
