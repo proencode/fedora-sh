@@ -36,10 +36,10 @@ cat <<__EOF__
 ${cRed}(1-3) ${cCyan}/etc/httpd/conf/httpd.conf 구성 파일을 열고 서버 이름을 다음과 같이 지정합니다.${cReset}
 
 ...
-ServerName proen.duckdns.org:2080${cYellow}
+ServerName myirm.duckdns.org:2080${cYellow}
            ################# ####
            ||||||||||||||||| ++++---- 포트번호 (2080).
-	   +++++++++++++++++--------- 서버의 이름을 지정 (proen.duckdns.org)${cReset}
+	   +++++++++++++++++--------- 서버의 이름을 지정 (myirm.duckdns.org)${cReset}
 ...
 <Directory "/var/www/html">
     ...
@@ -52,7 +52,9 @@ ${cCyan}----> ${cRed}(1-3) ${cCyan}press Enter:${cReset}
 __EOF__
 read a
 
-cmdYenter "sudo vi /etc/httpd/conf/httpd.conf" "(1-3) 위 설명과 같이 서버의 이름을  직접  지정합니다."
+cmdRun "grep ServerName /etc/httpd/conf/httpd.conf" "(1-3) 기존의 ServerName 을 확인합니다."
+cmdYenter "sudo vi /etc/httpd/conf/httpd.conf ; reset" "(1-3) 위 설명과 같이 서버의 이름을  직접  지정합니다."
+cmdRun "grep ServerName /etc/httpd/conf/httpd.conf" "(1-3) 바뀐 ServerName 을 확인합니다."
 
 cat <<__EOF__
 
@@ -90,7 +92,7 @@ dhcpv6-client http mdns samba-client ssh
 
 __EOF__
 
-cmdRun "sudo systemctl enable --now httpd" "(1-7) httpd 서비스를 활성화하고 시작합니다."
+cmdYenter "sudo systemctl enable --now httpd" "(1-7) httpd 서비스를 활성화하고 시작합니다."
 
 cat <<__EOF__
 
@@ -101,7 +103,7 @@ ${cReset}
 __EOF__
 
 
-cmdCont "ifconfig | grep -B1 netm" "(1-8) 다음 명령으로 현재의 ip 를 확인합니다."
+cmdRun "ifconfig | grep -B1 mask" "(1-8) 다음 명령으로 현재의 ip 를 확인합니다."
 
 cat <<__EOF__
 
@@ -126,17 +128,17 @@ ${cRed}(1-9) ${cCyan}IP 와 서버 이름을 지정합니다.${cReset}
 127.0.0.1   localhost localhost.localdomain localhost4 localhost4.localdomain4
 ::1         localhost localhost.localdomain localhost6 localhost6.localdomain6
 
-192.168.219.101  proen.duckdns.org${cYellow}
+192.168.219.101  myirm.duckdns.org${cYellow}
                  #################
 		 +++++++++++++++++---- TLS 암호화를 하기위해 필요한 IP 와 서버이름${cCyan}
 
-이제 웹 브라우저를 열고 주소 표시줄에 http://proen.duckdns.org 또는 localhost 을 입력하십시오.
+이제 웹 브라우저를 열고 주소 표시줄에 http://myirm.duckdns.org 또는 localhost 을 입력하십시오.
 
 ${cCyan}----> ${cRed}(1-9) ${cCyan}press Enter:${cReset}
 __EOF__
 read a
 
-cmdCont "sudo vi /etc/hosts" "(1-9) httpd 서버의 IP 주소 지정."
+cmdCont "sudo vi /etc/hosts ; reset" "(1-9) httpd 서버의 IP 주소 지정."
 cmdCont "sudo cat /etc/hosts" "(1-10) 확인"
 
 
