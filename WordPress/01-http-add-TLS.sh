@@ -17,7 +17,7 @@ cat <<__EOF__
 ${seqno} 먼저 mod_ssl 모듈을 설치해야 합니다. 이 모듈은 SSL(Secure Sockets Layer) 및 TLS(Transport Layer Security) 프로토콜을 통해 Apache HTTP 서버에 강력한 암호화를 제공합니다.
 
 __EOF__
-cmdCont "sudo dnf install mod_ssl" "${seqno}"
+cmdCont "sudo dnf install -y mod_ssl" "${seqno}"
 
 seqno="(2-2)"
 cat <<__EOF__
@@ -25,7 +25,7 @@ cat <<__EOF__
 ${seqno} 그런 다음 openssl 명령줄 도구를 사용하여 자체 서명된 TLS 인증서를 생성하여 HTTPS 연결을 활성화해야 합니다. 아래 명령을 사용하여 개인 키와 공개 인증서를 생성하십시오.
 
 __EOF__
-cmdCont "sudo dnf install openssl" "${seqno}"
+cmdCont "sudo dnf install -y openssl" "${seqno}"
 
 seqno="(2-3)"
 cat <<__EOF__
@@ -59,8 +59,11 @@ Common Name (eg, your name or your server's hostname) []:wpress.vbox.jj
 Email Address []:jjedu@outlook.kr
                  ################-- 이메일
 
+${seqno}
+sudo openssl req -x509 -newkey rsa:4096 -sha256 -days 365 -nodes -out /etc/pki/tls/certs/wpress.vbox.jj.crt -keyout /etc/pki/tls/private/wpress.vbox.jj.key
+
 __EOF__
-cmdCont "sudo openssl req -x509 -newkey rsa:4096 -sha256 -days 365 -nodes -out /etc/pki/tls/certs/wpress.vbox.jj.crt -keyout /etc/pki/tls/private/wpress.vbox.jj.key" "${seqno}"
+sudo openssl req -x509 -newkey rsa:4096 -sha256 -days 365 -nodes -out /etc/pki/tls/certs/wpress.vbox.jj.crt -keyout /etc/pki/tls/private/wpress.vbox.jj.key
 
 seqno="(2-4)"
 cat <<__EOF__
@@ -75,8 +78,11 @@ cat <<__EOF__
 
 ${seqno} /etc/httpd/conf.d/ssl.conf 파일을 열고 다음 줄을 편집/추가합니다.
 
+sudo vi /etc/httpd/conf.d/ssl.conf
+${cCyan}----> ${cRed}${seqno} ${cCyan}press Enter:${cReset}
 __EOF__
-cmdCont "sudo vim /etc/httpd/conf.d/ssl.conf" "${seqno}"
+read a
+sudo vi /etc/httpd/conf.d/ssl.conf
 
 seqno="(2-6)"
 cat <<__EOF__

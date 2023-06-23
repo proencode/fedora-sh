@@ -151,10 +151,13 @@ ${cRed}${seqno} ${cCyan}IP 와 서버 이름을 지정합니다.${cGreen}
 		 ++++++++++++++---- TLS 암호화를 하기위해 필요한 IP 와 서버이름${cCyan}
 
 이제 웹 브라우저를 열고 주소 표시줄에 http://wpress.vbox.jj 또는 localhost 을 입력하십시오.
-${cReset}
-__EOF__
 
-cmdCont "sudo vi /etc/hosts ; reset" "${seqno} httpd 서버의 IP 주소 지정."
+sudo vi /etc/hosts
+${cCyan}----> ${cRed}${seqno} ${cCyan}press Enter:${cReset}
+__EOF__
+read a
+sudo vi /etc/hosts
+
 cmdRun "sudo cat /etc/hosts" "${seqno} 확인${cGreen}"
 
 
