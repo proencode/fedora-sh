@@ -57,7 +57,8 @@ __EOF__
 update_start () {
 	cat <<__EOF__
 ${cYellow}
-/etc/dnf/dnf.conf ${cBlue}파일에 ${cCyan}#exclude=* # 샵 붙여서 업데이트 허가 ${cBlue}로 업데이트를 ${cYellow}허가${cBlue}해야 합니다.
+/etc/dnf/dnf.conf ${cBlue}파일에 다음과 같이 ${cYellow}업데이트를 허가 ${cBlue}해야 합니다.
+${cCyan}#exclude=* # 첫칸이 샵# 으로 시작하면 업데이트를 ${cYellow}허가, ${cBlue}첫칸에 샵# 이 없으면 업데이트 중지.
 
 ${cGreen}$(sudo cat /etc/dnf/dnf.conf)${cBlue}
 
@@ -66,12 +67,12 @@ __EOF__
 	read a
 
 	sudo vi /etc/dnf/dnf.conf
-	cmdRun "sudo grep "exclude=" /etc/dnf/dnf.conf" "프로그램 업데이트 중지 (exclude=*) 가 아니고, 허가 (# exclude=*) 해야 합니다."
+	cmdRun "sudo grep "exclude=" /etc/dnf/dnf.conf" "첫칸에 샵# 을 붙여서 업데이트를 허가 (# exclude=*) 해야 합니다."
 }
 update_stop () {
 	cat <<__EOF__
 ${cYellow}
-/etc/dnf/dnf.conf ${cBlue}파일에 ${cCyan}exclude=* # 샵을 떼어내서 업데이트 중지 ${cBlue}로 업데이트를 ${cMagenta}중지${cBlue}해야 합니다.
+/etc/dnf/dnf.conf ${cBlue}파일에 ${cCyan}exclude=*첫칸에 # 샵을 떼어내서 업데이트를 ${cMagenta}중지${cBlue}해야 합니다.
 
 ${cGreen}$(sudo cat /etc/dnf/dnf.conf)${cBlue}
 
@@ -80,7 +81,7 @@ __EOF__
 	read a
 
 	sudo vi /etc/dnf/dnf.conf
-	cmdRun "sudo grep "exclude=" /etc/dnf/dnf.conf" "프로그램 업데이트 중지 (exclude=*) 가 아니고, 허가 (# exclude=*) 해야 합니다."
+	cmdRun "sudo grep "exclude=" /etc/dnf/dnf.conf" "첫칸에 샵# 을 떼어내서 업데이트를 중지 (exclude=*) 해야 합니다."
 }
 
 # echo "${cCyan}----> ${cRed}
