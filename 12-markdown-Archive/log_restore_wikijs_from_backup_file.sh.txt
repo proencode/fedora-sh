@@ -1,0 +1,117 @@
+17:26:49토230701 yosj@vFed38 ~/git-projects/fedora-sh
+fedora-sh $ sh restore_wikijs_from_backup_file.sh ~/wiki_230630금-2110_pi4b.5yoil.sql.7z 
+>>>>>>>>>> restore_wikijs_from_backup_file.sh ||| docker-compose wiki.js 설치 >>>>>>>>>>
+#-
+#- 현재 운영중인 데이터베이스를 백업하려고 합니다.
+#- 만일 백업할 필요가 없다면 ' n ' 을 눌러 주세요.
+#-      ^^^^^^^^^^^^^^^^^^^^  ===
+#- ---->
+y
+[ y ]
+chown: warning: '.' should be ':': `yosj.yosj'
+#-- (1) 현재 운영중인 DB 를 백업하는 로컬 저장소 만듭니다.
+CONTAINER ID   IMAGE                COMMAND                   CREATED       STATUS                      PORTS      NAMES
+f6cf72175ed3   requarks/wiki:2      "docker-entrypoint.s…"   2 hours ago   Exited (0) 33 minutes ago              wikijs
+3f6510a2e2d3   postgres:11-alpine   "docker-entrypoint.s…"   2 hours ago   Up 2 hours                  5432/tcp   wikijsdb
+wikijs
+CONTAINER ID   IMAGE                COMMAND                   CREATED       STATUS                      PORTS      NAMES
+f6cf72175ed3   requarks/wiki:2      "docker-entrypoint.s…"   2 hours ago   Exited (0) 33 minutes ago              wikijs
+3f6510a2e2d3   postgres:11-alpine   "docker-entrypoint.s…"   2 hours ago   Up 2 hours                  5432/tcp   wikijsdb
+#-- (2) 백업을 위해 wiki.js 도커를 중단합니다.
+#-
+#-- (3) 지정한 백업파일을 DB 서버에 리스토어 하기전에, 현재 운영중인 DB 를 먼저 백업합니다.
+#-                                          ^^^^^^^^^^
+#- 백업시 --비밀번호-- 를 입력하세요.
+#- ---->
+
+7-Zip (a) [64] 16.02 : Copyright (c) 1999-2016 Igor Pavlov : 2016-05-21
+p7zip Version 16.02 (locale=ko_KR.UTF-8,Utf16=on,HugeFiles=on,64 bits,4 CPUs Intel(R) Core(TM) i5-9500 CPU @ 3.00GHz (906EA),ASM,AES-NI)
+
+Creating archive: /home/backup/wiki.js/last_backup/last-wikijs-230701_172720-vFed38.sql.7z
+
+Items to compress: 1
+
+
+Enter password (will not be echoed):
+Verify password (will not be echoed) :
+    
+Files read from disk: 1
+Archive size: 5186 bytes (6 KiB)
+Everything is Ok
+0.10user 0.03system 0:19.22elapsed 0%CPU (0avgtext+0avgdata 39936maxresident)k
+96inputs+16outputs (1major+9097minor)pagefaults 0swaps
+#-- (4) 현재 운영중인 DB 를 먼저 /home/backup/wiki.js/last_backup 에 백업합니다.
+#-- (5) 데이터베이스를 삭제합니다.
+#-- (6) 데이터베이스를 새로 만듭니다.
+#-
+#-- (7) 지정한 백업파일을 DB 서버에 리스토어 합니다.
+#-                                 ^^^^^^^^^^
+#- 백업시 --비밀번호-- 를 입력하세요.
+#- ---->
+
+SET (3)
+ERROR:  role "wikijs" already exists
+ALTER ROLE
+You are now connected to database "template1" as user "wikijs".
+SET (5)
+ set_config 
+------------
+ 
+(1 row)
+
+SET (4)
+You are now connected to database "postgres" as user "wikijs".
+SET (5)
+ set_config 
+------------
+ 
+(1 row)
+
+SET (9)
+ set_config 
+------------
+ 
+(1 row)
+
+SET (4)
+ERROR:  database "wiki" already exists
+ALTER DATABASE
+You are now connected to database "wiki" as user "wikijs".
+SET (5)
+ set_config 
+------------
+ 
+(1 row)
+
+SET (6)
+CREATE TABLE
+ALTER TABLE
+CREATE SEQUENCE
+ALTER TABLE
+ALTER SEQUENCE
+COMMENT
+COPY 15
+COPY 0
+COPY 573
+COPY 42
+COPY 573
+ setval 
+--------
+      1
+(1 row)
+ALTER TABLE
+CREATE INDEX
+
+real	0m30.128s
+user	0m2.686s
+sys	0m0.438s
+#-- (8) 백업파일을 DB 에 리스토어 합니다.
+wikijs
+CONTAINER ID   IMAGE                COMMAND                   CREATED       STATUS                  PORTS                                                 NAMES
+f6cf72175ed3   requarks/wiki:2      "docker-entrypoint.s…"   2 hours ago   Up Less than a second   3443/tcp, 0.0.0.0:5800->3000/tcp, :::5800->3000/tcp   wikijs
+3f6510a2e2d3   postgres:11-alpine   "docker-entrypoint.s…"   2 hours ago   Up 2 hours              5432/tcp                                              wikijsdb
+#-- (9) 중단했던 wiki.js 도커를 다시 시작합니다.
+<<<<<<<<<< restore_wikijs_from_backup_file.sh ||| docker-compose wiki.js 설치 <<<<<<<<<<
+17:28:12토230701 yosj@vFed38 ~/git-projects/fedora-sh
+fedora-sh $ 
+
