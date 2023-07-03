@@ -547,3 +547,60 @@ ${cRed}<<<<<<<<<<${cBlue} $0 ${cRed}||| ${cMagenta}${MEMO} ${cRed}<<<<<<<<<<${cR
 __EOF__
 ```
 
+## pgAdmin: PostgreSQL 도구 (https://www.pgadmin.org/)
+
+pgAdmin은 세계에서 가장 발전된 오픈 소스 데이터베이스인 PostgreSQL을 위한 가장 인기 있고 기능이 풍부한 오픈 소스 관리 및 개발 플랫폼입니다.
+pgAdmin은 Linux, Unix, macOS 및 Windows에서 PostgreSQL 및 EDB Advanced Server 10 이상을 관리하는 데 사용할 수 있습니다.
+
+다운로드: (https://www.pgadmin.org/download/)
+
+### RPM / Fedora 버전
+
+rpm: (https://www.pgadmin.org/download/pgadmin-4-rpm/)
+
+0. 이전의 pgAdmin 리포지토리 패키지가 있을경우, 삭제하려면.
+```
+sudo rpm -e pgadmin4-fedora-repo
+```
+
+1. 리포지토리 설정하기
+```
+sudo rpm -i https://ftp.postgresql.org/pub/pgadmin/pgadmin4/yum/pgadmin4-fedora-repo-2-1.noarch.rpm
+```
+
+2. pgAdmin 설치하기
+
+(2-1) 데스크톱 및 웹 모드 모두 설치하기.
+```
+sudo yum install pgadmin4
+```
+
+(2-2) 데스크톱 모드 전용으로 설치.
+```
+sudo yum install pgadmin4-desktop
+```
+
+(2-3) 웹 모드 전용으로 설치.
+```
+sudo yum install pgadmin4-web
+```
+
+(2-4) 이때 pgadmin4 또는 pgadmin4-web 을 설치한 경우.
+
+다음의 웹 설정 스크립트를 실행하여 웹 모드에서 실행되도록 시스템을 구성합니다.
+```
+sudo /usr/pgadmin4/bin/setup-web.sh
+```
+
+3. pgAdmin을 업그레이드하려면 다음 명령을 실행합니다.
+
+```
+sudo yum upgrade pgadmin4
+```
+
+### Windows 버전
+
+windows: (https://www.pgadmin.org/download/pgadmin-4-windows/)
+
+[ 2023년 3월 9일 릴리스 ](pgAdmin 4 v6.21)
+
