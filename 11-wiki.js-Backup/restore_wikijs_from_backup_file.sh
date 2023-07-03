@@ -1,7 +1,7 @@
 #!/bin/sh
 
 source ${HOME}/bin/color_base #-- 221027목-1257 CMD_DIR CMD_NAME cmdRun cmdCont cmdYenter echoSeq 
-MEMO="docker-compose wiki.js 설치"
+MEMO="백업파일을 wiki.js 데이터베이스로 리스토어 하기"
 cat <<__EOF__
 ${cMagenta}>>>>>>>>>>${cGreen} $0 ${cMagenta}||| ${cCyan}${MEMO} ${cMagenta}>>>>>>>>>>${cReset}
 __EOF__
@@ -44,7 +44,7 @@ ${cBlue}#-
 #-${cReset}
 __EOF__
 read a ; echo "[ $a ]"
-last_skip="db_backup_ok"
+last_skip="backup_ok"
 if [ "x$a" = 'xn' ]; then
 	cat <<__EOF__
 ${cBlue}#-
@@ -63,18 +63,20 @@ __EOF__
 fi
 # DB_NAME="wiki" #-- 백업할 데이터베이스 이름
 # LOGIN_PATH="wikipsql" #-- 데이터베이스 로그인 패쓰 ;;; pgsql 이라서 쓰지는 않음.
-LOCAL_FOLDER="/home/backup/wiki.js" #-- 백업파일을 일시적으로 저장하는 로컬 저장소의 디렉토리 이름
+# LOCAL_FOLDER="/home/backup/wiki.js" #-- 백업파일을 일시적으로 저장하는 로컬 저장소의 디렉토리 이름
 # REMOTE_FOLDER="wiki.js" #-- 원격 저장소의 첫번째 폴더 이름
 # RCLONE_NAME="yosgc" #-- rclone 이름 yosjeongc
 # DB_TYPE="pgsql"
-dir_for_backup=${LOCAL_FOLDER}/last_backup #-- 백업을 리스토어 하기전, 현재DB 백업하는 로컬 저장소
-if [ ! -f ${dir_for_backup} ]; then
+
+LOCAL_FOLDER="/home/backup/wiki.js" #-- 백업파일을 일시적으로 저장하는 로컬 저장소의 디렉토리 이름
+dir_for_backup=${LOCAL_FOLDER}/last_backup_b4_restore #-- 백업을 리스토어 하기전, 현재DB 백업하는 로컬 저장소
+if [ ! -d ${dir_for_backup} ]; then
 	cmdRun "sudo mkdir -p ${dir_for_backup} ; sudo chown ${USER}.${USER} ${dir_for_backup}" "#-- (1) 현재 운영중인 DB 를 백업하는 로컬 저장소 만듭니다."
 fi
 
 cmdRun "sudo docker ps -a ; sudo docker stop wikijs ; sudo docker ps -a" "#-- (2) 백업을 위해 wiki.js 도커를 중단합니다."
 
-if [ "x${last_skip}" = "xdb_backup_ok" ]; then
+if [ "x${last_skip}" = "xbackup_ok" ]; then
 	current_backup="last-wikijs-$(date +%y%m%d_%H%M%S)-$(uname -n).sql.7z"
 	cat <<__EOF__
 ${cBlue}#-
@@ -83,10 +85,11 @@ ${cBlue}#-
 #- 백업시 ${cYellow}비밀번호 ${cBlue}를 입력하세요.
 #-${cReset}
 __EOF__
-	cmdRun "sudo docker exec wikijsdb pg_dumpall -U wikijs | time 7za a -si ${dir_for_backup}/${current_backup} -p" "#-- (4) 현재 운영중인 DB 를 먼저 ${dir_for_backup} 에 백업합니다."
+	cmdRun "sudo docker exec wikijsdb pg_dumpall -U imwiki | time 7za a -si ${dir_for_backup}/${current_backup} -p" "#-- (4) 현재 운영중인 DB 를 먼저 ${dir_for_backup} 에 백업합니다."
 fi
-cmdRun "sudo docker exec -it wikijsdb dropdb -U wikijs wiki" "#-- (5) 데이터베이스를 삭제합니다."
-cmdRun "sudo docker exec -it wikijsdb createdb -U wikijs wiki" "#-- (6) 데이터베이스를 새로 만듭니다."
+#cmdRun "sudo docker exec -it wikijsdb dropdb -U imwiki wiki" "#-- (5) 데이터베이스를 삭제합니다."
+cmdRun "sudo docker exec  wikijsdb dropdb -U imwiki wiki" "#-- (5) 데이터베이스를 삭제합니다."
+cmdRun "sudo docker exec  wikijsdb createdb -U imwiki wiki" "#-- (6) 데이터베이스를 새로 만듭니다."
 cat <<__EOF__
 ${cBlue}#-
 #-- (7) 지정한 백업파일을 ${cRed}DB 서버에${cBlue} 리스토어 합니다.
@@ -94,7 +97,7 @@ ${cBlue}#-
 #- 백업시 ${cYellow}비밀번호 ${cBlue}를 입력하세요.
 #-${cReset}
 __EOF__
-cmdRun "time 7za x -so ${db_sql_7z} | sudo docker exec -i wikijsdb psql -U wikijs wiki" "#-- (8) 백업파일을 DB 에 리스토어 합니다."
+cmdRun "time 7za x -so ${db_sql_7z} | sudo docker exec -i wikijsdb psql -U imwiki wiki" "#-- (8) 백업파일을 DB 에 리스토어 합니다."
 cmdRun "sudo docker start wikijs ; sudo docker ps -a" "#-- (9) 중단했던 wiki.js 도커를 다시 시작합니다."
 
 
