@@ -1,24 +1,25 @@
-# 도커 설치
+# Wiki.js 설치
 
 1. 도커와 컨테이너는 무엇인가 https://m.blog.naver.com/complusblog/220980996544
 1. 가장 강력하고 확장 가능한 오픈소스 Wiki 소프트웨어 https://js.wiki
 
+![container 와 virtualmachine 비교](/yosj/container-virtualmachine.webp)
+
 ## Windows 에서 사용할 앱 설치
 
-### 백업용으로 쓸 USB 의 디렉토리 구조
+### 개발도구 등을 백업하는 USB 의 디렉토리 구조
 
-💽 USB (F:)
-┣━📂4winApp
-┃╌┣━📂4Git
-┃╌┃╌┣━📂usr
+💽 myUSB (F:)
+┣━📂4winApp (윈도우용 도구)
+┃╌┣━📁4Git (Git 을 위한 추가파일)
+┃╌┃╌┣━📁usr
 ┃╌┃╌┗━D2Coding 폰트
-┃╌┗━7z, android, gimp, Git, ideaIC, jdk, KeePass, postman, WinSCP,
-┣━📂vdi
-┃╌┣━7z2301-x64.exe
-┃╌┣━Git-2.41.0-64-bit.exe
+┃╌┣━4Git-usr-D2Coding, 7z, android, BraveBrowser, gimp, Git, ideaIC, jdk, 
+┃╌┣━KeePass, kotlin.7z, PhotoScape, Postman, WinSCP, wordpress,
+┃╌┗━
+┣━📂vdi (VirtualBox 설치를 위한 파일과 압축해 놓은 vdi 파일)
+┃╌┣━7z, Git, VC, VirtualBox,
 ┃╌┣━Users_VBox.푸른숲.pc18-C_다운로드_bada-230628-1649.7z.001
-┃╌┣━VC_redist.x64.exe
-┃╌┣━VirtualBox-7.0.8-156879-Win.exe
 ┃╌┣━yosjfedora38.03-keepass-b4-230628-1658.7z.001
 ┃╌┣━yosjfedora38.03-keepass-b4-230628-1658.7z.002
 ┃╌┣━yosjfedora38.03-keepass-b4-230628-1658.7z.tag
@@ -26,73 +27,79 @@
 
 ### 기본 도구
 
-1. `7zip` 압축 프로그램 ➡️ https://www.7-zip.org/ ➡️ Download  .exe  64-bit x64  1.5 MB
-1. `Git` 에서 `rsync` 명령을 쓰기 위해 추가하는 `usr` 폴더와, 가독성 높은 `D2Coding` 폰트 ➡️ [ 다운로드 ](/4winapp/4git-usr-d2coding.7z)
-1.  "윈도우를 위한 Git 패키지" 를 설치하는 실행파일 ➡️ https://git-scm.com/download/win ➡️ 64-bit Git for Windows Setup
-👉 `Git` 은 버전관리 시스템의 하나로 널리 쓰이는 프로그램이다.
-👉 `Git-Bash` 는 "윈도우를 위한 Git 패키지" 에 포함돼 있는 Bash 셀. Bash 셸은, 유닉스 시스템에서 쓰는 셸. 커맨드 라인에서 파일 관리, 프로그램 실행 등을 명령한다.
+7-zip, Git, WinSCP, KeePass, BraveBrowser,
+
+1. `7zip` 압축 프로그램 ➡️ https://www.7-zip.org/ ➡️ Download  .exe  64-bit x64  1.5 MB 🔑
+1.  "윈도우를 위한 Git 패키지" 를 설치하는 실행파일 ➡️ https://git-scm.com/download/win ➡️ 64-bit Git for Windows Setup 🔑
+📌 `Git` 은 버전관리 시스템의 하나로 널리 쓰이는 프로그램이다.
+📌 `Git-Bash` 는 "윈도우를 위한 Git 패키지" 에 포함돼 있는 Bash 셀. Bash 셸은, 유닉스 시스템에서 쓰는 셸. 커맨드 라인에서 파일 관리, 프로그램 실행 등을 명령한다.
+📌 `Git` 에서 `rsync` 명령을 쓰기 위해 추가하는 `usr` 폴더와, 가독성 높은 `D2Coding` 폰트 ➡️ [ 다운로드 ](/4winapp/4git-usr-d2coding.7z) 🔑
 1. BraveBrowserSetup-.exe 브라우저 https://try.bravesoftware.com/ ➡️ Download for free
-👉 Chrome에서 Brave로 전환해야 하는 이유 https://requestly.io/blog/switch-to-brave-from-chrome
-1. `WinSCP` 는 Windows 환경에서 `SFTP, FTP, SSH` 등의 프로토콜로 파일을 전송하는 클라이언트 프로그램이다 ➡️ https://winscp.net/eng/download.php ➡️ 아래쪽에서 (` DOWNLOAD WINSCP 6.1.1 (11 MB) `) 버튼을 클릭.
+📌 Chrome에서 Brave로 전환해야 하는 이유 https://requestly.io/blog/switch-to-brave-from-chrome
+1. `WinSCP` 는 Windows 환경에서 `SFTP, FTP, SSH` 등의 프로토콜로 파일을 전송하는 클라이언트 프로그램이다 ➡️ https://winscp.net/eng/download.php ➡️ 아래쪽에서 (` DOWNLOAD WINSCP 6.1.1 (11 MB) `) 🔑
+1. 비밀번호 관리 프로그램 KeePass https://keepass.info/download.html ➡️ Installer for Windows: Download Now 클릭 🔑
+
+### VirtualBox 도구
+
+VirtualBox, vc_redist.
+
+1. VirtualBox 7.0.8 다운로드 https://www.virtualbox.org/wiki/Downloads ➡️ https://download.virtualbox.org/virtualbox/7.0.8/VirtualBox-7.0.8-156879-Win.exe
+1. Windows 업데이트가 안되어 있어서 VirtualBox 설치할때 오류가 나는 경우 ➡️ Microsoft Visual C++ 재배포 가능 최신 지원 다운로드 아티클 2023. 04. 27. https://learn.microsoft.com/ko-kr/cpp/windows/latest-supported-vc-redist?view=msvc-170 ➡️ https://aka.ms/vs/17/release/vc_redist.x64.exe
 
 ### 개발 도구
 
-1. 자바 개발용 패키지 파일 https://www.oracle.com/java/technologies/javase/jdk17-archive-downloads.html ➡️ Windows x64 Installer ➡️ `jdk-17_windows-x64_bin.exe` 다운로드 및 실행
-2. 다음으로 `ideaIC` 를 설치하기 전 초기작업을 위해, `Git-bash` 띄우고, 다운로드 폴더 안에 `bada` 폴더를 만들고, 샘플 프로젝트를 다운받는다.
+jdk-17_windows, kotlin-ktor-rest-api, ideaIC, Postman, gimp, 
 
+1. 자바 개발용 패키지 파일 https://www.oracle.com/java/technologies/javase/jdk17-archive-downloads.html ➡️ Windows x64 Installer ➡️ `jdk-17_windows-x64_bin.exe` 🔑 다운로드해서 실행한다.
+2. `Git-bash` 를 실행해서, 다음과 같이 샘플 프로젝트를 다운받는다. 그리고 나서 해당 폴더를 압축해서 보관한다.
 ```
-cd ~/Downloads ; mkdir bada ; cd ~/Downloads/bada
 git clone https://github.com/selimatasoy/kotlin-ktor-rest-api.git
+7za a -mx=9 kotlin-ktor-rest-api.7z kotlin-ktor-rest-api
 ```
-
-또는, 저 폴더를 `kotlin-ktor-rest-api.7z` 라는 이름으로 미리 압축해 놓고,
-
-```
-7zr.exe a kotlin-ktor-rest-api.7z kotlin-ktor-rest-api
-```
-
-이 작업을 할 때마다 압축을 풀어준다.
-
-```
-7zr.exe x kotlin-ktor-rest-api.7z
-```
-
 3. `IntelliJ IDEA`는 JetBrains 에서 개발한 자바를 포함한 다양한 프로그래밍 언어를 위한 통합 개발 환경(IDE) 이다.
-https://www.jetbrains.com/idea/download/download-thanks.html?platform=windows&code=IIC ➡️ IntelliJ IDEA Community Edition 무료 버전
+https://www.jetbrains.com/idea/download/download-thanks.html?platform=windows&code=IIC ➡️ IntelliJ IDEA Community Edition 🔑 무료 버전
 4. Postman 은 API를 구축하고 사용하기 위한 API 플랫폼 이다. (`A`:애플리케이션 `P`:프로그램 `I`:인터페이스)
-https://www.postman.com/downloads/ ➡️ Windows 64bit ➡️ https://dl.pstmn.io/download/latest/win64
-https://blog.wishket.com/api%EB%9E%80-%EC%89%BD%EA%B2%8C-%EC%84%A4%EB%AA%85-%EA%B7%B8%EB%A6%B0%ED%81%B4%EB%9D%BC%EC%9D%B4%EC%96%B8%ED%8A%B8/ 👀
-API를 본격적으로 알아보기 전에, 비유를 들어 쉽게 설명을 도와드리겠습니다. 여러분이 멋진 레스토랑에 있다고 가정해봅시다. 점원이 가져다준 메뉴판을 보면서 먹음직스러운 스테이크를 고르면, 점원이 주문을 받아 요리사에 요청을 할 텐데요. 그러면 요리사는 정성껏 스테이크를 만들어 점원에게 주고, 여러분은 점원이 가져다준 맛있는 음식을 먹을 수 있게 됩니다.
+https://www.postman.com/downloads/ ➡️ Windows 64bit ➡️ https://dl.pstmn.io/download/latest/win64 🔑 
+📌 https://blog.wishket.com/api%EB%9E%80-%EC%89%BD%EA%B2%8C-%EC%84%A4%EB%AA%85-%EA%B7%B8%EB%A6%B0%ED%81%B4%EB%9D%BC%EC%9D%B4%EC%96%B8%ED%8A%B8/ 👀
+📌 API를 본격적으로 알아보기 전에, 비유를 들어 쉽게 설명을 도와드리겠습니다. 여러분이 멋진 레스토랑에 있다고 가정해봅시다. 점원이 가져다준 메뉴판을 보면서 먹음직스러운 스테이크를 고르면, 점원이 주문을 받아 요리사에 요청을 할 텐데요. 그러면 요리사는 정성껏 스테이크를 만들어 점원에게 주고, 여러분은 점원이 가져다준 맛있는 음식을 먹을 수 있게 됩니다.
 여기서 점원의 역할을 한 번 살펴보겠습니다. 점원은 손님에게 메뉴를 알려주고, 주방에 주문받은 요리를 요청합니다. 그다음 주방에서 완성된 요리를 손님께 다시 전달하지요. API는 점원과 같은 역할을 합니다.
 API는 손님(프로그램)이 주문할 수 있게 메뉴(명령 목록)를 정리하고, 주문(명령)을 받으면 요리사(응용프로그램)와 상호작용하여 요청된 메뉴(명령에 대한 값)를 전달합니다.
 쉽게 말해, API는 프로그램들이 서로 상호작용하는 것을 도와주는 매개체로 볼 수 있습니다.
 5. GIMP = GNU Image Manipulation Program (그누 이미지 처리 프로그램)
-https://www.gimp.org/downloads/ GIMP for Windows ➡️ Download GIMP 2.10.34 directly ➡️ https://download.gimp.org/gimp/v2.10/windows/gimp-2.10.34-setup.exe
+https://www.gimp.org/downloads/ GIMP for Windows ➡️ Download GIMP 2.10.34 directly ➡️ https://download.gimp.org/gimp/v2.10/windows/gimp-2.10.34-setup.exe 🔑
+GNU General Public License = GNU GPL = GPL, 일반 공중 사용허가서 = 자유 소프트웨어 재단에서 만든 자유 소프트웨어 라이선스
+6. Google-Chrome 을 업데이트하려면 다음 단계를 따르세요.
+(6-1) 컴퓨터에서 Chrome을 엽니다.
+(6-2) 오른쪽 상단에서 더보기 더보기를 클릭합니다.
+(6-3) 도움말 다음 Chrome 정보를 클릭합니다.
+(6-4) Chrome 업데이트를 클릭합니다.
+중요: 최신 버전을 사용하고 있다면 이 버튼이 표시되지 않습니다.
+(6-5) 다시 실행을 클릭합니다.
 
-6. Windows 의 Git-Bash 에서 한번에 설치하기 위한 BAT 스크립트.
+👉 Windows 에서 Git-Bash 를 실행한 다음, 4winApp 폴더로 이동한 뒤, 그곳의 프로그램들을 한번에 설치하기 위해서 Windows 에서 실행되는 BAT 스크립트를 다음과 같이 만든다. 🔑
+`cd ~/Downloads/myusb/4winApp ; cat 00RUN.00-exe-230707-1523.bat`
 ```
-type echo-run-chrome.txt
-set /p str=  ---- press Enter ---- : 
-7zr.exe x kotlin-ktor-rest-api.7z
+7z2301-x64.exe
+Git-2.41.0-64-bit.exe
+set /p str=  ---- usr 과 D2Coding 폰트 설치 끝난뒤 Enter 누르세요 ---- :
 start jdk-17_windows-x64_bin.exe
-ChromeSetup.exe
-start 7z2301-x64.exe
-BraveBrowserSetup-DWS000.exe
-start Git-2.41.0-64-bit.exe
+7za x kotlin-ktor-rest-api.7z
 ideaIC-2023.1.3.exe
-start mysql-installer-web-community-8.0.33.0.msi
+start Postman-win64-Setup.exe
 start gimp-2.10.34-setup.exe
-Postman-win64-Setup.exe
+WinSCP-6.1-Setup.exe
+KeePass-2.54-Setup.exe
+BraveBrowserSetup-DWS000.exe
 ```
 
 ## 도커 설치하기
 
-0. 시스템을 최신으로 업데이트 한다.
+0. Fedora 시스템을 최신으로 업데이트 한다.
 ```
 sudo dnf -y update
 ```
 
-1. Fedora 리파지토리를 시스템에 추가한 다음이라야 docker 를 설치할 수 있다.
+1. 다음과 같이 Fedora 리파지토리를 시스템에 추가한 다음이라야 docker 를 설치할 수 있다.
 ```
 sudo dnf -y install dnf-plugins-core
 sudo tee /etc/yum.repos.d/docker-ce.repo << EOF
@@ -115,15 +122,10 @@ sudo systemctl enable --now docker
 제대로 설치되었는지 확인한다.
 ```
 sudo systemctl status docker
+echo "--------------------------- sudo systemctl status docker"
+echo ""
+echo "--------------------------- sudo docker version"
 sudo docker version
-```
-
-sudo 를 쓰지 않고도 처리토록 하거나 설치확인을 위해 테스트하는
-생략 가능한 스크립트.
-```
-sudo usermod -aG docker $(whoami) ; newgrp docker ; echo "#-- (4-1) Docker 그룹은 만들었지만 사용자를 추가하지는 않았으며, sudo 없이 docker 명령을 실행하기 위해, 이 그룹에 사용자를 추가합니다."
-sudo docker pull alpine ; echo "#-- (4-2) 설치 확인을 위해, 테스트 도커를 다운로드해 봅니다."
-sudo docker run -it --rm alpine /bin/sh ; echo "#-- (4-3) 확인을 위해 'apk update' 와 'exit' 를 입력하세요."
 ```
 
 ## 도커 컴포즈를 빌드하기
@@ -140,13 +142,12 @@ sudo docker run -it --rm alpine /bin/sh ; echo "#-- (4-3) 확인을 위해 'apk 
 
 wiki.js 를 위한 데이터베이스로 포스트그레스 (postgres DB) 를 선택했으므로, 이것을 보관할 디렉토리를 만들고, wiki.js 설정을 위한 파일을 보관할 디렉토리도 만든다.
 ```
+source ${HOME}/bin/color_base #-- 221027목-1257 CMD_DIR CMD_NAME cmdRun cmdCont cmdYenter echoSeq
+
 cat <<__EOF__
----------------------------------
-
-
-+---+
-|   | 1. 작업에 필요한 디렉토리 만들기
-+---+
+${cBlue}+---+
+| ${cYellow}1 ${cBlue}| ${cCyan}작업에 필요한 디렉토리 만들기${cBlue}
++---+${cReset}
 
 __EOF__
 
@@ -156,49 +157,57 @@ wiki_conf_folder=${docker_folder}/wiki_conf
 
 p_made="x"
 if [ ! -d ${pgsql_folder} ]; then
-	sudo mkdir -p ${pgsql_folder}
-	sudo chcon -R system_u:object_r:container_file_t:s0 ${pgsql_folder}
-	sudo chown -R systemd-coredump:ssh_keys ${pgsql_folder}
+	chdRun "sudo mkdir -p ${pgsql_folder}"
+	chdRun "chcon -R system_u:object_r:container_file_t:s0 ${pgsql_folder}"
+	#-- sudo chown -R systemd-coredump:ssh_keys ${pgsql_folder}
 	p_made="o"
 fi
 
 w_made="x"
 if [ ! -d ${wiki_conf_folder} ]; then
-	sudo mkdir -p ${wiki_conf_folder}
-	sudo chown -R ${USER}:${USER} ${wiki_conf_folder}
+	chdRun "sudo mkdir -p ${wiki_conf_folder}"
+	chdRun "sudo chown -R ${USER}:${USER} ${wiki_conf_folder}"
 	w_made="o"
 fi
 
 if [ "x${p_made}" = "xx" ] || [ "x${w_made}" = "xx" ]; then
 	cat <<__EOF__
-!!!!> 다음 디렉토리가 이미 있습니다.
-$(sudo ls -l --color ${pgsql_folder})
-$(sudo ls -l --color ${wiki_conf_folder})
-$(sudo ls -l --color ${docker_folder})
 !!!!> 전에 쓰던 디렉토리가 남아있던것 같습니다.
+!!!!> sudo ls -l --color ${docker_folder}
+$(sudo ls -l --color ${docker_folder})
+!!!!> sudo ls -l --color ${pgsql_folder}
+$(sudo ls -l --color ${pgsql_folder})
+!!!!> sudo ls -l --color ${wiki_conf_folder}
+$(sudo ls -l --color ${wiki_conf_folder})
 !!!!> 확인후 삭제하고 이 스크립트를 다시 시작하세요.
 !!!!> sudo rm -rf ${pgsql_folder} ${wiki_conf_folder}
+!!!!>
+!!!!> ( 1 )---------------------------------
+!!!!>
 __EOF__
-	exit -1
+else
+	cat <<__EOF__
+----> sudo ls -l --color ${docker_folder}
+$(sudo ls -l --color ${docker_folder})
+----> sudo ls -l --color ${pgsql_folder}
+$(sudo ls -l --color ${pgsql_folder})
+----> sudo ls -l --color ${wiki_conf_folder}
+$(sudo ls -l --color ${wiki_conf_folder})
+
+----> ( 1 )---------------------------------
+
+__EOF__
 fi
-echi "----> sudo ls -l ${pgsql_folder}"
-sudo ls -l ${pgsql_folder}
-echi "----> sudo ls -l ${wiki_conf_folder}"
-sudo ls -l ${wiki_conf_folder}
-cat <<__EOF__
-( 1 )---------------------------------
-__EOF__
 ```
 
 ### 포트번호를 지정하고 설정파일 만들기
 ```
+source ${HOME}/bin/color_base #-- 221027목-1257 CMD_DIR CMD_NAME cmdRun cmdCont cmdYenter echoSeq
+
 cat <<__EOF__
----------------------------------
-
-
-+---+
-|   | 2. 포트번호를 지정하고 설정파일 만들기
-+---+
+${cBlue}+---+
+| ${cYellow}2 ${cBlue}| ${cCyan}포트번호를 지정하고 설정파일 만들기${cBlue}
++---+${cReset}
 
 ----> port 번호를 9900 처럼 입력하세요.
 __EOF__
@@ -251,37 +260,47 @@ services:
 __EOF__
 ls -l ${wiki_conf_folder}
 cat <<__EOF__
-( 2 )---------------------------------
+
+----> ( 2 )---------------------------------
+
 __EOF__
 ```
 
 ### 도커 컴포즈 `빌드 + 실행` 하기
 ```
+source ${HOME}/bin/color_base #-- 221027목-1257 CMD_DIR CMD_NAME cmdRun cmdCont cmdYenter echoSeq
+
 cat <<__EOF__
----------------------------------
-
-
-+---+
-|   | 3. 도커 컴포즈 `빌드 + 실행` 하기
-+---+
-
+${cBlue}+---+
+| ${cYellow}3 ${cBlue}| ${cCyan}도커 컴포즈 `빌드 + 실행` 하기${cBlue}
++---+${cReset}
 __EOF__
 
 cd ${wiki_conf_folder}
-sudo dnf -y install docker-compose
+cmdRun "sudo dnf -y install docker-compose" "docker-compose 를 설치합니다."
 
-rpm -qi docker-compose
-sudo docker ps -a
+cmdRun "rpm -qi docker-compose" "docker-compose 내역을 확인합니다."
+cmdRun "sudo docker ps -a" "docker 실행 내역을 봅니다."
 
-sudo docker-compose pull wiki
-echo "#-- 도커 컴포즈 wiki 를 빌드합니다."
+cmdRun "sudo docker-compose pull wiki" "도커 컴포즈 wiki 를 빌드합니다."
 
-sudo docker-compose up --force-recreate &
-echo "#-- 빌드한 도커 컴포즈를 실행합니다."
+cmdRun "sudo docker-compose up --force-recreate &" "빌드한 도커 컴포즈를 실행합니다."
 
-sudo docker-compose ps -a
+cmdRun "sudo docker-compose ps -a"
 cat <<__EOF__
-( 3 )---------------------------------
+wikijs  | 2023-07-07T08:19:07.832Z [MASTER] info: 🔻🔻🔻🔻🔻🔻🔻🔻🔻🔻🔻🔻🔻🔻🔻🔻🔻🔻🔻🔻🔻🔻🔻🔻🔻🔻🔻🔻🔻
+wikijs  | 2023-07-07T08:19:07.832Z [MASTER] info: 
+wikijs  | 2023-07-07T08:19:07.832Z [MASTER] info: Browse to http://YOUR-SERVER-IP:3000/ to complete setup!
+wikijs  | 2023-07-07T08:19:07.832Z [MASTER] info: 
+wikijs  | 2023-07-07T08:19:07.832Z [MASTER] info: 🔺🔺🔺🔺🔺🔺🔺🔺🔺🔺🔺🔺🔺🔺🔺🔺🔺🔺🔺🔺🔺🔺🔺🔺🔺🔺🔺🔺🔺
+
+
+이와 같은 메세지가 표시되면, 다음 명령을 입력해서 도커 실행내역을 확인합니다.
+
+
+${cYellow}sudo docker ps -a${cReset}
+
+
 __EOF__
 ```
 
@@ -912,11 +931,10 @@ windows: (https://www.pgadmin.org/download/pgadmin-4-windows/)
 
 1. 안녕히주무세요 어퍼컷Tube 구독자 97.4만명 조회수 22만회  3일 전 스타워즈 모든 시리즈는 디즈니 플러스에서 시청가능합니다!! https://www.youtube.com/watch?v=AUfAN2wNEMk
 
-👉 특수문자 이모티콘 모음 wepplication.github.io/tools/charMap/#unicode-2500-257F
+📌 특수문자 이모티콘 모음 wepplication.github.io/tools/charMap/#unicode-2500-257F
 ┏┳━┓
 ┃┃╌┃
 ┣╋━┫
 ┗┻━┛
 
-👉 https://wepplication.github.io/tools/charMap/#emoji
-
+📌 https://wepplication.github.io/tools/charMap/#emoji
