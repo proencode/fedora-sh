@@ -1,0 +1,78 @@
+#-- ysw10mi:tradepub
+   172792 100+ Tips for Saving Money.pdf
+   956494 1403 MS오피스365 vs 구글앱스.pdf
+  4552340 1408 알면 알수록 유용한 구글 드라이브.pdf
+  2723851 1909 엑셀 없어도 이상 무 구글 스프레드시트.pdf
+  1427093 2021년 상위 10개 관리 템플릿 및 체크리스트.pdf
+  3379878 2023년 리더십의 미래를 위한 23가지 트렌드.pdf
+  1312958 221006-20 Simple Food Swaps for Better Health.epub
+  1521247 221006-20 Simple Food Swaps for Better Health.pdf
+  1011282 230508-2023년_데이터_센터_현황.pdf
+ 21566974 230508-86_solo_w_pacb180_mMH92g5EafZ0TNxoz1EFPg.pdf
+ 20291255 230508-Microsoft_Outlook으로_더_스마트하게_작업하기.pdf
+   230039 230508-Windows_PowerShell_치트시트로_시작하기.pdf
+  8391155 230508-기계_학습_보안_원칙.pdf
+    59258 230508-더_힘들지_않게_더_똑똑하게_일하세요_책_요약.pdf
+ 37852557 230508-리더십_모범_사례_팀_관리.pdf
+  2420135 230508-변곡점_목적에_따라_일하고_생활하는_방법.pdf
+  4138462 230508-비_프로젝트_관리자를_위한_프로젝트_관리.pdf
+  2332366 230508-사이버_보안_및_개인_정보_보호법_핸드북.pdf
+  2650936 230508-원격_작업에서의_리더십.pdf
+   210468 230508-원격으로_작업할_때_생산성을_극대화하는_방법.pdf
+   704918 230508-재택근무_훌륭한_홈_오피스를_구축하는_방법.pdf
+   570737 230508-차분한_마음의_생산성_결과.pdf
+   187178 230512-windows_및_macos용_줌_키보드_단축키.pdf
+   179068 230512-주_4시간_근무_책_요약.pdf
+   543202 230515-2022년 최고의 리더십 명언 65가지 - 1부.pdf
+  3291973 230515-GPT-3 $27.99 Value FREE for a Limited Time.pdf
+  2176784 230515-Simple Guide to Inbox ZERO.pdf
+  2231016 230515-다음 이동 최고의 이동-원하는 직업으로의 전환.pdf
+  1189980 230520-the-end-of-risk.pdf
+ 17536237 230530-초보자를_위한_Excel_워크북_2판.pdf
+ 67461098 230607-Windows_Server_Automation_with_PowerShell_CookBook_5ed.pdf
+  5122772 230711-ChatGPT의_잠재력_잠금_해제.pdf
+  2652281 230711-Excel_생산성을_높이는_8가지_요령.pdf
+ 53657980 230711-Social_Media_Marketing_All-in-One_For_Dummies_5th_Edition.pdf
+  8261769 230711-The_Python_Book.pdf
+ 17536237 230711-초보자를_위한_Excel_워크북_2판.pdf
+    83992 70개 이상의 Windows용 Excel 키보드 단축키.pdf
+   186844 Alice's_Adventures_in_Wonderland_by_Lewis_Carroll.epub
+   280805 Bash-commands-cheat-sheet-Red-Hat-Developer.pdf
+   991545 DZone-230711-모바일_데이터베이스_기초.pdf
+ 14788924 DZone-230711-컨테이너.pdf
+  8929093 Dummies 위한 디지털 에티켓.pdf
+   714146 Enterprise Agreement.pdf
+ 23445537 Excel 2019 All-in-One For Dummies.pdf
+   109089 GIRLBOSS 도서 요약.pdf
+ 10773228 Java를 사용한 실습 소프트웨어 아키텍처.pdf
+ 10742695 Mastering Python.pdf
+   413239 OSDC_cheatsheet-old-and-new-commands-2022.10.31.zip
+   309294 Open Source Assurance Agreement (OSA).pdf
+ 10346529 Podman-in-Action-ebook-MEAP-Red-Hat-Developer-All-Chapters.pdf
+  3180009 Sencha-_Adopting_a_Unified_Component_Strategy_SNC-CS353_FINAL.pdf
+    92918 The 80 Best Micro Habits to Change Your Life.pdf
+ 67461098 Windows_Server_Automation_with_PowerShell_쿡북_제5판.pdf
+ 20712736 jhipster-book-epub3-v7.0.0-1678177918638.epub
+ 16801364 jhipster-book-pdf-screen-v7.0.0-1678177918638.pdf
+   644231 learn-to-code-in-6-months.pdf
+   194598 new_employee_checklist.pdf
+   462910 osdc_cheatsheet-kubernetes-2021.4.16.pdf
+   470558 osdc_cheatsheet-rust-2021.11.11.pdf
+   965835 osdc_compiling-code.zip
+     1927 rclone-file-rename-230411.sh
+      470 rename-space_to_underbar-for-pdf.sh
+   792621 tradepub-230711-미루는_습관을_피하는_5가지_팁.pdf
+   358627 고성과 팀을 만들고 관리하는 방법.pdf
+   563220 디지털 혁신을 통한 산업 지속 가능성 - 사례 연구.pdf
+   702583 미래의 성공을 안내하는 25가지 관점의 확실한 통합.pdf
+ 53245025 비즈니스 윤리 일반적인 문제와 그것이 중요한 이유.pdf
+   814384 시간 관리 전략.pdf
+  9407724 오늘날 원격으로 최고의 성능을 발휘할 수 있는 4가지 방법.pdf
+    68311 오래 지속되도록 구축 비전 있는 기업의 성공적인 습관 도서 요약.pdf
+ 52697486 인형을 위한 네트워킹 올인원 8판.pdf
+  7327758 전문 서비스 회사의 하급 직원이 많은 수에서 퇴직하고 있습니다.pdf
+  2548418 정보 인터뷰에서 물어볼 15가지 질문.pdf
+   919751 조직 내에서 4가지 중요한 사항.pdf
+ 33230632 직원 모니터링 도구 그리고 이를 구현하는 올바른 방법.pdf
+  1278405 최고보다 낫다 - 이메일을 끝내는 예기치 않은 방법 82가지.pdf
+#-- ysw10mi:tradepub
