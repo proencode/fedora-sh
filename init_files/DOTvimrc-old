@@ -10,8 +10,7 @@ call vundle#begin()
 "call vundle#begin('~/some/path/here')
 
 " let Vundle manage Vundle, required
-Plugin 'susabolca/Vundle.vim'
-" Plugin 'VundleVim/Vundle.vim'
+Plugin 'VundleVim/Vundle.vim'
 Plugin 'vim-airline/vim-airline'
 " 파일 트리 (:NERDTree 로 실행)
 Plugin 'scrooloose/nerdtree'
@@ -54,13 +53,12 @@ nmap nerd :NERDTreeToggle<CR>
 "
 " Brief help
 " :PluginList       - lists configured plugins
-" :PluginInstall    - installs plugins; append `!` to update or just :PluginUpdate
-" :PluginSearch foo - searches for foo; append `!` to refresh local cache
-" :PluginClean      - confirms removal of unused plugins; append `!` to auto-approve removal
+" :PluginInstall    - installs plugins; append  to update or just :PluginUpdate
+" :PluginSearch foo - searches for foo; append  to refresh local cache
+" :PluginClean      - confirms removal of unused plugins; append  to auto-approve removal
 "
 " see :h vundle for more details or wiki for FAQ
 " Put your non-Plugin stuff after this line
 "
-" 230224 금 1416 from https://github.com/susabolca/Vundle.vim
 " 210422 목 1036 from https://github.com/VundleVim/Vundle.vim
-" at dOTvimrc-old-$(date +'%y%m%d%a_%H%M%S')-$(uname -r)
+" at dOTvimrc-old-230208수_123156-6.1.9-200.fc37.x86_64
