@@ -3,7 +3,7 @@
 ymd=$(date +%y%m%d-%H%M%S)
 temp_file=qqq_temp-${ymd}
 
-for name in jjedone kaos1mi kaos2mi kaos3mi kaos4mi kaosngc swlibgc tpn1mi tpn2mi tpn3mi y5dnmi y5ncmi yosjgc ysw10mi
+for name in edone jjdrb jjone kaos1mi kaos2mi kaos3mi kaos4mi kaosngc swlibgc tpn1mi tpn2mi tpn3mi y5dnmi y5ncmi yosjgc ysw10mi
 do
 	dattim=$(date +%y%m%d%a%H%M%S)
 	echo "----> rclone ls ${name}: > ${ymd}/ls-${name}-${dattim}.list"
