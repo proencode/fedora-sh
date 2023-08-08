@@ -195,10 +195,14 @@ show_title "${this_year}/${this_wol} 최근 일주일 백업을 시작합니다.
 if [ ! -d ${LOCAL_YOIL} ]; then
 	showno="1a" ; showqq="보관용 로컬 디렉토리를 만듭니다."
 	show_then_run "mkdir -p ${LOCAL_YOIL} ; sudo chown ${USER}:${USER} ${LOCAL_YOIL}"
+	showno="1b" ; showqq="보관용 원격 디렉토리를 만듭니다."
+	show_then_run "/usr/bin/rclone mkdir ${RCLONE_NAME}:${REMOTE_YOIL}"
 fi
 if [ ! -d ${LOCAL_JU} ]; then
-	showno="1b" ; showqq="보관용 로컬 디렉토리를 만듭니다."
+	showno="1c" ; showqq="보관용 로컬 디렉토리를 만듭니다."
 	show_then_run "mkdir -p ${LOCAL_JU} ; sudo chown ${USER}:${USER} ${LOCAL_JU}"
+	showno="1d" ; showqq="보관용 원격 디렉토리를 만듭니다."
+	show_then_run "/usr/bin/rclone mkdir ${RCLONE_NAME}:${REMOTE_JU}"
 fi
 showno="2" ; showqq="보관용 로컬 디렉토리 입니다."
 show_then_run "ls -lR ${LOCAL_THIS_YEAR}"
