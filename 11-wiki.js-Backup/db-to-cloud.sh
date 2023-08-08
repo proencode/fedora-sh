@@ -68,7 +68,7 @@ if [ "x$1" = "x" ]; then
 #-- DB_NAME	DB_LOGIN_PATH	LOCAL_FOLDER	REMOTE_FOLDER	RCLONE_NAME	OK?	DB_USER_NAME
 #-- kaosorder2	kaoslog		backup/kaosdb	kaosdb		kaosngc		ok/""	kaosorder2 (카오스)
 #-- gate242	swlog		backup/gatedb	11-gate242	swlibgc		ok/""	gateroot (서원)
-#-- wiki	not--use	backup/wikidb	wikijsdb	swlibgc		ok/""	wiki (wiki.js) 스페이스가 모자라서 yosjgc 를 swlibgc 로 바꿈 230717월
+#-- wiki	not--use	backup/wikidb	wikijsdb	tpn2mi		ok/""	wiki (wiki.js) 스페이스가 모자라서 yosjgc 를 tpn2mi 로 바꿈 230808화, (swlibgc 로 바꿈 230717월)은 취소함
 #--
 #-- db_name	"" #-- 지정한 데이터베이스로 진행합니다.
 #-- db_name	"ok" #-- 지정한 데이터베이스로 진행하면서 과정을 보여줍니다.
@@ -103,7 +103,7 @@ if [ "x$1" = "xwiki" ]; then
 	LOGIN_PATH="wikipsql" #-- 데이터베이스 로그인 패쓰 ;;; pgsql 이라서 쓰지는 않음.
 	LOCAL_FOLDER="backup/wikidb" #-- 백업파일을 일시적으로 저장하는 로컬 저장소의 디렉토리 이름
 	REMOTE_FOLDER="wikijsdb" #-- 원격 저장소의 첫번째 폴더 이름
-	RCLONE_NAME="swlibgc" #-- rclone 이름 yosjeongc -> swlibgc
+	RCLONE_NAME="tpn2mi" #-- rclone 이름 yosjeongc -> tpn2mi
 	DB_TYPE="pgsql"
 	PSWD_GEN_CODE="dnlzl${pswd_ym}"
 else
