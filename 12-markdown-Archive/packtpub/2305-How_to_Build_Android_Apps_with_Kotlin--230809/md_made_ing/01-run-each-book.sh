@@ -1,7 +1,7 @@
 #!/bin/sh
 
 source ${HOME}/bin/color_base #-- 221027목-1257 CMD_DIR CMD_NAME cmdRun cmdCont cmdYenter echoSeq 
-MEMO="권 별로 작업하는 책에 있는 그림파일 이름 만들기"
+MEMO="권별 (+장별) 로 작업하는 책에 있는 그림파일 이름 만들기"
 cat <<__EOF__
 ${cMagenta}>>>>>>>>>>${cGreen} $0 ${cMagenta}||| ${cCyan}${MEMO} ${cMagenta}>>>>>>>>>>${cReset}
 __EOF__
@@ -29,7 +29,7 @@ fi
 if [ "x$4" != "x" ]; then
 	ChapterSeq="$4"
 else
-	ChapterSeq="01.c1" #-- (4) '01'=1 부터 시작하는 권 일련번호 'c1'=Section/Part/Chapter 번호
+	ChapterSeq="01.c1" #-- (4) '01'=1 부터 시작하는 권 번호 (+ 's1'=Section/'p1'=Part/'c1'=Chapter 번호)
 fi
 book_seqno=${ChapterSeq:0:2} #-- ChapterSeq 의 0 번 문자부터 2 개의 문자를 잘라내서 담는다.
 #-- ${ChapterSeq:0:2} = "01"
@@ -58,11 +58,6 @@ if [ "x$8" != "x" ]; then
 else
 	tags="kotlin android" #-- (8) 찾기 위한 태그
 fi
-if [ "x$9" != "x" ]; then
-	imageFolder="$9"
-else
-	imageFolder="230809.HBAK" #-- (9) 이미지 보관 폴더 (/${LNpublisher}/${LNimageFolder}/)
-fi
 
 # ${cBlue}${CMD_NAME} ${cRed}"${publisher}"  ${cMagenta}"${BookCover}"  ${cRed}"${ShortDescription}"  ${cMagenta}"${ChapterSeq}"  ${cRed}"${ChapterName}"  ${cMagenta}"${old_image_jemok}"  ${cRed}"${https_line}"  ${cMagenta}"${tags}"
 
@@ -77,7 +72,6 @@ ShortDescription="${cRed}${ShortDescription}${cBlue}"
  old_image_jemok="${cMagenta}${old_image_jemok}${cBlue}"
       https_line="${cRed}${https_line}${cBlue}"
             tags="${cMagenta}${tags}${cBlue}"
-     imageFolder="${cRed}${imageFolder}${cBlue}"
 ${cReset}
 __EOF__
 
@@ -270,7 +264,7 @@ do
 
 ${cBlue}
 ==========
-챕터  번호 [ 01.c1 ]  =  '01'=권 번호 1번 'c1'=챕터 1번
+챕터  번호 [ 01.c1 ]  = '01'=1 부터 시작하는 권 번호 (+ 's1'=Section/'p1'=Part/'c1'=Chapter 번호)
 ==========
 ${cYellow}>>>>> (5) ${cCyan}챕터 번호를 ${cRed}[ ${cGreen}${ChapterSeq} ${cRed}] ${cCyan}이와 같이 다음 줄에 입력합니다. ${cRed}[ ${cGreen}exit ${cRed}]${cCyan} 인 경우, 이 작업을 끝냅니다.${cReset}
 __EOF__
