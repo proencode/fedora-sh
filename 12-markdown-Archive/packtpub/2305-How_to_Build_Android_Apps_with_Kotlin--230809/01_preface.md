@@ -1,27 +1,40 @@
 
-How to Build Android Apps with Kotlin - Second Edition
-By Alex Forrester, Eran Boudjnah, Alexandru Dumbravan, and 2 more
-$39.99
-eBook version
-Buy
-$49.99
-Print + eBook
-Buy
+@ Q -> # 붙이고 줄 띄우기 => 0i# ^[A^M^[
+@ W -> 현 위치에서 Copy 까지 역따옴표 => j0i```^M^[/^Copy$^[ddk0C```^M^[
+@ E -> 찾은 글자 ~ SPACE 앞뒤로 backtick(`) 붙이기 => i`^[/ ^[i`^[/EEEEEEEEEE^[
+@ R -> 찾은 글자 ~ POINT 앞뒤로 backtick(`) 붙이기 => i`^[/.^[i`^[/RRRRRRRRRR^[
+@ T -> 찾은 글자 ~ COMMA 앞뒤로 backtick(`) 붙이기 => i`^[/,^[i`^[/TTTTTTTTTT^[
+@ Y -> 찾은 글자 ~ COLON 앞뒤로 backtick(`) 붙이기 => i`^[/;^[i`^[/YYYYYYYYYY^[
+@ U -> 찾은 글자~닫은괄호앞뒤로 backtick(`) 붙이기 => i`^[/)^[i`^[/UUUUUUUUUU^[
+
+@ A -> 빈 줄에 블록 시작하기 => 0C```^[^Mk0
+@ S -> 줄 앞에 > 나오면 안되므로 블록 마감하고 > 앞에 - 끼우기 => 0i```^M-^[^M0i```^[0
+@ D -> 줄 아래에 블록 마감하고 한줄 더 띄우기 => 0^Mi```^M^M^[kk
+@ F -> 이 줄을 타이틀로 만들기 => 0i#### ^[^M^[
+    마크다운 입력시 vi 커맨드 표시 ; (^[)=Ctrl+[ ; (^M)=Ctrl+M
+    인용구 작성시 ; 본문앞에는 꺽쇠 > 붙이고, 스타일 첨가시 끝줄에 종류별 구분을 표시한다.
+    https://docs.requarks.io/en/editors/markdown > Blockquotes > Stylings >
+    blue= {.is-info} ; green= {.is-success} ; yellow= {.is-warning} ; red= {.is-danger}
+
+---------- cut line ----------
+
+
 About this Book
 Looking to kick-start your app development journey with Android 13, but don’t know where to start? How to Build Android Apps with Kotlin is a comprehensive guide that will help jump-start your Android development practice. This book starts with the fundamentals of app development, enabling you to utilize Android Studio and Kotlin to get started with building Android projects. You'll learn how to create apps and run them on virtual devices through guided exercises. Progressing through the chapters, you'll delve into Android's RecyclerView to make the most of lists, images, and maps, and see how to fetch data from a web service. You'll also get to grips with testing, learning how to keep your architecture clean, understanding how to persist data, and gaining basic knowledge of the dependency injection pattern. Finally, you'll see how to publish your apps on the Google Play store. You'll work on realistic projects that are split up into bitesize exercises and activities, allowing you to challenge yourself in an enjoyable and attainable way. You'll build apps to create quizzes, read news articles, check weather reports, store recipes, retrieve movie information, and remind you where you parked your car. By the end of this book, you'll have the skills and confidence to build your own creative Android applications using Kotlin.
-Publication date:
-5월 2023
 
-Publisher
-Packt
 
-Pages
-704
+> Title: How to Build Android Apps with Kotlin 2ED
+> Short Description: By Alex Forrester, Eran Boudjnah, Alexandru Dumbravan, and 2 more 2023-05 Pages 704 ISBN 9781837634934
+> Path: packtpub/how_to_build_android_apps_with_kotlin_2ed
+> tags: Kotlin Android
+> this File Name: 01_preface.md
 
-ISBN
-9781837634934
+> Chapter Name: 01 Preface
+> Link: https://subscription.packtpub.com/book/mobile/9781837634934/pref/
+> Images: / packtpub / how_to_build_android_apps_with_kotlin_2ed /
+> create: 2023-08-10 목 12:24:48
 
-# Preface
+# 01 Preface
 
 Android has ruled the app market for the past decade, and developers are increasingly looking to start building their own Android apps. How to Build Android Apps with Kotlin starts with the building blocks of Android development, teaching you how to use Android Studio, the **integrated development environment** (**IDE**) for Android, with the Kotlin programming language for app development.
 

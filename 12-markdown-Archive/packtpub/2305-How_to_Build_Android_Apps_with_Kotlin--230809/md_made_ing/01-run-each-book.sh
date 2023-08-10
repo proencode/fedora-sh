@@ -29,9 +29,9 @@ fi
 if [ "x$4" != "x" ]; then
 	ChapterSeq="$4"
 else
-	ChapterSeq="01.c1" #-- (4) '01'=1 부터 시작하는 권 번호 (+ 's1'=Section/'p1'=Part/'c1'=Chapter 번호)
+	ChapterSeq="01.c1" #-- (4) '01'= 00 또는 01 부터 시작하는 권 번호 (+ 부 'p1'=Part / 장 'c1'=Chapter / 절 's1'=Section) 번호
 fi
-book_seqno=${ChapterSeq:0:2} #-- ChapterSeq 의 0 번 문자부터 2 개의 문자를 잘라내서 담는다.
+BookSeq=${ChapterSeq:0:2} #-- ChapterSeq 의 0 번 문자부터 2 개의 문자를 잘라내서 담는다.
 #-- ${ChapterSeq:0:2} = "01"
 #-- ${ChapterSeq:3:2} = "c1"
 
@@ -250,6 +250,16 @@ if [ "x$a" = "x" ]; then
 fi
 echo "      ${cRed}[ ${cYellow}${tags} ${cRed}]${cReset}"
 
+yesno="xxx"
+until [ "x$yesno" = "xy" ]
+do
+	cat <<__EOF__
+
+${cBlue}====> 계속 진행하기 위해서 ${cMagenta}[ ${cYellow}y ${cMagenta}] ${cBlue}를 눌러 주세요.${cReset}
+__EOF__
+	read yesno
+done
+
 
 
 # ChapterSeq="00-p1"
@@ -262,11 +272,17 @@ do
 	cat <<__EOF__
 
 
+$(ls -l *.md)
+
 ${cBlue}
-==========
-챕터  번호 [ 01.c1 ]  = '01'=1 부터 시작하는 권 번호 (+ 's1'=Section/'p1'=Part/'c1'=Chapter 번호)
-==========
-${cYellow}>>>>> (5) ${cCyan}챕터 번호를 ${cRed}[ ${cGreen}${ChapterSeq} ${cRed}] ${cCyan}이와 같이 다음 줄에 입력합니다. ${cRed}[ ${cGreen}exit ${cRed}]${cCyan} 인 경우, 이 작업을 끝냅니다.${cReset}
+===================
+  ++-------'01'=권 번호 ('00' 또는 '01'부터 시작)
+  || +----- 부 'p1'=Part / 장 'c1'=Chapter / 절 's1'=Section) 구분
+  || |+---- 부, 장, 절 의 일련번호
+  || ||
+[ 01.c1 ] = 권 번호 (챕터 번호)
+===================
+${cYellow}>>>>> (5) ${cCyan}(챕터 번호)를 ${cRed}[ ${cGreen}${ChapterSeq} ${cRed}] ${cCyan}이와 같이 다음 줄에 입력합니다. ${cRed}[ ${cGreen}exit ${cRed}]${cCyan} 인 경우, 이 작업을 끝냅니다.${cReset}
 __EOF__
 	read a
 	if [ "x$a" = "x" ]; then
@@ -278,9 +294,10 @@ __EOF__
 		ChapterName=""
 	else
 		ChapterSeq=$a
+		BookSeq=${ChapterSeq:0:2} #-- ChapterSeq 의 0 번 문자부터 2 개의 문자를 잘라내서 담는다.
 		cat <<__EOF__
 
-${cBlue}====> ${cMagenta}[ ${cGreen}${ChapterSeq} ${cMagenta}] ${cBlue}챕터 번호를 정했습니다.${cReset}
+${cBlue}====> ${cMagenta}[ ${cGreen}${ChapterSeq} ${cMagenta}] ${cBlue}(챕터 번호)를 정했습니다.${cReset}
 __EOF__
 read a
 if [ "x$a" = "x" ]; then
@@ -289,10 +306,10 @@ fi
 		cat <<__EOF__
       ${cRed}[ ${cYellow}${ChapterSeq} ${cRed}]
 ${cBlue}
-==========
-챕터  이름
-==========
-${cYellow}>>>>> (6) ${cCyan}${ChapterSeq} 챕터의 요약제목 을 ${cRed}[ ${cGreen}${ChapterName} ${cRed}] ${cCyan}이와 같이 다음 줄에 입력합니다. ${cRed}[ ${cGreen}exit ${cRed}]${cBlue} 인 경우, ${cCyan}이 작업을 끝냅니다.${cReset}
+===================
+${ChapterSeq} 권의 이름 (챕터 이름)
+===================
+${cYellow}>>>>> (6) ${cGreen}${ChapterSeq} ${cCyan}권의 요약제목 을 ${cRed}[ ${cGreen}${ChapterName} ${cRed}] ${cCyan}이와 같이 다음 줄에 입력합니다. ${cRed}[ ${cGreen}exit ${cRed}]${cBlue} 를 입력하면, 이 작업을 끝냅니다.${cReset}
 __EOF__
 		read a
 		if [ "x$a" = "x" ]; then
@@ -304,6 +321,8 @@ __EOF__
 			ChapterName=""
 		else
 			ChapterName=$a
+			chapterSeqName="${ChapterSeq} ${ChapterName}"
+			LNchapterSeqName=$(echo "${chapterSeqName,,}" | sed 's/ /_/g') #-- 소문자로 바꾸고 공백을 밑줄로 바꾼다.
 			cat <<__EOF__
 
 ${cBlue}====> ${cMagenta}[ ${cGreen}${ChapterName} ${cMagenta}] ${cBlue}챕터 이름을 정했습니다.${cReset}
@@ -318,7 +337,8 @@ __EOF__
 			# 이미지 제목
 			# -----------
 
-			image_jemok=${old_image_jemok}
+			old_image_jemok=${ChapterName}
+			image_jemok=${ChapterName}
 			until [ "x$image_jemok" = "xx" ] #-- exit
 			do
 				nextCnt="0000$((ImageCounter + 1))"
@@ -332,10 +352,12 @@ __EOF__
 				LNimage_jemok=$(echo "${image_jemok,,}" | sed 's/ /_/g')
 				cat <<__EOF__
 
+${cBlue}>>>>>     ${cGreen}${ChapterSeq} ${cCyan}권의 파일이름: ${cYellow}${LNchapterSeqName}.md
+
 ${cCyan}----> ${cMagenta}이미지 파일의 이름 = '${cBlue}알파벳만${cMagenta} 대/소 문자' '숫자' '.' '-' '빈칸'${cReset}
 
 ${cYellow}>>>>> (7) ${cMagenta}이미지 ${cBlue}'${cYellow}${ImageCounter}${cBlue}' ${cMagenta}번째의 설명을 ${cRed}[ ${cGreen}${image_jemok} ${cRed}] ${cMagenta}이와 같이 다음줄에 입력합니다.
-${cYellow}>>>>>     ${cRed}[${cGreen}${image_jemok}${cRed}] ${cMagenta}이렇게 입력한 경우, ${cBlue}![ ${cGreen}${image_jemok} ${cBlue}](/${LNpublisher}/${LNbookCover}/${cRed}${book_seqno}${cBlue}.${cYellow}${ImageCounter}${cBlue}-${cGreen}${LNimage_jemok}${cBlue}.webp ${cMagenta}처럼 등록됩니다.
+${cYellow}>>>>>     ${cRed}[${cGreen}${image_jemok}${cRed}] ${cMagenta}이렇게 입력한 경우, ${cBlue}![ ${cGreen}${image_jemok} ${cBlue}](/${LNpublisher}/${LNbookCover}/${cRed}${BookSeq}${cBlue}.${cYellow}${ImageCounter}${cBlue}-${cGreen}${LNimage_jemok}${cBlue}.webp ${cMagenta}처럼 등록됩니다.
 ${cYellow}>>>>>     ${cRed}[ ${cGreen}x ${cRed}]${cMagenta} 인 경우, ${cCyan}챕터 번호 ${cMagenta}입력으로 돌아갑니다.
 ${cYellow}>>>>>     ${cRed}[ ${cGreen}+ ${cRed}]${cMagenta} 인 경우, 챕터번호를 ${cBlue}'${cYellow}${nextStr}${cBlue}' 로 변경, ${cRed}[ ${cGreen}- ${cRed}]${cMagenta} 인 경우, 챕터번호를 ${cBlue}'${cYellow}${befoStr}${cBlue}' 로 변경,
 ${cYellow}>>>>>     ${cBlue}확장자를 무조건 ${cBlue}'${cYellow}.webp${cBlue}'${cMagenta} 로 붙여주므로, 이게 아니면 해당 타입까지 써주고, 결과를 수정하면 됩니다.${cReset}
@@ -350,7 +372,7 @@ __EOF__
 ${cCyan}----> ${cMagenta}다시 입력해 주세요 ~
 
 __EOF__
-				fi
+				else
 				echo "----$image_jemok----"
 				if [ "x$image_jemok" = "x+" ]; then
 					ImageCounter=${nextCnt:(-2)}
@@ -363,9 +385,6 @@ __EOF__
 				if [ "x$image_jemok" != "xx" ]; then #-- exit
 					old_image_jemok=${image_jemok}
 					LNimage_jemok=$(echo "${image_jemok,,}" | sed 's/ /_/g') #-- 전부 대문자로 바꾸려면 ${image_jemok^^}, 전부 소문자는 ${image_jemok,,}
-					chapter_name=$(echo "${ChapterName,,}" | sed 's/ /_/g')
-					SeqName="${ChapterSeq} ${ChapterName}"
-					thisFileName=$(echo "${SeqName,,}" | sed 's/ /_/g') #-- 소문자로 바꾸고 공백을 밑줄로 바꾼다.
 					cat <<__EOF__
       ${cRed}[ ${cYellow}${image_jemok} ${cRed}]
 
@@ -394,9 +413,9 @@ ${cReset}
 
 > Title: ${BookCover}
 > Short Description: ${ShortDescription}
-> Path: ${LNpublisher}/${LNbookCover}/${ChapterSeq}_${chapter_name}
+> Path: ${LNpublisher}/${LNbookCover}
 > tags: ${tags}
-> this File Name: ${thisFileName}.md
+> this File Name: ${LNchapterSeqName}.md
 
 > Chapter Name: ${ChapterSeq} ${ChapterName}
 > Link: ${https_line}
@@ -406,10 +425,10 @@ ${cReset}
 # ${ChapterSeq} ${ChapterName}
 
 
-${cRed}${book_seqno}${cBlue}.${cYellow}${ImageCounter}${cBlue}-${cGreen}${LNimage_jemok}${cBlue}.webp${cReset}
+${cRed}${BookSeq}${cBlue}.${cYellow}${ImageCounter}${cBlue}-${cGreen}${LNimage_jemok}${cBlue}.webp${cReset}
 
 
-${cBlue}![ ${cGreen}${image_jemok} ${cBlue}](/${LNpublisher}/${LNbookCover}/${cRed}${book_seqno}${cBlue}.${cYellow}${ImageCounter}${cBlue}-${cGreen}${LNimage_jemok}${cBlue}.webp${cReset})
+${cBlue}![ ${cGreen}${image_jemok} ${cBlue}](/${LNpublisher}/${LNbookCover}/${cRed}${BookSeq}${cBlue}.${cYellow}${ImageCounter}${cBlue}-${cGreen}${LNimage_jemok}${cBlue}.webp${cReset})
 
 ${cBlue}
 / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / /
@@ -418,6 +437,7 @@ ${cBlue}
 ${cReset}
 __EOF__
 					ImageCounter=${nextCnt:(-2)}
+				fi
 				fi
 				fi
 				fi
