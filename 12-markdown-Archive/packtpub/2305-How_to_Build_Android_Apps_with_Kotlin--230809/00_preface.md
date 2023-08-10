@@ -18,6 +18,31 @@
 
 ---------- cut line ----------
 
+Preface
+1 Part 1: Android Foundation
+2 Chapter 1: Creating Your First App
+3 Chapter 2: Building User Screen Flows
+4 Chapter 3: Developing the UI with Fragments
+5 Chapter 4: Building App Navigation
+6 Part 2: Displaying Network Calls
+7 Chapter 5: Essential Libraries: Retrofit, Moshi, and Glide
+8 Chapter 6: Adding and Interacting with RecyclerView
+9 Chapter 7: Android Permissions and Google Maps
+10 Chapter 8: Services, WorkManager, and Notifications
+11 Chapter 9: Building User Interfaces Using Jetpack Compose
+12 Part 3: Testing and Code Structure
+13 Chapter 10: Unit Tests and Integration Tests with JUnit, Mockito, and Espresso
+14 Chapter 11: Android Architecture Components
+15 Chapter 12: Persisting Data
+16 Chapter 13: Dependency Injection with Dagger, Hilt, and Koin
+17 Part 4: Polishing and Publishing an App
+18 Chapter 14: Coroutines and Flow
+19 Chapter 15: Architecture Patterns
+20 Chapter 16: Animations and Transitions with CoordinatorLayout and MotionLayout
+21 Chapter 17: Launching Your App on Google Play
+22 Index
+23 Other Books You May Enjoy
+
 
 About this Book
 Looking to kick-start your app development journey with Android 13, but don’t know where to start? How to Build Android Apps with Kotlin is a comprehensive guide that will help jump-start your Android development practice. This book starts with the fundamentals of app development, enabling you to utilize Android Studio and Kotlin to get started with building Android projects. You'll learn how to create apps and run them on virtual devices through guided exercises. Progressing through the chapters, you'll delve into Android's RecyclerView to make the most of lists, images, and maps, and see how to fetch data from a web service. You'll also get to grips with testing, learning how to keep your architecture clean, understanding how to persist data, and gaining basic knowledge of the dependency injection pattern. Finally, you'll see how to publish your apps on the Google Play store. You'll work on realistic projects that are split up into bitesize exercises and activities, allowing you to challenge yourself in an enjoyable and attainable way. You'll build apps to create quizzes, read news articles, check weather reports, store recipes, retrieve movie information, and remind you where you parked your car. By the end of this book, you'll have the skills and confidence to build your own creative Android applications using Kotlin.
@@ -114,35 +139,35 @@ On macOS, launch the DMG file and drag and drop Android Studio into the `Applica
 Next, the **Data Sharing** dialog will pop up; click either the **Send usage statistics to Google** button or the **Don’t send** button to disable sending anonymous usage data to Google:
 
 
-![ The Data Sharing dialog ](/packtpub/how_to_build_android_apps_with_kotlin_2ed/01.00-the_data_sharing_dialog.webp)
+![ The Data Sharing dialog ](/packtpub/how_to_build_android_apps_with_kotlin_2ed/00.00-the_data_sharing_dialog.webp)
 
 The Data Sharing dialog
 
 In the **Welcome** dialog, click the **Next** button to start the setup:
 
 
-![ The Welcome dialog ](/packtpub/how_to_build_android_apps_with_kotlin_2ed/01.01-the_welcome_dialog.webp)
+![ The Welcome dialog ](/packtpub/how_to_build_android_apps_with_kotlin_2ed/00.01-the_welcome_dialog.webp)
 
 The Welcome dialog
 
 In the **Install Type** dialog, select **Standard** to install the recommended settings. Then, click the **Next** button:
 
 
-![ The Install Type dialog ](/packtpub/how_to_build_android_apps_with_kotlin_2ed/01.02-the_install_type_dialog.webp)
+![ The Install Type dialog ](/packtpub/how_to_build_android_apps_with_kotlin_2ed/00.02-the_install_type_dialog.webp)
 
 The Install Type dialog
 
 In the **Select UI Theme** dialog, choose your preferred IDE theme—either **Light** or **Darcula** (dark theme)—then click the **Next** button:
 
 
-![ The Select UI Theme dialog ](/packtpub/how_to_build_android_apps_with_kotlin_2ed/01.03-the_select_ui_theme_dialog.webp)
+![ The Select UI Theme dialog ](/packtpub/how_to_build_android_apps_with_kotlin_2ed/00.03-the_select_ui_theme_dialog.webp)
 
 The Select UI Theme dialog
 
 In the **Verify Settings** dialog, review your settings and then click the **Finish** button. The setup wizard downloads and installs additional components, including the Android SDK:
 
 
-![ The Verify Settings dialog ](/packtpub/how_to_build_android_apps_with_kotlin_2ed/01.04-the_verify_settings_dialog.webp)
+![ The Verify Settings dialog ](/packtpub/how_to_build_android_apps_with_kotlin_2ed/00.04-the_verify_settings_dialog.webp)
 
 The Verify Settings dialog
 
@@ -227,7 +252,7 @@ Follow these simple steps to get the benefits:
 
 1. Scan the QR code or visit the link below
 
-![ Scan the QR code ](/packtpub/how_to_build_android_apps_with_kotlin_2ed/01.05-scan_the_qr_code.webp)
+![ Scan the QR code ](/packtpub/how_to_build_android_apps_with_kotlin_2ed/00.05-scan_the_qr_code.webp)
 
 https://packt.link/free-ebook/9781837634934
 
