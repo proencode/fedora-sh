@@ -35,7 +35,9 @@ BookSeq=${ChapterSeq:0:2} #-- ChapterSeq 의 0 번 문자부터 2 개의 문자�
 #-- ${ChapterSeq:0:2} = "01"
 #-- ${ChapterSeq:3:2} = "c1"
 
-ImageCounter="00" #-- 현재의 권번호 안에서 '0' 부터 올라가는 사진 카운터
+imageCntNo=0 #-- 현재의 권번호 안에서 0 부터 올라가는 사진 카운터
+imageCntZZ="0000${imageCntNo}"
+imageCnt99=${imageCntZZ:(-2)}
 
 if [ "x$5" != "x" ]; then
 	ChapterName="$5"
@@ -341,13 +343,17 @@ __EOF__
 			image_jemok=${ChapterName}
 			until [ "x$image_jemok" = "xx" ] #-- exit
 			do
-				nextCnt="0000$((ImageCounter + 1))"
-				nextStr=${nextCnt:(-2)}
-				if [ "x${ImageCounter}" = "x00" ]; then
-					befoStr="00"
+				nextCntNo=$(($imageCntNo + 1))
+				nextCntZZ="0000${nextCntNo}"
+				nextCnt99=${nextCntZZ:(-2)}
+				#-- if [ ${imageCntNo} -lt 1 ]; then
+				if (( "${imageCntNo}" < 1 )); then
+					befoCntNo=0
+					befoCnt99="00"
 				else
-					befoCnt="0000$((ImageCounter - 1))"
-					befoStr=${befoCnt:(-2)}
+					befoCntNo=$(($imageCntNo - 1))
+					befoCntZZ="0000${befoCntNo}"
+					befoCnt99=${befoCntZZ:(-2)}
 				fi
 				LNimage_jemok=$(echo "${image_jemok,,}" | sed 's/ /_/g')
 				cat <<__EOF__
@@ -356,10 +362,10 @@ ${cBlue}>>>>>     ${cGreen}${ChapterSeq} ${cCyan}권의 파일이름: ${cYellow}
 
 ${cCyan}----> ${cMagenta}이미지 파일의 이름 = '${cBlue}알파벳만${cMagenta} 대/소 문자' '숫자' '.' '-' '빈칸'${cReset}
 
-${cYellow}>>>>> (7) ${cMagenta}이미지 ${cBlue}'${cYellow}${ImageCounter}${cBlue}' ${cMagenta}번째의 설명을 ${cRed}[ ${cGreen}${image_jemok} ${cRed}] ${cMagenta}이와 같이 다음줄에 입력합니다.
-${cYellow}>>>>>     ${cRed}[${cGreen}${image_jemok}${cRed}] ${cMagenta}이렇게 입력한 경우, ${cBlue}![ ${cGreen}${image_jemok} ${cBlue}](/${LNpublisher}/${LNbookCover}/${cRed}${BookSeq}${cBlue}.${cYellow}${ImageCounter}${cBlue}-${cGreen}${LNimage_jemok}${cBlue}.webp ${cMagenta}처럼 등록됩니다.
+${cYellow}>>>>> (7) ${cMagenta}이미지 ${cBlue}'${cYellow}${imageCnt99}${cBlue}' ${cMagenta}번째의 설명을 ${cRed}[ ${cGreen}${image_jemok} ${cRed}] ${cMagenta}이와 같이 다음줄에 입력합니다.
+${cYellow}>>>>>     ${cRed}[${cGreen}${image_jemok}${cRed}] ${cMagenta}이렇게 입력한 경우, ${cBlue}![ ${cGreen}${image_jemok} ${cBlue}](/${LNpublisher}/${LNbookCover}/${cRed}${BookSeq}${cBlue}.${cYellow}${imageCnt99}${cBlue}-${cGreen}${LNimage_jemok}${cBlue}.webp ${cMagenta}처럼 등록됩니다.
 ${cYellow}>>>>>     ${cRed}[ ${cGreen}x ${cRed}]${cMagenta} 인 경우, ${cCyan}챕터 번호 ${cMagenta}입력으로 돌아갑니다.
-${cYellow}>>>>>     ${cRed}[ ${cGreen}+ ${cRed}]${cMagenta} 인 경우, 챕터번호를 ${cBlue}'${cYellow}${nextStr}${cBlue}' 로 변경, ${cRed}[ ${cGreen}- ${cRed}]${cMagenta} 인 경우, 챕터번호를 ${cBlue}'${cYellow}${befoStr}${cBlue}' 로 변경,
+${cYellow}>>>>>     ${cRed}[ ${cGreen}+ ${cRed}]${cMagenta} 인 경우, 챕터번호를 ${cBlue}'${cYellow}${nextCnt99}${cBlue}' 로 변경, ${cRed}[ ${cGreen}- ${cRed}]${cMagenta} 인 경우, 챕터번호를 ${cBlue}'${cYellow}${befoCnt99}${cBlue}' 로 변경,
 ${cYellow}>>>>>     ${cBlue}확장자를 무조건 ${cBlue}'${cYellow}.webp${cBlue}'${cMagenta} 로 붙여주므로, 이게 아니면 해당 타입까지 써주고, 결과를 수정하면 됩니다.${cReset}
 ${cReset}
 __EOF__
@@ -375,11 +381,21 @@ __EOF__
 				else
 				echo "----$image_jemok----"
 				if [ "x$image_jemok" = "x+" ]; then
-					ImageCounter=${nextCnt:(-2)}
+					imageCntNo=$(($imageCntNo + 1))
+					imageCntZZ="0000${imageCntNo}"
+					imageCnt99=${imageCntZZ:(-2)}
 					image_jemok=${old_image_jemok}
 				else
 				if [ "x$image_jemok" = "x-" ]; then
-					ImageCounter=${befoCnt:(-2)}
+					#-- if [ ${imageCntNo} -lt 1 ]; then
+					if (( "${imageCntNo}" < 1 )); then
+						imageCntNo=0
+						imageCnt99="00"
+					else
+						imageCntNo=$(($imageCntNo - 1))
+						imageCntZZ="0000${imageCntNo}"
+						imageCnt99=${imageCntZZ:(-2)}
+					fi
 					image_jemok=${old_image_jemok}
 				else
 				if [ "x$image_jemok" != "xx" ]; then #-- exit
@@ -425,10 +441,10 @@ ${cReset}
 # ${ChapterSeq} ${ChapterName}
 
 
-${cRed}${BookSeq}${cBlue}.${cYellow}${ImageCounter}${cBlue}-${cGreen}${LNimage_jemok}${cBlue}.webp${cReset}
+${cRed}${BookSeq}${cBlue}.${cYellow}${imageCnt99}${cBlue}-${cGreen}${LNimage_jemok}${cBlue}.webp${cReset}
 
 
-${cBlue}![ ${cGreen}${image_jemok} ${cBlue}](/${LNpublisher}/${LNbookCover}/${cRed}${BookSeq}${cBlue}.${cYellow}${ImageCounter}${cBlue}-${cGreen}${LNimage_jemok}${cBlue}.webp${cReset})
+${cBlue}![ ${cGreen}${image_jemok} ${cBlue}](/${LNpublisher}/${LNbookCover}/${cRed}${BookSeq}${cBlue}.${cYellow}${imageCnt99}${cBlue}-${cGreen}${LNimage_jemok}${cBlue}.webp${cReset})
 
 ${cBlue}
 / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / /
@@ -436,7 +452,9 @@ ${cBlue}
 ----> 윗줄을 복사해서 사용합니다.
 ${cReset}
 __EOF__
-					ImageCounter=${nextCnt:(-2)}
+					imageCntNo=$(($imageCntNo + 1))
+					imageCntZZ="0000${imageCntNo}"
+					imageCnt99=${imageCntZZ:(-2)}
 				fi
 				fi
 				fi
