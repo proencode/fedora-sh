@@ -5,6 +5,20 @@ CMD_NAME=`basename $0` ; CMD_DIR=${0%/$CMD_NAME} ; if [ "x$CMD_DIR" == "x" ] || 
 
 # https://zetawiki.com/wiki/Bash_2%EC%B0%A8%EC%9B%90_%EB%B0%B0%EC%97%B4
 
+#-- 다음의 11 줄을 복사해서 아래에 저장한다.
+# publisher="
+# " #-- 출판사
+# BookTitle="
+# " #-- 책 제목
+# ShortDescription="
+# " #-- 저자 발행일 등
+# pubdate="
+# " #-- 책 발행일의 년월 + 당월 순서 알파벳 1 글자
+# gendate=$(date +%y%m%d) #-- 문서작성일 = 실행일
+# https_line="
+# " #-- 읽는중인 홈페이지 링크
+#
+
 publisher="PacktPub" #-- 출판사
 BookTitle="Modern Android 13 Development Cookbook" #-- 책 제목
 ShortDescription="By Madona S. Wambua Jul 2023 322 pages" #-- 저자 발행일 등
@@ -90,17 +104,20 @@ cat <<__EOF__
 
 ----> 권별로 앞/뒤 페이지 이동을 위한 링크를 만듭니다.
 __EOF__
+
+wikiLink=$(echo "${publisher,,}/${BookTitle,,}" | sed 's/ /_/g' | sed 's/’//g' | sed "s/,//g")
+
 for ((rNumber=0 ; rNumber <= r_top ; rNumber++))
 do
 	leftStr="BEGIN"
 	if [ $rNumber -gt 0 ]; then
 		mdName=$(echo "${titleCode[$((rNumber - 1))]}-${titleName[$((rNumber - 1))],,}" | sed 's/ /_/g' | sed 's/’//g' | sed "s/,//g")
-		leftStr="${cMagenta}[ ${cGreen}${titleCode[$((rNumber - 1))]}${cBlue}-${titleName[$((rNumber - 1))]} ${cMagenta}]${cBlue}(/packtpub/fdsfdsfsd/${cCyan}${mdName}"
+		leftStr="${cMagenta}[ ${cGreen}${titleCode[$((rNumber - 1))]}${cBlue}-${titleName[$((rNumber - 1))]} ${cMagenta}]${cBlue}(/${wikiLink}/${cCyan}${mdName}"
 	fi
 	rightStr="END"
 	if [ $rNumber -lt $r_top ]; then
 		mdName=$(echo "${titleCode[$((rNumber + 1))]}-${titleName[$((rNumber + 1))],,}" | sed 's/ /_/g' | sed 's/’//g' | sed "s/,//g")
-		rightStr="${cMagenta}[ ${cYellow}${titleCode[$(( rNumber + 1 ))]}${cBlue}-${titleName[$(( rNumber + 1 ))]} ${cMagenta}]${cBlue}(/packtpub/fdsfdsfsd/${cCyan}${mdName}"
+		rightStr="${cMagenta}[ ${cYellow}${titleCode[$(( rNumber + 1 ))]}${cBlue}-${titleName[$(( rNumber + 1 ))]} ${cMagenta}]${cBlue}(/${wikiLink}/${cCyan}${mdName}"
 	fi
 	echo "${leftStr}${cReset} <--- ${cRed}${titleCode[$((rNumber))]}${cReset} ---> ${rightStr}${cReset}"
 done
