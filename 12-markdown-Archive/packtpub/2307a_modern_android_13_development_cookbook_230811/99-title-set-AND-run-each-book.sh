@@ -47,32 +47,18 @@ r_top=14 #--^^
 
 declare -A MatrixTab
 
-if [ "x$1" = "x" ]; then
-	sw01="0"
-	cat <<__EOF__
-$1
-sh $0 $1 <---- '1' 입력하면, 소문자 타이틀로 표시합니다.
-
-__EOF__
-	exit -1
-fi
-
-sw01=$1
-
 titleCnt=0
 declare -A titleCode
 declare -A titleName
 
 cat <<__EOF__
-책 제목: ${BookTitle}
-책 발행일의 년월 + 당월 순서 알파벳 1 글자: ${pubdate}
-문서작성일: ${gendate}
-
-보관 폴더: $(echo "${pubdate}-${BookTitle,,}" | sed 's/ /_/g' | sed 's/’//g' | sed "s/,//g")-${gendate}
-
-----> 권번호 titleCode[] 와 권별 제목 titleName[] 을 배열에 담습니다.
+${cBlue}책 제목: ${cRed}${BookTitle}
+${cBlue}책 발행일의 년월 + 당월 순서 알파벳 1 글자: ${cRed}${pubdate}
+${cBlue}문서작성일: ${cRed}${gendate}
+${cBlue}보관 폴더: ${cRed}$(echo "${pubdate}-${BookTitle,,}" | sed 's/ /_/g' | sed 's/’//g' | sed "s/,//g")-${gendate}
+${cReset}
 __EOF__
-#
+
 for ((rNumber=0 ; rNumber <= ${r_top} ; rNumber++)) #-- for i in {0..14}
 do
 	for CodeNameStr in Code Name ImgDir
@@ -80,46 +66,26 @@ do
 		ref="r$rNumber[$CodeNameStr]"
 		MatrixTab[$rNumber,$CodeNameStr]=${!ref}
 	done
-#--
-	if [ "$1" = "0" ]; then
-		#-- (0) 원본대로 보여준다.
-		echo "----> ${MatrixTab[$rNumber,Code]} : ${MatrixTab[$rNumber,Name]} #--- 원본"
-	else
-	if [ "$1" = "1" ]; then
-		#-- (1) 소문자로 바꾸고 공백,따옴표,컴마를 바꾼다.
-		titleCode[$titleCnt]=${MatrixTab[$rNumber,Code]}
-		titleName[$titleCnt]=${MatrixTab[$rNumber,Name]}
-		titleCnt=$(( titleCnt + 1 ))
-
-		mdName=$(echo "${MatrixTab[$rNumber,Code]}-${MatrixTab[$rNumber,Name],,}" | sed 's/ /_/g' | sed 's/’//g' | sed "s/,//g")
-#-- check--		cat <<__EOF__
-#-- check--${mdName}
-#-- check--__EOF__
-	fi
-	fi
+	#-- 소문자로 바꾼다.
+	titleCode[$titleCnt]=${MatrixTab[$rNumber,Code]}
+	titleName[$titleCnt]=${MatrixTab[$rNumber,Name]}
+	titleCnt=$(( titleCnt + 1 ))
+	#-- 공백,따옴표,컴마를 바꾼다.
+	mdName=$(echo "${MatrixTab[$rNumber,Code]}-${MatrixTab[$rNumber,Name],,}" | sed 's/ /_/g' | sed 's/’//g' | sed "s/,//g")
 done
-#
-#-- message--cat <<__EOF__
-#-- message--<---- 권번호 titleCode[] 와 권별 제목 titleName[] 을 배열에 담습니다.
-#-- message--
-#-- message------> 권별로 앞/뒤 페이지 이동을 위한 링크를 만듭니다.
-#-- message--__EOF__
 
 wikiLink=$(echo "${publisher,,}/${BookTitle,,}" | sed 's/ /_/g' | sed 's/’//g' | sed "s/,//g")
 
-last_BookNumber=-1 #-- 마지막으로 선택한 권 번호 (-1=선택 안함)
+last_BookNumber=-1 #-- (-1)=마지막으로 선택한 권 번호가 없다.
 
-
-
-cat <<__EOF__
-	
-권 번호를 선택합니다.
-__EOF__
 for ((rNumber=0 ; rNumber <= r_top ; rNumber++))
 do
 	echo "${cRed}${titleCode[$((rNumber))]}${cBlue}-${titleName[$((rNumber))]}${cReset}"
 done
 cat <<__EOF__
+
+권 번호를 선택합니다.
+
 ----> select Number: ('00' ... '${r_top}')
 __EOF__
 read this_BookNumber99 #-- 선택한 권번호
@@ -133,7 +99,9 @@ this_BookNumberZZ="0000${this_BookNumber99}"
 this_BookNumber99=${this_BookNumberZZ:(-2)}
 this_BookNumber=$(echo "${this_BookNumber99}" | sed -r 's/^0+//g') #-- 앞에 붙은 0 을 떼어낸다.
 cat <<__EOF__
-----> 선택: ${cRed}${this_BookNumber99}${cBlue}-${titleName[$this_BookNumber]}${cReset}
+${cUp}
+${cRed}[ ${cYellow}${this_BookNumber99} ${cRed}]${cReset}
+
 __EOF__
 
 for ((rNumber=0 ; rNumber <= r_top ; rNumber++))
@@ -149,7 +117,11 @@ do
 		rightStr="${cMagenta}[ ${cYellow}${titleCode[$(( rNumber + 1 ))]}${cBlue}-${titleName[$(( rNumber + 1 ))]} ${cMagenta}]${cBlue}(/${wikiLink}/${cCyan}${mdName}"
 	fi
 	#-- 앞뒤 링크 확인: echo "${leftStr}${cReset} <--- ${cRed}${titleCode[$((rNumber))]}${cReset} ---> ${rightStr}${cReset}"
-	echo "${cRed}${titleCode[$((rNumber))]}${cBlue}-${titleName[$((rNumber))]}${cReset}"
+	if [ $rNumber = $this_BookNumber ]; then
+		echo "${cYellow}${titleCode[$((rNumber))]}${cCyan}-${titleName[$((rNumber))]}${cReset}"
+	else
+		echo "${cRed}${titleCode[$((rNumber))]}${cBlue}-${titleName[$((rNumber))]}${cReset}"
+	fi
 done
 cat <<__EOF__
 <---- 권별로 앞/뒤 페이지 이동을 위한 링크를 만듭니다.
