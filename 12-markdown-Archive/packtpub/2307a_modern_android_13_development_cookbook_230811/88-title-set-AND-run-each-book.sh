@@ -25,17 +25,14 @@ __EOF__
 #
 
 publisher="PacktPub" #-- 출판사
-LNpublisher=$(echo "${publisher,,}" | sed 's/ /_/g') #-- 소문자로 바꾸고 공백을 밑줄로 바꾼다.
-
 BookTitle="Modern Android 13 Development Cookbook" #-- 책 제목
-LNbookTitle=$(echo "${BookTitle,,}" | sed 's/ /_/g') #-- 책 제목: 소문자로 바꾸고 공백을 밑줄로 바꾼다.
-
 ShortDescription="By Madona S. Wambua Jul 2023 322 pages" #-- 저자 발행일 등
-
 pubdate="2307a" #-- 책 발행일의 년월 + 당월 순서 알파벳 1 글자
 gendate=$(date +%y%m%d) #-- 문서작성일 = 실행일
 https_line="https://subscription.packtpub.com/book/mobile/9781837634934/pref/" #-- 읽는중인 홈페이지 링크
 
+LNpublisher=$(echo "${publisher,,}" | sed 's/ /_/g') #-- 소문자로 바꾸고 공백을 밑줄로 바꾼다.
+LNbookTitle=$(echo "${BookTitle,,}" | sed 's/ /_/g') #-- 책 제목: 소문자로 바꾸고 공백을 밑줄로 바꾼다.
 
 declare -A  r0=([Code]="00"     [Name]="Preface")
 declare -A  r1=([Code]="01.c1"  [Name]="Getting Started with Modern Android Development Skills")
@@ -151,274 +148,36 @@ if [ $this_BookNumber -lt $r_top ]; then
 	mdName=$(echo "${right_code}-${right_name},,}" | sed 's/ /_/g' | sed 's/’//g' | sed "s/,//g")
 fi
 tno=$((this_BookNumber))
-this_code=${titleCode[$((tno))]}
-this_name=${titleName[$((tno))]}
+this_code=${titleCode[$((tno))]} #-- 권번호 + Part / Section / Chapter 번호 --> '02.p1'
+this_name=${titleName[$((tno))]} #-- 권의 제목
 this_title="${cYellow}${this_code:0:2}${cRed}${this_code:2}${cBlue}-${this_name}${cReset}"
+
+BookSeq=${this_code:0:2} #-- this_code 의 0 번 문자부터 2 개의 문자를 잘라내서 담는다.
+#-- ${this_code:0:2} = "01"
+#-- ${this_code:3:2} = "c1"
+
 cat <<__EOF__
 ${left_title} <--- ${this_title} ---> ${right_title}
 __EOF__
-
-
-
-
-
-
-
-
-
 
 cat <<__EOF__
 ----> press Enter:
 __EOF__
 read a
-# zz00logs_folder="${HOME}/zz00logs" ; if [ ! -d "${zz00logs_folder}" ]; then cmdRun "mkdir ${zz00logs_folder}" "로그 폴더" ; fi
-# zz00log_name="${zz00logs_folder}/zz.$(date +"%y%m%d%a-%H%M%S")__RUNNING_${CMD_NAME}" ; touch ${zz00log_name}
-# ----
-
-
-if [ "x$4" != "x" ]; then
-	ChapterSeq="$4"
-else
-	ChapterSeq="01.c1" #-- (4) '01'= 00 또는 01 부터 시작하는 권 번호 (+ 부 'p1'=Part / 장 'c1'=Chapter / 절 's1'=Section) 번호
-fi
-BookSeq=${ChapterSeq:0:2} #-- ChapterSeq 의 0 번 문자부터 2 개의 문자를 잘라내서 담는다.
-#-- ${ChapterSeq:0:2} = "01"
-#-- ${ChapterSeq:3:2} = "c1"
 
 imageCntNo=0 #-- 현재의 권번호 안에서 0 부터 올라가는 사진 카운터
 imageCntZZ="0000${imageCntNo}"
 imageCnt99=${imageCntZZ:(-2)}
 
-if [ "x$5" != "x" ]; then
-	ChapterName="$5"
-else
-	ChapterName="Preface" #-- (5) wiki.js 왼쪽에 표시할 챕터 제목
-fi
-if [ "x$6" != "x" ]; then
-	old_image_jemok="$6"
-else
-	old_image_jemok="Android Foundation" #-- (6) 시작시 예시로 든 이미지의 일련번호 + 이름
-
-fi
-if [ "x$7" != "x" ]; then
-	https_line="$7"
-else
-	https_line="https://subscription.packtpub.com/book/mobile/9781837634934/pref/" #-- (7) 출판사 홈페이지 링크
-fi
-if [ "x$8" != "x" ]; then
-	tags="$8"
-else
-	tags="kotlin android" #-- (8) 찾기 위한 태그
-fi
-
-# ${cBlue}${CMD_NAME} ${cRed}"${publisher}"  ${cMagenta}"${BookTitle}"  ${cRed}"${ShortDescription}"  ${cMagenta}"${ChapterSeq}"  ${cRed}"${ChapterName}"  ${cMagenta}"${old_image_jemok}"  ${cRed}"${https_line}"  ${cMagenta}"${tags}"
-
-cat <<__EOF__
-
-${cBlue}
-       publisher="${cRed}${publisher}${cBlue}"
-       BookTitle="${cMagenta}${BookTitle}${cBlue}"
-ShortDescription="${cRed}${ShortDescription}${cBlue}"
-      ChapterSeq="${cMagenta}${ChapterSeq}${cBlue}"
-     ChapterName="${cRed}${ChapterName}${cBlue}"
- old_image_jemok="${cMagenta}${old_image_jemok}${cBlue}"
-      https_line="${cRed}${https_line}${cBlue}"
-            tags="${cMagenta}${tags}${cBlue}"
-${cReset}
-__EOF__
-
-# 01-000 Preface
-
-# 출판사 이름
-# -----------
-
-if [ "x$1" = "x" ]; then
-	#-- (대문자, 공백, - 와 _ 제외한 특수문자) 는 안됨 !
-	cat <<__EOF__
-
-${cRed}[ ${cCyan}1 ${cRed}] ${cBlue}---- packtpub
-  2   ---- medium
-  3   ---- docker
-  4   ---- howtogeek
-  5   ---- ddanzi
-  6   ---- ysjn
-  7   ---- gihyo
-
-${cGreen}----> ${cCyan}출판사 이름 ${cRed}[ ${cGreen}1 ~ 6 ${cRed}]${cCyan} 또는 새로운 ${cRed}[ ${cMagenta}= 알파벳만 = ${cGreen}출판사 분류명 ${cRed}] ${cCyan}을 입력하세요.${cReset}
-__EOF__
-	read a
-	if [ "x$a" = "x" ]; then
-		publisher="packtpub"
-		echo "${cUp}"
-	else
-		if [ "x$a" = "x1" ]; then
-			publisher="packtpub"
-		else
-		if [ "x$a" = "x2" ]; then
-			publisher="medium"
-		else
-		if [ "x$a" = "x3" ]; then
-			publisher="docker"
-		else
-	
-		if [ "x$a" = "x4" ]; then
-			publisher="howtogeek"
-		else
-		if [ "x$a" = "x5" ]; then
-			publisher="ddanzi"
-		else
-		if [ "x$a" = "x6" ]; then
-			publisher="ysjn"
-		else
-
-		if [ "x$a" = "x7" ]; then
-			publisher="gihyo"
-		else
-			publisher="$a"
-		fi
-		fi
-		fi
-
-		fi
-		fi
-		fi
-
-		fi
-	fi
-else
-	a="cmd 에서 지정"
-	publisher="$1"
-
-fi
-publish_no=$a
-
-LNpublisher=$(echo "${publisher,,}" | sed 's/ /_/g') #-- 소문자로 바꾸고 공백을 밑줄로 바꾼다.
-
-cat <<__EOF__
-
-${cBlue}====> ${cMagenta}[ ${cGreen}${publisher} ${cMagenta}] ${cBlue}출판사 이름을 정했습니다.${cReset}
-__EOF__
-read a
-if [ "x$a" = "x" ]; then
-	echo "${cUp}"
-fi
-
-# 책 제목
-# -------
-
-cat <<__EOF__
-${cRed}[ ${cBlue}${publish_no} ${cYellow}${publisher} ${cBlue}= ${cYellow}${LNpublisher} ${cRed}]
-
-${cGreen}----> (1) ${cCyan}폴더 이름으로 쓰기 위한 책 제목 Title: ${cRed}[ ${cGreen}${BookTitle} ${cRed}] ${cMagenta}= '${cBlue}알파벳만${cMagenta} 대/소 문자' '숫자' '.' '-' '빈칸'${cReset}
-__EOF__
-read a
-if [ "x$a" = "x" ]; then
-	echo "${cUp}"
-	a=${BookTitle}
-fi
-BookTitle=$a
-LNbookTitle=$(echo "${BookTitle,,}" | sed 's/ /_/g') #-- 책 제목: 소문자로 바꾸고 공백을 밑줄로 바꾼다.
-
-cat <<__EOF__
-
-${cBlue}====> ${cMagenta}[ ${cGreen}${LNpublisher} ${cBlue}/ ${cGreen}${LNbookTitle} ${cBlue}책 제목: ${cGreen}${BookTitle} ${cMagenta}] ${cBlue}책 제목을 정했습니다.${cReset}
-__EOF__
-read a
-if [ "x$a" = "x" ]; then
-	echo "${cUp}"
-fi
-
-# 설명 요약
-# ---------
-
-cat <<__EOF__
-      ${cRed}[ ${cYellow}${LNpublisher} ${cBlue}/ ${cYellow}${LNbookTitle} ${cBlue}책 제목: ${cYellow}${BookTitle} ${cRed}]
-
-${cGreen}----> (2) ${cCyan}설명 요약 Short Description: ${cRed}[ ${cGreen}${ShortDescription} ${cRed}] ${cMagenta} '한글/영문' '숫자' '.' '-' '빈칸'${cBlue})${cReset}
-__EOF__
-read a
-if [ "x$a" = "x" ]; then
-	echo "${cUp}"
-	a=${ShortDescription}
-fi
-ShortDescription=$a
-
-cat <<__EOF__
-
-${cBlue}====> ${cMagenta}[ ${cGreen}${ShortDescription} ${cMagenta}] ${cBlue}설명 요약을 정했습니다.${cReset}
-__EOF__
-read a
-if [ "x$a" = "x" ]; then
-	echo "${cUp}"
-fi
-
-# 원본 링크
-# ---------
-
-cat <<__EOF__
-      ${cRed}[ ${cYellow}${ShortDescription} ${cRed}]
-
-${cGreen}----> (3) ${cCyan}원본 링크 ${cRed}[ ${cGreen}${https_line} ${cRed}] ${cMagenta}= '${cBlue}알파벳만${cMagenta} 대/소 문자' '숫자' '.' '-' '빈칸'${cReset}
-__EOF__
-read a
-if [ "x$a" = "x" ]; then
-	echo "${cUp}"
-	a=${https_line}
-fi
-https_line=$a
-
-cat <<__EOF__
-
-${cBlue}====> ${cMagenta}[ ${cGreen}${https_line} ${cMagenta}] ${cBlue}원본 링크를 정했습니다.${cReset}
-__EOF__
-read a
-if [ "x$a" = "x" ]; then
-	echo "${cUp}"
-fi
-
-# 태그
-# ---------
-
-cat <<__EOF__
-      ${cRed}[ ${cYellow}${https_line} ${cRed}]
-
-${cGreen}----> (4) ${cCyan}태그 ${cRed}[ ${cGreen}${tags} ${cRed}] ${cMagenta}= '${cBlue}알파벳만${cMagenta} 대/소 문자' '숫자' '.' '-' '빈칸'${cReset}
-__EOF__
-read a
-if [ "x$a" = "x" ]; then
-	a=${tags}
-	echo "${cUp}"
-fi
-tags=$a
-
-cat <<__EOF__
-
-${cBlue}====> ${cMagenta}[ ${cGreen}${tags} ${cMagenta}] ${cBlue}태그를 정했습니다..${cReset}
-__EOF__
-read a
-if [ "x$a" = "x" ]; then
-	echo "${cUp}"
-fi
-echo "      ${cRed}[ ${cYellow}${tags} ${cRed}]${cReset}"
-
-yesno="xxx"
-until [ "x$yesno" = "xy" ]
-do
-	cat <<__EOF__
-
-${cBlue}====> 계속 진행하기 위해서 ${cMagenta}[ ${cYellow}y ${cMagenta}] ${cBlue}를 눌러 주세요.${cReset}
-__EOF__
-	read yesno
-done
 
 
 
-# ChapterSeq="00-p1"
+# this_code="00-p1"
 # ChapterName="Preface"
 # ---------------------
 
 
-until [ "x$ChapterSeq" = "x" ]
+until [ "x$this_code" = "x" ]
 do
 	cat <<__EOF__
 
@@ -433,34 +192,34 @@ ${cBlue}
   || ||
 [ 01.c1 ] = 권 번호 (챕터 번호)
 ===================
-${cYellow}>>>>> (5) ${cCyan}(챕터 번호)를 ${cRed}[ ${cGreen}${ChapterSeq} ${cRed}] ${cCyan}이와 같이 다음 줄에 입력합니다. ${cRed}[ ${cGreen}exit ${cRed}]${cCyan} 인 경우, 이 작업을 끝냅니다.${cReset}
+${cYellow}>>>>> (5) ${cCyan}(챕터 번호)를 ${cRed}[ ${cGreen}${this_code} ${cRed}] ${cCyan}이와 같이 다음 줄에 입력합니다. ${cRed}[ ${cGreen}exit ${cRed}]${cCyan} 인 경우, 이 작업을 끝냅니다.${cReset}
 __EOF__
 	read a
 	if [ "x$a" = "x" ]; then
 		echo "${cUp}"
-		a=$ChapterSeq #-- 엔터인 경우, ChapterSeq 원래값을 그대로 갖게 하려고.
+		a=$this_code #-- 엔터인 경우, this_code 원래값을 그대로 갖게 하려고.
 	fi
 	if [ "x$a" = "xexit" ]; then #-- 'exit' 를 입력하면 끝낸다.
-		ChapterSeq="" #-- 끝낸다.
+		this_code="" #-- 끝낸다.
 		ChapterName=""
 	else
-		ChapterSeq=$a
-		BookSeq=${ChapterSeq:0:2} #-- ChapterSeq 의 0 번 문자부터 2 개의 문자를 잘라내서 담는다.
+		this_code=$a
+		BookSeq=${this_code:0:2} #-- this_code 의 0 번 문자부터 2 개의 문자를 잘라내서 담는다.
 		cat <<__EOF__
 
-${cBlue}====> ${cMagenta}[ ${cGreen}${ChapterSeq} ${cMagenta}] ${cBlue}(챕터 번호)를 정했습니다.${cReset}
+${cBlue}====> ${cMagenta}[ ${cGreen}${this_code} ${cMagenta}] ${cBlue}(챕터 번호)를 정했습니다.${cReset}
 __EOF__
 read a
 if [ "x$a" = "x" ]; then
 	echo "${cUp}"
 fi
 		cat <<__EOF__
-      ${cRed}[ ${cYellow}${ChapterSeq} ${cRed}]
+      ${cRed}[ ${cYellow}${this_code} ${cRed}]
 ${cBlue}
 ===================
-${ChapterSeq} 권의 이름 (챕터 이름)
+${this_code} 권의 이름 (챕터 이름)
 ===================
-${cYellow}>>>>> (6) ${cGreen}${ChapterSeq} ${cCyan}권의 요약제목 을 ${cRed}[ ${cGreen}${ChapterName} ${cRed}] ${cCyan}이와 같이 다음 줄에 입력합니다. ${cRed}[ ${cGreen}exit ${cRed}]${cBlue} 를 입력하면, 이 작업을 끝냅니다.${cReset}
+${cYellow}>>>>> (6) ${cGreen}${this_code} ${cCyan}권의 요약제목 을 ${cRed}[ ${cGreen}${ChapterName} ${cRed}] ${cCyan}이와 같이 다음 줄에 입력합니다. ${cRed}[ ${cGreen}exit ${cRed}]${cBlue} 를 입력하면, 이 작업을 끝냅니다.${cReset}
 __EOF__
 		read a
 		if [ "x$a" = "x" ]; then
@@ -468,11 +227,11 @@ __EOF__
 			a=$ChapterName
 		fi
 		if [ "x$a" = "xexit" ]; then
-			ChapterSeq="" #-- 끝낸다.
+			this_code="" #-- 끝낸다.
 			ChapterName=""
 		else
 			ChapterName=$a
-			chapterSeqName="${ChapterSeq} ${ChapterName}"
+			chapterSeqName="${this_code} ${ChapterName}"
 			LNchapterSeqName=$(echo "${chapterSeqName,,}" | sed 's/ /_/g') #-- 소문자로 바꾸고 공백을 밑줄로 바꾼다.
 			cat <<__EOF__
 
@@ -507,7 +266,7 @@ __EOF__
 				LNimage_jemok=$(echo "${image_jemok,,}" | sed 's/ /_/g')
 				cat <<__EOF__
 
-${cBlue}>>>>>     ${cGreen}${ChapterSeq} ${cCyan}권의 파일이름: ${cYellow}${LNchapterSeqName}.md
+${cBlue}>>>>>     ${cGreen}${this_code} ${cCyan}권의 파일이름: ${cYellow}${LNchapterSeqName}.md
 
 ${cCyan}----> ${cMagenta}이미지 파일의 이름 = '${cBlue}알파벳만${cMagenta} 대/소 문자' '숫자' '.' '-' '빈칸'${cReset}
 
@@ -582,12 +341,12 @@ ${cReset}
 > tags: ${tags}
 > this File Name: ${LNchapterSeqName}.md
 
-> Chapter Name: ${ChapterSeq} ${ChapterName}
+> Chapter Name: ${this_code} ${ChapterName}
 > Link: ${https_line}
 > Images: / ${LNpublisher} / ${LNbookTitle} /
 > create: $(date +'%Y-%m-%d %a %H:%M:%S')
 
-# ${ChapterSeq} ${ChapterName}
+# ${this_code} ${ChapterName}
 
 
 ${cRed}${BookSeq}${cBlue}.${cYellow}${imageCnt99}${cBlue}-${cGreen}${LNimage_jemok}${cBlue}.webp${cReset}
@@ -611,9 +370,9 @@ __EOF__
 			done #-- until [ "x$image_jemok" = "x" ]
 		fi #-- if [ "x$a" = "x" ]; then #-- 요약제목 없으면,
 
-	fi #-- ChapterSeq="" 이므로 끝낸다.
+	fi #-- this_code="" 이므로 끝낸다.
 
-done #-- until [ "x$ChapterSeq" = "x" ]
+done #-- until [ "x$this_code" = "x" ]
 
 
 # ----
@@ -622,3 +381,6 @@ done #-- until [ "x$ChapterSeq" = "x" ]
 cat <<__EOF__
 ${cRed}<<<<<<<<<<${cBlue} $0 ${cRed}||| ${cMagenta}${MEMO} ${cRed}<<<<<<<<<<${cReset}
 __EOF__
+# zz00logs_folder="${HOME}/zz00logs" ; if [ ! -d "${zz00logs_folder}" ]; then cmdRun "mkdir ${zz00logs_folder}" "로그 폴더" ; fi
+# zz00log_name="${zz00logs_folder}/zz.$(date +"%y%m%d%a-%H%M%S")__RUNNING_${CMD_NAME}" ; touch ${zz00log_name}
+# ----
