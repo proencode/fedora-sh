@@ -5,7 +5,7 @@ CMD_NAME=`basename $0` ; CMD_DIR=${0%/$CMD_NAME} ; if [ "x$CMD_DIR" == "x" ] || 
 
 # https://zetawiki.com/wiki/Bash_2%EC%B0%A8%EC%9B%90_%EB%B0%B0%EC%97%B4
 
-#-- 다음의 11 줄을 복사해서 아래에 저장한다.
+#-- 다음의 열한줄을 복사해서 아래에 붙여놓고 해당 책에 맞추어 입력한다.
 # publisher="
 # " #-- 출판사
 # BookTitle="
@@ -92,20 +92,49 @@ do
 		titleCnt=$(( titleCnt + 1 ))
 
 		mdName=$(echo "${MatrixTab[$rNumber,Code]}-${MatrixTab[$rNumber,Name],,}" | sed 's/ /_/g' | sed 's/’//g' | sed "s/,//g")
-		cat <<__EOF__
-${mdName}
-__EOF__
+#-- check--		cat <<__EOF__
+#-- check--${mdName}
+#-- check--__EOF__
 	fi
 	fi
 done
 #
-cat <<__EOF__
-<---- 권번호 titleCode[] 와 권별 제목 titleName[] 을 배열에 담습니다.
-
-----> 권별로 앞/뒤 페이지 이동을 위한 링크를 만듭니다.
-__EOF__
+#-- message--cat <<__EOF__
+#-- message--<---- 권번호 titleCode[] 와 권별 제목 titleName[] 을 배열에 담습니다.
+#-- message--
+#-- message------> 권별로 앞/뒤 페이지 이동을 위한 링크를 만듭니다.
+#-- message--__EOF__
 
 wikiLink=$(echo "${publisher,,}/${BookTitle,,}" | sed 's/ /_/g' | sed 's/’//g' | sed "s/,//g")
+
+last_BookNumber=-1 #-- 마지막으로 선택한 권 번호 (-1=선택 안함)
+
+
+
+cat <<__EOF__
+	
+권 번호를 선택합니다.
+__EOF__
+for ((rNumber=0 ; rNumber <= r_top ; rNumber++))
+do
+	echo "${cRed}${titleCode[$((rNumber))]}${cBlue}-${titleName[$((rNumber))]}${cReset}"
+done
+cat <<__EOF__
+----> select Number: ('00' ... '${r_top}')
+__EOF__
+read this_BookNumber99 #-- 선택한 권번호
+if [ $this_BookNumber99 -lt 0 ] || [ $this_BookNumber99 -gt 99 ]; then
+	cat <<__EOF__
+----> ('00' ... '${r_top}') 범위를 벗어나므로 작업을 끝냅니다.
+__EOF__
+	exit -1
+fi
+this_BookNumberZZ="0000${this_BookNumber99}"
+this_BookNumber99=${this_BookNumberZZ:(-2)}
+this_BookNumber=$(echo "${this_BookNumber99}" | sed -r 's/^0+//g') #-- 앞에 붙은 0 을 떼어낸다.
+cat <<__EOF__
+----> 선택: ${cRed}${this_BookNumber99}${cBlue}-${titleName[$this_BookNumber]}${cReset}
+__EOF__
 
 for ((rNumber=0 ; rNumber <= r_top ; rNumber++))
 do
@@ -119,7 +148,8 @@ do
 		mdName=$(echo "${titleCode[$((rNumber + 1))]}-${titleName[$((rNumber + 1))],,}" | sed 's/ /_/g' | sed 's/’//g' | sed "s/,//g")
 		rightStr="${cMagenta}[ ${cYellow}${titleCode[$(( rNumber + 1 ))]}${cBlue}-${titleName[$(( rNumber + 1 ))]} ${cMagenta}]${cBlue}(/${wikiLink}/${cCyan}${mdName}"
 	fi
-	echo "${leftStr}${cReset} <--- ${cRed}${titleCode[$((rNumber))]}${cReset} ---> ${rightStr}${cReset}"
+	#-- 앞뒤 링크 확인: echo "${leftStr}${cReset} <--- ${cRed}${titleCode[$((rNumber))]}${cReset} ---> ${rightStr}${cReset}"
+	echo "${cRed}${titleCode[$((rNumber))]}${cBlue}-${titleName[$((rNumber))]}${cReset}"
 done
 cat <<__EOF__
 <---- 권별로 앞/뒤 페이지 이동을 위한 링크를 만듭니다.
