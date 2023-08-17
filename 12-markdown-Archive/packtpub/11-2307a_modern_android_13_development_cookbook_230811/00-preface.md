@@ -21,17 +21,14 @@
 
 
 > Title: Modern Android 13 Development Cookbook
+> md Path: /packtpub/2307a-modern_android_13_development_cookbook-230811/
+> this Chapter: 00-preface.md
+> Images Folder: /packtpub/img2307a-modern_android_13_development_cookbook-230811/
 > Short Description: By Madona S. Wambua Jul 2023 322 pages
-> Path: packtpub/modern_android_13_development_cookbook
-> tags: 
-> this File Name: .md
+> Link: https://subscription.packtpub.com/book/mobile/9781803235578/pref
+> create: 2023-08-17 목 14:25:13
 
-> Chapter Name: 00 
-> Link: https://subscription.packtpub.com/book/mobile/9781837634934/pref/
-> Images: / packtpub / modern_android_13_development_cookbook /
-> create: 2023-08-16 수 16:28:54
-
-# 
+# Preface
 
 
 
@@ -231,7 +228,8 @@ Follow these simple steps to get the benefits:
 
 1. Scan the **QR code** or visit the link below
 
-![ Scan the QR code ](/packtpub/modern_android_13_development_cookbook/00.00-scan_the_qr_code.webp)
+![ Scan the QR code ](/packtpub/img2307a-modern_android_13_development_cookbook-230811/00.00-scan_the_qr_code.webp)
+
 
 https://packt.link/free-ebook/9781803235578
 

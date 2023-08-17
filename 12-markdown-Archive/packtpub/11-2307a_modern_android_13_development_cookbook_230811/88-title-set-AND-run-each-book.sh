@@ -206,7 +206,7 @@ __EOF__
 
 (3) ${cBlue}----> 이미지 파일 이름은 '알파벳 대/소 문자', '숫자'와 '점 대시 빈칸' 만 씁니다.
           이미지 파일 이름이 ${cRed}[ ${cGreen}${image_jemok} ${cRed}] ${cBlue}인 경우,
-![ ${cGreen}${image_jemok} ${cBlue}](/${LNpublisher}/${LNbookTitle}/${cYellow}${ChapterSeq}${cBlue}.${cGreen}${imageCnt99}${cBlue}-${LNimage_jemok}.${cCyan}webp${cBlue}) 로 등록합니다.${cRed}
+![ ${cGreen}${image_jemok} ${cBlue}](/${LNpublisher}/img${LNbookTitle}/${cYellow}${ChapterSeq}${cBlue}.${cGreen}${imageCnt99}${cBlue}-${LNimage_jemok}.${cCyan}webp${cBlue}) 로 등록합니다.${cRed}
           [ ${cYellow}xx ${cRed}]${cBlue} 즉 '${cCyan}x 두개${cBlue}' 인 경우, ${cCyan}권 번호 입력 ${cMagenta}으로 돌아갑니다.${cRed}
           [ ${cYellow}+ ${cRed}]${cBlue} -> ${cGreen}${nextCnt99}${cBlue} = 이미지 번호 ///${cRed}
           [ ${cYellow}- ${cRed}]${cBlue} -> 이미지 번호 = ${cGreen}${befoCnt99} ${cBlue}/// ${cMagenta}지금 부여할 이미지 번호 = '${cGreen}${imageCnt99}${cBlue}'${cBlue}
@@ -271,22 +271,30 @@ ${cReset}
 
 
 > Title: ${BookTitle}
-> Path: /${LNpublisher}/${LNbookTitle}/
+> md Path: /${LNpublisher}/${LNbookTitle}/
 > this Chapter: ${LNchapterCodeName}.md
+> Images Folder: /${LNpublisher}/img${LNbookTitle}/
 > Short Description: ${ShortDescription}
 > Link: ${https_line}
 > create: $(date +'%Y-%m-%d %a %H:%M:%S')
 
 # ${this_name}
 
+md Path:
+/${LNpublisher}/${LNbookTitle}/
+
+this Chapter:
+${LNchapterCodeName}.md
+
 ${LNpublisher}/${LNbookTitle}/${LNchapterCodeName}.md
+
+Images Folder:
+/${LNpublisher}/img${LNbookTitle}/
 
 
 ${cYellow}${ChapterSeq}${cBlue}.${cGreen}${imageCnt99}${cBlue}-${cBlue}${LNimage_jemok}${cCyan}.webp${cReset}
 
-
-${cBlue}![ ${cGreen}${image_jemok} ${cBlue}](/${LNpublisher}/${LNbookTitle}/${cYellow}${ChapterSeq}${cBlue}.${cGreen}${imageCnt99}${cBlue}-${cBlue}${LNimage_jemok}${cCyan}.webp${cReset})
-
+${cBlue}![ ${cGreen}${image_jemok} ${cBlue}](/${LNpublisher}/img${LNbookTitle}/${cYellow}${ChapterSeq}${cBlue}.${cGreen}${imageCnt99}${cBlue}-${cBlue}${LNimage_jemok}${cCyan}.webp${cReset})
 ${cBlue}
 / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / /
 ${cReset}
