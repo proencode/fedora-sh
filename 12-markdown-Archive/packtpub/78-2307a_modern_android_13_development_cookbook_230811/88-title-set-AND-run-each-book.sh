@@ -19,7 +19,8 @@ __EOF__
 # " #-- 저자 발행일 등
 # pubdate="
 # " #-- 책 발행일의 년월 + 당월 순서 알파벳 1 글자
-# gendate=$(date +%y%m%d) #-- 문서작성일 = 실행일
+# gendate="
+# " #-- 문서작성일 = 실행일
 # https_line="
 # " #-- 읽는중인 홈페이지 링크
 #
@@ -28,11 +29,11 @@ publisher="PacktPub" #-- 출판사
 BookTitle="Modern Android 13 Development Cookbook" #-- 책 제목
 ShortDescription="By Madona S. Wambua Jul 2023 322 pages" #-- 저자 발행일 등
 pubdate="2307a" #-- 책 발행일의 년월 + 당월 순서 알파벳 1 글자
-gendate=$(date +%y%m%d) #-- 문서작성일 = 실행일
-https_line="https://subscription.packtpub.com/book/mobile/9781837634934/pref/" #-- 읽는중인 홈페이지 링크
+gendate="230811" #-- 문서작성일 = 실행일
+https_line="https://subscription.packtpub.com/book/mobile/9781803235578/pref" #-- 읽는중인 홈페이지 링크
 
 LNpublisher=$(echo "${publisher,,}" | sed 's/ /_/g') #-- 소문자로 바꾸고 공백을 밑줄로 바꾼다.
-LNbookTitle=$(echo "${BookTitle,,}" | sed 's/ /_/g') #-- 책 제목: 소문자로 바꾸고 공백을 밑줄로 바꾼다.
+LNbookTitle=$(echo "${pubdate}-${BookTitle,,}-${gendate}" | sed 's/ /_/g') #-- 책 제목: 소문자로 바꾸고 공백을 밑줄로 바꾼다.
 
 declare -A  r0=([Code]="00"     [Name]="Preface")
 declare -A  r1=([Code]="01.c1"  [Name]="Getting Started with Modern Android Development Skills")
@@ -59,11 +60,11 @@ declare -A titleCode
 declare -A titleName
 
 cat <<__EOF__
-${cCyan}(1)
+(1) ---->
 ${cBlue}책 제목: ${cRed}${BookTitle}
 ${cBlue}책 발행일의 년월 + 당월 순서 알파벳 1 글자: ${cRed}${pubdate}
 ${cBlue}문서작성일: ${cRed}${gendate}
-${cBlue}보관 폴더: ${cRed}$(echo "${pubdate}-${BookTitle,,}" | sed 's/ /_/g' | sed 's/’//g' | sed "s/,//g")-${gendate}
+${cBlue}보관 폴더: ${cRed}${LNbookTitle}
 ${cReset}
 __EOF__
 
@@ -79,16 +80,16 @@ do
 	titleName[$titleCnt]=${MatrixTab[$rNumber,Name]}
 	titleCnt=$(( titleCnt + 1 ))
 	#-- 공백,따옴표,컴마를 바꾼다.
-	mdName=$(echo "${MatrixTab[$rNumber,Code]}-${MatrixTab[$rNumber,Name],,}" | sed 's/ /_/g' | sed 's/’//g' | sed "s/,//g")
+	### mdName=$(echo "${MatrixTab[$rNumber,Code]}-${MatrixTab[$rNumber,Name],,}" | sed 's/ /_/g' | sed 's/’//g' | sed "s/,//g")
 done
 
-wikiLink=$(echo "${publisher,,}/${BookTitle,,}" | sed 's/ /_/g' | sed 's/’//g' | sed "s/,//g")
+#### wikiLink=$(echo "${publisher,,}/${BookTitle,,}" | sed 's/ /_/g' | sed 's/’//g' | sed "s/,//g")
 
-last_BookNumber=-444 #-- (-444)=마지막으로 선택한 권 번호가 없다.
+last_ChapterNumber=-444 #-- (-444)=마지막으로 선택한 권 번호가 없다.
 
 this_code="start" #-- 권번호 + Part / Section / Chapter 번호 --> '02.p1'
 
-until [ "x$this_code" = "xexit" ] #-- (A) 권번호 입력시 'exit' 를 입력해야 끝난다.
+until [ "x$this_code" = "xxx" ] #-- (A) 권번호 입력시 'xx' 를 입력해야 끝난다.
 do
 	for ((rNumber=0 ; rNumber <= r_top ; rNumber++))
 	do
@@ -97,31 +98,31 @@ do
 
 	this_code="start" #-- 권번호 + Part / Section / Chapter 번호 --> '02.p1'
 	cat <<__EOF__
-${cCyan}(2)
-${cBlue}권 번호를 선택합니다.
 
-----> select Number: ${cRed}[ ${cYellow}00${cBlue} ${cRed}] ${cBlue}... ${cRed}[ ${cYellow}${r_top} ${cRed}] ${cBlue}끝내려면, 'exit' 를 입력하세요.${cReset}
+(2) ${cBlue}----> 권 번호를 선택합니다.  ${cRed}[ ${cYellow}00${cBlue} ${cRed}] ${cBlue}... ${cRed}[ ${cYellow}${r_top} ${cRed}]${cBlue}
+          끝내려면, ${cRed}[ ${cYellow}xx ${cRed}] ${cBlue} 즉, '${cCyan}x 두개${cBlue}' 를 입력하세요.${cReset}
 __EOF__
 	read this_code #-- 선택한 권번호
 
-	if [ $this_code = "exit" ]; then #-- if-A.01
-		this_code="exit" #-- 권번호 + Part / Section / Chapter 번호 --> '02.p1'
+	if [ $this_code = "xx" ]; then #-- if-A.01
+		this_code="xx" #-- 권번호 + Part / Section / Chapter 번호 --> '02.p1'
 	else #-- if-A.01
 
 	if [ $this_code -lt 0 ] || [ $this_code -gt 99 ]; then #-- if-A.02
 		cat <<__EOF__
-----> ${cRed}[ ${cYellow}00${cBlue} ${cRed}] ${cBlue}... ${cRed}[ ${cYellow}${r_top} ${cRed}] ${cBlue}범위를 벗어나므로 작업을 끝냅니다.${cReset}
+(2a) ----> ${cRed}[ ${cYellow}00${cBlue} ${cRed}] ${cBlue}... ${cRed}[ ${cYellow}${r_top} ${cRed}] ${cBlue}범위를 벗어나므로 작업을 끝냅니다.${cReset}
 __EOF__
-		this_code="exit" #-- 권번호 + Part / Section / Chapter 번호 --> '02.p1'
+		this_code="xx" #-- 권번호 + Part / Section / Chapter 번호 --> '02.p1'
 	else #-- if-A.02
 
-		this_BookNumberZZ="0000${this_BookNumber99}"
-		this_BookNumber99=${this_BookNumberZZ:(-2)}
-		this_BookNumber=$(echo "${this_BookNumber99}" | sed -r 's/^0+//g') #-- 앞에 붙은 0 을 떼어낸다.
+		this_ChapterNumberZZ="0000${this_code:0:2}"
+		this_ChapterNumber99=${this_ChapterNumberZZ:(-2)}
+		#-- '0' 일때는 '' 로 되므로 아래로 대신한다. this_ChapterNumber=$(echo "${this_ChapterNumber99}" | sed -r 's/^0+//g') #-- 앞에 붙은 0 을 떼어낸다.
+		this_ChapterNumber=$((this_ChapterNumber99))
 
 		cat <<__EOF__
 ${cUp}
-${cRed}[ ${cYellow}${this_BookNumber99} ${cRed}]${cReset}
+${cRed}[ ${cYellow}${this_ChapterNumber99} ${cRed}]${cReset}
 __EOF__
 
 #-- for ((rNumber=0 ; rNumber <= r_top ; rNumber++))
@@ -137,41 +138,45 @@ __EOF__
 #-- 		rightStr="${cMagenta}[ ${cYellow}${titleCode[$(( rNumber + 1 ))]}${cBlue}-${titleName[$(( rNumber + 1 ))]} ${cMagenta}]${cBlue}(/${wikiLink}/${cCyan}${mdName}"
 #-- 	fi
 #-- 	#-- 앞뒤 링크 확인: echo "${leftStr}${cReset} <--- ${cRed}${titleCode[$((rNumber))]}${cReset} ---> ${rightStr}${cReset}"
-#-- 	if [ $rNumber = $this_BookNumber ]; then
+#-- 	if [ $rNumber = $this_ChapterNumber ]; then
 #-- 		echo "${cYellow}${titleCode[$((rNumber))]}${cCyan}-${titleName[$((rNumber))]}${cReset}"
 #-- 	else
 #-- 		echo "${cRed}${titleCode[$((rNumber))]}${cBlue}-${titleName[$((rNumber))]}${cReset}"
 #-- 	fi
 #-- done
 
-		left_title="BEGIN"
-		if [ $this_BookNumber > 0 ]; then
-			tno=$((this_BookNumber - 1))
+		left_code="" ; left_name="BEGIN"
+		left_title="${cReset}${left_name}"
+		if (( "$this_ChapterNumber" > 0 )); then #-- if [ $this_ChapterNumber -gt 0 ]; then
+			tno=$((this_ChapterNumber - 1))
 			left_code=${titleCode[$((tno))]}
 			left_name=${titleName[$((tno))]}
 			left_title="${cYellow}${left_code:0:2}${cReset}${left_code:2}-${left_name}"
 		fi
-		right_title="END"
-		if [ $this_BookNumber < $r_top ]; then
-			tno=$((this_BookNumber + 1))
+		right_code="" ; right_name="END"
+		right_title="${cReset}${left_name}"
+		if (( "$this_ChapterNumber" < "$r_top" )); then #-- if [ "$this_ChapterNumber" -lt "$r_top" ]; then
+			tno=$((this_ChapterNumber + 1))
 			right_code=${titleCode[$((tno))]}
 			right_name=${titleName[$((tno))]}
 			right_title="${cYellow}${right_code:0:2}${cReset}${right_code:2}-${right_name}"
 		fi
-		tno=$((this_BookNumber))
+		tno=$((this_ChapterNumber))
 		this_code=${titleCode[$((tno))]} #-- 권번호 + Part / Section / Chapter 번호 --> '02.p1'
 		this_name=${titleName[$((tno))]} #-- 권의 제목
 		this_title="${cYellow}${this_code:0:2}${cRed}${this_code:2}${cBlue}-${this_name}${cReset}"
-		this_fileName=$(echo "${this_code}-${this_name},,}" | sed 's/ /_/g' | sed 's/’//g' | sed "s/,//g")
+		LNchapterCodeName=$(echo "${this_code}-${this_name,,}" | sed 's/ /_/g' | sed 's/’//g' | sed "s/,//g")
 
-		BookSeq=${this_code:0:2} #-- this_code 의 0 번 문자부터 2 개의 문자를 잘라내서 담는다.
+		ChapterSeq=${this_code:0:2} #-- this_code 의 0 번 문자부터 2 개의 문자를 잘라내서 담는다.
 		#-- ${this_code:0:2} = "01"
 		#-- ${this_code:2} = ".c1"
 		#-- ${this_code:3:2} = "c1"
 
 		cat <<__EOF__
 
-${left_title} <--- ${this_title} ---> ${right_title}
+${cRed}<--- ${cReset}${left_title}
+${this_title} ${cRed}
+---> ${right_title}
 __EOF__
 
 		imageCntNo=0 #-- 현재의 권번호 안에서 0 부터 올라가는 사진 카운터
@@ -183,7 +188,7 @@ __EOF__
 
 		old_image_jemok=${this_name}
 		image_jemok=${this_name}
-		until [ "x$image_jemok" = "xexit" ] #-- (B) 이미지 제목 입력
+		until [ "x$image_jemok" = "xxx" ] #-- (B) 이미지 제목 입력
 		do
 			nextCntNo=$(($imageCntNo + 1))
 			nextCntZZ="0000${nextCntNo}"
@@ -199,27 +204,27 @@ __EOF__
 			LNimage_jemok=$(echo "${image_jemok,,}" | sed 's/ /_/g')
 			cat <<__EOF__
 
-${cBlue}>>>>>     ${cGreen}${this_code} ${cCyan}권의 파일이름: ${cYellow}${this_name}.md
-
-${cCyan}----> ${cMagenta}이미지 파일의 이름 = '${cBlue}알파벳만${cMagenta} 대/소 문자' '숫자' '.' '-' '빈칸'${cReset}
-
-${cYellow}>>>>> (7) ${cMagenta}이미지 ${cBlue}'${cYellow}${imageCnt99}${cBlue}' ${cMagenta}번째의 설명을 ${cRed}[ ${cGreen}${image_jemok} ${cRed}] ${cMagenta}이와 같이 다음줄에 입력합니다.
-${cYellow}>>>>>     ${cRed}[${cGreen}${image_jemok}${cRed}] ${cMagenta}이렇게 입력한 경우, ${cBlue}![ ${cGreen}${image_jemok} ${cBlue}](/${LNpublisher}/${LNbookTitle}/${cRed}${BookSeq}${cBlue}.${cYellow}${imageCnt99}${cBlue}-${cGreen}${LNimage_jemok}${cBlue}.webp ${cMagenta}처럼 등록됩니다.
-${cYellow}>>>>>     ${cRed}[ ${cGreen}exit ${cRed}]${cMagenta} 인 경우, ${cCyan}챕터 번호 ${cMagenta}입력으로 돌아갑니다.
-${cYellow}>>>>>     ${cRed}[ ${cGreen}+ ${cRed}]${cMagenta} 인 경우, 챕터번호를 ${cBlue}'${cYellow}${nextCnt99}${cBlue}' 로 변경, ${cRed}[ ${cGreen}- ${cRed}]${cMagenta} 인 경우, 챕터번호를 ${cBlue}'${cYellow}${befoCnt99}${cBlue}' 로 변경,
-${cYellow}>>>>>     ${cBlue}확장자를 무조건 ${cBlue}'${cYellow}.webp${cBlue}'${cMagenta} 로 붙여주므로, 이게 아니면 해당 타입까지 써주고, 결과를 수정하면 됩니다.${cReset}
-${cReset}
+(3) ${cBlue}----> 이미지 파일 이름은 '알파벳 대/소 문자', '숫자'와 '점 대시 빈칸' 만 씁니다.
+          이미지 파일 이름이 ${cRed}[ ${cGreen}${image_jemok} ${cRed}] ${cBlue}인 경우,
+![ ${cGreen}${image_jemok} ${cBlue}](/${LNpublisher}/${LNbookTitle}/${cYellow}${ChapterSeq}${cBlue}.${cGreen}${imageCnt99}${cBlue}-${LNimage_jemok}.${cCyan}webp${cBlue}) 로 등록합니다.${cRed}
+          [ ${cYellow}xx ${cRed}]${cBlue} 즉 '${cCyan}x 두개${cBlue}' 인 경우, ${cCyan}권 번호 입력 ${cMagenta}으로 돌아갑니다.${cRed}
+          [ ${cYellow}+ ${cRed}]${cBlue} -> ${cGreen}${nextCnt99}${cBlue} = 이미지 번호 ///${cRed}
+          [ ${cYellow}- ${cRed}]${cBlue} -> 이미지 번호 = ${cGreen}${befoCnt99} ${cBlue}/// ${cMagenta}지금 부여할 이미지 번호 = '${cGreen}${imageCnt99}${cBlue}'${cBlue}
+          또한, 확장자를 무조건 ${cBlue}'${cCyan}.webp${cBlue}'${cBlue} 로 붙여주므로, 이게 아니면 해당 타입까지 써주고, 결과를 수정하면 됩니다.${cReset}
 __EOF__
 			read image_jemok
 			if [ "x$image_jemok" = "x" ]; then #-- if-B.01
 				image_jemok=${old_image_jemok}
 				cat <<__EOF__
 ${cUp}
-${cCyan}----> ${cMagenta}다시 입력해 주세요 ~
+(3a) ${cBlue}----> ${cMagenta}다시 입력해 주세요 ~${cReset}
 
 __EOF__
 			else #-- if-B.01
-			echo "----$image_jemok----"
+			cat <<__EOF__
+${cUp}
+${cRed}[ ${cYellow}${image_jemok} ${cRed}]${cReset}
+__EOF__
 			if [ "x$image_jemok" = "x+" ]; then #-- if-B.02
 				imageCntNo=$(($imageCntNo + 1))
 				imageCntZZ="0000${imageCntNo}"
@@ -237,11 +242,10 @@ __EOF__
 				fi
 				image_jemok=${old_image_jemok}
 			else #-- if-B.03
-			if [ "x$image_jemok" != "xexit" ]; then #-- if-B.04
+			if [ "x$image_jemok" != "xxx" ]; then #-- if-B.04
 				old_image_jemok=${image_jemok}
 				LNimage_jemok=$(echo "${image_jemok,,}" | sed 's/ /_/g') #-- 전부 대문자로 바꾸려면 ${image_jemok^^}, 전부 소문자는 ${image_jemok,,}
 				cat <<__EOF__
-${cRed}[ ${cYellow}${image_jemok} ${cRed}]
 
 ${cBlue}
 / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / /
@@ -266,44 +270,44 @@ ${cReset}
 ---------- cut line ----------
 
 
-> Book Title: ${this_code} ${this_name}
+> Title: ${BookTitle}
+> Path: /${LNpublisher}/${LNbookTitle}/
+> this Chapter: ${LNchapterCodeName}.md
 > Short Description: ${ShortDescription}
-> Path: ${LNpublisher}/${LNbookTitle}
-> this File Name: ${this_fileName}.md
-
 > Link: ${https_line}
-> Images: / ${LNpublisher} / ${LNbookTitle} /
 > create: $(date +'%Y-%m-%d %a %H:%M:%S')
 
-# ${this_code} ${ChapterName}
+# ${this_name}
+
+${LNpublisher}/${LNbookTitle}/${LNchapterCodeName}.md
 
 
-${cRed}${BookSeq}${cBlue}.${cYellow}${imageCnt99}${cBlue}-${cGreen}${LNimage_jemok}${cBlue}.webp${cReset}
+${cYellow}${ChapterSeq}${cBlue}.${cGreen}${imageCnt99}${cBlue}-${cBlue}${LNimage_jemok}${cCyan}.webp${cReset}
 
 
-${cBlue}![ ${cGreen}${image_jemok} ${cBlue}](/${LNpublisher}/${LNbookTitle}/${cRed}${BookSeq}${cBlue}.${cYellow}${imageCnt99}${cBlue}-${cGreen}${LNimage_jemok}${cBlue}.webp${cReset})
+${cBlue}![ ${cGreen}${image_jemok} ${cBlue}](/${LNpublisher}/${LNbookTitle}/${cYellow}${ChapterSeq}${cBlue}.${cGreen}${imageCnt99}${cBlue}-${cBlue}${LNimage_jemok}${cCyan}.webp${cReset})
 
 ${cBlue}
 / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / /
-${cBlue}
-----> 윗줄을 복사해서 사용합니다.
+${cReset}
+(4) ${cBlue}----> 윗줄을 복사해서 사용합니다.
 ${cReset}
 __EOF__
 				imageCntNo=$(($imageCntNo + 1))
 					imageCntZZ="0000${imageCntNo}"
 					imageCnt99=${imageCntZZ:(-2)}
 
-			fi #-- if [ "x$image_jemok" != "xexit" ]; then #-- if-B.04
+			fi #-- if [ "x$image_jemok" != "xxx" ]; then #-- if-B.04
 			fi #-- if [ "x$image_jemok" = "x-" ]; then #-- if-B.03
 			fi #-- if [ "x$image_jemok" = "x+" ]; then #-- if-B.02
 			fi #-- if [ "x$image_jemok" = "x" ]; then #-- if-B.01
 
-		done #-- until [ "x$image_jemok" = "xexit" ] #-- (B) 이미지 제목 입력
+		done #-- until [ "x$image_jemok" = "xxx" ] #-- (B) 이미지 제목 입력
 
 	fi #-- if-A.02
 	fi #-- if-A.01
 
-done #-- until [ "x$this_code" = "xexit" ] #-- (A) 권번호 입력시 'exit' 를 입력해야 끝난다.
+done #-- until [ "x$this_code" = "xxx" ] #-- (A) 권번호 입력시 'xx' 를 입력해야 끝난다.
 
 # ----
 # rm -f ${zz00log_name} ; zz00log_name="${zz00logs_folder}/zz.$(date +"%y%m%d%a-%H%M%S")..${CMD_NAME}" ; touch ${zz00log_name}
