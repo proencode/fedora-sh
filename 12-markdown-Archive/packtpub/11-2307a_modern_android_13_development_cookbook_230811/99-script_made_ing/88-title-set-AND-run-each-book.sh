@@ -32,8 +32,8 @@ pubdate="2307a" #-- 책 발행일의 년월 + 당월 순서 알파벳 1 글자
 gendate="230811" #-- 문서작성일 = 실행일
 https_line="https://subscription.packtpub.com/book/mobile/9781803235578/pref" #-- 읽는중인 홈페이지 링크
 
-LNpublisher=$(echo "${publisher,,}" | sed 's/ /_/g') #-- 소문자로 바꾸고 공백을 밑줄로 바꾼다.
-LNbookTitle=$(echo "${pubdate}-${BookTitle,,}-${gendate}" | sed 's/ /_/g') #-- 책 제목: 소문자로 바꾸고 공백을 밑줄로 바꾼다.
+LNpublisher=$(echo "${publisher,,}" | sed 's/ /_/g' | sed 's/’//g' | sed "s/,//g") #-- 소문자로 바꾸고 공백을 밑줄로 바꾼다.
+LNbookTitle=$(echo "${pubdate}-${BookTitle,,}-${gendate}" | sed 's/ /_/g' | sed 's/’//g' | sed "s/,//g") #-- 책 제목: 소문자로 바꾸고 공백을 밑줄로 바꾼다.
 
 declare -A  r0=([Code]="00"     [Name]="Preface")
 declare -A  r1=([Code]="01.c1"  [Name]="Getting Started with Modern Android Development Skills")
@@ -201,15 +201,15 @@ __EOF__
 				befoCntZZ="0000${befoCntNo}"
 				befoCnt99=${befoCntZZ:(-2)}
 			fi
-			LNimage_jemok=$(echo "${image_jemok,,}" | sed 's/ /_/g')
+			LNimage_jemok=$(echo "${image_jemok,,}" | sed 's/ /_/g' | sed 's/’//g' | sed "s/,//g")
 			cat <<__EOF__
 
 (3) ${cBlue}----> 이미지 파일 이름은 '알파벳 대/소 문자', '숫자'와 '점 대시 빈칸' 만 씁니다.
           이미지 파일 이름이 ${cRed}[ ${cGreen}${image_jemok} ${cRed}] ${cBlue}인 경우,
-![ ${cGreen}${image_jemok} ${cBlue}](/${LNpublisher}/${LNbookTitle}/${cYellow}${ChapterSeq}${cBlue}.${cGreen}${imageCnt99}${cBlue}-${LNimage_jemok}.${cCyan}webp${cBlue}) 로 등록합니다.${cRed}
-          [ ${cYellow}xx ${cRed}]${cBlue} 즉 '${cCyan}x 두개${cBlue}' 인 경우, ${cCyan}권 번호 입력 ${cMagenta}으로 돌아갑니다.${cRed}
-          [ ${cYellow}+ ${cRed}]${cBlue} -> ${cGreen}${nextCnt99}${cBlue} = 이미지 번호 ///${cRed}
-          [ ${cYellow}- ${cRed}]${cBlue} -> 이미지 번호 = ${cGreen}${befoCnt99} ${cBlue}/// ${cMagenta}지금 부여할 이미지 번호 = '${cGreen}${imageCnt99}${cBlue}'${cBlue}
+![ ${cGreen}${image_jemok} ${cBlue}](/${LNpublisher}/img${LNbookTitle}/${cYellow}${ChapterSeq}${cBlue}.${cGreen}${imageCnt99}${cBlue}-${LNimage_jemok}.${cCyan}webp${cBlue}) 로 등록합니다.${cRed}
+          [ ${cYellow}xx ${cRed}]${cBlue} 즉 '${cCyan}x 두개${cBlue}' 인 경우, ${cCyan}권 번호 입력 ${cMagenta}으로 돌아갑니다.${cMagenta}
+부여번호${cRed}  [ ${cYellow}+ ${cRed}]${cBlue} -> ${cGreen}${nextCnt99}${cBlue} = 이미지 번호 ///${cMagenta}
+  '${cGreen}${imageCnt99}${cMagenta}'    ${cRed}[ ${cYellow}- ${cRed}]${cBlue} -> 이미지 번호 = ${cGreen}${befoCnt99} ${cBlue}///
           또한, 확장자를 무조건 ${cBlue}'${cCyan}.webp${cBlue}'${cBlue} 로 붙여주므로, 이게 아니면 해당 타입까지 써주고, 결과를 수정하면 됩니다.${cReset}
 __EOF__
 			read image_jemok
@@ -244,7 +244,7 @@ __EOF__
 			else #-- if-B.03
 			if [ "x$image_jemok" != "xxx" ]; then #-- if-B.04
 				old_image_jemok=${image_jemok}
-				LNimage_jemok=$(echo "${image_jemok,,}" | sed 's/ /_/g') #-- 전부 대문자로 바꾸려면 ${image_jemok^^}, 전부 소문자는 ${image_jemok,,}
+				LNimage_jemok=$(echo "${image_jemok,,}" | sed 's/ /_/g' | sed 's/’//g' | sed "s/,//g") #-- 전부 대문자로 바꾸려면 ${image_jemok^^}, 전부 소문자는 ${image_jemok,,}
 				cat <<__EOF__
 
 ${cBlue}
@@ -271,22 +271,30 @@ ${cReset}
 
 
 > Title: ${BookTitle}
-> Path: /${LNpublisher}/${LNbookTitle}/
+> md Path: /${LNpublisher}/${LNbookTitle}/
 > this Chapter: ${LNchapterCodeName}.md
+> Images Folder: /${LNpublisher}/img${LNbookTitle}/
 > Short Description: ${ShortDescription}
 > Link: ${https_line}
 > create: $(date +'%Y-%m-%d %a %H:%M:%S')
 
 # ${this_name}
 
+md Path:
+/${LNpublisher}/${LNbookTitle}/
+
+this Chapter:
+${LNchapterCodeName}.md
+
 ${LNpublisher}/${LNbookTitle}/${LNchapterCodeName}.md
+
+Images Folder:
+/${LNpublisher}/img${LNbookTitle}/
 
 
 ${cYellow}${ChapterSeq}${cBlue}.${cGreen}${imageCnt99}${cBlue}-${cBlue}${LNimage_jemok}${cCyan}.webp${cReset}
 
-
-${cBlue}![ ${cGreen}${image_jemok} ${cBlue}](/${LNpublisher}/${LNbookTitle}/${cYellow}${ChapterSeq}${cBlue}.${cGreen}${imageCnt99}${cBlue}-${cBlue}${LNimage_jemok}${cCyan}.webp${cReset})
-
+${cBlue}![ ${cGreen}${image_jemok} ${cBlue}](/${LNpublisher}/img${LNbookTitle}/${cYellow}${ChapterSeq}${cBlue}.${cGreen}${imageCnt99}${cBlue}-${cBlue}${LNimage_jemok}${cCyan}.webp${cReset})
 ${cBlue}
 / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / /
 ${cReset}
