@@ -1,5 +1,5 @@
           @ Q -> # 붙이고 줄 띄우기 
-0i## A
+0i### Akk
           @ W -> 현 위치에서 Copy 까지 역따옴표 
 j0i```/^Copy$ddk0C```
           @ E -> 찾은 글자 ~ SPACE 앞뒤로 backtick(`) 붙이기 

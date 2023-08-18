@@ -151,7 +151,7 @@ __EOF__
 			tno=$((this_ChapterNumber - 1))
 			left_code=${titleCode[$((tno))]}
 			left_name=${titleName[$((tno))]}
-			left_title="${cYellow}${left_code:0:2}${cReset}${left_code:2}-${left_name}"
+			left_title="${cYellow}${left_code:0:2}${left_code:2}${cReset}-${left_name}"
 		fi
 		right_code="" ; right_name="END"
 		right_title="${cReset}${left_name}"
@@ -159,12 +159,12 @@ __EOF__
 			tno=$((this_ChapterNumber + 1))
 			right_code=${titleCode[$((tno))]}
 			right_name=${titleName[$((tno))]}
-			right_title="${cYellow}${right_code:0:2}${cReset}${right_code:2}-${right_name}"
+			right_title="${cYellow}${right_code:0:2}${right_code:2}${cReset}-${right_name}"
 		fi
 		tno=$((this_ChapterNumber))
 		this_code=${titleCode[$((tno))]} #-- 권번호 + Part / Section / Chapter 번호 --> '02.p1'
 		this_name=${titleName[$((tno))]} #-- 권의 제목
-		this_title="${cYellow}${this_code:0:2}${cRed}${this_code:2}${cBlue}-${this_name}${cReset}"
+		this_title="${cYellow}${this_code:0:2}${this_code:2}${cBlue}-${cGreen}${this_name}${cReset}"
 		LNchapterCodeName=$(echo "${this_code}-${this_name,,}" | sed 's/ /_/g' | sed 's/’//g' | sed "s/,//g")
 
 		ChapterSeq=${this_code:0:2} #-- this_code 의 0 번 문자부터 2 개의 문자를 잘라내서 담는다.
@@ -177,6 +177,15 @@ __EOF__
 ${cRed}<--- ${cReset}${left_title}
 ${this_title} ${cRed}
 ---> ${right_title}
+
+${cBlue}/ / / / / / / /${cMagenta}
+> Title: ${cBlue}${BookTitle}${cMagenta}
+> ${cYellow}${this_code:0:2}${this_code:2} ${cGreen}/ ${cBlue}${this_name}${cMagenta}
+> md Path: ${cBlue}${LNpublisher} ${cGreen}/ ${cBlue}${LNbookTitle} ${cGreen}/${cMagenta}
+> ${cGreen}${LNchapterCodeName}.md${cMagenta}
+> Images Folder: ${cBlue}${LNpublisher} ${cGreen}/ ${cBlue}img${LNbookTitle}${cMagenta}
+${cBlue}/ / / / / / / /${cReset}
+
 __EOF__
 
 		imageCntNo=0 #-- 현재의 권번호 안에서 0 부터 올라가는 사진 카운터
@@ -205,8 +214,8 @@ __EOF__
 			cat <<__EOF__
 
 (3) ${cBlue}----> 이미지 파일 이름은 '알파벳 대/소 문자', '숫자'와 '점 대시 빈칸' 만 씁니다.
-          이미지 파일 이름이 ${cRed}[ ${cGreen}${image_jemok} ${cRed}] ${cBlue}인 경우,
-![ ${cGreen}${image_jemok} ${cBlue}](/${LNpublisher}/img${LNbookTitle}/${cYellow}${ChapterSeq}${cBlue}.${cGreen}${imageCnt99}${cBlue}-${LNimage_jemok}.${cCyan}webp${cBlue}) 로 등록합니다.${cRed}
+          이미지 파일 이름이 ${cRed}[ ${cCyan}${image_jemok} ${cRed}] ${cBlue}인 경우,
+![ ${cCyan}${image_jemok} ${cBlue}](/${LNpublisher}/img${LNbookTitle}/${cYellow}${ChapterSeq}${cBlue}.${cCyan}${imageCnt99}${cBlue}-${LNimage_jemok}.${cCyan}webp${cBlue}) 로 등록합니다.${cRed}
           [ ${cYellow}xx ${cRed}]${cBlue} 즉 '${cCyan}x 두개${cBlue}' 인 경우, ${cCyan}권 번호 입력 ${cMagenta}으로 돌아갑니다.${cMagenta}
 부여번호${cRed}  [ ${cYellow}+ ${cRed}]${cBlue} -> ${cGreen}${nextCnt99}${cBlue} = 이미지 번호 ///${cMagenta}
   '${cGreen}${imageCnt99}${cMagenta}'    ${cRed}[ ${cYellow}- ${cRed}]${cBlue} -> 이미지 번호 = ${cGreen}${befoCnt99} ${cBlue}///
@@ -250,7 +259,7 @@ __EOF__
 ${cBlue}
 / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / /
 ${cReset}
-@ Q -> # 붙이고 줄 띄우기 => 0i# ^[A^M^[
+@ Q -> # 붙이고 줄 띄우기 => 0i# ^[A^M^[kk^[
 @ W -> 현 위치에서 Copy 까지 역따옴표 => j0i\`\`\`^M^[/^Copy$^[ddk0C\`\`\`^M^[
 @ E -> 찾은 글자 ~ SPACE 앞뒤로 backtick(\`) 붙이기 => i\`^[/ ^[i\`^[/EEEEEEEEEE^[
 @ R -> 찾은 글자 ~ POINT 앞뒤로 backtick(\`) 붙이기 => i\`^[/.^[i\`^[/RRRRRRRRRR^[
@@ -268,37 +277,27 @@ ${cReset}
     blue= {.is-info} ; green= {.is-success} ; yellow= {.is-warning} ; red= {.is-danger}
 
 ---------- cut line ----------
+${cMagenta}
+> Title: ${cBlue}${BookTitle}${cMagenta}
+> ${cYellow}${this_code:0:2}${this_code:2} ${cGreen}/ ${cBlue}${this_name}${cMagenta}
+> md Path: ${cBlue}${LNpublisher} ${cGreen}/ ${cBlue}${LNbookTitle} ${cGreen}/${cMagenta}
+> ${cCyan}${LNchapterCodeName}.md${cMagenta}
+> Images Folder: ${cBlue}${LNpublisher} ${cGreen}/ ${cBlue}img${LNbookTitle}${cMagenta}
+> Short Description: ${cBlue}${ShortDescription}${cMagenta}
+> Link: ${cBlue}${https_line}${cMagenta}
+> create: ${cBlue}$(date +'%Y-%m-%d %a %H:%M:%S')${cBlue}
+
+# ${cCyan}${this_name}${cReset}
 
 
-> Title: ${BookTitle}
-> md Path: /${LNpublisher}/${LNbookTitle}/
-> this Chapter: ${LNchapterCodeName}.md
-> Images Folder: /${LNpublisher}/img${LNbookTitle}/
-> Short Description: ${ShortDescription}
-> Link: ${https_line}
-> create: $(date +'%Y-%m-%d %a %H:%M:%S')
+${cYellow}${ChapterSeq}${cBlue}.${cGreen}${imageCnt99}${cBlue}-${LNimage_jemok}${cCyan}.webp${cBlue}
 
-# ${this_name}
-
-md Path:
-/${LNpublisher}/${LNbookTitle}/
-
-this Chapter:
-${LNchapterCodeName}.md
-
-${LNpublisher}/${LNbookTitle}/${LNchapterCodeName}.md
-
-Images Folder:
-/${LNpublisher}/img${LNbookTitle}/
-
-
-${cYellow}${ChapterSeq}${cBlue}.${cGreen}${imageCnt99}${cBlue}-${cBlue}${LNimage_jemok}${cCyan}.webp${cReset}
-
-${cBlue}![ ${cGreen}${image_jemok} ${cBlue}](/${LNpublisher}/img${LNbookTitle}/${cYellow}${ChapterSeq}${cBlue}.${cGreen}${imageCnt99}${cBlue}-${cBlue}${LNimage_jemok}${cCyan}.webp${cReset})
+![ ${cGreen}${image_jemok} ${cBlue}](/${LNpublisher}/img${LNbookTitle}/${cYellow}${ChapterSeq}${cBlue}.${cGreen}${imageCnt99}${cBlue}-${LNimage_jemok}${cCyan}.webp${cReset})
 ${cBlue}
 / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / /
 ${cReset}
 (4) ${cBlue}----> 윗줄을 복사해서 사용합니다.
+    ----> (3) 으로 고고-
 ${cReset}
 __EOF__
 				imageCntNo=$(($imageCntNo + 1))
