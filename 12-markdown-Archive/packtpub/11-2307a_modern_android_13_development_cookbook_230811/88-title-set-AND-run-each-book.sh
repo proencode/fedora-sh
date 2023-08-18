@@ -145,21 +145,28 @@ __EOF__
 #-- 	fi
 #-- done
 
-		left_code="" ; left_name="BEGIN"
-		left_title="${cReset}${left_name}"
+		left_code="" ; left_name=""
+		left_link="BEGIN"
+		left_title="${cReset}${left_link}"
 		if (( "$this_ChapterNumber" > 0 )); then #-- if [ $this_ChapterNumber -gt 0 ]; then
 			tno=$((this_ChapterNumber - 1))
 			left_code=${titleCode[$((tno))]}
 			left_name=${titleName[$((tno))]}
-			left_title="${cYellow}${left_code:0:2}${left_code:2}${cReset}-${left_name}"
+			# left_title="${cYellow}${left_code:0:2}${left_code:2}${cReset}-${left_name}"
+			left_title="${cYellow}${left_code}${cReset}"
+			left_link="[ ${left_code} ](/${LNpublisher}/${LNbookTitle}/$(echo "${left_code}-${left_name,,}" | sed 's/ /_/g' | sed 's/’//g' | sed "s/,//g").md)"
 		fi
-		right_code="" ; right_name="END"
-		right_title="${cReset}${left_name}"
+		right_code="" ; right_name=""
+		right_link="END"
+		right_title="${cReset}${right_link}"
 		if (( "$this_ChapterNumber" < "$r_top" )); then #-- if [ "$this_ChapterNumber" -lt "$r_top" ]; then
 			tno=$((this_ChapterNumber + 1))
 			right_code=${titleCode[$((tno))]}
 			right_name=${titleName[$((tno))]}
-			right_title="${cYellow}${right_code:0:2}${right_code:2}${cReset}-${right_name}"
+			right_title="${cYellow}${right_code}${cReset}"
+			## right_title="${cYellow}${right_code:0:2}${right_code:2}${cReset}"
+			## right_title="${cYellow}${right_code:0:2}${right_code:2}${cReset}-${right_name}"
+			right_link="[ ${right_code} ](/${LNpublisher}/${LNbookTitle}/$(echo "${right_code}-${right_name,,}" | sed 's/ /_/g' | sed 's/’//g' | sed "s/,//g").md)"
 		fi
 		tno=$((this_ChapterNumber))
 		this_code=${titleCode[$((tno))]} #-- 권번호 + Part / Section / Chapter 번호 --> '02.p1'
@@ -172,18 +179,17 @@ __EOF__
 		#-- ${this_code:2} = ".c1"
 		#-- ${this_code:3:2} = "c1"
 
+#== ${cRed}<--- ${cReset}${left_title}
+#== ${this_title} ${cRed}
+#== ---> ${right_title}
+
 		cat <<__EOF__
-
-${cRed}<--- ${cReset}${left_title}
-${this_title} ${cRed}
----> ${right_title}
-
 ${cBlue}/ / / / / / / /${cMagenta}
-> Title: ${cBlue}${BookTitle}${cMagenta}
-> ${cYellow}${this_code:0:2}${this_code:2} ${cGreen}/ ${cBlue}${this_name}${cMagenta}
-> md Path: ${cBlue}${LNpublisher} ${cGreen}/ ${cBlue}${LNbookTitle} ${cGreen}/${cMagenta}
-> ${cGreen}${LNchapterCodeName}.md${cMagenta}
-> Images Folder: ${cBlue}${LNpublisher} ${cGreen}/ ${cBlue}img${LNbookTitle}${cMagenta}
+Title: ${cBlue}${BookTitle}${cMagenta}
+${cYellow}${this_code:0:2}${this_code:2} ${cGreen}/ ${cReset}${this_name}${cMagenta}
+md Path: ${cBlue}${LNpublisher} ${cGreen}/ ${cBlue}${LNbookTitle} ${cGreen}/${cMagenta}
+  ${cGreen}${LNchapterCodeName}.md${cMagenta}
+Images Folder: ${cBlue}${LNpublisher} ${cGreen}/ ${cBlue}img${LNbookTitle}${cMagenta}
 ${cBlue}/ / / / / / / /${cReset}
 
 __EOF__
@@ -254,30 +260,28 @@ __EOF__
 			if [ "x$image_jemok" != "xxx" ]; then #-- if-B.04
 				old_image_jemok=${image_jemok}
 				LNimage_jemok=$(echo "${image_jemok,,}" | sed 's/ /_/g' | sed 's/’//g' | sed "s/,//g") #-- 전부 대문자로 바꾸려면 ${image_jemok^^}, 전부 소문자는 ${image_jemok,,}
+#==  @ Q -> # 붙이고 줄 띄우기 => 0i# ^[A^M^[kk^[
+#==  @ W -> 현 위치에서 Copy 까지 역따옴표 => j0i\`\`\`^M^[/^Copy$^[ddk0C\`\`\`^M^[
+#==  @ E -> 찾은 글자 ~ SPACE 앞뒤로 backtick(\`) 붙이기 => i\`^[/ ^[i\`^[/EEEEEEEEEE^[
+#==  @ R -> 찾은 글자 ~ POINT 앞뒤로 backtick(\`) 붙이기 => i\`^[/.^[i\`^[/RRRRRRRRRR^[
+#==  @ T -> 찾은 글자 ~ COMMA 앞뒤로 backtick(\`) 붙이기 => i\`^[/,^[i\`^[/TTTTTTTTTT^[
+#==  @ Y -> 찾은 글자 ~ COLON 앞뒤로 backtick(\`) 붙이기 => i\`^[/;^[i\`^[/YYYYYYYYYY^[
+#==  @ U -> 찾은 글자~닫은괄호앞뒤로 backtick(\`) 붙이기 => i\`^[/)^[i\`^[/UUUUUUUUUU^[
+#==  
+#==  @ A -> 빈 줄에 블록 시작하기 => 0C\`\`\`^[^Mk0
+#==  @ S -> 줄 앞에 > 나오면 안되므로 블록 마감하고 > 앞에 - 끼우기 => 0i\`\`\`^M-^[^M0i\`\`\`^[0
+#==  @ D -> 줄 아래에 블록 마감하고 한줄 더 띄우기 => 0^Mi\`\`\`^M^M^[kk
+#==  @ F -> 이 줄을 타이틀로 만들기 => 0i#### ^[^M^[
+#==      마크다운 입력시 vi 커맨드 표시 ; (^[)=Ctrl+[ ; (^M)=Ctrl+M
+#==      인용구 작성시 ; 본문앞에는 꺽쇠 > 붙이고, 스타일 첨가시 끝줄에 종류별 구분을 표시한다.
+#==      https://docs.requarks.io/en/editors/markdown > Blockquotes > Stylings >
+#==      blue= {.is-info} ; green= {.is-success} ; yellow= {.is-warning} ; red= {.is-danger}
 				cat <<__EOF__
-
 ${cBlue}
 / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / /
-${cReset}
-@ Q -> # 붙이고 줄 띄우기 => 0i# ^[A^M^[kk^[
-@ W -> 현 위치에서 Copy 까지 역따옴표 => j0i\`\`\`^M^[/^Copy$^[ddk0C\`\`\`^M^[
-@ E -> 찾은 글자 ~ SPACE 앞뒤로 backtick(\`) 붙이기 => i\`^[/ ^[i\`^[/EEEEEEEEEE^[
-@ R -> 찾은 글자 ~ POINT 앞뒤로 backtick(\`) 붙이기 => i\`^[/.^[i\`^[/RRRRRRRRRR^[
-@ T -> 찾은 글자 ~ COMMA 앞뒤로 backtick(\`) 붙이기 => i\`^[/,^[i\`^[/TTTTTTTTTT^[
-@ Y -> 찾은 글자 ~ COLON 앞뒤로 backtick(\`) 붙이기 => i\`^[/;^[i\`^[/YYYYYYYYYY^[
-@ U -> 찾은 글자~닫은괄호앞뒤로 backtick(\`) 붙이기 => i\`^[/)^[i\`^[/UUUUUUUUUU^[
 
-@ A -> 빈 줄에 블록 시작하기 => 0C\`\`\`^[^Mk0
-@ S -> 줄 앞에 > 나오면 안되므로 블록 마감하고 > 앞에 - 끼우기 => 0i\`\`\`^M-^[^M0i\`\`\`^[0
-@ D -> 줄 아래에 블록 마감하고 한줄 더 띄우기 => 0^Mi\`\`\`^M^M^[kk
-@ F -> 이 줄을 타이틀로 만들기 => 0i#### ^[^M^[
-    마크다운 입력시 vi 커맨드 표시 ; (^[)=Ctrl+[ ; (^M)=Ctrl+M
-    인용구 작성시 ; 본문앞에는 꺽쇠 > 붙이고, 스타일 첨가시 끝줄에 종류별 구분을 표시한다.
-    https://docs.requarks.io/en/editors/markdown > Blockquotes > Stylings >
-    blue= {.is-info} ; green= {.is-success} ; yellow= {.is-warning} ; red= {.is-danger}
+${left_link} ${cBlue}<--- ${cCyan}${this_name} ${cBlue}---> ${right_link}
 
----------- cut line ----------
-${cMagenta}
 > Title: ${cBlue}${BookTitle}${cMagenta}
 > ${cYellow}${this_code:0:2}${this_code:2} ${cGreen}/ ${cBlue}${this_name}${cMagenta}
 > md Path: ${cBlue}${LNpublisher} ${cGreen}/ ${cBlue}${LNbookTitle} ${cGreen}/${cMagenta}
@@ -287,8 +291,7 @@ ${cMagenta}
 > Link: ${cBlue}${https_line}${cMagenta}
 > create: ${cBlue}$(date +'%Y-%m-%d %a %H:%M:%S')${cBlue}
 
-# ${cCyan}${this_name}${cReset}
-
+# ${cCyan}${this_name}
 
 ${cYellow}${ChapterSeq}${cBlue}.${cGreen}${imageCnt99}${cBlue}-${LNimage_jemok}${cCyan}.webp${cBlue}
 
@@ -297,8 +300,7 @@ ${cBlue}
 / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / /
 ${cReset}
 (4) ${cBlue}----> 윗줄을 복사해서 사용합니다.
-    ----> (3) 으로 고고-
-${cReset}
+    ----> (3) 으로 돌아갑니다.${cReset}
 __EOF__
 				imageCntNo=$(($imageCntNo + 1))
 					imageCntZZ="0000${imageCntNo}"
