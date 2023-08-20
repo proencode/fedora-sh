@@ -1,73 +1,14 @@
 
+| First Chapter | 👈 Preface 👉 |  [ 01.c1 Getting Started with ](/packtpub/2307a_modern_android_13_230811/01.c1_getting_started_with_modern_android_development_skills.md) |
+|:---:|:---:|:---:|
 
-@ Q -> # 붙이고 줄 띄우기 => 0i# ^[A^M^[
-@ W -> 현 위치에서 Copy 까지 역따옴표 => j0i```^M^[/^Copy$^[ddk0C```^M^[
-@ E -> 찾은 글자 ~ SPACE 앞뒤로 backtick(`) 붙이기 => i`^[/ ^[i`^[/EEEEEEEEEE^[
-@ R -> 찾은 글자 ~ POINT 앞뒤로 backtick(`) 붙이기 => i`^[/.^[i`^[/RRRRRRRRRR^[
-@ T -> 찾은 글자 ~ COMMA 앞뒤로 backtick(`) 붙이기 => i`^[/,^[i`^[/TTTTTTTTTT^[
-@ Y -> 찾은 글자 ~ COLON 앞뒤로 backtick(`) 붙이기 => i`^[/;^[i`^[/YYYYYYYYYY^[
-@ U -> 찾은 글자~닫은괄호앞뒤로 backtick(`) 붙이기 => i`^[/)^[i`^[/UUUUUUUUUU^[
-
-@ A -> 빈 줄에 블록 시작하기 => 0C```^[^Mk0
-@ S -> 줄 앞에 > 나오면 안되므로 블록 마감하고 > 앞에 - 끼우기 => 0i```^M-^[^M0i```^[0
-@ D -> 줄 아래에 블록 마감하고 한줄 더 띄우기 => 0^Mi```^M^M^[kk
-@ F -> 이 줄을 타이틀로 만들기 => 0i#### ^[^M^[
-    마크다운 입력시 vi 커맨드 표시 ; (^[)=Ctrl+[ ; (^M)=Ctrl+M
-    인용구 작성시 ; 본문앞에는 꺽쇠 > 붙이고, 스타일 첨가시 끝줄에 종류별 구분을 표시한다.
-    https://docs.requarks.io/en/editors/markdown > Blockquotes > Stylings >
-    blue= {.is-info} ; green= {.is-success} ; yellow= {.is-warning} ; red= {.is-danger}
-
----------- cut line ----------
-
-
-> Title: Modern Android 13 Development Cookbook
-> md Path: /packtpub/2307a-modern_android_13_development_cookbook-230811/
-> this Chapter: 00-preface.md
-> Images Folder: /packtpub/img2307a-modern_android_13_development_cookbook-230811/
-> Short Description: By Madona S. Wambua Jul 2023 322 pages
-> Link: https://subscription.packtpub.com/book/mobile/9781803235578/pref
-> create: 2023-08-17 목 14:25:13
+Title: `Modern Android 13 Development Cookbook ( 00 ) Preface`
+md Path: `packtpub / 2307a_modern_android_13_230811 / 00_preface.md`
+Short Description: `By Madona S. Wambua Jul 2023 322 pages`
+Link: https://subscription.packtpub.com/book/mobile/9781803235578/pref
+create: `2023-08-20 일 14:55:21`
 
 # Preface
-
-
-
-
-/ / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / /
-
-
-Packt Logo
-Browse Library
-Search titles …
-Sign In
-Start Free Trial
-Book image
-Table of Contents (15 chapters)
-
-Android is a powerful operating system widely used in various devices, phones, TVs, wearables, automobiles, and mor...
-By Madona S. Wambua
-Jul 2023
-322 pages
-
-Modern Android 13 Development Cookbook
-Overview of this book
-Android is a powerful operating system widely used in various devices, phones, TVs, wearables, automobiles, and more. This Android cookbook will teach you how to leverage the latest Android development technologies for creating incredible applications while making effective use of popular Jetpack libraries. You’ll also learn which critical principles to consider when developing Android apps. The book begins with recipes to get you started with the declarative UI framework, Jetpack Compose, and help you with handling UI states, Navigation, Hilt, Room, Wear OS, and more as you learn what's new in modern Android development. Subsequent chapters will focus on developing apps for large screens, leveraging Jetpack’s WorkManager, managing graphic user interface alerts, and tips and tricks within Android studio. Throughout the book, you'll also see testing being implemented for enhancing Android development, and gain insights into harnessing the integrated development environment of Android studio. Finally, you’ll discover best practices for robust modern app development. By the end of this book, you’ll be able to build an Android application using the Kotlin programming language and the newest modern Android development technologies, resulting in highly efficient applications.
-
-Preface
-Free Chapter 1 Chapter 1: Getting Started with Modern Android Development Skills
-2 Chapter 2: Creating Screens Using a Declarative UI and Exploring Compose Principles
-3 Chapter 3: Handling the UI State in Jetpack Compose and Using Hilt
-4 Chapter 4: Navigation in Modern Android Development
-5 Chapter 5: Using DataStore to Store Data and Testing
-6 Chapter 6: Using the Room Database and Testing
-7 Chapter 7: Getting Started with WorkManager
-8 Chapter 8: Getting Started with Paging
-9 Chapter 9: Building for Large Screens
-10 Chapter 10: Implementing Your First Wear OS Using Jetpack Compose
-11 Chapter 11: GUI Alerts – What’s New in Menus, Dialog, Toast, Snackbars, and More in Modern Android Development
-12 Chapter 12: Android Studio Tips and Tricks to Help You during Development
-13 Index
-14 Other Books You May Enjoy
 
 00 Preface
 01.c1 Getting Started with Modern Android Development Skills
@@ -84,7 +25,6 @@ Free Chapter 1 Chapter 1: Getting Started with Modern Android Development Skills
 12.c12 Android Studio Tips and Tricks to Help You during Development
 13 Index
 14 Other Books You May Enjoy
-
 
 # Preface
 
@@ -228,14 +168,13 @@ Follow these simple steps to get the benefits:
 
 1. Scan the **QR code** or visit the link below
 
-![ Scan the QR code ](/packtpub/img2307a-modern_android_13_development_cookbook-230811/00.00-scan_the_qr_code.webp)
-
+![ Scan the QR code ](/packtpub/2307a-preface-230811/00.00-scan_the_qr_code.webp)
 
 https://packt.link/free-ebook/9781803235578
 
 2. Submit your proof of purchase
 3. That’s it! We’ll send your free PDF and other benefits to your email directly
 
-Previous Chapter
-Next Chapter
+| First Chapter | 👈 Preface 👉 |  [ 01.c1 Getting Started with ](/packtpub/2307a_modern_android_13_230811/01.c1_getting_started_with_modern_android_development_skills.md) |
+|:---:|:---:|:---:|
 
