@@ -35,7 +35,7 @@ ShortDescription="By Madona S. Wambua Jul 2023 322 pages" #-- 저자 발행일 �
 https_line="https://subscription.packtpub.com/book/mobile/9781803235578/pref" #-- 읽는중인 홈페이지 링크
 
 LNpublisher=$(echo "${publisher,,}" | sed 's/-/_/g' | sed 's/ /_/g' | sed 's/’//g' | sed "s/,//g") #-- 소문자로 바꾸고 공백을 밑줄로 바꾼다.
-this_mdDir=$(echo "${pubdate}-${BookDir,,}-${gendate}" | sed 's/-/_/g' | sed 's/ /_/g' | sed 's/’//g' | sed "s/,//g") #-- 책 제목: 소문자로 바꾸고 공백을 밑줄로 바꾼다.
+this_mdDir=$(echo "${pubdate}_${BookDir,,}_${gendate}" | sed 's/-/_/g' | sed 's/ /_/g' | sed 's/’//g' | sed "s/,//g") #-- 책 제목: 소문자로 바꾸고 공백을 밑줄로 바꾼다.
 
 declare -A  r0=([Code]="00"    [Dir]="Preface"                  [Name]="Preface")
 declare -A  r1=([Code]="01.c1" [Dir]="Getting Started with"     [Name]="Getting Started with Modern Android Development Skills")
@@ -84,7 +84,7 @@ do
 	titleName[$titleCnt]=${MatrixTab[$rNumber,Name]}
 	titleCnt=$(( titleCnt + 1 ))
 	#-- 공백,따옴표,컴마를 바꾼다.
-	### mdName=$(echo "${MatrixTab[$rNumber,Code]}-${MatrixTab[$rNumber,Name],,}" | sed 's/ /_/g' | sed 's/’//g' | sed "s/,//g")
+	### mdName=$(echo "${MatrixTab[$rNumber,Code]}_${MatrixTab[$rNumber,Name],,}" | sed 's/ /_/g' | sed 's/’//g' | sed "s/,//g")
 done
 
 #### wikiLink=$(echo "${publisher,,}/${BookTitle,,}" | sed 's/ /_/g' | sed 's/’//g' | sed "s/,//g")
@@ -97,7 +97,7 @@ until [ "x$this_code" = "xxx" ] #-- (A) 권번호 입력시 'xx' 를 입력해�
 do
 	for ((rNumber=0 ; rNumber <= r_top ; rNumber++))
 	do
-		echo "${cYellow}${titleCode[$((rNumber))]:0:2}${cRed}${titleCode[$((rNumber))]:2}${cBlue}-${titleName[$((rNumber))]}${cReset}"
+		echo "${cYellow}${titleCode[$((rNumber))]:0:2}${cRed}${titleCode[$((rNumber))]:2}${cBlue}_${titleName[$((rNumber))]}${cReset}"
 	done
 
 	this_code="start" #-- 권번호 + Part / Section / Chapter 번호 --> '02.p1'
@@ -135,10 +135,10 @@ __EOF__
 		if (( "$this_ChapterNumber" > 0 )); then #-- if [ $this_ChapterNumber -gt 0 ]; then
 			tno=$((this_ChapterNumber - 1))
 			left_code=${titleCode[$((tno))]}
-			left_imgDir=$(echo "${pubdate}-${titleDir[$((tno))],,}-${gendate}" | sed 's/-/_/g' | sed 's/ /_/g' | sed 's/’//g' | sed "s/,//g")
+			left_imgDir=$(echo "${pubdate}_${titleDir[$((tno))],,}_${gendate}" | sed 's/-/_/g' | sed 's/ /_/g' | sed 's/’//g' | sed "s/,//g")
 			left_name=${titleName[$((tno))]}
 			left_title="${cYellow}${left_code}${cReset}"
-			left_link="[ ${left_code} ${titleDir[$((tno))]} ](/${LNpublisher}/${this_mdDir}/$(echo "${left_code}-${left_name,,}" | sed 's/-/_/g' | sed 's/ /_/g' | sed 's/’//g' | sed "s/,//g").md)"
+			left_link="[ ${left_code} ${titleDir[$((tno))]} ](/${LNpublisher}/${this_mdDir}/$(echo "${left_code}_${left_name,,}" | sed 's/-/_/g' | sed 's/ /_/g' | sed 's/’//g' | sed "s/,//g").md)"
 		fi
 		right_code="" ; right_name=""
 		right_link="Last Chapter"
@@ -146,20 +146,20 @@ __EOF__
 		if (( "$this_ChapterNumber" < "$r_top" )); then #-- if [ "$this_ChapterNumber" -lt "$r_top" ]; then
 			tno=$((this_ChapterNumber + 1))
 			right_code=${titleCode[$((tno))]}
-			right_imgDir=$(echo "${pubdate}-${titleDir[$((tno))],,}-${gendate}" | sed 's/-/_/g' | sed 's/ /_/g' | sed 's/’//g' | sed "s/,//g")
+			right_imgDir=$(echo "${pubdate}_${titleDir[$((tno))],,}_${gendate}" | sed 's/-/_/g' | sed 's/ /_/g' | sed 's/’//g' | sed "s/,//g")
 			right_name=${titleName[$((tno))]}
 			right_title="${cYellow}${right_code}${cReset}"
-			right_link="[ ${right_code} ${titleDir[$((tno))]} ](/${LNpublisher}/${this_mdDir}/$(echo "${right_code}-${right_name,,}" | sed 's/-/_/g' | sed 's/ /_/g' | sed 's/’//g' | sed "s/,//g").md)"
+			right_link="[ ${right_code} ${titleDir[$((tno))]} ](/${LNpublisher}/${this_mdDir}/$(echo "${right_code}_${right_name,,}" | sed 's/-/_/g' | sed 's/ /_/g' | sed 's/’//g' | sed "s/,//g").md)"
 			## right_title="${cYellow}${right_code:0:2}${right_code:2}${cReset}"
-			## right_title="${cYellow}${right_code:0:2}${right_code:2}${cReset}-${right_name}"
+			## right_title="${cYellow}${right_code:0:2}${right_code:2}${cReset}_${right_name}"
 		fi
 		tno=$((this_ChapterNumber))
 		this_code=${titleCode[$((tno))]} #-- 권번호 + Part / Section / Chapter 번호 --> '02.p1'
-		#-- 쓰지않음 this_imgDir=$(echo "${pubdate}-${titleDir[$((tno))],,}-${gendate}" | sed 's/ /_/g' | sed 's/’//g' | sed "s/,//g")
+		#-- 쓰지않음 this_imgDir=$(echo "${pubdate}_${titleDir[$((tno))],,}_${gendate}" | sed 's/ /_/g' | sed 's/’//g' | sed "s/,//g")
 		this_name=${titleName[$((tno))]} #-- 권의 제목
 		this_dir=${titleDir[$((tno))]} #-- 줄인 제목
-		this_title="${cYellow}${this_code:0:2}${this_code:2}${cBlue}-${cGreen}${this_name}${cReset}"
-		GwonCodeDir=$(echo "${this_code}-${this_dir,,}" | sed 's/-/_/g' | sed 's/ /_/g' | sed 's/’//g' | sed "s/,//g")
+		this_title="${cYellow}${this_code:0:2}${this_code:2}${cBlue}_${cGreen}${this_name}${cReset}"
+		GwonCodeDir=$(echo "${this_code}_${this_dir,,}" | sed 's/-/_/g' | sed 's/ /_/g' | sed 's/’//g' | sed "s/,//g")
 
 		ChapterSeq=${this_code:0:2} #-- this_code 의 0 번 문자부터 2 개의 문자를 잘라내서 담는다.
 		#-- ${this_code:0:2} = "01"
@@ -206,7 +206,7 @@ __EOF__
 
 (3) ${cBlue}----> 이미지 파일 이름은 '알파벳 대/소 문자', '숫자'와 '점 대시 빈칸' 만 씁니다.
           이미지 파일 이름이 ${cRed}[ ${cCyan}${image_jemok} ${cRed}] ${cBlue}인 경우,
-![ ${cCyan}${image_jemok} ${cBlue}](/${LNpublisher}/${this_mdDir}/${cYellow}${ChapterSeq}${cBlue}.${cCyan}${imageCnt99}${cBlue}-${LNimage_jemok}.${cCyan}webp${cBlue}) 로 등록합니다.${cRed}
+![ ${cCyan}${image_jemok} ${cBlue}](/${LNpublisher}/${this_mdDir}/${cYellow}${ChapterSeq}${cBlue}.${cCyan}${imageCnt99}${cBlue}_${LNimage_jemok}.${cCyan}webp${cBlue}) 로 등록합니다.${cRed}
           [ ${cYellow}xx ${cRed}]${cBlue} 즉 '${cCyan}x 두개${cBlue}' 인 경우, ${cCyan}권 번호 입력 ${cMagenta}으로 돌아갑니다.${cMagenta}
 부여번호${cRed}  [ ${cYellow}+ ${cRed}]${cBlue} -> ${cGreen}${nextCnt99}${cBlue} = 이미지 번호 ///${cMagenta}
   '${cGreen}${imageCnt99}${cMagenta}'    ${cRed}[ ${cYellow}- ${cRed}]${cBlue} -> 이미지 번호 = ${cGreen}${befoCnt99} ${cBlue}///
@@ -262,23 +262,32 @@ __EOF__
 #==      https://docs.requarks.io/en/editors/markdown > Blockquotes > Stylings >
 #==      blue= {.is-info} ; green= {.is-success} ; yellow= {.is-warning} ; red= {.is-danger}
 				cat <<__EOF__
+
+    ${cBlue}----> 줄인 이미지 파일 이름을 입력하세요.
+__EOF__
+				read short_image_jemok
+				LNimage_short_jemok=$(echo "${short_image_jemok,,}" | sed 's/-/_/g' | sed 's/ /_/g' | sed 's/’//g' | sed "s/,//g")
+				cat <<__EOF__
 ${cBlue}
 / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / /
 
 | ${left_link} | 👈 ${this_name} 👉 | ${cBlue} ${right_link} |${cMagenta}
 |:---:|:---:|:---:|
 
-Title: \`${cBlue}${BookTitle} ${cMagenta}( ${cYellow}${this_code:0:2}${this_code:2} ${cMagenta}) ${cReset}${this_name}${cMagenta}\`
-md Path: \`${cBlue}${LNpublisher} ${cMagenta}/ ${cBlue}${this_mdDir} ${cMagenta}/ ${cGreen}${GwonCodeDir}.md${cMagenta}\`
-Short Description: \`${cBlue}${ShortDescription}${cMagenta}\`
-Link: ${cBlue}${https_line}${cMagenta}
-create: \`${cBlue}$(date +'%Y-%m-%d %a %H:%M:%S')${cBlue}\`
+Title:\` ${cBlue}${BookTitle}${cMagenta} \`
+Short Description:\` ${cBlue}${ShortDescription}${cMagenta} \`
+Link:\` ${cBlue}${https_line}${cMagenta} \`
+create:\` ${cBlue}$(date +'%Y-%m-%d %a %H:%M:%S')${cMagenta} \`
+
+PAGE INFO Title:\`    ${cMagenta}${cYellow}${this_code:0:2}${this_code:2} ${cReset}${this_name}${cMagenta}    \`
+Path:\` ${cBlue}${LNpublisher}${cMagenta}/${cBlue}${this_mdDir}${cMagenta}/${cCyan}${GwonCodeDir}${cMagenta} \`
+md File:\` ${cGreen}${GwonCodeDir}.md${cMagenta} \`${cBlue}
 
 # ${cCyan}${this_name}
 
-${cYellow}${ChapterSeq}${cBlue}.${cGreen}${imageCnt99}${cBlue}-${LNimage_jemok}${cCyan}.webp${cBlue}
+${cYellow}${ChapterSeq}${cBlue}.${cGreen}${imageCnt99}${cBlue}_${LNimage_short_jemok}${cCyan}.webp${cBlue}
 
-![ ${cGreen}${image_jemok} ${cBlue}](/${LNpublisher}/${this_mdDir}/${cYellow}${ChapterSeq}${cBlue}.${cGreen}${imageCnt99}${cBlue}-${LNimage_jemok}${cCyan}.webp${cReset})
+![ ${cGreen}${image_jemok} ${cBlue}](/${LNpublisher}/${this_mdDir}/${cYellow}${ChapterSeq}${cBlue}.${cGreen}${imageCnt99}${cBlue}_${LNimage_short_jemok}${cCyan}.webp${cReset})
 ${cBlue}
 / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / /
 ${cReset}

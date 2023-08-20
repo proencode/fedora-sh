@@ -2,13 +2,13 @@
 | First Chapter | 👈 Preface 👉 |  [ 01.c1 Getting Started with ](/packtpub/2307a_modern_android_13_230811/01.c1_getting_started_with_modern_android_development_skills.md) |
 |:---:|:---:|:---:|
 
-Title: `Modern Android 13 Development Cookbook ( 00 ) Preface`
-md Path: `packtpub / 2307a_modern_android_13_230811 / 00_preface.md`
-Short Description: `By Madona S. Wambua Jul 2023 322 pages`
-Link: https://subscription.packtpub.com/book/mobile/9781803235578/pref
-create: `2023-08-20 일 14:55:21`
+`Title:` Modern Android 13 Development Cookbook
+`Short Description:` By Madona S. Wambua Jul 2023 322 pages
+`Link:` https://subscription.packtpub.com/book/mobile/9781803235578/pref
+`create:` 2023-08-20 일 15:57:05
 
-# Preface
+`PAGE INFO Title:` 00 Preface
+`Path:` packtpub/2307a_modern_android_13_230811/00_preface
 
 00 Preface
 01.c1 Getting Started with Modern Android Development Skills
