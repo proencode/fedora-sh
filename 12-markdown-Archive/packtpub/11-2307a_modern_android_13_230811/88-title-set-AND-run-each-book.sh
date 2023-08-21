@@ -11,9 +11,9 @@ __EOF__
 # https://zetawiki.com/wiki/Bash_2%EC%B0%A8%EC%9B%90_%EB%B0%B0%EC%97%B4
 
 #-- 다음의 열한줄을 복사해서 아래에 붙여놓고 해당 책에 맞추어 입력한다.
-# publisher="
+# PublisherName="
 # " #-- 출판사
-# BookTitle="
+# TitleName="
 # " #-- 책 제목
 # ShortDescription="
 # " #-- 저자 발행일 등
@@ -25,33 +25,34 @@ __EOF__
 # " #-- 읽는중인 홈페이지 링크
 #
 
-publisher="PacktPub" #-- 출판사
-BookTitle="Modern Android 13 Development Cookbook" #-- 책 제목
-BookDir="Modern Android 13" #-- 폴더 이름을 만들기 위한 줄인 제목
+PublisherName="PacktPub" #-- 출판사
+TitleName="Modern Android 13 Development Cookbook" #-- 책 제목
 pubdate="2307a" #-- 책 발행일의 년월 + 당월 순서 알파벳 1 글자
 gendate="230811" #-- 문서작성일 = 실행일
-Short3wordBookTitle="Modern Android 13" #-- 폴더 이름으로 쓰기 위한 3단어
 ShortDescription="By Madona S. Wambua Jul 2023 322 pages" #-- 저자 발행일 등
 https_line="https://subscription.packtpub.com/book/mobile/9781803235578/pref" #-- 읽는중인 홈페이지 링크
+image_type="webp" #-- 파일 사이즈가 작으므로 webp 를 사용한다.
 
-LNpublisher=$(echo "${publisher,,}" | sed 's/-/_/g' | sed 's/ /_/g' | sed 's/’//g' | sed "s/,//g") #-- 소문자로 바꾸고 공백을 밑줄로 바꾼다.
-this_mdDir=$(echo "${pubdate}_${BookDir,,}_${gendate}" | sed 's/-/_/g' | sed 's/ /_/g' | sed 's/’//g' | sed "s/,//g") #-- 책 제목: 소문자로 바꾸고 공백을 밑줄로 바꾼다.
+PublisherDir=$(echo "${PublisherName,,}" | sed 's/\//_/g' | sed 's/ /_/g' | sed "s/’/\'/g") #-- 소문자로 바꾸고 공백을 밑줄로 바꾼다.
+#-- perl 의 chomp 와 같이 문자열의 앞뒤에 있는 공백만 제거하려면; 출처: https://free-jonathan.tistory.com/9 -> http://greenfinger.tistory.com/m/237
+TitleName3word=$(echo ${TitleName,,} | awk '{print $1" "$2" "$3" "}' | sed -e 's/^ *//g' -e 's/ *$//g') #-- 폴더 이름으로 쓰기 위한 3단어
+DateTitle3wordDir=$(echo "${pubdate}_${TitleName3word}_${gendate}" | sed 's/\//_/g' | sed 's/ /_/g' | sed "s/’/\'/g") #-- 소문자로 바꾸고 공백을 밑줄로 바꾼다.
 
-declare -A  r0=([Code]="00"    [Dir]="Preface"                  [Name]="Preface")
-declare -A  r1=([Code]="01.c1" [Dir]="Getting Started with"     [Name]="Getting Started with Modern Android Development Skills")
-declare -A  r2=([Code]="02.c2" [Dir]="Creating Screens Using"   [Name]="Creating Screens Using a Declarative UI and Exploring Compose Principles")
-declare -A  r3=([Code]="03.c3" [Dir]="Handling the UI"          [Name]="Handling the UI State in Jetpack Compose and Using Hilt")
-declare -A  r4=([Code]="04.c4" [Dir]="Navigation in Modern"     [Name]="Navigation in Modern Android Development")
-declare -A  r5=([Code]="05.c5" [Dir]="Using DataStore to"       [Name]="Using DataStore to Store Data and Testing")
-declare -A  r6=([Code]="06.c6" [Dir]="Using the Room"           [Name]="Using the Room Database and Testing")
-declare -A  r7=([Code]="07.c7" [Dir]="Started with WorkManager" [Name]="Getting Started with WorkManager")
-declare -A  r8=([Code]="08.c8" [Dir]="Started with Paging"      [Name]="Getting Started with Paging")
-declare -A  r9=([Code]="09.c9" [Dir]="Building for Large"       [Name]="Building for Large Screens")
-declare -A r10=([Code]="10.c10"[Dir]="Implementing Your First"  [Name]="Implementing Your First Wear OS Using Jetpack Compose")
-declare -A r11=([Code]="11.c11"[Dir]="GUI Alerts Whats"         [Name]="GUI Alerts – What’s New in Menus, Dialog, Toast, Snackbars, and More in Modern Android Development")
-declare -A r12=([Code]="12.c12"[Dir]="Android Studio Tips"      [Name]="Android Studio Tips and Tricks to Help You during Development")
-declare -A r13=([Code]="13"    [Dir]="Index"                    [Name]="Index")
-declare -A r14=([Code]="14"    [Dir]="Other Books You"          [Name]="Other Books You May Enjoy")
+declare -A  r0=([Code]="00"     [Name]="Preface")
+declare -A  r1=([Code]="01.c1"  [Name]="Getting Started with Modern Android Development Skills")
+declare -A  r2=([Code]="02.c2"  [Name]="Creating Screens Using a Declarative UI and Exploring Compose Principles")
+declare -A  r3=([Code]="03.c3"  [Name]="Handling the UI State in Jetpack Compose and Using Hilt")
+declare -A  r4=([Code]="04.c4"  [Name]="Navigation in Modern Android Development")
+declare -A  r5=([Code]="05.c5"  [Name]="Using DataStore to Store Data and Testing")
+declare -A  r6=([Code]="06.c6"  [Name]="Using the Room Database and Testing")
+declare -A  r7=([Code]="07.c7"  [Name]="Getting Started with WorkManager")
+declare -A  r8=([Code]="08.c8"  [Name]="Getting Started with Paging")
+declare -A  r9=([Code]="09.c9"  [Name]="Building for Large Screens")
+declare -A r10=([Code]="10.c10" [Name]="Implementing Your First Wear OS Using Jetpack Compose")
+declare -A r11=([Code]="11.c11" [Name]="GUI Alerts – What’s New in Menus, Dialog, Toast, Snackbars, and More in Modern Android Development")
+declare -A r12=([Code]="12.c12" [Name]="Android Studio Tips and Tricks to Help You during Development")
+declare -A r13=([Code]="13"     [Name]="Index")
+declare -A r14=([Code]="14"     [Name]="Other Books You May Enjoy")
 r_top=14 #--^^
 
 
@@ -59,125 +60,111 @@ declare -A MatrixTab
 
 titleCnt=0
 declare -A titleCode
-declare -A titleDir
 declare -A titleName
 
 cat <<__EOF__
 (1) ---->
-${cBlue}책 제목: ${cRed}${BookTitle}
+${cBlue}책 제목: ${cRed}${TitleName}
 ${cBlue}책 발행일의 년월 + 당월 순서 알파벳 1 글자: ${cRed}${pubdate}
 ${cBlue}문서작성일: ${cRed}${gendate}
-${cBlue}보관 폴더: ${cRed}${this_mdDir}
+${cBlue}보관 폴더: ${cRed}${DateTitle3wordDir}
 ${cReset}
 __EOF__
 
 for ((rNumber=0 ; rNumber <= ${r_top} ; rNumber++)) #-- for i in {0..14}
 do
-	for CodeNameStr in Code Dir Name
+	for CodeNameStr in Code Name
 	do
 		ref="r$rNumber[$CodeNameStr]"
 		MatrixTab[$rNumber,$CodeNameStr]=${!ref}
 	done
-	#-- 소문자로 바꾼다.
 	titleCode[$titleCnt]=${MatrixTab[$rNumber,Code]}
-	titleDir[$titleCnt]=${MatrixTab[$rNumber,Dir]}
 	titleName[$titleCnt]=${MatrixTab[$rNumber,Name]}
 	titleCnt=$(( titleCnt + 1 ))
-	#-- 공백,따옴표,컴마를 바꾼다.
-	### mdName=$(echo "${MatrixTab[$rNumber,Code]}_${MatrixTab[$rNumber,Name],,}" | sed 's/ /_/g' | sed 's/’//g' | sed "s/,//g")
 done
 
-#### wikiLink=$(echo "${publisher,,}/${BookTitle,,}" | sed 's/ /_/g' | sed 's/’//g' | sed "s/,//g")
+Gwon_Enter="start" #-- 입력받은 권번호
 
-last_ChapterNumber=-444 #-- (-444)=마지막으로 선택한 권 번호가 없다.
-
-this_code="start" #-- 권번호 + Part / Section / Chapter 번호 --> '02.p1'
-
-until [ "x$this_code" = "xxx" ] #-- (A) 권번호 입력시 'xx' 를 입력해야 끝난다.
+until [ "x$Gwon_Enter" = "xxx" ] #-- (A) 권번호 입력시 'xx' 를 입력해야 끝난다.
 do
+	##-- 전체 목록을 보여준다.
 	for ((rNumber=0 ; rNumber <= r_top ; rNumber++))
 	do
 		echo "${cYellow}${titleCode[$((rNumber))]:0:2}${cRed}${titleCode[$((rNumber))]:2}${cBlue}_${titleName[$((rNumber))]}${cReset}"
 	done
 
-	this_code="start" #-- 권번호 + Part / Section / Chapter 번호 --> '02.p1'
+	Gwon_Enter="start" #-- 입력받은 권번호
 	cat <<__EOF__
 
 (2) ${cBlue}----> 권 번호를 선택합니다.  ${cRed}[ ${cYellow}00${cBlue} ${cRed}] ${cBlue}... ${cRed}[ ${cYellow}${r_top} ${cRed}]${cBlue}
           끝내려면, ${cRed}[ ${cYellow}xx ${cRed}] ${cBlue} 즉, '${cCyan}x 두개${cBlue}' 를 입력하세요.${cReset}
 __EOF__
-	read this_code #-- 선택한 권번호
+	read Gwon_Enter #-- 입력받은 권번호
 
-	if [ $this_code = "xx" ]; then #-- if-A.01
-		this_code="xx" #-- 권번호 + Part / Section / Chapter 번호 --> '02.p1'
+	if [ $Gwon_Enter = "xx" ]; then #-- if-A.01
+		Gwon_Enter="xx" #-- 입력받은 권번호
 	else #-- if-A.01
 
-	if [ $this_code -lt 0 ] || [ $this_code -gt 99 ]; then #-- if-A.02
+	if [ $Gwon_Enter -lt 0 ] || [ $Gwon_Enter -gt 99 ]; then #-- if-A.02
 		cat <<__EOF__
 (2a) ----> ${cRed}[ ${cYellow}00${cBlue} ${cRed}] ${cBlue}... ${cRed}[ ${cYellow}${r_top} ${cRed}] ${cBlue}범위를 벗어나므로 작업을 끝냅니다.${cReset}
 __EOF__
-		this_code="xx" #-- 권번호 + Part / Section / Chapter 번호 --> '02.p1'
+		Gwon_Enter="xx" #-- 입력받은 권번호
 	else #-- if-A.02
 
-		this_ChapterNumberZZ="0000${this_code:0:2}"
-		this_ChapterNumber99=${this_ChapterNumberZZ:(-2)}
-		#-- '0' 일때는 '' 로 되므로 아래로 대신한다. this_ChapterNumber=$(echo "${this_ChapterNumber99}" | sed -r 's/^0+//g') #-- 앞에 붙은 0 을 떼어낸다.
-		this_ChapterNumber=$((this_ChapterNumber99))
+		GwonNumberZZ="0000${Gwon_Enter:0:2}"
+		GwonNumber99=${GwonNumberZZ:(-2)}
+		#-- '0' 일때는 '' 로 되므로 아래로 대신한다. GwonNumber=$(echo "${GwonNumber99}" | sed -r 's/^0+//g') #-- 앞에 붙은 0 을 떼어낸다.
+		GwonNumber=$((GwonNumber99))
 
 		cat <<__EOF__
 ${cUp}
-${cRed}[ ${cYellow}${this_ChapterNumber99} ${cRed}]${cReset}
+${cRed}[ ${cYellow}${GwonNumber99} ${cRed}]${cReset}
 __EOF__
 
 		left_code="" ; left_name=""
 		left_link="First Chapter"
 		left_title="${cReset}${left_link}"
-		if (( "$this_ChapterNumber" > 0 )); then #-- if [ $this_ChapterNumber -gt 0 ]; then
-			tno=$((this_ChapterNumber - 1))
+		if (( "$GwonNumber" > 0 )); then #-- if [ $GwonNumber -gt 0 ]; then
+			tno=$((GwonNumber - 1))
 			left_code=${titleCode[$((tno))]}
-			left_imgDir=$(echo "${pubdate}_${titleDir[$((tno))],,}_${gendate}" | sed 's/-/_/g' | sed 's/ /_/g' | sed 's/’//g' | sed "s/,//g")
 			left_name=${titleName[$((tno))]}
-			left_title="${cYellow}${left_code}${cReset}"
-			left_link="[ ${left_code} ${titleDir[$((tno))]} ](/${LNpublisher}/${this_mdDir}/$(echo "${left_code}_${left_name,,}" | sed 's/-/_/g' | sed 's/ /_/g' | sed 's/’//g' | sed "s/,//g").md)"
+			left3word=$(echo ${left_name} | awk '{print $1" "$2" "$3" "}' | sed -e 's/^ *//g' -e 's/ *$//g')
+			left3w_md_file=${left3word,,}
+			left_link="[ ${left_Code} ${left3word} ](/${PublisherDir}/${DateTitle3wordDir}/$(echo "${left_code}-${left3w_md_file,,}" | sed 's/\//_/g' | sed 's/ /_/g' | sed "s/’/\'/g").md)"
+			#-- | ${left_link} | 👈 ${Gwon_Jemok} 👉 | ${cBlue} ${left_link} |${cMagenta}
 		fi
 		right_code="" ; right_name=""
 		right_link="Last Chapter"
 		right_title="${cReset}${right_link}"
-		if (( "$this_ChapterNumber" < "$r_top" )); then #-- if [ "$this_ChapterNumber" -lt "$r_top" ]; then
-			tno=$((this_ChapterNumber + 1))
+		if (( "$GwonNumber" < "$r_top" )); then #-- if [ "$GwonNumber" -lt "$r_top" ]; then
+			tno=$((GwonNumber + 1))
 			right_code=${titleCode[$((tno))]}
-			right_imgDir=$(echo "${pubdate}_${titleDir[$((tno))],,}_${gendate}" | sed 's/-/_/g' | sed 's/ /_/g' | sed 's/’//g' | sed "s/,//g")
 			right_name=${titleName[$((tno))]}
-			right_title="${cYellow}${right_code}${cReset}"
-			right_link="[ ${right_code} ${titleDir[$((tno))]} ](/${LNpublisher}/${this_mdDir}/$(echo "${right_code}_${right_name,,}" | sed 's/-/_/g' | sed 's/ /_/g' | sed 's/’//g' | sed "s/,//g").md)"
-			## right_title="${cYellow}${right_code:0:2}${right_code:2}${cReset}"
-			## right_title="${cYellow}${right_code:0:2}${right_code:2}${cReset}_${right_name}"
+			right3word=$(echo ${right_name} | awk '{print $1" "$2" "$3" "}' | sed -e 's/^ *//g' -e 's/ *$//g')
+			right3w_md_file=${right3word,,}
+			right_link="[ ${right_Code} ${right3word} ](/${PublisherDir}/${DateTitle3wordDir}/$(echo "${right_code}-${right3w_md_file,,}" | sed 's/\//_/g' | sed 's/ /_/g' | sed "s/’/\'/g").md)"
+			#-- | ${left_link} | 👈 ${Gwon_Jemok} 👉 | ${cBlue} ${right_link} |${cMagenta}
 		fi
-		tno=$((this_ChapterNumber))
-		this_code=${titleCode[$((tno))]} #-- 권번호 + Part / Section / Chapter 번호 --> '02.p1'
-		#-- 쓰지않음 this_imgDir=$(echo "${pubdate}_${titleDir[$((tno))],,}_${gendate}" | sed 's/ /_/g' | sed 's/’//g' | sed "s/,//g")
-		this_name=${titleName[$((tno))]} #-- 권의 제목
-		this_dir=${titleDir[$((tno))]} #-- 줄인 제목
-		this_title="${cYellow}${this_code:0:2}${this_code:2}${cBlue}_${cGreen}${this_name}${cReset}"
-		GwonCodeDir=$(echo "${this_code}_${this_dir,,}" | sed 's/-/_/g' | sed 's/ /_/g' | sed 's/’//g' | sed "s/,//g")
+		tno=$((GwonNumber))
+		Gwon_Part_code=${titleCode[$((tno))]} #-- 권번호 + Part / Section / Chapter 번호 --> '02.p1'
+		Gwon_Jemok=${titleName[$((tno))]} #-- 권의 제목
+		GwonJemok3word=$(echo ${Gwon_Jemok,,} | awk '{print $1" "$2" "$3" "}' | sed -e 's/^ *//g' -e 's/ *$//g')
+		GwonCodeDir=$(echo "${Gwon_Part_code}-${GwonJemok3word,,}" | sed 's/\//_/g' | sed 's/ /_/g' | sed "s/’/\'/g") #-- 폴더 이름으로 쓰기 위한 3단어
 
-		ChapterSeq=${this_code:0:2} #-- this_code 의 0 번 문자부터 2 개의 문자를 잘라내서 담는다.
-		#-- ${this_code:0:2} = "01"
-		#-- ${this_code:2} = ".c1"
-		#-- ${this_code:3:2} = "c1"
-
-#== ${cRed}<--- ${cReset}${left_title}
-#== ${this_title} ${cRed}
-#== ---> ${right_title}
+		ChapterSeq=${Gwon_Part_code:0:2} #-- Gwon_Part_code 의 0 번 문자부터 2 개의 문자를 잘라내서 담는다.
+		#-- ${Gwon_Part_code:0:2} = "01"
+		#-- ${Gwon_Part_code:2} = ".c1"
+		#-- ${Gwon_Part_code:3} = "c1"
 
 		cat <<__EOF__
 ${cBlue}/ / / / / / / /${cMagenta}
-Title: ${cBlue}${BookTitle} ${cMagenta}( ${cYellow}${this_code:0:2}${this_code:2} ${cMagenta}) ${cReset}${this_name}${cMagenta}
-md Path: ${cBlue}${LNpublisher} ${cMagenta}/ ${cBlue}${this_mdDir} ${cMagenta}/ ${cGreen}${GwonCodeDir}.md${cMagenta}
+Title: ${cBlue}${TitleName} ${cMagenta}( ${cYellow}${Gwon_Part_code:0:2}${Gwon_Part_code:2} ${cMagenta}) ${cReset}${Gwon_Jemok}${cMagenta}
+md Path: ${cBlue}${PublisherDir} ${cMagenta}/ ${cBlue}${DateTitle3wordDir} ${cMagenta}/ ${cGreen}${GwonCodeDir}.md${cMagenta}
 ${cBlue}/ / / / / / / /${cReset}
 
 __EOF__
-# 삭제함 Images Folder: ${cBlue}${LNpublisher} ${cMagenta}/ ${cBlue}${this_mdDir}
+# 삭제함 Images Folder: ${cBlue}${PublisherDir} ${cMagenta}/ ${cBlue}${DateTitle3wordDir}
 
 		imageCntNo=0 #-- 현재의 권번호 안에서 0 부터 올라가는 사진 카운터
 		imageCntZZ="0000${imageCntNo}"
@@ -186,8 +173,8 @@ __EOF__
 		# 이미지 제목
 		# -----------
 
-		old_image_jemok=${this_dir}
-		image_jemok=${this_dir}
+		old_image_jemok=${GwonJemok3word} #-- 처음에는 이 이름을 보여준다.
+		image_jemok=${GwonJemok3word}
 		until [ "x$image_jemok" = "xxx" ] #-- (B) 이미지 제목 입력
 		do
 			nextCntNo=$(($imageCntNo + 1))
@@ -201,16 +188,17 @@ __EOF__
 				befoCntZZ="0000${befoCntNo}"
 				befoCnt99=${befoCntZZ:(-2)}
 			fi
-			LNimage_jemok=$(echo "${image_jemok,,}" | sed 's/-/_/g' | sed 's/ /_/g' | sed 's/’//g' | sed "s/,//g")
+			ImageJemok3word=$(echo ${image_jemok,,} | awk '{print $1" "$2" "$3" "}' | sed -e 's/^ *//g' -e 's/ *$//g') #-- 폴더 이름으로 쓰기 위한 3단어
+			ImageFileName=$(echo "${ChapterSeq}.${imageCnt99}-${ImageJemok3word}" | sed 's/\//_/g' | sed 's/ /_/g' | sed "s/’/\'/g") #-- 소문자로 바꾸고 공백을 밑줄로 바꾼다.
 			cat <<__EOF__
 
 (3) ${cBlue}----> 이미지 파일 이름은 '알파벳 대/소 문자', '숫자'와 '점 대시 빈칸' 만 씁니다.
           이미지 파일 이름이 ${cRed}[ ${cCyan}${image_jemok} ${cRed}] ${cBlue}인 경우,
-![ ${cCyan}${image_jemok} ${cBlue}](/${LNpublisher}/${this_mdDir}/${cYellow}${ChapterSeq}${cBlue}.${cCyan}${imageCnt99}${cBlue}_${LNimage_jemok}.${cCyan}webp${cBlue}) 로 등록합니다.${cRed}
+${cMagenta}![ ${cCyan}${image_jemok} ${cMagenta}](${cBlue}/${PublisherDir}/${DateTitle3wordDir}/${cBlue}${ImageFileName:0:2}.${cGreen}${ImageFileName:3:2}${cBlue}-${ImageFileName:6}.${cBlue}${image_type}${cMagenta})${cBlue} 로 등록합니다.${cRed}
           [ ${cYellow}xx ${cRed}]${cBlue} 즉 '${cCyan}x 두개${cBlue}' 인 경우, ${cCyan}권 번호 입력 ${cMagenta}으로 돌아갑니다.${cMagenta}
 부여번호${cRed}  [ ${cYellow}+ ${cRed}]${cBlue} -> ${cGreen}${nextCnt99}${cBlue} = 이미지 번호 ///${cMagenta}
   '${cGreen}${imageCnt99}${cMagenta}'    ${cRed}[ ${cYellow}- ${cRed}]${cBlue} -> 이미지 번호 = ${cGreen}${befoCnt99} ${cBlue}///
-          또한, 확장자를 무조건 ${cBlue}'${cCyan}.webp${cBlue}'${cBlue} 로 붙여주므로, 이게 아니면 해당 타입까지 써주고, 결과를 수정하면 됩니다.${cReset}
+          또한, 확장자를 무조건 ${cBlue}'${cCyan}.${image_type}${cBlue}'${cBlue} 로 붙여주므로, 이게 아니면 해당 타입까지 써주고, 결과를 수정하면 됩니다.${cReset}
 __EOF__
 			read image_jemok
 			if [ "x$image_jemok" = "x" ]; then #-- if-B.01
@@ -244,59 +232,38 @@ __EOF__
 			else #-- if-B.03
 			if [ "x$image_jemok" != "xxx" ]; then #-- if-B.04
 				old_image_jemok=${image_jemok}
-				LNimage_jemok=$(echo "${image_jemok,,}" | sed 's/-/_/g' | sed 's/ /_/g' | sed 's/’//g' | sed "s/,//g") #-- 전부 대문자로 바꾸려면 ${image_jemok^^}, 전부 소문자는 ${image_jemok,,}
-#==  @ Q -> # 붙이고 줄 띄우기 => 0i# ^[A^M^[kk^[
-#==  @ W -> 현 위치에서 Copy 까지 역따옴표 => j0i\`\`\`^M^[/^Copy$^[ddk0C\`\`\`^M^[
-#==  @ E -> 찾은 글자 ~ SPACE 앞뒤로 backtick(\`) 붙이기 => i\`^[/ ^[i\`^[/EEEEEEEEEE^[
-#==  @ R -> 찾은 글자 ~ POINT 앞뒤로 backtick(\`) 붙이기 => i\`^[/.^[i\`^[/RRRRRRRRRR^[
-#==  @ T -> 찾은 글자 ~ COMMA 앞뒤로 backtick(\`) 붙이기 => i\`^[/,^[i\`^[/TTTTTTTTTT^[
-#==  @ Y -> 찾은 글자 ~ COLON 앞뒤로 backtick(\`) 붙이기 => i\`^[/;^[i\`^[/YYYYYYYYYY^[
-#==  @ U -> 찾은 글자~닫은괄호앞뒤로 backtick(\`) 붙이기 => i\`^[/)^[i\`^[/UUUUUUUUUU^[
-#==  
-#==  @ A -> 빈 줄에 블록 시작하기 => 0C\`\`\`^[^Mk0
-#==  @ S -> 줄 앞에 > 나오면 안되므로 블록 마감하고 > 앞에 - 끼우기 => 0i\`\`\`^M-^[^M0i\`\`\`^[0
-#==  @ D -> 줄 아래에 블록 마감하고 한줄 더 띄우기 => 0^Mi\`\`\`^M^M^[kk
-#==  @ F -> 이 줄을 타이틀로 만들기 => 0i#### ^[^M^[
-#==      마크다운 입력시 vi 커맨드 표시 ; (^[)=Ctrl+[ ; (^M)=Ctrl+M
-#==      인용구 작성시 ; 본문앞에는 꺽쇠 > 붙이고, 스타일 첨가시 끝줄에 종류별 구분을 표시한다.
-#==      https://docs.requarks.io/en/editors/markdown > Blockquotes > Stylings >
-#==      blue= {.is-info} ; green= {.is-success} ; yellow= {.is-warning} ; red= {.is-danger}
-				cat <<__EOF__
-
-    ${cBlue}----> 줄인 이미지 파일 이름을 입력하세요.
-__EOF__
-				read short_image_jemok
-				LNimage_short_jemok=$(echo "${short_image_jemok,,}" | sed 's/-/_/g' | sed 's/ /_/g' | sed 's/’//g' | sed "s/,//g")
+				ImageJemok3word=$(echo ${image_jemok,,} | awk '{print $1" "$2" "$3" "}' | sed -e 's/^ *//g' -e 's/ *$//g') #-- 폴더 이름으로 쓰기 위한 3단어
+				ImageFileName=$(echo "${ChapterSeq}.${imageCnt99}-${ImageJemok3word}" | sed 's/\//_/g' | sed 's/ /_/g' | sed "s/’/\'/g") #-- 소문자로 바꾸고 공백을 밑줄로 바꾼다.
 				cat <<__EOF__
 ${cBlue}
 / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / /
 
-| ${left_link} | 👈 ${this_name} 👉 | ${cBlue} ${right_link} |${cMagenta}
+| ${left_link} | 👈 ${Gwon_Jemok} 👉 | ${cBlue} ${right_link} |${cMagenta}
 |:---:|:---:|:---:|
 
-Title:\` ${cBlue}${BookTitle}${cMagenta} \`
+Title:\` ${cBlue}${TitleName}${cMagenta} \`
 Short Description:\` ${cBlue}${ShortDescription}${cMagenta} \`
 Link:\` ${cBlue}${https_line}${cMagenta} \`
 create:\` ${cBlue}$(date +'%Y-%m-%d %a %H:%M:%S')${cMagenta} \`
 
-PAGE INFO Title:\`    ${cMagenta}${cYellow}${this_code:0:2}${this_code:2} ${cReset}${this_name}${cMagenta}    \`
-Path:\` ${cBlue}${LNpublisher}${cMagenta}/${cBlue}${this_mdDir}${cMagenta}/${cCyan}${GwonCodeDir}${cMagenta} \`
-md File:\` ${cGreen}${GwonCodeDir}.md${cMagenta} \`${cBlue}
+PAGE INFO Title:\` ${cMagenta}${cYellow}${Gwon_Part_code:0:2}${cReset}${Gwon_Part_code:2} ${Gwon_Jemok} ${cMagenta}\`
+Path:\` ${cBlue}${PublisherDir} ${cMagenta}/ ${cBlue}${DateTitle3wordDir} ${cMagenta}\`
+md File:\` ${cYellow}${GwonCodeDir:0:2}${cGreen}${GwonCodeDir:2}.md${cMagenta} \`${cBlue}
 
-# ${cCyan}${this_name}
+# ${cCyan}${Gwon_Jemok}
 
-${cYellow}${ChapterSeq}${cBlue}.${cGreen}${imageCnt99}${cBlue}_${LNimage_short_jemok}${cCyan}.webp${cBlue}
+${cYellow}${ImageFileName:0:2}.${cGreen}${ImageFileName:3:2}${cBlue}-${ImageFileName:6}.${cCyan}${image_type}
 
-![ ${cGreen}${image_jemok} ${cBlue}](/${LNpublisher}/${this_mdDir}/${cYellow}${ChapterSeq}${cBlue}.${cGreen}${imageCnt99}${cBlue}_${LNimage_short_jemok}${cCyan}.webp${cReset})
-${cBlue}
+${cMagenta}![ ${cGreen}${image_jemok} ${cMagenta}](${cBlue}/${PublisherDir}/${DateTitle3wordDir}/${cYellow}${ImageFileName:0:2}.${cGreen}${ImageFileName:3:2}${cBlue}-${ImageFileName:6}.${cCyan}${image_type}${cMagenta})${cBlue}
+
 / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / /
 ${cReset}
 (4) ${cBlue}----> 윗줄을 복사해서 사용합니다.
     ----> (3) 으로 돌아갑니다.${cReset}
 __EOF__
 				imageCntNo=$(($imageCntNo + 1))
-					imageCntZZ="0000${imageCntNo}"
-					imageCnt99=${imageCntZZ:(-2)}
+				imageCntZZ="0000${imageCntNo}"
+				imageCnt99=${imageCntZZ:(-2)}
 
 			fi #-- if [ "x$image_jemok" != "xxx" ]; then #-- if-B.04
 			fi #-- if [ "x$image_jemok" = "x-" ]; then #-- if-B.03
@@ -308,7 +275,7 @@ __EOF__
 	fi #-- if-A.02
 	fi #-- if-A.01
 
-done #-- until [ "x$this_code" = "xxx" ] #-- (A) 권번호 입력시 'xx' 를 입력해야 끝난다.
+done #-- until [ "x$Gwon_Part_code" = "xxx" ] #-- (A) 권번호 입력시 'xx' 를 입력해야 끝난다.
 
 # ----
 # rm -f ${zz00log_name} ; zz00log_name="${zz00logs_folder}/zz.$(date +"%y%m%d%a-%H%M%S")..${CMD_NAME}" ; touch ${zz00log_name}
