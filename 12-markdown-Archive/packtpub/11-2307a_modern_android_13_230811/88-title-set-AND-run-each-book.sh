@@ -131,7 +131,7 @@ __EOF__
 			left_name=${titleName[$((tno))]}
 			left3word=$(echo ${left_name} | awk '{print $1" "$2" "$3" "}' | sed -e 's/^ *//g' -e 's/ *$//g')
 			left3w_md_file=${left3word,,}
-			left_link="[ ${left_Code} ${left3word} ](/${PublisherDir}/${DateTitle3wordDir}/$(echo "${left_code}-${left3w_md_file,,}" | sed 's/\//_/g' | sed 's/ /_/g' | sed "s/’/\'/g").md)"
+			left_link="[ ${left_code} ${left3word} ](/${PublisherDir}/${DateTitle3wordDir}/$(echo "${left_code}-${left3w_md_file,,}" | sed 's/\//_/g' | sed 's/ /_/g' | sed "s/’/\'/g").md)"
 			#-- | ${left_link} | 👈 ${Gwon_Jemok} 👉 | ${cBlue} ${left_link} |${cMagenta}
 		fi
 		right_code="" ; right_name=""
@@ -143,7 +143,7 @@ __EOF__
 			right_name=${titleName[$((tno))]}
 			right3word=$(echo ${right_name} | awk '{print $1" "$2" "$3" "}' | sed -e 's/^ *//g' -e 's/ *$//g')
 			right3w_md_file=${right3word,,}
-			right_link="[ ${right_Code} ${right3word} ](/${PublisherDir}/${DateTitle3wordDir}/$(echo "${right_code}-${right3w_md_file,,}" | sed 's/\//_/g' | sed 's/ /_/g' | sed "s/’/\'/g").md)"
+			right_link="[ ${right_code} ${right3word} ](/${PublisherDir}/${DateTitle3wordDir}/$(echo "${right_code}-${right3w_md_file,,}" | sed 's/\//_/g' | sed 's/ /_/g' | sed "s/’/\'/g").md)"
 			#-- | ${left_link} | 👈 ${Gwon_Jemok} 👉 | ${cBlue} ${right_link} |${cMagenta}
 		fi
 		tno=$((GwonNumber))
