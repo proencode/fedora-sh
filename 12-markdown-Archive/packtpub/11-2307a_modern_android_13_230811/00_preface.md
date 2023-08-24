@@ -1,5 +1,5 @@
 
-| First Chapter | 👈 Preface 👉 |  [ 01.c1 Getting Started with ](/packtpub/2307a_modern_android_13_230811/01.c1_getting_started_with_modern_android_development_skills.md) |
+| First Chapter | 👈 Preface 👉 |  [ 01.c1 Getting Started with ](/packtpub/2307a_modern_android_13_230811/01.c1-getting_started_with.md) |
 |:---:|:---:|:---:|
 
 `Title:` Modern Android 13 Development Cookbook
@@ -175,6 +175,6 @@ https://packt.link/free-ebook/9781803235578
 2. Submit your proof of purchase
 3. That’s it! We’ll send your free PDF and other benefits to your email directly
 
-| First Chapter | 👈 Preface 👉 |  [ 01.c1 Getting Started with ](/packtpub/2307a_modern_android_13_230811/01.c1_getting_started_with_modern_android_development_skills.md) |
+| First Chapter | 👈 Preface 👉 |  [ 01.c1 Getting Started with ](/packtpub/2307a_modern_android_13_230811/01.c1-getting_started_with.md) |
 |:---:|:---:|:---:|
 
