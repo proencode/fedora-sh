@@ -145,7 +145,9 @@ __EOF__
 			left_name=${titleName[$((tno))]}
 			left3word=$(echo ${left_name} | awk '{print $1" "$2" "$3" "}' | sed -e 's/^ *//g' -e 's/ *$//g')
 			left3w_md_file=${left3word,,}
-			left_link="[ ${left_code} ${left3word} ](/${PublisherDir}/${DateTitle3wordDir}/$(echo "${left_code}-${left3w_md_file,,}" | sed 's/\//_/g' | sed 's/ /_/g' | sed "s/’/\'/g").md)"
+			left_md_Name=$(echo "${left_code}-${left3w_md_file,,}" | sed 's/\//_/g' | sed 's/ /_/g' | sed "s/’/\'/g") #-- '.' 도 들어가는 md 파일 이름만
+			left_Path=$(echo "${left_md_Name}" | sed 's/\./_/g') #-- '.' 를 '_' 로 바꾼 폴더 이름으로 쓰기 위한 3단어 이름
+			left_link="[ ${left_code} ${left3word} ](/${PublisherDir}/${DateTitle3wordDir}/${left_Path})"
 			#-- | ${left_link} | 👈 ${Gwon_Jemok} 👉 | ${cBlue} ${left_link} |${cMagenta}
 		fi
 		right_code="" ; right_name=""
@@ -157,8 +159,9 @@ __EOF__
 			right_name=${titleName[$((tno))]}
 			right3word=$(echo ${right_name} | awk '{print $1" "$2" "$3" "}' | sed -e 's/^ *//g' -e 's/ *$//g')
 			right3w_md_file=${right3word,,}
-			right_link="[ ${right_code} ${right3word} ](/${PublisherDir}/${DateTitle3wordDir}/$(echo "${right_code}-${right3w_md_file,,}" | sed 's/\//_/g' | sed 's/ /_/g' | sed "s/’/\'/g").md)"
-			#-- | ${left_link} | 👈 ${Gwon_Jemok} 👉 | ${cBlue} ${right_link} |${cMagenta}
+			right_md_Name=$(echo "${right_code}-${right3w_md_file,,}" | sed 's/\//_/g' | sed 's/ /_/g' | sed "s/’/\'/g") #-- '.' 도 들어가는 md 파일 이름만
+			right_Path=$(echo "${right_md_Name}" | sed 's/\./_/g') #-- '.' 를 '_' 로 바꾼 폴더 이름으로 쓰기 위한 3단어 이름
+			right_link="[ ${right_code} ${right3word} ](/${PublisherDir}/${DateTitle3wordDir}/${right_Path})"
 		fi
 		tno=$((GwonNumber))
 		Gwon_Part_code=${titleCode[$((tno))]} #-- 권번호 + Part / Section / Chapter 번호 --> '02.p1'
