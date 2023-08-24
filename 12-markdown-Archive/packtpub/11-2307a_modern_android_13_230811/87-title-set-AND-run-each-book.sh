@@ -164,7 +164,8 @@ __EOF__
 		Gwon_Part_code=${titleCode[$((tno))]} #-- 권번호 + Part / Section / Chapter 번호 --> '02.p1'
 		Gwon_Jemok=${titleName[$((tno))]} #-- 권의 제목
 		GwonJemok3word=$(echo ${Gwon_Jemok,,} | awk '{print $1" "$2" "$3" "}' | sed -e 's/^ *//g' -e 's/ *$//g')
-		GwonCodeDir=$(echo "${Gwon_Part_code}-${GwonJemok3word,,}" | sed 's/\//_/g' | sed 's/ /_/g' | sed "s/’/\'/g") #-- 폴더 이름으로 쓰기 위한 3단어
+		Gwon_md_Name=$(echo "${Gwon_Part_code}-${GwonJemok3word,,}" | sed 's/\//_/g' | sed 's/ /_/g' | sed "s/’/\'/g") #-- '.' 도 들어가는 md 파일 이름만
+		Gwon_Path=$(echo "${Gwon_md_Name,,}" | sed 's/\./_/g') #-- '.' 를 '_' 로 바꾼 폴더 이름으로 쓰기 위한 3단어 이름
 
 		ChapterSeq=${Gwon_Part_code:0:2} #-- Gwon_Part_code 의 0 번 문자부터 2 개의 문자를 잘라내서 담는다.
 		#-- ${Gwon_Part_code:0:2} = "01"
@@ -174,7 +175,7 @@ __EOF__
 		cat <<__EOF__
 ${cBlue}/ / / / / / / /${cMagenta}
 Title: ${cBlue}${TitleName} ${cMagenta}( ${cYellow}${Gwon_Part_code:0:2}${Gwon_Part_code:2} ${cMagenta}) ${cReset}${Gwon_Jemok}${cMagenta}
-md Path: ${cBlue}${PublisherDir} ${cMagenta}/ ${cBlue}${DateTitle3wordDir} ${cMagenta}/ ${cGreen}${GwonCodeDir}.md${cMagenta}
+md Name: ${cBlue}${PublisherDir} ${cMagenta}/ ${cBlue}${DateTitle3wordDir} ${cMagenta}/ ${cGreen}${Gwon_md_Name}.md${cMagenta}
 ${cBlue}/ / / / / / / /${cReset}
 
 __EOF__
@@ -261,8 +262,8 @@ Link:\` ${cBlue}${titleLink[$GwonNumber]} ${cMagenta}\`
 create:\` ${cBlue}$(date +'%Y-%m-%d %a %H:%M:%S') ${cMagenta}\`
 
 PAGE INFO Title:\` ${cMagenta}${cYellow}${Gwon_Part_code:0:2}${cReset}${Gwon_Part_code:2} ${Gwon_Jemok} ${cMagenta}\`
-Path:\` ${cBlue}${PublisherDir} ${cMagenta}/ ${cBlue}${DateTitle3wordDir} ${cMagenta}\`
-md File:\` ${cYellow}${GwonCodeDir:0:2}${cGreen}${GwonCodeDir:2}.md${cMagenta} \`${cBlue}
+Book Path:\` ${cBlue}${PublisherDir}${cMagenta}/${cBlue}${DateTitle3wordDir}${cMagenta}/${cCyan}${Gwon_Path}${cMagenta} \`
+md Name:\` ${cYellow}${Gwon_md_Name:0:2}${cGreen}${Gwon_md_Name:2}.md${cMagenta} \`${cBlue}
 
 # ${cCyan}${Gwon_Jemok}
 
