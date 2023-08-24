@@ -259,9 +259,9 @@ ${cBlue}
 Title:\` ${cBlue}${TitleName} ${cMagenta}\`
 Short Description:\` ${cBlue}${ShortDescription} ${cMagenta}\`
 Link:\` ${cBlue}${titleLink[$GwonNumber]} ${cMagenta}\`
-create:\` ${cBlue}$(date +'%Y-%m-%d %a %H:%M:%S') ${cMagenta}\`
-
-PAGE INFO Title:\` ${cMagenta}${cYellow}${Gwon_Part_code:0:2}${cReset}${Gwon_Part_code:2} ${Gwon_Jemok} ${cMagenta}\`
+create:\` ${cBlue}$(date +'%Y-%m-%d %a %H:%M:%S') ${cMagenta}\`${cReset}
+PAGE INFO${cMagenta}
+Title:\` ${cMagenta}${cYellow}${Gwon_Part_code:0:2}${cReset}${Gwon_Part_code:2} ${cRed}${Gwon_Jemok} ${cMagenta}\`
 Book Path:\` ${cBlue}${PublisherDir}${cMagenta}/${cBlue}${DateTitle3wordDir}${cMagenta}/${cCyan}${Gwon_Path}${cMagenta} \`
 md Name:\` ${cYellow}${Gwon_md_Name:0:2}${cGreen}${Gwon_md_Name:2}.md${cMagenta} \`${cBlue}
 
