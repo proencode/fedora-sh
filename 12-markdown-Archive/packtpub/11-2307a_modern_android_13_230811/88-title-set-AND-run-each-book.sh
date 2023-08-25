@@ -21,8 +21,6 @@ __EOF__
 # " #-- 책 발행일의 년월 + 당월 순서 알파벳 1 글자
 # gendate="
 # " #-- 문서작성일 = 실행일
-# https_line="
-# " #-- 읽는중인 홈페이지 링크
 #
 
 PublisherName="PacktPub" #-- 출판사
@@ -30,7 +28,6 @@ TitleName="Modern Android 13 Development Cookbook" #-- 책 제목
 pubdate="2307a" #-- 책 발행일의 년월 + 당월 순서 알파벳 1 글자
 gendate="230811" #-- 문서작성일 = 실행일
 ShortDescription="By Madona S. Wambua Jul 2023 322 pages" #-- 저자 발행일 등
-https_line="https://subscription.packtpub.com/book/mobile/9781803235578/pref" #-- 읽는중인 홈페이지 링크
 image_type="webp" #-- 파일 사이즈가 작으므로 webp 를 사용한다.
 
 PublisherDir=$(echo "${PublisherName,,}" | sed 's/\//_/g' | sed 's/ /_/g' | sed "s/’/\'/g") #-- 소문자로 바꾸고 공백을 밑줄로 바꾼다.
@@ -38,21 +35,36 @@ PublisherDir=$(echo "${PublisherName,,}" | sed 's/\//_/g' | sed 's/ /_/g' | sed 
 TitleName3word=$(echo ${TitleName,,} | awk '{print $1" "$2" "$3" "}' | sed -e 's/^ *//g' -e 's/ *$//g') #-- 폴더 이름으로 쓰기 위한 3단어
 DateTitle3wordDir=$(echo "${pubdate}_${TitleName3word}_${gendate}" | sed 's/\//_/g' | sed 's/ /_/g' | sed "s/’/\'/g") #-- 소문자로 바꾸고 공백을 밑줄로 바꾼다.
 
-declare -A  r0=([Code]="00"     [Name]="Preface")
-declare -A  r1=([Code]="01.c1"  [Name]="Getting Started with Modern Android Development Skills")
-declare -A  r2=([Code]="02.c2"  [Name]="Creating Screens Using a Declarative UI and Exploring Compose Principles")
-declare -A  r3=([Code]="03.c3"  [Name]="Handling the UI State in Jetpack Compose and Using Hilt")
-declare -A  r4=([Code]="04.c4"  [Name]="Navigation in Modern Android Development")
-declare -A  r5=([Code]="05.c5"  [Name]="Using DataStore to Store Data and Testing")
-declare -A  r6=([Code]="06.c6"  [Name]="Using the Room Database and Testing")
-declare -A  r7=([Code]="07.c7"  [Name]="Getting Started with WorkManager")
-declare -A  r8=([Code]="08.c8"  [Name]="Getting Started with Paging")
-declare -A  r9=([Code]="09.c9"  [Name]="Building for Large Screens")
-declare -A r10=([Code]="10.c10" [Name]="Implementing Your First Wear OS Using Jetpack Compose")
-declare -A r11=([Code]="11.c11" [Name]="GUI Alerts – What’s New in Menus, Dialog, Toast, Snackbars, and More in Modern Android Development")
-declare -A r12=([Code]="12.c12" [Name]="Android Studio Tips and Tricks to Help You during Development")
-declare -A r13=([Code]="13"     [Name]="Index")
-declare -A r14=([Code]="14"     [Name]="Other Books You May Enjoy")
+declare -A  r0=([Code]="00"     [Name]="Preface"
+	[Link]="https://subscription.packtpub.com/book/mobile/9781803235578/pref")
+declare -A  r1=([Code]="01.c1"  [Name]="Getting Started with Modern Android Development Skills"
+	[Link]="https://subscription.packtpub.com/book/mobile/9781803235578/1")
+declare -A  r2=([Code]="02.c2"  [Name]="Creating Screens Using a Declarative UI and Exploring Compose Principles"
+	[Link]="https://subscription.packtpub.com/book/mobile/9781803235578/2")
+declare -A  r3=([Code]="03.c3"  [Name]="Handling the UI State in Jetpack Compose and Using Hilt"
+	[Link]="https://subscription.packtpub.com/book/mobile/9781803235578/3")
+declare -A  r4=([Code]="04.c4"  [Name]="Navigation in Modern Android Development"
+	[Link]="https://subscription.packtpub.com/book/mobile/9781803235578/4")
+declare -A  r5=([Code]="05.c5"  [Name]="Using DataStore to Store Data and Testing"
+	[Link]="https://subscription.packtpub.com/book/mobile/9781803235578/5")
+declare -A  r6=([Code]="06.c6"  [Name]="Using the Room Database and Testing"
+	[Link]="https://subscription.packtpub.com/book/mobile/9781803235578/6")
+declare -A  r7=([Code]="07.c7"  [Name]="Getting Started with WorkManager"
+	[Link]="https://subscription.packtpub.com/book/mobile/9781803235578/7")
+declare -A  r8=([Code]="08.c8"  [Name]="Getting Started with Paging"
+	[Link]="https://subscription.packtpub.com/book/mobile/9781803235578/8")
+declare -A  r9=([Code]="09.c9"  [Name]="Building for Large Screens"
+	[Link]="https://subscription.packtpub.com/book/mobile/9781803235578/9")
+declare -A r10=([Code]="10.c10" [Name]="Implementing Your First Wear OS Using Jetpack Compose"
+	[Link]="https://subscription.packtpub.com/book/mobile/9781803235578/10")
+declare -A r11=([Code]="11.c11" [Name]="GUI Alerts – What’s New in Menus, Dialog, Toast, Snackbars, and More in Modern Android Development"
+	[Link]="https://subscription.packtpub.com/book/mobile/9781803235578/11")
+declare -A r12=([Code]="12.c12" [Name]="Android Studio Tips and Tricks to Help You during Development"
+	[Link]="https://subscription.packtpub.com/book/mobile/9781803235578/12")
+declare -A r13=([Code]="13"     [Name]="Index"
+	[Link]="https://subscription.packtpub.com/book/mobile/9781803235578/13")
+declare -A r14=([Code]="14"     [Name]="Other Books You May Enjoy"
+	[Link]="https://subscription.packtpub.com/book/mobile/9781803235578/14")
 r_top=14 #--^^
 
 
@@ -61,6 +73,7 @@ declare -A MatrixTab
 titleCnt=0
 declare -A titleCode
 declare -A titleName
+declare -A titleLink
 
 cat <<__EOF__
 (1) ---->
@@ -73,13 +86,14 @@ __EOF__
 
 for ((rNumber=0 ; rNumber <= ${r_top} ; rNumber++)) #-- for i in {0..14}
 do
-	for CodeNameStr in Code Name
+	for CodeNameStr in Code Name Link
 	do
 		ref="r$rNumber[$CodeNameStr]"
 		MatrixTab[$rNumber,$CodeNameStr]=${!ref}
 	done
 	titleCode[$titleCnt]=${MatrixTab[$rNumber,Code]}
 	titleName[$titleCnt]=${MatrixTab[$rNumber,Name]}
+	titleLink[$titleCnt]=${MatrixTab[$rNumber,Link]}
 	titleCnt=$(( titleCnt + 1 ))
 done
 
@@ -131,7 +145,9 @@ __EOF__
 			left_name=${titleName[$((tno))]}
 			left3word=$(echo ${left_name} | awk '{print $1" "$2" "$3" "}' | sed -e 's/^ *//g' -e 's/ *$//g')
 			left3w_md_file=${left3word,,}
-			left_link="[ ${left_code} ${left3word} ](/${PublisherDir}/${DateTitle3wordDir}/$(echo "${left_code}-${left3w_md_file,,}" | sed 's/\//_/g' | sed 's/ /_/g' | sed "s/’/\'/g").md)"
+			left_md_Name=$(echo "${left_code}-${left3w_md_file,,}" | sed 's/\//_/g' | sed 's/ /_/g' | sed "s/’/\'/g") #-- '.' 도 들어가는 md 파일 이름만
+			left_Path=$(echo "${left_md_Name}" | sed 's/\./_/g') #-- '.' 를 '_' 로 바꾼 폴더 이름으로 쓰기 위한 3단어 이름
+			left_link="[ ${left_code} ${left3word} ](/${PublisherDir}/${DateTitle3wordDir}/${left_Path})"
 			#-- | ${left_link} | 👈 ${Gwon_Jemok} 👉 | ${cBlue} ${left_link} |${cMagenta}
 		fi
 		right_code="" ; right_name=""
@@ -143,14 +159,16 @@ __EOF__
 			right_name=${titleName[$((tno))]}
 			right3word=$(echo ${right_name} | awk '{print $1" "$2" "$3" "}' | sed -e 's/^ *//g' -e 's/ *$//g')
 			right3w_md_file=${right3word,,}
-			right_link="[ ${right_code} ${right3word} ](/${PublisherDir}/${DateTitle3wordDir}/$(echo "${right_code}-${right3w_md_file,,}" | sed 's/\//_/g' | sed 's/ /_/g' | sed "s/’/\'/g").md)"
-			#-- | ${left_link} | 👈 ${Gwon_Jemok} 👉 | ${cBlue} ${right_link} |${cMagenta}
+			right_md_Name=$(echo "${right_code}-${right3w_md_file,,}" | sed 's/\//_/g' | sed 's/ /_/g' | sed "s/’/\'/g") #-- '.' 도 들어가는 md 파일 이름만
+			right_Path=$(echo "${right_md_Name}" | sed 's/\./_/g') #-- '.' 를 '_' 로 바꾼 폴더 이름으로 쓰기 위한 3단어 이름
+			right_link="[ ${right_code} ${right3word} ](/${PublisherDir}/${DateTitle3wordDir}/${right_Path})"
 		fi
 		tno=$((GwonNumber))
 		Gwon_Part_code=${titleCode[$((tno))]} #-- 권번호 + Part / Section / Chapter 번호 --> '02.p1'
 		Gwon_Jemok=${titleName[$((tno))]} #-- 권의 제목
 		GwonJemok3word=$(echo ${Gwon_Jemok,,} | awk '{print $1" "$2" "$3" "}' | sed -e 's/^ *//g' -e 's/ *$//g')
-		GwonCodeDir=$(echo "${Gwon_Part_code}-${GwonJemok3word,,}" | sed 's/\//_/g' | sed 's/ /_/g' | sed "s/’/\'/g") #-- 폴더 이름으로 쓰기 위한 3단어
+		Gwon_md_Name=$(echo "${Gwon_Part_code}-${GwonJemok3word,,}" | sed 's/\//_/g' | sed 's/ /_/g' | sed "s/’/\'/g") #-- '.' 도 들어가는 md 파일 이름만
+		Gwon_Path=$(echo "${Gwon_md_Name,,}" | sed 's/\./_/g') #-- '.' 를 '_' 로 바꾼 폴더 이름으로 쓰기 위한 3단어 이름
 
 		ChapterSeq=${Gwon_Part_code:0:2} #-- Gwon_Part_code 의 0 번 문자부터 2 개의 문자를 잘라내서 담는다.
 		#-- ${Gwon_Part_code:0:2} = "01"
@@ -160,7 +178,7 @@ __EOF__
 		cat <<__EOF__
 ${cBlue}/ / / / / / / /${cMagenta}
 Title: ${cBlue}${TitleName} ${cMagenta}( ${cYellow}${Gwon_Part_code:0:2}${Gwon_Part_code:2} ${cMagenta}) ${cReset}${Gwon_Jemok}${cMagenta}
-md Path: ${cBlue}${PublisherDir} ${cMagenta}/ ${cBlue}${DateTitle3wordDir} ${cMagenta}/ ${cGreen}${GwonCodeDir}.md${cMagenta}
+md Name: ${cBlue}${PublisherDir} ${cMagenta}/ ${cBlue}${DateTitle3wordDir} ${cMagenta}/ ${cGreen}${Gwon_md_Name}.md${cMagenta}
 ${cBlue}/ / / / / / / /${cReset}
 
 __EOF__
@@ -238,17 +256,17 @@ __EOF__
 ${cBlue}
 / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / /
 
-| ${left_link} | 👈 ${Gwon_Jemok} 👉 | ${cBlue} ${right_link} |${cMagenta}
+| ${left_link} | 👈 ${Gwon_Part_code} ${Gwon_Jemok} 👉 | ${cBlue} ${right_link} |${cMagenta}
 |:---:|:---:|:---:|
 
-Title:\` ${cBlue}${TitleName}${cMagenta} \`
-Short Description:\` ${cBlue}${ShortDescription}${cMagenta} \`
-Link:\` ${cBlue}${https_line}${cMagenta} \`
-create:\` ${cBlue}$(date +'%Y-%m-%d %a %H:%M:%S')${cMagenta} \`
-
-PAGE INFO Title:\` ${cMagenta}${cYellow}${Gwon_Part_code:0:2}${cReset}${Gwon_Part_code:2} ${Gwon_Jemok} ${cMagenta}\`
-Path:\` ${cBlue}${PublisherDir} ${cMagenta}/ ${cBlue}${DateTitle3wordDir} ${cMagenta}\`
-md File:\` ${cYellow}${GwonCodeDir:0:2}${cGreen}${GwonCodeDir:2}.md${cMagenta} \`${cBlue}
+Title:\` ${cBlue}${TitleName} ${cMagenta}\`
+Short Description:\` ${cBlue}${ShortDescription} ${cMagenta}\`
+Link:\` ${cBlue}${titleLink[$GwonNumber]} ${cMagenta}\`
+create:\` ${cBlue}$(date +'%Y-%m-%d %a %H:%M:%S') ${cMagenta}\`${cReset}
+PAGE INFO${cMagenta}
+Title:\` ${cMagenta}${cYellow}${Gwon_Part_code:0:2}${cReset}${Gwon_Part_code:2} ${cRed}${Gwon_Jemok} ${cMagenta}\`
+Book Path:\` ${cBlue}${PublisherDir}${cMagenta}/${cBlue}${DateTitle3wordDir}${cMagenta}/${cCyan}${Gwon_Path}${cMagenta} \`
+md Name:\` ${cYellow}${Gwon_md_Name:0:2}${cGreen}${Gwon_md_Name:2}.md${cMagenta} \`${cBlue}
 
 # ${cCyan}${Gwon_Jemok}
 
