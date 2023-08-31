@@ -108,6 +108,7 @@ rclone copy yosjgc:"Life/Job/02-카오스패션/2021-5 카오스노트.docx" .
 rclone copy yosjgc:"Life/Job/02-카오스패션/Kaossam 샘플실 납품외주관리.xlsx" .
 cd ../../../
 
+mkdir -p "Life/Job/메디/"
 cd "Life/Job/메디/"
 echo "Life/Job/메디/"
 rclone copy yosjgc:"Life/Job/메디/[xls] 품목별 수량 합계 만들기.xlsx" .
@@ -125,6 +126,7 @@ echo "Life/정치/"
 rclone copy yosjgc:"Life/정치/더민주명단.xlsx" .
 cd ../../
 
+mkdir -p "Life/책메모/노자/"
 cd "Life/책메모/노자/"
 echo "Life/책메모/노자/"
 rclone copy yosjgc:"Life/책메모/노자/이경숙 노자도덕경.docx" .
@@ -139,7 +141,7 @@ rclone copy yosjgc:"Life/책메모/채근담/채근담 후집-134 완역.docx" .
 rclone copy yosjgc:"Life/책메모/채근담/채근담 후집-134 원본.docx" .
 cd ../../../
 
-mkdir "Life/책메모/"
+mkdir -p "Life/책메모/"
 cd "Life/책메모/"
 echo "Life/책메모/"
 rclone copy yosjgc:"Life/책메모/춘향전(春香傳) 3.docx" .
