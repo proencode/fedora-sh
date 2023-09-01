@@ -31,27 +31,33 @@ read a
 #-- 	mkdir -p ${from_dir}
 #-- fi
 
+echo "----> cd ${from_dir}"
+cd ${from_dir}
+
+echo "----> pwd"
+pwd
+
 copy_root_to() {
 	name="$1"
-	echo "----> rclone lsl ${rclone_name}:\"${name}\""
-	rclone lsl ${rclone_name}:"${name}"
-	echo "----> rclone delete ${rclone_name}:\"${name}\""
-	rclone delete ${rclone_name}:"${name}"
-	echo "----> rclone copy \"${name}\" ${rclone_name}:\""
-	rclone copy "${name}" ${rclone_name}:\"
-	echo "----> rclone lsl ${rclone_name}:\"${name}\""
-	rclone lsl ${rclone_name}:"${name}"
+	echo "----> rclone ls ${rclone_name}:\"${name}\""
+	rclone ls ${rclone_name}:"${name}"
+	echo "----> rclone deletefile ${rclone_name}:\"${name}\""
+	rclone deletefile ${rclone_name}:"${name}"
+	echo "----> rclone copy \"${name}\" ${rclone_name}:"
+	rclone copy "${name}" ${rclone_name}:
+	echo "----> rclone ls ${rclone_name}:\"${name}\""
+	rclone ls ${rclone_name}:"${name}"
 }
 
 copyto() {
 	dir="$1"
 	name="$2"
-	echo "----> rclone lsl \"${from_dir}/${dir}/${name}\""
-	rclone lsl ${rclone_name}:"${dir}/${name}"
-	echo "----> rclone copy \"${from_dir}/${dir}/${name}\" ${rclone_name}:\"${dir}/${from_dir}/\""
-	rclone copy "${from_dir}/${dir}/${name}" ${rclone_name}:"${dir}/${from_dir}/"
-	echo "----> rclone lsl ${rclone_name}:\"${dir}/${name}\""
-	rclone lsl ${rclone_name}:"${dir}/${name}"
+	echo "----> rclone ls \"${dir}/${name}\""
+	rclone ls ${rclone_name}:"${dir}/${name}"
+	echo "----> rclone copy \"${dir}/${name}\" ${rclone_name}:\"${dir}/\""
+	rclone copy "${dir}/${name}" ${rclone_name}:"${dir}/"
+	echo "----> rclone ls ${rclone_name}:\"${dir}/${name}\""
+	rclone ls ${rclone_name}:"${dir}/${name}"
 }
 
 echo "copy_root_to"
