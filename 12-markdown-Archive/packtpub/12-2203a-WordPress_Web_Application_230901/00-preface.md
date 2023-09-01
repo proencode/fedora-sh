@@ -42,7 +42,9 @@ Starting with WordPress' basic mechanism for creating plugins, the book covers r
 
 This book is for WordPress users, developers, and site integrators interested in creating new plugins to address their personal needs, fulfill client requirements, and bring new capabilities to the WordPress community. Basic knowledge of PHP and WordPress is expected.
 
-What this book covers
+
+# What this book covers
+
 Chapter 1, Preparing a Local Development Environment, shows plugin developers how to install and configure an efficient development environment.
 
 Chapter 2, Plugin Framework Basics, explains the basic mechanics of registering user functions with WordPress to be executed at key points when web pages are displayed, forming the basis of plugin creation.
@@ -69,27 +71,37 @@ Chapter 12, Enabling Plugin Internationalization, prepares your plugin to be tra
 
 Chapter 13, Distributing Your Plugin on WordPress.org, shows you how to prepare your plugin for sharing with the global WordPress community.
 
-To get the most out of this book
-All code examples in this book have been tested against WordPress 5.9 using the Twenty Twenty-Two theme, unless otherwise noted. As WordPress always strives for backward compatibility, they will likely work with future versions as well. All other software tools needed are covered in Chapter 1, Preparing a Local Development Environment.
 
+# To get the most out of this book
+
+All code examples in this book have been tested against WordPress 5.9 using the **Twenty Twenty-Two** theme, unless otherwise noted. As WordPress always strives for backward compatibility, they will likely work with future versions as well. All other software tools needed are covered in Chapter 1, Preparing a Local Development Environment.
+
+![ Preparing a Local Development Environment ](/packtpub/2203a_wordpress_plugin_development_230901/00.00-preparing_a_local.webp)
 
 If you are using the digital version of this book, we advise you to type the code yourself or access the code from the book's GitHub repository (a link is available in the next section). Doing so will help you avoid any potential errors related to the copying and pasting of code.
 
-Download the example code files
+
+# Download the example code files
+
 You can download the example code files for this book from GitHub at https://github.com/PacktPublishing/WordPress-Plugin-Development-Cookbook-Third-Edition. If there's an update to the code, it will be updated in the GitHub repository.
 
 We also have other code bundles from our rich catalog of books and videos available at https://github.com/PacktPublishing/. Check them out!
 
-Download the color images
+
+### Download the color images
+
 We also provide a PDF file that has color images of the screenshots and diagrams used in this book. You can download it here: https://static.packt-cdn.com/downloads/9781801810777_ColorImages.pdf
 
-Conventions used
+
+### Conventions used
+
 There are a number of text conventions used throughout this book.
 
-Code in text: Indicates code words in text, database table names, folder names, filenames, file extensions, pathnames, dummy URLs, user input, and Twitter handles. Here is an example: "The widget method starts by calling the standard PHP extract function on the first parameter received, an array named $args, which contains a list of styling tidbits to render the widget."
+`Code in text`: Indicates code words in text, database table names, folder names, filenames, file extensions, pathnames, dummy URLs, user input, and Twitter handles. Here is an example: "The `widget` method starts by calling the standard PHP `extract` function on the first parameter received, an array named `$args`, which contains a list of styling tidbits to render the widget."
 
 A block of code is set as follows:
 
+```
 class Book_Reviews extends WP_Widget {
     function __construct () {
         parent::__construct( 'book_reviews', 
@@ -98,79 +110,83 @@ class Book_Reviews extends WP_Widget {
                    'Displays list of recent book reviews' ) );
     }
 } 
+```
 
-Copy
-
-Explain
 When we wish to draw your attention to a particular part of a code block, the relevant lines or items are set in bold:
 
+```
 </tr><tr>
 <td colspan="2">
 <div class="g-recaptcha"
 data-sitekey="[my-site-key]"></div>
 </td>
+```
 
-Copy
-
-Explain
 Any command-line input or output is written as follows:
 
+```
 npm install --save-dev --save-exact @wordpress/scripts
+```
 
-Copy
-
-Explain
-Bold: Indicates a new term, an important word, or words that you see onscreen. For instance, words in menus or dialog boxes appear in bold. Here is an example: "Publish the new page and click on View Page to see the block on your development site."
+**Bold**: Indicates a new term, an important word, or words that you see onscreen. For instance, words in menus or dialog boxes appear in **bold**. Here is an example: "**Publish** the new page and click on **View Page** to see the block on your development site."
 
 Tips or Important Notes
 
 Appear like this.
 
-Sections
+
+# Sections
+
 In this book, you will find several headings that appear frequently (Getting ready, How to do it..., How it works..., There's more..., and See also).
 
 To give clear instructions on how to complete a recipe, use these sections as follows:
 
-Getting ready
+
+## Getting ready
+
 This section tells you what to expect in the recipe and describes how to set up any software or any preliminary settings required for the recipe.
 
-How to do it…
+
+## How to do it…
+
 This section contains the steps required to follow the recipe.
 
-How it works…
+
+## How it works…
+
 This section usually consists of a detailed explanation of what happened in the previous section.
 
-There's more…
+
+## There's more…
+
 This section consists of additional information about the recipe in order to make you more knowledgeable about the recipe.
 
-See also
+
+## See also
+
 This section provides helpful links to other useful information for the recipe.
 
-Get in touch
+
+# Get in touch
+
 Feedback from our readers is always welcome.
 
-General feedback: If you have questions about any aspect of this book, email us at customercare@packtpub.com and mention the book title in the subject of your message.
+**General feedback**: If you have questions about any aspect of this book, email us at customercare@packtpub.com and mention the book title in the subject of your message.
 
-Errata: Although we have taken every care to ensure the accuracy of our content, mistakes do happen. If you have found a mistake in this book, we would be grateful if you would report this to us. Please visit www.packtpub.com/support/errata and fill in the form.
+**Errata**: Although we have taken every care to ensure the accuracy of our content, mistakes do happen. If you have found a mistake in this book, we would be grateful if you would report this to us. Please visit www.packtpub.com/support/errata and fill in the form.
 
-Piracy: If you come across any illegal copies of our works in any form on the internet, we would be grateful if you would provide us with the location address or website name. Please contact us at copyright@packt.com with a link to the material.
+**Piracy**: If you come across any illegal copies of our works in any form on the internet, we would be grateful if you would provide us with the location address or website name. Please contact us at copyright@packt.com with a link to the material.
 
-If you are interested in becoming an author: If there is a topic that you have expertise in and you are interested in either writing or contributing to a book, please visit authors.packtpub.com.
+**If you are interested in becoming an author**: If there is a topic that you have expertise in and you are interested in either writing or contributing to a book, please visit authors.packtpub.com.
 
-Share Your Thoughts
+
+# Share Your Thoughts
+
 Once you've read WordPress Plugin Development Cookbook, we'd love to hear your thoughts! Please click here to go straight to the Amazon review page for this book and share your feedback.
 
 Your review is important to us and the tech community and will help us make sure we're delivering excellent quality content.
 
-Previous Chapter
-Next Chapter
 
-
-
-
-
-
-
-
-Annotate
+| First Chapter | 👈 00 Preface 👉 |  [ 01.c1 Preparing a Local ](/packtpub/2203a_wordpress_plugin_development_230901/01_c1-preparing_a_local) |
+|:---:|:---:|:---:|
 
