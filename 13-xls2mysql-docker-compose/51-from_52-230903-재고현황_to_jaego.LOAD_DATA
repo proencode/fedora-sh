@@ -1,0 +1,7 @@
+use hajdb ;
+LOAD DATA INFILE '/var/lib/mysql-files/52-230903-jaego.csv'
+INTO TABLE jaego
+FIELDS TERMINATED BY ';'
+ENCLOSED BY '"'
+LINES TERMINATED BY '\n'
+IGNORE 1 ROWS ;

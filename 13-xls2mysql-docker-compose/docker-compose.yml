@@ -2,7 +2,7 @@ version: '3.8'
 services:
   database:
     image: mysql:latest
-    container_name: xlsmycon
+    container_name: myxlsct
     environment:
       MYSQL_RANDOM_ROOT_PASSWORD: 1
     ports:

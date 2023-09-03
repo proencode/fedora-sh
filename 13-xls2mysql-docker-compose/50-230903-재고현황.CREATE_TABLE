@@ -1,0 +1,32 @@
+CREATE DATABASE IF NOT EXISTS hajdb;
+
+USE hajdb;
+
+CREATE TABLE IF NOT EXISTS jaego (
+    -- 제조사명;코드;제품명;규격;이월수량;단가;이월재고액;매입수량;단가;금액;매출수량;단가;금액;재고수량;단가;보험%;재고금액;보험단가;보험재고금액;차액(보험재고-재고);보험코드;코드;발주처명;표준코드;제품기타코드
+    jejo            VARCHAR(400)     NOT NULL, -- 제조사명
+    code            VARCHAR(400)     NOT NULL, -- 코드
+    pumirm          VARCHAR(400)     NOT NULL, -- 제품명
+    gyu             VARCHAR(400)     NOT NULL, -- 규격
+    iwolsu          INT             NOT NULL, -- 이월수량
+    iwoldan         INT             NOT NULL, -- 단가
+    iwolkum         INT             NOT NULL, -- 이월재고액
+    maeipsu         INT             NOT NULL, -- 매입수량
+    maeipdan        INT             NOT NULL, -- 단가
+    maeipkum        INT             NOT NULL, -- 금액
+    maechulsu       INT             NOT NULL, -- 매출수량
+    maechuldan      INT             NOT NULL, -- 단가
+    maechulkum      INT             NOT NULL, -- 금액
+    jaegosu         INT             NOT NULL, -- 재고수량
+    jaegodan        INT             NOT NULL, -- 단가
+    boheompcnt      INT             NOT NULL, -- 보험%
+    jaegokum        INT             NOT NULL, -- 재고금액
+    bojeondan       INT             NOT NULL, -- 보험단가
+    boheomkum       INT             NOT NULL, -- 보험재고금액
+    jaegocha        INT             NOT NULL, -- 차액(보험재고-재고)
+    boheomcode      VARCHAR(400)     NOT NULL, -- 보험코드
+    code2           VARCHAR(400)     NOT NULL, -- 코드
+    balju           VARCHAR(400)     NOT NULL, -- 발주처명
+    stdcode         VARCHAR(400)     NOT NULL, -- 표준코드
+    etccode         VARCHAR(400)     NOT NULL  -- 제품기타코드
+);

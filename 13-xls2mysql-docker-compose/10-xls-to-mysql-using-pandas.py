@@ -19,10 +19,10 @@ df = pd.read_excel('filename.xlsx')
 
 #-- mysql.connector.connect() 함수를 사용하여 MySQL 데이터베이스에 대한 연결을 만듭니다.
 
-connection = mysql.connector.connect(host='hostname',
-user='username',
-password='password',
-database='database')
+connection = mysql.connector.connect(host='myxlscont',
+user='root',
+password='ds2axa',
+database='hajdb')
 
 #-- 커서 개체를 만들고 SQL 쿼리를 실행하여 MySQL 테이블에 데이터를 삽입합니다.
 

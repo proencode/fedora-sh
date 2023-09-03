@@ -10,7 +10,7 @@ __EOF__
 # ----
 
 
-cmdRun "sudo docker-compose ps -a" "운영중인 MySQL DB 도커들"
+#cmdRun "sudo docker-compose ps -a" "운영중인 MySQL DB 도커들"
 ##for out in $(sudo docker ps -a | awk '{print $NF}')
 ##do
 ##	if [ "x$out" != "xNAMES" ]; then
@@ -19,13 +19,14 @@ cmdRun "sudo docker-compose ps -a" "운영중인 MySQL DB 도커들"
 ##	fi
 ##done
 
-CONTAINER_NAME=xlsmycon
+CONTAINER_NAME=myxlsct
 PORT_NO=7700
-DATABASE_NAME=minjsdb
-LOG_NAME=xlsmyconlog
-USER_NAME=xlsmyconroot
+DATABASE_NAME=hajdb
+#-xx LOG_NAME=myxlsctlog
+#-xx USER_NAME=myxlsctroot
 
-echo "${cRed}[ ${cYellow}${CONTAINER_NAME} ${cGreen}${DATABASE_NAME} ${cBlue}${USER_NAME} ${cCyan}${LOG_NAME} ${Red}] -OK-${cReset}"
+echo "${cRed}[ ${cYellow}${CONTAINER_NAME} ${cGreen}${DATABASE_NAME} ${cBlue}${USER_NAME} ${Red}] -OK-${cReset}"
+#-xx echo "${cRed}[ ${cYellow}${CONTAINER_NAME} ${cGreen}${DATABASE_NAME} ${cBlue}${USER_NAME} ${cCyan}${LOG_NAME} ${Red}] -OK-${cReset}"
 
 #--
 
@@ -79,7 +80,7 @@ version: '3.8'
 services:
   database:
     image: mysql:latest
-    container_name: xlsmycon
+    container_name: myxlsct
     environment:
       MYSQL_RANDOM_ROOT_PASSWORD: 1
     ports:
@@ -87,10 +88,12 @@ services:
     volumes:
       - /home/docker/mysql:/var/lib/mysql
 __EOF__
+#-- volumes: - /home/docker/mysql:/var/lib/mysql
+#-- mysql 데이터 위치 - 도커바깥 PC의 위치=내가 지정 : 도커가 쓰는 도커안쪽 위치
 
 cmdRun "cat ${XML_FILE}"
 
-cmdRun "sudo docker-compose up &" "sudo docker logs ${CONTAINER_NAME} 2>&1 | grep --color PASSWORD # <---- (0) 표시된 비밀번호를 복사합니다."
+cmdRun "sudo docker-compose up &" "sudo docker logs ${CONTAINER_NAME} 2>&1 | grep --color PASSWORD # <---- (0) 표시된 비밀번호를 복사하세요."
 
 
 echo "${cCyan}#----> db 초기화 작업이 끝날때까지 최대 2 분간 기다립니다."
@@ -110,7 +113,7 @@ done
 if [ "x${return_value}" = "x" ]; then
 	cmdCont "sudo docker logs ${CONTAINER_NAME} 2>&1 | grep --color PASSWORD" "${cRed}# <---- 비밀번호를 계속 확인해야 합니다."
 else
-	cmdRun "sudo docker logs ${CONTAINER_NAME} 2>&1 | grep --color PASSWORD" "# <---- (0) 위에 표시된 비밀번호를 복사합니다."
+	cmdRun "sudo docker logs ${CONTAINER_NAME} 2>&1 | grep --color PASSWORD" "# <---- (0) 위에 표시된 비밀번호를 복사하세요."
 fi
 
 cat <<__EOF__
