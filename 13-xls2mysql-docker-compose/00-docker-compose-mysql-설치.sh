@@ -89,8 +89,8 @@ services:
 __EOF__
 
 cmdRun "cat ${XML_FILE}"
-cmdRun "sudo docker-compose up &"
 
+cmdRun "sudo docker-compose up &" "sudo docker logs ${CONTAINER_NAME} 2>&1 | grep --color PASSWORD # <---- (0) 표시된 비밀번호를 복사합니다."
 
 
 echo "${cCyan}#----> db 초기화 작업이 끝날때까지 최대 2 분간 기다립니다."
@@ -113,21 +113,19 @@ else
 	cmdRun "sudo docker logs ${CONTAINER_NAME} 2>&1 | grep --color PASSWORD" "# <---- (0) 위에 표시된 비밀번호를 복사합니다."
 fi
 
-# ----
-rm -f ${log_name} ### ; log_name="${logs_folder}/zz.$(date +"%y%m%d-%H%M%S")..${CMD_NAME}" ; touch ${log_name}
-### cmdRun "ls --color ${CMD_DIR}" ; ls --color ${logs_folder}
-
 cat <<__EOF__
 sudo docker exec -it ${CONTAINER_NAME} mysql -u root -p ${cMagenta}# <---- ${cYellow}(1) ${cMagenta}Enter password: 가 나오면, GENERATED ROOT PASSWORD 를 여기에 붙여넣기 합니다.${cReset}
 
-alter user 'root'@'%' identified by '<>-<>-<>' ; grant all privileges on *.* to 'root'@'%' with grant option ; create database if not exists ${DATABASE_NAME} character set utf8 ; create user '${USER_NAME}'@'%' identified by '<>-<>-<>' ; grant all privileges on *.* to '${USER_NAME}'@'%' with grant option ; exit ; ${cGreen}-- -- -- -- ${cYellow}(2) ${cMangeta}<>-<>-<> 자리에 비번을 넣습니다. 복사할때 앞의 ${cGreen}초록색 -- -- -- -- ${cMagenta} 까지만 복사해야 합니다.${cReset}
-
-sudo docker exec -it ${CONTAINER_NAME} /bin/bash ; sudo docker restart ${CONTAINER_NAME} ; sudo docker ps -a ; ls --color ${CMD_DIR} ; ls --color ${logs_folder} ${cMagenta}# <---- ${cYellow}(3) ${cMagenta}docker 를 다시 시작해서 아래의 (4) 를 실행할 준비를 합니다.${cReset}
-
-echo "character-set-server=utf8" >> /etc/mysql/mysql.conf.d/mysqld.cnf ; tail -3 /etc/mysql/mysql.conf.d/mysqld.cnf ; exit ${cMagenta}# <---- ${cYellow}(4) ${cMagenta}docker 에서 utf8 을 쓰도록 지정합니다.${cReset}
+ALTER USER 'root'@'localhost' IDENTIFIED BY '<>-<>-<>'; ${cGreen}-- -- -- -- ${cYellow}(2) ${cMangeta}<>-<>-<> 자리에 비번을 넣습니다. 복사할때 앞의 ${cGreen}초록색 -- -- -- -- ${cMagenta} 까지만 복사해야 합니다.${cReset}
              |
-	     | 위와 같이 (1) ~ (4) 를 진행해야 설치가 끝납니다.
+	     | 위와 같이 (1) ~ (2) 를 진행해야 설치가 끝납니다.
 __EOF__
+cmdRun "ls --color ${CMD_DIR}" ; ls --color ${logs_folder}
+
+
+# alter user 'root'@'%' identified by '<>-<>-<>' ; grant all privileges on *.* to 'root'@'%' with grant option ; create database if not exists ${DATABASE_NAME} character set utf8 ; create user '${USER_NAME}'@'%' identified by '<>-<>-<>' ; grant all privileges on *.* to '${USER_NAME}'@'%' with grant option ; exit ; ${cGreen}-- -- -- -- ${cYellow}(2) ${cMangeta}<>-<>-<> 자리에 비번을 넣습니다. 복사할때 앞의 ${cGreen}초록색 -- -- -- -- ${cMagenta} 까지만 복사해야 합니다.${cReset}
+# sudo docker exec -it ${CONTAINER_NAME} /bin/bash ; sudo docker restart ${CONTAINER_NAME} ; sudo docker ps -a ; ls --color ${CMD_DIR} ; ls --color ${logs_folder} ${cMagenta}# <---- ${cYellow}(3) ${cMagenta}docker 를 다시 시작해서 아래의 (4) 를 실행할 준비를 합니다.${cReset}
+# echo "character-set-server=utf8" >> /etc/mysql/mysql.conf.d/mysqld.cnf ; tail -3 /etc/mysql/mysql.conf.d/mysqld.cnf ; exit ${cMagenta}# <---- ${cYellow}(4) ${cMagenta}docker 에서 utf8 을 쓰도록 지정합니다.${cReset}
 
 
 # ----
