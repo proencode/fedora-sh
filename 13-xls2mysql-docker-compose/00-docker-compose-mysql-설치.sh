@@ -80,15 +80,15 @@ version: '3.8'
 services:
   database:
     image: mysql:latest
-    container_name: myxlsct
+    container_name: ${CONTAINER_NAME}
     environment:
       MYSQL_RANDOM_ROOT_PASSWORD: 1
     ports:
       - "7700:3306"
     volumes:
-      - /home/docker/mysql:/var/lib/mysql
+      - /home/docker/${CONTAINER_NAME}:/var/lib/mysql
 __EOF__
-#-- volumes: - /home/docker/mysql:/var/lib/mysql
+#-- volumes: - /home/docker/${CONTAINER_NAME}:/var/lib/mysql
 #-- mysql 데이터 위치 - 도커바깥 PC의 위치=내가 지정 : 도커가 쓰는 도커안쪽 위치
 
 cmdRun "cat ${XML_FILE}"

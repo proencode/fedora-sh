@@ -8,22 +8,22 @@ CREATE TABLE IF NOT EXISTS jaego (
     code            VARCHAR(400)     NOT NULL, -- 코드
     pumirm          VARCHAR(400)     NOT NULL, -- 제품명
     gyu             VARCHAR(400)     NOT NULL, -- 규격
-    iwolsu          INT             NOT NULL, -- 이월수량
-    iwoldan         INT             NOT NULL, -- 단가
-    iwolkum         INT             NOT NULL, -- 이월재고액
-    maeipsu         INT             NOT NULL, -- 매입수량
-    maeipdan        INT             NOT NULL, -- 단가
-    maeipkum        INT             NOT NULL, -- 금액
-    maechulsu       INT             NOT NULL, -- 매출수량
-    maechuldan      INT             NOT NULL, -- 단가
-    maechulkum      INT             NOT NULL, -- 금액
-    jaegosu         INT             NOT NULL, -- 재고수량
-    jaegodan        INT             NOT NULL, -- 단가
-    boheompcnt      INT             NOT NULL, -- 보험%
-    jaegokum        INT             NOT NULL, -- 재고금액
-    bojeondan       INT             NOT NULL, -- 보험단가
-    boheomkum       INT             NOT NULL, -- 보험재고금액
-    jaegocha        INT             NOT NULL, -- 차액(보험재고-재고)
+    iwolsu          BIGINT          NOT NULL, -- 이월수량
+    iwoldan         BIGINT          NOT NULL, -- 단가
+    iwolkum         BIGINT          NOT NULL, -- 이월재고액
+    maeipsu         BIGINT          NOT NULL, -- 매입수량
+    maeipdan        BIGINT          NOT NULL, -- 단가
+    maeipkum        BIGINT          NOT NULL, -- 금액
+    maechulsu       BIGINT          NOT NULL, -- 매출수량
+    maechuldan      BIGINT          NOT NULL, -- 단가
+    maechulkum      BIGINT          NOT NULL, -- 금액
+    jaegosu         BIGINT          NOT NULL, -- 재고수량
+    jaegodan        BIGINT          NOT NULL, -- 단가
+    boheompcnt      BIGINT          NOT NULL, -- 보험%
+    jaegokum        BIGINT          NOT NULL, -- 재고금액
+    bojeondan       BIGINT          NOT NULL, -- 보험단가
+    boheomkum       BIGINT          NOT NULL, -- 보험재고금액
+    jaegocha        BIGINT          NOT NULL, -- 차액(보험재고-재고)
     boheomcode      VARCHAR(400)     NOT NULL, -- 보험코드
     code2           VARCHAR(400)     NOT NULL, -- 코드
     balju           VARCHAR(400)     NOT NULL, -- 발주처명

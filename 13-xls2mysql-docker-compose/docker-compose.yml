@@ -8,4 +8,4 @@ services:
     ports:
       - "7700:3306"
     volumes:
-      - /home/docker/mysql:/var/lib/mysql
+      - /home/docker/myxlsct:/var/lib/mysql
