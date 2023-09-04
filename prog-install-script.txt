@@ -21,6 +21,7 @@ sudo dnf install make automake autoconf gcc dkms \
     google-chrome-stable \
     livecd-tools liveusb-creator -y
 
+
 ## 2.1 커널 버전 확인
 
 rpm -qa | grep kernel | sort | grep kernel
@@ -74,12 +75,14 @@ ls -l ~/wind_data
 
 # 5. VundleVim 설치
 
+sudo dnf install git gcc vim-enhanced vim-common p7zip
+
 git clone https://github.com/susabolca/Vundle.vim ${HOME}/.vim/bundle/Vundle.vim
 
 ## 5.1 proen 서버에 미리 만들어둔 파일을 ${HOME} 디렉토리로 복사한다.
 
-rsync -avzr -e 'ssh -p 15822' proenpi@proen.duckdns.org:archive/DOTbashrc* ~/.bashrc
-rsync -avzr -e 'ssh -p 15822' proenpi@proen.duckdns.org:archive/DOTvimrc* ~/.vimrc
+rsync -avzr -e 'ssh -p 15822' proenpi@proen.duckdns.org:ar*/my*/li*/DOTbashrc ~/.bashrc
+rsync -avzr -e 'ssh -p 15822' proenpi@proen.duckdns.org:ar*/my*/li*/DOTvimrc ~/.vimrc
 
 ## 5.2 Bundle 을 설치한다
 
@@ -88,7 +91,13 @@ vim +BundleInstall +qall
 
 # 6. 한글 폰트파일 설치
 
-sudo rsync -avzr -e 'ssh -p 15822' proenpi@proen.duckdns.org:archive/Font*.7z /usr/share/fonts/
+sudo rsync -avzr -e 'ssh -p 15822' proenpi@proen.duckdns.org:ar*/my*/li*/font*7z /usr/share/fonts/
+
+cd /usr/share/fonts/ ; 7za x ./font*.7z
+sudo chown root:root D2Coding KoPub jeju_ttf naver-nanum seoul
+sudo chmod 755 D2Coding KoPub jeju_ttf naver-nanum seoul
+sudo chmod 644 D2Coding/* KoPub/* jeju_ttf/* naver-nanum/* seoul/*
+
 
 ## 6.1 snap 링크 설치 확인
 
