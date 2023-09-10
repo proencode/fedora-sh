@@ -53,9 +53,8 @@ if [ ! -d "${log_save}" ]; then
 	mkdir -p ${log_save} #-- 로그를 담는 디렉토리를 만듭니다."
 fi
 
-now=$(date +"%H:%M:%S")
 dir_name=zz.${log_save}-$(date +"%y%m%d%a-%H%M%S")
-du_sh_sort_hr_file=${log_save}/$(echo ${dir_name} | sed 's/\///' | sed 's/\//_/g')-$(date +"%y%m%d%a-%H%M%S")
+du_sh_sort_hr_file=${log_save}/$(echo ${dir_name} | sed 's/\///' | sed 's/\//_/g')
 
 
 MEMO="[줄수=${cnt}] [시작위치=${search_dir}] [파일명=${du_sh_sort_hr_file}]"
