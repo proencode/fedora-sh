@@ -36,7 +36,7 @@ fi
 echo "${rrr}[ ${yyy}${search_dir} ${rrr}]${xxx}"
 
 if [ "x$3" = "x" ]; then
-	curr_savelog="/home/${USER}/zz00logs"
+	curr_savelog="$(pwd)/zz00logs"
 else
 	curr_savelog="$3"
 fi
@@ -54,7 +54,8 @@ if [ ! -d "${log_save}" ]; then
 fi
 
 now=$(date +"%H:%M:%S")
-du_sh_sort_hr_file=${log_save}/zz.$(date +"%y%m%d%a-%H%M%S")
+dir_name=zz.${log_save}-$(date +"%y%m%d%a-%H%M%S")
+du_sh_sort_hr_file=${log_save}/$(echo ${dir_name} | sed 's/\///' | sed 's/\//_/g')-$(date +"%y%m%d%a-%H%M%S")
 
 
 MEMO="[줄수=${cnt}] [시작위치=${search_dir}] [파일명=${du_sh_sort_hr_file}]"
