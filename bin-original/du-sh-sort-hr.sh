@@ -29,23 +29,39 @@ else
 fi
 
 echo "----> 조사하는 디렉토리: [${curr_dir}]"
-read search_dir ; echo "${uuu}"
-if [ "x${search_dir}" = "x" ]; then
-	search_dir=${curr_dir}
+read a ; echo "${uuu}"
+if [ "x${a}" = "x" ]; then
+	a=${curr_dir}
 fi
+if [[ $a =~ "~" ]]; then #-- $a 안에 "~" 문자가 들어있으면,
+	search_dir=$(echo $a | awk -v home_dir="${HOME}" -F"~" '{print home_dir $2}') #-- awk 에게 ${HOME} 환경변수를 home_dir 이라는 이름으로 전달한다.
+else
+	search_dir=$a
+fi
+echo "a --- $a ---"
+echo "search_dir --- $search_dir ---"
+
 echo "${rrr}[ ${yyy}${search_dir} ${rrr}]${xxx}"
 
 if [ "x$3" = "x" ]; then
-	curr_savelog="$(pwd)/zz00logs"
+	curr_savelog="${search_dir}/zz00logs"
 else
 	curr_savelog="$3"
 fi
 
 echo "----> 로그 담는 디렉토리: [${curr_savelog}]"
-read log_save ; echo "${uuu}"
-if [ "x${log_save}" = "x" ]; then
-	log_save=${curr_savelog}
+read a ; echo "${uuu}"
+if [ "x${a}" = "x" ]; then
+	a=${curr_savelog}
 fi
+if [[ $a =~ "~" ]]; then #-- $a 안에 "~" 문자가 들어있으면,
+	log_save=$(echo $a | awk -v home_dir="${HOME}" -F"~" '{print home_dir $2}') #-- awk 에게 ${HOME} 환경변수를 home_dir 이라는 이름으로 전달한다.
+else
+	log_save=$a
+fi
+echo "a --- $a ---"
+echo "log_save --- $log_save ---"
+
 echo "${rrr}[ ${yyy}${log_save} ${rrr}]${xxx}"
 
 if [ ! -d "${log_save}" ]; then
@@ -53,9 +69,8 @@ if [ ! -d "${log_save}" ]; then
 	mkdir -p ${log_save} #-- 로그를 담는 디렉토리를 만듭니다."
 fi
 
-dir_name=zz.${log_save}-$(date +"%y%m%d%a-%H%M%S")
-du_sh_sort_hr_file=${log_save}/$(echo ${dir_name} | sed 's/\///' | sed 's/\//_/g')
-
+dir_name=zz.${search_dir}-$(date +"%y%m%d%a-%H%M%S") #-- 조사하는 디렉토리를 쓴다.
+du_sh_sort_hr_file=${log_save}/$(echo ${dir_name} | sed 's/\///' | sed 's/\//_/g') #-- 로그를 담는 파일 이름
 
 MEMO="[줄수=${cnt}] [시작위치=${search_dir}] [파일명=${du_sh_sort_hr_file}]"
 
