@@ -312,19 +312,26 @@ sudo docker ps -a
 echo "🎶 (1-13) --------------------"
 ```
 
-## 2. wiki.js 용 데이터베이스 서비스
+## 2. 필요한 디렉토리 작성
 
+1.  wiki.js 의 bash 변수 초기값을 `${HOME}/bin/variables_wikijs.sh` 파일에 저장한다.
 ```
-for i in {0..9}; do echo "#"; done
+for i in {0..3}; do echo "#"; done
 
-#----> wiki.js 도커에서 쓰는 bash 변수 선언.
-#--
+if [ ! -d ${HOME}/bin ]; then
+    echo "(2-1) mkdir ${HOME}/bin"
+    mkdir ${HOME}/bin
+fi
+WIKIJS_SH="${HOME}/bin/variables_wikijs.sh" #-- wiki.js 의 bash 변수 초기값을 저장한다.
+
+tee ${WIKIJS_SH} <<__EOF__ #-- tee 명령은 __EOF__ 이전까지 화면에 보여주면서 파일로도 저장한다.
 DOCKER_DIR="/home/docker" #----- dwjs 도커 디렉토리 홈
 DATABASE_DIR="${DOCKER_DIR}/wikijs_data" #-- dwjs wiki 데이터베이스 보관 디렉토리
-YML_DIR="${DOCKER_DIR}/wikijs_yml" #-------- dwjs docker-compose.yml 을 보관하는 /home/docker/ 아래의 디렉토리
-YML_NAME="docker-compose.yml" #-- dwjs docker-compose.yml 이름을 지정
+YML_DIR="${DOCKER_DIR}/wikijs_yml" #-------- dwjs docker-compose.yml 을 보관하는 ${DOCKER_DIR} 아래의 디렉토리
+YML_NAME="${YML_DIR}/docker-compose.yml" #-- dwjs docker-compose.yml 이름을 지정
 DATABASE_SERVICE="db_srv" #----- dwjs 데이터베이스 서비스 이름
 DATABASE_NAME="wikidb" #-------- dwjs 데이터베이스 이름
+DATABASE_DIR="${DOCKER_DIR}/wikijs_data" #-- dwjs wiki 데이터베이스 보관 디렉토리
 DATABASE_CONTAINER="pgwikic" #-- dwjs 데이터베이스 컨테이너 이름
 DB_user_NAME="imwiki" #--------- dwjs 데이터베이스 유저 이름
 DB_user_PASS="wikipswd" #------- dwjs 데이터베이스 유저 비번
@@ -332,14 +339,27 @@ WIKI_SERVICE="wiki_srv" #---- dwjs 위키 서비스 이름
 WIKI_PORT_NO="7700" #-------- dwjs 위키 포트 번호
 WIKI_CONTAINER="wikijsc" #--- dwjs 위키 컨테이너
 CLOUD_NAME="tp3mi" #------------ dwjs rclone 백업용 클라우드 이름
-#--
-#<---- wiki.js 도커에서 쓰는 bash 변수 선언.
+__EOF__
+
+echo "cat ${WIKIJS_SH} #-- (2-2) wiki.js 의 bash 변수 초기값"
+cat ${WIKIJS_SH}
+echo "🎶 (2-3) WIKIJS_SH=\"${HOME}/bin/variables_wikijs.sh\""
+```
+
+## 3. 데이터베이스 서비스
+
+```
+for i in {0..9}; do echo "#"; done
+
+WIKIJS_SH="${HOME}/bin/variables_wikijs.sh"
+echo "(3-1) \$(cat ${WIKIJS_SH}) #-- wiki.js 의 bash 변수 초기값을 읽어들입니다."
+$(cat ${WIKIJS_SH})
 
 if [ -d ${DATABASE_DIR} ]; then
-    echo "(2-1) sudo ls -alR ${DATABASE_DIR}"
+    echo "(3-2) sudo ls -alR ${DATABASE_DIR}"
     sudo ls -alR ${DATABASE_DIR}
     cat <<__EOF__
-(2-2) ${DATABASE_DIR} 디렉토리가 있으므로,
+(3-3) ${DATABASE_DIR} 디렉토리가 있으므로,
       내용을 확인해봐서 쓰지 않는 것이면,
       이 디렉토리를 지우고 다시 만들기 위해,
           터미널을 새로 열고,
@@ -347,45 +367,26 @@ if [ -d ${DATABASE_DIR} ]; then
 
       sudo rm -rf ${DATABASE_DIR} ; sudo mkdir -p ${DATABASE_DIR}
 
-🖍️ (2-3) 터미널을 새로 열고 디렉토리 재확인 Enter:
+🖍️ (3-4) 터미널을 새로 열고 디렉토리 재확인 Enter:
 __EOF__
     read a
 else
-    echo "(2-4) 데이터베이스가 사용하는 디렉토리 만들기: sudo mkdir -p ${DATABASE_DIR}"
+    echo "(3-5) sudo mkdir -p ${DATABASE_DIR}"
     sudo mkdir -p ${DATABASE_DIR}
 fi
-echo "(2-5) sudo ls -alR ${DOCKER_DIR}"
+echo "(3-6) sudo ls -alR ${DOCKER_DIR}"
 sudo ls -alR ${DOCKER_DIR}
-echo "🎶 (2-6) --------------------"
+echo "🎶 (3-7) --------------------"
 ```
 
-## 3. 위키 서비스
+## 4. 위키 서비스
 
 ```
 for i in {0..9}; do echo "#"; done
 
-#----> wiki.js 도커에서 쓰는 bash 변수 선언.
-#--
-DOCKER_DIR="/home/docker" #----- dwjs 도커 디렉토리 홈
-DATABASE_DIR="${DOCKER_DIR}/wikijs_data" #-- dwjs wiki 데이터베이스 보관 디렉토리
-YML_DIR="${DOCKER_DIR}/wikijs_yml" #-------- dwjs docker-compose.yml 을 보관하는 /home/docker/ 아래의 디렉토리
-YML_NAME="docker-compose.yml" #-- dwjs docker-compose.yml 이름을 지정
-DATABASE_SERVICE="db_srv" #----- dwjs 데이터베이스 서비스 이름
-DATABASE_NAME="wikidb" #-------- dwjs 데이터베이스 이름
-DATABASE_CONTAINER="pgwikic" #-- dwjs 데이터베이스 컨테이너 이름
-DB_user_NAME="imwiki" #--------- dwjs 데이터베이스 유저 이름
-DB_user_PASS="wikipswd" #------- dwjs 데이터베이스 유저 비번
-WIKI_SERVICE="wiki_srv" #---- dwjs 위키 서비스 이름
-WIKI_PORT_NO="7700" #-------- dwjs 위키 포트 번호
-WIKI_CONTAINER="wikijsc" #--- dwjs 위키 컨테이너
-CLOUD_NAME="tp3mi" #------------ dwjs rclone 백업용 클라우드 이름
-#--
-#<---- wiki.js 도커에서 쓰는 bash 변수 선언.
-
-if [ ! -d ${YML_DIR} ]; then
-    echo "(3-1) docker-compose.yml 보관 디렉토리 만들기: mkdir -p ${YML_DIR} ; sudo chmod 755 ${YML_DIR} ; sudo chown ${USER}:${USER} ${YML_DIR}"
-    mkdir -p ${YML_DIR} ; sudo chmod 755 ${YML_DIR} ; sudo chown ${USER}:${USER} ${YML_DIR}
-fi
+WIKIJS_SH="${HOME}/bin/variables_wikijs.sh"
+echo "(4-1) \$(cat ${WIKIJS_SH}) #-- wiki.js 의 bash 변수 초기값을 읽어들입니다."
+$(cat ${WIKIJS_SH})
 
 cat > ${YML_NAME} <<__EOF__
 version: "3"
@@ -422,49 +423,35 @@ services:
       ${WIKI_CONTAINER}
 __EOF__
 
-echo "(3-2) ls -lR ${YML_NAME} ; cat ${YML_NAME}"
+echo "(4-2) ls -lR ${YML_NAME} ; cat ${YML_NAME}"
 ls -lR ${YML_NAME} ; cat ${YML_NAME}
 
-echo "🎶 (3-3) --------------------"
+echo "🎶 (4-3) --------------------"
 ```
 
-## 4. 도커 컴포즈 빌드 + 실행
+## 5. 도커 컴포즈 빌드 + 실행
 
 ```
 for i in {0..9}; do echo "#"; done
 
-#----> wiki.js 도커에서 쓰는 bash 변수 선언.
-#--
-DOCKER_DIR="/home/docker" #----- dwjs 도커 디렉토리 홈
-DATABASE_DIR="${DOCKER_DIR}/wikijs_data" #-- dwjs wiki 데이터베이스 보관 디렉토리
-YML_DIR="${DOCKER_DIR}/wikijs_yml" #-------- dwjs docker-compose.yml 을 보관하는 /home/docker/ 아래의 디렉토리
-YML_NAME="docker-compose.yml" #-- dwjs docker-compose.yml 이름을 지정
-DATABASE_SERVICE="db_srv" #----- dwjs 데이터베이스 서비스 이름
-DATABASE_NAME="wikidb" #-------- dwjs 데이터베이스 이름
-DATABASE_CONTAINER="pgwikic" #-- dwjs 데이터베이스 컨테이너 이름
-DB_user_NAME="imwiki" #--------- dwjs 데이터베이스 유저 이름
-DB_user_PASS="wikipswd" #------- dwjs 데이터베이스 유저 비번
-WIKI_SERVICE="wiki_srv" #---- dwjs 위키 서비스 이름
-WIKI_PORT_NO="7700" #-------- dwjs 위키 포트 번호
-WIKI_CONTAINER="wikijsc" #--- dwjs 위키 컨테이너
-CLOUD_NAME="tp3mi" #------------ dwjs rclone 백업용 클라우드 이름
-#--
-#<---- wiki.js 도커에서 쓰는 bash 변수 선언.
+WIKIJS_SH="${HOME}/bin/variables_wikijs.sh"
+echo "(5-1) \$(cat ${WIKIJS_SH}) #-- wiki.js 의 bash 변수 초기값을 읽어들입니다."
+$(cat ${WIKIJS_SH})
 
 if [ ! -d ${YML_DIR} ]; then
-    echo "(4-1) docker-compose.yml 보관 디렉토리 만들기: mkdir -p ${YML_DIR} ; sudo chmod 755 ${YML_DIR} ; sudo chown ${USER}:${USER} ${YML_DIR}"
-    mkdir -p ${YML_DIR} ; sudo chmod 755 ${YML_DIR} ; sudo chown ${USER}:${USER} ${YML_DIR}
+    echo "(5-2) mkdir ${YML_DIR} #-- docker-compose.yml 보관 디렉토리"
+    mkdir ${YML_DIR}
 fi
-echo "(4-2) cd ${YML_DIR}
+echo "(5-3) cd ${YML_DIR}
 cd ${YML_DIR}
-echo "(4-3) sudo dnf -y install docker-compose (설치)"
+echo "(5-4) sudo dnf -y install docker-compose (설치)"
 sudo dnf -y install docker-compose
-echo "(4-4) rpm -qi docker-compose (내역)"
+echo "(5-5) rpm -qi docker-compose (내역)"
 rpm -qi docker-compose
-echo "(4-5) sudo docker ps -a"
+echo "(5-6) sudo docker ps -a"
 sudo docker ps -a
-echo "(4-6) sudo docker-compose pull ${WIKI_SERVICE} (빌드)"
-sudo docker-compose pull ${WIKI_SERVICE}
+echo "(5-7) sudo docker-compose pull wiki_srv (빌드)"
+sudo docker-compose pull wiki_srv
 ### ### sudo docker-compose up --build 를 쓰지 않음 ###
 
 cat <<__EOF__
@@ -487,43 +474,28 @@ localhost:${WIKI_PORT_NO}
 
 관리자 등록과 첫 홈페이지를 만듭니다.
 
-🖍️ (4-7) press Enter:
+🖍️ (5-8) press Enter:
 __EOF__
 read a
 
-echo "(4-8) sudo docker-compose up --force-recreate & (빌드한 도커 컴포즈를 실행합니다)"
+echo "(5-9) sudo docker-compose up --force-recreate & (빌드한 도커 컴포즈를 실행합니다)"
 sudo docker-compose up --force-recreate &
-echo "(4-9) sudo docker-compose ps -a"
+echo "(5-10) sudo docker-compose ps -a"
 sudo docker-compose ps -a
-echo "🎶 (4-10) --------------------"
+echo "🎶 (5-11) --------------------"
 ```
 
 # 데이터 백업과 리스토어
 
-## 5. 단순백업 보관하기
+## 6. 단순백업 보관하기
 
 ```
 lll=$(tput bold)$(tput setaf 0); rrr=$(tput bold)$(tput setaf 1); ggg=$(tput bold)$(tput setaf 2); yyy=$(tput bold)$(tput setaf 3); bbb=$(tput bold)$(tput setaf 4); mmm=$(tput bold)$(tput setaf 5); ccc=$(tput bold)$(tput setaf 6); www=$(tput bold)$(tput setaf 7); xxx=$(tput bold)$(tput sgr0); uuu=$(tput cuu 2)
-
 for i in {0..9}; do echo "#"; done
 
-#----> wiki.js 도커에서 쓰는 bash 변수 선언.
-#--
-DOCKER_DIR="/home/docker" #----- dwjs 도커 디렉토리 홈
-DATABASE_DIR="${DOCKER_DIR}/wikijs_data" #-- dwjs wiki 데이터베이스 보관 디렉토리
-YML_DIR="${DOCKER_DIR}/wikijs_yml" #-------- dwjs docker-compose.yml 을 보관하는 /home/docker/ 아래의 디렉토리
-YML_NAME="docker-compose.yml" #-- dwjs docker-compose.yml 이름을 지정
-DATABASE_SERVICE="db_srv" #----- dwjs 데이터베이스 서비스 이름
-DATABASE_NAME="wikidb" #-------- dwjs 데이터베이스 이름
-DATABASE_CONTAINER="pgwikic" #-- dwjs 데이터베이스 컨테이너 이름
-DB_user_NAME="imwiki" #--------- dwjs 데이터베이스 유저 이름
-DB_user_PASS="wikipswd" #------- dwjs 데이터베이스 유저 비번
-WIKI_SERVICE="wiki_srv" #---- dwjs 위키 서비스 이름
-WIKI_PORT_NO="7700" #-------- dwjs 위키 포트 번호
-WIKI_CONTAINER="wikijsc" #--- dwjs 위키 컨테이너
-CLOUD_NAME="tp3mi" #------------ dwjs rclone 백업용 클라우드 이름
-#--
-#<---- wiki.js 도커에서 쓰는 bash 변수 선언.
+WIKIJS_SH="${HOME}/bin/variables_wikijs.sh"
+echo "(6-1) \$(cat ${WIKIJS_SH}) #-- wiki.js 의 bash 변수 초기값을 읽어들입니다."
+$(cat ${WIKIJS_SH})
 
 this_y4m2=$(date +%Y)-$(date +%m) #- 2022-08 과 같이 만든다.
 
