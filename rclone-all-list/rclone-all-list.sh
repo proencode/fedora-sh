@@ -10,8 +10,9 @@ size_file=total_size-${ymd}
 echo "for cn in edone jjdrb jjone kaos1mi kaos2mi kaos3mi kaos4mi kaosngc swlibgc tpn1mi tpn2mi tpn3mi y5dnmi y5ncmi yosjgc ysw10mi yswone ;do echo \"----> \${cn}: \$(rclone size \${cn}: | grep size)\" ; done" > ${ymd}/${size_file}
 
 cnt=100
+#-- old_cloud_name: for cn in jjedone kaos1mi kaos2mi kaos3mi kaos4mi kaosngc swlibgc tpn1mi tpn2mi tpn3mi y5dnmi y5ncmi yosjgc ysw10mi
 
-for CLOUD_NAME in edone jjdrb jjone kaos1mi kaos2mi kaos3mi kaos4mi kaosngc swlibgc tpn1mi tpn2mi tpn3mi y5dnmi y5ncmi yosjgc ysw10mi yswone
+for CLOUD_NAME in edone jjdrb jjone kaos1mi kaos2mi kaos3mi kaos4mi kaosngc swlibgc tpn1mi tpn2mi tpn3mi tpn4mi y5dnmi y5ncmi yosjgc ysw10mi yswone
 do
 	dattim=$(date +%y%m%d%a%H%M%S)
 	cnt=$((cnt + 1))
