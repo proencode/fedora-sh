@@ -1066,8 +1066,8 @@ Media has two options when selected. There is "Library" and "Add New". In the li
 brary, you have already uploaded pictures and videos. And in the Add New you se- 
 lect it to upload more videos and images. 
 
-Fig 4.2: Screenshot showing “Library” and “Add New” option of “Media” 
-![ Fig 4.2: Screenshot showing “Library” and “Add New” option of “Media” ](fig_4.2_screenshot_showing_library.webp)
+Fig 4.2a: Screenshot showing “Library” and “Add New” option of “Media” 
+![ Fig 4.2a: Screenshot showing “Library” and “Add New” option of “Media” ](fig_4.2_screenshot_showing_library.webp)
 
 The " Library " option usually comes with already uploaded images integrated into 
 the system by the developer of the theme in use on the website. This is a new 
@@ -1075,8 +1075,8 @@ development as it was not like that before. But some developers may decide not t
 have any images or videos integrated into their theme. Astra theme for example 
 come with nice pictures stored in the library. You can see it in the screenshot. 
 
-Fig 4.2: Screenshot showing already uploaded images in the “Library” option 
-[ Fig 4.2: Screenshot showing already uploaded images in the “Library” option ](fig_4.2_screenshot_showing_already.webp)
+Fig 4.2b: Screenshot showing already uploaded images in the “Library” option 
+[ Fig 4.2b: Screenshot showing already uploaded images in the “Library” option ](fig_4.2_screenshot_showing_already.webp)
 
 Those pictures came with the theme currently in use in this my site. There are 
 many stock images but I captured just fewer number of them. 
@@ -1999,11 +1999,12 @@ laptop computer.
 - Click on Select
 
 Fig 7.1.2: Picture shows the position of Select 
-![ Fig 7.1.2: Picture shows the position of Select ](fig_7.1.2_picture_shows_the_position_of_select.webp)
+![ Fig 7.1.2: Picture shows the position of Select ](fig_7.1.2_picture_shows_the.webp)
 
 - Crop the logo or skip cropping 
 
 Fig 7.1.3: Cropping of my Logo 
+![ Fig 7.1.3: Cropping of my Logo ](fig_7.1.3_cropping_of_my.webp)
 
 You can decide to crop the logo or upload it like that. It can be auto fitted even if
 

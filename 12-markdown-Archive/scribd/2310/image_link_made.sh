@@ -7,28 +7,45 @@ if [ "x${img_type}" = "x" ]; then
 fi
 cat <<__EOF__
 
-🖍️  ${bbb}이미지 타입 ('${ccc}webp${bbb}' '${ccc}jpg${bbb}' 등) 을 지정하세요. ${mmm}[ ${rrr}그냥 엔터 = ${yyy}${img_type} ${mmm}]${xxx}
+🖍️  ${bbb}이미지 타입 ('${ccc}webp${bbb}' '${ccc}jpg${bbb}' 등) 을 지정하세요. ${mmm}[ ${bbb}그냥 엔터 = ${yyy}${img_type} ${mmm}]${xxx}
 __EOF__
-read a ; if [ "x$a" != "x" ]; then img_type=$a ; fi
-echo "${mmm}[ 이미지 타입 = ${yyy}.${img_type} ${mmm}]${xxx}"
+read a ;
+if [ "x$a" != "x" ]; then
+	img_type=$a
+fi
+echo "" ; echo "${uuu}   ${rrr}[ ${bbb}이미지 타입 = ${ccc}.${img_type} ${rrr}]${xxx}"
 
 md_dir=""
 if [ "x$1" != "x" ]; then
 	md_dir="$1/"
 fi
-echo "${rrr}ls ${yyy}${md_dir}${xxx}"
+echo "${bbb}ls ${md_dir}${xxx}"
+
+arg2_fig=""
+if [ "x$2" != "x" ]; then
+	arg2_fig="$2"
+fi
+
 ls ${md_dir}
-qqq=""
-until [ "x$qqq" = "xxx" ]
+typing_fig_name=""
+until [ "x$typing_fig_name" = "xxx" ]
 do
 	cat <<__EOF__
 
 🖍️  ${bbb}이미지 이름을 지정하세요. ${bbb}끝내려면, ${rrr}[ ${yyy}xx ${rrr}] ${bbb} 즉, '${ccc}x 두개${bbb}' 를 입력하세요.${xxx}
 __EOF__
-	read a ; echo ""
-	if [ "x$a" != "x" ] && [ "x$a" != "xxx" ]; then
-		c=${#a} #-- 문자열의 길이
-		img_name=$(echo ${a,,} | sed 's/:/-/g' | sed 's/- /-/g' | sed 's/ /_/g' | sed 's/;//g').${img_type}
+	if [ "x$arg2_fig" != "x" ]; then
+		echo "   ${mmm}[ ${bbb}그냥 엔터 = ${yyy}${arg2_fig} ${mmm}]${xxx}";
+	fi
+	read typing_fig_name
+	if [ "x$typing_fig_name" = "x" ] && [ "x$arg2_fig" != "x" ]; then
+		typing_fig_name="${arg2_fig}"
+	fi
+	echo "" ; echo "${uuu}   ${rrr}[ ${ccc}${typing_fig_name} ${rrr}]${xxx}"
+	arg2_fig="" #-- 처음 한번만 사용한다.
+	if [ "x$typing_fig_name" != "x" ] && [ "x$typing_fig_name" != "xxx" ]; then
+		c=${#typing_fig_name} #-- 문자열의 길이
+		img_name=$(echo ${typing_fig_name,,} | sed 's/:/-/g' | sed 's/- /-/g' | sed 's/ /_/g' | sed 's/;//g').${img_type}
 
 		head_name=$(echo ${img_name} | awk -F"-" '{print $1}')
 		check_name=$(echo ${img_name} | awk -F"-" '{print $2}' | awk -F".${img_type}" '{print $1}')
@@ -54,7 +71,7 @@ __EOF__
 
 		cat <<__EOF__
 
-${mmm}![ ${ccc}${a} ${mmm}](${yyy}${img_name}${mmm})${xxx}
+${mmm}![ ${ccc}${typing_fig_name} ${mmm}](${yyy}${img_name}${mmm})${xxx}
 __EOF__
 	fi
 done
