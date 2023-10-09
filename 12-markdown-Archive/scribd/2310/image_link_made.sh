@@ -45,8 +45,8 @@ __EOF__
 	arg2_fig="" #-- 처음 한번만 사용한다.
 	if [ "x$typing_fig_name" != "x" ] && [ "x$typing_fig_name" != "xxx" ]; then
 		c=${#typing_fig_name} #-- 문자열의 길이
-		img_name=$(echo ${typing_fig_name,,} | sed 's/:/-/g' | sed 's/- /-/g' | sed 's/ /_/g' | sed 's/;//g').${img_type}
-		echo "${mmm}![ ${ccc}${typing_fig_name} ${mmm}](${yyy}${img_name}${mmm})${xxx}"
+		img_name=$(echo ${typing_fig_name,,} | sed 's/:/-/g' | sed 's/- /-/g' | sed 's/ /_/g' | sed 's/;//g' | sed 's/“//g' | sed 's/”//g' ).${img_type}
+		echo "![ ${typing_fig_name} ](${img_name})"
 
 		head_name=$(echo ${img_name} | awk -F"-" '{print $1}')
 		check_name=$(echo ${img_name} | awk -F"-" '{print $2}' | awk -F".${img_type}" '{print $1}')
@@ -59,11 +59,12 @@ __EOF__
 			if [ "x${words[cnt+1]}" != "x" ]; then ww="${ww}_${words[cnt+1]}"; else y_n="n"; fi
 			if [ "x${words[cnt+2]}" != "x" ]; then ww="${ww}_${words[cnt+2]}"; else y_n="n"; fi
 			if [ "x${y_n}" = "xy" ]; then
-				echo "${mmm}![ ${ccc}${typing_fig_name} ${mmm}](${yyy}${head_name}-${ww}.${img_type}${mmm})${xxx}"
 				x=$(ls -l ${md_dir} | grep ${ww})
 				if [ "x$x" != "x" ]; then
-					#echo "${bbb}[$cnt]${xxx} ls -l ${md_dir} | grep --color ${ww}"
+					echo "${mmm}![ ${bbb}${typing_fig_name} ${mmm}](${bbb}${head_name}-${ww}.${img_type}${mmm})${xxx}"
 					ls -l ${md_dir} | grep --color ${ww}
+				else
+					echo "${mmm}![ ${ccc}${typing_fig_name} ${mmm}](${yyy}${head_name}-${ww}.${img_type}${mmm})${xxx}"
 				fi
 		       	fi
 		done

@@ -2092,6 +2092,1258 @@ Fig 7.2.1: Arrow points at the Publish tab in Site Identity section
 
 - Check your website
 
+Fig 7.2.2: The new look of our learning website www.teachkindle.com after adding title and description 
+![ Fig 7.2.2: The new look of our learning website www.teachkindle.com after adding title and description ](fig_7.2.2-look_of_our.webp)
+
+You are to check your website again to know if you like the changes you made 
+through your admin dashboard. 
+
+### Must you make your Site Title and Tagline Visible? 
+
+It is not a must for you to make your website title and tagline visible for your read- 
+ers or visitors to your site to see. If you notice that the title and the description you 
+made visible makes your website looks clustered, you can go back to the “Site 
+Identity” section and uncheck the box that makes the two parts visible. 
+Do not hesitate to look at your website anytime you make some changes through 
+admin dashboard. That will make you know whether your change makes your web- 
+site look good or bad. If it makes your website look substandard, you can undo 
+what you did before. That is the reason why you are not just a website builder but 
+also a designer as well. 
+Comparing the website look I had before on teachkindle.com and the new look I 
+have after making my Site Title and Tagline visible, I prefer to go with the former. 
+Going with the former is okay with me because it has a homepage and makes my 
+menu components more visible. I do not want my website header section to be 
+clustered. But this choice can be different to you. You have to choose what is okay 
+for your website depending on the theme in use in some cases. 
+ 
+
+# Chapter 8 Widgets and the use on Websites 
+ 
+
+Widgets allow WordPress users to add different functionality and features to their 
+WordPress sidebars without writing any code. Widgets are tiny blocks of specific
+functionality that you can place in your website sidebars (also known as widget- 
+ready-areas). 
+For beginners, this is an easy way to add things like galleries, quotes, popular 
+posts, Facebook like boxes, and other dynamic items on their WordPress site. This 
+is one of the reasons many people prefer to use WordPress Content Management 
+System to build their websites. It makes things easy for them and save them the 
+stress of writing codes and correcting any form of errors as they write the codes. 
+Widgets can be found on Appearance » Widgets page in your WordPress admin 
+area. Once you follow that direction, you will get to widgets area and choose any 
+functionality to complete your task. Occasionally, WordPress update their widgets 
+and add new features. 
+In this chapter, I will be teachings you on how to use some of the widgets found in 
+WordPress to build your websites. It is a practical class and I will guide you step by 
+step to make sure you are able to understand almost 100% of what I will be teach- 
+ing you in this chapter. I hope you are getting ready for it? 
+
+### What can Website Builders use Widgets to do? 
+
+Widgets can be used to perform some tasks. The can be used to add the following 
+to websites: 
+
+- To add tag cloud to websites 
+- Search bar to websites 
+- Images 
+- Pages to website site bars 
+- Videos 
+- Recent posts 
+- Archives 
+- Audio 
+- Categories 
+- Calendar to websites 
+- Social media links to websites 
+- Galleries 
+- Navigation Menus and 
+- Custom HTML to header or side bar of your website 
+
+From the list of the widgets, we will be discussing how to add some among many 
+of them. If we practice with some, you can do the rest on your own without much 
+stress. What is important is for you to know how some widgets are placed and you 
+can pick the rest of them from there. 
+ 
+## How to Add Video to Your Website Using Widget 
+
+This section is a practical approach on how to add videos to your website using the 
+Video widget. Sometimes, some builders of websites find it difficult on how they 
+can add videos to their websites to show visitors to their websites or websites they 
+build for clients. 
+These videos can be welcome videos to the website visitors. Maybe they want to 
+use short videos to introduce what they do to the masses, the need for adding 
+videos to the homepage of the website comes into play. In this subheading, you 
+will learn how this area of website design is carried out. 
+To add video to your website using video widget do the following:
+
+- Login to your WordPress admin area/dashboard 
+- Select Appearance 
+- Select Widgets 
+
+Fig 8: Arrow points at Widgets 
+![ Fig 8: Arrow points at Widgets ](fig_8-points_at_widgets.webp)
+
+- Select Video 
+
+Fig 8.1: Arrow directs to Video widget feature 
+![ Fig 8.1: Arrow directs to Video widget feature ](fig_8.1-arrow_directs_to.webp)
+
+As the new page opens, choose the Video widget option from list of widgets that 
+displays on your screen. 
+
+- Choose the position of your website you want the video to appear
+
+Fig 8.2a: Footer Bar Section 1 chosen as a position to place the video 
+![ Fig 8.2a: Footer Bar Section 1 chosen as a position to place the video ](fig_8.2a-footer_bar_section.webp)
+
+There are many other available areas you can place your videos on. There is Header 
+section, Main Sidebar, and footer Widget Area 2, 3, and 4. You can choose any of 
+them. But know that some widgets may not show in a particular area because 
+maybe there is no space or because of compatibility issue. 
+ 
+- Click Add Widget 
+
+Fig 8.2b: Add Widget position shown 
+![ Fig 8.2b: Add Widget position shown ](fig_8.2b-add_widget_position.webp)
+
+- Click on Add Video 
+
+This will allow you to add video to the widget area.
+
+Fig 8.3: Adding video in Progress 
+![ Fig 8.3: Adding video in Progress ](fig_8.3-adding_video_in.webp)
+
+You can choose videos that are already existing in your admin gallery or insert the 
+URL of any video existing online that you want to add (example the link to a video 
+on Youtube.com) or upload a video from your computer. Note that there is max- 
+imum size (Megabyte) of video you can upload. Some designs allow maximum of 
+25mb. 
+
+-Click Add to Widget 
+
+Fig 8.4: Selecting Add to Widget 
+![ Fig 8.4: Selecting Add to Widget ](fig_8.4-selecting_add_to.webp)
+
+As you select the video you like from any of the places available for you to do so,
+you click on Add to Widget for the video to be upload. 
+
+- Give the Video widget title if you wish 
+
+Fig 8.5: Arrow points at the space for title 
+![ Fig 8.5: Arrow points at the space for title ](fig_8.5-at_the_space.webp)
+
+- Click Save and then done 
+
+Fig 8.6: The position of the done button shown 
+![ Fig 8.6: The position of the done button shown ](fig_8.6-position_of_the.webp)
+
+- Click on Manage with Live Preview
+
+Fig 8.7: The position Manage with Live Preview shown 
+![ Fig 8.7: The position Manage with Live Preview shown ](fig_8.7-the_position_manage.webp)
+
+The reason for you to click on Manage with Live Preview is to see how the widget 
+will look at your website briefly before you visit the website homepage proper. Also, 
+the option of Manage with Live Preview helps you to know whether the position 
+you placed the widget is compatible with the website. If it is not compatible, the 
+system will tell you and suggests another position for you like the footer area of the 
+website. 
+
+- Visit your website to see the new change
+
+Fig 8.8: Picture shows the look of the video on the footer area of the website 
+![ Fig 8.8: Picture shows the look of the video on the footer area of the website ](fig_8.8-shows_the_look.webp)
+
+If for any reason you do not see the video widget in the position you placed it on 
+your website, then go back to the widget area and place the widget in another area. 
+If you chose to place the video in the header section in the initial one you did, you 
+can change to any footer area. 
+Maybe that will work. But better still do not avoid previewing after saving in the 
+widget area. That can help you to easily detect whether the position you placed the 
+video is okay or not. You will learn more about building and design of websites as 
+time goes on. There is room for developing your skill in the field of website build- 
+ing and design. 
+ 
+## How to Add Gallery Widget on a Website 
+
+The Gallery widget provides you with a simple way to display a photo gallery or 
+slideshow in your blog’s sidebar. I know you may have seen some websites that 
+display some pictures in a row. These pictures can be placed at the header, sidebar 
+or footer area of the websites. They look good and you smile softly when you see 
+some of them. They appear the way the pictures in your phone gallery are. 
+Sometimes when you smiled softly, you appreciated the power of technology. You 
+told yourself that technology is powerful and wished you could do such thing like 
+that. Today the era of wishing you could do that has gone as I will teach you how 
+that can be done by you. You will learn and practice it for real in this part of this 
+book. 
+
+### Practical: Steps in Adding Gallery to a Website using Gallery Widget Option 
+
+In this teaching, I may not show the screenshots of the teaching section I showed 
+when I taught you on how to upload video widget on your website. So, you can 
+look at the previous pictures. But the steps are simple to understand. So, you
+follow the steps. I will show some screenshots in areas you will need them and that 
+are new. 
+
+- Login to your admin area 
+- Click on widgets 
+- Select Gallery 
+- Select the Area you want the gallery to feature 
+
+Fig 8.8: Selecting Header as the area I want to have my Gallery 
+![ Fig 8.8: Selecting Header as the area I want to have my Gallery ](fig_8.8-selecting_header_as.webp)
+
+Maybe you want the gallery to be at Header, Sidebar, footer area 1, 2, 3, or 4 you 
+choose any area. 
+
+Fig 8.9: The position of Add Widget button shown 
+![ Fig 8.9: The position of Add Widget button shown ](fig_8.9-position_of_add.webp)
 
 
+- Click on Add Widget 
+- Give your gallery name if you wish 
+- Click on Add Images 
+
+This opens a new pop up window requesting you tick as many images you want to 
+have in the gallery as possible. But do not exceed the maximum Megabytes of con- 
+tents expected from you.
+
+Fig 8.1.1: The position of “Add Images” shown 
+![ Fig 8.1.1: The position of “Add Images” shown ](fig_8.1.1-of_add_images.webp)
+
+- Click on Create a new gallery 
+
+When you have selected the images you want to have in your gallery, just click on 
+"Create a new gallery". You can even decide to change the names of the individual 
+images you are uploading. To do this is simple. Once you select any image, by the 
+left-hand side is the details about that image. 
+There is “Title”, “Alt Text”, “Description and “Caption”. You can decide to just 
+change the title of the image. For example, it is better to have an image title as His- 
+tory of Istanbul than image-22. Also, if you are publishing gallery of employees in a 
+company, use their individual names as title instead of having a title that does not 
+tell who they are. 
+ 
+Fig 8.1.2: Emphasis on the Create a new gallery and Title of the images
+![ Fig 8.1.2: Emphasis on the Create a new gallery and Title of the images ](fig_8.1.2-emphasis_on_the.webp)
+
+- Click Insert gallery 
+- Click on Save and then Done 
+- Click on Manage with Live Preview 
+
+Fig 8.1.3: Arrow points at the position of “Manage with Live Preview” tab 
+![ Fig 8.1.3: Arrow points at the position of “Manage with Live Preview” tab ](fig_8.1.3-position_of_manage.webp)
+
+When you click on Manage with Live Preview, you have a look at how the gallery 
+will look on your website. If it does not look good, you can change the gallery or 
+delete it. It also informs you if the video won't display in that area if the area is 
+occupied already. It then suggests you create new gallery in the available areas of 
+your website. 
+You create it from that spot, and you have your gallery live. It is a simple task to 
+carryout. And at the end you will be happy you used live previewed option. Other- 
+wise you may think there was something you did wrong when trying to add the wid- 
+get. 
+
+## What happens when a Header Section Cannot Take a Widget and what to do 
+
+I decided to discuss this as a separate subheading so that I will guide you practi- 
+cally on what to do. It will be a thing of joy that I give you the proper teaching in 
+this area because it is important you know to prevent you from passing through 
+any form of unnecessary stress. 
+ 
+When a particular widget cannot fit into the Header section of a website, you get a 
+notification like this: 
+“Your theme has 4 other widget areas, but this particular page doesn’t display them. 
+ 
+You can navigate to other pages on your site while using the Customizer to view and 
+edit the widgets displayed on those pages. ” 
+
+Fig 8.1.4: The notification that appears when the Header section is occupied to take widget 
+![ Fig 8.1.4: The notification that appears when the Header section is occupied to take widget ](fig_8.1.4-the_notification_that.webp)
+
+### Solving the Challenge 
+
+To solve the issue by choosing any of the available sections, do the following: 
+
+- Choose any of the available widget areas suggested to you by the system 
+- Click on Add a Widget 
+
+Fig 8.1.5: Arrow directly points at the position 
+![ Fig 8.1.5: Arrow directly points at the position ](fig_8.1.5-arrow_directly_points.webp)
+
+After you chose from any of the available widget, maybe Footer Widget Area 3, a 
+new window opens. As that page opens, just click on Add a Widget 
+
+- Search for the widget you wanted to add. Example, search for gallery 
+
+A new page opens that allows you to choose the widget. Since we want to place 
+gallery, we search for it and select that widget.
+
+Fig 8.1.6: Typing gallery in the search box 
+![ Fig 8.1.6: Typing gallery in the search box ](fig_8.1.6-typing_gallery_in.webp)
+
+- Select the widget 
+- Click on Add Images 
+
+When you click on Add Images, it opens a new window for you to select pictures 
+
+Fig 8.1.7: Arrow points at Add images button 
+![ Fig 8.1.7: Arrow points at Add images button ](fig_8.1.7-points_at_add.webp)
+
+- Select the pictures you had in the gallery you created before the system notified 
+
+you that it could not work in Header section 
+
+- Click on Create a new gallery 
+- Click on Insert gallery 
+
+After you selected the images, click on Insert gallery tab to upload the images you 
+selected.
+
+Fig 8.1.8: Choosing Insert gallery 
+![ Fig 8.1.8: Choosing Insert gallery ](fig_8.1.8-choosing_insert_gallery.webp)
+
+- Give the Gallery name 
+- Click on Done 
+- Click Publish 
+- Visit your website 
+
+Fig 8.1.9: The new website look showing the position of the added Gallery Widget 
+![ Fig 8.1.9: The new website look showing the position of the added Gallery Widget ](fig_8.1.9-the_new_website.webp)
+ 
+
+# Chapter 9 How to use Sliders on Websites 
+ 
+
+Sliders are good. Sliders are nice. Sliders make websites look beautiful in the eyes. 
+Sliders which are positioned at the header section of a website welcome the visi- 
+tors. Most times, sliders at header section of websites put smiles on the faces of 
+readers when they first hit the homepage of the websites. 
+Have you ever visited a website and see images that slide or move at particular 
+intervals on the header section of the site? Sometimes they are timed to rotate or 
+slide every 10 seconds or 5. Such movement is what we are talking above. Slider 
+makes them move in that manner. 
+In web design terminology, the term slider is used for a slideshow added into a 
+web page. There are many WordPress slider plugins available which allow you to 
+create your own sliders and add them to your home page, landing pages, posts, or 
+anywhere you want on your website. 
+Sliders can be used on all kind of websites however they’re most commonly used 
+on business websites or professional portfolio websites. One clear advantage of 
+using a slider is that website owners can place all their important content in a vis- 
+ually appealing and interactive slideshow at the top of the page before their main 
+content. 
+Sliders can run slideshows automatically without user input by moving slides on 
+pre-defined time interval. They can also have buttons or thumbnails which users 
+can click to view a slide in the slider.
+The disadvantage of a slider on any website is that it can slow down the page load- 
+ing of any webpage using it. That is why you may experience slow loading speed 
+when you visit some websites that use sliders. 
+The reason for the slow loading of websites that use sliders is because sliders 
+make use of JavaScript, particularly jQuery which are loaded separately as scripts. 
+Another reason is due to the fact that sliders usually load images and the content 
+in the slides. So, if the images for example are high data consuming images, it may 
+take time for the slides to load. 
+But irrespective of this challenge, some websites use sliders. That is to say that the 
+advantages win the disadvantages. There are some websites that are known glob- 
+ally and that are popular that still use sliders. Example of such websites is bbc.- 
+com. That is to tell you that the disadvantage of using sliders can be minimized. 
+One of the ways is by having low data consuming images in your website sliders. 
+That will go a long way to help. Another solution is by using responsive slider plug- 
+ins. Some slider plugins, like Soliloquy try to minimize these disadvantages by 
+optimizing slider load speed and using responsive design for the slider. 
+ 
+## Practical: How to Place Slider on your Website 
+
+This is a practical section on how you can place working slider on your website. 
+You will learn gradual steps on how to get this job done in this section. 
+The steps in placing slider on your website is as follow: 
+
+- Login to your WordPress admin area 
+
+Fig 9: WordPress admin area 
+![ Fig 9: WordPress admin area ](fig_9-wordpress_admin_area.webp)
+
+- Select Plugins 
+- Click on Add New 
+
+Fig 9.1: The Add New option of plugins shown 
+![ Fig 9.1: The Add New option of plugins shown ](fig_9.1-the_add_new.webp)
+
+- Search for Slider 
+
+There are many sliders plugins developed by many people that are available in 
+WordPress. So, the moment you type slider in the search box provided for you, 
+there will be many that will show up. You can select from the many that will be dis- 
+played to you. But I will recommend you search for Soliloquy slider. 
+
+Fig 9.2: Search for Soliloquy slider in progress 
+![ Fig 9.2: Search for Soliloquy slider in progress ](fig_9.2-search_for_soliloquy.webp)
+
+- Click on any slider that is your choice 
+- Install it by clicking on Install now
+
+Fig 9.3: Installation of the slider plugin 
+![ Fig 9.3: Installation of the slider plugin ](fig_9.3-installation_of_the.webp)
+
+- Activate it by clicking on Activate button 
+
+Fig 9.4: Slider plugin activation in progress 
+![ Fig 9.4: Slider plugin activation in progress ](fig_9.4-slider_plugin_activation.webp)
+
+- Select the Slider 
+
+Fig 9.5: The position of the slider in the admin area shown 
+![ Fig 9.5: The position of the slider in the admin area shown ](fig_9.5-position_of_the.webp)
+
+Look at your screen options and you will see the activated slider. If you installed 
+Soliloquy slider, you will see "Soliloquy" as one of the screen options. Just click on 
+it. 
+
+- Select Add New 
+
+Fig 9.6: Image shows Add New option 
+![ Fig 9.6: Image shows Add New option ](fig_9.6-image_shows_add.webp)
+
+-Select Images from your WordPress library or Computer 
+
+As you click on the slider, select Add New option that will show up. If you are using 
+any slider different from Soliloquy, just choose any option that allows you to add 
+images to the slider.
+
+Fig 9.7: Selecting images for the slider 
+![ Fig 9.7: Selecting images for the slider ](fig_9.7-selecting_images_for.webp)
+
+Some sliders allow users to select many images once and add them to a particular 
+slider file. And some other sliders allow one by one selection until you have the 
+number of files you want to have in a particular slider folder/file. Soliloquy slider 
+allows one by one selection until you add some images of your choice to a partic- 
+ular slider folder. 
+As you click on Add New option, a new page opens which leaves you with the op- 
+tions of where you want to source the pictures you want to upload in the slider 
+from. You have the options of "Native Slider" and "External Sliders". In Native Slid- 
+er option you can take images from your computer and your system library while in 
+External Sliders option you can upload images from your social media libraries. 
+But I recommend you take pictures from your Native Slider which is what I will be 
+teaching you with. 
+
+- Give your slider a title 
+
+If you do not give your slider name, it will be difficult for you to upload it in a post 
+or any page of your choice. So, make sure name is in the title section. 
+
+Fig 9.8: Space to insert title in your slider 
+![ Fig 9.8: Space to insert title in your slider ](fig_9.8-space_to_insert.webp)
+
+- Click on Publish
+
+Fig 9.9: Publish button shown 
+![ Fig 9.9: Publish button shown ](fig_9.9-publish_button_shown.webp)
+
+After you selected the images you want to have in your slider and giving your slider 
+name, just click on Publish. 
+
+- Open any Page or Post you have already published which you want to place the 
+slider 
+- Insert the created slider inside 
+
+Fig 9.1.1: When already created slider is placed in a page 
+![ Fig 9.1.1: When already created slider is placed in a page ](fig_9.1.1-when_already_created.webp)
+ 
+## Step by Step Guide on how to Place the Created Slider in Posts and Pages 
+
+This is not far from what I just explained in the previous subheading, but I want to
+make it more detailed. You can decide to place the slider at the top part of your 
+post or page. Most visitor’s attention to any website are easily captured when slider 
+is placed at the top body part of any article. So, you can place the slider at the top 
+part of a page immediately after the page title. 
+To do this, first click at the place you want to place the slider in the page. Create 
+space between that part and where the article body started by hitting the enter key 
+on your computer keyboard. 
+Check at the top part of your page to see if you will find the slider symbol on it. If 
+you are using the updated WordPress, you will be expected to select the plus sym- 
+bol (+) on top after the title part of the article. 
+
+Fig 9.1.2: The plus symbol shown (+) 
+![ Fig 9.1.2: The plus symbol shown (+) ](fig_9.1.2-the_plus_symbol.webp)
+
+When you click on it, it will show other function buttons which among them is the 
+slider symbol. Click on the slider symbol and it enters the body of the word editor. 
+
+Fig 9.1.3: Choosing slider to be inserted into the page of WordPress word editor 
+![ Fig 9.1.3: Choosing slider to be inserted into the page of WordPress word editor ](fig_9.1.3-choosing_slider_to.webp)
+
+After inserting the slider into the page, a search box will be opened for you to 
+search the name of the slider you want to place in the page. For example, since I 
+created a slider named slider1, what to do is I search for the title and select it.
+
+Fig 9.1.4: Slider1 selected from the slider search box 
+![ Fig 9.1.4: Slider1 selected from the slider search box ](fig_9.1.4-slider1_selected_from.webp)
+
+A pushup button shows up if your slider is at the bottom of the post. Use that 
+pushup button to push your slider to the top section of your post. This happens if 
+you are publishing with the new block format of WordPress post. 
+ 
+Fig 9.1.5a: Pushing up the slider to the top of the page when inserted at the page bottom 
+![ Fig 9.1.5a: Pushing up the slider to the top of the page when inserted at the page bottom ](fig_9.1.5a-pushing_up_the.webp)
+
+- Click on Update 
+
+You can find this button at the right-hand side of the page. When you click on it, 
+changes are saved.
+
+Fig 9.1.5b: The position of Update in WordPress text editor 
+![ Fig 9.1.5b: The position of Update in WordPress text editor ](fig_9.1.5b-of_update_in.webp)
+
+- Visit your website to see the new look. 
+
+Fig 9.1.6: The new look of teachkindle.com with the slider 
+![ Fig 9.1.6: The new look of teachkindle.com with the slider ](fig_9.1.6-look_of_teachkindle.com.webp)
+
+## Managing Sliders in Astra and few other Themes 
+
+Astra theme is a nice theme but sometimes does not show some sliders placed in
+its pages and posts. It has its own slider, but it is not free. Its slider is not available 
+in the demo theme. That means if you want to place sliders that are compatible 
+with Astra theme, you must pay the developer of the theme to get it. 
+Its slider is uniquely customized for the theme. This is as of June 2020 because 
+maybe the developer will work on it in future to make downloaded and installed 
+sliders from other developers work with the theme. Their slider is available in pro 
+theme. What I meant is that when you want slider that will show in Astra designed 
+pages and posts, you are to pay for their upgraded theme. You can be paying yearly 
+to get their theme that has their integrated sliders in it. 
+There is still another way out we will be discussing in detail in the next subheading. 
+ 
+### How to Have Sliders on your Website even though you have Astra as your Primary Theme 
+
+The way out to have sliders developed by another developer work on your website 
+is to avoid editing or writing anything on your pages using Astra Elementor. Ele- 
+mentor works hand in hand with Astra. It is an Astra tool. So, if you want to have 
+the installed and activated slider work on any page of your website, do not edit that 
+particular page with Elementor. 
+Even if the default mean through which that page was created was through Ele- 
+mentor, just edit the page using WordPress editor option. For example, one of my 
+pages named "BUSINESS" which is a menu item on my website was created using 
+Elementor of Astra Theme. 
+
+Fig 9.1.7: A page named “BUSINESS” designed with Astra Elementor 
+![ Fig 9.1.7: A page named “BUSINESS” designed with Astra Elementor ](fig_9.1.7-a_page_named.webp)
+
+To be able to have slider integrated into this page, I must change the means 
+through which this Page was created to WordPress text editor. To do this, I am to 
+click on the “BUSINESS” to open the page. The next step is to choose the option of 
+edit using the option of “Back to WordPress editor”. When I choose that option on 
+top of the page, I can be able to place slider in the page irrespective of the fact that
+Astra theme is still the active theme. The difference is that Astra tool, Elementor, 
+will not be the tool in use again after the edit. 
+
+Fig 9.1.8: Editing “BUSINESS” page using “Back to WordPress Editor” option instead of Astra Elementor 
+![ Fig 9.1.8: Editing “BUSINESS” page using “Back to WordPress Editor” option instead of Astra Elementor ](fig_9.1.8-editing_business_page.webp)
+
+When you select the option to edit with WordPress editor, then follow the guide I 
+gave you on “`Step by Step Guide on how to Place the Created Slider in Posts and Pages`” to place slider in the page. After the whole exercise, click on “Update” to 
+save the changes you made. 
+
+Fig 9.1.9: Selecting “Update” to save the made changes 
+![ Fig 9.1.9: Selecting “Update” to save the made changes ](fig_9.1.9-selecting_update_to.webp)
+ 
+
+# Chapter 10 Explanation of Post Screen Option and its use 
+
+ 
+Post screen option is the most used in blog sites. Posts cannot receive less 
+emphasis when it comes to design of some websites. Without Posts there is noth- 
+ing like websites to some people. 
+A serious blogger cannot do without using post screen option in WordPress Con- 
+tent Management System. Blogger as used here means someone that writes online 
+articles. Posts are like skin that protect the nakedness of websites. It is through 
+posts that some information is broadcasted to the whole world to see. Articles you 
+read every day on the internet were created using post tool. 
+When I started writing online newly, I set target of how many posts I wanted to 
+have on my website every day. Then, my passion to write articles was high and a 
+day hardly pass without publishing something. I was serious with writing of articles
+and that made me. I was always having interactions with post tool then without 
+much stress. 
+At a point, I decided it was time to start teaching people how to do certain things 
+through books. That is why you are reading this my book right now. Posts have 
+made people have over ten million views in their websites within 2 years of exis- 
+tence or less. Post is a tool I will analyze properly in this chapter and I want you to 
+pay good attention in order to be happy to learn what you need to know. 
+
+Fig 10: Post screen option shown 
+![ Fig 10: Post screen option shown ](fig_10-post_screen_option.webp)
+
+A WordPress post is what makes up the blog aspect of your site. These are gener- 
+ally news or informational updates about a certain topic or talking point. Posts are 
+listed in reverse chronological order and can be tagged, categorized and even 
+archived on your site. A post is usually made of two major parts, the title section 
+and the body. Other areas are the description, tag and featured image. 
+
+## How to Make Posts Your Website Landing Page 
+
+By default, most websites have "Home" as their landing pages. What I mean is that 
+when people visit a particular website using the website URL, example 
+www.teachkindle.com, they are taken to the home page of the website. And that 
+home is the landing page.
+
+Fig 10.1: The default landing page of teachkindle.com (The “Home” page) 
+![ Fig 10.1: The default landing page of teachkindle.com (The “Home” page) ](fig_10.1-the_default_landing.webp)
+
+But in websites which were created with the main objective of bringing in people 
+that will read the posts of the website "Post" is mainly used as the landing page. In 
+this kind if website, it is not necessary to have a static homepage as "Home". As a 
+beginner, you might have had this issue before. 
+Maybe you published on your newly hosted website, visited your website to see 
+your newly published articles but you didn't see anything. You searched all through 
+you landing page, but you didn't see the post you just published. You may start 
+thinking that maybe something was wrong with the theme you were using. Don't 
+worry as I will teach you how to do it. 
+ 
+## Practical: Changing from Static Page to Post as Landing Page 
+
+To make post your landing page, do the following: 
+
+- Login to WordPress Admin area 
+- Select Appearance 
+- Select Customize
+
+Fig 10.2: Customize sub screen option shown 
+![ Fig 10.2: Customize sub screen option shown ](fig_10.2-customize_sub_screen.webp)
+
+- Select Homepage Settings 
+
+Fig 10.3: Selecting Homepage Settings tab 
+![ Fig 10.3: Selecting Homepage Settings tab ](fig_10.3-selecting_homepage_settings.webp)
+
+- Check/tick Your latest posts
+
+Fig 10.4: Selecting Your latest posts 
+![ Fig 10.4: Selecting Your latest posts ](fig_10.4-selecting_your_latest.webp)
+
+As shown in Fig 10.4, when you check or tick that button “Your latest posts”, all 
+posts you published, or you are going to publish will display on your website 
+homepage. When visitors view your website, the first thing to be shown to them 
+becomes the articles you published on your website. 
+
+- Click on Publish button 
+
+When you hit the Publish button, the change of making your posts appear on your 
+website homepage becomes effected. If you do not click on Publish button, the 
+change you made will not be visible on your website. So do not forget this impor- 
+tant part. 
+
+Fig 10.5: Hitting Publish button to save the change 
+![ Fig 10.5: Hitting Publish button to save the change ](fig_10.5-hitting_publish_button.webp)
+
+When you have saved the change, you can visit your website and see the change ef- 
+fected. If you have published some posts which were not showing on your website 
+homepage before now, you will see them surface on your website homepage now. 
+Let us see the change that appeared when I made the change on our learning web- 
+site www.teachkindle.com.
+
+Fig 10.6: When latest posts appear on teachkindle.com homepage 
+![ Fig 10.6: When latest posts appear on teachkindle.com homepage ](fig_10.6-when_latest_posts.webp)
+
+Note : Do not hesitate to write to me through my email on the last part of this book 
+if you are seeing something different maybe because of the theme you are using. 
+ 
+## How to Publish Articles using Post Tool 
+
+Post is the tool in WordPress which is used to publish articles. You can decide to 
+first write and edit these articles using your Microsoft Word in your computer. 
+After that you copy the articles and paste into your post body in WordPress. 
+Also, some writers also write directly into the WordPress post body. They do their 
+writing using the post tool of WordPress word processor. After they do their edit- 
+ing before they select the "publish" button for the work to go live. 
+If you are planning to start publishing online articles with the website you are plan- 
+ning to build, there are things you have to know. If your plan is just to write and 
+make money with your website through advertising, you must know some impor- 
+tant idea. 
+One of the ideas is that you are to write your articles to be as lengthy as possible. 
+Search engines like Bing and Google usually show lengthy articles to readers first 
+before others. 
+This is the reason any post that shows close relationship with the one you are 
+searching if available in Wikipedia is first shown by search engine. Wikipedia writes 
+long articles and that gives it edge over many other related titles published on 
+other website platforms. 
+Another important area to take into consideration is quality. Make your research 
+before you publish some articles. This will help you to publish quality articles that 
+will teach people something good at the end.
+
+Before I forget, keyword research is important before you publish some articles 
+also. There are some tools available online that can help you. You can make use of 
+Google Keyword Planner or Bing Webmaster Tool. These two web tools can help 
+by giving idea on some keywords people usually search for on the internet. And 
+when you find out, you channel your title to that area. 
+ 
+## Practice: How to Publish with Post Tool 
+
+The following are the steps to publish with WordPress Post tool: 
+
+- Login to your WordPress admin area 
+- Click on Post 
+
+Fig 10.7: Arrow points Post screen option 
+![ Fig 10.7: Arrow points Post screen option ](fig_10.7-arrow_points_post.webp)
+
+- Select Add New 
+
+Fig 10.8: Arrow shows the “Add New” option 
+![ Fig 10.8: Arrow shows the “Add New” option ](fig_10.8-shows_the_add.webp)
+
+- Start your writing 
+
+Add the title of your article and the content of the article in the body section. Click 
+of the title section to add your title. Also click on the body section to add the com- 
+plete contents of your article. As written earlier, you can decide to copy already writ- 
+ten one in your computer and paste or start composing your article by writing in- 
+side the WordPress word editor.
+
+Fig 10.9: Arrow shows title and body sections for you to publish your post 
+![ Fig 10.9: Arrow shows title and body sections for you to publish your post ](fig_10.9-arrow_shows_title.webp)
+
+- Click Publish 
+
+When you are done with your writing and editing, you can hit publish button and 
+your written article goes live on the internet. 
+
+Fig 10.1.1: Hitting the publish button 
+![ Fig 10.1.1: Hitting the publish button ](fig_10.1.1-hitting_the_publish.webp)
+ 
+## How to Use Page Break in a Post 
+
+Pagination, or page breaks, lets you split a single post or page into multiple pages 
+by adding links to the bottom. Sometimes beginners run into trouble when they 
+want to use page break in their articles. With the new update in WordPress, the 
+break used in WordPress text editor is now "Page Break Block". This is because 
+WordPress now encourage publishing of articles and pages with block style. But 
+you can decide to publish without blocks. 
+But whether page break block or page break, all is break. What is important is for 
+you to know how to carry out such task. 
+I know you visited some websites like news websites where you see many articles 
+with small description of each particular article in the homepage. And after the little 
+description you saw something like "read more". When you click on the "read
+amore", you read everything about that post in full. 
+That is what am talking about. I want to teach you how you can use such tool so 
+that all the contents that make up a post will not all appear on the landing page of 
+your website. It will make your website to look disorganized. That means if you 
+have 20 posts on your website homepage and each post is about 1,500 words, 
+30,000 words become displayed on your website homepage. It will take your read- 
+ers time to click on the individual post titles. This is because it will take them time 
+to scroll until they get to a title. 
+But with the help of break tool, this issue becomes thing of the past. They can 
+glance through the post titles within few seconds. As a result of this, they can make 
+their choice on any of your posts they want to read first irrespective of the numbers 
+of posts on your website. 
+ 
+## Practical: How to insert Page Break (Block) in a Post 
+
+Do the following to place page break in a post: 
+- Place your cursor where you want to make the page break 
+
+Fig 10.1.2: Placing your cursor in the place you want to insert page break 
+![ Fig 10.1.2: Placing your cursor in the place you want to insert page break ](fig_10.1.2-placing_your_cursor.webp)
+
+- Click on the "enclosed plus sign symbol"
+
+Fig 10.1.2: Path to finding the page break tool 
+![ Fig 10.1.2: Path to finding the page break tool ](fig_10.1.2-path_to_finding.webp)
+
+- Search for page break 
+
+A new search box opens which allows you to search for break tool. So, search for it 
+and insert it in that place you want it to be in the post. 
+
+Fig 10.1.3: Inserting page break 
+![ Fig 10.1.3: Inserting page break ](fig_10.1.3-inserting_page_break.webp)
+
+- Click on Publish or update button 
+
+Once you click publish or update button, the change you made becomes saved. 
+You can then visit your website to see how your post with the new change looks. 
+Update button shows when you have already published the post before but de- 
+cided to make the little change. In this case, the post was published already but
+amade little change because I wanted to insert page break. 
+
+Fig 10.1.4: Updating the made change in the post 
+![ Fig 10.1.4: Updating the made change in the post ](fig_10.1.4-updating_the_made.webp)
+ 
+## How to Use Hyperlink in a Post/Page 
+
+You will probably want to insert a link within the body of a WordPress website — 
+commonly referred to as a hyperlink, which is a line of text that is anchored to a 
+web address (URL) so that clicking the text takes a visitor to another website or 
+page that appears in the browser window. Properly placing links on your website al- 
+lows you to increase the time users spend on your website. It also helps users dis- 
+cover more content, make a purchase on your online store, or subscribe to your 
+email newsletter. 
+Hyperlinks can make visitors to your website spend more time on it. It will make 
+them read as many posts as possible because your posts are interlinked to one an- 
+other. Take for example a reader is reading a post on my website with the title 
+"Importance of Website", and I hyperlinked few words that says, "you can buy my 
+book on Amazon". When the reader clicks on the that "you can buy my book on 
+Amazon", the reader is taken to amazon page where that my book is located. At 
+that point the reader can buy the book. 
+As you can see, with the help of hyperlink, I have made the reader to buy my book 
+from Amazon. That is to say that I moved him from just reading of my article to 
+buying my book. Hyperlinks has been helpful to bloggers and online publishers. 
+
+### Practical: How to Hyperlink in a Post 
+
+To hyperlink any text, sentence or words in your post, do the following: 
+
+- Copy the correct URL link you want to use 
+
+Let us assume that I want to link to a book in amazon.com in one of my posts on 
+my website, I will first visit the URL (web link) of that book situated in amazon.com 
+and copy it. You can select all the link and hit copy. Example is the link to Amazon 
+selling book below:
+
+Fig 10.1.5: Copying web link of a book on Amazon 
+![ Fig 10.1.5: Copying web link of a book on Amazon ](fig_10.1.5-copying_web_link.webp)
+
+- Highlight the words you want to hyperlink in your post 
+
+After I copied the web link of the product I want to direct to, I then go back to the 
+post section of my WordPress dashboard. I then select or highlight the words I 
+want to hyperlink. In this example, the words I want to hyperlink is “buy a book 
+from Amazon”. This is shown in the screenshot below: 
+
+Fig 10.1.6: Highlighted words to be hyperlinked 
+![ Fig 10.1.6: Highlighted words to be hyperlinked ](fig_10.1.6-highlighted_words_to.webp)
+
+- Click on the link tool or symbol in your post
+
+Fig 10.1.7: Arrow shows the link symbol 
+![ Fig 10.1.7: Arrow shows the link symbol ](fig_10.1.7-shows_the_link.webp)
+
+- Insert the link you want to connect to 
+
+Going with our example. I will insert that link I copied from Amazon which is the 
+link to the book on that website. 
+
+Fig 10.1.8: The link that was copied from Amazon inserted in the link box 
+![ Fig 10.1.8: The link that was copied from Amazon inserted in the link box ](fig_10.1.8-the_link_that.webp)
+
+- Click on Publish or Update 
+
+Click on Update if the article is being edited for the hyperlink or Publish if the post 
+freshly published. Both functions are found at top right-hand side of the post tool. 
+
+- Visit your website to test the hyperlink 
+
+When you visit the post that contains the hyperlinked words, click on the words to 
+know if you will be taken to the intended destination. If it happens, that means the 
+hyperlink works well, otherwise you run a recheck. 
+ 
+Note : You can link between published posts on your website and not just outside 
+the website. Take for example that I published a post titled “The importance of 
+Internet” and I later published a post on “The Usefulness of Computer”. If I want 
+to hyperlink few words in the later post so that the person reading it can be di- 
+rected to read the former title (“The importance of Internet”), it is just for me to 
+copy the URL of the post, “The importance of Internet” (example www.teachkin- 
+dle.com/the-impor-tance-inter-net), highlight the few words I want to hyperlink in 
+my post “The Usefulness of Computer” and then insert the link in the highlighted 
+words using the guide I gave in this subheading. 
+ 
+## How to Insert Image in an Article/Post 
+
+Images in articles or posts communicate a lot to readers. I most cases, the kind of 
+image used by authors is dependent on what is being written on. It tells readers a 
+lot about an article. 
+Let's assume am writing a post about Amazon Kindle, using Amazon logo as a pic- 
+ture is enough to tell readers what the topic is about without first going into details. That image tells the readers that this guy in question must have written
+something about Amazon in this article. That first featured image speaks much 
+about the article. 
+In the recent time, WordPress added featured image to take the place of the old 
+name "image" used to upload images during publishing of articles. The Featured 
+Image (also known as post thumbnail) is a WordPress theme feature which allows 
+theme developers to add support for using a representative image for posts, pages, 
+or custom post types. 
+Blogging experts advise that it is better to use not less than 3 images in a post. According to them, this can be a source of extra traffic to your website. When people 
+search for images using search engines, your own image can appear in the image 
+search result. They can click on the image and are directed to your website. 
+
+### Practical: Inserting Image/Photo in your Post or Pages 
+
+To Insert images or photos into your posts or pages, do the following: 
+
+- Open the post/page 
+- Click on the enclosed plus symbol 
+
+This symbol can be found on the top right-hand corner of your post area or at the 
+button of the publishing block. 
+
+Fig 10.1.9: Selecting the symbol to open a new window for image 
+![ Fig 10.1.9: Selecting the symbol to open a new window for image ](fig_10.1.9-selecting_the_symbol.webp)
+
+- Select image tool 
+
+When you select the enclosed plus symbol, a new window opens. As this new win- 
+dow opens, you are to choose the image symbol among others.
+
+Fig 10.2.1: Selecting the image symbol 
+![ Fig 10.2.1: Selecting the image symbol ](fig_10.2.1-selecting_the_image.webp)
+
+- Upload your image 
+
+You are to select the image or images you want to insert into your post. You can 
+select images from your website gallery, your computer or from an online source. 
+
+Fig 10.2.2: Choosing your source of image 
+![ Fig 10.2.2: Choosing your source of image ](fig_10.2.2-choosing_your_source.webp)
+
+When you are done selecting the image you want to use in a post, just hit Select. 
+As you do this, the image will be uploaded into your post. If you do not like the 
+position of the image in the post, you can drag it up using the pushup tool by your 
+left-hand side.
+
+Fig 10.2.3: Choose Select to upload your selected image 
+![ Fig 10.2.3: Choose Select to upload your selected image ](fig_10.2.3-choose_select_to.webp)
+
+- Publish the image with your post 
+
+You can do this by simply hitting the Update or Publish button. 
+
+- Visit the post 
+
+Visit the post and see how it appears on your website. This will help you to go back 
+to your WordPress dashboard and make changes in the post if you do not like what 
+you see. But if you like how it appears, then leave it that way. 
+ 
+
+# Chapter 11 Footer Design of a Website and Adding Social Media Links 
+
+ 
+A Website footer is the bottom part of website. A footer can contain some links to 
+social media sites of the website like Facebook page, Instagram, Twitter, and Pin- 
+terest link. These media platforms are used by website owners to gain audience to 
+the services or products they sell. Many website owners who sell some products 
+through their websites have really made good amount of money with the help of 
+social media links. 
+In this chapter, we will be discussing in detail how to design footer section of web- 
+sites using WordPress. This footer section also includes how to build social media 
+handles or buttons at the bottom section of your website. When any visitor that 
+visits your website clicks on any of the social media symbols, they are taken to your 
+social media page. I will detail it out well so that you can understand. 
+Other items that can be at the footer section of your website are your links to your 
+important pages, upcoming events, your post categories, Terms and Conditions of 
+the website, Hot topics, contact link, copyright, and the rest. You can look at the 
+footer section of forbes.com website. 
+
+Fig 11: The footer section of forbes.com as at June 20, 2020 
+![ Fig 11: The footer section of forbes.com as at June 20, 2020 ](fig_11-the_footer_section.webp)
+
+## Practical: Adding Menu Items at Footer Section 
+
+To add menu items at the footer section of your website so that readers can easily 
+read your posts, do the following: 
+
+- Login to the admin area of your WordPress site
+
+Fig 11.1: A caption of my WordPress admin area 
+![ Fig 11.1: A caption of my WordPress admin area ](fig_11.1-a_caption_of.webp)
+
+- Click on Appearance 
+
+Fig 11.2: When “Appearance” is selected 
+![ Fig 11.2: When “Appearance” is selected ](fig_11.2-when_appearance_is.webp)
+
+- Select Menus 
+
+Fig 11.3: Arrow points at Menus 
+![ Fig 11.3a: Arrow points at Menus ](fig_11.3a-points_at_menus.webp)
+
+- Click on Create a new Menu to create a new menu. 
+
+Fig 11.3b: Creating a new Menu 
+![ Fig 11.3b: Creating a new Menu ](fig_11.3b-creating_a_new.webp)
+
+- Name the menu 
+You can decide to name it "Footer Design" This will remind you that the menu is 
+created to be used at the footer area of the website. The space for the naming is at 
+the right-hand side. 
+ 
+Fig 11.4: Picture shows the space to type in the name of the menu 
+![ Fig 11.4: Picture shows the space to type in the name of the menu ](fig_11.4-shows_the_space.webp)
+
+- Click Create Menu 
+
+Fig 11.5: Creating the Menu 
+![ Fig 11.5: Creating the Menu ](fig_11.5-creating_the_menu.webp)
+
+- Add the published pages 
+
+Since we have already published pages such as contact, About Us, Our Books, 
+Team, and Services, we can add them. Look at the left-hand side of the page you 
+are and you will see your already created pages. So, add as much pages as you 
+want.
+
+Fig 11.6: Picture shows the location of the pages 
+![ Fig 11.6: Picture shows the location of the pages ](fig_11.6-shows_the_location.webp)
+
+- Tick the box “Footer Menu” 
+
+This will make the pages selected to appear at the Footer section of your website. 
+The box is at the right side. 
+
+Fig 11.7: Arrow points at the box to tick for menu to appear at the footer section 
+![ Fig 11.7: Arrow points at the box to tick for menu to appear at the footer section ](fig_11.7-at_the_box.webp)
+
+- Drag and drop menu items to order them. 
+
+If the menu items are not properly arranged, you can put them in order through 
+drag and drop method.
+
+Fig 11.8: The order of the items after my arrangement 
+![ Fig 11.8: The order of the items after my arrangement ](fig_11.8-the_order_of.webp)
+
+- Click on Save Menu 
+
+You must save the menu for you to have a new menu. Just click save and the task 
+is done. 
+
+Fig 11.9: Saving the created footer menu 
+![ Fig 11.9: Saving the created footer menu ](fig_11.9-saving_the_created.webp)
+
+- Visit your website to see how the new change appears. If you do not like it, you 
+can make new changes. 
+ 
+## Another Practical Way to Build Footer Content of a Web-site: Step-by-Step Guide 
+
+There are some WordPress themes that come with already designed footer section. 
+An example is the pro version of Astra theme. The demo version does not come 
+with this feature. In this kind of theme, you edit the existing footer content of the 
+site and save the change. 
+What you are to do to get this done is simple. We are going to build and edit our 
+footer content using Elementor for Astra theme. But for few other themes different 
+from Astra, when you take your cursor to the footer content, you may still be able
+ato make the changes. 
+So, the footer building/design is done in this approach: 
+- Login to your WordPress admin area 
+- Then open a new tab in that your browser and visit your website URL. 
+As am about building the footer section of my websites www.teachkindle.com, I 
+will then visit my website URL which is www.teachkindle.com. The reason for vis- 
+iting this my website in a new tab of the same browser is for the browser to detect 
+that I am the admin of that website. This will make it allow me to do all the changes 
+I want. But make sure you have logged in to the admin section in a tab as stated in 
+the first step before visiting your website URL in a newly opened tab of the same 
+browser. 
+
+Fig 11.1.1: The homepage of a Website
+![ Fig 11.1.1: The homepage of a Website ](fig_11.1.1-the_homepage_of.webp)
+
+- Click on Customize on the top of your website 
+
+When you click on Customize, it will make some hidden functions you can use on 
+the website to show up to your seeing. 
+
+Fig 11.1.2: Arrow shows the Customize to click on 
+![ Fig 11.1.2: Arrow shows the Customize to click on ](fig_11.1.2-shows_the_customize.webp)
+
+- Take your cursor to the part of the footer you want to change 
+- Make your necessary changes 
+
+When you take your cursor to the part of the footer section you want to change, a 
+pen-like object appears, you click on the design to make your change. As shown in 
+the picture below, as you click on the blue pen-like design, you can type anything 
+you want to type and make your changes. 
+
+Fig 11.1.3: Picture shows where to make changes at the footer area 
+![ Fig 11.1.3: Picture shows where to make changes at the footer area ](fig_11.1.3-picture_shows_where.webp)
+
+- Save the change by click on Publish, Done or Save depending on the term available 
+- Visit your website to view the change. 
+ 
+## How to Place Social Media Links to your Website 
+
+In the recent time, it is hard to see any quality website that does not have social 
+media buttons or links. Social media links help in reaching to the pages and han- 
+dles of the website. When you like the pages and handles of an individual's or 
+company's website, you are likely to get notification from them anytime something 
+new is posted. Website builders use social media links buttons to drive traffic to
+their websites. We will be discussing practical way to have social media buttons on 
+your website footer area. 
+
+### Step-by-Step Guide in Inserting Social Media Links/Icons on a Website 
+
+In this first method which I am going to teach you with, please change your theme 
+from Astra if that is your theme in use to another theme, example theme called 
+Twenty Nineteen or Twenty Twenty. Better still, you can install and activate a theme 
+called Pinnacle, and install and activate a plugin named Kadence Toolkit to help in 
+completing the task. 
+But if you are making use of the Pro version of Astra theme (paid version) you can 
+make use of the theme as it has the needed features. To change your WordPress 
+theme easily, go to Appearance >>Themes>>Add New, search for the theme and 
+then install and activate it. Example, search for Pinnacle, install and activate it. 
+Also, do not forget to install and activate Kadence Toolkit plugin. 
+The steps to place social media links at your website are as follow: 
+
+- Login to you WordPress admin area 
+- Select Appearance 
+- Select Theme Option 
+
+Fig 11.1.4: Theme Options of Pinnacle Theme shown 
+![ Fig 11.1.4: Theme Options of Pinnacle Theme shown ](fig_11.1.4-theme_options_of.webp)
+
+Sometimes, some plugins you already installed and activated in your WordPress 
+may make this feature not to be available. So, you are to deactivate some of the 
+plugins you installed in your WordPress before, one by one, to find out if it will 
+show up. 
+In my own case, I have to deactivate some of the plugins I activated when I in- 
+stalled Astra theme at the beginning of my teaching. 
+To deactivate a plugin, follow these steps: 
+Log in to WordPress as the administrator.
+In the left-hand side, click Plugins. 
+Locate the plugin you want to disable, and then click deactivate. To re-enable the 
+plugin, click Activate 
+But if your theme shows "Theme Option" do not bother to deactivate any plugin. 
+
+### Continuation of the teaching after selecting "Theme Option" 
+
+- Select Social from the new page that opens 
+- Copy the URL of your social media platforms and paste in the space provided for 
+each button. 
+
+Example, if the URL of my website's Facebook platform is https:// 
+m.facebook.com/teach.kindle, I will copy that and paste in the space provided for 
+the Facebook URL. I will do the similar thing for my Twitter homepage link and 
+also that of my Instagram page. 
+
+- Click on Save Changes 
+
+Fig 11.1.5: Arrow points at the Save Changes button 
+![ Fig 11.1.5: Arrow points at the Save Changes button ](fig_11.1.5-at_the_save.webp)
+
+- Visit your website to see the links to your social media profiles and test them. 
+
+### Another Way to place Social Media Links at the Footer of your Website 
+
+I would have used the approach of HTML codes for this teaching but since this is 
+for beginners and the result is the same, we will be using a simpler approach that 
+does not require coding. 
+To place social media icons at the footer section of your website, do the following: 
+
+### Stage 1: Getting the Images of the Social Media Icons 
+
+- Search for the images of the social media icons you want to use through search 
+engines 
+
+Take for example you want to connect your website readers to your, Facebook, 
+Twitter and Pinterest platforms, you can search for "10x10 Facebook social icon 
+image" in Google. Select the picture tab and it will show you many pictures of 
+Facebook logos, select one among the many. Do the same search for the other two 
+social icon images.
+
+Fig 11.1.6: The result that showed up when I searched for Facebook icon image using Google and then selected image search option as shown 
+![ Fig 11.1.6: The result that showed up when I searched for Facebook icon image using Google and then selected image search option as shown ](fig_11.1.6-the_result_that.webp)
+
+Fig 11.1.7: The result that showed up when I searched for Twitter icon using Google and then selected image search option 
+![ Fig 11.1.7: The result that showed up when I searched for Twitter icon using Google and then selected image search option ](fig_11.1.7-result_that_showed.webp)
+
+Fig 11.1.8: The result that showed up when I searched for Pinterest icon using Google and then selected image search option 
+![ Fig 11.1.8: The result that showed up when I searched for Pinterest icon using Google and then selected image search option ](fig_11.1.8-that_showed_up.webp)
+
+- Download the pictures in your computer 
+
+You can save them in a folder in your computer. This will save you the stress of 
+looking for them when you need them. 
+ 
+### Stage 2: Uploading the Images to Media 
+
+- Login to your WordPress admin dashboard 
+
+Fig 11.1.9: Caption of part of my WordPress admin area 
+![ Fig 11.1.9: Caption of part of my WordPress admin area ](fig_11.1.9-caption_of_part.webp)
+
+- Select "Media" among the screen options 
+
+Fig 11.1.11: Arrow points at the Media 
+![ Fig 11.1.11: Arrow points at the Media ](fig_11.1.11-at_the_media.webp)
+
+- Select Add New 
+
+Fig 11.1.12: Caption shows “Add New”
+![ Fig 11.1.12: Caption shows “Add New” ](fig_11.1.12-caption_shows_add.webp)
+
+- Select the downloaded social media icons images from your computer and upload them to the media library 
+
+### Stage 3: Creating Footer Widget with underlying Social Media Links 
+
+- Go to your WordPress admin dashboard 
+- Select Appearance 
+- Click on Widgets 
+
+Fig 11.1.13: Arrow points at Widgets 
+![ Fig 11.1.13: Arrow points at Widgets ](fig_11.1.13-arrow_points_at_widgets.webp)
+
+- Select Text widget 
+
+As the widget opens, look well and select the widget option "Text" 
+
+- Add Text Widget 
+
+You can add this text widget by clicking on the "Add" button 
+
+Fig 11.1.14a: Arrow points at “Add” at the Text widget 
+![ Fig 11.1.14a: Arrow points at “Add” at the Text widget ](fig_11.1.14a-points_at_add.webp)
+
+- Give the Widget name 
+
+You can decide to give the widget a name "Connect with Us"
+
+Fig 11.1.14b: Giving name to the text widget 
+![ Fig 11.1.14b: Giving name to the text widget ](fig_11.1.14b-giving_name_to.webp)
+
+- Choose the footer position you want the widget to appear. 
+
+Because what you want to achieve is to have social media links at the footer of the 
+website, you should choose "Footer Column 1" 
+
+Fig 11.1.15: Selecting footer location of the social media icons (Footer Column 1 ticked) 
+![ Fig 11.1.15: Selecting footer location of the social media icons (Footer Column 1 ticked) ](fig_11.1.15-selecting_footer_location.webp)
+
+- Click on "Add Media" 
+
+"Add Media" is on top of the workspace for your type. 
+
+Fig 11.1.16: The “Add Media” to be clicked at shown 
+![ Fig 11.1.16: The “Add Media” to be clicked at shown ](fig_11.1.16-the_add_media.webp)
+
+- Select social media image from the Media Library one by one
+
+Fig 11.1.17: Selecting Twitter social media icon image from Media Library after I selected that of Facebook 
+![ Fig 11.1.17: Selecting Twitter social media icon image from Media Library after I selected that of Facebook ](fig_11.1.17-selecting_twitter_social.webp)
+
+- Change few details about each image 
+
+Under the subheading "Attachment Display Settings", choose alignment to be left, 
+at “Link To” choose “Custom URL”, in the URL, copy and paste the link to the so- 
+cial media platform you want readers to connect to (Example I can insert “https:// 
+mobile.twitter.com/goodwebdesign?lang=en” if I want to connect readers to my 
+Twitter page assuming am the owner of the Twitter handle). And in the size, 
+choose smallest size since you are to place the linked image at the footer of your 
+website. In the caption, I chose Thumbnail 150x150 but later reduced each of the 
+social media icon (images) to 50x50. Make the images small so that they look 
+fashionable at the footer area. 
+
+Fig 11.1.18: Changing a social media icon image detail
+![ Fig 11.1.18: Changing a social media icon image detail ](fig_11.1.18-changing_a_social.webp)
+
+- Click on "Inserted into Post" for the image to be uploaded 
+
+Do this for all the images you want to use while using the correct link for each image. 
+
+Fig 11.1.19: Inserting the icon image into post 
+![ Fig 11.1.19: Inserting the icon image into post ](fig_11.1.19-inserting_the_icon.webp)
+
+- Save your widget 
+
+Fig 11.2.1: Saving the social media links at the footer area of my website 
+![ Fig 11.2.1: Saving the social media links at the footer area of my website ](fig_11.2.1-saving_the_social.webp)
+
+- Visit your website to see the new addition.
+
+Fig 11.2.2: The look of the added social media links on my website footer 
+![ Fig 11.2.2: The look of the added social media links on my website footer ](fig_11.2.2-the_look_of.webp)
+
+When a visitor to my website clicks at any of the icons, he or she will be taken to 
+my social media page of that platform. 
 
