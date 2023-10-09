@@ -46,6 +46,7 @@ __EOF__
 	if [ "x$typing_fig_name" != "x" ] && [ "x$typing_fig_name" != "xxx" ]; then
 		c=${#typing_fig_name} #-- 문자열의 길이
 		img_name=$(echo ${typing_fig_name,,} | sed 's/:/-/g' | sed 's/- /-/g' | sed 's/ /_/g' | sed 's/;//g').${img_type}
+		echo "${mmm}![ ${ccc}${typing_fig_name} ${mmm}](${yyy}${img_name}${mmm})${xxx}"
 
 		head_name=$(echo ${img_name} | awk -F"-" '{print $1}')
 		check_name=$(echo ${img_name} | awk -F"-" '{print $2}' | awk -F".${img_type}" '{print $1}')
@@ -58,20 +59,22 @@ __EOF__
 			if [ "x${words[cnt+1]}" != "x" ]; then ww="${ww}_${words[cnt+1]}"; else y_n="n"; fi
 			if [ "x${words[cnt+2]}" != "x" ]; then ww="${ww}_${words[cnt+2]}"; else y_n="n"; fi
 			if [ "x${y_n}" = "xy" ]; then
-				if [ -f ${md_dir}${ww} ]; then echo "file found"; fi
-				echo "${bbb}[$cnt]${xxx} ls -l ${md_dir} | grep --color ${mmm}${ww}${xxx}"
-				ls -l ${md_dir} | grep --color ${ww}
+				echo "${mmm}![ ${ccc}${typing_fig_name} ${mmm}](${yyy}${head_name}-${ww}.${img_type}${mmm})${xxx}"
+				x=$(ls -l ${md_dir} | grep ${ww})
+				if [ "x$x" != "x" ]; then
+					#echo "${bbb}[$cnt]${xxx} ls -l ${md_dir} | grep --color ${ww}"
+					ls -l ${md_dir} | grep --color ${ww}
+				fi
 		       	fi
 		done
-		find_file=$(ls -l ${md_dir} | grep --color ${head_name}-${words[0]})
-		if [ "x${find_file}" != "x" ]; then
-			echo "${mmm}#--------------------------------------------${xxx}"
-			ls -l ${md_dir} | grep --color ${head_name}-${words[0]}
-		fi
-
-		cat <<__EOF__
-
-${mmm}![ ${ccc}${typing_fig_name} ${mmm}](${yyy}${img_name}${mmm})${xxx}
-__EOF__
+#		find_file=$(ls -l ${md_dir} | grep --color ${head_name}-${words[0]})
+#		if [ "x${find_file}" != "x" ]; then
+#			echo "${mmm}#--------------------------------------------${xxx}"
+#			ls -l ${md_dir} | grep --color ${head_name}-${words[0]}
+#		fi
+#
+#		cat <<__EOF__
+#
+#__EOF__
 	fi
 done

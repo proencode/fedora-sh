@@ -1066,8 +1066,8 @@ Media has two options when selected. There is "Library" and "Add New". In the li
 brary, you have already uploaded pictures and videos. And in the Add New you se- 
 lect it to upload more videos and images. 
 
-Fig 4.2a: Screenshot showing “Library” and “Add New” option of “Media” 
-![ Fig 4.2a: Screenshot showing “Library” and “Add New” option of “Media” ](fig_4.2_screenshot_showing_library.webp)
+Fig 4.2a: Screenshot showing “Library” and “Add New” option of “Media”
+![ Fig 4.2a: Screenshot showing “Library” and “Add New” option of “Media” ](fig_4.2a_screenshot_showing_library.webp)
 
 The " Library " option usually comes with already uploaded images integrated into 
 the system by the developer of the theme in use on the website. This is a new 
@@ -1076,7 +1076,7 @@ have any images or videos integrated into their theme. Astra theme for example
 come with nice pictures stored in the library. You can see it in the screenshot. 
 
 Fig 4.2b: Screenshot showing already uploaded images in the “Library” option 
-[ Fig 4.2b: Screenshot showing already uploaded images in the “Library” option ](fig_4.2_screenshot_showing_already.webp)
+[ Fig 4.2b: Screenshot showing already uploaded images in the “Library” option ](fig_4.2b_screenshot_showing_already.webp)
 
 Those pictures came with the theme currently in use in this my site. There are 
 many stock images but I captured just fewer number of them. 
@@ -2007,17 +2007,91 @@ Fig 7.1.3: Cropping of my Logo
 ![ Fig 7.1.3: Cropping of my Logo ](fig_7.1.3_cropping_of_my.webp)
 
 You can decide to crop the logo or upload it like that. It can be auto fitted even if
+you choose not to crop it. You are to click on “Skip Cropping” if you do not want to 
+crop or hit “Crop Image” when you are done cropping. 
+
+- Click publish 
+
+Fig 7.1.4: Arrow shows the position of Publish button 
+![ Fig 7.1.4: Arrow shows the position of Publish button ](fig_7.1.4-shows_the_position.webp)
+
+-Visit your website 
+ 
+Fig 7.1.5: The new look of www.teachkindle.com after creating and uploading of logo 
+![ Fig 7.1.5: The new look of www.teachkindle.com after creating and uploading of logo ](fig_7.1.5-new_look_of.webp)
+
+## How to Insert or Change a Website Title and Description
+
+It is usually difficult for beginners in website building to know how to change their 
+website name. Also, some still find it difficult to change the site description. In this 
+subheading, I will be walking you through on how to get this task done. It is a sim- 
+ple task to carry out in as much as you know what to do and how to do them. 
+Some people have built a blog site with their initial idea of writing on a niche. But 
+along the line the story changed. As the story changed, they expanded the cate- 
+gories they were writing on. As this happened, they needed to change the title and 
+descriptions of their websites. 
+Maybe the author was initially focusing on only news niche and as time went on 
+decided to integrate education articles into the niche. As this happened, the web- 
+site builder needs to change the title and the description of the website. If the initial 
+description was "All About News Update" the site builder can change the descrip- 
+tion to something like "Great News Zone and Education Materials. In the later de- 
+scription, it encompasses the newly added niche to the website. 
+If you are building any website that you want to teach people something new in dif- 
+ferent genre, it may require you changing the titles and the description of the web- 
+site very often. So, there are reasons why people may like to change the title and 
+description of their websites as time goes on. No matter what the reason may be, 
+may job to you is to teach you how you can do that as fast and as neat as possible. 
+ 
+### Practical: How to Change your Website Title and Description 
+
+We will be practicing this using our learning website www.teachkindle.com. We will 
+be taking a look at how the site looks right now and after the redesign will see the 
+change in the look of the website. 
+
+Fig 7.1.6: www.teachkindle.com before changing of its title and description 
+a![ Fig 7.1.6: www.teachkindle.com before changing of its title and description ](fig_7.1.6-before_changing_of.webp)
+
+The steps on how to change your website title and description through WordPress 
+admin dashboard are as follow: 
+
+- Login to your admin dashboard 
+- Select Appearance 
+- Select Customize 
+
+Fig 7.1.7: The position of Customize pointed by the arrow symbol 
+![ Fig 7.1.7: The position of Customize pointed by the arrow symbol ](fig_7.1.7-the_position_of.webp)
+
+- Choose Header 
+- Choose Site Identity 
+
+Fig 7.1.8a: Arrow points at the Site Identity position 
+![ Fig 7.1.8a: Arrow points at the Site Identity position ](fig_7.1.8a-points_at_the.webp)
+
+- Make the changes needed under Site Title and Tagline 
+
+Fig 7.1.8b: Arrow points at the positions to make changes 
+![ Fig 7.1.8b: Arrow points at the positions to make changes ](fig_7.1.8b-at_the_positions.webp)
+
+Since we want to change the website title and description, just click inside the pro- 
+vided space, erase the words that were there before and type something new which 
+you want as title and site description. 
+ 
+- Check/tick the box "Display Site Title" and "Display Tagline"
+
+Fig 7.1.9: Arrow points at the direction of the already checked or ticked boxes 
+![ Fig 7.1.9: Arrow points at the direction of the already checked or ticked boxes ](fig_7.1.9-the_direction_of.webp)
+
+These terms may vary depending on the theme in use. For example, some themes 
+can have "Site Name" in place of "Site Title" and "Site Description" in place of 
+"Tag Line". So, use your head and know what to do when you get there. 
+ 
+- Click on Publish on top right corner. 
+
+Fig 7.2.1: Arrow points at the Publish tab in Site Identity section 
+![ Fig 7.2.1: Arrow points at the Publish tab in Site Identity section ](fig_7.2.1-at_the_publish.webp)
+
+- Check your website
 
 
 
-
-
-
-Jump Back
-130 pages (39 min) left in this book
-Previous Page
-PAGE 108 OF 205
-Next Page
-53% read
-Brave 확대/축소 125%
 
