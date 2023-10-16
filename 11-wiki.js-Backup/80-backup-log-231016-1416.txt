@@ -1,0 +1,318 @@
+13:59:54월231016 proenpi@pi4b /opt/backup/wikidb
+wikidb $ sh db-to-cloud.sh wiki ok
+    |
+    |
+    | 2023/10 최근 일주일 백업을 시작합니다. (231016월-1400)
+    |
+    |
+----> ls -lR /opt/backup/wikidb/2023 #-- #-- (2) 보관용 로컬 디렉토리 입니다.
+/opt/backup/wikidb/2023:
+합계 626124
+drwxrwxr-x 2 proenpi proenpi      4096 10월 16 11:57 01_53ju
+drwxrwxr-x 2 proenpi proenpi      4096 10월 16 11:44 1_7yoil
+-rw-rw-r-- 1 proenpi proenpi  36337322  1월 31  2023 wiki_230131화-1903_pi4b.01wol.sql.7z
+-rw-rw-r-- 1 proenpi proenpi  38702042  2월 28  2023 wiki_230228화-2303_pi4b.02wol.sql.7z
+-rw-rw-r-- 1 proenpi proenpi  44468570  3월 31  2023 wiki_230331금-2303_pi4b.03wol.sql.7z
+-rw-rw-r-- 1 proenpi proenpi  44619210  4월 30 23:08 wiki_230430일-2303_pi4b.04wol.sql.7z
+-rw-rw-r-- 1 proenpi proenpi  44811530  5월 31 21:16 wiki_230531수-2110_pi4b.05wol.sql.7z
+-rw-rw-r-- 1 proenpi proenpi  44954138  6월 30 21:15 wiki_230630금-2110_pi4b.06wol.sql.7z
+-rw-rw-r-- 1 proenpi proenpi  93895074  7월 31 20:13 wiki_230731월-2003_pi4b.07wol.sql.7z
+-rw-rw-r-- 1 proenpi proenpi  95586018  8월 31 20:14 wiki_230831목-2003_pi4b.08wol.sql.7z
+-rw-rw-r-- 1 proenpi proenpi  95994946  9월 30 20:14 wiki_230930토-2003_pi4b.09wol.sql.7z
+-rw-rw-r-- 1 proenpi proenpi 101726530 10월 16 11:56 wiki_231016월-1144_pi4b.10wol.sql.7z
+
+/opt/backup/wikidb/2023/01_53ju:
+합계 2555416
+-rw-rw-r-- 1 proenpi proenpi  32239722  1월  1  2023 wiki_230101일-1503_pi4b.52ju.sql.7z
+-rw-rw-r-- 1 proenpi proenpi  35394490  1월  8  2023 wiki_230108일-1503_pi4b.01ju.sql.7z
+-rw-rw-r-- 1 proenpi proenpi  35481114  1월 15  2023 wiki_230115일-2303_pi4b.02ju.sql.7z
+-rw-rw-r-- 1 proenpi proenpi  36322810  1월 22  2023 wiki_230122일-1503_pi4b.03ju.sql.7z
+-rw-rw-r-- 1 proenpi proenpi  36328522  1월 29  2023 wiki_230129일-1903_pi4b.04ju.sql.7z
+-rw-rw-r-- 1 proenpi proenpi  36344490  2월  3  2023 wiki_230203금-2303_pi4b.05ju.sql.7z
+-rw-rw-r-- 1 proenpi proenpi  36348138  2월 11  2023 wiki_230211토-1103_pi4b.06ju.sql.7z
+-rw-rw-r-- 1 proenpi proenpi  38681882  2월 19  2023 wiki_230219일-1954_pi4b.07ju.sql.7z
+-rw-rw-r-- 1 proenpi proenpi  38700794  2월 26  2023 wiki_230226일-1903_pi4b.08ju.sql.7z
+-rw-rw-r-- 1 proenpi proenpi  41729994  3월  5  2023 wiki_230305일-2303_pi4b.09ju.sql.7z
+-rw-rw-r-- 1 proenpi proenpi  44438746  3월 12  2023 wiki_230312일-1903_pi4b.10ju.sql.7z
+-rw-rw-r-- 1 proenpi proenpi  44450458  3월 19  2023 wiki_230319일-2303_pi4b.11ju.sql.7z
+-rw-rw-r-- 1 proenpi proenpi  44460362  3월 26  2023 wiki_230326일-2303_pi4b.12ju.sql.7z
+-rw-rw-r-- 1 proenpi proenpi  44469674  4월  2  2023 wiki_230402일-2303_pi4b.13ju.sql.7z
+-rw-rw-r-- 1 proenpi proenpi  44479978  4월  9  2023 wiki_230409일-2303_pi4b.14ju.sql.7z
+-rw-rw-r-- 1 proenpi proenpi  44486906  4월 14  2023 wiki_230414금-2303_pi4b.15ju.sql.7z
+-rw-rw-r-- 1 proenpi proenpi  44513178  4월 23 23:08 wiki_230423일-2303_pi4b.16ju.sql.7z
+-rw-rw-r-- 1 proenpi proenpi  44619210  4월 30 23:11 wiki_230430일-2303_pi4b.17ju.sql.7z
+-rw-rw-r-- 1 proenpi proenpi  44647370  5월  7 23:11 wiki_230507일-2303_pi4b.18ju.sql.7z
+-rw-rw-r-- 1 proenpi proenpi  44654042  5월 14 23:08 wiki_230514일-2303_pi4b.19ju.sql.7z
+-rw-rw-r-- 1 proenpi proenpi  44686810  5월 21 19:09 wiki_230521일-1903_pi4b.20ju.sql.7z
+-rw-rw-r-- 1 proenpi proenpi  44793146  5월 28 21:15 wiki_230528일-2110_pi4b.21ju.sql.7z
+-rw-rw-r-- 1 proenpi proenpi  44814090  6월  4 21:15 wiki_230604일-2110_pi4b.22ju.sql.7z
+-rw-rw-r-- 1 proenpi proenpi  44880986  6월 11 21:16 wiki_230611일-2110_pi4b.23ju.sql.7z
+-rw-rw-r-- 1 proenpi proenpi  44907658  6월 18 21:15 wiki_230618일-2110_pi4b.24ju.sql.7z
+-rw-rw-r-- 1 proenpi proenpi  44936074  6월 25 21:17 wiki_230625일-2110_pi4b.25ju.sql.7z
+-rw-rw-r-- 1 proenpi proenpi  44957402  7월  2 11:13 wiki_230702일-1103_pi4b.26ju.sql.7z
+-rw-rw-r-- 1 proenpi proenpi  49369274  7월  9 20:09 wiki_230709일-2003_pi4b.27ju.sql.7z
+-rw-rw-r-- 1 proenpi proenpi  97190114  7월 16 20:14 wiki_230716일-2003_pi4b.28ju.sql.7z
+-rw-rw-r-- 1 proenpi proenpi  93882978  7월 23 20:14 wiki_230723일-2003_pi4b.29ju.sql.7z
+-rw-rw-r-- 1 proenpi proenpi  93894370  7월 30 20:14 wiki_230730일-2003_pi4b.30ju.sql.7z
+-rw-rw-r-- 1 proenpi proenpi  93901890  8월  6 20:14 wiki_230806일-2003_pi4b.31ju.sql.7z
+-rw-rw-r-- 1 proenpi proenpi  93904626  8월 13 20:15 wiki_230813일-2003_pi4b.32ju.sql.7z
+-rw-rw-r-- 1 proenpi proenpi  93925698  8월 20 20:15 wiki_230820일-2003_pi4b.33ju.sql.7z
+-rw-rw-r-- 1 proenpi proenpi  94480322  8월 27 20:14 wiki_230827일-2003_pi4b.34ju.sql.7z
+-rw-rw-r-- 1 proenpi proenpi  95904994  9월  3 20:14 wiki_230903일-2003_pi4b.35ju.sql.7z
+-rw-rw-r-- 1 proenpi proenpi  95930834  9월 10 20:15 wiki_230910일-2003_pi4b.36ju.sql.7z
+-rw-rw-r-- 1 proenpi proenpi  95972194  9월 16 20:15 wiki_230916토-2003_pi4b.37ju.sql.7z
+-rw-rw-r-- 1 proenpi proenpi  95982274  9월 24 20:15 wiki_230924일-2003_pi4b.38ju.sql.7z
+-rw-rw-r-- 1 proenpi proenpi  95994850 10월  1 20:14 wiki_231001일-2003_pi4b.39ju.sql.7z
+-rw-rw-r-- 1 proenpi proenpi  96013858 10월  8 20:14 wiki_231008일-2003_pi4b.40ju.sql.7z
+-rw-rw-r-- 1 proenpi proenpi 101726434 10월 15 21:05 wiki_231015일-2052_pi4b.41ju.sql.7z
+-rw-rw-r-- 1 proenpi proenpi 101726530 10월 16 11:57 wiki_231016월-1144_pi4b.42ju.sql.7z
+
+/opt/backup/wikidb/2023/1_7yoil:
+합계 695316
+-rw-rw-r-- 1 proenpi proenpi 101666306 10월 10 20:14 wiki_231010화-2003_pi4b.2yoil.sql.7z
+-rw-rw-r-- 1 proenpi proenpi 101705330 10월 11 20:16 wiki_231011수-2003_pi4b.3yoil.sql.7z
+-rw-rw-r-- 1 proenpi proenpi 101707922 10월 12 20:14 wiki_231012목-2003_pi4b.4yoil.sql.7z
+-rw-rw-r-- 1 proenpi proenpi 101712994 10월 13 20:15 wiki_231013금-2003_pi4b.5yoil.sql.7z
+-rw-rw-r-- 1 proenpi proenpi 101718962 10월 14 15:50 wiki_231014토-1538_pi4b.6yoil.sql.7z
+-rw-rw-r-- 1 proenpi proenpi 101726434 10월 15 21:04 wiki_231015일-2052_pi4b.7yoil.sql.7z
+-rw-rw-r-- 1 proenpi proenpi 101726530 10월 16 11:56 wiki_231016월-1144_pi4b.1yoil.sql.7z
+<---- ls -lR /opt/backup/wikidb/2023 #-- #-- (2) 보관용 로컬 디렉토리 입니다.
+----> REMOTE_SQL_7Z_LIST=$(/usr/bin/rclone ls tpn2mi:wikijsdb/2023/1_7yoil/ | grep .1yoil.sql.7z | awk '{print $2}') #-- (3) 오늘날짜 클라우드 백업파일이 있는지 확인 합니다.
+----> # #-- (4b) 클라우드에는 오늘날짜 백업파일이 없습니다.
+----> rm -f /opt/backup/wikidb/2023/1_7yoil/*.1yoil.sql.7z #-- #-- (5) 오늘날짜 로컬 백업파일을 삭제합니다.
+<---- rm -f /opt/backup/wikidb/2023/1_7yoil/*.1yoil.sql.7z #-- #-- (5) 오늘날짜 로컬 백업파일을 삭제합니다.
+----> sudo docker exec wikijsdb pg_dumpall -U wikijs | 7za a -mx=9 -si /opt/backup/wikidb/2023/1_7yoil/wiki_231016월-1400_pi4b.1yoil.sql.7z -pdnlzl2310 #-- #-- (6) DB 를 로컬에 백업합니다.
+
+7-Zip (a) [64] 16.02 : Copyright (c) 1999-2016 Igor Pavlov : 2016-05-21
+p7zip Version 16.02 (locale=ko_KR.UTF-8,Utf16=on,HugeFiles=on,64 bits,4 CPUs LE)
+
+Creating archive: /opt/backup/wikidb/2023/1_7yoil/wiki_231016월-1400_pi4b.1yoil.sql.7z
+
+Items to compress: 1
+
+
+Files read from disk: 1
+Archive size: 101726850 bytes (98 MiB)
+Everything is Ok
+<---- sudo docker exec wikijsdb pg_dumpall -U wikijs | 7za a -mx=9 -si /opt/backup/wikidb/2023/1_7yoil/wiki_231016월-1400_pi4b.1yoil.sql.7z -pdnlzl2310 #-- #-- (6) DB 를 로컬에 백업합니다.
+2023/10/16 14:11:51 ERROR : wiki_231016월-1400_pi4b.1yoil.sql.7z: Failed to copy: upload file failed to create session: Request over quota
+2023/10/16 14:11:51 ERROR : Attempt 1/3 failed with 1 errors and: upload file failed to create session: Request over quota
+2023/10/16 14:11:51 ERROR : wiki_231016월-1400_pi4b.1yoil.sql.7z: Failed to copy: upload file failed to create session: Request over quota
+2023/10/16 14:11:51 ERROR : Attempt 2/3 failed with 1 errors and: upload file failed to create session: Request over quota
+2023/10/16 14:11:52 ERROR : wiki_231016월-1400_pi4b.1yoil.sql.7z: Failed to copy: upload file failed to create session: Request over quota
+2023/10/16 14:11:52 ERROR : Attempt 3/3 failed with 1 errors and: upload file failed to create session: Request over quota
+2023/10/16 14:11:52 Failed to copy: upload file failed to create session: Request over quota
+----> OUTRC=$(/usr/bin/rclone copy /opt/backup/wikidb/2023/1_7yoil/wiki_231016월-1400_pi4b.1yoil.sql.7z tpn2mi:wikijsdb/2023/1_7yoil/) #-------- #-- (7) 로컬 DB 백업파일을 클라우드로 복사합니다.
+----> # #-- (8) wikijsdb/2023/1_7yoil 월 최근 일주일 백업을 끝냅니다. (231016월-1400)
+    |
+    |
+    | wikijsdb/2023/1_7yoil 월의 마지막 백업파일을 wikijsdb/2023 년도로 복사 시작 (231016월-1400)
+    |
+    |
+----> REMOTE_SQL_7Z_LIST=$(/usr/bin/rclone ls tpn2mi:wikijsdb/2023/ | grep .10wol.sql.7z | awk '{print $2}') #-- (9) 10월 백업파일이 이전에 백업돼 있었는지 확인 합니다.
+----> # #-- (10b) 클라우드에는 10월 백업파일이 없습니다.
+----> rm -f /opt/backup/wikidb/2023/*.10wol.sql.7z #-- #-- (11) 오늘날짜 로컬 백업파일을 삭제합니다.
+<---- rm -f /opt/backup/wikidb/2023/*.10wol.sql.7z #-- #-- (11) 오늘날짜 로컬 백업파일을 삭제합니다.
+----> # #-- (12) wikijsdb/2023/1_7yoil 월 백업파일을 wikijsdb/2023 년도로 복사하는 작업을 시작합니다. (231016월-1400)
+----> cp /opt/backup/wikidb/2023/1_7yoil/wiki_231016월-1400_pi4b.1yoil.sql.7z /opt/backup/wikidb/2023/wiki_231016월-1400_pi4b.10wol.sql.7z #-- #-- (13) 로컬 디렉토리의 월 백업파일을 년도로 복사합니다.
+<---- cp /opt/backup/wikidb/2023/1_7yoil/wiki_231016월-1400_pi4b.1yoil.sql.7z /opt/backup/wikidb/2023/wiki_231016월-1400_pi4b.10wol.sql.7z #-- #-- (13) 로컬 디렉토리의 월 백업파일을 년도로 복사합니다.
+2023/10/16 14:12:15 ERROR : wiki_231016월-1400_pi4b.10wol.sql.7z: Failed to copy: upload file failed to create session: Request over quota
+2023/10/16 14:12:15 ERROR : Attempt 1/3 failed with 1 errors and: upload file failed to create session: Request over quota
+2023/10/16 14:12:15 ERROR : wiki_231016월-1400_pi4b.10wol.sql.7z: Failed to copy: upload file failed to create session: Request over quota
+2023/10/16 14:12:15 ERROR : Attempt 2/3 failed with 1 errors and: upload file failed to create session: Request over quota
+2023/10/16 14:12:16 ERROR : wiki_231016월-1400_pi4b.10wol.sql.7z: Failed to copy: upload file failed to create session: Request over quota
+2023/10/16 14:12:16 ERROR : Attempt 3/3 failed with 1 errors and: upload file failed to create session: Request over quota
+2023/10/16 14:12:16 Failed to copy: upload file failed to create session: Request over quota
+----> OUTRC=$(/usr/bin/rclone copy /opt/backup/wikidb/2023/wiki_231016월-1400_pi4b.10wol.sql.7z tpn2mi:wikijsdb/2023/) #-------- #-- (14) 10월 백업파일을 2023년도 폴더로 복사합니다.
+----> OUTRC=$(/usr/bin/rclone ls tpn2mi:wikijsdb/2023) #---- 36337322 wiki_230131화-1903_pi4b.01wol.sql.7z
+ 38702042 wiki_230228화-2303_pi4b.02wol.sql.7z
+ 44468570 wiki_230331금-2303_pi4b.03wol.sql.7z
+ 44619210 wiki_230430일-2303_pi4b.04wol.sql.7z
+ 44811530 wiki_230531수-2110_pi4b.05wol.sql.7z
+ 44954138 wiki_230630금-2110_pi4b.06wol.sql.7z
+ 93895074 wiki_230731월-2003_pi4b.07wol.sql.7z
+101666306 1_7yoil/wiki_231010화-2003_pi4b.2yoil.sql.7z
+101705330 1_7yoil/wiki_231011수-2003_pi4b.3yoil.sql.7z
+101707922 1_7yoil/wiki_231012목-2003_pi4b.4yoil.sql.7z
+101712994 1_7yoil/wiki_231013금-2003_pi4b.5yoil.sql.7z
+101718962 1_7yoil/wiki_231014토-1538_pi4b.6yoil.sql.7z
+ 32239722 01_53ju/wiki_230101일-1503_pi4b.52ju.sql.7z
+ 35394490 01_53ju/wiki_230108일-1503_pi4b.01ju.sql.7z
+ 35481114 01_53ju/wiki_230115일-2303_pi4b.02ju.sql.7z
+ 36322810 01_53ju/wiki_230122일-1503_pi4b.03ju.sql.7z
+ 36328522 01_53ju/wiki_230129일-1903_pi4b.04ju.sql.7z
+ 36344490 01_53ju/wiki_230203금-2303_pi4b.05ju.sql.7z
+ 36348138 01_53ju/wiki_230211토-1103_pi4b.06ju.sql.7z
+ 38681882 01_53ju/wiki_230219일-1954_pi4b.07ju.sql.7z
+ 38700794 01_53ju/wiki_230226일-1903_pi4b.08ju.sql.7z
+ 41729994 01_53ju/wiki_230305일-2303_pi4b.09ju.sql.7z
+ 44438746 01_53ju/wiki_230312일-1903_pi4b.10ju.sql.7z
+ 44450458 01_53ju/wiki_230319일-2303_pi4b.11ju.sql.7z
+ 44460362 01_53ju/wiki_230326일-2303_pi4b.12ju.sql.7z
+ 44469674 01_53ju/wiki_230402일-2303_pi4b.13ju.sql.7z
+ 44479978 01_53ju/wiki_230409일-2303_pi4b.14ju.sql.7z
+ 44486906 01_53ju/wiki_230414금-2303_pi4b.15ju.sql.7z
+ 44513178 01_53ju/wiki_230423일-2303_pi4b.16ju.sql.7z
+ 44619210 01_53ju/wiki_230430일-2303_pi4b.17ju.sql.7z
+ 44647370 01_53ju/wiki_230507일-2303_pi4b.18ju.sql.7z
+ 44654042 01_53ju/wiki_230514일-2303_pi4b.19ju.sql.7z
+ 44686810 01_53ju/wiki_230521일-1903_pi4b.20ju.sql.7z
+ 44793146 01_53ju/wiki_230528일-2110_pi4b.21ju.sql.7z
+ 44814090 01_53ju/wiki_230604일-2110_pi4b.22ju.sql.7z
+ 44880986 01_53ju/wiki_230611일-2110_pi4b.23ju.sql.7z
+ 44907658 01_53ju/wiki_230618일-2110_pi4b.24ju.sql.7z
+ 44936074 01_53ju/wiki_230625일-2110_pi4b.25ju.sql.7z
+ 44957402 01_53ju/wiki_230702일-1103_pi4b.26ju.sql.7z
+ 49369274 01_53ju/wiki_230709일-2003_pi4b.27ju.sql.7z
+ 97190114 01_53ju/wiki_230716일-2003_pi4b.28ju.sql.7z
+ 93882978 01_53ju/wiki_230723일-2003_pi4b.29ju.sql.7z
+ 93894370 01_53ju/wiki_230730일-2003_pi4b.30ju.sql.7z
+ 93901890 01_53ju/wiki_230806일-2003_pi4b.31ju.sql.7z
+ 93904626 01_53ju/wiki_230813일-2003_pi4b.32ju.sql.7z
+ 93925698 01_53ju/wiki_230820일-2003_pi4b.33ju.sql.7z
+ 95930834 01_53ju/wiki_230910일-2003_pi4b.36ju.sql.7z
+ 95972194 01_53ju/wiki_230916토-2003_pi4b.37ju.sql.7z---- #-- (15) 폴더 확인
+----> # #-- (16) wikijsdb/2023/1_7yoil 월 백업파일을 wikijsdb/2023 년도로 복사하는 작업을 끝냅니다. (231016월-1400)
+    |
+    |
+    | wikijsdb/2023/1_7yoil 월의 마지막 백업파일을 wikijsdb/2023/01_53ju 폴더에 J42 번호로 복사 시작 (231016월-1400)
+    |
+    |
+----> REMOTE_SQL_7Z_LIST=$(/usr/bin/rclone ls tpn2mi:wikijsdb/2023/01_53ju/ | grep .42ju.sql.7z | awk '{print $2}') #-- (17) 10월 백업파일이 이전에 백업돼 있었는지 확인 합니다.
+----> # #-- (18b) 클라우드에는 .42ju.sql.7z 백업파일이 없습니다.
+----> rm -f /opt/backup/wikidb/2023/01_53ju/*.42ju.sql.7z #-- #-- (19) 오늘날짜 로컬 백업파일을 삭제합니다.
+<---- rm -f /opt/backup/wikidb/2023/01_53ju/*.42ju.sql.7z #-- #-- (19) 오늘날짜 로컬 백업파일을 삭제합니다.
+----> cp /opt/backup/wikidb/2023/1_7yoil/wiki_231016월-1400_pi4b.1yoil.sql.7z /opt/backup/wikidb/2023/01_53ju/wiki_231016월-1400_pi4b.42ju.sql.7z #-- #-- (20) .42ju.sql.7z 백업파일을 wikijsdb/2023/01_53ju 로 복사하는 작업을 시작합니다. (231016월-1400)
+<---- cp /opt/backup/wikidb/2023/1_7yoil/wiki_231016월-1400_pi4b.1yoil.sql.7z /opt/backup/wikidb/2023/01_53ju/wiki_231016월-1400_pi4b.42ju.sql.7z #-- #-- (20) .42ju.sql.7z 백업파일을 wikijsdb/2023/01_53ju 로 복사하는 작업을 시작합니다. (231016월-1400)
+2023/10/16 14:12:35 ERROR : wiki_231016월-1400_pi4b.42ju.sql.7z: Failed to copy: upload file failed to create session: Request over quota
+2023/10/16 14:12:35 ERROR : Attempt 1/3 failed with 1 errors and: upload file failed to create session: Request over quota
+2023/10/16 14:12:35 ERROR : wiki_231016월-1400_pi4b.42ju.sql.7z: Failed to copy: upload file failed to create session: Request over quota
+2023/10/16 14:12:35 ERROR : Attempt 2/3 failed with 1 errors and: upload file failed to create session: Request over quota
+2023/10/16 14:12:36 ERROR : wiki_231016월-1400_pi4b.42ju.sql.7z: Failed to copy: upload file failed to create session: Request over quota
+2023/10/16 14:12:36 ERROR : Attempt 3/3 failed with 1 errors and: upload file failed to create session: Request over quota
+2023/10/16 14:12:36 Failed to copy: upload file failed to create session: Request over quota
+----> OUTRC=$(/usr/bin/rclone copy /opt/backup/wikidb/2023/01_53ju/wiki_231016월-1400_pi4b.42ju.sql.7z tpn2mi:wikijsdb/2023/01_53ju/) #-------- #-- (21) 10월 백업파일을 wikijsdb/2023/01_53ju 폴더로 복사합니다.
+----> ls -lR /opt/backup/wikidb/2023 #-- #-- (22a) 보관용 로컬 디렉토리 입니다.
+/opt/backup/wikidb/2023:
+합계 626124
+drwxrwxr-x 2 proenpi proenpi      4096 10월 16 14:12 01_53ju
+drwxrwxr-x 2 proenpi proenpi      4096 10월 16 14:00 1_7yoil
+-rw-rw-r-- 1 proenpi proenpi  36337322  1월 31  2023 wiki_230131화-1903_pi4b.01wol.sql.7z
+-rw-rw-r-- 1 proenpi proenpi  38702042  2월 28  2023 wiki_230228화-2303_pi4b.02wol.sql.7z
+-rw-rw-r-- 1 proenpi proenpi  44468570  3월 31  2023 wiki_230331금-2303_pi4b.03wol.sql.7z
+-rw-rw-r-- 1 proenpi proenpi  44619210  4월 30 23:08 wiki_230430일-2303_pi4b.04wol.sql.7z
+-rw-rw-r-- 1 proenpi proenpi  44811530  5월 31 21:16 wiki_230531수-2110_pi4b.05wol.sql.7z
+-rw-rw-r-- 1 proenpi proenpi  44954138  6월 30 21:15 wiki_230630금-2110_pi4b.06wol.sql.7z
+-rw-rw-r-- 1 proenpi proenpi  93895074  7월 31 20:13 wiki_230731월-2003_pi4b.07wol.sql.7z
+-rw-rw-r-- 1 proenpi proenpi  95586018  8월 31 20:14 wiki_230831목-2003_pi4b.08wol.sql.7z
+-rw-rw-r-- 1 proenpi proenpi  95994946  9월 30 20:14 wiki_230930토-2003_pi4b.09wol.sql.7z
+-rw-rw-r-- 1 proenpi proenpi 101726850 10월 16 14:11 wiki_231016월-1400_pi4b.10wol.sql.7z
+
+/opt/backup/wikidb/2023/01_53ju:
+합계 2555416
+-rw-rw-r-- 1 proenpi proenpi  32239722  1월  1  2023 wiki_230101일-1503_pi4b.52ju.sql.7z
+-rw-rw-r-- 1 proenpi proenpi  35394490  1월  8  2023 wiki_230108일-1503_pi4b.01ju.sql.7z
+-rw-rw-r-- 1 proenpi proenpi  35481114  1월 15  2023 wiki_230115일-2303_pi4b.02ju.sql.7z
+-rw-rw-r-- 1 proenpi proenpi  36322810  1월 22  2023 wiki_230122일-1503_pi4b.03ju.sql.7z
+-rw-rw-r-- 1 proenpi proenpi  36328522  1월 29  2023 wiki_230129일-1903_pi4b.04ju.sql.7z
+-rw-rw-r-- 1 proenpi proenpi  36344490  2월  3  2023 wiki_230203금-2303_pi4b.05ju.sql.7z
+-rw-rw-r-- 1 proenpi proenpi  36348138  2월 11  2023 wiki_230211토-1103_pi4b.06ju.sql.7z
+-rw-rw-r-- 1 proenpi proenpi  38681882  2월 19  2023 wiki_230219일-1954_pi4b.07ju.sql.7z
+-rw-rw-r-- 1 proenpi proenpi  38700794  2월 26  2023 wiki_230226일-1903_pi4b.08ju.sql.7z
+-rw-rw-r-- 1 proenpi proenpi  41729994  3월  5  2023 wiki_230305일-2303_pi4b.09ju.sql.7z
+-rw-rw-r-- 1 proenpi proenpi  44438746  3월 12  2023 wiki_230312일-1903_pi4b.10ju.sql.7z
+-rw-rw-r-- 1 proenpi proenpi  44450458  3월 19  2023 wiki_230319일-2303_pi4b.11ju.sql.7z
+-rw-rw-r-- 1 proenpi proenpi  44460362  3월 26  2023 wiki_230326일-2303_pi4b.12ju.sql.7z
+-rw-rw-r-- 1 proenpi proenpi  44469674  4월  2  2023 wiki_230402일-2303_pi4b.13ju.sql.7z
+-rw-rw-r-- 1 proenpi proenpi  44479978  4월  9  2023 wiki_230409일-2303_pi4b.14ju.sql.7z
+-rw-rw-r-- 1 proenpi proenpi  44486906  4월 14  2023 wiki_230414금-2303_pi4b.15ju.sql.7z
+-rw-rw-r-- 1 proenpi proenpi  44513178  4월 23 23:08 wiki_230423일-2303_pi4b.16ju.sql.7z
+-rw-rw-r-- 1 proenpi proenpi  44619210  4월 30 23:11 wiki_230430일-2303_pi4b.17ju.sql.7z
+-rw-rw-r-- 1 proenpi proenpi  44647370  5월  7 23:11 wiki_230507일-2303_pi4b.18ju.sql.7z
+-rw-rw-r-- 1 proenpi proenpi  44654042  5월 14 23:08 wiki_230514일-2303_pi4b.19ju.sql.7z
+-rw-rw-r-- 1 proenpi proenpi  44686810  5월 21 19:09 wiki_230521일-1903_pi4b.20ju.sql.7z
+-rw-rw-r-- 1 proenpi proenpi  44793146  5월 28 21:15 wiki_230528일-2110_pi4b.21ju.sql.7z
+-rw-rw-r-- 1 proenpi proenpi  44814090  6월  4 21:15 wiki_230604일-2110_pi4b.22ju.sql.7z
+-rw-rw-r-- 1 proenpi proenpi  44880986  6월 11 21:16 wiki_230611일-2110_pi4b.23ju.sql.7z
+-rw-rw-r-- 1 proenpi proenpi  44907658  6월 18 21:15 wiki_230618일-2110_pi4b.24ju.sql.7z
+-rw-rw-r-- 1 proenpi proenpi  44936074  6월 25 21:17 wiki_230625일-2110_pi4b.25ju.sql.7z
+-rw-rw-r-- 1 proenpi proenpi  44957402  7월  2 11:13 wiki_230702일-1103_pi4b.26ju.sql.7z
+-rw-rw-r-- 1 proenpi proenpi  49369274  7월  9 20:09 wiki_230709일-2003_pi4b.27ju.sql.7z
+-rw-rw-r-- 1 proenpi proenpi  97190114  7월 16 20:14 wiki_230716일-2003_pi4b.28ju.sql.7z
+-rw-rw-r-- 1 proenpi proenpi  93882978  7월 23 20:14 wiki_230723일-2003_pi4b.29ju.sql.7z
+-rw-rw-r-- 1 proenpi proenpi  93894370  7월 30 20:14 wiki_230730일-2003_pi4b.30ju.sql.7z
+-rw-rw-r-- 1 proenpi proenpi  93901890  8월  6 20:14 wiki_230806일-2003_pi4b.31ju.sql.7z
+-rw-rw-r-- 1 proenpi proenpi  93904626  8월 13 20:15 wiki_230813일-2003_pi4b.32ju.sql.7z
+-rw-rw-r-- 1 proenpi proenpi  93925698  8월 20 20:15 wiki_230820일-2003_pi4b.33ju.sql.7z
+-rw-rw-r-- 1 proenpi proenpi  94480322  8월 27 20:14 wiki_230827일-2003_pi4b.34ju.sql.7z
+-rw-rw-r-- 1 proenpi proenpi  95904994  9월  3 20:14 wiki_230903일-2003_pi4b.35ju.sql.7z
+-rw-rw-r-- 1 proenpi proenpi  95930834  9월 10 20:15 wiki_230910일-2003_pi4b.36ju.sql.7z
+-rw-rw-r-- 1 proenpi proenpi  95972194  9월 16 20:15 wiki_230916토-2003_pi4b.37ju.sql.7z
+-rw-rw-r-- 1 proenpi proenpi  95982274  9월 24 20:15 wiki_230924일-2003_pi4b.38ju.sql.7z
+-rw-rw-r-- 1 proenpi proenpi  95994850 10월  1 20:14 wiki_231001일-2003_pi4b.39ju.sql.7z
+-rw-rw-r-- 1 proenpi proenpi  96013858 10월  8 20:14 wiki_231008일-2003_pi4b.40ju.sql.7z
+-rw-rw-r-- 1 proenpi proenpi 101726434 10월 15 21:05 wiki_231015일-2052_pi4b.41ju.sql.7z
+-rw-rw-r-- 1 proenpi proenpi 101726850 10월 16 14:12 wiki_231016월-1400_pi4b.42ju.sql.7z
+
+/opt/backup/wikidb/2023/1_7yoil:
+합계 695316
+-rw-rw-r-- 1 proenpi proenpi 101666306 10월 10 20:14 wiki_231010화-2003_pi4b.2yoil.sql.7z
+-rw-rw-r-- 1 proenpi proenpi 101705330 10월 11 20:16 wiki_231011수-2003_pi4b.3yoil.sql.7z
+-rw-rw-r-- 1 proenpi proenpi 101707922 10월 12 20:14 wiki_231012목-2003_pi4b.4yoil.sql.7z
+-rw-rw-r-- 1 proenpi proenpi 101712994 10월 13 20:15 wiki_231013금-2003_pi4b.5yoil.sql.7z
+-rw-rw-r-- 1 proenpi proenpi 101718962 10월 14 15:50 wiki_231014토-1538_pi4b.6yoil.sql.7z
+-rw-rw-r-- 1 proenpi proenpi 101726434 10월 15 21:04 wiki_231015일-2052_pi4b.7yoil.sql.7z
+-rw-rw-r-- 1 proenpi proenpi 101726850 10월 16 14:11 wiki_231016월-1400_pi4b.1yoil.sql.7z
+<---- ls -lR /opt/backup/wikidb/2023 #-- #-- (22a) 보관용 로컬 디렉토리 입니다.
+----> /usr/bin/rclone lsl tpn2mi:wikijsdb/2023 #-- #-- (22b) 원격 디렉토리 입니다.
+ 36337322 2023-08-08 14:40:59.000000000 wiki_230131화-1903_pi4b.01wol.sql.7z
+ 38702042 2023-08-08 14:41:10.000000000 wiki_230228화-2303_pi4b.02wol.sql.7z
+ 44468570 2023-08-08 14:40:56.000000000 wiki_230331금-2303_pi4b.03wol.sql.7z
+ 44619210 2023-08-08 14:40:58.000000000 wiki_230430일-2303_pi4b.04wol.sql.7z
+ 44811530 2023-08-08 14:41:12.000000000 wiki_230531수-2110_pi4b.05wol.sql.7z
+ 44954138 2023-08-08 14:41:23.000000000 wiki_230630금-2110_pi4b.06wol.sql.7z
+ 93895074 2023-08-08 14:41:58.000000000 wiki_230731월-2003_pi4b.07wol.sql.7z
+101666306 2023-10-10 20:15:08.000000000 1_7yoil/wiki_231010화-2003_pi4b.2yoil.sql.7z
+101705330 2023-10-11 20:16:25.000000000 1_7yoil/wiki_231011수-2003_pi4b.3yoil.sql.7z
+101707922 2023-10-12 20:15:21.000000000 1_7yoil/wiki_231012목-2003_pi4b.4yoil.sql.7z
+101712994 2023-10-13 20:15:47.000000000 1_7yoil/wiki_231013금-2003_pi4b.5yoil.sql.7z
+101718962 2023-10-14 15:51:09.000000000 1_7yoil/wiki_231014토-1538_pi4b.6yoil.sql.7z
+ 32239722 2023-08-08 14:42:15.000000000 01_53ju/wiki_230101일-1503_pi4b.52ju.sql.7z
+ 35394490 2023-08-08 14:42:34.000000000 01_53ju/wiki_230108일-1503_pi4b.01ju.sql.7z
+ 35481114 2023-08-08 14:42:36.000000000 01_53ju/wiki_230115일-2303_pi4b.02ju.sql.7z
+ 36322810 2023-08-08 14:42:42.000000000 01_53ju/wiki_230122일-1503_pi4b.03ju.sql.7z
+ 36328522 2023-08-08 14:42:51.000000000 01_53ju/wiki_230129일-1903_pi4b.04ju.sql.7z
+ 36344490 2023-08-08 14:42:58.000000000 01_53ju/wiki_230203금-2303_pi4b.05ju.sql.7z
+ 36348138 2023-08-08 14:42:56.000000000 01_53ju/wiki_230211토-1103_pi4b.06ju.sql.7z
+ 38681882 2023-08-08 14:42:59.000000000 01_53ju/wiki_230219일-1954_pi4b.07ju.sql.7z
+ 38700794 2023-08-08 14:43:10.000000000 01_53ju/wiki_230226일-1903_pi4b.08ju.sql.7z
+ 41729994 2023-08-08 14:43:23.000000000 01_53ju/wiki_230305일-2303_pi4b.09ju.sql.7z
+ 44438746 2023-08-08 14:43:19.000000000 01_53ju/wiki_230312일-1903_pi4b.10ju.sql.7z
+ 44450458 2023-08-08 14:43:22.000000000 01_53ju/wiki_230319일-2303_pi4b.11ju.sql.7z
+ 44460362 2023-08-08 14:43:26.000000000 01_53ju/wiki_230326일-2303_pi4b.12ju.sql.7z
+ 44469674 2023-08-08 14:43:48.000000000 01_53ju/wiki_230402일-2303_pi4b.13ju.sql.7z
+ 44479978 2023-08-08 14:43:36.000000000 01_53ju/wiki_230409일-2303_pi4b.14ju.sql.7z
+ 44486906 2023-08-08 14:43:39.000000000 01_53ju/wiki_230414금-2303_pi4b.15ju.sql.7z
+ 44513178 2023-08-08 14:43:41.000000000 01_53ju/wiki_230423일-2303_pi4b.16ju.sql.7z
+ 44619210 2023-08-08 14:43:51.000000000 01_53ju/wiki_230430일-2303_pi4b.17ju.sql.7z
+ 44647370 2023-08-08 14:43:53.000000000 01_53ju/wiki_230507일-2303_pi4b.18ju.sql.7z
+ 44654042 2023-08-08 14:44:03.000000000 01_53ju/wiki_230514일-2303_pi4b.19ju.sql.7z
+ 44686810 2023-08-08 14:44:02.000000000 01_53ju/wiki_230521일-1903_pi4b.20ju.sql.7z
+ 44793146 2023-08-08 14:44:13.000000000 01_53ju/wiki_230528일-2110_pi4b.21ju.sql.7z
+ 44814090 2023-08-08 14:44:13.000000000 01_53ju/wiki_230604일-2110_pi4b.22ju.sql.7z
+ 44880986 2023-08-08 14:44:23.000000000 01_53ju/wiki_230611일-2110_pi4b.23ju.sql.7z
+ 44907658 2023-08-08 14:44:17.000000000 01_53ju/wiki_230618일-2110_pi4b.24ju.sql.7z
+ 44936074 2023-08-08 14:44:39.000000000 01_53ju/wiki_230625일-2110_pi4b.25ju.sql.7z
+ 44957402 2023-08-08 14:44:33.000000000 01_53ju/wiki_230702일-1103_pi4b.26ju.sql.7z
+ 49369274 2023-08-08 14:44:39.000000000 01_53ju/wiki_230709일-2003_pi4b.27ju.sql.7z
+ 97190114 2023-08-08 14:45:03.000000000 01_53ju/wiki_230716일-2003_pi4b.28ju.sql.7z
+ 93882978 2023-08-08 14:45:05.000000000 01_53ju/wiki_230723일-2003_pi4b.29ju.sql.7z
+ 93894370 2023-08-08 14:45:28.000000000 01_53ju/wiki_230730일-2003_pi4b.30ju.sql.7z
+ 93901890 2023-08-08 14:45:11.000000000 01_53ju/wiki_230806일-2003_pi4b.31ju.sql.7z
+ 93904626 2023-08-13 20:15:43.000000000 01_53ju/wiki_230813일-2003_pi4b.32ju.sql.7z
+ 93925698 2023-08-20 20:15:53.000000000 01_53ju/wiki_230820일-2003_pi4b.33ju.sql.7z
+ 95930834 2023-09-10 20:15:55.000000000 01_53ju/wiki_230910일-2003_pi4b.36ju.sql.7z
+ 95972194 2023-09-16 20:15:40.000000000 01_53ju/wiki_230916토-2003_pi4b.37ju.sql.7z
+<---- /usr/bin/rclone lsl tpn2mi:wikijsdb/2023 #-- #-- (22b) 원격 디렉토리 입니다.
+----> # #-- (23) wikijsdb/2023/1_7yoil 월의 마지막 백업파일을 wikijsdb/2023/01_53ju 폴더에 J42 번호로 복사하는 작업을 끝냅니다. (231016월-1400)
+
