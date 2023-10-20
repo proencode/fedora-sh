@@ -96,11 +96,6 @@ lll=$(tput bold)$(tput setaf 0); rrr=$(tput bold)$(tput setaf 1); ggg=$(tput bol
 
 for i in {0..3}; do echo "#"; done
 
-#----> wiki.js 도커에서 쓰는 bash 변수 선언.
-#--
-DATABASE_SERVICE="db_srv" #----- dwjs 데이터베이스 서비스 이름
-WIKI_SERVICE="wiki_srv" #---- dwjs 위키 서비스 이름
-
 if [ "x${WIKI_PORT_NO}" = "x" ]; then
     WIKI_PORT_NO="7700" #-------- dwjs 위키 포트 번호
 fi
@@ -151,11 +146,6 @@ echo "🎶 (2-6) --------------------"
 lll=$(tput bold)$(tput setaf 0); rrr=$(tput bold)$(tput setaf 1); ggg=$(tput bold)$(tput setaf 2); yyy=$(tput bold)$(tput setaf 3); bbb=$(tput bold)$(tput setaf 4); mmm=$(tput bold)$(tput setaf 5); ccc=$(tput bold)$(tput setaf 6); www=$(tput bold)$(tput setaf 7); xxx=$(tput bold)$(tput sgr0); uuu=$(tput cuu 2)
 
 for i in {0..3}; do echo "#"; done
-
-#----> wiki.js 도커에서 쓰는 bash 변수 선언.
-#--
-DATABASE_SERVICE="db_srv" #----- dwjs 데이터베이스 서비스 이름
-WIKI_SERVICE="wiki_srv" #---- dwjs 위키 서비스 이름
 
 if [ "x${WIKI_PORT_NO}" = "x" ]; then
     WIKI_PORT_NO="7700" #-------- dwjs 위키 포트 번호
@@ -232,9 +222,6 @@ lll=$(tput bold)$(tput setaf 0); rrr=$(tput bold)$(tput setaf 1); ggg=$(tput bol
 
 for i in {0..3}; do echo "#"; done
 
-#----> wiki.js 도커에서 쓰는 bash 변수 선언.
-#--
-
 if [ "x${WIKI_PORT_NO}" = "x" ]; then
     WIKI_PORT_NO="7700" #-------- dwjs 위키 포트 번호
 fi
@@ -269,8 +256,10 @@ echo "(4-4) 설치내역 확인: rpm -qi docker-compose"
 rpm -qi docker-compose
 echo "(4-5) sudo docker ps -a"
 sudo docker ps -a
-echo "(4-6) 도커 컴포즈 빌드: time sudo docker-compose pull ${WIKI_SERVICE} (prn 0m23.508s; yscart 0m57.622s; yscartV 1m3.054s)"
-time sudo docker-compose pull ${WIKI_SERVICE}
+echo "(4-6) 도커 컴포즈 빌드: time sudo docker-compose pull wikijs (prn 0m23.508s; yscart 0m57.622s; yscartV 1m3.054s)"
+#-----------------------------------------------------------^^^^^^ 위키 컨테이너
+time sudo docker-compose pull wikijs
+#-----------------------------^^^^^^ 위키 컨테이너
 ### ### sudo docker-compose up --build 를 쓰지 않음 ###
 
 cat <<__EOF__
@@ -542,11 +531,6 @@ lll=$(tput bold)$(tput setaf 0); rrr=$(tput bold)$(tput setaf 1); ggg=$(tput bol
 
 for i in {0..3}; do echo "#"; done
 
-#----> wiki.js 도커에서 쓰는 bash 변수 선언.
-#--
-DATABASE_SERVICE="db_srv" #----- dwjs 데이터베이스 서비스 이름
-WIKI_SERVICE="wiki_srv" #---- dwjs 위키 서비스 이름
-
 if [ "x${WIKI_PORT_NO}" = "x" ]; then
     WIKI_PORT_NO="7700" #-------- dwjs 위키 포트 번호
 fi
@@ -640,11 +624,6 @@ echo "🎶 (5-10) --------------------"
 lll=$(tput bold)$(tput setaf 0); rrr=$(tput bold)$(tput setaf 1); ggg=$(tput bold)$(tput setaf 2); yyy=$(tput bold)$(tput setaf 3); bbb=$(tput bold)$(tput setaf 4); mmm=$(tput bold)$(tput setaf 5); ccc=$(tput bold)$(tput setaf 6); www=$(tput bold)$(tput setaf 7); xxx=$(tput bold)$(tput sgr0); uuu=$(tput cuu 2)
 
 for i in {0..3}; do echo "#"; done
-
-#----> wiki.js 도커에서 쓰는 bash 변수 선언.
-#--
-DATABASE_SERVICE="db_srv" #----- dwjs 데이터베이스 서비스 이름
-WIKI_SERVICE="wiki_srv" #---- dwjs 위키 서비스 이름
 
 if [ "x${WIKI_PORT_NO}" = "x" ]; then
     WIKI_PORT_NO="7700" #-------- dwjs 위키 포트 번호
