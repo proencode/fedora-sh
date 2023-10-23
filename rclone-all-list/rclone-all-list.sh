@@ -17,7 +17,7 @@ do
 	dattim=$(date +%y%m%d%a%H%M%S)
 	cnt=$((cnt + 1))
 	echo "#----> (${cnt:(-2)}) ${CLOUD_NAME}:"
-	rclone lsl ${CLOUD_NAME}: > ${temp_file}
+	rclone lsl ${CLOUD_NAME}: | sort -k4 > ${temp_file}
 	# 유닉스 쉘에서 스페이스 잘리지 않게 유지하고 읽는 방법 멜번초이 2016. 10. 29. 10:22 https://pangate.com/904
 	while IFS= read -r ONE_LINE
 	do
