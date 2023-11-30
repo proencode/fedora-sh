@@ -8,8 +8,8 @@ rsync -avzr --delete -e 'ssh -oHostKeyAlgorithms=+ssh-dss -p 2022' --exclude=tar
 rsync -avzr --delete --rsh="/usr/bin/sshpass -f \${HOME}/.ssh/kaosco.4ssh ssh -oHostKeyAlgorithms=+ssh-dss -Y -p2022 -o StrictHostKeyChecking=no -l kaosco" --no-o --no-g --delete kaoscOK:\${from_dir} .
 rclone copy --include "Ktor*epub" yosjgc:ebooks ~/wind_bada/Downloads/
 2. atyosjswlib 격화소양 i6ytjwudrk 촉견폐일소액구 kaosdesysclubi 씨큐둘째프로젝트 3rhg5vyrr
-${cYellow}git config --global user.password "ATBBn9e5ZGpH6qk8yNbXfMUfeGe49D6AB2" #-- bbop대아투코드네임${cReset}
-${cYellow}git config --global user.password "ghp_gmOZzI37247MBZ9YkPR6RZV2a6BeNU3Ld" #--피륙오딸라 date -d "+90 days" 2023. 12. 21. (목) 07:13:57 KST {$cReset}
+${cYellow}git config --global user.password " ATBBn9e5ZGpH6qk8yNbXfMUfeGe49D6AB2 " #-- bbop대아투코드네임${cReset}
+${cYellow}git config --global user.password " ghp_gmOZzI37247MBZ9YkPR6RZV2a6BeNU3Ld " #--피륙오딸라 date -d "+90 days" 2023. 12. 21. (목) 07:13:57 KST {$cReset}
 ${cYellow}git config --global user.name "${USER} at $(uname -n)" #-- 아이버스${cReset}
 ${cYellow}git config --global user.email "yosjeon@gmail.com" #-- 데몬&${cReset}
 ${cYellow}git config --global alias.ll "log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit" # ----> 한줄로 로그보기${cReset}
