@@ -8,7 +8,11 @@ do
 	#-- ${원본문자열/바꾸려는문자열/바꿔넣을문자열}
 	dirname="${fn/$nameonly/''}"
 	rclone copy "yosjgc:${fn}" .
+	echo "^^^ rclone copy "yosjgc:${fn}" . ^^^"
 	7za a -mx=9 "${nameonly}.7z" "${nameonly}"
+	echo "^^^ 7za a -mx=9 "${nameonly}.7z" "${nameonly}" ^^^"
 	rclone copy "${nameonly}.7z" "yosjgc:${fn}.7z"
-	rclone ls "yosjgc:${dirname}"
+	echo "^^^ rclone copy "${nameonly}.7z" "yosjgc:${fn}.7z" ^^^"
 done
+rclone ls "yosjgc:${dirname}"
+echo "^^^ rclone ls "yosjgc:${dirname}" ^^^"
