@@ -11,7 +11,12 @@ ghp_oHVLCLWM8l9Dt0vM5a5VcYrBw1dIvO3Uhl 대소쿠리
 tanon="qr"
 modav="q1"
 solti="q2"
+
 ssh -oHostKeyAlgorithms=+ssh-dss -Y -p 2022 kaosco@kaos.kr
+
+ssh -oHostKeyAlgorithms=+ssh-dss -Y -p 2022 kaosco@kaos.kr ls -l /var/base/*base/$(date +"%Y/%m")/$(date -d '1 day ago' +%d) /var/base_db/kaosorder2/$(date +"%Y/%m")/*$(date -d '1 day ago' +%y%m%d)* #-- 어제자 데이터
+
+ssh -oHostKeyAlgorithms=+ssh-dss -Y -p 2022 kaosco@kaos.kr ls -l /var/base/*base/$(date +"%Y/%m")/$(date +%d) /var/base_db/kaosorder2/$(date +"%Y/%m")/*$(date +%y%m%d)* #-- 오늘자 데이터
 
 # rsync -avzr --delete -e 'ssh -oHostKeyAlgorithms=+ssh-dss -p 2022' ./   xxx    kaosco@kaos.kr:docker-start-kaosorder-FOR-TEST-ONLY/kaosorder/ #-- 서버로 보낼때
 
