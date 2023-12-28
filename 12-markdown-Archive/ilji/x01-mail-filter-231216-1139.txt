@@ -1,0 +1,163 @@
+
+일치: from:(kakaobank.com OR kbmail.kbstar.com OR kftc.or.kr OR 산업은행 OR yescard.com OR siren24.com OR nice.co.kr OR nonghyup.com OR hanacard.co.kr OR jbbank.co.kr OR tosspayments.com OR "kcp.co.kr") 작업: 받은편지함 건너뛰기, '은행' 라벨 적용	수정     삭제
+일치: from:("인터파크" or "interpark.com") 작업: 받은편지함 건너뛰기, '쇼핑몰' 라벨 적용, 절대 스팸으로 신고하지 않음	수정     삭제
+일치: from:(gihyo.co.jp) 작업: 받은편지함 건너뛰기, '책/기술평론사' 라벨 적용	수정     삭제
+일치: from:(packtpub.com) 작업: 받은편지함 건너뛰기, 'Packtpub' 라벨 적용, 절대 스팸으로 신고하지 않음	수정     삭제
+일치: from:(hanbit.co.kr) 작업: 받은편지함 건너뛰기, '책/한빛미디어' 라벨 적용	수정     삭제
+일치: from:(ridibooks.com) 작업: 받은편지함 건너뛰기, '책/리디북스' 라벨 적용	수정     삭제
+일치: from:(manning.com) 작업: 받은편지함 건너뛰기, '책/매닝' 라벨 적용	수정     삭제
+일치: from:(korea.kr OR aladin.co.kr OR bandinlunis.com) 작업: 받은편지함 건너뛰기, '책/도서관' 라벨 적용	수정     삭제
+일치: from:("도레지" OR "doregi.com") 작업: 받은편지함 건너뛰기, '쇼핑몰/도레지' 라벨 적용	수정     삭제
+일치: from:(G마켓) 작업: 받은편지함 건너뛰기, '쇼핑몰/G마켓' 라벨 적용	수정     삭제
+일치: from:(Amazon.com) 작업: 받은편지함 건너뛰기, '쇼핑몰/Amazon.com' 라벨 적용	수정     삭제
+일치: from:(eklc.co.kr OR mktg@kr.ibm.com OR mailer@dzone.com OR mailer@dzone.com OR cwmail@idg.co.jp OR dell_home@message.email.kr.dell.com OR biztalk@daou.co.kr OR noreply@notify.salesforce.com OR salesforcenews@rymo.net OR mailmaster@lottetown.com) 작업: 받은편지함 건너뛰기, '주간지/메이커' 라벨 적용	수정     삭제
+일치: from:(선대인경제연구소 OR sdinsight.co.kr OR sdinomics.com) 작업: 받은편지함 건너뛰기, '주간지' 라벨 적용	수정     삭제
+일치: from:(medium.com) 작업: 받은편지함 건너뛰기, 'Medium' 라벨 적용	수정     삭제
+일치: from:(kyobobook.co.kr) 작업: 받은편지함 건너뛰기, '책/교보' 라벨 적용	수정     삭제
+일치: from:(netflix.com) 작업: 받은편지함 건너뛰기, '쇼핑몰/넷플릭스' 라벨 적용	수정     삭제
+일치: 텐바이텐 작업: 받은편지함 건너뛰기, '쇼핑몰/텐바이텐' 라벨 적용	수정     삭제
+일치: from:(yes24.com) 작업: 받은편지함 건너뛰기, '쇼핑몰/예스24' 라벨 적용	수정     삭제
+일치: from:(idg.co.kr) 작업: 받은편지함 건너뛰기, '주간지/IDG tech' 라벨 적용	수정     삭제
+일치: from:(qoo10.com) 작업: 받은편지함 건너뛰기, '쇼핑몰/Qoo10' 라벨 적용	수정     삭제
+일치: from:(engadget.com) 작업: 받은편지함 건너뛰기, '주간지' 라벨 적용	수정     삭제
+일치: from:(infoq.com) 작업: 받은편지함 건너뛰기, '주간지' 라벨 적용	수정     삭제
+일치: from:(atlassian.com OR bitbucket.org) 작업: 받은편지함 건너뛰기, 'SW/Bitbucket' 라벨 적용	수정     삭제
+일치: from:(itsfoss.com) 작업: 받은편지함 건너뛰기, 'SW/Linux' 라벨 적용	수정     삭제
+일치: from:(howtogeek.com OR reviewgeek.com) 작업: 받은편지함 건너뛰기, '주간지/How to geek' 라벨 적용	수정     삭제
+일치: from:(twitter.com) 작업: 받은편지함 건너뛰기, 'SNS/Twitter' 라벨 적용	수정     삭제
+일치: from:(facebookmail.com) 작업: 받은편지함 건너뛰기, 'SNS/Facebook' 라벨 적용	수정     삭제
+일치: from:(treepla.net OR "트리플래닛") 작업: 받은편지함 건너뛰기, '후원' 라벨 적용	수정     삭제
+일치: from:(technologyreview.com) 작업: 받은편지함 건너뛰기, 'MIT tech review' 라벨 적용, 절대 스팸으로 신고하지 않음	수정     삭제
+일치: from:(email@newsletter.gq.com) 작업: 받은편지함 건너뛰기, '주간지/GQ daily' 라벨 적용	수정     삭제
+일치: from:(newsletters.wired.com) 작업: 받은편지함 건너뛰기, '쇼핑몰/wired' 라벨 적용	수정     삭제
+일치: from:(newsletter.popularmechanics.com) 작업: 받은편지함 건너뛰기, '쇼핑몰/mechanics' 라벨 적용	수정     삭제
+일치: from:(community.engage.redhat.com) 작업: 받은편지함 건너뛰기, 'SW/Linux' 라벨 적용	수정     삭제
+일치: from:(stratasys.com) 작업: 받은편지함 건너뛰기, 'HW/3D' 라벨 적용	수정     삭제
+일치: from:(onoffmix.com) 작업: 받은편지함 건너뛰기, '주간지/onoffmix' 라벨 적용	수정     삭제
+일치: from:(owncloud.com) 작업: 받은편지함 건너뛰기, 'SW/Cloud' 라벨 적용	수정     삭제
+일치: from:(seoul.msf.org) 작업: 받은편지함 건너뛰기, '후원' 라벨 적용	수정     삭제
+일치: from:(kakao.com) 작업: 받은편지함 건너뛰기, 'SNS/카카오' 라벨 적용	수정     삭제
+일치: from:(google.com) 작업: 받은편지함 건너뛰기, 'google' 라벨 적용	수정     삭제
+일치: from:(reply5.ebay.com) 작업: 받은편지함 건너뛰기, '쇼핑몰/eBay' 라벨 적용	수정     삭제
+일치: from:(maillist.codeproject.com) 작업: 받은편지함 건너뛰기, '주간지/codeproject' 라벨 적용	수정     삭제
+일치: from:(noreply@updates.freelancer.com) 작업: 받은편지함 건너뛰기, '주간지/freelancer' 라벨 적용	수정     삭제
+일치: from:(hn30129@gmail.com) 작업: 받은편지함 건너뛰기, '하늘' 라벨 적용	수정     삭제
+일치: from:(jeongoals09@gmail.com) 작업: 받은편지함 건너뛰기, '해민' 라벨 적용	수정     삭제
+일치: from:(errata@packt.com) 작업: 받은편지함 건너뛰기, '책/팩트펍 문의' 라벨 적용	수정     삭제
+일치: to:(errata@packt.com) 작업: 받은편지함 건너뛰기, '책/팩트펍 문의' 라벨 적용	수정     삭제
+일치: from:(seowontire@daum.net) 작업: 받은편지함 건너뛰기, '01-서원타이어' 라벨 적용, 절대 스팸으로 신고하지 않음	수정     삭제
+일치: to:(seowontire@daum.net) 작업: 받은편지함 건너뛰기, '01-서원타이어' 라벨 적용, 절대 스팸으로 신고하지 않음	수정     삭제
+일치: list:(88a8b42e031ff433f4c9e5cc6.348448.list-id.mcsv.net) 작업: 받은편지함 건너뛰기, '쇼핑몰/MOFT' 라벨 적용	수정     삭제
+일치: list:(<100022755.xt.local>) 작업: 받은편지함 건너뛰기, '책/TIME' 라벨 적용	수정     삭제
+일치: from:(noreply@nyj.go.kr) 작업: 받은편지함 건너뛰기, '자동납부 고지' 라벨 적용, 절대 스팸으로 신고하지 않음	수정     삭제
+일치: from:(yirego.com) 작업: 받은편지함 건너뛰기, '쇼핑몰/yirego' 라벨 적용	수정     삭제
+일치: from:(crew@morningbrew.com) 작업: 받은편지함 건너뛰기, '주간지/Tech Brew' 라벨 적용, 절대 스팸으로 신고하지 않음	수정     삭제
+일치: from:(hello-tanzu@vmware.com) 작업: '주간지/vmware' 라벨 적용	수정     삭제
+일치: from:(no-reply@netlify.com) 작업: 받은편지함 건너뛰기, '주간지/netlify' 라벨 적용	수정     삭제
+일치: from:(abc@nicepay.co.kr) 작업: 받은편지함 건너뛰기, '주간지/동행' 라벨 적용	수정     삭제
+일치: from:(noreply@redditmail.com) 작업: 받은편지함 건너뛰기, '주간지/Reddit' 라벨 적용	수정     삭제
+일치: from:(leo@code4startup.com) 작업: 받은편지함 건너뛰기, 'SW/LEO kickstart' 라벨 적용	수정     삭제
+일치: from:(help@doodly.kr) 작업: 받은편지함 건너뛰기, 'SW/두들리' 라벨 적용	수정     삭제
+일치: from:(no_reply2@funshop.co.kr) 작업: 받은편지함 건너뛰기, '쇼핑몰/펀샵' 라벨 적용	수정     삭제
+일치: from:(eugen@baeldung.com) 작업: 받은편지함 건너뛰기, 'SW/groovy' 라벨 적용	수정     삭제
+일치: from:(sk@kaos.kr) 작업: 받은편지함 건너뛰기, '02-카오스패션' 라벨 적용, 절대 스팸으로 신고하지 않음	수정     삭제
+일치: from:(eskyski@hanmail.net) 작업: 받은편지함 건너뛰기, '02-카오스패션' 라벨 적용, 절대 스팸으로 신고하지 않음	수정     삭제
+일치: from:(kaos.note@gmail.com) 작업: 받은편지함 건너뛰기, '02-카오스패션' 라벨 적용, 절대 스팸으로 신고하지 않음	수정     삭제
+일치: from:(eskyski@hanmail.net) 작업: '02-카오스패션' 라벨 적용	수정     삭제
+일치: from:(sklee@kaos.co.kr) 작업: 받은편지함 건너뛰기, '02-카오스패션' 라벨 적용, 절대 스팸으로 신고하지 않음	수정     삭제
+일치: from:(dfzin@dfzin.com) 작업: 받은편지함 건너뛰기, '02-카오스패션' 라벨 적용, 절대 스팸으로 신고하지 않음	수정     삭제
+일치: from:(myles.tippett@packt-subscriptions.intercom-mail.com) 작업: 받은편지함 건너뛰기, 'Packtpub' 라벨 적용, 절대 스팸으로 신고하지 않음	수정     삭제
+일치: from:(mmobile@mvno.kt-bill.kt.com) 작업: 받은편지함 건너뛰기, '자동납부 고지' 라벨 적용	수정     삭제
+일치: from:(jw@baeldung.com) 작업: 받은편지함 건너뛰기, 'SW/Java' 라벨 적용	수정     삭제
+일치: from:(piero@pieroborrelli.com) 작업: 받은편지함 건너뛰기, 'SW/web' 라벨 적용	수정     삭제
+일치: from:(feelbongha@hanmail.net) 작업: 받은편지함 건너뛰기, '쇼핑몰/봉하장날' 라벨 적용	수정     삭제
+일치: from:(email@me.kickstarter.com) 작업: 받은편지함 건너뛰기, '쇼핑몰/kickstarter' 라벨 적용	수정     삭제
+일치: from:(lenovo@ecomms.lenovo.com) 작업: 받은편지함 건너뛰기, '쇼핑몰' 라벨 적용	수정     삭제
+일치: from:(wired@eml.condenast.com) 작업: 받은편지함 건너뛰기, '쇼핑몰/wired' 라벨 적용	수정     삭제
+일치: list:(<6424583.xt.local>) 작업: 받은편지함 건너뛰기, '주간지' 라벨 적용	수정     삭제
+일치: from:(newsletter@decisiondeskhq.com) 작업: 받은편지함 건너뛰기, '주간지/Desk HQ' 라벨 적용	수정     삭제
+일치: from:(2gm@objectcomputing.com) 작업: 받은편지함 건너뛰기, 'SW/groovy' 라벨 적용	수정     삭제
+일치: from:(morris_design@morris.co.kr) 작업: 받은편지함 건너뛰기, '쇼핑몰' 라벨 적용	수정     삭제
+일치: from:(account_noreply@navercorp.com) 작업: 받은편지함 건너뛰기, '쇼핑몰/네이버' 라벨 적용	수정     삭제
+일치: from:(powersn@objectcomputing.com) 작업: 받은편지함 건너뛰기, 'SW/Object Computing' 라벨 적용	수정     삭제
+일치: from:(no-reply@kickstarter.com) 작업: 받은편지함 건너뛰기, '쇼핑몰/kickstarter' 라벨 적용	수정     삭제
+일치: list:(b0430276d7d2e6e91745fb8cd.116941.list-id.mcsv.net) 작업: 받은편지함 건너뛰기, 'SW/Cloud' 라벨 적용	수정     삭제
+일치: from:(noreply@github.com) 작업: 받은편지함 건너뛰기, 'github' 라벨 적용	수정     삭제
+일치: list:(wkeY5d6pg.newsletter.linuxbabe.com) 작업: 받은편지함 건너뛰기, '주간지/리눅스' 라벨 적용	수정     삭제
+일치: from:(2gm@objectcomputing.com) 작업: 받은편지함 건너뛰기, 'SW/Object Computing' 라벨 적용	수정     삭제
+일치: from:(3pbinder@3pbinder.com) 작업: 받은편지함 건너뛰기, '쇼핑몰' 라벨 적용	수정     삭제
+일치: from:(tech@galcoms.co.kr) 작업: 받은편지함 건너뛰기, '은행' 라벨 적용	수정     삭제
+일치: from:(justice0416@naver.com) 작업: 받은편지함 건너뛰기, '공익소송' 라벨 적용	수정     삭제
+일치: from:(yosjeon@gmail.com) to:(justice0416@naver.com) 작업: 받은편지함 건너뛰기, '공익소송' 라벨 적용	수정     삭제
+일치: from:(sales@inux3d.com) 작업: 받은편지함 건너뛰기, 'HW/라즈베리파이4' 라벨 적용	수정     삭제
+일치: from:(niceipin@mail.niceid.co.kr) 작업: 받은편지함 건너뛰기, '은행' 라벨 적용	수정     삭제
+일치: from:(Offers@tradepubs.nl00.net) 작업: 받은편지함 건너뛰기, '책/tradePub' 라벨 적용	수정     삭제
+일치: from:(mega.nz) 작업: 받은편지함 건너뛰기, 'MEGA' 라벨 적용	수정     삭제
+일치: from:(dns@nic.lv) 작업: 받은편지함 건너뛰기, 'NIC' 라벨 적용	수정     삭제
+일치: from:(jamesb@packt.com) 작업: 받은편지함 건너뛰기, '책/팩트펍 문의' 라벨 적용	수정     삭제
+일치: from:(news@jetbrains.com) 작업: 받은편지함 건너뛰기, '개발툴' 라벨 적용	수정     삭제
+일치: from:(justice0416@naver.com) 작업: 받은편지함 건너뛰기, '후원' 라벨 적용	수정     삭제
+일치: from:(hello@1password.com) 작업: 받은편지함 건너뛰기, 절대 스팸으로 신고하지 않음	수정     삭제
+일치: from:(nice_customer@nicepg.co.kr) 작업: 받은편지함 건너뛰기, '은행' 라벨 적용	수정     삭제
+일치: from:(jr@androidintel.net) 작업: 받은편지함 건너뛰기, '주간지' 라벨 적용	수정     삭제
+일치: from:(wiesej@objectcomputing.com) 작업: 받은편지함 건너뛰기, '책' 라벨 적용	수정     삭제
+일치: from:(cs@moft.us) 작업: 받은편지함 건너뛰기, '쇼핑몰' 라벨 적용	수정     삭제
+일치: from:(dennou@gihyo.co.jp) 작업: 받은편지함 건너뛰기, '책/기술평론사' 라벨 적용	수정     삭제
+일치: from:(info@flowerresearch.com) 작업: 받은편지함 건너뛰기, '여론조사꽃' 라벨 적용, 중요 대화로 표시	수정     삭제
+일치: from:(smo@sb-components.co.uk) 작업: 받은편지함 건너뛰기, 'RaspberryPi' 라벨 적용	수정     삭제
+일치: from:(hm5136@naver.com) 작업: 받은편지함 건너뛰기, '해민' 라벨 적용	수정     삭제
+일치: from:(DailyDigest@email.join1440.com) 작업: 받은편지함 건너뛰기, '주간지/1440 DailyDigest' 라벨 적용	수정     삭제
+일치: from:(Squad@thedailyupside.com) 작업: 받은편지함 건너뛰기, '주간지/Daily' 라벨 적용	수정     삭제
+일치: list:(e93d600ae425624336de0293b.379382.list-id.mcsv.net) 작업: 받은편지함 건너뛰기, 'HW' 라벨 적용	수정     삭제
+일치: from:(info@womenandwar.net) 작업: 받은편지함 건너뛰기, '정의기억연대' 라벨 적용	수정     삭제
+일치: from:(support@sb-components.co.uk) 작업: 받은편지함 건너뛰기, 'HW/라즈베리파이4' 라벨 적용	수정     삭제
+일치: from:(hello@hyperskill.org) 작업: 받은편지함 건너뛰기, 'SW/JetBrains' 라벨 적용	수정     삭제
+일치: from:(customer_center@kbanknow.com) 작업: 받은편지함 건너뛰기, '은행' 라벨 적용	수정     삭제
+일치: from:(noreply@canonical.com) 작업: 받은편지함 건너뛰기, 'SW' 라벨 적용	수정     삭제
+일치: from:(jonathan.garnier@canonical-mail.com) 작업: 받은편지함 건너뛰기, 'SW' 라벨 적용	수정     삭제
+일치: list:(05dafa9b4317774547b114632.21217.list-id.mcsv.net) 작업: 받은편지함 건너뛰기, 'SW' 라벨 적용	수정     삭제
+일치: from:(community@dzone.com) 작업: 받은편지함 건너뛰기, 'SW' 라벨 적용	수정     삭제
+일치: from:(thanks-sf@tradepub.com) 작업: 받은편지함 건너뛰기, '주간지/tradepub' 라벨 적용	수정     삭제
+일치: from:(aaron.nash@packt-subscriptions.intercom-mail.com) 작업: 받은편지함 건너뛰기, 'Packtpub' 라벨 적용, 절대 스팸으로 신고하지 않음	수정     삭제
+일치: list:(d9dae16c3f9f533e6c9e48efb.342649.list-id.mcsv.net) 작업: 받은편지함 건너뛰기, '주간지/Leanpub' 라벨 적용	수정     삭제
+일치: from:(service@unihertz.com) 작업: 받은편지함 건너뛰기, '쇼핑몰/Unihertz' 라벨 적용	수정     삭제
+일치: from:(thanks-dzone-resources@tradepub.com) 작업: 받은편지함 건너뛰기, '주간지/tradepub' 라벨 적용	수정     삭제
+일치: from:(thanks-solo@tradepub.com) 작업: 받은편지함 건너뛰기, '주간지/tradepub' 라벨 적용	수정     삭제
+일치: from:(no.reply@mail.tossbank.com) 작업: 받은편지함 건너뛰기, '은행' 라벨 적용	수정     삭제
+일치: list:(<526001723.xt.local>) 작업: 받은편지함 건너뛰기, '페이팔' 라벨 적용	수정     삭제
+일치: from:(service@intl.paypal.com) 작업: 받은편지함 건너뛰기, '페이팔' 라벨 적용	수정     삭제
+일치: from:(thanks-dzone@tradepub.com) 작업: 받은편지함 건너뛰기, '주간지/tradepub' 라벨 적용	수정     삭제
+일치: list:(<projectwelove.cf.gmail.com.x25pj-5iq5i.mj>) 작업: 받은편지함 건너뛰기, '피싱의심' 라벨 적용	수정     삭제
+일치: from:(noti.kakaopay@kakaocorp.com) 작업: 받은편지함 건너뛰기, '은행' 라벨 적용	수정     삭제
+일치: from:(naverpayadmin_noreply@naver.com) 작업: 받은편지함 건너뛰기, '은행' 라벨 적용	수정     삭제
+일치: from:(contact@campaigns.kr) 작업: 받은편지함 건너뛰기, '캠페인즈' 라벨 적용	수정     삭제
+일치: from:(mail@imas.inicis.com) 작업: 받은편지함 건너뛰기, '은행' 라벨 적용	수정     삭제
+일치: from:(ebiz@ntrex.co.kr) 작업: 받은편지함 건너뛰기, '쇼핑몰/라즈베리파이 SBC' 라벨 적용	수정     삭제
+일치: from:(robot@hyperskill.org) 작업: 받은편지함 건너뛰기, 'SW/JetBrains' 라벨 적용	수정     삭제
+일치: from:(oracle-acct_ww@oracle.com) 작업: 받은편지함 건너뛰기, 'SW/Java' 라벨 적용	수정     삭제
+일치: list:(<7218442.xt.local>) 작업: 받은편지함 건너뛰기, 'SW/Gradle' 라벨 적용	수정     삭제
+일치: from:(noreply@dzone.com) 작업: 받은편지함 건너뛰기, '주간지/tradepub' 라벨 적용	수정     삭제
+일치: from:(thanks-howtogeek@tradepub.com) 작업: 받은편지함 건너뛰기, '주간지/tradepub' 라벨 적용	수정     삭제
+일치: from:(customercare@gotowebinar.com) 작업: 받은편지함 건너뛰기, '주간지/tradepub' 라벨 적용	수정     삭제
+일치: from:(war_women@naver.com) 작업: 받은편지함 건너뛰기, '정의기억연대' 라벨 적용	수정     삭제
+일치: from:(feedback@slack.com) 작업: 'SW/slack' 라벨 적용	수정     삭제
+일치: from:(cscenter@konai.com) 작업: 받은편지함 건너뛰기, '은행' 라벨 적용	수정     삭제
+일치: from:(feedback@slack.com) 작업: 받은편지함 건너뛰기, 'SW/slack' 라벨 적용	수정     삭제
+일치: from:(tech@galcoms.co.kr) 작업: 받은편지함 건너뛰기, '쇼핑몰' 라벨 적용	수정     삭제
+일치: from:(noreply@youtube.com) 작업: 받은편지함 건너뛰기, '유튜브' 라벨 적용	수정     삭제
+일치: from:(buyer04.g@mail.aliexpress.com) 작업: 받은편지함 건너뛰기, '쇼핑몰' 라벨 적용	수정     삭제
+일치: from:(no-reply-aws@amazon.com) 작업: 받은편지함 건너뛰기, 'aws-amazon' 라벨 적용	수정     삭제
+일치: from:(aws-korea-marketing@amazon.com) 작업: 받은편지함 건너뛰기, 'aws-amazon' 라벨 적용	수정     삭제
+일치: from:(noreply@amazon.com) 작업: 받은편지함 건너뛰기, 'aws-amazon' 라벨 적용	수정     삭제
+일치: from:(account-update@amazon.com) 작업: 받은편지함 건너뛰기, 'aws-amazon' 라벨 적용	수정     삭제
+일치: from:(store-news@amazon.com) 작업: 받은편지함 건너뛰기, 'aws-amazon' 라벨 적용	수정     삭제
+일치: from:(shipment-tracking@amazon.com) 작업: 받은편지함 건너뛰기, '쇼핑몰/Amazon.com' 라벨 적용	수정     삭제
+일치: list:(<patentdrop.substack.com>) 작업: 받은편지함 건너뛰기, '주간지' 라벨 적용	수정     삭제
+일치: from:(hyunmudo@hanmail.net) 작업: 받은편지함 건너뛰기, 'dasanedu' 라벨 적용	수정     삭제
+일치: list:(05dafa9b4317774547b114632.21217.list-id.mcsv.net) 작업: 받은편지함 건너뛰기, '주간지/chartr' 라벨 적용	수정     삭제
+일치: from:(crew@hyperskill.org) 작업: 받은편지함 건너뛰기, '하이퍼스킬-JetBrains' 라벨 적용	수정     삭제
+일치: from:(team@patentdrop.thedailyupside.com) 작업: 받은편지함 건너뛰기, 'Patent Drop' 라벨 적용	수정     삭제
+일치: list:(<500009930.xt.local>) 작업: 받은편지함 건너뛰기, '그린피스' 라벨 적용	수정     삭제
+일치: list:(a99b43453db5050f1f26b2744.61177.list-id.mcsv.net) 작업: 받은편지함 건너뛰기, '노마드코더' 라벨 적용	수정     삭제
+일치: from:(nico@mail.nomadcoders.co) 작업: 받은편지함 건너뛰기, '노마드코더' 라벨 적용	수정     삭제
+일치: from:(weekly@raspberrypi.com) 작업: 받은편지함 건너뛰기, 'RaspberryPi' 라벨 적용	수정     삭제
