@@ -14,6 +14,8 @@ solti="q2"
 
 ssh -oHostKeyAlgorithms=+ssh-dss -Y -p 2022 kaosco@kaos.kr
 
+ssh -oHostKeyAlgorithms=+ssh-dss -Y -p 2022 kaosco@kaos.kr ls -l /var/base/*base/$(date +%Y)/$(date +%m)/ /var/base_db/kaosorder2/$(date +%Y)/$(date +%m)/
+
 ssh -oHostKeyAlgorithms=+ssh-dss -Y -p 2022 kaosco@kaos.kr ls -l /var/base/*base/$(date +"%Y/%m")/$(date -d '1 day ago' +%d) /var/base_db/kaosorder2/$(date +"%Y/%m")/*$(date -d '1 day ago' +%y%m%d)* #-- 어제자 데이터
 
 ssh -oHostKeyAlgorithms=+ssh-dss -Y -p 2022 kaosco@kaos.kr ls -l /var/base/*base/$(date +"%Y/%m")/$(date +%d) /var/base_db/kaosorder2/$(date +"%Y/%m")/*$(date +%y%m%d)* #-- 오늘자 데이터
