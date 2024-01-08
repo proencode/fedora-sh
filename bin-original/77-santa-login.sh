@@ -18,10 +18,19 @@ ssh -oHostKeyAlgorithms=+ssh-dss -Y -p 2022 kaosco@kaos.kr ls -l /var/base/*base
 
 ssh -oHostKeyAlgorithms=+ssh-dss -Y -p 2022 kaosco@kaos.kr ls -l /var/base/*base/$(date +"%Y/%m")/$(date -d '1 day ago' +%d) /var/base_db/kaosorder2/$(date +"%Y/%m")/*$(date -d '1 day ago' +%y%m%d)* #-- 어제자 데이터
 
-ssh -oHostKeyAlgorithms=+ssh-dss -Y -p 2022 kaosco@kaos.kr ls -l /var/base/*base/$(date +"%Y/%m")/$(date +%d) /var/base_db/kaosorder2/$(date +"%Y/%m")/*$(date +%y%m%d)* #-- 오늘자 데이터
+ssh -oHostKeyAlgorithms=+ssh-dss -Y -p 2022 kaosco@kaos.kr ls -l /var/base/*base/$(date +"%Y/%m")/$(date +%d) /var/base_db/kaosorder2/$(date +"%Y/%m")/*$(date +%y%m)* #-- 오늘자 데이터
 
 # rsync -avzr --delete -e 'ssh -oHostKeyAlgorithms=+ssh-dss -p 2022' ./   xxx    kaosco@kaos.kr:docker-start-kaosorder-FOR-TEST-ONLY/kaosorder/ #-- 서버로 보낼때
 
 # rsync -avzr --delete -e 'ssh -oHostKeyAlgorithms=+ssh-dss -p 2022' --exclude=target/classes kaosco@kaos.kr:docker-start-kaosorder-FOR-TEST-ONLY/kaosorder/ ./ XXX #-- 받을때
+
+for cegs_base in cadbase emailbase georaebase scanbase
+do
+    y4=$(date +%Y);m2=$(date +%m);echo "----> 받을때: rsync -avzr -e 'ssh -oHostKeyAlgorithms=+ssh-dss -p 2022' kaosco@kaos.kr:/var/base/${cegs_base}/${y4}/${m2}/ /var/base/${cegs_base}/${y4}/${m2}/"
+    y4=$(date +%Y);m2=$(date +%m);rsync -avzr -e 'ssh -oHostKeyAlgorithms=+ssh-dss -p 2022' kaosco@kaos.kr:/var/base/${cegs_base}/${y4}/${m2}/ /var/base/${cegs_base}/${y4}/${m2}/
+done
+
+y4=$(date +%Y);m2=$(date +%m);echo "----> 받을때: rsync -avzr -e 'ssh -oHostKeyAlgorithms=+ssh-dss -p 2022' kaosco@kaos.kr:/var/base_db/kaosorder2/${y4}/${m2}/ /var/base_db/kaosorder2/${y4}/${m2}/"
+y4=$(date +%Y);m2=$(date +%m);rsync -avzr -e 'ssh -oHostKeyAlgorithms=+ssh-dss -p 2022' kaosco@kaos.kr:/var/base_db/kaosorder2/${y4}/${m2}/ /var/base_db/kaosorder2/${y4}/${m2}/
 
 __EOF__
