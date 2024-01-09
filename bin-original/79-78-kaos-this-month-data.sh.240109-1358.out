@@ -1,0 +1,96 @@
+14:07:08화240109 proenpi@pi4b ~/git-projects/fedora-sh/bin-original
+bin-original $ sh 78-kaos-this-month-data.sh
+----> 당월의 서버 확인: ssh -oHostKeyAlgorithms=+ssh-dss -Y -p 2022 kaosco@kaos.kr ls -l /var/base/*base/2024/01/ /var/base_db/kaosorder2/2024/01/
+kaosco@kaos.kr's password:
+/var/base/cadbase/2024/01/:
+total 16
+drwxr-xr-x 2 tomcat tomcat 4096  1월  2 12:39 02
+drwxr-xr-x 2 tomcat tomcat 4096  1월  8 09:29 08
+
+/var/base/emailbase/2024/01/:
+total 8
+drwxr-xr-x 2 tomcat tomcat 4096  1월  5 10:58 02
+
+/var/base/scanbase/2024/01/:
+total 32
+drwxr-xr-x 2 tomcat tomcat 4096  1월  2 17:44 02
+drwxr-xr-x 2 tomcat tomcat 4096  1월  4 12:00 04
+drwxr-xr-x 2 tomcat tomcat 4096  1월  8 16:28 08
+drwxr-xr-x 2 tomcat tomcat 4096  1월  9 09:50 09
+
+/var/base_db/kaosorder2/2024/01/:
+total 96260
+-rwxr-xr-x 1 kaosco kaosco 12291031  1월  1 20:10 kaosorder2_240101-201001.sql.7z
+-rwxr-xr-x 1 kaosco kaosco 12292775  1월  2 20:10 kaosorder2_240102-201001.sql.7z
+-rwxr-xr-x 1 kaosco kaosco 12293223  1월  3 20:10 kaosorder2_240103-201001.sql.7z
+-rwxr-xr-x 1 kaosco kaosco 12293959  1월  4 20:10 kaosorder2_240104-201001.sql.7z
+-rwxr-xr-x 1 kaosco kaosco 12295415  1월  5 20:10 kaosorder2_240105-201001.sql.7z
+-rwxr-xr-x 1 kaosco kaosco 12296423  1월  6 20:10 kaosorder2_240106-201001.sql.7z
+-rwxr-xr-x 1 kaosco kaosco 12296423  1월  7 20:10 kaosorder2_240107-201001.sql.7z
+-rw-r--r-- 1 kaosco kaosco 12298759  1월  8 20:10 kaosorder2_240108-201001.sql.7z
+-rwxr-xr-x 1 kaosco kaosco    20633  1월  8 20:11 last_db_time.txt
+----> 당월의 백업 디렉토리 확인: ls -l /opt/backup/kaosdb/2024/*/01/
+/opt/backup/kaosdb/2024/cadbase/01/:
+합계 1456
+-rw-rw-r-- 1 proenpi proenpi 594370  1월  2 20:30 240102-cadbase-240102-203003.7z
+-rw-rw-r-- 1 proenpi proenpi   1789  1월  2 20:30 240102-cadbase-240102-203003.ls-alR
+-rw-rw-r-- 1 proenpi proenpi 883886  1월  8 20:30 240108-cadbase-240108-203002.7z
+-rw-rw-r-- 1 proenpi proenpi   2571  1월  8 20:30 240108-cadbase-240108-203002.ls-alR
+
+/opt/backup/kaosdb/2024/emailbase/01/:
+합계 396
+-rw-rw-r-- 1 proenpi proenpi 400901  1월  2 20:30 240102-emailbase-240102-203020.7z
+-rw-rw-r-- 1 proenpi proenpi    531  1월  2 20:30 240102-emailbase-240102-203020.ls-alR
+
+/opt/backup/kaosdb/2024/georaebase/01/:
+합계 0
+
+/opt/backup/kaosdb/2024/kaosorder2/01/:
+합계 96096
+-rw-r--r-- 1 proenpi proenpi 12291031  1월  1 20:10 kaosorder2_240101-201001.sql.7z
+-rw-r--r-- 1 proenpi proenpi 12292775  1월  2 20:10 kaosorder2_240102-201001.sql.7z
+-rw-r--r-- 1 proenpi proenpi 12293223  1월  3 20:10 kaosorder2_240103-201001.sql.7z
+-rw-r--r-- 1 proenpi proenpi 12293959  1월  4 20:10 kaosorder2_240104-201001.sql.7z
+-rw-r--r-- 1 proenpi proenpi 12295415  1월  5 20:10 kaosorder2_240105-201001.sql.7z
+-rw-r--r-- 1 proenpi proenpi 12296423  1월  6 20:10 kaosorder2_240106-201001.sql.7z
+-rw-r--r-- 1 proenpi proenpi 12296423  1월  7 20:10 kaosorder2_240107-201001.sql.7z
+-rw-r--r-- 1 proenpi proenpi 12298759  1월  8 20:10 kaosorder2_240108-201001.sql.7z
+-rw-r--r-- 1 proenpi proenpi    20633  1월  7 20:11 last_db_time.txt
+
+/opt/backup/kaosdb/2024/scanbase/01/:
+합계 13312
+-rw-rw-r-- 1 proenpi proenpi 7678243  1월  2 20:30 240102-scanbase-240102-203050.7z
+-rw-rw-r-- 1 proenpi proenpi     668  1월  2 20:30 240102-scanbase-240102-203050.ls-alR
+-rw-rw-r-- 1 proenpi proenpi 2427386  1월  4 20:30 240104-scanbase-240104-203006.7z
+-rw-rw-r-- 1 proenpi proenpi     345  1월  4 20:30 240104-scanbase-240104-203006.ls-alR
+-rw-rw-r-- 1 proenpi proenpi 3509275  1월  8 20:30 240108-scanbase-240108-203019.7z
+-rw-rw-r-- 1 proenpi proenpi     787  1월  8 20:30 240108-scanbase-240108-203019.ls-alR
+----> 클라우드 백업: rclone ls kaosngc:kaosdb/2024/cadbase/01
+   883886 240108-cadbase-240108-203002.7z
+     2571 240108-cadbase-240108-203002.ls-alR
+   594370 240102-cadbase-240102-203003.7z
+     1789 240102-cadbase-240102-203003.ls-alR
+----> 클라우드 백업: rclone ls kaosngc:kaosdb/2024/emailbase/01
+   400901 240102-emailbase-240102-203020.7z
+      531 240102-emailbase-240102-203020.ls-alR
+----> 클라우드 백업: rclone ls kaosngc:kaosdb/2024/georaebase/01
+2024/01/09 14:07:57 Failed to ls: directory not found
+----> 클라우드 백업: rclone ls kaosngc:kaosdb/2024/scanbase/01
+  3509275 240108-scanbase-240108-203019.7z
+      787 240108-scanbase-240108-203019.ls-alR
+  2427386 240104-scanbase-240104-203006.7z
+      345 240104-scanbase-240104-203006.ls-alR
+  7678243 240102-scanbase-240102-203050.7z
+      668 240102-scanbase-240102-203050.ls-alR
+----> 클라우드 백업: rclone ls kaosngc:kaosdb/2024/kaosorder2/01
+ 12298759 kaosorder2_240108-201001.sql.7z
+ 12296423 kaosorder2_240107-201001.sql.7z
+ 12296423 kaosorder2_240106-201001.sql.7z
+ 12295415 kaosorder2_240105-201001.sql.7z
+ 12293959 kaosorder2_240104-201001.sql.7z
+ 12293223 kaosorder2_240103-201001.sql.7z
+ 12292775 kaosorder2_240102-201001.sql.7z
+ 12291031 kaosorder2_240101-201001.sql.7z
+14:08:02화240109 proenpi@pi4b ~/git-projects/fedora-sh/bin-original
+bin-original $
+
