@@ -1,6 +1,36 @@
 #!/bin/sh
 
-mkdir -p "Life/2023문서/"
+mkdircopy () {
+	fdir="$1"
+	new_fdir=$(echo ${fdir} | sed 's/\[//g' | sed 's/\]//g' | sed 's/(//g' | sed 's/)//g' | sed 's/,/./g' | sed 's/／/-/g' | sed 's/ - /-/g' | sed 's/ /_/g')
+	echo "----> mkdir -p \"${fdir}\" ${new_fdir}"
+	mkdir -p "${fdir}" ${new_fdir}
+	echo "----> ls -l \"${fdir}\" ${new_fdir}"
+	ls -l "${fdir}" ${new_fdir}
+}
+copyfile () {
+	fdir="$1"
+	fn="$2"
+	new_fdir=$(echo ${fdir} | sed 's/\[//g' | sed 's/\]//g' | sed 's/(//g' | sed 's/)//g' | sed 's/,/./g' | sed 's/／/-/g' | sed 's/ - /-/g' | sed 's/ /_/g')
+	new_fn=$(echo ${fn} | sed 's/\[//g' | sed 's/\]//g' | sed 's/(//g' | sed 's/)//g' | sed 's/,/./g' | sed 's/／/-/g' | sed 's/ - /-/g' | sed 's/ /_/g')
+
+	echo "----> rclone copy yosjgc:\"${fdir}/${fn}\" \"${fdir}/${fn}\""
+	rclone copy yosjgc:"${fdir}/${fn}" "${fdir}/${fn}"
+	echo "----> mv \"${fdir}/${fn}\" ${new_fdir}/${new_fn}"
+	mv "${fdir}/${fn}" ${new_fdir}/${new_fn}
+	echo "----> rclone copy ${new_fdir}/${new_fn} yosjgc:${new_fdir}/${new_fn}"
+	rclone copy ${new_fdir}/${new_fn} yosjgc:${new_fdir}/${new_fn}
+	echo "----> NEW ---> rclone ls yosjgc:${new_fdir}/${new_fn}"
+	rclone ls yosjgc:${new_fdir}/${new_fn}
+	echo "----> OLD ---> rclone ls yosjgc:\"${fdir}/${fn}\""
+	rclone ls yosjgc:"${fdir}/${fn}"
+	echo "----> OLD ---> rclone delete yosjgc:\"${fdir}/${fn}\""
+	echo "----> press Enter:"
+	read a
+	rclone delete yosjgc:"${fdir}/${fn}"
+}
+
+mkdircopy "Life/2023문서/"
 
 copyfile "Life" "2021-08 문서.docx"
 copyfile "Life" "2021-10 일지.docx"
@@ -43,9 +73,9 @@ copyfile "Life/2023문서" "영어 공부.docx"
 copyfile "Life/2023문서" "월말 김어준_index의 사본.xlsx"
 copyfile "Life/2023문서" "제목 없는 스프레드시트.xlsx"
 
-mkdir -p "Life/Job/01-서원타이어/구글 스프레드시트/"
-mkdir -p "Life/Job/01-서원타이어/서원자료/설명메모/"
-mkdir -p "Life/Job/01-서원타이어/서원자료/올바로 관련자료/2019년도/"
+mkdircopy "Life/Job/01-서원타이어/구글 스프레드시트/"
+mkdircopy "Life/Job/01-서원타이어/서원자료/설명메모/"
+mkdircopy "Life/Job/01-서원타이어/서원자료/올바로 관련자료/2019년도/"
 
 copyfile "Life/Job/01-서원타이어" "2020-12 On-demand Delivery System with Python & PWA.docx"
 copyfile "Life/Job/01-서원타이어" "3D CAD 오픈소스 포함 캐드 프로그램.docx"
@@ -76,22 +106,22 @@ copyfile "Life/Job/01-서원타이어/서원자료/올바로 관련자료/2019�
 copyfile "Life/Job/01-서원타이어/서원자료/올바로 관련자료/2019년도" "2019 올바로등록.docx"
 copyfile "Life/Job/01-서원타이어/제목 없는 문서.docx"
 
-mkdir -p "Life/Job/02-카오스패션/"
+mkdircopy "Life/Job/02-카오스패션/"
 
 copyfile "Life/Job/02-카오스패션" "2021-5 카오스노트.docx"
 copyfile "Life/Job/02-카오스패션" "Kaossam 샘플실 납품외주관리.xlsx"
 
-mkdir -p "Life/Job/메디/"
-mkdir -p "Life/Job/프로그램/"
+mkdircopy "Life/Job/메디/"
+mkdircopy "Life/Job/프로그램/"
 
 copyfile "Life/Job/메디" "[xls] 품목별 수량 합계 만들기.xlsx" #---
 copyfile "Life/Job/프로그램" "Grails 4 SSC 예제.docx"
 
-mkdir -p "Life/정치/"
+mkdircopy "Life/정치/"
 copyfile "Life/정치" "더민주명단.xlsx"
 
-mkdir -p "Life/책메모/노자/"
-mkdir -p "Life/책메모/채근담/"
+mkdircopy "Life/책메모/노자/"
+mkdircopy "Life/책메모/채근담/"
 
 copyfile "Life/책메모/노자" "이경숙 노자도덕경.docx"
 copyfile "Life/책메모/채근담" "채근담 전집-100 완역.docx"
@@ -100,7 +130,7 @@ copyfile "Life/책메모/채근담" "채근담 후집-134 완역.docx"
 copyfile "Life/책메모/채근담" "채근담 후집-134 원본.docx"
 copyfile "Life/책메모/춘향전(春香傳) 3.docx"
 
-mkdir -p "Life/현대 메모/2020사진/"
+mkdircopy "Life/현대 메모/2020사진/"
 
 copyfile "Life/현대 메모" "2020 아파트 관리비.xlsx"
 copyfile "Life/현대 메모" "2020년 일지.docx"
@@ -116,7 +146,7 @@ copyfile "Life/현대 메모" "Cm 을 픽셀로 바꾸기.xlsx"
 copyfile "Life/현대 메모" "냉수를 졸졸 흐르게 한 것임.xlsx"
 copyfile "Life/현대 메모" "통장관리.xlsx"
 
-mkdir -p "root/old현대/보관/"
+mkdircopy "root/old현대/보관/"
 
 copyfile "root" "Google 노트에서 가져온 문서 - 내 노트.docx"
 copyfile "root" "Google 노트에서 가져온 문서 - 노트 1.docx"
@@ -138,7 +168,7 @@ copyfile "" "재고현황.xlsx"
 copyfile "" "제목 없는 스프레드시트.xlsx"
 copyfile "" "제목 없는 스프레드시트.xlsx"
 
-mkdir -p "현대 공유/"
+mkdircopy "현대 공유/"
 
 copyfile "현대 공유" "2021 고정비 지출.xlsx"
 copyfile "현대 공유" "2021년 가계부.xlsx"
