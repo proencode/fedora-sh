@@ -1,0 +1,212 @@
+1. vi 에서 다음줄 위에서 `"wyy` 를 입력해서 `"w"` 에 저장하고,
+2. `@w` 를 입력해서 변경 작업을 실시한다.
+```
+/ddd=^[s### ^[0i```^M^[j0i```^M^[
+```
+3. `^[` => `Ctrl` + `v`
+4. `^M` => `Ctrl` + `m`
+
+### 2-INTRODUCTION
+```
+ddd=2-INTRODUCTION
+mkdir ../${ddd} ; cd ../${ddd}
+2.0-Welcome-02m06.mkv
+2.1-Requirements-02m47.mkv
+2.2-What_Are_We_Using-04m55.mkv
+2.3-OpenAI_Requirements-03m18.mkv
+2.4-Disclaimer-02m33.mkv
+2.5-Virtual_Environment-11m03.mkv
+2.6-Jupyter_Notebooks-05m26.mkv
+```
+
+### 3-WELCOME_TO_LANGCHAIN
+```
+ddd=3-WELCOME_TO_LANGCHAIN
+mkdir ../${ddd} ; cd ../${ddd}
+3.0-LLMs_and_Chat_Models-08m07.mkv
+3.1-Predict_Messages-05m04.mkv
+3.2-Prompt_Templates-07m59.mkv
+3.3-OutputParser_and_LCEL-11m51.mkv
+3.4-Chaining_Chains-14m11.mkv
+3.5-Recap-05m21.mkv
+```
+
+### 4-MODEL_IO
+```
+ddd=4-MODEL_IO
+mkdir ../${ddd} ; cd ../${ddd}
+4.0-Introduction-03m02.mkv
+4.1-FewShotPromptTemplate-13m52.mkv
+4.2-FewShotChatMessagePromptTemplate-07m24.mkv
+4.3-LengthBasedExampleSelector-07m55.mkv
+4.4-Serialization_and_Composition-08m12.mkv
+4.5-Caching-05m54.mkv
+4.6-Serialization-05m23.mkv
+```
+
+### 5-MEMORY
+```
+ddd=5-MEMORY
+mkdir ../${ddd} ; cd ../${ddd}
+5.0-ConversationBufferMemory-05m10.mkv
+5.1-ConversationBufferWindowMemory-03m14.mkv
+5.2-ConversationSummaryMemory-03m38.mkv
+5.3-ConversationSummaryBufferMemory-03m32.mkv
+5.4-ConversationKGMemory-03m52.mkv
+5.5-Memory_on_LLMChain-08m47.mkv
+5.6-Chat_Based_Memory-04m03.mkv
+5.7-LCEL_Based_Memory-07m38.mkv
+5.8-Recap-04m57.mkv
+```
+
+### 6-RAG
+```
+ddd=6-RAG
+mkdir ../${ddd} ; cd ../${ddd}
+6.0-Introduction-04m20.mkv
+6.1-Data_Loaders_and_Splitters-14m35.mkv
+6.2-Tiktoken-04m19.mkv
+6.3-Vectors-11m56.mkv
+6.4-Vector_Store-12m15.mkv
+6.5-Langsmith-01m48.mkv
+6.6-RetrievalQA-18m22.mkv
+6.7-Recap-05m17.mkv
+6.8-Stuff_LCEL_Chain-10m13.mkv
+6.9-Map_Reduce_LCEL_Chain-19m48.mkv
+6.10-Recap-07m26.mkv
+```
+
+### 7-DOCUMENTGPT
+```
+ddd=7-DOCUMENTGPT
+mkdir ../${ddd} ; cd ../${ddd}
+7.0-Introduction-05m01.mkv
+7.1-Magic-06m31.mkv
+7.2-Data_Flow-06m18.mkv
+7.3-Multi_Page-07m08.mkv
+7.4-Chat_Messages-14m10.mkv
+7.5-Recap-04m39.mkv
+7.6-Uploading_Documents-13m23.mkv
+7.7-Chat_History-11m17.mkv
+7.8-Chain-10m29.mkv
+7.9-Streaming-15m54.mkv
+7.10-Recap-10m42.mkv
+```
+
+### 8-PRIVATEGPT
+```
+ddd=8-PRIVATEGPT
+mkdir ../${ddd} ; cd ../${ddd}
+8.0-Introduction-04m14.mkv
+8.1-HuggingFaceHub-10m07.mkv
+8.2-HuggingFacePipeline-05m37.mkv
+8.3-GPT4All-05m39.mkv
+8.4-Ollama-15m27.mkv
+8.5-Conclusions-01m53.mkv
+```
+
+### 9-QUIZGPT
+```
+ddd=9-QUIZGPT
+mkdir ../${ddd} ; cd ../${ddd}
+9.0-Introduction-03m18.mkv
+9.1-WikipediaRetriever-10m10.mkv
+9.2-GPT-4_Turbo-06m25.mkv
+9.3-Questions_Prompt-09m52.mkv
+9.4-Formatter_Prompt-06m30.mkv
+9.5-Output_Parser-04m35.mkv
+9.6-Caching-09m18.mkv
+9.7-Grading_Questions-10m39.mkv
+9.8-Function_Calling-15m15.mkv
+9.9-Conclusions-01m26.mkv
+```
+
+### 10-SITEGPT
+```
+ddd=10-SITEGPT
+mkdir ../${ddd} ; cd ../${ddd}
+10.0-Introduction-01m53.mkv
+10.1-AsyncChromiumLoader-09m15.mkv
+10.2-SitemapLoader-07m02.mkv
+10.3-Parsing_Function-13m49.mkv
+10.4-Map_Re_Rank_Chain-11m56.mkv
+10.5-Map_Re_Rank_Chain_part_Two-13m24.mkv
+10.6-Code_Challenge-05m38.mkv
+```
+
+### 11-MEETINGGPT
+```
+ddd=11-MEETINGGPT
+mkdir ../${ddd} ; cd ../${ddd}
+11.0-Introduction-03m33.mkv
+11.1-Audio_Extraction-08m02.mkv
+11.2-Cutting_The_Audio-13m01.mkv
+11.3-Whisper_Transcript-12m11.mkv
+11.4-Recap-06m03.mkv
+11.5-Upload_UI-17m08.mkv
+11.6-Refine_Chain_Plan-05m52.mkv
+11.7-Refine_Chain-14m55.mkv
+11.8-QnA_Tab-05m52.mkv
+```
+
+### 12-INVESTORGPT
+```
+ddd=12-INVESTORGPT
+mkdir ../${ddd} ; cd ../${ddd}
+12.0-Introduction-02m13.mkv
+12.1-Your_First_Agent-09m38.mkv
+12.2-How_Do_Agents_Work-12m28.mkv
+12.3-Zero-shot_ReAct_Agent-09m47.mkv
+12.4-OpenAI_Functions_Agent-10m51.mkv
+12.5-Search_Tool-04m15.mkv
+12.6-Stock_Information_Tools-14m27.mkv
+12.7-Agent_Prompt-10m32.mkv
+12.8-SQLDatabaseToolkit-10m18.mkv
+12.9-Conclusions-02m39.mkv
+```
+
+### 13-CHEFGPT
+```
+ddd=13-CHEFGPT
+mkdir ../${ddd} ; cd ../${ddd}
+13.0-Introduction-07m55.mkv
+13.1-CustomGPT_Creation-06m09.mkv
+13.2-FastAPI_Server-08m36.mkv
+13.3-GPT_Action-05m16.mkv
+13.4-Recap-04m51.mkv
+13.5-API_Key_Auth-04m57.mkv
+13.6-OAuth-16m04.mkv
+13.7-Recap-04m13.mkv
+13.8-Pinecone-08m16.mkv
+13.9-Chef_API-05m33.mkv
+13.10-Code_Challenge-04m18.mkv
+13.11-Conclusions-00m52.mkv
+```
+
+### 14-BONUS-_ASSISTANTS_API
+```
+ddd=14-BONUS-_ASSISTANTS_API
+mkdir ../${ddd} ; cd ../${ddd}
+14.0-Introduction-02m20.mkv
+14.1-How_Assistants_Work-05m01.mkv
+14.2-Creating_The_Assistant-07m43.mkv
+14.3-Assistant_Tools-09m33.mkv
+14.4-Running_A_Thread-10m00.mkv
+14.5-Assistant_Actions-18m26.mkv
+14.6-Recap-06m46.mkv
+14.7-Code_Challenge-01m29.mkv
+14.8-RAG_Assistant-13m58.mkv
+14.9-Conclusions-00m55.mkv
+```
+
+### 15-BONUS-_AZUREGPT_n_AWS_BEDROCK
+```
+ddd=15-BONUS-_AZUREGPT_n_AWS_BEDROCK
+mkdir ../${ddd} ; cd ../${ddd}
+15.0-Introduction-02m57.mkv
+15.1-AWS_Bedrock-05m06.mkv
+15.2-AWS_IAM-03m05.mkv
+15.3-BedrockChat-05m23.mkv
+15.4-AzureChatOpenAI-08m17.mkv
+15.5-Conclusions-00m46.mkv
+
