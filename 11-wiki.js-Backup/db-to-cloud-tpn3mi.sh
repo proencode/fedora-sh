@@ -68,7 +68,8 @@ if [ "x$1" = "x" ]; then
 #-- DB_NAME	DB_LOGIN_PATH	LOCAL_FOLDER	REMOTE_FOLDER	RCLONE_NAME	OK?	DB_USER_NAME
 #-- kaosorder2	kaoslog		backup/kaosdb	kaosdb		kaosngc		ok/""	kaosorder2 (카오스)
 #-- gate242	swlog		backup/gatedb	11-gate242	swlibgc		ok/""	gateroot (서원)
-#-- wiki	not--use	backup/wikidb	wikijsdb	tpn3mi		ok/""	wiki (wiki.js) 스페이스가 모자라서 yosjgc 를 tpn3mi 240201목, (tpn2mi 로 바꿈 230808화), (swlibgc 로 바꿈 230717월)은 취소함
+#-- wiki	not--use	backup/wikidb	wikijsdb	tpn3mi		ok/""	wiki (wiki.js) 스페이스가 모자라서 tpn2mi 를 tpn3mi  로바꿈 240201목,
+#---- (yosjgc 를 tpn2mi 로 바꿈 230808화), (swlibgc 로 바꿈 230717월)은 취소함
 #--
 #-- db_name	"" #-- 지정한 데이터베이스로 진행합니다.
 #-- db_name	"ok" #-- 지정한 데이터베이스로 진행하면서 과정을 보여줍니다.
