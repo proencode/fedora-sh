@@ -38,5 +38,9 @@ do
 	echo "${bbb}----> rclone lsl kaosngc:kaosdb/${grep_y4}/${base}/${grep_mm}/ | grep --color \"_${grep_y2mmdd}-\"${xxx}"
 	rclone lsl kaosngc:kaosdb/${grep_y4}/${base}/${grep_mm}/ | grep --color "_${grep_y2mmdd}-"
 done
-echo "${bbb}----> rclone lsl tpn3mi:wikijsdb/${grep_y4}${xxx}"
-rclone lsl tpn3mi:wikijsdb/${grep_y4}
+
+echo "${ccc}----> ${bbb}rclone lsl tpn4mi:calls_sms/${grep_y4}/ | grep --color ${grep_yy}${grep_mm}${xxx}"
+rclone lsl tpn4mi:calls_sms/${grep_y4}/ | grep --color ${grep_yy}${grep_mm}
+
+echo "${bbb}----> rclone lsl tpn3mi:wikijsdb/${grep_y4} | grep --color wiki_${xxx}"
+rclone lsl tpn3mi:wikijsdb/${grep_y4} | grep --color wiki_
