@@ -7,9 +7,10 @@ yoran@orangepizero2w /home/docker/backup $
 
 __EOF__
 
-DOCKER_NAME="wikijsdb"
 USER_NAME="wikijs"
 DB_NAME="wiki"
+DB_CONTAINER="wikijsdb"
+
 BACKUP_DIR=/home/docker/backup/$(date +%Y)
 if [ ! -d ${BACKUP_DIR} ]; then
 	mkdir ${BACKUP_DIR}
@@ -37,13 +38,15 @@ fi
 cat <<__EOF__
 ----> ls -l ${RESTORE_FILE}
 $(ls -l ${RESTORE_FILE})
+----> sudo docker stop wikijs ; sudo docker ps -a
 __EOF__
+sudo docker stop wikijs ; sudo docker ps -a
 
 cat <<__EOF__
-----> time sudo docker exec ${DOCKER_NAME} pg_dumpall -U ${USER_NAME} | 7za a -mx=9 -p -si ${BACKUP_FILE}
+----> time sudo docker exec ${DB_CONTAINER} pg_dumpall -U ${USER_NAME} | 7za a -mx=9 -p -si ${BACKUP_FILE}
 ----> 백업하려는 파일의 새로운 비번을 입력하세요.
 __EOF__
-time sudo docker exec ${DOCKER_NAME} pg_dumpall -U ${USER_NAME} | 7za a -mx=9 -p -si ${BACKUP_FILE}
+time sudo docker exec ${DB_CONTAINER} pg_dumpall -U ${USER_NAME} | 7za a -mx=9 -p -si ${BACKUP_FILE}
 
 #-- Archive size: 169271234 bytes (162 MiB)
 #-- Everything is Ok
@@ -59,18 +62,21 @@ cat <<__EOF__
 ----> 최종 백업한 파일 입니다.
 ----> ls -l ${BACKUP_FILE}
 $(ls -l ${BACKUP_FILE})
-----> sudo docker exec -it ${DOCKER_NAME} dropdb -U ${USER_NAME} ${DB_NAME}
+----> sudo docker exec -it ${DB_CONTAINER} dropdb -U ${USER_NAME} ${DB_NAME}
 ----> 리스토어 하기 전에, 현재의 위키 데이터베이스를 지워야 하므로,
 ----> 삭제하려면 'y' 를 입력하세요.
 __EOF__
 read a
-if { "x$a" != "xy" ]; then
+if [ "x$a" != "xy" ]; then
 	echo "====> 백업만 하고 현재의 위키를 그대로 두고 작업을 끝냅니다."
 else
-	echo "----> sudo docker exec -it ${DOCKER_NAME} dropdb -U ${USER_NAME} ${DB_NAME}"
-	sudo docker exec -it ${DOCKER_NAME} dropdb -U ${USER_NAME} ${DB_NAME}
-	echo "----> sudo docker exec -it ${DOCKER_NAME} createdb -U ${USER_NAME} ${DB_NAME}"
-	sudo docker exec -it ${DOCKER_NAME} createdb -U ${USER_NAME} ${DB_NAME}
-	echo "----> time 7za x -so 리스토어할_백업파일wiki_240210토-2003_pi4b.02wol.sql.7z | sudo docker exec -i pgsql psql -U ${USER_NAME} postgres"
-	time 7za x -so 리스토어할_백업파일wiki_240210토-2003_pi4b.02wol.sql.7z | sudo docker exec -i pgsql psql -U ${USER_NAME} postgres
+	echo "----> sudo docker exec -it ${DB_CONTAINER} dropdb -U ${USER_NAME} ${DB_NAME}"
+	sudo docker exec -it ${DB_CONTAINER} dropdb -U ${USER_NAME} ${DB_NAME}
+	echo "----> sudo docker exec -it ${DB_CONTAINER} createdb -U ${USER_NAME} ${DB_NAME}"
+	sudo docker exec -it ${DB_CONTAINER} createdb -U ${USER_NAME} ${DB_NAME}
+	echo "----> time 7za x -so ${RESTORE_FILE} | sudo docker exec -i ${DB_CONTAINER} psql -U ${USER_NAME} postgres"
+	echo "----> 백업했을때 입력한 비번을 입력하세요."
+	time 7za x -so ${RESTORE_FILE} | sudo docker exec -i ${DB_CONTAINER} psql -U ${USER_NAME} postgres
 fi
+echo "----> sudo docker start wikijs ; sudo docker ps -a"
+sudo docker start wikijs ; sudo docker ps -a
