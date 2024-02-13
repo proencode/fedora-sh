@@ -63,20 +63,25 @@ if [ ! -f ${RESTORE_FILE} ]; then
 fi
 cat <<__EOF__
 
+----> 리스토어 하기전 최종 백업한 BACKUP_FILE: ${BACKUP_FILE}
+$(ls -l ${BACKUP_FILE})
+----> DB 는 이 파일로 복구할 예정입니다 - RESTORE_FILE: ${RESTORE_FILE}
+$(ls -l ${RESTORE_FILE})
+
 ----> 지정한 백업파일을 리스토어 하기 위해서는 현재 데이터베이스를 삭제해야 합니다.
 ---->
-----> 최종 백업한 파일 입니다.
-----> ls -l ${BACKUP_FILE} #-- BACKUP_FILE
-$(ls -l ${BACKUP_FILE})
-----> ls -l ${RESTORE_FILE} #-- RESTORE_FILE
-$(ls -l ${RESTORE_FILE})
 ----> sudo docker exec -it ${DB_CONTAINER} dropdb -U ${DB_USER} ${DB_NAME}
 ----> 리스토어 하기 전에, 현재의 위키 데이터베이스를 지워야 하므로,
 ----> 삭제하려면 'y' 를 입력하세요.
 __EOF__
 read a
 if [ "x$a" != "xy" ]; then
-    echo "====> 백업만 하고 현재의 위키를 그대로 두고 작업을 끝냅니다."
+    cat <<__EOF__
+
+----> 리스토어 하기전 최종 백업한 BACKUP_FILE: ${BACKUP_FILE}
+$(ls -l ${BACKUP_FILE})
+====> 백업만 하고 현재의 위키를 그대로 두고 작업을 끝냅니다.
+__EOF__
 else
     echo "----> sudo docker exec -it ${DB_CONTAINER} dropdb -U ${DB_USER} ${DB_NAME}"
     sudo docker exec -it ${DB_CONTAINER} dropdb -U ${DB_USER} ${DB_NAME}
@@ -84,13 +89,13 @@ else
     sudo docker exec -it ${DB_CONTAINER} createdb -U ${DB_USER} ${DB_NAME}
     cat <<__EOF__
 ----> time 7za x -so ${RESTORE_FILE} | sudo docker exec -i pgsql psql -U ${DB_USER} postgress
-----> 암호를 입력하세요.
+----> 백업했을때, 저 파일에 지정한 비번을 입력하세요.
 __EOF__
     time 7za x -so ${RESTORE_FILE} | sudo docker exec -i pgsql psql -U ${DB_USER} postgres
 cat <<__EOF__
-----> BACKUP_FILE: ${BACKUP_FILE}
+----> 리스토어 하기전 최종 백업한 BACKUP_FILE: ${BACKUP_FILE}
 $(ls -l ${BACKUP_FILE})
-----> RESTORE_FILE: ${RESTORE_FILE}
+----> DB 는 이 파일로 복구 하였음 - RESTORE_FILE: ${RESTORE_FILE}
 $(ls -l ${RESTORE_FILE})
 ----> sudo docker ps -a ; sudo docker start ${WIKI_CONTAINER} ; sudo docker ps -a #-- WIKI START
 __EOF__
