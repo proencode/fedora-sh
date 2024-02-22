@@ -29,3 +29,5 @@ do
 		echo "${cRed}!!!! ${cYellow}----> ${dir} 폴더가 없습니다."
 	fi
 done
+qqq=ssword
+grep ${qqq} ~/g*/f*/git-pull-ALL-proj-dir.sh | awk -F${qqq} '{print $2}'
