@@ -5,8 +5,8 @@ Copying content over a network is usually done manually. For example, we just us
 In this chapter, we are going to cover the following topics:
 
 - Learning how to use SSH and SCP
-- Learning how to use rsync
-- Using vsftpd
+- Learning how to use `rsync`
+- Using `vsftpd`
 
 # Technical requirements
 
@@ -18,26 +18,24 @@ So, let's start our virtual machines and let's get cracking!
 
 Back in the 1990s, it was a pretty natural thing to use the Telnet, rlogin, and FTP protocols. Come to think of it, using (anonymous) FTP is still done a lot. Bearing in mind that most local networks in the 1990s were based around network hubs (not switches) and the fact that all of these protocols are plain-text protocols that are easy to eavesdrop on via network sniffers, it really isn't all that strange that we're not using these devices and/or protocols as much anymore. As book authors, we haven't heard of anyone using rlogin since the late 1990s, although Telnet is still widely used to configure network devices (mostly switches and routers). This is the reason why SSH was developed (as a Telnet/rlogin replacement), and, along with SSH, SCP was developed (as a replacement for FTP). To put things into perspective, the first version of SSH was released in the mid-1990s. Let's see how it works.
 
-Getting ready
+## Getting ready
+
 We just need one Ubuntu and one CentOS machine for this recipe. Let's say we are going to use cli1 and cli2 to master these commands.
 
-How to do it…
+## How to do it…
+
 Our first scenario is going to be connecting from one machine to another by using SSH. We are going to presume that we don't have all of the necessary packages installed – just enough to cover our bases. We know that there are a lot of IT people out there who try to install the smallest number of packages possible on their servers/containers, so these extra steps shouldn't be much of a problem.
 
 On an Ubuntu-based machine, we can do it like this:
-
+```
 apt-get -y install libssh-4 openssh-client openssh-server openssh-sftp-server ssh-import-id
+```
 
-Copy
-
-Explain
 On a CentOS machine, we can do it like this:
-
+```
 dnf install openssh-server
+```
 
-Copy
-
-Explain
 For both of them, we need to start the service and enable it if we want to use it permanently:
 
 systemctl start sshd
