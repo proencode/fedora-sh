@@ -1,0 +1,571 @@
+.:
+total 132
+drwxr-xr-x 1 user 197121  0  1월  1  1980 ./
+drwxr-xr-x 1 user 197121  0  3월  6 11:57 ../
+-rw-r--r-- 1 user 197121 91  1월 18 11:36 00-copytoC-bada.bat
+drwxr-xr-x 1 user 197121  0  3월  3 12:27 41-app_linux/
+drwxr-xr-x 1 user 197121  0  3월  4 20:00 42-more100M-app_linux/
+drwxr-xr-x 1 user 197121  0  3월  5 01:57 43-app_windows/
+drwxr-xr-x 1 user 197121  0  3월  4 20:37 44-more100M-app_windows/
+drwxr-xr-x 1 user 197121  0  3월  5 02:05 bada/
+drwxr-xr-x 1 user 197121  0  2월 19 14:29 etc_files/
+drwxr-xr-x 1 user 197121  0  4월 13  2023 System Volume Information/
+drwxr-xr-x 1 user 197121  0  3월  3 17:40 udemy-2312-video-zip/
+drwxr-xr-x 1 user 197121  0  2월 23 09:48 zz00logs/
+
+./41-app_linux:
+total 331776
+drwxr-xr-x 1 user 197121        0  3월  3 12:27 ./
+drwxr-xr-x 1 user 197121        0  1월  1  1980 ../
+-rw-r--r-- 1 user 197121     2211  7월 21  2023 DOTbashrc
+-rw-r--r-- 1 user 197121     6620  9월 20 12:24 DOTconfig-rclone.7z
+-rw-r--r-- 1 user 197121     2642  7월 21  2023 DOTvimrc
+-rw-r--r-- 1 user 197121    79496  7월 26  2023 dropbox_2022.12.05_amd64.deb
+-rw-r--r-- 1 user 197121 45157569  6월 13  2023 fonts-D2-KoPub-jeju-nanum-seoul.7z
+-rw-r--r-- 1 user 197121 73721189  1월  6 11:46 jetbrains-toolbox-2.1.3.18901.tar.gz
+-rw-r--r-- 1 user 197121  8059155  7월 26  2023 keepassxc-2.7.5-2.fc38.x86_64.rpm
+-rw-r--r-- 1 user 197121 90774484  1월 26  2023 ko.231.158.zip
+-rw-r--r-- 1 user 197121        0  7월 22  2023 ko.231.158x.230722-0947-jar-com.intellij.ko-한글
+-rw-r--r-- 1 user 197121    81982  9월 20 12:03 nautilus-dropbox-2022.12.05-1.fedora.x86_64.rpm
+-rw-r--r-- 1 user 197121    80704  2월 20  2022 pu02.RegEdit.exe.HKEY_CURRENT_USER.Software.SimonTatham.PuTTY4.reg
+-rw-r--r-- 1 user 197121    46257  2월 24  2023 sha256sum.zip
+-rw-r--r-- 1 user 197121    65249  8월 30  2022 spring.io--MovieReviewBoard.zip
+-rw-r--r-- 1 user 197121 96843142  2월 20 08:31 VirtualBox-7.0-7.0.14_161095_fedora36-1.x86_64.rpm
+-rw-r--r-- 1 user 197121 23818978  6월  1  2023 wordpress-6.2.2-ko_KR.tar.gz
+
+./42-more100M-app_linux:
+total 3234560
+drwxr-xr-x 1 user 197121          0  3월  4 20:00 ./
+drwxr-xr-x 1 user 197121          0  1월  1  1980 ../
+-rw-r--r-- 1 user 197121 1079632896  6월 12  2023 android-studio-2022.2.1.20-linux.tar.gz
+-rw-r--r-- 1 user 197121  105944353  4월 21  2023 eclipse-inst-jre-linux64-2023-03.tar.gz
+-rw-r--r-- 1 user 197121  974152883  1월  6 11:37 ideaIC-2023.2.2.tar.gz
+-rw-r--r-- 1 user 197121  577477377  7월 22  2023 pycharm-community-2023.1.4.tar.gz
+-rw-r--r-- 1 user 197121  574649029  6월 13  2023 spring-tool-suite-4-4.18.1.RELEASE-e4.27.0-linux.gtk.x86_64.tar.gz
+
+./43-app_windows:
+total 329984
+drwxr-xr-x 1 user 197121        0  3월  5 01:57 ./
+drwxr-xr-x 1 user 197121        0  1월  1  1980 ../
+-rw-r--r-- 1 user 197121      474  8월  3  2023 00RUN.00-exe-230803-1229.bat
+-rw-r--r-- 1 user 197121      368  8월  4  2023 00RUN.00-exe-230804-1054.bat
+-rw-r--r-- 1 user 197121  4139088  6월 20  2023 4Git-usr-D2Coding.7z
+-rwxr-xr-x 1 user 197121  1589510  6월 26  2023 7z2301-x64.exe*
+-rwxr-xr-x 1 user 197121   578048  9월 19  2022 7zr.exe*
+-rwxr-xr-x 1 user 197121  1446992 12월 18 10:30 BraveBrowserSetup-BRV010.exe*
+-rwxr-xr-x 1 user 197121  1373744 11월 10 15:53 ChromeSetup.exe*
+-rwxr-xr-x 1 user 197121 30773952 10월  4  2022 cleverpdf-v300.exe*
+-rw-r--r-- 1 user 197121  3553188 11월 28 11:26 D2Coding-NotoMono-FONT-231128-1125.7z.001
+-rwxr-xr-x 1 user 197121   788872  8월 27  2023 DropboxInstaller.exe*
+-rw-r--r-- 1 user 197121      212  6월 21  2023 echo-run-chrome.txt
+-rwxr-xr-x 1 user 197121  2329224  6월 19  2023 JavaSetup8u371.exe*
+-rwxr-xr-x 1 user 197121 67968544 12월 19 12:42 jetbrains-toolbox-2.1.2.18853.exe*
+-rw-r--r-- 1 user 197121 32481280  9월  5  2023 KeePassXC-2.7.6-Win64.msi
+-rw-r--r-- 1 user 197121   773918  6월 26  2023 kotlin-ktor-rest-api.7z
+-rw-r--r-- 1 user 197121    62486  6월 19  2023 ktor-rest-api-211031.zip
+-rw-r--r-- 1 user 197121  2514944  6월 21  2023 mysql-installer-web-community-8.0.33.0.msi
+-rw-r--r-- 1 user 197121 64629621 11월 24 17:02 noto-font-opentype-truetype.7z
+-rw-r--r-- 1 user 197121 10084539 11월 27 14:48 noto-font-truetype-231127-1448.7z
+-rwxr-xr-x 1 user 197121 21025552  5월 17  2023 PhotoScapeSetup_V3.7.exe*
+-rw-r--r-- 1 user 197121 20257387  1월  2 12:42 rclone-v1.65.0-windows-amd64.zip
+-rwxr-xr-x 1 user 197121 44420344  1월 19 13:40 vlc-3.0.20-win64.exe*
+-rw-r--r-- 1 user 197121 25360773  6월  1  2023 wordpress-6.2.2-ko_KR.zip
+
+./44-more100M-app_windows:
+total 3948544
+drwxr-xr-x 1 user 197121          0  3월  4 20:37 ./
+drwxr-xr-x 1 user 197121          0  1월  1  1980 ../
+-rwxr-xr-x 1 user 197121 1035510136  6월 12  2023 android-studio-2022.2.1.20-windows.exe*
+-rwxr-xr-x 1 user 197121  480047040  1월  2 16:33 eBookLibrary_Kyobo.exe*
+-rw-r--r-- 1 user 197121  120632782  6월 19  2023 gradle-7.5-bin.zip
+-rwxr-xr-x 1 user 197121  692289936  7월 27  2023 ideaIC-2023.2.exe*
+-rw-r--r-- 1 user 197121  147637330  7월 10  2023 inkscape-1.2.2_2022-12-09_732a01da63-x64.msi
+-rwxr-xr-x 1 user 197121  160723096  6월 19  2023 jdk-17_windows-x64_bin.exe*
+-rwxr-xr-x 1 user 197121  167840304  6월 16  2023 Postman-win64-Setup.exe*
+-rwxr-xr-x 1 user 197121  423849032  3월 28  2023 pycharm-community-2022.3.3.exe*
+-rwxr-xr-x 1 user 197121  115074352  1월  9  2023 SlackSetup.exe*
+-rw-r--r-- 1 user 197121  559436768  6월 13  2023 spring-tool-suite-4-4.18.1.RELEASE-e4.27.0-win32.win32.x86_64.self-extracting.jar
+-rw-r--r-- 1 user 197121  139500650  9월  5  2023 YES24eBookSetup-230905.zip
+
+./bada:
+total 3074304
+drwxr-xr-x 1 user 197121          0  3월  5 02:05 ./
+drwxr-xr-x 1 user 197121          0  1월  1  1980 ../
+-rw-r--r-- 1 user 197121        585  3월  6 12:53 00-install_program-240306-1228.bat
+drwxr-xr-x 1 user 197121          0  3월  2 17:39 4Git/
+-rwxr-xr-x 1 user 197121    1589510  6월 26  2023 7z2301-x64.exe*
+-rwxr-xr-x 1 user 197121     578048  9월 19  2022 7zr.exe*
+-rwxr-xr-x 1 user 197121    1446992 12월 18 10:30 BraveBrowserSetup-BRV010.exe*
+-rwxr-xr-x 1 user 197121    1376304  1월 28 15:37 ChromeSetup.exe*
+drwxr-xr-x 1 user 197121          0  3월  2 17:40 downloads/
+-rwxr-xr-x 1 user 197121  320646304 11월 18 09:49 gimp-2.10.36-setup.exe*
+-rwxr-xr-x 1 user 197121   65350776  3월  2 17:49 Git-2.44.0-64-bit.exe*
+-rw-r--r-- 1 user 197121      37338  3월  6 13:12 kdbx-putty-reg-240306-1312.7z.001
+-rw-r--r-- 1 user 197121   32481280  9월  5  2023 KeePassXC-2.7.6-Win64-230905.msi
+-rw-r--r-- 1 user 197121  363511808  2월 28 13:30 LibreOffice_24.2.0_Win_x86-64.msi
+-rw-r--r-- 1 user 197121    3709440  3월  2 17:57 putty-64bit-0.80-installer.msi
+-rw-r--r-- 1 user 197121       5394 11월 29 14:32 rclone-HOME_snap_rclone_current_.config_rclone_rclone.conf-231129-1431.7z
+-rw-r--r-- 1 user 197121    6235838  1월 22 15:54 rsync-for-GitBash-240122-1554.7z.001
+-rw-r--r-- 1 user 197121 2158363498  2월 28 11:38 ubuntu2204svr.03-git-projects-240228-1138.7z.001
+-rw-r--r-- 1 user 197121          0  2월 28 11:35 ubuntu2204svr.03-git-projects-240228-1138.7z.tag2
+-rw-r--r-- 1 user 197121     101710  1월 22 15:29 USERvb7.03-u2204svr-240122-1529.7z.001
+-rwxr-xr-x 1 user 197121   25416016  3월  2 10:52 VC_redist.x64-14.38.33135.0.exe*
+-rwxr-xr-x 1 user 197121  111161880  1월 18 12:46 VirtualBox-7.0.14-161095-Win.exe*
+-rwxr-xr-x 1 user 197121   42860784  1월 28 14:22 vlc-3.0.20-win32.exe*
+-rwxr-xr-x 1 user 197121   11580272  3월  2 17:46 WinSCP-6.3.1-Setup.exe*
+
+./bada/4Git:
+total 0
+drwxr-xr-x 1 user 197121 0  3월  2 17:39 ./
+drwxr-xr-x 1 user 197121 0  3월  5 02:05 ../
+drwxr-xr-x 1 user 197121 0  1월  8 11:28 fonts/
+drwxr-xr-x 1 user 197121 0  1월  8 11:28 usr/
+
+./bada/4Git/fonts:
+total 17920
+drwxr-xr-x 1 user 197121       0  1월  8 11:28 ./
+drwxr-xr-x 1 user 197121       0  3월  2 17:39 ../
+-rw-r--r-- 1 user 197121 8410952  5월 25  2018 D2Coding.ttc
+-rw-r--r-- 1 user 197121 4185844  5월 25  2018 D2Coding.ttf
+-rw-r--r-- 1 user 197121 4359956  5월 25  2018 D2CodingBold.ttf
+-rw-r--r-- 1 user 197121  107848 11월 11  2020 NotoMono-Regular.ttf
+-rw-r--r-- 1 user 197121  523412 12월 26  2020 NotoSansMono-Bold.ttf
+-rw-r--r-- 1 user 197121  510612 12월 26  2020 NotoSansMono-Regular.ttf
+
+./bada/4Git/usr:
+total 0
+drwxr-xr-x 1 user 197121 0  1월  8 11:28 ./
+drwxr-xr-x 1 user 197121 0  3월  2 17:39 ../
+drwxr-xr-x 1 user 197121 0  1월  8 11:28 bin/
+drwxr-xr-x 1 user 197121 0  1월  8 11:28 lib/
+drwxr-xr-x 1 user 197121 0  1월  8 11:28 share/
+
+./bada/4Git/usr/bin:
+total 5760
+drwxr-xr-x 1 user 197121       0  1월  8 11:28 ./
+drwxr-xr-x 1 user 197121       0  1월  8 11:28 ../
+-rwxr-xr-x 1 user 197121 2504416  1월  4 05:03 msys-crypto-1.1.dll*
+-rwxr-xr-x 1 user 197121   57520  8월 29  2020 msys-xxhash-0.8.0.dll*
+-rwxr-xr-x 1 user 197121   48304  8월 11  2023 msys-xxhash-0.dll*
+-rwxr-xr-x 1 user 197121  798146  5월 16  2022 msys-zstd-1.dll*
+-rwxr-xr-x 1 user 197121  520187 10월 24  2020 rsync.exe*
+-rwxr-xr-x 1 user 197121    4914 10월 24  2020 rsync-ssl*
+-rwxr-xr-x 1 user 197121 1355766  1월  5  2023 zstd.exe*
+
+./bada/4Git/usr/lib:
+total 0
+drwxr-xr-x 1 user 197121 0  1월  8 11:28 ./
+drwxr-xr-x 1 user 197121 0  1월  8 11:28 ../
+drwxr-xr-x 1 user 197121 0  1월  8 11:28 rsync/
+
+./bada/4Git/usr/lib/rsync:
+total 128
+drwxr-xr-x 1 user 197121    0  1월  8 11:28 ./
+drwxr-xr-x 1 user 197121    0  1월  8 11:28 ../
+-rwxr-xr-x 1 user 197121 7467 10월 24  2020 rrsync*
+
+./bada/4Git/usr/share:
+total 0
+drwxr-xr-x 1 user 197121 0  1월  8 11:28 ./
+drwxr-xr-x 1 user 197121 0  1월  8 11:28 ../
+drwxr-xr-x 1 user 197121 0  1월  8 11:28 licenses/
+drwxr-xr-x 1 user 197121 0  1월  8 11:28 man/
+
+./bada/4Git/usr/share/licenses:
+total 0
+drwxr-xr-x 1 user 197121 0  1월  8 11:28 ./
+drwxr-xr-x 1 user 197121 0  1월  8 11:28 ../
+drwxr-xr-x 1 user 197121 0  1월  8 11:28 libxxhash/
+drwxr-xr-x 1 user 197121 0  1월  8 11:28 rsync/
+
+./bada/4Git/usr/share/licenses/libxxhash:
+total 128
+drwxr-xr-x 1 user 197121    0  1월  8 11:28 ./
+drwxr-xr-x 1 user 197121    0  1월  8 11:28 ../
+-rw-r--r-- 1 user 197121 2228  8월 29  2020 LICENSE
+
+./bada/4Git/usr/share/licenses/rsync:
+total 128
+drwxr-xr-x 1 user 197121     0  1월  8 11:28 ./
+drwxr-xr-x 1 user 197121     0  1월  8 11:28 ../
+-rw-r--r-- 1 user 197121 35564 10월 24  2020 COPYING
+
+./bada/4Git/usr/share/man:
+total 0
+drwxr-xr-x 1 user 197121 0  1월  8 11:28 ./
+drwxr-xr-x 1 user 197121 0  1월  8 11:28 ../
+drwxr-xr-x 1 user 197121 0  1월  8 11:28 man1/
+drwxr-xr-x 1 user 197121 0  1월  8 11:28 man5/
+
+./bada/4Git/usr/share/man/man1:
+total 256
+drwxr-xr-x 1 user 197121     0  1월  8 11:28 ./
+drwxr-xr-x 1 user 197121     0  1월  8 11:28 ../
+-rw-r--r-- 1 user 197121 64401 10월 24  2020 rsync.1.gz
+-rw-r--r-- 1 user 197121  1809 10월 24  2020 rsync-ssl.1.gz
+
+./bada/4Git/usr/share/man/man5:
+total 128
+drwxr-xr-x 1 user 197121     0  1월  8 11:28 ./
+drwxr-xr-x 1 user 197121     0  1월  8 11:28 ../
+-rw-r--r-- 1 user 197121 19575 10월 24  2020 rsyncd.conf.5.gz
+
+./bada/downloads:
+total 0
+drwxr-xr-x 1 user 197121 0  3월  2 17:40 ./
+drwxr-xr-x 1 user 197121 0  3월  5 02:05 ../
+
+./etc_files:
+total 1643776
+drwxr-xr-x 1 user 197121          0  2월 19 14:29 ./
+drwxr-xr-x 1 user 197121          0  1월  1  1980 ../
+-rw-r--r-- 1 user 197121   50416572  1월 28 12:47 3일차초급36.피자주문실습-JJ-20-win10home-ver1909-in200228-build18363.657-240128-1248.mkv
+-rw-r--r-- 1 user 197121   35726872  1월 28 14:11 3일차초급36.피자주문실습-PRN-6-win11home-ver22H2-in230608-build22621.3007-240128-1411.mkv
+-rw-r--r-- 1 user 197121  142153062  2월 20 17:09 4Git-240220화-1708.7z.001
+drwxr-xr-x 1 user 197121          0  9월  6 01:28 bin/
+drwxr-xr-x 1 user 197121          0  1월 18 12:33 iso_ubuntu/
+-rw-r--r-- 1 user 197121      37940  3월  4 18:52 kdbx-reg-240304-1852.7z.001
+-rw-r--r-- 1 user 197121      37940  3월  4 18:52 kdbx-reg-240304월-1852.7z.001
+-rw-r--r-- 1 user 197121      37939  3월  5 11:00 kdbx-reg-240305-1058.7z.001
+drwxr-xr-x 1 user 197121          0  3월  2 18:44 old_bat/
+drwxr-xr-x 1 user 197121          0 11월 15 11:05 old_users/
+drwxr-xr-x 1 user 197121          0  1월  6 12:06 old_vdi.7z/
+-rw-r--r-- 1 user 197121        639  1월 17 00:33 old01.09-C_다운로드_bada-Fedora-240117-0033.bat
+drwxr-xr-x 1 user 197121          0  6월 20  2023 pdf-epub-mp4/
+-rw-r--r-- 1 user 197121       3394  3월  5 10:40 putty-export-regedit-240305-1039.reg.7z
+drwxr-xr-x 1 user 197121          0  1월  6 11:43 run/
+-rw-r--r-- 1 user 197121      24527 11월 15 12:14 USB-231115수-1214.ls-lR
+-rw-r--r-- 1 user 197121       2252  1월 19 16:26 user-ubuntu2204svr.00-240119-1626.7z.001
+drwxr-xr-x 1 user 197121          0  9월  4  2023 vdi_Fedora/
+drwxr-xr-x 1 user 197121          0 11월 15 11:34 vdi_Windows/
+drwxr-xr-x 1 user 197121          0 10월 23 15:08 Virtualbox_jammy_amd64/
+-rw-r--r-- 1 user 197121 1453349748  2월 20 15:46 YES24eBook-240220화-1532.7z
+-rw-r--r-- 1 user 197121        298 11월 20 11:06 z02.01-copytoC-vdi_Fedora-app-4Git-231120_1055.bat
+-rw-r--r-- 1 user 197121        293  1월 17 00:30 z03.06-copytoC-4Git-quickusb-app_linux-240113-1525.bat
+-rw-r--r-- 1 user 197121        305 11월 20 11:14 z04.01-copytoC-vdi_Windows-app-4Git-231120_1103.bat
+
+./etc_files/bin:
+total 512
+drwxr-xr-x 1 user 197121    0  9월  6 01:28 ./
+drwxr-xr-x 1 user 197121    0  2월 19 14:29 ../
+-rwxr-xr-x 1 user 197121  793  8월 29  2023 00-made-ls-alR-7z.sh*
+-rwxr-xr-x 1 user 197121 3433  4월  7  2023 file-check-vbada.sh*
+-rwxr-xr-x 1 user 197121   95 11월 15 12:14 ls-alR.sh*
+-rwxr-xr-x 1 user 197121  363  8월  3  2023 pp-dir-listing.sh*
+
+./etc_files/iso_ubuntu:
+total 8594816
+drwxr-xr-x 1 user 197121          0  1월 18 12:33 ./
+drwxr-xr-x 1 user 197121          0  2월 19 14:29 ../
+-rw-r--r-- 1 user 197121 5037662208  1월 18 11:44 ubuntu-22.04.3-desktop-amd64.iso
+-rw-r--r-- 1 user 197121 2133391360  1월 18 11:17 ubuntu-22.04.3-live-server-amd64.iso
+-rw-r--r-- 1 user 197121 1629840970  1월 19 16:35 ubuntu2204svr.00-init-240119-1428.7z.001
+
+./etc_files/old_bat:
+total 10112
+drwxr-xr-x 1 user 197121    0  3월  2 18:44 ./
+drwxr-xr-x 1 user 197121    0  2월 19 14:29 ../
+-rw-r--r-- 1 user 197121  419  2월 20 17:08 00-install_program-240220화-1708.bat
+-rw-r--r-- 1 user 197121  433  2월 24 12:48 00-install_program-240224토-1249.bat
+-rw-r--r-- 1 user 197121  391  3월  5 11:19 00-install_program-240305화-1058.bat
+-rw-r--r-- 1 user 197121  724  3월  6 11:05 00-install_program-240306-1105.bat
+-rw-r--r-- 1 user 197121  266  6월 21  2023 00RUN.00-exe-230621-1116.bat
+-rw-r--r-- 1 user 197121  343  6월 21  2023 00RUN.00-exe-230621-1401.bat
+-rw-r--r-- 1 user 197121  384  6월 21  2023 00RUN.00-exe-230621-1422.bat
+-rw-r--r-- 1 user 197121  400  6월 23  2023 00RUN.00-exe-230623-1102.bat
+-rw-r--r-- 1 user 197121  400  6월 26  2023 00RUN.00-exe-230626-1019.bat
+-rw-r--r-- 1 user 197121  346  6월 26  2023 00RUN.00-exe-230626-1225.bat
+-rw-r--r-- 1 user 197121  412  6월 26  2023 00RUN.00-exe-230626-1618.bat
+-rw-r--r-- 1 user 197121  285  6월 26  2023 00RUN.00-exe-230626-1647.bat
+-rw-r--r-- 1 user 197121  335  6월 26  2023 00RUN.00-exe-230626-1724.bat
+-rw-r--r-- 1 user 197121  329  6월 26  2023 00RUN.00-exe-230626-1739.bat
+-rw-r--r-- 1 user 197121  476  7월 14  2023 00RUN.00-exe-230714-1001.bat
+-rw-r--r-- 1 user 197121  470  7월 17  2023 00RUN.00-exe-230717-1020.bat
+-rw-r--r-- 1 user 197121  470  7월 17  2023 00RUN.00-exe-230717-1147.bat
+-rw-r--r-- 1 user 197121  513  7월 21  2023 00RUN.00-exe-230721-1419.bat
+-rw-r--r-- 1 user 197121  333  8월  3  2023 00RUN.00-exe-230803-1229.bat
+-rw-r--r-- 1 user 197121  654 11월 17 11:54 01.00-C_다운로드_bada-Fedora-231117-1154.bat
+-rw-r--r-- 1 user 197121  654 11월 20 10:41 01.00-C_다운로드_bada-Fedora-231120-1041.bat
+-rw-r--r-- 1 user 197121  653 11월 20 11:07 01.01-C_다운로드_bada-Fedora-231120-1057.bat
+-rw-r--r-- 1 user 197121  653 11월 23 14:29 01.02-C_다운로드_bada-Fedora-231123-1429.bat
+-rw-r--r-- 1 user 197121  653 11월 28 11:50 01.03-C_다운로드_bada-Fedora-231128-1112.bat
+-rw-r--r-- 1 user 197121  652 11월 29 14:05 01.04-C_다운로드_bada-Fedora-231129-1405.bat
+-rw-r--r-- 1 user 197121  652 11월 30 09:41 01.05-C_다운로드_bada-Fedora-231130-0940.bat
+-rw-r--r-- 1 user 197121  654 12월  4 16:17 01.06-C_다운로드_bada-Fedora-231204-1018.bat
+-rw-r--r-- 1 user 197121  654 12월 20 09:48 01.07-C_다운로드_bada-Fedora-231220-0948.bat
+-rw-r--r-- 1 user 197121  633 12월 22 13:29 01.08-C_다운로드_bada-Fedora-231222-1329.bat
+-rw-r--r-- 1 user 197121  392  7월 21  2023 01-JIN.02-진접도-D_ir3300_1DB171-230721-1056.bat
+-rw-r--r-- 1 user 197121  344  8월  2  2023 01-JIN.03-진접도-D_ir3300_1DB171-230802-1719.bat
+-rw-r--r-- 1 user 197121  461  8월  3  2023 01-JIN.04-진접도-D_ir3300_1DB171-230803-1226.bat
+-rw-r--r-- 1 user 197121  684 11월 15 12:08 02.36-C_다운로드_bada-231115-1148.bat
+-rw-r--r-- 1 user 197121 2042 10월  4 15:28 02-02-PRN.28-푸른숲-C_다운로드_bada-231004-1528.bat
+-rw-r--r-- 1 user 197121 2076 10월  5 10:30 02-02-PRN.29-푸른숲-C_다운로드_bada-231005-1010.bat
+-rw-r--r-- 1 user 197121 2043 10월  5 11:49 02-02-PRN.29-푸른숲-C_다운로드_bada-231005-1043.bat
+-rw-r--r-- 1 user 197121 2112 10월 11 14:57 02-03-PRN.30-푸른숲-C_다운로드_bada-231011-1457.bat
+-rw-r--r-- 1 user 197121 2070 10월 24 11:36 02-03-PRN.31-푸른숲-C_다운로드_bada-231024-1107.bat
+-rw-r--r-- 1 user 197121 2160 10월 25 10:33 02-03-PRN.32-푸른숲-C_다운로드_bada-231025-1033.bat
+-rw-r--r-- 1 user 197121 1195 10월 27 10:42 02-03-PRN.33-푸른숲-C_다운로드_bada-231027-1042.bat
+-rw-r--r-- 1 user 197121 1195 11월  8 11:48 02-03-PRN.34-푸른숲-C_다운로드_bada-231108-1148.bat
+-rw-r--r-- 1 user 197121 1195 11월 13 11:07 02-03-PRN.35-푸른숲-C_다운로드_bada-231113-1107.bat
+-rw-r--r-- 1 user 197121 1074  7월 31  2023 02-PRN.21-푸른숲-C_다운로드_bada-230731-1404.bat
+-rw-r--r-- 1 user 197121 1134  8월  2  2023 02-PRN.22-푸른숲-C_다운로드_bada-230802-1713.bat
+-rw-r--r-- 1 user 197121 1234  8월  3  2023 02-PRN.23-푸른숲-C_다운로드_bada-230803-1528.bat
+-rw-r--r-- 1 user 197121 1234  8월 12  2023 02-PRN.24-푸른숲-C_다운로드_bada-230812-1520.bat
+-rw-r--r-- 1 user 197121 1242  9월  6 13:20 02-PRN.25-푸른숲-C_다운로드_bada-230906-1226.bat
+-rw-r--r-- 1 user 197121 2012  9월 26 15:39 02-PRN.27-푸른숲-C_다운로드_bada-230926-1545.bat
+-rw-r--r-- 1 user 197121  167 10월 24 11:44 96-01-copy-toc-7zr-x-ubuntu2204-231024-1104.bat
+-rw-r--r-- 1 user 197121   59 10월  5 11:43 97-00-copy-toc-linuxApp-231005-1144.bat
+-rw-r--r-- 1 user 197121  224 10월 24 11:43 97-01-copy-toc-4Git-linuxApp-231024-1046.bat
+-rw-r--r-- 1 user 197121  494 10월 27 10:57 97-02-copy-toc-4Git-linuxApp-231027-1040.bat
+-rw-r--r-- 1 user 197121  496 11월 13 11:05 97-03-copy-toc-4Git-linuxApp-231113-1104.bat
+-rw-r--r-- 1 user 197121  182 10월  4 15:21 98-02-copy-toc-7zr-x-windows-231004-1514.bat
+-rw-r--r-- 1 user 197121  171 10월  5 11:46 98-03-copy-toc-7zr-x-windows-231005-1007.bat
+-rw-r--r-- 1 user 197121  181 10월 24 11:44 98-04-copy-toc-7zr-x-windows-231024-1112.bat
+-rw-r--r-- 1 user 197121  165  9월 19 15:19 98-copy-toc-7zr-x-windows.bat
+-rw-r--r-- 1 user 197121  111  3월 27  2023 99.03a.VC_redist.x64_Install-230216-1059.bat
+-rw-r--r-- 1 user 197121  183 10월  4 15:24 99-02-copy-toc-7zr-x-fedora-231004-1524.bat
+-rw-r--r-- 1 user 197121  172 10월 24 10:52 99-03-copy-toc-7zr-x-fedora-231005-1001.bat
+-rw-r--r-- 1 user 197121  182 10월 24 11:44 99-04-copy-toc-7zr-x-fedora-231024-1052.bat
+-rw-r--r-- 1 user 197121  329  9월 26 15:26 99-copy-toc-7zr-x-fedora.bat
+-rw-r--r-- 1 user 197121 1929  5월 19  2023 BAT.JJ15-진접19jj-D_ir3300_iDB171j-230517-1011.bat
+-rw-r--r-- 1 user 197121 3119  5월 19  2023 BAT.PRN17-푸른숲13prn-C_다운로드_bada-230517-0956.bat
+-rw-r--r-- 1 user 197121 3116  6월 28  2023 BAT.PRN17-푸른숲13prn-C_다운로드_bada-230628-1007.bat
+-rw-r--r-- 1 user 197121 3392  7월 17  2023 BAT.PRN17-푸른숲13prn-C_다운로드_bada-230717-1016.bat
+-rw-r--r-- 1 user 197121 1275  7월 21  2023 PRN20-푸른숲PC13-C_다운로드_bada-230721-1058.bat
+-rw-r--r-- 1 user 197121 1885  4월 13  2023 xxxJJ-02.22-VBox7_FROM-D-230413-0930.bat
+-rw-r--r-- 1 user 197121 2832  4월 27  2023 xxxPRnS13-푸른숲-1DB171-230427-1117.bat
+-rw-r--r-- 1 user 197121  232 11월 17 11:50 z02.00-copytoC-vdi_Fedora-app_Linux-231117.1150.bat
+-rw-r--r-- 1 user 197121  298 11월 20 11:06 z02.01-copytoC-vdi_Fedora-app-4Git-231120_1055.bat
+-rw-r--r-- 1 user 197121  226 11월 17 12:00 z03.00-copytoC-vdi_Ubuntu-app_Linux-231117.1200.bat
+-rw-r--r-- 1 user 197121  292 11월 20 11:15 z03.01-copytoC-vdi_Ubuntu-app-4Git-231120_1059.bat
+-rw-r--r-- 1 user 197121  308 11월 23 14:27 z03.02-copytoC-vdi_Ubuntu-app-4Git-231123_1427.bat
+-rw-r--r-- 1 user 197121  307 11월 29 10:02 z03.03-copytoC-vdi_Ubuntu-4Git-app-231127-1403.bat
+-rw-r--r-- 1 user 197121  307 11월 30 09:39 z03.04-copytoC-4Git-vdi_Ubuntu-app-231130-0938.bat
+-rw-r--r-- 1 user 197121  294 12월  1 09:54 z03.05-copytoC-4Git-vdi_Ubuntu-app-231201-0954.bat
+-rw-r--r-- 1 user 197121  179 11월 17 11:52 z04.00-copytoC-vdi_Windows-10-231117.1152.bat
+-rw-r--r-- 1 user 197121  305 11월 20 11:14 z04.01-copytoC-vdi_Windows-app-4Git-231120_1103.bat
+
+./etc_files/old_users:
+total 3584
+drwxr-xr-x 1 user 197121      0 11월 15 11:05 ./
+drwxr-xr-x 1 user 197121      0  2월 19 14:29 ../
+-rw-r--r-- 1 user 197121   5485  4월 27  2023 UsersVBox7.12-PRN13-푸른숲-C-다운로드-bada-230427-1204.7z.001
+-rw-r--r-- 1 user 197121 324267  4월 28  2023 UsersVBox7.13-JJ19-진접-D-ir3300-iDB171-vdi-files-230428-0959.7z.001
+-rw-r--r-- 1 user 197121 312282  5월  4  2023 UsersVBox7.14-D-ir3300-iDB171-vdi-files-JJ19-진접-230504-0944.7z.001
+-rw-r--r-- 1 user 197121  55394  5월  3  2023 UsersVBox7.14-PRN13-푸른숲-C-다운로드-bada-230503-1444.7z.001
+-rw-r--r-- 1 user 197121  55394  5월  3  2023 UsersVBox7.16-C_다운로드_bada-PR13-푸른숲-230504-1006.7z.001
+-rw-r--r-- 1 user 197121 312282  5월  4  2023 UsersVBox7.JJ15-진접19jj-D_ir3300_iDB171-230517-1011.7z.001
+-rw-r--r-- 1 user 197121   7310  6월 16  2023 UsersVBox7.JJ16-진접19jj-D_ir3300_iDB171-230616-1017.7z.001
+-rw-r--r-- 1 user 197121  60131  6월 28  2023 UsersVBox7.PRN01-푸른숲13-C_다운로드_bada-230628-1649.7z.001
+-rw-r--r-- 1 user 197121 106681  5월 26  2023 UsersVBox7.PRN17-푸른숲13prn-C_다운로드_bada-230526-1043.7z.001
+-rw-r--r-- 1 user 197121 106681  5월 26  2023 UsersVBox7.PRN17-푸른숲PC13-C_다운로드_bada-230526-1043.7z.001
+-rw-r--r-- 1 user 197121   4962  7월 12  2023 UsersVBox7.PRN18-푸른숲PC13-C_다운로드_bada-230712-1014.7z.001
+-rw-r--r-- 1 user 197121   4936  7월 20  2023 UsersVBox7.PRN19-푸른숲PC13-C_다운로드_bada-230720-1047.7z.001
+-rw-r--r-- 1 user 197121 167199  7월 21  2023 UsersVBox7.PRN20-푸른숲PC13-C_다운로드_bada-230721-1335.7z.001
+-rw-r--r-- 1 user 197121 120482 11월 23 11:01 UsersVBox7-01.00-f38-u2204desktop-w10-231123-1100.7z.001
+-rw-r--r-- 1 user 197121 165759 11월 28 16:14 UsersVBox7-01.01-f38-u2204desktopserver-w10-231128-1614.7z
+-rw-r--r-- 1 user 197121 119411 11월 15 12:07 UsersVBox7-01C_다운로드_bada-231115-1206.7z.001
+-rw-r--r-- 1 user 197121   4883  7월 10  2023 UsersVBox7-JIN.00-진접도-D_ir3300_iDB171-230710-1026.7z.001
+-rw-r--r-- 1 user 197121  47991  7월 31  2023 UsersVBox7-PRN.00-푸른숲-C_다운로드_bada-230731-1029.7z.001
+-rw-r--r-- 1 user 197121 144070  8월  3  2023 UsersVBox7-PRN.00-푸른숲-C_다운로드_bada-230803-1540.7z.001
+
+./etc_files/old_vdi.7z:
+total 1647104
+drwxr-xr-x 1 user 197121          0  1월  6 12:06 ./
+drwxr-xr-x 1 user 197121          0  2월 19 14:29 ../
+-rw-r--r-- 1 user 197121      16820 10월 31 12:28 export-putty-231031.reg
+-rw-r--r-- 1 user 197121 1686379122 11월 28 15:35 ubuntu2204server.00-init-231128-1528.7z
+-rw-r--r-- 1 user 197121          0 11월 30 10:09 ubuntu2204server.00-init-231128-1528.tag2
+
+./etc_files/pdf-epub-mp4:
+total 3399680
+drwxr-xr-x 1 user 197121          0  6월 20  2023 ./
+drwxr-xr-x 1 user 197121          0  2월 19 14:29 ../
+drwxr-xr-x 1 user 197121          0 11월 21 17:32 00-54-ubuntu-screen-capture/
+-rw-r--r-- 1 user 197121  204397119 12월  4 14:05 2023년 10월 16일 SNS 이미지 편집 1주차 수업영상.mp4
+-rw-r--r-- 1 user 197121  194045370 12월  4 14:28 2023년 10월 23일 SNS 이미지 편집 2주차 수업영상.mp4
+-rw-r--r-- 1 user 197121  240929328 12월  4 14:50 2023년 10월 30일 SNS 이미지 편집 3주차 수업영상.mp4
+-rw-r--r-- 1 user 197121  229317802 12월  4 14:53 2023년 11월 06일 SNS 이미지 편집 4주차 수업영상.mp4
+-rw-r--r-- 1 user 197121  230754313 12월  4 14:56 2023년 11월 13일 SNS 이미지 편집 5주차 수업영상.mp4
+-rw-r--r-- 1 user 197121  207424593 12월  4 14:58 2023년 11월 20일 SNS 이미지 편집 6주차 수업영상.mp4
+-rw-r--r-- 1 user 197121  212076198 12월  4 14:58 2023년 11월 27일 SNS 이미지 편집 7주차 수업영상.mp4
+-rw-r--r-- 1 user 197121      30941  4월 22  2021 210422-grails4-ssc.txt
+-rw-r--r-- 1 user 197121        700 12월  9  2022 221209-memo.txt
+-rw-r--r-- 1 user 197121      42824  6월 20  2023 230619-1102-1-proj-setting.webp
+-rw-r--r-- 1 user 197121      40682  6월 20  2023 230619-1106-2-AddPlugin-rout-nego-seri-logg.webp
+-rw-r--r-- 1 user 197121   34678549  7월 19  2023 230719-1st-fedora-Screenshots.7z
+-rw-r--r-- 1 user 197121   12232119  7월 19  2023 230719-2nd-Screenshots.7z
+-rw-r--r-- 1 user 197121   62392956  7월 20  2023 230720-1323-Fedora-설치-Screenshots.7z.001
+-rw-r--r-- 1 user 197121     373194 11월 28 16:00 231128-1522-ubuntu2204server-Capture-231128-1600.7z
+-rw-r--r-- 1 user 197121     135420 12월 13 14:49 231213-1449-pomodoro-2.png
+-rw-r--r-- 1 user 197121   41836500 12월 20 11:42 231220-1142-요즘 완전 대세! 크롬 확장앱 만들기. 5분컷..mp4
+-rw-r--r-- 1 user 197121  216582677 12월 20 15:48 231220-1547-챗GPT 사용법 강의 (2시간 30분) _ 최신 GPT4 Turbo & GPTs 포함.mp4
+-rw-r--r-- 1 user 197121   39581063 12월 20 16:00 231220-1600-ChatGPT로 10분만에 ChatGPT용 크롬 익스텐션 앱 출시.mp4
+drwxr-xr-x 1 user 197121          0 11월 21 17:08 capture-231121/
+-rw-r--r-- 1 user 197121   18875660 11월 17 17:39 Captures-231117-1739.7z
+-rw-r--r-- 1 user 197121       7383 11월 29 11:56 chrome_ex-128x128.png
+-rw-r--r-- 1 user 197121       4635 11월 29 12:01 chrome_ex-16x16.png
+-rw-r--r-- 1 user 197121       5162 11월 29 12:00 chrome_ex-32X32.png
+-rw-r--r-- 1 user 197121       5813 11월 29 12:00 chrome_ex-48x48.png
+-rw-r--r-- 1 user 197121     254320 12월  6  2021 chromekbd-키보드단축키.jpg
+-rwxr-xr-x 1 user 197121       1016  3월 21  2023 diff-2-dir.sh*
+-rwxr-xr-x 1 user 197121       2074  7월 22  2023 diff-local-remote.sh*
+-rw-r--r-- 1 user 197121       4608 11월 29 12:02 fromORG-chrome_ex-16x16.png
+-rw-r--r-- 1 user 197121 1441608878 12월 11 13:30 fullstackgpt_webm-231211-1326.7z.001
+-rw-r--r-- 1 user 197121   90774484  1월 26  2023 ko.231.158.zip
+-rw-r--r-- 1 user 197121        269  2월 10  2023 mega-tpnoteokr-key.7z
+
+./etc_files/pdf-epub-mp4/00-54-ubuntu-screen-capture:
+total 31488
+drwxr-xr-x 1 user 197121        0 11월 21 17:32 ./
+drwxr-xr-x 1 user 197121        0  6월 20  2023 ../
+-rw-r--r-- 1 user 197121   112939 11월 21 16:03 00-right-top-settings.png
+-rw-r--r-- 1 user 197121   114313 11월 21 16:06 01-Region-n-languages.png
+-rw-r--r-- 1 user 197121 20312886 11월 21 18:33 01-ubuntu2204desktop-capture.7z
+-rw-r--r-- 1 user 197121   142247 11월 21 16:08 02-language-install.png
+-rw-r--r-- 1 user 197121   139544 11월 21 16:08 03-applying-changes.png
+-rw-r--r-- 1 user 197121   139582 11월 21 16:10 04-language-support-ok.png
+-rw-r--r-- 1 user 197121   143369 11월 21 16:10 05-keyboard.png
+-rw-r--r-- 1 user 197121   143199 11월 21 16:11 06-input-source-korean.png
+-rw-r--r-- 1 user 197121   138589 11월 21 16:12 07-korean-add.png
+-rw-r--r-- 1 user 197121   147903 11월 21 16:13 08-move-up.png
+-rw-r--r-- 1 user 197121   141155 11월 21 16:15 09-input-source-korean.png
+-rw-r--r-- 1 user 197121   147283 11월 21 16:17 10-ibus-setup.png
+-rw-r--r-- 1 user 197121   156648 11월 21 16:18 11-input-method-add.png
+-rw-r--r-- 1 user 197121   156987 11월 21 16:19 12-search-korean.png
+-rw-r--r-- 1 user 197121   140952 11월 21 16:20 13-korean-한국어.png
+-rw-r--r-- 1 user 197121   435180 11월 21 16:41 20-ibus-setup.png
+-rw-r--r-- 1 user 197121   440648 11월 21 16:43 21-imput-method-add.png
+-rw-r--r-- 1 user 197121   396213 11월 21 17:11 30-show-app.png
+-rw-r--r-- 1 user 197121    97682 11월 21 17:12 31-settings.png
+-rw-r--r-- 1 user 197121   115228 11월 21 17:14 32-region-n-language.png
+-rw-r--r-- 1 user 197121   140645 11월 21 17:14 33-manage-installed-language.png
+-rw-r--r-- 1 user 197121   140455 11월 21 17:15 34-lang-install.png
+-rw-r--r-- 1 user 197121   140825 11월 21 17:16 35-applying-changes.png
+-rw-r--r-- 1 user 197121   136754 11월 21 17:17 36-install-remove-languages.png
+-rw-r--r-- 1 user 197121   140696 11월 21 17:20 37-hankuko-ok.png
+-rw-r--r-- 1 user 197121   152875 11월 21 17:21 38-no-english.png
+-rw-r--r-- 1 user 197121   131182 11월 21 17:22 39-apply-system-wide.png
+-rw-r--r-- 1 user 197121   134705 11월 21 17:24 40-regional-formats.png
+-rw-r--r-- 1 user 197121   136238 11월 21 17:29 41-click-plus-char.png
+-rw-r--r-- 1 user 197121   401711 11월 21 17:30 42-reboot.png
+-rw-r--r-- 1 user 197121   135105 11월 21 17:34 43-keyboard-add-input-source-korean.png
+-rw-r--r-- 1 user 197121   140733 11월 21 17:34 44-korean-hangul.png
+-rw-r--r-- 1 user 197121   150651 11월 21 17:35 45-move-up.png
+-rw-r--r-- 1 user 197121   141308 11월 21 17:36 46-input-source.png
+-rw-r--r-- 1 user 197121   149067 11월 21 17:37 47-english-remove.png
+-rw-r--r-- 1 user 197121   143037 11월 21 17:37 48-last-input-source.png
+-rw-r--r-- 1 user 197121   152514 11월 21 17:38 49-preferences.png
+-rw-r--r-- 1 user 197121   177438 11월 21 17:39 50-hangul-toggle-key-add.png
+-rw-r--r-- 1 user 197121   337552 11월 21 17:44 51-alt-R.png
+-rw-r--r-- 1 user 197121   179699 11월 21 17:45 52-alt-R-ok.png
+-rw-r--r-- 1 user 197121   401886 11월 21 17:46 53-english-typing.png
+-rw-r--r-- 1 user 197121   402338 11월 21 17:47 54-hangul-typing.png
+
+./etc_files/pdf-epub-mp4/capture-231121:
+total 4352
+drwxr-xr-x 1 user 197121      0 11월 21 17:08 ./
+drwxr-xr-x 1 user 197121      0  6월 20  2023 ../
+-rw-r--r-- 1 user 197121 112939 11월 21 16:03 00-right-top-settings.png
+-rw-r--r-- 1 user 197121 114313 11월 21 16:06 01-Region-n-languages.png
+-rw-r--r-- 1 user 197121 142247 11월 21 16:08 02-language-install.png
+-rw-r--r-- 1 user 197121 139544 11월 21 16:08 03-applying-changes.png
+-rw-r--r-- 1 user 197121 139582 11월 21 16:10 04-language-support-ok.png
+-rw-r--r-- 1 user 197121 143369 11월 21 16:10 05-keyboard.png
+-rw-r--r-- 1 user 197121 143199 11월 21 16:11 06-input-source-korean.png
+-rw-r--r-- 1 user 197121 138589 11월 21 16:12 07-korean-add.png
+-rw-r--r-- 1 user 197121 147903 11월 21 16:13 08-move-up.png
+-rw-r--r-- 1 user 197121 141155 11월 21 16:15 09-input-source-korean.png
+-rw-r--r-- 1 user 197121 147283 11월 21 16:17 10-ibus-setup.png
+-rw-r--r-- 1 user 197121 156648 11월 21 16:18 11-input-method-add.png
+-rw-r--r-- 1 user 197121 156987 11월 21 16:19 12-search-korean.png
+-rw-r--r-- 1 user 197121 140952 11월 21 16:20 13-korean-한국어.png
+-rw-r--r-- 1 user 197121 435180 11월 21 16:41 20-ibus-setup.png
+-rw-r--r-- 1 user 197121 440648 11월 21 16:43 21-imput-method-add.png
+
+./etc_files/run:
+total 18688
+drwxr-xr-x 1 user 197121        0  1월  6 11:43 ./
+drwxr-xr-x 1 user 197121        0  2월 19 14:29 ../
+-rw-r--r-- 1 user 197121      170 11월 15 11:42 96-02-copy-toc-7zr-x-ubuntu2204-231115-1142.bat
+-rw-r--r-- 1 user 197121      499 11월 15 14:12 97-04-copy-toc-4Git-linuxApp-231115-1126.bat
+-rw-r--r-- 1 user 197121      185 11월 15 11:41 98-05-copy-toc-7zr-x-windows-231115-1140.bat
+-rw-r--r-- 1 user 197121      182 11월 15 11:40 99-05-copy-toc-7zr-x-fedora-231115-1139.bat
+-rw-r--r-- 1 user 197121 18245684 12월 20 13:43 Oracle_VM_VirtualBox_Extension_Pack-7.0.12.vbox-extpack
+-rw-r--r-- 1 user 197121   174068 12월  4 11:06 UsersVBox7-01.02-f38-u2204desktopserver-w10-231204-1105.7z.001
+
+./etc_files/vdi_Fedora:
+total 8142720
+drwxr-xr-x 1 user 197121          0  9월  4  2023 ./
+drwxr-xr-x 1 user 197121          0  2월 19 14:29 ../
+-rw-r--r-- 1 user 197121 4290772992 10월  5 17:47 yosjfedora38.12-ChromeDropboxKeepassRcloneGimp-231005-1729.7z.001
+-rw-r--r-- 1 user 197121 4047320346 10월  5 17:47 yosjfedora38.12-ChromeDropboxKeepassRcloneGimp-231005-1729.7z.002
+-rw-r--r-- 1 user 197121          0  9월 26 10:48 yosjfedora38.12-ChromeDropboxKeepassRcloneGimp-231005-1729.7z.tag3
+
+./etc_files/vdi_Windows:
+total 10144384
+drwxr-xr-x 1 user 197121          0 11월 15 11:34 ./
+drwxr-xr-x 1 user 197121          0  2월 19 14:29 ../
+-rw-r--r-- 1 user 197121 4290772992  9월  6 11:44 yosjwindows10.04-gimp_keepassXC_dropbox_yes24-9948-230906-1057.7z.001
+-rw-r--r-- 1 user 197121 4290772992  9월  6 11:41 yosjwindows10.04-gimp_keepassXC_dropbox_yes24-9948-230906-1057.7z.002
+-rw-r--r-- 1 user 197121 1806201562  9월  6 11:44 yosjwindows10.04-gimp_keepassXC_dropbox_yes24-9948-230906-1057.7z.003
+-rw-r--r-- 1 user 197121          0  9월  6 01:27 yosjwindows10.04-gimp_keepassXC_dropbox_yes24-9948-230906-1057.7z.tag4
+
+./etc_files/Virtualbox_jammy_amd64:
+total 75008
+drwxr-xr-x 1 user 197121        0 10월 23 15:08 ./
+drwxr-xr-x 1 user 197121        0  2월 19 14:29 ../
+-rw-r--r-- 1 user 197121 28618854 10월 23 15:06 containerd.io_1.6.24-1_amd64.deb
+-rw-r--r-- 1 user 197121 22568250 10월 23 14:56 docker-ce_24.0.6-1~ubuntu.22.04~jammy_amd64.deb
+-rw-r--r-- 1 user 197121 13287422 10월 23 14:55 docker-ce-cli_24.0.6-1~ubuntu.22.04~jammy_amd64.deb
+-rw-r--r-- 1 user 197121 11942730 10월 23 14:56 docker-compose-plugin_2.21.0-1~ubuntu.22.04~jammy_amd64.deb
+
+./System Volume Information:
+total 256
+drwxr-xr-x 1 user 197121  0  4월 13  2023 ./
+drwxr-xr-x 1 user 197121  0  1월  1  1980 ../
+drwxr-xr-x 1 user 197121  0  4월 26  2023 AadRecoveryPasswordDelete/
+drwxr-xr-x 1 user 197121  0  4월 26  2023 ClientRecoveryPasswordRotation/
+-rw-r--r-- 1 user 197121 76  4월 13  2023 IndexerVolumeGuid
+-rw-r--r-- 1 user 197121 12  4월 13  2023 WPSettings.dat
+
+./System Volume Information/AadRecoveryPasswordDelete:
+total 0
+drwxr-xr-x 1 user 197121 0  4월 26  2023 ./
+drwxr-xr-x 1 user 197121 0  4월 13  2023 ../
+
+./System Volume Information/ClientRecoveryPasswordRotation:
+total 0
+drwxr-xr-x 1 user 197121 0  4월 26  2023 ./
+drwxr-xr-x 1 user 197121 0  4월 13  2023 ../
+
+./udemy-2312-video-zip:
+total 7977984
+drwxr-xr-x 1 user 197121          0  3월  3 17:40 ./
+drwxr-xr-x 1 user 197121          0  1월  1  1980 ../
+-rw-r--r-- 1 user 197121  696394147  3월  3 15:41 udemy-2312-02강.7z.001
+-rw-r--r-- 1 user 197121        567  3월  3 16:38 udemy-2312-02강.lsl
+-rw-r--r-- 1 user 197121  949936037  3월  3 15:46 udemy-2312-03강.7z.001
+-rw-r--r-- 1 user 197121        695  3월  3 16:39 udemy-2312-03강.lsl
+-rw-r--r-- 1 user 197121  794192929  3월  3 15:50 udemy-2312-04강.7z.001
+-rw-r--r-- 1 user 197121        504  3월  3 16:39 udemy-2312-04강.lsl
+-rw-r--r-- 1 user 197121  585214753  3월  3 15:53 udemy-2312-05강.7z.001
+-rw-r--r-- 1 user 197121        504  3월  3 16:39 udemy-2312-05강.lsl
+-rw-r--r-- 1 user 197121 1060466851  3월  3 15:59 udemy-2312-06강.7z.001
+-rw-r--r-- 1 user 197121        504  3월  3 16:39 udemy-2312-06강.lsl
+-rw-r--r-- 1 user 197121  890611367  3월  3 16:08 udemy-2312-07강.7z.001
+-rw-r--r-- 1 user 197121        798  3월  3 16:39 udemy-2312-07강.lsl
+-rw-r--r-- 1 user 197121 1071915290  3월  3 16:06 udemy-2312-08강.7z.001
+-rw-r--r-- 1 user 197121        579  3월  3 16:39 udemy-2312-08강.lsl
+-rw-r--r-- 1 user 197121  763920601  3월  3 16:10 udemy-2312-09강.7z.001
+-rw-r--r-- 1 user 197121        447  3월  3 16:39 udemy-2312-09강.lsl
+-rw-r--r-- 1 user 197121  716941052  3월  3 16:14 udemy-2312-10강.7z.001
+-rw-r--r-- 1 user 197121        588  3월  3 16:39 udemy-2312-10강.lsl
+-rw-r--r-- 1 user 197121  637808555  3월  3 16:17 udemy-2312-11강.7z.001
+-rw-r--r-- 1 user 197121        483  3월  3 16:39 udemy-2312-11강.lsl
+
+./zz00logs:
+total 128
+drwxr-xr-x 1 user 197121   0  2월 23 09:48 ./
+drwxr-xr-x 1 user 197121   0  1월  1  1980 ../
+-rw-r--r-- 1 user 197121 126  2월 23 09:48 zz.run_media_yos_myUSB-240223금-094823
