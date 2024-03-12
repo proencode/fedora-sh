@@ -4,7 +4,7 @@ hhh=$(tput bold)$(tput setaf 0); rrr=$(tput bold)$(tput setaf 1); ggg=$(tput bol
 
 keepass_name="keepass"
 cloud_name_dir="yswone:${keepass_name}"
-org_dir="${HOME}/wind_bada/downloads"
+org_dir="${HOME}/wind_bada"
 ym="$(date +%y%m)"
 org_kdbx="${keepass_name}${ym}.kdbx"
 org_dir_kdbx="${org_dir}/${org_kdbx}"
