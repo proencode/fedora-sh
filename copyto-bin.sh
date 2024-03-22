@@ -11,4 +11,4 @@ rsync -avzr ~/git-projects/fedora-sh/rclone-all-list/[ilrsy]* ~/bin/
 echo "----> rsync -avzr ~/git-projects/fedora-sh/copy* ~/bin/"
 rsync -avzr ~/git-projects/fedora-sh/copy* ~/bin/
 echo "----> ls -al ~/bin"
-ls -al ~/bin
+ls -altr ~/bin

@@ -19,18 +19,18 @@ org_dir_ODS="${org_dir}/${org_ODS}"
 ym_ODS="43-${keepass_name}$(date +%y%m%d-%H%M).ods"
 ym_dir_ODS="${HOME}/${ym_ODS}"
 
-echo "#----> ls -l ${org_dir}/${keepass_name}*.kdbx"
-ls -l ${org_dir}/${keepass_name}*.kdbx
-echo "#----> ls -l 43-${org_dir}/${keepass_name}*.ods"
-ls -l ${org_dir}/43-${keepass_name}*.ods
+echo "#----> ls -ltr ${org_dir}/${keepass_name}*.kdbx"
+ls -ltr ${org_dir}/${keepass_name}*.kdbx
+echo "#----> ls -ltr 43-${org_dir}/${keepass_name}*.ods"
+ls -ltr ${org_dir}/43-${keepass_name}*.ods
 
 if [ ! -f ${org_dir_kdbx} ]; then
         cat <<__EOF__
 #-- ${org_dir_kdbx} 파일이 없습니다.
 #-- ${org_dir} 에서 ${keepass_name}-9912.kdbx 파일이 있으면,
 #-- ${org_kdbx} 로 이름을 바꾸고 다시 실행하세요~
-#-- ls -l ${org_dir}/
-$(ls -l ${org_dir}/)
+#-- ls -ltr ${org_dir}/
+$(ls -ltr ${org_dir}/)
 #--
 __EOF__
         exit -1
@@ -40,8 +40,8 @@ if [ ! -f ${org_dir_ODS} ]; then
 #-- ${org_dir_ODS} 파일이 없습니다.
 #-- ${org_dir} 에서 43-${keepass_name}-9912.ods 파일이 있으면,
 #-- ${org_ODS} 로 이름을 바꾸고 다시 실행하세요~
-#-- ls -l ${org_dir}/
-$(ls -l ${org_dir}/)
+#-- ls -ltr ${org_dir}/
+$(ls -ltr ${org_dir}/)
 #--
 __EOF__
         exit -1

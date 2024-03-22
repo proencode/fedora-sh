@@ -17,8 +17,8 @@ ym_dir_kdbx="${HOME}/${ym_kdbx}"
 
 echo "${bbb}#----> ${ccc}rclone copy ${cloud_name_dir}/${org_kdbx} ${org_dir}/${xxx}"
 rclone copy ${cloud_name_dir}/${org_kdbx} ${org_dir}/
-echo "${bbb}#----> ${ccc}ls -l ${org_dir}/${keepass_name}*.kdbx${xxx}"
-ls -l ${org_dir}/${keepass_name}*.kdbx
+echo "${bbb}#----> ${ccc}ls -ltr ${org_dir}/${keepass_name}*.kdbx${xxx}"
+ls -ltr ${org_dir}/${keepass_name}*.kdbx
 #-- echo "${bbb}#----> ${ccc}rclone lsl ${cloud_name_dir}/ | sort -k2 -k3${xxx}"
 #-- rclone lsl ${cloud_name_dir}/ | sort -k2 -k3
 
@@ -29,7 +29,7 @@ ym_dir_ODS="${HOME}/${ym_ODS}"
 
 echo "${bbb}#----> ${ccc}rclone copy ${cloud_name_dir}/${org_ODS} ${org_dir}/${xxx}"
 rclone copy ${cloud_name_dir}/${org_ODS} ${org_dir}/
-echo "${bbb}#----> ${ccc}ls -l ${org_dir}/43-${keepass_name}*.ods${xxx}"
-ls -l ${org_dir}/43-${keepass_name}*.ods
+echo "${bbb}#----> ${ccc}ls -ltr ${org_dir}/43-${keepass_name}*.ods${xxx}"
+ls -ltr ${org_dir}/43-${keepass_name}*.ods
 echo "${bbb}#----> ${ccc}rclone lsl ${cloud_name_dir}/ | sort -k2 -k3${xxx}"
 rclone lsl ${cloud_name_dir}/ | sort -k2 -k3
