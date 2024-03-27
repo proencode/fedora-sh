@@ -84,6 +84,8 @@ echo "----> cd ${search_dir} ; sudo du -sh * .??* | sort -hr > ${du_sh_sort_hr_f
 cd ${search_dir} ; sudo du -sh * .??* | sort -hr > ${du_sh_sort_hr_file}
 echo "----> echo -e \"\${xxx}\$(head -\${cnt} \${du_sh_sort_hr_file})"
 echo -e "${xxx}$(head -${cnt} ${du_sh_sort_hr_file})"
+echo "#-- ${rrr}ls -alR ~/[가-히]* > ${log_save}/\$(date +%y%m%d-%H%M)-가-히.ls-alR ; ls -ahl ${log_save}/*.ls-alR${xxx}"
+ls -alR ~/[가-히]* > ${log_save}/$(date +%y%m%d-%H%M)-가-히.ls-alR ; ls -ahl ${log_save}/*.ls-alR
 
 
 # ----
