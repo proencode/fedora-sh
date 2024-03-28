@@ -31,5 +31,5 @@ do
 done
 cat <<__EOF__
 ${cBlue}#${cYellow}  git config --global user.password " ATBBn9e5ZGpH6qk8yNbXfMUfeGe49D6AB2 " #-- bbop대아투코드네임${cReset}
-${cBlue}#${cYellow}  git config --global user.password " ghp_8m0VHj3TBgmn95473fQfTaIKvvUyyG1Ql " #--오티야3달피엘 Expires on Mon, Mar 25 2024.{$cReset}
+${cBlue}#${cYellow}  git config --global user.password " ghp_a4czNfMIeaYxc9ZmZY4IPYipjzjQb63fq "#-- 누가사스싸이다 expires on Wed, Jun 26 2024.${cReset}
 __EOF__
