@@ -10,6 +10,8 @@ echo "----> rsync -avzr ~/git-projects/fedora-sh/rclone-all-list/[ilrsy]* ~/bin/
 rsync -avzr ~/git-projects/fedora-sh/rclone-all-list/[ilrsy]* ~/bin/
 echo "----> rsync -avzr ~/git-projects/fedora-sh/copy* ~/bin/"
 rsync -avzr ~/git-projects/fedora-sh/copy* ~/bin/
+echo "----> rsync -avzr ~/git-projects/fedora-sh/cmdbox ~/bin/"
+rsync -avzr ~/git-projects/fedora-sh/cmdbox ~/bin/
 echo "----> ls -al ~/bin"
 rsync -avzr ~/git-projects/fedora-sh/bin*/du-* ~/bin/
 ls -altr ~/bin
