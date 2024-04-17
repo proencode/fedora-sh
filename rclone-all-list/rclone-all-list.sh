@@ -1,5 +1,13 @@
 #!/bin/sh
 
+rc_lsl=~/rclone-lsl
+if [ ! -d ${rc_lsl} ]; then
+	echo "----> mkdir ${rc_lsl}"
+	mkdir ${rc_lsl}
+fi
+echo "----> cd ${rc_lsl}"
+cd ${rc_lsl}
+
 ymd=$(date +%y%m%d-%H%M%S)
 if [ ! -d ${ymd} ]; then
 	mkdir ${ymd}
