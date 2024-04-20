@@ -7,7 +7,7 @@ file_Made () {
 	link_box="$3 <---> $4"
 
 	Jemok="${ChapterSeq} ${ChapterName}"
-	small_Jemok=$(echo "${Jemok,,}" | sed 's/ /_/g' | sed 's/\./_/g')
+	small_Jemok=$(echo "${Jemok,,}" | sed 's/ /_/g' | sed 's/\./_/g' | sed 's/“/\"/g' | sed 's/”/\"/g')
 	cat <<__EOF__ | tee "${small_Jemok}.md"
 
 @ Q -> # 붙이고 줄 띄우기 => 0i### ^[A^M^[
@@ -62,7 +62,8 @@ JemokMade () {
 		PrevLink="$PrevName"
 	else
 		PrevJemok="${PrevSeq} ${PrevName}"
-		small_PrevJemok=$(echo "${PrevJemok,,}" | sed 's/ /_/g' | sed 's/\./_/g')
+		small_PrevJemok=$(echo "${PrevJemok,,}" | sed 's/ /_/g' | sed 's/\./_/g' | sed 's/“/\"/g' | sed 's/”/\"/g')
+
 		PrevLink="[ ${PrevJemok} ](/${small_Publisher}/${small_BookCover}/${small_PrevJemok})"
 	fi
 
@@ -70,7 +71,7 @@ JemokMade () {
 		NextLink="$NextName"
 	else
 		NextJemok="${NextSeq} ${NextName}"
-		small_NextJemok=$(echo "${NextJemok,,}" | sed 's/ /_/g' | sed 's/\./_/g')
+		small_NextJemok=$(echo "${NextJemok,,}" | sed 's/ /_/g' | sed 's/\./_/g' | sed 's/“/\"/g' | sed 's/”/\"/g')
 		NextLink="[ ${NextJemok} ](/${small_Publisher}/${small_BookCover}/${small_NextJemok})"
 	fi
 }
@@ -127,8 +128,8 @@ ShortDescription="Publication date: 1월 2022 Publisher Packt Pages 356 ISBN 978
 tags="kotlin ktor" #-- (4) 찾기 위한 태그 --
 https_line="https://subscription.packtpub.com/book/programming/9781801815727/pref" #-- (5) 출판사 홈체이지 링크 --
 #--
-small_Publisher=$(echo "${Publisher,,}" | sed 's/ /_/g' | sed 's/\./_/g')
-small_BookCover=$(echo "${BookCover,,}" | sed 's/ /_/g' | sed 's/\./_/g')
+small_Publisher=$(echo "${Publisher,,}" | sed 's/ /_/g' | sed 's/\./_/g' | sed 's/“/\"/g' | sed 's/”/\"/g')
+small_BookCover=$(echo "${BookCover,,}" | sed 's/ /_/g' | sed 's/\./_/g' | sed 's/“/\"/g' | sed 's/”/\"/g')
 SMALL_BOOKCOVER_IMG="${small_BookCover}_img"
 mkdir ${SMALL_BOOKCOVER_IMG}
 #--
