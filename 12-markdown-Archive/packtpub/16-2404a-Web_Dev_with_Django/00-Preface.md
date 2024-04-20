@@ -82,6 +82,15 @@ This book is for programmers looking to enhance their web development skills usi
 
 ### ------------------------
 
+🇬🇧 1. 다음을 한국어로 번역해줘.
+🇰🇷 2. 한국어로 번역.
+🇰🇷 3. 번역한 내용을 요약해서 정리해줘.
+
+🇬🇧 1. 다음을 한국어로 번역해줘.
+🇰🇷 2. 한국어로 번역.
+🇰🇷 3. 마지막 번역 요청 프롬프트는 '
+...'였는데, 이에 대한 답변만 요약해줘.
+
 프로필 사진: 마지막 요청 프롬프트는 "다음을 한국어로 번역해줘.
 
  Who this book is for
