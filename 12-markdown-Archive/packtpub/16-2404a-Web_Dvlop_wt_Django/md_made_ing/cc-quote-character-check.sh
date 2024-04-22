@@ -1,47 +1,41 @@
 #!/bin/sh
 
-file=$1
-shcmd=""
+script_made () {
+	from_file=$1
+	from_views=$2
+	to_views=$3
+	from_char=$4
+	to_char=$5
 
-#-- from_chars="#--from--" #--from--“--”--’--
-#-- to_chars="#---to---"   #---to---"--"--'--
-from_chars="#--from--"
-to_chars="#---to---"
-
-for char in "“" "”"
-do
-	found_char=$(grep ${char} ${file})
-	from_chars="${from_chars}${char}--"
-	if [ "x" != "x${found_char}" ]; then
-		shcmd="${shcmd} ; sed -i 's/${char}/\\\"/g' ${file}"
-		#-- ---------------------(_________|^^^^|_)
-		to_chars="${to_chars}\"--"
+	from_views="${from_views}${from_char}//"
+	grep_found=$(grep ${from_char} ${from_file}) #-- 찾는 문자가 파일에 있나?
+	if [ "x" != "x${grep_found}" ]; then
+		shcmd="${shcmd} ; sed -i 's/${from_char}/${to_char}/g' ${from_file}"
+		to_views="${to_views}${to_char}//"
 	else
-		to_chars="${to_chars}??-"
+		to_views="${to_views}??-"
+		echo "#----> ${from_char} 문자가 사용되지 않았습니다."
 	fi
-done
+}
 
-for char in "’"
-do
-	found_char=$(grep ${char} ${file})
-	from_chars="${from_chars}${char}--"
-	if [ "x" != "x${found_char}" ]; then
-		shcmd="${shcmd} ; sed -i \"s/${char}/'/g\" ${file}"
-		#-- ---------------------(__________|^|__)
-		to_chars="${to_chars}'--"
-	else
-		to_chars="${to_chars}!!-"
-	fi
-done
+FILE=$1 #-- 문자 변경할 파일.
+shcmd="" #-- 문자 변경하는 셀 스크립트.
+
+from_views="#--from--//" #--from--//“//”//’//
+to_views="#---to---//"   #---to---//"//"//'//
+
+script_made ${FILE} ${from_views} ${to_views} "“" '"'
+script_made ${FILE} ${from_views} ${to_views} "”" '"'
+script_made ${FILE} ${from_views} ${to_views} "’" "'"
 
 if [ "x" != "x${shcmd}" ]; then
 	cat <<__EOF__
 #----> 문자열을 바꾸는 스크립트
 
-rsync -avzr ${file} md_made_ing/old-files/${file}-$(date +%y%m%d-%H%M)${shcmd} #-- 문자열을 바꿉니다.
+rsync -avzr ${FILE} md_made_ing/old-files/${FILE}-$(date +%y%m%d-%H%M)${shcmd} #-- 문자 변경 스크립트.
 
-#-- from_chars="#--from--" ${from_chars}
-#-- to_chars="#---to---"   ${to_chars}
+from_views="#--from--//" ${from_views}
+to_views="#---to---//"   ${to_views}
 
 #<---- 문자열을 바꾸는 스크립트
 __EOF__
