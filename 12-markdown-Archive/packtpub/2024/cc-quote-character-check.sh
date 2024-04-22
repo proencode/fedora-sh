@@ -10,7 +10,13 @@ script_made () {
 	from_views="${from_views}${from_char}//"
 	grep_found=$(grep ${from_char} ${from_file}) #-- 찾는 문자가 파일에 있나?
 	if [ "x" != "x${grep_found}" ]; then
-		shcmd="${shcmd} ; sed -i 's/${from_char}/${to_char}/g' ${from_file}"
+		if [ "${to_char}" == "'" ]; then
+			#-- sed "..."
+			shcmd="${shcmd} ; sed -i \"s/${from_char}/${to_char}/g\" ${from_file}"
+		else
+			#-- sed '...'
+			shcmd="${shcmd} ; sed -i 's/${from_char}/${to_char}/g' ${from_file}"
+		fi
 		to_views="${to_views}${to_char}//"
 	else
 		to_views="${to_views}??-"
@@ -29,10 +35,12 @@ script_made ${FILE} ${from_views} ${to_views} "”" '"'
 script_made ${FILE} ${from_views} ${to_views} "’" "'"
 
 if [ "x" != "x${shcmd}" ]; then
+	old_dir="old_files"
 	cat <<__EOF__
 #----> 문자열을 바꾸는 스크립트
 
-rsync -avzr ${FILE} md_made_ing/old-files/${FILE}-$(date +%y%m%d-%H%M)${shcmd} #-- 문자 변경 스크립트.
+if [ ! -d ${old_dir} ]; then mkdir ${old_dir} ; fi
+rsync -avzr ${FILE} ${old_dir}/${FILE}-$(date +%y%m%d-%H%M)${shcmd} #-- 문자 변경 스크립트.
 
 from_views="#--from--//" ${from_views}
 to_views="#---to---//"   ${to_views}
