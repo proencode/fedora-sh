@@ -3,7 +3,8 @@
 file=$1
 shcmd=""
 
-#-- " " '
+#-- from_chars="#--from--" #--from--“--”--’--
+#-- to_chars="#---to---"   #---to---"--"--'--
 from_chars="#--from--"
 to_chars="#---to---"
 
@@ -39,8 +40,8 @@ if [ "x" != "x${shcmd}" ]; then
 
 rsync -avzr ${file} md_made_ing/old-files/${file}-$(date +%y%m%d-%H%M)${shcmd} #-- 문자열을 바꿉니다.
 
-${from_chars}
-${to_chars}
+#-- from_chars="#--from--" ${from_chars}
+#-- to_chars="#---to---"   ${to_chars}
 
 #<---- 문자열을 바꾸는 스크립트
 __EOF__
