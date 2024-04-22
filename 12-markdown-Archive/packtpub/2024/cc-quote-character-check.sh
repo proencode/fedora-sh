@@ -39,8 +39,7 @@ if [ "x" != "x${shcmd}" ]; then
 	cat <<__EOF__
 #----> 문자열을 바꾸는 스크립트
 
-if [ ! -d ${old_dir} ]; then mkdir ${old_dir} ; fi
-rsync -avzr ${FILE} ${old_dir}/${FILE}-$(date +%y%m%d-%H%M)${shcmd} #-- 문자 변경 스크립트.
+if [ ! -d ${old_dir} ]; then mkdir ${old_dir} ; fi ; rsync -avzr ${FILE} ${old_dir}/${FILE}-$(date +%y%m%d-%H%M)${shcmd} #-- 문자 변경 스크립트.
 
 from_views="#--from--//" ${from_views}
 to_views="#---to---//"   ${to_views}

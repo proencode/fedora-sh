@@ -1,7 +1,6 @@
 
 # Preface
 
-" " '
 Do you want to develop reliable and secure applications that stand out from the crowd without spending hours on boilerplate code? You've made the right choice by trusting the Django framework, and this book will tell you why. Often referred to as a "batteries included" web development framework, Django comes with all the core features needed to build a standalone application. Web Development with Django will take you through all the essential concepts and help you explore its power to build real-world applications using Python. Throughout the book, you'll get to grips with the major features of Django by building a website called Bookr – a repository for book reviews. This end-to-end case study is split into a series of bitesize projects presented as exercises and activities, allowing you to challenge yourself in an enjoyable and attainable way. As you advance, you'll acquire various practical skills, including how to serve static files to add CSS, JavaScript, and images to your application, implement forms to accept user input, and manage sessions to ensure a reliable user experience. You'll cover everyday tasks that are part of the development cycle of a real-world web application. By the end of this Django book, you'll have the skills and confidence to creatively develop and deploy your own projects.
 
 # Who this book is for
