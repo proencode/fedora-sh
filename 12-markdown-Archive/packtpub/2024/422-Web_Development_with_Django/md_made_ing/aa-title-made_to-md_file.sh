@@ -139,10 +139,10 @@ md_Create () {
 #-- (1-5) 책에 맞추어 수정하는 부분.
 #--
 Publisher="packtpub" #-- (1) 출판사 --
-BookCover="422 Web Development with Django 2ndED" #-- (2) 책 제목 --
+BookCover="2024/422 Web Development with Django 2ed" #-- (2) 등록년도/시작월일 + 책 제목 --
 ShortDescription="Publication date: May 2023 Publisher Packt Pages 764" #-- (3) 저자등 설명 --
 tags="Django" #-- (4) 찾기 위한 태그 --
-https_line="https://subscription.packtpub.com/book/web-development/9781803230603/pref" #-- (5) 출판사 홈체이지 링크 --
+https_line="https://subscription.packtpub.com/book/web-development/9781803230603/pref" #-- (5) 출판사 홈페이지 링크 --
 #--
 small_Publisher=$(echo "${Publisher,,}" | sed 's/ /_/g' | sed 's/\./_/g' | sed 's/“/\"/g' | sed 's/”/\"/g' | sed "s/’/'/g")
 small_BookCover=$(echo "${BookCover,,}" | sed 's/ /_/g' | sed 's/\./_/g' | sed 's/“/\"/g' | sed 's/”/\"/g' | sed "s/’/'/g")
