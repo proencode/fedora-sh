@@ -1,29 +1,12 @@
+aa
+| [ 00 Preface ](/packtpub/2024/422-Web_Development_with_Django/00-contents) | 👈 00 Preface 👉 |  [ 01 An Introduction to Django ](/packtpub/2024/422-Web_Development_with_Django/01) |
+|:---:|:---:|:---:|
 
-@ Q -> # 붙이고 줄 띄우기 => 0i### ^[A^M^[
-@ W -> 현 위치에서 Copy 까지 역따옴표 => j0i```^M^[/^Copy$^[ddk0C```^M^[
-@ E -> 찾은 글자 ~ SPACE 앞뒤로 backtick(`) 붙이기 => i`^[/ ^[i`^[/EEEEEEEEEE^[
-@ R -> 찾은 글자 ~ POINT 앞뒤로 backtick(`) 붙이기 => i`^[/\.^[i`^[/RRRRRRRRRR^[
-@ T -> 찾은 글자 ~ COMMA 앞뒤로 backtick(`) 붙이기 => i`^[/,^[i`^[/TTTTTTTTTT^[
-@ Y -> 찾은 글자 ~   ;   앞뒤로 backtick(`) 붙이기 => i`^[/;^[i`^[/YYYYYYYYYY^[
-@ U -> 찾은 글자~닫은괄호앞뒤로 backtick(`) 붙이기 => i`^[/)^[i`^[/UUUUUUUUUU^[
-@ I -> 찾은 글자 ~ COLON 앞뒤로 backtick(`) 붙이기 => i`^[/:^[i`^[/CCCCCCCCCC^[
 
-@ A -> 빈 줄에 블록 시작하기 => 0C```^[^Mk0
-@ S -> 줄 앞에 > 나오면 안되므로 블록 마감하고 > 앞에 - 끼우기 => 0i```^M-^[^M0i```^[0
-@ D -> 줄 아래에 블록 마감하고 한줄 더 띄우기 => 0^Mi```^M^M^[kk
-@ F -> 이 줄을 타이틀로 만들기 => 0i#### ^[^M^[
+[ Image Sample ](/packtpub/2024/422-Web_Development_with_Django/00a.000)
 
-    마크다운 입력시 vi 커맨드 표시 ; (^[)=Ctrl+[ ; (^M)=Ctrl+M
-    인용구 작성시 ; 본문앞에는 꺽쇠 > 붙이고, 스타일 첨가시 끝줄에 종류별 구분을 표시한다.
-    https://docs.requarks.io/en/editors/markdown > Blockquotes > Stylings >
-    blue= {.is-info} ; green= {.is-success} ; yellow= {.is-warning} ; red= {.is-danger}
+Preface
 
----------- cut line ----------
-
-| ≪ [ 00.0 Contents ](/packtpub/2024/422_web_development_with_django_2ed/00_0_contents) | 00.1 Preface | [ 01 An Introduction to Django ](/packtpub/2024/422_web_development_with_django_2ed/01_an_introduction_to_django) ≫ |
-|:----:|:----:|:----:|
-
-# 00.1 Preface
 
 Do you want to develop reliable and secure applications that stand out from the crowd without spending hours on boilerplate code? You've made the right choice by trusting the Django framework, and this book will tell you why. Often referred to as a "batteries included" web development framework, Django comes with all the core features needed to build a standalone application. Web Development with Django will take you through all the essential concepts and help you explore its power to build real-world applications using Python. Throughout the book, you'll get to grips with the major features of Django by building a website called Bookr – a repository for book reviews. This end-to-end case study is split into a series of bitesize projects presented as exercises and activities, allowing you to challenge yourself in an enjoyable and attainable way. As you advance, you'll acquire various practical skills, including how to serve static files to add CSS, JavaScript, and images to your application, implement forms to accept user input, and manage sessions to ensure a reliable user experience. You'll cover everyday tasks that are part of the development cycle of a real-world web application. By the end of this Django book, you'll have the skills and confidence to creatively develop and deploy your own projects.
 
@@ -165,20 +148,6 @@ https://packt.link/free-ebook/9781803230603
 2. Submit your proof of purchase
 3. That's it! We'll send your free PDF and other benefits to your email directly
 
-
-
-
-| ≪ [ 00.0 Contents ](/packtpub/2024/422_web_development_with_django_2ed/00_0_contents) | 00.1 Preface | [ 01 An Introduction to Django ](/packtpub/2024/422_web_development_with_django_2ed/01_an_introduction_to_django) ≫ |
-|:----:|:----:|:----:|
-
-> (1) Path: packtpub/2024/422_web_development_with_django_2ed/00_1_preface
-> (2) Markdown
-> (3) Title: 00.1 Preface
-> (4) Short Description: Publication date: May 2023 Publisher Packt Pages 764
-> (5) tags: Django
-> Book Name: 2024/422 Web Development with Django 2ed
-> Link: https://subscription.packtpub.com/book/web-development/9781803230603/pref
-> create: 2024-04-23 화 16:10:00
-> Images: /packtpub/2024/422_web_development_with_django_2ed_img/
-> .md Name: 00_1_preface.md
+| [ 00 Preface ](/packtpub/2024/422-Web_Development_with_Django/00-contents) | 👈 00 Preface 👉 |  [ 01 An Introduction to Django ](/packtpub/2024/422-Web_Development_with_Django/01) |
+|:---:|:---:|:---:|
 
