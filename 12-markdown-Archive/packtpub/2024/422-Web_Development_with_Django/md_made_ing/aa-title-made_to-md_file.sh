@@ -1,13 +1,26 @@
 #!/bin/sh
 
 #-- file_Made "01" "P1 JavaScript Syntax" #from --> md_Create () {
+#-- file_Made "${CurrentSeq}" "${CurrentName}" "${PrevLink}" "${NextLink}"
+#----> file_Made
+
 file_Made () {
 	ChapterSeq=$1 #-- 권 번호
 	ChapterName=$2 #-- wiki.js 왼쪽에 표시할 챕터 제목
-	link_box="$3 <---> $4"
+echo "#----> file_Made CurrentSeq ${CurrentSeq}; CurrentName ${CurrentName}; PrevLink ${PrevLink}; NextLink ${NextLink};"
+	if [ "x${PrevLink}" = "xBegin" ]; then
+		link_box="| 🏁 $3 | ${ChapterSeq} ${ChapterName} | $4 ≫ |"
+	else
+		if [ "x${NextLink}" = "xEnd" ]; then
+			link_box="| ≪ $3 | ${ChapterSeq} ${ChapterName} | $4 🔔 |"
+			#-- End 🔔 | End 🎆 | End 🎇 | End 🌟 |
+		else
+			link_box="| ≪ $3 | ${ChapterSeq} ${ChapterName} | $4 ≫ |"
+		fi
+	fi
 
 	Jemok="${ChapterSeq} ${ChapterName}"
-	small_Jemok=$(echo "${Jemok,,}" | sed 's/ /_/g' | sed 's/\./_/g' | sed 's/“/\"/g' | sed 's/”/\"/g')
+	small_Jemok=$(echo "${Jemok,,}" | sed 's/ /_/g' | sed 's/\./_/g' | sed 's/“/\"/g' | sed 's/”/\"/g' | sed "s/’/'/g")
 	cat <<__EOF__ | tee "${small_Jemok}.md"
 
 @ Q -> # 붙이고 줄 띄우기 => 0i### ^[A^M^[
@@ -23,6 +36,7 @@ file_Made () {
 @ S -> 줄 앞에 > 나오면 안되므로 블록 마감하고 > 앞에 - 끼우기 => 0i\`\`\`^M-^[^M0i\`\`\`^[0
 @ D -> 줄 아래에 블록 마감하고 한줄 더 띄우기 => 0^Mi\`\`\`^M^M^[kk
 @ F -> 이 줄을 타이틀로 만들기 => 0i#### ^[^M^[
+
     마크다운 입력시 vi 커맨드 표시 ; (^[)=Ctrl+[ ; (^M)=Ctrl+M
     인용구 작성시 ; 본문앞에는 꺽쇠 > 붙이고, 스타일 첨가시 끝줄에 종류별 구분을 표시한다.
     https://docs.requarks.io/en/editors/markdown > Blockquotes > Stylings >
@@ -30,15 +44,17 @@ file_Made () {
 
 ---------- cut line ----------
 
-> ${link_box}
+${link_box}
+|:----:|:----:|:----:|
 
 # ${ChapterSeq} ${ChapterName}
 #----> 본문을 기재하는 위치.
 
 
 
-> ${link_box}
->
+${link_box}
+|:----:|:----:|:----:|
+
 > (1) Path: ${small_Publisher}/${small_BookCover}/${small_Jemok}
 > (2) Markdown
 > (3) Title: ${ChapterSeq} ${ChapterName}
@@ -62,7 +78,7 @@ JemokMade () {
 		PrevLink="$PrevName"
 	else
 		PrevJemok="${PrevSeq} ${PrevName}"
-		small_PrevJemok=$(echo "${PrevJemok,,}" | sed 's/ /_/g' | sed 's/\./_/g' | sed 's/“/\"/g' | sed 's/”/\"/g')
+		small_PrevJemok=$(echo "${PrevJemok,,}" | sed 's/ /_/g' | sed 's/\./_/g' | sed 's/“/\"/g' | sed 's/”/\"/g' | sed "s/’/'/g")
 
 		PrevLink="[ ${PrevJemok} ](/${small_Publisher}/${small_BookCover}/${small_PrevJemok})"
 	fi
@@ -71,7 +87,7 @@ JemokMade () {
 		NextLink="$NextName"
 	else
 		NextJemok="${NextSeq} ${NextName}"
-		small_NextJemok=$(echo "${NextJemok,,}" | sed 's/ /_/g' | sed 's/\./_/g' | sed 's/“/\"/g' | sed 's/”/\"/g')
+		small_NextJemok=$(echo "${NextJemok,,}" | sed 's/ /_/g' | sed 's/\./_/g' | sed 's/“/\"/g' | sed 's/”/\"/g' | sed "s/’/'/g")
 		NextLink="[ ${NextJemok} ](/${small_Publisher}/${small_BookCover}/${small_NextJemok})"
 	fi
 }
@@ -123,36 +139,42 @@ md_Create () {
 #-- (1-5) 책에 맞추어 수정하는 부분.
 #--
 Publisher="packtpub" #-- (1) 출판사 --
-BookCover="Kotlin Design Patterns and Best Practices - Second Edition" #-- (2) 책 제목 --
-ShortDescription="Publication date: 1월 2022 Publisher Packt Pages 356 ISBN 9781801815727" #-- (3) 저자등 설명 --
-tags="kotlin ktor" #-- (4) 찾기 위한 태그 --
-https_line="https://subscription.packtpub.com/book/programming/9781801815727/pref" #-- (5) 출판사 홈체이지 링크 --
+BookCover="422 Web Development with Django 2ndED" #-- (2) 책 제목 --
+ShortDescription="Publication date: May 2023 Publisher Packt Pages 764" #-- (3) 저자등 설명 --
+tags="Django" #-- (4) 찾기 위한 태그 --
+https_line="https://subscription.packtpub.com/book/web-development/9781803230603/pref" #-- (5) 출판사 홈체이지 링크 --
 #--
-small_Publisher=$(echo "${Publisher,,}" | sed 's/ /_/g' | sed 's/\./_/g' | sed 's/“/\"/g' | sed 's/”/\"/g')
-small_BookCover=$(echo "${BookCover,,}" | sed 's/ /_/g' | sed 's/\./_/g' | sed 's/“/\"/g' | sed 's/”/\"/g')
+small_Publisher=$(echo "${Publisher,,}" | sed 's/ /_/g' | sed 's/\./_/g' | sed 's/“/\"/g' | sed 's/”/\"/g' | sed "s/’/'/g")
+small_BookCover=$(echo "${BookCover,,}" | sed 's/ /_/g' | sed 's/\./_/g' | sed 's/“/\"/g' | sed 's/”/\"/g' | sed "s/’/'/g")
 SMALL_BOOKCOVER_IMG="${small_BookCover}_img"
 mkdir ${SMALL_BOOKCOVER_IMG}
 #--
 #-- (6) md_Create "권 번호" "S섹션/C챕터 번호 + 제목"
+#-- 권번호의 0.. 은 목차, 1.. ~ 8.. 은 본문, 9.. 는 색인 등으로 정한다.
 #-- 첫줄에는 "SKIP" "Begin" , 끝줄에는 "SKIP" "End" 로 표시한다.
 md_Create "SKIP" "Begin"
 #--
-md_Create "00" "Preface"
-md_Create "01" "S1 Classical Patterns"
-md_Create "02" "C1 Getting Started with Kotlin"
-md_Create "03" "C2 Working with Creational Patterns"
-md_Create "04" "C3 Understanding Structural Patterns"
-md_Create "05" "C4 Getting Familiar with Behavioral Patterns"
-md_Create "06" "S2 Reactive and Concurrent Patterns"
-md_Create "07" "C5 Introducing Functional Programming"
-md_Create "08" "C6 Threads and Coroutines"
-md_Create "09" "C7 Controlling the Data Flow"
-md_Create "10" "C8 Designing for Concurrency"
-md_Create "11" "S3 Practical Application of Design Patterns"
-md_Create "12" "C9 Idioms and Anti-Patterns"
-md_Create "13" "C10 Concurrent Microservices with Ktor"
-md_Create "14" "C11 Reactive Microservices with Vert.x"
-md_Create "15" "Assessments"
-md_Create "16" "Other Books You May Enjoy"
+md_Create "00.0" "Contents"
+md_Create "00.1" "Preface"
+
+md_Create "01" "An Introduction to Django"
+md_Create "02" "Models and Migrations"
+md_Create "03" "URL Mapping, Views, and Templates"
+md_Create "04" "An Introduction to Django Admin"
+md_Create "05" "Serving Static Files"
+md_Create "06" "Forms"
+md_Create "07" "Advanced Form Validation and Model Forms"
+md_Create "08" "Media Serving and File Uploads"
+md_Create "09" "Sessions and Authentication"
+md_Create "10" "Advanced Django Admin and Customizations"
+md_Create "11" "Advanced Templating and Class-Based Views"
+md_Create "12" "Building a REST API"
+md_Create "13" "Generating CSV, PDF, and Other Binary Files"
+md_Create "14" "Testing Your Django Applications"
+md_Create "15" "Django Third-Party Libraries"
+md_Create "16" "Using a Frontend JavaScript Library with Django"
+
+md_Create "17" "Index"
+md_Create "18" "Other Books You May Enjoy"
 #--
 md_Create "SKIP" "End"
