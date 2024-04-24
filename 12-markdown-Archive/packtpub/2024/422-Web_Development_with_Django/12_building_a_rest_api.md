@@ -36,9 +36,9 @@
 > (3) Title: 12 Building a REST API
 > (4) Short Description: Publication date: May 2023 Publisher Packt Pages 764
 > (5) tags: Django
-> Book Name: 2024/422 Web Development with Django 2ed
+> Book Name: 422 Web Development with Django 2ed
 > Link: https://subscription.packtpub.com/book/web-development/9781803230603/pref
-> create: 2024-04-23 화 16:10:01
-> Images: /packtpub/2024/422_web_development_with_django_2ed_img/
+> create: 2024-04-24 수 14:56:28
+> Images: /packtpub/2024/422_web_development_with_django_2ed_img/12/
 > .md Name: 12_building_a_rest_api.md
 

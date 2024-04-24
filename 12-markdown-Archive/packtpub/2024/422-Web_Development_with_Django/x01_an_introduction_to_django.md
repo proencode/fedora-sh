@@ -66,7 +66,7 @@ django-admin startproject myproject
 
 This will create the `myproject` directory, which Django populates with the necessary files to run the project. Inside the `myproject` directory are two files (shown in Figure 1.1):
 
-![ Figure 1.1 – The project directory for myproject ](/packtpub/2024/422-web_development_with_django/01.01-the_project_directory_for_myproject.webp)
+![ Figure 1.1 – The project directory for myproject ](/packtpub/422-web_development_with_django/01.01-the_project_directory_for_myproject.webp)
 Figure 1.1 – The project directory for myproject
 
 `manage.py` is a Python script that is executed at the command line to interact with your project. We will use it to start the **Django development server**, a development web server you will use to interact with your Django project on your local computer. Like `django-admin`, commands are passed in on the command line. Unlike `django-admin`, this script is not mapped in your system path, so we must execute it using Python. We will need to use the command line to do that. For example, inside the project directory, we run the following command:
@@ -1229,23 +1229,5 @@ In the next chapter, you will start to learn about Django's database integration
 > Link: https://subscription.packtpub.com/book/web-development/9781803230603/pref
 > create: 2024-04-23 화 16:10:00
 > Images: /packtpub/2024/422_web_development_with_django_2ed_img/
-> .md Name: 01_an_introduction_to_django.md
-
-|:----:|:----:|:----:|
-
-
-
-| ≪ [ 00.1 Preface ](/packtpub/2024/422_web_development_with_django_2ed/00_1_preface) | 01 An Introduction to Django | [ 02 Models and Migrations ](/packtpub/2024/422_web_development_with_django_2ed/02_models_and_migrations) ≫ |
-|:----:|:----:|:----:|
-
-> (1) Path: packtpub/2024/422_web_development_with_django_2ed/01_an_introduction_to_django
-> (2) Markdown
-> (3) Title: 01 An Introduction to Django
-> (4) Short Description: Publication date: May 2023 Publisher Packt Pages 764
-> (5) tags: Django
-> Book Name: 422 Web Development with Django 2ed
-> Link: https://subscription.packtpub.com/book/web-development/9781803230603/pref
-> create: 2024-04-24 수 14:56:27
-> Images: /packtpub/2024/422_web_development_with_django_2ed_img/01/
 > .md Name: 01_an_introduction_to_django.md
 

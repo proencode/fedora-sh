@@ -19,6 +19,7 @@ echo "#----> file_Made CurrentSeq ${CurrentSeq}; CurrentName ${CurrentName}; Pre
 		fi
 	fi
 
+	small_ChapterSeq=$(echo "${ChapterSeq,,}" | sed 's/ /_/g' | sed 's/\./_/g' | sed 's/“/\"/g' | sed 's/”/\"/g' | sed "s/’/'/g")
 	Jemok="${ChapterSeq} ${ChapterName}"
 	small_Jemok=$(echo "${Jemok,,}" | sed 's/ /_/g' | sed 's/\./_/g' | sed 's/“/\"/g' | sed 's/”/\"/g' | sed "s/’/'/g")
 	cat <<__EOF__ | tee "${small_Jemok}.md"
@@ -63,7 +64,7 @@ ${link_box}
 > Book Name: ${BookTitle}
 > Link: ${https_line}
 > create: $(date +'%Y-%m-%d %a %H:%M:%S')
-> Images: /${small_Publisher}/${SMALL_BOOKCOVER_IMG}/
+> Images: /${small_Publisher}/${SMALL_BOOKCOVER_IMG}/${small_ChapterSeq}/
 > .md Name: ${small_Jemok}.md
 
 __EOF__
