@@ -56,7 +56,7 @@ ${link_box}
 ${link_box}
 |:----:|:----:|:----:|
 
-> (1) Path: ${small_Publisher}/${small_BookCover}/${small_Jemok}
+> (1) Path: ${small_Publisher}/${small_YearTitle}/${small_Jemok}
 > (2) Markdown
 > (3) Title: ${ChapterSeq} ${ChapterName}
 > (4) Short Description: ${ShortDescription}
@@ -64,7 +64,7 @@ ${link_box}
 > Book Name: ${BookTitle}
 > Link: ${https_line}
 > create: $(date +'%Y-%m-%d %a %H:%M:%S')
-> Images: /${small_Publisher}/${SMALL_BOOKCOVER_IMG}/${small_ChapterSeq}/
+> Images: /${small_Publisher}/${img_dir}/${small_ChapterSeq}/
 > .md Name: ${small_Jemok}.md
 
 __EOF__
@@ -81,7 +81,7 @@ JemokMade () {
 		PrevJemok="${PrevSeq} ${PrevName}"
 		small_PrevJemok=$(echo "${PrevJemok,,}" | sed 's/ /_/g' | sed 's/\./_/g' | sed 's/“/\"/g' | sed 's/”/\"/g' | sed "s/’/'/g")
 
-		PrevLink="[ ${PrevJemok} ](/${small_Publisher}/${small_BookCover}/${small_PrevJemok})"
+		PrevLink="[ ${PrevJemok} ](/${small_Publisher}/${small_YearTitle}/${small_PrevJemok})"
 	fi
 
 	if [ "x${NextSeq}" = "xSKIP" ]; then
@@ -89,7 +89,7 @@ JemokMade () {
 	else
 		NextJemok="${NextSeq} ${NextName}"
 		small_NextJemok=$(echo "${NextJemok,,}" | sed 's/ /_/g' | sed 's/\./_/g' | sed 's/“/\"/g' | sed 's/”/\"/g' | sed "s/’/'/g")
-		NextLink="[ ${NextJemok} ](/${small_Publisher}/${small_BookCover}/${small_NextJemok})"
+		NextLink="[ ${NextJemok} ](/${small_Publisher}/${small_YearTitle}/${small_NextJemok})"
 	fi
 }
 #-- 링크를 만든다. JemokMade #from <-- md_Create () {
@@ -139,18 +139,21 @@ md_Create () {
 
 #-- (1-5) 책에 맞추어 수정하는 부분.
 #--
+#--
 Publisher="packtpub" #-- (1) 출판사 --
 BookYear="2024" #-- (2-1) 등록년도
 BookTitle="422 Web Development with Django 2ed" #-- (2-2) 시작월일 + 책 제목 --
-BookCover="${BookYear}/${BookTitle}" #-- (2) 호스트의 경로
+Year_Title="${BookYear}/${BookTitle}" #-- (2) 호스트의 경로
 ShortDescription="Publication date: May 2023 Publisher Packt Pages 764" #-- (3) 저자등 설명 --
 tags="Django" #-- (4) 찾기 위한 태그 --
 https_line="https://subscription.packtpub.com/book/web-development/9781803230603/pref" #-- (5) 출판사 홈페이지 링크 --
 #--
 small_Publisher=$(echo "${Publisher,,}" | sed 's/ /_/g' | sed 's/\./_/g' | sed 's/“/\"/g' | sed 's/”/\"/g' | sed "s/’/'/g")
-small_BookCover=$(echo "${BookCover,,}" | sed 's/ /_/g' | sed 's/\./_/g' | sed 's/“/\"/g' | sed 's/”/\"/g' | sed "s/’/'/g")
-SMALL_BOOKCOVER_IMG="${small_BookCover}_img"
-mkdir ${SMALL_BOOKCOVER_IMG}
+small_YearTitle=$(echo "${Year_Title,,}" | sed 's/ /_/g' | sed 's/\./_/g' | sed 's/“/\"/g' | sed 's/”/\"/g' | sed "s/’/'/g")
+img_dir="${small_YearTitle}_img"
+if [ ! -d ${img_dir} ]; then
+	mkdir -p ${img_dir}
+fi
 #--
 #-- (6) md_Create "권 번호" "S섹션/C챕터 번호 + 제목"
 #-- 권번호의 0.. 은 목차, 1.. ~ 8.. 은 본문, 9.. 는 색인 등으로 정한다.
