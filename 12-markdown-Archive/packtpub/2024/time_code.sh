@@ -2,11 +2,17 @@
 
 code_table="0123456789abcdefghijkmnpqrstuvwxyz"
 
-if [ "x$1" == "x" ]; then
-	cat <<__EOF__
-sh $0 -help #-- -help 또는 아무거나 입력하면 설명을 보여줍니다.
+cat <<__EOF__
+#-- 
+#-- sh $0 proj_name #-- 프로젝트 이름을 proj_name 처럼 입력하면 설명에 추가합니다.
+#-- 
 
 __EOF__
+
+proj_name=""
+
+if [ "x$1" != "x" ]; then
+	proj_name="$1-"
 else
 	gen_code=""
 	for current_date in {1..12}
@@ -58,23 +64,30 @@ __EOF__
 
 fi
 
-this_yy=$(date +%y)
-this_mm=$(date +%m)
-this_dd=$(date +%d)
-this_HH=$(date +%H)
-this_MM=$(date +%M)
-min_HALF=$((this_MM / 2)) #-- 2분 간격으로 하기 위해서.
+while true :
+do
+	this_yy=$(date +%y)
+	a=${this_yy:1}
+	yy_to_abc=$(( a + 12 ))
+	this_mm=$(date +%m)
+	wol_to_xyz=$(( this_mm + 15 ))
+	this_dd=$(date +%d)
+	this_HH=$(date +%H)
+	this_MM=$(date +%M)
+	min_HALF=$((this_MM / 2)) #-- 2분 간격으로 하기 위해서.
 
-a=${this_yy:1}
-yy_to_alpha=$(( a + 12 ))
+	yyx=${code_table:$(( $yy_to_abc )):1}
+	wolx=${code_table:$(( $wol_to_xyz )):1}
+	ddx=${code_table:$(( $this_dd )):1}
+	hhx=${code_table:$(( $this_HH )):1}
+	minx=${code_table:$(( $min_HALF )):1}
 
-# ${code_table:$(( $yy_to_alpha )):1}
-# ${code_table:$(( $this_mm )):1}
-# ${code_table:$(( $this_dd )):1}
-# ${code_table:$(( $this_HH )):1}
-# ${code_table:$(( $min_HALF )):1}
+	cat <<__EOF__
+#--${this_yy}-${this_mm}-${this_dd}-${this_HH}-${this_MM}--
 
-cat <<__EOF__
-#--${this_yy}-${this_mm}-${this_dd}-${this_HH}-${this_MM}--    ${code_table:$(( $this_mm )):1}${code_table:$(( $this_HH )):1}${code_table:$(( $this_dd )):1}${code_table:$(( $min_HALF )):1}    time_code    ${code_table:$(( $this_mm )):1}${code_table:$(( $this_HH )):1}${code_table:$(( $this_dd )):1}${code_table:$(( $yy_to_alpha )):1}${code_table:$(( $min_HALF )):1}
+${wolx}${hhx}${ddx}${minx}    ${proj_name}${wolx}${hhx}${ddx}${minx}    time_code    ${wolx}${hhx}${ddx}${yyx}${minx}    ${proj_name}${wolx}${hhx}${ddx}${yyx}${minx}
 
+#----> press wHdym Enter or <CTRL> + <C> to quit:
 __EOF__
+	read a
+done
