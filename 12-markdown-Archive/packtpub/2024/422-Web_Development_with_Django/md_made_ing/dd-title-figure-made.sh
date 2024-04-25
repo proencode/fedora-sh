@@ -94,6 +94,40 @@ JemokMade () {
 }
 #-- 링크를 만든다. JemokMade #from <-- md_Create () {
 
+
+#-- Figure_Link "1.53" "Searching Django workshop" "Figure 1.53 – Searching Django workshop"
+Figure_Link () {
+	FigureNumber=$1
+	FigureShortMemo=$2
+	FigureOriginalMemo=$3
+
+	small_FigureShortMemo=$(echo "${FigureShortMemo,,}" | sed 's/ /_/g')
+	cat <<__EOF__ | tee -a "${small_Jemok}.md" #-- -a = >> 를 뜻하는 append 연산자.
+![ ${FigureOriginalMemo} ](/${small_Publisher}/${img_dir}/${small_FigureShortMemo}.webp)
+${FigureOriginalMemo}
+
+__EOF__
+    #-- ----> press Enter:
+	#-- read a
+}
+
+#-- figure_title_made "1.53" "Searching Django workshop"
+#--
+#-- Figure 1.53 – Searching Django workshop
+#-- "Figure" "1.53" " – " "Searching Django workshop"
+#-- _____(1) "1_53" __(2) "searching_django_workshop" ___(3) .webp
+#--
+#-- ![ Figure 1.53 – Searching Django workshop
+#-- ---^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ ----------------------------------- _____
+#-- ](/packtpub/2024/422-web_development_with_django/1_53-searching_django_workshop.webp)
+#--    ^^^^^^^^ |||| +++++++++++++++++++++++++++++++ //// -------------------------
+#-- 
+#-- ![ Figure 1.53 – Searching Django workshop ](/packtpub/2024/422-web_develo..
+#-- ..pment_with_django/1_53-searching_django_workshop.webp)
+
+#-- (1-2) 책에 맞추어 수정하는 부분.
+#--
+
 PrevSeq="" ; PrevTitle=""
 CurrentSeq="" ; CurrentTitle=""
 NextSeq="" ; NextTitle=""
@@ -170,22 +204,26 @@ md_Create "00.1" "Preface" #-- 서문
 #-- 본문은 권 번호 01 또는 001 부터 시작한다.
 #-- reate  mdSeq  mdTitle
 md_Create "01" "An Introduction to Django"
-md_Create "02" "Models and Migrations"
-md_Create "03" "URL Mapping, Views, and Templates"
-md_Create "04" "An Introduction to Django Admin"
-md_Create "05" "Serving Static Files"
-md_Create "06" "Forms"
-md_Create "07" "Advanced Form Validation and Model Forms"
-md_Create "08" "Media Serving and File Uploads"
-md_Create "09" "Sessions and Authentication"
-md_Create "10" "Advanced Django Admin and Customizations"
-md_Create "11" "Advanced Templating and Class-Based Views"
-md_Create "12" "Building a REST API"
-md_Create "13" "Generating CSV, PDF, and Other Binary Files"
-md_Create "14" "Testing Your Django Applications"
-md_Create "15" "Django Third-Party Libraries"
-md_Create "16" "Using a Frontend JavaScript Library with Django"
-md_Create "17" "Index"
-md_Create "18" "Other Books You May Enjoy"
 #--
-md_Create "SKIP" "End" #-- 끝줄 표시.
+Figure_Link "1.53" "Searching Django workshop" "Figure 1.53 – Searching Django workshop"
+#--
+####md_Create "02" "Models and Migrations"
+####md_Create "03" "URL Mapping, Views, and Templates"
+####md_Create "04" "An Introduction to Django Admin"
+####md_Create "05" "Serving Static Files"
+####md_Create "06" "Forms"
+####md_Create "07" "Advanced Form Validation and Model Forms"
+####md_Create "08" "Media Serving and File Uploads"
+####md_Create "09" "Sessions and Authentication"
+####md_Create "10" "Advanced Django Admin and Customizations"
+####md_Create "11" "Advanced Templating and Class-Based Views"
+####md_Create "12" "Building a REST API"
+####md_Create "13" "Generating CSV, PDF, and Other Binary Files"
+####md_Create "14" "Testing Your Django Applications"
+####md_Create "15" "Django Third-Party Libraries"
+####md_Create "16" "Using a Frontend JavaScript Library with Django"
+####md_Create "17" "Index"
+####md_Create "18" "Other Books You May Enjoy"
+#####--
+####md_Create "SKIP" "End" #-- 끝줄 표시.
+

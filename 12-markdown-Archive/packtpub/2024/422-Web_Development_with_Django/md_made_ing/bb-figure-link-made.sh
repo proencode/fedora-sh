@@ -11,9 +11,9 @@ fff () {
 ![ ${FigureMemo} ](/${small_Publisher}/${img_dir}/${small_FigureMemo}.webp)
 ${FigureMemo}
 
-----> press Enter:
 __EOF__
-	read a
+    #-- ----> press Enter:
+	#-- read a
 }
 
 #-- figure_title_made "1.53" "Searching Django workshop"
@@ -35,15 +35,15 @@ __EOF__
 
 Publisher="packtpub" #-- (1) 출판사 --
 BookYear="2024" #-- (2-1) 등록년도
-BookTitle="422 Web Development with Django 2ed" #-- (2-2) 시작월일 + 책 제목 --
-Year_Title="${BookYear}/${BookTitle}" #-- (2) 호스트의 경로
+BookTitle="422-Web Development with Django 2ed" #-- (2-2) 시작월일 + 책 제목 --
+BookLink="${BookYear}/${BookTitle}" #-- (2) 호스트의 경로
 ShortDescription="Publication date: May 2023 Publisher Packt Pages 764" #-- (3) 저자등 설명 --
 tags="Django" #-- (4) 찾기 위한 태그 --
 https_line="https://subscription.packtpub.com/book/web-development/9781803230603/pref" #-- (5) 출판사 홈페이지 링크 --
 #--
 small_Publisher=$(echo "${Publisher,,}" | sed 's/ /_/g' | sed 's/\./_/g' | sed 's/“/\"/g' | sed 's/”/\"/g' | sed "s/’/'/g")
-small_YearTitle=$(echo "${Year_Title,,}" | sed 's/ /_/g' | sed 's/\./_/g' | sed 's/“/\"/g' | sed 's/”/\"/g' | sed "s/’/'/g")
-img_dir="${small_YearTitle}_img"
+small_BookLink=$(echo "${BookLink,,}" | sed 's/ /_/g' | sed 's/\./_/g' | sed 's/“/\"/g' | sed 's/”/\"/g' | sed "s/’/'/g")
+img_dir="${small_BookLink}_img"
 if [ ! -d ${img_dir} ]; then
 	mkdir -p ${img_dir}
 fi
