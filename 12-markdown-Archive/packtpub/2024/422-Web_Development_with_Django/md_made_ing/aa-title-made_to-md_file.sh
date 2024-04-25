@@ -98,21 +98,25 @@ PrevSeq="" ; PrevName=""
 CurrentSeq="" ; CurrentName=""
 NextSeq="" ; NextName=""
 
+#-- md_Create mdSeq  mdTitle
+#-- md_Create -$1--  --$2---
+#-- md_Create "SKIP" "Begin"
+
 md_Create () {
-	TitleSeq=$1 #-- 권 번호
-	TitleName=$2 #-- wiki.js 왼쪽에 표시할 챕터 제목
+	mdSeq=$1 #-- 권 번호
+	mdTitle=$2 #-- wiki.js 왼쪽에 표시할 챕터 제목
 	if [ "x$NextSeq" = "x" ]; then
 		if [ "x$PrevSeq" = "x" ]; then
 			#-- 이전 페이지가 없으면, 이전 페이지로 담는다.
-			PrevSeq=$TitleSeq ; PrevName=$TitleName
+			PrevSeq=$mdSeq ; PrevTitle=$mdTitle
 		else
 		if [ "x$CurrentSeq" = "x" ]; then
 			#-- 현재 페이지가 없으면, 현재 페이지로 담는다.
-			CurrentSeq=$TitleSeq ; CurrentName=$TitleName
+			CurrentSeq=$mdSeq ; CurrentTitle=$mdTitle
 		else
 		# if [ "x$NextSeq" = "x" ]; then
 			#-- 다음 페이지가 없으면, 다음 페이지로 담는다.
-			NextSeq=$TitleSeq ; NextName=$TitleName
+			NextSeq=$mdSeq ; NextTitle=$mdTitle
 		# fi
 		fi
 		fi
@@ -121,18 +125,18 @@ md_Create () {
 		JemokMade
 
 		if [ "x${NextSeq}" != "xSKIP" ]; then
-			file_Made "${CurrentSeq}" "${CurrentName}" "${PrevLink}" "${NextLink}"
+			file_Made "${CurrentSeq}" "${CurrentTitle}" "${PrevLink}" "${NextLink}"
 		fi
 
-		PrevSeq=$CurrentSeq ; PrevName=$CurrentName
-		CurrentSeq=$NextSeq ; CurrentName=$NextName
-		NextSeq=$TitleSeq ; NextName=$TitleName
+		PrevSeq=$CurrentSeq ; PrevTitle=$CurrentTitle
+		CurrentSeq=$NextSeq ; CurrentTitle=$NextTitle
+		NextSeq=$mdSeq ; NextTitle=$mdTitle
 
 		if [ "x${NextSeq}" = "xSKIP" ]; then
 			#-- 링크를 만든다.
 			JemokMade
 
-			file_Made "${CurrentSeq}" "${CurrentName}" "${PrevLink}" "${NextLink}"
+			file_Made "${CurrentSeq}" "${CurrentTitle}" "${PrevLink}" "${NextLink}"
 		fi
 	fi
 }
@@ -143,26 +147,28 @@ md_Create () {
 Publisher="packtpub" #-- (1) 출판사 --
 BookYear="2024" #-- (2-1) 등록년도
 BookTitle="422 Web Development with Django 2ed" #-- (2-2) 시작월일 + 책 제목 --
-Year_Title="${BookYear}/${BookTitle}" #-- (2) 호스트의 경로
 ShortDescription="Publication date: May 2023 Publisher Packt Pages 764" #-- (3) 저자등 설명 --
 tags="Django" #-- (4) 찾기 위한 태그 --
 https_line="https://subscription.packtpub.com/book/web-development/9781803230603/pref" #-- (5) 출판사 홈페이지 링크 --
 #--
 small_Publisher=$(echo "${Publisher,,}" | sed 's/ /_/g' | sed 's/\./_/g' | sed 's/“/\"/g' | sed 's/”/\"/g' | sed "s/’/'/g")
-small_YearTitle=$(echo "${Year_Title,,}" | sed 's/ /_/g' | sed 's/\./_/g' | sed 's/“/\"/g' | sed 's/”/\"/g' | sed "s/’/'/g")
-img_dir="${small_YearTitle}_img"
+BookLink="${BookYear}/${BookTitle}" #-- (2) 호스트의 경로
+small_BookLink=$(echo "${BookLink,,}" | sed 's/ /_/g' | sed 's/\./_/g' | sed 's/“/\"/g' | sed 's/”/\"/g' | sed "s/’/'/g")
+img_dir="${small_BookLink}_img"
 if [ ! -d ${img_dir} ]; then
 	mkdir -p ${img_dir}
 fi
 #--
-#-- (6) md_Create "권 번호" "S섹션/C챕터 번호 + 제목"
-#-- 권번호의 0.. 은 목차, 1.. ~ 8.. 은 본문, 9.. 는 색인 등으로 정한다.
+#-- (6) md_Create "권 번호" "제목"
 #-- 첫줄에는 "SKIP" "Begin" , 끝줄에는 "SKIP" "End" 로 표시한다.
-md_Create "SKIP" "Begin"
 #--
-md_Create "00.0" "Contents"
-md_Create "00.1" "Preface"
+md_Create "SKIP" "Begin" #-- 첫줄 표시.
+#--
+md_Create "00.0" "Contents" #-- 목차
+md_Create "00.1" "Preface" #-- 서문
 
+#-- 본문은 권 번호 01 또는 001 부터 시작한다.
+#-- reate  mdSeq  mdTitle
 md_Create "01" "An Introduction to Django"
 md_Create "02" "Models and Migrations"
 md_Create "03" "URL Mapping, Views, and Templates"
@@ -183,4 +189,4 @@ md_Create "16" "Using a Frontend JavaScript Library with Django"
 md_Create "17" "Index"
 md_Create "18" "Other Books You May Enjoy"
 #--
-md_Create "SKIP" "End"
+md_Create "SKIP" "End" #-- 끝줄 표시.
