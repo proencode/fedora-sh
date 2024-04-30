@@ -1,5 +1,9 @@
 #!/bin/bash
 
+declare -A figure_number
+declare -A figure_title
+SPminusSP=" – "
+
 figure_link () {
 	#-- [Shell Script] 배열(array)과 Map 사용하기 2021. 7. 12. 22:25ㆍLinux
 	#-- https://nuritech.tistory.com/22
@@ -8,37 +12,20 @@ figure_link () {
 	#-- ............ ----------|||-----------------------------------
 	#-- ........ figure_number ||| figure_title [ ]
 	#--
-	#-- "Figure 1.1 - " 과 "Figure 1.15 - " 가 같이 있으므로,
+	#-- xxx "Figure 1.1 - " 과 "Figure 1.15 - " 가 같이 있으므로,
 	#-- " - " 를 추가한다.
-	figure_number = $(echo "$1" | awk -F" - " '{print "$1 - "}')
-	figure_title[ $figure_number ] = $(echo "$1" | awk -F" - " '{print $2}')
+	###figure_number = $(echo "$1" | awk -F"${SPminusSP}" '{print "$1 - "}')
+	figure_number=$(echo "$1" | awk -F"${SPminusSP}" '{print $1}')
+	fftt=$(echo "$1" | awk -F"${SPminusSP}" '{print $2}')
+	figure_title[ "$figure_number" ]="${fftt}"
+	cat <<__EOF__
+fftt=${fftt}
+figure_link "$1"
+figure_title[ \$figure_number $figure_number ]
+figure_title[ $figure_number ] = "$figure_title[ $figure_number ]"
+
+__EOF__
 }
-
-declare -A figure_number
-declare -A figure_title
-figure_seq=0
-
-# 텍스트 파일 경로
-FILEPATH="$1"
-SEQ=0
-
-# 텍스트 파일 내용을 읽음
-while IFS= read -r line; do
-	# 문자열 확인
-	#-- if [[ $line == *"Figure "* ]]; then #-- check "figure " on any position
-	if [[ $line == "Figure "* ]]; then #-- delete first asterisk (*)
-		if [ $SEQ -eq 0 ]; then
-			# 앞줄에 삽입 문자열 추가
-			echo "![ ${line} ](---)"
-			SEQ=1
-		else
-			SEQ=0
-			echo "$line"
-		fi
-	else
-		echo "$line"
-	fi
-done < "$FILEPATH"
 
 # 기본 문법
 #-- declare -A 변수
@@ -50,8 +37,12 @@ done < "$FILEPATH"
 #-- map[key1]=value1
 #-- map[key2]=value2
 #--
-#-- grep "^Figure " 01_an_introduction_to_django.md | uniq
+#-- grep "^Figure " 01_an_introduction_to_django.md | uniq #-- 아래 선언을 만들기 위한 스크립트.
 
+#-- 링크값 선언.
+
+#-- "Figure 1.1 – The ..." 의 " - " 대신, 위에서 선언한 SPminusSP 를 사용한다.
+#--
 figure_link "Figure 1.1 – The project directory for myproject"
 figure_link "Figure 1.2 – The Django welcome screen"
 figure_link "Figure 1.3 – Editing a single book or review"
@@ -107,3 +98,40 @@ figure_link "Figure 1.51 – Clicking the breakpoint that was on line 5 disables
 figure_link "Figure 1.52 – The Bookr welcome page"
 figure_link "Figure 1.53 – Searching Django workshop"
 figure_link "Figure 1.54 – Note how HTML characters are escaped so that we are protected from tag injection"
+
+#-- END OF 링크값 선언.
+
+FILEPATH="$1" #-- 파일 경로 및 읽어들일 파일
+
+# 텍스트 파일 내용을 한줄씩 $line 으로 읽음
+while IFS= read -r line; do
+	# 문자열 확인
+	#-- if [[ $line == *"Figure "* ]]; then #-- check "figure " on any position
+	if [[ $line == "Figure "* ]]; then #-- delete first asterisk (*)
+		if [ $SEQ -eq 0 ]; then
+			# 앞줄에 삽입 문자열 추가
+			###lines_number = $(echo "$line" | awk -F"${SPminusSP}" '{print "$1 - "}')
+			#-- lines_number = "Figure 1.54"
+			lines_number=$(echo "$line" | awk -F"${SPminusSP}" '{print $1}')
+			echo "----> \$figure_title[ ---- \"${lines_number}\" ---- ] <----"
+			echo "----> $figure_title[ \"${lines_number}\" ] <----"
+			lines_title=$figure_title[ "${lines_number}" ]
+			#-- .webp 로 고정함.
+			echo <<__EOF__
+\${lines_title} ${lines_title}
+\${wiki_link} ${wiki_link}
+\${link_number} ${link_number}
+\${wiki_link}/\${link_number}.webp) ${wiki_link}/${link_number}.webp)
+
+__EOF__
+			echo "![ ${lines_title} ](${wiki_link}/${link_number}.webp)"
+			SEQ=1
+		else
+			SEQ=0
+			echo "$line"
+		fi
+	else
+		echo "$line"
+	fi
+done < "$FILEPATH"
+
