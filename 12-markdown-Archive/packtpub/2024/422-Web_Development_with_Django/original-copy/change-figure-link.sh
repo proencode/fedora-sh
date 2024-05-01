@@ -1,68 +1,92 @@
 #!/bin/bash
 
+FILEPATH=""
 Figure_ONLY=""
 trace_ON=""
-FILEPATH=""
+read_trace_ON="n"
+read_Figure_ONLY="n"
+
 if [ "x$3" != "x" ]; then
-	Figure_ONLY="$1"
-	trace_ON="$2"
-	FILEPATH="$3" #-- 읽어들일 파일 경로 + 파일
+	FILEPATH="$1" #-- 읽어들일 파일 경로 + 파일
+	Figure_ONLY="$2"
+	trace_ON="$3"
 else
 	if [ "x$2" != "x" ]; then
-		Figure_ONLY="n"
+		FILEPATH="$1" #-- 읽어들일 파일 경로 + 파일
+		Figure_ONLY="$2"
 		trace_ON="n"
-		FILEPATH="$2" #-- 읽어들일 파일 경로 + 파일
+		read_trace_ON="y"
 	else
 		if [ "x$1" != "x" ]; then
-			Figure_ONLY="y"
-			trace_ON="n"
 			FILEPATH="$1" #-- 읽어들일 파일 경로 + 파일
+			Figure_ONLY="y"
+			read_Figure_ONLY="y"
+			trace_ON="n"
+			read_trace_ON="y"
 		fi
 	fi
 fi
 cat <<__EOF__
 
-$ $0 ..... (Figure_ONLY) (trace_ON) (.md File)
-$ $0 <---------> ${Figure_ONLY} <-------> ${trace_ON} <------> ${FILEPATH}
+$ $0 ..... (${FILEPATH}) (${Figure_ONLY}) (${trace_ON})
+$ $0 ..... (.md File) (Figure_ONLY [y]) (trace_ON [n])
 __EOF__
 
-#---->
-Figure_ONLY=""
-trace_ON=""
-cat <<__EOF__
+Figure_ONLY=${Figure_ONLY,,}
+if [ "x$read_Figure_ONLY" = "xy" ]; then #-- argument 입력이 없으면,
+	cat <<__EOF__
 
-다 보려면  press Enter:  Figure 목록만 보려면 'y'
+#----> 다 보려면  press Enter:  Figure 목록만 보려면 'y'
 __EOF__
-cat <<__EOF__
-
-#----> 결과만 보려면  press Enter:  작업 과정의 값도 보려면 'y'"
-__EOF__
-cat <<__EOF__
-
-#----> 경로 포함한 읽어들일 파일 이름 [ ${FILEPATH} ] press Enter:
-__EOF__
-read a
-echo "#--$0 \"${FILEPATH}\""
-
-echo "#----> 다 보려면  press Enter:  또는 Figure 목록만 보려면 'y'"
-read aa
-if [ "x$aa" != "xy" ]; then
-	Figure_ONLY="y"
-	echo "#----> ALL LISTING. 파일 전체를 보여줍니다."
-else
-	Figure_ONLY="n"
-	echo "#----> Figure list ONLY. Figure 목록만 보여줍니다."
+	read a
+	a=${a,,}
+	if [ "x$a" != "xy" ]; then
+		Figure_ONLY="n"
+		echo "'n' #-- ALL LISTING. 파일 전체를 보여줍니다."
+	else
+		Figure_ONLY="y"
+		echo "'y' #-- Figure list ONLY. Figure 목록만 보여줍니다."
+	fi
 fi
 
-echo "#----> 결과만 보려면  press Enter:  작업 과정의 값도 보려면 'y'"
-read aa
-if [ "x$aa" != "xy" ]; then
-	trace_ON="n"
-	echo "#----> trace OFF. 결과만 보여줍니다."
-else
-	trace_ON="y"
-	echo "#----> trace ON. 작업 과정의 값도 보여줍니다."
+trace_ON=${trace_ON,,}
+if [ "x$read_trace_ON" = "xy" ]; then
+	cat <<__EOF__
+
+#----> 결과만 보려면  press Enter:  작업 과정의 값도 보려면 'y'
+__EOF__
+	read a
+	a=${a,,}
+	if [ "x$a" != "xy" ]; then
+		trace_ON="n"
+		echo "'n' #-- trace OFF. 결과만 보여줍니다."
+	else
+		trace_ON="y"
+		echo "'y' #-- trace ON. 작업 과정의 값도 보여줍니다."
+	fi
 fi
+
+#== cat <<__EOF__
+#== 
+#== #----> 경로 포함한 읽어들일 파일 이름 [ ${FILEPATH} ] 이면 press Enter:  아니면 입력:
+#== __EOF__
+#== read a
+#== if [ "x$a" != "x" ]; then
+#== 	FILEPATH=$a
+#== fi
+cat <<__EOF__
+'${FILEPATH}' #-- 경로 포함한 읽어들일 파일 이름
+
+__EOF__
+
+if [ ! -f "${FILEPATH}" ]; then
+	cat <<__EOF__
+경로 포함한 읽어들일 '${FILEPATH}' 파일이 없으므로 중단합니다.
+
+__EOF__
+	exit -1
+fi
+
 
 # 기본 문법
 #-- declare -A 변수
@@ -106,7 +130,7 @@ figure_link () {
     figure_title_map[ "$FigNumber" ] = "${figure_title_map[ $FigNumber ]}"
 
 __EOF__
-		echo "#----> press Enter:" ; read a
+		echo "#----> trace_ON: Enter to CONTINUE:" ; read a
 	fi
 }
 
@@ -255,7 +279,7 @@ if [ "x$trace_ON" = "xy" ]; then #-- trace --ON--
 		value=${key}
 		echo "58: figure_title_map:$key, value:$value"
 	done
-	echo "#----> press Enter:" ; read a
+	echo "#----> trace_ON: Enter to CONTINUE:" ; read a
 fi
 
 
@@ -280,7 +304,7 @@ while IFS= read -r line; do
 79: ----> \$figure_title_map[ ---- \"${lines_number}\" ---- ] <----"
     ----> $figure_title_map[ \"${lines_number}\" ] <----"
 __EOF__
-				echo "#----> press Enter:" ; read a
+				echo "#----> trace_ON: Enter to CONTINUE:" ; read a
 			fi
 
 			#-- 링크를 출력하는데 이미지 타입을 .webp 로 고정했으므로 확인해야 한다.
@@ -301,7 +325,7 @@ lines_title=${figure_title_map[ $lines_number ]}
 ![ ${lines_title} ](${image_dir}/${lines_number}.webp)
     <----
 __EOF__
-				echo "#----> press Enter:" ; read a
+				echo "#----> trace_ON: Enter to CONTINUE:" ; read a
 			fi
 			SEQ=1
 		else
@@ -324,6 +348,6 @@ if [ "x$trace_ON" = "xy" ]; then #-- trace --ON--
 		value="${figure_title_map[ $key ]}"
 		echo "     figure_title_map keyr=$key, value=$value"
 	done
-	echo "#----> press Enter:" ; read a
+	echo "#----> trace_ON: Enter to CONTINUE:" ; read a
 fi
 
