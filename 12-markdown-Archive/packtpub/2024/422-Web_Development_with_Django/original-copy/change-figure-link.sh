@@ -1,10 +1,67 @@
 #!/bin/bash
 
-FILEPATH="$1" #-- 읽어들일 파일 경로 + 파일
+Figure_ONLY=""
+trace_ON=""
+FILEPATH=""
+if [ "x$3" != "x" ]; then
+	Figure_ONLY="$1"
+	trace_ON="$2"
+	FILEPATH="$3" #-- 읽어들일 파일 경로 + 파일
+else
+	if [ "x$2" != "x" ]; then
+		Figure_ONLY="n"
+		trace_ON="n"
+		FILEPATH="$2" #-- 읽어들일 파일 경로 + 파일
+	else
+		if [ "x$1" != "x" ]; then
+			Figure_ONLY="y"
+			trace_ON="n"
+			FILEPATH="$1" #-- 읽어들일 파일 경로 + 파일
+		fi
+	fi
+fi
+cat <<__EOF__
 
-if [ ! -f "${FILEPATH}" ]; then
-	echo "#----> $0 \"${FILEPATH}\" <---- 처리할 .md 최초의 원본 파일을 지정해야 합니다."
-	exit -1
+$ $0 ..... (Figure_ONLY) (trace_ON) (.md File)
+$ $0 <---------> ${Figure_ONLY} <-------> ${trace_ON} <------> ${FILEPATH}
+__EOF__
+
+#---->
+Figure_ONLY=""
+trace_ON=""
+cat <<__EOF__
+
+다 보려면  press Enter:  Figure 목록만 보려면 'y'
+__EOF__
+cat <<__EOF__
+
+#----> 결과만 보려면  press Enter:  작업 과정의 값도 보려면 'y'"
+__EOF__
+cat <<__EOF__
+
+#----> 경로 포함한 읽어들일 파일 이름 [ ${FILEPATH} ] press Enter:
+__EOF__
+read a
+echo "#--$0 \"${FILEPATH}\""
+
+echo "#----> 다 보려면  press Enter:  또는 Figure 목록만 보려면 'y'"
+read aa
+if [ "x$aa" != "xy" ]; then
+	Figure_ONLY="y"
+	echo "#----> ALL LISTING. 파일 전체를 보여줍니다."
+else
+	Figure_ONLY="n"
+	echo "#----> Figure list ONLY. Figure 목록만 보여줍니다."
+fi
+
+echo "#----> 결과만 보려면  press Enter:  작업 과정의 값도 보려면 'y'"
+read aa
+if [ "x$aa" != "xy" ]; then
+	trace_ON="n"
+	echo "#----> trace OFF. 결과만 보여줍니다."
+else
+	trace_ON="y"
+	echo "#----> trace ON. 작업 과정의 값도 보여줍니다."
 fi
 
 # 기본 문법
@@ -21,8 +78,6 @@ declare -A figure_image_map
 declare -A figure_title_map
 SPminusSP=" – "
 SEQ=0
-check_echo_ok="no" #-- "yes" 면 확인용 echo 를 실행한다.
-#check_echo_ok="yes" #-- "yes" 면 확인용 echo 를 실행한다.
 
 figure_link () {
 	#-- [Shell Script] 배열(array)과 Map 사용하기 2021. 7. 12. 22:25ㆍLinux
@@ -44,7 +99,7 @@ figure_link () {
 	FigTitle=$(echo  "$2" | awk -F"${SPminusSP}" '{print $2}')
 	figure_title_map[ "$FigNumber" ]=${FigTitle} #-- 제목.
 
-	if [ "x$check_echo_ok" = "xyes" ]; then #-- "yes" 면 확인용 echo 를 실행한다.
+	if [ "x$trace_ON" = "xy" ]; then #-- trace --ON--
 		cat <<__EOF__
 26: for Image="$1"
     figure_image_map[ "$FigNumber" ] = "${figure_image_map[ $FigNumber ]}"
@@ -195,7 +250,7 @@ figure_link "Figure 1.54 – Note how HTML characters" \
 
 #-- END OF 링크값 선언.
 
-if [ "x$check_echo_ok" = "xyes" ]; then #-- "yes" 면 확인용 echo 를 실행한다.
+if [ "x$trace_ON" = "xy" ]; then #-- trace --ON--
 	for key in ${!figure_title_map[@]}; do
 		value=${key}
 		echo "58: figure_title_map:$key, value:$value"
@@ -216,10 +271,11 @@ while IFS= read -r line; do
 			#-- 앞줄에 삽입 문자열 추가 --
 			#-- key 에 공백이 들어가면 안되므로 " " 를 "_" 로 바꾼다.
 			lines_number=$(echo "$line" | awk -F"${SPminusSP}" '{print $1}' | sed 's/ /_/g')
-			lines_image=${figure_image_map[ $lines_number ]}
+			small_lines_number=$(echo "${lines_number,,}" | sed 's/ /_/g' | sed 's/\./_/g' | sed 's/“/\"/g' | sed 's/”/\"/g' | sed "s/’/'/g")
+			lines_image=${small_lines_number}-${figure_image_map[ $lines_number ]}
 			lines_title=${figure_title_map[ $lines_number ]}
 
-			if [ "x$check_echo_ok" = "xyes" ]; then #-- "yes" 면 확인용 echo 를 실행한다.
+			if [ "x$trace_ON" = "xy" ]; then #-- trace --ON--
 				cat <<__EOF__
 79: ----> \$figure_title_map[ ---- \"${lines_number}\" ---- ] <----"
     ----> $figure_title_map[ \"${lines_number}\" ] <----"
@@ -231,7 +287,7 @@ __EOF__
 			cat <<__EOF__
 ![ ${lines_title} ](${image_dir}/${lines_image}.webp)
 __EOF__
-			if [ "x$check_echo_ok" = "xyes" ]; then #-- "yes" 면 확인용 echo 를 실행한다.
+			if [ "x$trace_ON" = "xy" ]; then #-- trace --ON--
 				cat <<__EOF__
 90: ---->
 lines_title=\$figure_title_map[ \${lines_number} ]
@@ -250,14 +306,18 @@ __EOF__
 			SEQ=1
 		else
 			SEQ=0
-			echo "$line" #-- 원본대로 출력한다.
+			if [ "x$Figure_ONLY" = "xn" ]; then #-- ALL LISTING
+				echo "$line" #-- 원본대로 출력한다.
+			fi
 		fi
 	else
-		echo "$line" #-- 원본대로 출력한다.
+		if [ "x$Figure_ONLY" = "xn" ]; then #-- ALL LISTING
+			echo "$line" #-- 원본대로 출력한다.
+		fi
 	fi
 done < "${FILEPATH}"
 
-if [ "x$check_echo_ok" = "xyes" ]; then #-- "yes" 면 확인용 echo 를 실행한다.
+if [ "x$trace_ON" = "xy" ]; then #-- trace --ON--
 	echo "114: for key in ${!figure_title_map[@]}; do"
 	for key in ${!figure_title_map[@]}; do
 		echo "     value=\"${key}\""
