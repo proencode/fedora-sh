@@ -38,10 +38,10 @@ if [ "x$read_Figure_ONLY" = "xy" ]; then #-- argument 입력이 없으면,
 
 #----> 다 보려면  press Enter:  Figure 목록만 보려면 'y'
 __EOF__
-	read a
-	echo "42: a=$a"
-	a=${a,,}
-	echo "44: a=$a=\${a}"
+	read x
+	echo "42: x=$x"
+	a=${x,,}
+	echo "44: a=$a=$x"
 	if [ "x$a" != "xy" ]; then
 		Figure_ONLY="n"
 		echo "'n' #-- ALL LISTING. 파일 전체를 보여줍니다."
@@ -57,10 +57,10 @@ if [ "x$read_trace_ON" = "xy" ]; then
 
 #----> 결과만 보려면  press Enter:  작업 과정의 값도 보려면 'y'
 __EOF__
-	read a
-	echo "61: a=$a"
-	a=${a,,}
-	echo "63: a=$a=\${a}"
+	read x
+	echo "61: x=$x"
+	a=${x,,}
+	echo "63: a=$a=$x"
 	if [ "x$a" != "xy" ]; then
 		trace_ON="n"
 		echo "'n' #-- trace OFF. 결과만 보여줍니다."
@@ -75,9 +75,9 @@ fi
 #== #----> 경로 포함한 읽어들일 파일 이름 [ ${FILEPATH} ] 이면 press Enter:  아니면 입력:
 #== __EOF__
 #== read a
-#== if [ "x$a" != "x" ]; then
+#== i---f [ "x$a" != "x" ]; then
 #== 	FILEPATH=$a
-#== fi
+#== f===i
 cat <<__EOF__
 '${FILEPATH}' #-- 경로 포함한 읽어들일 파일 이름
 
@@ -133,12 +133,11 @@ figure_link () {
     figure_image_map[ "$FigNumber" ] = "${figure_image_map[ $FigNumber ]}"
     figure_title_map[ "$FigNumber" ] = "${figure_title_map[ $FigNumber ]}"
 
-#----> trace_ON: Enter to CONTINUE:
 __EOF__
-		read a
-		echo "139: a=$a"
-		a=${a,,}
-		echo "141: a=$a=\${a}"
+		echo "#----> trace_ON: Enter to CONTINUE:" ; read x
+		echo "139: x=$x"
+		a=${x,,}
+		echo "141: a=$a=$x"
 	fi
 }
 
@@ -287,11 +286,10 @@ if [ "x$trace_ON" = "xy" ]; then #-- trace --ON--
 		value=${key}
 		echo "58: figure_title_map:$key, value:$value"
 	done
-	echo "#----> trace_ON: Enter to CONTINUE:"
-	read a
-	echo "292: a=$a"
-	a=${a,,}
-	echo "294: a=$a=\${a}"
+	echo "#----> trace_ON: Enter to CONTINUE:" ; read x
+	echo "292: x=$x"
+	a=${x,,}
+	echo "294: a=$a=$x"
 fi
 
 
@@ -300,7 +298,7 @@ fi
 while IFS= read -r line; do
 	# 문자열 확인
 	#------------------vvvvvvvvvvv--- *"figure "* 문자열이 어느 위치든지 찾는다.
-	#-- if [[ $line == *"Figure "* ]]; then
+	#-- i f [[ $line == *"Figure "* ]]; then
 	#--------------vvvvvvvvvv--- "figure "* 문자열이 맨 앞에 있는것만 찾는다.
 	if [[ $line == "Figure "* ]]; then
 		if [ $SEQ -eq 0 ]; then
@@ -316,12 +314,11 @@ while IFS= read -r line; do
 79: ----> \$figure_title_map[ ---- \"${lines_number}\" ---- ] <----"
     ----> $figure_title_map[ \"${lines_number}\" ] <----"
 
-#----> trace_ON: Enter to CONTINUE:
 __EOF__
-				read a
-				echo "321: a=$a"
-				a=${a,,}
-				echo "323: a=$a=\${a}"
+				echo "#----> trace_ON: Enter to CONTINUE:" ; read x
+				echo "322: x=$x"
+				a=${x,,}
+				echo "324: a=$a=$x"
 			fi
 
 			#-- 링크를 출력하는데 이미지 타입을 .webp 로 고정했으므로 확인해야 한다.
@@ -330,27 +327,19 @@ __EOF__
 __EOF__
 			if [ "x$Figure_ONLY" = "xy" ]; then #-- ONLY Figure
 				cat <<__EOF__
-
+----
 ${lines_title}
-
+----
 ${image_dir}/${lines_image}.webp
-
+----
 ${lines_image}.webp
-
-#----> Figure_ONLY: [ $Figure_ONLY ]
-a [ $a ]
-while IFS= read -r line; do
-${line}
-while IFS= read -r line; do
-
-
-
-read a
+----
+348: read x [ $x ]
 __EOF__
-				read a
-				echo "345: a=$a"
-				a=${a,,}
-				echo "347: a=$a=\${a}"
+				echo "341: #----> figure only ---->" ; read x
+				echo "351: x=$x"
+				a=${x,,}
+				echo "353: a=$a=$x"
 			fi
 			if [ "x$trace_ON" = "xy" ]; then #-- trace --ON--
 				cat <<__EOF__
@@ -366,12 +355,11 @@ lines_title=${figure_title_map[ $lines_number ]}
 ![ ${lines_title} ](${image_dir}/${lines_number}.webp)
     <----
 
-#----> trace_ON: Enter to CONTINUE:
 __EOF__
-				read a
-				echo "365: a=$a"
-				a=${a,,}
-				echo "367: a=$a=\${a}"
+				echo "#----> trace_ON: Enter to CONTINUE:" ; read x
+				echo "372: x=$x"
+				a=${x,,}
+				echo "374: a=$a=$x"
 			fi
 			SEQ=1
 		else
@@ -394,11 +382,10 @@ if [ "x$trace_ON" = "xy" ]; then #-- trace --ON--
 		value="${figure_title_map[ $key ]}"
 		echo "     figure_title_map keyr=$key, value=$value"
 	done
-	echo "#----> trace_ON: Enter to CONTINUE:"
-	read a
-	echo "392: a=$a"
-	a=${a,,}
-	echo "394: a=$a=\${a}"
+	echo "#----> trace_ON: Enter to CONTINUE:" ; read x
+	echo "399: x=$x"
+	a=${x,,}
+	echo "401: a=$a=$x"
 fi
 
 echo "----> FILEPAtH ${FILEPATH}; Figure_ONLY ${Figure_ONLY}; trace_ON ${trace_ON}; read_trace_ON ${read_trace_ON}; read_Figure_ONLY ${read_Figure_ONLY};"
