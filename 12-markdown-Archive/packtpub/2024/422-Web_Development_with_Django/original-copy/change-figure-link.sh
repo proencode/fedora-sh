@@ -39,7 +39,9 @@ if [ "x$read_Figure_ONLY" = "xy" ]; then #-- argument 입력이 없으면,
 #----> 다 보려면  press Enter:  Figure 목록만 보려면 'y'
 __EOF__
 	read a
+	echo "42: a=$a"
 	a=${a,,}
+	echo "44: a=$a=\${a}"
 	if [ "x$a" != "xy" ]; then
 		Figure_ONLY="n"
 		echo "'n' #-- ALL LISTING. 파일 전체를 보여줍니다."
@@ -56,7 +58,9 @@ if [ "x$read_trace_ON" = "xy" ]; then
 #----> 결과만 보려면  press Enter:  작업 과정의 값도 보려면 'y'
 __EOF__
 	read a
+	echo "61: a=$a"
 	a=${a,,}
+	echo "63: a=$a=\${a}"
 	if [ "x$a" != "xy" ]; then
 		trace_ON="n"
 		echo "'n' #-- trace OFF. 결과만 보여줍니다."
@@ -84,7 +88,7 @@ if [ ! -f "${FILEPATH}" ]; then
 경로 포함한 읽어들일 '${FILEPATH}' 파일이 없으므로 중단합니다.
 
 __EOF__
-	exit -1
+	exit 1
 fi
 
 
@@ -129,8 +133,12 @@ figure_link () {
     figure_image_map[ "$FigNumber" ] = "${figure_image_map[ $FigNumber ]}"
     figure_title_map[ "$FigNumber" ] = "${figure_title_map[ $FigNumber ]}"
 
+#----> trace_ON: Enter to CONTINUE:
 __EOF__
-		echo "#----> trace_ON: Enter to CONTINUE:" ; read a
+		read a
+		echo "139: a=$a"
+		a=${a,,}
+		echo "141: a=$a=\${a}"
 	fi
 }
 
@@ -279,7 +287,11 @@ if [ "x$trace_ON" = "xy" ]; then #-- trace --ON--
 		value=${key}
 		echo "58: figure_title_map:$key, value:$value"
 	done
-	echo "#----> trace_ON: Enter to CONTINUE:" ; read a
+	echo "#----> trace_ON: Enter to CONTINUE:"
+	read a
+	echo "292: a=$a"
+	a=${a,,}
+	echo "294: a=$a=\${a}"
 fi
 
 
@@ -303,14 +315,43 @@ while IFS= read -r line; do
 				cat <<__EOF__
 79: ----> \$figure_title_map[ ---- \"${lines_number}\" ---- ] <----"
     ----> $figure_title_map[ \"${lines_number}\" ] <----"
+
+#----> trace_ON: Enter to CONTINUE:
 __EOF__
-				echo "#----> trace_ON: Enter to CONTINUE:" ; read a
+				read a
+				echo "321: a=$a"
+				a=${a,,}
+				echo "323: a=$a=\${a}"
 			fi
 
 			#-- 링크를 출력하는데 이미지 타입을 .webp 로 고정했으므로 확인해야 한다.
 			cat <<__EOF__
 ![ ${lines_title} ](${image_dir}/${lines_image}.webp)
 __EOF__
+			if [ "x$Figure_ONLY" = "xy" ]; then #-- ONLY Figure
+				cat <<__EOF__
+
+${lines_title}
+
+${image_dir}/${lines_image}.webp
+
+${lines_image}.webp
+
+#----> Figure_ONLY: [ $Figure_ONLY ]
+a [ $a ]
+while IFS= read -r line; do
+${line}
+while IFS= read -r line; do
+
+
+
+read a
+__EOF__
+				read a
+				echo "345: a=$a"
+				a=${a,,}
+				echo "347: a=$a=\${a}"
+			fi
 			if [ "x$trace_ON" = "xy" ]; then #-- trace --ON--
 				cat <<__EOF__
 90: ---->
@@ -324,8 +365,13 @@ lines_title=${figure_title_map[ $lines_number ]}
 \${image_dir}/\${lines_number}.webp) ${image_dir}/${lines_number}.webp)
 ![ ${lines_title} ](${image_dir}/${lines_number}.webp)
     <----
+
+#----> trace_ON: Enter to CONTINUE:
 __EOF__
-				echo "#----> trace_ON: Enter to CONTINUE:" ; read a
+				read a
+				echo "365: a=$a"
+				a=${a,,}
+				echo "367: a=$a=\${a}"
 			fi
 			SEQ=1
 		else
@@ -348,6 +394,11 @@ if [ "x$trace_ON" = "xy" ]; then #-- trace --ON--
 		value="${figure_title_map[ $key ]}"
 		echo "     figure_title_map keyr=$key, value=$value"
 	done
-	echo "#----> trace_ON: Enter to CONTINUE:" ; read a
+	echo "#----> trace_ON: Enter to CONTINUE:"
+	read a
+	echo "392: a=$a"
+	a=${a,,}
+	echo "394: a=$a=\${a}"
 fi
 
+echo "----> FILEPAtH ${FILEPATH}; Figure_ONLY ${Figure_ONLY}; trace_ON ${trace_ON}; read_trace_ON ${read_trace_ON}; read_Figure_ONLY ${read_Figure_ONLY};"
