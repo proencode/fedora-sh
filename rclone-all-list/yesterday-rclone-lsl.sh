@@ -29,14 +29,17 @@ fi
 
 for base in cadbase emailbase georaebase scanbase
 do
-	echo "${bbb}----> rclone lsl kaosngc:kaosdb/${grep_y4}/${base}/${grep_mm}/ | grep --color \" ${grep_y2mmdd}-\"${xxx}"
-	rclone lsl kaosngc:kaosdb/${grep_y4}/${base}/${grep_mm}/ | grep --color " ${grep_y2mmdd}-"
+	echo "${bbb}----> rclone lsl kaosngc:kaosdb/${grep_y4}/${base}/${grep_mm}/ | sort -k2 | tail -4${xxx}"
+	rclone lsl kaosngc:kaosdb/${grep_y4}/${base}/${grep_mm}/ | sort -k2 | tail -4
+	#--rclone lsl kaosngc:kaosdb/${grep_y4}/${base}/${grep_mm}/ | grep --color " ${grep_y2mmdd}-"
 done
 
 for base in  kaosorder2
 do
-	echo "${bbb}----> rclone lsl kaosngc:kaosdb/${grep_y4}/${base}/${grep_mm}/ | grep --color \"_${grep_y2mmdd}-\"${xxx}"
+	echo "${bbb}----> rclone lsl kaosngc:kaosdb/${grep_y4}/${base}/${grep_mm}/ | sort -k2 | tail -4${xxx}"
+	rclone lsl kaosngc:kaosdb/${grep_y4}/${base}/${grep_mm}/ | sort -k2 | tail -4
 	rclone lsl kaosngc:kaosdb/${grep_y4}/${base}/${grep_mm}/ | grep --color "_${grep_y2mmdd}-"
+	#--rclone lsl kaosngc:kaosdb/${grep_y4}/${base}/${grep_mm}/ | grep --color " ${grep_y2mmdd}-"
 done
 
 echo "${ccc}----> ${bbb}rclone lsl tpn4mi:calls_sms/${grep_y4}/ | grep --color ${grep_yy}${grep_mm}${xxx}"
