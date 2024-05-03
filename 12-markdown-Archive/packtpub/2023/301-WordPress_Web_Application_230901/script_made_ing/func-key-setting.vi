@@ -1,26 +1,0 @@
-          @ Q -> # 붙이고 줄 띄우기 
-0i### Akk
-          @ W -> 현 위치에서 Copy 까지 역따옴표 
-j0i```/^Copy$ddk0C```
-          @ E -> 찾은 글자 ~ SPACE 앞뒤로 backtick(`) 붙이기 
-i`/ i`/EEEEEaEEEEE
-          @ R -> 찾은 글자 ~ POINT 앞뒤로 backtick(`) 붙이기 
-i`/\.i`/RRRRaRRRRRR
-          @ T -> 찾은 글자 ~ COMMA 앞뒤로 backtick(`) 붙이기 
-i`/,i`/TTTTTaTTTTT
-          @ Y -> 찾은 글자 ~   ;   앞뒤로 backtick(`) 붙이기 
-i`/;i`/YYYYYaYYYYY
-          @ U -> 찾은 글자~닫은괄호앞뒤로 backtick(`) 붙이기 
-i`/)i`/UUUUUaUUUUU
-          @ I -> 찾은 글자 ~ COLON 앞뒤로 backtick(`) 붙이기 
-i`/:i`/IIIIIaIIIII
-          @ O -> 찾은 글자 ~   }   앞뒤로 backtick(`) 붙이기 
-i`/}i`/OOOOOaOOOOO
-          @ A -> 빈 줄에 블록 시작하기 
-0C```k0
-          @ S -> 줄 앞에 > 나오면 안되므로 블록 마감하고 > 앞에 - 끼우기 
-0i```-0i```0
-          @ D -> 줄 아래에 블록 마감하고 한줄 더 띄우기 
-0i```kk
-          @ F -> 이 줄을 타이틀로 만들기 
-0i#### 
