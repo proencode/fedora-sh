@@ -317,15 +317,12 @@ __EOF__
 			fi
 			if [ "x$Figure_ONLY" = "xy" ]; then #-- ONLY Figure
 				cat <<__EOF__
-
+--------------------
 ${lines_number}${SPminusSP}${lines_title}
 
 ${image_dir}/${lines_image}.webp
 
 ${lines_image}.webp
-
-
-
 
 __EOF__
 				#___ echo "326: #----> figure only ---->"
