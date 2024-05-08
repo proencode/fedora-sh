@@ -17,3 +17,5 @@ do
 	ping -c 1 ${this_ip}.${i}  | grep "시간=" &
 	ping -c 1 ${this_ip}.${i}  | grep "time=" &
 done
+echo "----> press Enter:"
+read a
