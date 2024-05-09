@@ -1,0 +1,30 @@
+#-- mkdir ENKO-all.zip ; cd ENKO-all.zip
+#-- 7za x ../../ENKO-all.zip ; cd ../
+
+7-Zip (a) [64] 16.02 : Copyright (c) 1999-2016 Igor Pavlov : 2016-05-21
+p7zip Version 16.02 (locale=ko_KR.UTF-8,Utf16=on,HugeFiles=on,64 bits,4 CPUs Intel(R) Core(TM) i5-6200U CPU @ 2.30GHz (406E3),ASM,AES-NI)
+
+Scanning the drive for archives:
+1 file, 29416588 bytes (29 MiB)
+
+Extracting archive: ../../ENKO-all.zip
+
+ERRORS:
+Unexpected end of archive
+
+--
+Path = ../../ENKO-all.zip
+Type = zip
+ERRORS:
+Unexpected end of archive
+Physical Size = 30284566
+
+ERROR: Data Error : ENKO032.mp3
+                     
+Sub items Errors: 1
+
+Archives with Errors: 1
+
+Open Errors: 1
+
+Sub items Errors: 1

@@ -1,0 +1,20 @@
+#-- mkdir 50-99part.zip ; cd 50-99part.zip
+#-- 7za x ../../50-99part.zip ; cd ../
+
+7-Zip (a) [64] 16.02 : Copyright (c) 1999-2016 Igor Pavlov : 2016-05-21
+p7zip Version 16.02 (locale=ko_KR.UTF-8,Utf16=on,HugeFiles=on,64 bits,4 CPUs Intel(R) Core(TM) i5-6200U CPU @ 2.30GHz (406E3),ASM,AES-NI)
+
+Scanning the drive for archives:
+1 file, 28151280 bytes (27 MiB)
+
+Extracting archive: ../../50-99part.zip
+--
+Path = ../../50-99part.zip
+Type = zip
+Physical Size = 28151280
+
+Everything is Ok      
+
+Files: 50
+Size:       29489430
+Compressed: 28151280

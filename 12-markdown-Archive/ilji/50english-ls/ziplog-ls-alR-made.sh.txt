@@ -1,0 +1,363 @@
+08:11:28금240510 yos@yscart ~/비디오/50english/aaa
+aaa $ sh ../ls-alR-made.sh 
+#-- mkdir 0-49part.zip ; cd 0-49part.zip
+#-- 7za x ../../0-49part.zip ; cd ../
+
+7-Zip (a) [64] 16.02 : Copyright (c) 1999-2016 Igor Pavlov : 2016-05-21
+p7zip Version 16.02 (locale=ko_KR.UTF-8,Utf16=on,HugeFiles=on,64 bits,4 CPUs Intel(R) Core(TM) i5-6200U CPU @ 2.30GHz (406E3),ASM,AES-NI)
+
+Scanning the drive for archives:
+1 file, 12842168 bytes (13 MiB)
+
+Extracting archive: ../../0-49part.zip
+--
+Path = ../../0-49part.zip
+Type = zip
+Physical Size = 12842168
+
+Everything is Ok   
+
+Files: 50
+Size:       21651305
+Compressed: 12842168
+#-- ls -alR . > ../0-49part.zip.ls-alR
+#-- ls ..
+ 0-49part.zip	        ENES-all.zip	      기본문장.part1.rar  '영어 50문장만 외워라.torrent'
+ 0-49part.zip.ls-alR    ENKO-all.zip	      기본문장.part2.rar   회화.part1.rar
+'0-99 기본원어민.mp3'   aaa		      기본문장.part3.rar   회화.part3.rar
+ 50-99part.zip	        ls-alR-made.sh	      기본문장.part4.rar   회화.part4.rar
+ 50eng.xls	        mp3Directcut134.zip   기본문장.part5.rar   회화.part5.rar
+#-- ls -l
+합계 0
+drwxr-xr-x 1 yos yos 900  5월 10일  08:11 0-49part.zip
+#----> rm -rf 0-49part.zip #-- press Enter:
+
+#-- mkdir 50-99part.zip ; cd 50-99part.zip
+#-- 7za x ../../50-99part.zip ; cd ../
+
+7-Zip (a) [64] 16.02 : Copyright (c) 1999-2016 Igor Pavlov : 2016-05-21
+p7zip Version 16.02 (locale=ko_KR.UTF-8,Utf16=on,HugeFiles=on,64 bits,4 CPUs Intel(R) Core(TM) i5-6200U CPU @ 2.30GHz (406E3),ASM,AES-NI)
+
+Scanning the drive for archives:
+1 file, 28151280 bytes (27 MiB)
+
+Extracting archive: ../../50-99part.zip
+--
+Path = ../../50-99part.zip
+Type = zip
+Physical Size = 28151280
+
+Everything is Ok      
+
+Files: 50
+Size:       29489430
+Compressed: 28151280
+#-- ls -alR . > ../50-99part.zip.ls-alR
+#-- ls ..
+ 0-49part.zip	        ENES-all.zip	      기본문장.part2.rar	      회화.part3.rar
+ 0-49part.zip.ls-alR    ENKO-all.zip	      기본문장.part3.rar	      회화.part4.rar
+'0-99 기본원어민.mp3'   aaa		      기본문장.part4.rar	      회화.part5.rar
+ 50-99part.zip	        ls-alR-made.sh	      기본문장.part5.rar
+ 50-99part.zip.ls-alR   mp3Directcut134.zip  '영어 50문장만 외워라.torrent'
+ 50eng.xls	        기본문장.part1.rar    회화.part1.rar
+#-- ls -l
+합계 0
+drwxr-xr-x 1 yos yos 1200  5월 10일  08:11 50-99part.zip
+#----> rm -rf 50-99part.zip #-- press Enter:
+
+#-- mkdir ENES-all.zip ; cd ENES-all.zip
+#-- 7za x ../../ENES-all.zip ; cd ../
+
+7-Zip (a) [64] 16.02 : Copyright (c) 1999-2016 Igor Pavlov : 2016-05-21
+p7zip Version 16.02 (locale=ko_KR.UTF-8,Utf16=on,HugeFiles=on,64 bits,4 CPUs Intel(R) Core(TM) i5-6200U CPU @ 2.30GHz (406E3),ASM,AES-NI)
+
+Scanning the drive for archives:
+1 file, 25600876 bytes (25 MiB)
+
+Extracting archive: ../../ENES-all.zip
+
+ERRORS:
+Unexpected end of archive
+
+--
+Path = ../../ENES-all.zip
+Type = zip
+ERRORS:
+Unexpected end of archive
+Physical Size = 25845051
+
+ERROR: Data Error : ENES030.mp3
+                     
+Sub items Errors: 1
+
+Archives with Errors: 1
+
+Open Errors: 1
+
+Sub items Errors: 1
+#-- ls -alR . > ../ENES-all.zip.ls-alR
+#-- ls ..
+ 0-49part.zip	        ENES-all.zip	      기본문장.part1.rar	      회화.part1.rar
+ 0-49part.zip.ls-alR    ENES-all.zip.ls-alR   기본문장.part2.rar	      회화.part3.rar
+'0-99 기본원어민.mp3'   ENKO-all.zip	      기본문장.part3.rar	      회화.part4.rar
+ 50-99part.zip	        aaa		      기본문장.part4.rar	      회화.part5.rar
+ 50-99part.zip.ls-alR   ls-alR-made.sh	      기본문장.part5.rar
+ 50eng.xls	        mp3Directcut134.zip  '영어 50문장만 외워라.torrent'
+#-- ls -l
+합계 0
+drwxr-xr-x 1 yos yos 660  5월 10일  08:12 ENES-all.zip
+#----> rm -rf ENES-all.zip #-- press Enter:
+
+#-- mkdir ENKO-all.zip ; cd ENKO-all.zip
+#-- 7za x ../../ENKO-all.zip ; cd ../
+
+7-Zip (a) [64] 16.02 : Copyright (c) 1999-2016 Igor Pavlov : 2016-05-21
+p7zip Version 16.02 (locale=ko_KR.UTF-8,Utf16=on,HugeFiles=on,64 bits,4 CPUs Intel(R) Core(TM) i5-6200U CPU @ 2.30GHz (406E3),ASM,AES-NI)
+
+Scanning the drive for archives:
+1 file, 29416588 bytes (29 MiB)
+
+Extracting archive: ../../ENKO-all.zip
+
+ERRORS:
+Unexpected end of archive
+
+--
+Path = ../../ENKO-all.zip
+Type = zip
+ERRORS:
+Unexpected end of archive
+Physical Size = 30284566
+
+ERROR: Data Error : ENKO032.mp3
+                     
+Sub items Errors: 1
+
+Archives with Errors: 1
+
+Open Errors: 1
+
+Sub items Errors: 1
+#-- ls -alR . > ../ENKO-all.zip.ls-alR
+#-- ls ..
+ 0-49part.zip	        ENES-all.zip	      mp3Directcut134.zip  '영어 50문장만 외워라.torrent'
+ 0-49part.zip.ls-alR    ENES-all.zip.ls-alR   기본문장.part1.rar    회화.part1.rar
+'0-99 기본원어민.mp3'   ENKO-all.zip	      기본문장.part2.rar    회화.part3.rar
+ 50-99part.zip	        ENKO-all.zip.ls-alR   기본문장.part3.rar    회화.part4.rar
+ 50-99part.zip.ls-alR   aaa		      기본문장.part4.rar    회화.part5.rar
+ 50eng.xls	        ls-alR-made.sh	      기본문장.part5.rar
+#-- ls -l
+합계 0
+drwxr-xr-x 1 yos yos 704  5월 10일  08:12 ENKO-all.zip
+#----> rm -rf ENKO-all.zip #-- press Enter:
+
+#-- mkdir mp3Directcut134.zip ; cd mp3Directcut134.zip
+#-- 7za x ../../mp3Directcut134.zip ; cd ../
+
+7-Zip (a) [64] 16.02 : Copyright (c) 1999-2016 Igor Pavlov : 2016-05-21
+p7zip Version 16.02 (locale=ko_KR.UTF-8,Utf16=on,HugeFiles=on,64 bits,4 CPUs Intel(R) Core(TM) i5-6200U CPU @ 2.30GHz (406E3),ASM,AES-NI)
+
+Scanning the drive for archives:
+1 file, 92084 bytes (90 KiB)
+
+Extracting archive: ../../mp3Directcut134.zip
+--
+Path = ../../mp3Directcut134.zip
+Type = zip
+Physical Size = 92084
+
+Everything is Ok
+
+Files: 7
+Size:       119883
+Compressed: 92084
+#-- ls -alR . > ../mp3Directcut134.zip.ls-alR
+#-- ls ..
+ 0-49part.zip	        ENKO-all.zip		     기본문장.part3.rar
+ 0-49part.zip.ls-alR    ENKO-all.zip.ls-alR	     기본문장.part4.rar
+'0-99 기본원어민.mp3'   aaa			     기본문장.part5.rar
+ 50-99part.zip	        ls-alR-made.sh		    '영어 50문장만 외워라.torrent'
+ 50-99part.zip.ls-alR   mp3Directcut134.zip	     회화.part1.rar
+ 50eng.xls	        mp3Directcut134.zip.ls-alR   회화.part3.rar
+ ENES-all.zip	        기본문장.part1.rar	     회화.part4.rar
+ ENES-all.zip.ls-alR    기본문장.part2.rar	     회화.part5.rar
+#-- ls -l
+합계 0
+drwxr-xr-x 1 yos yos 192  5월 10일  08:12 mp3Directcut134.zip
+#----> rm -rf mp3Directcut134.zip #-- press Enter:
+
+#-- mkdir 기본문장.part1.rar ; cd 기본문장.part1.rar
+#-- unrar x ../../기본문장.part1.rar ; cd ../
+
+UNRAR 7.00 freeware      Copyright (c) 1993-2024 Alexander Roshal
+
+
+Extracting from ../../기본문장.part1.rar
+
+Creating    기본문장                                                      OK
+Extracting  기본문장/1a_00.mp3                                            OK 
+Extracting  기본문장/1a_01.mp3                                            OK 
+Extracting  기본문장/1a_02.mp3                                            OK 
+Extracting  기본문장/1a_03.mp3                                            OK 
+Extracting  기본문장/1a_04.mp3                                            OK 
+Extracting  기본문장/1a_05.mp3                                            OK 
+Extracting  기본문장/1a_06.mp3                                            OK 
+Extracting  기본문장/1a_07.mp3                                            OK 
+Extracting  기본문장/1a_08.mp3                                            OK 
+Extracting  기본문장/1a_09.mp3                                            OK 
+Extracting  기본문장/1a_10.mp3                                            OK 
+Extracting  기본문장/1a_11.mp3                                            OK 
+Extracting  기본문장/1a_12.mp3                                            OK 
+Extracting  기본문장/1a_13.mp3                                            OK 
+Extracting  기본문장/1a_14.mp3                                            OK 
+Extracting  기본문장/1a_15.mp3                                            OK 
+Extracting  기본문장/1a_16.mp3                                            OK 
+Extracting  기본문장/1a_17.mp3                                            OK 
+Extracting  기본문장/1a_18.mp3                                            OK 
+Extracting  기본문장/1a_19.mp3                                            OK 
+Extracting  기본문장/1a_20.mp3                                            OK 
+Extracting  기본문장/1a_21.mp3                                            OK 
+Extracting  기본문장/1a_22.mp3                                            OK 
+Extracting  기본문장/1a_23.mp3                                            OK 
+Extracting  기본문장/1a_24.mp3                                            OK 
+Extracting  기본문장/1a_25.mp3                                            OK 
+Extracting  기본문장/1a_26.mp3                                            OK 
+Extracting  기본문장/1a_27.mp3                                            OK 
+Extracting  기본문장/1a_28.mp3                                            OK 
+Extracting  기본문장/1a_29.mp3                                            OK 
+Extracting  기본문장/1a_30.mp3                                            OK 
+Extracting  기본문장/1a_31.mp3                                            OK 
+Extracting  기본문장/1a_32.mp3                                            OK 
+Extracting  기본문장/1a_33.mp3                                            OK 
+Extracting  기본문장/1a_34.mp3                                            OK 
+Extracting  기본문장/1a_35.mp3                                            20%
+
+Extracting from ../../기본문장.part2.rar
+
+...         기본문장/1a_35.mp3                                            OK 
+Extracting  기본문장/1a_36.mp3                                            OK 
+Extracting  기본문장/1a_37.mp3                                            OK 
+Extracting  기본문장/1a_38.mp3                                            OK 
+Extracting  기본문장/1a_39.mp3                                            OK 
+Extracting  기본문장/1a_40.mp3                                            OK 
+Extracting  기본문장/1a_41.mp3                                            OK 
+Extracting  기본문장/1a_42.mp3                                            OK 
+Extracting  기본문장/1a_43.mp3                                            OK 
+Extracting  기본문장/1a_44.mp3                                            OK 
+Extracting  기본문장/1a_45.mp3                                            OK 
+Extracting  기본문장/1a_46.mp3                                            OK 
+Extracting  기본문장/1a_47.mp3                                            OK 
+Extracting  기본문장/1a_48.mp3                                            OK 
+Extracting  기본문장/1a_49.mp3                                            OK 
+Extracting  기본문장/1a_50.mp3                                            OK 
+Extracting  기본문장/1a_51.mp3                                            OK 
+Extracting  기본문장/1a_52.mp3                                            OK 
+Extracting  기본문장/1a_53.mp3                                            OK 
+Extracting  기본문장/1a_54.mp3                                            OK 
+Extracting  기본문장/1a_55.mp3                                            OK 
+Extracting  기본문장/1a_56.mp3                                            OK 
+Extracting  기본문장/1a_57.mp3                                            OK 
+Extracting  기본문장/1a_58.mp3                                            OK 
+Extracting  기본문장/1a_59.mp3                                            OK 
+Extracting  기본문장/1a_60.mp3                                            OK 
+Extracting  기본문장/1a_61.mp3                                            41%
+
+Extracting from ../../기본문장.part3.rar
+
+...         기본문장/1a_61.mp3                                            OK 
+Extracting  기본문장/1a_62.mp3                                            OK 
+Extracting  기본문장/1a_63.mp3                                            OK 
+Extracting  기본문장/1a_64.mp3                                            OK 
+Extracting  기본문장/1a_65.mp3                                            OK 
+Extracting  기본문장/1a_66.mp3                                            OK 
+Extracting  기본문장/1a_67.mp3                                            OK 
+Extracting  기본문장/1a_68.mp3                                            OK 
+Extracting  기본문장/1a_69.mp3                                            OK 
+Extracting  기본문장/1a_70.mp3                                            OK 
+Extracting  기본문장/1a_71.mp3                                            OK 
+Extracting  기본문장/1a_72.mp3                                            OK 
+Extracting  기본문장/1a_73.mp3                                            OK 
+Extracting  기본문장/1a_74.mp3                                            OK 
+Extracting  기본문장/1a_75.mp3                                            OK 
+Extracting  기본문장/1a_76.mp3                                            OK 
+Extracting  기본문장/1a_77.mp3                                            OK 
+Extracting  기본문장/1a_78.mp3                                            OK 
+Extracting  기본문장/1a_79.mp3                                            62%
+
+Extracting from ../../기본문장.part4.rar
+
+...         기본문장/1a_79.mp3                                            OK 
+Extracting  기본문장/1a_80.mp3                                            OK 
+Extracting  기본문장/1a_81.mp3                                            OK 
+Extracting  기본문장/1a_82.mp3                                            OK 
+Extracting  기본문장/1a_83.mp3                                            OK 
+Extracting  기본문장/1a_84.mp3                                            OK 
+Extracting  기본문장/1a_85.mp3                                            OK 
+Extracting  기본문장/1a_86.mp3                                            OK 
+Extracting  기본문장/1a_87.mp3                                            OK 
+Extracting  기본문장/1a_88.mp3                                            OK 
+Extracting  기본문장/1a_89.mp3                                            OK 
+Extracting  기본문장/1a_90.mp3                                            OK 
+Extracting  기본문장/1a_91.mp3                                            OK 
+Extracting  기본문장/1a_92.mp3                                            82%
+
+Extracting from ../../기본문장.part5.rar
+
+...         기본문장/1a_92.mp3                                            OK 
+Extracting  기본문장/1a_93.mp3                                            OK 
+Extracting  기본문장/1a_94.mp3                                            OK 
+Extracting  기본문장/1a_95.mp3                                            OK 
+Extracting  기본문장/1a_96.mp3                                            OK 
+Extracting  기본문장/1a_97.mp3                                            OK 
+Extracting  기본문장/1a_98.mp3                                            OK 
+Extracting  기본문장/1a_99.mp3                                            OK 
+All OK
+#-- ls -alR . > ../기본문장.part1.rar.ls-alR
+#-- ls ..
+ 0-49part.zip	        ENES-all.zip.ls-alR	     기본문장.part1.rar		     회화.part1.rar
+ 0-49part.zip.ls-alR    ENKO-all.zip		     기본문장.part1.rar.ls-alR	     회화.part3.rar
+'0-99 기본원어민.mp3'   ENKO-all.zip.ls-alR	     기본문장.part2.rar		     회화.part4.rar
+ 50-99part.zip	        aaa			     기본문장.part3.rar		     회화.part5.rar
+ 50-99part.zip.ls-alR   ls-alR-made.sh		     기본문장.part4.rar
+ 50eng.xls	        mp3Directcut134.zip	     기본문장.part5.rar
+ ENES-all.zip	        mp3Directcut134.zip.ls-alR  '영어 50문장만 외워라.torrent'
+#-- ls -l
+합계 0
+drwxr-xr-x 1 yos yos 24  5월 10일  08:12 기본문장.part1.rar
+#----> rm -rf 기본문장.part1.rar #-- press Enter:
+
+#-- mkdir 회화.part1.rar ; cd 회화.part1.rar
+#-- unrar x ../../회화.part1.rar ; cd ../
+
+UNRAR 7.00 freeware      Copyright (c) 1993-2024 Alexander Roshal
+
+
+Extracting from ../../회화.part1.rar
+
+Creating    회화                                                        OK
+Extracting  회화/회화00-04.mp3                                            OK 
+Extracting  회화/회화05-09.mp3                                            OK 
+Extracting  회화/회화10-14.mp3                                            OK 
+Extracting  회화/회화15-19.mp3                                            OK 
+Extracting  회화/회화20-24.mp3                                            OK 
+Extracting  회화/회화25-29.mp3                                           100%
+Cannot find volume ../../회화.part2.rar     
+회화/회화25-29.mp3       - checksum error
+Total errors: 1
+#-- ls -alR . > ../회화.part1.rar.ls-alR
+#-- ls ..
+ 0-49part.zip	        ENKO-all.zip.ls-alR	     기본문장.part4.rar
+ 0-49part.zip.ls-alR    aaa			     기본문장.part5.rar
+'0-99 기본원어민.mp3'   ls-alR-made.sh		    '영어 50문장만 외워라.torrent'
+ 50-99part.zip	        mp3Directcut134.zip	     회화.part1.rar
+ 50-99part.zip.ls-alR   mp3Directcut134.zip.ls-alR   회화.part1.rar.ls-alR
+ 50eng.xls	        기본문장.part1.rar	     회화.part3.rar
+ ENES-all.zip	        기본문장.part1.rar.ls-alR    회화.part4.rar
+ ENES-all.zip.ls-alR    기본문장.part2.rar	     회화.part5.rar
+ ENKO-all.zip	        기본문장.part3.rar
+#-- ls -l
+합계 0
+drwxr-xr-x 1 yos yos 12  5월 10일  08:12 회화.part1.rar
+#----> rm -rf 회화.part1.rar #-- press Enter:
+
+

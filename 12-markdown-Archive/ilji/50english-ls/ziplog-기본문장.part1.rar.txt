@@ -1,0 +1,126 @@
+#-- mkdir 기본문장.part1.rar ; cd 기본문장.part1.rar
+#-- unrar x ../../기본문장.part1.rar ; cd ../
+
+UNRAR 7.00 freeware      Copyright (c) 1993-2024 Alexander Roshal
+
+
+Extracting from ../../기본문장.part1.rar
+
+Creating    기본문장                                                      OK
+Extracting  기본문장/1a_00.mp3                                            OK 
+Extracting  기본문장/1a_01.mp3                                            OK 
+Extracting  기본문장/1a_02.mp3                                            OK 
+Extracting  기본문장/1a_03.mp3                                            OK 
+Extracting  기본문장/1a_04.mp3                                            OK 
+Extracting  기본문장/1a_05.mp3                                            OK 
+Extracting  기본문장/1a_06.mp3                                            OK 
+Extracting  기본문장/1a_07.mp3                                            OK 
+Extracting  기본문장/1a_08.mp3                                            OK 
+Extracting  기본문장/1a_09.mp3                                            OK 
+Extracting  기본문장/1a_10.mp3                                            OK 
+Extracting  기본문장/1a_11.mp3                                            OK 
+Extracting  기본문장/1a_12.mp3                                            OK 
+Extracting  기본문장/1a_13.mp3                                            OK 
+Extracting  기본문장/1a_14.mp3                                            OK 
+Extracting  기본문장/1a_15.mp3                                            OK 
+Extracting  기본문장/1a_16.mp3                                            OK 
+Extracting  기본문장/1a_17.mp3                                            OK 
+Extracting  기본문장/1a_18.mp3                                            OK 
+Extracting  기본문장/1a_19.mp3                                            OK 
+Extracting  기본문장/1a_20.mp3                                            OK 
+Extracting  기본문장/1a_21.mp3                                            OK 
+Extracting  기본문장/1a_22.mp3                                            OK 
+Extracting  기본문장/1a_23.mp3                                            OK 
+Extracting  기본문장/1a_24.mp3                                            OK 
+Extracting  기본문장/1a_25.mp3                                            OK 
+Extracting  기본문장/1a_26.mp3                                            OK 
+Extracting  기본문장/1a_27.mp3                                            OK 
+Extracting  기본문장/1a_28.mp3                                            OK 
+Extracting  기본문장/1a_29.mp3                                            OK 
+Extracting  기본문장/1a_30.mp3                                            OK 
+Extracting  기본문장/1a_31.mp3                                            OK 
+Extracting  기본문장/1a_32.mp3                                            OK 
+Extracting  기본문장/1a_33.mp3                                            OK 
+Extracting  기본문장/1a_34.mp3                                            OK 
+Extracting  기본문장/1a_35.mp3                                            20%
+
+Extracting from ../../기본문장.part2.rar
+
+...         기본문장/1a_35.mp3                                            OK 
+Extracting  기본문장/1a_36.mp3                                            OK 
+Extracting  기본문장/1a_37.mp3                                            OK 
+Extracting  기본문장/1a_38.mp3                                            OK 
+Extracting  기본문장/1a_39.mp3                                            OK 
+Extracting  기본문장/1a_40.mp3                                            OK 
+Extracting  기본문장/1a_41.mp3                                            OK 
+Extracting  기본문장/1a_42.mp3                                            OK 
+Extracting  기본문장/1a_43.mp3                                            OK 
+Extracting  기본문장/1a_44.mp3                                            OK 
+Extracting  기본문장/1a_45.mp3                                            OK 
+Extracting  기본문장/1a_46.mp3                                            OK 
+Extracting  기본문장/1a_47.mp3                                            OK 
+Extracting  기본문장/1a_48.mp3                                            OK 
+Extracting  기본문장/1a_49.mp3                                            OK 
+Extracting  기본문장/1a_50.mp3                                            OK 
+Extracting  기본문장/1a_51.mp3                                            OK 
+Extracting  기본문장/1a_52.mp3                                            OK 
+Extracting  기본문장/1a_53.mp3                                            OK 
+Extracting  기본문장/1a_54.mp3                                            OK 
+Extracting  기본문장/1a_55.mp3                                            OK 
+Extracting  기본문장/1a_56.mp3                                            OK 
+Extracting  기본문장/1a_57.mp3                                            OK 
+Extracting  기본문장/1a_58.mp3                                            OK 
+Extracting  기본문장/1a_59.mp3                                            OK 
+Extracting  기본문장/1a_60.mp3                                            OK 
+Extracting  기본문장/1a_61.mp3                                            41%
+
+Extracting from ../../기본문장.part3.rar
+
+...         기본문장/1a_61.mp3                                            OK 
+Extracting  기본문장/1a_62.mp3                                            OK 
+Extracting  기본문장/1a_63.mp3                                            OK 
+Extracting  기본문장/1a_64.mp3                                            OK 
+Extracting  기본문장/1a_65.mp3                                            OK 
+Extracting  기본문장/1a_66.mp3                                            OK 
+Extracting  기본문장/1a_67.mp3                                            OK 
+Extracting  기본문장/1a_68.mp3                                            OK 
+Extracting  기본문장/1a_69.mp3                                            OK 
+Extracting  기본문장/1a_70.mp3                                            OK 
+Extracting  기본문장/1a_71.mp3                                            OK 
+Extracting  기본문장/1a_72.mp3                                            OK 
+Extracting  기본문장/1a_73.mp3                                            OK 
+Extracting  기본문장/1a_74.mp3                                            OK 
+Extracting  기본문장/1a_75.mp3                                            OK 
+Extracting  기본문장/1a_76.mp3                                            OK 
+Extracting  기본문장/1a_77.mp3                                            OK 
+Extracting  기본문장/1a_78.mp3                                            OK 
+Extracting  기본문장/1a_79.mp3                                            62%
+
+Extracting from ../../기본문장.part4.rar
+
+...         기본문장/1a_79.mp3                                            OK 
+Extracting  기본문장/1a_80.mp3                                            OK 
+Extracting  기본문장/1a_81.mp3                                            OK 
+Extracting  기본문장/1a_82.mp3                                            OK 
+Extracting  기본문장/1a_83.mp3                                            OK 
+Extracting  기본문장/1a_84.mp3                                            OK 
+Extracting  기본문장/1a_85.mp3                                            OK 
+Extracting  기본문장/1a_86.mp3                                            OK 
+Extracting  기본문장/1a_87.mp3                                            OK 
+Extracting  기본문장/1a_88.mp3                                            OK 
+Extracting  기본문장/1a_89.mp3                                            OK 
+Extracting  기본문장/1a_90.mp3                                            OK 
+Extracting  기본문장/1a_91.mp3                                            OK 
+Extracting  기본문장/1a_92.mp3                                            82%
+
+Extracting from ../../기본문장.part5.rar
+
+...         기본문장/1a_92.mp3                                            OK 
+Extracting  기본문장/1a_93.mp3                                            OK 
+Extracting  기본문장/1a_94.mp3                                            OK 
+Extracting  기본문장/1a_95.mp3                                            OK 
+Extracting  기본문장/1a_96.mp3                                            OK 
+Extracting  기본문장/1a_97.mp3                                            OK 
+Extracting  기본문장/1a_98.mp3                                            OK 
+Extracting  기본문장/1a_99.mp3                                            OK 
+All OK

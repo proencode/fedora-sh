@@ -1,0 +1,20 @@
+#-- mkdir mp3Directcut134.zip ; cd mp3Directcut134.zip
+#-- 7za x ../../mp3Directcut134.zip ; cd ../
+
+7-Zip (a) [64] 16.02 : Copyright (c) 1999-2016 Igor Pavlov : 2016-05-21
+p7zip Version 16.02 (locale=ko_KR.UTF-8,Utf16=on,HugeFiles=on,64 bits,4 CPUs Intel(R) Core(TM) i5-6200U CPU @ 2.30GHz (406E3),ASM,AES-NI)
+
+Scanning the drive for archives:
+1 file, 92084 bytes (90 KiB)
+
+Extracting archive: ../../mp3Directcut134.zip
+--
+Path = ../../mp3Directcut134.zip
+Type = zip
+Physical Size = 92084
+
+Everything is Ok
+
+Files: 7
+Size:       119883
+Compressed: 92084
