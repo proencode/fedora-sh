@@ -144,6 +144,7 @@ BookTitle="422-Web Development with Django 2ed" #-- (3) (시작월일)-(책 제�
 #--           ++++---- 이 장의 Chapter 번호
 #--           |||| ++++++++---- 이 장의 Chapter 제목
 #--           |||| ||||||||
+#--           |||| ||||||||:::::::::..........
 #-- md_Create "01" "An Introduction to Django"
 #-- 이 스크립트는 장 별로 따로따로 만들고 있으므로, 여기에 해당하는 장의 번호를 지정한다.
 ChapterSeq="01"

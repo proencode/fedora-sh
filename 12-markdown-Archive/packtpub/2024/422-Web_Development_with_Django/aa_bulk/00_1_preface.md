@@ -140,6 +140,9 @@ Follow these simple steps to get the benefits:
 
 Scan the QR code or visit the link below
 
+Figure 0.1 – Scan the QR code
+Figure 0.1 – Scan the QR code
+
 https://packt.link/free-ebook/9781803230603
 
 Submit your proof of purchase

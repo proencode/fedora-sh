@@ -1,7 +1,7 @@
 #!/bin/sh
 
-bulk_dir=az_bulk
-md_dir=bz_mdFormat
+bulk_dir=aa_bulk
+md_dir=bb_mdFormat
 if [ ! -d ${md_dir} ]; then
 	echo "#----> mkdir -p ${md_dir}"
 	mkdir -p ${md_dir}

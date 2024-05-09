@@ -165,7 +165,7 @@ if [ ! -d ../../${img_dir} ]; then
 	mkdir -p ../../${img_dir}
 fi
 
-bulk_dir=az_bulk
+bulk_dir=aa_bulk
 if [ ! -d ${bulk_dir} ]; then
 	mkdir -p ${bulk_dir}
 fi
