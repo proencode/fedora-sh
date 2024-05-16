@@ -57,7 +57,7 @@ fi
 
 cmdrun "rclone lsl ${cloud_name_dir}/ | sort -k2 -k3" "3. 옛 클라우드 확인"
 
-cmdrun "rclone move ${cloud_name_dir}/${ym}/ ${cloud_BACKUP_name_dir}/${ym}/" "4. 클라우드 옛 자료 이동"
+cmdrun "rclone moveto ${cloud_name_dir}/${ym}/ ${cloud_BACKUP_name_dir}/${ym}/" "4. 클라우드 옛 자료 이동"
 
 cmdrun "rclone lsl ${cloud_BACKUP_name_dir}/ | sort -k2 -k3" "5. 이동후 클라우드"
 #--
