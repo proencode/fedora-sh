@@ -23,7 +23,8 @@ for CLOUD_NAME in edone jjdrb jjone kaos1mi kaos2mi kaos3mi kaos4mi kaosngc swli
 do
 	dattim=$(date +%y%m%d%a%H%M%S)
 	cnt=$((cnt + 1))
-	echo "#-----------------> (${cnt:(-2)}) ${CLOUD_NAME}:"
+	###-- echo "#-----------------> (${cnt:(-2)}) ${CLOUD_NAME}:"
+	echo "#-----------------> (${cnt}) ${CLOUD_NAME}:"
 	rclone lsl ${CLOUD_NAME}: | sort -k4 > ${temp_file}
 	# 유닉스 쉘에서 스페이스 잘리지 않게 유지하고 읽는 방법 멜번초이 2016. 10. 29. 10:22 https://pangate.com/904
 	while IFS= read -r ONE_LINE
@@ -54,17 +55,19 @@ do
 			#----> (4) rem_size_date ===rem     4492 2023-01-06 ===
 
 			namoji=$(echo "${REM_a_LINE}" | awk -F"${arg4_time}" '{print $2}')
-			###echo "#----> (5) namoji ===${namoji}==="
+			###-- echo "#----> (5) namoji ===${namoji}==="
 			#----> (5) namoji === 문서/YES24eBook/6f6a52790c9c428abcaaf053fb576fb9/OEBPS/Styles/style.css===
 
-			###echo "#----> (6) ===${rem_size_date}${arg4_time} ${CLOUD_NAME}:${namoji:1}==="
+			###-- echo "#----> (6) ===${rem_size_date}${arg4_time} ${CLOUD_NAME}:${namoji:1}==="
 			#----> (6) ===rem     4492 2023-01-06 07:45:48.000000000 yswone:문서/YES24eBook/6f6a52790c9c428abcaaf053fb576fb9/OEBPS/Styles/style.css===
 
-			echo "${rem_size_date:3}${arg4_time} ${CLOUD_NAME}:${namoji:1}" >> ${ymd}/${cnt:(-2)}-${CLOUD_NAME}-${dattim}.lsl
+			###-- echo "${rem_size_date:3}${arg4_time} ${CLOUD_NAME}:${namoji:1}" >> ${ymd}/${cnt:(-2)}-${CLOUD_NAME}-${dattim}.lsl
+			echo "${rem_size_date}${arg4_time} ${CLOUD_NAME}:${namoji}" >> ${ymd}/${cnt}-${CLOUD_NAME}-${dattim}.lsl
 			#-- :3 으로 'rem' 을 떼어내고, namoji 의 앞에 붙은 ' ' 공백도 :1 로 뗸다.
 		fi
 	done < ${temp_file}
-	echo "#----> (${cnt:(-2)}) ${CLOUD_NAME}: $(rclone size ${CLOUD_NAME}: | grep size)" >> ${ymd}/${size_file}
+	###-- echo "#----> (${cnt:(-2)}) ${CLOUD_NAME}: $(rclone size ${CLOUD_NAME}: | grep size)" >> ${ymd}/${size_file}
+	echo "#----> (${cnt}) ${CLOUD_NAME}: $(rclone size ${CLOUD_NAME}: | grep size)" >> ${ymd}/${size_file}
 	tail -1 ${ymd}/${size_file}
 done
 rm -f ${temp_file}
