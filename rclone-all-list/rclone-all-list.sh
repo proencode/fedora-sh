@@ -15,7 +15,7 @@ fi
 temp_file=qqq_temp-${ymd}
 size_file=total_size-${ymd}
 
-echo "for cd in edone jjdrb jjone kaos1mi kaos2mi kaos3mi kaos4mi kaosngc swlibgc tpn1mi tpn2mi tpn3mi tpn4mi y5dnmi y5ncmi yosjgc ysw10mi yswone ;do echo \"----> \${cn}: \$(rclone size \${cn}: | grep size)\" ; done" > ${ymd}/${size_file}
+echo "cc=100 ; for cn in edone jjdrb jjone kaos1mi kaos2mi kaos3mi kaos4mi kaosngc swlibgc tpn1mi tpn2mi tpn3mi tpn4mi y5dnmi y5ncmi yosjgc ysw10mi yswone ;do cc=\$((cc + 1)) ; echo \"----> (\${cc:(-2)}) \${cn}: \$(rclone size \${cn}: | grep size)\" ; done" > ${ymd}/${size_file}
 
 cnt=100
 
