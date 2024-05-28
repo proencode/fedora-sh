@@ -25,7 +25,7 @@ if [ ! -d ${rc_lsl} ]; then
 fi
 echo "----> cd ${rc_lsl}"
 cd ${rc_lsl}
-echo "----> sh ~/bin/rclone-all-list.sh"
-sh ~/bin/rclone-all-list.sh
+echo "----> /bin/bash ~/bin/rclone-all-list.sh"
+/bin/bash ~/bin/rclone-all-list.sh
 echo "----> sh ~/bin/yesterday-rclone-lsl.sh"
 sh ~/bin/yesterday-rclone-lsl.sh 
