@@ -68,8 +68,7 @@ if [ "x$1" = "x" ]; then
 #-- DB_NAME	DB_LOGIN_PATH	LOCAL_FOLDER	REMOTE_FOLDER	RCLONE_NAME	OK?	DB_USER_NAME
 #-- kaosorder2	kaoslog		backup/kaosdb	kaosdb		kaosngc		ok/""	kaosorder2 (카오스)
 #-- gate242	swlog		backup/gatedb	11-gate242	swlibgc		ok/""	gateroot (서원)
-#-- wiki	not--use	backup/wikidb	wikijsdb	tpn3mi		ok/""	wiki (wiki.js) 스페이스가 모자라서 tpn2mi 를 tpn3mi  로바꿈 240201목,
-#---- (yosjgc 를 tpn2mi 로 바꿈 230808화), (swlibgc 로 바꿈 230717월)은 취소함
+#-- wiki	not--use	backup/wikidb	wikijsdb	tpn3mi		ok/""	wiki (wiki.js) 스페이스가 모자라서 yosjgc 를 tpn3mi 240201목, (tpn2mi 로 바꿈 230808화), (swlibgc 로 바꿈 230717월)은 취소함
 #--
 #-- db_name	"" #-- 지정한 데이터베이스로 진행합니다.
 #-- db_name	"ok" #-- 지정한 데이터베이스로 진행하면서 과정을 보여줍니다.
@@ -202,8 +201,8 @@ fi
 if [ ! -d ${LOCAL_JU} ]; then
 	showno="1c" ; showqq="보관용 로컬 디렉토리를 만듭니다."
 	show_then_run "mkdir -p ${LOCAL_JU} ; sudo chown ${USER}:${USER} ${LOCAL_JU}"
-	showno="1d" ; showqq="보관용 원격 디렉토리를 만듭니다."
-	show_then_run "/usr/bin/rclone mkdir ${RCLONE_NAME}:${REMOTE_JU}"
+	#---JU-DELETE--- showno="1d" ; showqq="보관용 원격 디렉토리를 만듭니다."
+	#---JU-DELETE--- show_then_run "/usr/bin/rclone mkdir ${RCLONE_NAME}:${REMOTE_JU}"
 fi
 showno="2" ; showqq="보관용 로컬 디렉토리 입니다."
 show_then_run "ls -lR ${LOCAL_THIS_YEAR}"
@@ -328,12 +327,12 @@ show_then_view "#"
 
 #-- JU_sql7z=${DB_NAME}_${ymd_hm}_${uname_n}${ju_beonho_sql_7z}
 
-show_title "${REMOTE_YOIL} 월의 마지막 백업파일을 ${REMOTE_JU} 폴더에 J${ju_beonho} 번호로 복사 시작 (${ymd_hm})"
+#---JU-DELETE--- show_title "${REMOTE_YOIL} 월의 마지막 백업파일을 ${REMOTE_JU} 폴더에 J${ju_beonho} 번호로 복사 시작 (${ymd_hm})"
 
 
-showno="17" ; showqq="${this_wol}월 백업파일이 이전에 백업돼 있었는지 확인 합니다."
-show_then_view "REMOTE_SQL_7Z_LIST=\$(/usr/bin/rclone ls ${RCLONE_NAME}:${REMOTE_JU}/ | grep ${ju_beonho_sql_7z} | awk '{print \$2}')"
-REMOTE_SQL_7Z_LIST=$(/usr/bin/rclone ls ${RCLONE_NAME}:${REMOTE_JU}/ | grep ${ju_beonho_sql_7z} | awk '{print $2}')
+#---JU-DELETE--- showno="17" ; showqq="${this_wol}월 백업파일이 이전에 백업돼 있었는지 확인 합니다."
+#---JU-DELETE--- show_then_view "REMOTE_SQL_7Z_LIST=\$(/usr/bin/rclone ls ${RCLONE_NAME}:${REMOTE_JU}/ | grep ${ju_beonho_sql_7z} | awk '{print \$2}')"
+#---JU-DELETE--- REMOTE_SQL_7Z_LIST=$(/usr/bin/rclone ls ${RCLONE_NAME}:${REMOTE_JU}/ | grep ${ju_beonho_sql_7z} | awk '{print $2}')
 
 
 if [ "x$REMOTE_SQL_7Z_LIST" != "x" ]; then
@@ -347,9 +346,9 @@ if [ "x$REMOTE_SQL_7Z_LIST" != "x" ]; then
 		show_then_view "file_name=\$(echo ${val} | sed 's/ *\$//g')"
 		file_name=$(echo ${val} | sed 's/ *$//g')
 
-		OUTRC=$(/usr/bin/rclone deletefile ${RCLONE_NAME}:${REMOTE_JU}/${file_name})
+		#---JU-DELETE--- OUTRC=$(/usr/bin/rclone deletefile ${RCLONE_NAME}:${REMOTE_JU}/${file_name})
 		showno="18a2" ; showqq="${this_wol}월 백업파일을 삭제합니다."
-		show_then_view "OUTRC=\$(/usr/bin/rclone deletefile ${RCLONE_NAME}:${REMOTE_JU}/${file_name}) ${cMagenta}#----${cYellow}${OUTRC}${cMagenta}----"
+		#---JU-DELETE--- show_then_view "OUTRC=\$(/usr/bin/rclone deletefile ${RCLONE_NAME}:${REMOTE_JU}/${file_name}) ${cMagenta}#----${cYellow}${OUTRC}${cMagenta}----"
 	done
 else
 	showno="18b" ; showqq="클라우드에는 ${ju_beonho_sql_7z} 백업파일이 없습니다."
@@ -363,9 +362,9 @@ show_then_run "rm -f ${LOCAL_JU}/*${ju_beonho_sql_7z}"
 showno="20" ; showqq="${ju_beonho_sql_7z} 백업파일을 ${REMOTE_JU} 로 복사하는 작업을 시작합니다. (${ymd_hm})"
 show_then_run "cp ${LOCAL_YOIL}/${YOIL_sql7z} ${LOCAL_JU}/${JU_sql7z}"
 
-OUTRC=$(/usr/bin/rclone copy ${LOCAL_JU}/${JU_sql7z} ${RCLONE_NAME}:${REMOTE_JU}/)
+#---JU-DELETE--- OUTRC=$(/usr/bin/rclone copy ${LOCAL_JU}/${JU_sql7z} ${RCLONE_NAME}:${REMOTE_JU}/)
 showno="21" ; showqq="${this_wol}월 백업파일을 ${REMOTE_JU} 폴더로 복사합니다."
-show_then_view "OUTRC=\$(/usr/bin/rclone copy ${LOCAL_JU}/${JU_sql7z} ${RCLONE_NAME}:${REMOTE_JU}/) ${cMagenta}#----${cYellow}${OUTRC}${cMagenta}----"
+#---JU-DELETE--- show_then_view "OUTRC=\$(/usr/bin/rclone copy ${LOCAL_JU}/${JU_sql7z} ${RCLONE_NAME}:${REMOTE_JU}/) ${cMagenta}#----${cYellow}${OUTRC}${cMagenta}----"
 
 showno="22a" ; showqq="보관용 로컬 디렉토리 입니다."
 show_then_run "ls -lR ${LOCAL_THIS_YEAR}"
