@@ -27,27 +27,31 @@ cmdyes () {
 	fi
 }
 
-keepass_name="keepass"
-cloud_name_dir="yswone:${keepass_name}"
-org_dir="${HOME}/wind_bada"
-if [ ! -d ${org_dir} ]; then
-	cmdrun "mkdir -p ${org_dir}" "0. 로컬 디렉토리"
+keepass_dir="keepass"
+cloud_name_dir="yswone:${keepass_dir}" #-- 클라우드 폴더
+
+keepass_name="${keepass_dir}proen"
+keepass_kdbx="${keepass_name}.kdbx" #-- kdbx 이름
+
+local_dir="${HOME}/wind_bada" #-- 로컬 저장폴더
+local_dir_kdbx="${local_dir}/${keepass_kdbx}" #-- 로컬 keepass 파일
+
+local_backup_dir="${local_dir}/old_file" #-- 로컬 백업폴더
+if [ ! -d ${local_backup_dir} ]; then
+	cmdrun "mkdir -p ${local_backup_dir}" "0. 로컬 디렉토리 만들기"
 fi
-ym="$(date +%y%m)"
 
-org_kdbx="${keepass_name}${ym}.kdbx"
-org_dir_kdbx="${org_dir}/${org_kdbx}"
-ym_kdbx="${keepass_name}$(date +%y%m%d-%H%M).kdbx"
-ym_dir_kdbx="${HOME}/${ym_kdbx}"
+ymdhm_kdbx="${keepass_name}$(date +%y%m%d-%H%M).kdbx"
+cmdrun "mv ${local_dir}/${keepass_kdbx} ${local_backup_dir}/${ymdhm_kdbx}" "1. 로컬 kdbx 를 옮기고,"
 
-cmdrun "rclone copy ${cloud_name_dir}/${org_kdbx} ${org_dir}/" "1. 클라우드에서 로컬로 받기"
-cmdrun "ls -ltr ${org_dir}/${keepass_name}*.kdbx" "2. 받은 파일"
+cmdrun "rclone copy ${cloud_name_dir}/${keepass_kdbx} ${local_dir}/" "2. 클라우드에서 로컬로 받기"
+cmdrun "ls -ltr ${local_dir}/${keepass_name}*.kdbx" "3. 받은 파일 확인"
 
-org_ODS="43-${keepass_name}${ym}.ods"
-org_dir_ODS="${org_dir}/${org_ODS}"
-ym_ODS="43-${keepass_name}$(date +%y%m%d-%H%M).ods"
-ym_dir_ODS="${HOME}/${ym_ODS}"
+keepass_ODS="43-${keepass_name}.ods"
+local_dir_ODS="${local_dir}/${keepass_ODS}"
+ymdhm_ODS="43-${keepass_name}$(date +%y%m%d-%H%M).ods"
+ymdhm_dir_ODS="${HOME}/${ymdhm_ODS}"
 
-cmdrun "rclone copy ${cloud_name_dir}/${org_ODS} ${org_dir}/" "3. 클라우드에서 .ods 받기"
-cmdrun "ls -ltr ${org_dir}/43-${keepass_name}*.ods" "4. 받은 .ods 파일"
-cmdrun "rclone lsl ${cloud_name_dir}/ | sort -k2 -k3" "5. 클라우드 내용"
+cmdrun "rclone copy ${cloud_name_dir}/${keepass_ODS} ${local_dir}/" "4. 클라우드에서 .ods 받기"
+cmdrun "ls -ltr ${local_dir}/43-${keepass_name}*.ods" "5. 받은 .ods 파일"
+cmdrun "rclone lsl ${cloud_name_dir}/ | sort -k2 -k3" "6. 클라우드 백업 확인"
