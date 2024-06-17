@@ -21,34 +21,72 @@ read_n_echo () {
 				y2=${yy:(-2)}
 				m1="0${mm}" ; m2=${m1:(-2)}
 				d1="0${dd}" ; d2=${d1:(-2)}
-				echo "$cn:${k_e}=== ${y2}${m2}${d2}-"
+				echo "24:::$cn:${k_e}=== ${y2}${m2}${d2}-"
 			else
 				if [ "${k_e}" == "e" ]; then
 					if [ "x${line}" != "x" ]; then
 						line2str=$(echo ${line} | sed 's/ /_/g' | sed 's/:/-/g' | sed 's/;/./g' | sed 's/,/./g' | sed 's/- /-/g' | sed 's/“//g' | sed 's/”//g' | sed 's/(/./g' | sed 's/)/./g' | sed 's/</./g' | sed 's/>/./g' | sed 's/\[/./g' | sed 's/\]/./g' | sed 's/\//./g' | sed 's/+/./g')
-						echo "$cn:d${k_e}=== $line2str"
+						echo "29:::$cn:d${k_e}=== $line2str"
 					fi
 				fi
-				echo "$cn:${k_e}=== $line"
+				echo "32:::$cn:${k_e}=== $line"
 			fi
 		fi
 	done < $read_file
 }
+
+#>>> kor
 
 if [ "x$1" != "x" ]; then
 	file1="$1"
 else
 	file1="kor-tradepub"
 fi
-echo "#-- ${file1}"
+
+if [ -f ${file1} ]; then
+	cat <<__EOF__
+
+#-- \$1='$file1'
+
+__EOF__
+	read_n_echo "k" $file1
+else
+	cat <<__EOF__
+
+#-- \$1='$file1' NOT FOUND.
+
+__EOF__
+fi
+
+#<<< kor
+
+#>>> eng
 
 if [ "x$2" != "x" ]; then
 	file2="$2"
 else
 	file2="eng-tradepub"
 fi
-echo "#-- ${file2}"
 
-read_n_echo "k" $file1
+if [ -f ${file2} ]; then
+	cat <<__EOF__
 
-read_n_echo "e" $file2
+#-- \$2='$file2'
+
+__EOF__
+	read_n_echo "e" $file2
+else
+	cat <<__EOF__
+
+#-- \$2='$file2' NOT FOUND.
+
+__EOF__
+fi
+
+#<<< eng
+
+cat <<__EOF__
+
+#-- $ bash $0 $1 $2
+
+__EOF__
