@@ -42,5 +42,4 @@ current_time = datetime.datetime.now()
 
 # 알파벳으로 변환된 시각 출력
 converted_time = convert_time_to_alphabet(current_time)
-print(f"          {converted_time}          {current_time.month}-{current_time.day} {current_time.hour}:{current_time.minute}")
-print(f"={converted_time}= ")
+print(f"          {converted_time}          {current_time.month}-{current_time.day} {current_time.hour}:{current_time.minute}          ={converted_time}= ")
