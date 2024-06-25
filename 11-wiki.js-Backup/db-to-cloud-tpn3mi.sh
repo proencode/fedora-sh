@@ -86,6 +86,7 @@ if [ "x$1" = "xkaosorder" ]; then
 	LOCAL_FOLDER="backup/kaosdb" #-- 백업파일을 일시적으로 저장하는 로컬 저장소의 디렉토리 이름
 	REMOTE_FOLDER="kaosdb" #-- 원격 저장소의 첫번째 폴더 이름
 	RCLONE_NAME="kaosngc" #-- rclone 이름 kaos.notegc
+	RCLONE_DEL_CLOUD="" #-- 클라우드 파일 삭제시 쓰레기통으로 보내지 않고 바로 삭제.
 	DB_TYPE="mysql"
 	PSWD_GEN_CODE="zkdhtm${pswd_ym}"
 else
@@ -95,6 +96,7 @@ if [ "x$1" = "xgate242" ]; then
 	LOCAL_FOLDER="backup/gatedb" #-- 백업파일을 일시적으로 저장하는 로컬 저장소의 디렉토리 이름
 	REMOTE_FOLDER="11-gate242" #-- 원격 저장소의 첫번째 폴더 이름
 	RCLONE_NAME="swlibgc" #-- rclone 이름 seowontire.libgc
+	RCLONE_DEL_CLOUD="" #-- 클라우드 파일 삭제시 쓰레기통으로 보내지 않고 바로 삭제.
 	DB_TYPE="mysql"
 	PSWD_GEN_CODE="tjdnjs${pswd_ym}"
 else
@@ -104,6 +106,7 @@ if [ "x$1" = "xwiki" ]; then
 	LOCAL_FOLDER="backup/wikidb" #-- 백업파일을 일시적으로 저장하는 로컬 저장소의 디렉토리 이름
 	REMOTE_FOLDER="wikijsdb" #-- 원격 저장소의 첫번째 폴더 이름
 	RCLONE_NAME="tpn3mi" #-- rclone 이름 yosjeongc -> tpn3mi (tpn2mi)
+	RCLONE_DEL_CLOUD="--mega-hard-delete" #-- 클라우드 파일 삭제시 쓰레기통으로 보내지 않고 바로 삭제.
 	DB_TYPE="pgsql"
 	PSWD_GEN_CODE="dnlzl${pswd_ym}"
 else
@@ -224,9 +227,9 @@ if [ "x$REMOTE_SQL_7Z_LIST" != "x" ]; then
 		show_then_view "file_name=\$(echo ${val} | sed 's/ *\$//g')"
 		file_name=$(echo ${val} | sed 's/ *$//g')
 
-		OUTRC=$(/usr/bin/rclone deletefile ${RCLONE_NAME}:${REMOTE_YOIL}/${file_name})
+		OUTRC=$(/usr/bin/rclone deletefile ${RCLONE_NAME}:${REMOTE_YOIL}/${file_name} ${RCLONE_DEL_CLOUD})
 		showno="4a2" ; showqq="오늘날짜 클라우드 백업파일을 삭제합니다."
-		show_then_view "OUTRC=\$(/usr/bin/rclone deletefile ${RCLONE_NAME}:${REMOTE_YOIL}/${file_name}) ${cMagenta}#----${cYellow}${OUTRC}${cMagenta}----"
+		show_then_view "OUTRC=\$(/usr/bin/rclone deletefile ${RCLONE_NAME}:${REMOTE_YOIL}/${file_name} ${RCLONE_DEL_CLOUD}) ${cMagenta}#----${cYellow}${OUTRC}${cMagenta}----"
 		show_then_view "#"
 	done
 else
@@ -287,9 +290,9 @@ if [ "x$REMOTE_SQL_7Z_LIST" != "x" ]; then
 		show_then_view "file_name=\$(echo ${val} | sed 's/ *\$//g')"
 		file_name=$(echo ${val} | sed 's/ *$//g')
 
-		OUTRC=$(/usr/bin/rclone deletefile ${RCLONE_NAME}:${REMOTE_YEAR}/${file_name})
+		OUTRC=$(/usr/bin/rclone deletefile ${RCLONE_NAME}:${REMOTE_YEAR}/${file_name} ${RCLONE_DEL_CLOUD})
 		showno="10a2" ; showqq="${this_wol}월 백업파일을 삭제합니다."
-		show_then_view "OUTRC=\$(/usr/bin/rclone deletefile ${RCLONE_NAME}:${REMOTE_YOIL}/${file_name}) ${cMagenta}#----${cYellow}${OUTRC}${cMagenta}----"
+		show_then_view "OUTRC=\$(/usr/bin/rclone deletefile ${RCLONE_NAME}:${REMOTE_YOIL}/${file_name} ${RCLONE_DEL_CLOUD}) ${cMagenta}#----${cYellow}${OUTRC}${cMagenta}----"
 	done
 else
 	showno="10b" ; showqq="클라우드에는 ${this_wol}월 백업파일이 없습니다."
@@ -346,9 +349,9 @@ if [ "x$REMOTE_SQL_7Z_LIST" != "x" ]; then
 		show_then_view "file_name=\$(echo ${val} | sed 's/ *\$//g')"
 		file_name=$(echo ${val} | sed 's/ *$//g')
 
-		#---JU-DELETE--- OUTRC=$(/usr/bin/rclone deletefile ${RCLONE_NAME}:${REMOTE_JU}/${file_name})
+		#---JU-DELETE--- OUTRC=$(/usr/bin/rclone deletefile ${RCLONE_NAME}:${REMOTE_JU}/${file_name} ${RCLONE_DEL_CLOUD})
 		showno="18a2" ; showqq="${this_wol}월 백업파일을 삭제합니다."
-		#---JU-DELETE--- show_then_view "OUTRC=\$(/usr/bin/rclone deletefile ${RCLONE_NAME}:${REMOTE_JU}/${file_name}) ${cMagenta}#----${cYellow}${OUTRC}${cMagenta}----"
+		#---JU-DELETE--- show_then_view "OUTRC=\$(/usr/bin/rclone deletefile ${RCLONE_NAME}:${REMOTE_JU}/${file_name} ${RCLONE_DEL_CLOUD}) ${cMagenta}#----${cYellow}${OUTRC}${cMagenta}----"
 	done
 else
 	showno="18b" ; showqq="클라우드에는 ${ju_beonho_sql_7z} 백업파일이 없습니다."
