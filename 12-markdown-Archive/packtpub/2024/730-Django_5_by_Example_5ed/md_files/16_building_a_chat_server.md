@@ -17,7 +17,7 @@
 > (5) tags: Django
 > Book Title: 730 Django 5 by Example
 > Link: https://subscription.packtpub.com/book/web-development/9781805125457/1
-> create: 2024-07-30 화 12:32:03
+> create: 2024-07-30 화 14:25:55
 > Images: /packtpub/img/16/
 > .md Name: 16_building_a_chat_server.md
 
