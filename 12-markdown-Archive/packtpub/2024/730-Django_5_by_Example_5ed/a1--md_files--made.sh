@@ -23,19 +23,35 @@ echo "#----> file_Made CurrentSeq ${CurrentSeq}; CurrentTitle ${CurrentTitle}; P
 	Jemok="${ChapterSeq} ${ChapterTitle}"
 	small_Jemok=$(echo "${Jemok,,}" | sed 's/ /_/g' | sed 's/\./_/g' | sed 's/“/\"/g' | sed 's/”/\"/g' | sed "s/’/'/g")
 ## 
+## https://coldmater.tistory.com/226
+## Vim 에서 매크로 등록하고 실행하기
+## 1. `q{레지스터}` 로 매크로 기록 시작 (레지스터는 알파벳(a-z) 또는 숫자(0-9)를 지정한다)
+## 하단 상태표시줄에 q 가 표시되고, 레지스터 (a-z, 0-9 중 하나) 를 정해서 입력하면
+## 상태표시줄에 'Recording @a'(레지스터로 'a'를 입력했다고 가정) 와 같이
+## 실제 명령어를 대기하고 있는 상태가 된다.
+## 2. `q` 로 매크로 기록 종료
+## 3. `@{레지스터}` 로 저장된 매크로 실행
+## 4. `@@` 로 직전에 실행한 매크로 재실행
+## 5. `반복횟수}@{레지스터}` 또는 `{반복횟수}@@` 로 저장된 매크로를 '반복횟수' 만큼 재실행
+## 또는,
+## 6. 아래와 같이 타이핑할 매크로 를 입력해 놓고,
+## 해당 줄 위에서, `"ayy` (따옴표 + 레지스터 + yy) 로 레지스터에 저장할수 있다.
+##
 ## @ Q -> # 붙이고 줄 띄우기 => 0i### ^[A^M^[
 ## @ W -> 현 위치에서 Copy 까지 역따옴표 => j0i\`\`\`^M^[/^Copy$^[ddk0C\`\`\`^M^[
-## @ E -> 찾은 글자 ~ SPACE 앞뒤로 backtick(\`) 붙이기 => i\`^[/ ^[i\`^[/EEEEEEEEEE^[
-## @ R -> 찾은 글자 ~ POINT 앞뒤로 backtick(\`) 붙이기 => i\`^[/\.^[i\`^[/RRRRRRRRRR^[
-## @ T -> 찾은 글자 ~ COMMA 앞뒤로 backtick(\`) 붙이기 => i\`^[/,^[i\`^[/TTTTTTTTTT^[
-## @ Y -> 찾은 글자 ~   ;   앞뒤로 backtick(\`) 붙이기 => i\`^[/;^[i\`^[/YYYYYYYYYY^[
-## @ U -> 찾은 글자~닫은괄호앞뒤로 backtick(\`) 붙이기 => i\`^[/)^[i\`^[/UUUUUUUUUU^[
-## @ I -> 찾은 글자 ~ COLON 앞뒤로 backtick(\`) 붙이기 => i\`^[/:^[i\`^[/CCCCCCCCCC^[
+## @ E -> 찾은 글자 ~ SPACE 앞뒤로 backtick(\`) 붙이기 => i\`^[/ ^[i\`^[/EEEEEaEEEEE^[
+## @ R -> 찾은 글자 ~ POINT 앞뒤로 backtick(\`) 붙이기 => i\`^[/\.^[i\`^[/RRRRRaRRRRR^[
+## @ T -> 찾은 글자 ~ COMMA 앞뒤로 backtick(\`) 붙이기 => i\`^[/,^[i\`^[/TTTTTaTTTTT^[
+## @ Y -> 찾은 글자 ~   ;   앞뒤로 backtick(\`) 붙이기 => i\`^[/;^[i\`^[/YYYYYaYYYYY^[
+## @ U -> 찾은 글자~닫은괄호앞뒤로 backtick(\`) 붙이기 => i\`^[/)^[i\`^[/UUUUUaUUUUU^[
+## @ I -> 찾은 글자 ~ COLON 앞뒤로 backtick(\`) 붙이기 => i\`^[/:^[i\`^[/IIIIIaIIIII^[
+## @ O -> 찾은 글자 ~   }   앞뒤로 backtick(\`) 붙이기 => i\`^[/:^[i\`^[/OOOOOaOOOOO^[
 ## 
 ## @ A -> 빈 줄에 블록 시작하기 => 0C\`\`\`^[^Mk0
 ## @ S -> 줄 앞에 > 나오면 안되므로 블록 마감하고 > 앞에 - 끼우기 => 0i\`\`\`^M-^[^M0i\`\`\`^[0
 ## @ D -> 줄 아래에 블록 마감하고 한줄 더 띄우기 => 0^Mi\`\`\`^M^M^[kk
 ## @ F -> 이 줄을 타이틀로 만들기 => 0i#### ^[^M^[
+## @ Z -> 현 위치에서 Explain 까지 역따옴표 => j0i```^M^[/^Explain$^[3k3dd0C```^M^[
 ## 
 ##     마크다운 입력시 vi 커맨드 표시 ; (^[)=Ctrl+[ ; (^M)=Ctrl+M
 ##     인용구 작성시 ; 본문앞에는 꺽쇠 > 붙이고, 스타일 첨가시 끝줄에 종류별 구분을 표시한다.
