@@ -3,9 +3,7 @@
 |:----:|:----:|:----:|
 
 # 01 Building a Blog Application
-
-# Building a Blog Application
-
+Building a Blog Application
 In this book, you will learn how to build professional-grade web projects using Django. This initial chapter will guide you through the essential building blocks of a Django application, from installation to deployment. If you haven’t set up Django on your machine yet, the Installing Django section will walk you through the installation process.
 
 Before starting our first Django project, let’s go over what you are about to learn. This chapter will give you a general overview of the framework. It will guide you through the different major components to create a fully functional web application: models, templates, views, and URLs. You will gain an understanding of how Django works and how the different framework components interact.
@@ -16,154 +14,154 @@ Consider this chapter as your roadmap for constructing a fully-fledged Django ap
 
 This chapter will cover the following topics:
 
-- Installing Python
-- Creating a Python virtual environment
-- Installing Django
-- Creating and configuring a Django project
-- Building a Django application
-- Designing data models
-- Creating and applying model migrations
-- Setting up an administration site for your models
-- Working with QuerySets and model managers
-- Building views, templates, and URLs
-- Understanding the Django request/response cycle
-
+Installing Python
+Creating a Python virtual environment
+Installing Django
+Creating and configuring a Django project
+Building a Django application
+Designing data models
+Creating and applying model migrations
+Setting up an administration site for your models
+Working with QuerySets and model managers
+Building views, templates, and URLs
+Understanding the Django request/response cycle
 You will start by installing Python on your machine.
 
 The source code for this chapter can be found at https://github.com/PacktPublishing/Django-5-by-example/tree/main/Chapter01.
 
-All Python packages used in this chapter are included in the `requirements.txt` file in the source code for the chapter. You can follow the instructions to install each Python package in the following sections, or you can install all the requirements at once with the command `python -m pip install -r requirements.txt`.
+All Python packages used in this chapter are included in the requirements.txt file in the source code for the chapter. You can follow the instructions to install each Python package in the following sections, or you can install all the requirements at once with the command python -m pip install -r requirements.txt.
 
-# Installing Python
-
+Installing Python
 Django 5.0 supports Python 3.10, 3.11, and 3.12. In the examples in this book, we will use Python 3.12.
 
 If you’re using Linux or macOS, you probably have Python installed. If you’re using Windows, you can download a Python installer from the python.org website. You can download Python for your OS from https://www.python.org/downloads/.
 
-Open the command-line shell prompt of your machine. If you are using macOS, press Command + spacebar to open Spotlight and write Terminal to open `Terminal.app`. If you are using Windows, open the Start menu and type `powers` into the search box. Then, click on the Windows PowerShell application to open it. Alternatively, you can use the more basic command prompt by typing `cmd` into the search box and clicking on the Command Prompt application to open it.
+Open the command-line shell prompt of your machine. If you are using macOS, press Command + spacebar to open Spotlight and write Terminal to open Terminal.app. If you are using Windows, open the Start menu and type powers into the search box. Then, click on the Windows PowerShell application to open it. Alternatively, you can use the more basic command prompt by typing cmd into the search box and clicking on the Command Prompt application to open it.
 
 Verify that Python 3 is installed on your machine by typing the following command in the shell prompt:
 
-```bash
 python3 --version
-```
 
+Copy
+
+Explain
 If you see the following, then Python 3 is installed on your computer:
 
-```
 Python 3.12.3
-```
 
-If you get an error, try the `python` command instead of `python3`. If you use Windows, it’s recommended that you replace `python` with the `py` command.
+Copy
+
+Explain
+If you get an error, try the python command instead of python3. If you use Windows, it’s recommended that you replace python with the py command.
 
 If your installed Python version is lower than 3.12, or if Python is not installed on your computer, download Python 3.12 from https://www.python.org/downloads/ and follow the instructions to install it. On the download site, you can find Python installers for Windows, macOS, and Linux.
 
-Throughout this book, when Python is referenced in the shell prompt, we will use the `python` command, though some systems may require using `python3`. If you are using Linux or macOS and your system’s Python is Python 2, you will need to use `python3` to use the Python 3 version you installed. Note that Python 2 reached end-of-life in January 2020 and shouldn’t be used anymore.
+Throughout this book, when Python is referenced in the shell prompt, we will use the python command, though some systems may require using python3. If you are using Linux or macOS and your system’s Python is Python 2, you will need to use python3 to use the Python 3 version you installed. Note that Python 2 reached end-of-life in January 2020 and shouldn’t be used anymore.
 
-In Windows, `python` is the Python executable of your default Python installation, whereas `py` is the Python launcher. The Python launcher for Windows was introduced in Python 3.3. It detects what Python versions are installed on your machine and it automatically delegates to the latest version.
+In Windows, python is the Python executable of your default Python installation, whereas py is the Python launcher. The Python launcher for Windows was introduced in Python 3.3. It detects what Python versions are installed on your machine and it automatically delegates to the latest version.
 
-If you use Windows, you should use the `py` command. You can read more about the Windows Python launcher at https://docs.python.org/3/using/windows.html#launcher.
+If you use Windows, you should use the py command. You can read more about the Windows Python launcher at https://docs.python.org/3/using/windows.html#launcher.
 
 Next, you are going to create a Python environment for your project and install the necessary Python libraries.
 
-# Creating a Python virtual environment
-
+Creating a Python virtual environment
 When you write Python applications, you will usually use packages and modules that are not included in the standard Python library. You may have Python applications that require a different version of the same module. However, only a specific version of a module can be installed system-wide. If you upgrade a module version for an application, you might end up breaking other applications that require an older version of that module.
 
 To address this issue, you can use Python virtual environments. With virtual environments, you can install Python modules in an isolated location rather than installing them system-wide. Each virtual environment has its own Python binary and can have its own independent set of installed Python packages in its site-packages directory.
 
-Since version 3.3, Python comes with the `venv` library, which provides support for creating lightweight virtual environments. By using the Python `venv` module to create isolated Python environments, you can use different package versions for different projects. Another advantage of using `venv` is that you won’t need any administrative privileges to install Python packages.
+Since version 3.3, Python comes with the venv library, which provides support for creating lightweight virtual environments. By using the Python venv module to create isolated Python environments, you can use different package versions for different projects. Another advantage of using venv is that you won’t need any administrative privileges to install Python packages.
 
 If you are using Linux or macOS, create an isolated environment with the following command:
 
-```bash
 python -m venv my_env
-```
 
-Remember to use `python3` instead of `python` if your system comes with Python 2 and you installed Python 3.
+Copy
+
+Explain
+Remember to use python3 instead of python if your system comes with Python 2 and you installed Python 3.
 
 If you are using Windows, use the following command instead:
 
-```bash
 py -m venv my_env
-```
 
+Copy
+
+Explain
 This will use the Python launcher in Windows.
 
-The previous command will create a Python environment in a new directory named `my_env`. Any Python libraries you install while your virtual environment is active will go into the `my_env/lib/python3.12/site-packages` directory.
+The previous command will create a Python environment in a new directory named my_env. Any Python libraries you install while your virtual environment is active will go into the my_env/lib/python3.12/site-packages directory.
 
 If you are using Linux or macOS, run the following command to activate your virtual environment:
 
-```bash
 source my_env/bin/activate
-```
 
+Copy
+
+Explain
 If you are using Windows, use the following command instead:
 
-```
 .\my_env\Scripts\activate
-```
 
+Copy
+
+Explain
 The shell prompt will include the name of the active virtual environment enclosed in parentheses, like this:
 
-```
 (my_env) zenx@pc:~ zenx$
-```
 
-You can deactivate your environment at any time with the `deactivate` command. You can find more information about `venv` at https://docs.python.org/3/library/venv.html.
+Copy
 
-# Installing Django
+Explain
+You can deactivate your environment at any time with the deactivate command. You can find more information about venv at https://docs.python.org/3/library/venv.html.
 
+Installing Django
 If you have already installed Django 5.0, you can skip this section and jump directly to the Creating your first project section.
 
 Django comes as a Python module and thus can be installed in any Python environment. If you haven’t installed Django yet, the following is a quick guide to installing it on your machine.
 
-## Installing Django with pip
+Installing Django with pip
+The pip package management system is the preferred method of installing Django. Python 3.12 comes with pip preinstalled, but you can find pip installation instructions at https://pip.pypa.io/en/stable/installation/.
 
-The `pip` package management system is the preferred method of installing Django. Python 3.12 comes with `pip` preinstalled, but you can find `pip` installation instructions at https://pip.pypa.io/en/stable/installation/.
+Run the following command at the shell prompt to install Django with pip:
 
-Run the following command at the shell prompt to install Django with `pip`:
-
-```bash
 python -m pip install Django~=5.0.4
-```
 
-This will install Django’s latest 5.0 version in the Python `site-packages` directory of your virtual environment.
+Copy
+
+Explain
+This will install Django’s latest 5.0 version in the Python site-packages directory of your virtual environment.
 
 Now we will check whether Django has been successfully installed. Run the following command in a shell prompt:
 
-```bash
 python -m django --version
-```
 
-If you get an output that starts with `5.0`, Django has been successfully installed on your machine. If you get the message `No module named Django`, Django is not installed on your machine. If you have issues installing Django, you can review the different installation options described at https://docs.djangoproject.com/en/5.0/intro/install/.
+Copy
 
-All Python packages used in this chapter are included in the `requirements.txt` file in the source code for the chapter, mentioned above. You can follow the instructions to install each Python package in the following sections, or you can install all requirements at once with the command `pip install -r requirements.txt`.
+Explain
+If you get an output that starts with 5.0, Django has been successfully installed on your machine. If you get the message No module named Django, Django is not installed on your machine. If you have issues installing Django, you can review the different installation options described at https://docs.djangoproject.com/en/5.0/intro/install/.
 
-# Django overview
+All Python packages used in this chapter are included in the requirements.txt file in the source code for the chapter, mentioned above. You can follow the instructions to install each Python package in the following sections, or you can install all requirements at once with the command pip install -r requirements.txt.
 
+Django overview
 Django is a framework consisting of a set of components that solve common web development problems. Django components are loosely coupled, which means they can be managed independently. This helps separate the responsibilities of the different layers of the framework; the database layer knows nothing about how the data is displayed, the template system knows nothing about web requests, and so on.
 
-Django offers maximum code reusability by following the `DRY (don’t repeat yourself)` principle. Django also fosters rapid development and allows you to use less code by taking advantage of Python’s dynamic capabilities, such as introspection.
+Django offers maximum code reusability by following the DRY (don’t repeat yourself) principle. Django also fosters rapid development and allows you to use less code by taking advantage of Python’s dynamic capabilities, such as introspection.
 
 You can read more about Django’s design philosophies at https://docs.djangoproject.com/en/5.0/misc/design-philosophies/.
 
-## Main framework components
-
-Django follows the `MTV (Model-Template-View)` pattern. It is a slightly similar pattern to the well-known `MVC (Model-View-Controller)` pattern, where the template acts as the view and the framework itself acts as the controller.
+Main framework components
+Django follows the MTV (Model-Template-View) pattern. It is a slightly similar pattern to the well-known MVC (Model-View-Controller) pattern, where the template acts as the view and the framework itself acts as the controller.
 
 The responsibilities in the Django MTV pattern are divided as follows:
 
-- `Model`: This defines the logical data structure and is the data handler between the database and the view.
-- `Template`: This is the presentation layer. Django uses a plain-text template system that keeps everything that the browser renders.
-- `View`: This communicates with the database via the model and transfers the data to the template for viewing.
-
-The framework itself acts as the controller. It sends a request to the appropriate view, according to the Django **URL** configuration.
+Model: This defines the logical data structure and is the data handler between the database and the view.
+Template: This is the presentation layer. Django uses a plain-text template system that keeps everything that the browser renders.
+View: This communicates with the database via the model and transfers the data to the template for viewing.
+The framework itself acts as the controller. It sends a request to the appropriate view, according to the Django URL configuration.
 
 When developing any Django project, you will always work with models, views, templates, and URLs. In this chapter, you will learn how they fit together.
 
-## The Django architecture
-
+The Django architecture
 Figure 1.1 shows how Django processes requests and how the request/response cycle is managed with the different main Django components – URLs, views, models, and templates:
 
 Diagram
@@ -1886,6 +1884,7 @@ Read this book alongside other users, Django development experts, and the author
 https://packt.link/Django5ByExample
 
 
+
 | ≪ [ 00 Preface ](/packtpub/2024/730_django_5_by_example/00_preface) | 01 Building a Blog Application | [ 02 Enhancing Your Blog and Adding Social Features ](/packtpub/2024/730_django_5_by_example/02_enhancing_your_blog_and_adding_social_features) ≫ |
 |:----:|:----:|:----:|
 
@@ -1896,7 +1895,7 @@ https://packt.link/Django5ByExample
 > (5) tags: Django
 > Book Title: 730 Django 5 by Example
 > Link: https://subscription.packtpub.com/book/web-development/9781805125457/1
-> create: 2024-07-30 화 14:25:54
+> create: 2024-07-30 화 15:30:45
 > Images: /packtpub/img/01/
 > .md Name: 01_building_a_blog_application.md
 

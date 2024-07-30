@@ -164,22 +164,24 @@ if [ ! -d ${img_dir} ]; then
 	mkdir -p ${img_dir}
 fi
 
-md_files_dir="md_files"
-if [ ! -d ${md_files_dir} ]; then
-	echo "#-- mkdir -p ${md_files_dir}"
-	mkdir -p ${md_files_dir}
+aa_bulk_dir="aa_bulk"
+if [ ! -d ${aa_bulk_dir} ]; then
+	echo "#-- mkdir -p ${aa_bulk_dir}"
+	mkdir -p ${aa_bulk_dir}
 fi
-cd ${md_files_dir}
+cd ${aa_bulk_dir}
 
 #--
 #-- (1-5) 책에 맞추어 수정하는 부분.
 #-- vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv
+#-- -------------------------------------------------------------
 Publisher="packtpub" #-- (1) 출판사 --
 BookYear="2024" #-- (2-1) 등록년도
 BookTitle="730 Django 5 by Example" #-- (2-2) 시작월일 + 책 제목 -- 730-Django_5_by_Example_5ed
 ShortDescription="By Antonio Melé Publication Date: 2024-04-30" #-- (3) 저자등 설명 --
 tags="Django" #-- (4) 찾기 위한 태그 --
 https_line="https://subscription.packtpub.com/book/web-development/9781805125457/1" #-- (5) 책 링크 --
+#-- -------------------------------------------------------------
 #-- ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 #--
 small_Publisher=$(echo "${Publisher,,}" | sed 's/ /_/g' | sed 's/\./_/g' | sed 's/“/\"/g' | sed 's/”/\"/g' | sed "s/’/'/g")
@@ -196,6 +198,7 @@ md_Create "SKIP" "Begin" #-- 첫줄 표시.
 #-- 본문은 권 번호 01 또는 001 부터 시작한다.
 #--
 #-- vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv
+#-- -------------------------------------------------------------
 # create  mdSeq  mdTitle
 md_Create "00" "Preface" #-- 서문
 md_Create "01" "Building a Blog Application" #-- 이하 본문
@@ -217,6 +220,7 @@ md_Create "16" "Building a Chat Server"
 md_Create "17" "Going Live"
 md_Create "18" "Other Books You May Enjoy"
 md_Create "19" "Index"
+#-- -------------------------------------------------------------
 #-- ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 #--
 # create  mdSeq  mdTitle
