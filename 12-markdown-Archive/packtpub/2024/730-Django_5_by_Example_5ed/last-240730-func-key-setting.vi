@@ -40,3 +40,7 @@ i`/}i`/OOOOOaOOOOO
 0i#### 
           @ Z -> 현 위치에서 Explain 까지 역따옴표 
 j0i```/^Explain$3k3dd0C```
+          @ X -> 현 위치에서 Explain 까지 ```python
+j0i```python/^Explain$3k3dd0C```
+          @ C -> 현 위치에서 Explain 까지 ```bash
+j0i```bash/^Explain$3k3dd0C```

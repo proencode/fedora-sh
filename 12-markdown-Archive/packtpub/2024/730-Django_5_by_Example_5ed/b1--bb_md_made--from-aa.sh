@@ -1,7 +1,7 @@
 #!/bin/sh
 
 bulk_dir=aa_bulk
-md_made_dir=bb_md_made
+md_made_dir=bb_md
 if [ ! -d ${md_made_dir} ]; then
 	echo "#----> mkdir -p ${md_made_dir}"
 	mkdir -p ${md_made_dir}
