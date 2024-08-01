@@ -14,7 +14,10 @@ do
 			chapter_numb=$(echo ${fig_num} | awk '{print $2}')
 			fig_title=$(echo $fig_memo | awk '{print $1" "$2" "$3}')
 			small_fig_title=$(echo "${fig_title,,}" | sed 's/ /_/g' | sed 's/\./_/g' | sed 's/“/\"/g' | sed 's/”/\"/g' | sed "s/’/'/g")
-			echo "![ ${chapter_numb} ${fig_memo} ](/packtpub/2024/730/${chapter_numb}-${small_fig_title}.webp)     ${chapter_numb}-${small_fig_title}.webp"
+			cat <<__EOF__
+![ ${chapter_numb} ${fig_memo} ](/packtpub/2024/730/${chapter_numb}-${small_fig_title}.webp)
+${chapter_numb}-${small_fig_title}.webp
+__EOF__
 		fi
 	fi
 done < $1
