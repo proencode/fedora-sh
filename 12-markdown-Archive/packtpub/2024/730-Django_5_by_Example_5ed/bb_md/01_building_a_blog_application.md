@@ -660,20 +660,20 @@ python manage.py shell
 
 Then, type the following lines:
 
-```bash
+```python
 >>> from blog.models import Post
 >>> Post.Status.choices
 ```
 
 You will obtain the `enum` choices with value-label pairs, like this:
 
-```bash
+```python
 [('DF', 'Draft'), ('PB', 'Published')]
 ```
 
 Type the following line:
 
-```bash
+```python
 >>> Post.Status.labels
 ```
 
@@ -685,25 +685,25 @@ You will get the human-readable names of the `enum` members, as follows:
 
 Type the following line:
 
-```bash
+```python
 >>> Post.Status.values
 ```
 
 You will get the values of the `enum` members, as follows. These are the values that can be stored in the database for the `status` field:
 
-```bash
+```python
 ['DF', 'PB']
 ```
 
 Type the following line:
 
-```bash
+```python
 >>> Post.Status.names
 ```
 
 You will get the names of the choices, like this:
 
-```bash
+```python
 ['DRAFT', 'PUBLISHED']
 ```
 
@@ -848,120 +848,124 @@ python manage.py migrate
 
 You will get an output that ends with the following line:
 
+```bash
 Applying blog.0001_initial... OK
+```
 
-Copy
+We just applied migrations for the applications listed in `INSTALLED_APPS`, including the `blog` application. After applying the migrations, the database reflects the current status of the models.
 
-Explain
-We just applied migrations for the applications listed in INSTALLED_APPS, including the blog application. After applying the migrations, the database reflects the current status of the models.
+If you edit the `models.py` file in order to add, remove, or change the fields of existing models, or if you add new models, you will have to create a new migration using the `makemigrations` command. Each migration allows Django to keep track of model changes. Then, you will have to apply the migration using the `migrate` command to keep the database in sync with your models.
 
-If you edit the models.py file in order to add, remove, or change the fields of existing models, or if you add new models, you will have to create a new migration using the makemigrations command. Each migration allows Django to keep track of model changes. Then, you will have to apply the migration using the migrate command to keep the database in sync with your models.
+# Creating an administration site for models
 
-Creating an administration site for models
-Now that the Post model is in sync with the database, we can create a simple administration site to manage blog posts.
+Now that the `Post` model is in sync with the database, we can create a simple administration site to manage blog posts.
 
 Django comes with a built-in administration interface that is very useful for editing content. The Django site is built dynamically by reading the model metadata and providing a production-ready interface for editing content. You can use it out of the box, configuring how you want your models to be displayed in it.
 
-The django.contrib.admin application is already included in the INSTALLED_APPS setting, so you don’t need to add it.
+The `django.contrib.admin` application is already included in the `INSTALLED_APPS` setting, so you don’t need to add it.
 
-Creating a superuser
+## Creating a superuser
+
 First, you will need to create a user to manage the administration site. Run the following command:
 
+```bash
 python manage.py createsuperuser
+```
 
-Copy
-
-Explain
 You will see the following output. Enter your desired username, email, and password, as follows:
 
+```bash
 Username (leave blank to use 'admin'): admin
 Email address: admin@admin.com
 Password: ********
 Password (again): ********
+```
 
-Copy
-
-Explain
 Then, you will see the following success message:
 
+```bash
 Superuser created successfully.
+```
 
-Copy
-
-Explain
 We just created an administrator user with the highest permissions.
 
-The Django administration site
+## The Django administration site
+
 Start the development server with the following command:
 
+```bash
 python manage.py runserver
+```
 
-Copy
+Open `http://127.0.0.1:8000/admin/` in your browser. You should see the administration login page, as shown in *Figure 1.7*:
 
-Explain
-Open http://127.0.0.1:8000/admin/ in your browser. You should see the administration login page, as shown in Figure 1.7:
-
+![ 1.7 The Django administration site login screen ](/packtpub/2024/730/1.7-the_django_administration.webp)
 
 Figure 1.7: The Django administration site login screen
 
-Log in using the credentials of the user you created in the preceding step. You will see the administration site index page, as shown in Figure 1.8:
+Log in using the credentials of the user you created in the preceding step. You will see the administration site index page, as shown in *Figure 1.8*:
 
+![ 1.8 The Django administration site index page ](/packtpub/2024/730/1.8-the_django_administration.webp)
 
 Figure 1.8: The Django administration site index page
 
-The Group and User models that you can see in the preceding screenshot are part of the Django authentication framework located in django.contrib.auth. If you click on Users, you will see the user you created previously.
+The `Group` and `User` models that you can see in the preceding screenshot are part of the Django authentication framework located in `django.contrib.auth`. If you click on **Users**, you will see the user you created previously.
 
-Adding models to the administration site
-Let’s add your blog models to the administration site. Edit the admin.py file of the blog application and make it look like this; the new lines are highlighted in bold:
+## Adding models to the administration site
 
+Let’s add your blog models to the administration site. Edit the `admin.py` file of the `blog` application and make it look like this; the new lines are highlighted in bold:
+
+```python
 from django.contrib import admin
 from .models import Post
 admin.site.register(Post)
+```
 
-Copy
+Now, reload the administration site in your browser. You should see your `Post` model on the site, as follows:
 
-Explain
-Now, reload the administration site in your browser. You should see your Post model on the site, as follows:
-
+![ 1.9 The Post model of the blog application included in the Django administration site index page ](/packtpub/2024/730/1.9-the_post_model.webp)
 
 Figure 1.9: The Post model of the blog application included in the Django administration site index page
 
 That was easy, right? When you register a model in the Django administration site, you get a user-friendly interface generated by introspecting your models that allows you to list, edit, create, and delete objects in a simple way.
 
-Click on the Add link beside Posts to add a new post. You will note the form that Django has generated dynamically for your model, as shown in Figure 1.10:
+Click on the **Add** link beside **Posts** to add a new post. You will note the form that Django has generated dynamically for your model, as shown in *Figure 1.10*:
 
+![ 1.10 The Django administration site edit form for the Post model ](/packtpub/2024/730/1.10-the_django_administration.webp)
 
 Figure 1.10: The Django administration site edit form for the Post model
 
-Django uses different form widgets for each type of field. Even complex fields, such as DateTimeField, are displayed with an easy interface, such as a JavaScript date picker.
+Django uses different form widgets for each type of field. Even complex fields, such as `DateTimeField`, are displayed with an easy interface, such as a JavaScript date picker.
 
-Fill in the form and click on the SAVE button. You should be redirected to the post list page with a success message and the post you just created, as shown in Figure 1.11:
+Fill in the form and click on the **SAVE** button. You should be redirected to the post list page with a success message and the post you just created, as shown in *Figure 1.11*:
 
+![ 1.11 The Django administration site list view for the Post model with an added successfully message ](/packtpub/2024/730/1.11-the_django_administration.webp)
 
 Figure 1.11: The Django administration site list view for the Post model with an added successfully message
 
-Customizing how models are displayed
+## Customizing how models are displayed
+
 Now, we will take a look at how to customize the administration site.
 
-Edit the admin.py file of your blog application and change it, as follows. The new lines are highlighted in bold:
+Edit the `admin.py` file of your `blog` application and change it, as follows. The new lines are highlighted in bold:
 
+```python
 from django.contrib import admin
 from .models import Post
 @admin.register(Post)
 class PostAdmin(admin.ModelAdmin):
     list_display = ['title', 'slug', 'author', 'publish', 'status']
+```
 
-Copy
+We are telling the Django administration site that the model is registered in the site using a custom class that inherits from `ModelAdmin`. In this class, we can include information about how to display the model on the administration site and how to interact with it.
 
-Explain
-We are telling the Django administration site that the model is registered in the site using a custom class that inherits from ModelAdmin. In this class, we can include information about how to display the model on the administration site and how to interact with it.
+The `list_display` attribute allows you to set the fields of your model that you want to display on the administration object list page. The `@admin.register()` decorator performs the same function as the `admin.site.register()` function that you replaced, registering the `ModelAdmin` class that it decorates.
 
-The list_display attribute allows you to set the fields of your model that you want to display on the administration object list page. The @admin.register() decorator performs the same function as the admin.site.register() function that you replaced, registering the ModelAdmin class that it decorates.
+Let’s customize the `admin` model with some more options.
 
-Let’s customize the admin model with some more options.
+Edit the `admin.py` file of your `blog` application and change it, as follows. The new lines are highlighted in bold:
 
-Edit the admin.py file of your blog application and change it, as follows. The new lines are highlighted in bold:
-
+```python
 from django.contrib import admin
 from .models import Post
 @admin.register(Post)
@@ -973,34 +977,37 @@ class PostAdmin(admin.ModelAdmin):
     raw_id_fields = ['author']
     date_hierarchy = 'publish'
     ordering = ['status', 'publish']
+```
 
-Copy
-
-Explain
 Return to your browser and reload the post list page. Now, it will look like this:
 
+![ 1.12 The Django administration site custom list view for the Post model ](/packtpub/2024/730/1.12-the_django_administration.webp)
 
 Figure 1.12: The Django administration site custom list view for the Post model
 
-You can see that the fields displayed on the post list page are the ones we specified in the list_display attribute. The list page now includes a right sidebar that allows you to filter the results by the fields included in the list_filter attribute. Filters for ForeignKey fields like author are only displayed in the sidebar if more than one object exists in the database.
+You can see that the fields displayed on the post list page are the ones we specified in the `list_display` attribute. The list page now includes a right sidebar that allows you to filter the results by the fields included in the `list_filter` attribute. Filters for `ForeignKey` fields like `author` are only displayed in the sidebar if more than one object exists in the database.
 
-A search bar has appeared on the page. This is because we have defined a list of searchable fields using the search_fields attribute. Just below the search bar, there are navigation links to navigate through a date hierarchy; this has been defined by the date_hierarchy attribute. You can also see that the posts are ordered by STATUS and PUBLISH columns by default. We have specified the default sorting criteria using the ordering attribute.
+A search bar has appeared on the page. This is because we have defined a list of searchable fields using the `search_fields` attribute. Just below the search bar, there are navigation links to navigate through a date hierarchy; this has been defined by the `date_hierarchy` attribute. You can also see that the posts are ordered by **STATUS** and **PUBLISH** columns by default. We have specified the default sorting criteria using the `ordering` attribute.
 
-Next, click on the ADD POST link. You will also note some changes here. As you type the title of a new post, the slug field is filled in automatically. You have told Django to prepopulate the slug field with the input of the title field using the prepopulated_fields attribute:
+Next, click on the **ADD POST** link. You will also note some changes here. As you type the title of a new post, the `slug` field is filled in automatically. You have told Django to prepopulate the `slug` field with the input of the `title` field using the `prepopulated_fields` attribute:
 
+![ 1.13 The slug model is now automatically prepopulated as you type in the title ](/packtpub/2024/730/1.13-the_slug_model.webp)
 
 Figure 1.13: The slug model is now automatically prepopulated as you type in the title
 
-Also, the author field is now displayed with a lookup widget, which can be much better than an input selection drop-down when you have thousands of users. This is achieved with the raw_id_fields attribute and it looks like this:
+Also, the `author` field is now displayed with a lookup widget, which can be much better than an input selection drop-down when you have thousands of users. This is achieved with the `raw_id_fields` attribute and it looks like this:
 
+![ 1.14 The widget to select related objects for the Author field of the Post model ](/packtpub/2024/730/1.14-the_widget_to.webp)
 
 Figure 1.14: The widget to select related objects for the Author field of the Post model
 
-Adding facet counts to filters
-Django 5.0 introduces facet filters to the administration site, showcasing facet counts. These counts indicate the number of objects corresponding to each specific filter, making it easier to identify matching objects in the admin changelist view. Next, we are going to make sure facet filters are always displayed for the PostAdmin admin model.
+## Adding facet counts to filters
 
-Edit the admin.py file of your blog application and add the following line highlighted in bold:
+Django 5.0 introduces facet filters to the administration site, showcasing facet counts. These counts indicate the number of objects corresponding to each specific filter, making it easier to identify matching objects in the admin changelist view. Next, we are going to make sure facet filters are always displayed for the `PostAdmin` admin model.
 
+Edit the `admin.py` file of your `blog` application and add the following line highlighted in bold:
+
+```python
 from django.contrib import admin
 from .models import Post
 @admin.register(Post)
@@ -1013,12 +1020,11 @@ class PostAdmin(admin.ModelAdmin):
     date_hierarchy = 'publish'
     ordering = ['status', 'publish']
     show_facets = admin.ShowFacets.ALWAYS
+```
 
-Copy
+Create some posts using the administration site and access `http://127.0.0.1:8000/admin/blog/post/`. The filters should now include total facet counts, as shown in *Figure 1.15*:
 
-Explain
-Create some posts using the administration site and access http://127.0.0.1:8000/admin/blog/post/. The filters should now include total facet counts, as shown in Figure 1.15:
-
+![ 1.15 Status field filters including facet counts ](/packtpub/2024/730/1.15-status_field_filters.webp)
 
 Figure 1.15: Status field filters including facet counts
 
@@ -1026,31 +1032,33 @@ With a few lines of code, we have customized the way the model is displayed on t
 
 You can find more information about the Django administration site at https://docs.djangoproject.com/en/5.0/ref/contrib/admin/.
 
-Working with QuerySets and managers
+# Working with QuerySets and managers
+
 Now that we have a fully functional administration site to manage blog posts, it is a good time to learn how to read and write content to the database programmatically.
 
-The Django object-relational mapper (ORM) is a powerful database abstraction API that lets you create, retrieve, update, and delete objects easily. An ORM allows you to generate SQL queries using the object-oriented paradigm of Python. You can think of it as a way to interact with your database in a Pythonic fashion instead of writing raw SQL queries.
+The Django `object-relational mapper (ORM)` is a powerful database abstraction API that lets you create, retrieve, update, and delete objects easily. An ORM allows you to generate SQL queries using the object-oriented paradigm of Python. You can think of it as a way to interact with your database in a Pythonic fashion instead of writing raw SQL queries.
 
 The ORM maps your models to database tables and provides you with a simple Pythonic interface to interact with your database. The ORM generates SQL queries and maps the results to model objects. The Django ORM is compatible with MySQL, PostgreSQL, SQLite, Oracle, and MariaDB.
 
-Remember that you can define the database of your project in the DATABASES setting of your project’s settings.py file. Django can work with multiple databases at a time, and you can program database routers to create custom data routing schemes.
+Remember that you can define the database of your project in the `DATABASES` setting of your project’s `settings.py` file. Django can work with multiple databases at a time, and you can program database routers to create custom data routing schemes.
 
 Once you have created your data models, Django gives you a free API to interact with them. You can find the model API reference of the official documentation at https://docs.djangoproject.com/en/5.0/ref/models/.
 
-The Django ORM is based on QuerySets. A QuerySet is a collection of database queries to retrieve objects from your database. You can apply filters to QuerySets to narrow down the query results based on given parameters. The QuerySet equates to a SELECT SQL statement and the filters are limiting SQL clauses such as WHERE or LIMIT.
+The Django ORM is based on QuerySets. A QuerySet is a collection of database queries to retrieve objects from your database. You can apply filters to QuerySets to narrow down the query results based on given parameters. The QuerySet equates to a `SELECT` SQL statement and the filters are limiting SQL clauses such as `WHERE` or `LIMIT`.
 
 Next, you are going to learn how to build and execute QuerySets.
 
-Creating objects
+## Creating objects
+
 Run the following command in the shell prompt to open the Python shell:
 
+```bash
 python manage.py shell
+```
 
-Copy
-
-Explain
 Then, type the following lines:
 
+```python
 >>> from django.contrib.auth.models import User
 >>> from blog.models import Post
 >>> user = User.objects.get(username='admin')
@@ -1059,408 +1067,379 @@ Then, type the following lines:
 ...             body='Post body.',
 ...             author=user)
 >>> post.save()
+```
 
-Copy
-
-Explain
 Let’s analyze what this code does.
 
-First, we are retrieving the user object with the username admin:
+First, we are retrieving the `user` object with the username `admin`:
 
+```python
 >>> user = User.objects.get(username='admin')
+```
 
-Copy
+The `get()` method allows us to retrieve a single object from the database. This method executes a `SELECT` SQL statement behind the scenes. Note that this method expects a result that matches the query. If no results are returned by the database, this method will raise a `DoesNotExist` exception, and if the database returns more than one result, it will raise a `MultipleObjectsReturned` exception. Both exceptions are attributes of the model class that the query is being performed on.
 
-Explain
-The get() method allows us to retrieve a single object from the database. This method executes a SELECT SQL statement behind the scenes. Note that this method expects a result that matches the query. If no results are returned by the database, this method will raise a DoesNotExist exception, and if the database returns more than one result, it will raise a MultipleObjectsReturned exception. Both exceptions are attributes of the model class that the query is being performed on.
+Then, we create a `Post` instance with a custom title, slug, and body, and set the user that we previously retrieved as the author of the post:
 
-Then, we create a Post instance with a custom title, slug, and body, and set the user that we previously retrieved as the author of the post:
-
+```python
 >>> post = Post(title='Another post', slug='another-post', body='Post body.', author=user)
+```
 
-Copy
-
-Explain
 This object is in memory and not persisted to the database; we created a Python object that can be used during runtime but is not saved into the database.
 
-Finally, we are saving the Post object in the database using the save() method:
+Finally, we are saving the `Post` object in the database using the `save()` method:
 
+```python
 >>> post.save()
+```
 
-Copy
+This action performs an `INSERT` SQL statement behind the scenes.
 
-Explain
-This action performs an INSERT SQL statement behind the scenes.
+We created an object in memory first and then persisted it to the database. However, you can create the object and persist it to the database in a single operation using the `create()` method, as follows:
 
-We created an object in memory first and then persisted it to the database. However, you can create the object and persist it to the database in a single operation using the create() method, as follows:
-
+```python
 >>> Post.objects.create(title='One more post',
                     slug='one-more-post',
                     body='Post body.',
                     author=user)
+```
 
-Copy
+In certain situations, you might need to fetch an object from the database or create it if it’s absent. The `get_or_create()` method facilitates this by either retrieving an object or creating it if not found. This method returns a tuple with the object retrieved and a Boolean indicating whether a new object was created. The following code attempts to retrieve a `User` object with the username `user2`, and if it doesn’t exist, it will create one:
 
-Explain
-In certain situations, you might need to fetch an object from the database or create it if it’s absent. The get_or_create() method facilitates this by either retrieving an object or creating it if not found. This method returns a tuple with the object retrieved and a Boolean indicating whether a new object was created. The following code attempts to retrieve a User object with the username user2, and if it doesn’t exist, it will create one:
-
+```python
 >>> user, created = User.objects.get_or_create(username='user2')
+```
 
-Copy
+## Updating objects
 
-Explain
-Updating objects
-Now, change the title of the previous Post object to something different and save the object again:
+Now, change the title of the previous `Post` object to something different and save the object again:
 
+```python
 >>> post.title = 'New title'
 >>> post.save()
+```
 
-Copy
+This time, the `save()` method performs an `UPDATE` SQL statement.
 
-Explain
-This time, the save() method performs an UPDATE SQL statement.
+> The changes you make to a model object are not persisted to the database until you call the `save()` method.
 
-The changes you make to a model object are not persisted to the database until you call the save() method.
+## Retrieving objects
 
-Retrieving objects
-You already know how to retrieve a single object from the database using the get() method. We accessed this method using Post.objects.get(). Each Django model has at least one manager, and the default manager is called objects. You get a QuerySet object using your model manager.
+You already know how to retrieve a single object from the database using the `get()` method. We accessed this method using `Post.objects.get()`. Each Django model has at least one manager, and the default manager is called `objects`. You get a QuerySet object using your model manager.
 
-To retrieve all objects from a table, we use the all() method on the default objects manager, like this:
+To retrieve all objects from a table, we use the `all()` method on the default objects manager, like this:
 
+```python
 >>> all_posts = Post.objects.all()
+```
 
-Copy
-
-Explain
 This is how we create a QuerySet that returns all objects in the database. Note that this QuerySet has not been executed yet. Django QuerySets are lazy, which means they are only evaluated when they are forced to. This behavior makes QuerySets very efficient. If you don’t assign the QuerySet to a variable but, instead, write it directly on the Python shell, the SQL statement of the QuerySet is executed because you are forcing it to generate output:
 
+```python
 >>> Post.objects.all()
 <QuerySet [<Post: Who was Django Reinhardt?>, <Post: New title>]>
+```
 
-Copy
+## Filtering objects
 
-Explain
-Filtering objects
-To filter a QuerySet, you can use the filter() method of the manager. This method allows you to specify the content of a SQL WHERE clause by using field lookups.
+To filter a QuerySet, you can use the `filter()` method of the manager. This method allows you to specify the content of a SQL `WHERE` clause by using field lookups.
 
-For example, you can use the following to filter Post objects by their title:
+For example, you can use the following to filter `Post` objects by their `title`:
 
+```python
 >>> Post.objects.filter(title='Who was Django Reinhardt?')
+```
 
-Copy
-
-Explain
 This QuerySet will return all posts with the exact title Who was Django Reinhardt?. Let’s review the SQL statement generated with this QuerySet. Run the following code in the shell:
 
+```python
 >>> posts = Post.objects.filter(title='Who was Django Reinhardt?')
 >>> print(posts.query)
+```
 
-Copy
+By printing the `query` attribute of the QuerySet, we can get the SQL produced by it:
 
-Explain
-By printing the query attribute of the QuerySet, we can get the SQL produced by it:
-
+```sql
 SELECT "blog_post"."id", "blog_post"."title", "blog_post"."slug", "blog_post"."author_id", "blog_post"."body", "blog_post"."publish", "blog_post"."created", "blog_post"."updated", "blog_post"."status" FROM "blog_post" WHERE "blog_post"."title" = Who was Django Reinhardt? ORDER BY "blog_post"."publish" DESC
+```
 
-Copy
+The generated `WHERE` clause performs an exact match on the `title` column. The `ORDER BY` clause specifies the default order defined in the `ordering` attribute of the `Post` model’s `Meta` options since we haven’t provided any specific ordering in the QuerySet. You will learn about ordering in a bit. Note that the `query` attribute is not part of the QuerySet public API.
 
-Explain
-The generated WHERE clause performs an exact match on the title column. The ORDER BY clause specifies the default order defined in the ordering attribute of the Post model’s Meta options since we haven’t provided any specific ordering in the QuerySet. You will learn about ordering in a bit. Note that the query attribute is not part of the QuerySet public API.
+## Using field lookups
 
-Using field lookups
-The previous QuerySet example consists of a filter lookup with an exact match. The QuerySet interface provides you with multiple lookup types. Two underscores are used to define the lookup type, with the format field__lookup. For example, the following lookup produces an exact match:
+The previous QuerySet example consists of a filter lookup with an exact match. The QuerySet interface provides you with multiple lookup types. Two underscores are used to define the lookup type, with the format `field__lookup`. For example, the following lookup produces an exact match:
 
+```python
 >>> Post.objects.filter(id__exact=1)
+```
 
-Copy
+When no specific lookup type is provided, the lookup type is assumed to be `exact`. The following lookup is equivalent to the previous one:
 
-Explain
-When no specific lookup type is provided, the lookup type is assumed to be exact. The following lookup is equivalent to the previous one:
-
+```python
 >>> Post.objects.filter(id=1)
+```
 
-Copy
+Let’s take a look at other common lookup types. You can generate a case-insensitive lookup with `iexact`:
 
-Explain
-Let’s take a look at other common lookup types. You can generate a case-insensitive lookup with iexact:
-
+```python
 >>> Post.objects.filter(title__iexact='who was django reinhardt?')
+```
 
-Copy
+You can also filter objects using a containment test. The `contains` lookup translates to a SQL lookup using the `LIKE` operator:
 
-Explain
-You can also filter objects using a containment test. The contains lookup translates to a SQL lookup using the LIKE operator:
-
+```python
 >>> Post.objects.filter(title__contains='Django')
+```
 
-Copy
+The equivalent SQL clause is `WHERE title LIKE '%Django%'`. A case-insensitive version is also available, named `icontains`:
 
-Explain
-The equivalent SQL clause is WHERE title LIKE '%Django%'. A case-insensitive version is also available, named icontains:
-
+```python
 >>> Post.objects.filter(title__icontains='django')
+```
 
-Copy
+You can check for a given iterable (often a list, tuple, or another QuerySet object) with the `in` lookup. The following example retrieves posts with an `id` that is `1` or `3`:
 
-Explain
-You can check for a given iterable (often a list, tuple, or another QuerySet object) with the in lookup. The following example retrieves posts with an id that is 1 or 3:
-
+```python
 >>> Post.objects.filter(id__in=[1, 3])
+```
 
-Copy
+The following example shows the greater than (`gt`) lookup:
 
-Explain
-The following example shows the greater than (gt) lookup:
-
+```python
 >>> Post.objects.filter(id__gt=3)
+```
 
-Copy
-
-Explain
-The equivalent SQL clause is WHERE ID > 3.
+The equivalent SQL clause is `WHERE ID > 3`.
 
 This example shows the greater than or equal to lookup:
 
+```python
 >>> Post.objects.filter(id__gte=3)
+```
 
-Copy
-
-Explain
 This one shows the less than lookup:
 
+```python
 >>> Post.objects.filter(id__lt=3)
+```
 
-Copy
-
-Explain
 This shows the less than or equal to lookup:
 
+```python
 >>> Post.objects.filter(id__lte=3)
+```
 
-Copy
+A case-sensitive/insensitive starts-with lookup can be performed with the `startswith` and `istartswith` lookup types, respectively:
 
-Explain
-A case-sensitive/insensitive starts-with lookup can be performed with the startswith and istartswith lookup types, respectively:
-
+```python
 >>> Post.objects.filter(title__istartswith='who')
+```
 
-Copy
+A case-sensitive/insensitive ends-with lookup can be performed with the `endswith` and `iendswith` lookup types, respectively:
 
-Explain
-A case-sensitive/insensitive ends-with lookup can be performed with the endswith and iendswith lookup types, respectively:
-
+```python
 >>> Post.objects.filter(title__iendswith='reinhardt?')
+```
 
-Copy
-
-Explain
 There are also different lookup types for date lookups. An exact date lookup can be performed as follows:
 
+```python
 >>> from datetime import date
 >>> Post.objects.filter(publish__date=date(2024, 1, 31))
+```
 
-Copy
+This shows how to filter a `DateField` or `DateTimeField` field by year:
 
-Explain
-This shows how to filter a DateField or DateTimeField field by year:
-
+```python
 >>> Post.objects.filter(publish__year=2024)
+```
 
-Copy
-
-Explain
 You can also filter by month:
 
+```python
 >>> Post.objects.filter(publish__month=1)
+```
 
-Copy
-
-Explain
 And you can filter by day:
 
+```python
 >>> Post.objects.filter(publish__day=1)
+```
 
-Copy
+You can chain additional lookups to `date`, `year`, `month`, and `day`. For example, here is a lookup for a value greater than a given date:
 
-Explain
-You can chain additional lookups to date, year, month, and day. For example, here is a lookup for a value greater than a given date:
-
+```python
 >>> Post.objects.filter(publish__date__gt=date(2024, 1, 1))
+```
 
-Copy
+To lookup related object fields, you also use the two-underscores notation. For example, to retrieve the posts written by the user with the `admin` username, use the following:
 
-Explain
-To lookup related object fields, you also use the two-underscores notation. For example, to retrieve the posts written by the user with the admin username, use the following:
-
+```python
 >>> Post.objects.filter(author__username='admin')
+```
 
-Copy
+You can also chain additional lookups for the related fields. For example, to retrieve posts written by any user with a username that starts with `ad`, use the following:
 
-Explain
-You can also chain additional lookups for the related fields. For example, to retrieve posts written by any user with a username that starts with ad, use the following:
-
+```python
 >>> Post.objects.filter(author__username__starstwith='ad')
+```
 
-Copy
+You can also filter by multiple fields. For example, the following QuerySet retrieves all posts published in 2024 by the author with the username `admin`:
 
-Explain
-You can also filter by multiple fields. For example, the following QuerySet retrieves all posts published in 2024 by the author with the username admin:
-
+```python
 >>> Post.objects.filter(publish__year=2024, author__username='admin')
+```
 
-Copy
+## Chaining filters
 
-Explain
-Chaining filters
 The result of a filtered QuerySet is another QuerySet object. This allows you to chain QuerySets together. You can build an equivalent QuerySet to the previous one by chaining multiple filters:
 
+```python
 >>> Post.objects.filter(publish__year=2024) \
 >>>             .filter(author__username='admin')
+```
 
-Copy
+## Excluding objects
 
-Explain
-Excluding objects
-You can exclude certain results from your QuerySet by using the exclude() method of the manager. For example, you can retrieve all posts published in 2024 whose titles don’t start with Why:
+You can exclude certain results from your QuerySet by using the `exclude()` method of the manager. For example, you can retrieve all posts published in 2024 whose titles don’t start with `Why`:
 
+```python
 >>> Post.objects.filter(publish__year=2024) \
 >>>             .exclude(title__startswith='Why')
+```
 
-Copy
+## Ordering objects
 
-Explain
-Ordering objects
-The default order is defined in the ordering option of the model’s Meta. You can override the default ordering using the order_by() method of the manager. For example, you can retrieve all objects ordered by their title, as follows:
+The default order is defined in the `ordering` option of the model’s `Meta`. You can override the default ordering using the `order_by()` method of the manager. For example, you can retrieve all objects ordered by their `title`, as follows:
 
+```python
 >>> Post.objects.order_by('title')
+```
 
-Copy
-
-Explain
 Ascending order is implied. You can indicate descending order with a negative sign prefix, like this:
 
+```python
 >>> Post.objects.order_by('-title')
+```
 
-Copy
+You can order by multiple fields. The following example orders objects by `author` first and then `title`:
 
-Explain
-You can order by multiple fields. The following example orders objects by author first and then title:
-
+```python
 >>> Post.objects.order_by('author', 'title')
+```
 
-Copy
+To order randomly, use the string `'?'`, as follows:
 
-Explain
-To order randomly, use the string '?', as follows:
-
+```python
 >>> Post.objects.order_by('?')
+```
 
-Copy
+## Limiting QuerySets
 
-Explain
-Limiting QuerySets
 You can limit a QuerySet to a certain number of results by using a subset of Python’s array-slicing syntax. For example, the following QuerySet limits the results to 5 objects:
 
+```python
 >>> Post.objects.all()[:5]
+```
 
-Copy
+This translates to a SQL `LIMIT 5` clause. Note that negative indexing is not supported.
 
-Explain
-This translates to a SQL LIMIT 5 clause. Note that negative indexing is not supported.
-
+```python
 >>> Post.objects.all()[3:6]
+```
 
-Copy
-
-Explain
-The preceding translates to a SQL OFFSET 3 LIMIT 6 clause, to return the fourth through sixth objects.
+The preceding translates to a SQL `OFFSET 3 LIMIT 6` clause, to return the fourth through sixth objects.
 
 To retrieve a single object, you can use an index instead of a slice. For example, use the following to retrieve the first object of posts in random order:
 
+```python
 >>> Post.objects.order_by('?')[0]
+```
 
-Copy
+## Counting objects
 
-Explain
-Counting objects
-The count() method counts the total number of objects matching the QuerySet and returns an integer. This method translates to a SELECT COUNT(*) SQL statement. The following example returns the total number of posts with an id lower than 3:
+The `count()` method counts the total number of objects matching the QuerySet and returns an integer. This method translates to a `SELECT COUNT(*)` SQL statement. The following example returns the total number of posts with an `id` lower than `3`:
 
+```python
 >>> Post.objects.filter(id_lt=3).count()
 2
+```
 
-Copy
+## Checking if an object exists
 
-Explain
-Checking if an object exists
-The exists() method allows you to check if a QuerySet contains any results. This method returns True if the QuerySet contains any items and False otherwise. For example, you can check if there are any posts with a title that starts with Why using the following QuerySet:
+The `exists()` method allows you to check if a QuerySet contains any results. This method returns `True` if the QuerySet contains any items and `False` otherwise. For example, you can check if there are any posts with a `title` that starts with Why using the following QuerySet:
 
+```python
 >>> Post.objects.filter(title__startswith='Why').exists()
 False
+```
 
-Copy
+## Deleting objects
 
-Explain
-Deleting objects
-If you want to delete an object, you can do it from an object instance using the delete() method, as follows:
+If you want to delete an object, you can do it from an object instance using the `delete()` method, as follows:
 
+```python
 >>> post = Post.objects.get(id=1)
 >>> post.delete()
+```
 
-Copy
+Note that deleting objects will also delete any dependent relationships for `ForeignKey` objects defined with `on_delete` set to `CASCADE`.
 
-Explain
-Note that deleting objects will also delete any dependent relationships for ForeignKey objects defined with on_delete set to CASCADE.
+## Complex lookups with Q objects
 
-Complex lookups with Q objects
-Field lookups using filter() are joined with a SQL AND operator. For example, filter(field1='foo ', field2='bar') will retrieve objects where field1 is foo and field2 is bar. If you need to build more complex queries, such as queries with OR statements, you can use Q objects.
+Field lookups using `filter()` are joined with a SQL `AND` operator. For example, `filter(field1='foo ', field2='bar')` will retrieve objects where `field1` is foo and `field2` is bar. If you need to build more complex queries, such as queries with `OR` statements, you can use `Q` objects.
 
-A Q object allows you to encapsulate a collection of field lookups. You can compose statements by combining Q objects with the & (and), | (or), and ^ (xor) operators.
+A `Q` object allows you to encapsulate a collection of field lookups. You can compose statements by combining `Q` objects with the `&` (and), `|` (or), and `^` (xor) operators.
 
 For example, the following code retrieves posts with a title that starts with the string who or why (case-insensitive):
 
+```python
 >>> from django.db.models import Q
 >>> starts_who = Q(title__istartswith='who')
 >>> starts_why = Q(title__istartswith='why')
 >>> Post.objects.filter(starts_who | starts_why)
+```
 
-Copy
+In this case, we use the `|` operator to build an `OR` statement.
 
-Explain
-In this case, we use the | operator to build an OR statement.
+You can read more about `Q` objects at https://docs.djangoproject.com/en/5.0/topics/db/queries/#complex-lookups-with-q-objects.
 
-You can read more about Q objects at https://docs.djangoproject.com/en/5.0/topics/db/queries/#complex-lookups-with-q-objects.
+## When QuerySets are evaluated
 
-When QuerySets are evaluated
 Creating a QuerySet doesn’t involve any database activity until it is evaluated. QuerySets will usually return another unevaluated QuerySet. You can concatenate as many filters as you like to a QuerySet, and you will not hit the database until the QuerySet is evaluated. When a QuerySet is evaluated, it translates into a SQL query to the database.
 
 QuerySets are only evaluated in the following cases:
 
-The first time you iterate over them
-When you slice them, for instance, Post.objects.all()[:3]
-When you pickle or cache them
-When you call repr() or len() on them
-When you explicitly call list() on them
-When you test them in a statement, such as bool(), or, and, or if
-More on QuerySets
-You will use QuerySets in all the project examples featured in this book. You will learn how to generate aggregates over QuerySets in the Retrieving posts by similarity section of Chapter 3, Extending Your Blog Application.
+> - The first time you iterate over them
+> - When you slice them, for instance, `Post.objects.all()[:3]`
+> - When you pickle or cache them
+> - When you call `repr()` or `len()` on them
+> - When you explicitly call `list()` on them
+> - When you test them in a statement, such as `bool()`, `or`, `and`, or `if`
 
-You will learn how to optimize QuerySets in the Optimizing QuerySets that involve related objects section in Chapter 7, Tracking User Actions.
+## More on QuerySets
+
+You will use QuerySets in all the project examples featured in this book. You will learn how to generate aggregates over QuerySets in the *Retrieving posts by similarity* section of *Chapter 3, Extending Your Blog Application*.
+
+You will learn how to optimize QuerySets in the *Optimizing QuerySets that involve related objects* section in *Chapter 7, Tracking User Actions*.
 
 The QuerySet API reference is located at https://docs.djangoproject.com/en/5.0/ref/models/querysets/.
 
 You can read more about making queries with the Django ORM at https://docs.djangoproject.com/en/5.0/topics/db/queries/.
 
-Creating model managers
-The default manager for every model is the objects manager. This manager retrieves all the objects in the database. However, we can define custom managers for models.
+## Creating model managers
 
-Let’s create a custom manager to retrieve all posts that have a PUBLISHED status.
+The default manager for every model is the `objects` manager. This manager retrieves all the objects in the database. However, we can define custom managers for models.
 
-There are two ways to add or customize managers for your models: you can add extra manager methods to an existing manager or create a new manager by modifying the initial QuerySet that the manager returns. The first method provides you with a QuerySet notation like Post.objects.my_manager(), and the latter provides you with a QuerySet notation like Post.my_manager.all().
+Let’s create a custom manager to retrieve all posts that have a `PUBLISHED` status.
 
-We will choose the second method to implement a manager that will allow us to retrieve posts using the notation Post.published.all().
+There are two ways to add or customize managers for your models: you can add extra manager methods to an existing manager or create a new manager by modifying the initial QuerySet that the manager returns. The first method provides you with a QuerySet notation like `Post.objects.my_manager()`, and the latter provides you with a QuerySet notation like `Post.my_manager.all()`.
 
-Edit the models.py file of your blog application to add the custom manager, as follows. The new lines are highlighted in bold:
+We will choose the second method to implement a manager that will allow us to retrieve posts using the notation `Post.published.all()`.
 
+Edit the `models.py` file of your `blog` application to add the custom manager, as follows. The new lines are highlighted in bold:
+
+```python
 class PublishedManager(models.Manager):
     def get_queryset(self):
         return (
@@ -1478,43 +1457,42 @@ class Post(models.Model):
         ]
     def __str__(self):
         return self.title
+```
 
-Copy
+The first manager declared in a model becomes the default manager. You can use the `Meta` attribute `default_manager_name` to specify a different default manager. If no manager is defined in the model, Django automatically creates the `objects` default manager for it. If you declare any managers for your model but you want to keep the `objects` manager as well, you have to add it explicitly to your model. In the preceding code, we have added the default `objects` manager and the `published` custom manager to the `Post` model.
 
-Explain
-The first manager declared in a model becomes the default manager. You can use the Meta attribute default_manager_name to specify a different default manager. If no manager is defined in the model, Django automatically creates the objects default manager for it. If you declare any managers for your model but you want to keep the objects manager as well, you have to add it explicitly to your model. In the preceding code, we have added the default objects manager and the published custom manager to the Post model.
+The `get_queryset()` method of a manager returns the QuerySet that will be executed. We have overridden this method to build a custom QuerySet that filters posts by their status and returns a successive QuerySet that only includes posts with the `PUBLISHED` status.
 
-The get_queryset() method of a manager returns the QuerySet that will be executed. We have overridden this method to build a custom QuerySet that filters posts by their status and returns a successive QuerySet that only includes posts with the PUBLISHED status.
-
-We have now defined a custom manager for the Post model. Let’s test it!
+We have now defined a custom manager for the `Post` model. Let’s test it!
 
 Start the development server again with the following command in the shell prompt:
 
+```bash
 python manage.py shell
+```
 
-Copy
+Now, you can import the `Post` model and retrieve all published posts whose title starts with `Who`, executing the following QuerySet:
 
-Explain
-Now, you can import the Post model and retrieve all published posts whose title starts with Who, executing the following QuerySet:
-
+```python
 >>> from blog.models import Post
 >>> Post.published.filter(title__startswith='Who')
+```
 
-Copy
+To obtain results for this QuerySet, make sure to set the `status` field to `PUBLISHED` in the `Post` object whose `title` starts with the string Who.
 
-Explain
-To obtain results for this QuerySet, make sure to set the status field to PUBLISHED in the Post object whose title starts with the string Who.
+# Building list and detail views
 
-Building list and detail views
-Now that you understand how to use the ORM, you are ready to build the views of the blog application. A Django view is just a Python function that receives a web request and returns a web response. All the logic to return the desired response goes inside the view.
+Now that you understand how to use the ORM, you are ready to build the views of the `blog` application. A Django view is just a Python function that receives a web request and returns a web response. All the logic to return the desired response goes inside the view.
 
 First, you will create your application views, then you will define a URL pattern for each view, and finally, you will create HTML templates to render the data generated by the views. Each view will render a template, passing variables to it, and will return an HTTP response with the rendered output.
 
-Creating list and detail views
+## Creating list and detail views
+
 Let’s start by creating a view to display the list of posts.
 
-Edit the views.py file of the blog application and make it look like this; the new lines are highlighted in bold:
+Edit the `views.py` file of the `blog` application and make it look like this; the new lines are highlighted in bold:
 
+```python
 from django.shortcuts import render
 from .models import Post
 def post_list(request):
@@ -1524,20 +1502,19 @@ def post_list(request):
         'blog/post/list.html',
         {'posts': posts}
     )
+```
 
-Copy
+This is our very first Django view. The `post_list` view takes the `request` object as the only parameter. This parameter is required by all views.
 
-Explain
-This is our very first Django view. The post_list view takes the request object as the only parameter. This parameter is required by all views.
+In this view, we retrieve all the posts with the `PUBLISHED` status using the `published` manager that we created previously.
 
-In this view, we retrieve all the posts with the PUBLISHED status using the published manager that we created previously.
+Finally, we use the `render()` shortcut provided by Django to render the list of posts with the given template. This function takes the `request` object, the template path, and the context variables to render the given template. It returns an `HttpResponse` object with the rendered text (normally HTML code).
 
-Finally, we use the render() shortcut provided by Django to render the list of posts with the given template. This function takes the request object, the template path, and the context variables to render the given template. It returns an HttpResponse object with the rendered text (normally HTML code).
+The `render()` shortcut takes the request context into account, so any variable set by the template context processors is accessible by the given template. Template context processors are just callables that set variables into the context. You will learn how to use context processors in *Chapter 4, Building a Social Website*.
 
-The render() shortcut takes the request context into account, so any variable set by the template context processors is accessible by the given template. Template context processors are just callables that set variables into the context. You will learn how to use context processors in Chapter 4, Building a Social Website.
+Let’s create a second view to display a single post. Add the following function to the `views.py` file:
 
-Let’s create a second view to display a single post. Add the following function to the views.py file:
-
+```python
 from django.http import Http404
 def post_detail(request, id):
     try:
@@ -1549,19 +1526,19 @@ def post_detail(request, id):
         'blog/post/detail.html',
         {'post': post}
     )
+```
 
-Copy
+This is the `post_detail` view. This view takes the `id` argument of a post. In the view, we try to retrieve the `Post` object with the given `id` by calling the `get()` method on the `published` manager. We raise an `Http404` exception to return an HTTP 404 error if the model `DoesNotExist` exception is raised because no result is found.
 
-Explain
-This is the post_detail view. This view takes the id argument of a post. In the view, we try to retrieve the Post object with the given id by calling the get() method on the published manager. We raise an Http404 exception to return an HTTP 404 error if the model DoesNotExist exception is raised because no result is found.
+Finally, we use the `render()` shortcut to render the retrieved post using a template.
 
-Finally, we use the render() shortcut to render the retrieved post using a template.
+## Using the get_object_or_404 shortcut
 
-Using the get_object_or_404 shortcut
-Django provides a shortcut to call get() on a given model manager and raises an Http404 exception instead of a DoesNotExist exception when no object is found.
+Django provides a shortcut to call `get()` on a given model manager and raises an `Http404` exception instead of a `DoesNotExist` exception when no object is found.
 
-Edit the views.py file to import the get_object_or_404 shortcut and change the post_detail view, as follows. The new code is highlighted in bold:
+Edit the `views.py` file to import the `get_object_or_404` shortcut and change the `post_detail` view, as follows. The new code is highlighted in bold:
 
+```python
 from django.shortcuts import get_object_or_404, render
 # ...
 def post_detail(request, id):
@@ -1575,17 +1552,17 @@ def post_detail(request, id):
         'blog/post/detail.html',
         {'post': post}
     )
+```
 
-Copy
+In the detail view, we now use the `get_object_or_404()` shortcut to retrieve the desired post. This function retrieves the object that matches the given parameters or an HTTP 404 (not found) exception if no object is found.
 
-Explain
-In the detail view, we now use the get_object_or_404() shortcut to retrieve the desired post. This function retrieves the object that matches the given parameters or an HTTP 404 (not found) exception if no object is found.
+## Adding URL patterns for your views
 
-Adding URL patterns for your views
-URL patterns allow you to map URLs to views. A URL pattern is composed of a string pattern, a view, and, optionally, a name that allows you to name the URL project-wide. Django runs through each URL pattern and stops at the first one that matches the requested URL. Then, Django imports the view of the matching URL pattern and executes it, passing an instance of the HttpRequest class and the keyword or positional arguments.
+URL patterns allow you to map URLs to views. A URL pattern is composed of a string pattern, a view, and, optionally, a name that allows you to name the URL project-wide. Django runs through each URL pattern and stops at the first one that matches the requested URL. Then, Django imports the view of the matching URL pattern and executes it, passing an instance of the `HttpRequest` class and the keyword or positional arguments.
 
-Create a urls.py file in the directory of the blog application and add the following lines to it:
+Create a `urls.py` file in the directory of the blog application and add the following lines to it:
 
+```python
 from django.urls import path
 from . import views
 app_name = 'blog'
@@ -1594,63 +1571,64 @@ urlpatterns = [
     path('', views.post_list, name='post_list'),
     path('<int:id>/', views.post_detail, name='post_detail'),
 ]
+```
 
-Copy
+In the preceding code, you define an application namespace with the `app_name` variable. This allows you to organize URLs by application and use the name when referring to them. You define two different patterns using the `path()` function. The first URL pattern doesn’t take any arguments and is mapped to the `post_list` view. The second pattern is mapped to the `post_detail` view and takes only one argument `id`, which matches an integer, set by the path converter `int`.
 
-Explain
-In the preceding code, you define an application namespace with the app_name variable. This allows you to organize URLs by application and use the name when referring to them. You define two different patterns using the path() function. The first URL pattern doesn’t take any arguments and is mapped to the post_list view. The second pattern is mapped to the post_detail view and takes only one argument id, which matches an integer, set by the path converter int.
+You use angle brackets to capture the values from the URL. Any value specified in the URL pattern as `<parameter>` is captured as a string. You use path converters, such as `<int:year>`, to specifically match and return an integer. For example `<slug:post>` would specifically match a slug (a string that can only contain letters, numbers, underscores, or hyphens). You can see all the path converters provided by Django at https://docs.djangoproject.com/en/5.0/topics/http/urls/#path-converters.
 
-You use angle brackets to capture the values from the URL. Any value specified in the URL pattern as <parameter> is captured as a string. You use path converters, such as <int:year>, to specifically match and return an integer. For example <slug:post> would specifically match a slug (a string that can only contain letters, numbers, underscores, or hyphens). You can see all the path converters provided by Django at https://docs.djangoproject.com/en/5.0/topics/http/urls/#path-converters.
+If using `path()` and converters isn’t sufficient for you, you can use `re_path()` instead to define complex URL patterns with Python regular expressions. You can learn more about defining URL patterns with regular expressions at https://docs.djangoproject.com/en/5.0/ref/urls/#django.urls.re_path. If you haven’t worked with regular expressions before, you might want to take a look at *Regular Expression HOWTO*, located at https://docs.python.org/3/howto/regex.html, first.
 
-If using path() and converters isn’t sufficient for you, you can use re_path() instead to define complex URL patterns with Python regular expressions. You can learn more about defining URL patterns with regular expressions at https://docs.djangoproject.com/en/5.0/ref/urls/#django.urls.re_path. If you haven’t worked with regular expressions before, you might want to take a look at Regular Expression HOWTO, located at https://docs.python.org/3/howto/regex.html, first.
+> Creating a `urls.py` file for each application is the best way to make your applications reusable by other projects.
+{.is-info}
 
-Creating a urls.py file for each application is the best way to make your applications reusable by other projects.
+Next, you have to include the URL patterns of the `blog` application in the main URL patterns of the project.
 
-Next, you have to include the URL patterns of the blog application in the main URL patterns of the project.
+Edit the `urls.py` file located in the `mysite` directory of your project and make it look like the following. The new code is highlighted in bold:
 
-Edit the urls.py file located in the mysite directory of your project and make it look like the following. The new code is highlighted in bold:
-
+```python
 from django.contrib import admin
 from django.urls import include, path
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('blog/', include('blog.urls', namespace='blog')),
 ]
+```
 
-Copy
+The new URL pattern defined with `include` refers to the URL patterns defined in the `blog` application so that they are included under the `blog/` path. You include these patterns under the namespace `blog`. Namespaces have to be unique across your entire project. Later, you will refer to your blog URLs easily by using the namespace followed by a colon and the URL name, for example, `blog:post_list` and `blog:post_detail`. You can learn more about URL namespaces at https://docs.djangoproject.com/en/5.0/topics/http/urls/#url-namespaces.
 
-Explain
-The new URL pattern defined with include refers to the URL patterns defined in the blog application so that they are included under the blog/ path. You include these patterns under the namespace blog. Namespaces have to be unique across your entire project. Later, you will refer to your blog URLs easily by using the namespace followed by a colon and the URL name, for example, blog:post_list and blog:post_detail. You can learn more about URL namespaces at https://docs.djangoproject.com/en/5.0/topics/http/urls/#url-namespaces.
+# Creating templates for your views
 
-Creating templates for your views
-You have created views and URL patterns for the blog application. URL patterns map URLs to views, and views decide which data gets returned to the user. Templates define how the data is displayed; they are usually written in HTML in combination with the Django template language. You can find more information about the Django template language at https://docs.djangoproject.com/en/5.0/ref/templates/language/.
+You have created views and URL patterns for the `blog` application. URL patterns map URLs to views, and views decide which data gets returned to the user. Templates define how the data is displayed; they are usually written in HTML in combination with the Django template language. You can find more information about the Django template language at https://docs.djangoproject.com/en/5.0/ref/templates/language/.
 
 Let’s add templates to your application to display posts in a user-friendly manner.
 
-Create the following directories and files inside your blog application directory:
+Create the following directories and files inside your `blog` application directory:
 
+```bash
 templates/
     blog/
         base.html
         post/
             list.html
             detail.html
+```
 
-Copy
+The preceding structure will be the file structure for your templates. The `base.html` file will include the main HTML structure of the website and divide the content into the main content area and a sidebar. The `list.html` and `detail.html` files will inherit from the `base.html` file to render the blog post list and detail views, respectively.
 
-Explain
-The preceding structure will be the file structure for your templates. The base.html file will include the main HTML structure of the website and divide the content into the main content area and a sidebar. The list.html and detail.html files will inherit from the base.html file to render the blog post list and detail views, respectively.
+Django has a powerful template language that allows you to specify how data is displayed. It is based on *template tags*, *template variables*, and *template filters*:
 
-Django has a powerful template language that allows you to specify how data is displayed. It is based on template tags, template variables, and template filters:
+- Template tags control the rendering of the template and look like this: `{% tag %}`.
+- Template variables get replaced with values when the template is rendered and look like this: `{{ variable }}`.
+- Template filters allow you to modify variables for display and look like this: `{{ variable|filter }}`.
 
-Template tags control the rendering of the template and look like this: {% tag %}.
-Template variables get replaced with values when the template is rendered and look like this: {{ variable }}.
-Template filters allow you to modify variables for display and look like this: {{ variable|filter }}.
 You can see all the built-in template tags and filters at https://docs.djangoproject.com/en/5.0/ref/templates/builtins/.
 
-Creating a base template
-Edit the base.html file and add the following code:
+## Creating a base template
 
+Edit the `base.html` file and add the following code:
+
+```html
 {% load static %}
 <!DOCTYPE html>
 <html>
@@ -1669,17 +1647,17 @@ Edit the base.html file and add the following code:
   </div>
 </body>
 </html>
+```
 
-Copy
+`{% load static %}` tells Django to load the `static` template tags that are provided by the `django.contrib.staticfiles` application, which is contained in the `INSTALLED_APPS` setting. After loading them, you can use the `{% static %}` template tag throughout this template. With this template tag, you can include the static files, such as the `blog.css` file, which you will find in the code of this example under the `static/` directory of the `blog` application. Copy the `static/` directory from the code that comes along with this chapter into the same location as your project to apply the CSS styles to the templates. You can find the directory’s contents at https://github.com/PacktPublishing/Django-5-by-example/tree/master/Chapter01/mysite/blog/static.
 
-Explain
-{% load static %} tells Django to load the static template tags that are provided by the django.contrib.staticfiles application, which is contained in the INSTALLED_APPS setting. After loading them, you can use the {% static %} template tag throughout this template. With this template tag, you can include the static files, such as the blog.css file, which you will find in the code of this example under the static/ directory of the blog application. Copy the static/ directory from the code that comes along with this chapter into the same location as your project to apply the CSS styles to the templates. You can find the directory’s contents at https://github.com/PacktPublishing/Django-5-by-example/tree/master/Chapter01/mysite/blog/static.
+You can see that there are two `{% block %}` tags. These tell Django that you want to define a block in that area. Templates that inherit from this template can fill in the blocks with content. You have defined a block called `title` and a block called `content`.
 
-You can see that there are two {% block %} tags. These tell Django that you want to define a block in that area. Templates that inherit from this template can fill in the blocks with content. You have defined a block called title and a block called content.
+# Creating the post list template
 
-Creating the post list template
-Let’s edit the post/list.html file and make it look like the following:
+Let’s edit the `post/list.html` file and make it look like the following:
 
+```html
 {% extends "blog/base.html" %}
 {% block title %}My Blog{% endblock %}
 {% block content %}
@@ -1696,39 +1674,42 @@ Let’s edit the post/list.html file and make it look like the following:
     {{ post.body|truncatewords:30|linebreaks }}
   {% endfor %}
 {% endblock %}
+```
 
-Copy
+With the `{% extends %}` template tag, you tell Django to inherit from the `blog/base.html` template. Then, you fill the `title` and `content` blocks of the base template with content. You iterate through the posts and display their title, date, author, and body, including a link in the title to the detail URL of the post. We build the URL using the `{% url %}` template tag provided by Django.
 
-Explain
-With the {% extends %} template tag, you tell Django to inherit from the blog/base.html template. Then, you fill the title and content blocks of the base template with content. You iterate through the posts and display their title, date, author, and body, including a link in the title to the detail URL of the post. We build the URL using the {% url %} template tag provided by Django.
+This template tag allows you to build URLs dynamically by their name. We use `blog:post_detail` to refer to the `post_detail` URL in the `blog` namespace. We pass the required `post.id` parameter to build the URL for each post.
 
-This template tag allows you to build URLs dynamically by their name. We use blog:post_detail to refer to the post_detail URL in the blog namespace. We pass the required post.id parameter to build the URL for each post.
+> Always use the `{% url %}` template tag to build URLs in your templates instead of writing hardcoded URLs. This will make your URLs more maintainable.
+{.is-info}
 
-Always use the {% url %} template tag to build URLs in your templates instead of writing hardcoded URLs. This will make your URLs more maintainable.
+In the body of the post, we apply two template filters: `truncatewords` truncates the value to the number of words specified, and `linebreaks` converts the output into HTML line breaks. You can concatenate as many template filters as you wish; each one will be applied to the output generated by the preceding one.
 
-In the body of the post, we apply two template filters: truncatewords truncates the value to the number of words specified, and linebreaks converts the output into HTML line breaks. You can concatenate as many template filters as you wish; each one will be applied to the output generated by the preceding one.
+## Accessing our application
 
-Accessing our application
-Change the status of the initial post to Published, as shown in Figure 1.16, and create some new posts, also with a Published status.
+Change the status of the initial post to **Published**, as shown in *Figure 1.16*, and create some new posts, also with a **Published** status.
 
+![ 1.16 The status field for a published post ](/packtpub/2024/730/1.16-the_status_field.webp)
 
 Figure 1.16: The status field for a published post
 
 Open the shell and execute the following command to start the development server:
 
+```bash
 python manage.py runserver
+```
 
-Copy
+Open `http://127.0.0.1:8000/blog/` in your browser; you will see everything running. You should see something like this:
 
-Explain
-Open http://127.0.0.1:8000/blog/ in your browser; you will see everything running. You should see something like this:
-
+![ 1.17 The page for the post list view ](/packtpub/2024/730/1.17-the_page_for.webp)
 
 Figure 1.17: The page for the post list view
 
-Creating the post detail template
-Next, edit the post/detail.html file:
+## Creating the post detail template
 
+Next, edit the `post/detail.html` file:
+
+```html
 {% extends "blog/base.html" %}
 {% block title %}{{ post.title }}{% endblock %}
 {% block content %}
@@ -1738,143 +1719,141 @@ Next, edit the post/detail.html file:
   </p>
   {{ post.body|linebreaks }}
 {% endblock %}
+```
 
-Copy
-
-Explain
 Next, you can return to your browser and click on one of the post titles to take a look at the detail view of the post. You should see something like this:
 
+![ 1.18 The page for the post’s detail view ](/packtpub/2024/730/1.18-the_page_for.webp)
 
 Figure 1.18: The page for the post’s detail view
 
-Take a look at the URL – it should include the auto-generated post ID, like /blog/1/.
+Take a look at the URL – it should include the auto-generated post ID, like `/blog/1/`.
 
-The request/response cycle
+# The request/response cycle
+
 Let’s review the request/response cycle of Django with the application we built. The following schema shows a simplified example of how Django processes HTTP requests and generates HTTP responses:
 
 Timeline
-
 Description automatically generated with medium confidence
+
+![ 1.19 The Django request/response cycle ](/packtpub/2024/730/1.19-the_django_request_response.webp)
+
 Figure 1.19: The Django request/response cycle
 
 Let’s review the Django request/response process:
 
-A web browser requests a page by its URL, for example, https://domain.com/blog/33/. The web server receives the HTTP request and passes it over to Django.
+A web browser requests a page by its URL, for example, `https://domain.com/blog/33/`. The web server receives the HTTP request and passes it over to Django.
 
-Django runs through each URL pattern defined in the URL patterns configuration. The framework checks each pattern against the given URL path, in order of appearance, and stops at the first one that matches the requested URL. In this case, the pattern /blog/<id>/ matches the path /blog/33/.
+Django runs through each URL pattern defined in the URL patterns configuration. The framework checks each pattern against the given URL path, in order of appearance, and stops at the first one that matches the requested URL. In this case, the pattern `/blog/<id>/` matches the path `/blog/33/`.
 
-Django imports the view of the matching URL pattern and executes it, passing an instance of the HttpRequest class and the keyword or positional arguments. The view uses the models to retrieve information from the database. Using the Django ORM, QuerySets are translated into SQL and executed in the database.
+Django imports the view of the matching URL pattern and executes it, passing an instance of the `HttpRequest` class and the keyword or positional arguments. The view uses the models to retrieve information from the database. Using the Django ORM, QuerySets are translated into SQL and executed in the database.
 
-The view uses the render() function to render an HTML template passing the Post object as a context variable.
+The view uses the `render()` function to render an HTML template passing the `Post` object as a context variable.
 
-The rendered content is returned as a HttpResponse object by the view with the text/html content type by default.
+The rendered content is returned as a HttpResponse object by the view with the `text/html` content type by default.
 
-You can always use this schema as the basic reference for how Django processes requests. This schema doesn’t include Django middleware, for the sake of simplicity. You will use middleware in different examples of this book, and you will learn how to create custom middleware in Chapter 17, Going Live.
+You can always use this schema as the basic reference for how Django processes requests. This schema doesn’t include Django middleware, for the sake of simplicity. You will use middleware in different examples of this book, and you will learn how to create custom middleware in *Chapter 17, Going Live*.
 
-Management commands used in this chapter
+# Management commands used in this chapter
+
 In this chapter, we have introduced a variety of Django management commands. You need to get familiar with them, as they will be used often throughout the book. Let’s revisit the commands we have covered in this chapter.
 
-To create the file structure for a new Django project named mysite, we used the following command:
+To create the file structure for a new Django project named `mysite`, we used the following command:
 
+```bash
 django-admin startproject mysite
+```
 
-Copy
+To create the file structure for a new Django application named `blog`:
 
-Explain
-To create the file structure for a new Django application named blog:
-
+```bash
 python manage.py startapp blog
+```
 
-Copy
-
-Explain
 To apply all database migrations:
 
+```bash
 python manage.py migrate
+```
 
-Copy
+To create migrations for the models of the `blog` application:
 
-Explain
-To create migrations for the models of the blog application:
-
+```bash
 python manage.py makemigrations blog
+```
 
-Copy
+To view the SQL statements that will be executed with the first migration of the `blog` application:
 
-Explain
-To view the SQL statements that will be executed with the first migration of the blog application:
-
+```bash
 python manage.py sqlmigrate blog 0001
+```
 
-Copy
-
-Explain
 To run the Django development server:
 
+```bash
 python manage.py runserver
+```
 
-Copy
-
-Explain
 To run the development server specifying host/port and settings file:
 
+```bash
 python manage.py runserver 127.0.0.1:8001 --settings=mysite.settings
+```
 
-Copy
-
-Explain
 To run the Django shell:
 
+```bash
 python manage.py shell
+```
 
-Copy
-
-Explain
 To create a superuser using the Django authentication framework:
 
+```bash
 python manage.py createsuperuser
+```
 
-Copy
-
-Explain
 For the full list of available management commands, check out https://docs.djangoproject.com/en/5.0/ref/django-admin/.
 
-Summary
+# Summary
+
 In this chapter, you learned the basics of the Django web framework by creating a simple blog application. You designed the data models and applied migrations to the database. You also created the views, templates, and URLs for your blog.
 
 In the next chapter, you will enhance your blog by creating canonical URLs for your posts and building SEO-friendly URLs. You will also learn how to implement object pagination and how to build class-based views. You will also create forms to let your users recommend posts by email and comment on posts.
 
-Additional resources
+# Additional resources
+
 The following resources provide additional information related to the topics covered in this chapter:
 
-Source code for this chapter: https://github.com/PacktPublishing/Django-5-by-example/tree/main/Chapter01
-Download Python: https://www.python.org/downloads/
-Windows Python launcher: https://docs.python.org/3/using/windows.html#launcher
-Python venv library for virtual environments: https://docs.python.org/3/library/venv.html
-Python pip installation instructions: at https://pip.pypa.io/en/stable/installation/
-Django installation options: https://docs.djangoproject.com/en/5.0/topics/install/
-Django 5.0 release notes: https://docs.djangoproject.com/en/5.0/releases/5.0/
-The django-upgrade tool: https://github.com/adamchainz/django-upgrade
-The pyupgrade tool: https://github.com/asottile/pyupgrade
-Django’s design philosophies: https://docs.djangoproject.com/en/5.0/misc/design-philosophies/
-Django model field reference: https://docs.djangoproject.com/en/5.0/ref/models/fields/
-Model index reference: https://docs.djangoproject.com/en/5.0/ref/models/indexes/
-Python support for enumerations: https://docs.python.org/3/library/enum.html
-Django model enumeration types: https://docs.djangoproject.com/en/5.0/ref/models/fields/#enumeration-types
-Django settings reference: https://docs.djangoproject.com/en/5.0/ref/settings/
-Database default values for model fields: https://docs.djangoproject.com/en/5.0/ref/models/fields/#django.db.models.Field.db_default
-Database functions: https://docs.djangoproject.com/en/5.0/ref/models/database-functions/
-Django administration site: https://docs.djangoproject.com/en/5.0/ref/contrib/admin/
-Model API reference: https://docs.djangoproject.com/en/5.0/ref/models/
-Making queries with the Django ORM: https://docs.djangoproject.com/en/5.0/topics/db/queries/
-QuerySet API reference: https://docs.djangoproject.com/en/5.0/ref/models/querysets/
-Complex lookups with Q objects: https://docs.djangoproject.com/en/5.0/topics/db/queries/#complex-lookups-with-q-objects
-Django URL dispatcher: https://docs.djangoproject.com/en/5.0/topics/http/urls/
-Django template language: https://docs.djangoproject.com/en/5.0/ref/templates/language/
-Built-in template tags and filters: https://docs.djangoproject.com/en/5.0/ref/templates/builtins/
-Django management commands: https://docs.djangoproject.com/en/5.0/ref/django-admin/
-Static files for the code in this chapter: https://github.com/PacktPublishing/Django-5-by-example/tree/master/Chapter01/mysite/blog/static
-Join us on Discord!
+> - Source code for this chapter: https://github.com/PacktPublishing/Django-5-by-example/tree/main/Chapter01
+> - Download Python: https://www.python.org/downloads/
+> - Windows Python launcher: https://docs.python.org/3/using/windows.html#launcher
+> - Python `venv` library for virtual environments: https://docs.python.org/3/library/venv.html
+> - Python `pip` installation instructions: at https://pip.pypa.io/en/stable/installation/
+> - Django installation options: https://docs.djangoproject.com/en/5.0/topics/install/
+> - Django 5.0 release notes: https://docs.djangoproject.com/en/5.0/releases/5.0/
+> - The `django-upgrade` tool: https://github.com/adamchainz/django-upgrade
+> - The `pyupgrade` tool: https://github.com/asottile/pyupgrade
+> - Django’s design philosophies: https://docs.djangoproject.com/en/5.0/misc/design-philosophies/
+> - Django model field reference: https://docs.djangoproject.com/en/5.0/ref/models/fields/
+> - Model index reference: https://docs.djangoproject.com/en/5.0/ref/models/indexes/
+> - Python support for enumerations: https://docs.python.org/3/library/enum.html
+> - Django model enumeration types: https://docs.djangoproject.com/en/5.0/ref/models/fields/#enumeration-types
+> - Django settings reference: https://docs.djangoproject.com/en/5.0/ref/settings/
+> - Database default values for model fields: https://docs.djangoproject.com/en/5.0/ref/models/fields/#django.db.models.Field.db_default
+> - Database functions: https://docs.djangoproject.com/en/5.0/ref/models/database-functions/
+> - Django administration site: https://docs.djangoproject.com/en/5.0/ref/contrib/admin/
+> - Model API reference: https://docs.djangoproject.com/en/5.0/ref/models/
+> - Making queries with the Django ORM: https://docs.djangoproject.com/en/5.0/topics/db/queries/
+> - QuerySet API reference: https://docs.djangoproject.com/en/5.0/ref/models/querysets/
+> - Complex lookups with Q objects: https://docs.djangoproject.com/en/5.0/topics/db/queries/#complex-lookups-with-q-objects
+> - Django URL dispatcher: https://docs.djangoproject.com/en/5.0/topics/http/urls/
+> - Django template language: https://docs.djangoproject.com/en/5.0/ref/templates/language/
+> - Built-in template tags and filters: https://docs.djangoproject.com/en/5.0/ref/templates/builtins/
+> - Django management commands: https://docs.djangoproject.com/en/5.0/ref/django-admin/
+> - Static files for the code in this chapter: https://github.com/PacktPublishing/Django-5-by-example/tree/master/Chapter01/mysite/blog/static
+
+# Join us on Discord!
+
 Read this book alongside other users, Django development experts, and the author himself. Ask questions, provide solutions to other readers, chat with the author via Ask Me Anything sessions, and much more.Scan the QR code or visit the link to join the community.
 
 https://packt.link/Django5ByExample

@@ -1,7 +1,8 @@
 #!/bin/sh
 
-if [ ! -f $1 ]; then
+if [ "x$1" == "x" ] || [ ! -f $1 ]; then
 	echo "#-- $1 파일이 없습니다."
+	ls -l *.md | sed 's/-rw-rw-r-- 1 ${USER} ${USER}//'
 	exit -1
 fi
 
