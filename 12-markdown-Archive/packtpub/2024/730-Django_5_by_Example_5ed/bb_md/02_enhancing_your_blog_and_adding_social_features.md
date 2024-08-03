@@ -2,42 +2,47 @@
 | ≪ [ 01 Building a Blog Application ](/packtpub/2024/730_django_5_by_example/01_building_a_blog_application) | 02 Enhancing Your Blog and Adding Social Features | [ 03 Extending Your Blog Application ](/packtpub/2024/730_django_5_by_example/03_extending_your_blog_application) ≫ |
 |:----:|:----:|:----:|
 
-# 02 Enhancing Your Blog and Adding Social Features
-Enhancing Your Blog and Adding Social Features
+# Enhancing Your Blog and Adding Social Features
+
 In the preceding chapter, we learned the main components of Django by developing a simple blog application using views, templates, and URLs. In this chapter, we will extend the functionalities of the blog application with features that can be found in many blogging platforms nowadays.
 
 In this chapter, you will learn the following topics:
 
-Using canonical URLs for models
-Creating SEO-friendly URLs for posts
-Adding pagination to the post list view
-Building class-based views
-Sending emails with Django
-Using Django forms to share posts via email
-Adding comments to posts using forms from models
-Functional overview
-Figure 2.1 shows a representation of the views, templates, and functionalities that will be built in this chapter:
+> - Using canonical URLs for models
+> - Creating SEO-friendly URLs for posts
+> - Adding pagination to the post list view
+> - Building class-based views
+> - Sending emails with Django
+> - Using Django forms to share posts via email
+> - Adding comments to posts using forms from models
 
+# Functional overview
+
+*Figure 2.1* shows a representation of the views, templates, and functionalities that will be built in this chapter:
+
+![ 2.1 Diagram of functionalities built in Chapter 2 ](/packtpub/2024/730/2.1-diagram_of_functionalities.webp)
 
 Figure 2.1: Diagram of functionalities built in Chapter 2
 
-In this chapter, we will add pagination to the post list page to navigate through all posts. We will also learn how to build class-based views with Django and convert the post_list view to a class-based view named PostListView.
+In this chapter, we will add pagination to the post list page to navigate through all posts. We will also learn how to build class-based views with Django and convert the `post_list` view to a class-based view named `PostListView`.
 
-We will create the post_share view to share posts via email. We will use Django forms to share posts and send email recommendations via Simple Mail Transfer Protocol (SMTP). To add comments to posts, we will create a Comment model to store comments, and we will build the post_comment view using forms for models.
+We will create the `post_share` view to share posts via email. We will use Django forms to share posts and send email recommendations via **Simple Mail Transfer Protocol (SMTP)**. To add comments to posts, we will create a `Comment` model to store comments, and we will build the `post_comment` view using forms for models.
 
 The source code for this chapter can be found at https://github.com/PacktPublishing/Django-5-by-example/tree/main/Chapter02.
 
-All Python packages used in this chapter are included in the requirements.txt file in the source code for the chapter. You can follow the instructions to install each Python package in the following sections, or you can install all the requirements at once with the python -m pip install -r requirements.txt command.
+All Python packages used in this chapter are included in the `requirements.txt` file in the source code for the chapter. You can follow the instructions to install each Python package in the following sections, or you can install all the requirements at once with the `python -m pip install -r requirements.txt `command.
 
-Using canonical URLs for models
+# Using canonical URLs for models
+
 A website might have different pages that display the same content. In our application, the initial part of the content for each post is displayed both on the post list page and the post detail page. A canonical URL is the preferred URL for a resource. You can think of it as the URL of the most representative page for specific content. There might be different pages on your site that display posts, but there is a single URL that you use as the main URL for a post.
 
-Canonical URLs allow you to specify the URL for the master copy of a page. Django allows you to implement the get_absolute_url() method in your models to return the canonical URL for the object.
+Canonical URLs allow you to specify the URL for the master copy of a page. Django allows you to implement the `get_absolute_url()` method in your models to return the canonical URL for the object.
 
-We will use the post_detail URL defined in the URL patterns of the application to build the canonical URL for Post objects. Django provides different URL resolver functions that allow you to build URLs dynamically using their name and any required parameters. We will use the reverse() utility function of the django.urls module.
+We will use the `post_detail` URL defined in the URL patterns of the application to build the canonical URL for `Post` objects. Django provides different URL resolver functions that allow you to build URLs dynamically using their name and any required parameters. We will use the `reverse()` utility function of the `django.urls` module.
 
-Edit the models.py file of the blog application to import the reverse() function and add the get_absolute_url() method to the Post model as follows. The new code is highlighted in bold:
+Edit the `models.py` file of the `blog` application to import the `reverse()` function and add the `get_absolute_url()` method to the `Post` model as follows. The new code is highlighted in bold:
 
+```python
 from django.conf import settings
 from django.db import models
 from django.urls import reverse
@@ -61,34 +66,31 @@ class Post(models.Model):
             'blog:post_detail',
             args=[self.id]
     )
+```
 
-Copy
+The `reverse()` function will build the URL dynamically using the URL name defined in the URL patterns. We have used the `blog` namespace followed by a colon and the `post_detail` URL name. Remember that the `blog` namespace is defined in the main `urls.py` file of the project when including the URL patterns from `blog.urls`. The `post_detail` URL is defined in the `urls.py` file of the `blog` application.
 
-Explain
-The reverse() function will build the URL dynamically using the URL name defined in the URL patterns. We have used the blog namespace followed by a colon and the post_detail URL name. Remember that the blog namespace is defined in the main urls.py file of the project when including the URL patterns from blog.urls. The post_detail URL is defined in the urls.py file of the blog application.
-
-The resulting string, blog:post_detail, can be used globally in your project to refer to the post detail URL. This URL has a required parameter, which is the id of the blog post to retrieve. We have included the id of the Post object as a positional argument by using args=[self.id].
+The resulting string, `blog:post_detail`, can be used globally in your project to refer to the post detail URL. This URL has a required parameter, which is the `id` of the blog post to retrieve. We have included the `id` of the `Post` object as a positional argument by using `args=[self.id]`.
 
 You can learn more about the URL’s utility functions at https://docs.djangoproject.com/en/5.0/ref/urlresolvers/.
 
-Let’s replace the post detail URLs in the templates with the new get_absolute_url() method.
+Let’s replace the post detail URLs in the templates with the new `get_absolute_url()` method.
 
-Edit the blog/post/list.html file and replace the following line:
+Edit the `blog/post/list.html` file and replace the following line:
 
+```html
 <a href="{% url 'blog:post_detail' post.id %}">
+```
 
-Copy
-
-Explain
 Replace the preceding line with the following line:
 
+```html
 <a href="{{ post.get_absolute_url }}">
+```
 
-Copy
+The `blog/post/list.html` file should now look as follows:
 
-Explain
-The blog/post/list.html file should now look as follows:
-
+```html
 {% extends "blog/base.html" %}
 {% block title %}My Blog{% endblock %}
 {% block content %}
@@ -105,26 +107,25 @@ The blog/post/list.html file should now look as follows:
     {{ post.body|truncatewords:30|linebreaks }}
   {% endfor %}
 {% endblock %}
+```
 
-Copy
-
-Explain
 Open the shell prompt and execute the following command to start the development server:
 
+```python
 python manage.py runserver
+```
 
-Copy
+Open `http://127.0.0.1:8000/blog/` in your browser. Links to individual blog posts should still work. Django now builds the post URLs using the `get_absolute_url()` method of the `Post` model.
 
-Explain
-Open http://127.0.0.1:8000/blog/ in your browser. Links to individual blog posts should still work. Django now builds the post URLs using the get_absolute_url() method of the Post model.
+# Creating SEO-friendly URLs for posts
 
-Creating SEO-friendly URLs for posts
-The canonical URL for a blog post detail view currently looks like /blog/1/. We will change the URL pattern to create SEO-friendly URLs for posts. We will be using both the publish date and slug values to build the URLs for single posts. By combining dates, we will make a post detail URL to look like /blog/2024/1/1/who-was-django-reinhardt/. We will provide search engines with friendly URLs to index, containing both the title and date of the post.
+The canonical URL for a blog post detail view currently looks like `/blog/1/`. We will change the URL pattern to create SEO-friendly URLs for posts. We will be using both the `publish` date and `slug` values to build the URLs for single posts. By combining dates, we will make a post detail URL to look like `/blog/2024/1/1/who-was-django-reinhardt/`. We will provide search engines with friendly URLs to index, containing both the title and date of the post.
 
-To retrieve single posts with the combination of publication date and slug, we need to ensure that no post can be stored in the database with the same slug and publish date as an existing post. We will prevent the Post model from storing duplicated posts by defining slugs to be unique for the publication date of the post.
+To retrieve single posts with the combination of publication date and slug, we need to ensure that no post can be stored in the database with the same `slug` and `publish` date as an existing post. We will prevent the `Post` model from storing duplicated posts by defining slugs to be unique for the publication date of the post.
 
-Edit the models.py file and add the following unique_for_date parameter to the slug field of the Post model:
+Edit the `models.py` file and add the following `unique_for_date` parameter to the `slug` field of the `Post` model:
 
+```python
 class Post(models.Model):
     # ...
     slug = models.SlugField(
@@ -132,71 +133,65 @@ class Post(models.Model):
         unique_for_date='publish'
     )
     # ...
+```
 
-Copy
+By using `unique_for_date`, the `slug` field is now required to be unique for the date stored in the `publish` field. Note that the `publish` field is an instance of `DateTimeField`, but the check for unique values will be done only against the date (not the time). Django will prevent you from saving a new post with the same slug as an existing post for a given publication date. We have now ensured that slugs are unique for the publication date, so we can now retrieve single posts by the `publish` and `slug` fields.
 
-Explain
-By using unique_for_date, the slug field is now required to be unique for the date stored in the publish field. Note that the publish field is an instance of DateTimeField, but the check for unique values will be done only against the date (not the time). Django will prevent you from saving a new post with the same slug as an existing post for a given publication date. We have now ensured that slugs are unique for the publication date, so we can now retrieve single posts by the publish and slug fields.
-
-We have changed our models, so, let’s create migrations. Note that unique_for_date is not enforced at the database level, so no database migration is required. However, Django uses migrations to keep track of all model changes. We will create a migration just to keep migrations aligned with the current state of the model.
+We have changed our models, so, let’s create migrations. Note that `unique_for_date` is not enforced at the database level, so no database migration is required. However, Django uses migrations to keep track of all model changes. We will create a migration just to keep migrations aligned with the current state of the model.
 
 Run the following command in the shell prompt:
 
+```bash
 python manage.py makemigrations blog
+```
 
-Copy
-
-Explain
 You should get the following output:
 
+```bash
 Migrations for 'blog':
     blog/migrations/0002_alter_post_slug.py
     - Alter field slug on post
+```
 
-Copy
-
-Explain
-Django just created the 0002_alter_post_slug.py file inside the migrations directory of the blog application.
+Django just created the `0002_alter_post_slug.py` file inside the `migrations` directory of the `blog` application.
 
 Execute the following command in the shell prompt to apply existing migrations:
 
+```bash
 python manage.py migrate
+```
 
-Copy
-
-Explain
 You will get an output that ends with the following line:
 
+```bash
 Applying blog.0002_alter_post_slug... OK
+```
 
-Copy
+Django will consider that all migrations have been applied and the models are in sync. No action will be done in the database because `unique_for_date` is not enforced at the database level.
 
-Explain
-Django will consider that all migrations have been applied and the models are in sync. No action will be done in the database because unique_for_date is not enforced at the database level.
+## Modifying the URL patterns
 
-Modifying the URL patterns
 Let’s modify the URL patterns to use the publication date and slug for the post detail URL.
 
-Edit the urls.py file of the blog application and replace the following line:
+Edit the `urls.py` file of the `blog` application and replace the following line:
 
+```python
 path('<int:id>/', views.post_detail, name='post_detail'),
+```
 
-Copy
-
-Explain
 Replace the preceding line with the following lines:
 
+```python
 path(
     '<int:year>/<int:month>/<int:day>/<slug:post>/',
     views.post_detail,
     name='post_detail'
 ),
+```
 
-Copy
+The `urls.py` file should now look like this:
 
-Explain
-The urls.py file should now look like this:
-
+```python
 from django.urls import path
 from . import views
 app_name = 'blog'
@@ -209,25 +204,26 @@ urlpatterns = [
          name='post_detail'
     ),
 ]
+```
 
-Copy
+The URL pattern for the `post_detail` view takes the following arguments:
 
-Explain
-The URL pattern for the post_detail view takes the following arguments:
+> - year: This requires an integer
+> - month: This requires an integer
+> - day: This requires an integer
+> - post: This requires a slug (a string that contains only letters, numbers, underscores, or hyphens)
 
-year: This requires an integer
-month: This requires an integer
-day: This requires an integer
-post: This requires a slug (a string that contains only letters, numbers, underscores, or hyphens)
-The int path converter is used for the year, month, and day parameters, whereas the slug path converter is used for the post parameter. You learned about path converters in the previous chapter. You can see all path converters provided by Django at https://docs.djangoproject.com/en/5.0/topics/http/urls/#path-converters.
+The `int` path converter is used for the `year`, `month`, and `day` parameters, whereas the `slug` path converter is used for the `post` parameter. You learned about path converters in the previous chapter. You can see all path converters provided by Django at https://docs.djangoproject.com/en/5.0/topics/http/urls/#path-converters.
 
-Our posts have now an SEO-friendly URL that is built with the date and slug of each post. Let’s modify the post_detail view accordingly.
+Our posts have now an SEO-friendly URL that is built with the date and slug of each post. Let’s modify the `post_detail` view accordingly.
 
-Modifying the views
-We will change the parameters of the post_detail view to match the new URL parameters and use them to retrieve the corresponding Post object.
+## Modifying the views
 
-Edit the views.py file and edit the post_detail view like this:
+We will change the parameters of the `post_detail` view to match the new URL parameters and use them to retrieve the corresponding `Post` object.
 
+Edit the `views.py` file and edit the `post_detail` view like this:
+
+```python
 def post_detail(request, year, month, day, post):
     post = get_object_or_404(
         Post,
@@ -241,17 +237,17 @@ def post_detail(request, year, month, day, post):
         'blog/post/detail.html',
         {'post': post}
     )
+```
 
-Copy
+We have modified the `post_detail` view to take the `year`, `month`, `day`, and `post` arguments and retrieve a published post with the given slug and publication date. By adding `unique_for_date='publish'` to the `slug` field of the `Post` model, we ensured that there would be only one post with a slug for a given date. Thus, you can retrieve single posts using the date and slug.
 
-Explain
-We have modified the post_detail view to take the year, month, day, and post arguments and retrieve a published post with the given slug and publication date. By adding unique_for_date='publish' to the slug field of the Post model, we ensured that there would be only one post with a slug for a given date. Thus, you can retrieve single posts using the date and slug.
+## Modifying the canonical URL for posts
 
-Modifying the canonical URL for posts
 We also have to modify the parameters of the canonical URL for blog posts to match the new URL parameters.
 
-Edit the models.py file of the blog application and edit the get_absolute_url() method as follows:
+Edit the `models.py` file of the `blog` application and edit the `get_absolute_url()` method as follows:
 
+```python
 class Post(models.Model):
     # ...
     def get_absolute_url(self):
@@ -264,43 +260,43 @@ class Post(models.Model):
                 self.slug
             ]
         )
+```
 
-Copy
-
-Explain
 Start the development server by typing the following command in the shell prompt:
 
+```bash
 python manage.py runserver
+```
 
-Copy
-
-Explain
 Next, you can return to your browser and click on one of the post titles to take a look at the detail view of the post. You should see something like this:
 
+![ 2.2 The page for the post’s detail view ](/packtpub/2024/730/2.2-the_page_for.webp)
 
 Figure 2.2: The page for the post’s detail view
 
-You have designed SEO-friendly URLs for the blog posts. The URL for a post now looks like /blog/2024/1/1/who-was-django-reinhardt/.
+You have designed SEO-friendly URLs for the blog posts. The URL for a post now looks like `/blog/2024/1/1/who-was-django-reinhardt/`.
 
 Now that you have implemented SEO-friendly URLs, let’s focus on implementing navigation through posts using pagination.
 
-Adding pagination
+# Adding pagination
+
 When you start adding content to your blog, you can easily store tens or hundreds of posts in your database. Instead of displaying all the posts on a single page, you may want to split the list of posts across several pages and include navigation links to the different pages. This functionality is called pagination, and you can find it in almost every web application that displays long lists of items.
 
 For example, Google uses pagination to divide search results across multiple pages. Figure 2.3 shows Google’s pagination links for search result pages:
 
-Icon
+![ 2.3 Google pagination links for search result pages ](/packtpub/2024/730/2.3-google_pagination_links.webp)
 
-Description automatically generated
 Figure 2.3: Google pagination links for search result pages
 
 Django has a built-in pagination class that allows you to manage paginated data easily. You can define the number of objects you want to be returned per page and you can retrieve the posts that correspond to the page requested by the user.
 
-Adding pagination to the post list view
+## Adding pagination to the post list view
+
 We will add pagination to the list of posts so that users can easily navigate through all posts published on the blog.
 
-Edit the views.py file of the blog application to import the Django Paginator class and modify the post_list view as follows:
+Edit the `views.py` file of the `blog` application to import the Django `Paginator` class and modify the `post_list` view as follows:
 
+```python
 from django.core.paginator import Paginator
 from django.shortcuts import get_object_or_404, render
 from .models import Post
@@ -315,17 +311,17 @@ def post_list(request):
         'blog/post/list.html',
         {'posts': posts}
     )
+```
 
-Copy
-
-Explain
 Let’s review the new code we have added to the view:
 
-We instantiate the Paginator class with the number of objects to return per page. We will display three posts per page.
-We retrieve the page GET HTTP parameter and store it in the page_number variable. This parameter contains the requested page number. If the page parameter is not in the GET parameters of the request, we use the default value 1 to load the first page of results.
-We obtain the objects for the desired page by calling the page() method of Paginator. This method returns a Page object that we store in the posts variable.
-We pass the posts object to the template.
-Creating a pagination template
+1. We instantiate the `Paginator` class with the number of objects to return per page. We will display three posts per page.
+1. We retrieve the `page GET` HTTP parameter and store it in the `page_number` variable. This parameter contains the requested page number. If the `page` parameter is not in the `GET` parameters of the request, we use the default value `1` to load the first page of results.
+1. We obtain the objects for the desired page by calling the `page()` method of `Paginator`. This method returns a `Page` object that we store in the `posts` variable.
+1. We pass the `posts` object to the template.
+
+## Creating a pagination template
+
 We need to create a page navigation for users to browse through the different pages. In this section, we will create a template to display the pagination links, and we’ll make it generic so that we can reuse the template for any object pagination on our website.
 
 In the templates/ directory, create a new file and name it pagination.html. Add the following HTML code to the file:

@@ -2,6 +2,7 @@
 | 🏁 730 Django 5 by Example | 00 Preface | [ 01 Building a Blog Application ](/packtpub/2024/730_django_5_by_example/01_building_a_blog_application) ≫ |
 |:----:|:----:|:----:|
 
+
 # 00 Preface
 
 Django is an open-source Python web framework that encourages rapid development and clean, pragmatic design. It takes care of much of the hassle of web development and presents a relatively shallow learning curve for beginner programmers. Django follows Python’s “batteries included” philosophy, shipping with a rich and versatile set of modules that solve common web-development problems. The simplicity of Django, together with its powerful features, makes it attractive to both novice and expert programmers. Django has been designed for simplicity, flexibility, reliability, and scalability.
@@ -24,56 +25,56 @@ This book should serve as a primer for programmers newly initiated to Django. Th
 
 This book encompasses a range of topics of web application development with Django. The book will guide you through building four different fully-featured web applications, that are built over the course of 17 chapters.
 
-- A blog application (chapters 1 to 3)
-- An image bookmarking website (chapters 4 to 7)
-- An online shop (chapters 8 to 11)
-- An e-learning platform (chapters 12 to 17)
+> - A blog application (chapters 1 to 3)
+> - An image bookmarking website (chapters 4 to 7)
+> - An online shop (chapters 8 to 11)
+> - An e-learning platform (chapters 12 to 17)
 
 Each chapter covers several Django features.
 
-Chapter 1, Building a Blog Application, will introduce you to the framework through a blog application. You will create the basic blog models, views, templates, and URLs to display blog posts. You will learn how to build QuerySets with the Django **object-relational mapper (ORM)**, and you will configure the Django administration site.
+*Chapter 1, Building a Blog Application*, will introduce you to the framework through a blog application. You will create the basic blog models, views, templates, and URLs to display blog posts. You will learn how to build QuerySets with the Django **object-relational mapper (ORM)**, and you will configure the Django administration site.
 
-Chapter 2, Enhancing Your Blog with Advanced Features, will teach you how to add pagination to your blog, and how to implement Django class-based views. You will learn to send emails with Django, and handle forms and model forms. You will also implement a comment system for blog posts.
+*Chapter 2, Enhancing Your Blog with Advanced Features*, will teach you how to add pagination to your blog, and how to implement Django class-based views. You will learn to send emails with Django, and handle forms and model forms. You will also implement a comment system for blog posts.
 
-Chapter 3, Extending Your Blog Application, explores how to integrate third-party applications. This chapter will guide you through the process of creating a tagging system, and you will learn how to build complex QuerySets to recommed similar posts. The chapter will teach you how to create custom template tags and filters. You will also learn how to use the sitemap framework and create an RSS feed for your posts. You will complete your blog application by building a search engine using PostgreSQL’s full-text search capabilities.
+*Chapter 3, Extending Your Blog Application*, explores how to integrate third-party applications. This chapter will guide you through the process of creating a tagging system, and you will learn how to build complex QuerySets to recommed similar posts. The chapter will teach you how to create custom template tags and filters. You will also learn how to use the sitemap framework and create an RSS feed for your posts. You will complete your blog application by building a search engine using PostgreSQL’s full-text search capabilities.
 
-Chapter 4, Building a Social Website, explains how to build a social website. You will learn how to implement user authentication views and learn to use the Django authentication framework. You will implement user registration and extend the user model with a custom profile model.
+*Chapter 4, Building a Social Website*, explains how to build a social website. You will learn how to implement user authentication views and learn to use the Django authentication framework. You will implement user registration and extend the user model with a custom profile model.
 
-Chapter 5, Implementing Social Authentication, covers implementing social authentication and using the messages framework. You will create a custom authentication backend and you will integrate social authentication with Google, using OAuth 2. You will learn how to use `django-extensions` to run the development server through HTTPS and customize the social authentication pipeline to automate the user profile creation.
+*Chapter 5, Implementing Social Authentication*, covers implementing social authentication and using the messages framework. You will create a custom authentication backend and you will integrate social authentication with Google, using OAuth 2. You will learn how to use `django-extensions` to run the development server through HTTPS and customize the social authentication pipeline to automate the user profile creation.
 
-Chapter 6, Sharing Content on Your Website, will teach you how to transform your social application into an image bookmarking website. You will define many-to-many relationships for models, and you will create a JavaScript bookmarklet that integrates into your project. The chapter will show you how to generate image thumbnails. You will also learn how to implement asynchronous HTTP requests using JavaScript and Django and you will implement infinite scroll pagination.
+*Chapter 6, Sharing Content on Your Website*, will teach you how to transform your social application into an image bookmarking website. You will define many-to-many relationships for models, and you will create a JavaScript bookmarklet that integrates into your project. The chapter will show you how to generate image thumbnails. You will also learn how to implement asynchronous HTTP requests using JavaScript and Django and you will implement infinite scroll pagination.
 
-Chapter 7, Tracking User Actions, will show you how to build a follower system for users. You will complete your image bookmarking website by creating a user activity stream application. You will learn how to create generic relations between models and optimize QuerySets.
+*Chapter 7, Tracking User Actions*, will show you how to build a follower system for users. You will complete your image bookmarking website by creating a user activity stream application. You will learn how to create generic relations between models and optimize QuerySets.
 
 You will work with signals and implement denormalization. You will use Django Debug Toolbar to obtain relevant debug information. Finally, you will integrate Redis into your project to count image views and you will create a ranking of the most viewed images with Redis.
 
-Chapter 8, Building an Online Shop, explores how to create an online shop. You will build models for a product catalog, and you will create a shopping cart using Django sessions. You will build a context processor for the shopping cart and will learn how to manage customer orders. The chapter will teach you how to send asynchronous notifications using Celery and RabbitMQ. You will also learn to monitor Celery using Flower.
+*Chapter 8, Building an Online Shop*, explores how to create an online shop. You will build models for a product catalog, and you will create a shopping cart using Django sessions. You will build a context processor for the shopping cart and will learn how to manage customer orders. The chapter will teach you how to send asynchronous notifications using Celery and RabbitMQ. You will also learn to monitor Celery using Flower.
 
-Chapter 9, Managing Payments and Orders, explains how to integrate a payment gateway into your shop. You will integrate Stripe Checkout and receive asynchronous payment notifications in your application. You will implement custom views in the administration site and you will also customize the administration site to export orders to CSV files. You will also learn how to generate PDF invoices dynamically.
+*Chapter 9, Managing Payments and Orders*, explains how to integrate a payment gateway into your shop. You will integrate Stripe Checkout and receive asynchronous payment notifications in your application. You will implement custom views in the administration site and you will also customize the administration site to export orders to CSV files. You will also learn how to generate PDF invoices dynamically.
 
-Chapter 10, Extending Your Shop, will teach you how to create a coupon system to apply discounts to the shopping cart. You will update the Stripe Checkout integration to implement coupon discounts and you will apply coupons to orders. You will use Redis to store products that are usually bought together, and use this information to build a product recommendation engine.
+*Chapter 10, Extending Your Shop*, will teach you how to create a coupon system to apply discounts to the shopping cart. You will update the Stripe Checkout integration to implement coupon discounts and you will apply coupons to orders. You will use Redis to store products that are usually bought together, and use this information to build a product recommendation engine.
 
-Chapter 11, Adding Internationalization to Your Shop, will show you how to add internationalization to your project. You will learn how to generate and manage translation files and translate strings in Python code and Django templates. You will use Rosetta to manage translations and implement per-language URLs. You will learn how to translate model fields using `django-parler` and how to use translations with the ORM. Finally, you will create a localized form field using `django-localflavor`.
+*Chapter 11, Adding Internationalization to Your Shop*, will show you how to add internationalization to your project. You will learn how to generate and manage translation files and translate strings in Python code and Django templates. You will use Rosetta to manage translations and implement per-language URLs. You will learn how to translate model fields using `django-parler` and how to use translations with the ORM. Finally, you will create a localized form field using `django-localflavor`.
 
-Chapter 12, Building an E-Learning Platform, will guide you through creating an e-learning platform. You will add fixtures to your project, and create initial models for the content management system. You will use model inheritance to create data models for polymorphic content. You will learn how to create custom model fields by building a field to order objects. You will also implement authentication views for the CMS.
+*Chapter 12, Building an E-Learning Platform*, will guide you through creating an e-learning platform. You will add fixtures to your project, and create initial models for the content management system. You will use model inheritance to create data models for polymorphic content. You will learn how to create custom model fields by building a field to order objects. You will also implement authentication views for the CMS.
 
-Chapter 13, Creating a Content Management System, will teach you how to create a CMS using class-based views and mixins. You will use the Django groups and permissions system to restrict access to views and implement formsets to edit the content of courses. You will also create a drag-and-drop functionality to reorder course modules and their content using JavaScript and Django.
+*Chapter 13, Creating a Content Management System*, will teach you how to create a CMS using class-based views and mixins. You will use the Django groups and permissions system to restrict access to views and implement formsets to edit the content of courses. You will also create a drag-and-drop functionality to reorder course modules and their content using JavaScript and Django.
 
-Chapter 14, Rendering and Caching Content, will show you how to implement the public views for the course catalog. You will create a student registration system and manage student enrollment on courses. You will create the functionality to render different types of content for the course modules. You will learn how to cache content using the Django cache framework and configure the Memcached and Redis cache backends for your project. Finally, you will learn how to monitor Redis using the administration site.
+*Chapter 14, Rendering and Caching Content*, will show you how to implement the public views for the course catalog. You will create a student registration system and manage student enrollment on courses. You will create the functionality to render different types of content for the course modules. You will learn how to cache content using the Django cache framework and configure the Memcached and Redis cache backends for your project. Finally, you will learn how to monitor Redis using the administration site.
 
-Chapter 15, Building an API, explores building a RESTful API for your project using Django REST framework. You will learn how to create serializers for your models and build custom API views. You will handle API authentication and implement permissions for API views.
+*Chapter 15, Building an API*, explores building a RESTful API for your project using Django REST framework. You will learn how to create serializers for your models and build custom API views. You will handle API authentication and implement permissions for API views.
 
 You will learn how to build API viewsets and routers. The chapter will also teach you how to consume your API using the Requests library.
 
-Chapter 16, Building a Chat Server, explains how to use Django Channels to create a real-time chat server for students. You will learn how to implement functionalities that rely on asynchronous communication through WebSockets. You will create a WebSocket consumer with Python and implement a WebSocket client with JavaScript. You will use Redis to set up a channel layer and you will learn how to make your WebSocket consumer fully asynchronous. You will also implement a chat history by persisting chat messages into the database.
+*Chapter 16, Building a Chat Server*, explains how to use Django Channels to create a real-time chat server for students. You will learn how to implement functionalities that rely on asynchronous communication through WebSockets. You will create a WebSocket consumer with Python and implement a WebSocket client with JavaScript. You will use Redis to set up a channel layer and you will learn how to make your WebSocket consumer fully asynchronous. You will also implement a chat history by persisting chat messages into the database.
 
-Chapter 17, Going Live, will show you how to create settings for multiple environments and how to set up a production environment using PostgreSQL, Redis, uWSGI, NGINX, and Daphne with Docker Compose. You will learn how to serve your project securely through HTTPS and use the Django system check framework. The chapter will also teach you how to build a custom middleware and create custom management commands.
+*Chapter 17, Going Live*, will show you how to create settings for multiple environments and how to set up a production environment using PostgreSQL, Redis, uWSGI, NGINX, and Daphne with Docker Compose. You will learn how to serve your project securely through HTTPS and use the Django system check framework. The chapter will also teach you how to build a custom middleware and create custom management commands.
 
 # To get the most out of this book
 
-- You must possess a good working knowledge of Python.
-- You should be comfortable with HTML and JavaScript.
-- It is recommended that you go through parts 1 to 3 of the tutorial in the official Django documentation at https://docs.djangoproject.com/en/5.0/intro/tutorial01/.
+> - You must possess a good working knowledge of Python.
+> - You should be comfortable with HTML and JavaScript.
+> - It is recommended that you go through parts 1 to 3 of the tutorial in the official Django documentation at https://docs.djangoproject.com/en/5.0/intro/tutorial01/.
 
 ## Download the example code files
 
@@ -176,7 +177,6 @@ https://packt.link/free-ebook/9781805125457
 
 1. Submit your proof of purchase.
 1. That’s it! We’ll send your free PDF and other benefits to your email directly.
-
 
 
 | 🏁 730 Django 5 by Example | 00 Preface | [ 01 Building a Blog Application ](/packtpub/2024/730_django_5_by_example/01_building_a_blog_application) ≫ |
