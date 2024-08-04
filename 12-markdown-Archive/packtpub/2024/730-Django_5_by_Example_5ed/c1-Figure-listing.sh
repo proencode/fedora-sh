@@ -5,6 +5,14 @@ if [ "x$1" == "x" ] || [ ! -f $1 ]; then
 	ls -l *.md | sed 's/-rw-rw-r-- 1 ${USER} ${USER}//'
 	exit -1
 fi
+img_link="/packtpub/2024/730/"
+echo "#-- image link: [ ${img_link} ]"
+read a
+if [ "x$a" != "x" ]; then
+	img_link=$a
+fi
+echo "#-- image link set to '${img_link}'"
+echo "#--"
 
 while IFS= read -r line
 do
@@ -16,7 +24,7 @@ do
 			fig_title=$(echo $fig_memo | awk '{print $1" "$2" "$3}')
 			small_fig_title=$(echo "${fig_title,,}" | sed 's/ /_/g' | sed 's/\./_/g' | sed 's/“/\"/g' | sed 's/”/\"/g' | sed "s/’/'/g")
 			cat <<__EOF__
-![ ${chapter_numb} ${fig_memo} ](/packtpub/2024/730/${chapter_numb}-${small_fig_title}.webp)
+![ ${chapter_numb} ${fig_memo} ](${img_link}/${chapter_numb}-${small_fig_title}.webp)
 ${chapter_numb}-${small_fig_title}.webp
 __EOF__
 		fi

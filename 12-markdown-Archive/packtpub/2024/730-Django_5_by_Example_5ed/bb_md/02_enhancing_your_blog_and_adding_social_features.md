@@ -324,8 +324,9 @@ Let’s review the new code we have added to the view:
 
 We need to create a page navigation for users to browse through the different pages. In this section, we will create a template to display the pagination links, and we’ll make it generic so that we can reuse the template for any object pagination on our website.
 
-In the templates/ directory, create a new file and name it pagination.html. Add the following HTML code to the file:
+In the `templates/` directory, create a new file and name it `pagination.html`. Add the following HTML code to the file:
 
+```html
 <div class="pagination">
   <span class="step-links">
     {% if page.has_previous %}
@@ -339,14 +340,13 @@ In the templates/ directory, create a new file and name it pagination.html. Add 
     {% endif %}
   </span>
 </div>
+```
 
-Copy
+This is the generic pagination template. The template expects to have a `Page` object in the context to render the previous and next links and to display the current page and total pages of results.
 
-Explain
-This is the generic pagination template. The template expects to have a Page object in the context to render the previous and next links and to display the current page and total pages of results.
+Let’s return to the `blog/post/list.html` template and include the `pagination.html` template at the bottom of the `{% content %}` block, as follows:
 
-Let’s return to the blog/post/list.html template and include the pagination.html template at the bottom of the {% content %} block, as follows:
-
+```html
 {% extends "blog/base.html" %}
 {% block title %}My Blog{% endblock %}
 {% block content %}
@@ -364,45 +364,47 @@ Let’s return to the blog/post/list.html template and include the pagination.ht
   {% endfor %}
   {% include "pagination.html" with page=posts %}
 {% endblock %}
+```
 
-Copy
-
-Explain
-The {% include %} template tag loads the given template and renders it using the current template context. We use with to pass additional context variables to the template. The pagination template uses the page variable to render, while the Page object that we pass from our view to the template is called posts. We use with page=posts to pass the variable expected by the pagination template. You can follow this method to use the pagination template for any type of object.
+The `{% include %}` template tag loads the given template and renders it using the current template context. We use `with` to pass additional context variables to the template. The pagination template uses the `page` variable to render, while the `Page` object that we pass from our view to the template is called `posts`. We use `with page=posts` to pass the variable expected by the pagination template. You can follow this method to use the pagination template for any type of object.
 
 Start the development server by typing the following command in the shell prompt:
 
+```bash
 python manage.py runserver
+```
 
-Copy
+Open `http://127.0.0.1:8000/admin/blog/post/` in your browser and use the administration site to create a total of four different posts. Make sure to set the status to Published for all of them.
 
-Explain
-Open http://127.0.0.1:8000/admin/blog/post/ in your browser and use the administration site to create a total of four different posts. Make sure to set the status to Published for all of them.
+Now, open `http://127.0.0.1:8000/blog/` in your browser. You should see the first three posts in reverse chronological order, and then the navigation links at the bottom of the post list like this:
 
-Now, open http://127.0.0.1:8000/blog/ in your browser. You should see the first three posts in reverse chronological order, and then the navigation links at the bottom of the post list like this:
-
+![ 2.4 The post list page including pagination ](/packtpub/2024/730/2.4-the_post_list.webp)
 
 Figure 2.4: The post list page including pagination
 
-If you click on Next, you will see the last post. The URL for the second page contains the ?page=2 GET parameter. This parameter is used by the view to load the requested page of results using the paginator.
+If you click on Next, you will see the last post. The URL for the second page contains the `?page=2 GET` parameter. This parameter is used by the view to load the requested page of results using the paginator.
 
+![ 2.5 The second page of results ](/packtpub/2024/730/2.5-the_second_page.webp)
 
 Figure 2.5: The second page of results
 
 Great! The pagination links are working as expected.
 
-Handling pagination errors
-Now that the pagination is working, we can add exception handling for pagination errors in the view. The page parameter used by the view to retrieve the given page could potentially be used with wrong values, such as non-existing page numbers or a string value that cannot be used as a page number. We will implement appropriate error handling for those cases.
+## Handling pagination errors
 
-Open http://127.0.0.1:8000/blog/?page=3 in your browser. You should see the following error page:
+Now that the pagination is working, we can add exception handling for pagination errors in the view. The `page` parameter used by the view to retrieve the given page could potentially be used with wrong values, such as non-existing page numbers or a string value that cannot be used as a page number. We will implement appropriate error handling for those cases.
 
+Open `http://127.0.0.1:8000/blog/?page=3` in your browser. You should see the following error page:
+
+![ 2.6 The EmptyPage error page ](/packtpub/2024/730/2.6-the_emptypage_error.webp)
 
 Figure 2.6: The EmptyPage error page
 
-The Paginator object throws an EmptyPage exception when retrieving page 3 because it’s out of range. There are no results to display. Let’s handle this error in our view.
+The `Paginator` object throws an `EmptyPage` exception when retrieving page `3` because it’s out of range. There are no results to display. Let’s handle this error in our view.
 
-Edit the views.py file of the blog application to add the necessary imports and modify the post_list view as follows:
+Edit the `views.py` file of the `blog` application to add the necessary imports and modify the `post_list` view as follows:
 
+```python
 from django.core.paginator import EmptyPage, Paginator
 from django.shortcuts import get_object_or_404, render
 from .models import Post
@@ -421,28 +423,29 @@ def post_list(request):
         'blog/post/list.html',
         {'posts': posts}
     )
+```
 
-Copy
+We have added a try and except block to manage the `EmptyPage` exception when retrieving a page. If the page requested is out of range, we return the last page of results. We get the total number of pages with `paginator.num_pages`. The total number of pages is the same as the last page number.
 
-Explain
-We have added a try and except block to manage the EmptyPage exception when retrieving a page. If the page requested is out of range, we return the last page of results. We get the total number of pages with paginator.num_pages. The total number of pages is the same as the last page number.
+Open `http://127.0.0.1:8000/blog/?page=3` in your browser again. Now, the exception is managed by the view, and the last page of results is returned as follows:
 
-Open http://127.0.0.1:8000/blog/?page=3 in your browser again. Now, the exception is managed by the view, and the last page of results is returned as follows:
-
+![ 2.7 The last page of results ](/packtpub/2024/730/2.7-the_last_page.webp)
 
 Figure 2.7: The last page of results
 
-Our view should also handle the case when something different than an integer is passed in the page parameter.
+Our view should also handle the case when something different than an integer is passed in the `page` parameter.
 
-Open http://127.0.0.1:8000/blog/?page=asdf in your browser. You should see the following error page:
+Open `http://127.0.0.1:8000/blog/?page=asdf` in your browser. You should see the following error page:
 
+![ 2.8 The PageNotAnInteger error page ](/packtpub/2024/730/2.8-the_pagenotaninteger_error.webp)
 
 Figure 2.8: The PageNotAnInteger error page
 
-In this case, the Paginator object throws a PageNotAnInteger exception when retrieving the page asdf because page numbers can only be integers. Let’s handle this error in our view.
+In this case, the `Paginator` object throws a `PageNotAnInteger` exception when retrieving the page `asdf` because page numbers can only be integers. Let’s handle this error in our view.
 
-Edit the views.py file of the blog application to add the necessary imports and modify the post_list view as follows:
+Edit the `views.py` file of the `blog` application to add the necessary imports and modify the `post_list` view as follows:
 
+```python
 from django.shortcuts import get_object_or_404, render
 from .models import Post
 from django.core.paginator import EmptyPage, PageNotAnInteger, Paginator
@@ -464,38 +467,42 @@ def post_list(request):
         'blog/post/list.html',
         {'posts': posts}
     )
+```
 
-Copy
+We have added a new `except` block to manage the `PageNotAnInteger` exception when retrieving a page. If the page requested is not an integer, we return the first page of results.
 
-Explain
-We have added a new except block to manage the PageNotAnInteger exception when retrieving a page. If the page requested is not an integer, we return the first page of results.
+Open `http://127.0.0.1:8000/blog/?page=asdf` in your browser again. Now, the exception is managed by the view and the first page of results is returned as follows:
 
-Open http://127.0.0.1:8000/blog/?page=asdf in your browser again. Now, the exception is managed by the view and the first page of results is returned as follows:
-
+![ 2.9 The first page of results ](/packtpub/2024/730/2.9-the_first_page.webp)
 
 Figure 2.9: The first page of results
 
 The pagination for blog posts is now fully implemented.
 
-You can learn more about the Paginator class at https://docs.djangoproject.com/en/5.0/ref/paginator/.
+You can learn more about the `Paginator` class at https://docs.djangoproject.com/en/5.0/ref/paginator/.
 
-Having learned how to paginate your blog, we will now turn to transforming the post_list view into an equivalent view that is built using Django generic views and built-in pagination.
+Having learned how to paginate your blog, we will now turn to transforming the `post_list` view into an equivalent view that is built using Django generic views and built-in pagination.
 
-Building class-based views
+# Building class-based views
+
 We have built the blog application using function-based views. Function-based views are simple and powerful, but Django also allows you to build views using classes.
 
-Class-based views are an alternative way to implement views as Python objects instead of functions. Since a view is a function that takes a web request and returns a web response, you can also define your views as class methods. Django provides base view classes that you can use to implement your own views. All of them inherit from the View class, which handles HTTP method dispatching and other common functionalities.
+Class-based views are an alternative way to implement views as Python objects instead of functions. Since a view is a function that takes a web request and returns a web response, you can also define your views as class methods. Django provides base view classes that you can use to implement your own views. All of them inherit from the `View` class, which handles HTTP method dispatching and other common functionalities.
 
-Why use class-based views
+## Why use class-based views
+
 Class-based views offer some advantages over function-based views that are useful for specific use cases. Class-based views allow you to:
 
-Organize code related to HTTP methods, such as GET, POST, or PUT, in separate methods, instead of using conditional branching
-Use multiple inheritance to create reusable view classes (also known as mixins)
-Using a class-based view to list posts
-To understand how to write class-based views, we will create a new class-based view that is equivalent to the post_list view. We will create a class that will inherit from the generic ListView view offered by Django. ListView allows you to list any type of object.
+> - Organize code related to HTTP methods, such as `GET`, `POST`, or `PUT`, in separate methods, instead of using conditional branching
+> - Use multiple inheritance to create reusable view classes (also known as mixins)
 
-Edit the views.py file of the blog application and add the following code to it:
+## Using a class-based view to list posts
 
+To understand how to write class-based views, we will create a new class-based view that is equivalent to the `post_list` view. We will create a class that will inherit from the generic `ListView` view offered by Django. `ListView` allows you to list any type of object.
+
+Edit the `views.py` file of the `blog` application and add the following code to it:
+
+```python
 from django.views.generic import ListView
 class PostListView(ListView):
     """
@@ -505,18 +512,18 @@ class PostListView(ListView):
     context_object_name = 'posts'
     paginate_by = 3
     template_name = 'blog/post/list.html'
+```
 
-Copy
+The `PostListView` view is analogous to the `post_list` view we built previously. We have implemented a class-based view that inherits from the `ListView` class. We have defined a view with the following attributes:
 
-Explain
-The PostListView view is analogous to the post_list view we built previously. We have implemented a class-based view that inherits from the ListView class. We have defined a view with the following attributes:
+> - We use `queryset` to use a custom QuerySet instead of retrieving all objects. Instead of defining a `queryset` attribute, we could have specified `model = Post` and Django would have built the generic `Post.objects.all()` QuerySet for us.
+> - We use the context variable `posts` for the query results. The default variable is `object_list` if you don’t specify any `context_object_name`.
+> - We define the pagination of results with `paginate_by`, returning three objects per page.
+> - We use a custom template to render the page with `template_name`. If you don’t set a default template, `ListView` will use `blog/post_list.html` by default.
 
-We use queryset to use a custom QuerySet instead of retrieving all objects. Instead of defining a queryset attribute, we could have specified model = Post and Django would have built the generic Post.objects.all() QuerySet for us.
-We use the context variable posts for the query results. The default variable is object_list if you don’t specify any context_object_name.
-We define the pagination of results with paginate_by, returning three objects per page.
-We use a custom template to render the page with template_name. If you don’t set a default template, ListView will use blog/post_list.html by default.
-Now, edit the urls.py file of the blog application, comment the preceding post_list URL pattern, and add a new URL pattern using the PostListView class, as follows:
+Now, edit the `urls.py` file of the `blog` application, comment the preceding `post_list` URL pattern, and add a new URL pattern using the `PostListView` class, as follows:
 
+```python
 urlpatterns = [
     # Post views
     # path('', views.post_list, name='post_list'),
@@ -527,12 +534,11 @@ urlpatterns = [
         name='post_detail'
     ),
 ]
+```
 
-Copy
+In order to keep pagination working, we have to use the right page object that is passed to the template. Django’s `ListView` generic view passes the page requested in a variable called `page_obj`. We have to edit the `post/list.html` template accordingly to include the paginator using the right variable, as follows:
 
-Explain
-In order to keep pagination working, we have to use the right page object that is passed to the template. Django’s ListView generic view passes the page requested in a variable called page_obj. We have to edit the post/list.html template accordingly to include the paginator using the right variable, as follows:
-
+```html
 {% extends "blog/base.html" %}
 {% block title %}My Blog{% endblock %}
 {% block content %}
@@ -550,45 +556,49 @@ In order to keep pagination working, we have to use the right page object that i
   {% endfor %}
   {% include "pagination.html" with page=page_obj %}
 {% endblock %}
+```
 
-Copy
+Open `http://127.0.0.1:8000/blog/` in your browser and verify that the pagination links work as expected. The behavior of the pagination links should be the same as with the previous `post_list` view.
 
-Explain
-Open http://127.0.0.1:8000/blog/ in your browser and verify that the pagination links work as expected. The behavior of the pagination links should be the same as with the previous post_list view.
+The exception handling in this case is a bit different. If you try to load a page out of range or pass a non-integer value in the `page` parameter, the view will return an HTTP response with the status code `404` (page not found) like this:
 
-The exception handling in this case is a bit different. If you try to load a page out of range or pass a non-integer value in the page parameter, the view will return an HTTP response with the status code 404 (page not found) like this:
-
+![ 2.10 HTTP 404 Page not found response ](/packtpub/2024/730/2.10-http_404_page.webp)
 
 Figure 2.10: HTTP 404 Page not found response
 
-The exception handling that returns the HTTP 404 status code is provided by the ListView view.
+The exception handling that returns the HTTP `404` status code is provided by the `ListView` view.
 
-This is a simple example of how to write class-based views. You will learn more about class-based views in Chapter 13, Creating a Content Management System, and successive chapters.
+This is a simple example of how to write class-based views. You will learn more about class-based views in *Chapter 13, Creating a Content Management System*, and successive chapters.
 
 You can read an introduction to class-based views at https://docs.djangoproject.com/en/5.0/topics/class-based-views/intro/.
 
 After learning how to use class-based views and using built-in object pagination, we will implement the functionality for sharing posts by email to engage your blog readers.
 
-Recommending posts by email
+# Recommending posts by email
+
 We will allow users to share blog posts with others by sending post recommendations via email. You will learn how to create forms in Django, handle data submission, and send emails with Django, enhancing your blog with a personal touch.
 
-Take a minute to think about how you could use views, URLs, and templates to create this functionality using what you learned in the preceding chapter.
+Take a minute to think about how you could use *views*, *URLs*, and *templates* to create this functionality using what you learned in the preceding chapter.
 
 To allow users to share posts via email, we will need to:
 
-Create a form for users to fill in their name, their email address, the recipient’s email address, and optional comments
-Create a view in the views.py file that handles the posted data and sends the email
-Add a URL pattern for the new view in the urls.py file of the blog application
-Create a template to display the form
-Creating forms with Django
+1. Create a form for users to fill in their name, their email address, the recipient’s email address, and optional comments
+1. Create a view in the `views.py` file that handles the posted data and sends the email
+1. Add a URL pattern for the new view in the `urls.py` file of the blog application
+1. Create a template to display the form
+
+## Creating forms with Django
+
 Let’s start by building the form to share posts. Django has a built-in forms framework that allows you to create forms easily. The forms framework makes it simple to define the fields of the form, specify how they have to be displayed, and indicate how they have to validate input data. The Django forms framework offers a flexible way to render forms in HTML and handle data.
 
 Django comes with two base classes to build forms:
 
-Form: This allows you to build standard forms by defining fields and validations.
-ModelForm: This allows you to build forms tied to model instances. It provides all the functionalities of the base Form class, but form fields can be explicitly declared, or automatically generated, from model fields. The form can be used to create or edit model instances.
-First, create a forms.py file inside the directory of your blog application and add the following code to it:
+> - `Form`: This allows you to build standard forms by defining fields and validations.
+> - `ModelForm`: This allows you to build forms tied to model instances. It provides all the functionalities of the base `Form` class, but form fields can be explicitly declared, or automatically generated, from model fields. The form can be used to create or edit model instances.
 
+First, create a `forms.py` file inside the directory of your `blog` application and add the following code to it:
+
+```python
 from django import forms
 class EmailPostForm(forms.Form):
     name = forms.CharField(max_length=25)
@@ -598,31 +608,33 @@ class EmailPostForm(forms.Form):
         required=False,
         widget=forms.Textarea
     )
+```
 
-Copy
+We have defined our first Django form. The `EmailPostForm` form inherits from the base `Form` class. We use different field types to validate data accordingly.
 
-Explain
-We have defined our first Django form. The EmailPostForm form inherits from the base Form class. We use different field types to validate data accordingly.
-
-Forms can reside anywhere in your Django project. The convention is to place them inside a forms.py file for each application.
+> Forms can reside anywhere in your Django project. The convention is to place them inside a `forms.py` file for each application.
+{.is_info}
 
 The form contains the following fields:
 
-name: An instance of CharField with a maximum length of 25 characters. We will use it for the name of the person sending the post.
-email: An instance of EmailField. We will use the email of the person sending the post recommendation.
-to: An instance of EmailField. We will use the email address of the recipient, who will receive an email recommending the post.
-comments: An instance of CharField. We will use it for comments to include in the post recommendation email. We have made this field optional by setting required to False, and we have specified a custom widget to render the field.
-Each field type has a default widget that determines how the field is rendered in HTML. The name field is an instance of CharField. This type of field is rendered as an <input type="text"> HTML element. The default widget can be overridden with the widget attribute. In the comments field, we use the Textarea widget to display it as a <textarea> HTML element instead of the default <input> element.
+> - `name`: An instance of `CharField` with a maximum length of 25 characters. We will use it for the name of the person sending the post.
+> - `email`: An instance of `EmailField`. We will use the email of the person sending the post recommendation.
+> - `to`: An instance of `EmailField`. We will use the email address of the recipient, who will receive an email recommending the post.
+> - `comments`: An instance of `CharField`. We will use it for comments to include in the post recommendation email. We have made this field optional by setting `required` to `False`, and we have specified a custom widget to render the field.
 
-Field validation also depends on the field type. For example, the email and to fields are EmailField fields. Both fields require a valid email address; the field validation will otherwise raise a forms.ValidationError exception and the form will not validate. Other parameters are also taken into account for the form field validation, such as the name field having a maximum length of 25 or the comments field being optional.
+Each field type has a default widget that determines how the field is rendered in HTML. The `name` field is an instance of `CharField`. This type of field is rendered as an `<input type="text">` HTML element. The default widget can be overridden with the `widget` attribute. In the `comments` field, we use the `Textarea` widget to display it as a `<textarea>` HTML element instead of the default `<input>` element.
+
+Field validation also depends on the field type. For example, the `email` and `to` fields are `EmailField` fields. Both fields require a valid email address; the field validation will otherwise raise a `forms.ValidationError` exception and the form will not validate. Other parameters are also taken into account for the form field validation, such as the `name` field having a maximum length of `25` or the `comments` field being optional.
 
 These are only some of the field types that Django provides for forms. You can find a list of all field types available at https://docs.djangoproject.com/en/5.0/ref/forms/fields/.
 
-Handling forms in views
+## Handling forms in views
+
 We have defined the form to recommend posts via email. Now, we need a view to create an instance of the form and handle the form submission.
 
-Edit the views.py file of the blog application and add the following code to it:
+Edit the `views.py` file of the `blog` application and add the following code to it:
 
+```python
 from .forms import EmailPostForm
 def post_share(request, post_id):
     # Retrieve post by id
@@ -648,22 +660,19 @@ def post_share(request, post_id):
             'form': form
         }
     )
+```
 
-Copy
+We have defined the `post_share` view that takes the `request` object and the `post_id` variable as parameters. We use the `get_object_or_404()` shortcut to retrieve a published post by its id.
 
-Explain
-We have defined the post_share view that takes the request object and the post_id variable as parameters. We use the get_object_or_404() shortcut to retrieve a published post by its id.
-
-We use the same view both for displaying the initial form and processing the submitted data. The HTTP request method allows us to differentiate whether the form is being submitted. A GET request will indicate that an empty form has to be displayed to the user and a POST request will indicate the form is being submitted. We use request.method == 'POST' to differentiate between the two scenarios.
+We use the same view both for displaying the initial form and processing the submitted data. The HTTP `request` method allows us to differentiate whether the form is being submitted. A `GET` request will indicate that an empty form has to be displayed to the user and a `POST` request will indicate the form is being submitted. We use `request.method == 'POST'` to differentiate between the two scenarios.
 
 This is the process to display the form and handle the form submission:
 
-When the page is loaded for the first time, the view receives a GET request. In this case, a new EmailPostForm instance is created and stored in the form variable. This form instance will be used to display the empty form in the template:
+1. When the page is loaded for the first time, the view receives a `GET` request. In this case, a new `EmailPostForm` instance is created and stored in the `form` variable. This form instance will be used to display the empty form in the template:
+```python
 form = EmailPostForm()
+```
 
-Copy
-
-Explain
 When the user fills in the form and submits it via POST, a form instance is created using the submitted data contained in request.POST:
 if request.method == 'POST':
     # Form was submitted
@@ -1612,12 +1621,13 @@ Reusable field group templates: https://docs.djangoproject.com/en/5.0/topics/for
 | ≪ [ 01 Building a Blog Application ](/packtpub/2024/730_django_5_by_example/01_building_a_blog_application) | 02 Enhancing Your Blog and Adding Social Features | [ 03 Extending Your Blog Application ](/packtpub/2024/730_django_5_by_example/03_extending_your_blog_application) ≫ |
 |:----:|:----:|:----:|
 
-> (1) Path: packtpub/2024/730_django_5_by_example/02_enhancing_your_blog_and_adding_social_features
-> (2) Markdown
-> (3) Title: 02 Enhancing Your Blog and Adding Social Features
-> (4) Short Description: By Antonio Melé Publication Date: 2024-04-30
-> (5) tags: Django
-> Book Title: 730 Django 5 by Example
+> Page Properties:
+> (1) Title: 02 Enhancing Your Blog and Adding Social Features
+> (2) Short Description: 730 Django 5 by Example 5ed
+> (3) Path: packtpub/2024/730_django_5_by_example/02_enhancing_your_blog_and_adding_social_features
+> Book Title: Django 5 By Example - Fifth Edition
+> Date: By Antonio Melé Publication Date: 2024-04-30
+> tags: Django
 > Link: https://subscription.packtpub.com/book/web-development/9781805125457/1
 > create: 2024-07-30 화 15:30:45
 > Images: /packtpub/img/02/

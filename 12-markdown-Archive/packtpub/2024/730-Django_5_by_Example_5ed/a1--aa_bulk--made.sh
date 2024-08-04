@@ -73,12 +73,13 @@ ${link_box}
 ${link_box}
 |:----:|:----:|:----:|
 
-> (1) Path: ${small_Publisher}/${small_BookLink}/${small_Jemok}
-> (2) Markdown
-> (3) Title: ${ChapterSeq} ${ChapterTitle}
-> (4) Short Description: ${ShortDescription}
-> (5) tags: ${tags}
-> Book Title: ${BookTitle}
+> Page Properties:
+> (1) Title: ${ChapterSeq} ${ChapterTitle}
+> (2) Short Description: ${ShortDescription}
+> (3) Path: ${small_Publisher}/${small_BookLink}/${small_Jemok}
+> Book Title: ${BookName}
+> AuthorDate: ${AuthorDate}
+> tags: ${tags}
 > Link: ${https_line}
 > create: $(date +'%Y-%m-%d %a %H:%M:%S')
 > Images: /${small_Publisher}/${img_dir}/${small_ChapterSeq}/
@@ -177,8 +178,10 @@ cd ${aa_bulk_dir}
 #-- -------------------------------------------------------------
 Publisher="packtpub" #-- (1) 출판사 --
 BookYear="2024" #-- (2-1) 등록년도
+BookName="Django 5 By Example - Fifth Edition" #-- 책 이름
+ShortDescription="Django 5 By Example 5ed" #-- 짧은 설명
 BookTitle="730 Django 5 by Example" #-- (2-2) 시작월일 + 책 제목 -- 730-Django_5_by_Example_5ed
-ShortDescription="By Antonio Melé Publication Date: 2024-04-30" #-- (3) 저자등 설명 --
+AuthorDate="By Antonio Melé Publication Date: 2024-04-30" #-- (3) 저자등 설명 --
 tags="Django" #-- (4) 찾기 위한 태그 --
 https_line="https://subscription.packtpub.com/book/web-development/9781805125457/1" #-- (5) 책 링크 --
 #-- -------------------------------------------------------------
