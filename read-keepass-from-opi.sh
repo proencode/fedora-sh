@@ -1,52 +1,68 @@
 #!/bin/sh
 
-file="keepassproen.kdbx"
-user="orangepi"
-addr="proen.duckdns.org"
-svrdir="ar*/ke*" #-- svrdir="archive/keepass"
-#--- localdir="${HOME}/Downloads/bada"
-#--- localdir=$(echo "$localdir" | perl -pe 's/\/+$//') #-- 마지막 '/' 를 삭제한다.
-localdir="" #-- 현재 위치에 파일을 받기로 한다.
+keeps_name="keepassproen" #-- keepass 파일의 이름만
+keeps_ext="kdbx" #-- 확장자
+keepsNameExt="${keeps_name}.${keeps_ext}" #-- keepass 파일명 전체
 
-#--- if [ ! -d ${localdir} ]; then
-#---    echo "#-- mkdir ${localdir}"
-#---    mkdir ${localdir}
-#--- fi
+userID="orangepi" #-- 호스트의 사용자
+svrURL="proen.duckdns.org" #-- 호스트 URL
+svrDIR="archive/keepass" #-- 파일을 저장하는 디렉토리
 
-echo "#-- ${user}@${addr}:${svrdir} COPY TO ${file}"
+cloudDRV="yosjgc" #-- 클라우드 드라이브
+cloudDIR="keepass" #-- 파일을 저장하는 디렉토리
 
-echo "#-- INPUT port no"
-echo "#--       ----"
-read -s port #-- 호스트 접속시 포트번호, '-s' 타이핑하는 글자를 안보여준다.
+cat <<__EOF__
+#-- !!! ${keepsNameExt} 파일이 있는곳에서 실행해야 한다. !!!
 
-echo "#-- INPUT svrdir: [ ${svrdir} ]"
-echo "#--       ------"
+#-- userID@svrURL:${svrDIR} COPY TO ${keepsNameExt}
+#-- (1) INPUT: port no (서버 포트번호 입력시 숫자 표시 안됨)
+#--            ----
+__EOF__
+read -s svrPORT #-- 호스트 접속시 포트번호, '-s' 타이핑하는 글자를 안보여준다.
+
+cat <<__EOF__
+#-- (2) INPUT: 서버 디렉토리 [ ${svrDIR} ]
+#--            -------------
+__EOF__
 read a
+
 if [ "x$a" != "x" ]; then
-        svrdir=$a
+        svrDIR=$a
 fi
-svrdir=$(echo "$svrdir" | perl -pe 's/\/+$//') #-- 마지막 '/' 를 삭제한다.
-echo "#--> ${svrdir}/"
+svrDIR=$(echo "$svrDIR" | perl -pe 's/\/+$//') #-- 마지막에 있는 '/' 는 모두 삭제하는 perl 스크립트
 
-echo ""
-echo "#-- ssh -p 65536 user@${addr} ls -l ${svrdir}/${file}"
-ssh -p ${port} ${user}@${addr} ls -l ${svrdir}/${file}
-echo "#--                           -----|--------------- (1) 서버의 현재 파일"
-echo "                                   |"
-echo "                                   V"
-echo "#-- ls -l ${localdir}${file}"
-ls -l ${localdir}${file}
-echo "#--                     --------------------- (2) 로컬의 현재 파일"
+cat <<__EOF__
+#--> ${svrDIR}
 
-echo ""
-echo "#-- [ (1) 서버의 파일 시각이 (2) 로컬의 파일 시각보다 최신인 경우만 받아온다 ]"
-echo "#--       ----------------       ---------------- "
-echo ""
-echo "#-- rsync -avzr -e \"ssh -p 65536\" user@${addr}:${svrdir}/${file} ${localdir}${file}"
-echo "#-- 서버에서 받아온다."
-rsync -avzr -e "ssh -p ${port}" ${user}@${addr}:${svrdir}/${file} ${localdir}${file}
-
-echo ""
-echo "#-- ls -l ${localdir}${file}"
-ls -l ${localdir}${file}
-echo "#--                     --------------------- (3) 로컬의 최종 파일"
+#-- ssh -p svrPORT userID@svrURL ls -l ${svrDIR}/${keepsNameExt}
+#--                           -----|--------------- (3) 서버 의 현재 파일
+__EOF__
+ssh -p ${svrPORT} ${userID}@${svrURL} ls -l ${svrDIR}/${keepsNameExt}
+cat <<__EOF__
+#--                           -----|--------------- (3) 서버 의 현재 파일
+#--                                |
+#--                                V
+#-- ls -l ${keepsNameExt}
+#--                           --------------------- (4) 로컬 (이 PC) 의 현재 파일
+__EOF__
+ls -l ${keepsNameExt}
+cat <<__EOF__
+#--                           --------------------- (4) 로컬 (이 PC) 의 현재 파일
+#--
+#-- [ (3) 서버의 파일 시각 이 (4) 로컬의 파일 시각 보다 최신인 경우만 받아온다 ]
+#--       ----------------   >>   ---------------- 
+#--
+#-- 서버의 파일이 더 최근이면 'y' 입력:
+__EOF__
+read a
+if [ "x$a" = "xy" ]; then
+	cat <<__EOF__
+#-- (5) 서버에서 받아온다.
+#-- rsync -avzr -e "ssh -p svrPORT" userID@svrURL:${svrDIR}/${keepsNameExt} ${keepsNameExt}
+__EOF__
+	rsync -avzr -e "ssh -p ${svrPORT}" ${userID}@${svrURL}:${svrDIR}/${keepsNameExt} ${keepsNameExt}
+	echo "#-- ls -l ${keepsNameExt}"
+	echo "#--                           --------------------- (6) 로컬의 최종 파일"
+	ls -l ${keepsNameExt}
+	echo "#--                           --------------------- (6) 로컬의 최종 파일"
+fi
