@@ -1,15 +1,15 @@
 #!/bin/sh
 
-file_name="keepassproen"
-file_ext="kdbx"
-file="${file_name}.${file_ext}"
+file_name="keepassproen" #-- keepass 파일의 이름만
+file_ext="kdbx" #-- 확장자
+file="${file_name}.${file_ext}" #-- keepass 파일명 전체
 
 echo "#-- ${file} 파일이 있는곳에서 실행해야 한다."
 echo "#-- INPUT 수정메모"
 echo "#--       --------"
 read logmsg
 
-logmemo=$(date +%y%m%d%a-%H%M" ${logmsg}")
+logmemo=$(date +%y%m%d%a-%H%M" ${logmsg}") #-- 날짜 + 수정메모
 echo "#----------"
 echo ""
 echo "${logmemo}"
@@ -21,20 +21,20 @@ echo "#-- 수정메모를 keep 에 붙인다."
 echo "#-- press Enter:"
 read a
 
-user="orangepi"
-addr="proen.duckdns.org"
-svr_ArKe="archive/keepass"
+user="orangepi" #-- 호스트의 사용자
+addr="proen.duckdns.org" #-- 호스트 이름
+svr_ArKe="archive/keepass" #-- 파일을 저장하는 디렉토리
 echo "#--"
 echo "#-- ${file} COPYTO user@server:${svr_ArKe} AND GDrive"
 echo "#-- (1) INPUT port no"
 echo "#--           ----"
-read -s port
+read -s port #-- 호스트 접속시 포트번호, '-s' 타이핑하는 글자를 안보여준다.
 
 echo "#-- (2) INPUT arc./kee.: [ ${svr_ArKe} ]"
 echo "#--           ---------"
 read a
 if [ "x$a" != "x" ]; then
-	svr_ArKe=$a
+        svr_ArKe=$a
 fi
 svr_ArKe=$(echo "$svr_ArKe" | perl -pe 's/\/+$//')
 echo "#--> ${svr_ArKe}"

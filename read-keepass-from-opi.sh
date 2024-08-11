@@ -9,21 +9,21 @@ svrdir="ar*/ke*" #-- svrdir="archive/keepass"
 localdir="" #-- 현재 위치에 파일을 받기로 한다.
 
 #--- if [ ! -d ${localdir} ]; then
-#--- 	echo "#-- mkdir ${localdir}"
-#--- 	mkdir ${localdir}
+#---    echo "#-- mkdir ${localdir}"
+#---    mkdir ${localdir}
 #--- fi
 
 echo "#-- ${user}@${addr}:${svrdir} COPY TO ${file}"
 
 echo "#-- INPUT port no"
 echo "#--       ----"
-read -s port
+read -s port #-- 호스트 접속시 포트번호, '-s' 타이핑하는 글자를 안보여준다.
 
 echo "#-- INPUT svrdir: [ ${svrdir} ]"
 echo "#--       ------"
 read a
 if [ "x$a" != "x" ]; then
-	svrdir=$a
+        svrdir=$a
 fi
 svrdir=$(echo "$svrdir" | perl -pe 's/\/+$//') #-- 마지막 '/' 를 삭제한다.
 echo "#--> ${svrdir}/"
