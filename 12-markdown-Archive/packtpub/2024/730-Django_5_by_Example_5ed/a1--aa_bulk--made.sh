@@ -19,9 +19,9 @@ echo "#----> file_Made CurrentSeq ${CurrentSeq}; CurrentTitle ${CurrentTitle}; P
 		fi
 	fi
 
-	small_ChapterSeq=$(echo "${ChapterSeq,,}" | sed 's/ /_/g' | sed 's/\./_/g' | sed 's/“/\"/g' | sed 's/”/\"/g' | sed "s/’/'/g")
 	Jemok="${ChapterSeq} ${ChapterTitle}"
-	small_Jemok=$(echo "${Jemok,,}" | sed 's/ /_/g' | sed 's/\./_/g' | sed 's/“/\"/g' | sed 's/”/\"/g' | sed "s/’/'/g")
+	underline_Jemok=$(echo "${Jemok}" | sed 's/ /_/g' | sed 's/\./_/g' | sed 's/“/\"/g' | sed 's/”/\"/g' | sed "s/’/'/g")
+	small_Jemok=$(echo "${underline_Jemok,,}")
 ## 
 ## https://coldmater.tistory.com/226
 ## Vim 에서 매크로 등록하고 실행하기
@@ -76,13 +76,12 @@ ${link_box}
 > Page Properties:
 > (1) Title: ${ChapterSeq} ${ChapterTitle}
 > (2) Short Description: ${ShortDescription}
-> (3) Path: ${small_Publisher}/${small_BookLink}/${small_Jemok}
+> (3) Path: ${underline_Publisher}/${underline_BookLink}/${underline_Jemok}
 > Book Title: ${BookName}
 > AuthorDate: ${AuthorDate}
 > tags: ${tags}
 > Link: ${https_line}
 > create: $(date +'%Y-%m-%d %a %H:%M:%S')
-> Images: /${small_Publisher}/${img_dir}/${small_ChapterSeq}/
 > .md Name: ${small_Jemok}.md
 
 __EOF__
@@ -97,17 +96,19 @@ JemokMade () {
 		PrevLink="$PrevTitle"
 	else
 		PrevJemok="${PrevSeq} ${PrevTitle}"
-		small_PrevJemok=$(echo "${PrevJemok,,}" | sed 's/ /_/g' | sed 's/\./_/g' | sed 's/“/\"/g' | sed 's/”/\"/g' | sed "s/’/'/g")
+		underline_PrevJemok=$(echo "${PrevJemok}" | sed 's/ /_/g' | sed 's/\./_/g' | sed 's/“/\"/g' | sed 's/”/\"/g' | sed "s/’/'/g")
+		small_PrevJemok=$(echo "${underline_PrevJemok,,}")
 
-		PrevLink="[ ${PrevJemok} ](/${small_Publisher}/${small_BookLink}/${small_PrevJemok})"
+		PrevLink="[ ${PrevJemok} ](/${underline_Publisher}/${underline_BookLink}/${underline_PrevJemok})"
 	fi
 
 	if [ "x${NextSeq}" = "xSKIP" ]; then
 		NextLink="$NextTitle"
 	else
 		NextJemok="${NextSeq} ${NextTitle}"
-		small_NextJemok=$(echo "${NextJemok,,}" | sed 's/ /_/g' | sed 's/\./_/g' | sed 's/“/\"/g' | sed 's/”/\"/g' | sed "s/’/'/g")
-		NextLink="[ ${NextJemok} ](/${small_Publisher}/${small_BookLink}/${small_NextJemok})"
+		underline_NextJemok=$(echo "${NextJemok}" | sed 's/ /_/g' | sed 's/\./_/g' | sed 's/“/\"/g' | sed 's/”/\"/g' | sed "s/’/'/g")
+		small_NextJemok=$(echo "${NextJemok,,}")
+		NextLink="[ ${NextJemok} ](/${underline_Publisher}/${underline_BookLink}/${underline_NextJemok})"
 	fi
 }
 #-- 링크를 만든다. JemokMade #from <-- md_Create () {
@@ -187,9 +188,11 @@ https_line="https://subscription.packtpub.com/book/web-development/9781805125457
 #-- -------------------------------------------------------------
 #-- ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 #--
-small_Publisher=$(echo "${Publisher,,}" | sed 's/ /_/g' | sed 's/\./_/g' | sed 's/“/\"/g' | sed 's/”/\"/g' | sed "s/’/'/g")
+underline_Publisher=$(echo "${Publisher}" | sed 's/ /_/g' | sed 's/\./_/g' | sed 's/“/\"/g' | sed 's/”/\"/g' | sed "s/’/'/g")
+small_Publisher=$(echo "${underline_Publisher,,}")
 BookLink="${BookYear}/${BookTitle}" #-- (2) 호스트의 경로
-small_BookLink=$(echo "${BookLink,,}" | sed 's/ /_/g' | sed 's/\./_/g' | sed 's/“/\"/g' | sed 's/”/\"/g' | sed "s/’/'/g")
+underline_BookLink=$(echo "${BookLink}" | sed 's/ /_/g' | sed 's/\./_/g' | sed 's/“/\"/g' | sed 's/”/\"/g' | sed "s/’/'/g")
+small_BookLink=$(echo "${underline_BookLink,,}")
 
 #--
 #-- (6) md_Create "권 번호" "제목"

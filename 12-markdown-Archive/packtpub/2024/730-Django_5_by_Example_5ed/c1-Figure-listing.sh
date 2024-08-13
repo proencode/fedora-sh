@@ -5,7 +5,7 @@ if [ "x$1" == "x" ] || [ ! -f $1 ]; then
 	ls -l *.md | sed 's/-rw-rw-r-- 1 ${USER} ${USER}//'
 	exit -1
 fi
-img_link="/packtpub/2024/730/"
+img_link="/packtpub/2024/730"
 echo "#-- image link: [ ${img_link} ]"
 read a
 if [ "x$a" != "x" ]; then

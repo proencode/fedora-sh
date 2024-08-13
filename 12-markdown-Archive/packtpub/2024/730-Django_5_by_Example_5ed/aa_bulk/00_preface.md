@@ -1,5 +1,5 @@
 
-| 🏁 730 Django 5 by Example | 00 Preface | [ 01 Building a Blog Application ](/packtpub/2024/730_django_5_by_example/01_building_a_blog_application) ≫ |
+| 🏁 730 Django 5 by Example | 00 Preface | [ 01 Building a Blog Application ](/packtpub/2024/730_Django_5_by_Example/01_Building_a_Blog_Application) ≫ |
 |:----:|:----:|:----:|
 
 # 00 Preface
@@ -169,17 +169,17 @@ That’s it! We’ll send your free PDF and other benefits to your email directl
 
 
 
-| 🏁 730 Django 5 by Example | 00 Preface | [ 01 Building a Blog Application ](/packtpub/2024/730_django_5_by_example/01_building_a_blog_application) ≫ |
+| 🏁 730 Django 5 by Example | 00 Preface | [ 01 Building a Blog Application ](/packtpub/2024/730_Django_5_by_Example/01_Building_a_Blog_Application) ≫ |
 |:----:|:----:|:----:|
 
-> (1) Path: packtpub/2024/730_django_5_by_example/00_preface
-> (2) Markdown
-> (3) Title: 00 Preface
-> (4) Short Description: By Antonio Melé Publication Date: 2024-04-30
-> (5) tags: Django
-> Book Title: 730 Django 5 by Example
+> Page Properties:
+> (1) Title: 00 Preface
+> (2) Short Description: Django 5 By Example 5ed
+> (3) Path: packtpub/2024/730_Django_5_by_Example/00_Preface
+> Book Title: Django 5 By Example - Fifth Edition
+> AuthorDate: By Antonio Melé Publication Date: 2024-04-30
+> tags: Django
 > Link: https://subscription.packtpub.com/book/web-development/9781805125457/1
-> create: 2024-07-30 화 15:30:44
-> Images: /packtpub/img/00/
+> create: 2024-08-13 화 13:49:11
 > .md Name: 00_preface.md
 

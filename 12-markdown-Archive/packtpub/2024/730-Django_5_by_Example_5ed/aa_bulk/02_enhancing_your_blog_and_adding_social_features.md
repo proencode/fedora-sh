@@ -1,8 +1,9 @@
 
-| ≪ [ 01 Building a Blog Application ](/packtpub/2024/730_django_5_by_example/01_building_a_blog_application) | 02 Enhancing Your Blog and Adding Social Features | [ 03 Extending Your Blog Application ](/packtpub/2024/730_django_5_by_example/03_extending_your_blog_application) ≫ |
+| ≪ [ 01 Building a Blog Application ](/packtpub/2024/730_Django_5_by_Example/01_Building_a_Blog_Application) | 02 Enhancing Your Blog and Adding Social Features | [ 03 Extending Your Blog Application ](/packtpub/2024/730_Django_5_by_Example/03_Extending_Your_Blog_Application) ≫ |
 |:----:|:----:|:----:|
 
 # 02 Enhancing Your Blog and Adding Social Features
+
 Enhancing Your Blog and Adding Social Features
 In the preceding chapter, we learned the main components of Django by developing a simple blog application using views, templates, and URLs. In this chapter, we will extend the functionalities of the blog application with features that can be found in many blogging platforms nowadays.
 
@@ -1613,17 +1614,17 @@ Reusable field group templates: https://docs.djangoproject.com/en/5.0/topics/for
 
 
 
-| ≪ [ 01 Building a Blog Application ](/packtpub/2024/730_django_5_by_example/01_building_a_blog_application) | 02 Enhancing Your Blog and Adding Social Features | [ 03 Extending Your Blog Application ](/packtpub/2024/730_django_5_by_example/03_extending_your_blog_application) ≫ |
+| ≪ [ 01 Building a Blog Application ](/packtpub/2024/730_Django_5_by_Example/01_Building_a_Blog_Application) | 02 Enhancing Your Blog and Adding Social Features | [ 03 Extending Your Blog Application ](/packtpub/2024/730_Django_5_by_Example/03_Extending_Your_Blog_Application) ≫ |
 |:----:|:----:|:----:|
 
-> (1) Path: packtpub/2024/730_django_5_by_example/02_enhancing_your_blog_and_adding_social_features
-> (2) Markdown
-> (3) Title: 02 Enhancing Your Blog and Adding Social Features
-> (4) Short Description: By Antonio Melé Publication Date: 2024-04-30
-> (5) tags: Django
-> Book Title: 730 Django 5 by Example
+> Page Properties:
+> (1) Title: 02 Enhancing Your Blog and Adding Social Features
+> (2) Short Description: Django 5 By Example 5ed
+> (3) Path: packtpub/2024/730_Django_5_by_Example/02_Enhancing_Your_Blog_and_Adding_Social_Features
+> Book Title: Django 5 By Example - Fifth Edition
+> AuthorDate: By Antonio Melé Publication Date: 2024-04-30
+> tags: Django
 > Link: https://subscription.packtpub.com/book/web-development/9781805125457/1
-> create: 2024-07-30 화 15:30:45
-> Images: /packtpub/img/02/
+> create: 2024-08-13 화 13:49:11
 > .md Name: 02_enhancing_your_blog_and_adding_social_features.md
 

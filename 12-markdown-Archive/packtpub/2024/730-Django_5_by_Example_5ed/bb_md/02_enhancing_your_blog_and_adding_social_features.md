@@ -1,5 +1,5 @@
 
-| ≪ [ 01 Building a Blog Application ](/packtpub/2024/730_django_5_by_example/01_building_a_blog_application) | 02 Enhancing Your Blog and Adding Social Features | [ 03 Extending Your Blog Application ](/packtpub/2024/730_django_5_by_example/03_extending_your_blog_application) ≫ |
+| ≪ [ 01 Building a Blog Application ](/packtpub/2024/730_Django_5_by_Example/01_Building_a_Blog_Application) | 02 Enhancing Your Blog and Adding Social Features | [ 03 Extending Your Blog Application ](/packtpub/2024/730_Django_5_by_Example/03_Extending_Your_Blog_Application) ≫ |
 |:----:|:----:|:----:|
 
 # Enhancing Your Blog and Adding Social Features
@@ -673,64 +673,67 @@ This is the process to display the form and handle the form submission:
 form = EmailPostForm()
 ```
 
-When the user fills in the form and submits it via POST, a form instance is created using the submitted data contained in request.POST:
+2. When the user fills in the form and submits it via `POST`, a form instance is created using the submitted data contained in `request.POST`:
+```python
 if request.method == 'POST':
     # Form was submitted
     form = EmailPostForm(request.POST)
+```
 
-Copy
+3. After this, the data submitted is validated using the form’s `is_valid()` method. This method validates the data introduced in the form and returns `True` if all fields contain valid data. If any field contains invalid data, then `is_valid()` returns `False`. The list of validation errors can be obtained with `form.errors`.
+1. If the form is not valid, the form is rendered in the template again, including the data submitted. Validation errors will be displayed in the template.
+If the form is valid, the validated data is retrieved with `form.cleaned_data.` This attribute is a dictionary of form fields and their values. Forms not only validate the data but also clean the data by normalizing it to a consistent format.
 
-Explain
-After this, the data submitted is validated using the form’s is_valid() method. This method validates the data introduced in the form and returns True if all fields contain valid data. If any field contains invalid data, then is_valid() returns False. The list of validation errors can be obtained with form.errors.
-If the form is not valid, the form is rendered in the template again, including the data submitted. Validation errors will be displayed in the template.
-If the form is valid, the validated data is retrieved with form.cleaned_data. This attribute is a dictionary of form fields and their values. Forms not only validate the data but also clean the data by normalizing it to a consistent format.
-If your form data does not validate, cleaned_data will contain only the valid fields.
+> If your form data does not validate, `cleaned_data` will contain only the valid fields.
 
-We have implemented the view to display the form and handle the form submission. We will now learn how to send emails using Django and then we will add that functionality to the post_share view.
+We have implemented the view to display the form and handle the form submission. We will now learn how to send emails using Django and then we will add that functionality to the `post_share` view.
 
-Sending emails with Django
+## Sending emails with Django
+
 Sending emails with Django is very straightforward. You need to have a local SMTP server, or you need to access an external SMTP server, like your email service provider.
 
 The following settings allow you to define the SMTP configuration to send emails with Django:
 
-EMAIL_HOST: The SMTP server host; the default is localhost
-EMAIL_PORT: The SMTP port; the default is 25
-EMAIL_HOST_USER: The username for the SMTP server
-EMAIL_HOST_PASSWORD: The password for the SMTP server
-EMAIL_USE_TLS: Whether to use a Transport Layer Security (TLS) secure connection
-EMAIL_USE_SSL: Whether to use an implicit TLS secure connection
-Additionally, you can use the DEFAULT_FROM_EMAIL setting to specify the default sender when sending emails with Django. For this example, we will use Google’s SMTP server with a standard Gmail account.
+> - `EMAIL_HOST`: The SMTP server host; the default is `localhost`
+> - `EMAIL_PORT`: The SMTP port; the default is `25`
+> - `EMAIL_HOST_USER`: The username for the SMTP server
+> - `EMAIL_HOST_PASSWORD`: The password for the SMTP server
+> - `EMAIL_USE_TLS`: Whether to use a **Transport Layer Security (TLS)** secure connection
+> - `EMAIL_USE_SSL`: Whether to use an implicit TLS secure connection
 
-Working with environment variables
+Additionally, you can use the `DEFAULT_FROM_EMAIL` setting to specify the default sender when sending emails with Django. For this example, we will use Google’s SMTP server with a standard Gmail account.
+
+## Working with environment variables
+
 We will add SMTP configuration settings to the project, and we will load the SMTP credentials from environment variables. By using environment variables, we will avoid embedding credentials in the source code. There are multiple reasons to keep configuration separate from the code:
 
-Security: Credentials or secret keys in the code can lead to unintentional exposure, especially if you push the code to public repositories.
-Flexibility: Keeping the configuration separate will allow you to use the same code base across different environments without any changes. You will learn how to build multiple environments in Chapter 17, Going Live.
-Maintainability: Changing a configuration won’t require a code change, ensuring that your project remains consistent across versions.
-To facilitate the separation of configuration from code, we are going to use python-decouple. This library simplifies the use of environment variables in your projects. You can find information about python-decouple at https://github.com/HBNetwork/python-decouple.
+> - `Security`: Credentials or secret keys in the code can lead to unintentional exposure, especially if you push the code to public repositories.
+> - `Flexibility`: Keeping the configuration separate will allow you to use the same code base across different environments without any changes. You will learn how to build multiple environments in *Chapter 17, Going Live*.
+> - `Maintainability`: Changing a configuration won’t require a code change, ensuring that your project remains consistent across versions.
 
-First, install python-decouple via pip by running the following command:
+To facilitate the separation of configuration from code, we are going to use `python-decouple`. This library simplifies the use of environment variables in your projects. You can find information about `python-decouple` at https://github.com/HBNetwork/python-decouple.
 
+First, install `python-decouple` via `pip` by running the following command:
+
+```bash
 python -m pip install python-decouple==3.8
+```
 
-Copy
+Then, create a new file inside your project’s root directory and name it `.env`. The `.env` file will contain key-value pairs of environment variables. Add the following lines to the new file:
 
-Explain
-Then, create a new file inside your project’s root directory and name it .env. The .env file will contain key-value pairs of environment variables. Add the following lines to the new file:
-
+```python
 EMAIL_HOST_USER=your_account@gmail.com
 EMAIL_HOST_PASSWORD=
 DEFAULT_FROM_EMAIL=My Blog <your_account@gmail.com>
+```
 
-Copy
+If you have a Gmail account, replace `your_account@gmail.com` with your Gmail account. The `EMAIL_HOST_PASSWORD` variable has no value yet, we will add it later. The `DEFAULT_FROM_EMAIL` variable will be used to specify the default sender for our emails. If you don’t have a Gmail account, you can use the SMTP credentials for your email service provider.
 
-Explain
-If you have a Gmail account, replace your_account@gmail.com with your Gmail account. The EMAIL_HOST_PASSWORD variable has no value yet, we will add it later. The DEFAULT_FROM_EMAIL variable will be used to specify the default sender for our emails. If you don’t have a Gmail account, you can use the SMTP credentials for your email service provider.
+If you are using a `git` repository for your code, make sure to include `.env` in the `.gitignore` file of your repository. By doing so, you ensure that credentials are excluded from the repository.
 
-If you are using a git repository for your code, make sure to include .env in the .gitignore file of your repository. By doing so, you ensure that credentials are excluded from the repository.
+Edit the `settings.py` file of your project and add the following code to it:
 
-Edit the settings.py file of your project and add the following code to it:
-
+```bash
 from decouple import config
 # ...
 # Email server configuration
@@ -740,29 +743,27 @@ EMAIL_HOST_PASSWORD = config('EMAIL_HOST_PASSWORD')
 EMAIL_PORT = 587
 EMAIL_USE_TLS = True
 DEFAULT_FROM_EMAIL = config('DEFAULT_FROM_EMAIL')
+```
 
-Copy
+The `EMAIL_HOST_USER`, `EMAIL_HOST_PASSWORD` and `DEFAULT_FROM_EMAIL` settings are now loaded from environment variables defined in the `.env` file.
 
-Explain
-The EMAIL_HOST_USER, EMAIL_HOST_PASSWORD and DEFAULT_FROM_EMAIL settings are now loaded from environment variables defined in the .env file.
+The provided `EMAIL_HOST`, `EMAIL_PORT` and `EMAIL_USE_TLS` settings are for Gmail’s SMTP server. If you don’t have a Gmail account, you can use the SMTP server configuration of your email service provider.
 
-The provided EMAIL_HOST, EMAIL_PORT and EMAIL_USE_TLS settings are for Gmail’s SMTP server. If you don’t have a Gmail account, you can use the SMTP server configuration of your email service provider.
+Instead of Gmail, you can also use a professional, scalable email service that allows you to send emails via SMTP using your own domain, such as SendGrid (https://sendgrid.com/) or Amazon **Simple Email Service (SES)** (https://aws.amazon.com/ses/). Both services will require you to verify your domain and sender email accounts and will provide you with SMTP credentials to send emails. The `django-anymail` application simplifies the task of adding email service providers to your project like SendGrid or Amazon SES. You can find installation instructions for `django-anymail` at https://anymail.dev/en/stable/installation/, and the list of supported email service providers at https://anymail.dev/en/stable/esps/.
 
-Instead of Gmail, you can also use a professional, scalable email service that allows you to send emails via SMTP using your own domain, such as SendGrid (https://sendgrid.com/) or Amazon Simple Email Service (SES) (https://aws.amazon.com/ses/). Both services will require you to verify your domain and sender email accounts and will provide you with SMTP credentials to send emails. The django-anymail application simplifies the task of adding email service providers to your project like SendGrid or Amazon SES. You can find installation instructions for django-anymail at https://anymail.dev/en/stable/installation/, and the list of supported email service providers at https://anymail.dev/en/stable/esps/.
+If you can’t use an SMTP server, you can tell Django to write emails to the console by adding the following setting to the `settings.py` file:
 
-If you can’t use an SMTP server, you can tell Django to write emails to the console by adding the following setting to the settings.py file:
-
+```python
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+```
 
-Copy
-
-Explain
 By using this setting, Django will output all emails to the shell instead of sending them. This is very useful for testing your application without an SMTP server.
 
 In order to send emails with Gmail’s SMTP server, make sure that two-step verification is active in your Gmail account.
 
 Open https://myaccount.google.com/security in your browser and enable 2-Step Verification for your account, as shown in Figure 2.11:
 
+![ 2.11 The sign in to Google page for Google accounts ](/packtpub/2024/730/2.11-the_sign_in.webp)
 
 Figure 2.11: The sign in to Google page for Google accounts
 
@@ -770,72 +771,74 @@ Then, you need to create an app password and use it for your SMTP credentials. A
 
 To create an app password, open https://myaccount.google.com/apppasswords in your browser. You will see the following screen:
 
+![ 2.12 Form to generate a new Google app password ](/packtpub/2024/730/2.12-form_to_generate.webp)
 
 Figure 2.12: Form to generate a new Google app password
 
-If you cannot access App passwords, it might be that 2-Step Verification is not set for your account, your account is an organization account instead of a standard Gmail account, or you turned on Google’s advanced protection. Make sure to use a standard Gmail account and activate 2-Step Verification for your Google account. You can find more information at https://support.google.com/accounts/answer/185833.
+If you cannot access **App passwords**, it might be that 2-Step Verification is not set for your account, your account is an organization account instead of a standard Gmail account, or you turned on Google’s advanced protection. Make sure to use a standard Gmail account and activate 2-Step Verification for your Google account. You can find more information at https://support.google.com/accounts/answer/185833.
 
-Enter the name Blog and click the Create button, as follows:
+Enter the name `Blog` and click the Create button, as follows:
 
+![ 2.13 Form to generate a new Google app password ](/packtpub/2024/730/2.13-form_to_generate.webp)
 
 Figure 2.13: Form to generate a new Google app password
 
 A new password will be generated and displayed like this:
 
+![ 2.14 Generated Google app password ](/packtpub/2024/730/2.14-generated_google_app.webp)
 
 Figure 2.14: Generated Google app password
 
 Copy the generated app password.
 
-Next, edit the .env file of your project and add the app password to the EMAIL_HOST_PASSWORD variable, as follows:
+Next, edit the `.env` file of your project and add the app password to the `EMAIL_HOST_PASSWORD` variable, as follows:
 
+```python
 EMAIL_HOST_USER=your_account@gmail.com
 EMAIL_HOST_PASSWORD=xxxxxxxxxxxxxxxx
 DEFAULT_FROM_EMAIL=My Blog <your_account@gmail.com>
+```
 
-Copy
-
-Explain
 Open the Python shell by running the following command in the system shell prompt:
 
+```bash
 python manage.py shell
+```
 
-Copy
-
-Explain
 Execute the following code in the Python shell:
 
+```bash
 >>> from django.core.mail import send_mail
 >>> send_mail('Django mail',
 ...           'This e-mail was sent with Django.',
 ...           'your_account@gmail.com',
 ...           ['your_account@gmail.com'],
 ...           fail_silently=False)
+```
 
-Copy
+The `send_mail()` function takes the subject, message, sender, and list of recipients as required arguments. By setting the optional argument `fail_silently=False`, we are telling it to raise an exception if the email cannot be sent. If the output you see is `1`, then your email was successfully sent.
 
-Explain
-The send_mail() function takes the subject, message, sender, and list of recipients as required arguments. By setting the optional argument fail_silently=False, we are telling it to raise an exception if the email cannot be sent. If the output you see is 1, then your email was successfully sent.
+If you get a `CERTIFICATE_VERIFY_FAILED` error, install the `certify` module with the command `pip install --upgrade certifi`. If you are using macOS, run the following command on the shell to install `certify` and let Python access macOS root certificates:
 
-If you get a CERTIFICATE_VERIFY_FAILED error, install the certify module with the command pip install --upgrade certifi. If you are using macOS, run the following command on the shell to install certify and let Python access macOS root certificates:
-
+```bash
 /Applications/Python\ 3.12/Install\ Certificates.command
+```
 
-Copy
-
-Explain
 Check your inbox. You should have received the email as displayed in Figure 2.15:
 
+![ 2.15 Test email sent displayed in Gmail ](/packtpub/2024/730/2.15-test_email_sent.webp)
 
 Figure 2.15: Test email sent displayed in Gmail
 
 You just sent your first email with Django! You can find more information about sending emails with Django at https://docs.djangoproject.com/en/5.0/topics/email/.
 
-Let’s add this functionality to the post_share view.
+Let’s add this functionality to the `post_share` view.
 
-Sending emails in views
-Edit the post_share view in the views.py file of the blog application, as follows:
+## Sending emails in views
 
+Edit the `post_share` view in the `views.py` file of the blog application, as follows:
+
+```python
 # ...
 from django.core.mail import send_mail
 # ...
@@ -882,20 +885,19 @@ def post_share(request, post_id):
             'sent': sent
         }
     )
+```
 
-Copy
+In the preceding code, we have declared a `sent` variable with the initial `False` value. We set this variable to `True` after the email is sent. We will use the `sent` variable later in the template to display a success message when the form is successfully submitted.
 
-Explain
-In the preceding code, we have declared a sent variable with the initial False value. We set this variable to True after the email is sent. We will use the sent variable later in the template to display a success message when the form is successfully submitted.
+Since we have to include a link to the post in the email, we retrieve the absolute path of the post using its `get_absolute_url()` method. We use this path as an input for `request.build_absolute_uri()` to build a complete URL, including the HTTP schema and hostname.
 
-Since we have to include a link to the post in the email, we retrieve the absolute path of the post using its get_absolute_url() method. We use this path as an input for request.build_absolute_uri() to build a complete URL, including the HTTP schema and hostname.
-
-We create the subject and the message body of the email using the cleaned data of the validated form. Finally, we send the email to the email address contained in the to field of the form. In the from_email parameter, we pass the None value, so the value of the DEFAULT_FROM_EMAIL setting will be used for the sender.
+We create the subject and the message body of the email using the cleaned data of the validated form. Finally, we send the email to the email address contained in the `to` field of the form. In the `from_email` parameter, we pass the `None` value, so the value of the `DEFAULT_FROM_EMAIL` setting will be used for the sender.
 
 Now that the view is complete, we have to add a new URL pattern for it.
 
-Open the urls.py file of your blog application and add the post_share URL pattern, as follows:
+Open the `urls.py` file of your `blog` application and add the `post_share` URL pattern, as follows:
 
+```python
 from django.urls import path
 from . import views
 app_name = 'blog'
@@ -909,17 +911,17 @@ urlpatterns = [
         name='post_detail'),
     path('<int:post_id>/share/', views.post_share, name='post_share'),
 ]
+```
 
-Copy
+## Rendering forms in templates
 
-Explain
-Rendering forms in templates
 After creating the form, programming the view, and adding the URL pattern, the only thing missing is the template for the view.
 
-Create a new file in the blog/templates/blog/post/ directory and name it share.html.
+Create a new file in the `blog/templates/blog/post/` directory and name it `share.html`.
 
-Add the following code to the new share.html template:
+Add the following code to the new `share.html` template:
 
+```html
 {% extends "blog/base.html" %}
 {% block title %}Share a post{% endblock %}
 {% block content %}
@@ -937,34 +939,31 @@ Add the following code to the new share.html template:
     </form>
   {% endif %}
 {% endblock %}
+```
 
-Copy
+This is the template that is used to both display the form to share a post via email and to display a success message when the email has been sent. We differentiate between both cases with `{% if sent %}`.
 
-Explain
-This is the template that is used to both display the form to share a post via email and to display a success message when the email has been sent. We differentiate between both cases with {% if sent %}.
+To display the form, we have defined an HTML form element, indicating that it has to be submitted by the `POST` method:
 
-To display the form, we have defined an HTML form element, indicating that it has to be submitted by the POST method:
-
+```html
 <form method="post">
+```
 
-Copy
+We have included the form instance with `{{ form.as_p }}`. We tell Django to render the form fields using HTML paragraph `<p>` elements by using the `as_p` method. We could also render the form as an unordered list with `as_ul` or as an HTML table with `as_table`.
 
-Explain
-We have included the form instance with {{ form.as_p }}. We tell Django to render the form fields using HTML paragraph <p> elements by using the as_p method. We could also render the form as an unordered list with as_ul or as an HTML table with as_table.
+We have added a `{% csrf_token %}` template tag. This tag introduces a hidden field with an autogenerated token to avoid **cross-site request forgery (CSRF)** attacks. These attacks consist of a malicious website or program performing an unwanted action for a user on the site. You can find more information about CSRF at https://owasp.org/www-community/attacks/csrf.
 
-We have added a {% csrf_token %} template tag. This tag introduces a hidden field with an autogenerated token to avoid cross-site request forgery (CSRF) attacks. These attacks consist of a malicious website or program performing an unwanted action for a user on the site. You can find more information about CSRF at https://owasp.org/www-community/attacks/csrf.
+The `{% csrf_token %}` template tag generates a hidden field that is rendered like this:
 
-The {% csrf_token %} template tag generates a hidden field that is rendered like this:
-
+```html
 <input type='hidden' name='csrfmiddlewaretoken' value='26JjKo2lcEtYkGoV9z4XmJIEHLXN5LDR' />
+```
 
-Copy
+> - By default, Django checks for the CSRF token in all `POST` requests. Remember to include the `csrf_token` tag in all forms that are submitted via `POST`.
 
-Explain
-By default, Django checks for the CSRF token in all POST requests. Remember to include the csrf_token tag in all forms that are submitted via POST.
+Edit the `blog/post/detail.html` template and make it look like this:
 
-Edit the blog/post/detail.html template and make it look like this:
-
+```html
 {% extends "blog/base.html" %}
 {% block title %}{{ post.title }}{% endblock %}
 {% block content %}
@@ -979,68 +978,68 @@ Edit the blog/post/detail.html template and make it look like this:
     </a>
   </p>
 {% endblock %}
+```
 
-Copy
-
-Explain
-We have added a link to the post_share URL. The URL is built dynamically with the {% url %} template tag provided by Django. We use the namespace called blog and the URL named post_share. We pass the id post as a parameter to build the URL.
+We have added a link to the `post_share` URL. The URL is built dynamically with the `{% url %}` template tag provided by Django. We use the namespace called `blog` and the URL named `post_share`. We pass the `id` post as a parameter to build the URL.
 
 Open the shell prompt and execute the following command to start the development server:
 
+```bash
 python manage.py runserver
+```
 
-Copy
-
-Explain
-Open http://127.0.0.1:8000/blog/ in your browser and click on any post title to view the post detail page.
+Open `http://127.0.0.1:8000/blog/` in your browser and click on any post title to view the post detail page.
 
 Under the post body, you should see the link that you just added, as shown in Figure 2.16:
 
+![ 2.16 The post detail page, including a link to share the post ](/packtpub/2024/730/2.16-the_post_detail.webp)
 
 Figure 2.16: The post detail page, including a link to share the post
 
-Click on Share this post, and you should see the page, including the form to share this post by email, as follows:
+Click on **Share this post**, and you should see the page, including the form to share this post by email, as follows:
 
-Graphical user interface, text, application
+![ 2.17 The page to share a post via email ](/packtpub/2024/730/2.17-the_page_to.webp)
 
-Description automatically generated
 Figure 2.17: The page to share a post via email
 
-CSS styles for the form are included in the example code in the static/css/blog.css file. When you click on the SEND E-MAIL button, the form is submitted and validated. If all fields contain valid data, you get a success message, as follows:
+CSS styles for the form are included in the example code in the `static/css/blog.css` file. When you click on the **SEND E-MAIL** button, the form is submitted and validated. If all fields contain valid data, you get a success message, as follows:
 
-Text
-
-Description automatically generated with medium confidence
+a![ 2.18 A success message for a post shared via email ](/packtpub/2024/730/2.18-a_success_message.webp)
+2.18-a_success_message.webp
 Figure 2.18: A success message for a post shared via email
 
 Send a post to your own email address and check your inbox. The email you receive should look like this:
 
+![ 2.19 Test email sent displayed in Gmail ](/packtpub/2024/730/2.19-test_email_sent.webp)
 
 Figure 2.19: Test email sent displayed in Gmail
 
 If you submit the form with invalid data, the form will be rendered again, including all validation errors:
 
-Graphical user interface, text, application, Teams
+![ 2.20 The share post form displaying invalid data errors ](/packtpub/2024/730/2.20-the_share_post.webp)
 
-Description automatically generated
 Figure 2.20: The share post form displaying invalid data errors
 
-Most modern browsers will prevent you from submitting a form with empty or erroneous fields. This is because the browser validates the fields based on their attributes before submitting the form. In this case, the form won’t be submitted, and the browser will display an error message for the fields that are wrong. To test the Django form validation using a modern browser, you can skip the browser form validation by adding the novalidate attribute to the HTML <form> element, like <form method="post" novalidate>. You can add this attribute to prevent the browser from validating fields and test your own form validation. After you are done testing, remove the novalidate attribute to keep the browser form validation.
+Most modern browsers will prevent you from submitting a form with empty or erroneous fields. This is because the browser validates the fields based on their attributes before submitting the form. In this case, the form won’t be submitted, and the browser will display an error message for the fields that are wrong. To test the Django form validation using a modern browser, you can skip the browser form validation by adding the `novalidate` attribute to the HTML `<form>` element, like `<form method="post" novalidate>`. You can add this attribute to prevent the browser from validating fields and test your own form validation. After you are done testing, remove the `novalidate` attribute to keep the browser form validation.
 
 The functionality for sharing posts by email is now complete. You can find more information about working with forms at https://docs.djangoproject.com/en/5.0/topics/forms/.
 
-Creating a comment system
+# Creating a comment system
+
 We will continue extending our blog application with a comment system that will allow users to comment on posts. To build the comment system, we will need the following:
 
-A comment model to store user comments on posts
-A Django form that allows users to submit comments and manages the data validation
-A view that processes the form and saves a new comment to the database
-A list of comments and the HTML form to add a new comment that can be included in the post detail template
-Creating a model for comments
+> - A comment model to store user comments on posts
+> - A Django form that allows users to submit comments and manages the data validation
+> - A view that processes the form and saves a new comment to the database
+> - A list of comments and the HTML form to add a new comment that can be included in the post detail template
+
+## Creating a model for comments
+
 Let’s start by building a model to store user comments on posts.
 
-Open the models.py file of your blog application and add the following code:
+Open the `models.py` file of your `blog` application and add the following code:
 
+```python
 class Comment(models.Model):
     post = models.ForeignKey(
         Post,
@@ -1060,117 +1059,114 @@ class Comment(models.Model):
         ]
     def __str__(self):
         return f'Comment by {self.name} on {self.post}'
+```
 
-Copy
+This is the `Comment` model. We have added a `ForeignKey` field to associate each comment with a single post. This many-to-one relationship is defined in the `Comment` model because each comment will be made on one post, and each post may have multiple comments.
 
-Explain
-This is the Comment model. We have added a ForeignKey field to associate each comment with a single post. This many-to-one relationship is defined in the Comment model because each comment will be made on one post, and each post may have multiple comments.
-
-The related_name attribute allows you to name the attribute that you use for the relationship from the related object back to this one. We can retrieve the post of a comment object using comment.post and retrieve all comments associated with a post object using post.comments.all(). If you don’t define the related_name attribute, Django will use the name of the model in lowercase, followed by _set (that is, comment_set) to name the relationship of the related object to the object of the model, where this relationship has been defined.
+The `related_name` attribute allows you to name the attribute that you use for the relationship from the related object back to this one. We can retrieve the post of a comment object using `comment.post` and retrieve all comments associated with a post object using `post.comments.all()`. If you don’t define the `related_name` attribute, Django will use the name of the model in lowercase, followed by `_set` (that is, `comment_set`) to name the relationship of the related object to the object of the model, where this relationship has been defined.
 
 You can learn more about many-to-one relationships at https://docs.djangoproject.com/en/5.0/topics/db/examples/many_to_one/.
 
-We have defined the active Boolean field to control the status of the comments. This field will allow us to manually deactivate inappropriate comments using the administration site. We use default=True to indicate that all comments are active by default.
+We have defined the `active` Boolean field to control the status of the comments. This field will allow us to manually deactivate inappropriate comments using the administration site. We use `default=True` to indicate that all comments are active by default.
 
-We have defined the created field to store the date and time when the comment was created. By using auto_now_add, the date will be saved automatically when creating an object. In the Meta class of the model, we have added ordering = ['created'] to sort comments in chronological order by default, and we have added an index for the created field in ascending order. This will improve the performance of database lookups or ordering results using the created field.
+We have defined the `created` field to store the date and time when the comment was created. By using `auto_now_add`, the date will be saved automatically when creating an object. In the `Meta` class of the model, we have added `ordering = ['created']` to sort comments in chronological order by default, and we have added an index for the `created` field in ascending order. This will improve the performance of database lookups or ordering results using the `created` field.
 
-The Comment model that we have built is not synchronized with the database. We need to generate a new database migration to create the corresponding database table.
+The `Comment` model that we have built is not synchronized with the database. We need to generate a new database migration to create the corresponding database table.
 
 Run the following command from the shell prompt:
 
+```bash
 python manage.py makemigrations blog
+```
 
-Copy
-
-Explain
 You should see the following output:
 
+```python
 Migrations for 'blog':
   blog/migrations/0003_comment.py
     - Create model Comment
+```
 
-Copy
-
-Explain
-Django has generated a 0003_comment.py file inside the migrations/ directory of the blog application. We need to create the related database schema and apply the changes to the database.
+Django has generated a `0003_comment.py` file inside the `migrations/` directory of the `blog` application. We need to create the related database schema and apply the changes to the database.
 
 Run the following command to apply existing migrations:
 
+```bash
 python manage.py migrate
+```
 
-Copy
-
-Explain
 You will get an output that includes the following line:
 
+```bash
 Applying blog.0003_comment... OK
+```
 
-Copy
+The migration has been applied and the `blog_comment` table has been created in the database.
 
-Explain
-The migration has been applied and the blog_comment table has been created in the database.
+## Adding comments to the administration site
 
-Adding comments to the administration site
 Next, we will add the new model to the administration site to manage comments through a simple interface.
 
-Open the admin.py file of the blog application, import the Comment model, and add the following ModelAdmin class:
+Open the `admin.py` file of the `blog` application, import the `Comment` model, and add the following `ModelAdmin` class:
 
+```python
 from .models import Comment, Post
 @admin.register(Comment)
 class CommentAdmin(admin.ModelAdmin):
     list_display = ['name', 'email', 'post', 'created', 'active']
     list_filter = ['active', 'created', 'updated']
     search_fields = ['name', 'email', 'body']
+```
 
-Copy
-
-Explain
 Open the shell prompt and execute the following command to start the development server:
 
+```bash
 python manage.py runserver
+```
 
-Copy
+Open `http://127.0.0.1:8000/admin/` in your browser. You should see the new model included in the **BLOG** section, as shown in *Figure 2.21*:
 
-Explain
-Open http://127.0.0.1:8000/admin/ in your browser. You should see the new model included in the BLOG section, as shown in Figure 2.21:
-
+![ 2.21 Blog application models on the Django administration index page ](/packtpub/2024/730/2.21-blog_application_models.webp)
 
 Figure 2.21: Blog application models on the Django administration index page
 
 The model is now registered on the administration site.
 
-In the Comments row, click on Add. You will see the form to add a new comment:
+In the **Comments** row, click on **Add**. You will see the form to add a new comment:
 
+![ 2.22 Form to add a new comment in the Django administration site ](/packtpub/2024/730/2.22-form_to_add.webp)
 
 Figure 2.22: Form to add a new comment in the Django administration site
 
-Now we can manage Comment instances using the administration site.
+Now we can manage `Comment` instances using the administration site.
 
-Creating forms from models
-We need to build a form to let users comment on blog posts. Remember that Django has two base classes that can be used to create forms: Form and ModelForm. We used the Form class to allow users to share posts by email. Now, we will use ModelForm to take advantage of the existing Comment model and build a form dynamically for it.
+## Creating forms from models
 
-Edit the forms.py file of your blog application and add the following lines:
+We need to build a form to let users comment on blog posts. Remember that Django has two base classes that can be used to create forms: `Form` and `ModelForm`. We used the `Form` class to allow users to share posts by email. Now, we will use `ModelForm` to take advantage of the existing `Comment` model and build a form dynamically for it.
 
+Edit the `forms.py` file of your `blog` application and add the following lines:
+
+```python
 from .models import Comment
 class CommentForm(forms.ModelForm):
     class Meta:
         model = Comment
         fields = ['name', 'email', 'body']
+```
 
-Copy
+To create a form from a model, we just indicate which model to build the form for in the `Meta` class of the form. Django will introspect the model and build the corresponding form dynamically.
 
-Explain
-To create a form from a model, we just indicate which model to build the form for in the Meta class of the form. Django will introspect the model and build the corresponding form dynamically.
-
-Each model field type has a corresponding default form field type. The attributes of model fields are taken into account for form validation. By default, Django creates a form field for each field contained in the model. However, we can explicitly tell Django which fields to include in the form using the fields attribute or define which fields to exclude using the exclude attribute. In the CommentForm form, we have explicitly included the name, email, and body fields. These are the only fields that will be included in the form.
+Each model field type has a corresponding default form field type. The attributes of model fields are taken into account for form validation. By default, Django creates a form field for each field contained in the model. However, we can explicitly tell Django which fields to include in the form using the `fields` attribute or define which fields to exclude using the `exclude` attribute. In the `CommentForm` form, we have explicitly included the `name`, `email`, and `body` fields. These are the only fields that will be included in the form.
 
 You can find more information about creating forms from models at https://docs.djangoproject.com/en/5.0/topics/forms/modelforms/.
 
-Handling ModelForms in views
-For sharing posts by email, we used the same view to display the form and manage its submission. We used the HTTP method to differentiate between both cases: GET to display the form and POST to submit it. In this case, we will add the comment form to the post detail page, and we will build a separate view to handle the form submission. The new view that processes the form will allow the user to return to the post detail view once the comment has been stored in the database.
+## Handling ModelForms in views
 
-Edit the views.py file of the blog application and add the following code:
+For sharing posts by email, we used the same view to display the form and manage its submission. We used the HTTP method to differentiate between both cases: `GET` to display the form and `POST` to submit it. In this case, we will add the comment form to the post detail page, and we will build a separate view to handle the form submission. The new view that processes the form will allow the user to return to the post detail view once the comment has been stored in the database.
 
+Edit the `views.py` file of the `blog` application and add the following code:
+
+```python
 from django.core.mail import send_mail
 from django.core.paginator import EmptyPage, PageNotAnInteger, Paginator
 from django.shortcuts import get_object_or_404, render
@@ -1205,43 +1201,43 @@ def post_comment(request, post_id):
             'comment': comment
         }
     )
+```
 
-Copy
-
-Explain
-We have defined the post_comment view that takes the request object and the post_id variable as parameters. We will be using this view to manage the post submission. We expect the form to be submitted using the HTTP POST method. We use the require_POST decorator provided by Django to only allow POST requests for this view. Django allows you to restrict the HTTP methods allowed for views. Django will throw an HTTP 405 (method not allowed) error if you try to access the view with any other HTTP method.
+We have defined the `post_comment` view that takes the `request` object and the `post_id` variable as parameters. We will be using this view to manage the post submission. We expect the form to be submitted using the HTTP `POST` method. We use the `require_POST` decorator provided by Django to only allow `POST` requests for this view. Django allows you to restrict the HTTP methods allowed for views. Django will throw an HTTP `405` (method not allowed) error if you try to access the view with any other HTTP method.
 
 In this view, we have implemented the following actions:
 
-We retrieve a published post by its id using the get_object_or_404() shortcut.
-We define a comment variable with the initial value None. This variable will be used to store the comment object when it is created.
-We instantiate the form using the submitted POST data and validate it using the is_valid() method. If the form is invalid, the template is rendered with the validation errors.
-If the form is valid, we create a new Comment object by calling the form’s save() method and assign it to the comment variable, as follows:
+1. We retrieve a published post by its `id` using the `get_object_or_404()` shortcut.
+1. We define a `comment` variable with the initial value `None`. This variable will be used to store the comment object when it is created.
+1. We instantiate the form using the submitted `POST` data and validate it using the `is_valid()` method. If the form is invalid, the template is rendered with the validation errors.
+1. If the form is valid, we create a new `Comment` object by calling the form’s `save()` method and assign it to the `comment` variable, as follows:
+
+```python
 comment = form.save(commit=False)
+```
 
-Copy
+5. The `save()` method creates an instance of the model that the form is linked to and saves it to the database. If you call it using `commit=False`, the model instance is created but not saved to the database. This allows us to modify the object before finally saving it.
+> The `save()` method is available for `ModelForm` but not for `Form` instances since they are not linked to any model.
 
-Explain
-The save() method creates an instance of the model that the form is linked to and saves it to the database. If you call it using commit=False, the model instance is created but not saved to the database. This allows us to modify the object before finally saving it.
-The save() method is available for ModelForm but not for Form instances since they are not linked to any model.
+6. We assign the post to the comment we created:
 
-We assign the post to the comment we created:
+```python
 comment.post = post
+```
 
-Copy
+7. We save the new comment to the database by calling its `save()` method:
 
-Explain
-We save the new comment to the database by calling its save() method:
+```python
 comment.save()
+```
 
-Copy
+8. We render the `blog/post/comment.html` template, passing the `post`, `form`, and `comment` objects in the template context. This template doesn’t exist yet; we will create it later.
 
-Explain
-We render the blog/post/comment.html template, passing the post, form, and comment objects in the template context. This template doesn’t exist yet; we will create it later.
 Let’s create a URL pattern for this view.
 
-Edit the urls.py file of the blog application and add the following URL pattern to it:
+Edit the `urls.py` file of the `blog` application and add the following URL pattern to it:
 
+```python
 from django.urls import path
 from . import views
 app_name = 'blog'
@@ -1259,23 +1255,24 @@ urlpatterns = [
         '<int:post_id>/comment/', views.post_comment, name='post_comment'
     ),
 ]
+```
 
-Copy
-
-Explain
 We have implemented the view to manage the submission of comments and their corresponding URL. Let’s create the necessary templates.
 
-Creating templates for the comment form
+## Creating templates for the comment form
+
 We will create a template for the comment form that we will use in two places:
 
-In the post detail template associated with the post_detail view to let users publish comments.
-In the post comment template associated with the post_comment view to display the form again if there are any form errors.
-We will create the form template and use the {% include %} template tag to include it in the two other templates.
+> - In the post detail template associated with the `post_detail` view to let users publish comments.
+> - In the post comment template associated with the `post_comment` view to display the form again if there are any form errors.
 
-In the templates/blog/post/ directory, create a new includes/ directory. Add a new file inside this directory and name it comment_form.html.
+We will create the form template and use the `{% include %}` template tag to include it in the two other templates.
+
+In the `templates/blog/post/` directory, create a new `includes/` directory. Add a new file inside this directory and name it `comment_form.html`.
 
 The file structure should look as follows:
 
+```bash
 templates/
   blog/
     post/
@@ -1284,28 +1281,26 @@ templates/
       detail.html
       list.html
       share.html
+```
 
-Copy
+Edit the new `blog/post/includes/comment_form.html` template and add the following code:
 
-Explain
-Edit the new blog/post/includes/comment_form.html template and add the following code:
-
+```html
 <h2>Add a new comment</h2>
 <form action="{% url "blog:post_comment" post.id %}" method="post">
   {{ form.as_p }}
   {% csrf_token %}
   <p><input type="submit" value="Add comment"></p>
 </form>
+```
 
-Copy
+In this template, we build the `action` URL of the HTML `<form>` element dynamically using the `{% url %}` template tag. We build the URL of the `post_comment` view that will process the form. We display the form rendered in paragraphs and we include `{% csrf_token %}` for CSRF protection because this form will be submitted with the `POST` method.
 
-Explain
-In this template, we build the action URL of the HTML <form> element dynamically using the {% url %} template tag. We build the URL of the post_comment view that will process the form. We display the form rendered in paragraphs and we include {% csrf_token %} for CSRF protection because this form will be submitted with the POST method.
-
-Create a new file in the templates/blog/post/ directory of the blog application and name it comment.html.
+Create a new file in the `templates/blog/post/` directory of the blog application and name it `comment.html`.
 
 The file structure should now look as follows:
 
+```bash
 templates/
   blog/
     post/
@@ -1315,12 +1310,11 @@ templates/
       detail.html
       list.html
       share.html
+```
 
-Copy
+Edit the new `blog/post/comment.html` template and add the following code:
 
-Explain
-Edit the new blog/post/comment.html template and add the following code:
-
+```html
 {% extends "blog/base.html" %}
 {% block title %}Add a comment{% endblock %}
 {% block content %}
@@ -1331,19 +1325,20 @@ Edit the new blog/post/comment.html template and add the following code:
     {% include "blog/post/includes/comment_form.html" %}
   {% endif %}
 {% endblock %}
+```
 
-Copy
+This is the template for the post comment view. In this view, we expect the form to be submitted via the `POST` method. The template covers two different scenarios:
 
-Explain
-This is the template for the post comment view. In this view, we expect the form to be submitted via the POST method. The template covers two different scenarios:
+> - If the form data submitted is valid, the `comment` variable will contain the `comment` object that was created and a success message will be displayed.
+> - If the form data submitted is not valid, the `comment` variable will be `None`. In this case, we will display the comment form. We use the `{% include %}` template tag to include the `comment_form.html` template that we have previously created.
 
-If the form data submitted is valid, the comment variable will contain the comment object that was created and a success message will be displayed.
-If the form data submitted is not valid, the comment variable will be None. In this case, we will display the comment form. We use the {% include %} template tag to include the comment_form.html template that we have previously created.
-Adding comments to the post detail view
-To complete the comment functionality, we will add the list of comments and the comment form to the post_detail view.
+## Adding comments to the post detail view
 
-Edit the views.py file of the blog application and edit the post_detail view as follows:
+To complete the comment functionality, we will add the list of comments and the comment form to the `post_detail` view.
 
+Edit the `views.py` file of the `blog` application and edit the `post_detail` view as follows:
+
+```python
 def post_detail(request, year, month, day, post):
     post = get_object_or_404(
         Post,
@@ -1366,30 +1361,31 @@ def post_detail(request, year, month, day, post):
             'form': form
         }
     )
+```
 
-Copy
+Let’s review the code we have added to the `post_detail` view:
 
-Explain
-Let’s review the code we have added to the post_detail view:
+> - We have added a QuerySet to retrieve all active comments for the post, as follows:
+> ```python
+> comments = post.comments.filter(active=True)
+> ```
+>
+> - This QuerySet is built using the `post` object. Instead of building a QuerySet for the `Comment` model directly, we leverage the `post` object to retrieve the related `Comment` objects. We use the `comments` manager for the related `Comment` objects that we previously defined in the `Comment` model, using the `related_name` attribute of the `ForeignKey` field to the `Post` model.
+> - We have also created an instance of the comment form with `form = CommentForm()`.
 
-We have added a QuerySet to retrieve all active comments for the post, as follows:
-comments = post.comments.filter(active=True)
+## Adding comments to the post detail template
 
-Copy
+We need to edit the `blog/post/detail.html` template to implement the following:
 
-Explain
-This QuerySet is built using the post object. Instead of building a QuerySet for the Comment model directly, we leverage the post object to retrieve the related Comment objects. We use the comments manager for the related Comment objects that we previously defined in the Comment model, using the related_name attribute of the ForeignKey field to the Post model.
-We have also created an instance of the comment form with form = CommentForm().
-Adding comments to the post detail template
-We need to edit the blog/post/detail.html template to implement the following:
+> - Display the total number of comments for a post
+> - Display the list of comments
+> - Display the form for users to add a new comment
 
-Display the total number of comments for a post
-Display the list of comments
-Display the form for users to add a new comment
 We will start by adding the total number of comments for a post.
 
-Edit the blog/post/detail.html template and change it as follows:
+Edit the `blog/post/detail.html` template and change it as follows:
 
+```html
 {% extends "blog/base.html" %}
 {% block title %}{{ post.title }}{% endblock %}
 {% block content %}
@@ -1409,22 +1405,21 @@ Edit the blog/post/detail.html template and change it as follows:
     </h2>
   {% endwith %}
 {% endblock %}
+```
 
-Copy
+We use the Django **object relational mapper (ORM)** in the template, executing the `comments.count()` QuerySet. Note that the Django template language doesn’t use parentheses for calling methods. The `{% with %}` tag allows you to assign a value to a new variable that will be available in the template until the `{% endwith %}` tag.
 
-Explain
-We use the Django object relational mapper (ORM) in the template, executing the comments.count() QuerySet. Note that the Django template language doesn’t use parentheses for calling methods. The {% with %} tag allows you to assign a value to a new variable that will be available in the template until the {% endwith %} tag.
+> The `{% with %}` template tag is useful for avoiding hitting the database or accessing expensive methods multiple times.
 
-The {% with %} template tag is useful for avoiding hitting the database or accessing expensive methods multiple times.
+We use the `pluralize` template filter to display a plural suffix for the word “comment,” depending on the `total_comments` value. Template filters take the value of the variable they are applied to as their input and return a computed value. We will learn more about template filters in *Chapter 3, Extending Your Blog Application*.
 
-We use the pluralize template filter to display a plural suffix for the word “comment,” depending on the total_comments value. Template filters take the value of the variable they are applied to as their input and return a computed value. We will learn more about template filters in Chapter 3, Extending Your Blog Application.
-
-The pluralize template filter returns a string with the letter “s” if the value is different from 1. The preceding text will be rendered as 0 comments, 1 comment, or N comments, depending on the number of active comments for the post.
+The `pluralize` template filter returns a string with the letter “s” if the value is different from `1`. The preceding text will be rendered as 0 comments, 1 comment, or N comments, depending on the number of active comments for the post.
 
 Now, let’s add the list of active comments to the post detail template.
 
-Edit the blog/post/detail.html template and implement the following changes:
+Edit the `blog/post/detail.html` template and implement the following changes:
 
+```html
 {% extends "blog/base.html" %}
 {% block title %}{{ post.title }}{% endblock %}
 {% block content %}
@@ -1455,16 +1450,15 @@ Edit the blog/post/detail.html template and implement the following changes:
     <p>There are no comments.</p>
   {% endfor %}
 {% endblock %}
+```
 
-Copy
-
-Explain
-We have added a {% for %} template tag to loop through the post comments. If the comments list is empty, we display a message that informs users that there are no comments for this post. We enumerate comments with the {{ forloop.counter }} variable, which contains the loop counter in each iteration. For each post, we display the name of the user who posted it, the date, and the body of the comment.
+We have added a `{% for %}` template tag to loop through the post comments. If the `comments` list is empty, we display a message that informs users that there are no comments for this post. We enumerate comments with the `{{ forloop.counter }}` variable, which contains the loop counter in each iteration. For each post, we display the name of the user who posted it, the date, and the body of the comment.
 
 Finally, let’s add the comment form to the template.
 
-Edit the blog/post/detail.html template and include the comment form template as follows:
+Edit the `blog/post/detail.html` template and include the comment form template as follows:
 
+```html
 {% extends "blog/base.html" %}
 {% block title %}{{ post.title }}{% endblock %}
 {% block content %}
@@ -1496,57 +1490,65 @@ Edit the blog/post/detail.html template and include the comment form template as
   {% endfor %}
   {% include "blog/post/includes/comment_form.html" %}
 {% endblock %}
+```
 
-Copy
+Open `http://127.0.0.1:8000/blog/` in your browser and click on a post title to take a look at the post detail page. You will see something like Figure 2.23:
 
-Explain
-Open http://127.0.0.1:8000/blog/ in your browser and click on a post title to take a look at the post detail page. You will see something like Figure 2.23:
-
+![ 2.23 The post detail page, including the form to add a comment ](/packtpub/2024/730/2.23-the_post_detail.webp)
 
 Figure 2.23: The post detail page, including the form to add a comment
 
-Fill in the comment form with valid data and click on Add comment. You should see the following page:
+Fill in the comment form with valid data and click on **Add comment**. You should see the following page:
 
+![ 2.24 The comment added success page ](/packtpub/2024/730/2.24-the_comment_added.webp)
 
 Figure 2.24: The comment added success page
 
-Click on the Back to the post link. You should be redirected back to the post detail page, and you should be able to see the comment that you just added, as follows:
+Click on the **Back to the post** link. You should be redirected back to the post detail page, and you should be able to see the comment that you just added, as follows:
 
+![ 2.25 The post detail page, including a comment ](/packtpub/2024/730/2.25-the_post_detail.webp)
 
 Figure 2.25: The post detail page, including a comment
 
 Add one more comment to the post. The comments should appear below the post contents in chronological order, as follows:
 
+![ 2.26 The comment list on the post detail page ](/packtpub/2024/730/2.26-the_comment_list.webp)
 
 Figure 2.26: The comment list on the post detail page
 
-Open http://127.0.0.1:8000/admin/blog/comment/ in your browser. You will see the administration page with the list of comments you created, like this:
+Open `http://127.0.0.1:8000/admin/blog/comment/` in your browser. You will see the administration page with the list of comments you created, like this:
 
+![ 2.27 List of comments on the administration site ](/packtpub/2024/730/2.27-list_of_comments.webp)
 
 Figure 2.27: List of comments on the administration site
 
-Click on the name of one of the posts to edit it. Uncheck the Active checkbox as follows and click on the Save button:
+Click on the name of one of the posts to edit it. Uncheck the Active checkbox as follows and click on the **Save** button:
 
+![ 2.28 Editing a comment on the administration site ](/packtpub/2024/730/2.28-editing_a_comment.webp)
 
 Figure 2.28: Editing a comment on the administration site
 
-You will be redirected to the list of comments. The Active column will display an inactive icon for the comment, as shown in Figure 2.29:
+You will be redirected to the list of comments. The **Active** column will display an inactive icon for the comment, as shown in *Figure 2.29*:
 
+![ 2.29 Active/inactive comments on the administration site ](/packtpub/2024/730/2.29-active_inactive_comments_on.webp)
 
 Figure 2.29: Active/inactive comments on the administration site
 
 If you return to the post detail view, you will note that the inactive comment is no longer displayed, neither is it counted for the total number of active comments for the post:
 
-
+![ 2.30 A single active comment displayed on the post detail page ](/packtpub/2024/730/2.30-a_single_active.webp)
+2.30-a_single_active.webp
 Figure 2.30: A single active comment displayed on the post detail page
 
-Thanks to the active field, you can deactivate inappropriate comments and avoid showing them on your posts.
+Thanks to the `active` field, you can deactivate inappropriate comments and avoid showing them on your posts.
 
-Using simplified templates for form rendering
-You have used {{ form.as_p }} to render the forms using HTML paragraphs. This is a very straightforward method for rendering forms, but there may be occasions when you need to employ custom HTML markup for rendering forms.
+## Using simplified templates for form rendering
+
+You have used `{{ form.as_p }}` to render the forms using HTML paragraphs. This is a very straightforward method for rendering forms, but there may be occasions when you need to employ custom HTML markup for rendering forms.
 
 To use custom HTML for rendering form fields, you can access each form field directly, or iterate through the form fields, as in the following example:
 
+```html
 {% for field in form %}
   <div class="my-div">
     {{ field.errors }}
@@ -1554,18 +1556,17 @@ To use custom HTML for rendering form fields, you can access each form field dir
     <div class="help-text">{{ field.help_text|safe }}</div>
   </div>
 {% endfor %}
+```
 
-Copy
-
-Explain
-In this code, we use {{ field.errors }} to render any field errors of the form, {{ field.label_tag }} to render the form HTML label, {{ field }} to render the actual field, and {{ field.help_text|safe }} to render the field’s help text HTML.
+In this code, we use `{{ field.errors }}` to render any field errors of the form, `{{ field.label_tag }}` to render the form HTML label, `{{ field }}` to render the actual field, and `{{ field.help_text|safe }}` to render the field’s help text HTML.
 
 This method is helpful to customize how forms are rendered, but you might need to add certain HTML elements for specific fields or include some fields in containers. Django 5.0 introduces field groups and field group templates. Field groups simplify the rendering of labels, widgets, help texts, and field errors. Let’s use this new feature to customize the comment form.
 
-We are going to use custom HTML markup to reposition the name and email form fields using additional HTML elements.
+We are going to use custom HTML markup to reposition the `name` and `email` form fields using additional HTML elements.
 
-Edit the blog/post/includes/comment_form.html template and modify it as follows. The new code is highlighted in bold:
+Edit the `blog/post/includes/comment_form.html` template and modify it as follows. The new code is highlighted in bold:
 
+```html
 <h2>Add a new comment</h2>
 <form action="{% url "blog:post_comment" post.id %}" method="post">
   <div class="left">
@@ -1578,58 +1579,58 @@ Edit the blog/post/includes/comment_form.html template and modify it as follows.
   {% csrf_token %}
   <p><input type="submit" value="Add comment"></p>
 </form>
+```
 
-Copy
-
-Explain
-We have added <div> containers for the name and email fields with a custom CSS class to float both fields to the left. The as_field_group method renders each field including help text and errors. This method uses the django/forms/field.html template by default. You can see the contents of this template at https://github.com/django/django/blob/stable/5.0.x/django/forms/templates/django/forms/field.html. You can also create custom field templates and reuse them by adding the template_name attribute to any form field. You can read more about reusable form templates at https://docs.djangoproject.com/en/5.0/topics/forms/#reusable-field-group-templates.
+We have added `<div>` containers for the `name` and `email` fields with a custom CSS class to float both fields to the left. The `as_field_group` method renders each field including help text and errors. This method uses the `django/forms/field.html` template by default. You can see the contents of this template at https://github.com/django/django/blob/stable/5.0.x/django/forms/templates/django/forms/field.html. You can also create custom field templates and reuse them by adding the `template_name` attribute to any form field. You can read more about reusable form templates at https://docs.djangoproject.com/en/5.0/topics/forms/#reusable-field-group-templates.
 
 Open a blog post and take a look at the comment form. The form should now look like Figure 2.31:
 
+![ 2.31 The comment form with the new HTML markup ](/packtpub/2024/730/2.31-the_comment_form.webp)
 
 Figure 2.31: The comment form with the new HTML markup
 
-The name and email fields are now displayed next to each other. Field groups allow you to easily customize form rendering.
+The `name` and `email` fields are now displayed next to each other. Field groups allow you to easily customize form rendering.
 
-Summary
+# Summary
+
 In this chapter, you learned how to define canonical URLs for models. You created SEO-friendly URLs for blog posts, and you implemented object pagination for your post list. You also learned how to work with Django forms and model forms. You created a system to recommend posts by email and created a comment system for your blog.
 
 In the next chapter, you will create a tagging system for the blog. You will learn how to build complex QuerySets to retrieve objects by similarity. You will learn how to create custom template tags and filters. You will also build a custom sitemap and feed for your blog posts and implement full-text search functionality for your posts.
 
-Additional resources
+# Additional resources
+
 The following resources provide additional information related to the topics covered in this chapter:
 
-Source code for this chapter: https://github.com/PacktPublishing/Django-5-by-example/tree/main/Chapter02
-URL utility functions: https://docs.djangoproject.com/en/5.0/ref/urlresolvers/
-URL path converters: https://docs.djangoproject.com/en/5.0/topics/http/urls/#path-converters
-Django paginator class: https://docs.djangoproject.com/en/5.0/ref/paginator/
-Introduction to class-based views – https://docs.djangoproject.com/en/5.0/topics/class-based-views/intro/
-Sending emails with Django: https://docs.djangoproject.com/en/5.0/topics/email/
-The python-decouple library: https://github.com/HBNetwork/python-decouple
-The django-anymail library: https://anymail.dev/en/stable/installation/
-The django-anymail supported email service providers: https://anymail.dev/en/stable/esps/
-Django form field types: https://docs.djangoproject.com/en/5.0/ref/forms/fields/
-Working with forms: https://docs.djangoproject.com/en/5.0/topics/forms/
-Creating forms from models: https://docs.djangoproject.com/en/5.0/topics/forms/modelforms/
-Many-to-one model relationships: https://docs.djangoproject.com/en/5.0/topics/db/examples/many_to_one/
-Default form field template: https://github.com/django/django/blob/stable/5.0.x/django/forms/templates/django/forms/field.html
-Reusable field group templates: https://docs.djangoproject.com/en/5.0/topics/forms/#reusable-field-group-templates
+> - Source code for this chapter: https://github.com/PacktPublishing/Django-5-by-example/tree/main/Chapter02
+> - URL utility functions: https://docs.djangoproject.com/en/5.0/ref/urlresolvers/
+> - URL path converters: https://docs.djangoproject.com/en/5.0/topics/http/urls/#path-converters
+> - Django paginator class: https://docs.djangoproject.com/en/5.0/ref/paginator/
+> - Introduction to class-based views – https://docs.djangoproject.com/en/5.0/topics/class-based-views/intro/
+> - Sending emails with Django: https://docs.djangoproject.com/en/5.0/topics/email/
+> - The `python-decouple` library: https://github.com/HBNetwork/python-decouple
+> - The `django-anymail` library: https://anymail.dev/en/stable/installation/
+> - The `django-anymail` supported email service providers: https://anymail.dev/en/stable/esps/
+> - Django form field types: https://docs.djangoproject.com/en/5.0/ref/forms/fields/
+> - Working with forms: https://docs.djangoproject.com/en/5.0/topics/forms/
+> - Creating forms from models: https://docs.djangoproject.com/en/5.0/topics/forms/modelforms/
+> - Many-to-one model relationships: https://docs.djangoproject.com/en/5.0/topics/db/examples/many_to_one/
+> - Default form field template: https://github.com/django/django/blob/stable/5.0.x/django/forms/templates/django/forms/field.html
+> - Reusable field group templates: https://docs.djangoproject.com/en/5.0/topics/forms/#reusable-field-group-templates
 
 
 
 
-| ≪ [ 01 Building a Blog Application ](/packtpub/2024/730_django_5_by_example/01_building_a_blog_application) | 02 Enhancing Your Blog and Adding Social Features | [ 03 Extending Your Blog Application ](/packtpub/2024/730_django_5_by_example/03_extending_your_blog_application) ≫ |
+| ≪ [ 01 Building a Blog Application ](/packtpub/2024/730_Django_5_by_Example/01_Building_a_Blog_Application) | 02 Enhancing Your Blog and Adding Social Features | [ 03 Extending Your Blog Application ](/packtpub/2024/730_Django_5_by_Example/03_Extending_Your_Blog_Application) ≫ |
 |:----:|:----:|:----:|
 
 > Page Properties:
 > (1) Title: 02 Enhancing Your Blog and Adding Social Features
-> (2) Short Description: 730 Django 5 by Example 5ed
-> (3) Path: packtpub/2024/730_django_5_by_example/02_enhancing_your_blog_and_adding_social_features
+> (2) Short Description: Django 5 By Example 5ed
+> (3) Path: packtpub/2024/730_Django_5_by_Example/02_Enhancing_Your_Blog_and_Adding_Social_Features
 > Book Title: Django 5 By Example - Fifth Edition
-> Date: By Antonio Melé Publication Date: 2024-04-30
+> AuthorDate: By Antonio Melé Publication Date: 2024-04-30
 > tags: Django
 > Link: https://subscription.packtpub.com/book/web-development/9781805125457/1
-> create: 2024-07-30 화 15:30:45
-> Images: /packtpub/img/02/
+> create: 2024-08-13 화 13:49:11
 > .md Name: 02_enhancing_your_blog_and_adding_social_features.md
 
