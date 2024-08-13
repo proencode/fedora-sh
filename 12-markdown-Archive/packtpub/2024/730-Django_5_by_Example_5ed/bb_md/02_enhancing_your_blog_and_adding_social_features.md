@@ -1005,7 +1005,7 @@ Figure 2.17: The page to share a post via email
 CSS styles for the form are included in the example code in the `static/css/blog.css` file. When you click on the **SEND E-MAIL** button, the form is submitted and validated. If all fields contain valid data, you get a success message, as follows:
 
 a![ 2.18 A success message for a post shared via email ](/packtpub/2024/730/2.18-a_success_message.webp)
-2.18-a_success_message.webp
+
 Figure 2.18: A success message for a post shared via email
 
 Send a post to your own email address and check your inbox. The email you receive should look like this:
@@ -1537,7 +1537,7 @@ Figure 2.29: Active/inactive comments on the administration site
 If you return to the post detail view, you will note that the inactive comment is no longer displayed, neither is it counted for the total number of active comments for the post:
 
 ![ 2.30 A single active comment displayed on the post detail page ](/packtpub/2024/730/2.30-a_single_active.webp)
-2.30-a_single_active.webp
+
 Figure 2.30: A single active comment displayed on the post detail page
 
 Thanks to the `active` field, you can deactivate inappropriate comments and avoid showing them on your posts.
