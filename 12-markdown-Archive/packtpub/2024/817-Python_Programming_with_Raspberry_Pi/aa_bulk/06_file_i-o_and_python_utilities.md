@@ -1,5 +1,5 @@
 
-| ≪ [ 05 Data Types and Object-Oriented Programming in Python ](/packtpub/2024/817_Python_Programming_with_Raspberry_Pi_1ed/05_Data_Types_and_Object-Oriented_Programming_in_Python) | 06 File I/O and Python Utilities | [ 07 Requests and Web Frameworks ](/packtpub/2024/817_Python_Programming_with_Raspberry_Pi_1ed/07_Requests_and_Web_Frameworks) ≫ |
+| ≪ [ 05 Data Types and Object-Oriented Programming in Python ](/packtpub/2024/817-Python_with_RaspPi_1ed/05_Data_Types_and_Object-Oriented_Programming_in_Python) | 06 File I/O and Python Utilities | [ 07 Requests and Web Frameworks ](/packtpub/2024/817-Python_with_RaspPi_1ed/07_Requests_and_Web_Frameworks) ≫ |
 |:----:|:----:|:----:|
 
 # 06 File I/O and Python Utilities
@@ -39,7 +39,7 @@ Copy
 
 Explain
 This file pointer is used to read the contents of the file and print it to the screen:
-       data = file.read() 
+       data = file.read()
        print(data)
 
 Copy
@@ -53,23 +53,23 @@ I am learning Python Programming using the Raspberry Pi Zero
 Copy
 
 Explain
- 
+
 
 Reading lines
 Sometimes, it is necessary to read the contents of a file by line-by-file. In Python, there are two options to do this: readline() and readlines():
 
 readline(): As the name suggests, this in-built function enables reading one line at a time. Let's review this using an example:
-       if __name__ == "__main__": 
+       if __name__ == "__main__":
           # open text file to read
-          file = open('read_line.txt', 'r') 
+          file = open('read_line.txt', 'r')
 
           # read a line from the file
-          data = file.readline() 
-          print(data) 
+          data = file.readline()
+          print(data)
 
-          # read another line from the file 
-          data = file.readline() 
-          print(data) 
+          # read another line from the file
+          data = file.readline()
+          print(data)
 
           file.close()
 
@@ -88,14 +88,14 @@ Explain
 A new line is returned every time the readline function is called and it returns an empty string when the end-of-file has reached.
 
 readlines(): This function reads the entire content of a file in lines and stores each it to a list:
-       if __name__ == "__main__": 
+       if __name__ == "__main__":
            # open text file to read
-           file = open('read_lines.txt', 'r') 
+           file = open('read_lines.txt', 'r')
 
            # read a line from the file
-           data = file.readlines() 
-           for line in data: 
-               print(line) 
+           data = file.readlines()
+           for line in data:
+               print(line)
 
            file.close()
 
@@ -104,8 +104,8 @@ Copy
 Explain
 Since the lines of the files is stored as a list, it could be retrieved by iterating through the list:
 
-       data = file.readlines() 
-           for line in data: 
+       data = file.readlines()
+           for line in data:
                print(line)
 
 Copy
@@ -130,17 +130,17 @@ Copy
 
 Explain
 Let's put the code together where we write a string to a text file, close it, re-open the file and print the contents of the file to the screen:
-       if __name__ == "__main__": 
+       if __name__ == "__main__":
           # open text file to write
-          file = open('write_file.txt', 'w') 
+          file = open('write_file.txt', 'w')
           # write a line from the file
           file.write('I am excited to learn Python using
-          Raspberry Pi Zero \n') 
-          file.close() 
+          Raspberry Pi Zero \n')
+          file.close()
 
-          file = open('write_file.txt', 'r') 
-          data = file.read() 
-          print(data) 
+          file = open('write_file.txt', 'r')
+          data = file.read()
+          print(data)
           file.close()
 
 Copy
@@ -156,16 +156,16 @@ Explain
 Appending to a file
 Whenever a file is opened using the write flag w, the contents of the file are deleted and opened afresh to write data. There is an alternative flag a that enables appending data to the end of the file. This flag also creates a new file if the file (that is passed as an argument to open) doesn't exist. Let's consider the code snippet below where we append a line to the text file write_file.txt from the previous section:
 
-if __name__ == "__main__": 
+if __name__ == "__main__":
    # open text file to append
-   file = open('write_file.txt', 'a') 
+   file = open('write_file.txt', 'a')
    # append a line from the file
-   file.write('This is a line appended to the file\n') 
-   file.close() 
+   file.write('This is a line appended to the file\n')
+   file.close()
 
-   file = open('write_file.txt', 'r') 
-   data = file.read() 
-   print(data) 
+   file = open('write_file.txt', 'r')
+   data = file.read()
+   print(data)
    file.close()
 
 Copy
@@ -190,16 +190,16 @@ Copy
 Explain
 Let's try to skip the first line and read only the second line using seek:
 
-if __name__ == "__main__": 
+if __name__ == "__main__":
    # open text file to read
 
-   file = open('write_file.txt', 'r') 
+   file = open('write_file.txt', 'r')
 
    # read the second line from the file
-   file.seek(53) 
+   file.seek(53)
 
-   data = file.read() 
-   print(data) 
+   data = file.read()
+   print(data)
    file.close()
 
 Copy
@@ -217,19 +217,19 @@ Thus, seek enables moving the file pointer to a specific position.
 Read n bytes
 The seek function enables moving the pointer to a specific position and reading a byte or n bytes from that position. Let's re-visit reading write_file.txt and try to read the word excited in the sentence I am excited to learn Python using Raspberry Pi Zero.
 
-if __name__ == "__main__": 
-   # open text file to read and write 
-   file = open('write_file.txt', 'r') 
+if __name__ == "__main__":
+   # open text file to read and write
+   file = open('write_file.txt', 'r')
 
-   # set the pointer to the desired position 
-   file.seek(5) 
-   data = file.read(1) 
-   print(data) 
+   # set the pointer to the desired position
+   file.seek(5)
+   data = file.read(1)
+   print(data)
 
    # rewind the pointer
-   file.seek(5) 
-   data = file.read(7) 
-   print(data) 
+   file.seek(5)
+   data = file.read(7)
+   print(data)
    file.close()
 
 Copy
@@ -239,8 +239,8 @@ The preceding code can be explained in the following steps:
 
 In the first step, the file is opened using the read flag and the file pointer is set to the fifth byte (using seek)—the position of the letter e in the contents of the text file.
 Now, we read one byte from the file by passing it as an argument to the read function. When an integer is passed as an argument, the read function returns the corresponding number of bytes from the file. When no argument is passed, it reads the entire file. The read function returns an empty string if the file is empty:
-       file.seek(5) 
-       data = file.read(1) 
+       file.seek(5)
+       data = file.read(1)
        print(data)
 
 Copy
@@ -248,8 +248,8 @@ Copy
 Explain
 In the second part, we try to read the word excited from the text file. We rewind the position of the pointer back to the fifth byte. Then we read seven bytes from the file (length of the word excited).
 When the code snippet is executed (available for download along with this chapter as seek_to_read.py), the program should print the letter e and the word excited:
-       file.seek(5) 
-       data = file.read(7) 
+       file.seek(5)
+       data = file.read(7)
        print(data)
 
 Copy
@@ -268,18 +268,18 @@ Copy
 Explain
 Let's modify the second line to read: This is a line that was modified. The code sample is available for download along with this chapter as seek_to_write.py.
 
-if __name__ == "__main__": 
-   # open text file to read and write 
-   file = open('write_file.txt', 'r+') 
+if __name__ == "__main__":
+   # open text file to read and write
+   file = open('write_file.txt', 'r+')
 
-   # set the pointer to the desired position 
-   file.seek(68) 
-   file.write('that was modified \n') 
+   # set the pointer to the desired position
+   file.seek(68)
+   file.write('that was modified \n')
 
    # rewind the pointer to the beginning of the file
-   file.seek(0) 
-   data = file.read() 
-   print(data) 
+   file.seek(0)
+   data = file.read()
+   print(data)
    file.close()
 
 Copy
@@ -309,16 +309,16 @@ Use the a+ flag to open the write_file.txt file (discussed in different examples
 The with keyword
 So far, we discussed different flags that could be used to open files in different modes. The examples we discussed followed a common pattern—open the file, perform read/write operations and close the file. There is an elegant way of interacting with files using the with keyword. If there are any errors during the execution of the code block that interacts with a file, the with keyword ensures that the file is closed and the associated resources are cleaned up on exiting the code block. As always, let's review the with keyword with an example:
 
-if __name__ == "__main__": 
-   with open('write_file.txt', 'r+') as file: 
-         # read the contents of the file and print to the screen 
-         print(file.read()) 
-         file.write("This is a line appended to the file") 
+if __name__ == "__main__":
+   with open('write_file.txt', 'r+') as file:
+         # read the contents of the file and print to the screen
+         print(file.read())
+         file.write("This is a line appended to the file")
 
-         #rewind the file and read its contents 
-         file.seek(0) 
-         print(file.read()) 
-   # the file is automatically closed at this point 
+         #rewind the file and read its contents
+         file.seek(0)
+         print(file.read())
+   # the file is automatically closed at this point
    print("Exited the with keyword code block")
 
 Copy
@@ -335,27 +335,27 @@ Example 1:
 
 In the first example, let's create a config file that stores information including device ID, GPIO pins in use, sensor interface address, debug switch, and access credentials:
 
-import configparser 
+import configparser
 
-if __name__ == "__main__": 
-   # initialize ConfigParser 
-   config_parser = configparser.ConfigParser() 
+if __name__ == "__main__":
+   # initialize ConfigParser
+   config_parser = configparser.ConfigParser()
 
-   # Let's create a config file 
-   with open('raspi.cfg', 'w') as config_file: 
-         #Let's add a section called ApplicationInfo 
-         config_parser.add_section('AppInfo') 
+   # Let's create a config file
+   with open('raspi.cfg', 'w') as config_file:
+         #Let's add a section called ApplicationInfo
+         config_parser.add_section('AppInfo')
 
-         #let's add config information under this section 
-         config_parser.set('AppInfo', 'id', '123') 
-         config_parser.set('AppInfo', 'gpio', '2') 
-         config_parser.set('AppInfo', 'debug_switch', 'True') 
-         config_parser.set('AppInfo', 'sensor_address', '0x62') 
+         #let's add config information under this section
+         config_parser.set('AppInfo', 'id', '123')
+         config_parser.set('AppInfo', 'gpio', '2')
+         config_parser.set('AppInfo', 'debug_switch', 'True')
+         config_parser.set('AppInfo', 'sensor_address', '0x62')
 
-         #Let's add another section for credentials 
-         config_parser.add_section('Credentials') 
-         config_parser.set('Credentials', 'token', 'abcxyz123') 
-         config_parser.write(config_file) 
+         #Let's add another section for credentials
+         config_parser.add_section('Credentials')
+         config_parser.set('Credentials', 'token', 'abcxyz123')
+         config_parser.write(config_file)
    print("Config File Creation Complete")
 
 Copy
@@ -371,10 +371,10 @@ Copy
 Explain
 Now, we open a config file called raspi.cfg using the with keyword. Since the file doesn't exist, a new config file is created.
 The config file is going to consist of two sections namely AppInfo and Credentials.
- 
+
 
 The two sections could be created using the add_section method as follows:
-       config_parser.add_section('AppInfo') 
+       config_parser.add_section('AppInfo')
        config_parser.add_section('Credentials')
 
 Copy
@@ -397,13 +397,13 @@ We strongly recommend trying the code snippets yourself and use these snippets a
 
 When the preceding code snippet is executed, a config file called raspi.cfg is created. The contents of the config file would include the contents shown as follows:
 
-[AppInfo] 
-id = 123 
-gpio = 2 
-debug_switch = True 
-sensor_address = 0x62 
+[AppInfo]
+id = 123
+gpio = 2
+debug_switch = True
+sensor_address = 0x62
 
-[Credentials] 
+[Credentials]
 token = abcxyz123
 
 Copy
@@ -413,23 +413,23 @@ Example 2:
 
 Let's discuss an example where we read config parameters from a config file created in the previous example:
 
-import configparser 
+import configparser
 
-if __name__ == "__main__": 
-   # initialize ConfigParser 
-   config_parser = configparser.ConfigParser() 
+if __name__ == "__main__":
+   # initialize ConfigParser
+   config_parser = configparser.ConfigParser()
 
-   # Let's read the config file 
-   config_parser.read('raspi.cfg') 
+   # Let's read the config file
+   config_parser.read('raspi.cfg')
 
-   # Read config variables 
-   device_id = config_parser.get('AppInfo', 'id') 
-   debug_switch = config_parser.get('AppInfo', 'debug_switch') 
-   sensor_address = config_parser.get('AppInfo', 'sensor_address') 
+   # Read config variables
+   device_id = config_parser.get('AppInfo', 'id')
+   debug_switch = config_parser.get('AppInfo', 'debug_switch')
+   sensor_address = config_parser.get('AppInfo', 'sensor_address')
 
-   # execute the code if the debug switch is true 
+   # execute the code if the debug switch is true
    if debug_switch == "True":
-         print("The device id is " + device_id) 
+         print("The device id is " + device_id)
          print("The sensor_address is " + sensor_address)
 
 Copy
@@ -448,11 +448,11 @@ Since we know the structure of the config file, let's go ahead and read some con
 Copy
 
 Explain
- 
+
 
 Now that the config parameters are read into variables, let's make use of it in our program. For example: Let's test if the debug_switch variable (a switch to determine if the program is in debug mode) and print the other config parameters that were retrieved from the file:
        if debug_switch == "True":
-           print("The device id is " + device_id) 
+           print("The device id is " + device_id)
            print("The sensor_address is " + sensor_address)
 
 Copy
@@ -464,20 +464,20 @@ Let's discuss an example where we would like to modify an existing config file. 
 
 The following code snippet is available for download as config_parser_modify.py along with this chapter:
 
-import configparser 
+import configparser
 
-if __name__ == "__main__": 
-   # initialize ConfigParser 
-   config_parser = configparser.ConfigParser() 
+if __name__ == "__main__":
+   # initialize ConfigParser
+   config_parser = configparser.ConfigParser()
 
-   # Let's read the config file 
-   config_parser.read('raspi.cfg') 
+   # Let's read the config file
+   config_parser.read('raspi.cfg')
 
-   # Set firmware version 
-   config_parser.set('AppInfo', 'fw_version', 'A3') 
+   # Set firmware version
+   config_parser.set('AppInfo', 'fw_version', 'A3')
 
-   # write the updated config to the config file 
-   with open('raspi.cfg', 'w') as config_file: 
+   # write the updated config to the config file
+   with open('raspi.cfg', 'w') as config_file:
        config_parser.write(config_file)
 
 Copy
@@ -486,24 +486,24 @@ Explain
 Let's discuss how this works:
 
 As always, the first step is initializing an instance of the ConfigParser class. The config file is loaded using the method read:
-       # initialize ConfigParser 
-       config_parser = configparser.ConfigParser() 
+       # initialize ConfigParser
+       config_parser = configparser.ConfigParser()
 
-       # Let's read the config file 
+       # Let's read the config file
        config_parser.read('raspi.cfg')
 
 Copy
 
 Explain
 The required parameter is updated using the set method (discussed in a previous example):
-       # Set firmware version 
+       # Set firmware version
        config_parser.set('AppInfo', 'fw_version', 'A3')
 
 Copy
 
 Explain
 The updated config is saved to the config file using the write method:
-       with open('raspi.cfg', 'w') as config_file: 
+       with open('raspi.cfg', 'w') as config_file:
           config_parser.write(config_file)
 
 Copy
@@ -530,7 +530,7 @@ The next step is initializing an instance of the writer class of the CSV module:
 Copy
 
 Explain
- 
+
 
 Now, each row is added to the file by creating a list that contains all the elements that need to be added to a row. For example: The first row can be added to the list as follows:
        csv_writer.writerow([123, 456, 789])
@@ -539,12 +539,12 @@ Copy
 
 Explain
 Putting it altogether, we have:
-       import csv 
-       if __name__ == "__main__": 
-          # initialize csv writer 
-          with open("csv_example.csv", 'w') as csv_file: 
-                csv_writer = csv.writer(csv_file) 
-                csv_writer.writerow([123, 456, 789]) 
+       import csv
+       if __name__ == "__main__":
+          # initialize csv writer
+          with open("csv_example.csv", 'w') as csv_file:
+                csv_writer = csv.writer(csv_file)
+                csv_writer.writerow([123, 456, 789])
                 csv_writer.writerow(["Red", "Green", "Blue"])
 
 Copy
@@ -573,23 +573,23 @@ Copy
 
 Explain
 Now that the contents of the CSV file are loaded, each row of the CSV file could be retrieved as follows:
-       for row in csv_reader: 
+       for row in csv_reader:
            print(row)
 
 Copy
 
 Explain
- 
+
 
 Put it all together:
-       import csv 
+       import csv
 
-       if __name__ == "__main__": 
-          # initialize csv writer 
-          with open("csv_example.csv", 'r') as csv_file: 
-                csv_reader = csv.reader(csv_file) 
+       if __name__ == "__main__":
+          # initialize csv writer
+          with open("csv_example.csv", 'r') as csv_file:
+                csv_reader = csv.reader(csv_file)
 
-                for row in csv_reader: 
+                for row in csv_reader:
                       print(row)
 
 Copy
@@ -624,9 +624,9 @@ Copy
 Explain
 In the preceding code snippet, we make use of the isfile() function, available with the os.path module. When a file's location is passed an argument to the function, it returns True if the file exists at that location. In this example, since the file write_file.txt exists in the code examples directory, the function returns True. Hence the message, The file exists is printed to the screen:
 
-if os.path.isfile('/home/pi/Desktop/code_samples/write_file.txt'): 
-    print('The file exists!') 
-else: 
+if os.path.isfile('/home/pi/Desktop/code_samples/write_file.txt'):
+    print('The file exists!')
+else:
     print('The file does not exist!')
 
 Copy
@@ -635,10 +635,10 @@ Explain
 Checking for a folder's existence
 Similar to os.path.isfile(), there is another function called os.path.isdir(). It returns True if a folder exists at a specific location. We have been reviewing all code samples from a folder called code_samples located on the Raspberry Pi's desktop. It's existence could be confirmed as follows:
 
-# Confirm code_samples' existence 
-if os.path.isdir('/home/pi/Desktop/code_samples'): 
-    print('The directory exists!') 
-else: 
+# Confirm code_samples' existence
+if os.path.isdir('/home/pi/Desktop/code_samples'):
+    print('The directory exists!')
+else:
     print('The directory does not exist!')
 
 Copy
@@ -652,7 +652,7 @@ os.remove('/home/pi/Desktop/code_samples/read_file.txt')
 Copy
 
 Explain
- 
+
 
 Killing a process
 It is possible to kill an application running on the Raspberry Pi by passing process pid to the kill() function. In the previous chapter, we discussed the light_scheduler example that runs as a background process on the Raspberry Pi. To demonstrate killing a process, we are going to attempt killing that process. We need to determine the process pid of the light_scheduler process (you may pick an application that was started by you as a user and not do not touch root processes). The process pid could be retrieved from the command-line terminal using the following command:
@@ -808,7 +808,7 @@ Line 7.
 Copy
 
 Explain
- 
+
 
 Summary
 In this chapter, we discussed file I/O – reading and writing to files, different flags used to read, write, and append to files. We talked about moving file pointers to different points in a file to retrieve specific content or overwrite the contents of a file at a specific location. We discussed the ConfigParser module in Python and its application in storing/retrieving config parameters for applications along with reading and writing to CSV files.
@@ -819,17 +819,17 @@ In the upcoming chapters, we will discuss uploading sensor data stored in CSV fi
 
 
 
-| ≪ [ 05 Data Types and Object-Oriented Programming in Python ](/packtpub/2024/817_Python_Programming_with_Raspberry_Pi_1ed/05_Data_Types_and_Object-Oriented_Programming_in_Python) | 06 File I/O and Python Utilities | [ 07 Requests and Web Frameworks ](/packtpub/2024/817_Python_Programming_with_Raspberry_Pi_1ed/07_Requests_and_Web_Frameworks) ≫ |
+
+| ≪ [ 05 Data Types and Object-Oriented Programming in Python ](/packtpub/2024/817-Python_with_RaspPi_1ed/05_Data_Types_and_Object-Oriented_Programming_in_Python) | 06 File I/O and Python Utilities | [ 07 Requests and Web Frameworks ](/packtpub/2024/817-Python_with_RaspPi_1ed/07_Requests_and_Web_Frameworks) ≫ |
 |:----:|:----:|:----:|
 
 > Page Properties:
 > (1) Title: 06 File I/O and Python Utilities
 > (2) Short Description: Python with RaspPi 1ed
-> (3) Path: packtpub/2024/817_Python_Programming_with_Raspberry_Pi_1ed/06_File_I-O_and_Python_Utilities
-> Book Title: Python Programming with Raspberry Pi - 1th Ed
+> (3) Path: /packtpub/2024/817-Python_with_RaspPi_1ed/06_File_I-O_and_Python_Utilities
+> Book Jemok: Python Programming with Raspberry Pi - 1th Ed
 > AuthorDate: By Antonio Melé Publication Date: Apr 2017 312 pages 1Ed
-> tags: Python RaspPi
 > Link: https://subscription.packtpub.com/book/iot-and-hardware/9781786467577/1
-> create: 2024-08-17 토 12:28:19
+> create: 2024-08-17 토 16:35:09
 > .md Name: 06_file_i-o_and_python_utilities.md
 

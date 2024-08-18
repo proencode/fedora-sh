@@ -1,5 +1,5 @@
 
-| 🏁 817 Python Programming with Raspberry Pi 1ed | 00 Preface | [ 01 Getting Started with Python and the Raspberry Pi Zero ](/packtpub/2024/817_Python_Programming_with_Raspberry_Pi_1ed/01_Getting_Started_with_Python_and_the_Raspberry_Pi_Zero) ≫ |
+| 🏁 817 Python Programming with Raspberry Pi - 1th Ed | 00 Preface | [ 01 Getting Started with Python and the Raspberry Pi Zero ](/packtpub/2024/817-Python_with_RaspPi_1ed/01_Getting_Started_with_Python_and_the_Raspberry_Pi_Zero) ≫ |
 |:----:|:----:|:----:|
 
 # 00 Preface
@@ -21,6 +21,7 @@
 | Gaurav Suri | Shantanu N. Zagade |
 
 ## About the Authors
+
 Sai Yamanoor is an embedded systems engineer working for a private startup school in the San Francisco Bay Area, where he builds devices that helps students achieve their full potential. He completed his graduate studies in Mechanical Engineering at Carnegie Mellon University, Pittsburgh PA, and his undergraduate work in Mechatronics Engineering from Sri Krishna College of Engineering and Technology, Coimbatore, India. His interests, deeply rooted in DIY and ppen software and hardware cultures, include developing gadgets and apps that improve Quality of Life, Internet of Things, crowdfunding, education, and new technologies. In his spare time, he plays with various devices and architectures such as the Raspberry Pi, Arduino, Galileo, Android devices and others. Sai blogs about his adventures with Mechatronics at the aptly named Mechatronics Craze blog at http://mechatronicscraze.wordpress.com/. You can find his project portfolios at http://saiyamanoor.com.
 
 This book is Sai's second title and he has earlier published a book titled Raspberry Pi Mechatronics Projects.
@@ -32,15 +33,17 @@ Srihari Yamanoor is a mechanical engineer, working on medical devices, sustainab
 I have many people to thank for any and all success in my life, one of the culminations being this second book. I start with my parents for always making sure that I put my career and education first. My brother Sai Yamanoor, is the main reason I have my name on not one, but two books! I have to thank several professors and teachers, not the least of whom are Kenneth Waldron, Dr. Radhakrishnan, Dr. R. Rudramoorthy, Dr. K.A. Jagadeesh, Cyril "Master", and the Late "Master" Williams. Of course, I'd be remiss, if I didn’t acknowledge my mentors, Russ Sampson, James Stubbs, Mukund Patel, and Anna Tamura. Then, I have my dearest friends, Patrick Nguyen, Anna Jao, Andrew Eib, Vishnu Prasad Ramachandran, and David Ma, who have put up with my quirks over the last several years, patiently offering advice and helping me weather several storms. I too would like to apologize to Balaji Raghavendra, who was left out of the acknowledgements from our last book, purely by accident, and nevertheless, inexcusably so. Without your help, we would not have been able to complete that book and start on this one. I second Sai in recognizing Abhishek Jadhav’s immeasurable patience and guidance throughout the course of the publication of this book.  Last but not the least, there are my beloved felines, the glaring that keeps me going – Bob, Gi-Ve, Fish Bone and Saxi.We would like to acknowledge that 100% of the proceeds in revenue and profits of the authors, is being turned over to worthy non-profits.
 
 ## About the Reviewer
+
 Ian McAlpine had his first introduction to computers was his school's Research Machines RML-380Z and his physics teacher's Compukit UK101. That was followed by a Sinclair ZX81 and then a BBC Micro Model A, which he still has to this day. That interest resulted in a MEng degree in Electronic Systems Engineering from Aston University and an MSc degree in Information Technology from the University of Liverpool. Ian is currently a Senior Product Expert in the BI & Analytics Competence Centre at SAP Labs in Vancouver, Canada.
 
 
 The introduction of the Raspberry Pi rekindled his desire to "tinker", but also provided an opportunity to give back to the community. Consequently Ian was a very active volunteer for 3 years on The MagPi, a monthly magazine for the Raspberry Pi, which you can read online or download for free at http://www.raspberrypi.org/magpi/. He also holds an amateur radio license (callsign VE7FTO) and is a communications volunteer for his local community Emergency Management Office. He was a technical reviewer for Packt books, such as Raspberry Pi Cookbook for Python Programmers, Raspberry Pi Projects for Kids, and Raspberry Pi 2 Server Essentials.
 
- 
+
 I would like to thank my darling wife, Louise, and my awesome kids Emily and Molly for allowing me to disappear into my "office"…and for training our dog to fetch me!
 
 ## cktPub.com
+
 For support files and downloads related to your book, please visit www.PacktPub.com.
 
 Did you know that Packt offers eBook versions of every book published, with PDF and ePub files available? You can upgrade to the eBook version at www.PacktPub.com and as a print book customer, you are entitled to a discount on the eBook copy. Get in touch with us at service@packtpub.com for more details.
@@ -66,6 +69,7 @@ Thanks for purchasing this Packt book. At Packt, quality is at the heart of our 
 If you'd like to join our team of regular reviewers, you can e-mail us at customerreviews@packtpub.com. We award our regular reviewers with free eBooks and videos in exchange for their valuable feedback. Help us be relentless in improving our products!
 
 ## Preface
+
 The Raspberry Pi represents the best in innovation in computer science, education, entertainment, hobby hacking, and several other categories that you can classify the device family into. Even as this book is entering publication, the Raspberry Pi family of products have become the third best selling computers of all time. It is anyone’s guess that with the continuing innovation coming out of the Raspberry Pi Foundation and the thousands of people across the planet constantly demonstrating newer and better examples innovative solutions with the various flavors of Raspberry Pi, what new heights this product line might reach!
 
 One of the main goals of the Raspberry Pi is affordability. And the purpose of this book is to allow the beginner to learn Programming in Python, as well as manipulating hardware. The reader may have worked a little bit on hardware, and a little bit on programming, and want to strengthen skills in either area. The reader may also just be interested in doing more projects with the Pi Zero in Python, and of course, some of the projects in this book, briefly highlighted below might be of interest.
@@ -120,9 +124,9 @@ Code words in text, database table names, folder names, filenames, file extensio
 
 A block of code is set as follows:
 
-      try: 
-         input_value = int(value) 
-      except ValueError as error:  
+      try:
+         input_value = int(value)
+      except ValueError as error:
          print("The value is invalid %s" % error)
 
 Copy
@@ -189,17 +193,17 @@ Questions
 If you have a problem with any aspect of this book, you can contact us at questions@packtpub.com, and we will do our best to address the problem.
 
 
-| 🏁 817 Python Programming with Raspberry Pi 1ed | 00 Preface | [ 01 Getting Started with Python and the Raspberry Pi Zero ](/packtpub/2024/817_Python_Programming_with_Raspberry_Pi_1ed/01_Getting_Started_with_Python_and_the_Raspberry_Pi_Zero) ≫ |
+
+| 🏁 817 Python Programming with Raspberry Pi - 1th Ed | 00 Preface | [ 01 Getting Started with Python and the Raspberry Pi Zero ](/packtpub/2024/817-Python_with_RaspPi_1ed/01_Getting_Started_with_Python_and_the_Raspberry_Pi_Zero) ≫ |
 |:----:|:----:|:----:|
 
 > Page Properties:
 > (1) Title: 00 Preface
 > (2) Short Description: Python with RaspPi 1ed
-> (3) Path: packtpub/2024/817_Python_Programming_with_Raspberry_Pi_1ed/00_Preface
-> Book Title: Python Programming with Raspberry Pi - 1th Ed
+> (3) Path: /packtpub/2024/817-Python_with_RaspPi_1ed/00_Preface
+> Book Jemok: Python Programming with Raspberry Pi - 1th Ed
 > AuthorDate: By Antonio Melé Publication Date: Apr 2017 312 pages 1Ed
-> tags: Python RaspPi
 > Link: https://subscription.packtpub.com/book/iot-and-hardware/9781786467577/1
-> create: 2024-08-17 토 11:35:57
+> create: 2024-08-17 토 16:35:08
 > .md Name: 00_preface.md
 

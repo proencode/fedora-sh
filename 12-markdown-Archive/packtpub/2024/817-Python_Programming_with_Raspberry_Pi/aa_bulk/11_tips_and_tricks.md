@@ -1,5 +1,5 @@
 
-| ≪ [ 10 Home Automation Using The Raspberry Pi Zero ](/packtpub/2024/817_Python_Programming_with_Raspberry_Pi_1ed/10_Home_Automation_Using_The_Raspberry_Pi_Zero) | 11 Tips and Tricks | 817 Python Programming with Raspberry Pi 1ed 🔔 |
+| ≪ [ 10 Home Automation Using The Raspberry Pi Zero ](/packtpub/2024/817-Python_with_RaspPi_1ed/10_Home_Automation_Using_The_Raspberry_Pi_Zero) | 11 Tips and Tricks | 817 Python Programming with Raspberry Pi - 1th Ed 🔔 |
 |:----:|:----:|:----:|
 
 # 11 Tips and Tricks
@@ -79,7 +79,7 @@ On the Terminal, log in to your Raspberry Pi using the ssh command:
 Copy
 
 Explain
- 
+
 
 Enter the password of your Raspberry Pi when prompted and gain remote access to your Raspberry Pi.
 
@@ -157,7 +157,7 @@ Learning to use command-line text editors can come handy while working on projec
 Note
 There are other text editors such as vi and vim. However, nano text editor is much simpler to use.
 
- 
+
 
 Graphical text editors
 Apart from IDLE's graphical text editor, there are many other text editors out there. On Windows, we recommend using Notepad++ (https://notepad-plus-plus.org/). It comes with a lot of plugins and features that distinguish Python keywords from other parts of the code. It also provides visual aid to indent your code properly.
@@ -180,7 +180,7 @@ Copy
 Explain
 Add the following line to the file (make sure that the IP address of the Raspberry Pi is added):
 
-alias my_pi='ssh pi@192.168.1.2 -p 2' 
+alias my_pi='ssh pi@192.168.1.2 -p 2'
 
 Copy
 
@@ -200,7 +200,7 @@ In a Windows environment, it is possible to save SSH sessions for repeated usage
 
 Save session
 
- 
+
 
 Whenever the SSH access to the Raspberry Pi is needed, launch PuTTY and load my_session (shown in the following screenshot):
 
@@ -252,24 +252,24 @@ This stackable breadboard is useful to a beginner in electronics. It provides ac
 
 Stackable breadboard
 
- 
+
 
 Note
 This breadboard is available at (http://rasp.io/prohat/). We also found another enclosure with breadboard right next to it-http://a.co/dLdxaO1.
 
 
 
-| ≪ [ 10 Home Automation Using The Raspberry Pi Zero ](/packtpub/2024/817_Python_Programming_with_Raspberry_Pi_1ed/10_Home_Automation_Using_The_Raspberry_Pi_Zero) | 11 Tips and Tricks | 817 Python Programming with Raspberry Pi 1ed 🔔 |
+
+| ≪ [ 10 Home Automation Using The Raspberry Pi Zero ](/packtpub/2024/817-Python_with_RaspPi_1ed/10_Home_Automation_Using_The_Raspberry_Pi_Zero) | 11 Tips and Tricks | 817 Python Programming with Raspberry Pi - 1th Ed 🔔 |
 |:----:|:----:|:----:|
 
 > Page Properties:
 > (1) Title: 11 Tips and Tricks
 > (2) Short Description: Python with RaspPi 1ed
-> (3) Path: packtpub/2024/817_Python_Programming_with_Raspberry_Pi_1ed/11_Tips_and_Tricks
-> Book Title: Python Programming with Raspberry Pi - 1th Ed
+> (3) Path: /packtpub/2024/817-Python_with_RaspPi_1ed/11_Tips_and_Tricks
+> Book Jemok: Python Programming with Raspberry Pi - 1th Ed
 > AuthorDate: By Antonio Melé Publication Date: Apr 2017 312 pages 1Ed
-> tags: Python RaspPi
 > Link: https://subscription.packtpub.com/book/iot-and-hardware/9781786467577/1
-> create: 2024-08-17 토 11:35:58
+> create: 2024-08-17 토 16:35:09
 > .md Name: 11_tips_and_tricks.md
 

@@ -1,5 +1,5 @@
 
-| ≪ [ 09 Let's Build a Robot ](/packtpub/2024/817_Python_Programming_with_Raspberry_Pi_1ed/09_Let_s_Build_a_Robot) | 10 Home Automation Using The Raspberry Pi Zero | [ 11 Tips and Tricks ](/packtpub/2024/817_Python_Programming_with_Raspberry_Pi_1ed/11_Tips_and_Tricks) ≫ |
+| ≪ [ 09 Let's Build a Robot ](/packtpub/2024/817-Python_with_RaspPi_1ed/09_Let_s_Build_a_Robot) | 10 Home Automation Using The Raspberry Pi Zero | [ 11 Tips and Tricks ](/packtpub/2024/817-Python_with_RaspPi_1ed/11_Tips_and_Tricks) ≫ |
 |:----:|:----:|:----:|
 
 # 10 Home Automation Using The Raspberry Pi Zero
@@ -94,7 +94,7 @@ Connect a speaker to the output terminal (green) of the USB sound card.
 On your Raspberry Pi Zero's command-line terminal, list all the audio sources connected to your Raspberry Pi Zero using the following command:
        aplay -l
        **** List of PLAYBACK Hardware Devices ****
-       card 0: ALSA [bcm2835 ALSA], device 0: bcm2835 
+       card 0: ALSA [bcm2835 ALSA], device 0: bcm2835
          ALSA [bcm2835 ALSA]
        Subdevices: 8/8
        Subdevice #0: subdevice #0
@@ -105,11 +105,11 @@ On your Raspberry Pi Zero's command-line terminal, list all the audio sources co
        Subdevice #5: subdevice #5
        Subdevice #6: subdevice #6
        Subdevice #7: subdevice #7
-       card 0: ALSA [bcm2835 ALSA], device 1: bcm2835 
+       card 0: ALSA [bcm2835 ALSA], device 1: bcm2835
          ALSA [bcm2835 IEC958/HDMI]
        Subdevices: 1/1
        Subdevice #0: subdevice #0
-       card 1: Set [C-Media USB Headphone Set], 
+       card 1: Set [C-Media USB Headphone Set],
          device 0: USB Audio [USB Audio]
        Subdevices: 1/1
        Subdevice #0: subdevice #0
@@ -159,7 +159,7 @@ MAX9814 with omnidirectional microphone Source: Adafruit.com
 
 The gain of the amplifier can be set to three levels: 60 dB when the gain pin is unconnected, 50 dB when the gain pin is connected to ground, and 40 dB when the gain pin is connected to Vdd.
 Connect Vdd and the GND pins to the 5V and GND pins of the Raspberry Pi's GPIO pins (,pins 4 and 6 of the Raspberry Pi's GPIO).
- 
+
 
 Cut the 3.5 mm cable into two halves. It consists of three wires connected to the Tip, Ring and Sleeve of the 3.5 mm connector (as shown in the picture here). Use a multimeter to identify the Sleeve, Tip, and Ring wires of the 3.5 mm connector.
 
@@ -176,7 +176,7 @@ Microphone connected to 3.5 mm connector
 
 We are ready to test the microphone and set an optimal capture volume. From the Raspberry Pi Zero's command-line terminal, run the following command:
 
-       arecord -f dat -D plughw:2 
+       arecord -f dat -D plughw:2
          --duration=10~/home/pi/rectest.wav
 
 Copy
@@ -214,14 +214,14 @@ The next step is selecting domains, that is, the nature of applications the assi
 
 Enable domains
 
- 
+
 
 Click on Save & Continue. Once you have created your new client, click on it (from the dashboard) to retrieve the following credentials: Client ID and Client Key.
 
 Copy the Client id and the Client Key from the dashboard
 
 We also need to download the SDK for Python 3.x (latest version available at https://docs.houndify.com/sdks#python):
-       wget 
+       wget
        https://static.houndify.com/sdks/python
        /0.5.0/houndify_python3_sdk_0.5.0.tar.gz
 
@@ -229,7 +229,7 @@ Copy
 
 Explain
 Extract the package as follows:
-       tar -xvzf houndify_python3_sdk_0.5.0.tar.gzrm 
+       tar -xvzf houndify_python3_sdk_0.5.0.tar.gzrm
        houndify_python3_sdk_0.5.0.tar.gz
 
 Copy
@@ -237,7 +237,7 @@ Copy
 Explain
 The SDK comes with plenty of examples to get started. Let's consider a scenario where you would like to find out the weather at your current location by interacting with the voice assistant:
 Get your current GPS coordinates from a tool such as Google Maps. For example, the GPS coordinates for a specific intersection in San Francisco, California is 37.778724, -122.414778. Let's try to find the weather at this specific location.
- 
+
 
 Open the sample_wave.py file and modify line 39 of the file:
               client.setLocation(37.778724, -37.778724)
@@ -246,8 +246,8 @@ Copy
 
 Explain
 Save the file and from the command-line terminal, change directories to the Houndify SDK folder:
-              cd houndify_python3_sdk_0.5.0/ 
-              ./sample_wave.py <client_id> <client_key> 
+              cd houndify_python3_sdk_0.5.0/
+              ./sample_wave.py <client_id> <client_key>
               test_audio/whatistheweatherthere_nb.wav
 
 Copy
@@ -255,9 +255,9 @@ Copy
 Explain
 After processing the request, it should print a detailed response:
               src="//static.midomi.com/corpus/H_Zk82fGHFX/build/js/
-              templates.min.js"></script>'}}, 'TemplateName': 
-              'VerticalTemplateList', 'AutoListen': False, 
-              'WeatherCommandKind': 'ShowWeatherCurrentConditions', 
+              templates.min.js"></script>'}}, 'TemplateName':
+              'VerticalTemplateList', 'AutoListen': False,
+              'WeatherCommandKind': 'ShowWeatherCurrentConditions',
               'SpokenResponseLong': 'The weather is 45 degrees and
               mostly clear in San Francisco.',
 
@@ -276,7 +276,7 @@ Let's get started with building our voice assistant that we can use to find the 
 
 On your Houndify dashboard, go to your client's home page. Dashboard | Click on your client.
 Locate Custom Commands on the navigation bar to the left. Let's add a custom command each to turn on and turn off the light.
- 
+
 
 Delete ClientMatch #1 that comes as a template with the custom commands.
 
@@ -302,7 +302,7 @@ Complete Transcription (the onFinalResponse method)
 Error State (the onError method)
 We need to make use of action intents to turning on/off lights using voice command.
 When we implemented the custom commands on the Houndify website, we added an action intent for each command. For example, the action intent for turning on the lights was:
-       { 
+       {
            "action": "turn_light_on"
        }
 
@@ -315,26 +315,26 @@ In order to turn on/off the lights based on the received action intent, we need 
 Copy
 
 Explain
- 
 
- 
+
+
 
 The GPIO pin that controls the light is initialized in the __init__ method of the MyListener class:
-       class MyListener(houndify.HoundListener): 
-         def __init__(self): 
+       class MyListener(houndify.HoundListener):
+         def __init__(self):
            self.light = OutputDevice(3)
 
 Copy
 
 Explain
 On completing transcription, if an action intent is received, the lights are either turned on or turned off. It is implemented as follows:
-       def onFinalResponse(self, response): 
-         if "AllResults" in response: 
-           result = response["AllResults"][0] 
-           if result['CommandKind'] == "ClientMatchCommand": 
-             if result["Result"]["action"] == "turn_light_on": 
-               self.light.on() 
-             elif result["Result"]["action"] == "turn_light_off": 
+       def onFinalResponse(self, response):
+         if "AllResults" in response:
+           result = response["AllResults"][0]
+           if result['CommandKind'] == "ClientMatchCommand":
+             if result["Result"]["action"] == "turn_light_on":
+               self.light.on()
+             elif result["Result"]["action"] == "turn_light_off":
                self.light.off()
 
 Copy
@@ -347,7 +347,7 @@ We also need to announce the voice assistant's action while turning on/off light
 Note
 Because the script makes use of Google's text-to-speech engine, it connects to the Internet to fetch the transcribed audio data.
 
- 
+
 
 Open a new shell script from the Raspberry Pi's command-line terminal:
               nano speech.sh
@@ -356,11 +356,11 @@ Copy
 
 Explain
 Paste the following contents:
-              #!/bin/bash 
+              #!/bin/bash
               say() { local IFS=+;/usr/bin/mplayer
-              -ao alsa -really-quiet -noconsolecontrols 
+              -ao alsa -really-quiet -noconsolecontrols
               "http://translate.google.com/translate_tts?
-              ie=UTF-8&client=tw-ob&q=$*&tl=En-us"; } 
+              ie=UTF-8&client=tw-ob&q=$*&tl=En-us"; }
               say $*
 
 Copy
@@ -379,11 +379,11 @@ Copy
 
 Explain
 The system calls to announce the voice assistant actions are implemented as follows:
-              if result["Result"]["action"] == "turn_light_on": 
-                self.light.on() 
-                os.system("~/speech.sh Turning Lights On") 
-              elif result["Result"]["action"] == "turn_light_off": 
-                self.light.off() 
+              if result["Result"]["action"] == "turn_light_on":
+                self.light.on()
+                os.system("~/speech.sh Turning Lights On")
+              elif result["Result"]["action"] == "turn_light_off":
+                self.light.off()
                 os.system("~/speech.sh Turning Lights Off")
 
 Copy
@@ -403,7 +403,7 @@ Test the program as follows (audio files are also available for download with th
 Copy
 
 Explain
- 
+
 
 Adding a button
 Let's add a button to our voice assistant. This momentary push button is connected to pin 2 (BCM numbering) and the LED is connected to pin 3.
@@ -418,21 +418,21 @@ Copy
 
 Explain
 When a button is pressed, the voice assistant needs to play a beep sound indicating that it is awaiting the user's command. Beep sounds of your choice can be downloaded from www.freesound.org.
- 
+
 
 Following the beep sound, the user command is recorded for a duration of 5 seconds. The recorded file is then processed using the Houndify SDK. The following code snippet shows the trigger function that is called when the button is pressed:
-       def trigger_function(): 
-         os.system("aplay -D plughw:1,0 /home/pi/beep.wav") 
-         os.system("arecord -D plughw:2,0 -f S16_LE -d 5 
-         /home/pi/query.wav") 
-         os.system("aplay -D plughw:1,0 /home/pi/beep.wav") 
+       def trigger_function():
+         os.system("aplay -D plughw:1,0 /home/pi/beep.wav")
+         os.system("arecord -D plughw:2,0 -f S16_LE -d 5
+         /home/pi/query.wav")
+         os.system("aplay -D plughw:1,0 /home/pi/beep.wav")
          call_houndify()
 
 Copy
 
 Explain
 The trigger function is registered as follows:
-       button = Button(4) 
+       button = Button(4)
        button.when_released = trigger_function
 
 Copy
@@ -504,7 +504,7 @@ The relay is driven by an active-low signal that is when a 0V signal is given to
 
 The components of each relay circuit (labeled)
 
- 
+
 
 Note
 We strongly recommend reading about optocouplers to understand their need and how an active-low signal to this relay board drives the relays.
@@ -521,45 +521,45 @@ Schematic to rig a 12V DC appliance with a relay
 Note
 For an AC power appliance, we recommend using the power switch tail II or the AC relay unit discussed earlier in this section. They are safe for hobby grade applications.
 
- 
+
 
 Building the web dashboard
 The first step is creating the html template for the dashboard. Our dashboard is going to enable controlling four appliances, that is, turn them on or off:
 
 In our dashboard, we need an htmltable where each row on the table represents a device, as follows:
-       <table> 
-           <tr> 
-               <td> 
-                   <input type="checkbox" name="relay" 
-                    value="relay_0">Motor</input> </br> 
-               </td> 
-           <td> 
+       <table>
+           <tr>
+               <td>
+                   <input type="checkbox" name="relay"
+                    value="relay_0">Motor</input> </br>
+               </td>
+           <td>
                <input type="radio" name="state_0" value="On">On
-               </input> 
-                   <input type="radio" name="state_0" value="Off" 
+               </input>
+                   <input type="radio" name="state_0" value="Off"
                    checked="checked">Off</input>
-           </td> 
+           </td>
        </table>
 
 Copy
 
 Explain
 In the preceding code snippet, each device state is encapsulated in a data cell <td>, each device is represented by a checkbox, and the device state is represented by an on/off radio button. For example, a motor is represented as follows:
-       <td> 
-          <input type="checkbox" name="relay" 
-          value="relay_0">Motor</input> </br> 
-       </td> 
-       <td> 
+       <td>
+          <input type="checkbox" name="relay"
+          value="relay_0">Motor</input> </br>
+       </td>
+       <td>
           <input type="radio" name="state_0" value="On">On
-          </input> 
-           <input type="radio" name="state_0" value="Off" 
-           checked="checked">Off</input>   
+          </input>
+           <input type="radio" name="state_0" value="Off"
+           checked="checked">Off</input>
        </td>
 
 Copy
 
 Explain
- 
+
 
 On the dashboard, this would be represented as follows:
 
@@ -567,12 +567,12 @@ On the dashboard, this would be represented as follows:
 Device represented by a checkbox and radio button
 
 The table is encapsulated in an html form:
-       <form action="/energize" method="POST"> 
-          <table> 
-          . 
-          . 
-          . 
-          </table> 
+       <form action="/energize" method="POST">
+          <table>
+          .
+          .
+          .
+          </table>
        </form>
 
 Copy
@@ -588,7 +588,7 @@ Explain
 Energize button
 
 On the server side, we need to set up the GPIO pins used to control the relays:
-       NUM_APPLIANCES = 4 
+       NUM_APPLIANCES = 4
 
        relay_index = [2, 3, 4, 14]
 
@@ -597,8 +597,8 @@ Copy
 Explain
 The list relay_index represents the GPIO pins being used to control the relays.
 Before starting the server, we need to create an OutputDevice object (from the gpiozero module) for all the devices:
-       for i in range(NUM_APPLIANCES): 
-               devices.append(OutputDevice(relay_index[i], 
+       for i in range(NUM_APPLIANCES):
+               devices.append(OutputDevice(relay_index[i],
                                       active_high=False))
 
 Copy
@@ -608,18 +608,18 @@ The OutputDevice object meant for each device/relay is initialized and added to 
 When the form is submitted (by hitting the energize button), the POST request is handled by the energize() method.
 We are controlling four devices that are represented by relay_x, and their corresponding states are represented by state_x, that is, On or Off. The default state is Off.
 When a form is submitted by the user, we determine if the POST request contains information related to each device. If a specific device needs to be turned on/off, we call the on()/off() method of that device's object:
-       relays = request.form.getlist("relay") 
-       for idx in range(0, NUM_APPLIANCES): 
-           device_name = "relay_" + str(idx) 
-           if device_name in relays: 
-               device_state = "state_" + str(idx) 
-               state = request.form.get(device_state) 
-               print(state) 
-               if state == "On": 
-                   print(state) 
-                   devices[idx].on() 
-               elif state == "Off": 
-                   print(state) 
+       relays = request.form.getlist("relay")
+       for idx in range(0, NUM_APPLIANCES):
+           device_name = "relay_" + str(idx)
+           if device_name in relays:
+               device_state = "state_" + str(idx)
+               state = request.form.get(device_state)
+               print(state)
+               if state == "On":
+                   print(state)
+                   devices[idx].on()
+               elif state == "Off":
+                   print(state)
                    devices[idx].off()
 
 Copy
@@ -710,7 +710,7 @@ While registering a new application, fill in the description including the name 
 
 Set callback URL
 
- 
+
 
 Once your application is created, copy the Client ID and Client Secret from application's dashboard.
 
@@ -740,7 +740,7 @@ If the authorization was successful, it should redirect you to a page where the 
 
 Authorization to access the Fitbit API
 
- 
+
 
 Close the browser and copy the refresh_token and access_token information displayed on the command prompt.
 
@@ -758,9 +758,9 @@ Copy
 
 Explain
 We have to initialize the fitbit client using the client key, client secret, access_token, and refresh_token earlier in this section:
-       fbit_client = fitbit.Fitbit(CONSUMER_KEY, 
-                                   CONSUMER_SECRET, 
-                                   access_token=ACCESS_TOKEN, 
+       fbit_client = fitbit.Fitbit(CONSUMER_KEY,
+                                   CONSUMER_SECRET,
+                                   access_token=ACCESS_TOKEN,
                                        refresh_token=REFRESH_TOKEN)
 
 Copy
@@ -768,17 +768,17 @@ Copy
 Explain
 According to the Fitbit API documentation, the current day's physical activity can be retrieved using the intraday_time_series() method.
 The required arguments to retrieve the physical activity include the resource that needs to be retrieved; that is, steps, detail_level, that is, the smallest time interval for which the given information needs to be retrieved, start times and the end times.
- 
+
 
 The start time is 12:00 a.m. of the current day, and the end time is the current time. We will be making use of the datetime module to get the current time. There is a function named strftime that gives us the current time in the hour:minute format.
 Note
 Make sure that your Raspberry Pi Zero's OS time is correctly configured with the local time zone settings.
 
-       now = datetime.datetime.now() 
-       end_time = now.strftime("%H:%M") 
-       response = fbit_client.intraday_time_series('activities/steps', 
-         detail_level='15min', 
-         start_time="00:00", 
+       now = datetime.datetime.now()
+       end_time = now.strftime("%H:%M")
+       response = fbit_client.intraday_time_series('activities/steps',
+         detail_level='15min',
+         start_time="00:00",
          end_time=end_time)
 
 Copy
@@ -795,33 +795,33 @@ Building the visual aid
 Let's build a visual aid where we display the number of steps taken in a given day using an LED strip. The LED strip would light up like a progress bar based on the daily physical activity.
 
 The first step is importing the requisite libraries while building the visual aid. This includes the fitbit and blinkt libraries. We will also import some additional libraries:
-       import blinkt 
-       import datetime 
-       import fitbit 
-       import time 
+       import blinkt
+       import datetime
+       import fitbit
+       import time
        import schedule
 
 Copy
 
 Explain
- 
+
 
 Make sure that you have the requisite tokens discussed earlier in this section:
-       CONSUMER_KEY = "INSERT_KEY" 
-       CONSUMER_SECRET = "INSERT_SECRET" 
-       ACCESS_TOKEN = "INSER_TOKEN" 
+       CONSUMER_KEY = "INSERT_KEY"
+       CONSUMER_SECRET = "INSERT_SECRET"
+       ACCESS_TOKEN = "INSER_TOKEN"
        REFRESH_TOKEN = "INSERT_TOKEN"
 
 Copy
 
 Explain
 A new refresh token is needed every 8 hours. This is a feature of the API's authorization mechanism. Hence, we need a function that gets a new token using the existing token:
-       def refresh_token(): 
-           global REFRESH_TOKEN 
-           oauth = fitbit.FitbitOauth2Client(client_id=CONSUMER_KEY, 
-             client_secret=CONSUMER_SECRET, 
-             refresh_token=REFRESH_TOKEN, 
-             access_token=ACCESS_TOKEN) 
+       def refresh_token():
+           global REFRESH_TOKEN
+           oauth = fitbit.FitbitOauth2Client(client_id=CONSUMER_KEY,
+             client_secret=CONSUMER_SECRET,
+             refresh_token=REFRESH_TOKEN,
+             access_token=ACCESS_TOKEN)
            REFRESH_TOKEN = oauth.refresh_token()
 
 Copy
@@ -832,29 +832,29 @@ Note
 In general, it is a bad practice to make use of the global keyword. Use it with your best judgement.
 
 Next, we need a function to retrieve steps using the Fitbit class. We are going to use the same procedure as the previous example. Initialize the fitbit class and retrieve the steps using intraday_time_series:
-       def get_steps(): 
-           num_steps = 0 
-           client = fitbit.Fitbit(CONSUMER_KEY, 
-                                  CONSUMER_SECRET, 
-                                  access_token=ACCESS_TOKEN, 
-                                  refresh_token=REFRESH_TOKEN) 
-           try: 
-               now = datetime.datetime.now() 
-               end_time = now.strftime("%H:%M") 
-               response = 
-                client.intraday_time_series('activities/steps', 
-                  detail_level='15min', 
-                  start_time="00:00", 
-                  end_time=end_time) 
-           except Exception as error: 
-               print(error) 
-           else: 
-               str_steps = response['activities-steps'][0]['value'] 
-               print(str_steps) 
-               try: 
-                   num_steps = int(str_steps) 
-               except ValueError: 
-                   pass 
+       def get_steps():
+           num_steps = 0
+           client = fitbit.Fitbit(CONSUMER_KEY,
+                                  CONSUMER_SECRET,
+                                  access_token=ACCESS_TOKEN,
+                                  refresh_token=REFRESH_TOKEN)
+           try:
+               now = datetime.datetime.now()
+               end_time = now.strftime("%H:%M")
+               response =
+                client.intraday_time_series('activities/steps',
+                  detail_level='15min',
+                  start_time="00:00",
+                  end_time=end_time)
+           except Exception as error:
+               print(error)
+           else:
+               str_steps = response['activities-steps'][0]['value']
+               print(str_steps)
+               try:
+                   num_steps = int(str_steps)
+               except ValueError:
+                   pass
            return num_steps
 
 Copy
@@ -867,31 +867,31 @@ Copy
 
 Explain
 We check for the steps every 15 minutes and light up the LEDs accordingly. Because the Pimoroni Blinkt consists of eight LEDs, we can light up one LED for every 1250 steps of physical activity:
-       # update steps every 15 minutes 
-       if (time.time() - current_time) > 900: 
-           current_time  = time.time() 
-           steps = get_steps() 
+       # update steps every 15 minutes
+       if (time.time() - current_time) > 900:
+           current_time  = time.time()
+           steps = get_steps()
 
-       num_leds = steps // 1250 
+       num_leds = steps // 1250
 
-       if num_leds > 8: 
-           num_leds = 8 
+       if num_leds > 8:
+           num_leds = 8
 
-       for i in range(num_leds): 
-           blinkt.set_pixel(i, 0, 255, 0) 
+       for i in range(num_leds):
+           blinkt.set_pixel(i, 0, 255, 0)
 
-       if num_leds <= 7:  
-           blinkt.set_pixel(num_leds, 255, 0, 0) 
-           blinkt.show() 
-           time.sleep(1) 
-           blinkt.set_pixel(num_leds, 0, 0, 0) 
-           blinkt.show() 
+       if num_leds <= 7:
+           blinkt.set_pixel(num_leds, 255, 0, 0)
+           blinkt.show()
+           time.sleep(1)
+           blinkt.set_pixel(num_leds, 0, 0, 0)
+           blinkt.show()
            time.sleep(1)
 
 Copy
 
 Explain
- 
+
 
 For every multiple of 1250 steps, we set an LED's color to green using the blinkt.set_pixel() method. We set the next LED to a blinking red. For example, at the time of writing this section, the total number of steps was 1604. This is (1250 x1) + 354 steps. Hence, we light up one LED in green and the next LED blinks red. This indicates that the steps are in progress.
 The picture here shows the blinking red LED when the progress was less than 1250 steps:
@@ -902,7 +902,7 @@ After walking around, the progress shifted to the right by one LED:
 
 Physical activity at 1604 steps
 
- 
+
 
 The next step is to set off a buzzer when there is no minimum physical activity. This is achieved by connecting a buzzer to the GPIO pins of the Raspberry Pi Zero. We have demonstrated the use of a buzzer in an earlier chapter.
 The earlier example is available for download along with this chapter as visual_aid.py. We will let you figure out the logic to set off a buzzer when there is no minimum physical activity in a period (for example, an hour).
@@ -922,7 +922,7 @@ Copy
 
 Explain
 The latitude and longitudinal coordinates can be obtained using a simple web search. For example, the request URL for Newark, CA is:
-       URL = ("https://api.darksky.net/forecast/key" 
+       URL = ("https://api.darksky.net/forecast/key"
        "/37.8267,-122.4233?exclude=currently,minutely,hourly")
 
 Copy
@@ -931,17 +931,17 @@ Explain
 The response includes the current, minutely, and hourly forecasts. They can be excluded using the exclude parameter as shown in the preceding URL.
 Now, we need to turn on the sprinkler only if it is not going to rain the next day. According to the API documentation, the weather forecast is returned as a Data Point object. The data points include a field named icon that indicates whether it is going to be clear, cloudy, or rainy.
 Let's write a method check_weather() that fetches the weather for the week:
-       def check_weather(): 
-          try: 
-                response = requests.get(URL) 
-          except Exception as error: 
-                print(error) 
-          else: 
-                if response.status_code == 200: 
-                      data = response.json() 
-                      if data["daily"]["data"][1]["icon"] == "rain": 
-                            return True 
-                      else: 
+       def check_weather():
+          try:
+                response = requests.get(URL)
+          except Exception as error:
+                print(error)
+          else:
+                if response.status_code == 200:
+                      data = response.json()
+                      if data["daily"]["data"][1]["icon"] == "rain":
+                            return True
+                      else:
                             return False
 
 Copy
@@ -982,17 +982,17 @@ Relays and kickback voltages: http://www.coilgun.info/theoryinductors/inductivek
 
 
 
-| ≪ [ 09 Let's Build a Robot ](/packtpub/2024/817_Python_Programming_with_Raspberry_Pi_1ed/09_Let_s_Build_a_Robot) | 10 Home Automation Using The Raspberry Pi Zero | [ 11 Tips and Tricks ](/packtpub/2024/817_Python_Programming_with_Raspberry_Pi_1ed/11_Tips_and_Tricks) ≫ |
+
+| ≪ [ 09 Let's Build a Robot ](/packtpub/2024/817-Python_with_RaspPi_1ed/09_Let_s_Build_a_Robot) | 10 Home Automation Using The Raspberry Pi Zero | [ 11 Tips and Tricks ](/packtpub/2024/817-Python_with_RaspPi_1ed/11_Tips_and_Tricks) ≫ |
 |:----:|:----:|:----:|
 
 > Page Properties:
 > (1) Title: 10 Home Automation Using The Raspberry Pi Zero
 > (2) Short Description: Python with RaspPi 1ed
-> (3) Path: packtpub/2024/817_Python_Programming_with_Raspberry_Pi_1ed/10_Home_Automation_Using_The_Raspberry_Pi_Zero
-> Book Title: Python Programming with Raspberry Pi - 1th Ed
+> (3) Path: /packtpub/2024/817-Python_with_RaspPi_1ed/10_Home_Automation_Using_The_Raspberry_Pi_Zero
+> Book Jemok: Python Programming with Raspberry Pi - 1th Ed
 > AuthorDate: By Antonio Melé Publication Date: Apr 2017 312 pages 1Ed
-> tags: Python RaspPi
 > Link: https://subscription.packtpub.com/book/iot-and-hardware/9781786467577/1
-> create: 2024-08-17 토 11:35:58
+> create: 2024-08-17 토 16:35:09
 > .md Name: 10_home_automation_using_the_raspberry_pi_zero.md
 

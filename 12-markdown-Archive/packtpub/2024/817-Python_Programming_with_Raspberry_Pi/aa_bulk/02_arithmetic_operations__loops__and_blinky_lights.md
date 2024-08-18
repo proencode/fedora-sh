@@ -1,5 +1,5 @@
 
-| ≪ [ 01 Getting Started with Python and the Raspberry Pi Zero ](/packtpub/2024/817_Python_Programming_with_Raspberry_Pi_1ed/01_Getting_Started_with_Python_and_the_Raspberry_Pi_Zero) | 02 Arithmetic Operations, Loops, and Blinky Lights | [ 03 Conditional Statements, Functions, and Lists ](/packtpub/2024/817_Python_Programming_with_Raspberry_Pi_1ed/03_Conditional_Statements__Functions__and_Lists) ≫ |
+| ≪ [ 01 Getting Started with Python and the Raspberry Pi Zero ](/packtpub/2024/817-Python_with_RaspPi_1ed/01_Getting_Started_with_Python_and_the_Raspberry_Pi_Zero) | 02 Arithmetic Operations, Loops, and Blinky Lights | [ 03 Conditional Statements, Functions, and Lists ](/packtpub/2024/817-Python_with_RaspPi_1ed/03_Conditional_Statements__Functions__and_Lists) ≫ |
 |:----:|:----:|:----:|
 
 # 02 Arithmetic Operations, Loops, and Blinky Lights
@@ -23,54 +23,54 @@ Arithmetic operations
 Python enables performing all the standard arithmetic operations. Let's launch the Python interpreter and learn more:
 
 Addition: Two numbers can be added using the + operand. The result is printed on the screen. Try the following example using the python interpreter:
-       >>>123+456 
+       >>>123+456
        579
 
 Copy
 
 Explain
 Subtraction: Two numbers can be added using the - operand:
-       >>>456-123 
-       333 
-       >>>123-456 
+       >>>456-123
+       333
+       >>>123-456
        -333
 
 Copy
 
 Explain
 Multiplication: Two numbers can be multiplied as follows:
-       >>>123*456 
+       >>>123*456
        56088
 
 Copy
 
 Explain
 Division: Two numbers can be divided as follows:
-       >>>456/22 
+       >>>456/22
        20.727272727272727
-       >>>456/2.0 
-       228.0 
-       >>>int(456/228) 
+       >>>456/2.0
+       228.0
+       >>>int(456/228)
        2
 
 Copy
 
 Explain
 Modulus operator: In Python, the modulus operator (%) returns the remainder of a division operation:
-       >>>4%2 
-       0 
-       >>>3%2 
+       >>>4%2
+       0
+       >>>3%2
        1
 
 Copy
 
 Explain
 The floor operator (//) is the opposite of the modulus operator. This operator returns the floor of the quotient, that is, the integer result, and discards the fractions:
-       >>>9//7 
-       1 
-       >>>7//3 
-       2 
-       >>>79//25 
+       >>>9//7
+       1
+       >>>7//3
+       2
+       >>>79//25
        3
 
 Copy
@@ -84,7 +84,7 @@ If you are interested in a deep dive on bitwise operators, we recommend getting 
 Consider the numbers 3 and 2 whose binary equivalents are 011 and 010, respectively. Let's take a look at different operators that perform the operation on every bit of the number:
 
 The AND operator: The AND operator is used to perform the AND operation on two numbers. Try this using the Python interpreter:
-       >>>3&2 
+       >>>3&2
        2
 
 Copy
@@ -101,7 +101,7 @@ Copy
 
 Explain
 The OR operator: The OR operator is used to perform the OR operation on two numbers as follows:
-       >>>3|2 
+       >>>3|2
        3
 
 Copy
@@ -118,7 +118,7 @@ Copy
 
 Explain
 The NOT operator: The NOT operator flips the bits of a number. see the following example:
-       >>>~1 
+       >>>~1
        -2
 
 Copy
@@ -130,14 +130,14 @@ Note
 For a better understanding of two's complement and so on, we recommend reading the following articles, https://wiki.python.org/moin/BitwiseOperators and https://en.wikipedia.org/wiki/Two's_complement.
 
 The XOR operator: An exclusive OR operation can be performed as follows:
-       >>>3^2 
+       >>>3^2
        1
 
 Copy
 
 Explain
 Left shift operator: The left shift operator enables shifting the bits of a given value to the left by the desired number of places. For example, bit shifting the number 3 to the left gives us the number 6. The binary representation of the number 3 is 0011. Left shifting the bits by one position will give us 0110, that is, the number 6:
-       >>>3<<1 
+       >>>3<<1
        6
 
 Copy
@@ -148,58 +148,58 @@ Logical operators
 Logical operators are used to check different conditions and execute the code accordingly. For example, detecting a button interfaced to the Raspberry Pi's GPIO being pressed and executing a specific task as a consequence. Let's discuss the basic logical operators:
 
 EQUAL: The EQUAL (==) operator is used to compare if two values are equal:
-       >>>3==3 
-       True 
-       >>>3==2 
+       >>>3==3
+       True
+       >>>3==2
        False
 
 Copy
 
 Explain
 NOT EQUAL: The NOT EQUAL (!=) operator compares two values and returns True if they are not equal:
-       >>>3!=2 
-       True 
-       >>>2!=2 
+       >>>3!=2
+       True
+       >>>2!=2
        False
 
 Copy
 
 Explain
 GREATER THAN: This operator (>) returns True if one value is greater than the other value:
-       >>>3>2 
-       True 
-       >>>2>3 
+       >>>3>2
+       True
+       >>>2>3
        False
 
 Copy
 
 Explain
 LESS THAN: This operator compares two values and returns True if one value is smaller than the other:
-       >>>2<3 
-       True 
-       >>>3<2 
+       >>>2<3
+       True
+       >>>3<2
        False
 
 Copy
 
 Explain
 GREATER THAN OR EQUAL TO (>=): This operator compares two values and returns True if one value is greater/bigger than or equal to the other value:
-       >>>4>=3 
-       True 
-       >>>3>=3 
-       True 
-       >>>2>=3 
+       >>>4>=3
+       True
+       >>>3>=3
+       True
+       >>>2>=3
        False
 
 Copy
 
 Explain
 LESS THAN OR EQUAL TO (<=): This operator compares two values and returns True if one value is smaller than or equal to the other value:
-       >>>2<=2 
-       True 
-       >>>2<=3 
-       True 
-       >>>3<=2 
+       >>>2<=2
+       True
+       >>>2<=3
+       True
+       >>>3<=2
        False
 
 Copy
@@ -215,16 +215,16 @@ Similarly, variables simplify code development by providing means to store infor
 There are different kinds of data types in Python. Let's review the different data types:
 
 In general, names, street addresses, and so on are a combination of alphanumeric characters. In Python, they are stored as strings. Strings in Python are represented and stored in variables as follows:
-       >>>name = 'John Smith' 
+       >>>name = 'John Smith'
        >>>address = '123 Main Street'
 
 Copy
 
 Explain
 Numbers in Python could be stored as follows:
-       >>>age = 29 
-       >>>employee_id = 123456 
-       >>>height = 179.5 
+       >>>age = 29
+       >>>employee_id = 123456
+       >>>height = 179.5
        >>>zip_code = 94560
 
 Copy
@@ -237,7 +237,7 @@ Copy
 
 Explain
 It is possible to assign values to multiple variables at the same time:
-       >>>a = c= 1 
+       >>>a = c= 1
        >>>b = a
 
 Copy
@@ -263,9 +263,9 @@ Copy
 Explain
 In the preceding example, we are making use of the input() function to seek the user's input of the number. The input() function takes the prompt ("Enter the first number: ") as an argument and returns the user input. In this example, the user input is stored in the variable, var. In order to add two numbers, we make use of the input() function to request user to provide two numbers as input:
 
-    var1 = input("Enter the first number: ") 
-    var2 = input("Enter the second number: ") 
-    total = int(var1) + int(var2) 
+    var1 = input("Enter the first number: ")
+    var2 = input("Enter the second number: ")
+    total = int(var1) + int(var2)
     print("The sum is %d" % total)
 
 Copy
@@ -313,12 +313,12 @@ Make use of the format() method to format a string with more than one variable.
 
 Let's build a console/command-line application that takes inputs from the user and print it on the screen. Let's create a new file named input_test.py, (available along with this chapter's downloads) take some user inputs and print them on the screen:
 
-    name = input("What is your name? ") 
-    address = input("What is your address? ") 
-    age = input("How old are you? ") 
+    name = input("What is your name? ")
+    address = input("What is your address? ")
+    age = input("How old are you? ")
 
-    print("My name is " + name) 
-    print("I am " + age + " years old") 
+    print("My name is " + name)
+    print("I am " + age + " years old")
     print("My address is " + address)
 
 Copy
@@ -339,7 +339,7 @@ In the preceding example, we printed the user inputs in combination with another
 
 In Python, strings can be concatenated by adding + between two strings:
 
-    name = input("What is your name? ") 
+    name = input("What is your name? ")
     print("My name is " + name)
 
 Copy
@@ -347,7 +347,7 @@ Copy
 Explain
 It is possible to concatenate two strings, but it is not possible to concatenate an integer. Let's consider the following example:
 
-    id = 5 
+    id = 5
     print("My id is " + id)
 
 Copy
@@ -374,7 +374,7 @@ Sometimes, a specific task has to be repeated several times. In such cases, we c
 A for loop
 In Python, a for loop is used to execute a task for n times. A for loop iterates through each element of a sequence. This sequence could be a dictionary, list, or any other iterator. For example, let's discuss an example where we execute a loop:
 
-    for i in range(0, 10): 
+    for i in range(0, 10):
        print("Loop execution no: ", i)
 
 Copy
@@ -385,7 +385,7 @@ In the preceding example, the print statement is executed 10 times:
 
 In order to execute the print task 10 times, the range() function (https://docs.python.org/2/library/functions.html#range) was used. The range function generates a list of numbers for a start and stop values that are passed as an arguments to the function. In this case, 0 and 10 are passed as arguments to the range() function. This returns a list containing numbers from 0 to 9. The for loop iterates through the code block for each element in steps of 1. The range function can also generate a list of numbers in steps of 2. This is done by passing the start value, stop value, and the step value as arguments to the range() function:
 
-    for i in range(0, 20, 2): 
+    for i in range(0, 20, 2):
        print("Loop execution no: ", i)
 
 Copy
@@ -396,7 +396,7 @@ In this example, 0 is the start value, 20 is the stop value, and 2 is the step v
 
 The range function can be used to count down from a given number. Let's say we would like to count down from 10 to 1:
 
-    for i in range(10, 0, -1): 
+    for i in range(10, 0, -1):
        print("Count down no: ", i)
 
 Copy
@@ -410,7 +410,7 @@ The general syntax of the range function is range(start, stop, step_count). It g
 Indentation
 Note the indentation in the for loop block:
 
-    for i in range(10, 1, -1): 
+    for i in range(10, 1, -1):
        print("Count down no: ", i)
 
 Copy
@@ -418,9 +418,9 @@ Copy
 Explain
 Python executes the block of code under the for loop statement. It is one of the features of the Python programming language. It executes any piece of code under the for loop as long as it has same level of indentation:
 
-    for i in range(0,10): 
-       #start of block 
-       print("Hello") 
+    for i in range(0,10):
+       #start of block
+       print("Hello")
        #end of block
 
 Copy
@@ -435,8 +435,8 @@ It is important to pay attention to indentation in Python as it directly affects
 Nested loops
 In Python, it is possible to implement a loop within a loop. For example, let's say we have to print x and y coordinates of a map. We can use nested loops to implement this:
 
-for x in range(0,3): 
-   for y in range(0,3): 
+for x in range(0,3):
+   for y in range(0,3):
          print(x,y)
 
 Copy
@@ -447,8 +447,8 @@ The expected output is:
 
 Be careful about code indentation in nested loops as it may throw errors. Consider the following example:
 
-for x in range(0,10): 
-   for y in range(0,10): 
+for x in range(0,10):
+   for y in range(0,10):
    print(x,y)
 
 Copy
@@ -469,9 +469,9 @@ Hence, it is important to pay attention to indentation in Python (especially nes
 A while loop
 while loops are used when a specific task is supposed to be executed until a specific condition is met. while loops are commonly used to execute code in an infinite loop. Let's look at a specific example where we would like to print the value of i from 0 to 9:
 
-i=0 
-while i<10: 
-  print("The value of i is ",i) 
+i=0
+while i<10:
+  print("The value of i is ",i)
   i+=1
 
 Copy
@@ -488,9 +488,9 @@ This is equivalent to i = i+1.
 
 This example would execute the code until the value of i is less than 10. It is also possible to execute something in an infinite loop:
 
-i=0 
-while True: 
-  print("The value of i is ",i) 
+i=0
+while True:
+  print("The value of i is ",i)
   i+=1
 
 Copy
@@ -500,12 +500,12 @@ The execution of this infinite loop can be stopped by pressing Ctrl + C on your 
 
 It is also possible to have nested while loops:
 
-i=0 
-j=0 
-while i<10: 
-  while j<10: 
-    print("The value of i,j is ",i,",",j) 
-    i+=1 
+i=0
+j=0
+while i<10:
+  while j<10:
+    print("The value of i,j is ",i,",",j)
+    i+=1
     j+=1
 
 Copy
@@ -556,7 +556,7 @@ Copy
 Explain
 We will be turning the LED on and off at a 1-second interval. In order to do so, we will be importing the time library. In Python, we need to import a library to make use of it. Since we interfaced the LED to the GPIO pin 2, let's make a mention of that in our code:
 
-import time 
+import time
 
 led = LED(2)
 
@@ -567,10 +567,10 @@ We just created a variable named led and defined that we will be making use of G
 
 The gpiozero library's LED class comes with functions named on() and off() to set the GPIO pin 2 to high and low, respectively:
 
-while True: 
-    led.on() 
-    time.sleep(1) 
-    led.off() 
+while True:
+    led.on()
+    time.sleep(1)
+    led.off()
     time.sleep(1)
 
 Copy
@@ -608,17 +608,17 @@ Have you heard of the chat application named Slack? How about controlling a tabl
 
 
 
-| ≪ [ 01 Getting Started with Python and the Raspberry Pi Zero ](/packtpub/2024/817_Python_Programming_with_Raspberry_Pi_1ed/01_Getting_Started_with_Python_and_the_Raspberry_Pi_Zero) | 02 Arithmetic Operations, Loops, and Blinky Lights | [ 03 Conditional Statements, Functions, and Lists ](/packtpub/2024/817_Python_Programming_with_Raspberry_Pi_1ed/03_Conditional_Statements__Functions__and_Lists) ≫ |
+
+| ≪ [ 01 Getting Started with Python and the Raspberry Pi Zero ](/packtpub/2024/817-Python_with_RaspPi_1ed/01_Getting_Started_with_Python_and_the_Raspberry_Pi_Zero) | 02 Arithmetic Operations, Loops, and Blinky Lights | [ 03 Conditional Statements, Functions, and Lists ](/packtpub/2024/817-Python_with_RaspPi_1ed/03_Conditional_Statements__Functions__and_Lists) ≫ |
 |:----:|:----:|:----:|
 
 > Page Properties:
 > (1) Title: 02 Arithmetic Operations, Loops, and Blinky Lights
 > (2) Short Description: Python with RaspPi 1ed
-> (3) Path: packtpub/2024/817_Python_Programming_with_Raspberry_Pi_1ed/02_Arithmetic_Operations__Loops__and_Blinky_Lights
-> Book Title: Python Programming with Raspberry Pi - 1th Ed
+> (3) Path: /packtpub/2024/817-Python_with_RaspPi_1ed/02_Arithmetic_Operations__Loops__and_Blinky_Lights
+> Book Jemok: Python Programming with Raspberry Pi - 1th Ed
 > AuthorDate: By Antonio Melé Publication Date: Apr 2017 312 pages 1Ed
-> tags: Python RaspPi
 > Link: https://subscription.packtpub.com/book/iot-and-hardware/9781786467577/1
-> create: 2024-08-17 토 11:35:57
+> create: 2024-08-17 토 16:35:08
 > .md Name: 02_arithmetic_operations__loops__and_blinky_lights.md
 

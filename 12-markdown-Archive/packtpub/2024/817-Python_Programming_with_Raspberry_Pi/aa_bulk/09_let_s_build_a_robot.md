@@ -1,5 +1,5 @@
 
-| ≪ [ 08 Awesome Things You Could Develop Using Python ](/packtpub/2024/817_Python_Programming_with_Raspberry_Pi_1ed/08_Awesome_Things_You_Could_Develop_Using_Python) | 09 Let's Build a Robot | [ 10 Home Automation Using The Raspberry Pi Zero ](/packtpub/2024/817_Python_Programming_with_Raspberry_Pi_1ed/10_Home_Automation_Using_The_Raspberry_Pi_Zero) ≫ |
+| ≪ [ 08 Awesome Things You Could Develop Using Python ](/packtpub/2024/817-Python_with_RaspPi_1ed/08_Awesome_Things_You_Could_Develop_Using_Python) | 09 Let's Build a Robot | [ 10 Home Automation Using The Raspberry Pi Zero ](/packtpub/2024/817-Python_with_RaspPi_1ed/10_Home_Automation_Using_The_Raspberry_Pi_Zero) ≫ |
 |:----:|:----:|:----:|
 
 # 09 Let's Build a Robot
@@ -59,7 +59,7 @@ A set of M2.5 rows, spacers, and nuts
 
 http://a.co/dpdmb1B
 
- 
+
 
 1
 
@@ -101,7 +101,7 @@ A Raspberry Pi Zero camera module
 
 http://a.co/07iFhxC
 
- 
+
 
 1
 
@@ -208,7 +208,7 @@ The next step is mounting the wheels. The wheels are designed to be press-fitted
 
 Assembling wheels onto the servo
 
- 
+
 
 Lock the wheels in place using a screw (comes with the wheels)
 
@@ -229,7 +229,7 @@ The first step in the assembly process is to solder the 40 pin header. Stack the
 
 Stack the header on top of the Raspberry Pi Zero
 
- 
+
 
 Position the motor driver (as shown in the picture here) on top of the header. Hold on to the motor driver board so that the board is not tilted while soldering.
 
@@ -261,7 +261,7 @@ Mounting the Raspberry Pi Zero onto the chassis
 Note
 While mounting the Raspberry Pi Zero, we ensured that we are able to plug in the HDMI cable, USB cable, and so on for testing purposes.
 
- 
+
 
 The chassis we have used is made of anodized aluminum;hence, it is nonconductive. We mounted the Raspberry Pi Zero directly, without any insulation between the chassis and the Raspberry Pi Zero.
 Note
@@ -393,7 +393,7 @@ sudo raspi-config.
 Copy
 
 Explain
- 
+
 
 It should launch the config options menu (shown in the screenshot here):
 
@@ -521,7 +521,7 @@ Explain
 Now that the libraries are installed, let's write a program that rotates the motors continuously:
 
 As always, the first step is importing the MotorHAT module:
-       from Adafruit_MotorHAT import Adafruit_MotorHAT, 
+       from Adafruit_MotorHAT import Adafruit_MotorHAT,
        Adafruit_DCMotor
 
 Copy
@@ -529,42 +529,42 @@ Copy
 Explain
 The next step is to create an instance of the MotorHAT class and establish the interface with the motor driver (as discussed in the previous section, the motor driver's 7-bit address is 0x60).
 The motors of the robot are connected to channels 1 and 2. Hence, we need to initialize two instances of the Adafruit_DCMotor class that represent the left and right motors of the robot:
-       left_motor = motor_driver.getMotor(1) 
+       left_motor = motor_driver.getMotor(1)
        right_motor = motor_driver.getMotor(2)
 
 Copy
 
 Explain
 The next step is setting the motor speed and motor direction. The motor speed can be set using an integer between 0 and 255 (which corresponds to 0% and 100% of the motor's rated rpm). Let's set the motor speed at 100%:
-       left_motor.setSpeed(255) 
+       left_motor.setSpeed(255)
        right_motor.setSpeed(255)
 
 Copy
 
 Explain
 Let's rotate the motors in the forward direction:
-       left_motor.run(Adafruit_MotorHAT.FORWARD) 
+       left_motor.run(Adafruit_MotorHAT.FORWARD)
        right_motor.run(Adafruit_MotorHAT.FORWARD)
 
 Copy
 
 Explain
 Let's rotate both the motors in the forward direction for 5 seconds and then reduce the speed:
-       left_motor.setSpeed(200) 
+       left_motor.setSpeed(200)
        right_motor.setSpeed(200)
 
 Copy
 
 Explain
 Now, let's rotate the motors in the reverse direction:
-       left_motor.run(Adafruit_MotorHAT.BACKWARD) 
+       left_motor.run(Adafruit_MotorHAT.BACKWARD)
        right_motor.run(Adafruit_MotorHAT.BACKWARD)
 
 Copy
 
 Explain
 Let's turn off the motors once we are done rotating the motors in the reverse direction for 5 seconds:
-       left_motor.run(Adafruit_MotorHAT.RELEASE) 
+       left_motor.run(Adafruit_MotorHAT.RELEASE)
        right_motor.run(Adafruit_MotorHAT.RELEASE)
 
 Copy
@@ -572,33 +572,33 @@ Copy
 Explain
 Putting it altogether:
 
-from Adafruit_MotorHAT import Adafruit_MotorHAT, Adafruit_DCMotor 
-from time import sleep 
+from Adafruit_MotorHAT import Adafruit_MotorHAT, Adafruit_DCMotor
+from time import sleep
 
 
-if __name__ == "__main__": 
-  motor_driver = Adafruit_MotorHAT(addr=0x60) 
+if __name__ == "__main__":
+  motor_driver = Adafruit_MotorHAT(addr=0x60)
 
-  left_motor = motor_driver.getMotor(1) 
-  right_motor = motor_driver.getMotor(2) 
+  left_motor = motor_driver.getMotor(1)
+  right_motor = motor_driver.getMotor(2)
 
-  left_motor.setSpeed(255) 
-  right_motor.setSpeed(255) 
+  left_motor.setSpeed(255)
+  right_motor.setSpeed(255)
 
-  left_motor.run(Adafruit_MotorHAT.FORWARD) 
-  right_motor.run(Adafruit_MotorHAT.FORWARD) 
+  left_motor.run(Adafruit_MotorHAT.FORWARD)
+  right_motor.run(Adafruit_MotorHAT.FORWARD)
 
-  sleep(5) 
+  sleep(5)
 
-  left_motor.setSpeed(200) 
-  right_motor.setSpeed(200) 
+  left_motor.setSpeed(200)
+  right_motor.setSpeed(200)
 
-  left_motor.run(Adafruit_MotorHAT.BACKWARD) 
-  right_motor.run(Adafruit_MotorHAT.BACKWARD) 
+  left_motor.run(Adafruit_MotorHAT.BACKWARD)
+  right_motor.run(Adafruit_MotorHAT.BACKWARD)
 
-  sleep(5) 
+  sleep(5)
 
-  left_motor.run(Adafruit_MotorHAT.RELEASE) 
+  left_motor.run(Adafruit_MotorHAT.RELEASE)
   right_motor.run(Adafruit_MotorHAT.RELEASE)
 
 Copy
@@ -660,7 +660,7 @@ The screenshot of the Raspberry Configuration screen
 Reboot your Raspberry Pi Zero!
 Verification of camera function
 Once your reboot is complete, run the following command from the Command Prompt:
-raspistill -o test_picture 
+raspistill -o test_picture
 
 Copy
 
@@ -695,14 +695,14 @@ We are going to make use of object-oriented programming to implement the motor c
 Open a file named robot.py to implement the Robot class.
 In order to control the movement of the robot, the robot needs the motor driver channels that are being used (to drive the motors) as inputs during initialization.
 Hence, the __init__() function of the Robot class would be something as follows:
-       import time 
-       from Adafruit_MotorHAT import Adafruit_MotorHAT 
+       import time
+       from Adafruit_MotorHAT import Adafruit_MotorHAT
 
 
-       class Robot(object): 
-         def __init__(self, left_channel, right_channel): 
-           self.motor = Adafruit_MotorHAT(0x60) 
-           self.left_motor = self.motor.getMotor(left_channel) 
+       class Robot(object):
+         def __init__(self, left_channel, right_channel):
+           self.motor = Adafruit_MotorHAT(0x60)
+           self.left_motor = self.motor.getMotor(left_channel)
            self.right_motor = self.motor.getMotor(right_channel)
 
 Copy
@@ -711,47 +711,47 @@ Explain
 In the preceding code snippet, the __init__() function requires the channels being used to connect the left and right motors to the motor driver board as arguments.
 When an instance of the Robot class is created, the motor driver (Adafruit_MotorHAT) is initialized and the motor channels are initialized.
 Let's write methods to move the robot in the forward and reverse directions:
-       def forward(self, duration): 
-         self.set_speed() 
-         self.left_motor.run(Adafruit_MotorHAT.FORWARD) 
-         self.right_motor.run(Adafruit_MotorHAT.FORWARD) 
-         time.sleep(duration) 
-         self.stop() 
+       def forward(self, duration):
+         self.set_speed()
+         self.left_motor.run(Adafruit_MotorHAT.FORWARD)
+         self.right_motor.run(Adafruit_MotorHAT.FORWARD)
+         time.sleep(duration)
+         self.stop()
 
-       def reverse(self, duration): 
-         self.set_speed() 
-         self.left_motor.run(Adafruit_MotorHAT.BACKWARD) 
-         self.right_motor.run(Adafruit_MotorHAT.BACKWARD) 
-         time.sleep(duration) 
+       def reverse(self, duration):
+         self.set_speed()
+         self.left_motor.run(Adafruit_MotorHAT.BACKWARD)
+         self.right_motor.run(Adafruit_MotorHAT.BACKWARD)
+         time.sleep(duration)
          self.stop()
 
 Copy
 
 Explain
 Let's also write methods to move the robot in left- and right-hand side directions. In order to turn the robot left, we need to turn the left motor off and keep the right motor on and vice versa. This creates a turning moment and turns the robot in that direction:
-       def left(self, duration): 
-         self.set_speed() 
-         self.right_motor.run(Adafruit_MotorHAT.FORWARD) 
-         time.sleep(duration) 
-         self.stop() 
+       def left(self, duration):
+         self.set_speed()
+         self.right_motor.run(Adafruit_MotorHAT.FORWARD)
+         time.sleep(duration)
+         self.stop()
 
-       def right(self, duration): 
-         self.set_speed() 
-         self.left_motor.run(Adafruit_MotorHAT.FORWARD) 
-         time.sleep(duration) 
+       def right(self, duration):
+         self.set_speed()
+         self.left_motor.run(Adafruit_MotorHAT.FORWARD)
+         time.sleep(duration)
          self.stop()
 
 Copy
 
 Explain
 Thus, we have implemented a Robot class that drives the robot in the four directions. Let's implement a simple test so that we can test the Robot class before we use it in our main program:
-       if __name__ == "__main__": 
-         # create an instance  of the robot class with channels 1 and 2 
-         robot = Robot(1,2) 
-         print("Moving forward...") 
-         robot.forward(5) 
-         print("Moving backward...") 
-         robot.reverse(5) 
+       if __name__ == "__main__":
+         # create an instance  of the robot class with channels 1 and 2
+         robot = Robot(1,2)
+         print("Moving forward...")
+         robot.forward(5)
+         print("Moving backward...")
+         robot.reverse(5)
          robot.stop()
 
 Copy
@@ -822,7 +822,7 @@ Create a folder named templates within the folder where your flask framework and
          </head>
 
          <body>
-          <iframe id="stream" 
+          <iframe id="stream"
           src="http://<IP_Address_of_your_Raspberry_Pi>
           :8081/?action=stream" width="320" height="240">
           </iframe>
@@ -833,7 +833,7 @@ Copy
 
 Explain
 In the preceding code snippet, include the IP address of your Raspberry Pi Zero and save it as index.html.
- 
+
 
 Create a file named web_interface.py and serve index.html saved to the templates folder:
 from flask import Flask, render_template
@@ -865,62 +865,62 @@ Buttons for robot control
 In this section, we will add implement buttons to the web interface to drive the robot.
 
 The first step is adding four buttons to index.html. We will be making use of HTML Table to add four buttons (Code snippet shortened for brevity and refer to http://www.w3schools.com/html/html_tables.asp for more information on HTML tables):
-       <table style="width:100%; max-width: 500px; height:300px;"> 
-         <tr> 
-           <td> 
-             <form action="/forward" method="POST"> 
+       <table style="width:100%; max-width: 500px; height:300px;">
+         <tr>
+           <td>
+             <form action="/forward" method="POST">
                <input type="submit" value="forward" style="float:
-               left; width:80% ;"> 
-               </br> 
-             </form> 
-           </td> 
-       ... 
+               left; width:80% ;">
+               </br>
+             </form>
+           </td>
+       ...
        </table>
 
 Copy
 
 Explain
 In web_interface.py, we need to implement a method that accepts POST requests from the buttons. For example, the method to accept requests from /forward can be implemented as follows:
-       @app.route('/forward', methods = ['POST']) 
-       def forward(): 
-           my_robot.forward(0.25) 
+       @app.route('/forward', methods = ['POST'])
+       def forward():
+           my_robot.forward(0.25)
            return redirect('/')
 
 Copy
 
 Explain
 Putting it altogether, web_interface.py looks something as follows:
-       from flask import Flask, render_template, request, redirect 
-       from robot import Robot  
+       from flask import Flask, render_template, request, redirect
+       from robot import Robot
 
-       app = Flask(__name__) 
-       my_robot = Robot(1,2) 
+       app = Flask(__name__)
+       my_robot = Robot(1,2)
 
-       @app.route("/") 
-       def hello(): 
-           return render_template('index.html') 
+       @app.route("/")
+       def hello():
+           return render_template('index.html')
 
-       @app.route('/forward', methods = ['POST']) 
-       def forward(): 
-           my_robot.forward(0.25) 
-           return redirect('/') 
+       @app.route('/forward', methods = ['POST'])
+       def forward():
+           my_robot.forward(0.25)
+           return redirect('/')
 
-       @app.route('/reverse', methods = ['POST']) 
-       def reverse(): 
-           my_robot.reverse(0.25) 
-           return redirect('/') 
+       @app.route('/reverse', methods = ['POST'])
+       def reverse():
+           my_robot.reverse(0.25)
+           return redirect('/')
 
-       @app.route('/left', methods = ['POST']) 
-       def left(): 
-           my_robot.left(0.25) 
-           return redirect('/') 
+       @app.route('/left', methods = ['POST'])
+       def left():
+           my_robot.left(0.25)
+           return redirect('/')
 
-       @app.route('/right', methods = ['POST']) 
-       def right(): 
-           my_robot.right(0.25) 
-           return redirect('/') 
+       @app.route('/right', methods = ['POST'])
+       def right():
+           my_robot.right(0.25)
+           return redirect('/')
 
-       if __name__ == "__main__": 
+       if __name__ == "__main__":
            app.run('0.0.0.0')
 
 Copy
@@ -938,7 +938,7 @@ Reboot your Raspberry Pi Zero, and you should see a live feed of the robot's cam
 
 Control your robot a browser!
 
- 
+
 
 Troubleshooting tips
 Here are some of the problems we encountered while building the robot:
@@ -951,7 +951,7 @@ Consider making enhancements to the web interface such that you could alter the 
 If you are planning to build a robot that operates in outdoor conditions, you potentially add a GPS sensor. Most GPS sensors stream data via the UART interface. We recommend reading Chapter 4, Communication Interfaces for examples.
 The distance of obstacles can be measured using this sensor: https://www.adafruit.com/products/3317. This can be helpful in telemetry applications.
 * In this book, we used a camera to drive the robot. It is possible to take pictures and understand the objects in a scene using this image understanding tool:https://cloud.google.com/vision/.
- 
+
 
 Summary
 In this chapter, we built a robot that consists of a pair of motors driven by a Raspberry Pi using a motor driver. The robot is also equipped with a camera module to aid steering the robot. It consists of two battery packs to power the Raspberry Pi Zero and motors, respectively. We will also upload a video of the robot's operation to this book's website.
@@ -971,17 +971,17 @@ Raspberry Pi Camera Setup for web streaming: http://jamespoole.me/2016/04/29/web
 
 
 
-| ≪ [ 08 Awesome Things You Could Develop Using Python ](/packtpub/2024/817_Python_Programming_with_Raspberry_Pi_1ed/08_Awesome_Things_You_Could_Develop_Using_Python) | 09 Let's Build a Robot | [ 10 Home Automation Using The Raspberry Pi Zero ](/packtpub/2024/817_Python_Programming_with_Raspberry_Pi_1ed/10_Home_Automation_Using_The_Raspberry_Pi_Zero) ≫ |
+
+| ≪ [ 08 Awesome Things You Could Develop Using Python ](/packtpub/2024/817-Python_with_RaspPi_1ed/08_Awesome_Things_You_Could_Develop_Using_Python) | 09 Let's Build a Robot | [ 10 Home Automation Using The Raspberry Pi Zero ](/packtpub/2024/817-Python_with_RaspPi_1ed/10_Home_Automation_Using_The_Raspberry_Pi_Zero) ≫ |
 |:----:|:----:|:----:|
 
 > Page Properties:
 > (1) Title: 09 Let's Build a Robot
 > (2) Short Description: Python with RaspPi 1ed
-> (3) Path: packtpub/2024/817_Python_Programming_with_Raspberry_Pi_1ed/09_Let_s_Build_a_Robot
-> Book Title: Python Programming with Raspberry Pi - 1th Ed
+> (3) Path: /packtpub/2024/817-Python_with_RaspPi_1ed/09_Let_s_Build_a_Robot
+> Book Jemok: Python Programming with Raspberry Pi - 1th Ed
 > AuthorDate: By Antonio Melé Publication Date: Apr 2017 312 pages 1Ed
-> tags: Python RaspPi
 > Link: https://subscription.packtpub.com/book/iot-and-hardware/9781786467577/1
-> create: 2024-08-17 토 11:35:58
+> create: 2024-08-17 토 16:35:09
 > .md Name: 09_let_s_build_a_robot.md
 

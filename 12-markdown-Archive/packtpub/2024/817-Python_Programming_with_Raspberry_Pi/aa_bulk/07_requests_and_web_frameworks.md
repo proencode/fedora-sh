@@ -1,5 +1,5 @@
 
-| ≪ [ 06 File I/O and Python Utilities ](/packtpub/2024/817_Python_Programming_with_Raspberry_Pi_1ed/06_File_I-O_and_Python_Utilities) | 07 Requests and Web Frameworks | [ 08 Awesome Things You Could Develop Using Python ](/packtpub/2024/817_Python_Programming_with_Raspberry_Pi_1ed/08_Awesome_Things_You_Could_Develop_Using_Python) ≫ |
+| ≪ [ 06 File I/O and Python Utilities ](/packtpub/2024/817-Python_with_RaspPi_1ed/06_File_I-O_and_Python_Utilities) | 07 Requests and Web Frameworks | [ 08 Awesome Things You Could Develop Using Python ](/packtpub/2024/817-Python_with_RaspPi_1ed/08_Awesome_Things_You_Could_Develop_Using_Python) ≫ |
 |:----:|:----:|:----:|
 
 # 07 Requests and Web Frameworks
@@ -110,8 +110,8 @@ Let's discuss how the same example works with the try/except keywords:
 
 From the previous example, we know that when a user provides the wrong input (for example, a letter instead of a number between 0 and 9), the exception occurs at line 10 (where the user input is converted into an integer), and the nature of the error is named ValueError.
 It is possible to avoid interruption of the program's execution by wrapping this in a try...except block:
-      try: 
-         input_value = int(value) 
+      try:
+         input_value = int(value)
       except ValueError as error:
          print("The value is invalid %s" % error)
 
@@ -267,17 +267,17 @@ In order to make use of the API, sign up for an API account and get an API key (
 An API key from openweathermap.org
 
 According to the API documentation (openweathermap.org/current), the weather information for a city can be retrieved using http://api.openweathermap.org/data/2.5/weather?zip=SanFrancisco&appid=API_KEY&units=imperial as the URL.
- 
+
 
 Substitute API_KEY with the key from your account and use it to retrieve the current weather information in a browser. You should be able to retrieve the weather information in the following format:
-       {"coord":{"lon":-122.42,"lat":37.77},"weather":[{"id":800, 
-       "main":"Clear","description":"clear sky","icon":"01n"}],"base": 
-       "stations","main":{"temp":71.82,"pressure":1011,"humidity":50, 
+       {"coord":{"lon":-122.42,"lat":37.77},"weather":[{"id":800,
+       "main":"Clear","description":"clear sky","icon":"01n"}],"base":
+       "stations","main":{"temp":71.82,"pressure":1011,"humidity":50,
        "temp_min":68,"temp_max":75.99},"wind":
        {"speed":13.04,"deg":291},
-       "clouds":{"all":0},"dt":1474505391,"sys":{"type":3,"id":9966, 
-       "message":0.0143,"country":"US","sunrise":1474552682, 
-       "sunset":1474596336},"id":5391959,"name":"San 
+       "clouds":{"all":0},"dt":1474505391,"sys":{"type":3,"id":9966,
+       "message":0.0143,"country":"US","sunrise":1474552682,
+       "sunset":1474596336},"id":5391959,"name":"San
        Francisco","cod":200}
 
 Copy
@@ -289,7 +289,7 @@ Let's review retrieving the weather using the requests module and parsing the JS
 
 Substitute the URL in the previous example (internet_access.py) with the one discussed in this example. This should return the weather information in the JSON format.
 The requests module provides a method to parse the JSON data. The response could be parsed as follows:
-       response = requests.get(URL) 
+       response = requests.get(URL)
        json_data = response.json()
 
 Copy
@@ -341,7 +341,7 @@ In the previous example, we retrieved information from the Internet. Let's consi
 In this example, we will post these events to Slack using requests. Let's send a direct message to ourselves on Slack whenever a sensor event such as a cat door opening occurs. We need a URL to post these sensor events to Slack. Let's review generating a URL in order to post sensor events to Slack:
 
 The first step in generating a URL is creating an incoming webhook. A webhook is a type request that can post messages that are carried as a payload to applications such as Slack.
- 
+
 
 If you are a member of a Slack team named TeamX, launch your team's application directory, namely teamx.slack.com/apps in a browser:
 
@@ -359,7 +359,7 @@ Let's send a private message to ourselves when an event occurs. Select Privately
 
 Select Privately to you
 
- 
+
 
 We have generated a URL to send direct messages about sensor events (URL partially concealed):
 
@@ -452,12 +452,12 @@ Controlling a table lamp using the Flask framework
 
 According to the Flask framework documentation, it is possible to route a URL to a specific function. For example, it is possible to bind /lamp/<control> using route() to the control() function:
 
-@app.route("/lamp/<control>") 
-def control(control): 
-  if control == "on": 
-    lights.on() 
-  elif control == "off": 
-    lights.off() 
+@app.route("/lamp/<control>")
+def control(control):
+  if control == "on":
+    lights.on()
+  elif control == "off":
+    lights.off()
   return "Table lamp is now %s" % control
 
 Copy
@@ -465,23 +465,23 @@ Copy
 Explain
 In the preceding code snippet, <control> is a variable that can be passed on as an argument to the binding function. This enables us to turn the lamp on/off. For example, <IP address>:5000/lamp/on turns on the lamp, and vice versa. Putting it all together, we have this:
 
-#!/usr/bin/python3 
+#!/usr/bin/python3
 
-from flask import Flask 
-from gpiozero import OutputDevice 
+from flask import Flask
+from gpiozero import OutputDevice
 
-app = Flask(__name__) 
-lights = OutputDevice(2) 
+app = Flask(__name__)
+lights = OutputDevice(2)
 
-@app.route("/lamp/<control>") 
-def control(control): 
-  if control == "on": 
-    lights.on() 
-  elif control == "off": 
-    lights.off() 
-  return "Table lamp is now %s" % control 
+@app.route("/lamp/<control>")
+def control(control):
+  if control == "on":
+    lights.on()
+  elif control == "off":
+    lights.off()
+  return "Table lamp is now %s" % control
 
-if __name__ == "__main__": 
+if __name__ == "__main__":
     app.run('0.0.0.0')
 
 Copy
@@ -499,17 +499,17 @@ In this chapter, we discussed the try/except keywords in Python. We also discuss
 
 
 
-| ≪ [ 06 File I/O and Python Utilities ](/packtpub/2024/817_Python_Programming_with_Raspberry_Pi_1ed/06_File_I-O_and_Python_Utilities) | 07 Requests and Web Frameworks | [ 08 Awesome Things You Could Develop Using Python ](/packtpub/2024/817_Python_Programming_with_Raspberry_Pi_1ed/08_Awesome_Things_You_Could_Develop_Using_Python) ≫ |
+
+| ≪ [ 06 File I/O and Python Utilities ](/packtpub/2024/817-Python_with_RaspPi_1ed/06_File_I-O_and_Python_Utilities) | 07 Requests and Web Frameworks | [ 08 Awesome Things You Could Develop Using Python ](/packtpub/2024/817-Python_with_RaspPi_1ed/08_Awesome_Things_You_Could_Develop_Using_Python) ≫ |
 |:----:|:----:|:----:|
 
 > Page Properties:
 > (1) Title: 07 Requests and Web Frameworks
 > (2) Short Description: Python with RaspPi 1ed
-> (3) Path: packtpub/2024/817_Python_Programming_with_Raspberry_Pi_1ed/07_Requests_and_Web_Frameworks
-> Book Title: Python Programming with Raspberry Pi - 1th Ed
+> (3) Path: /packtpub/2024/817-Python_with_RaspPi_1ed/07_Requests_and_Web_Frameworks
+> Book Jemok: Python Programming with Raspberry Pi - 1th Ed
 > AuthorDate: By Antonio Melé Publication Date: Apr 2017 312 pages 1Ed
-> tags: Python RaspPi
 > Link: https://subscription.packtpub.com/book/iot-and-hardware/9781786467577/1
-> create: 2024-08-17 토 11:35:58
+> create: 2024-08-17 토 16:35:09
 > .md Name: 07_requests_and_web_frameworks.md
 

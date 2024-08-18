@@ -1,5 +1,5 @@
 
-| ≪ [ 00 Preface ](/packtpub/2024/817_Python_Programming_with_Raspberry_Pi_1ed/00_Preface) | 01 Getting Started with Python and the Raspberry Pi Zero | [ 02 Arithmetic Operations, Loops, and Blinky Lights ](/packtpub/2024/817_Python_Programming_with_Raspberry_Pi_1ed/02_Arithmetic_Operations__Loops__and_Blinky_Lights) ≫ |
+| ≪ [ 00 Preface ](/packtpub/2024/817-Python_with_RaspPi_1ed/00_Preface) | 01 Getting Started with Python and the Raspberry Pi Zero | [ 02 Arithmetic Operations, Loops, and Blinky Lights ](/packtpub/2024/817-Python_with_RaspPi_1ed/02_Arithmetic_Operations__Loops__and_Blinky_Lights) ≫ |
 |:----:|:----:|:----:|
 
 # 01 Getting Started with Python and the Raspberry Pi Zero
@@ -90,7 +90,7 @@ https://www.adafruit.com/product/3170
 
 $5.95
 
- 
+
 
 The other items needed for this include a USB mouse, USB keyboard, and a monitor with the HDMI output or DVI output. We will also need an HDMI cable (or DVI to HDMI cable if the monitor has an DVI output). Some vendors such as the Pi Hut sell the Raspberry Pi Zero accessories as a kit (for example, https://thepihut.com/collections/raspberry-pi-accessories/products/raspberry-pi-zero-essential-kit).
 
@@ -116,7 +116,7 @@ The Raspberry Pi Zero is a small computer that costs about $5 and smaller than a
 Note
 A fun fact for the readers is that one of the authors of this book, Sai Yamanoor, drove from San Francisco to Los Angeles (700+ miles for a round trip in one day) on the day after Thanksgiving to buy the Raspberry Pi Zero from a local store.
 
- 
+
 
 The features of the Raspberry Pi Zero
 The Raspberry Pi Zero is powered by a 1 GHz BCM2835 processor and 512 MB RAM. BCM2835 is a System on a Chip (SoC) developed by Broadcom semiconductors. SoC is one where all the components required to run a computer are available on a single chip (for example, the BCM2835 includes CPU, GPU, peripherals such as USB interface). The documentation for the BCM2835 SoC is available at https://www.raspberrypi.org/documentation/hardware/raspberrypi/bcm2835/README.md.
@@ -155,7 +155,7 @@ Perform the following steps:
 
 Arrange the Raspberry Pi on top of the headers upside down.
 Gently hold the Raspberry Pi (to make sure that the headers are positioned correctly while soldering) and solder the headers onto the Raspberry Pi.
- 
+
 
 Inspect the board to ensure that the headers are soldered properly and carefully remove the Raspberry Pi Zero off the breadboard.
 
@@ -205,7 +205,7 @@ Under the System tab, change the password:
 Change the password
 
 Under the Localisation tab, change the locale, time zone, and keyboard settings based upon your region.
- 
+
 
 When the installation is complete, connect the Raspberry Pi Zero to the wireless network (using the wireless tab on the top right).
 
@@ -227,7 +227,7 @@ The OS upgrade should complete within a couple of minutes.
 Note
 The Raspberry Pi Foundation hosts a video on its website that provides a visual aid to set up the Raspberry Pi. This video is available at https://vimeo.com/90518800.
 
- 
+
 
 Let's learn Python!
 Python is a high-level programming language invented by Guido Van Rossum. It is advantageous to learn Python using the Raspberry Pi for the following reasons:
@@ -269,7 +269,7 @@ From the IDLE's interactive command-line tool, type the following line:
 Copy
 
 Explain
- 
+
 
 This should print the following to the interactive command-line tool's screen:
 
@@ -281,7 +281,7 @@ The command-line tool is useful for test coding logic, but it is neither practic
 Launch IDLE's text editor (in IDLE, File | New File), enter the hello world line discussed in the previous section and save it as helloworld.py.
 Now, the code could be executed by either pressing the F5 key or clicking on Run Module from the drop-down menu Run, and you will get the output as shown in the following figure:
 
- 
+
 
 Launching the Python interpreter via the Linux Terminal
 It is also possible to use the Python interpreter via the Linux Terminal. Programmers mostly use this to test their code or refer to the Python documentation tool, pydoc. This approach is convenient if the readers plan to use a text editor other than IDLE:
@@ -353,17 +353,16 @@ That's it! In this chapter, we set up the Raspberry Pi Zero to write our first p
 
 
 
-| ≪ [ 00 Preface ](/packtpub/2024/817_Python_Programming_with_Raspberry_Pi_1ed/00_Preface) | 01 Getting Started with Python and the Raspberry Pi Zero | [ 02 Arithmetic Operations, Loops, and Blinky Lights ](/packtpub/2024/817_Python_Programming_with_Raspberry_Pi_1ed/02_Arithmetic_Operations__Loops__and_Blinky_Lights) ≫ |
+| ≪ [ 00 Preface ](/packtpub/2024/817-Python_with_RaspPi_1ed/00_Preface) | 01 Getting Started with Python and the Raspberry Pi Zero | [ 02 Arithmetic Operations, Loops, and Blinky Lights ](/packtpub/2024/817-Python_with_RaspPi_1ed/02_Arithmetic_Operations__Loops__and_Blinky_Lights) ≫ |
 |:----:|:----:|:----:|
 
 > Page Properties:
 > (1) Title: 01 Getting Started with Python and the Raspberry Pi Zero
 > (2) Short Description: Python with RaspPi 1ed
-> (3) Path: packtpub/2024/817_Python_Programming_with_Raspberry_Pi_1ed/01_Getting_Started_with_Python_and_the_Raspberry_Pi_Zero
-> Book Title: Python Programming with Raspberry Pi - 1th Ed
+> (3) Path: /packtpub/2024/817-Python_with_RaspPi_1ed/01_Getting_Started_with_Python_and_the_Raspberry_Pi_Zero
+> Book Jemok: Python Programming with Raspberry Pi - 1th Ed
 > AuthorDate: By Antonio Melé Publication Date: Apr 2017 312 pages 1Ed
-> tags: Python RaspPi
 > Link: https://subscription.packtpub.com/book/iot-and-hardware/9781786467577/1
-> create: 2024-08-17 토 11:35:57
+> create: 2024-08-17 토 16:35:08
 > .md Name: 01_getting_started_with_python_and_the_raspberry_pi_zero.md
 

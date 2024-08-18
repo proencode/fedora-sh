@@ -1,28 +1,57 @@
 #!/bin/sh
 
 #-- file_Made "01" "P1 JavaScript Syntax" #from --> md_Create () {
-#-- file_Made "${CurrentSeq}" "${CurrentTitle}" "${PrevLink}" "${NextLink}"
+#-- file_Made "${CurrentSeq}" "${CurrentChapter}" "${PrevLink}" "${NextLink}"
 #----> file_Made
 
 file_Made () {
 	ChapterSeq=$1 #-- 권 번호
-	ChapterTitle=$2 #-- wiki.js 왼쪽에 표시할 챕터 제목
-echo "#----> file_Made CurrentSeq ${CurrentSeq}; CurrentTitle ${CurrentTitle}; PrevLink ${PrevLink}; NextLink ${NextLink};"
+	ChapterJemok=$2 #-- wiki.js 왼쪽에 표시할 챕터 제목
+echo "#----> file_Made CurrentSeq ${CurrentSeq}; CurrentChapter ${CurrentChapter}; PrevLink ${PrevLink}; NextLink ${NextLink};"
 	if [ "x${PrevLink}" = "xBegin" ]; then
-		link_box="| 🏁 ${BookTitle} | ${ChapterSeq} ${ChapterTitle} | $4 ≫ |"
+		link_box="| 🏁 ${TypingMmDd} ${BookJemok} | ${ChapterSeq} ${ChapterJemok} | $4 ≫ |"
 	else
 		if [ "x${NextLink}" = "xEnd" ]; then
-			link_box="| ≪ $3 | ${ChapterSeq} ${ChapterTitle} | ${BookTitle} 🔔 |"
+			link_box="| ≪ $3 | ${ChapterSeq} ${ChapterJemok} | ${TypingMmDd} ${BookJemok} 🔔 |"
 			#-- End 🔔 | End 🎆 | End 🎇 | End 🌟 |
 		else
-			link_box="| ≪ $3 | ${ChapterSeq} ${ChapterTitle} | $4 ≫ |"
+			link_box="| ≪ $3 | ${ChapterSeq} ${ChapterJemok} | $4 ≫ |"
 		fi
 	fi
 
-	Jemok="${ChapterSeq} ${ChapterTitle}"
-	#-- 제목에 " ' , / 등의 특수문자는 _ 또는 제거한다.
+	Jemok="${ChapterSeq} ${ChapterJemok}"
+	#-- " ' , / 등의 특수문자는 _ 로 바꾸거나 제거한다.
 	underline_Jemok=$(echo "${Jemok}" | sed 's/ /_/g' | sed 's/\./_/g' | sed 's/“/_/g' | sed 's/”/_/g' | sed 's/\"/_/g' | sed "s/’/_/g" | sed "s/,/_/g" | sed "s/'/_/g" | sed "s/\//-/g")
 	small_Jemok=$(echo "${underline_Jemok,,}")
+
+	cat <<__EOF__ | tee "${small_Jemok}.md"
+
+${link_box}
+|:----:|:----:|:----:|
+
+# ${ChapterSeq} ${ChapterJemok}
+#----> 본문을 기재하는 위치.
+
+
+
+${link_box}
+|:----:|:----:|:----:|
+
+> Page Properties:
+> (1) Title: ${ChapterSeq} ${ChapterJemok}
+> (2) Short Description: ${TypingJemok}
+> (3) Path: ${book_path}/${underline_Jemok}
+> Book Jemok: ${BookJemok}
+> AuthorDate: ${AuthorDate}
+> Link: ${https_line}
+> create: $(date +'%Y-%m-%d %a %H:%M:%S')
+> .md Name: ${small_Jemok}.md
+
+__EOF__
+
+}
+#-- file_Made "01" "P1 JavaScript Syntax" #from <-- md_Create () {
+
 ## 
 ## https://coldmater.tistory.com/226
 ## Vim 에서 매크로 등록하고 실행하기
@@ -61,84 +90,54 @@ echo "#----> file_Made CurrentSeq ${CurrentSeq}; CurrentTitle ${CurrentTitle}; P
 ## 
 ## ---------- cut line ----------
 ## 
-	cat <<__EOF__ | tee "${small_Jemok}.md"
-
-${link_box}
-|:----:|:----:|:----:|
-
-# ${ChapterSeq} ${ChapterTitle}
-#----> 본문을 기재하는 위치.
-
-
-
-${link_box}
-|:----:|:----:|:----:|
-
-> Page Properties:
-> (1) Title: ${ChapterSeq} ${ChapterTitle}
-> (2) Short Description: ${ShortDescription}
-> (3) Path: ${underline_Publisher}/${underline_BookLink}/${underline_Jemok}
-> Book Title: ${BookName}
-> AuthorDate: ${AuthorDate}
-> tags: ${tags}
-> Link: ${https_line}
-> create: $(date +'%Y-%m-%d %a %H:%M:%S')
-> .md Name: ${small_Jemok}.md
-
-__EOF__
-}
-#-- file_Made "01" "P1 JavaScript Syntax" #from <-- md_Create () {
 
 #-- 링크를 만든다. JemokMade #from --> md_Create () {
 JemokMade () {
 	#-- 다음 페이지가 있으면,
 	#-- 현재 페이지를 만들어낸다.
 	if [ "x${PrevSeq}" = "xSKIP" ]; then
-		PrevLink="$PrevTitle"
+		PrevLink="$PrevChapter"
 	else
-		PrevJemok="${PrevSeq} ${PrevTitle}"
+		PrevJemok="${PrevSeq} ${PrevChapter}"
 		#-- 이전 제목에 " ' , / 등의 특수문자는 _ 또는 제거한다.
 		underline_PrevJemok=$(echo "${PrevJemok}" | sed 's/ /_/g' | sed 's/\./_/g' | sed 's/“/_/g' | sed 's/”/_/g' | sed 's/\"/_/g' | sed "s/’/_/g" | sed "s/,/_/g" | sed "s/'/_/g" | sed "s/\//-/g")
-		small_PrevJemok=$(echo "${underline_PrevJemok,,}")
-
-		PrevLink="[ ${PrevJemok} ](/${underline_Publisher}/${underline_BookLink}/${underline_PrevJemok})"
+		PrevLink="[ ${PrevJemok} ](${book_path}/${underline_PrevJemok})"
 	fi
 
 	if [ "x${NextSeq}" = "xSKIP" ]; then
-		NextLink="$NextTitle"
+		NextLink="$NextChapter"
 	else
-		NextJemok="${NextSeq} ${NextTitle}"
+		NextJemok="${NextSeq} ${NextChapter}"
 		#-- 다음 제목에 " ' , / 등의 특수문자는 _ 또는 제거한다.
 		underline_NextJemok=$(echo "${NextJemok}" | sed 's/ /_/g' | sed 's/\./_/g' | sed 's/“/_/g' | sed 's/”/_/g' | sed 's/\"/_/g' | sed "s/’/_/g" | sed "s/,/_/g" | sed "s/'/_/g" | sed "s/\//-/g")
-		small_NextJemok=$(echo "${NextJemok,,}")
-		NextLink="[ ${NextJemok} ](/${underline_Publisher}/${underline_BookLink}/${underline_NextJemok})"
+		NextLink="[ ${NextJemok} ](${book_path}/${underline_NextJemok})"
 	fi
 }
 #-- 링크를 만든다. JemokMade #from <-- md_Create () {
 
-PrevSeq="" ; PrevTitle=""
-CurrentSeq="" ; CurrentTitle=""
-NextSeq="" ; NextTitle=""
+PrevSeq="" ; PrevChapter=""
+CurrentSeq="" ; CurrentChapter=""
+NextSeq="" ; NextChapter=""
 
-#-- md_Create mdSeq  mdTitle
+#-- md_Create mdSeq  mdChapter
 #-- md_Create -$1--  --$2---
 #-- md_Create "SKIP" "Begin"
 
 md_Create () {
 	mdSeq=$1 #-- 권 번호
-	mdTitle=$2 #-- wiki.js 왼쪽에 표시할 챕터 제목
+	mdChapter=$2 #-- wiki.js 왼쪽에 표시할 챕터 제목
 	if [ "x$NextSeq" = "x" ]; then
 		if [ "x$PrevSeq" = "x" ]; then
 			#-- 이전 페이지가 없으면, 이전 페이지로 담는다.
-			PrevSeq=$mdSeq ; PrevTitle=$mdTitle
+			PrevSeq=$mdSeq ; PrevChapter=$mdChapter
 		else
 		if [ "x$CurrentSeq" = "x" ]; then
 			#-- 현재 페이지가 없으면, 현재 페이지로 담는다.
-			CurrentSeq=$mdSeq ; CurrentTitle=$mdTitle
+			CurrentSeq=$mdSeq ; CurrentChapter=$mdChapter
 		else
 		# if [ "x$NextSeq" = "x" ]; then
 			#-- 다음 페이지가 없으면, 다음 페이지로 담는다.
-			NextSeq=$mdSeq ; NextTitle=$mdTitle
+			NextSeq=$mdSeq ; NextChapter=$mdChapter
 		# fi
 		fi
 		fi
@@ -147,18 +146,18 @@ md_Create () {
 		JemokMade
 
 		if [ "x${NextSeq}" != "xSKIP" ]; then
-			file_Made "${CurrentSeq}" "${CurrentTitle}" "${PrevLink}" "${NextLink}"
+			file_Made "${CurrentSeq}" "${CurrentChapter}" "${PrevLink}" "${NextLink}"
 		fi
 
-		PrevSeq=$CurrentSeq ; PrevTitle=$CurrentTitle
-		CurrentSeq=$NextSeq ; CurrentTitle=$NextTitle
-		NextSeq=$mdSeq ; NextTitle=$mdTitle
+		PrevSeq=$CurrentSeq ; PrevChapter=$CurrentChapter
+		CurrentSeq=$NextSeq ; CurrentChapter=$NextChapter
+		NextSeq=$mdSeq ; NextChapter=$mdChapter
 
 		if [ "x${NextSeq}" = "xSKIP" ]; then
 			#-- 링크를 만든다.
 			JemokMade
 
-			file_Made "${CurrentSeq}" "${CurrentTitle}" "${PrevLink}" "${NextLink}"
+			file_Made "${CurrentSeq}" "${CurrentChapter}" "${PrevLink}" "${NextLink}"
 		fi
 	fi
 }
@@ -181,29 +180,23 @@ cd ${aa_bulk_dir}
 #-- vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv
 #-- -------------------------------------------------------------
 Publisher="packtpub" #-- (1) 출판사 --
-BookYear="2024" #-- (2-1) 등록년도
-BookName="Python Programming with Raspberry Pi - 1th Ed" #-- 책 이름
-ShortDescription="Python with RaspPi 1ed" #-- 짧은 설명
-BookTitle="817 Python Programming with Raspberry Pi 1ed" #-- (2-2) 시작월일 + 책 제목 -- 730-Django_5_by_Example_5ed
-AuthorDate="By Antonio Melé Publication Date: Apr 2017 312 pages 1Ed" #-- (3) 저자등 설명 --
-tags="Python RaspPi" #-- (4) 찾기 위한 태그 --
-https_line="https://subscription.packtpub.com/book/iot-and-hardware/9781786467577/1" #-- (5) 책 링크 --
+BookJemok="Python Programming with Raspberry Pi - 1th Ed" #-- 책 이름
+TypingYear="2024" #-- 입력년도
+TypingMmDd="817" #-- 입력월일
+TypingJemok="Python with RaspPi 1ed" #-- 짧은 제목
+AuthorDate="By Antonio Melé Publication Date: Apr 2017 312 pages 1Ed" #-- 저자등 설명
+https_line="https://subscription.packtpub.com/book/iot-and-hardware/9781786467577/1" #-- 책 링크
 #-- -------------------------------------------------------------
 #-- ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 #--
-#-- 출판사에 " ' , / 등의 특수문자는 _ 또는 제거한다.
-underline_Publisher=$(echo "${Publisher}" | sed 's/ /_/g' | sed 's/\./_/g' | sed 's/“/_/g' | sed 's/”/_/g' | sed 's/\"/_/g' | sed "s/’/_/g" | sed "s/,/_/g" | sed "s/'/_/g" | sed "s/\//-/g")
-small_Publisher=$(echo "${underline_Publisher,,}")
-BookLink="${BookYear}/${BookTitle}" #-- (2) 호스트의 경로
-#-- 책제목에 " ' , / 등의 특수문자는 _ 또는 제거한다.
-underline_BookLink=$(echo "${BookLink}" | sed 's/ /_/g' | sed 's/\./_/g' | sed 's/“/_/g' | sed 's/”/_/g' | sed 's/\"/_/g' | sed "s/’/_/g" | sed "s/,/_/g" | sed "s/'/_/g") #xxx  | sed "s/\//-/g")
-small_BookLink=$(echo "${underline_BookLink,,}")
-
+#-- " ' , / 등의 특수문자는 _ 또는 제거한다.
+mmdd_jemok=$(echo "${TypingMmDd}-${TypingJemok}" | sed 's/ /_/g' | sed 's/\./_/g' | sed 's/“/_/g' | sed 's/”/_/g' | sed 's/\"/_/g' | sed "s/’/_/g" | sed "s/,/_/g" | sed "s/'/_/g" | sed "s/\//-/g")
+book_path="/${Publisher}/${TypingYear}/${mmdd_jemok}"
 #--
 #-- (6) md_Create "권 번호" "제목"
 #-- 첫줄에는 "SKIP" "Begin" , 끝줄에는 "SKIP" "End" 로 표시한다.
 #--
-# create  mdSeq  mdTitle
+# create  mdSeq  mdChapter
 md_Create "SKIP" "Begin" #-- 첫줄 표시.
 #--
 #-- 본문은 권 번호 01 또는 001 부터 시작한다.
@@ -211,7 +204,7 @@ md_Create "SKIP" "Begin" #-- 첫줄 표시.
 #--
 #-- vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv
 #-- -------------------------------------------------------------
-# create  mdSeq  mdTitle
+# create  mdSeq  mdChapter
 md_Create "00" "Preface" #-- 서문
 md_Create "01" "Getting Started with Python and the Raspberry Pi Zero" #-- 이하 본문
 md_Create "02" "Arithmetic Operations, Loops, and Blinky Lights"
@@ -227,5 +220,5 @@ md_Create "11" "Tips and Tricks"
 #-- -------------------------------------------------------------
 #-- ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 #--
-# create  mdSeq  mdTitle
+# create  mdSeq  mdChapter
 md_Create "SKIP" "End" #-- 끝줄 표시.

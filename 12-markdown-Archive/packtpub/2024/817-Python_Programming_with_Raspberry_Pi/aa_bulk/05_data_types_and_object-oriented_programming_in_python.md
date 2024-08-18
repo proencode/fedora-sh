@@ -1,5 +1,5 @@
 
-| ≪ [ 04 Communication Interfaces ](/packtpub/2024/817_Python_Programming_with_Raspberry_Pi_1ed/04_Communication_Interfaces) | 05 Data Types and Object-Oriented Programming in Python | [ 06 File I/O and Python Utilities ](/packtpub/2024/817_Python_Programming_with_Raspberry_Pi_1ed/06_File_I-O_and_Python_Utilities) ≫ |
+| ≪ [ 04 Communication Interfaces ](/packtpub/2024/817-Python_with_RaspPi_1ed/04_Communication_Interfaces) | 05 Data Types and Object-Oriented Programming in Python | [ 06 File I/O and Python Utilities ](/packtpub/2024/817-Python_with_RaspPi_1ed/06_File_I-O_and_Python_Utilities) ≫ |
 |:----:|:----:|:----:|
 
 # 05 Data Types and Object-Oriented Programming in Python
@@ -30,7 +30,7 @@ Copy
 Explain
 Since a list is an ordered sequence of elements, the elements of a list could be fetched by iterating through the list elements using a for loop as follows:
 
-for item in sequence: 
+for item in sequence:
     print("The number is ", item)
 
 Copy
@@ -57,11 +57,11 @@ In Python, the attributes of a data type can be retrieved using the dir() method
     ['__add__', '__class__', '__contains__', '__delattr__',
     '__delitem__', '__dir__', '__doc__', '__eq__',
     '__format__', '__ge__', '__getattribute__', '__getitem__',
-    '__gt__', '__hash__', '__iadd__', '__imul__', '__init__', 
+    '__gt__', '__hash__', '__iadd__', '__imul__', '__init__',
     '__iter__', '__le__', '__len__', '__lt__', '__mul__',
     '__ne__', '__new__', '__reduce__', '__reduce_ex__',
-    '__repr__', '__reversed__', '__rmul__', '__setattr__', 
-    '__setitem__', '__sizeof__', '__str__', '__subclasshook__', 
+    '__repr__', '__reversed__', '__rmul__', '__setattr__',
+    '__setitem__', '__sizeof__', '__str__', '__subclasshook__',
     'append', 'clear', 'copy', 'count', 'extend', 'index',
     'insert', 'pop', 'remove', 'reverse', 'sort']
 
@@ -184,7 +184,7 @@ In the list, Wednesday is missing. It needs to be positioned between Tuesday and
 Copy
 
 Explain
- 
+
 
 Challenge to the reader
 In the preceding list, Sunday is missing. Use the insert attribute of lists to insert it at the correct position.
@@ -397,7 +397,7 @@ There are several ways to print the keys or values of a dictionary:
 
 >>> for key in my_dict:
 
-    ... 
+    ...
 
     print(my_dict[value])
 
@@ -426,7 +426,7 @@ In the preceding example, we iterate through the keys of the dictionary and retr
 
 >>> for value in my_dict.values():
 
-... 
+...
 
     print(value)
 
@@ -521,7 +521,7 @@ Tuples are especially useful in scenarios where the value cannot be modified. Tu
 
 >>> for value in my_dict.items():
 
-    ... 
+    ...
 
     print(value)
 
@@ -594,8 +594,8 @@ Let's get started!
 Revisiting the student ID card example
 Let's revisit the ID card example from Chapter 2, Arithmetic Operations, Loops, and Blinky Lights (input_test.py). We discussed writing a simple program that captures and prints the information belonging to a student. A student's contact information could be retrieved and stored as follows:
 
-name = input("What is your name? ") 
-address = input("What is your address? ") 
+name = input("What is your name? ")
+address = input("What is your address? ")
 age = input("How old are you? ")
 
 Copy
@@ -615,12 +615,12 @@ Copy
 Explain
 Thus, a class called Student has been defined. Whenever a new object is created, the method __init__() (the underscore indicate that the init method is a magic method, that is it is a function that is called by Python when an object is created) is called internally by Python. This method is defined within the class:
 
-class Student(object): 
-    """A Python class to store student information""" 
+class Student(object):
+    """A Python class to store student information"""
 
-    def __init__(self, name, address, age): 
-        self.name = name 
-        self.address = address 
+    def __init__(self, name, address, age):
+        self.name = name
+        self.address = address
         self.age = age
 
 Copy
@@ -639,8 +639,8 @@ In this example, we created an object belonging to the Student class called stud
 
 Now, the information belonging to student1 could be retrieved as follows:
 
-print(student1.name) 
-print(student1.age) 
+print(student1.name)
+print(student1.age)
 print(student1.address)
 
 Copy
@@ -658,24 +658,24 @@ We created two objects called student1 and student2. Each object's attributes ar
 Adding methods to a class
 Let's add some methods to our Student class that would help retrieve a student's information:
 
-class Student(object): 
-    """A Python class to store student information""" 
+class Student(object):
+    """A Python class to store student information"""
 
-    def __init__(self, name, age, address): 
-        self.name = name 
-        self.address = address 
-        self.age = age 
+    def __init__(self, name, age, address):
+        self.name = name
+        self.address = address
+        self.age = age
 
-    def return_name(self): 
-        """return student name""" 
-        return self.name 
+    def return_name(self):
+        """return student name"""
+        return self.name
 
-    def return_age(self): 
-        """return student age""" 
-        return self.age 
+    def return_age(self):
+        """return student age"""
+        return self.age
 
-    def return_address(self): 
-        """return student address""" 
+    def return_address(self):
+        """return student address"""
         return self.address
 
 Copy
@@ -683,9 +683,9 @@ Copy
 Explain
 In this example, we have added three methods namely return_name(), return_age() and return_address() that returns the attributes name, age and address respectively. These methods of a class are called callable attributes. Let's review a quick example where we make use of these callable attributes to print an object's information.
 
-student1 = Student("John Doe", "29", "123 Main Street, Newark, CA") 
-print(student1.return_name()) 
-print(student1.return_age()) 
+student1 = Student("John Doe", "29", "123 Main Street, Newark, CA")
+print(student1.return_name())
+print(student1.return_age())
 print(student1.return_address())
 
 Copy
@@ -693,9 +693,9 @@ Copy
 Explain
 So far, we discussed methods that retrieves information about a student. Let's include a method in our class that enables updating information belonging to a student. Now, let's add another method to the class that enables updating address by a student:
 
-def update_address(self, address): 
-    """update student address""" 
-    self.address = address 
+def update_address(self, address):
+    """update student address"""
+    self.address = address
     return self.address
 
 Copy
@@ -703,7 +703,7 @@ Copy
 Explain
 Let's compare the student1 object's address before and after updating the address:
 
-print(student1.address()) 
+print(student1.address())
 print(student1.update_address("234 Main Street, Newark, CA"))
 
 Copy
@@ -733,7 +733,7 @@ Similarly, the Python interpreter ignores any single line comment that starts wi
 
 For example, the following code snippet informs the reader that a random number between 0 and 9 is generated and stored in the variable rand_num:
 
-# generate a random number between 0 and 9 
+# generate a random number between 0 and 9
 rand_num = random.randrange(0,10)
 
 Copy
@@ -751,7 +751,7 @@ It is quite possible that you may not be able to recall what needs fixing when y
 self
 In our object-oriented example, the first argument to every method had an argument called self. self refers to the instance of the class in use and the self keyword is used as the first argument in methods that interact with the instances of the class. In the preceding example, self refers to the object student1. It is equivalent to initializing an object and accessing it as follows:
 
-Student(student1, "John Doe", "29", "123 Main Street, Newark, CA") 
+Student(student1, "John Doe", "29", "123 Main Street, Newark, CA")
 Student.return_address(student1)
 
 Copy
@@ -764,10 +764,10 @@ Let's write a Python class (tone_player.py in downloads) that plays a musical to
 
 Let's call our class TonePlayer. This class should be capable of controlling the speaker volume and playing any file passed as an argument while creating an object:
 
-class TonePlayer(object): 
-    """A Python class to play boot-up complete tone""" 
+class TonePlayer(object):
+    """A Python class to play boot-up complete tone"""
 
-    def __init__(self, file_name): 
+    def __init__(self, file_name):
         self.file_name = file_name
 
 Copy
@@ -782,9 +782,9 @@ Copy
 Explain
 We also need to be able to set the volume level at which the tone has to be played. Let's add a method to do the same:
 
-def set_volume(self, value): 
-    """set tone sound volume""" 
-    subprocess.Popen(["amixer", "set", "'PCM'", str(value)], 
+def set_volume(self, value):
+    """set tone sound volume"""
+    subprocess.Popen(["amixer", "set", "'PCM'", str(value)],
     shell=False)
 
 Copy
@@ -803,27 +803,27 @@ Copy
 Explain
 Put it all together:
 
-import subprocess 
+import subprocess
 
-class TonePlayer(object): 
-    """A Python class to play boot-up complete tone""" 
+class TonePlayer(object):
+    """A Python class to play boot-up complete tone"""
 
-    def __init__(self, file_name): 
-        self.file_name = file_name 
+    def __init__(self, file_name):
+        self.file_name = file_name
 
-    def set_volume(self, value): 
-        """set tone sound volume""" 
+    def set_volume(self, value):
+        """set tone sound volume"""
         subprocess.Popen(["amixer", "set", "'PCM'", str(value)],
-        shell=False) 
+        shell=False)
 
-    def play(self): 
-        """play the wav file""" 
-        subprocess.Popen(["aplay", self.file_name], shell=False) 
+    def play(self):
+        """play the wav file"""
+        subprocess.Popen(["aplay", self.file_name], shell=False)
 
 
-if __name__ == "__main__": 
-    tone_player = TonePlayer("/home/pi/tone.wav") 
-    tone_player.set_volume(75) 
+if __name__ == "__main__":
+    tone_player = TonePlayer("/home/pi/tone.wav")
+    tone_player.set_volume(75)
     tone_player.play()
 
 Copy
@@ -855,12 +855,12 @@ Raspberry Pi Zero interfaced to the PowerSwitch Tail II
 
 The following is the LightSchedular class created:
 
-class LightScheduler(object): 
-    """A Python class to turn on/off lights""" 
+class LightScheduler(object):
+    """A Python class to turn on/off lights"""
 
-    def __init__(self, start_time, stop_time): 
-        self.start_time = start_time 
-        self.stop_time = stop_time 
+    def __init__(self, start_time, stop_time):
+        self.start_time = start_time
+        self.stop_time = stop_time
         # lamp is connected to GPIO pin2.
         self.lights = OutputDevice(2)
 
@@ -869,17 +869,17 @@ Copy
 Explain
 Whenever an instance of LightScheduler is created, the GPIO pin is initialized to control the PowerSwitch Tail II. Now, let's add methods to turn on/off lights:
 
-def init_schedule(self): 
-        # set the schedule 
-        schedule.every().day.at(self.start_time).do(self.on) 
-        schedule.every().day.at(self.stop_time).do(self.off) 
+def init_schedule(self):
+        # set the schedule
+        schedule.every().day.at(self.start_time).do(self.on)
+        schedule.every().day.at(self.stop_time).do(self.off)
 
-    def on(self): 
-        """turn on lights""" 
-        self.lights.on() 
+    def on(self):
+        """turn on lights"""
+        self.lights.on()
 
-    def off(self): 
-        """turn off lights""" 
+    def off(self):
+        """turn off lights"""
         self.lights.off()
 
 Copy
@@ -889,41 +889,41 @@ In the init_schedule() method, the start and stop times that were passed as argu
 
 Put it together, we have:
 
-import schedule 
-import time 
-from gpiozero import OutputDevice 
+import schedule
+import time
+from gpiozero import OutputDevice
 
-class LightScheduler(object): 
-    """A Python class to turn on/off lights""" 
+class LightScheduler(object):
+    """A Python class to turn on/off lights"""
 
-    def __init__(self, start_time, stop_time): 
-        self.start_time = start_time 
-        self.stop_time = stop_time 
+    def __init__(self, start_time, stop_time):
+        self.start_time = start_time
+        self.stop_time = stop_time
         # lamp is connected to GPIO pin2.
-        self.lights = OutputDevice(2) 
+        self.lights = OutputDevice(2)
 
-    def init_schedule(self): 
-        # set the schedule 
-        schedule.every().day.at(self.start_time).do(self.on) 
-        schedule.every().day.at(self.stop_time).do(self.off) 
+    def init_schedule(self):
+        # set the schedule
+        schedule.every().day.at(self.start_time).do(self.on)
+        schedule.every().day.at(self.stop_time).do(self.off)
 
-    def on(self): 
-        """turn on lights""" 
-        self.lights.on() 
+    def on(self):
+        """turn on lights"""
+        self.lights.on()
 
-    def off(self): 
-        """turn off lights""" 
-        self.lights.off() 
+    def off(self):
+        """turn off lights"""
+        self.lights.off()
 
 
-if __name__ == "__main__": 
-    lamp = LightScheduler("18:30", "9:30") 
-    lamp.on() 
-    time.sleep(50) 
-    lamp.off() 
-    lamp.init_schedule() 
+if __name__ == "__main__":
+    lamp = LightScheduler("18:30", "9:30")
+    lamp.on()
+    time.sleep(50)
+    lamp.off()
+    lamp.init_schedule()
     while True:
-        schedule.run_pending() 
+        schedule.run_pending()
         time.sleep(1)
 
 Copy
@@ -939,17 +939,17 @@ In this chapter, we discussed lists and the advantages of OOP. We discussed OOP 
 
 
 
-| ≪ [ 04 Communication Interfaces ](/packtpub/2024/817_Python_Programming_with_Raspberry_Pi_1ed/04_Communication_Interfaces) | 05 Data Types and Object-Oriented Programming in Python | [ 06 File I/O and Python Utilities ](/packtpub/2024/817_Python_Programming_with_Raspberry_Pi_1ed/06_File_I-O_and_Python_Utilities) ≫ |
+
+| ≪ [ 04 Communication Interfaces ](/packtpub/2024/817-Python_with_RaspPi_1ed/04_Communication_Interfaces) | 05 Data Types and Object-Oriented Programming in Python | [ 06 File I/O and Python Utilities ](/packtpub/2024/817-Python_with_RaspPi_1ed/06_File_I-O_and_Python_Utilities) ≫ |
 |:----:|:----:|:----:|
 
 > Page Properties:
 > (1) Title: 05 Data Types and Object-Oriented Programming in Python
 > (2) Short Description: Python with RaspPi 1ed
-> (3) Path: packtpub/2024/817_Python_Programming_with_Raspberry_Pi_1ed/05_Data_Types_and_Object-Oriented_Programming_in_Python
-> Book Title: Python Programming with Raspberry Pi - 1th Ed
+> (3) Path: /packtpub/2024/817-Python_with_RaspPi_1ed/05_Data_Types_and_Object-Oriented_Programming_in_Python
+> Book Jemok: Python Programming with Raspberry Pi - 1th Ed
 > AuthorDate: By Antonio Melé Publication Date: Apr 2017 312 pages 1Ed
-> tags: Python RaspPi
 > Link: https://subscription.packtpub.com/book/iot-and-hardware/9781786467577/1
-> create: 2024-08-17 토 11:35:57
+> create: 2024-08-17 토 16:35:09
 > .md Name: 05_data_types_and_object-oriented_programming_in_python.md
 

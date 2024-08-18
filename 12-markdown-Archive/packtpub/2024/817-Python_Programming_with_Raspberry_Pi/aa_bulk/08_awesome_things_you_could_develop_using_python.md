@@ -1,5 +1,5 @@
 
-| ≪ [ 07 Requests and Web Frameworks ](/packtpub/2024/817_Python_Programming_with_Raspberry_Pi_1ed/07_Requests_and_Web_Frameworks) | 08 Awesome Things You Could Develop Using Python | [ 09 Let's Build a Robot ](/packtpub/2024/817_Python_Programming_with_Raspberry_Pi_1ed/09_Let_s_Build_a_Robot) ≫ |
+| ≪ [ 07 Requests and Web Frameworks ](/packtpub/2024/817-Python_with_RaspPi_1ed/07_Requests_and_Web_Frameworks) | 08 Awesome Things You Could Develop Using Python | [ 09 Let's Build a Robot ](/packtpub/2024/817-Python_with_RaspPi_1ed/09_Let_s_Build_a_Robot) ≫ |
 |:----:|:----:|:----:|
 
 # 08 Awesome Things You Could Develop Using Python
@@ -46,7 +46,7 @@ This proves that OpenCV is installed on the Raspberry Pi Zero. Let's write a hel
 
 According to the documentation, we need to make use of the imread() function to read the contents of the image file. We also need to specify the format in which we would like to read the image. In this case, we are going to read the image in grayscale format. This is specified by cv2.IMREAD_GRAYSCALE that is passed as the second argument to the function:
 
-import cv2 
+import cv2
 
 img = cv2.imread('/home/pi/screenshot.jpg',cv2.IMREAD_GRAYSCALE)
 
@@ -111,13 +111,13 @@ Raspberry Pi camera
 
 https://thepihut.com/products/raspberry-pi-camera-module
 
- 
+
 
 Perform the following steps to install a camera to the Raspberry Pi Zero:
 
 The first step is interfacing the camera to the Raspberry Pi Zero. The camera adapter can be installed as shown in the following figure. Lift the connector tab and slide the camera adapter and press the connector gently:
 
- 
+
 
 We need to enable the camera interface on the Raspberry Pi Zero. On your desktop, go to Preferences and launch Raspberry Pi Configuration. Under the Interfaces tab of the Raspberry Pi configuration, enable the camera, and save the configuration:
 
@@ -145,7 +145,7 @@ Copy
 Explain
 Let's make sure that the package works as intended with a simple program. The documentation for the picamera package is available at https://picamera.readthedocs.io/en/release-1.12/api_camera.html.
 The first step is initializing the PiCamera class. This is followed by flipping the image across the vertical axis. This is only required because the camera is mounted upside down on the mount. This may not be necessary with other mounts:
-       with PiCamera() as camera: 
+       with PiCamera() as camera:
        camera.vflip = True
 
 Copy
@@ -157,11 +157,11 @@ Before taking a picture, we can preview the picture that is going to be captured
 Copy
 
 Explain
- 
+
 
 Let's preview for 10 seconds before we take a picture. We can take a picture using the capture() method:
-       sleep(10) 
-       camera.capture("/home/pi/Desktop/desktop_shot.jpg") 
+       sleep(10)
+       camera.capture("/home/pi/Desktop/desktop_shot.jpg")
        camera.stop_preview()
 
 Copy
@@ -169,15 +169,15 @@ Copy
 Explain
 The capture() method requires the file location as an argument (as shown in the preceding snippet). Once we are done, we can close the camera preview using stop_preview().
 Putting it altogether, we have this:
-       from picamera import PiCamera 
+       from picamera import PiCamera
        from time import sleep
 
-       if __name__ == "__main__": 
-         with PiCamera() as camera: 
-           camera.vflip = True 
-           camera.start_preview() 
-           sleep(10) 
-           camera.capture("/home/pi/Desktop/desktop_shot.jpg") 
+       if __name__ == "__main__":
+         with PiCamera() as camera:
+           camera.vflip = True
+           camera.start_preview()
+           sleep(10)
+           camera.capture("/home/pi/Desktop/desktop_shot.jpg")
            camera.stop_preview()
 
 Copy
@@ -188,7 +188,7 @@ The preceding code sample is available for download along with this chapter as p
 
 Image captured using the Raspberry Pi camera module
 
- 
+
 
 Let's combine this example with the previous one—convert this image to grayscale and display it until a key is pressed. Ensure that you are still within the cv virtual environment workspace.
 Let's convert the captured image to grayscale as follows:
@@ -204,8 +204,8 @@ The following is the image converted upon capture:
 Image converted to grayscale upon capture
 
 Now we can display the grayscale image as follows:
-       cv2.imshow("image", img) 
-       cv2.waitKey(0) 
+       cv2.imshow("image", img)
+       cv2.waitKey(0)
        cv2.destroyAllWindows()
 
 Copy
@@ -233,45 +233,45 @@ We will now attempt transcribing the sp02.wav audio sample performing the follow
 The first step is signing up for an account with wit.ai. Make a note of the API as shown in the following screenshot:
 
 The first step is installing the requests library. It could be installed as follows:
-pip3 install requests 
+pip3 install requests
 
 Copy
 
 Explain
 According to the wit.ai documentation, we need to add custom headers to our request that includes the API key (replace $TOKEN with the token from your account). We also need to specify the file format in the header. In this case, it is a .wav file, and the sampling frequency is 8000 Hz:
-       import requests 
+       import requests
 
-       if __name__ == "__main__": 
-         url = 'https://api.wit.ai/speech?v=20161002' 
-         headers = {"Authorization": "Bearer $TOKEN", 
+       if __name__ == "__main__":
+         url = 'https://api.wit.ai/speech?v=20161002'
+         headers = {"Authorization": "Bearer $TOKEN",
                     "Content-Type": "audio/wav"}
 
 Copy
 
 Explain
 In order to transcribe the audio sample, we need to attach the audio sample in the request body:
-       files = open('sp02.wav', 'rb') 
-       response = requests.post(url, headers=headers, data=files) 
-       print(response.status_code) 
+       files = open('sp02.wav', 'rb')
+       response = requests.post(url, headers=headers, data=files)
+       print(response.status_code)
        print(response.text)
 
 Copy
 
 Explain
- 
+
 
 Putting it all together, gives us this:
-       #!/usr/bin/python3 
+       #!/usr/bin/python3
 
-       import requests 
+       import requests
 
-       if __name__ == "__main__": 
-         url = 'https://api.wit.ai/speech?v=20161002' 
-         headers = {"Authorization": "Bearer $TOKEN", 
-                    "Content-Type": "audio/wav"} 
-         files = open('sp02.wav', 'rb') 
-         response = requests.post(url, headers=headers, data=files) 
-         print(response.status_code) 
+       if __name__ == "__main__":
+         url = 'https://api.wit.ai/speech?v=20161002'
+         headers = {"Authorization": "Bearer $TOKEN",
+                    "Content-Type": "audio/wav"}
+         files = open('sp02.wav', 'rb')
+         response = requests.post(url, headers=headers, data=files)
+         print(response.status_code)
          print(response.text)
 
 Copy
@@ -341,13 +341,13 @@ Let's get started:
 The first step is retrieving the bike availability from the bike share service. This data is available in JSON format at http://feeds.bayareabikeshare.com/stations/stations.json. The data includes bike availability throughout the network.
 The bike availability at each station is provided with parameters, such as station ID, station name, address, number of bikes available, and so on.
 In this example, we will retrieve the bike availability for the Townsend at 7th station in San Francisco. The station ID is 65 (open the earlier-mentioned link in a browser to find id). Let's write some Python code to retrieve the bike availability data and parse this information:
-       import requests 
+       import requests
 
-       BIKE_URL = http://feeds.bayareabikeshare.com/stations 
-       /stations.json 
+       BIKE_URL = http://feeds.bayareabikeshare.com/stations
+       /stations.json
 
-       # fetch the bike share information 
-       response = requests.get(BIKE_URL) 
+       # fetch the bike share information
+       response = requests.get(BIKE_URL)
        parsed_data = response.json()
 
 Copy
@@ -355,7 +355,7 @@ Copy
 Explain
 The first step is fetching the data using a GET request (via the requests module). The requests module provides an inbuilt JSON decoder. The JSON data can be parsed by calling the json() function.
 
- 
+
 
 Now, we can iterate through the dictionary of stations and find the bike availability at Townsend at 7th, by performing the following steps:
 In the retrieved data, each station's data is furnished with an ID. The station ID in question is 65 (open the data feed URL provided earlier in a browser to understand the data format; a snippet of the data is shown in the following screenshot):
@@ -363,10 +363,10 @@ In the retrieved data, each station's data is furnished with an ID. The station 
 A snippet of the bike share data feed fetched using a browser
 
 We need to iterate through the values and determine if the station id matches that of Townsend at 7th:
-              station_list = parsed_data['stationBeanList'] 
-              for station in station_list: 
-                if station['id'] == 65 and 
-                   station['availableBikes'] < 2: 
+              station_list = parsed_data['stationBeanList']
+              for station in station_list:
+                if station['id'] == 65 and
+                   station['availableBikes'] < 2:
                   print("The available bikes is %d" % station
                   ['availableBikes'])
 
@@ -380,7 +380,7 @@ IFTTT is a service that enables creating recipes that connecting devices to diff
 
 All recipes on IFTTT follow a common template—if this then that, that is, if a particular event has occurred, then a specific action is triggered. For this example, we need to create an applet that triggers a mobile notification on receiving a web request.
 
- 
+
 
 You can start creating an applet using the drop-down menu under your account, as shown in the following screenshot:
 
@@ -394,7 +394,7 @@ Select the Maker Webhooks channel as the incoming trigger:
 
 Select the Maker Webhooks channel
 
- 
+
 
 Select Receive a web request. A web request from the Raspberry Pi would act as a trigger to send a mobile notification:
 
@@ -416,7 +416,7 @@ Now, let's format the notification that we would like to receive on our devices:
 
 Setup notification for your device
 
- 
+
 
 In the mobile notification, we need to receive the number of bikes available at the bike share station. Click on the + Ingredient button and select Value1.
 
@@ -438,21 +438,21 @@ Making a POST request using the earlier-mentioned URL (key concealed for privacy
 
 While making a request (as explained in the IFTTT documentation), if we include the number of bikes in the JSON body of request (using Value1), it can be shown on the mobile notification.
 Let's revisit the Python example to make a web request when the number of bikes is below a certain threshold. Save the IFTTT URL and your IFTTT access key (retrieved from your IFTTT account) to your code as follows:
-       IFTTT_URL = "https://maker.ifttt.com/trigger/mobile_notify/ 
+       IFTTT_URL = "https://maker.ifttt.com/trigger/mobile_notify/
        with/key/$KEY"
 
 Copy
 
 Explain
 When the number of bikes is below a certain threshold, we need to make a POST request with the bike information encoded in the JSON body:
-       for station in station_list: 
-         if station['id'] == 65 and 
-            station['availableBikes'] < 3: 
-           print("The available bikes is %d" % 
-           station['availableBikes']) 
-           payload = {"value1": station['availableBikes']} 
-           response = requests.post(IFTTT_URL, json=payload) 
-           if response.status_code == 200: 
+       for station in station_list:
+         if station['id'] == 65 and
+            station['availableBikes'] < 3:
+           print("The available bikes is %d" %
+           station['availableBikes'])
+           payload = {"value1": station['availableBikes']}
+           response = requests.post(IFTTT_URL, json=payload)
+           if response.status_code == 200:
              print("Notification successfully triggered")
 
 Copy
@@ -465,30 +465,30 @@ Copy
 
 Explain
 Putting it all together, we have this:
-       #!/usr/bin/python3 
+       #!/usr/bin/python3
 
-       import requests 
-       import datetime 
+       import requests
+       import datetime
 
        BIKE_URL = "http://feeds.bayareabikeshare.com/stations/
-       stations.json" 
-       # find your key from ifttt 
+       stations.json"
+       # find your key from ifttt
        IFTTT_URL = "https://maker.ifttt.com/trigger/mobile_notify/
-       with/key/$KEY" 
+       with/key/$KEY"
 
-       if __name__ == "__main__": 
-         # fetch the bike share information 
-         response = requests.get(BIKE_URL) 
-         parsed_data = response.json() 
-         station_list = parsed_data['stationBeanList'] 
-         for station in station_list: 
-           if station['id'] == 65 and 
-              station['availableBikes'] < 10: 
+       if __name__ == "__main__":
+         # fetch the bike share information
+         response = requests.get(BIKE_URL)
+         parsed_data = response.json()
+         station_list = parsed_data['stationBeanList']
+         for station in station_list:
+           if station['id'] == 65 and
+              station['availableBikes'] < 10:
              print("The available bikes is %d" % station
-             ['availableBikes']) 
-         payload = {"value1": station['availableBikes']} 
-             response = requests.post(IFTTT_URL, json=payload) 
-             if response.status_code == 200: 
+             ['availableBikes'])
+         payload = {"value1": station['availableBikes']}
+             response = requests.post(IFTTT_URL, json=payload)
+             if response.status_code == 200:
                print("Notification successfully triggered")
 
 Copy
@@ -525,10 +525,10 @@ Note
 There are restrictions on the wordnik API usage. Refer to the API documentation for more details.
 
 Let's review writing our first example using the wordnik Python client. In order to fetch the word of the day, we need to initialize the WordsApi class. According to the API documentation, this could be done as follows:
-       # sign up for an API key 
-       API_KEY = 'API_KEY' 
-       apiUrl = 'http://api.wordnik.com/v4' 
-       client = swagger.ApiClient(API_KEY, apiUrl) 
+       # sign up for an API key
+       API_KEY = 'API_KEY'
+       apiUrl = 'http://api.wordnik.com/v4'
+       client = swagger.ApiClient(API_KEY, apiUrl)
        wordsApi = WordsApi.WordsApi(client)
 
 Copy
@@ -541,28 +541,28 @@ Copy
 
 Explain
 This returns a WordOfTheDay object. According to the wordnik Python client documentation, this object consists of different parameters including the word, its synonym, source, usage, and so on. The word of the day and its synonym could be printed as follows:
-       print("The word of the day is %s" % example.word) 
+       print("The word of the day is %s" % example.word)
        print("The definition is %s" %example.definitions[0].text)
 
 Copy
 
 Explain
- 
+
 
 Putting it all together, we have this:
-       #!/usr/bin/python3 
+       #!/usr/bin/python3
 
-       from wordnik import * 
+       from wordnik import *
 
-       # sign up for an API key 
-       API_KEY = 'API_KEY' 
-       apiUrl = 'http://api.wordnik.com/v4' 
+       # sign up for an API key
+       API_KEY = 'API_KEY'
+       apiUrl = 'http://api.wordnik.com/v4'
 
-       if __name__ == "__main__": 
-         client = swagger.ApiClient(API_KEY, apiUrl) 
-         wordsApi = WordsApi.WordsApi(client) 
-         example = wordsApi.getWordOfTheDay() 
-         print("The word of the day is %s" % example.word) 
+       if __name__ == "__main__":
+         client = swagger.ApiClient(API_KEY, apiUrl)
+         wordsApi = WordsApi.WordsApi(client)
+         example = wordsApi.getWordOfTheDay()
+         print("The word of the day is %s" % example.word)
          print("The definition is %s" %example.definitions[0].text)
 
 Copy
@@ -620,36 +620,36 @@ In this example, we have set the logging level to INFO. So, any log message belo
 If the logging level is set to ERROR, only those log messages are saved to the file.
 
 Let's log a message based on the outcome of the POST request:
-       response = requests.post(IFTTT_URL, json=payload) 
-       if response.status_code == 200: 
-         logging.info("Notification successfully triggered") 
-       else: 
+       response = requests.post(IFTTT_URL, json=payload)
+       if response.status_code == 200:
+         logging.info("Notification successfully triggered")
+       else:
          logging.error("POST request failed")
 
 Copy
 
 Explain
- 
+
 
 Putting it all together, we have this:
-       #!/usr/bin/python3 
+       #!/usr/bin/python3
 
-       import requests 
-       import logging 
+       import requests
+       import logging
 
-       # find your key from ifttt 
+       # find your key from ifttt
        IFTTT_URL = "https://maker.ifttt.com/trigger/rf_trigger/
-       with/key/$key" 
+       with/key/$key"
 
-       if __name__ == "__main__": 
-         # fetch the bike share information 
+       if __name__ == "__main__":
+         # fetch the bike share information
          logging.basicConfig(format='%(asctime)s : %(levelname)s
-         : %(message)s', filename='log_file.log', level=logging.INFO) 
-         payload = {"value1": "Sample_1", "value2": "Sample_2"} 
-         response = requests.post(IFTTT_URL, json=payload) 
-         if response.status_code == 200: 
-           logging.info("Notification successfully triggered") 
-         else: 
+         : %(message)s', filename='log_file.log', level=logging.INFO)
+         payload = {"value1": "Sample_1", "value2": "Sample_2"}
+         response = requests.post(IFTTT_URL, json=payload)
+         if response.status_code == 200:
+           logging.info("Notification successfully triggered")
+         else:
            logging.error("POST request failed")
 
 Copy
@@ -664,9 +664,9 @@ In this section, we are going to discuss the concept of threading in Python. We 
 
 We are going to emulate a situation where we would like to process events from sensors of the same type. In this example, we are just going to print something to the screen. We need to define a function that listens to events from each sensor:
 
-def sensor_processing(string): 
-  for num in range(5): 
-    time.sleep(5) 
+def sensor_processing(string):
+  for num in range(5):
+    time.sleep(5)
     print("%s: Iteration: %d" %(string, num))
 
 Copy
@@ -674,13 +674,13 @@ Copy
 Explain
 We can make use of the preceding function to listen for sensor events from three different sensors at the same time using the threading module in Python:
 
-thread_1 = threading.Thread(target=sensor_processing, args=("Sensor 1",)) 
-thread_1.start() 
+thread_1 = threading.Thread(target=sensor_processing, args=("Sensor 1",))
+thread_1.start()
 
-thread_2 = threading.Thread(target=sensor_processing, args=("Sensor 2",)) 
-thread_2.start() 
+thread_2 = threading.Thread(target=sensor_processing, args=("Sensor 2",))
+thread_2.start()
 
-thread_3 = threading.Thread(target=sensor_processing, args=("Sensor 3",)) 
+thread_3 = threading.Thread(target=sensor_processing, args=("Sensor 3",))
 thread_3.start()
 
 Copy
@@ -688,22 +688,22 @@ Copy
 Explain
 Putting it all together, we have this:
 
-import threading 
-import time 
+import threading
+import time
 
-def sensor_processing(string): 
-  for num in range(5): 
-    time.sleep(5) 
-    print("%s: Iteration: %d" %(string, num)) 
+def sensor_processing(string):
+  for num in range(5):
+    time.sleep(5)
+    print("%s: Iteration: %d" %(string, num))
 
-if __name__ == '__main__': 
-  thread_1 = threading.Thread(target=sensor_processing, args=("Sensor 1",)) 
-  thread_1.start() 
+if __name__ == '__main__':
+  thread_1 = threading.Thread(target=sensor_processing, args=("Sensor 1",))
+  thread_1.start()
 
-  thread_2 = threading.Thread(target=sensor_processing, args=("Sensor 2",)) 
-  thread_2.start() 
+  thread_2 = threading.Thread(target=sensor_processing, args=("Sensor 2",))
+  thread_2.start()
 
-  thread_3 = threading.Thread(target=sensor_processing, args=("Sensor 3",)) 
+  thread_3 = threading.Thread(target=sensor_processing, args=("Sensor 3",))
   thread_3.start()
 
 Copy
@@ -711,20 +711,20 @@ Copy
 Explain
 The preceding code sample (available for download as threading_example.py) starts three threads that listens to events from three sensors at the same time. The output looks something like this:
 
-Thread 1: Iteration: 0 
-Thread 2: Iteration: 0 
-Thread 3: Iteration: 0 
-Thread 2: Iteration: 1 
-Thread 1: Iteration: 1 
-Thread 3: Iteration: 1 
-Thread 2: Iteration: 2 
-Thread 1: Iteration: 2 
-Thread 3: Iteration: 2 
-Thread 1: Iteration: 3 
-Thread 2: Iteration: 3 
-Thread 3: Iteration: 3 
-Thread 1: Iteration: 4 
-Thread 2: Iteration: 4 
+Thread 1: Iteration: 0
+Thread 2: Iteration: 0
+Thread 3: Iteration: 0
+Thread 2: Iteration: 1
+Thread 1: Iteration: 1
+Thread 3: Iteration: 1
+Thread 2: Iteration: 2
+Thread 1: Iteration: 2
+Thread 3: Iteration: 2
+Thread 1: Iteration: 3
+Thread 2: Iteration: 3
+Thread 3: Iteration: 3
+Thread 1: Iteration: 4
+Thread 2: Iteration: 4
 Thread 3: Iteration: 4
 
 Copy
@@ -776,17 +776,17 @@ In this chapter, we discussed advanced topics in Python. We discussed topics inc
 
 
 
-| ≪ [ 07 Requests and Web Frameworks ](/packtpub/2024/817_Python_Programming_with_Raspberry_Pi_1ed/07_Requests_and_Web_Frameworks) | 08 Awesome Things You Could Develop Using Python | [ 09 Let's Build a Robot ](/packtpub/2024/817_Python_Programming_with_Raspberry_Pi_1ed/09_Let_s_Build_a_Robot) ≫ |
+
+| ≪ [ 07 Requests and Web Frameworks ](/packtpub/2024/817-Python_with_RaspPi_1ed/07_Requests_and_Web_Frameworks) | 08 Awesome Things You Could Develop Using Python | [ 09 Let's Build a Robot ](/packtpub/2024/817-Python_with_RaspPi_1ed/09_Let_s_Build_a_Robot) ≫ |
 |:----:|:----:|:----:|
 
 > Page Properties:
 > (1) Title: 08 Awesome Things You Could Develop Using Python
 > (2) Short Description: Python with RaspPi 1ed
-> (3) Path: packtpub/2024/817_Python_Programming_with_Raspberry_Pi_1ed/08_Awesome_Things_You_Could_Develop_Using_Python
-> Book Title: Python Programming with Raspberry Pi - 1th Ed
+> (3) Path: /packtpub/2024/817-Python_with_RaspPi_1ed/08_Awesome_Things_You_Could_Develop_Using_Python
+> Book Jemok: Python Programming with Raspberry Pi - 1th Ed
 > AuthorDate: By Antonio Melé Publication Date: Apr 2017 312 pages 1Ed
-> tags: Python RaspPi
 > Link: https://subscription.packtpub.com/book/iot-and-hardware/9781786467577/1
-> create: 2024-08-17 토 11:35:58
+> create: 2024-08-17 토 16:35:09
 > .md Name: 08_awesome_things_you_could_develop_using_python.md
 

@@ -1,5 +1,5 @@
 
-| ≪ [ 03 Conditional Statements, Functions, and Lists ](/packtpub/2024/817_Python_Programming_with_Raspberry_Pi_1ed/03_Conditional_Statements__Functions__and_Lists) | 04 Communication Interfaces | [ 05 Data Types and Object-Oriented Programming in Python ](/packtpub/2024/817_Python_Programming_with_Raspberry_Pi_1ed/05_Data_Types_and_Object-Oriented_Programming_in_Python) ≫ |
+| ≪ [ 03 Conditional Statements, Functions, and Lists ](/packtpub/2024/817-Python_with_RaspPi_1ed/03_Conditional_Statements__Functions__and_Lists) | 04 Communication Interfaces | [ 05 Data Types and Object-Oriented Programming in Python ](/packtpub/2024/817-Python_with_RaspPi_1ed/05_Data_Types_and_Object-Oriented_Programming_in_Python) ≫ |
 |:----:|:----:|:----:|
 
 # 04 Communication Interfaces
@@ -36,7 +36,7 @@ sudo raspi-config
 Copy
 
 Explain
- 
+
 
 Select Advanced Options from the main menu of raspi-config:
 
@@ -72,7 +72,7 @@ Python code for serial port communication
 We will make use of the pySerial library (https://pyserial.readthedocs.io/en/latest/shortintro.html#opening-serial-ports) for interfacing the carbon dioxide sensor:
 
 As per the sensor's documentation, the sensor output can be read by initiating the serial port at a baud rate of 9600, no parity, 8 bits, and 1 stop bit. The GPIO serial port is ttyAMA0. The first step in interfacing with the sensor is initiating serial port communication:
-       import serial 
+       import serial
        ser = serial.Serial("/dev/ttyAMA0")
 
 Copy
@@ -94,41 +94,41 @@ The sensor responds with a 7-byte response, which can be read as follows:
 Copy
 
 Explain
- 
+
 
 The sensor's response is in the following format:
 
 Carbon dioxide sensor response
 
 According to the datasheet, the sensor data size is 2 bytes. Each byte can be used to store a value of 0 and 255. Two bytes can be used to store values up to 65,535 (255 * 255). The carbon dioxide concentration could be calculated from the message as follows:
-       high = resp[3] 
-       low = resp[4] 
+       high = resp[3]
+       low = resp[4]
        co2 = (high*256) + low
 
 Copy
 
 Explain
 Put it all together:
-       import serial 
-       import time 
-       import array 
-       ser = serial.Serial("/dev/ttyAMA0") 
-       print("Serial Connected!") 
-       ser.flushInput() 
-       time.sleep(1) 
+       import serial
+       import time
+       import array
+       ser = serial.Serial("/dev/ttyAMA0")
+       print("Serial Connected!")
+       ser.flushInput()
+       time.sleep(1)
 
-       while True: 
+       while True:
            ser.write(bytearray([0xFE, 0x44, 0x00, 0x08,
-           0x02, 0x9F, 0x25])) 
-           # wait for sensor to respond 
-           time.sleep(.01) 
-           resp = ser.read(7) 
-           high = resp[3] 
-           low = resp[4] 
-           co2 = (high*256) + low 
-           print() 
-           print() 
-           print("Co2 = " + str(co2)) 
+           0x02, 0x9F, 0x25]))
+           # wait for sensor to respond
+           time.sleep(.01)
+           resp = ser.read(7)
+           high = resp[3]
+           low = resp[4]
+           co2 = (high*256) + low
+           print()
+           print()
+           print("Co2 = " + str(co2))
            time.sleep(1)
 
 Copy
@@ -193,23 +193,23 @@ In this section, we will discuss an example where we will measure the ambient li
 I2C drivers for the lux sensor
 The drivers are available from the GitHub repository for the Sensorian hardware (https://github.com/sensorian/sensorian-firmware.git). Let's clone the repository from the command-line terminal:
 
-git clone https://github.com/sensorian/sensorian-firmware.git 
+git clone https://github.com/sensorian/sensorian-firmware.git
 
 Copy
 
 Explain
 Let's make use of the drivers (which is available in the  ~/sensorian-firmware/Drivers_Python/APDS-9300 folder) to read the values from the two ADC channels of the sensor:
 
-import time 
-import APDS9300 as LuxSens 
-import sys 
+import time
+import APDS9300 as LuxSens
+import sys
 
-AmbientLight = LuxSens.APDS9300() 
-while True: 
-   time.sleep(1) 
-   channel1 = AmbientLight.readChannel(1)                       
-   channel2 = AmbientLight.readChannel(0) 
-   Lux = AmbientLight.getLuxLevel(channel1,channel2) 
+AmbientLight = LuxSens.APDS9300()
+while True:
+   time.sleep(1)
+   channel1 = AmbientLight.readChannel(1)
+   channel2 = AmbientLight.readChannel(0)
+   Lux = AmbientLight.getLuxLevel(channel1,channel2)
    print("Lux output: %d." % Lux)
 
 Copy
@@ -235,8 +235,8 @@ Let's review an example where we write to a flash memory chip on the Sensorian a
 
 Since we already have the drivers downloaded, let's review an example available with drivers:
 
-import sys 
-import time   
+import sys
+import time
 import S25FL204K as Memory
 
 Copy
@@ -244,9 +244,9 @@ Copy
 Explain
 Let's initialize and write the message hello to the memory:
 
-Flash_memory = Memory.S25FL204K() 
-Flash_memory.writeStatusRegister(0x00) 
-message = "hello" 
+Flash_memory = Memory.S25FL204K()
+Flash_memory.writeStatusRegister(0x00)
+message = "hello"
 flash_memory.writeArray(0x000000,list(message), message.len())
 
 Copy
@@ -254,8 +254,8 @@ Copy
 Explain
 Now, let's try to read the data we just wrote to the external memory:
 
-data = flash_memory.readArray(0x000000, message.len()) 
-print("Data Read from memory: ") 
+data = flash_memory.readArray(0x000000, message.len())
+print("Data Read from memory: ")
 print(''.join(data))
 
 Copy
@@ -276,17 +276,17 @@ In this chapter, we have discussed different communication interfaces that are a
 
 
 
-| ≪ [ 03 Conditional Statements, Functions, and Lists ](/packtpub/2024/817_Python_Programming_with_Raspberry_Pi_1ed/03_Conditional_Statements__Functions__and_Lists) | 04 Communication Interfaces | [ 05 Data Types and Object-Oriented Programming in Python ](/packtpub/2024/817_Python_Programming_with_Raspberry_Pi_1ed/05_Data_Types_and_Object-Oriented_Programming_in_Python) ≫ |
+
+| ≪ [ 03 Conditional Statements, Functions, and Lists ](/packtpub/2024/817-Python_with_RaspPi_1ed/03_Conditional_Statements__Functions__and_Lists) | 04 Communication Interfaces | [ 05 Data Types and Object-Oriented Programming in Python ](/packtpub/2024/817-Python_with_RaspPi_1ed/05_Data_Types_and_Object-Oriented_Programming_in_Python) ≫ |
 |:----:|:----:|:----:|
 
 > Page Properties:
 > (1) Title: 04 Communication Interfaces
 > (2) Short Description: Python with RaspPi 1ed
-> (3) Path: packtpub/2024/817_Python_Programming_with_Raspberry_Pi_1ed/04_Communication_Interfaces
-> Book Title: Python Programming with Raspberry Pi - 1th Ed
+> (3) Path: /packtpub/2024/817-Python_with_RaspPi_1ed/04_Communication_Interfaces
+> Book Jemok: Python Programming with Raspberry Pi - 1th Ed
 > AuthorDate: By Antonio Melé Publication Date: Apr 2017 312 pages 1Ed
-> tags: Python RaspPi
 > Link: https://subscription.packtpub.com/book/iot-and-hardware/9781786467577/1
-> create: 2024-08-17 토 11:35:57
+> create: 2024-08-17 토 16:35:09
 > .md Name: 04_communication_interfaces.md
 

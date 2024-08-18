@@ -1,5 +1,5 @@
 
-| ≪ [ 02 Arithmetic Operations, Loops, and Blinky Lights ](/packtpub/2024/817_Python_Programming_with_Raspberry_Pi_1ed/02_Arithmetic_Operations__Loops__and_Blinky_Lights) | 03 Conditional Statements, Functions, and Lists | [ 04 Communication Interfaces ](/packtpub/2024/817_Python_Programming_with_Raspberry_Pi_1ed/04_Communication_Interfaces) ≫ |
+| ≪ [ 02 Arithmetic Operations, Loops, and Blinky Lights ](/packtpub/2024/817-Python_with_RaspPi_1ed/02_Arithmetic_Operations__Loops__and_Blinky_Lights) | 03 Conditional Statements, Functions, and Lists | [ 04 Communication Interfaces ](/packtpub/2024/817-Python_with_RaspPi_1ed/04_Communication_Interfaces) ≫ |
 |:----:|:----:|:----:|
 
 # 03 Conditional Statements, Functions, and Lists
@@ -12,7 +12,7 @@ Breaking out of loops using conditional statement
 Functions in Python
 GPIO callback functions
 Motor control in Python
- 
+
 
 Conditional statements
 In Python, conditional statements are used to determine if a specific condition is met by testing whether a condition is true or false. Conditional statements are used to determine how a program is executed. For example, conditional statements could be used to determine whether it is time to turn on the lights. The syntax is as follows:
@@ -26,11 +26,11 @@ Copy
 Explain
 The condition is usually tested using a logical operator, and the set of tasks under the indented block is executed. Let's consider the example, check_address_if_statement.py (available for download with this chapter) where the user input to a program needs to be verified using a yes or no question:
 
-check_address = input("Is your address correct(yes/no)? ") 
-if check_address == "yes": 
-  print("Thanks. Your address has been saved") 
-if check_address == "no": 
-  del(address) 
+check_address = input("Is your address correct(yes/no)? ")
+if check_address == "yes":
+  print("Thanks. Your address has been saved")
+if check_address == "no":
+  del(address)
   print("Your address has been deleted. Try again")
 
 Copy
@@ -43,11 +43,11 @@ Likewise, if the user input is no, the program executes the indented code block 
 An if-else statement
 In the preceding example, we used an if statement to test each condition. In Python, there is an alternative option named the if-else statement. The if-else statement enables testing an alternative condition if the main condition is not true:
 
-check_address = input("Is your address correct(yes/no)? ") 
-if check_address == "yes": 
-  print("Thanks. Your address has been saved") 
-else: 
-  del(address) 
+check_address = input("Is your address correct(yes/no)? ")
+if check_address == "yes":
+  print("Thanks. Your address has been saved")
+else:
+  del(address)
   print("Your address has been deleted. Try again")
 
 Copy
@@ -58,13 +58,13 @@ In this example, if the user input is yes, the indented code block under if is e
 if-elif-else statement
 In the preceding example, the program executes any piece of code under the else block for any user input other than yes that is if the user pressed the return key without providing any input or provided random characters instead of no, the if-elif-else statement works as follows:
 
-check_address = input("Is your address correct(yes/no)? ") 
-if check_address == "yes": 
-  print("Thanks. Your address has been saved") 
-elif check_address == "no": 
-  del(address) 
-  print("Your address has been deleted. Try again") 
-else: 
+check_address = input("Is your address correct(yes/no)? ")
+if check_address == "yes":
+  print("Thanks. Your address has been saved")
+elif check_address == "no":
+  del(address)
+  print("Your address has been deleted. Try again")
+else:
   print("Invalid input. Try again")
 
 Copy
@@ -79,11 +79,11 @@ In the three examples that we discussed so far, it could be noted that an if sta
 Breaking out of loops
 Conditional statements can be used to break out of a loop execution (for loop and while loop). When a specific condition is met, an if statement can be used to break out of a loop:
 
-i = 0 
-while True: 
-  print("The value of i is ", i) 
-  i += 1 
-  if i > 100: 
+i = 0
+while True:
+  print("The value of i is ", i)
+  i += 1
+  if i > 100:
     break
 
 Copy
@@ -106,7 +106,7 @@ The other terminal of the push button is pulled up to 3.3V using a 10 K resistor
 
 Interfacing the push button to the Raspberry Pi Zero's GPIO - an image generated using Fritzing
 
- 
+
 
 Let's review the code required to review the button state. We make use of loops and conditional statements to read the button inputs using the Raspberry Pi Zero.
 
@@ -116,9 +116,9 @@ In a later chapter, we will discuss object-oriented programming (OOP). For now, 
 
 Let's get started with importing the gpiozero library and instantiate the Button class of the gpiozero library (we will discuss Python's classes, objects, and their attributes in a later chapter). The button is interfaced to GPIO pin 2. We need to pass the pin number as an argument during instantiation:
 
-from gpiozero import Button 
+from gpiozero import Button
 
-#button is interfaced to GPIO 2 
+#button is interfaced to GPIO 2
 button = Button(2)
 
 Copy
@@ -126,7 +126,7 @@ Copy
 Explain
 The gpiozero library's documentation is available at http://gpiozero.readthedocs.io/en/v1.2.0/api_input.html. According to the documentation, there is a variable named is_pressed in the Button class that could be tested using a conditional statement to determine if the button is pressed:
 
-if button.is_pressed: 
+if button.is_pressed:
     print("Button pressed")
 
 Copy
@@ -134,13 +134,13 @@ Copy
 Explain
 Whenever the button is pressed, the message Button pressed is printed on the screen. Let's stick this code snippet inside an infinite loop:
 
-from gpiozero import Button 
+from gpiozero import Button
 
-#button is interfaced to GPIO 2 
+#button is interfaced to GPIO 2
 button = Button(2)
 
-while True: 
-  if button.is_pressed: 
+while True:
+  if button.is_pressed:
     print("Button pressed")
 
 Copy
@@ -151,14 +151,14 @@ In an infinite while loop, the program constantly checks for a button press and 
 Breaking out a loop by counting button presses
 Let's review another example where we would like to count the number of button presses and break out of the infinite loop when the button has received a predetermined number of presses:
 
-i = 0 
-while True: 
-  if button.is_pressed: 
-    button.wait_for_release() 
-    i += 1 
-    print("Button pressed") 
+i = 0
+while True:
+  if button.is_pressed:
+    button.wait_for_release()
+    i += 1
+    print("Button pressed")
 
-  if i >= 10: 
+  if i >= 10:
     break
 
 Copy
@@ -178,7 +178,7 @@ We briefly discussed functions in Python. Functions execute a predefined set of 
 
 A function can be declared in Python using the def keyword. A function could be defined as follows:
 
-def my_func(): 
+def my_func():
    print("This is a simple function")
 
 Copy
@@ -191,8 +191,8 @@ A function is always defined with parentheses. The parentheses are used to pass 
 
 Let's review an example where we pass an argument to a function:
 
-def add_function(a, b): 
-  c = a + b 
+def add_function(a, b):
+  c = a + b
   print("The sum of a and b is ", c)
 
 Copy
@@ -202,8 +202,8 @@ In this example, a and b are arguments to the function. The function adds a and 
 
 Hence, the arguments a and b are required to execute function, or calling the function without the arguments would result in an error. Errors related to missing arguments could be avoided by setting default values to the arguments:
 
-def add_function(a=0, b=0): 
-  c = a + b 
+def add_function(a=0, b=0):
+  c = a + b
   print("The sum of a and b is ", c)
 
 Copy
@@ -216,7 +216,7 @@ Similarly, the print function prints any variable passed as an argument. If the 
 Returning values from a function
 Functions can perform a set of defined operations and finally return a value at the end. Let's consider the following example:
 
-def square(a): 
+def square(a):
    return a**2
 
 Copy
@@ -227,10 +227,10 @@ In this example, the function returns a square of the argument. In Python, the r
 The scope of variables in a function
 There are two types of variables in a Python program: local and global variables. Local variables are local to a function, that is, it is a variable declared within a function is accessible within that function. The example is as follows:
 
-def add_function(): 
-  a = 3 
-  b = 2 
-  c = a + b 
+def add_function():
+  a = 3
+  b = 2
+  c = a + b
   print("The sum of a and b is ", c)
 
 Copy
@@ -238,11 +238,11 @@ Copy
 Explain
 In this example, the variables a and b are local to the function add_function. Let's consider an example of a global variable:
 
-a = 3 
-b = 2 
-def add_function(): 
-  c = a + b 
-  print("The sum of a and b is ", c) 
+a = 3
+b = 2
+def add_function():
+  c = a + b
+  print("The sum of a and b is ", c)
 
 add_function()
 
@@ -251,12 +251,12 @@ Copy
 Explain
 In this case, the variables a and b are declared in the main body of the Python script. They are accessible across the entire program. Now, let's consider this example:
 
-a = 3 
-def my_function(): 
-  a = 5 
+a = 3
+def my_function():
+  a = 5
   print("The value of a is ", a)
 
-my_function() 
+my_function()
 print("The value of a is ", a)
 
 Copy
@@ -277,13 +277,13 @@ Copy
 Explain
 In this case, when my_function is called, the value of a is 5 and the value of a is 3 in the print statement of the main body of the script. In Python, it is not possible to explicitly modify the value of global variables inside functions. In order to modify the value of a global variable, we need to make use of the global keyword:
 
-a = 3 
-def my_function(): 
-  global a 
-  a = 5 
+a = 3
+def my_function():
+  global a
+  a = 5
   print("The value of a is ", a)
 
-my_function() 
+my_function()
 print("The value of a is ", a)
 
 Copy
@@ -291,13 +291,13 @@ Copy
 Explain
 In general, it is not recommended to modify variables inside functions as it is not a very safe practice of modifying variables. The best practice would be passing variables as arguments and returning the modified value. Consider the following example:
 
-a = 3 
-def my_function(a): 
-  a = 5 
-  print("The value of a is ", a) 
-  return a 
+a = 3
+def my_function(a):
+  a = 5
+  print("The value of a is ", a)
+  return a
 
-a = my_function(a) 
+a = my_function(a)
 print("The value of a is ", a)
 
 Copy
@@ -308,20 +308,20 @@ In the preceding program, the value of a is 3. It is passed as an argument to my
 GPIO callback functions
 Let's review some uses of functions with the GPIO example. Functions can be used in order to handle specific events related to the GPIO pins of the Raspberry Pi. For example, the gpiozero library provides the capability of calling a function either when a button is pressed or released:
 
-from gpiozero import Button 
+from gpiozero import Button
 
-def button_pressed(): 
+def button_pressed():
   print("button pressed")
 
-def button_released(): 
+def button_released():
   print("button released")
 
-#button is interfaced to GPIO 2 
-button = Button(2) 
-button.when_pressed = button_pressed 
+#button is interfaced to GPIO 2
+button = Button(2)
+button.when_pressed = button_pressed
 button.when_released = button_released
 
-while True: 
+while True:
   pass
 
 Copy
@@ -338,16 +338,16 @@ In order to control a motor, we need an H-bridge motor driver (Discussing H-brid
 
 The Pololu product page also provides instructions on how to connect the motor. Let's get to writing some Python code to operate the motor:
 
-from gpiozero import Motor 
-from gpiozero import OutputDevice 
+from gpiozero import Motor
+from gpiozero import OutputDevice
 import time
 
-motor_1_direction = OutputDevice(13) 
+motor_1_direction = OutputDevice(13)
 motor_2_direction = OutputDevice(12)
 
 motor = Motor(5, 6)
 
-motor_1_direction.on() 
+motor_1_direction.on()
 motor_2_direction.on()
 
 motor.forward()
@@ -356,7 +356,7 @@ time.sleep(10)
 
 motor.stop()
 
-motor_1_direction.off() 
+motor_1_direction.off()
 motor_2_direction.off()
 
 Copy
@@ -367,12 +367,12 @@ Raspberry Pi based motor control
 
 In order to control the motor, let's declare the pins, the motor's speed pins and direction pins. As per the motor driver's documentation, the motors are controlled by GPIO pins 12, 13 and 5, 6, respectively.
 
-from gpiozero import Motor 
-from gpiozero import OutputDevice 
-import time 
+from gpiozero import Motor
+from gpiozero import OutputDevice
+import time
 
-motor_1_direction = OutputDevice(13) 
-motor_2_direction = OutputDevice(12) 
+motor_1_direction = OutputDevice(13)
+motor_2_direction = OutputDevice(12)
 
 motor = Motor(5, 6)
 
@@ -409,17 +409,17 @@ In this chapter, we discussed conditional statements and the applications of con
 
 
 
-| ≪ [ 02 Arithmetic Operations, Loops, and Blinky Lights ](/packtpub/2024/817_Python_Programming_with_Raspberry_Pi_1ed/02_Arithmetic_Operations__Loops__and_Blinky_Lights) | 03 Conditional Statements, Functions, and Lists | [ 04 Communication Interfaces ](/packtpub/2024/817_Python_Programming_with_Raspberry_Pi_1ed/04_Communication_Interfaces) ≫ |
+
+| ≪ [ 02 Arithmetic Operations, Loops, and Blinky Lights ](/packtpub/2024/817-Python_with_RaspPi_1ed/02_Arithmetic_Operations__Loops__and_Blinky_Lights) | 03 Conditional Statements, Functions, and Lists | [ 04 Communication Interfaces ](/packtpub/2024/817-Python_with_RaspPi_1ed/04_Communication_Interfaces) ≫ |
 |:----:|:----:|:----:|
 
 > Page Properties:
 > (1) Title: 03 Conditional Statements, Functions, and Lists
 > (2) Short Description: Python with RaspPi 1ed
-> (3) Path: packtpub/2024/817_Python_Programming_with_Raspberry_Pi_1ed/03_Conditional_Statements__Functions__and_Lists
-> Book Title: Python Programming with Raspberry Pi - 1th Ed
+> (3) Path: /packtpub/2024/817-Python_with_RaspPi_1ed/03_Conditional_Statements__Functions__and_Lists
+> Book Jemok: Python Programming with Raspberry Pi - 1th Ed
 > AuthorDate: By Antonio Melé Publication Date: Apr 2017 312 pages 1Ed
-> tags: Python RaspPi
 > Link: https://subscription.packtpub.com/book/iot-and-hardware/9781786467577/1
-> create: 2024-08-17 토 11:35:57
+> create: 2024-08-17 토 16:35:09
 > .md Name: 03_conditional_statements__functions__and_lists.md
 
