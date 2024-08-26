@@ -13,7 +13,7 @@
 > Page Properties:
 > (1) Title: 09 API 를 이용해 데이터 수집하기
 > (2) Short Description: 파이썬 업무자동화
-> (3) Path: /길벗/2024/818-파이썬_업무자동화/09_API_를_이용해_데이터_수집하기
+> (3) Path: / 길벗/2024/818-파이썬_업무자동화/09_API_를_이용해_데이터_수집하기
 > Book Jemok: 커리어 스킬업 파이썬 업무자동화
 > AuthorDate: 손원준 240620 492 pages
 > Link: https://product.kyobobook.co.kr/detail/S000213585471

@@ -6,7 +6,7 @@
 
 Title: 00 Preface
 Short Description: 818 커리어 스킬업 파이썬 업무자동화
-Path: / PaperBook/2024/818-파이썬_업무자동화/00_Preface
+Path: / 길벗/2024/818-파이썬_업무자동화/00_Preface
 
 ## Part 1. 파이썬 기초
 
@@ -16,7 +16,7 @@ Path: / PaperBook/2024/818-파이썬_업무자동화/00_Preface
 
 ### 3. 자료형
 
-### 4. 제어문과 제어처리
+### 4. 제어문과 예외 처리
 
 ### 5. 함수와 모듈
 
@@ -49,7 +49,7 @@ Path: / PaperBook/2024/818-파이썬_업무자동화/00_Preface
 > Page Properties:
 > (1) Title: 00 Preface
 > (2) Short Description: 파이썬 업무자동화
-> (3) Path: /길벗/2024/818-파이썬_업무자동화/00_Preface
+> (3) Path: / 길벗/2024/818-파이썬_업무자동화/00_Preface
 > Book Jemok: 커리어 스킬업 파이썬 업무자동화
 > AuthorDate: 손원준 240620 492 pages
 > Link: https://product.kyobobook.co.kr/detail/S000213585471
