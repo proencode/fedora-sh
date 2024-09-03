@@ -1,7 +1,7 @@
 ////////////////////////////////
 bbop edit2022 에디터 MVGQHT6HGBvKZYEA3QZZ
 vvvvvvvvvv
-========== ghp 비번때문에 오류 나므로 수정함
+========== ghp 비번때문에 오류 나므로 삭제함
 원격: - 커밋: fd295a393a58f84de088c1ee6e00c69a71670be9
 원격: 경로: 12-markdown-Archive/ilji/docx2022/2202.txt:3
 remote:
