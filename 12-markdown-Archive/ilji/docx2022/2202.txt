@@ -1,6 +1,13 @@
 ////////////////////////////////
 bbop edit2022 에디터 MVGQHT6HGBvKZYEA3QZZ
-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
+vvvvvvvvvv
+_OO#yt#Ge#7M#mM#rt#DQ#aB#Y4#00#c9#Lm#ay#Mu#4V#0r#bv#uI
+========== ghp 비번때문에 오류 나므로 수정함
+원격: - 커밋: fd295a393a58f84de088c1ee6e00c69a71670be9
+원격: 경로: 12-markdown-Archive/ilji/docx2022/2202.txt:3
+remote:
+remote: (?) push하려면 커밋에서 비밀을 제거하거나 이 URL을 따라 비밀을 허용하세요.
+^^^^^^^^^^
 220509월 까지
 git config –global credential-helper ‘cache –timeout=300’ (5분간 통과)
 git config –global --list
