@@ -1,0 +1,245 @@
+2022-09 일지 > https://docs.google.com/document/d/10JZc1k18j3l-mqcG4f6vFntISoFazpq9mtAbOhnj-Zs/edit
+2022-08 일지 > https://docs.google.com/document/d/1Hw0KNBu3YrNckfELNHD69xZNRZMgmt-JtFnAZt4tdbY/edit
+git config --global user.password “ghp_oqmCyGaHfr0ztUEO4n6AD525xgWGpU02B” #--깃헙육ㅠㅠ신공
+git config --global user.name "${USER} at $(uname -n)" ; git config --global user.email "yosjeon@gmail.com"
+git config --global alias.ll "log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit" # ----> 한줄로 로그보기
+git config --global --list
+1.	epub reader chrome-extension://fnplkbhndemgbopkkpmpnfklkhphpneg/data/UI/index.html
+2.	wikijs http://proen.duckdns.org:5800
+3.	grails https://grails.org/
+4.	packtpub Vue CLI 3 Quick Start Guide https://subscription.packtpub.com/book/web-development/9781789950342/pref
+5.	medium Vue.js, Spring Boot, Kotlin 및 GraphQL: 최신 앱 구축 — 1부 https://medium.com/@auth0/vue-js-spring-boot-kotlin-and-graphql-building-modern-apps-part-1-5e77cc710a58
+6.	gihyo https://gihyo.jp/dp
+
+220930 금
+0950 푸른숲도서관
+
+내 사랑 내 곁에 - 김현식 -01:00:32플라11111[가공프로그래밍] https://www.ddanzi.com/index.php?mid=free&page=2&document_srl=751360010
+[KBS 시사기획 창] 한국 외교, 기로에 서다 [6]01:01:21재고미[거덜] https://www.ddanzi.com/index.php?mid=free&page=2&document_srl=751360061
+민주당도 박은정, 임은정, 진혜원 검사만큼은 지켜줘야 합니다. 더하여 박은정 검사 부군인 이종근 검사도 함께요. 
+거북목 https://youtu.be/jD5EwJncYLw
+딴지에서 추천받은 사대문안 맛집정리했어요 [83]2022-09-29 15:14배나온탈모아조씨 https://www.ddanzi.com/index.php?mid=free&statusList=HOT%2CHOTBEST%2CHOTAC%2CHOTBESTAC&page=4&document_srl=751522827
+6시간 만나는 문재인과 바이든 [4]2022-09-29 22:32카림벤제마조회 3047 추천20 비추천0
+https://youtu.be/AyqbrhDPCP8
+chrome 확장 프로그램 만들기
+크롬 확장 프로그램 튜토리얼
+생활코딩 확장 프로그램
+구글 확장 프로그램
+크롬 확장 프로그램 DB
+Vue.js로 크롬 확장 프로그램 만들기 강의 - 1부 https://www.peterkimzz.com/vuejs-chrome-extension-1/
+
+220923 금
+1010 푸른숲도서관
+
+
+220922 목
+0940 진접도서관
+
+오픈 소스 블록체인 개발: Hyperledger FireFly 시작하기 https://opensource.com/article/22/9/blockchain-hyperledger-firefly?utm_medium=Email&utm_campaign=weekly&sc_cid=7013a00000388d4AAA
+cleverpdf-v300-201209.exe
+
+
+220921 수
+0940 진접도서관
+
+1.	Spring이 Vert.x보다 빠른 이유는 무엇입니까? https://betterprogramming.pub/why-spring-is-faster-than-vert-x-bc09b436021d
+2.	페도라 문서 https://docs.fedoraproject.org/ko/fedora/latest/
+3.	vnc https://www.server-world.info/en/note?os=Fedora_36&p=desktop&f=6
+4.	금융감독원 각 은행 예금 상품 https://finlife.fss.or.kr/deposit/selectDeposit.do?menuId=2000100
+
+220920 화
+0930 진접도서관
+
+kotlin 스프링 부트 에 대한 결과  https://medium.com/search?q=kotlin+spring+boot
+
+Vue.js, Spring Boot, Kotlin 및 GraphQL: 최신 앱 구축 — 1부 https://medium.com/@auth0/vue-js-spring-boot-kotlin-and-graphql-building-modern-apps-part-1-5e77cc710a58
+
+220919 월
+1010 진접도서관
+
+fedora 에서 webp 보려면: sudo dnf install webp-pixbrf-;pader
+1440 Daily Digest
+석기 시대 수술 고고학자들은 약 31,000년 전에 수행 된 복잡한 절단 의 증거 동남아시아 보르네오 섬의 외딴 동굴에 묻힌 젊은 수렵채집인의 것 이 개인이 10세에서 14세 사이에 절차를 거쳐 20세까지 살았고 묻힌 것으로 추정. 약 12,000년 전인 신석기 혁명 전까지 인간은 복잡한 의료 절차를 수행할 도구와 의학적 지식이 부족하다고 믿었습니다
+모든 프로그래머가 알아야 할 40가지 알고리즘 - Second Edition https://subscription.packtpub.com/book/programming/9781803247762/1
+Kubernetes - 기본 및 그 이상 - 4판 https://subscription.packtpub.com/book/cloud-and-networking/9781804611395/1
+You Can Access a User’s Camera With Just HTML The other day I came across a cool HTML attribute I had never heard of before; capture. So I decided to make a video and blog post about it. by Austin Gil CORE · Sep. 06, 22 · Web Dev Zone · Tutorial https://dzone.com/articles/til-you-can-access-a-users-camera-with-just-html?edition=754996&utm_campaign=&utm_content=Access%20a%20User%E2%80%99s%20Camera%20With%20Just%20HTML&utm_medium=email&utm_source=dzone&utm_term=
+Linux에서 웹용 이미지 크기를 조정하고 최적화하는 5가지 방법 https://opensource.com/article/22/9/resize-optimize-images-web-linux?utm_medium=Email&utm_campaign=weekly&sc_cid=7013a00000387F5AAI
+오픈 소스 이벤트: 설정해야 할 4가지 목표와 측정 방법 https://opensource.com/article/22/9/measure-success-your-open-source-event?utm_medium=Email&utm_campaign=weekly&sc_cid=7013a00000387F5AAI
+PDF를 EPUB로 변환하는 상위 5 변환기 - EasePDF https://www.easepdf.com/ko/topics/convert-pdf-to-epub.html
+
+
+
+220918 일
+
+220917 토
+대중적이진 않지만 놓치기 아쉬운 미드 10 https://www.ddanzi.com/index.php?mid=free&statusList=HOT%2CHOTBEST%2CHOTAC%2CHOTBESTAC&document_srl=750129300
+인생설계전문가 17:30:00 e 나라지표 홈페이지에 매월말 외환보유고 현황이 공개되고있고 22년 8월 말 외환보유고가 4360억불 입니다. https://www.index.go.kr/potal/main/EachDtlPageDetail.do?idx_cd=1067
+북미종전선언 10월초 가능성. BTS부산공연의 의미 조회수 9,731회2022. 9. 16. 세상돌아보기Gust&Thunder 구독자 3.53만명  https://www.youtube.com/watch?v=Tw4btMI_Ue0
+[#티전드] 분명히 아는데 설명을 못하겠다면? 당신은 모르는 겁니다! 상위 0.1% 학생들에게서 공통적으로 나타난다는 '그 행동'의 비밀🤫 #어쩌다어른 조회수 773,304회2022. 8. 17. tvN D ENT 구독자 379만명 https://www.youtube.com/watch?v=bi8Mo7aZ8bM
+
+
+
+220916 금
+1010 푸른숲도서관
+
+만복보쌈	5%		오남읍	오남읍 양지로278번길 35-3	q			31
+이승윤의알통떡강정	5%	오남읍	오남읍 양지로281번길 12, 1층	q			33
+곽만근갈비탕오남점	5%	오남읍	오남읍 진건오남로 566, 105호	q			36
+즉석서울김밥	5%		오남읍	오남읍 진건오남로 636, 1층 11호	q			25
+바이킹(바이킹피자)	5%	오남읍	오남읍 진건오남로 778, 116호(선일프라자)	q			17
+씨에프랑스(씨에프랑스빵)1%	오남읍	오남읍 진건오남로 800, 104호(양지빌딩)	q			46
+맘스터치 오남양지점	5%	오남읍	오남읍 진건오남로 812, 1층 1호	q			16
+슈퍼맵짱떡볶이	5%	오남읍	오남읍 진건오남로 884번길28, 102호	q			2
+마신떡볶이	5%		오남읍	오남읍 진건오남로690번길 5, 1층	q			29
+짜장스토리	5%		오남읍	오남읍 진건오남로797번길 23, 105~107호(현대아파트상가동)	q			20
+미친꽈배기	5%		오남읍	오남읍 진건오남로797번길 28, 1층	q			22
+청년 떡볶이	5%		진접읍	진접읍 경복대로 233, 1층 112호 (서울프라자)	q		24	24
+유정 (유정쌀공방:떡,떡케이크 주문제작 및 수업)	5%	진접읍	진접읍 광릉내로 12, 1층	q		64	64
+고고피자떡볶이		5%	진접읍	진접읍 금강로 1445, 3층	q		27	27
+피자투어 장현1호점		5%	진접읍	진접읍 금강로1530-8 (백석빌딩6호)	q		3	3
+종가떡집	5%		진접읍	진접읍 장현로 100-2	q		12	12
+하나약국	5%		진접읍	진접읍 장현로 101	q		14	14
+면콕(면콕 칼국수)	5%	진접읍	진접읍 장현로 144	q		18	18
+장현생선구이	5%		진접읍	진접읍 장현로 154	q		19	19
+주재근베이커리(진접점)5%	진접읍	진접읍 장현로 64(1층)	q		32	32
+유명신발	5%		진접읍	진접읍 장현로 83	q		22	22
+동방박사(동방박사 서적)5%	진접읍	진접읍 장현로 89	q		10	10
+동방박사(동방박사 문구)5%	진접읍	진접읍 장현로 89	q		11	11
+속초상회	10%		진접읍	진접읍 장현로77, 108-111호(장현프라자)	q		25	25
+주식회사 에이치알에듀케이션(보물섬:생활용품 창고형할인매장)	5%	진접읍	진접읍 주곡로 222-6	q		61	61
+추오정 남원추어탕	5%	진접읍	진접읍 진건오남로 1029	q		26	26
+정가네동태야	5%		진접읍	진접읍 해밀예당1로189번길 1, 102호(원일플로라아파트상가동)	q		67	67
+정다믄 김밥천국 진접경복점5%진접읍	진접읍 해밀예당1로215번길 4, 102호	q		36	36
+(본)동태마을	5%		진접읍	진접읍 해밀예당1로235번길 11(1층)	q		44	44
+꿀꿀이 순대국(깡돈)	5%	진접읍	진접읍 해밀예당1로235번길 5-7, 1층	q		43	43
+주한 순대국	5%		진접읍	진접읍 해밀예당3로 122, 106, 107호	q		20	20
+부영세탁	5%		진접읍	진접읍 해밀예당3로 36, 104-1호(부영사랑으로상가동)	q		21	21
+디씨마트	5%		진접읍	진접읍 해밀예당3로 52, 109호(으뜸빌딩)	q		15	15
+
+220912 월
+조 외떡잎식물 화본과 강아지풀속 화본과 한해살이풀 동아시아 강수량,일조량=밀 폭우무더위 가뭄약한 벼 건조척박한 들 조 쌀 보리 조 콩 기장 오곡 
+상주교체기 상충신 백이 숙제 주관부좁쌀거부 수양산 공자 노대사구 녹봉 좁쌀6만섬 민가저녁좁쌀죽 노파친절 안보이나 이렇게 맛있는 음식 진나라 운하건설 대규모조밭개간 남북조시대 강남개발후 쌀밥 일제강점기 주식 좁쌀밥 19아일랜드 감자귀리전염병  세종 도량형 황해도 좁쌀기준 샤오미 소미=좁쌀 창업초기 좁쌀죽 대미=쌀 좁쌀과녁
+현재로서 가장 강력하게 쌀 품질을 관리하고 있는 품질인증마크는 'GAP'이나 '도지사 및 시장 인증마크, 쌀 품종명 관리마크'
+
+220909 
+https://www.youtube.com/watch?v=qJ9tQkYkknQ
+이길여 총장 올초 영상 1932 91
+
+220908 목
+https://gihyo.jp/book/2021/978-4-297-11859-4#toc
+Kotlin 서버 측 프로그래밍 실천 개발 2021년 4월 14일 종이판 출시 다케바타 나오토 B5 변형판/ 304 페이지 정가 3,608 엔(본체 3,280엔+세 10%) ISBN 978-4-297-11859-4
+https://gihyo.jp/dp
+Kotlin サーバーサイドプログラミング実践開発 EPUB・PDF　3,280円
+Kotlin 서버 측 프로그래밍 실습 개발 EPUB・PDF 3,280엔
+https://subscription.packtpub.com/book/game-development/9781801816984/pref Building Games with Flutter - Build a complete game from start to finish using Flutter and Flame while getting acquainted with each building bloc… By Paul Teale Jun 2022 224 pages
+
+민선 8기 정성주 김제 시장의 공약에 따른 것이다. 정 시장은 6·1지방선거 당시 "재임 중 전체 시민 1인당 200만원꼴로 일상회복지원금이 돌아가도록 하겠다" 811억원 1인당 100만원씩 무기명 선불카드로 일상회복지원금을 지급 전라남도 영광군도 1인당 100만원씩 지급
+
+https://www.youtube.com/watch?v=hnanNlDbsE4 침착맨 삼국지 완전판 조회수 9,772,944회최초 공개: 2020. 10. 4.
+
+https://www.ddanzi.com/index.php?mid=free&statusList=HOT%2CHOTBEST%2CHOTAC%2CHOTBESTAC&document_srl=749290433
+숭간이동[현명한이모] 어르신께서는 lh행복주택에 당첨되어 보증금이 필요하셔서 은행에 대출상담하러 가셧고
+은행에서는 보증금의 70%를 대출가능하다 하는데
+어르신께서는 돈이 부족하니 내사정 한번만 봐달라 더 어찌 안되겠냐 계속 부탁을 하십니다..
+"어머니.. 지금 구청에 **과에 가셔서 저소득층lh보증금 대출 상담하러 왔다 하셔요. 구청에서 부족한거 빌려줄수 있어요. 적어드릴게요.
+1번. 구청 **과 가서 lh보증금 문의하기.
+2번. 동사무소 기초수급,차상위 쪽 가셔서 주거, 생계급여 문의하면서 보증금 관련지원 문의하기.
+3번. 동사무소에 문의하면서 복지관에 사례관리 요청하기. 사례관리 대상자가 되면 사회복지단체의 지원을 받을 수 있어요. 초록우산같은 복지재단에서도 지원많이해요.
+저 셋중에 한군데에서는 분명 일을 해결하실수 있을거예요.
+순서대로 가보셔요.."
+어르신께서 연신 고맙다고 연락처라도 여쭤보셨지만
+이사 잘 하시라고 말씀드리고 제 자리로 돌아왔어요.
+
+2022-09-07 22:50 건표고칩 신탄진오천이네07:00:40 표고버섯 농장 딸래밉니다. 조용히 물개박수 치고 갑니다^^ 그리고 얼려서 보관하시는거 잘하시는 거에요 다시한번 박수짝짝ㅋㅋ 하우스표고라면 웬만하면 물에 씻지말고 휴지나 솔로 털어서 드시구, 종이가방에 넣고 살짝닫아 냉장고에 넣으면 2주 3주도 드실수있어요!
+바래봄07:20:15 무 손가락 두마디와 파 한줄기 추천드립니다 무의 달고 시원함으로 라면이 단짠시원 감칠맛의 극대화!!
+
+https://m.ppomppu.co.kr/new/bbs_view.php?id=humor&no=448659 어느 조각가가 7년에 걸쳐 조각한 작품.jpg 3 새해는대박 기타 | 2021-06-06 09:08 | 조회 : 7620 / 추천 : 1
+https://www.ddanzi.com/index.php?mid=free&statusList=HOT%2CHOTBEST%2CHOTAC%2CHOTBESTAC&document_srl=749281650
+옛 이탈리아의 대리석 조각 클라스. [37]2022-09-07 23:05헤에취
+
+220907 수
+0920 진접도서관
+
+저장된 비밀번호 중 일부가 온라인에 유출되었습니다 yosjeon@gmail.com
+저장된 비밀번호 중 일부가 사용 중인 사이트 또는 앱에서 발생한 정보 유출로 인해 노출되었습니다. 하지만 Google 계정은 영향을 받지 않았습니다.
+계정의 보안을 유지하기 위해 Google 비밀번호 관리자에서 지금 비밀번호를 변경하도록 권장합니다. 비밀번호 확인
+다음 페이지에서 보안 활동도 확인할 수 있습니다. https://myaccount.google.com/notifications
+
+알자지라 방송 https://www.aljazeera.com/
+
+sudo hostnamectl set-hostname yosfedora
+
+영어를 못 할수 밖에 없게 배우는 한가지 예 [81]2022-09-07 14:07덕조[it이직조언]조회 11290 추천112 비추천-4
+대표적인게 관계대명사죠.
+보통 관계대명사를 배울때 문장 두개 써놓고
+하나로 합치는 괴상망측한 짓을 합니다.
+그래서 학교 시험문제도 그런식으로 내는경우가 다반사입니다.
+I like the girl. / She makes a doll.
+I like the girl who makes a doll.
+이렇게 배운 사람은, 배운 순간부터 아이러니하게도
+관계대명사를 실제 말이나 글에서 절대로 사용할 수 없는 운명이 되는거죠.
+관계대명사가 필요한 이유는 아래와같음.
+한 여자애가 있는겁니다.
+a girl
+근데 이 여자애가 어떤 여자앤지 좀 꾸며주고싶음
+인형만드는 여자애
+a girl who makes a doll
+인형 만들고있는 여자애
+a girl who is making a doll
+인형 만들고있었던 여자애
+a girl who was making a doll
+인형 만들어온 여자애
+a girl who has made a doll
+인형을 만들어본적 없는 여자애
+a girl who has never made a doll
+영어를 배우는 여자애
+a girl who learns English
+커피 마시지 않는 여자애
+a girl who doesn't drink coffee
+모두가 좋아하는 커피를 마시지 않는 여자애
+a girl who doesn't drink coffee which everyone likes
+관계대명사는 형용사(오리지널 형용사가 아닌 만들어지는형용사)를 배우는거고
+그 만들어지는 형용사는 제가 전에 올린글에서 말씀드린 기본문장으로(커피 기본문장 시리즈)
+아주 손쉽게 만들어낼 수 있음.
+그래서 관계대명사는, 기본문장을 우리말처럼 구사할수있게 연습하지 않으면
+관계대명사를 사용하는 말 역시 우리말처럼 구사하기가 불가능함.
+
+
+220906 화
+0910 진접도서관
+
+태풍 흰남노 제주-부산
+일본, 후쿠시마 사고 11년 후 원전 재가동 및 확대 계획
+독일, 로버트 하벡(Robert Habeck) 경제장관 올해 말 퇴역예정인 3개의 가동 중인 발전소의 수명을 연장하는 것은 잘못된 결정
+
+220905 월
+https://pal.assembly.go.kr/suggestion/insertView.do?extendedParam=lgsltpaId=PRC_M2G2M0S8E2R2E1Q7V1V6D0I6Z6N9U5,callUrl=/law/readView.do,currDate=2022-09-05%2021:03:46,pageNo=1
+의안번호	2116955	발의자	김용민의원 등 12인
+법률안명	윤석열 대통령 배우자 김건희의 주가조작, 허위 경력 사건 등의 진상규명을 위한 특별검사 임명 등에 관한 법률안
+이 사태를 확실하게 정리할 특검에 대해 찬성합니다.
+선인들의 피로 세운 민주주의를 후퇴시키고, 나라의 기강을 무너뜨리며, 후손들의 정신을 피폐케 만드는 자들을 반드시 처단하기 위해서 위 법률안을 찬성합니다. 자본주의의 근본을 흔들고, 공정한 평가를 위해 고생하는 이들을 비웃는, 김건희 일당에 대해 명명백백하게 조사하고 그 책임을 물어서, 이나라에 아직 정의가 온전히 살아있음을 밝혀주시길 바랍니다.
+
+220904 일
+박형준 부산시장 세계박람회 유치계획서 제출 위해 파리향 뱍쟈횬 입력 220904-1154 시장님이 태풍 온다니까 도망갔어요 18:40:04 남해안고등어
+D700STORY🐱🐱 18:49:14
+경상좌수사 박홍
+경상감사 김수
+초계군수 이유검
+김해부사 서예원
+경상우수사 조대곤
+상주목사 김해
+순변사 이일
+도원수 김명원 유도대장 이양원
+경상우수사 원균
+임진왜란때 병사들을 남겨두고 도망간 장수~
+그리고 부산시장 박형준~꼭 기억하세요
+
+220903 토
+스탠서드16 스테인리스 316 양면 도마 스테인리스 SUS-316으로 제작된 프리미엄 위생 도마입니다. 소비자가 44,800원 판매가 39,800원 http://stanthird16.cafe24.com/surl/P/9/?cafe_mkt=ue_0824_youtube&gclid=Cj0KCQjw08aYBhDlARIsAA_gb0eligUhqTHrL8DyryhCrVBEjBjVMTVoGc61HIRPtKbC81WkIi3SzAAaAhFWEALw_wcB
+
+퀀텀의 세계 이순칠교수 https://www.youtube.com/watch?v=ahD7qkuZH0w
+
+아래 드라마 내용 요약해준 영상을 보니까 (ost 나와요) 음.. 그런 내용이었구만요. 풋풋하네요. 최진실 그립네요. https://youtu.be/zkAD_NZQ1OM
+파일럿인가 하던 드라마는 둘이 껴안고 달로 가는 엔딩이었던 기억이 납니다. 아스트라제네카 01:51:49[ 제3행성인 ] https://youtu.be/oIXZwYfHfxo?t=677  저세상 엔딩
+
+

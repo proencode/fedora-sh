@@ -1,0 +1,855 @@
+////////////////////////////////
+bbop edit2022 에디터 MVGQHT6HGBvKZYEA3QZZ
+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
+220509월 까지
+git config --global credential-helper ‘cache –timeout=300’ (5분간 통과)
+git config --global --list
+1.	github.com 로그인 후,
+a.	우상단 프로필 사진 클릭 > 설정 Setting 클릭
+b.	좌 사이드바에서 맨 아래 개발자 설정 Developer setting 클릭
+c.	개인 액세스 토큰 Personal access token 클릭
+d.	새 토큰 생성 Generate new token 클릭 > 권한에서 저장소 액세스 repo 선택
+e.	토큰 생성 Generate token
+f.	토큰을 복사한다.
+2.	저장소 repository 복사.
+a.	https://git-scm.com/book/ko/v2/Git-도구-Credential-저장소
+i.	Git - Credential 저장소
+b.	git clone https://proencode@github.com/proencode/run_sh.git
+i.	이때 비밀번호를 물어오면 토큰을 입력한다.
+ii.	위 비번을 저장하기 위해 다음 명령을 실행한다.
+git config --global credential.helper ‘cache –timeout=300’ (5분동안만 비번없이 진행한다)
+git config --global credential.helper cache (cache 만 지정하면 15분동안 비번없이 진행한다)
+git config --global credential.helper store (토큰의 유효기간동안 비번없이 진행한다)
+git config credential.helper store 
+https://git-scm.com/book/ko/v2/Git-%EB%8F%84%EA%B5%AC-Credential-%EC%A0%80%EC%9E%A5%EC%86%8C
+<><><><>
+프로엔코드 설명할것 프로엔2021년도준비물
+github.com ; bitbucket.org 도 비밀번호관리를 별도로 해야 된다.
+////////////////////////////////
+Flutter Cookbook 읽기 https://subscription.packtpub.com/book/mobile/9781838823382/1
+Dart https://subscription.packtpub.com/book/mobile/9781838823382/2
+Micronaut®로 마이크로서비스 구축 https://subscription.packtpub.com/book/web_development/9781800564237/2
+
+git clone https://github.com/proencode/run_sh.git
+[packtpub]  Flutter Cookbook
+Introduction to Widgets https://subscription.packtpub.com/book/mobile/9781838823382/3
+Flutter for Beginners 현재: https://subscription.packtpub.com/book/mobile/9781800565999/7
+문서 및 학습 리소스 https://codelabs.developers.google.com/?cat=Flutter
+<><><><>
+ebook 읽던곳
+////////////////////////////////
+
+
+
+
+
+
+
+////////////////////////////////
+<><><><>
+////////////////////////////////
+
+220331 목 진접도서관 0950
+grep Figure flutterCookbook_*md | awk -F/ ‘{print $3}’
+Android 애플리케이션 개발을 위한 Spring 배우기 https://subscription.packtpub.com/book/application-development/9781789349252/pref
+Visual Studio Code 에서 스프링 부트 프로젝트 개발하기 Posted by honeymon on January 06, 2021 http://honeymon.io/tech/2021/01/06/use-vs-code-for-spring-boot.html
+
+210924 Language Translator Using Google API in Python https://www.geeksforgeeks.org/language-translator-using-google-api-in-python/
+Cloud Translation API 의 할당량 및 제한 https://stackoverflow.com/questions/54149160/maximum-string-size-to-be-translated-by-google-api
+
+대한민국 성인 99%가 평생 모르며 사는 것 l 똑똑한 많은 한국인들이 쉽고 호구당하는 이유 조회수 89,776회 2022. 3. 28.
+https://www.youtube.com/watch?v=-lR-2XtfjI0
+
+220330 수 진접도서관 0940
+spring boot CRUD
+
+220329 화 진접도서관 0920
+packtpub flutter cookbook
+마크다운 입력시 vi 커맨드 ; ^{=Ctrl+[ ; ^M=Ctrl+M
+@ Q -> # 붙이고 줄 띄우기 => 0i# ^[A^M^[
+@ W -> 현 위치에서 Copy 까지 역따옴표 => j0i```^M^[/^Copy^[ddk0C```^M^[
+인용구 작성시, 본문앞에는 꺽쇠 > 붙이고, 스타일 첨가시 끝줄에 종류별 구분을 표시한다.
+https://docs.requarks.io/en/editors/markdown > Blockquotes > Stylings >
+blue= {.is-info} ; green= {.is-success} ; yellow= {.is-warning} ; red= {.is-danger}
+
+![Figure6.13-solution is to use a BuildContext ](/flutter_cookbook_img/figure6.13-solution_is_to_use_a_buildcontext.webp)
+ 
+
+220328 월 진접도서관 0920
+암호 관리자에 대해 비용을 지불해야 합니까? 앤드류 하인즈만 @andrew_andrew__ 2021년 12월 28일 오후 3:09 EDT에 업데이트됨 | 7분 읽기 https://www.reviewgeek.com/69534/should-you-pay-for-a-password-manager/
+2022년 크롬북: 풀타임 컴퓨터가 될 수 있습니까? 조 페데와 @tallshmo 업데이트됨 2022년 1월 4일 오후 5:03 EDT | 3분 읽기 https://www.howtogeek.com/734429/chromebooks-in-2021-can-one-be-your-full-time-computer/
+Chromebook에서 Linux 앱을 설정하고 사용하는 방법 카메론 서머슨 @서머슨 2018년 8월 22일, 오전 9시(동부 표준시) | 3분 읽기 https://www.howtogeek.com/363331/how-to-set-up-and-use-linux-apps-on-chrome-os/
+YouTube 비디오의 대본을 얻는 방법 조 페데와 @tallshmo 2022년 3월 27일 오후 12시(동부 표준시) | 1분 읽기 https://www.howtogeek.com/793947/how-to-get-the-transcript-of-a-youtube-video/
+오래된 전화기를 안전하게 폐기하는 방법 조 페데와 @tallshmo 2022년 3월 27일 오전 8시(동부 표준시) | 3분 읽기 https://www.howtogeek.com/793005/how-to-safely-dispose-of-an-old-phone/
+
+220327 일
+경남 창원시 마산회원구 마산우체국
+사서함 7호 창원교도소 700번
+김경수
+
+유대인의 하루는 저녁 6시에 시작된다. 오인환 라이스메이커
+
+220325 금 푸른숲도서관 1020
+ubuntu20.04 설치시 화면 아래 짤림 > 화면 클릭후 백탭으로 다음버튼 선택할것.
+tweak > 최상위 표시줄 요일표시 추가 + 카보드와 마우스 - 추가배치 옵션 - CapsLock 사용안함 체크
+[A] > chromium 설치
+
+220324 목 푸른숲도서관 0950
+충격적인 얘기feat.윤호중 [16]21:33:36차팬조회 4588 추천30 비추천-11
+대선 격돌의 와중에 투표독려 문자를 보내는데
+윤호중이가 1만명의 명단을 보냈답니다.
+그 문자를 보내려는 순간 다시 연락이 와서 5천명만 보내라고 했다네요~~
+금액차이도 얼마 안되는데‥
+자기정치들을 한거죠~
+다들 방기한거지요.
+0.7%차이는 이재명의 힘으로 끌고 온거라고 하네요.
+원래대로 하면 8~10%차이인데
+>>> 22:53:27 무엇을 주장하는지 분명하지 않습니다.
+분란을 일으키기 위해 쓴 글로 보이니
+명확하게 표현을 하던지 아니면 지우세요.
+
+sw 2020-01, 02 거래, 올바로 파일요청함.
+
+Spring Boot가 기계 학습- 서비스를 만나는 위치: 연구 / 이 게시물에서 Deep Java Library가 Java 개발자를 기계 학습(ML) 게임에 도입하는 방법에 대해 자세히 알아보세요.
+Where Spring Boot Meets Machine Learning Services: A Study / In this post, learn more about how the Deep Java Library brings Java developers into the machine learning (ML) game. / by John Vester    CORE · Mar. 16, 22 · AI Zone · Presentation https://dzone.com/articles/where-spring-boot-meets-machine-learning-services-1?edition=719428
+
+Spring Boot - 기본 SQL 쿼리를 사용하는 방법 | Restful Web Service / 이 비디오에서는 Spring 부트에서 기본 SQL 쿼리를 사용하는 방법을 자세히 살펴봅니다.
+Spring Boot - How To Use Native SQL Queries | Restful Web Service / In this video, take a closer look at how to use native SQL queries in Spring boot. / by Ram N · Mar. 16, 22 · Java Zone · Tutorial https://dzone.com/articles/spring-boot-how-to-use-native-sql-queries-restful?edition=719428
+
+생존을 위한 서버리스 / 서버리스 컴퓨팅은 클라우드, 컨테이너 및 마이크로서비스 아키텍처의 원칙에 대한 궁극적인 전달인 클라우드 네이티브의 논리적인 차세대 진화로 부상했습니다.
+Serverless for Survival / Serverless computing has emerged as the logical next evolution of cloud native — the ultimate delivery on the principles of cloud, container, and microservices architectures. by Michelle Gienow · Mar. 18, 22 · Cloud Zone · Opinion
+https://dzone.com/articles/serverless-for-survival?edition=719434
+
+2022년에 시도할 22개의 라즈베리 파이 프로젝트 https://opensource.com/article/22/3/raspberry-pi-projects-2022?utm_medium=Email&utm_campaign=weekly&sc_cid=7013a000002qPrdAAE
+
+https://www.reviewgeek.com/112777/multiplayer-doom-arrives-on-the-raspberry-pi-pico-a-4-computer/
+https://kilograham.github.io/rp2040-doom/
+
+Top 12 Flutter Development Tools https://ricardo-castellanos-herreros.medium.com/top-5-flutter-development-tools-7f593b27cc54
+
+
+220323 수 푸른숲도서관 0930
+미디엄 제목: 210603 Create the first spring boot app
+미디엄 링크: https://medium.com/nerd-for-tech/create-the-first-spring-boot-app-4e930d812a22
+타이틀: 101 Create the first spring boot app
+짧은 설명: 스프링부트 첫 앱 만들기 Dimuthu Wickramanayake 210603
+Path: medium/spring_boot_diwi/101
+![Figure 1.1 – Create a empty gradle project using intellij](/spring_boot_diwi_img/101-01-intellij_gradle.png)
+![Figure 1.2 – src_main folder](/spring_boot_diwi_img/101-02-src_main_folder.png)
+
+미디엄 제목: 210605 Spring boot series — Stock Market data End Point
+미디엄 링크: https://medium.com/nerd-for-tech/spring-boot-series-stock-market-data-end-point-356592487254
+타이틀: 102 Stock Market data End Point
+짧은 설명: 주식 시장 데이터의 엔드 포인트 Dimuthu Wickramanayake 210605
+Path: medium/spring_boot_diwi/102
+
+미디엄 제목: 210606 Spring boot series — Unit testing basics
+미디엄 링크: https://medium.com/nerd-for-tech/spring-boot-series-unit-testing-basics-3ce566250465
+타이틀: 103 Unit testing basics
+짧은 설명: 단위 테스트 기본 Dimuthu Wickramanayake 210606
+Path: medium/spring_boot_diwi/103
+![Figure 3.1 – Create Test](/spring_boot_diwi_img/103-01-create_test.png)
+
+미디엄 제목: 210606 Spring boot series — Sending Stock market data in JSON form
+미디엄 링크: https://medium.com/nerd-for-tech/spring-boot-series-sending-stock-market-data-in-json-form-cce978a9a90d
+타이틀: 104 Sending Stock market data in JSON form
+짧은 설명: 주식 시장 데이터를 JSON 형식으로 보내기 Dimuthu Wickramanayake 210606
+Path: medium/spring_boot_diwi/104
+
+미디엄 제목: 210611 Spring boot series — Creating a Web Socket to send real time market data
+미디엄 링크: https://medium.com/nerd-for-tech/spring-boot-series-creating-a-web-socket-to-send-real-time-market-data-ee5273b3204b
+타이틀: 105 Creating a Web Socket to send real time market data
+짧은 설명: 실시간 시장 데이터를 보내기 위한 웹 소켓 만들기 Dimuthu Wickramanayake 2106011
+Path: medium/spring_boot_diwi/105
+
+미디엄 제목: Dimuthu Wickramanayake Jun 6, 2021 Flutter series — Creating the first Flutter application
+미디엄 링크: https://medium.com/nerd-for-tech/flutter-series-creating-the-first-flutter-application-793e5816f816
+타이틀: 101 Creating the first Flutter application
+짧은 설명: Dimuthu Wickramanayake 210606 첫 플러터 앱 만들기
+Path: medium/flutter_diwi/101
+![Figure 1.1 – vsCode main.dart](/flutter_diwi_img/101-01-vscode_main.dart.png)                                                     
+![Figure 1.2 – chrome browser localhost:8000](/flutter_diwi_img/101-02-localhost_8000.png)
+![Figure 1.3 – result hellow world](/flutter_diwi_img/101-03-hellow_world.png)
+
+미디엄 제목: Dimuthu Wickramanayake Jun 8, 2021 Flutter series — Implementing stock market watch list UI
+미디엄 링크: https://medium.com/nerd-for-tech/flutter-series-implementing-stock-market-watch-list-ui-dccd37a9ef34
+타이틀: 102 Implementing stock market watch list UI
+짧은 설명: Dimuthu Wickramanayake 210608 주식 시장 감시 목록 UI 구현
+Path: medium/flutter_diwi/102
+![Figure 2.1 – this is the UI](/flutter_diwi_img/102-01-this_is_the_ui.png)
+![Figure 2.2 – Scrolling Watch List](/flutter_diwi_img/102-02-scrolling_watch_list.png)
+
+
+
+
+
+
+미디엄 제목: DDimuthu Wickramanayake Jun 8, 2021 Flutter series — Connecting UI to spring boot backend
+미디엄 링크: https://medium.com/nerd-for-tech/flutter-series-connecting-ui-to-spring-boot-backend-f9874dc3dcd5
+타이틀: 103 Connecting UI to spring boot backend
+짧은 설명: Dimuthu Wickramanayake 210608 스프링 부트 백엔드에 UI 연결하기
+Path: medium/flutter_diwi/103
+![Figure 3.1 – final result](/flutter_diwi_img/103-01-final_result.png)
+
+미디엄 제목: Dimuthu Wickramanayake Jun 12, 2021 Flutter series — Connecting the spring boot web socket market data (Real time market data)
+미디엄 링크: https://medium.com/nerd-for-tech/flutter-series-connecting-the-spring-boot-web-socket-market-data-real-time-market-data-976a07022109
+타이틀: 104 Connecting the spring boot web socket market data (Real time market data)
+짧은 설명: Dimuthu Wickramanayake 210612 스프링 부트 웹 소켓 시장 데이터 연결 (실시간 시장 데이터)
+Path: medium/flutter_diwi/104
+![Figure 4.1 – 210612 final result](/flutter_diwi_img/104-01-210612_final_result.png)
+
+인셀 대통령 - 인셀에 대한 bbc 기사인데 세계적인 문제군요 https://www.bbc.com/korean/international-58304375.amp
+민주당 시위 영상 보다가 ㅠㅠ 개딸들 https://www.youtube.com/watch?v=pNJM3AezcQM&t=8643s
+https://youtu.be/pNJM3AezcQM?t=8643
+
+
+220322 화 푸른숲도서관 1020
+spring boot + flutter
+Spring Boot in Visual Studio Code https://code.visualstudio.com/docs/java/java-spring-boot
+
+책 - 벤 존슨 알렉산더 로이드 시공사 힐링 코드
+
+220321 월 진접도서관 0930
+ubuntu2110.00-init-220321.vdi.7z.001 작성
+__공유기:____:____:____:____:____:____:____:____:____:____
+__외부포트___:____:_내부ip__:____:____:___내부포트___:____
+__15822_:____:____:_192.168.219.58____:___22____:____:____
+__15800_:____:____:_192.168.219.58____:___5800__:____:____
+
+내부망의 경우 > C:\Windows\System32\drivers\etc\hosts 또는 /etc/hosts 에서 지정: (192.168.219.58 hd)  > 호출시: hd:5800
+외부망의 경우 > 호출시 도메인 이름 사용: proen.duckdns.org:5800
+외부 PC 에서 내부 PC 의 VirtualBox 접속하기 https://shutcoding.tistory.com/9
+__공유기____:____:____:____:____:____:____:____:____:____:_VirtualBox > 네트워크 > 어댑터1 > 고급 > 포트포워딩____:____
+__외부포트__:____:_내부ip__:____:____:___내부포트___:____:_호스트IP____:___호스트포트___:_게스트IP____:____게스트포트__
+__5800_:____:____:_192.168.219.13____:___5800__:____:____:_192.168.219.13__5800____:____:_192.168.219.501__3000___:____
+
+220320 일
+RaspberryPi 4B 에 Ubuntu 21.04 설치 https://reddb.tistory.com/190
+
+220319 토
+일본인이 쓰는 오야붕, おやぶん(親分) 이란 단어는 어버이로 모신다는 뜻이고,
+꼬붕, こぶん(子分) 이란 단어는 자식의 역할을 한다는 뜻이다.
+따라서, 친일이란 일본을 어버이로 모신다는 뜻이지, 그저 친하게만 지내자는 말이 아니다.
+
+몽골 제국의 유럽 침공 1~4 전편 몰아보기 [별별역사 추석특선] 조회수 4,032,224회2020. 9. 30. https://www.youtube.com/watch?v=iGpoMNl1iRA
+김밥사랑 21:52:49 [ 이름정하기넘싫어 ] 이거 효과 엄청 날듯 하네요. 돈 좋아하는 수박들에게도.솔깃.
+최강욱 농협 301 0274-3692 71
+조응천 농협 301 0788 1177 91
+민형배 농협 351-1131-8776-13
+한준호 농협은행 301-0276-7241-91
+이재정 농협 301-0197-6434-41
+김의겸 농협 301 0289-9232-91
+이수진 신한 100-034-256782
+박주민 신한 100 031 399152
+김용민 농협 301-0273-7739-91
+정청래 농협 301-0273-2305-71
+박홍근 농협 301-0108-5560-21
+김남국 기업 457-088638-04-016
+황운하 농협 301-0273-9799-91
+윤건영 농협 301-0267-2990-51
+
+우리에게는 멀리는 삼일운동부터 419, 유신반대 그리고 촛불시위에 이르기까지 남녀노소를 불구하고 다 참여한 역사가 있습니다.
+나이제한을 하는것은 일본을 숭배하고 섬기려는 자들의 머리에서 나오는 짓이라고 주장하며 빨리 이런 악법을 바꿔야 할 것입니다.
+
+그림자 아티스트 한 분 소개합니다. [17] 21:13:20 국가대표선수 https://www.ddanzi.com/index.php?mid=free&statusList=HOT%2CHOTBEST%2CHOTAC%2CHOTBESTAC&document_srl=729377286
+https://www.youtube.com/user/joonybangol
+
+Raspberry PI 에서 docker 설치와 실행하기 – buster OS편 https://www.boolsee.pe.kr/installation-and-running-of-docker-in-raspberry-pi-buster/
+
+
+220318 금 푸른숲도서관 0930
+Spring Boot in Visual Studio Code https://code.visualstudio.com/docs/java/java-spring-boot
+
+210603 Create the first spring boot app
+https://medium.com/nerd-for-tech/create-the-first-spring-boot-app-4e930d812a22
+originally published at -> https://billacode.wordpress.com/2021/06/02/spring-boot-basics/
+210605 Spring boot series — Stock Market data End Point
+https://medium.com/nerd-for-tech/spring-boot-series-stock-market-data-end-point-356592487254
+210606 Spring boot series — Unit testing basics
+https://medium.com/nerd-for-tech/spring-boot-series-unit-testing-basics-3ce566250465
+210606 Spring boot series — Sending Stock market data in JSON form
+https://medium.com/nerd-for-tech/spring-boot-series-sending-stock-market-data-in-json-form-cce978a9a90d
+210611 Spring boot series — Creating a Web Socket to send real time market data
+https://medium.com/nerd-for-tech/spring-boot-series-creating-a-web-socket-to-send-real-time-market-data-ee5273b3204b
+
+1425 Flutter 시리즈
+210606 Flutter series — Creating the first Flutter application
+https://medium.com/nerd-for-tech/flutter-series-creating-the-first-flutter-application-793e5816f816
+210608 Flutter series — Implementing stock market watch list UI
+https://medium.com/nerd-for-tech/flutter-series-implementing-stock-market-watch-list-ui-dccd37a9ef34
+210608 Flutter series — Connecting UI to spring boot backend
+https://medium.com/nerd-for-tech/flutter-series-connecting-ui-to-spring-boot-backend-f9874dc3dcd5
+210612 Flutter series — Connecting the spring boot web socket market data (Real time market data)
+https://medium.com/nerd-for-tech/flutter-series-connecting-the-spring-boot-web-socket-market-data-real-time-market-data-976a07022109
+
+220317 목 진접도서관 0940
+Crypto Mining이란 무엇이며 어떻게 작동합니까? 퍼거스 오설리반  @fergusosullivan 2021년 12월 12일 https://www.howtogeek.com/771391/what-is-crypto-mining-and-how-does-it-work/
+MICRONAUT ® 프레임워크 로 IOT 마이크로서비스 구축 https://objectcomputing.com/resources/publications/sett/february-2022-iot-microservices-with-micronaut?utm_campaign=2GM%20Community%20Engagement&utm_medium=email&_hsmi=206356096&_hsenc=p2ANqtz--hPaGKCj_ba6329jaIQiGrkrFFyJno-MGqQAziKeo240JIpDjIcCDiOCEvC2vVF5FONC6IKa4dbaqL_1edPBCWbCBzPg&utm_content=206356096&utm_source=hs_email
+
+====> 윈도우에서 고정IP 지정해놓기
+( 1 ) cmd 에서 ipconfig 실행.
+C:\Users\USER> ipconfig
+Windows IP 구성
+
+이더넷 어댑터 VirtualBox Host-Only Network:
+   연결별 DNS 접미사. . . . :
+   링크-로컬 IPv6 주소 . . . . : fe80::c072:bbbd:997a:f05b%24
+   IPv4 주소 . . . . . . . . . : 192.168.56.1
+   서브넷 마스크 . . . . . . . : 255.255.255.0
+   기본 게이트웨이 . . . . . . :
+
+이더넷 어댑터 이더넷:
+   연결별 DNS 접미사. . . . :
+   링크-로컬 IPv6 주소 . . . . : fe80::5990:d0f:a210:757c%8
+   IPv4 주소 . . . . . . . . . : 192.168.100.119
+   서브넷 마스크 . . . . . . . : 255.255.255.0
+   기본 게이트웨이 . . . . . . : 192.168.100.1
+( 2 ) 윈도우 키[+] 를 누르고, [설정] 클릭 (=> 단축키 [+] i) > [네트워크 및 인터넷] 클릭 > [어댑터 속성 변경] 클릭
+( 3 ) [이더넷] 오른쪽 마우스 클릭 > [속성] 클릭
+( 4 ) 제목: 이더넷 속성 > [인터넷 프로토콜 버전 4 (TCP/IPv4)] 클릭해 놓고 > [속성] 클릭
+( 5 ) (o) [다음 ip 주소 사용] ip 주소: __.__.__.__ 서브넷 마스크: __.__.__.__ 기본 게이트웨이: __.__.__.__
+( 6 ) (o) [다음 DNS 서버 주소 사용] ip 주소: __.__.__.__ 기본설정 DNS 서버: __.__.__.__ 보조 DNS 서버: __.__.__.__
+<==== 윈도우에서 고정IP 지정해놓기
+
+전에 거래하던 해외교포 사장님이 국내 들어오셔서
+식사를 하는중에 이동형작가 이야기를 해서 깜짝 놀랐네요.
+그때 저는 지나간 나꼼수 들으며 우와~ 그러던 때인데
+솔직히 이작가에 대해선 잘 몰랐었습니다.
+나중에 가시면서 꼭 들어봐 달라고(!) 신신당부 하시더군요.
+지금은 아침방송 말고는 좋아하던 음악만 찾아서 듣고 있습니다.
+이작가 그동안 고생했으니 실컷 쉬어도 뭐라 안할께요.
+
+220316 수 진접도서관 1110
+sh run*/970*sh 실행시 발생한 오류.
+2022-03-16T07:46:01.084441502Z library initialization failed - unable to allocate file descriptor table - out of memory
+unable to allocate file descriptor table - out of memory in docker 로 구글링,
+https://superuser.com/questions/1413352/running-jdk-8-in-docker-suddenly-broken-on-arch-linux-with-unable-to-allocate-f/1413390#1413390
+16:57:44수22-03-16 fedora@vfedora ~/git-projects/gate242
+gate242 $ vi run_sh/tomcat-gate242_docker_start/002.run-gatetc-gate_tomcat.sh 에서 다음과 같이 수정,
+ 76 ${cGreen}sudo docker run --detach \\
+ 77         --restart=always \\
+ 78         --volume /etc/localtime:/etc/localtime:ro \\
+ 79         --ulimit nofile=122880:122880 -m 3G \\ # 2022-03-16T07:46:01.084441502Z library initialization failed - unable to allocate file descriptor table - out of memory 오류로, unable to allocate file descriptor table - out of memory in docker 로 구글링, https://superuser.com/questions/1413352/running-jdk-8-in-docker-suddenly-broken-on-arch-linux-with-unable-to-allocate-f/1413390#1413390
+
+ 91 sudo docker run --detach \
+ 92         --restart=always \
+ 93         --volume /etc/localtime:/etc/localtime:ro \
+ 94         --ulimit nofile=122880:122880 -m 3G \ <<< 일단 위 내용에서 복사붙여넣기함.
+ 95         --env TZ=Asia/Seoul \
+ 96         --publish ${port_no}:8080 \
+ 97         --network ${DOCKER_NETWORK_NAME} \
+ 98         --name ${TOMCAT_CONTAINER_NAME} \
+ 99         ${TOMCAT_IMAGE}
+===> 정상 작동함. 적절한 값은 따로 찾아볼것.
+
+
+
+220315 화 진접도서관 0930
+공인IP 와 사설IP http://www.codns.com/b/B05-104
+외부 IP에서 공유기 내부 PC에 선택 접속하기 https://studyforus.tistory.com/35
+
+워드프레스 블로그 시작하기 2022년 2월 22일 https://www.thewordcracker.com/basic/how-to-start-wordpress/
+저렴하게 도메인 등록하기 2022년 1월 31일 https://www.thewordcracker.com/miscellaneous/%EC%A0%80%EB%A0%B4%ED%95%98%EA%B2%8C-%EB%8F%84%EB%A9%94%EC%9D%B8-%EA%B5%AC%EC%9E%85%ED%95%98%EA%B8%B0/
+워드프레스 사용법 및 시작하기 https://news.wp-kr.com/wordpress-start-guide/
+
+git clone https://github.com/MohammadAli1111/Spring-boot-api-Flutter.git 
+[kotlin + Spring] 코틀린 환경에서 Spring Boot 사용하기 by 사바라다 2021. 7. 25. https://sabarada.tistory.com/180
+코틀린 시작하기 최종 수정 날짜: 2022년 3월 8일 https://kotlinlang.org/docs/getting-started.html
+Spring Boot 및 Kotlin으로 웹 애플리케이션 빌드 https://spring.io/guides/tutorials/spring-boot-kotlin/
+mustache의 사용법 간단 정리 두더지 개발자 2020. 9. 26. 01:26 출처: https://engineer-mole.tistory.com/123  [매일 꾸준히, 더 깊이]
+
+1425 Spring Boot 시리즈
+210603 Create the first spring boot app
+https://medium.com/nerd-for-tech/create-the-first-spring-boot-app-4e930d812a22
+originally published at -> https://billacode.wordpress.com/2021/06/02/spring-boot-basics/
+210605 Spring boot series — Stock Market data End Point
+https://medium.com/nerd-for-tech/spring-boot-series-stock-market-data-end-point-356592487254
+210606 Spring boot series — Unit testing basics
+https://medium.com/nerd-for-tech/spring-boot-series-unit-testing-basics-3ce566250465
+210606 Spring boot series — Sending Stock market data in JSON form
+https://medium.com/nerd-for-tech/spring-boot-series-sending-stock-market-data-in-json-form-cce978a9a90d
+210611 Spring boot series — Creating a Web Socket to send real time market data
+https://medium.com/nerd-for-tech/spring-boot-series-creating-a-web-socket-to-send-real-time-market-data-ee5273b3204b
+
+1425 Flutter 시리즈
+210606 Flutter series — Creating the first Flutter application
+https://medium.com/nerd-for-tech/flutter-series-creating-the-first-flutter-application-793e5816f816
+210608 Flutter series — Implementing stock market watch list UI
+https://medium.com/nerd-for-tech/flutter-series-implementing-stock-market-watch-list-ui-dccd37a9ef34
+210608 Flutter series — Connecting UI to spring boot backend
+https://medium.com/nerd-for-tech/flutter-series-connecting-ui-to-spring-boot-backend-f9874dc3dcd5
+210612 Flutter series — Connecting the spring boot web socket market data (Real time market data)
+https://medium.com/nerd-for-tech/flutter-series-connecting-the-spring-boot-web-socket-market-data-real-time-market-data-976a07022109
+
+
+220314 월 진접도서관 0940
+[라즈베리파이] 기본설정 - duckdns를 이용한 외부접속 스카J 2020. 6. 26. 12:42 https://m.blog.naver.com/PostView.naver?isHttpsRedirect=true&blogId=ksnnw&logNo=222012860088
+[No-ip] 무료 DNS/DDNS 서비스 설정하기 (D-Link DDNS 서비스 종료) 이로이로 2020. 7. 3. 10:51 https://oysu.tistory.com/48
+암호 화폐 란 무엇입니까? 퍼거스 오설리반 @fergusosullivan 2021년 9월 3일 오전 8시(동부 표준시) | 4분 읽기 https://www.howtogeek.com/748405/what-is-cryptocurrency/
+How to Dockerize a Node.js Web App JAMES WALKER MAR 12, 2022, 6:00 AM EDT | 5 min read https://www.cloudsavvyit.com/15529/how-to-dockerize-a-node-js-web-app/
+
+220313 일
+내일부터 7가지 신청하세요! 꿀알바 일자리, 지원금, 수당, 바우처 등 2022. 3. 13. 복지마블TV [Welfare Marble] https://www.youtube.com/watch?v=FHim7N58Cko
+
+
+220313-123623 그냥그러하다[IT개발_]-펌) 우리가 아미에게서 배워야 할 것 https://cafe.naver.com/jamgallery/75050
+
+===> 글삭제됨
+왜정때 일본인이 조선사람 평하듯 하는 글이군요.
+
+저 말이 틀린것은 없습니다.
+다만 한국인에게는 저것 말고도 가진것이 더 있지요.
+
+삼일운동이 최남선의 것도 아니고 손병희의 것도 아니듯
+촛불은 조선일보의 것도 아니고 박원순의 것도 아닙니다.
+뜨거운 가슴을 가진 이땅의 사람들 것입니다.
+
+글쓴이가 유시민이건 무시민이건
+말을 하다만 것처럼 보입니다.
+출처는 어디인가요?
+<=== 글삭제됨
+
+220312 토 진접도서관 1150
+외부 PC 에서 내부 PC 의 VirtualBox 접속하기 https://shutcoding.tistory.com/9
+__공유기____:____:____:____:____:____:____:____:____:____:_VirtualBox > 네트워크 > 어댑터1 > 고급 > 포트포워딩____:____
+__외부포트__:____:_내부ip__:____:____:___내부포트___:____:_호스트IP____:___호스트포트___:_게스트IP____:____게스트포트__
+__5800_:____:____:_192.168.219.13____:___5800__:____:____:_192.168.219.13__5800____:____:_192.168.219.501__3000___:____
+
+이 싸움은 십년을 가야할 것입니다.
+민주당 병신들에게 힘을 줘서 기운을 잃지않게 하고
+국짐이 점점더 감당이 안되겠다는 것을 느끼게 하고
+어리석은 이들이 뭔가 이상하다는 눈치를 채게 하는것이
+여기서부터 라고 생각합니다.
+보시는 분들 조금씩이라도 정기후원을 해 주시면 좋겠습니다.
+
+조용은 개뿔!
+
+전투에 졌더라도 숨은 붙어 있으니
+다음을 모색해야지요.
+전쟁이 끝나지 않았는데 뜬금없는 노랫가락이
+무슨 필요가 있겠습니까.
+
+그양반들 쉬는게 쉬는게 아닐거고요.
+후회는 죽은 다음에 해도 늦지 않습니다.
+
+결국 발생한 우크라이나-러시아 전쟁, 4시간 몰아보기 [우크라이나 통합본] 2022. 3. 11. 최준영 박사의 지구본 연구소
+https://www.youtube.com/watch?v=XrRjRY_PjEI
+
+DZone > Web Dev Zone > Salesforce SDK를 사용하여 Kotlin 모바일 앱 빌드: 데이터 편집 및 생성 https://dzone.com/articles/building-a-kotlin-mobile-app-with-the-salesforce-s-1?edition=716393
+5 Linux Alternatives for Windows PowerToys https://www.howtogeek.com/786985/linux-alternatives-for-windows-powertoys/
+How to Use the Bash printf Command on Linux https://www.howtogeek.com/781474/how-to-use-the-bash-printf-command-on-linux/
+How to Add, Replace, and Remove Docker Image Tags https://www.cloudsavvyit.com/15422/how-to-add-replace-and-remove-docker-image-tags/
+
+220311 금
+https://www.ddanzi.com/index.php?mid=free&statusList=HOT%2CHOTBEST%2CHOTAC%2CHOTBESTAC&document_srl=727841022
+
+220310 목 진접도서관 0910 20대 대선 이재명석패 윤석열 당선
+
+팬카페 : http://naver.me/51QvIAaM
+이재명갤러리 : https://m.dcinside.com/board/leejaemyung
+
+2022-3-10 목 정의기억연대가 대통령 당선인에게 바라는 입장문.
+1 2015 한일합의 = 당사자 배제, 공식배상 철회, 소녀상 철거 + 국제사회에서 비방금지 조건으로 이면합의 = 외교적 참사
+2 일본군 위안부 피해자의 인권보호 + 명예회복 = 대통령의 책임이자 의무
+3 수요시위 + 평화의소녀상 공격 = 인권운동에 대한 역사부정세력의 테러행위
+4 과거의 과오 직시는 필수조건이며, 인권 + 민주주의 원칙 = 한일관계의 토대
+미래세대가 평등하고 안전하게 살 수 있도록 하는 대통령 역할 하기를 요청.
+
+군더더기 없이 잘 간추린 입장문이라서 가져옴.
+이나라의 주인은 국민 자신이며, 국가권력은 국민들이 한시적으로 빌려준 것일 뿐임을 명심할 것
+
+이재명 카페 다같이 가입합시다. 거대 통합 팬클럽 만들어서 지켜요 https://www.ddanzi.com/index.php?mid=free&statusList=HOT%2CHOTBEST%2CHOTAC%2CHOTBESTAC&document_srl=727348765
+https://m.cafe.naver.com/ca-fe/jamgallery
+유시민, 2030여성분들 존경합니다 https://www.youtube.com/watch?v=Lt7Tud4tC7Q
+
+220308 화 진접도서관
+1240
+
+220307 월 진접도서관 0940
+2203
+하버드 교수가 알려주는 당장 젊어지는 방법 ; 매년 나이를 더 먹어도 오히려 젊어지는 오래 된 비밀 ; 조회수 66,756회 ; 2022. 3. 7. https://www.youtube.com/watch?v=zGnHRTVTLmw
+2312
+혹시 ‘이런 말’쓰는 사람이 주변에 있다면, 절대 놓치지 마세요 ; 인간관계 명언 ; 조회수 375,270회 ; 2022. 1. 2. https://www.youtube.com/watch?v=eXv_beyY8no
+
+아, 이젠 진짜 자야지.
+새벽 두시가 진짜 있다는걸 느낀 오늘이네요.
+베게에다 머리만 붙이면 아침이었는데...
+
+유튜브 보다가, 넷플릭스 보다가, 메일 밀린거 뒤져 보다가...
+뭘 봐도 눈에 안들어오네요.
+내 머리로는 우리가 이기는게 틀림없는데,
+마음은 왜 이렇게 간절한지요.
+
+내 어깨에, 내 머리에 손을 얹어 주세요.
+하느님, 내가 욕해서 미안해요.
+잘못했어요.
+내 얘기 들으시는거 다 알고 있으니, 대답 안하셔도 이해할께요.
+내가 원하는건 한두가지 뿐이에요.
+제대로 된 대통령을 뽑는것. 제대로 된 개혁을 이루는것.
+주위 나라와 제대로 된 관계를 맺는것.
+세가지네요.
+뭐 그렇게 많지도 않잖아요?
+저거, 우리 손으로도 다 할수 있어요. 사실.
+그래도 왜 나도 모르게 욕이 나올까요.
+그냥 조금만 아주 조금씩만 거들어주시면 좋을텐데..
+내가 가진건 다 썼어요. 이미 다 썼다고요.
+일곱개의 손은 이미 내 편을 들어주었고, 한개의 손은 내말 들어 준대요.
+그리고 두놈은 아주 나쁜 놈이에요. 골로 보내버려야 돼요.
+난 내몫을 다 했어요. 꽤 잘했다고요.
+그래도 왜 이렇게 욕을 하고 싶은거죠?
+난 쉬고 싶어요. 난 떠나고 싶어요.
+그리고 그래선 안된다는걸 알아요.
+내 일은 내가 알아서 할테니, 당신 일은 당신이 알아서 해주세요.
+제발요.
+
+Eclipse, Java 다운로드 및 설치 https://ilerlemek.tistory.com/9?category=612626
+====> 170428-2155
+1. Java 다운로드
+https://www.oracle.com/java/technologies/javase-downloads.html > Windows 선택
+> x64 Installer 또는 x64 MSI Installer 선택
+다운로드한 파일 실행
+
+2. 환경변수 설정 — 필요없다.
+[+] > 설정 > 설정 검색 칸에 ‘시스템 설정’ 입력 > 시스템 속성 에서,
+> 고급 > 환경 변수 > 시스템 변수 
+> 새로 만들기 > 
+변수 이름 JAVA_HOME
+변수 값 에서 디렉토리 찾아보기 로 C:\Program Files\Java\jdk-17.0.2 선택
+> 변수 = Path 클릭 > 편집 (시스템 변수 편집)
+변수 이름: Path 
+변수 값: %JAVA_HOME%\bin;.... (앞에 끼워넣는다)
+
+3. Java 설치 확인
+cmd 에서
+java 엔터
+javac 엔터
+java -version
+
+4. Eclipse 다운로드
+https://www.eclipse.org/downloads/ > Download
+Eclipse IDE for Java EE Developers
+<==== 170428-2155
+
+java 설치하기 ( JDK 설치, 환경변수 설정, 테스트) 자바 2019. 7. 21. 16:55 https://gaeggu.tistory.com/2
+https://ilerlemek.tistory.com/202
+
+====> 210701-1729
+IntelliJ IDEA 다운로드 및 설치
+
+1, IntelliJ IDEA 다운로드
+https://www.jetbrains,com.idea/ > Downloads Community exe Download
+
+2, IntelliJ IDEA 설치
+64 bit launcher > java
+
+3. JDK 다운로드
+New Project > Java > Download JDK 체크 > Download (전에 환경변수 설정해야 함)
+
+4. SDK 설정
+File > Project Structure (Ctrl + Shift + Alt + S)
+Platform Setting > SDKs > + > Add JDK 새 SDK 추가
+
+5. 플러그인 설정 및 제거
+File > New Project Setting > Settings for New Projects
+Settings > Plugins > iBATIS 톱니바퀴>Uninstall
+<==== 210701-1729
+
+2203 swtr 매뉴얼
+ksam 샘플실 흐름도
+spring boot kotlin
+spring + flutter
+
+
+1425 Spring Boot 시리즈
+210603 Create the first spring boot app
+https://medium.com/nerd-for-tech/create-the-first-spring-boot-app-4e930d812a22
+210605 Spring boot series — Stock Market data End Point
+https://medium.com/nerd-for-tech/spring-boot-series-stock-market-data-end-point-356592487254
+210606 Spring boot series — Unit testing basics
+https://medium.com/nerd-for-tech/spring-boot-series-unit-testing-basics-3ce566250465
+210606 Spring boot series — Sending Stock market data in JSON form
+https://medium.com/nerd-for-tech/spring-boot-series-sending-stock-market-data-in-json-form-cce978a9a90d
+210611 Spring boot series — Creating a Web Socket to send real time market data
+https://medium.com/nerd-for-tech/spring-boot-series-creating-a-web-socket-to-send-real-time-market-data-ee5273b3204b
+
+1425 Flutter 시리즈
+210606 Flutter series — Creating the first Flutter application
+https://medium.com/nerd-for-tech/flutter-series-creating-the-first-flutter-application-793e5816f816
+originally published at -> https://billacode.wordpress.com/2021/06/02/spring-boot-basics/
+====> build.gradle
+plugins {
+    id 'org.springframework.boot' version '2.4.3'
+    id 'io.spring.dependency-management' version '1.0.11.RELEASE'
+    id 'java'
+}
+ 
+group = 'com.example'
+version = '0.0.1-SNAPSHOT'
+sourceCompatibility = '1.8'
+ 
+repositories {
+    mavenCentral()
+}
+ 
+dependencies {
+    implementation 'org.springframework.boot:spring-boot-starter-web'
+    testImplementation('org.springframework.boot:spring-boot-starter-test')
+}
+ 
+test {
+    useJUnitPlatform()
+}
+<==== build.gradle
+====> java/StockController.java
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+ 
+@RestController
+@EnableAutoConfiguration
+public class StockController {
+ 
+    @RequestMapping("/")
+    String home() {
+        return "Hello World!";
+    }
+ 
+    public static void main(String[] args) {
+        SpringApplication.run(StockController.class, args);
+    }
+}
+<==== java/StockController.java
+
+210608 Flutter series — Implementing stock market watch list UI
+https://medium.com/nerd-for-tech/flutter-series-implementing-stock-market-watch-list-ui-dccd37a9ef34
+210608 Flutter series — Connecting UI to spring boot backend
+https://medium.com/nerd-for-tech/flutter-series-connecting-ui-to-spring-boot-backend-f9874dc3dcd5
+210612 Flutter series — Connecting the spring boot web socket market data (Real time market data)
+https://medium.com/nerd-for-tech/flutter-series-connecting-the-spring-boot-web-socket-market-data-real-time-market-data-976a07022109
+
+1425 Flutter 시리즈
+210603 Create the first spring boot app
+https://medium.com/nerd-for-tech/create-the-first-spring-boot-app-4e930d812a22
+
+
+
+[kotlin + Spring] 코틀린 환경에서 Spring Boot 사용하기 by 사바라다 2021. 7. 25. https://sabarada.tistory.com/180
+# 환경
+JDK 버전 : 1.8.0.292 ; kotlin 버전 : 1.4.32 ; spring boot 버전 : 2.4.5 ; gradle 버전 : 6.8.3 ; intellij 버전 : 2021.1.1
+
+# 프로젝트 시작
+
+# gradle kotlin dsl 설정
+빌드 자동화 = 실행 가능한 코드를 만드는 과정 (코드 > 컴파일 > 바이너리 코드 + 패키징 + 코드 테스트)
+import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
+
+plugins {
+    kotlin("jvm") version "1.4.32"
+    kotlin("plugin.spring") version "1.4.32"
+    id("org.springframework.boot") version "2.4.5"
+    id("io.spring.dependency-management") version "1.0.11.RELEASE"
+}
+
+group = "personal.project"
+version = "0.0.1-SNAPSHOT"
+java.sourceCompatibility = JavaVersion.VERSION_11
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    implementation("org.springframework.boot:spring-boot-starter-web")
+    implementation("org.jetbrains.kotlin:kotlin-reflect")
+    implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8")
+    testImplementation("org.springframework.boot:spring-boot-starter-test")
+}
+
+tasks.withType<KotlinCompile> {
+    kotlinOptions {
+        freeCompilerArgs = listOf("-Xjsr305=strict")
+        jvmTarget = "1.8"
+    }
+}
+
+tasks.withType<Test> {
+    useJUnitPlatform()
+}
+
+# plugin
+plugins {
+    kotlin("jvm") version "1.4.32" //– 프로젝트에서는 jvm을 타겟으로 한다고 명시
+    kotlin("plugin.spring") version "1.4.32" //– https://plugins.gradle.org/plugin/org.jetbrains.kotlin.plugin.spring
+    id("org.springframework.boot") version "2.4.5" //– spring boot를 사용하기 위한 플러그인
+    id("io.spring.dependency-management") version "1.0.11.RELEASE" //– spring 관련 의존성의 버전관리를 일괄적으로 하기 위한 플러그인
+}
+
+# 의존성 (dependencies)
+
+# main
+@SpringBootApplication
+class LighthouseApplication
+
+fun main(args: Array<String>) {
+    runApplication<LighthouseApplication>(*args)
+}
+
+220306 일
+복은 구하려 할게 아니라, 받을만한 일을 내가 만들어야 하고,
+화는 피한다고 되는게 아니니, 화를 불러들이게 주둥이를 놀리지 말아라 했지요.
+
+복받을 일들을 하시고,
+화를 부르는 일은 하지 마십시다.
+
+윤씨돼서 헛발질하면 촛불 들면 되고요.
+정신을 못차리면 화염병 좀 말아야죠.
+눈치가 눈꼽만큼이라도 있다면 함부로 건드리지 못할거고.
+심씨가 된다면? 한바탕 웃을꺼 같애요.
+이재명 대통령되면? 하느님 부처님 조상님들에게 응석 좀 부릴랍니다.
+왜 나 속상하게 했어~~
+하늘이 무너져도 소가 빠져나갈만한 구멍이 있다고 하니
+여러분 아무 걱정 마세요. 어떤거든 닥치면 다 헤쳐나갈 수 있어요.
+
+유가 실시간 가격변동은 아래에서 보시면 됩니다. http://www.tradingforaliving.co.kr
+
+220306-213212 계란한판+-오랜만에 아들이 ㄷㄷㄷ 아저씨들 사이트에 그림 올려달라고 https://www.ddanzi.com/index.php?mid=free&statusList=HOT%2CHOTBEST%2CHOTAC%2CHOTBESTAC&page=2&document_srl=726061492
+검은눈 22:03:16 그래픽 현업 종사자 입니다. 아드님이 6학년이고 미술을 따로 배운적이 없는 것 같은데 저 정도 실력이면 꽤나 재능이 있어보입니다. 아드님도 학교친구들과 비교했을때 자신이 어느정도인지 알거구요. ㅎㅎ
+뽐내고 인정받는 것은 중요한 동기부여입니다
+그러나 재능을 꽃피우려면 노력이 필요하며
+핵심은 꾸준히 그리는 것입니다. 우선 자기것을 표현하는 것보다 지금은 사물을 관찰하고 표현하는게 중요한 시기입니다. 일종의 눈매, 형태에 대해 파악하는 능력이 그림을 그리는데는 제일 중요합니다. 창의력은 그 다음이구요.
+뭐든 그리도록 도와주세요. 만화, 사진, 사물 등등
+그 다음에 인체가 중요한 시기가 올것입니다.
+
+창의력은 다양한 영화 영상매체도 중요하지만 책을 많이 보고 상상하는게 더 중요하다고 생각합니다.
+남들과 다른 관점을 가지도록 많은 것들을 경험시켜주시면 좋을듯 합니다. 화이팅입니다!
+
+
+시시콜콜 조선복지실록 박영서 들녘 2022 9791159257155 15000
+과연 조선시대에도 복지라는게 있었을까 싶었는데, 놀랍게도 이 책을 발견하게 되었습니다. 복지에 관해 법을 만들고 개정하기도 했고 제대로 실행하고 있는지 암행어사를 파견해서 임금이 보고서를 받기도 했군요. 아주 흥미로운 책입니다.
+
+220305 토
+예수를 믿는 자와 부처를 따르는 자와 무속에 취한 자들이 그러하듯 내 마음속에 일어나는 원념을 모아서, 나의 몸 저 손을 통해 나의 뜻을 세상에 천명합니다.
+
+https://www.ddanzi.com/index.php?mid=free&statusList=HOT%2CHOTBEST%2CHOTAC%2CHOTBESTAC&document_srl=725725796
+neko0728 11:43:27 [ 스윙스윙 ]
+베트남전에 파병된 부대가 전투부대로는 맹호, 백마, 해병대 청룡부대가 있고.
+지원부대로는 건설지원단 비둘기 부대, 해군 수송지원단 백구부대, 공군 항공수송단 은마부대.
+제100 군수사령부 십자성 부대가 있습니다.
+그중에서 야자수와 별이 있는게 십자성부대 입니다.
+아마 저사람은 베트남전에 참전한듯 하네요.
+https://t1.daumcdn.net/blogfile/fs12/35_blog_2008_03_29_14_51_47edd8d95f436?x-content-disposition=inline&filename=e0058513_47d5207e85d47.jpg
+
+220304 금 푸른숲도서관 0930
+대전환의 시대, 새로운 대한민국이 온다 (김준형의 외교혁명 제안) 김준형 크레타 2022 9791197784224 17,000
+K팝과 K컨텐츠로 한국이 유명해진 것은 겉보기일 뿐이고, 한국의 능력이 다른 나라를 넘어서기 때문에 다른 나라들이 주목하고 친해지려는 것이니만큼, 우리의 각성과 처신이 어느때보다도 중요해졌다는 김준형교수의 책이 아주 중요한 점을 지적하고 있으므로 희망도서로 주천합니다.
+
+자신의 어린 시절이 자신의 국가를 치유하는 데 도움이 될 수 있다고 믿는 한국의 대통령 후보 https://time.com/6154471/south-korea-president-election-lee-jae-myung/
+
+220303 목 진접도서관 0920
+Docker로 워드프레스 설치하기 및 관련 이슈 정리 2020. 12. 28. 21:19  [개발자 마르코] 출처: https://gkqlgkql.tistory.com/88
+
+
+220302 수 진접도서관 0910
+
+포트로얄 글로비스 02-701-2520 지마켓글로벌유한책임 1566-5701 평일 0900~1800 스마일클럽 전용 1522-5700 365일 0900~1800
+상품명: ASUS 베어본 PN62 미니PC 데스크탑 인텔i5 소형컴퓨터
+상품 금액 : 660,240원
+1.	노트북 메모리 만 사용함
+2.	단일 32gb 가능함
+
+1800-5807 0900-1200 1300-1700 토일공 휴무
+상품명: DDR4 32G PC4-25600 노트북 메모리 램32기가 RAM 램 (상품금액 200,000원 - 할인금액 12,000원) 상품금액 188,000원 배송비 2,500원 주문금액 190,500원
+
+TV모니터 티엑스 고객센터 1566-6488 0930-1200 1300-1700 토일공 휴무
+상품명: 60cm 모니터 LED 게이밍 컴퓨터모니터 FHD HDR 75Hz
+상품 금액 : 134,000원
+
+How to connect raspberry pi to google drive
+https://www.devquora.com/discuss/how-to-connect-raspberry-pi-to-google-drive/
+
+How to upload file to google storage in grails by using GoogleServiceAuthentication class?
+https://stackoverflow.com/questions/53747196/how-to-upload-file-to-google-storage-in-grails-by-using-googleserviceauthenticat
+
+# 플러터 시작
+## 등장 배경
+## 주목받는
+## 개발환경
+## 프로젝트 시작
+# 다트>플러터
+## 비동기 처리방식
+## JSON 데이터
+## 스트립 통신
+## 다트 프로그램
+# 플러터 내부구조
+## 프로젝트 구조
+## 위젯 생명주기
+# 위젯
+## 스캐폴드 > 머티어리얼 디자인
+## 이미지 폰트 추가
+## 사용자와 상호작용
+# 탭과 리스트
+## 탭바로 화면이동
+## 목록 리스트 뷰
+# iOS 스타일 플러터 앱
+## 쿠퍼티노 위젯 동물소개앱
+## 동물 추가 화면
+## 기타 쿠퍼티노 위젯
+# 네트워크 통신
+## 카카오 앱 이용
+## 이미지 파일 내려받기
+# 내비게이션
+## 이해
+## 할일 기록앱
+# 내부 저장소
+## 공유환경 설정
+## 파일
+# 데이터베이스
+## 만들기
+## 처리하기
+# 애니메이션
+## 구현
+## 인트로화면
+## 스크롤
+# 네이티브 API
+## 안드로이드 네이티브와 통신
+## 데이터 주고받기
+# 파이어베이스
+## 설정
+## 애널리틱스 사용
+## 메모장 앱
+## 푸시알림
+## 광고
+# 여행정보앱
+## 오픈 API
+## 스케치
+## 앱 프로젝트
+# 앱 완성
+## 메인화면
+## 상세보기
+## 즐겨찾기
+## 일정
+## 구글 플레이 출시
+
+220301 화
+[생중계] 제103주년 3·1절 기념식 '대한사람 대한으로'
+16:30 독립선언서 낭독
+https://www.youtube.com/watch?v=Q8V7q0MD1KY
+
+우리가 다시 쓰는 독립선언서 (2022 3.1절 낭독한 내용)
+https://www.gne.go.kr/upload_data/board_data/BBS_0000486/155211199459051.pdf
+
+기미 독립 선언서(己未獨立宣言書)
+https://ko.wikisource.org/wiki/3%C2%B71%EB%8F%85%EB%A6%BD%EC%84%A0%EC%96%B8%EC%84%9C
+
+기미 독립 선언서
+https://namu.wiki/w/%EA%B8%B0%EB%AF%B8%EB%8F%85%EB%A6%BD%EC%84%A0%EC%96%B8%EC%84%9C
+
+아무도 몰랐던 플라스틱손잡이 재활용 조회수 501,609회 2020. 11. 28 야무진은경쌤 https://www.youtube.com/watch?v=2eTR9-j0Zy8
+
+[홍사훈의 경제쇼] 최준영ㅡ예측할 수 없는 푸틴의 다음 선택은? 우크라이나 사태, 최악의 상황으로 갈 수도! 조회수 163,277회 2022. 2. 28 KBS 1라디오 https://www.youtube.com/watch?v=kISy0FecDKU
+
+220301-212636 푸른내일을위해-(장문주의) 2시간 넘게 정말 공들여 현재 판세 분석했습니다. 꼭 봐주세요!!
+https://www.ddanzi.com/index.php?mid=free&statusList=HOT%2CHOTBEST%2CHOTAC%2CHOTBESTAC&document_srl=724983656
+
+

@@ -1,0 +1,1047 @@
+
+211130 화 0837
+[단독선공개] 소년공부터 시작했던 이재명의 힘든 어린시절, 다사다난했던 그의 인생사 이야기… [옥탑방의 문제아들/Problem Child in House] | KBS 방송 조회수 24,948회2021. 11. 30.
+https://www.youtube.com/watch?v=bPV0SCy3pdg
+
+영입인사1호 조동연 공동선대위원장 발표
+https://youtu.be/wW-wPBzxuoY
+
+[N☢️]모터스[1B30코난똑똑딸] https://www.ddanzi.com/index.php?mid=free&statusList=HOT%2CHOTBEST%2CHOTAC%2CHOTBESTAC&document_srl=711836387
+딸래미가 초딩때 명탐정 코난도 좋아했고, 한때 프로파일러가 되려고 해서
+"왜 저기를 들어갔데???" (윤짜장에 대해 비호감이 있습니다.)
+음 그러면 이제 이수정 교수의 책을 안 읽겠다고 합니다...
+"배경이 그렇다면 자기 말이나 글에서 그런 시각이 묻어날게 아니냐?"
+
+ly.lv/95 라트비아 도메인 nic.lv
+nic.lv yosjeon 오라뜨비아!
+spd.lv
+ 우분투 설치
+1.	u00 -> 시스템 업데이트 = 나중에 알림 > 한글 = 바뀐 내용 적용
+2.	sudo apt-get update
+a.	sudo apt-get install build-essential g++ make
+b.	dpkg -l | grep kernel
+3.	장치 > 게스트 확장 CD 이미지 삽입 > 오류시 재작업 -> 
+a.	sudo /sbin/rcvboxadd quicksetup all
+4.	sudo gpasswd -a ubuntu(유저명) vb	oxsf ; sudo grep vbox /etc/group
+a.	> 재부팅
+5.	cd /media/sf_Downloads
+a.	rsync -avzr -e ‘ssh -p 18022’ kaosco@kaos.kr:bin/1*/f*/f* .
+b.	cd /usr/share/fonts
+c.	sudo 7za x /media/sf_Downloads/install_fonts*.7z .
+6.	https://itlearningcenter.tistory.com/entry/%E3%80%901804-LTS%E3%80%91VIM-Plug-in-%EC%84%A4%EC%B9%98%ED%95%98%EA%B8%B0
+a.	sudo apt-get install vim
+b.	git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
+c.	vi .vimrc 로 저 블로그의 .vimrc 를 복사해 넣는다.
+d.	vi +BundleInstall +qall
+
+“ --------------------------------------------------------
+vi ~/.vimrc
+" VIM 옵션
+" https://itlearningcenter.tistory.com/entry/%E3%80%901804-LTS%E3%80%91VIM-Plug-in-%EC%84%A4%EC%B9%98%ED%95%98%EA%B8%B0
+syntax on						" 구문강조 사용
+set autoindent						" 자동 들여쓰기
+set smartindent						" 스마트한 들여쓰기
+set cindent						" C 프로그래밍용 자동 들여쓰기
+set shiftwidth=4					" 자동 들여쓰기 4칸
+set tabstop=4						" 탭을 4칸으로
+set nobackup						" 백업 파일을 안만듬
+set nowrapscan						" 검색할 때 문서의 끝에서 처음으로 안돌아감
+set ignorecase						" 검색시 대소문자 무시, set ic 도 가능
+set hlsearch						" 검색어 강조, set hls 도 가능
+set number						" 행번호 표시, set nu 도 가능
+set nocompatible					" 오리지날 VI와 호환하지 않음
+set backspace=eol,start,indent				" 줄의 끝, 시작, 들여쓰기에서 백스페이스시 이전줄로
+set ruler						" 화면 우측 하단에 현재 커서의 위치(줄,칸) 표시
+set cursorline						" 편집 위치에 커서 라인 설정
+set laststatus=2					" 상태바 표시를 항상한다
+set incsearch						" 키워드 입력시 점진적 검색
+set fencs=ucs-bom,utf-8,euc-kr.latin1			" 한글 파일은 euc-kr로, 유니코드는 유니코드로
+set fileencoding=utf-8					" 파일저장인코딩
+set tenc=utf-8						" 터미널 인코딩
+set background=dark					" 하이라이팅 lihgt / dark
+set history=1000					" vi 편집기록 기억갯수 .viminfo에 기록
+set t_Co=256						" 색 조정
+highlight Comment term=bold cterm=bold ctermfg=4	" 코멘트 하이라이트
+set wrap
+set noswapfile
+set lbr
+"set visualbell						" 키를 잘못눌렀을 때 화면 프레시
+"set mouse=a						" vim에서 마우스 사용
+
+"
+" VIM 플러그인 설치 목록
+"
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
+
+Plugin 'VundleVim/Vundle.vim'				" VIM 플러그인 관리 플러그인
+
+Plugin 'airblade/vim-gitgutter'				" Git으로 관리하는 파일의 변경된 부분을 확인
+Plugin 'scrooloose/nerdtree'				" 파일트리
+Plugin 'scrooloose/nerdcommenter'			" 주석
+Plugin 'taglist-plus'					" 소스파일의 클래스, 함수, 변수 정보 창
+Plugin 'bling/vim-airline'				" 상태바(Vim 사용자의 하단 상태바를 변경)
+Plugin 'vim-syntastic/syntastic'			" 구문 체크
+Plugin 'nanotech/jellybeans.vim'			" 색상 테마 변경
+Plugin 'ctrlpvim/ctrlp.vim'				" 하위 디렉토리 파일 찾기
+Plugin 'Lokaltog/vim-easymotion'			" 한 화면에서 커서 이동
+Plugin 'surround.vim'					" 소스 버전 컨트롤
+Plugin 'iwataka/ctrlproj.vim'				" 지정된 위치 프로젝트 파일 찾기
+Plugin 'Quich-Filter'					" 라인 필터링
+Plugin 'terryma/vim-multiple-cursors'			" 여러 커서에서 동시 수정
+Plugin 'SirVer/ultisnips'				" 저장한 코드 조각 입력
+Plugin 'mattn/emmet-vim'				" HTML, CSS 코드 단축 입력
+Plugin 'HTML.zip'					" HTML 단축 입력
+Plugin 'rking/ag.vim'					" 문자열 찾기
+Plugin 'chrisbra/NrrwRgn'				" 라인 범위 지정 후 수정
+Plugin 'MultipleSearch'					" 여러 문자열 동시에 강조
+Plugin 'majutsushi/tagbar'				" ctags 결과 표시
+Plugin 'xuhdev/SingleCompile'				" 하나의 파일 컴파일 후 실행
+Plugin 'mhinz/vim-signify'				" 버전 관리 파일 상태 표시
+Plugin 'tommcdo/vim-lion'				" 라인 정렬
+Plugin 'tpope/vim-fugitive'				" Vim에서 git 명령어 사용
+Plugin 'elzr/vim-json'					" JSON 파일 보기
+Plugin 'AutoComplPop'					" 자동 완성(Ctrl + P)를 누르지 않음
+
+call vundle#end()
+
+filetype plugin indent on				" 파일 종류에 따른 구문강조
+colorscheme jellybeans					" vi 색상 테마 설정
+
+au FileType * setl fo-=cro				" 자동 주석 기능 해제
+
+"
+" ctrlp.vim 설정
+"
+let g:ctrlp_custom_ignore = {
+  \ 'dir':  '\.git$\|public$\|log$\|tmp$\|vendor$',
+  \ 'file': '\v\.(exe|so|dll)$'
+\ }
+
+"
+" Tag list 설정
+"
+let Tlist_Use_Right_Window = 1
+let Tlist_Auto_Open = 0
+let Tlist_Exit_OnlyWindow = 0
+let Tlist_Inc_Winwidth = 0
+let Tlist_Ctags_Cmd = "/usr/bin/ctags"
+
+"
+" 단축키
+"
+map <F3> <C-w><C-v>
+map <F4> <C-w><C-w>
+map <F5> :NERDTreeToggle<cr>
+map <F6> :TlistToggle<cr>
+“ ===============================
+https://shanepark.tistory.com/237
+sudo apt-get remove docker docker-engine docker.io containerd runc #-- 오래된 버전 삭제하기
+sudo apt-get update ; sudo apt-get -y install apt-transport-https ca-certificates curl gnupg lsb-release #-- repository 설정
+curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo gpg --dearmor -o /usr/share/keyrings/docker-archive-keyring.gpg #-- gpg 키 등록
+echo "deb [arch=amd64 signed-by=/usr/share/keyrings/docker-archive-keyring.gpg] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable" | sudo tee /etc/apt/sources.list.d/docker.list > /dev/null #-- repository 등록
+sudo apt-get update ; sudo apt-get install docker-ce docker-ce-cli containerd.io #-- Docker 설치
+docker --version #-- 설치 완료
+
+
+211129 월 1000 진접도서관
+Flutter Cookbook https://subscription.packtpub.com/book/mobile/9781838823382/1/ch01lvl1sec22/vs-code
+flutter 쿡북 https://docs.flutter.dev/cookbook
+
+VirtualBox > F35-05 실행중 > 문서, 메일, 
+Windows10 > flutter 테스트
+Morning Brew > Emerging Tech Brew의 친구들은 로봇 공학의 모든 것, 그 역사, 자동 기계에 의존하는 산업, 로봇권의 다음 단계를 분석하는 가이드를 작성했습니다.
+https://www.morningbrew.com/emerging-tech/guides/your-guide-to-robotics?utm_campaign=mb&utm_medium=newsletter&utm_source=morning_brew&mid=db30df5cf56610950d7c52cc3ccfea4d
+
+211128 일 1032
+1.	웹 브라우저 > 점3x3개 = Google 앱
+a.	자주쓰는것 우선배열  > (Gmail, 드라이브, 문서) (Play, 번역, 스프레드 시트)
+b.	문서 > 새문서 만들기 -> 제목: 2021-11 일지 ->(월별로 작성)
+i.	수기메모와 같이 211117 수 1122 로 시작,
+ii.	매번 기록을 첫줄에서 시작, 날짜 역순으로 기록. 찾기에서 안나오면 드라이브에서 찾기 하면됨.
+c.	A5 서식 
+i.	파일 > 방향 > 가로 ;; 파일 > 페이지 설정 > 여백 > 오른쪽 0.4 나머지 1 
+ii.	서식 > 열 > 좌우 2칸 ;; 서식 > 줄 및 단락 간격 > 1.5 ;; 양면인쇄 > 위로넘김
+iii.	(. . . . , . . . . _) x 5개  + (. . . . , .) ;; 2 페이지 작성 ;; 1 페이지 [4, 1] ; 2 페이지 [2, 3]
+iv.	[4] 진한 회색 2 ; [1`] 진한 파란색 2 ; [2] 진한 빨간색 2 ; [3] 진한 노란색 2
+2.	3p binder + A4용지
+a.	첫줄 -> 날짜 요일 시분 장소 + 펜테스트: 채근담, 중용, 고문진보,
+b.	다쓴것 -> 빵끈으로 뒤로묶기 두꺼운것으로 겉표지
+c.	필통 ->  3색볼펜, USB, 손톱깎이, 안경수건, 실바늘단추, 빗, 커넥터,
+3.	유튜브
+a.	Peachy 피치, Topic, 김시선, 쓸모왕, 
+b.	강성범tv, 고양이뉴스, 곽동수TV, 사이버 김구, 호사카유지TV, 
+c.	매불쇼, 김영대 LIVE, 사람사는세상노무현재단, 삼프로TV, 세바시 강연, 편의점 클라쓰e, 최준영박사의 지구본연구소, 
+d.	건나물TV, 노마드 코더 Nomad Coders, 오빠두엑셀, 정리왕 썬더이대표, 최배근TV, 코지 코더, 
+e.	과학하고 앉아있네, 긱블 Geekble, 북툰, 카오스 사이언스, 
+f.	기본소득당 용혜인, 박시영TV, 서울의소리, 열린공감TV, 이동형TV, 
+4.	정리할 주제
+a.	편한가계부, 뱅크샐러드, 
+b.	복식부기, 손쉬운 재무제표, 
+c.	정도전, 명청교체기, 진독수평전, 도쿠가와 이에야쓰,
+d.	대승기신론, 양자역학, 수소폭탄, 망원경, 판 구조론, 지열발전, 
+e.	금본위제, UN, IMF, FTA, 기후위기, 
+f.	MIT Tech Review, Medium, 
+g.	이경숙 노자, 채근담, 고문진보, 
+h.	
+5.	도서관 등에서 VirtualBox 사용
+a.	VirtualBox 설치 > https://virtualbox.org/wiki/downloads
+b.	fedora 35 다운로드 > https://getfedora.org/ko/workstation/download/
+c.	virtualBox 실행 + fedora 설치
+d.	fedora 에서 추가작업
+i.	sudo vi /etc/sudoers
+ii.	sudo hostnamectl set-hostname fed35
+iii.	sudo dnf -y install make automake autoconf gcc dkms wget vim-enhanced vim-common mc git p7zip gnome-tweak-tool livecd-tools #-- 꼭 필요한 프로그램들
+iv.	sudo dnf -y install keepass rclone liveusb-creator #-- 꼭 필요한 앱
+v.	google-chrome 설정 > 다운로드 > 위치 > 변경 > /media/sf_Desktop/Download 로 지정한다.
+vi.	sudo systemctl enable sshd ; sudo systemctl start sshd
+e.	폰트설치 https://github.com/naver/d2codingfont/releases
+i.	다운로드후 *.ttf 오른쪽마우스 > 설치 클릭
+ii.	저작권 걱정없는 무료한글폰트 71종 https://pepepien.tistory.com/187
+iii.	공유마당 https://gongu.copyright.or.kr/gongu/bbs/B0000018/list.do?menuNo=200195
+iv.	공공누리 https://www.kogl.or.kr/recommend/recommendDivList.do?division=font
+v.	저작권 걱정없는 무료효과음 25GB https://pepepien.tistory.com/248?category=693186
+vi.	누구나 쉽게 디자인 할수있는 법 https://news.mangoboard.net/news/?p=513&gclid=EAIaIQobChMIzrS_vNGF9AIV38VMAh2eYAtOEAEYBSAAEgKsZvD_BwE
+vii.	
+6.	
+
+팩트펍 Flutter Cookbook 소스 https://github.com/PacktPublishing/Flutter-Cookbook.git
+win10 에서 Flutter 설치
+1.	폰트 설치
+a.	https://github.com/naver/d2codingfont/releases
+b.	D2Coding-Ver1.3.2-20180524.zip -> (다운로드 + 압축 풀고)
+c.	D2Coding 폴더의 파일 모두 선택 -> (오른쪽 마우스 클릭 + 설치 클릭)
+d.	다운받은파일 모두삭제
+2.	git 설치
+a.	https://git-scm.com/download/win
+b.	(다운로드 + 실행) > Git bash 를 작업표시줄에 붙이고 + 실행
+c.	글자가 작으므로, 제목 라인에서 > 오른쪽 마우스 클릭 > Options… 선택
+d.	Looks > Cursor > (*) Block
+e.	Text > Font [Select] D2coding 16pt
+f.	Locale [ko_KR] character set [UTF-8]
+3.	flutter
+a.	설치브라우저에서:
+i.	https://flutter.dev > get started > install > windows > Get the Flutter SDK
+ii.	$ ls Downloads/    <-- Git bash 에서:
+iii.	$ unzip Downloads/flutter_windows_2.5.3-stable.zip
+b.	Git bash 에서:
+i.	$ pwd    <-- 현재 위치
+ii.	$ git clone https://github.com/flutter/flutter.git -b stable
+4.	환경변수 지정하기
+a.	윈도우 돋보기 (Windows+R 안됨) > env 입력 > 환경변수 선택 > User 에 대한 사용자 변수 선택
+b.	또는, 윈도우 찾기 (돋보기) 클릭후, env 엔터
+c.	변수 중에서 Path 클릭하고 [편집] > 새로만들기 >
+d.	%USERPROFILE%\flutter\bin 입력하고 > 확인 > 확인 > 확인
+e.	$ flutter doctor
+5.	Android Studio 설치
+a.	https://developer.android.com > Download > Android Studio > Android 스튜디오 다운로드
+i.	Download Android Studio > 설치
+b.	Android Studio 에서 > More Actions v > SDK Manager > System Settings > Android SDK
+i.	> [SDK Tools] > Android SDK CmdLineTool 체크 > accept 버튼 클릭
+c.	flutter doctor --android-licenses
+6.	Android Studio 사용법
+a.	File > Settings > Appearance > [v] Use custom font: [D2Coding] + [16]
+b.	File > Settings > Editor > Font > Font: [D2Coding] Size: [16]
+c.	File > Project Structure > 왼쪽 Module 클릭 > 중간 Sources 트리에서 > 만들고 싶은 폴더에서 우클릭 > New Folder: 이름지정
+d.	폴더이름 변경 > Shift + F6
+
+[일본저격] 야마모토 타로 “한국분들이 저를 아신다고요? 투표권이 없어서 어쩌나”
+https://www.youtube.com/watch?v=Ol5kcthhDM0
+김경록 "이 카톡 보고 잠을 좀 설쳤습니다" 그렇게 피의자가 된다 김경록
+#로블록스 #메타버스 #개발자 '로블록스 개발자' 가 필요한 시대가 온다?! 조회수 714회2021. 11. 28. https://www.youtube.com/watch?v=Ysvbo142h5U
+나이 들수록 혼자가 되어야 하는 이유 - 노후를 위해 무조건 챙겨야 하는 3가지 
+조회수 410,570회2021. 11. 13. 1.2만 211 공유 저장 셀프컴퍼니 구독자 18.2만명
+https://www.youtube.com/watch?v=8LcwTChv6lA
+너무 웃기고 엉뚱한 학생들의 시험답안지 모음(84문제) ※웃음을 참아보세요
+https://www.youtube.com/watch?v=8pWIH0YkjgY
+
+211127 토 1441 진접도서관
+일본 초등학생 명찰 한글표기 대유행에 발칵뒤집힌 일본 교육부 상황 "한글 읽기 쉬워서 그래요, 일제 개명 100년후 역으로 한글 점령"
+https://www.youtube.com/watch?v=9ahZqnwouyw
+두 아이가 함께 생활할 집을 얻어야 하는데 [31]2021-11-27 21:44콩이와콩자 https://www.ddanzi.com/index.php?mid=free&statusList=HOT%2CHOTBEST%2CHOTAC%2CHOTBESTAC&page=5&document_srl=711580483
+banien 2021-11-27 21:57 자주가던곳에서 스크랩 해둔건데 공유해봅니다~
+부동산 전세계약 할 때 우리가 해야 할 기초적인 것들.txt https://theqoo.net/2188965001
+전세를 생각하는 사람들이 꼭 봐야 하는 만화 https://theqoo.net/2166391266
+국토교통부가 알려주는 전세사기 피해 예방.jpg https://theqoo.net/2054827122
+사회초년생, 대학생 등 방구하는 방법(기초) https://theqoo.net/1814237477
+전세사기수법 https://theqoo.net/2213221126
+무지개색연필 2021-11-27 22:47 다운로드 링크 오류안내 페이지 
+서울시 청년주거상담센터 http://youth-housing-seoul.kr/
+탁현민, 'impossible dream' [7] 2021-11-27 21:40 나옹이와나리가함께™ https://youtu.be/wb2r_qexbm4
+4차한류? 실상공개!! 현지에서 바로 보내드립니다. 일본생활 / 일본일상 / 일본브이로그 / 조회수 52,898회2021. 4. 3.
+핫뽀오니 2021-11-27 20:29 [ 핫뽀오니 ] https://youtu.be/Ef0e6c4GCNg
+
+211126 금 0940 푸른숲도서관
+
+211125 목 0930 진접도서관
+이재명 후보 - 외신기자클럽 초청 토론회 https://www.youtube.com/watch?v=vQZSpIcXrPk
+211125-163822 Remy-[실시간 정리 최종] 이재명 후보-외신기자클럽 초청 토론회
+https://www.ddanzi.com/index.php?mid=free&statusList=HOT%2CHOTBEST%2CHOTAC%2CHOTBESTAC&page=4&document_srl=711307253
+
+Visual studio code https://code.visualstudio.com/
+Medium
+Flutter 앱 보안. https://medium.com/@mohammadEzzo/securing-flutter-apps-3cd1aedda088
+메모 > 마인드맵 > 손그림 > 디자인 Figma > 폴더+구조 > 더좋은 프로그램 배우기 > git+github > 미니프로젝트 먼저 > 작은 중간목표
+소프트웨어 개발자가 되기 위해 수학이 필요한 것은 아닙니다. 레오 리우 레오 리우 7월 1일 · 
+4분 읽기 https://liou28335.medium.com/you-do-not-need-math-to-be-a-software-developer-a2ec46d04538
+Flutter 템플릿을 위한 5가지 최고의 웹사이트 바빅 타카르 바빅 타카르 5일 전 · 
+2분 읽음 https://medium.com/@techextensor957/5-best-websites-for-flutter-templates-4e1eba4f0903
+Firebase를 사용하여 Flutter로 쉽게 로그인 및 등록 2021년 7월 23일 에 의해 
+Prasant https://kickertech.com/login-and-register-easily-with-flutter-using-firebase/
+login logout https://github.com/dragneel2074/login_logout_app
+Flutter Crash Course for Beginners 2021 - Build a Flutter App with Google's Flutter & Dart 조회수 1,652,952회 
+2019. 7. 10. https://www.youtube.com/watch?v=x0uinJvhNxI
+플러터 샘플 https://flutter.github.io/samples/#
+The Complete 2021 Flutter Development Bootcamp with Dart 평점: 1점 만점 중 4.7점 4.7 (37,735개의 평점) 126,748명의 수강생
+https://www.udemy.com/course/flutter-bootcamp-with-dart/?ranMID=39197&ranEAID=w3WHd5KiuvA&ranSiteID=w3WHd5KiuvA-dkqRyXK6pGv82KHDXD.txg&LSNPUBID=w3WHd5KiuvA&utm_source=aff-campaign&utm_medium=udemyads
+
+초보자를 위한 Flutter 단기집중과정 2021 - Google의 Flutter & Dart로 Flutter 앱 빌드 아카데미마인드 구독자 73.5만명
+초보자를 위한 무료 Flutter 소개:  https://www.youtube.com/watch?v=x0uinJvhNxI
+Flutter를 시작하고 Flutter로 iOS 및 Android 앱을 빌드하는 방법을 배우십시오! 
+전체 Flutter 과정에 참여하세요: https://acad.link/flutter
+Discord에서 Academind 커뮤니티에 무료로 가입하세요:  https://discord.gg/gxvEWGU
+다른 모든 과정을 확인하세요: https://academind.com/learn/our-courses
+---------- 내용: 소개 00:03
+플러터란? 01:50
+Flutter의 아키텍처 07:44
+Flutter 및 Dart 코드가 네이티브 앱으로 컴파일되는 방법 12:31
+Flutter 버전 이해하기 15:44
+Flutter macOS 설정 18:34
+macOS 개발 환경 37:24
+플러터 윈도우 설정 41:32
+Windows 개발 환경 01:00:48
+플러터 및 머티리얼 디자인 01:04:34
+Flutter 대안 01:05:49
+강의 개요 01:11:56
+코스를 최대한 활용하는 방법 01:18:36
+모듈 소개 01:21:17
+새 프로젝트 만들기 01:23:42
+생성된 파일 및 폴더 개요 01:35:57
+기본 앱 분석 01:44:18
+다트 기초 01:49:50
+더 많은 다트 기본 사항 02:07:08
+처음부터 앱 빌드 02:20:15
+에뮬레이터에서 앱 실행 02:31:18
+클래스 생성자와 명명된 인수 02:34:43
+첫 번째 요약 및 추가 구문 02:43:13
+위젯 트리 만들기 02:51:24
+보이는(입력/출력) 및 보이지 않는(레이아웃/제어) 위젯 02:59:04
+레이아웃 위젯 추가 03:02:17
+기능 및 버튼 연결 03:09:09
+익명 기능 03:16:40
+위젯 데이터 업데이트(또는: StatelessWidget를 잘못 사용) 03:20:01
+Stateful 위젯으로 올바르게 업데이트하기 03:26:38
+후드 아래의 간략한 모습 03:38:36
+개인 속성 사용 03:41:04
+새로운 맞춤형 위젯 만들기 03:46:21
+첫 번째 스타일링 및 레이아웃 단계 03:58:11
+열거형 및 다중 생성자 04:06:12
+공식 문서 및 위젯 카탈로그 04:10:19
+콜백 함수 전달하기 04:12:59
+지도 소개 04:23:37
+위젯에 목록 매핑 04:29:30
+최종 대 상수 04:39:54
+"if" 문 소개 04:50:45
+[DART DEEP DIVE] "if" 문에 대해 자세히 알아보기 04:57:36
+[DART DEEP DIVE] "null" 값 05:08:52
+조건부로 위젯 출력하기 05:10:55
+앱을 위젯으로 분할 05:13:16
+총점 계산 05:23:13
+게터 및 "else-if" 05:30:59
+퀴즈 재설정 05:37:34
+마무리 05:42:28
+---------- • 이동 https://www.academind.com
+ 뉴스레터를 구독하여 최신 소식을 확인하고 독점 콘텐츠 및 할인을 받으세요. • Twitter에서 @maxedapps 및 @academind_real 팔로우 • Instagram에서 @academind_real 팔로우: https://www.instagram.com/academind_real
+• Facebook 커뮤니티에 가입하세요. https://www.facebook.com/academindcha…
+영상에서 만나요!
+#flutter소개 #플러터코스 #플러터앱
+---------- Academind는 웹 개발, 프론트엔드 웹 개발, 백엔드 웹 개발, 프로그래밍, 코딩 및 데이터 과학 분야의 온라인 교육 소스입니다! 튜토리얼, 코스, 집중 과정, 소개, 온라인 튜토리얼 또는 관련 비디오를 찾고 있더라도 우리는 귀하가 찾고 있는 콘텐츠를 제공하기 위해 최선을 다합니다. 우리의 주제에는 Angular, React, Vue, Html, CSS, JavaScript, TypeScript, Redux, Nuxt.js, RxJs, Bootstrap, Laravel, Node.js, Progressive Web Apps(PWA), Ionic, React Native, 정규식(RegEx)이 포함됩니다. , Stencil, Power BI, Amazon Web Services(AWS), Firebase 또는 기타 주제가 있는 경우 이 채널이나 academind.com에서 원하는 학습 리소스를 찾아보세요!
+https://www.youtube.com/watch?v=x0uinJvhNxI
+
+
+211124 수 0624
+Ubuntu 20.04 LTS Server 버전에서 Docker 설치
+https://blog.dalso.org/linux/ubuntu-20-04-lts/13118
+sudo apt update ; sudo apt upgrade
+sudo apt-get install apt-transport-https ca-certificates curl gnupg-agent software-properties-common
+curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
+arch #-- 아키텍처 확인
+sudo add-apt-repository \
+"deb [arch=amd64] https://download.docker.com/linux/ubuntu \
+$(lsb_release -cs) \ stable"
+sudo apt-get update && sudo apt-get install docker-ce docker-ce-cli containerd.io
+sudo docker -v
+sudo systemctl enable docker && service docker start
+service docker status
+
+portainer는 docker의 이미지,컨테이너,네트워크등을 쉽게 관리할 수 있게 도와주는 GUI Web 서비스
+https://hub.docker.com/
+
+sudo mkdir -p /home/portainer
+sudo docker run --name portainer -p 9000:9000 -d --restart always -v /home/portainer:/data -v /var/run/docker.sock:/var/run/docker.sock portainer/portainer
+admin / 포트라이너2021
+
+211123 화 0814
+211123-060553 [⛄]빵발🐱🐶-아재들만 믿는 미신 ㅎㄷㄷㄷㄷ https://www.ddanzi.com/index.php?mid=free&page=3&document_srl=710925075&statusList=HOT%2CHOTBEST%2CHOTAC%2CHOTBESTAC
++ 다리떨면 복나간다. 문지방 밟으면 클난다. 똥차보면 재수좋다. 밤에 손톱발톱 깎지마라. 시험날 미역국. 
+
+211122 월 0749
+도커(docker)를 활용하여 위키(wiki.js) 구축 한방에 끝내기
+https://dyjh-blog.netlify.app/posts/2020-10-wiki-js-docker
+
+한국 무기가 좋을 수밖에 없는 이유 l 한국 땅에서 시험 통과하면 세계 어느 곳에서도 살아남는다 
+조회수 736,045회2020. 10. 23. https://www.youtube.com/watch?v=5kWiWwDzz2E
+2002 한일월드컵이 진짜 기적이었던 이유 l 한국인의 잠재력이 미친듯이 폭발하던 한편의 영화 같았던 그해 여름
+조회수 317,997회2021. 7. 4. https://www.youtube.com/watch?v=JNf3JJ0I5ho
+외국인이 말하는 한국인이 무서운 진짜 이유 
+조회수 2,447,667회2021. 4. 22. https://www.youtube.com/watch?v=KwfobhJeQOc
+세계를 깜작 놀래킨 한국인들의 미친 단결의 역사 l 평소엔 무뚝뚝하지만 위기 때는 단결력 십만배 상승하는 민족 l 한국인들은 외계인이다 
+조회수 2,573,791회2020. 12. 18. https://www.youtube.com/watch?v=-LyQHpjVesc
+지금 해외에서 크게 이슈가 된 한국 청소년들의 인성 l 한국 아이들은 어떻게 저런 행동을 할 수 있나? 
+조회수 2,683,635회2020. 9. 26. https://www.youtube.com/watch?v=o_Qv-h66u5I
+대한민국이 진정한 선진국인 이유 l 사람이 명품인 국가가 보여주는 진짜 국격의 모습 
+조회수 703,320회2021. 8. 28. https://www.youtube.com/watch?v=oNnJxfPl0m4
+지금 무섭게 한국 추월하고 있는 일본 전자제품 기술력 l 이제 LG의 독주는 끝났다 l 역대급 신제품 공개한 일본 상황 
+조회수 1,124,028회2021. 8. 13. https://www.youtube.com/watch?v=o5qbljvIuQ0&t=29s
+한국 초딩들이 경찰서 와서 보인 놀라운 행동 l 한국 청소년들은 어째서 저런 행동을 할까? 
+조회수 302,920회2021. 2. 27. https://www.youtube.com/watch?v=usLHk8clalU&t=301s
+하버드 교수가 분석한 한국인들이 뛰어난 이유 l 한국인들의 정신력은 일본 중국과 근본부터 아예 달라요 
+조회수 1,370,126회2020. 12. 26. https://www.youtube.com/watch?v=pPl1Jgsok2E
+한국인들은 세계에서 제일 특이한 민족 l 다이슨 무선 청소기 부사장 발표 l 지나치게 청소를 많이 하는 이상한 사람들 
+조회수 2,750,697회2020. 8. 12. https://www.youtube.com/watch?v=D9fmA6AFsH8
+지금 빠르게 현실화되고 있는 과거 대한민국 초강대국 예언들 l 이번 사태를 계기로 초강대국 진입하게 될 대한민국 l 소름주의... 
+조회수 3,303,842회2020. 4. 27. https://www.youtube.com/watch?v=ZawIojNrIR0
+중국 인민군 VS 대한민국 국군 전면전 최종 결과 l 중국이 절대 한국을 이길 수 없는 이유 l 전쟁 발발 10일 내 중국 패망 시나리오 
+조회수 3,594,643회2021. 2. 15. https://www.youtube.com/watch?v=xPE3zPDPIj0
+미국 아마존에서 한국 호랑이 담요가 난리가 난 이유 l 밤마다 범이 내려온다 l 다시 한 번 새로운 한류가 분다 
+조회수 690,156회2020. 10. 20. https://www.youtube.com/watch?v=X0dmiezm560
+한국인이 음식을 대하는 자세 l 우리는 먹는 것에 대해 진심이다 l 세상 모든 것은 볶음밥으로 귀결된다 
+조회수 477,317회2020. 10. 2. https://www.youtube.com/watch?v=_WbpHcmpxEU
+
+
+211121 일 0954
+16:28
+AWS Certified Cloud Practitioner 출처: [짜깡이의 IT 딱 대!] https://jjakang2.tistory.com/14
+Solutions Architect Associate 가 목표
+외국어능력시험 FLEX 시험일정 및 문제풀이 자료 https://layeredstruc.tistory.com/90
+211121-201420 simpleisbest-클리앙 펌-이재명이 왜 대통령감인지 이제껏 가장 납득이 가는 짤과 영상
+https://youtu.be/ksu8xddYDDk
+이재명후보 논산 화지시장 연설 https://youtu.be/-lpeasTetYc
+평화의 소녀상 펀딩 https://link.tumblbug.com/n4gGidGfjlb
+문재인대통령님의 국민과의대화 https://www.youtube.com/watch?v=EopamHWuOpU
+
+13:27
+freeCodeCamp의 커리큘럼에 오신 것을 환영합니다.
+https://www.freecodecamp.org/learn/
+반응형 웹디자인 자격증
+JavaScript 알고리즘 및 데이터 구조 인증
+프런트 엔드 개발 라이브러리 인증
+데이터 시각화 인증
+백엔드 개발 및 API 인증
+품질보증서
+Python 인증을 통한 데이터 분석
+정보보안 자격증
+Python 인증을 통한 기계 학습
+코딩 면접 준비
+
+Flutter 애플리케이션 설계를 위한 완벽한 가이드
+https://medium.com/codex/a-complete-guide-to-architect-your-flutter-application-a5a4da662549
+
+
+09:54
+Medium
+클리어 리눅스란? — 2022년 가장 강력한 운영 체제
+현대적인 결제 플랫폼 구축 > Tweeq에서는 사내 결제 시스템을 구축하고 있습니다.
+NodeJS에서 Golang으로: MacOS 라이브 다시 로드
+Flutter에서 XML을 Json으로
+Spring Framework 튜토리얼: Spring 시작하기
+
+Microsoft Excel에서 한 페이지에 시트를 인쇄하는 방법 샌디 라이튼하우스 @sandystachowiak 2021년 11월 19일 오전 11시 EST | 1분 읽기
+https://www.howtogeek.com/761465/how-to-print-a-sheet-on-one-page-in-microsoft-excel/
+
+manning
+Rust를 사용하는 Flutter 백엔드 » Rust Web Development의 저자인 Bastian Gruber 는 Flutter 팟캐스트로 Flutter와 함께 Flutter를 집중적으로 다루고 있으며, 특히 Rust를 사용하여 놀라운 모바일 백엔드를 구축하는 방법에 대해 집중적으로 다루고 있습니다
+https://redcircle.com/shows/flying-high-with-flutter/episodes/5b32efdc-0934-4ba7-b089-6d9ea07092b3?trk_msg=0H1DDS02JEM45700CLEOBCPUGK&trk_contact=EBHMPC9F0FUPQFDRBPFO8A7JU0&trk_sid=HIKUH374THUP5TMUUOI24CB95G&trk_link=MR0EIB3PSBH4T2P61Q49DQKIIK&utm_source=Listrak&utm_medium=Email&utm_term=https%3a%2f%2fredcircle.com%2fshows%2fflying-high-with-flutter%2fepisodes%2f5b32efdc-0934-4ba7-b089-6d9ea07092b3&utm_campaign=Weekend+roundup!+Last+chance+for+%2424.99+eBooks+and+more!
+
+211120 토 0951
+원래 배밭이었다던 강남의 역사 1부 (f.김시덕)_책과함께#52
+https://www.youtube.com/watch?v=Qm2WBWgXXa0
+[단둑]이재명도 개미투자자였다~
+https://youtu.be/h9bJSmXiJDY
+기성기자보다 수준 높은 대학기자... 너무도 쉽게 설명하는 이재명
+https://youtu.be/2o2qZOYd-fY
+21112-2200 다큐사랑-주말은 반찬하는 날짜
+https://www.ddanzi.com/index.php?mid=free&statusList=HOT%2CHOTBEST%2CHOTAC%2CHOTBESTAC&document_srl=710600548
+
+Express, Socket.IO, Flutter Web으로 채팅 앱 개발하기
+https://ichi.pro/ko/express-socket-io-flutter-web-eulo-chaeting-aeb-gaebalhagi-79013149570920
+Flutter / 플러터 2.5 업데이트 무엇이 변경되었을까? 조회수 2,302 2021. 9. 19. 91 2 개발하는남자 구독자 2.93천명
+https://www.youtube.com/watch?v=HYxvkU4ld70
+블로그 https://sudarlife.tistory.com/entry/%ED%94%8C%EB%9F%AC%ED%84%B0-25-%EC%97%85%EB%8D%B0%EC%9D%B4%ED%8A%B8-%EB%A6%B4%EB%A6%AC%EC%A6%88-%EB%85%B8%ED%8A%B8-%EA%B0%84%EB%8B%A8-%EC%A0%95%EB%A6%AC-flutter-25-release-version-update
+flutter firebase example github
+Flutter: CRUD operations using Firebase Cloud Firestore
+https://medium.com/flutter-community/flutter-crud-operations-using-firebase-cloud-firestore-a7ef38bbf027
+Flutter와 함께 Firebase를 사용하는 방법
+https://medium.com/47billion/how-to-use-firebase-with-flutter-e4a47a7470ce
+‘파이어베이스'(FIREBASE)란 무엇인가? 파이어베이스 심층 탐구 : 상편
+blog.wishket.com/파이어베이스firebase란-무엇인가-파이어베이스-심층-탐/
+플러터 sqlite CRUD
+https://www.djamware.com/post/5ebb3fcf9c9e8f5505054768/flutter-tutorial-sqlite-offline-crud-ios-and-android-apps
+Flutter 튜토리얼: 네이티브 Android 및 iOS 앱을 빠르게 생성 Didin J. 작성, 2020년 1월 14일에 업데이트됨
+https://www.djamware.com/post/5e1dd37711c01b0ae0c1c7db/flutter-tutorial-create-a-native-android-and-ios-apps-quickly
+Minimal client-server example for Flutter and server-side Dart
+https://suragch.medium.com/minimal-client-server-example-for-flutter-and-server-side-dart-dc4257903753
+flutter express
+what is server side for flutter
+안심글꼴 https://gongu.copyright.or.kr/freeFontEvent_KOGL.html
+공유저작물 공유마당 https://gongu.copyright.or.kr/gongu/main/main.do
+
+
+211119 금 1000 푸른숲도서관
+고용노동서비스 One-ID 회원정보보유 재동의 안내 안녕하세요. One-ID회원님. (One-ID: newtron3) 고용노동서비스(워크넷, HRD-net, 고용노동부 민원마당, WORLDJOB+) > 고용노동서비스 One-ID 회원정보보유 재동의에 동의하신 후 계속해서 이용하시겠습니까? > 동의함
+
+Github 사용법 잘 정리되어 있는 사이트 내맘일까 2020. 10. 3. 16:49
+https://mywaycoding.tistory.com/50
+Engadget | The Morning After <newsletter@newsletter.engadget.com> 수신거부 2021. 11. 16. 오후 10:15
+
+Apple, 비정기적인 가방 검색 논란 해결을 위해 3천만 달러 제안 싸움은 2013년부터 계속됐다. 스티브 덴트 S. 덴트| 11.15.21 @stevetdent
+How to Run Your Own DNS Server on Your Local Network
+https://www.cloudsavvyit.com/14816/how-to-run-your-own-dns-server-on-your-local-network/
+LibreOffice vs. Microsoft Office: How Does It Measure Up?
+https://www.howtogeek.com/764727/libreoffice-vs-microsoft-office/
+Creating a Kubernetes Home Lab with K3s on Raspberry Pie
+https://medium.com/geekculture/creating-a-kubernetes-home-lab-with-k3s-on-raspberry-pie-b8e67f832091
+초보자를 위한 Rust 프로그래밍 6분!
+https://medium.com/codex/rust-programing-for-beginners-in-6-mins-8fed31ce0fc2
+돈과 정면으로 마주하는 사람에게 돈이 따른다 / 돈이 따르는 사람 돈이 따르지 않는 사람 조회수 87,699회2021. 10. 28.
+https://www.youtube.com/watch?v=WpAFutYorj4
+겨울 11월에 심을 수 있는 텃밭작물 8가지 농작물
+https://www.youtube.com/watch?v=UXvWyVZ9d38
+시간과 공간에 대한 아주 기이한 해석 [북툰 과학다큐]
+https://www.youtube.com/watch?v=RkKQkvpx9Xw
+어려운거 다 뺐습니다 이번엔 정말 쉬워요! (양자역학, 코펜하겐 해석) 조회수 237,025회2020. 12. 12.
+https://www.youtube.com/watch?v=nXFhB965wNI
+
+
+211118 목 2215
+1998년 대한민국을 IMF로부터 구해 낸 스무살 여자 골퍼 박세리 l 요즘 아이들은 절대 모르는 전성기 그녀의 포스 조회수 71,851회2020. 12. 20.
+https://www.youtube.com/watch?v=9gVOl94DAr0
+지리산만두 22:29:56 toilet paper roll 특허보면 B로 되어 있습니다. https://patentimages.storage.googleapis.com/30/7c/4a/f68bbd4e64a160/US465588.pdf
+
+211117 수 1100 진접도서관
+1.	3p binder + A4용지 펀칭
+a.	좌상 211117 수 1122 장소, 날씨, 이슈 메모
+b.	첫줄 펜테스트 3색볼펜
+c.	다쓴것은 상하구멍 2군데 빵끈으로 뒤로묶기 편철보관 두꺼운비닐 등으로 겉표지
+2.	필통 > 필기구, USB, 손톱깍기, 실바늘단추, 빗, 커넥터,
+3.	웹 브라우저 > 점3x3개 = Google 앱
+a.	자주쓰는것 우선배열  > (Gmail, 드라이브, 문서) (Play, 번역, 스프레드 시트)
+b.	문서 > 2021-11 일지 -- 월별로 작성
+i.	수기메모와 같이 211117 수 1122 로 시작,
+ii.	매번 기록을 첫줄에서 시작, 날짜 역순으로 기록. 찾기에서 안나오면 드라이브에서 찾기 하면됨.
+4.	도서관 등에서 VirtualBox 사용
+a.	VirtualBox 설치 > https://virtualbox.org/wiki/downloads
+b.	fedora 35 다운로드 > https://getfedora.org/ko/workstation/download/
+c.	virtualBox 실행 + fedora 설치
+d.	fedora 에서 추가작업
+i.	sudo vi /etc/sudoers
+ii.	sudo hostnamectl set-hostname fed35
+iii.	sudo dnf -y install make automake autoconf gcc dkms wget vim-enhanced vim-common mc git p7zip gnome-tweak-tool livecd-tools #-- 꼭 필요한 프로그램들
+iv.	sudo dnf -y install keepass rclone liveusb-creator #-- 꼭 필요한 앱
+v.	google-chrome 설정 > 다운로드 > 위치 > 변경 > /media/sf_Desktop/Download 로 지정한다.
+vi.	sudo systemctl enable sshd ; sudo systemctl start sshd
+e.	폰트설치 https://github.com/naver/d2codingfont/releases 다운로드후 *.ttf 오른쪽마우스 > 설치 클릭
+i.	저작권 걱정없는 무료한글폰트 71종 https://pepepien.tistory.com/187
+ii.	공유마당 https://gongu.copyright.or.kr/gongu/bbs/B0000018/list.do?menuNo=200195
+iii.	공공누리 https://www.kogl.or.kr/recommend/recommendDivList.do?division=font
+iv.	저작권 걱정없는 무료효과음 25GB https://pepepien.tistory.com/248?category=693186
+v.	누구나 쉽게 디자인 할수있는 법 https://news.mangoboard.net/news/?p=513&gclid=EAIaIQobChMIzrS_vNGF9AIV38VMAh2eYAtOEAEYBSAAEgKsZvD_BwE
+vi.	
+5.	유튜브 보고 내용 정리하기
+a.	알릴레오, 지구본연구소, 삼프로TV, 북툰, 최배근TV, 
+b.	쓸모왕, Peachy 피치, Topic, 건나물TV, 정리왕 썬더이대표, 
+c.	고양이뉴스, 곽동수TV, 사이버 김구, 편의점 클라쓰e, 
+d.	서울의 소리, 세바시, 기본소득당 용혜인, 김시선, 
+6.	정리할 주제
+a.	이경숙 노자, 채근담, 
+b.	편한가계부, 뱅크샐러드
+c.	MIT Tech Review, Medium 편역
+d.	정도전, 명청교체기, 진독수평전, 도쿠가와 이에야쓰,
+e.	대승기신론, 양자역학 발견, 수소폭탄 발명,
+f.	망원경, 판 구조론, 지열발전, 비지캘크의 시대,
+g.	복식부기, 손쉬운 재무제표, FTA, 
+h.	금본위제, UN, IMF, 기후위기, 
+
+황현필한국사
+11/17 을사늑약 116년전
+을사오적 이완용, 이지용, 이근택, 권중현, 박제순
+민영환 자결
+이상설 간도망명
+장지연 시일야방성대곡 황성신문
+고종 헐버트 미국에 특사파견
+을사의병 최익현, 신돌석, 민종식
+장인환, 전명운 스티븐슨 저격
+나철, 오기호 오적암살단 조직 미수
+이재명 명동성당 이완용 전치2주
+고종 이상설, 이준, 이위종 헤이그특사
+안중근 을사조약원흉 이등박문 처단
+1905 을사년 을씨년스럽다 어원
+임시정부 순국선열기념일로 선포
+박시백 35년, 친일파열전
+
+전우용 1947 신흥무관학교 재건, 신흥전문학원, 1949 신흥초급대학, 한국전쟁시 부산 운영권 분쟁, 1960 경희대학교로 개명, 2011년 100주년, 2021년 110주년 무기념, 
+우리역사는 깊다 푸른역사 2015
+한국회사의 탄생 서울대출판문화원 2011
+현대인의 탄생 이순 2011
+내안의 역사 푸른역사 2019
+망월폐견 새움 2021
+
+211116 화 1200 호평도서관
+추미애 11월 14일 오전 10:54 <외교의 ABC도 모르면 대통령 욕심을 버려라> 
+
+하필 ABC기자가 물었는데, 외교의 ABC를 모른다. 
+1. 윤석열 후보의 외신기자회견은 참담하기 그지없다. 과거 오바마 대통령이 박근혜 대통령을 한참 동정 어린 눈으로 바라보면서 “딱한  박대통령(Poor President)은 질문이 뭔지 기억도 못하네요”라고 해 나라의 수치였던 장면이 떠올랐다.  
+2. 첫째, 윤석열 후보의 논리는 외교 상식이 결여되고 무지하다. 
+외교정책의 비전에 대해 미국 ABC기자가 묻자 "민주주의와 인권이라는 가치에 기반"한 “예측가능한 법치의 외교관계”라고 답했다.  처음 들어보는 엉뚱한 답변이다. 
+국제사회의 현실이 권력정치의 장이므로 전후 다양한 레짐을 만들고 협의체나 기구를 두게 되었다.
+그럼에도 잘 지키지 않는 건,  헨리 키신저 말대로  ‘외교란 국내정치의 연장’이기 때문이다.  
+강대국조차 ‘예측가능한 법치외교’라는 오만과 과장을 하지 않는다.   
+트럼프의 미국이 과거 파리협약으로부터 탈퇴한 것이나, 올해 26차 유엔 기후변화협약 당사국총회 COP26 정상회의에 시진핑의 중국이 오지 않았던 것을 보더라도 미중은 예측가능하거나 국제협약을 준수하는 등 법치적 자세가 아니다. 
+따라서 한 나라의 외교의 특징이나 비전은 대체로 현실주의냐, 이상주의냐 또는 권력정치를 추구하느냐, 국제레짐을 존중하느냐는 기준에서 보는 것이다. 
+3. 둘째, 윤 후보는 시간의 선후에 대한 이해가 틀렸다. 그래서 인과관계가 뒤집혔다. 
+윤 후보는 대일외교에서 문재인 정부가 국내문제를 대일관계에 이용한 잘못이 있다고 했다. 
+위안부 협상에 대한 재검토나 대일경제보복에 대한 강경대응을 염두에 둔 비판 같다. 그러나 위안부 협상은 박근혜 정부의 큰 실수였고 실패였다.  갑자기 위안부 협상을 서둘러 시민들이 세운 소녀상 철거와 추후 다시는 국제사회에 위안부 문제를 거론하지 않기로 했다는 이면 합의가 들켰고, 결국  엄청난 국민 반발을 자초했다. 
+또 일본의 경제보복의 단초가 된 것은  사법부 판결이었다(2018년 대법원 전원합의체 판결). 문재인 정부의 독단적 결정이 아니라 윤 후보가 앞서 외교의 가치로 강조한 “민주주의와 인권에 기초”한 것이고, “주권적”인 3권분립의 산물이었다. 그러나 일본은 화이트 리스트에 한국을 제외하여 수출통제를 하는 등 경제보복을 한 것이다. 당시 아베가 장기집권을 위해 우경화한 일본내의 민족주의를 자극하는 보복외교를 구사한 것이었다. 그런데 윤 후보는  일본을 비판하기는 커녕  문재인정부를 비난하고, 원인 제공자와 피해 결과의 선후를 바꾸어 말함으로써 일본 극우의 주장과 같은 입장인 셈이다. 
+그는 한일이 미래를 지향하면 과거사문제도 잘 정리될 것이라며 이익 우선의 실용주의를 피력했다. 그러나 그런 자세는 일본의 이익에 맞추고 눈치를 살피는 비굴함이지 결코 실용외교가 아니다.
+4. 셋째, 냉전적 인식에서 한치도 벗어나지 못했다.
+종전선언을  반대하는 것은 한국과 일본의 유엔사가 무력해지기 때문이란다. 
+그런데 정전협정을 관리하는 유엔사는 정전협정 위반에 대한 아무런 법적 제재수단도 가지고 있지 않기에 종전선언을 한다고 더 무력해질 것도 없다. 오히려 정전협정 위반여부에 대한 판정시비나 불복으로 인한 충돌이 확전으로 불붙을 수 있기에 평화를 위한 종전선언이 필요한 것이다.
+5. 넷째, 일관성이 없고 나이브하다. 사드는 미군의 자산이고 미군이 운용하는 것이다. 그러나 그는  한국 주권사항이니 추가배치도 안보상황에 따르겠다고 했다. 반대로 대법원의 강제징용판결은 사법주권이 분명한데도 대일관계를 국내정치에 이용한 잘못이라고 우기고 있다. 
+또 핵공유와 핵추진잠수함을 희망하면서도 이와 배치되는 NPT를 지키고  비핵화가 전제된 핵우산을 의미하는 확장억제를 해야한다는 모순된 말을 한다. 
+한반도 비핵화가 아닌 북한 비핵화를 주장하면서 한반도비핵화를 기조로 하는 바이든 정부와 협상할 수 있다고도 한다. 
+북한 비핵화를 놓고 판문점에서 남북미 3자가 정례적 회담을 가져야 한다고도 하는데 북이 응할리가 없다.  
+6. 외교 테이블은 먹고 싶은 대로 메뉴를 주문하는 자리가 아니다. 
+끝까지 ABC는 없었다.       
+전지구적 재앙인 코로나와 기후위기로  국제사회의 상호 관계도 달라지고 있다. 미국 일극체제에서 다극체제로 옮겨가고, 상호 협력과 연대 없이 지구적 위기를 극복하지 못한다는 것이다. 
+한국의 위상도 선진국으로 높아지고 국제사회에서 외교적, 경제적 발언권도 가지게 되었다. 남북관계를 주도하고 역내 평화를 이끌어 내기 위한 우리의 종전선언 논리는 반향을 가질 수밖에 없다.
+시대 흐름을 읽지 못하고 외교를 모르면 나라를 이끌 수가 없다.
+
+
+211115 월 0910 진접도서관
+플러터 - 리눅스에서 설치
+https://flutter.dev/docs/get-started/install/linux
+
+초보자를 위한 플러터 - 두번째 에디션
+https://subscription.packtpub.com/book/mobile/9781800565999/2/ch02lvl1sec04/what-is-flutter
+
+https://flutter.dev/docs/get-started/flutter-for/declarative 선언적 UI 소개
+https://flutter.dev/docs/get-started/flutter-for/declarative
+
+
+Linux에서 Android Studio로 Flutter를 설정하는 방법
+https://www.cloudsavvyit.com/14744/how-to-set-up-flutter-with-android-studio-on-linux/
+
+스핀런치의 발사? 냅다돌려던지기(?) 전 과정을 4k 애니메이션으로 만든 유튜브 영상
+https://youtu.be/Z3Z8cOHV8oM
+456, 123, 깨어난포스, 로그원, 라스트 제다이, 한솔로, 라이즈 오브 스카이워커
+
+
+메타버스 진입을 위한 기술 전문가 가이드
+https://www.popularmechanics.com/technology/a38147952/facebook-metaverse-gear-oculus-portal/
+이 유용한 무료 웹사이트로 입력하는 방법 배우기
+https://www.reviewgeek.com/43898/learn-how-to-type-with-these-helpful-free-websites/
+IBM은 새로운 양자 칩은 고전적인 슈퍼 컴퓨터로 시뮬레이션할 수 없다고 말합니다
+https://www.engadget.com/ibm-eagle-processor-050133991.html?guccounter=1
+딸아이 완전수면 1년차
+https://www.reddit.com/r/dataisbeautiful/comments/qpekw1/oc_my_daughters_complete_first_year_of_sleep/?utm_campaign=mb&utm_medium=newsletter&utm_source=morning_brew
+오 와우! Pop!_OS Linux 개발자는 새로운 Rust 기반 데스크탑 환경을 만들고 있습니다
+https://news.itsfoss.com/pop-os-cosmic-rust/
+도커와 페도라 35
+https://fedoramagazine.org/docker-and-fedora-35/
+ktor
+https://github.com/ktorio
+http://ktor.io/
+
+
+1.	keepass.info [2.49] 파일 다운로드 > 설치한다.
+2.	한글을 쓰기 위해 KeePass 를 실행하고, 
+a.	view > change language > Get More Languages > 홈페이지에서 Korean - [2.49+] 를 선택하면,
+i.	KeePass-2.49-Korean.zip 이 다운로드 된다. 
+b.	이 파일 압축을 풀면 Korean.lngx 가 나온다. 이 파일을,
+i.	(Windows) C:\Program Files (x86)\keepass Password Safe 2\ 로 옮긴다.
+ii.	(Linux) cp ~/다운로드/Korean.lngx /usr/lib/keepass/Languages
+c.	다시 KeePass 에서, 
+i.	view > change language > Korean(한국어) 를 선택하면,
+ii.	프로그램이 다시 실행되고 한국어로 나온다.
+3.	데이터베이스 만들기
+a.	파일 > 새로 > 새 데이터베이스저장위치 및 이름 (데이터베이스.kdbx) 선택
+i.	복합 마스터 키 만들기 : 새로운 마스터 비밀번호를 입력하고 확인 클릭.
+b.	새 비밀번호 데이터베이스 만들기 (2 단계)
+i.	(일반, 보안, 압축, 휴지통, 고급 탭중) 일반탭에서는 데이터베이스의 정보를 입력할 수 있다. (입력하지 않아도 된다.)
+ii.	다른 탭의 값들은 기본값을 두고 사용하면 된다.
+4.	항목 추가하기
+a.	주 화면에서, 마우스 오른클릭 > 항목 추가
+i.	제목 필드: 인터넷 브라우저의 제목표시줄에 표시된 글자와 일치 > 동일한 사이트 로 인식
+5.	항목 추가시 새로운 필드 추가 방법
+a.	사이트에 따라 아이디, 비밀번호 말고, 주민번호, 상호 등 여러 항목을 입력해야 하는 경우, KeePass는 원하는 만큼 필드를 추가해 여러개의 항목을 한꺼번에 입력해두고, 관리할 수 있다.  
+6.	새로운 필드를 추가하기 위해, [고급] 탭 > [추가] 버튼 선택
+a.	“이름”과 “값”을 입력한다
+i.	주민등록번호는 앞자리, 뒷자리 따로 입력해야 하므로,
+1.	필드도 ‘주민번호 앞자리’, ‘주민번호 뒷자리’ 와 같이 따로 입력할 수 있도록 해야 한다.
+ii.	두 개의 필드를 모두 입력하면 ‘문자열 필드’ 에 입력한 두 개의 필드가 보인다.
+b.	[자동-입력] 탭으로 가서, 순서열을 재정의 해줘야 한다.
+i.	“기본 순서열 재정의”를 클릭하고 우측의 “수정”을 누른다.
+ii.	키입력 순서열 설정창이 열리면,
+1.	‘사용자 지정 키 입력 순서열 사용’ 을 체크하고 입력되는 순서를 설정해 준다.
+iii.	입력 시 명령어는 하단에 모두 표시되므로, 사용할 명령어를 클릭해주면 자동으로 입력된다.
+iv.	만약 주민등록번호를 입력하고 비밀번호를 입력한 후 로그인하는 사이트라면 :
+1.	{주민번호 앞자리}{TAB}{주민번호 뒷자리}{TAB}{Password}{ENTER}
+2.	라는 식으로 입력하면, 자동로그인 단축키를 눌렀을 때, 자동으로 모든 항목을 입력하고 로그인까지 실행한다.
+7.	Keepass 옵션                                                                                                                                                          
+a.	도구 > 옵션으로 이동
+b.	인터페이스 탭 :
+i.	닫기 버튼[x] 로 응용 프로그램 종료 대신 메인 창 최소화하기 체크
+ii.	작업표시줄 대신 트레이로 최소화 체크
+c.	통합 탭 : 
+i.	전역 자동-입력의 단축키를 지정해 두고, 원하는 사이트의 로그인 폼을 클릭한 후 단축키를 누르면 자동으로 아이디와 비밀번호를 입력하고 로그인한다.
+ii.	윈도우즈 시작시 KeePass 실행 (현재 사용자) 체크
+8.	Keepass 플러그인
+a.	공식 플러그인  http://keepass.info/plugins.html  중에 사용할 것을 선택한다. 필자는 아래의 것들을 사용한다.                                                    
+9.	KeePass Favicon Downloader
+a.	추가한 목록들의 제목에 파비콘을 추가할 수 있는 플러그인이다.
+10.	KeePass Favicon Downloader
+a.	추가한 목록들의 제목에 파비콘을 추가할 수 있는 플러그인이다. http://keepass-favicon.sourceforge.net/
+b.	다운 받은 KeePassFaviconDownloader.plgx 플러그인을 KeePass 디렉토리에 plugins라는 디렉토리를 생성후 이동시킨후, Keepass를 재시작한다.
+11.	keepasshttp
+a.	구글 크롬의 chromeIPass 확장기능과 연계하여 사용한다. https://github.com/pfn/keepasshttp/
+b.	다운 받은 KeePassHttp.plgx 플러그인을 KeePass 디렉토리에 plugins 라는 디렉토리를 생성후 이동시킨다. KeePass를 재시작한다.
+i.	입력된 URL에 대한 일치하는 모든 항목을 반환
+ii.	업데이트 항목
+iii.	항목의 안전한 교환
+iv.	항목이 전달된 경우 사용자에게 알림
+v.	사용자는 하나의 항목에 대한 액세스를 허용/거부할 수 있음
+vi.	데이터베이스의 잠금모드가 해제 되어 있을때에만 작동
+vii.	연결하는 동안 잠금모드이면 데이터베이스를 잠금해제를 요청함
+viii.	열려있는 모든 데이터베이스의 검색(사용자가 이기능을 활성화 했을시)
+ix.	이벤트가 발생할 때마다, 사용자는 트레이 알림 또는 상호작용을 요청받게 된다.
+12.	ChromeIPass
+a.	전역 자동-입력의 단축키를 사용해서 웹브라우저를 다루기에는 모자람이 있다. 한/영 전환으로 인한 로그인 실패도 그중에 하나다. 자동으로 복사/붙여넣기가 가능하게 도와주는 확장기능이다. https://chrome.google.com/webstore/detail/ompiailgknfdndiefoaoiligalphfdae
+b.	확장기능 설치후에는 항목의 URL 주소를 이용하여 정보를 구하게 된다.
+c.	로그인 페이지를 방문해보면 크롬의 주소 창에 ChromeIPass 아이콘이 생기며 x 표시가 되어 있다. 아이콘을 클릭하여 암호를 확인하면 x 표시가 사라진다.
+d.	키 이름을 정해주면 연동이 시작된다.
+e.	이후 로그인할 페이지에 처음 접속하면 알림창이 뜨고 이를 허용해주면 된다.
+13.	KeePass Google Sync Plugin
+a.	Keepass 데이터베이스를 구글드라이브와 동기화하는 플러그인이다. 구글을 믿는자만 이용하자.
+i.	HOME http://sourceforge.net/projects/kp-googlesync/
+ii.	DOWN http://sourceforge.net/projects/kp-googlesync/files/Plugin%20for%20KeePass%202.20.1/
+b.	도구 메뉴에서 수동 동기화
+c.	저장시 동기화 활성화/비활성화
+d.	Download, Upload, and Bi-directional Sync
+14.	KeePass Google Sync Plugin 설치법
+a.	설치가이드 : http://kaa-ching.blogspot.nl/2012/12/improved-manual-for-keepass-google-sync.html
+b.	Google Sync plugin을 KeePass에서 사용하기 위해서 3가지로 나눠서 설명한다.
+i.	KeePass 와 Google Drive의 통신연결
+ii.	KeePass 에 Google 계정을 설정 
+iii.	KeePass 설정파일 편집
+1.	세가지 단계를 자세히 살펴보자.
+c.	Step 1: KeePass 와 Google Drive의 통신연결
+i.	구글 드라이브에서 "OAuth 2.0"이라고 불리는 것을 활성화 해줘야한다.
+ii.	https://code.google.com/apis/console 로 접속해서 왼쪽메뉴중에 API Access를 선택한다.
+1.	(이 메뉴가 보이는 화면으로 접속되지 않는다면 몇번 반복해보자)
+iii.	만일 API Access로 접속했을때 아래와 같이 OAuth 2.0 client ID를 생성하는 메뉴가 나타나지 않고 
+1.	client ID 가 보여진다면 이미 생성된 상태이니 생성하는 과정은 패스해도 된다.
+iv.	Create an OAuth 2.0 client ID 클릭
+v.	Product name: KeePass 입력, Next 클릭
+vi.	Application type: Installed application을 선택, 
+1.	Installed application type: Other 선택하고 Create client ID 클릭
+vii.	Client ID와 Client secret값이 화면에 보여진다. 이 값은 KeePass 설정값에 이용된다.
+viii.	다음으로 구글 드라이브 API를 활성화해야 한다.
+1.	왼쪽 메뉴에서 Service 선택
+2.	Drive API를 찾은후 OFF 되어 있는 값을 On 시켜준다.
+d.	Step 2: KeePass에 Google 계정 설정 - KeePass에 이미 구글 계정을 등록해 놓았을 경우는 패스해도 된다.
+i.	항목을 추가하고 구글 계정을 추가한다.
+ii.	속성탭으로 이동해서 UUID값이 보여지는지 확인한다.
+iii.	이 값은 KeePass 설정값에 이용된다. 
+e.	Step 3: KeePass 설정파일 편집
+i.	http://sourceforge.net/projects/kp-googlesync/files/Plugin%20for%20KeePass%202.20.1/ 에서 다운로드 받은 플러그인 파일을 압축해제 하자.
+ii.	GoogleSyncPlugin.plgx 파일을 KeePass 디렉토리에 plugins 라는 디렉토리를 생성후 이동시킨다.
+iii.	Sample-KeePass.config.xml 파일을 열고 <Custom> ~ </Custom> 부분을 복사한다.
+iv.	KeePass에서는 "KeePass.config.xml"이라는 설정파일을 사용한다.
+v.	인스톨버전을 사용하고 있다면 C:\Users\User Name\AppData\Roaming\KeePass\KeePass.config.xml 와 같은 위치에 파일이 존재할테고, 포터블 버전을 사용하고 있다면 KeePass.exe(실행파일) 파일과 같은 위치에 존재할 것이다.
+vi.	KeePass.config.xml 파일을 열고 위에서 복사한 부분을 붙여넣는데 만약 다른 플러그인들을 설치했었다면 이미 <custom> 부분이 존재하할테니 <item> 부분만 복사해서 붙여넣는다.
+vii.	위와 같이 붙여넣고 각각의 Key에 맞는 Value 값을 넣어주면된다.
+1.	EnableAutoSync : DB 변경시 자동 동기화 true/false 
+2.	GoogleSyncClientID : Step 1단계에서 얻은 Client ID 값을 넣어준다.
+3.	GoogleSyncClientSecret : Step 1단계에서 얻은 Client Secret 값을 넣어준다.
+4.	GoogleSyncKeePassUID : Step 2단계에서 얻은 구글 계정의 UUID 값을 넣어준다.
+5.	GoogleSyncShowAuthenticationForm : 구글 인증폼을 보이게하려면 true, 2단계인증(factor)이 필요하다. 기본적으로 false에 두고 많이 사용한다.
+viii.	상단메뉴바에서 도구 > GoogleSyncPlugin > Upload to Google Drive 를 선택하면 구글드라이브에 DB파일이 저장된다. 위에서 EnableAutoSync 값을 true로 설정해 두었다면 이후 DB내용이 수정될때마다 자동으로 구글드라이브에 연결해서 파일을 갱신한다.
+15.	문제 해결
+a.	KeePass 설정파일을 메모장으로 열고 수정하고 저장하는데 있어 문제가 발생했었다. 저장한 내용이 반영이 안되거나 다시 수정전 내용으로 돌아가는 일이 발생해서 KeePass를 종료하고 다시 저장하고 확인하고 등을 반복했다.
+b.	클라이언트 버전이 아닌 풀버전의 .NET Framework 4가 필요하다.
+16.	Keepass 모바일과 연동
+a.	안드로이드기기 + Google Drive = Keepass2 Android Password Safe
+b.	KeePassDroid and Google Drive work Perfectly = https://plus.google.com/+JudeHansen/posts/Yp99hWQdKwh
+출처: https://webdir.tistory.com/386 [WEBDIR]
+
+AMD 프로세서로 Oracle VM VirtualBox 오류를 해결하는 방법
+https://ourcodeworld.com/articles/read/1282/how-to-solve-oracle-vm-virtualbox-error-with-amd-processors-amd-v-is-disabled-in-the-bios-or-by-the-host-os-verr-svm-disabled
+Virtualization on a Ryzen 5 3500U laptop
+https://community.amd.com/t5/processors/virtualization-on-a-ryzen-5-3500u-laptop/td-p/344245
+
+
+211114 일 2120
+면역세포의 대부분은 장에 있다?! 나의 장이 건강한지 알 수 있는 신호들! | CBS 김동호의 기막힌 초대 조회수 573,355회2021. 10. 25.
+https://www.youtube.com/watch?v=FuzO52je574
+
+
+211111 목 0940 진접도서관
+AWS CLI – 기본 사항
+https://dzone.com/articles/aws-cli-basics?edition=703395
+
+211110 수 0807
+5가지 오픈소스 프로토타이핑 도구 [2021]
+https://fosspost.org/open-source-prototyping-tools/
+Pencil https://pencil.evolus.vn/ http://openclipart.org/
+Alva https://meetalva.io/doc/docs/start.html
+적벽부 https://m.cafe.daum.net/songdam.poong-su/EZwv/90?q=D_Q_pv7C3fF910&
+한유 잡설중 마설 https://moyaria.tistory.com/501 지 只
+https://leeza.tistory.com/797 지 祇
+https://blog.daum.net/ssunghyee2/399 지 秪
+정기연 02-365-4016 기부금영수증
+청년몰 
+https://youth.jobaba.net/login_exe
+
+0950 진접도서관
+특정 파일, 폴더 제외하고 전송하기
+rsync -avzr -e ‘ssh -p 18022’ --exclude=’211*.vdi’ 01-Running-Vdi/ kaosco@kaos.kr:p*/01-Ru*/
+이재명 관훈 토론--혼자 보기 아까워서 링크 걸어봅니다
+https://www.youtube.com/watch?v=Oqj5WQTqS4E
+
+211108 월 0910 진접도서관
+Python 또는 Bash를 사용하여 Jekyll 정적 사이트에 동적 데이터 삽입
+https://dzone.com/articles/inserting-dynamic-data-into-jekyll-static-sites-python-bash?edition=703392
+이월패딩은 어디서 사유..? 그냥 따스하기만 하면 됩미다
+https://www.ddanzi.com/index.php?mid=free&page=2&document_srl=708879998
+
+211107 일 1110
+What Is the Difference Between Git and GitHub?
+https://dzone.com/articles/what-is-the-difference-between-git-and-github?edition=702405
+Top 5 Git Tips and Tricks to Improve Your Workflow
+https://dzone.com/articles/top-5-git-tips-amp-tricks?edition=703391
+VirtualBox
+google-chrome 설정 > 다운로드 > 위치 > 변경 > /media/sf_Desktop/02-download 로 지정한다.
+폰트설치
+https://github.com/naver/d2codingfont/releases
+다운로드후 *.ttf 오른쪽마우스 > 설치 클릭
+저작권 걱정없는 무료한글폰트 71종
+https://pepepien.tistory.com/187
+공유마당
+https://gongu.copyright.or.kr/gongu/bbs/B0000018/list.do?menuNo=200195
+공공누리
+https://www.kogl.or.kr/recommend/recommendDivList.do?division=font
+저작권 걱정없는 무료효과음 25GB
+https://pepepien.tistory.com/248?category=693186
+누구나 쉽게 디자인 할수있는 법
+https://news.mangoboard.net/news/?p=513&gclid=EAIaIQobChMIzrS_vNGF9AIV38VMAh2eYAtOEAEYBSAAEgKsZvD_BwE
+처음부터 Golang을 사용한 WebAssembly
+https://itnext.io/webassemply-with-golang-by-scratch-e05ec5230558
+
+211105 금 1000 푸른숲도서관
+걷기매니아 털보의사가 알려주는 엄청난 걷기의 효능!!
+https://www.youtube.com/watch?v=fnn129jEluU
+차이슨 청소기 https://brand.naver.com/inic/products/4843089571
+211106-152843 탕아-급합니다. 빨리도와주세요 어르신들 생각을 바꿀만한 채널 뭐 없을까요?
+https://www.ddanzi.com/index.php?mid=free&statusList=HOT%2CHOTBEST%2CHOTAC%2CHOTBESTAC&document_srl=708561052
+조선왕조실록 이덕일
+앞으로 10년 부의 거대물결이 온다 에릭 레드먼드 정성재
+https://www.youtube.com/watch?v=a2aEbY6QVdY
+ready player one
+리더 디퍼런트
+이재명 성남시 재임당시 이룬 성과 대부분 전국 최초 
+https://www.ddanzi.com/index.php?mid=free&statusList=HOT%2CHOTBEST%2CHOTAC%2CHOTBESTAC&document_srl=708583932
+https://blog.naver.com/allplant/222560091475
+2017년3월15일 기준입니다
+
+1.청년배당 지급 (24세 청년 연 100만원 지급=19~29세로 확대)
+2.산후조리비 지원 (1인당50만원=전국100만원으로 확대)
+3.무상교복지원 (성남시 중학교 신입생 =전국 중•고 신입생으로 확대)
+4.성남형 창의 교육 지원 사업 (200억원)전국 확대
+5.대학생 학자금 대출이자 지원사업 전국 확대 (대학생 등록금 반값 인하+취업시까지 대출금 채무 유예)
+6.친환경 무상급식 전국 확대
+7.성남의료원 건립 (공공의료 확충 전국 확대)
+8.초등학교 치과 진료 전국 확대(4학년생 1인당 4만원 지원)
+9.무료로 무제한 대여되는 장난감 도서관 (7개소 운영)전국 확대
+10.공공 아이사랑 놀이터 (14개 운영)전국 확대
+11.시립 지원 아동 센터(4개 운영)국공립 지원 아동 센터로 전국 확대
+12.미성년자 생리대 지원 사업 전국 확대
+13.경로당 급식 도우미 파견 사업 전국 확대
+14.노인 소일거리 사업 (월10만원)전국 100만개로 확대
+15.사회복지시설 종사자 처우 개선 전국 확대(연 평균 100만원 지원)
+16.보육교사 처우 개선 전국 확대(성남시 1인 최고
+연61만원 지원)
+17.생활 임금 전국 확대(시간당8000원=2019년 까지 1만원 인상)정부 출연기관 등 모든 공공기관에 생활임금 적용
+18.빚 탕감 프로젝트 전국 확대(금융상담 복지센터 설치 운영)
+19.지역화폐(성남사랑상품권)활성화 전국 확대(기본 소득 등 정부복지지출 해당 지역에서만 사용하는 지역화폐로 지급)
+20.성남시 상권 활성화 대책 전국 확대 =소상공인 매출 6.4%증가(상인 교육 확대,젠트리피케이션 선제대응)
+21.SNS 시민 소통 관제 (광속행정) 전국 확대
+22.시민 순찰대 운영 전국 확대(시민 안전은 물론 택배 보관,공구 대여,주거 환경 개선 서비스도 제공)
+23.사회적 경제 활성화(사회적 기업 구매율 전국 최고)전국 확대
+24.공공와이파이(성남시1,113개)설치 전국 확대
+25.행복 안심 무인 택배 보관함 설치(12개소 운영)전국 확대
+26.지방세 체납 징수 강화 전국으로 확대 (일자리1만개 창출)
+27.공사 원가공개,표준 시장 단가 적용 전국 시행(정부의 불법적 지시 철회)
+28.계약 심사제로 예산 절감(1년에 42억원 절감=지자체 전국으로 확대)
+29.특수 형광 물질 도포 사업 전국 확대(범죄 예방 효과 탁월)
+30.자전거 보험 가입(1천명 시민 혜택)서비스 전국 확대
+
+BTS
+https://youtu.be/ayGl-igrwy8
+https://youtu.be/ao67EoGv5a8
+https://youtu.be/floMqK_yHf8
+이번 대선판 제가 딱원하는 구도가 나왔네요
+https://www.ddanzi.com/index.php?mid=free&statusList=HOT%2CHOTBEST%2CHOTAC%2CHOTBESTAC&document_srl=708596293
+윤석열, 홍준표 누가 유리할까? 지지층 분석 https://www.ddanzi.com/free/705530823
+홍준표의 위험성 https://www.ddanzi.com/free/708152769
+윤석열이 올라오면 검찰들이 더 활개칠것이다라는 주장에 대한 반론 https://www.ddanzi.com/free/708265759
+
+스키마 관리 및 문서화를 위한 범용 데이터베이스 디자이너
+https://dbschema.com/
+다음은 5가지 오픈 소스 프로토타이핑 도구입니다. [2021]
+https://fosspost.org/open-source-prototyping-tools/
+사이먼 제임스 2021년 6월 5일 최종 업데이트
+1.	Pencil{ https://pencil.evolus.vn/Downloads.html
+2.	Alva: node.js https://meetalva.io/
+3.	Quant-UX: online service https://www.quant-ux.com/
+source: https://github.com/KlausSchaefers?tab=repositories&q=quant&type=&language=
+4.	UXBOX: svg https://github.com/uxbox/uxbox
+5.	Akira
+
+11 Best Free Wireframe Tools for UX Designers in 2021
+https://careerfoundry.com/en/blog/ux-design/free-wireframing-tools/
+1.	Adobe XD 
+2.	Miro 
+3.	Mockplus Balsamiq 
+4.	Wireframes 
+5.	Wireframe.cc 
+6.	Figma 
+7.	Pencil Project 
+8.	NinjaMock 
+9.	FluidUI 
+10.	Mockflow 
+11.	Cacoo
+육아 서천석 오응영
+
+
+211104 목 1010 진접도서관
+BASH 배열에 담고 쓰기
+arr=(st01 qqq235 kr7)
+$ echo arr[@]
+arr[@]
+$ echo ${arr[@]} # 내역 보기
+st01 qqq235 kr7
+$ echo ${arr[1]} # 두번째의 내용
+qqq235
+$ echo ${!arr[@]} # 내역들의 인덱스 번호
+0 1 2
+$ echo ${#arr[@]} # 내역 갯수
+3
+$ echo ${#arr[1]} # 두번째 내역의 길이
+6
+$ cat bash.sh
+for styleno in ${arr[@]} ; do
+	echo "styleno = ${styleno};"
+done
+BASH
+
+김정숙 여사, 동해 표기 고지도 & 헝가리 신부의 100년 전 예언
+KTV 트윗
+https://twitter.com/Mylife_KTV/status/1456167574442442757?t=RjYNUOvdrQ77AT4pEdQnqg&s=19
+KTV 영상 
+https://youtu.be/vm-KMjYfXcI
+딴지일보 자유게시판
+https://www.ddanzi.com/708192727
+
+2021. 11. 3. 산동 무씨묘에서 나온 환웅신화 이야기 | 오순제교수의 신화에서 역사로 1부 
+https://www.youtube.com/watch?v=DAI2_SNGWeU
+
+211103 수 0732
+NodeJS 개발자를 위한 Rust를 사용한 웹 개발 소개
+https://levelup.gitconnected.com/intro-to-web-programming-in-rust-for-nodejs-developers-1a9c048c4de1
+Flutter 웹을 실현하려는 시도를 중지하십시오 — 일어나지 않을 것입니다 - Flutter Web은 저주받은 문제이기 때문에
+https://medium.com/codex/stop-trying-to-make-flutter-web-happen-its-not-going-to-happen-a29f805df504
+Linux 컨테이너의 죽음
+https://inacioklassmann.medium.com/the-death-of-linux-containers-2f7f92e59c33
+Flutter 앱을 개발할 때 복잡성을 피하는 10가지 유용한 라이브러리
+https://blog.devgenius.io/10-useful-libraries-to-avoid-complexity-when-you-are-developing-a-flutter-app-7004044851ce
+내가 없으면 살 수 없는 7가지 Flutter 패키지
+https://levelup.gitconnected.com/the-7-flutter-packages-i-cant-live-without-9c18ac8540bd
+모든 Flutter 개발자가 알아야 할 5가지 개념
+https://medium.com/codechai/5-concepts-every-flutter-dev-should-know-48673ab074cb
+Rust 프로그래밍의 디자인 패턴
+https://medium.com/@knoldus/design-patterns-in-rust-programming-e5c5ad6ec1a7
+Flutter가 차세대 대세인 이유
+https://mariapapag.medium.com/why-flutter-is-the-next-big-thing-3d6b940a533a
+
+Fedora 35 설치후 작업
+1.	저장소에서 가상CD 꺼냄 > 네트워크에 호스트전용어댑터 추가 > 공유폴더 지정
+2.	실행 > 서드파티저장소 체크하고 > 사용자, 암호 등 지정
+3.	로그인 > 한국어 (Hangul) 한 > EN 클릭후 설정 선택 > 단어단위 체크, 자동순서 해제
+> 한영전환키 추가 > 오른쪽 Alt 선택 > 적용 + 확인
+4.	윈도우키 > ter 입력해서 터미널 띄우고 > 화면에서 ls 를 쳐본다 > 오른쪽위 햄버거마크 > 기본설정 > 글꼴 15 로, 파란색 환하게
+5.	추가로 필요한 명령을 설치한다.
+sudo dnf install make automake autoconf gcc dkms wget vim-enhanced vim-common mc git p7zip gnome-tweak-tool livecd-tools
+6.	공유폴더를 쓸수 있도록 한다.
+sudo gpasswd -a fedora vboxsf ; sudo grep vbox /etc/group # fedora 는 사용자 이름이다.
+7.	폰트와 구성파일을 가져온다. configuration file
+cd /media/sf_Desktop
+rsync -avzr -e ‘ssh -p 18022’ kaosco@kaos.kr:bin/1*/f*/f* .
+8.	구성파일을 설치한다.
+mv fedora35-bashrc ~/.bashrc # 배쉬 설정파일
+mv fedora35-vimrc ~/.vimrc # vi 에디터 설정파일
+9.	폰트를 설치한다.
+cd /usr/share/fonts
+sudo 7za x /media/sf_Desktop/install-fonts*7z .
+10.	vi 의 플러그인 Vundle 설정
+git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
+vi +BundleInstall +qall
+11.	도커와 mysql 설치 > run_sh/mysql_docker_start 에서 11 ~ 16-.sh 를 실행한다.
+12.	sdk 를 설치하고, java, gradle, groovy, grails 를 설치한다.
+
+[Lenovo] 노트북 아이디어패드 Slim3-15ARE R3 DOS 어비스 블루 /라이젠3 4300U /DDR4 4G /SSD 256G /15형 = 564,000원
+http://newmall.benepia.co.kr/disp/storeMain.bene?chnlId=BENE&custCoCd=00GR&shopId=OM15&prdId=446253785
+레노보 상품들
+https://youthjobaba.benepia.co.kr/comm/HeaderSearchList.do?srchTxt=Lenovo
+
+11번가 - [마이크로소프트] 윈도우10 홈 풀패키지 FPP 찜하기 공유하기 할인모음가 105,900원
+https://www.11st.co.kr/products/3772476978?gclid=Cj0KCQjw5oiMBhDtARIsAJi0qk0aQO2nE34muWPFkwvWqXfyH_CihiJHFP9t_JeM6G3wsmumGW00YVgaAos0EALw_wcB&utm_term=&utm_campaign=%B1%B8%B1%DB%BC%EE%C7%CEPC+%C3%DF%B0%A1%C0%DB%BE%F7&utm_source=%B1%B8%B1%DB_PC_S_%BC%EE%C7%CE&utm_medium=%B0%CB%BB%F6
+
+영어 리스닝이 안되는 이유가 있군요
+https://youtu.be/X10RH_jPkwA
+
+
+211102 화 0812
+JS 스택에서 WordPress 리메이크. Next.js 웹사이트를 위한 새로운 CMS
+https://itnext.io/remaking-wordpress-in-js-stack-hello-to-a-new-cms-for-next-js-websites-63096bc5f98b
+https://github.com/CromwellCMS/Cromwell
+경기도일자리재단 - 청년복지포인트
+https://youth.jobaba.net/main
+
+211101 월 0950
+샘플데이터 새로 만들것
+국짐당 난리났네! "윤석열 불법선거운동" 빼박 녹음 증거
+https://youtu.be/gIkertPhsrk
+211101-203526 하늘사진기-백수 ㅊㅈ 시상식 애국가
+https://youtu.be/ogdWidEEXy4
+
+'yes, the news we needed': Tottenham fans celebrate the sacking of boss Nuno Espirito Santo after a dismal 17-game spell - before calling on Daniel Levy to 'show ambition' and get Antonio Conte as his replacement
+'네, 우리가 필요로 하는 소식': 토트넘 팬들은 17경기를 치른 후 누노 에스피리토 산토 감독의 경질을 축하하며 다니엘 레비에게 '야망을 보여주고' 안토니오 콘테를 그의 후임자로 영입하라고 촉구했습니다.
+Nuno espirito santo, 47, was appointed on a two-year deal back in June but he never looked comfortable in the job at Tottenham and now finds himself out of work after 17 games.
+Nuno espirito santo(47)는 6월에 2년 계약으로 임명되었지만 토트넘에서 결코 편안해 보이지 않았고 이제 17경기를 치른 후 직장에서 실직하게 되었습니다.
+https://img-cdn.ddanzi.com/files/attach/images/4258226/470/872/707/b2d9b8268e6c30a5771c7bb090cffd1a.png
+
+211101-2219 국민의짐사냥꾼-김정숙여사 현재상황 2021-11-01 22:23 http://perito.shop/product/bled-standard-bag-in-vegan-leather%EB%B8%94%EB%A0%88%EB%93%9C-%EA%B9%83%ED%84%B8%EB%B0%B1-500g%EC%9D%98%EA%B8%B0%EC%A0%81/9/category/25/display/1/
+
+211102-000446 아크시리즈-슈카월드가 얘기하는 노멀 패스의 붕괴 https://youtu.be/G-ElDhOQvg0
+
+

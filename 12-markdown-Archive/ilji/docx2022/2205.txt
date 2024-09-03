@@ -1,0 +1,311 @@
+5535 500 5413
+220530 월
+[헝가리부부] 더니 어린이집 소풍날 김밥 싸갔는데 다른 학부형들이 다 드신날!! 조회수 596,861회 2022. 5. 24. https://www.youtube.com/watch?v=zoYv2vONxFE
+
+참외 제발 칼로 깎지 마세요! 이렇게 먹어야 효능 100% 먹는 겁니다 조회수 635,569회2021. 8. 4. 김소형 채널H https://www.youtube.com/watch?v=LvDYdevK5ho
+
+반쪽 수박 절대 먹지 마세요! 잘라서 파는 수박에 세균이? 건강하게 수박 보관하는 법 알려드립니다! 조회수 36,829회2020. 6. 27. 김소형 채널H https://www.youtube.com/watch?v=NefS2fIFzpc
+
+매실효능 그대로 설탕 없이 먹는 법! 김소형 무설탕 매실고 만들기 조회수 272,561회2020. 6. 24. 김소형 채널H https://www.youtube.com/watch?v=NYDGQbpd29M
+
+
+
+
+220529 일
+CentOS 5.11 https://archive.kernel.org/centos-vault/
+
+220526 목
+중앙선거관리위원회 http://info.nec.go.kr/ 현재선거
+
+1-시·도지사 선거 경기도 1 / 1 김동연(金東兗)
+2-시장 선거 남양주시 1 / 1 최민희(崔敏姬)
+3-시도 의회의원
+남양주시 3선거구 1 / 1 조미자(趙美子)
+4-구시군 의회의원
+남양주시 다선거구 1 / 2 이수련(李洙連)
+5-기초의원 비례대표 1 / 2 손정자(孫貞滋)
+6-교육감 1 / 1 성기선(成基善)
+7-광역의원 비례대표 1 / 15
+이자형(李慈炯) 장민수(蔣珉守) 최효숙(崔孝淑) 김선영(金善寧) 황세주(黃世珠)
+
+1-시·도지사 선거 경기도 1 / 1
+더불어민주당 김동연(金東兗)
+2-시장 선거 남양주시 1 / 1
+더불어민주당 최민희(崔敏姬)
+3-시도 의회의원 선거 남양주시 1 / 1  3선거구
+더불어민주당 조미자(趙美子)
+4-구시군 의회의원 선거 남양주시 다선거구 1 / 2
+더불어민주당 이수련(李洙連)
+5-기초의원 비례대표 선거 1 / 2 더불어민주당
+더불어민주당 손정자(孫貞滋)
+6-교육감 선거 1 / 1 경기도
+성기선(成基善)
+7-광역의원 비례대표 선거 1 / 15 더불어민주당
+1번 더불어민주당 이자형(李慈炯)
+2번 더불어민주당 장민수(蔣珉守)
+3번 더불어민주당 최효숙(崔孝淑)
+4번 더불어민주당 김선영(金善寧)
+5번 더불어민주당 황세주(黃世珠)
+6번 더불어민주당 박재용(朴宰鏞)
+
+
+220523 월
+
+어쨋든 나라위해 수고한 분들 모두를 위해 입법 찬성합니다.
+
+무능한 자는 자신의 무능을 알아서 변명하고 우겨대는데 능숙해지고
+유능한 자는 남의 무능함을 알기 때문에 자신을 내세우지 않습니다.
+
+깨진 유리창 이론이 말해주듯 작은 잘못이라 해서 관심을 두지 않게되면
+머지않아 유리뿐 아니라 벽이 부서지고 지붕이 날아가게 될 것입니다.
+
+전임 대통령에게 가하는 테러를 보고 있자니 뜻하지 않게 피바람이 불게
+돨 것인가 해서 몹시 걱정이 됩니다.
+
+이러한 법을 만들어 가는것을 시작으로 해서 힘들어도 법치의 원칙을 세워서
+제정신이 아닌 자들을 계도해 나가는 원칙을 세워야 합니다.
+
+220522 일
+충격주의! 누구나 할 수 있는 ‘책을 통째로 외우는 방법' (수험생의 성지 1편) 조회수 1,524,288회2019. 1. 15. DreamSchool이윤규 구독자 31.5만명 https://www.youtube.com/watch?v=y4fyL8vAdbs
+바이든 방한 이유, 미국 대통령 전공자가 알려드립니다 f.안병진 경희대학교 미래문명원 교수 [신과함께 207화] 조회수 237,150회2022. 5. 21. 삼프로TV_경제의신과함께 구독자 195만명 https://www.youtube.com/watch?v=32PGljReHuU
+
+
+
+220519 목
+kaos server 211.223.11.80 서버 오류
+11:13:52 (Thu) 2022-05-19 root@santa
+~ # fsck /dev/VolGroup01/LogVol01
+fsck 1.39 (29 May 2006)
+e2fsck 1.39 (29 May 2006)
+/dev/VolGroup01/LogVol01 contains a file system with errors, check forced.
+Pass 1: checking inodes, blocks, and sizes
+
+Inodes that were part of a corrupted orphan linked list found. Fix<Y>? Yes
+
+Inode 138477570 was part of the orphaned inode list. FIXED.
+…
+
+220518 수
+마지막 업데이트: 2020년 11월 21일 https://www.startupcto.com/server-tech/centos/running-fsck
+CentOS 5에서 fsck 실행 = 단일 사용자 모드를 통해서라도 마운트된 파일 시스템에서 fsck를 실행하는 것은 분명히 매우 나쁜 생각입니다. 실행을 위한 두 가지 좋은 옵션이 있습니다. CD에서 부팅 CentOS가 설치된 CD에서 부팅하고 CD에서 실행합니다. 그러면 파일 시스템이 마운트되지 않습니다. 이렇게 하려면 Linux 복구 모드로 부팅하십시오.
+부팅: 리눅스 구조
+원하는지 묻는 메시지가 표시되면 파일 시스템을 마운트하지 마십시오. fsck위에서 언급했듯이 마운트된 파일 시스템 에서는 실행할 수 없습니다 .
+복구 모드에 있으면 fsck올바른 파티션 에서 실행하십시오.
+
+fsck -f /dev/sda1
+
+Linux LVM을 사용하여 파티션을 만든 경우 다음을 실행하기 전에 해당 파티션에 액세스할 수 있도록 해야 합니다 fsck.
+lvm pvscan 
+lvm vgscan 
+lvm lvchange -ay VolGroup00 
+lvm lvscan
+그런 다음 실행할 수 있습니다 fsck.
+
+fsck -f /dev/VolGroup00/LogVol00
+
+다시 시작할 때 실행 입력하면
+
+bash# shutdown -Fr now
+그러면 CentOS가 재부팅되고 파일 시스템이 마운트되기 전에 수행되는 강제 fsck를 수행합니다.
+
+220517 화
+푸른숲도서관 0910
+DZone > 데이터베이스 영역 > 기존 노트북이 새로운 데이터베이스 서버입니다. : 오래된 노트북이 새로운 데이터베이스 서버입니다 - 항상 사용 가능한 상태로 유지하는 데 필요한 모든 구성과 함께 Ubuntu Server, Docker 및 MariaDB를 설치하여 오래된 랩톱을 활용하는 방법을 알아보십시오. 알레한드로 두아르테 핵심 · 5월. 05, 22 · 데이터베이스 영역 · 지도 시간 https://dzone.com/articles/your-old-laptop-is-your-new-database-server?edition=731511
+
+220516 월
+🎉 Flutter 3.0 출시!! 이제 정말 완전체가 되는구나...😎 조회수 9,232회2022. 5. 13. The Coding Papa 더코딩파파 구독자 9.48천명
+다트언어 마스터 강의[현재진행중]
+https://thecodingpapa.com/p/dart-language
+#TheCodingPapa #더코딩파파
+여러분이 요청한 가정의달 이벤트
+[The Coding Papa](https://thecodingpapa.com/p/karrot-ma...)
+지금부터 5월8일(토)까지 이벤트!
+ ̶5̶5̶0̶U̶S̶D̶ ➡️ 275USD(50%OFF)
+✅옆집 할머니를 이해시킬 마인드로 제작한 Dart 강의.
+✅당근마켓 앱을 여러분이 직접 제작하면서 배웁니다.
+✅앱광고로 돈버는 Admob강의가 최신버전으로 완벽 업그레이드!
+✅30일 환불 보장 기간이 있으니 주저말고 도전해보세요!👊
+🎉Dart마스터 코스(NEW)
+🎉당근마켓 156강 이상 HD고급강의(550 USD)
+🎉Admob(앱광고) 마스터 코스(97 USD)
+🌟인스타그램 160강 이상 HD고급강의(350 USD)
+🌟Push알림 마스터 코스(97 USD)
+🌟소셜 로그인 마스터 코스(93 USD)
+🌟모르는 부분에 대한 추가 고급 강의.(200 USD)
+🌟업데이트 및 추가 강의(300 USD)
+구독하시면 더 많은 비디오를 찾으실 수 있습니다! 💛 http://bit.ly/TheCodingPapa
+
+Flutter 3 Released ++ New Flutter Game Development Toolkit 조회수 13,186회2022. 5. 13. Gamefromscratch 구독자 18.3만명 https://www.youtube.com/watch?v=mcUzG1SwWqU
+What's new in Flutter 조회수 70,545회2022. 5. 12. Flutter https://www.youtube.com/watch?v=w_ezWG1yKQQ
+
+
+
+220515 일
+1.	fedora36 설치.
+2.	첫번째 다시 부팅.
+fedora36 init > 환영 [설치 시작(S)] > 개인 정보: 위치 정보 서비스 (x) > 서드 파티 저장소: > 온라인 계정 연결: [건너뛰기(S)] > 사용자 정보: yosVbox / yos >암호 지정: $암호123# > [Fedora Linux 시작(S)]
+3.	VirtuakBox 메뉴바
+장치 > 클립보드 공유 > (o) 양방향
+장치 > 게스트 확장 CD 이미지 삽입
+Windows 키 = 검색화면에서 ter (terminal) 터미널 > df 로 광학 드라이브 이름 확인 > cd /run/media/ 사용자 이름 /VBox_GAs_6.1.34/ ; sudo ../VBoxLinuxAdditions.run 으로 관리자 권한으로 실행 
+4.	terminal 실행
+샌드위치 아이콘 (3) 클릭 > 기본설정(P) > 이름없음 클릭 > 이름없음의 v 클릭해서 이름 바꾸기... 클릭 > fed36 등으로 이름 바꾸기
+현재의 텍스트  메뉴에서 > 사용자 지정 글꼴 체크 > Monospace 클릭으로 터미널 글꼴 선택 들어가서 아래쪽 크기 를 12에서 14로 변경, 선택
+색 메뉴에서 > 팔레트의 5번째 파란색 클릭 > 파란색 #12488B 가 어두워서 #1D73DF 정도로 밝게 해주고, 선택
+5.	fedora-sh.git 받기
+cd ~/
+mkdir git-projects ; cd git-projects
+git clone https://proencode@github.com/proencode/fedora-sh.git
+cd fedora-sh
+ls -l
+6.	00- 기본 프로그램 설치스크립트
+sh 00-init-vfedora.sh
+6. Windows 10 에서 고정 ip 설정
+cmd 창에서 ipconfig 의 기본 게이트웨이 확인
+설정 > 네트워크 및 인터넷 > 어댑터 옵션 변경 > 이더넷 마우스오른쪽 클릭 > 속성 > 인터넷 프로토콜 버전 TCP/IPv4 속성 
+
+최강욱 의원이 중수청 법안 발의에 필요한 청원동의를 받고 있습니다. 5만명의 동의가 필요합니다. https://petitions.assembly.go.kr/status/onGoing/DCEBD134598A5776E054B49691C1987F
+
+
+220514 토
+[최배근TV LIVE 88회]- 바이든 방한 목적은 미·중간 미래 생태계 전쟁의 승리! 일본 경제의 문제는? 조회수 35,972회실시간 스트리밍 시작일: 2022. 5. 11. 최배근TV 구독자 22.4만명 https://www.youtube.com/watch?v=NjLqgw4bAbU
+
+220513 금
+푸른숲도서관 1110
+
+ssh 접속 시 no matching key exchange method found 에러 https://scbyun.com/1195
+http://www.openssh.com/legacy.html
+017-rsync-to-here $ cat /etc/redhat-release ; getconf LONG_BIT ; openssl version ; ssh -V
+Fedora release 35 (Thirty Five)
+64
+OpenSSL 1.1.1n  FIPS 15 Mar 2022
+OpenSSH_8.7p1, OpenSSL 1.1.1n  FIPS 15 Mar 2022
+12:33:01금220513 fedora@fedlib ~/git-projects/1-bin-scripts/old-1-bin-scripts/017-rsync-to-here
+
+ssh -oKexAlgorithms=diffie-hellman-group-exchange-sha1 -Y -p 2022 kaosco@210.223.11.244
+또는
+.ssh $ cat config 
+Host kaoskr
+    hostname 210.223.11.244
+    # KexAlgorithms diffie-hellman-group-exchange-sha1
+    KexAlgorithms +diffie-hellman-group-exchange-sha1,diffie-hellman-group14-sha1,diffie-hellman-group1-sha1
+    user kaosco
+    identityfile "~/.ssh/kaosco.4ssh" #-- ssh-keygen 으로 만든 상대방 파일을 받아와야 한다.
+    port 2022
+12:56:11금220513 fedora@fedlib ~/.ssh
+.ssh $ ssh kaoskr
+Load key "/home/fedora/.ssh/kaosco.4ssh": invalid format
+kaosco@210.223.11.244's password: 
+Last login: Fri May 13 12:56:51 2022 from 222.120.119.154
+13:09:38 (금) 2022-05-13 kaosco@santa ~
+~ $ 
+
+https://setapp.com/apps/be-focused?irgwc=1&clickid=RikSe1VWwxyIUzlzoz0qSzwoUkD0k11FaQyf3E0&iradid=344290&irpid=156932&utm_content=TEXT_LINK&utm_campaign=How-To%20Geek%2C%20LLC&sharedid=usecase&utm_medium=affiliate&mpaid=3&utm_source=impactradius&campaign=impactradius
+재택 근무? Mac용 Setapp으로 생산성 향상 2022년 4월 29일, 오전 11:55 EDT | 3분 읽기 https://www.howtogeek.com/798968/working-from-home-boost-your-productivity-with-setapp-for-mac/
+
+
+220508 일
+1시간안에 워드프레스 홈페이지 만들기 강좌 8단계 | 초보자 따라하기 가이드 2021. 3. 20. 가이드빈 https://www.youtube.com/watch?v=DbQTHmc15KQ
+한동훈이 큰일 함 [6]11:22:42 https://www.ddanzi.com/index.php?mid=free&statusList=HOT%2CHOTBEST%2CHOTAC%2CHOTBESTAC&document_srl=734908134
+https://www.missycoupons.com/zero/board.php#id=general&no=335260
+https://www.82cook.com/entiz/read.php?bn=15&num=3446183
+저렴한 가격에 DMR 가능한 아마추어(햄)무전기 DJ-MD5 리뷰 - 4급도 가능해요. 2021. 12. 17. 공돌이파파 https://www.youtube.com/watch?v=W_jqyEDIQsY
+다리에 쥐가 나는 이유 그리고 해결방법 !!! 2021. 11. 12. 통찰의학 돈건통 https://www.youtube.com/watch?v=DZOZHEV4Axs
+
+
+220504 수
+푸른숲도서관 1010
+
+(본인신용카드) 전*석 고객님_ PROPER 카드 VISA8628 _결제계좌:지역농협(12) 511032*****366 | 기본연회비 04/01연회비	10,000원
+SMS이용요금(하나머니) 03월분31일치 03/06수수료	300원 | 유튜브프리미엄_구글 유튜브 멤버십_TOSS 04/06일시불	2,990원
+
+카카오뱅크 체크카드 5365-****-****-3387 연결계좌 3333-**-****161 (04월 11일 출금)	2,900원 3387	2022.03.31 	정상 03 월 버스 2건 2,900	
+
+TBS 뉴스공장 이큐브랩 권순범대표 https://www.youtube.com/watch?v=oC1WPcXC2dw&t=5453s 1:30:40
+1_신촌 쓰레기통 넘쳐서 학교 쓰레기통 압축 프로젝트 진행.
+얼마나 찼는지 지도기반 수거 스케줄 문자, 앱으로 통보.
+2_환경미화원 인터뷰. 기존 쓰레기통 정보도. 별도 부착센서 빈공간 수위체크 IoT (Internet of Things) 센서.
+3_정보가 중요. 치우는 사람, 도시 관점. 압축률 5-8배. 신촌 하루 5-8회 수거 -> 1-2회로 축소.
+서울 1,000개, 쓰레기통 수가 적어야 집에 버린다 = 한국, 일본만 성공. 시민의식. 상해 600만개 쓰레기통.
+4_미국 대량 쓰레기, 재활용 안함. 민영화 마피아. 레스토랑에 통 갖다두고 주단위 수거.
+중간자 역할로. 쓰레기통 센서 찼을때, 여러 수거업체 견적, 최저가 낙찰방식. 월 4회 > 월 3회.
+
+## 220503 화
+푸른숲도서관 1150
+
+windows10 에서 VirtualBox 에 fedora 설치하고 그 위에 docker 깔고 wiki.js 운영.
+공인IP, 개인IP 모두 사용할수 있도록.
+gimp 에서 사진 축소하기
+Alt+F = @F 로 표기한다.
+Ctrl+O = ^O 로 표기한다.
+
+@F+ O 또는 ^O >> 파일 열기
+@I+ S >> 이미지 + 이미지 크기 조정
+이미지 크기 - 너비 @W 1080 을 540 으로 하고 Tab 키 누르면, 높이는 자동 조정된다.
+@S >> 크기조정 완료
+Shift-Ctrl-E 이미지 내보내기
+
+## 220502 월
+진접도서관 0950
+
+클리엉펌-넷플릭스에서 그대가 조국 볼수도 있을것 같아요 [64]15:52:56다저스월시우승가즈아 https://www.ddanzi.com/index.php?mid=free&statusList=HOT%2CHOTBEST%2CHOTAC%2CHOTBESTAC&document_srl=734348811
+Netflix 오류 코드를 수정하는 방법 : M7353-5101? 이 방법 시도 [MiniTool 뉴스] https://ko.gov-civil-setubal.pt/how-fix-netflix-error-code
+
+통장정리, 구두수선 어느요일?, 휴지통 20L 찾기, 
+wiki.js 인쇄시 2매 양면 좌편철, 보관박스 준비
+연휴 스터디 일정, wiki.js 체험목록: dart 를 위한 yatzi 프로젝트, DoIT 실습, packtpub bash 문서,
+
+## 220501 일
+220501-091222(˚∀˚)참치는TUNA-기록의 민족이 남긴 업적… https://www.ddanzi.com/index.php?mid=free&statusList=HOT%2CHOTBEST%2CHOTAC%2CHOTBESTAC&document_srl=734246533
+대안뉴스구독자 8.81만명 https://www.youtube.com/channel/UClgTJWXTyDDBVWr0g5LjR8w
+
+shra19/Yatzy: The game is written in Python - GitHub https://github.com/shra19/Yatzy
+yahtzee · GitHub Topics https://gist.github.com/kirkmartel/2757217
+A terminal game of Yahtzee coded with Python. - GitHub https://github.com/sameetandpotatoes/Yahtzee
+A dice game based on Yahtzee/Yatzy, built with Flutter. https://github.com/Akmal02/flutzy
+Dart 소개 및 개발환경 https://brunch.co.kr/@mystoryg/115
+Dart (프로그래밍 언어) 간단하게 정리함 https://www.newiki.net/wiki/Dart_(%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D_%EC%96%B8%EC%96%B4)#cite_ref-6
+
+
+////////////////////////////////
+bbop edit2022 에디터 MVGQHT6HGBvKZYEA3QZZ
+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
+220509월 까지
+git config --global credential-helper ‘cache –timeout=300’ (5분간 통과)
+git config --global --list
+1.	github.com 로그인 후,
+a.	우상단 프로필 사진 클릭 > 설정 Setting 클릭
+b.	좌 사이드바에서 맨 아래 개발자 설정 Developer setting 클릭
+c.	개인 액세스 토큰 Personal access token 클릭
+d.	새 토큰 생성 Generate new token 클릭 > 권한에서 저장소 액세스 repo 선택
+e.	토큰 생성 Generate token
+f.	토큰을 복사한다.
+2.	저장소 repository 복사.
+a.	https://git-scm.com/book/ko/v2/Git-도구-Credential-저장소
+i.	Git - Credential 저장소
+b.	git clone https://proencode@github.com/proencode/run_sh.git
+i.	이때 비밀번호를 물어오면 토큰을 입력한다.
+ii.	위 비번을 저장하기 위해 다음 명령을 실행한다.
+git config --global credential.helper ‘cache –timeout=300’ (5분동안만 비번없이 진행한다)
+git config --global credential.helper cache (cache 만 지정하면 15분동안 비번없이 진행한다)
+git config --global credential.helper store (토큰의 유효기간동안 비번없이 진행한다)
+git config credential.helper store 
+https://git-scm.com/book/ko/v2/Git-%EB%8F%84%EA%B5%AC-Credential-%EC%A0%80%EC%9E%A5%EC%86%8C
+<><><><>
+프로엔코드 설명할것 프로엔2021년도준비물
+github.com ; bitbucket.org 도 비밀번호관리를 별도로 해야 된다.
+////////////////////////////////
+Flutter Cookbook 읽기 https://subscription.packtpub.com/book/mobile/9781838823382/1
+Learn Spring for Android Application Development - Android 애플리케이션 개발을 위한 Spring 배우기 https://subscription.packtpub.com/book/application-development/9781789349252/pref/preflvl1sec02/who-this-book-is-for
+Dart https://subscription.packtpub.com/book/mobile/9781838823382/2
+Micronaut®로 마이크로서비스 구축 https://subscription.packtpub.com/book/web_development/9781800564237/2
+
+git clone https://github.com/proencode/run_sh.git
+[packtpub]  Flutter Cookbook
+Introduction to Widgets https://subscription.packtpub.com/book/mobile/9781838823382/3
+Flutter for Beginners 현재: https://subscription.packtpub.com/book/mobile/9781800565999/7
+문서 및 학습 리소스 https://codelabs.developers.google.com/?cat=Flutter
+<><><><>
+ebook 읽던곳
+////////////////////////////////
+

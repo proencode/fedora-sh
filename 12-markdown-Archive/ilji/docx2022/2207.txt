@@ -1,0 +1,486 @@
+
+2022-06 일지 > https://docs.google.com/document/d/1WycuRT33ihe4PdI-tQ1GmALTZTKC1rFXuLZxJAIEMvk/edit
+
+220731 일
+
+[어머니요청] 양양군 남애리 (194-13) 민박집 [31]10:17:44GPCPA https://www.ddanzi.com/index.php?mid=free&statusList=HOT%2CHOTBEST%2CHOTAC%2CHOTBESTAC&document_srl=745004138
+
+220730 토
+
+공기로 작동하는 배터리가 있다!? | 그런데 기존 대비 3배 이상의 효율이라고!? | 과학쿠키 다큐 단편 조회수 273,287회2020. 7. 11. 과학쿠키 [Science Cookie] 구독자 42.6만명 https://www.youtube.com/watch?v=lRYIgPcWmAw
+
+이것만 알면 한 달 내로 똥배 대신 근육 나옵니다 조회수 3,781회2022. 7. 30. 텐바디 https://www.youtube.com/watch?v=iIKj--MgqMg
+
+귀가 트이는 영어회화, 영화 속 100장면 책에서 볼수 없는 진짜영어 공부법, 영어공부하기 좋은 미드 조회수 45,783회2022. 7. 21. 레이첼 랭귀지스쿨 Rachel's Language School https://www.youtube.com/watch?v=aWbwMPFJvbg
+
+대박 마늘까는 기막힌 방법 이렇게 하니 정말 쉽게 까네요 국산 깐마늘 조회수 375,358회2022. 7. 24. 삼남자인삼농장 구독자 9.59만명 https://www.youtube.com/watch?v=Y5C_DumQpH0
+
+독학으로 머신러닝 개발자로 입문하기 완벽 정리 조회수 21,068회2022. 7. 24. 저세상개발자 구독자 3.28천명 https://www.youtube.com/watch?v=Y5XOpgE-O_0
+
+온라인 코딩 학습지가 도착했어요! https://ddingdong.spartacodingclub.kr/?utm_source=youtube&utm_medium=display&utm_campaign=%EB%9D%B5%EB%8F%99%EC%BD%94%EB%94%A9&utm_content=etc&utm_term=etc&gclid=Cj0KCQjwio6XBhCMARIsAC0u9aEo9_eyRxa4Ric2VNVOgg1bZe21vRL91-H-nvCIzvc5DTySuRpt-8IaAmPyEALw_wcB
+
+220730-15:04:55저스트보닌-(보배펌) 치매가족이 있을 때 할 일_tip https://www.ddanzi.com/index.php?mid=free&statusList=HOT%2CHOTBEST%2CHOTAC%2CHOTBESTAC&document_srl=744918058
+
+https://www.ddanzi.com/ddanziNews/744384351 ´내앞´은 전기영화로 1910년 일제에 의한 경술국치가 시작되자 안동에서 문중 별로 일어난 저항 운동을 그린 영화이다. 특히 독립군 양성을 위해 같은 해 12월 24일 중국 서간도로 떠나는 내앞 마을(의성 김 씨 집성촌)의 백하 김대락 일가에 초점을 둔다. 그리고 고향에 남아서 저항한 그의 여동생 김락 애국지사의 시선에서 그녀와 가족의 비극의 삶을 전한다. (2016년 제15회 미쟝센 단편영화제) https://vimeo.com/134209305
+
+
+
+09:09:21
+
+좋은 표현이 아니라고 봅니다.
+
+마치 장애인을 폄하하는걸 보는 느낌입니다.
+
+이걸 보면 국짐놈들은
+그래 민주당 놈들이 그따우 밖에 안되지,
+늬가 저소득 저학력 이라고? 일루와 우리 국짐이 다 해결해 줄께, 그럴꺼 같습니다.
+
+좀더 고민을 해서
+저소득 저학력이라도 품위를 느낄수 있는
+캠페인을 만드는게 더 좋아요.
+
+
+
+
+
+
+돌아보면,
+1987년에 노태우대표의 629선언으로 대통령 직선제 개헌이 됐지만,
+대통령은 김대중. 김영삼이 되지 않고 노태우가 됐지요.
+///
+2020년 선거에서 국민은 민주당에 힘을 실어줬는데,
+뭔 사연인진 몰라도 다들 나몰라라 하는 바람에
+완전 꺼진불 됐던 국짐당이 대통령 꿰찬거 아니겠습니까.
+
+저소득 저학력이 그런 위대한 일을 해냈다면
+그들에게 머리숙이고 조언듣고 바라는걸 해줘야죠.
+
+산위에서 바위를 들판으로 굴리는건 쉽습니다.
+들판서 바위를 산위로 굴려 올리는건 힘들지요.
+산위에다 비석이라도 하나 세우려면
+이리저리 꾀를 잘 내서 종국에는 올려 세우는게 답입니다.
+
+누구라도 거기에 참여하도록 권하고 그 공을 잘 나누는게
+옳고 그름을 밝힌다고 판을 깨는것보다 낫다고 생각합니다.
+
+220729 금 1030 푸른숲도서관
+
+docker 의 ROOT 없애는법 https://hjjungdev.tistory.com/114
+
+[Docker] Docker-Compose : LINUX + TOMCAT + JSP + MYSQL 세팅하기 월공 2021. 4. 27. 10:44 https://bug41.tistory.com/entry/Docker-Docker-Compose-LINUX-TOMCAT-JSP-MYSQL-%EC%84%B8%ED%8C%85%ED%95%98%EA%B8%B0
+
+[Docker 기본(5/8)] Volume을 활용한 Data 관리
+https://medium.com/dtevangelist/docker-%EA%B8%B0%EB%B3%B8-5-8-volume%EC%9D%84-%ED%99%9C%EC%9A%A9%ED%95%9C-data-%EA%B4%80%EB%A6%AC-9a9ac1db978c
+
+220728 목 0940 푸른숲도서관
+
+How to import a excel file to the h2 database? http://h2database.com/html/tutorial.html#csv
+mongodb https://velopert.com/457
+
+편안한 죽음? 연명치료를 거부하면 의사는 이렇게 합니다. [도서: 오십부터 시작하는 나이 공부] 남궁인 | 방송대 | 방송통신대 | 응급실 | 노인 | 병원 조회수 275,240회최초 공개: 2022. 7. 24. 방송대 지식+ 구독자 51만명 https://www.youtube.com/watch?v=lwlOtiQw7es
+
+220727 수 0940 푸른숲도서관
+@teinen_qiita posted at 2018-09-08 updated at 2019-08-16 OpenAPI (Swagger) 超入門 入門 swagger REST-API OpenAPI https://qiita.com/teinen_qiita/items/e440ca7b1b52ec918f1b
+한국이라는 단어만 들어도 눈물이 납니다 l 한국이 세계에서 가장 사업하기 좋은 곳인 이유 l 인성 좋은 기업이 결국에는 인정받는 이유 조회수 63,005회2022. 7. 27. Peachy 피치 https://www.youtube.com/watch?v=SbC-GXB3JV8
+
+
+220726 화 0930 푸른숲도서관
+1.	fedora, ubuntu 설치
+2.	wikijs 설치
+3.	소주제 선정
+a.	fedora/ubuntu 설치 매뉴얼
+b.	wikijs 사용 매뉴얼
+c.	gimp, inkscape
+d.	flutter, spring boot kotlin
+4.	주문관리: order & bill, tax report, work process, employ, 
+
+220725 월
+지금 미국 엄마들이 한국 태권도에 열광하는 이유 l 인성부터 코딩까지 원스탑 육아 서비스 코리안 태권도장조회수 33,526회2022. 7. 25.Peachy 피치 https://www.youtube.com/watch?v=0BfwyeFO9uk
+
+
+220724 일
+2022년 영어는 이 1000 문장으로 마스터 가능합니다. | 4시간 영어 흘려듣기 조회수 950,495회2022. 1. 1. ShadowingKorean.com쉐도잉코리안 구독자 54.3만명 https://www.youtube.com/watch?v=56bbAusmfuU
+
+[법륜스님의 세상보기] 우크라이나전쟁과 한반도 70년 전쟁 조회수 88,221회2022. 7. 13. 법륜스님과 함께하는 행복TV https://www.youtube.com/watch?v=ZBqlldhC79E
+
+김견희 본문 글쓴이 09:42:39 [ ortholee ]
+저도 제가 지금 하는게 정확한건지는 잘 모르겠습니다 ㅎ.ㅎ
+숄더 팩킹 유튜브서 찾아보고 매달려서 고거만 한동안 했던거같아요
+이게 잘 되고 있는건지는 잘 모르겠지만요 ^^;
+조언 감사드립니다 꾸벅
+
+220723 토 1340 진접도서관
+박기영, 관객 기립 ´넬라 판타지아´[불후의명곡 Immortal Songs].20160102 조회수 27,163,498회2016. 1. 2. 구독자 710만명 https://www.youtube.com/watch?v=NTKOyUWRO7o
+
+[요청폭주]드디어 넬라판타지아 커버 !!_팝페라가수 송은혜_Nella Fantasia |Sarah Brightman 조회수 1,687,220회2021. 4. 21. 송은혜 LUCY  구독자 10.3만명 https://www.youtube.com/watch?v=rTaSjE5R-T4
+
+
+정부에서 1080만원 그냥 줍니다!! 월 10만원만 저축하세요!! 7월까지 꼭 신청하세요!! 조회수 619,190회2022. 7. 3. 시니어전성시대 구독자 89.1만명 https://www.youtube.com/watch?v=d83LKyPftMU
+
+걸으면서 허리통증 없애는 방법 | 허리통증이 사라지는 걷기운동, 허리디스크 회복 | 셀프힐링전문가 제오의 힐링가이드 조회수 166,086회최초 공개: 2022. 4. 8. 일지의 브레인TV 구독자 5.92만명 https://www.youtube.com/watch?v=BxF_xgrPP7g
+
+건강한 시니어! 노년 근력운동 이것만 따라하시면 됩니다! 조회수 178,725회2021. 7. 27. 슬기로운 시니어생활 https://www.youtube.com/watch?v=mQ5SIRvwYOo
+
+총경회의를 검사장회의랑 비교하는 것 자체도 잘못된 것임 [7]08:16:32각인조회 2424 추천54 비추천-1
+검사장회의는 수사권 조정 땜에 뺏길 밥그릇 사수하겠다고 쪼다 같은 검사장 새퀴들이 모여서 개지랄 떤 것임
+그에 반해 총경회의는 권력의 경찰 사유화를 반대하기 위해 시민과 최접점에 있는 일선 경찰서장들이 분연히 일어선 것임
+ 이게 같나?
+검찰새퀴들 정의로운 척은 다 하면서
+하는 짓은 동네 양아치만도 못함
+그런 조직 대가리를 대통령으로 앉혀놓았으니
+나라가 이 모양이지
+
+rlfkakswk 08:50:04 서장과 총경이 투표해서 50프로만나와도 회의한다는것을 70프로까지 나와서
+실행한겁니다 그만큼 경찰의 뜻이 강하다는것인데 바로 당일 후임정하고 실행자를 쫒아내는 행태는
+윤석렬이 얼마나 무식하고 졸렬한인간인지를 보여주는 거죠
+
+
+이재명 당대표 출마선언문 전문 [5]2022-07-17 14:33호동이가집사조회 389 추천15 비추천0
+
+이기는 민주당! 이재명은 합니다!(전당대회 당대표 출마선언문)
+
+ 존경하는 국민 여러분, 사랑하는 당원 동지 여러분. 오늘은 제헌절입니다. 국민이 곧 국가임을, 모든 권력의 원천은 국민임을, 바로 ‘대한민국은 민주공화국이다’를 선포한 날입니다. 정치는 국민의 위임에 따라 국민을 대신하여 국가공동체를 지켜내고, 국민의 생명과 안전을 보호하며, 더 나은 미래와 국민의 삶을 책임지는 것입니다. 그래서 정치의 존재이유는 오로지 국민, 오로지 민생입니다.
+
+ 정당은 국리민복을 위한 비전·정책을 제시하고 국민의 기대와 신뢰를 모아 정치권력을 위임 받으며, 정책집행과 권력 행사에 대해 다시 국민에게 심판 받으면서 경쟁합니다. 당의 토대는 국민의 신임이고, 당의 목표는 선거승리를 통한 정권획득이며, 존재목적은 민주주의와 공화정의 가치를 실현하는 것, 곧 민주공화국의 실현입니다.
+
+ 우리 민주당이 성공하는 길 역시 국민 속에서 소통하고, 맡겨진 권력을 제대로 행사해서 성과와 실적을 내며, 이를 통해 국민의 신뢰와 기대, 사랑을 회복하는 것입니다. 현실이 어려워도 희망이 있으면 살아갈 수 있습니다. 희망을 제시하고 현실로 만들어가는 것이 바로 정치입니다. 
+
+이상과 현실에는 언제나 괴리가 있습니다. 김대중 대통령께서 말씀하신 ‘서생적 문제의식과 상인적 현실감각’이 중요한 이유입니다. 국가와 국민의 삶을 통째로 책임지는 정치는 이상과 가치를 잃지 않되, 현실에 기반하여 열 발자국을 향한 반 발짝을 뗄 줄 알아야 합니다.
+
+권력과 책임은 동전의 양면입니다. 당대표 도전 역시 당대표를 권력으로 보면 욕망이고, 책임으로 여기면 헌신입니다. 지난 대선과 대선 결과에 연동된 지방선거 패배의 가장 큰 책임은 제게 있다는 생각에 변함이 없습니다. 제가 그 결과에 대해 책임져야 하는 것 또한 당연합니다. 책임은 문제회피가 아니라 문제해결이고, 말이 아닌 행동으로 져야 합니다. 당의 어려움을 외면하지 않고, 민주당을 사랑하는 국민과 당원의 뜻을 모아 새로운 민주당, 이기는 민주당으로 만드는 것이 진정 책임지는 행동이라 믿습니다.
+
+ 많은 분이 저의 정치적 미래를 우려하며 당대표 도전을 말렸습니다. 저 역시 개인 정치사로 보면 위험한 선택임을 잘 압니다. 그러나 민주당이 국민의 기대와 사랑을 회복하지 못하면 총선승리도, 지선승리도, 대선승리도 요원합니다. 사즉생의 정신으로 민심에 온 몸을 던지고, 국민의 집단지성에 저의 정치적 미래를 모두 맡기겠습니다.
+
+ 존경하는 국민 여러분, 당원동지 여러분. 대한민국이 위기입니다. 전 세계가 탄소에서 수소로의 에너지전환, 노동을 대체하는 기술혁명과 디지털전환, 산업과 경제구조의 질적 전환에 직면했습니다. 피할 수 없는 신문명 시대로 진입하며 세계사적 대격랑이 시작되었습니다. 한반도를 둘러싼 국제정세도 위태롭습니다. 경제위기, 민생위기도 심각합니다. 월급 빼고 다 오르는 물가에 국민은 생존을 걱정하고 극단적 선택을 고민합니다. 늘어난 부채로 금융약자와 청년들의 삶이 흔들립니다. 이미 예견되었던 민생·경제 위기가 빠르고 강하게 우리를 위협합니다.
+
+ 민주당이 위기입니다. 대통령 취임 두 달 만에 새정부에 대한 기대가 무너지지만, 우리 민주당은 이 분노와 실망을 희망과 열정으로 바꿔 담지 못하고 있습니다. 이대로라면 2024년 총선의 승리도, 민주개혁 진영의 재집권도 쉽지 않습니다.
+
+ 더 큰 위기는 정치실종입니다. 국민의 눈물을 닦고 아픔을 보듬으며 희망을 향해 나아가는 ‘민생 정치’ 대신 보복과 뒷조사가 능사인 퇴행적 ‘검찰 정치’가 자리 잡았고, 예견된 위기가 현실화 되는데도 위기대응책이나 책임자는 보이지 않습니다. 대전환의 시대에 유능한 정치로 반 발짝만 앞서도 무한한 기회의 문을 열 수 있겠지만, 무능과 무책임으로 끌려가면 도태위험이 기다립니다.
+
+ 존경하고 사랑하는 국민 여러분, 그리고 당원동지 여러분. 이기는 민주당을 만들겠습니다. 가진 것 없는 저 이재명은 국민 속에서 국민만을 믿고 의지하며 ‘함께 사는 세상’을 향해 없는 길을 만들며 이 자리까지 왔습니다. 위기를 기회로 만들며 성취해왔던 저 이재명이 시대적 과제와 국민의 눈높이에 맞게, 민주당을 바꾸고, 정치를 바꾸고, 세상을 바꾸겠습니다. 그 첫 시작이 이기는 민주당을 만드는 것입니다. 패배하는 민주당과 결별하고, 이기는 민주당으로 완전히 바꾸겠습니다.
+
+ 상대의 실패에 기대는 ‘반사이익정치’를 끝내고, 스스로 혁신하며 체감되는 성과로 국민의 사랑과 기대를 모아 가겠습니다. 이념과 진영에 갇힌 정쟁정치를 배격하고, 잘하기를 겨루는 경쟁정치로 바꾸겠습니다. 국민이 ‘그만 됐다’ 할 때까지 ‘민주당’만 빼고 모든 것을 바꾸겠습니다.
+
+ 국민우선 민생제일입니다. 민생중심의 개혁적 실용주의로 현장에서 문제를 찾아 해결하며, 경제·민생 위기에 손 놓은 3무(무능, 무책임, 무기력) 정권 대신 국민의 삶을 지키겠습니다. 신뢰와 기대 속에 국민의 삶과 대한민국의 미래를 책임지는 ‘민생실용정당’으로서 차기 총선에서 반드시 승리하겠습니다. 이기는 민주당을 만드는데 저 자신을 온전히 던지겠습니다. 이 임무에 실패한다면 이재명의 시대적 소명도 끝날 것입니다. 이기는 민주당을 위해 미래, 유능, 강함, 혁신, 통합 다섯 가지 약속을 드립니다.
+
+ 첫째, 미래형 민주당을 만들겠습니다. 정치는 10년 20년 후 우리의 미래, 다음 세대가 살아갈 세상을 준비해야 합니다. 기술혁명에 따른 높은 생산력에 터 잡아, ‘최소한의 삶’을 보장하는 사회에서, 일자리, 소득, 교육 등 모든 영역에서 ‘기본적인 삶’을 책임지는 사회로의 대전환을 준비하겠습니다.
+
+ 눈앞에 닥친 신문명시대에 끌려가지 않고 선도하며, 대전환의 미래사회에 적합한 신 사회계약을 준비하겠습니다. 새로운 국제질서와 한반도 상황에 부합하는 새로운 평화시대의 꿈도 준비하겠습니다. 오늘을 바꾸고 내일을 준비하는 민주당으로 거듭나도록 하겠습니다.
+
+ 둘째, 유능한 민주당으로 만들겠습니다. 정치는 주권자인 국민과 약속에서 시작됩니다. 헛된 약속을 하지 않고, 약속은 천금같이 지키면서 마이너스인 신뢰잔고를 조금씩 충실하게 늘려가겠습니다,
+
+ 일하는 민주당으로 만들어, 성과와 실적으로 다시 평가받겠습니다. 국민우선 민생제일주의를 기본으로 실용적 민생개혁, 현장중심의 생활정치를 일상화하겠습니다. 체감되는 성과를 축적하고 정치효능감을 극대화하면서 국민의 사랑을 회복해 가겠습니다.
+
+ 비록 대선에선 패했지만 공약점검기구를 만들어 약속을 지키겠습니다. 다수의석을 활용해 ‘공통공약추진기구’로 타당과의 공통공약을 우선 추진하고, 민주당의 대선공약도 가능한 범위에서 최대한 실행하겠습니다.
+
+ 당이 바뀌어야 정치가 바뀌고, 정치가 바뀌어야 세상이 바뀝니다. 비례민주주의 강화, 위성정당금지, 국민소환제, 의원특권제한, 기초의원 광역화 등 정치교체를 위한 정치개혁도 흔들림 없이 추진하겠습니다. 한반도 평화와 외교안보가 정부여당의 당리당략에 의해 희생되지 않게 하겠습니다. 국익중심의 실용주의를 벗어나지 않고, 평화공존과 합리적 국제연대의 틀을 깨지 않도록 철저히 견제하겠습니다.
+
+ ‘영입보다는 양성·발탁’ 원칙으로 유능한 인재들에게 기회를 제공하겠습니다. 청년 세대를 제대로 대변하는 청년정치가가 계파 인맥이 아닌 합리적인 경로로 성장·발굴되도록 체계적이고 상시적인 교육·참여 프로그램을 갖추겠습니다.
+
+ 닥쳐온 대내외적 위기를 이겨내는 것, 위기를 기회로 만들어 내는 것이 바로 정치가 할 일입니다. 한 나라의 정치역량이 국가경쟁력입니다. 위기를 기회로 만드는 나라는 흥하고, 기회조차 활용하지 못하는 나라는 쇠퇴합니다.
+
+ 셋째, 강한 민주당을 만들겠습니다. 확고한 비전으로 정국을 주도하는 당, 야당 역할을 제대로 하는 야당, 국민 지지 속에 할 일을 하는 당이 바로 강한 정당입니다. 강력한 리더십으로 민주당을 합리적이되 강한 정당으로 만들겠습니다. 민생개혁에 필요하다면 정부여당과 얼마든지 협력하겠지만, 오만과 폭주는 강력 저지해 감시·견제라는 야당의 본분에 철저하겠습니다.
+
+ 당 대표 산하에 ‘민생경제위기대책기구’, ‘위기의민주주의대책기구’를 만들어 경제위기 해법을 제시하고, 민주주의 후퇴와 공권력 남용을 확실히 막겠습니다. 할 일을 하기 위해 저항을 이겨내라고, 목표를 찾아내고 새 길을 만들라고 국민이 준 힘이 바로 권력입니다. 토론·협의·조정에 최선을 다하되, 시급한 민생개혁과제라면 국회법과 다수결원칙에 따라 국민이 맡긴 입법권을 적극적으로 사용하겠습니다.
+
+ 넷째, 국민 속에서 혁신하는 민주당을 만들겠습니다. 당은 국민 속에서 국민과 소통하며 국민과 함께 해야 합니다. 국민·당원과의 직접 소통, 국민과 당원의 적극 참여, 최대치의 민주주의가 기울어진 운동장에서 이기는 유일한 길입니다.
+
+ 민주당에 민주가 부족하다는 지적이 뼈아픕니다. 가장 민주적인 정당이 가장 튼튼한 정당입니다. 많은 분들이 ‘여심’(여의도 국회의원), 당심, 민심의 괴리를 걱정합니다. 국회의원과 당원, 지지자 간 차이를 좁히는 방법은 민주주의 강화뿐입니다. 민주당이 ‘누구나 당원하고 싶은 정당’으로 혁신하고, 국민 속에서 여남노소 누구나 자유롭게 활동하는 소통정당으로 만드는 것이 해법입니다.
+
+ 전자민주주의로 직접민주주의를 확대하고 당원의 지위를 강화하겠습니다. 당대표를 포함한 당과 당원 간의 온·오프라인 소통시스템을 도입하겠습니다. 지역위원회별 당원총회 정례화, 당원투표 상설화, 온라인 당원청원제, 직능커뮤니티 등 당원 소통창구를 늘리고, 당원의 집단지성을 당의 의사결정에 활용하겠습니다. 공직후보, 당직후보, 정책 등을 분리해 투표권 행사요건을 완화함으로 더 많은 국민들이 민주당에 입당하고 관심 갖게 하겠습니다.
+
+ 원내운영은 국회의원 중심이 불가피하지만, 당은 지역위원장(원내 + 원외) 중심으로 운영해 원내 원외의 괴리를 줄이겠습니다. 대부분 취약지역인 원외 지역은 전국정당화를 위한 중요거점인데도 사실상 방치되고 있습니다. 원외위원장에 대한 후원허용 등 지원방안을 적극 모색하고, 특히 취약지역에는 비례대표 우선 배정, 당직 부여 등 인적 물적 지원을 확대 강화하겠습니다.
+
+ 다섯째, 통합의 민주당을 만들겠습니다. 이기는 민주당이 되려면 우리부터 바뀌어야 합니다. 다름을 이유로 한 갈등과 분열이 아니라 정권창출이라는 하나의 목표 아래 통합하고 단결해야 합니다. 조직이 아닌 당은 다양성이 본질입니다. 다름은 제거 대상이 아니라 역할분담을 통해 시너지를 내는 자원입니다.
+
+ 낡은 관행과 이념, 우리 내부를 편 가르는 모든 것들과 결별합시다. 우리 안의 차이가 아무리 큰 들 상대와의 차이보다 크지는 않습니다. 계파정치로 성장하지 않은 저 이재명은 계파정치를 배격하고 ‘통합정치’ 를 하겠습니다.
+
+ 지금까지 그래왔던 것처럼 저의 인사 제1원칙은 사명감과 열성, 능력과 실적입니다. 당의 전통으로 자리 잡은 시스템공천 강화로 누구나 능력과 실적, 경쟁력에 따라 공정하게 평가받을 것입니다. 선거마다 유령처럼 떠도는 ‘계파공천’, ‘사천’ ‘공천 학살’이란 단어는 사라질 것입니다.
+
+ 존경하는 국민 여러분, 당원동지 여러분. 저를 포함한 많은 정치인들이 많은 약속을 합니다. 정책에는 저작권이 없고, 약속은 누구나 할 수 있기 때문입니다. 그러나 약속을 지키는 정치인이 많지 않습니다. 약속을 지켜왔던 사람이 앞으로도 약속을 지킵니다. 약속을 지켜온 저 이재명이 약속을 지키겠습니다. 약속을 지키는 민주당으로 만들어 반드시 국민의 신뢰를 회복하겠습니다. 유능함을 인정받은 이재명이 당에서도 실력을 발휘하겠습니다. 유능한 민주당으로 혁신하여 국민의 기대와 희망을 되찾아 오겠습니다. 존경하는 국민 여러분, 사랑하는 당원 동지 여러분.
+
+ 굴곡진 인생을 통해 배운 것이 하나 있습니다. 함께 걷는 동지가 많다면 아픔도 절망도, 새 길을 만드는 힘이 된다는 것입니다. 미래에 대한 좌절과 정치에 대한 분노를 새로운 희망을 향한 열정으로 바꿔주십시오. 민주당이 국민 곁에 설 때 국민의 삶이 한 걸음씩 바뀌었습니다. 민주화를 선도했고 외환위기를 극복했고 복지국가의 기틀을 닦았습니다. 남북 대립의 시대를 끝내고 한반도 평화 시대를 열었습니다. 국민 여러분과 당원 동지들께서 손잡아주신다면 국민과 함께 승리하는 민주당의 시대, 전진하는 대한민국을 다시 만들 수 있습니다. 시민과 도민의 삶을 바꾼 이재명의 경험과 실력, 약속은 지키는 열정과 의지 모두를 민주당에 쏟아 붓겠습니다. 국민과 함께, 당원과 함께 민주당을 바꾸고, 정치를 바꾸고, 대한민국과 국민의 삶을 바꿔내겠습니다.
+
+ 이기는 민주당! 이재명은 합니다! 고맙습니다.
+
+
+220718 월 0930 진접도서관
+이 튜토리얼에서는 ![ Spring Boot ](https://spring.io/projects/spring-boot/) 와 ![ Kotlin ](https://kotlinlang.org/) 의 기능을 결합하여 샘플 블로그 애플리케이션을 효율적으로 빌드하는 방법을 보여줍니다 https://github.com/spring-guides/tut-spring-boot-kotlin
+
+Chrome 개발자 도구 JavaScript 소스 스니펫을 사용하는 방법 https://dzone.com/articles/how-to-use-chrome-developer-tools-javascript-sourc
+
+첫 번째 Python GitHub 작업 작성 https://dzone.com/articles/writing-your-first-python-github-action?edition=739714
+
+220716 토
+02019135A#19A02350A$
+
+#Flutter #SpringBoot 🔵🟢Flutter Web & Spring Boot - Ecommerce Admin Panel 조회수 1,478회2021. 12. 11. Utter 구독자 1.81천명 https://www.youtube.com/watch?v=xB70rK1j6ZI&t=1564s
+
+프로그래밍/코틀린(Kotlin) 인텔리J(IntelliJ) 코틀린(Kotlin) 프로젝트 생성과 Hello Kotlin 출력(#2) 노한량 2021. 3. 11. 12:20 https://bestpractice80.tistory.com/68
+
+Build RESTful APIs Using Kotlin and Spring Boot [Video] https://subscription.packtpub.com/video/web-development/9781804616451/p2/video2_5/conditionals-if-and-when-block
+
+운동: 걷기 말고 이렇게 스쿼트 하면 나타나는 효과 조회수 1,057회2022. 7. 16. 텐바디 https://www.youtube.com/watch?v=X7APCE3OJyQ
+
+Full Stack Development with Spring Boot and React - Third Edition
+https://subscription.packtpub.com/book/web-development/9781801816786/2
+
+Learn Spring for Android Application Development
+https://subscription.packtpub.com/book/application-development/9781789349252/1
+Learn Spring for Android Application Development
+A hands-on guide to Android programming with Spring MVC, Spring Boot, and Spring Security By Igor Kucherenko... Jan 2019 392 pages
+https://subscription.packtpub.com/book/application-development/9781789349252/pref/preflvl1sec02/who-this-book-is-for
+Spring MVC, Spring Boot 및 Spring Security를 사용한 Android 프로그래밍에 대한 실습 가이드
+
+Flutter Cookbook
+https://subscription.packtpub.com/book/mobile/9781838823382/1
+Flutter Cookbook
+Discover how to build, scale, and debug native iOS and Android applications from a single codebase using the Dart p... Simone Alessandria... Jun 2021 646 pages
+https://subscription.packtpub.com/book/mobile/9781838823382/1
+Dart 를 사용하여 단일 코드베이스에서 기본 iOS 및 Android 애플리케이션을 빌드, 확장 및 디버그하는 방법을 알아보세요.
+
+Flutter for Beginners - Second Edition 
+https://subscription.packtpub.com/book/mobile/9781800565999/1
+Flutter for Beginners - Second Edition
+Develop the real-world experience you need to build and launch your own Flutter apps with this full-color guide By Thomas Bailey... Oct 2021 370 pages
+https://subscription.packtpub.com/book/mobile/9781800565999/7
+이 풀 컬러 가이드를 통해 Flutter 앱을 빌드하고 실행하는 데 필요한 실제 경험을 개발하세요.
+
+Vue.js 3 By Example
+https://subscription.packtpub.com/book/web-development/9781838826345/1
+
+Building Microservices with Micronaut®
+https://subscription.packtpub.com/book/web-development/9781800564237/2
+Building Microservices with Micronaut
+Explore different aspects of building modular microservices such as development, testing, maintenance, and deploy me... By Zack Dawood... Sep 2021 362 pages
+https://subscription.packtpub.com/book/web_development/9781800564237/2
+개발, 테스트, 유지 관리 및 배포와 같은 모듈식 마이크로서비스 구축의 다양한 측면을 살펴보십시오.
+
+Microservices with Spring Boot and Spring Cloud - Second Edition
+A step-by-step guide to creating and deploying production-quality microservices-based applications By Magnus Larsson AB Jul 2021 774 pages
+https://subscription.packtpub.com/book/web_development/9781801072977/pref
+프로덕션 품질의 마이크로서비스 기반 애플리케이션 생성 및 배포에 대한 단계별 가이드
+
+Develop diverse, real-life projects by exploring Spring Boot s features By Mohamed Shazin Sadakath Jul 2018 336 pages
+https://subscription.packtpub.com/book/application-development/9781789136159/pref
+Spring Boot의 기능을 탐색하여 다양한 실제 프로젝트 개발
+
+Mastering Spring Boot 2.0
+Learn to develop, test, and deploy your Spring Boot distributed application and explore various best practices. By Dinesh Rajput May 2018 390 pages
+https://subscription.packtpub.com/book/programming/9781787127562/3/ch03lvl1sec27/using-the-initializr-with-the-spring-boot-cli
+Spring Boot 분산 애플리케이션을 개발, 테스트 및 배포하고 다양한 모범 사례를 탐색하는 방법
+
+Spring Boot 2.0 Cookbook - Second Edition
+Take your application development skills to the next level by implementing Spring Boot features effectively By Alex Antonov Feb 2018 286 pages
+https://subscription.packtpub.com/book/application-development/9781787129825/pref
+Spring Boot 기능을 효과적으로 구현하여 애플리케이션 개발 기술을 한 단계 끌어올리십시오.
+
+Mastering Vim
+Mastering Vim, reviewed by Bram Moolenaar, the creator of Vim, covers usage of Vim and Neovim, showcases relevant p... By Ruslan Osipov Nov 2018 330 pages
+https://subscription.packtpub.com/book/application-development/9781789341096/pref
+Vim의 창시자인 Bram Moolenaar가 검토한 Mastering Vim은 Vim 및 Neovim의 사용법을 다루고 관련 p...
+
+Learning AWK Programming
+Text processing and pattern matching simplified By Shiwang Kalkhanda Mar 2018 416 pages
+https://subscription.packtpub.com/book/big-data-and-business-intelligence/9781788391030/pref
+텍스트 처리 및 패턴 매칭 간소화
+
+Hands-On Data Science with the Command Line
+Big data processing and analytics at speed and scale using command line tools. By Jason Morris... Jan 2019 124 pages
+https://subscription.packtpub.com/book/big-data-and-business-intelligence/9781789132984/pref
+명령줄 도구를 사용하여 속도와 규모로 빅 데이터를 처리하고 분석합니다.
+
+Kotlin
+Kotlin Quick Start Guide
+Get started with Kotlin programming for building real world applications By Marko Devcic Aug 2018 178 pages
+https://www.packtpub.com/product/kotlin-quick-start-guide/9781789344189
+실제 애플리케이션 구축을 위한 Kotlin 프로그래밍 시작하기
+
+Rust
+Rust Web Programming
+Adopt the Rust programming language by learning how to build fully functional web applications and services and add... By Maxwell Flitton Feb 2021 394 pages
+https://subscription.packtpub.com/book/web_development/9781800560819/pref
+완전한 기능의 웹 애플리케이션 및 서비스를 구축하고 추가하는 방법을 학습하여 Rust 프로그래밍 언어를 채택하십시오.
+
+Creative Projects for Rust Programmers
+A practical guide to understanding the latest features of the Rust programming language, useful libraries, and fram... By Carlo Milanesi Jun 2020 404 pages
+https://subscription.packtpub.com/book/programming/9781789346220/pref/preflvl1sec04/to-get-the-most-out-of-this-book
+Rust 프로그래밍 언어, 유용한 라이브러리, 프레임워크의 최신 기능을 이해하기 위한 실용적인 가이드...
+
+Rust Quick Start Guide
+Get familiar with writing programs in the trending new systems programming language that brings together the powerf... By Daniel Arbuckle Oct 2018 180 pages
+https://subscription.packtpub.com/book/application-development/9781789616705/pref
+강력한 성능을 제공하는 최신 최신 시스템 프로그래밍 언어로 프로그램 작성에 익숙해지십시오.
+
+//qq//
+220715 금
+1050 푸른숲도서관
+
+와 임윤찬 진짜 소름끼치네요. [44]2022-07-15 21:40dragonlet https://www.ddanzi.com/index.php?mid=free&statusList=HOT%2CHOTBEST%2CHOTAC%2CHOTBESTAC&page=3&document_srl=743299183
+진보해그리드 2022-07-15 21:44 https://youtu.be/zLMteG8mk9w
+엔드오브타임 2022-07-15 21:48 이분 해설 꼭 보세요 국내 해설과는 차원이 다릅니다. https://youtu.be/DhUFLepewgA
+
+
+intellij-idea 시작하기
+https://learntutorials.net/ko/intellij-idea/topic/1734/intellij-idea-%EC%8B%9C%EC%9E%91%ED%95%98%EA%B8%B0
+sdk i java 11.0.12-open
+which java #--> 나오는 주소를 IJ에서, Select HomeDirectoy for JDK > Add JDK 에서 이 주소의 current 디렉토리까지 지정.
+Spring Boot 및 Kotlin으로 웹 애플리케이션 빌드 https://spring.io/guides/tutorials/spring-boot-kotlin/
+
+박스365 ok 빡스2022별 020 19 135 아샵
+윈도우 설치
+Git Bash: git-scm.com
+OpenJDK: eclipse.org > download
+Node.js: nodejs.org
+Visual Studio Code: code.visualstudio.com
+Kotlin: kotlinlang.org > Docs > Tools > Compiler > Command-line Compiler
+> unzip /z/bada/windows-programs/kotlin-compiler-1.7.10.zip #-- 현재 디렉토리에 압축풀기
+> mv kotlinc/ /c/ #-- C:\ 로 옮긴다.
+[+]R >sysdm.cpl > 고급 > 환경변수 > 시스템변수 > Path 클릭하고 편집 > 새로만들기 > c:\kotlinc\bin > 확인
+> kotlinc –version
+
+
+220714 목
+1000 푸른숲도서관
+
+2021년 02월 14일 수정 비주얼 스튜디오 코드(Visual Studio Code)란? Daegwon Nacyot Kim 웹사이트 @nacyo_t 페이스북 링크드인 https://www.44bits.io/ko/keyword/visual-studio-code
+201504 마소빌드발표, 201604 1.0 공개, 2018 스택오버플로우 선호도 50.7% 1위, 202001 깃허브 vuejs/vue, facebook/react, tensorflow/tensorflow, twbs/bootstrap, 5위 Visual Studio Code, TypeScript, 모나코 에디터 JavaScript, 
+비주얼 스튜디오 코드(Visual Studio Code) 공식 문서 https://code.visualstudio.com/docs
+비주얼 스튜디오 코드(Visual Studio Code) 커맨드라인 옵션 https://code.visualstudio.com/docs/editor/command-line
+언어 확장 팩 - 비주얼 스튜디오 코드(Visual Studio Code) https://marketplace.visualstudio.com/search?target=VSCode&category=Language%20Packs&sortBy=Installs
+파이썬Python, C/C++, C#, 도커Docker, 고Go, 파워셸PowerShell 등을 지원하고 있습니다. VS 코드가 지원하는 프로그래밍 언어와 기능에 대해서는 공식 문서를 통해서도 확인할 수 있습니다.
+
+비주얼 스튜디오 코드의 프로그래밍 언어 지원 (파이썬Python, C/C++, C#, 도커Docker, 고Go, 파워셸PowerShell 등을 지원) https://code.visualstudio.com/docs/languages/overview
+비주얼 스튜디오 코드(Visual Studio Code) 마켓 플레이스 https://marketplace.visualstudio.com/vscode
+
+
+
+220713 수
+0930 진접도서관 비
+
+flutter spring boot 연동 
+Spring Boot REST API와 Flutter 연결-1 부 
+Connecting Flutter with Spring Boot REST API PXP
+Flutter Web & Spring Boot - Ecommerce Admin Panel 7개월 전 Utter
+
+
+220712 화
+1000 푸른숲도서관
+
+Auth0 Identity Is Complex, Deal With It. Auth0 is The Identity Platform for Application Builders. 4.7K Followers Aug 13, 2019 Vue.js, Spring Boot, Kotlin, and GraphQL: Building Modern Apps — Part 1 Vue.js, Spring Boot, Kotlin 및 GraphQL: 최신 앱 구축 — 1부 https://medium.com/@auth0/vue-js-spring-boot-kotlin-and-graphql-building-modern-apps-part-1-5e77cc710a58
+MovieReviewBoard-Part-1 https://github.com/vladimirfomene/MovieReviewBoard-Part-1.git
+
+프라산나 위제시리와르다나 2020년 12월 25일 3분 읽기 Windows git bash에 rsync 추가 git bash 내부의 rsync 기능 활용 https://prasaz.medium.com/add-rsync-to-windows-git-bash-f42736bae1b3
+Zstandard https://facebook.github.io/zstd/
+WINDOWS 64비트용 PEAZIP RAR ZIP OPENER 다운로드 https://peazip.github.io/peazip-64bit.html
+
+독일 프랑스 일본의 교수와 학자 14명이 독일 베를린시 미테구청에 평화의 소녀상을 영구존치해달라고 요청하는 서한 2022-06-20 제출함.
+이와 별도로 서한을 제출한 이튿날 미테구의회는 평화의 소녀상 영구존치와 관련한 결의안을 의결함.
+한경 https://www.hankyung.com/international/article/202207119145Y
+
+독일 카셀대학교 평화의 소녀상 2022-07-08 제막식. 학생기획-대학 공식허가-대학내 공공부지에 설치. 소녀상작가 기증. 국제현대미술축제 도큐멘타 5년마다 500만명 참석. 후원링크 https://bit.ly/2wu2cpB ‘독일 평화비 활동’에 체크 (기간: ~2022년 8월 31일까지)
+일시후원: 국민은행 069137-04-014198 
+<예금주:재)일본군성노예제문제해결을위한정의기억>
+
+코코넛마카롱 18:00:31 저는 교수님이 일하시는 아주대병원 외상센터에서 목숨을 건졌습니다 저를 중환자실에 두고 그저 기다리던 부모님한테 교수님은 신처럼 보였다고 나중에 말하시더군요 병원에 있으면서 듣게 된 닥터헬기 소리는 남다릅니다 저승길 들어선 누군가를 교수님이 붙잡고 데려오시는구나... 교수님 건강하세요
+
+220711 월
+Vue의 기초를 배우기 위해 시도했던 프로젝트 https://github.com/basejump/grails-vuejs-todomvc-example.git
+1.	node-v18.5.0-x64.msi 29MB
+2.	VSCodeUserSetup–1.69.0.exe 80MB
+3.	npm install -g @vue/cli 
+a.	Get-ExecutionPolicy -List
+b.	Set-ExecutionPolicy RemoteSigned -Scope CurrentUser
+
+[#티전드] 한국인 특) 뭐든 150% 뽕 뽑으려 함ㅋㅋㅋ 사회심리학자 허태균 교수가 밝히는 그 이유! | #어쩌다어른 조회수 1,553,422회2022. 5. 27. tvN D ENT 구독자 361만명 https://www.youtube.com/watch?v=H_KAnaRqYOM
+
+
+220710 일
+서예의 꽃- 예서(隸書)가 가장 사랑받는 이유 조회수 45,803회2022. 6. 23. Tatao CalliArt https://www.youtube.com/watch?v=sCIuIKonU64
+
+https://www.ddanzi.com/free/742655024#comment_742659587
+탄지 2022-07-10 10:50 [ 무는개🐶 ]
+몽골에서 출발한 원나라의 발음과 남경에서 시작한 명나라의 발음이 달랐다고 합니다.
+
+원나라와 돈독하게 지내다가 명나라와 대치했던 이성계가 세종이 열살때쯤 죽었으니
+이때 나이든 사람들과 새로 외국어를 배우는 젊은 사람들 간에
+배우는 중국어 발음이 차이가 날 것으로 추측이 됩니다.
+
+명나라가 대세를 이루는 마당에 그쪽 발음대로 따라가는 것이 순리겠죠.
+
+그래서 속담에,
+나는 바담풍 해도 너는 바람풍 해라 하는 말이 나온것 같네요.
+
+https://ko.wikipedia.org/wiki/%EC%9A%B4%EC%84%9C
+이후 원나라가 들어서면서 중국 한자음의 중심지가 원나라가 있던 중국 북방 지방이 되자, 그곳에서 사용하는 한자음인 북방음(北方音)을 반영하여 1292년에 황공소(黃公紹)가 《고금운회》를, 1297년에 웅충(熊忠)이 이를 간략하게 만든 《고금운회거요》를 지었다.
+명나라 건국 이후에는 홍무제의 명으로 《홍무정운》(洪武正韻)이 편찬되었는데, 성모는 남방음, 운모는 북방음을 혼합한 규범음을 제시하였다.
+
+조선 초기에는 동음(東音)을 표기한 《동국정운》과 화음(華音)을 표기한 《홍무정운역훈》, 《사성통고》(四聲通攷), 《사성통해》가 편찬되었다.[41][주 4] 훈민정음 창제 이후 세종 대에 편찬된 《동국정운》은 명나라의 《홍무정운》과 마찬가지로 표준이 되는 규범적 한자음을 제시하여 속음을 교정하고자 하는 목적에서 지어졌으며, 《고금운회거요》의 한자음을 바탕으로 한자를 모두 91운으로 나누었다.[42] 그러나 한자의 뜻을 주석으로 달지 않았을 뿐 아니라, 인위적으로 설정한 한자음이 실제 음과 괴리가 커 성종 대에 와서는 무용지물해졌다는 한계를 보였다.[43] 단종 3년(1455년)에는 외국어로서의 중국어의 표준 한자음을 제시하고자, 《홍무정운》에 기존의 반절 표기 대신 훈민정음으로 음과 주석을 단 《홍무정운역훈》이 완성되었다.[44] 그러나 운의 배열 순서가 《고금운회거요》, 《중원음운》, 《동국정운》과 다르며 주석이 지나치게 많다는 불편함이 있었고, 이를 개선하고자 《홍무정운역훈》의 주석을 모두 제거한 《사성통고》가 편찬되었으나 이번에는 주석이 아예 없다는 점이 문제가 되었다.[45][46] 이에 중종 12년(1517년)에 최세진이 《사성통고》에 《고금운회거요》의 주석을 간단히 요약해 달고, 15-16세기의 한자음을 정음, 속음, 금속음의 세 가지로 분류하여 기록한 《사성통해》를 편찬하였다.[47] 한편, 《용비어천가》의 반절 표기가 대부분 《고금운회거요》, 《홍무정운》, 《예부운략》, 《용감수경》 등과 비슷한 점을 볼 때, 《용비어천가》가 편찬된 조선 초기에는 이러한 운서들도 여전히 널리 쓰였을 것이다.
+
+220709 토
+1050 푸른숲도서관
+
+아베 총격 사망
+[보배펌]그만둔지 1년 된 알바한테 연락이 왔어요. [35]09:05:29Hola~ https://www.ddanzi.com/index.php?mid=free&statusList=HOT%2CHOTBEST%2CHOTAC%2CHOTBESTAC&page=2&document_srl=742568847
+
+evelopment Enviroment with Grails 5.1.2 + Docker https://github.com/fernando88to/EnvDevelopmentGrailsDocker.git
+
+Grails 5.1.1 - REST API Example https://github.com/puneetbehl/rest-api-demo.git
+
+Banking Application with Grails 5 https://github.com/KingSK1998/Banking-Application-with-Grails-5.git
+git clone https://github.com/KingSK1998/Banking-Application-with-Grails-5.git
+git clone https://github.com/davebrown1975/grails5_scaffolding.git
+
+Grails로 MVC 웹 애플리케이션 구축 최종 수정일: 2022년 6월 4일 by baeldung https://www.baeldung.com/grails-mvc-application
+
+
+220706 수
+0900 진접도서관
+
+http://localhost:8086/kaosorder/samplesheet/list '매니저 작업' 시 추가화면에서 http://iyfnz.com/?dn=wzdfactory.com&pid=9PO755G95 로 이동함.
+
+
+220707 목
+0900 진접도서관
+
+소프트웨어 프로젝트 관리자로서 마스터해야 하는 주간 의식 배우기 이 게시물은 이정표 식별, 프로젝트 계획, 위험 레지스트리 및 프로젝트 업데이트와 같은 할 일을 포함하여 프로젝트 관리자의 주간 생활을 간략하게 설명합니다.  ~에 의해 제이드 루빅    핵심 · 07.01, 22 · Agile Zone · 지도 시간
+https://dzone.com/articles/learn-the-weekly-rituals-you-should-master-as-a-so?edition=739705
+오늘은 프로젝트 매니저의 주간생활에 대해 다뤄보려고 합니다. 내가 프로젝트를 관리할 때 매주 하는 일은 다음과 같습니다. 
+1.	다음 이정표를 식별합니다 . 한 달도 채 남지 않은 목표가 있습니까? 그렇지 않은 경우 가능한 한 빨리 하나를 만드십시오. 팀과의 모든 회의에서 다음 이정표에 대해 이야기하십시오. 
+2.	프로젝트 계획을 업데이트하십시오 . 매주 금요일에 1~2시간을 예약하여 프로젝트 계획을 검토하고 업데이트하십시오. 
+3.	위험 레지스트리를 업데이트하십시오 . 프로젝트 계획 시간 동안 위험 레지스트리를 업데이트하십시오. 
+4.	주간 프로젝트 업데이트를 보냅니다 . 프로젝트 계획과 위험 레지스트리를 업데이트한 후 내가 책임지고 있는 모든 프로젝트의 상황을 요약한 업데이트를 보냅니다.
+
+
+220705 화
+0900 진접도서관
+
+암호화된 이메일 및 보안 메시지를 보내는 가장 좋은 무료 방법 닉 루이스 업데이트됨 2022년 6월 29일 오후 12시 39분(동부 표준시) | 6분 읽기 https://www.howtogeek.com/135638/the-best-free-ways-to-send-encrypted-email-and-secure-messages/
+
+Linux 시작을 위한 9가지 Bash 스크립트 예제 데이브 맥케이 2022년 6월 29일 오전 11시(동부 표준시) | 10분 읽기 https://www.howtogeek.com/808593/bash-script-examples/
+
+Raspberry Pi Pico W는 단돈 6달러이며 매우 작습니다. 코빈 대번포트 2022년 6월 30일 오전 11시 48분(동부 표준시) | 2분 읽기 https://www.howtogeek.com/815081/raspberry-pi-pico-w-only-costs-6-and-is-super-tiny/
+
+새로운 Raspberry Pi Pico W는 Wi-Fi를 추가하고 비용은 $6입니다. 앤드류 하인즈만 2022년 6월 30일 오전 10시 48분(동부 표준시) | 1분 읽기 https://www.reviewgeek.com/122110/new-raspberry-pi-pico-w-adds-wi-fi-and-costs-6/
+
+Kotlin 문법 총 정리 - 1시간 조회수 51회2022. 7. 5. 오준석의 생존코딩 구독자 1.11만명 https://www.youtube.com/watch?v=OtHkb6wAI5U
+
+속보📢 오늘부터 신청!(~8월 31일까지)전기세 지원!! 최대 400만원 드립니다! 아파트 산다면 신청하세요! 조회수 16,352회2022. 7. 5. 복지마블TV [Welfare Marble] 구독자 80.9만명 https://www.youtube.com/watch?v=7yJyOwVzWtE
+
+220703 일
+저 이 종이접기 방법 찾을 수 있을까요? [6]2022-07-02 01:48바다호랑이 https://www.ddanzi.com/free/741702240
+다굵 [자전거개발] 2022-07-02 01:57 https://www.google.com/search?q=paper+folding+face&newwindow=1&sxsrf=ALiCzsbB0IJK9m-jmhsaFzA2NEzSI3uAHQ%3A1656694632142&source=hp&ei=aCe_YobNBpv3wAPns5G4DA&iflsig=AJiK0e8AAAAAYr81eHhq5KOezCGH5lLsDG_pYAoipw04&ved=0ahUKEwiGobG4lNj4AhWbO3AKHedZBMcQ4dUDCAc&uact=5&oq=paper+folding+face&gs_lcp=Cgdnd3Mtd2l6EAMyBAgAEBMyCAgAEB4QDxATMggIABAeEAgQEzIICAAQHhAIEBMyCAgAEB4QCBATMggIABAeEAgQEzIICAAQHhAIEBMyCAgAEB4QCBATMgoIABAeEA8QCBATMggIABAeEAgQEzoECCMQJzoFCAAQgAQ6CwguEIAEEMcBENEDOg4ILhCABBDHARCjAhDUAjoFCC4QgAQ6BAgAEB46BggAEB4QEzoICAAQHhAKEBM6CAgAEB4QDRATOgoIABAeEA8QDRATUABY90NglkZoAHAAeACAAX2IAdYPkgEEMC4xOJgBAKABAQ&sclient=gws-wiz
+^^*)
+바다호랑이 본문 글쓴이 2022-07-02 02:00 [ 다굵 ] 오 감사합니다. folding face 로 검색하는거군요 감사합니다.
+돌든타임 2022-07-02 02:07 origami face
+Oh,Me! 2022-07-02 01:59 https://youtu.be/uJ1eEIBVoTM Finn Jackson Etsy에서 패턴 판다 하네요
+
+220702 토
+여름에는 무를 이렇게 일주일만 드세요❗반찬 걱정 따로 할 필요없어요. 금새 허리가 잘록해집니다. 조회수 162,009회 2022. 6. 14. 묘식당 Rabbit's 구독자 3.33만명 https://www.youtube.com/watch?v=icQk9bmEv9Y
+
+bbop edit2022 에디터 MVGQHT6HGBvKZYEA3QZZ
+git config --global credential.helper store #-- 토큰의 유효기간동안 비번없이 진행한다.
+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
+//qq//
+
+

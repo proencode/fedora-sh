@@ -1,0 +1,426 @@
+
+220430 토
+[세계사] 문명의 탄생! 이집트와 메소포타미아 : 곰브리치 세계사 1부 조회수 384,824회 2020. 5. 23. 일당백 : 일생동안 읽어야 할 백권의 책 구독자 24.7만명 https://www.youtube.com/watch?v=82e-8EPUm6M
+
+용혜인 의원은 남의당 사람인데다, 자신의 의견을 뚜렷하게 밝혔습니다.
+양향자 의원은 우리당 사람은 아니지만, 잠수탄 이후로 어떤 의견도 들은게 없습니다.
+저 의원들은 자신들의 의지로 투표한것일 뿐, 민주당에 고용된 이들이 아니니
+미련을 버려야 합니다.
+차라리 민주당 내의 수박의원들이 본래의 민주당 의원으로 개과천선할 수 있도록
+수박세탁 캠페인을 별이는 것이 마땅합니다.
+
+다만, 박병석 의장의 행위는 도저히 납득이 되지 않으며
+미래에 동일 수법이 통하지 못하도록 하기 위해서는
+박병석 방지법이 꼭 필요하다고 생각합니다.
+
+이제 우리의 동지는 눈앞에서나 기억속에서나 영영 사라져버리고,
+시원스레 일하든지 뒤통수를 치든지 하는 일꾼들만 남았으니
+나를 지지하는 자는 남의당 이라도 내 친구요,
+나를 속여먹는 자는 우리당 이라도 웬수입니다.
+개딸과 기타 여러분들은 못미더운 민주당보고 힘내라고 외치고 있고
+나같은 사람은 발만동동 거리면서 여길 드나들 뿐입니다.
+화염병 들고 벽돌깨던 나같은 세월은 이제 지나갔으니
+제발 개달들 하자는대로 새로운 시대에 맞춰갑시다.
+
+220425 월 진접도서관 0910
+shra19/Yatzy: The game is written in Python - GitHub https://github.com/shra19/Yatzy
+yahtzee · GitHub Topics https://gist.github.com/kirkmartel/2757217
+A terminal game of Yahtzee coded with Python. - GitHub https://github.com/sameetandpotatoes/Yahtzee
+A dice game based on Yahtzee/Yatzy, built with Flutter. https://github.com/Akmal02/flutzy
+Dart 소개 및 개발환경 https://brunch.co.kr/@mystoryg/115
+Dart (프로그래밍 언어) 간단하게 정리함 https://www.newiki.net/wiki/Dart_(%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D_%EC%96%B8%EC%96%B4)#cite_ref-6
+
+220424 일
+[361 회] 영상기록, 남북철도 기적의 오디세이 1부 https://playvod.imbc.com/Vod/VodPlay?broadcastId=1000484100744100000
+| 반지름 | 크랭크-뒷바퀴 | 의자높이 | 핸들길이 | 핸들높이 | 자전거 |
+|:---:|:---:|:---:|:---:|:---:|:---:|
+| 35 | 70 | 90 | 60 | 100 | ys |
+| 35 | 60 | 85 | 60 | 95 | HM |
+| 30 | 55 | 75 | 80 | 110 | My |
+| 35 | 65 | 80 | 65 | 100 | hn |
+
+Android Studio Download https://developer.android.com/studio
+
+((OR))
+
+cat <<__EOF__
+## ====================
+How to Install Android Studio on Fedora 35 By Raj On Nov 11, 2021 https://www.itzgeek.com/how-tos/linux/fedora-how-tos/how-to-install-android-studio-on-fedora-35.html
+
+##... Output: If the above output is non-zero ((8)), then your machine has Intel or AMD virtualization support.
+##... egrep --color 'vmx|svm' /proc/cpuinfo | wc -l
+----> press Enter:
+__EOF__
+read a
+egrep --color 'vmx|svm' /proc/cpuinfo | wc -l
+cat <<__EOF__
+
+##... Then, install the KVM to have hardware acceleration for the better performance of Android Studio if your machine supports VT technology.
+##... sudo dnf -y install qemu-kvm bridge-utils libvirt virt-install
+----> press Enter:
+__EOF__
+read a
+sudo dnf -y install qemu-kvm bridge-utils libvirt virt-install
+cat <<__EOF__
+
+##... 1. Install Android Studio Using Snap
+##... Android studio is available as a snap package for Fedora operating system. So, first, install the Snap package management on your system.
+##... sudo dnf install -y snapd ; sudo ln -s /var/lib/snapd/snap /snap ; sudo snap install core && sudo snap refresh core
+----> press Enter:
+__EOF__
+read a
+sudo dnf install -y snapd ; sudo ln -s /var/lib/snapd/snap /snap ; sudo snap install core && sudo snap refresh core
+cat <<__EOF__
+
+##... Then, install Android Studio using the snap command.
+##... sudo snap install android-studio --classic
+----> press Enter:
+__EOF__
+read a
+sudo snap install android-studio --classic
+cat <<__EOF__
+
+##... The installation will take some time to complete. After the installation of Android Studio, verify the installation using the below command.
+##... sudo snap list android-studio
+----> press Enter:
+__EOF__
+read a
+sudo snap list android-studio
+
+
+220423 토 푸른숲도서관 0910
+Git Bash Download https://git-scm.com/download/win
+gVim Download https://www.vim.org/download.php
+PuTTY Download https://www.chiark.greenend.org.uk/~sgtatham/putty/latest.html
+WinSCP Download https://winscp.net/eng/download.php
+PuTTY 설정 값 공유하는 방법2013. 10. 7. 16:34 출처: [Daeseok's Blog] https://woodz.tistory.com/62
+PuTTY Configuration Tips and Tricks https://my.hfcc.edu/students/classes/cis/tutorials/putty-settings
+맥메가 인터넷광고 1544-5823 https://www.100mb.kr/bbs/board.php?bo_table=customer
+
+220422 금 푸른숲도서관 0900 흐림
+2022년 스트리밍 비용을 절약하는 가장 좋은 방법은 다음과 같습니다. 제이슨 피츠패트릭 @jasonfitzpatric 2022년 4월 20일 오전 11시 23분(동부 표준시) | 2분 읽기 https://www.howtogeek.com/799173/heres-the-best-way-to-save-money-on-streaming-in-2022/
+【gihyo.jp UPDATES】今どきの省スペースPCでUbuntu／リリース間近でまさかの機能追加？！ ---- 2022/04/20 Ubuntu Weekly Recipe 제711회 Ryzen 5 5500U로 에너지 절약 PC 생활 2022년 4월 13일 미즈노 겐 https://gihyo.jp/admin/serial/01/ubuntu-recipe/0711?utm_source=eMail&utm_medium=gihyojp&utm_campaign=Mail
+기준요척 | 소싱 정보 BT란 무엇일까? (컬러 컨펌) by 현소엠 2020. 3. 6. https://cloths-product.tistory.com/31
+
+
+220421 목 0830 푸른숲도서관 1000
+https://www.microsoft.com/ko-kr/software-download/windows11
+NotePad ?
+
+한 번만 읽어도 책 내용 다 기억하는 기적의 독서 메모 법 | 김익한 @김교수의 세 가지 명지대 교수, 기록학자 #메모 #기록 #독서 https://www.youtube.com/watch?v=fxdPHw8vhog
+
+
+220420 수 푸른숲도서관 0910
+The One-Page Guide to Negotiate Your Salary 220420-1126 급여 협상을 위한 한 페이지 가이드 
+현직이 알려드리는 우리집 방충망 이야기 [18]20:41:42까칠밀애소년콜록™ https://www.ddanzi.com/index.php?mid=free&statusList=HOT%2CHOTBEST%2CHOTAC%2CHOTBESTAC&document_srl=733146172
+
+
+220419 화 푸른숲도서관 0950
+20 Ways to Connect with an Audience for Lasting Influence 지속적인 영향력을 위해 청중과 소통하는 20가지 방법
+17 Anti-Procrastination Hacks Book Summary - Limited Time Offer 17가지 미루기 방지 해킹 도서 요약 - 기간 한정 제공
+The Essentials of IT Management - 2022 Kit IT 관리의 필수 요소 - 2022 키트 - 다운로드 안됨
+The Complete Guide to Maximizing Your Productivity 생산성 극대화를 위한 완벽한 가이드
+wiki.js 에서 git clone git@bitbucket.org:yosjeon/proen-wikijs.git 로 자동백업하는 방법을 찾지 못했음.
+
+220418 월 진접도서관 0950
+화산논검 15:38:01 나사가 의외로 이런 저런 자료가 공개된게 엄청 많지유.. https://eyes.nasa.gov/
+지구와 태양계, 우주와 우주선을 탐험하는 나사의 눈 사이트 https://eyes.nasa.gov/
+
+지방선거 관련 사이트를 하나 만들었습니다.2022-04-18 23:40 Kormad 조회 55 추천4 비추천0 https://2022.minjuplus.net/
+
+
+김밥천국 냉국수 [30]20:54:20갱생청년조회 4492 추천38 비추천-2
+
+지금 사는 동네에 이사온지 1년이 되어간다.
+
+시장이 가까워서 맛집이 꽤 있는편이지만
+1년동안 단골이라 할만큼 자주가는 음식점은 없다.
+
+드문드문 여러집을 전전한다.
+
+하루는 버스에 내리자마자 배가 하도 고파서
+정류장 근처에 보이는 김밥천국으로
+들어갔다.
+
+그녀를 사랑해서가 아니라
+누군가를 사랑하고 싶을때
+그녀가 거기에 있었을뿐인 이유와
+같은 이유 정도?
+
+낡은 가게엔 손님은 하나도 없고
+배달음식만 포장하고 있었다.
+
+특별히 맛나 보이진 않지만 이것저것 메뉴만
+쓸데 없이 많아보이는 인상을 받았는데
+그렇게 땡기는게 없어서
+그냥 국수를 시키기로 했다.
+
+좀 더운날이라 시원한 열무국수를 시키려 했으나
+아직 철이 아니라고 해서
+냉국수를 시켰다.
+
+220418-205420갱생청년-김밥천국 냉국수.jpg 20220416_172314.jpg
+
+뭐 특별하게 보이는 국수는 아니었으나
+면이 적당히 잘 삶힌거 같고
+김치가 적당히 맛이 들어서 먹다보니
+국물까지 다비웠다.
+
+그뒤로도 틈만나면 가서 저 국수를 먹었다.
+
+대부분 국물까지 다비우는데
+식당 아줌마가 몇번 찾아가니
+국물까지 다 비운다는 걸 알고
+자기 음식 잘 먹어줘서 그랬는지
+나중엔 면을 조금더 넣어주시는거  같다.
+
+이사온뒤 1년동안 관심없다가
+그냥 배고파서 들어간 김밥천국에서
+평범해 보이는 냉국수가 너무 맛있어서
+그걸 먹으러 김밥천국의 단골이 될 줄은
+몰랐다.
+
+이집 냉국수만 특별히 내입맛에 맞는건지
+김밥천국 프렌차이즈마다 맛이 비슷한지
+알 수 없지만 다른 웬만한 국수집보다는
+내입맛에 맞았다.
+
+사람 관계도 그런거 같다.
+첫인상이 강렬하다고 해서
+꼭 오래 관계유지되는 것도 아니고,
+처음에 관심 없다가도
+나만 알 수 있는 그 사람 매력을 뒤늦게
+발견해서 오래 잘 지낼 수도 있다.
+
+ 저 김밥친국 냉국수가  그런 케이스다.
+
+ 앞으로 더 더워질테니 저기 갈 일 많을거 같다.
+
+220417 일 jhn11-15금강로1281쿠팡남양주1캠프행, 현대병원옆 조개칼국수2 명동칼국수1, 명입
+https://malzero.xyz/ mzk 악성코드 애드웨어 제거
+https://teus.me/556?category=402265  -> 구라제거기
+저런 프로그램들 써야 하는 경우, 작업 관리자 > 시작프로그램에서 '사용 안 함'으로만 바꿔주셔도 좋습니다. 그러면 사용할 때만 켜지거든요.
+미국에서 625 참전용사 만난 스벅 알바 눈나 jpg ㄷㄷㄷ [1]2022-04-16 23:40왁싱김어준❤️ https://www.youtube.com/watch?v=gB1Tso9mZvQ
+어느 스타벅스 알바생이 보여준 감동적인 행동 l 할아버지, 저희를 위해 싸워주셔서 정말 감사드려요 조회수 109,530회 2022. 4. 17. Peachy 피치 https://www.youtube.com/watch?v=uzSP6k7KGSQ
+무료 쉬운 게임 개발 강의 - 3시간만에 개발, 출시, 수익화까지 완성 조회수 1,297,744회2022. 1. 23. 조코딩 JoCoding 구독자 41.3만명 https://www.youtube.com/watch?v=EqoU1PodQQ4
+
+
+220416 토 맥도날드행
+공부를 하려면 꼭 알고 있어야 할 학습의 원리 | 한근태(작가) | 강연 | 먼데이스테이지 2022. 1. 21. https://www.youtube.com/watch?v=zFue3qwv-PA
+한근태 고수의 학습법
+Flutter Course for Beginners – 37-hour Cross Platform App Development Tutorial 조회수 442,420회 https://www.youtube.com/watch?v=VPvVD8t02U8
+
+
+
+220412 화 푸른숲도서관 0910
+맨프리트 싱 3.9K 팔로워 2021년 5월 19일 5분 읽기 프로그래머로서 수동 소득을 만드는 최고의 방법 https://preettheman.medium.com/top-ways-to-make-passive-income-as-a-programmer-b59e0baa97bd
+비트코인 채굴은 어떻게 작동합니까? How Does Bitcoin Mining Work? By EUNY HONG Updated March 14, 2022 Reviewed by JEFREDA R. BROWN Fact checked by KIRSTEN ROHRS SCHMITT https://www.investopedia.com/tech/how-does-bitcoin-mining-work/
+Remix 웹 프레임워크 https://preettheman.medium.com/build-better-websites-with-this-web-framework-1be713c554b1
+https://remix.run/docs/en/v1/tutorials/blog#quickstart
+
+Docker로 WordPress를 설치하는 방법 잔느 루오스테마 https://upcloud.com/community/tutorials/wordpress-with-docker/
+Packt 5개의 프로젝트를 빌드하여 WordPress 테마를 만드는 방법 배우기 https://subscription.packtpub.com/book/web-development/9781787286641/pref
+이 책은 5가지 다른 프로젝트를 통해 WordPress 테마 개발 프로세스의 첫 번째 단계를 수행하는 데 도움이 될 것입니다.
+Eduonix 학습 솔루션 제공 2017년 12월 458페이지
+
+
+
+
+220411 월 0747
+청년몰 https://youth.jobaba.net/main
+
+220410 일 2249
+Paper Pistol Gun | How to Make a Paper Pistol Gun With Upper Side Magazine That Shoots Paper Bullets 2022. 2. 7. Mad Times https://www.youtube.com/watch?v=CnC_1PX26tk
+한번알면 평생쓰는 30가지 식재료 냉장고 정리법 • 똑똑한 냉장 냉동법 2022. 2. 11. 맘스테이블 Mom's table https://www.youtube.com/watch?v=3VvkGnvsW-8
+Spring Boot React Full Stack | Full Course ✅ 2021. 5. 8. Java Guides https://www.youtube.com/watch?v=XkVpb_8IPUM
+https://blog.naver.com/westerno/222696379588
+
+220408 금 푸른숲도서관 0910
+임가르시아🍖 15:58:10 [ 블루환타 ] 전북 전주시 완산구 전라감영로 48-1 한국식당입니다.
+
+220407 목 0750 푸른숲도서관 1000
+Go vs Rust 언어 미래 전망은? https://open-support.tistory.com/entry/Go-vs-Rust-%EB%AF%B8%EB%9E%98-%EC%A0%84%EB%A7%9D
+한국 러스트 사용자 그룹 https://rust-kr.org
+
+Using Spring Boot with IntelliJ Community Edition Developer Our resident opinionated developer. 02 DEC 2019• 1 MIN READ https://www.developersoapbox.com/using-spring-boot-with-intellij-community-edition/
+명령줄만 사용하는 스프링 부트 개발 2020년 5월 8일• 6 분 읽기 https://www.developersoapbox.com/command-line-only-spring-boot-development-using-vim/
+
+VIM SED AWK
+Mastering Vim https://subscription.packtpub.com/book/application-development/9781789341096/pref
+Learning AWK Programming https://subscription.packtpub.com/book/big-data-and-business-intelligence/9781788391030/pref
+Hands-On Data Science with the Command Line https://subscription.packtpub.com/book/big-data-and-business-intelligence/9781789132984/pref
+RUST
+Rust Quick Start Guide https://subscription.packtpub.com/book/application-development/9781789616705/pref
+Rust Web Programming https://subscription.packtpub.com/book/web_development/9781800560819/pref
+Creative Projects for Rust Programmers https://subscription.packtpub.com/book/programming/9781789346220/pref/preflvl1sec04/to-get-the-most-out-of-this-book
+SPRING
+Microservices with Spring Boot and Spring Cloud - Second Edition https://subscription.packtpub.com/book/web_development/9781801072977/pref
+
+220405 화 푸른숲도서관 0900
+Kotlin Quick Start Guide https://www.packtpub.com/product/kotlin-quick-start-guide/9781789344189
+[Spring Boot] Gradle이란? Gradle 의존성 설정하기 림 림 2020. 10. 6. 01:04 https://limdevbasic.tistory.com/12
+디지털 세상을 만드는 아날로거 Oct 12, 2017 운영 자동화#1 — 빌드 자동화 by Gradle https://medium.com/@goinhacker/%EC%9A%B4%EC%98%81-%EC%9E%90%EB%8F%99%ED%99%94-1-%EB%B9%8C%EB%93%9C-%EC%9E%90%EB%8F%99%ED%99%94-by-gradle-7630c0993d09
+디지털 세상을 만드는 아날로거 May 3, 2018 Spring Boot 2.0 수박 겉 핥기 https://medium.com/@goinhacker/spring-boot-2-0-%EC%88%98%EB%B0%95-%EA%B2%89-%ED%95%A5%EA%B8%B0-9bc1f3800fd4
+
+스프링(Spring), 스프링 부트(Spring Boot)란? 개념 정리 melonicedlatte Jul 11, 2021 http://melonicedlatte.com/2021/07/11/174700.html
+[Spring-boot] 시작하기 전 알아야 할 것들 by bryan.oh 2021. 6. 19. https://hello-bryan.tistory.com/319
+
+how to flutter in vs code https://docs.flutter.dev/development/tools/vs-code
+Spring Boot support in VS Code https://code.visualstudio.com/docs/java/java-spring-boot
+Building Android Java apps using MS VS Code instead of Android Studio Saamer Mansoor 2020년 6월 21일 https://www.linkedin.com/pulse/building-android-apps-using-microsofts-vs-code-instead-saamer-mansoor
+
+
+손에는 회초리가 마음속엔 화염병이 들려져 있습니다. 귀와 코에선 뜨거운 김이 쏟아지고요. 알아서 하시길.
+
+11가지 훌륭한 라즈베리 파이 Pico 프로젝트 데이브 맥퀼링 @daveymaccy 2022년 4월 3일 오전 9시(동부 표준시) | 4분 읽기 https://www.reviewgeek.com/112687/great-raspberry-pi-pico-projects/
+이 Raspberry Pi 기반 데스크 캘린더는 레트로 Mac UI를 모방합니다. 앤드류 하인즈만 @andrew_andrew__ 2022년 4월 2일 오후 2시(동부 표준시) | 1분 읽기 https://www.reviewgeek.com/113917/this-raspberry-pi-powered-desk-calendar-mimics-a-retro-mac-ui/
+
+Flutter Cookbook 읽기 https://subscription.packtpub.com/book/mobile/9781838823382/1
+
+Learn Spring for Android Application Development - Android 애플리케이션 개발을 위한 Spring 배우기 https://subscription.packtpub.com/book/application-development/9781789349252/pref/preflvl1sec02/who-this-book-is-for
+
+1장 , 환경 정보 에서는 서버 측과 클라이언트 측 모두를 위한 환경을 만듭니다. 또한 프로젝트에 필요한 도구 유형을 살펴보겠습니다. 또한 Spring과 Android를 사용하는 플랫폼으로 무엇을 만들 수 있는지 이해할 것입니다.
+
+2장 , Kotlin 개요에서는 Kotlin 의 기본 사항을 다루고 기본 구문 및 유형을 포함하여 Kotlin에 사용할 수 있는 환경과 도구 또는 IDE를 설정하는 방법을 살펴봅니다. if-else명령문, for루프 및 루프 를 포함한 흐름 구조를 볼 수 while있습니다. 또한 Kotlin을 위한 객체 지향 프로그래밍을 살펴보고 클래스, 인터페이스, 객체 등을 다룹니다. 매개변수, 생성자 및 구문과 함께 함수도 다룹니다. 코틀린의 핵심 기능인 
+
+3장 , 스프링 프레임워크의 개요, 스프링 프레임워크 의 기초를 다루고 독자들은 스프링과 빈을 설정하는 방법을 배울 것이다. 이 장에서는 Spring의 아키텍처와 함께 종속성 주입에 대해 설명합니다. 독자들은 가능한 한 빨리 애플리케이션을 개발하는 데 도움이 되는 Spring MVC와 Spring Boot에 대해 배울 것입니다. Spring Data 모듈에 대해서도 설명합니다. 또한 애플리케이션에 대한 인증 및 기타 보안을 제공하는 Spring Security도 다룰 것입니다.
+
+4장 , Android용 Spring 모듈 에서는 Android 프로젝트에 연결된 RestTemplate 및 Retrofit 모듈을 다룹니다. HTTP 클라이언트에 대한 설명이 제공됩니다. JSON 마샬링에 대한 개체도 다룹니다. 환경을 시작하고 설정하는 방법을 배웁니다. 다른 Spring 모듈 및 Maven 종속성 관리의 공통 기능과 함께 RestTemplate 및 Retrofit 모듈(예: POST, , 및 , GET, UPDATE, 및 , )에 대한 HTTP 요청 메소드도 다룹니다.DELETE
+
+5장 , 스프링 시큐리티로 애플리케이션 보호하기, 스프링 시큐리티 에 대한 요구사항을 다룬다. 웹 서버에서 보안 및 인증을 등록하고 구성하는 방법을 배웁니다. 또한 Spring Security의 아키텍처와 이를 클라이언트에 사용하는 방법에 대해서도 배웁니다. Android 애플리케이션용 API 보안에 대한 접근 방식과 보안 흐름이 무엇인지 살펴보겠습니다. REST API와 관련하여 Spring Security를 사용하는 방법을 배웁니다. 기본 인증, OAuth2, 암시적 흐름 및 권한 부여 코드 흐름의 사용에 대해서도 설명합니다. 또한 Android 프로젝트에 연결하고 기본 인증을 사용하는 방법을 배웁니다.
+
+6장 , 데이터베이스 접근하기 , 기존 Spring 데이터 모듈을 다룬다. 또한 JDBC, JPA, H2, Spring용 MySQL 및 Android용 SQLite Room도 다룹니다. 또한 JPA를 사용하여 Spring에서 REST API를 생성하고 API를 가져오고 Android에서 콘텐츠를 처리하는 방법에 대해서도 학습합니다.
+
+7장 , 동시성 , 동시성, 병렬 처리, 스레드 풀과 같은 주제를 포함한 코루틴을 다룹니다. 우리는 또한 순차 연산과 콜백 지옥 에 대해 배울 것입니다.
+
+8장 , 반응형 프로그래밍 , Spring Reactor 및 차단을 포함한 반응형 프로그래밍 관련 주제를 다룹니다. 독자들은 이 장에서 RxJava와 RxAndroid에 대해서도 배울 것입니다.
+
+9장 , 애플리케이션 만들기 , 안드로이드 환경 설치부터 시작한다. 그런 다음 웹 서버에서 Spring을 구성하고 프로젝트 디자인을 만듭니다. 그런 다음 UI, 레이아웃 및 RESTful 웹 서비스를 만들고 API에서 JSON을 검색합니다. 또한 앱에 Spring Boot와 Spring Security를 사용하는 방법도 배웁니다. 그런 다음 기본 인증을 사용하여 데이터를 보호하고 사용자에게 액세스 권한을 부여하는 방법을 배웁니다. Android 앱에 보안 REST API를 사용하고 Android에서 콘텐츠를 처리하는 방법을 알아보겠습니다. 이 응용 프로그램은 Kotlin을 기반으로 하며 이 응용 프로그램에서 null 안전, 리플렉션 및 주석을 포함한 기능과 같은 Kotlin 기능의 기능을 활용할 것입니다.
+
+10장 , 애플리케이션 테스팅 , 스프링 테스팅을 다룬다. 여기에는 단위, 통합 및 UI 테스트와 그 사용이 포함됩니다. JUnit 및 Espresso와 같은 테스트 도구와 함께 프로젝트의 테스트 구조를 알게 됩니다. JUnit 및 JPA에 대한 테스트 사례도 논의됩니다. Android 애플리케이션에 대한 UI 테스트 케이스를 작성하는 방법을 배웁니다. 또한 Android Studio를 통해 이러한 테스트를 실행하는 방법도 배웁니다. 또한 Kotlin에서 Espresso를 사용하여 UI를 테스트하는 방법과 Android 앱에서 Kotlin과 관련하여 사용하는 방법을 배웁니다. 또한 응용 프로그램의 동시성 및 반응 프로그래밍에 대해서도 살펴보겠습니다 .
+
+이제 아시아의 대표는 한국이라는 애플 l 뒤늦게 파친코 내용 알고 단체 충격 먹은 일본인들 상황 l 어떻게 애플이 일본한테 이럴 수 있나… 2022. 4. 5. Peachy 피치 https://www.youtube.com/watch?v=uvOqJkiCy5o
+
+
+220404 월 진접도서관 1020
+DJ채널 구독자 5.76만명 독일언론 "드라마 "파친코" 이 위대한 서사시는 그렇게 나올 수 밖에 없었다."  사과하지 않는 일본의 전쟁 범죄 , 나올 작품이 나온 것 https://www.youtube.com/watch?v=zytIsNkjQLw
+
+하버드 방문한 '파친코' 이민진 작가 한국 학생 한마디에 펑펑 운 이유/ 관객들 모두 숙연해진 상황 2022. 3. 28 재미이슈 https://www.youtube.com/watch?v=AbiccoRW5JM
+
+> 민주당에 미련이 없어진 것이 아니고, 민주당을 아예 갈아엎어야 하겠다는 생각이 듭니다. 물울 쏟아버리고 나서, 줘 담는 시늉을 한다면 초가삼간도 필요가 없구나 여길겁니다. 투표는 안하기만 하면 되는 것이니 어려울 것도 없습니다. 이미 결심이 섰으니, 앞으로의 팔자는 당신들이 정하십시오.
+> 어려운 상황을 국민도 다 알고 있습니다. 그러나 의원님들의 마음먹기에 따라서 모두의 운명이 바뀌니 무거운 책임을 피하려 하지 마시기 바랍니다.
+
+220403 일
+What Is Fedora Linux? https://www.howtogeek.com/782928/what-is-fedora-linux/
+
+2204-022325 쟁점을파하다-대장 항문외과 의사의 충고 
+https://www.ddanzi.com/index.php?mid=free&statusList=HOT%2CHOTBEST%2CHOTAC%2CHOTBESTAC&document_srl=731217279
+도올은,
+집안이 좀 넉넉할자는 몰라도
+자기 전공에 대해서도 사랑이 없는 분입니다.
+마당 쓸다 땅거죽 벗길놈
+
+https://www.ddanzi.com/index.php?mid=free&statusList=HOT%2CHOTBEST%2CHOTAC%2CHOTBESTAC&document_srl=731232857
+지성의허브 08:45:26
+
+힘내세요.
+
+제가 아는 거 조금 알려드리면
+동사무소가서 국민기초생활보장법 수급자 신청 (국기법 수급)하시면
+기본 자산 조사를 해서 대상여부를 확인해요.
+
+수급자격에는 생계급여, 의료급여, 주거급여, 교육급여 가 있어요.
+각 급여마다 기준되는 소득 금액은 달라요.
+(직장을 다니시고 소득 신고 된게 있으면 힘들수 있어요)
+
+대상이 되면 다음에는 근로능력을 판단해요.
+근로능력이 없는 노인, 아동, 장애인은 바로 수급비를 지급하고
+근로능력이 있는 사람들은 국민취업지원제도를 통해 취업 노력을 하면 수급비 + 취업수당을 주거나
+조금 근로능력이 떨어지면 지역자활센터에서 일하게 도와줘요. 여기서 일하면 월 130~140정도 받을 수있어요.
+
+위에서 말한 생계급여는 압류방지 통장으로 만들수 있구요.
+교육 급여를 받으면 아이들 어린이집 무료로 보낼수 있어요.
+의료급여 받으면 의료보험료 안내도 병원비 1500원정도 내고 다닐수 있어요.
+
+희망키움통장이라고 월 10만원 저축하면 생계급여받는 사람은 3년뒤에 1200만원 받을수 있구요.
+유튜브 따복tv 보시면 자세히 알수 있어요.
+
+살다보면 힘든일도 있고, 어려운 일도 행복하고 즐거운 일도 있지요.
+어려운 일만 내탓이라 생각하세마세요.
+힘내세요.
+
+220402 토 진접도서관 1050 똘똘이 다산동행
+
+220401 금 0907 푸른숲도서관 1020
+wordpress 용 도커에서 https 사용하기
+
+출처: https://www.ddanzi.com/index.php?mid=free&statusList=HOT%2CHOTBEST%2CHOTAC%2CHOTBESTAC&page=3&document_srl=731034674
+제목: 작가도 매력적인 파친코 [42]
+게재: 04:28:11
+저자: 쑥과마눌?
+복사: 220401-1129 조회 8926 추천138 비추천0
+
+[이민진 작가 인터뷰] 일본 자이니치의 삶이 고된 이유 조회수 581,782회2021. 3. 12. https://www.youtube.com/watch?v=rMsyZxPcXoA
+원본 https://www.youtube.com/watch?v=gnd_rJDAW78
+
+여론조사꽃
+이 꽃에 많은 벌과 나비들이 몰려들게 하시고
+온갖 꽃가루를 받아들이고 제대로 골라내어
+큰 열매로 이루어지게 하소서.
+
+일상 생활에서 가장 실용적인 5가지 매듭 조회수 11,575,291회2021. 11. 4. https://www.youtube.com/watch?v=m5J4yZ-iqDU
+
+
+
+
+////////////////////////////////
+bbop edit2022 에디터 MVGQHT6HGBvKZYEA3QZZ
+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
+220509월 까지
+git config --global credential-helper ‘cache –timeout=300’ (5분간 통과)
+git config --global --list
+1.	github.com 로그인 후,
+a.	우상단 프로필 사진 클릭 > 설정 Setting 클릭
+b.	좌 사이드바에서 맨 아래 개발자 설정 Developer setting 클릭
+c.	개인 액세스 토큰 Personal access token 클릭
+d.	새 토큰 생성 Generate new token 클릭 > 권한에서 저장소 액세스 repo 선택
+e.	토큰 생성 Generate token
+f.	토큰을 복사한다.
+2.	저장소 repository 복사.
+a.	https://git-scm.com/book/ko/v2/Git-도구-Credential-저장소
+i.	Git - Credential 저장소
+b.	git clone https://proencode@github.com/proencode/run_sh.git
+i.	이때 비밀번호를 물어오면 토큰을 입력한다.
+ii.	위 비번을 저장하기 위해 다음 명령을 실행한다.
+git config --global credential.helper ‘cache –timeout=300’ (5분동안만 비번없이 진행한다)
+git config --global credential.helper cache (cache 만 지정하면 15분동안 비번없이 진행한다)
+git config --global credential.helper store (토큰의 유효기간동안 비번없이 진행한다)
+git config credential.helper store 
+https://git-scm.com/book/ko/v2/Git-%EB%8F%84%EA%B5%AC-Credential-%EC%A0%80%EC%9E%A5%EC%86%8C
+<><><><>
+프로엔코드 설명할것 프로엔2021년도준비물
+github.com ; bitbucket.org 도 비밀번호관리를 별도로 해야 된다.
+////////////////////////////////
+Flutter Cookbook 읽기 https://subscription.packtpub.com/book/mobile/9781838823382/1
+Learn Spring for Android Application Development - Android 애플리케이션 개발을 위한 Spring 배우기 https://subscription.packtpub.com/book/application-development/9781789349252/pref/preflvl1sec02/who-this-book-is-for
+Dart https://subscription.packtpub.com/book/mobile/9781838823382/2
+Micronaut®로 마이크로서비스 구축 https://subscription.packtpub.com/book/web_development/9781800564237/2
+
+git clone https://github.com/proencode/run_sh.git
+[packtpub]  Flutter Cookbook
+Introduction to Widgets https://subscription.packtpub.com/book/mobile/9781838823382/3
+Flutter for Beginners 현재: https://subscription.packtpub.com/book/mobile/9781800565999/7
+문서 및 학습 리소스 https://codelabs.developers.google.com/?cat=Flutter
+<><><><>
+ebook 읽던곳
+////////////////////////////////
+
+
+
+
+
+////////////////////////////////
+<><><><>
+////////////////////////////////
+
+
