@@ -269,7 +269,7 @@ Dart (프로그래밍 언어) 간단하게 정리함 https://www.newiki.net/wiki
 
 ////////////////////////////////
 bbop edit2022 에디터 MVGQHT6HGBvKZYEA3QZZ
-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
+========== ghp 비번때문에 오류 나므로 삭제함
 220509월 까지
 git config --global credential-helper ‘cache –timeout=300’ (5분간 통과)
 git config --global --list

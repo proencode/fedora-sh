@@ -758,7 +758,7 @@ TBS https://www.youtube.com/c/seoultbstv
 ////////////////////////////////
 bbop edit2022 에디터 MVGQHT6HGBvKZYEA3QZZ
 git config --global credential.helper store #-- 토큰의 유효기간동안 비번없이 진행한다.
-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
+========== ghp 비번때문에 오류 나므로 삭제함
 220509월 까지
 git config --global credential-helper ‘cache –timeout=300’ (5분간 통과)
 git config --global --list

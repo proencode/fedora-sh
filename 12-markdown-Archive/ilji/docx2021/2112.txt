@@ -1,4 +1,4 @@
-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
+==비번 삭제함==
 프로엔코드 설명할것 프로엔2021년도준비물
 git clone https://github.com/proencode/run_sh.git
 
@@ -632,7 +632,7 @@ v.	누구나 쉽게 디자인 할수있는 법 https://news.mangoboard.net/news/
 
 
 211202 목 0910 진접도서관
-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
+==비번 삭제함==
 프로엔코드 설명할것 프로엔2021년도준비물
 git clone https://github.com/proencode/run-sh.git
 GitHub CLI 설치 https://blog.outsider.ne.kr/1498

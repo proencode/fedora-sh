@@ -375,7 +375,7 @@ wordpress 용 도커에서 https 사용하기
 
 ////////////////////////////////
 bbop edit2022 에디터 MVGQHT6HGBvKZYEA3QZZ
-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
+========== ghp 비번때문에 오류 나므로 삭제함
 220509월 까지
 git config --global credential-helper ‘cache –timeout=300’ (5분간 통과)
 git config --global --list

@@ -1,6 +1,7 @@
 2022-08 일지 > https://docs.google.com/document/d/1Hw0KNBu3YrNckfELNHD69xZNRZMgmt-JtFnAZt4tdbY/edit
 2022-07 일지 > https://docs.google.com/document/d/1tlMFI-hVBjbxbtAzCBr8fWjZblI9V4p8-rCYR-raO94/edit
-git config --global user.password ‘ghp_oqmCyGaHfr0ztUEO4n6AD525xgWGpU02B’ #--깃헙육ㅠㅠ신공
+git config --global user.password ‘’ #--깃헙육ㅠㅠ신공
+========== ghp 비번때문에 오류 나므로 삭제함
 git config --global user.name "${USER} at $(uname -n)" ; git config --global user.email "yosjeon@gmail.com"
 git config --global alias.ll "log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%
 Creset' --abbrev-commit" # ----> 한줄로 로그보기
@@ -509,7 +510,7 @@ git config --global user.password ‘복사한 토큰’
 ```
 8. git pull 로 테스트
 
-깃헙 ghp_oqmCyGaHfr0ztUEO4n6AD525xgWGpU02B 육ㅠㅠ
+========== ghp 비번때문에 오류 나므로 삭제함
 
 220817 수
 1000 푸른숲도서관
@@ -1151,6 +1152,6 @@ xerox lab > 레이저 프린터, vlsi, 마우스, 이더넷, gui, wysiwyg, oop, 
 
 bbop edit2022 에디터 MVGQHT6HGBvKZYEA3QZZ
 git config --global credential.helper store #-- 토큰의 유효기간동안 비번없이 진행한다.
-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
+========== ghp 비번때문에 오류 나므로 삭제함
 //qq//
 
