@@ -94,3 +94,11 @@ cat <<__EOF__
 #-- ssh -p svrPORT userID@svrURL rclone lsl cloudDRV:cloudDIR/ --include "${keeps_name}*"
 __EOF__
 ssh -p ${svrPORT} ${userID}@${svrURL} rclone lsl ${cloudDRV}:${cloudDIR}/ --include "${keeps_name}*.${keeps_ext}"
+
+cat <<__EOF__
+
+${logmemo}
+$(ls -l ${keepsNameExt})
+__EOF__
+
+rsync -avzr -e "ssh -p ${svrPORT}" ls -l ${userID}@${svrURL}:${svrDIR}/ ${keepsNameExt}
