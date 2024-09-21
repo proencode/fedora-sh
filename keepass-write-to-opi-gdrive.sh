@@ -25,15 +25,6 @@ cat <<__EOF__
 ${logmemo}
 $(ls -l ${keepsNameExt})
 
-#-- keepass 파일의 공유 항목에 수정메모를 입력하고,
-#-- 수정메모를 복사해서 google keep 에도 붙인다.
-#-- press Enter:
-#--              --
-__EOF__
-read a
-
-cat <<__EOF__
-#--
 #-- ${keepsNameExt} COPYTO userID@svrURL:${svrDIR} AND GDrive
 #-- (1) INPUT: port no (서버 포트번호 입력시 숫자 표시 안됨)
 #--            ----
@@ -41,6 +32,7 @@ __EOF__
 read -s svrPORT #-- 호스트 접속시 포트번호, '-s' 타이핑하는 글자를 안보여준다.
 
 cat <<__EOF__
+
 #-- (2) INPUT: 서버 디렉토리 [ ${svrDIR} ]
 #--            -------------
 __EOF__
@@ -53,52 +45,71 @@ svrDIR=$(echo "$svrDIR" | perl -pe 's/\/+$//') #-- 마지막에 있는 '/' 는 �
 keepsName_Date_Ext=${keeps_name}-$(date +%y%m%d-%H%M).${keeps_ext}
 
 cat <<__EOF__
-#--> ${svrDIR}
+
 #-- (3) 서버의 keepass 파일을 backup/ 으로 이동
 #-- ssh -p svrPORT userID@svrURL mv ./${svrDIR}/${keepsNameExt} ./${svrDIR}/backup/${keepsName_Date_Ext}
 __EOF__
 ssh -p ${svrPORT} ${userID}@${svrURL} mv ./${svrDIR}/${keepsNameExt} ./${svrDIR}/backup/${keepsName_Date_Ext}
 
 cat <<__EOF__
+
 #-- (4) 서버로 복사
 #-- rsync -avzr -e \"ssh -p svrPORT\" ${keepsNameExt} userID@svrURL:${svrDIR}/
 __EOF__
 rsync -avzr -e "ssh -p ${svrPORT}" ${keepsNameExt} ${userID}@${svrURL}:${svrDIR}/
 
 cat <<__EOF__
+
 #-- (5) 복사후 서버의 파일
 #-- ssh -p svrPORT userID@svrURL ls -l ./${svrDIR}/${keepsNameExt} ./${svrDIR}/backup/${keeps_name}*.${keeps_ext}
 __EOF__
 ssh -p ${svrPORT} ${userID}@${svrURL} ls -l ./${svrDIR}/${keepsNameExt} ./${svrDIR}/backup/${keeps_name}*.${keeps_ext}
 
 cat <<__EOF__
+
 #-- (6) 백업하기 전의 클라우드 파일
 #-- ssh -p svrPORT userID@svrURL rclone lsl cloudDRV:cloudDIR/ --include \"${keeps_name}*.${keeps_ext}\"
 __EOF__
 ssh -p ${svrPORT} ${userID}@${svrURL} rclone lsl ${cloudDRV}:${cloudDIR}/ --include "${keeps_name}*.${keeps_ext}"
 
 cat <<__EOF__
+
 #-- (7) 클라우드 파일 이름바꾸기
 #-- ssh -p svrPORT userID@svrURL rclone moveto cloudDRV:cloudDIR/${keepsNameExt} cloudDRV:cloudDIR/backup/${keepsName_Date_Ext}
 __EOF__
 ssh -p ${svrPORT} ${userID}@${svrURL} rclone moveto ${cloudDRV}:${cloudDIR}/${keepsNameExt} ${cloudDRV}:${cloudDIR}/backup/${keepsName_Date_Ext}
 
 cat <<__EOF__
+
 #-- (8) 클라우드로 복사
 #-- ssh -p svrPORT userID@svrURL rclone copy ./svrDIR/${keepsNameExt} cloudDRV:cloudDIR/
 __EOF__
 ssh -p ${svrPORT} ${userID}@${svrURL} rclone copy ./${svrDIR}/${keepsNameExt} ${cloudDRV}:${cloudDIR}/
 
 cat <<__EOF__
+
 #-- (9) 백업 완료후 클라우드의 파일
 #-- ssh -p svrPORT userID@svrURL rclone lsl cloudDRV:cloudDIR/ --include "${keeps_name}*"
 __EOF__
 ssh -p ${svrPORT} ${userID}@${svrURL} rclone lsl ${cloudDRV}:${cloudDIR}/ --include "${keeps_name}*.${keeps_ext}"
 
-cat <<__EOF__
-
+log_keepass=log_keepass-$(date +%y%m%d-%H%M).txt
+cat > ${log_keepass} <<__EOF__
+keepassXC 현대공 ~/git-projects/fedora-sh/keepass-write-to-opi-gdrive.sh
 ${logmemo}
 $(ls -l ${keepsNameExt})
+$(ssh -p ${svrPORT} ${userID}@${svrURL} ls -l ${svrDIR}/${keeps_name}*.${keeps_ext})
+$(ssh -p ${svrPORT} ${userID}@${svrURL} rclone lsl ${cloudDRV}:${cloudDIR}/ --include "${keeps_name}*.${keeps_ext}")
 __EOF__
 
-rsync -avzr -e "ssh -p ${svrPORT}" ls -l ${userID}@${svrURL}:${svrDIR}/ ${keepsNameExt}
+cat <<__EOF__
+#----
+#---- (10) cat ${log_keepass}
+#----
+__EOF__
+cat ${log_keepass}
+cat <<__EOF__
+#====
+#==== (10) cat ${log_keepass}
+#====
+__EOF__
