@@ -4,6 +4,15 @@ keeps_name="keepassproen" #-- keepass 파일의 이름만
 keeps_ext="kdbx" #-- 확장자
 keepsNameExt="${keeps_name}.${keeps_ext}" #-- keepass 파일명 전체
 
+if [ ! -f ${keepsNameExt} ]; then
+cat <<__EOF__
+#--
+#-- !!! ${keepsNameExt} 파일이 있는곳에서 실행해야 한다. !!!
+#--
+__EOF__
+	exit -1
+fi
+
 userID="orangepi" #-- 호스트의 사용자
 svrURL="proen.duckdns.org" #-- 호스트 URL
 svrDIR="archive/keepass" #-- 파일을 저장하는 디렉토리
@@ -12,7 +21,7 @@ cloudDRV="yosjgc" #-- 클라우드 드라이브
 cloudDIR="keepass" #-- 파일을 저장하는 디렉토리
 
 cat <<__EOF__
-#-- !!! ${keepsNameExt} 파일이 있는곳에서 실행해야 한다. !!!
+#--
 #-- INPUT: 수정메모
 #--        --------
 __EOF__
@@ -45,11 +54,12 @@ svrDIR=$(echo "$svrDIR" | perl -pe 's/\/+$//') #-- 마지막에 있는 '/' 는 �
 keepsName_Date_Ext=${keeps_name}-$(date +%y%m%d-%H%M).${keeps_ext}
 
 cat <<__EOF__
-
-#-- (3) 서버의 keepass 파일을 backup/ 으로 이동
+#-- (3) keepass 파일을 backup/ 으로 서버이동 및 로컬복사
 #-- ssh -p svrPORT userID@svrURL mv ./${svrDIR}/${keepsNameExt} ./${svrDIR}/backup/${keepsName_Date_Ext}
 __EOF__
 ssh -p ${svrPORT} ${userID}@${svrURL} mv ./${svrDIR}/${keepsNameExt} ./${svrDIR}/backup/${keepsName_Date_Ext}
+echo "#-- rsync -avzr ${keepsNameExt} backup/${keepsName_Date_Ext}"
+rsync -avzr ${keepsNameExt} backup/${keepsName_Date_Ext}
 
 cat <<__EOF__
 
@@ -98,6 +108,7 @@ cat > ${log_keepass} <<__EOF__
 keepassXC 현대공 ~/git-projects/fedora-sh/keepass-write-to-opi-gdrive.sh
 ${logmemo}
 $(ls -l ${keepsNameExt})
+$(ls -l backup/${keepsName_Date_Ext})
 $(ssh -p ${svrPORT} ${userID}@${svrURL} ls -l ${svrDIR}/${keeps_name}*.${keeps_ext})
 $(ssh -p ${svrPORT} ${userID}@${svrURL} rclone lsl ${cloudDRV}:${cloudDIR}/ --include "${keeps_name}*.${keeps_ext}")
 __EOF__
