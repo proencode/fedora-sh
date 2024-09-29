@@ -44,22 +44,24 @@ cmdTTbegin () {
 cmdTTend () {
 	echo "${cBlue}<---- ${cMagenta}$1${cReset}"
 }
-freesound_dir="${HOME}/bin/freesound"
+
+wavbox=(NONE play-1-pbong.wav play-2-castanets.wav play-3-ddenng.wav play-4-tiiill.wav play-5-gguuuung.wav play-6-ddeeeng.wav)
+wavhan=(0=none 1=딩~ 2=캐스터네츠~ 3=뗑- 4=띠일~ 5=데에엥~~ 6=교회_뎅-)
+bin_fs="${HOME}/bin/freesound"
+#-- play -q ${bin_fs}/${wavbox[ 1 ]} & #-- 1=딩~
+#-- play -q ${bin_fs}/${wavbox[ 2 ]} & #-- 2=캐스터네츠~
+#-- play -q ${bin_fs}/${wavbox[ 3 ]} & #-- 3=뗑-
+#-- play -q ${bin_fs}/${wavbox[ 4 ]} & #-- 4=띠일~
+#-- play -q ${bin_fs}/${wavbox[ 5 ]} & #-- 5=데에엥~~
+#-- play -q ${bin_fs}/${wavbox[ 6 ]} & #-- 6=교회_뎅-
+
+# PLAY_OK="ok" #-- 인 경우만 사용할수 있다.
 ding_play () {
-	if [ "x$PLAY_OK" = "xok" ]; then #-- play 설치가 된 경우,
-		if [ "x$1" = "x1" ]; then play -q ${freesound_dir}/play-1-pbong.wav & #-- 91926__tim-kahn__ding.wav & #---- x1=딩~
-		else if [ "x$1" = "x2" ]; then play -q ${freesound_dir}/play-2-castanets.wav & #-- 411459__inspectorj__castanets-multi-a-h1.wav & #---- x2=캐스터네츠~
-		else if [ "x$1" = "x3" ]; then play -q ${freesound_dir}/play-3-ddenng.wav & #-- 339816__inspectorj__hand-bells-f-single.wav & #---- x3=뗅-
-		else if [ "x$1" = "x4" ]; then play -q ${freesound_dir}/play-4-tiiill.wav & #-- 212541__misstickle__indian-bell-chime.wav & #---- x4=띠일~
-		else if [ "x$1" = "x5" ]; then play -q ${freesound_dir}/play-5-gguuuung.wav & #-- 411090__inspectorj__wind-chime-gamelan-gong-a.wav & #---- x5=데에엥~~
-		else play -q ${freesound_dir}/play-6-ddeeeng.wav & #-- 513865__wormletter__chime-c.wav & #---- x6=교회 뎅-
-		fi ; fi ; fi ; fi ; fi
-	else
-		echo "${cRed}~~~ play-${1} ~~~${cReset}"
-	fi
+	ding_val=$1
+	if [[ "x${ding_val}" < "x1" || "x${ding_val}" > "x6" ]]; then ding_val="4" ; fi
+	play -q ${bin_fs}/${wavbox[$ding_val]} &
+	echo "${cRed}~~~ play-${1} ~~~${cReset}"
 }
-# ding_play 1 #-- 1=딩~ 2=캐스터네츠~ 3=뗅- 4=띠일~ 5=데에엥~~ 6=교회 뎅-
-# $PLAY_OK="ok" #-- 인 경우만 사용할수 있다.
 
 change_special_char () {
 	#-- " str_01 " == 빈칸을 밑줄로.
