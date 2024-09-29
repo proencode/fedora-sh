@@ -28,12 +28,27 @@ __EOF__
 read logmsg
 
 logmemo=$(date +%y%m%d%a-%H%M" ${logmsg}") #-- 날짜 + 수정메모
+log_keepass=log_keepass-$(date +%y%m%d-%H%M).txt
+cat > ${log_keepass} <<__EOF__
+${logmemo}
+$(ls -l ${keepsNameExt})
+keepassXC 현대공 ~/git-projects/fedora-sh/keepass-write-to-opi-gdrive.sh
+__EOF__
+
 cat <<__EOF__
 #----------
 
 ${logmemo}
 $(ls -l ${keepsNameExt})
+keepassXC 현대공 ~/git-projects/fedora-sh/keepass-write-to-opi-gdrive.sh
 
+#----------
+위 내용을 keepass.kdbx 에 저장한 뒤에 진행한다.
+#-- press Enter:
+__EOF__
+read a
+
+cat <<__EOF__
 #-- ${keepsNameExt} COPYTO userID@svrURL:${svrDIR} AND GDrive
 #-- (1) INPUT: port no (서버 포트번호 입력시 숫자 표시 안됨)
 #--            ----
@@ -103,10 +118,7 @@ cat <<__EOF__
 __EOF__
 ssh -p ${svrPORT} ${userID}@${svrURL} rclone lsl ${cloudDRV}:${cloudDIR}/ --include "${keeps_name}*.${keeps_ext}"
 
-log_keepass=log_keepass-$(date +%y%m%d-%H%M).txt
-cat > ${log_keepass} <<__EOF__
-keepassXC 현대공 ~/git-projects/fedora-sh/keepass-write-to-opi-gdrive.sh
-${logmemo}
+cat >> ${log_keepass} <<__EOF__
 $(ls -l ${keepsNameExt})
 $(ls -l backup/${keepsName_Date_Ext})
 $(ssh -p ${svrPORT} ${userID}@${svrURL} ls -l ${svrDIR}/${keeps_name}*.${keeps_ext})

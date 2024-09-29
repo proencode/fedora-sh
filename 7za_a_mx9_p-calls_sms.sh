@@ -23,10 +23,12 @@ done
 cmdrun "ls -hl --color *xml*"
 
 cmdrun "rclone copy ./ --include \"[cs]*7z\" yosjgc:calls_sms/"
-cmdrun "rclone lsl yosjgc:calls_sms/ --include \"[cs]*xml*\" ."
+cmdrun "rclone lsl yosjgc:calls_sms/ --include \"[cs]*xml*\""
 
 call <<__EOF__
 
-#  rclone delete yosjgc:calls_sms/ --include "[cs]*xml"
+#  rclone delete yosjgc:calls_sms/ --include "[cs]*xml" | sort -k4
+#
+#  rclone delete yosjgc:calls_sms/ | sort -k4
 
 __EOF__
