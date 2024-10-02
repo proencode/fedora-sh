@@ -30,7 +30,7 @@ do
 	fi
 done
 cat <<__EOF__
-${cBlue}#${cYellow}  git config --global user.password " ATBBn9e5ZGpH6qk8yNbXfMUfeGe49D6AB2 " #-- bbop대아투코드네임${cReset}
-#-- 240703-- ${cBlue}#${cYellow}  git config --global user.password " ghp_f4aSIiWBEQwqUrsZpNZH1hbUO3jbyc1St "#-- 마이쓰리띠스케줄러 expires on Wed, Jun 26 2024. https://github.com/settings/tokens  ${cReset}
-${cBlue}#${cYellow}  git config --global user.password " ghp_lP3kmyutZbdrCXVN6ks4KRGWzC65id39j "#-- 오로지쩨이씨 xxx마이쓰리띠스케줄러 expires on Wed, Jun 26 2024. https://github.com/settings/tokens  ${cReset}
+${cYellow}#-- ${cBlue} ghp_kcuCfFsh9O3f1mTcTlNVtlp6IN3Qbe1JK https://github.com/settings/tokens
+A치큰5대2 241002석달용 — repo Expires on Tue, Dec 31 2024.
+${cReset}
 __EOF__
