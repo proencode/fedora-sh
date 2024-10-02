@@ -37,19 +37,16 @@ keepassXC 현대공 ~/git-projects/fedora-sh/keepass-write-to-opi-gdrive.sh
 __EOF__
 
 cat <<__EOF__
-#----------
 #--
 $(cat ${log_keepass})
 #--
 #----------
-위 내용을 keepass.kdbx 에 저장한 뒤에 진행한다.
+위 내용을 keepass.kdbx 에 저장한 뒤에 진행해야 합니다.
 #-- press Enter:
 __EOF__
 read a
 
 cat <<__EOF__
-
-=======
 #--
 #-- ${keepsNameExt} COPYTO userID@svrURL:${svrDIR} AND GDrive
 #--
@@ -88,6 +85,7 @@ __EOF__
 rsync -avzr -e "ssh -p ${svrPORT}" ${keepsNameExt} ${userID}@${svrURL}:${svrDIR}/
 
 cat <<__EOF__
+#--
 #-- (6) 백업하기 전의 클라우드 파일
 #-- ssh -p svrPORT userID@svrURL rclone lsl cloudDRV:cloudDIR/ --include \"${keeps_name}*.${keeps_ext}\"
 __EOF__
@@ -97,7 +95,6 @@ cat <<__EOF__
 #--
 #-- (7) 클라우드 파일 이름바꾸기
 #-- ssh -p svrPORT userID@svrURL rclone moveto cloudDRV:cloudDIR/${keepsNameExt} cloudDRV:cloudDIR/backup/${keepsName_Date_Ext}
-ssh -p ${svrPORT} ${userID}@${svrURL} rclone moveto ${cloudDRV}:${cloudDIR}/${keepsNameExt} ${cloudDRV}:${cloudDIR}/backup/${keepsName_Date_Ext}
 __EOF__
 ssh -p ${svrPORT} ${userID}@${svrURL} rclone moveto ${cloudDRV}:${cloudDIR}/${keepsNameExt} ${cloudDRV}:${cloudDIR}/backup/${keepsName_Date_Ext}
 
@@ -115,6 +112,10 @@ cat <<__EOF__
 __EOF__
 ssh -p ${svrPORT} ${userID}@${svrURL} rclone lsl ${cloudDRV}:${cloudDIR}/ --include "${keeps_name}*.${keeps_ext}"
 
+cat <<__EOF__
+#--
+#-- (10) 로컬의 파일과 server 파일, cloud 파일을 확인하기 위해, 원격 서버에 로그인을 두번 실행합니다.
+__EOF__
 cat >> ${log_keepass} <<__EOF__
 =======
 #-- 최종 파일
@@ -129,12 +130,12 @@ __EOF__
 
 cat <<__EOF__
 #----
-#---- (10) cat ${log_keepass}
+#---- (11) cat ${log_keepass}
 #----
 __EOF__
 cat ${log_keepass}
 cat <<__EOF__
 #====
-#==== (10) cat ${log_keepass}
+#==== (11) cat ${log_keepass}
 #====
 __EOF__
