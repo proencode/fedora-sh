@@ -11,5 +11,5 @@ fi
 #--f=$(echo "$f" | sed 's/ /\\ /g')
 echo "${ccc}--- ${bbb}$f ${ccc}---${xxx}"
 
-ls -l | grep "${f}"; a="0"; b=$(ls -l | grep "${f}" | awk '{print $5}'); for i in $b; do a="$a+$i"; done ; v=$(echo $a | bc); printf "${yyy}%'.f${xxx}\n" $v
+ls -l | grep --color "${f}"; a="0"; b=$(ls -l | grep --color "${f}" | awk '{print $5}'); for i in $b; do a="$a+$i"; done ; v=$(echo $a | bc); printf "${yyy}%'.f${xxx}\n" $v
 #-- printf "%'.2f\n" $v #-- 소숫점이하 포함.

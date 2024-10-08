@@ -7,6 +7,22 @@ cmdrun () {
 	echo "${bbb}# <.... $1 #-- $2${xxx}"
 }
 
+git_dir="${HOME}/git-projects/fedora-sh"
+pg_name=$(echo $0)
+if [ ! -f ${git_dir}/${pg_name} ]; then
+	echo "!!!! ${git_dir}/${pg_name} 파일이 없습니다."
+	exit -1
+fi
+
+if [ "x$(diff ${pg_name} ${git_dir}/${pg_name})" != "x" ]; then
+	cat <<__EOF__
+!!!! 파일이 다릅니다.
+\$(diff ${pg_name} ${git_dir}/${pg_name})
+$(diff ${pg_name} ${git_dir}/${pg_name})
+__EOF__
+fi
+read a
+
 wavbox=(NONE play-1-pbong.wav play-2-castanets.wav play-3-ddenng.wav play-4-tiiill.wav play-5-gguuuung.wav play-6-ddeeeng.wav)
 wavhan=(0=none 1=딩~ 2=캐스터네츠~ 3=뗅- 4=띠일~ 5=데에엥~~ 6=교회_뎅-)
 bin_fs="${HOME}/bin/freesound"
