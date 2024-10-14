@@ -1,0 +1,27 @@
+git-projects $ ls -al
+합계 0
+drwxrwxr-x  1 yos yos  592 10월 15일  07:40 .
+drwxr-xr-x. 1 yos yos 3694 10월 15일  07:36 ..
+drwxrwxr-x  1 yos yos 1460  9월 29일  21:42 1-bin-scripts
+drwxr-xr-x  1 yos yos  214 2023년  3월 29일 TasksApp-Api
+drwxr-xr-x  1 yos yos  226 2023년  3월 29일 TasksApp-Flutter
+drwxr-xr-x  1 yos yos 3502 10월 15일  07:36 fedora-sh
+drwxr-xr-x  1 yos yos  234  5월 18일  11:12 gate242
+drwxrwxr-x  1 yos yos  154  9월 24일  16:58 gilbut-길벗-2408-파이썬_업무자동화-080363
+drwxrwxr-x  1 yos yos  290 10월 15일  07:29 git-projects
+drwx------  1 yos yos    0 10월 15일  07:38 img
+drwxrwxr-x  1 yos yos  116 10월 14일  17:33 invertColorsChromeExtension
+drwxrwxr-x  1 yos yos  372 2022년  8월 24일 kaosorder
+drwxrwxr-x  1 yos yos  236 2022년  1월 23일 ksam245
+drwxr-xr-x  1 yos yos  238 2023년  2월  1일 ktor-api-CRUD-RestAPI-14star
+drwx------  1 yos yos    0 10월 15일  07:38 manning
+drwxrwxr-x  1 yos yos  210  9월 27일  11:47 medium-family-expense-tracker
+drwxrwxr-x  1 yos yos  366  7월  9일  16:53 packt_Django-5-By-Example
+drwx------  1 yos yos    0 10월 15일  07:38 pdf
+drwx------  1 yos yos    0 10월 15일  07:38 python-proj
+drwxrwxr-x  1 yos yos  908 2023년  1월 15일 run_sh
+drwxrwxr-x  1 yos yos  450 2023년  1월 15일 ubuntu-sh
+drwxrwxr-x  1 yos yos  452 10월  6일  16:25 zstd
+drwx------  1 yos yos    0 10월 15일  07:38 zz00logs
+07:41:03화241015 yos@yscart ~/git-projects
+
