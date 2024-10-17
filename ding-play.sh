@@ -7,7 +7,7 @@
 #-- play -q ${bin_fs}/411090__inspectorj__wind-chime-gamelan-gong-a.wav & #-- 4.2M 데에엥~~
 #-- play -q ${bin_fs}/513865__wormletter__chime-c.wav & #-- 1.7M 교회 뎅-
 
-wavbox=(NONE play-1-pbong.wav play-2-castanets.wav play-3-ddenng.wav play-4-tiiill.wav play-5-gguuuung.wav play-6-ddeeeng.wav)
+wavbox=(NONE play-1-pbong.wav play-2-castanets.wav play-3-ddenng.wav play-4-tiiill.wav play-5-gguuuung.wav play-6-ddeeeng.wav) #-- play -q ${bin_fs}/${wavbox[$ding_val]} &
 wavhan=(0=none 1=딩~ 2=캐스터네츠~ 3=뗑- 4=띠일~ 5=데에엥~~ 6=교회_뎅-)
 bin_fs="${HOME}/bin/freesound"
 #-- play -q ${bin_fs}/${wavbox[ 1 ]} & #-- 1=딩~
