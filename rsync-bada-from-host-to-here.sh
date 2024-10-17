@@ -30,30 +30,31 @@ svrUSER=${read_s}
 cmdreada_s "(3) INPUT: host name" "(서버 호스트 이름 입력시 문자 표시 안됨)"
 svrHOST=${read_s}
 
-#---> ls -hl ~/ar*/my*/[7b]*[ez]
+#---> ls -hl ~/ar*/my*/[7b][za]*[x7][ez]
 #-- 1.6M 7z2408-x64.exe
-#--------:------------^----v
+#--------XX----------^^---vv
 #-- 217M bada-241006-1557.7z
 #--
-#---> ls -hl ~/ar*/my*/is*/[OV]*[ke]
+#---> ls -hl ~/ar*/my*/is*/[OV][ri]*[cx][ke]
 #--  22M Oracle_VirtualBox_Extension_Pack-7.1.2.vbox-extpack
-#--------:-----------------------------v-------------------^
+#--------XX---------------------------vv------------------^^
 #-- 106M VirtualBox-7.1.2-164945-Win.exe
 #--
-#---> ls -hl ~/ar*/my*/lg3*/py[ct]*[43].[21]*e
+#---> ls -hl ~/ar*/my*/lg3*/py[ct]*[43].[21]*xe
 #-- 468M pycharm-community-2024.2.2.exe
-#--------::^----vvv-----------^:^-----^
+#--------||X------------------^|^----||
+#--------||X----v|v-----------||
 #--  26M python-3.12.6-amd64.exe
 #--
-#---> ls -hl ~/ar*/my*/lg1*/[Rg]*e
+#---> ls -hl ~/ar*/my*/lg1*/[Rg][ui]*xe
 #-- 759M RustRover-2024.2.3.exe
-#--------:^-------------------:
+#--------XX------------------||
 #-- 329M gimp-2.10.38-setup.exe
 #--
-dir_names=("./ar*/my*/[7b]*[ez]" \
-	"./ar*/my*/is*/[OV]*[ke]" \
-	"./ar*/my*/lg3*/py[ct]*[43].[21]*e" \
-	"./ar*/my*/lg1*/[Rg]*e")
+dir_names=("./ar*/my*/[7b][za]*[x7][ez]" \
+	"./ar*/my*/is*/[OV][ri]*[cx][ke]" \
+	"./ar*/my*/lg3*/py[ct]*[43].[21]*xe" \
+	"./ar*/my*/lg1*/[Rg][ui]*xe")
 
 for dina in "${dir_names[@]}"
 do
