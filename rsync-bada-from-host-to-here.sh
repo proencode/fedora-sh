@@ -52,6 +52,7 @@ svrHOST=${read_s}
 #-- 329M gimp-2.10.38-setup.exe
 #--
 dir_names=("ar*/my*/[7l][za]*[x7][ez]" \
+	"ar*/ke*/keepassproen.kdbx" \
 	"ar*/my*/Vi*/[OV][ri]*[cx][ke]" \
 	"ar*/my*/lg3*/py[ct]*[43].[21]*xe" \
 	"ar*/my*/lg1*/[Rg][ui]*xe")
