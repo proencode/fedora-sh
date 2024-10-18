@@ -30,10 +30,10 @@ svrUSER=${read_s}
 cmdreada_s "(3) INPUT: host name" "(서버 호스트 이름 입력시 문자 표시 안됨)"
 svrHOST=${read_s}
 
-#---> ls -hl ~/ar*/my*/[7b][za]*[x7][ez]
+#---> ls -hl ~/ar*/my*/[7l][za]*[x7][ez]
 #-- 1.6M 7z2408-x64.exe
 #--------XX----------^^---vv
-#-- 217M bada-241006-1557.7z
+#-- 217M lastbada-241018-1405.7z
 #--
 #---> ls -hl ~/ar*/my*/Vi*/[OV][ri]*[cx][ke]
 #--  22M Oracle_VirtualBox_Extension_Pack-7.1.2.vbox-extpack
@@ -51,13 +51,15 @@ svrHOST=${read_s}
 #--------XX------------------||
 #-- 329M gimp-2.10.38-setup.exe
 #--
-dir_names=("ar*/my*/[7b][za]*[x7][ez]" \
+dir_names=("ar*/my*/[7l][za]*[x7][ez]" \
 	"ar*/my*/Vi*/[OV][ri]*[cx][ke]" \
 	"ar*/my*/lg3*/py[ct]*[43].[21]*xe" \
 	"ar*/my*/lg1*/[Rg][ui]*xe")
-
+tot_dir=4
+dir_cnt=0
 for dina in "${dir_names[@]}"
 do
-	echo "${ccc}#-- ${bbb}rsync -avzr -e 'ssh -p PORT' USER@HOST:${dina} .${xxx}"
+	dir_cnt=$(( dir_cnt + 1 ))
+	echo "${yyy}#-- ${ggg}(${tot_dir}-${dir_cnt}) ${bbb}rsync -avzr -e 'ssh -p PORT' USER@HOST:${dina} .${xxx}"
 	echo "rsync -avzr -e 'ssh -p ${svrPORT}' ${svrUSER}@${svrHOST}:${dina} ." | sh
 done
