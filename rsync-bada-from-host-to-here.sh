@@ -38,8 +38,8 @@ svrHOST=${read_s}
 echo "${yyy}#-- ${ccc}(4) 7za lastbada ${bbb}rsync -avzr -e 'ssh -p PORT' USER@HOST:ar*/my*/[7l][za]*[x7][ez] .${xxx}"
 echo "rsync -avzr -e 'ssh -p ${svrPORT}' ${svrUSER}@${svrHOST}:ar*/my*/[7l][za]*[x7][ez] ." | sh
 #--
-echo "${yyy}#-- ${ccc}(5) unzip lastbada ${bbb}7za x lastbada-*7z${xxx}"
-7za x lastbada-*7z
+echo "${yyy}#-- ${ccc}(5) ./7zr.exe x lastbada ${bbb}7za x lastbada-*7z${xxx}"
+./7zr.exe x lastbada-*7z
 #--
 echo "${yyy}#-- ${ccc}cd bada${xxx}"
 cd bada
@@ -64,7 +64,7 @@ dir_names=("ar*/ke*/keepassproen.kdbx" \
 	"ar*/my*/Vi*/[OV][ri]*[cx][ke]" \
 	"ar*/my*/lg3*/py[ct]*[43].[21]*xe" \
 	"ar*/my*/lg1*/[Rg][ui]*xe")
-tot_dir=4
+tot_dir=6
 dir_cnt=0
 for dina in "${dir_names[@]}"
 do
