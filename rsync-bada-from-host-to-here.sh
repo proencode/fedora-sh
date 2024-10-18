@@ -35,6 +35,15 @@ svrHOST=${read_s}
 #--------XX----------^^---vv
 #-- 217M lastbada-241018-1405.7z
 #--
+echo "${yyy}#-- ${ccc}(4) 7za lastbada ${bbb}rsync -avzr -e 'ssh -p PORT' USER@HOST:ar*/my*/[7l][za]*[x7][ez] .${xxx}"
+echo "rsync -avzr -e 'ssh -p ${svrPORT}' ${svrUSER}@${svrHOST}:ar*/my*/[7l][za]*[x7][ez] ." | sh
+#--
+echo "${yyy}#-- ${ccc}(5) unzip lastbada ${bbb}7za x lastbada-*7z${xxx}"
+7za x lastbada-*7z
+#--
+echo "${yyy}#-- ${ccc}cd bada${xxx}"
+cd bada
+#--
 #---> ls -hl ~/ar*/my*/Vi*/[OV][ri]*[cx][ke]
 #--  22M Oracle_VirtualBox_Extension_Pack-7.1.2.vbox-extpack
 #--------XX---------------------------vv------------------^^
@@ -51,8 +60,7 @@ svrHOST=${read_s}
 #--------XX------------------||
 #-- 329M gimp-2.10.38-setup.exe
 #--
-dir_names=("ar*/my*/[7l][za]*[x7][ez]" \
-	"ar*/ke*/keepassproen.kdbx" \
+dir_names=("ar*/ke*/keepassproen.kdbx" \
 	"ar*/my*/Vi*/[OV][ri]*[cx][ke]" \
 	"ar*/my*/lg3*/py[ct]*[43].[21]*xe" \
 	"ar*/my*/lg1*/[Rg][ui]*xe")
@@ -61,6 +69,6 @@ dir_cnt=0
 for dina in "${dir_names[@]}"
 do
 	dir_cnt=$(( dir_cnt + 1 ))
-	echo "${yyy}#-- ${ggg}(${tot_dir}-${dir_cnt}) ${bbb}rsync -avzr -e 'ssh -p PORT' USER@HOST:${dina} .${xxx}"
+	echo "${yyy}#-- ${ggg}[${tot_dir}-${dir_cnt}] ${bbb}rsync -avzr -e 'ssh -p PORT' USER@HOST:${dina} .${xxx}"
 	echo "rsync -avzr -e 'ssh -p ${svrPORT}' ${svrUSER}@${svrHOST}:${dina} ." | sh
 done
