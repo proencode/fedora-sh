@@ -26,3 +26,6 @@ cmdyes () {
 		fi
 	fi
 }
+
+echo "
+${lll}#--BLACK /// ${rrr}#--RED /// ${ggg}#--GREEN /// ${yyy}#--YELLOW /// ${bbb}#--BLUE /// ${mmm}#--MAGENTA /// ${ccc}#--CYAN /// ${www}#--WHITE /// ${xxx}#--XXX ///"
