@@ -28,17 +28,53 @@ fi
 DOCKER_DIR=/home/docker
 DB_DIR=${DOCKER_DIR}/pgsql
 #-- pgsql db
-DB_USER="imwiki"
-DB_PSWD="wikijsrocks"
-DB_NAME="wikidb"
-DB_CONTAINER="wikipg"
+DB_USER="wikijs" #---POSTGRES_USER: "imwiki"
+DB_PSWD="wikijsrocks" #---POSTGRES_PASSWORD: "wikijsrocks"
+DB_NAME="wiki" #---POSTGRES_DB: "wikidb"
+DB_CONTAINER="wikijsdb" #---container_name: "wikijsdb"
 #-- wiki.js
-WIKI_CONF_DIR=${DOCKER_DIR}/wiki_conf
+#--NOT_USE--WIKI_CONF_DIR=${DOCKER_DIR}/wiki_conf
 WIKI_CONTAINER="wikijs"
 WIKI_PORT_NO="9900"
 #-- services
-DB_SERVICE="db"
-WIKI_SERVICE="wiki"
+#--NOT_USE--DB_SERVICE="db"
+#--NOT_USE--WIKI_SERVICE="wiki"
+
+#////////////////////////////////////////////////
+#///---version: "3"
+#///---services:
+#///---
+#///---  db: 
+#///---    image: postgres:11-alpine
+#///---    environment:
+#///---      POSTGRES_DB: wiki
+#///---      POSTGRES_PASSWORD: wikijsrocks
+#///---      POSTGRES_USER: wikijs
+#///---    logging:
+#///---      driver: "none"
+#///---    restart: unless-stopped
+#///---    volumes:
+#///---      - /home/docker/pgsql:/var/lib/postgresql/data
+#///---    container_name:
+#///---      wikijsdb
+#///---
+#///---  wiki:
+#///---    image: requarks/wiki:2
+#///---    depends_on:
+#///---      - db
+#///---    environment:
+#///---      DB_TYPE: postgres
+#///---      DB_HOST: db
+#///---      DB_PORT: 5432
+#///---      DB_USER: wikijs
+#///---      DB_PASS: wikijsrocks
+#///---      DB_NAME: wiki
+#///---    restart: unless-stopped
+#///---    ports:
+#///---      - "5840:3000"
+#///---    container_name:
+#///---      wikijs
+#////////////////////////////////////////////////
 
 #-- local/remote folder
 LOCAL_FOLDER="/home/backup/wikidb" #- 보관용 로컬 저장소
@@ -103,10 +139,10 @@ if [ "x${last_skip}" = "xdb_backup_ok" ]; then
 
 ${cGreen}----> ${cYellow}sudo docker exec ${DB_CONTAINER} pg_dumpall -U ${DB_USER} | 7za a -mx=9 -si ${dir_for_backup}/${current_backup} -p ${cCyan}#-- (4) 지정한 백업파일을 DB 서버에 리스토어 하기전에, 현재의 DB 를 먼저 백업합니다.
 
-${cRed}----> ${cYellow}비밀번호${cRed}를 입력하세요.${cReset}
+${cRed}----> ${cYellow}비밀번호${cRed}를 위키 입력하세요.${cReset}
 
 __EOF__
-	sudo docker exec ${DB_CONTAINER} pg_dumpall -U ${DB_USER} | 7za a -mx=9 -si ${dir_for_backup}/${current_backup} -p
+	sudo docker exec ${DB_CONTAINER} pg_dumpall -U ${DB_USER} | 7za a -mx=9 -pdnlzl -si ${dir_for_backup}/${current_backup}
 fi
 
 echoSeq ""
