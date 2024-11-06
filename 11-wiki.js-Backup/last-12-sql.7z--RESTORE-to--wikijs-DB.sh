@@ -4,7 +4,7 @@ db_sql_7z="$1"
 if [ "x${db_sql_7z}" = "x" ] || [ ! -f "${db_sql_7z}" ]; then
 	echo "${yyy}#--->${bbb} ls -l *.sql.7z${xxx}"
 	ls -l *.sql.7z
-	echo "${rrr}#--->${ggg} 프로그램 이름 다음에 wiki_*sql.7z 파일을 지정하지 않았으므로, 클라우드에서 파일을 다운로드 받습니다."
+	echo "${rrr}#--->${ggg} 프로그램 이름 다음에 wiki_*sql.7z 파일을 지정하지 않았으므로, 클라우드에서 파일을 다운로드 받습니다.${xxx}"
 	echo "${rrr}#--->${ggg} press Enter:${xxx}"
 	read a
 	echo "${yyy}#--->${bbb} time rclone copy tpn3mi:wikijsdb/$(date +%Y)/ --include \"wiki_$(date +%y%m)*wol*sql.7z\" .${xxx}"
@@ -35,15 +35,16 @@ WIKI_PORT_NO="9900"
 #--NOT_USE--DB_SERVICE="db"
 #--NOT_USE--WIKI_SERVICE="wiki"
 
-echo "${yyy}#--->${bbb} (1) 위키 도커 중단 sudo docker ps -a ; sudo docker stop ${WIKI_CONTAINER} ; sudo docker ps -a"
+echo "${yyy}#--->${bbb} (1) 위키 도커 중단: sudo docker ps -a ; sudo docker stop ${WIKI_CONTAINER} ; sudo docker ps -a${xxx}"
 sudo docker ps -a ; sudo docker stop ${WIKI_CONTAINER} ; sudo docker ps -a
-echo "${yyy}#--->${bbb} (2) DB 삭제하기 sudo docker exec -it ${DB_CONTAINER} dropdb -U ${DB_USER} ${DB_NAME}"
+echo "${yyy}#--->${bbb} (2) DB 삭제하기: sudo docker exec -it ${DB_CONTAINER} dropdb -U ${DB_USER} ${DB_NAME}${xxx}"
 sudo docker exec -it ${DB_CONTAINER} dropdb -U ${DB_USER} ${DB_NAME}
-echo "${yyy}#--->${bbb} (3) DB 만들기 sudo docker exec -it ${DB_CONTAINER} createdb -U ${DB_USER} ${DB_NAME}"
+echo "${yyy}#--->${bbb} (3) DB 만들기: sudo docker exec -it ${DB_CONTAINER} createdb -U ${DB_USER} ${DB_NAME}${xxx}"
 sudo docker exec -it ${DB_CONTAINER} createdb -U ${DB_USER} ${DB_NAME}
-echo "${yyy}#--->${bbb} (4) 백업파일을 DB 에 리스토어하기 time 7za x -so ${db_sql_7z} | sudo docker exec -i ${DB_CONTAINER} psql -U ${DB_USER} ${DB_NAME}"
+echo "${yyy}#--->${bbb} (4) 백업파일을 DB 에 리스토어하기 위해 ${mmm}비번${bbb} 을 입력하세요."
+echo "${yyy}#--->${bbb} time 7za x -so ${db_sql_7z} | sudo docker exec -i ${DB_CONTAINER} psql -U ${DB_USER} ${DB_NAME}${xxx}"
 time 7za x -so ${db_sql_7z} | sudo docker exec -i ${DB_CONTAINER} psql -U ${DB_USER} ${DB_NAME}
-echo "${yyy}#--->${bbb} (5) 위키 도커 다시 시작 sudo docker start ${WIKI_CONTAINER} ; sudo docker ps -a"
+echo "${yyy}#--->${bbb} (5) 위키 도커 다시 시작: sudo docker start ${WIKI_CONTAINER} ; sudo docker ps -a${xxx}"
 sudo docker start ${WIKI_CONTAINER} ; sudo docker ps -a
 echo "#------------"
 echo "#------------ 7. wiki.js 리스토어 작업"
