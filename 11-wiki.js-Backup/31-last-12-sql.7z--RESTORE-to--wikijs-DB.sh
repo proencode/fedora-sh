@@ -41,10 +41,11 @@ echo "${yyy}#--->${bbb} (2) DB 삭제하기: sudo docker exec -it ${DB_CONTAINER
 sudo docker exec -it ${DB_CONTAINER} dropdb -U ${DB_USER} ${DB_NAME}
 echo "${yyy}#--->${bbb} (3) DB 만들기: sudo docker exec -it ${DB_CONTAINER} createdb -U ${DB_USER} ${DB_NAME}${xxx}"
 sudo docker exec -it ${DB_CONTAINER} createdb -U ${DB_USER} ${DB_NAME}
-echo "${yyy}#--->${bbb} (4) 백업파일을 DB 에 리스토어하기 위해 ${mmm}비번${bbb} 을 입력하세요."
-echo "${yyy}#--->${bbb} time 7za x -so ${db_sql_7z} | sudo docker exec -i ${DB_CONTAINER} psql -U ${DB_USER} ${DB_NAME}${xxx}"
+echo "${yyy}#--->${bbb} time 7za x -so ${db_sql_7z} | sudo docker exec -i ${DB_CONTAINER} psql -U ${DB_USER} ${DB_NAME}"
+echo "${yyy}#--->${bbb} (4) 백업파일을 DB 에 리스토어하기 위해 ${mmm}비번${bbb} 을 입력하세요.${xxx}"
 time 7za x -so ${db_sql_7z} | sudo docker exec -i ${DB_CONTAINER} psql -U ${DB_USER} ${DB_NAME}
 echo "${yyy}#--->${bbb} (5) 위키 도커 다시 시작: sudo docker start ${WIKI_CONTAINER} ; sudo docker ps -a${xxx}"
 sudo docker start ${WIKI_CONTAINER} ; sudo docker ps -a
+echo "${yyy}#--->${bbb} (6) localhost:5740 (포트번호)${xxx}"
 echo "#------------"
 echo "#------------ 7. wiki.js 리스토어 작업"
