@@ -13,21 +13,21 @@ if [ ! -d ${calls_sms_dir} ]; then
 fi
 cd ~/${calls_sms_dir}
 
-git_dir="${HOME}/git-projects/fedora-sh"
-pg_name=$(echo $0)
-if [ ! -f ${git_dir}/${pg_name} ]; then
-	echo "${bbb}!!!! ${ccc}${git_dir}/${pg_name} 스크립트 파일이 없습니다.${xxx}"
-	exit -1
-else
-	cmdrun "ls -l ${pg_name} ${git_dir}/${pg_name}" "스크립트 파일을 확인합니다."
-fi
-
-if [ "x$(diff ${pg_name} ${git_dir}/${pg_name})" != "x" ]; then
-	cmdrun "diff ${pg_name} ${git_dir}/${pg_name}" "!!!! 스크립트 파일이 다릅니다."
-	exit -1
-fi
-echo "${bbb}#---> ${ccc}press Enter:${xxx}"
-read a
+#-- git_dir="${HOME}/git-projects/fedora-sh"
+#-- pg_name=$(echo $0)
+#-- if [ ! -f ${git_dir}/${pg_name} ]; then
+#-- 	echo "${bbb}!!!! ${ccc}${git_dir}/${pg_name} 스크립트 파일이 없습니다.${xxx}"
+#-- 	exit -1
+#-- else
+#-- 	cmdrun "ls -l ${pg_name} ${git_dir}/${pg_name}" "스크립트 파일을 확인합니다."
+#-- fi
+#-- 
+#-- if [ "x$(diff ${pg_name} ${git_dir}/${pg_name})" != "x" ]; then
+#-- 	cmdrun "diff ${pg_name} ${git_dir}/${pg_name}" "!!!! 스크립트 파일이 다릅니다."
+#-- 	exit -1
+#-- fi
+#-- echo "${bbb}#---> ${ccc}press Enter:${xxx}"
+#-- read a
 
 wavbox=(NONE play-1-pbong.wav play-2-castanets.wav play-3-ddenng.wav play-4-tiiill.wav play-5-gguuuung.wav play-6-ddeeeng.wav)
 wavhan=(0=none 1=딩~ 2=캐스터네츠~ 3=뗅- 4=띠일~ 5=데에엥~~ 6=교회_뎅-)
@@ -60,11 +60,13 @@ done
 cmdrun "ls -hl --color *xml*"
 
 cmdrun "rclone copy ./ --include \"[cs]*7z\" yosjgc:calls_sms/"
-cmdrun "rclone lsl yosjgc:calls_sms/ --include \"[cs]*xml*\""
+cmdrun "rclone lsl yosjgc:calls_sms/ --include \"[cs]*xml*\" | sort -k4"
 
 cat <<__EOF__
 
 ${bbb}#  ${ccc}rclone delete yosjgc:calls_sms/ --include "[cs]*xml" | sort -k4${bbb}
+#
+#  ${ccc}rm [cs]*xml${bbb}
 #
 #  ${ccc}rclone lsl yosjgc:calls_sms/ | sort -k4${xxx}
 
