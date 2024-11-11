@@ -7,17 +7,23 @@ cmdrun () {
 	echo "${bbb}# <.... $1 #-- $2${xxx}"
 }
 
+calls_sms_dir="wind_bada/calls_sms"
+if [ ! -d ${calls_sms_dir} ]; then
+	cmdrun "cd ~/; mkdir -p ${calls_sms_dir}" "받는 폴더를 만들고 이동합니다."
+fi
+cd ~/${calls_sms_dir}
+
 git_dir="${HOME}/git-projects/fedora-sh"
 pg_name=$(echo $0)
 if [ ! -f ${git_dir}/${pg_name} ]; then
-	echo "${bbb}!!!! ${ccc}${git_dir}/${pg_name} 파일이 없습니다.${xxx}"
+	echo "${bbb}!!!! ${ccc}${git_dir}/${pg_name} 스크립트 파일이 없습니다.${xxx}"
 	exit -1
 else
-	cmdrun "ls -l ${pg_name} ${git_dir}/${pg_name}" "파일을 확인합니다."
+	cmdrun "ls -l ${pg_name} ${git_dir}/${pg_name}" "스크립트 파일을 확인합니다."
 fi
 
 if [ "x$(diff ${pg_name} ${git_dir}/${pg_name})" != "x" ]; then
-	cmdrun "diff ${pg_name} ${git_dir}/${pg_name}" "!!!! 파일이 다릅니다."
+	cmdrun "diff ${pg_name} ${git_dir}/${pg_name}" "!!!! 스크립트 파일이 다릅니다."
 	exit -1
 fi
 echo "${bbb}#---> ${ccc}press Enter:${xxx}"
