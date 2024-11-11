@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
 lll=$(tput bold)$(tput setaf 0); rrr=$(tput bold)$(tput setaf 1); ggg=$(tput bold)$(tput setaf 2); yyy=$(tput bold)$(tput setaf 3); bbb=$(tput bold)$(tput setaf 4); mmm=$(tput bold)$(tput setaf 5); ccc=$(tput bold)$(tput setaf 6); www=$(tput bold)$(tput setaf 7); xxx=$(tput bold)$(tput sgr0); uuu=$(tput cuu 2)
 
@@ -8,7 +8,7 @@ cmdrun () {
 }
 
 calls_sms_dir="wind_bada/calls_sms"
-if [ ! -d ${calls_sms_dir} ]; then
+if [ ! -d ~/${calls_sms_dir} ]; then
 	cmdrun "cd ~/; mkdir -p ${calls_sms_dir}" "받는 폴더를 만들고 이동합니다."
 fi
 cd ~/${calls_sms_dir}

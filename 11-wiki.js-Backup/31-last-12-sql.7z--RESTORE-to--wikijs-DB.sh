@@ -1,4 +1,12 @@
+#!/bin/bash
+
 lll=$(tput bold)$(tput setaf 0); rrr=$(tput bold)$(tput setaf 1); ggg=$(tput bold)$(tput setaf       2); yyy=$(tput bold)$(tput setaf 3); bbb=$(tput bold)$(tput setaf 4); mmm=$(tput bold)$(tput         setaf 5); ccc=$(tput bold)$(tput setaf 6); www=$(tput bold)$(tput setaf 7); xxx=$(tput               bold)$(tput sgr0); uuu=$(tput cuu 2)
+
+wikijsdb_dir="wind_bada/wikijsdb"
+if [ ! -d ~/${wikijsdb_dir} ]; then
+	cmdrun "cd ~/; mkdir -p ${wikijsdb_dir}" "받는 폴더를 만들고 이동합니다."
+fi
+cd ~/${wikijsdb_dir}
 
 db_sql_7z="$1"
 if [ "x${db_sql_7z}" = "x" ] || [ ! -f "${db_sql_7z}" ]; then
