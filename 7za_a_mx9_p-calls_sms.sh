@@ -33,17 +33,21 @@ bin_fs="${HOME}/bin/freesound"
 #-- play -q ${bin_fs}/${wavbox[ 5 ]} & #-- 5=데에엥~~
 #-- play -q ${bin_fs}/${wavbox[ 6 ]} & #-- 6=교회_뎅-
 
-cmdrun "ls -l \"[cs]*xml\""
+cmdrun "ls -l \"[cs]*xml*\""
 cmdrun "rclone copy yosjgc:calls_sms/ --include \"[cs]*xml\" ."
-cmdrun "ls -l \"[cs]*xml\""
+cmdrun "ls -l \"[cs]*xml*\""
 cmdrun "read a " "Press Enter:"
 
 tot_cnt=$(ls calls*xml sms*xml | wc -l)
 seq=0
+ppsswwdd="9988"
+
 for file_name in $(ls calls*xml sms*xml)
 do
 	seq=$(( seq + 1 ))
-	cmdrun "7za a -mx=9 -p ${file_name}.7z ${file_name}" "(${tot_cnt}-${seq})"
+	echo "${bbb}# ----> ${ccc}7za a -mx=9 -p ${file_name}.7z ${file_name} ${bbb}#-- ${ggg}(${tot_cnt}-${seq})${xxx}"; echo "$1" | sh
+	7za a -mx=9 -p${ppsswwdd} ${file_name}.7z ${file_name}
+	echo "${bbb}# <.... 7za a -mx=9 -p ${file_name}.7z ${file_name} #-- (${tot_cnt}-${seq})${xxx}"
 	play -q ${bin_fs}/${wavbox[ 1 ]} & #-- 1=딩~
 	cmdrun "ls -hl --color ${file_name}*"
 done
@@ -54,9 +58,9 @@ cmdrun "rclone lsl yosjgc:calls_sms/ --include \"[cs]*xml*\""
 
 cat <<__EOF__
 
-${bbb}#  ${ccc}rclone delete yosjgc:calls_sms/ --include "[cs]*xml" | sort -k4
-${bbb}#
-#  ${ccc}rclone delete yosjgc:calls_sms/ | sort -k4${xxx}
+${bbb}#  ${ccc}rclone delete yosjgc:calls_sms/ --include "[cs]*xml" | sort -k4${bbb}
+#
+#  ${ccc}rclone lsl yosjgc:calls_sms/ | sort -k4${xxx}
 
 __EOF__
 play -q ${bin_fs}/${wavbox[ 2 ]} & #-- 2=캐스터네츠~
