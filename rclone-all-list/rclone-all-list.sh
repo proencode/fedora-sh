@@ -1,12 +1,11 @@
 #!/bin/bash
 
-rc_lsl=~/wind_bada/rclone-lsl
-if [ ! -d ${rc_lsl} ]; then
-	echo "----> mkdir -p ${rc_lsl}"
-	mkdir -p ${rc_lsl}
+rc_lsl="wind_bada/rclone-lsl"
+if [ ! -d ~/${rc_lsl} ]; then
+	cmdrun "cd ~/; mkdir -p ${rc_lsl}" "받는 폴더를 만들고 이동합니다."
 fi
-echo "----> cd ${rc_lsl}"
-cd ${rc_lsl}
+echo "----> cd ~/${rc_lsl}"
+cd ~/${rc_lsl}
 
 ymd=$(date +%y%m%d-%H%M%S)
 if [ ! -d ${ymd} ]; then
