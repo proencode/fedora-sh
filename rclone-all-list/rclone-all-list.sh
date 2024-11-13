@@ -1,9 +1,9 @@
-#!/bin/sh
+#!/bin/bash
 
-rc_lsl=~/rclone-lsl
+rc_lsl=~/wind_bada/rclone-lsl
 if [ ! -d ${rc_lsl} ]; then
-	echo "----> mkdir ${rc_lsl}"
-	mkdir ${rc_lsl}
+	echo "----> mkdir -p ${rc_lsl}"
+	mkdir -p ${rc_lsl}
 fi
 echo "----> cd ${rc_lsl}"
 cd ${rc_lsl}
