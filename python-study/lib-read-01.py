@@ -12,9 +12,12 @@ with open(file_name, "r") as f:
             book_no = book_no + 1
             # print("---- [ %d ]" % book_no)
             if line3456_view == 1: # 표시할것
-                print("---- [ %s %s %s %s ]" % (line3_str, line4_str, line5_str, line6_str))
+                # print("---- [ %s %s %s %s ]" % (line3_str, line4_str, line5_str, line6_str))
+                print("| %s | %s | %s | %s | %s %s |" % (line3_str, line4c_str, line5_str, line6_str, line4a_str, line4b_str))
                 line3_str=""
-                line4_str=""
+                line4a_str=""
+                line4b_str=""
+                line4c_str=""
                 line5_str=""
                 line6_str=""
                 line3456_view=0 # 표시하지 말것
@@ -33,18 +36,24 @@ with open(file_name, "r") as f:
 
         if line_seq == 3: # ---- 3 ---- 도서 141. 홈페이지 : 기본 ＋ 활용 쉽게 배우기
             # ------------------------- ^^^^^^^^|^^^^^^^^^^|^^^^^^^^^^
-            s1=a_line.split('.')
+            # -------------------------   s1[0] | s1[1]    |
+            # --------------------------------------- s2[0]|
+            s1=a_line.split('.') # s1[0]=도서번호 필요없음
             s2=s1[1].split(':')
-            # print("%s.....%s" % (s2[0].strip(), a_line.strip())) # 설명중 1줄 표시
-            line3_str=s2[0].strip() # 설명중 1줄 표시
+            line3_str=s2[0].strip() # 
             line3456_view=1 # 표시할것
 
         if line3456_view == 1: # 표시할것
-            if line_seq == 4: # ---- 4 ---- 발행년도: 2004
-                # ------------------------- ^^^^^^^^|^^^^^
-                s1=a_line.split('발행년도:')
+            if line_seq == 4: # ---- 저자 : 박종훈 지음 출판사: Pazit(파지트) 발행년도: 2023
+                # -------------------||||||^^^^^^^^^^^^^|||||||^^^^^^^^^^^^^^^|||||||||^^^^^
+                s1=a_line.split('저자 :')
+                s2=s1[1].split('출판사:')
+                s3=s2[1].split('발행년도:')
                 # print("%s" % s1[1].strip()) # 설명중 1줄 표시
-                line4_str=s1[1].strip() # 설명중 1줄 표시
+                # line4_str=s1[1].strip() # 설명중 1줄 표시
+                line4a_str=s2[0].strip().replace(" ; ", ";").replace(" , ",",").replace(".","").replace("[공]","공") # 저자
+                line4b_str=s3[0].strip() # 출판사
+                line4c_str=s3[1].strip() # 발행년도
                 line3456_view=1 # 표시할것
             if line_seq == 5: # ---- 5 ---- 청구기호: 004.575-성66홈
                 # ------------------------- ^^^^^^^^|^^^^^^^^^^
