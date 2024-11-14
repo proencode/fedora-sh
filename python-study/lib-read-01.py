@@ -5,6 +5,7 @@ book_no=0 # 책의 일련번호
 jul_tot=8 # 책 하나의 설명줄 갯수
 line_seq=1 # 설명줄 순서
 line3456_view=0 # 표시하지 말것
+header_ok=0 # 첫줄 다음에 헤더줄 추가 안했음
 
 with open(file_name, "r") as f:
     for a_line in f:
@@ -14,6 +15,9 @@ with open(file_name, "r") as f:
             if line3456_view == 1: # 표시할것
                 # print("---- [ %s %s %s %s ]" % (line3_str, line4_str, line5_str, line6_str))
                 print("| %s | %s | %s | %s | %s %s |" % (line3_str, line4c_str, line5_str, line6_str, line4a_str, line4b_str))
+                if header_ok == 0: # 첫줄 다음에 헤더줄 추가 안했음
+                    print("|:---|:---|:---|:---|:---|")
+                    header_ok=1 # 첫줄 다음에 헤더줄 추가 완료함
                 line3_str=""
                 line4a_str=""
                 line4b_str=""
