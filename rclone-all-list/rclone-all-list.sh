@@ -2,9 +2,10 @@
 
 rc_lsl="wind_bada/rclone-lsl"
 if [ ! -d ~/${rc_lsl} ]; then
-	cmdrun "cd ~/; mkdir -p ${rc_lsl}" "받는 폴더를 만들고 이동합니다."
+	cd ~/; mkdir -p ${rc_lsl}
+	echo "#---> cd ~/; mkdir -p ${rc_lsl} #-- 받는 폴더를 만들고 이동합니다."
 fi
-echo "----> cd ~/${rc_lsl}"
+echo "#---> cd ~/${rc_lsl}"
 cd ~/${rc_lsl}
 
 ymd=$(date +%y%m%d-%H%M%S)
@@ -14,7 +15,7 @@ fi
 temp_file=qqq_temp-${ymd}
 size_file=total_size-${ymd}
 
-echo "cc=100 ; for cn in dosomi edone jjdrb jjone kaos1mi kaos2mi kaos3mi kaos4mi kaosngc swlibgc tpn1mi tpn2mi tpn3mi tpn4mi y5dnmi y5ncmi yosjgc ysw10mi yswone ;do cc=\$((cc + 1)) ; echo \"----> (\${cc:(-2)}) \${cn}: \$(rclone size \${cn}: | grep size)\" ; done" > ${ymd}/${size_file}
+echo "cc=100 ; for cn in dosomi edone jjdrb jjone kaos1mi kaos2mi kaos3mi kaos4mi kaosngc swlibgc tpn1mi tpn2mi tpn3mi tpn4mi y5dnmi y5ncmi yosjgc ysw10mi yswone ;do cc=\$((cc + 1)) ; echo \"#---> (\${cc:(-2)}) \${cn}: \$(rclone size \${cn}: | grep size)\" ; done" > ${ymd}/${size_file}
 
 cnt=100
 
@@ -37,9 +38,9 @@ do
 			echo "${rem_size_date:3}${arg4_time} ${CLOUD_NAME}:${namoji:1}" >> ${ymd}/${cnt:(-2)}-${CLOUD_NAME}-${dattim}.lsl
 		fi
 	done < ${temp_file}
-	echo "#----> (${cnt:(-2)}) ${CLOUD_NAME}: $(rclone size ${CLOUD_NAME}: | grep size)" >> ${ymd}/${size_file}
+	echo "#---> (${cnt:(-2)}) ${CLOUD_NAME}: $(rclone size ${CLOUD_NAME}: | grep size)" >> ${ymd}/${size_file}
 	tail -1 ${ymd}/${size_file}
 done
 rm -f ${temp_file}
-#----> (9) 7za a -mx=9 lsl-rclone-230831-142555.7z 230831-142555 ; ls -l . 230831-142555
+#---> (9) 7za a -mx=9 lsl-rclone-230831-142555.7z 230831-142555 ; ls -l . 230831-142555
 7za a -mx=9 lsl-rclone-${ymd}.7z ${ymd} ; ls -l . ${ymd}
