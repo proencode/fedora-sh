@@ -9,8 +9,9 @@ cmdrun () {
 
 calls_sms_dir="wind_bada/calls_sms"
 if [ ! -d ~/${calls_sms_dir} ]; then
-	cmdrun "cd ~/; mkdir -p ${calls_sms_dir}" "받는 폴더를 만들고 이동합니다."
+	cmdrun "cd ~/; mkdir -p ${calls_sms_dir}" "받는 폴더를 만듭니다."
 fi
+echo "${bbb}# ----> ${ccc}cd ~/${calls_sms_dir} ${bbb}#-- ${ggg}받는 폴더로 이동합니다.${xxx}"
 cd ~/${calls_sms_dir}
 
 #-- git_dir="${HOME}/git-projects/fedora-sh"
@@ -51,7 +52,7 @@ ppsswwdd="9988"
 for file_name in $(ls calls*xml sms*xml)
 do
 	seq=$(( seq + 1 ))
-	echo "${bbb}# ----> ${ccc}7za a -mx=9 -p ${file_name}.7z ${file_name} ${bbb}#-- ${ggg}(${tot_cnt}-${seq})${xxx}"; echo "$1" | sh
+	echo "${bbb}# ----> ${ccc}7za a -mx=9 -p ${file_name}.7z ${file_name} ${bbb}#-- ${ggg}(${tot_cnt}-${seq})${xxx}"
 	7za a -mx=9 -p${ppsswwdd} ${file_name}.7z ${file_name}
 	echo "${bbb}# <.... 7za a -mx=9 -p ${file_name}.7z ${file_name} #-- (${tot_cnt}-${seq})${xxx}"
 	play -q ${bin_fs}/${wavbox[ 1 ]} & #-- 1=딩~
