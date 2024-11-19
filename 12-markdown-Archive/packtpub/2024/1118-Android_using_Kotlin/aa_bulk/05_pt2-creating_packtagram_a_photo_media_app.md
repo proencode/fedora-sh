@@ -3,7 +3,14 @@
 |:----:|:----:|:----:|
 
 # 05 Pt2-Creating Packtagram, a Photo Media App
-#----> 본문을 기재하는 위치.
+
+In this second part, you will learn to create an Instagram-like social networking app, Packtagram, by setting up its structure, developing user interfaces for stories and news feeds, and implementing data retrieval and caching. You will then explore integrating CameraX to enhance photo capturing and editing functionalities, including using machine learning to generate hashtags. Finally, you will add video capabilities to the app, learning to capture, edit with FFmpeg, and upload videos to Cloud Storage for Firebase, transforming Packtagram into a comprehensive multimedia platform.
+
+This part includes the following chapters:
+
+- Chapter 4, Building the Packtagram UI
+- Chapter 5, Creating a Photo Editor Using CameraX
+- Chapter 6, Adding Video and Editing Functionality to Packtagram
 
 
 
