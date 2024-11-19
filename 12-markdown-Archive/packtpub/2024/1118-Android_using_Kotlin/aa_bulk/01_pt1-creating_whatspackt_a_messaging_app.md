@@ -2,8 +2,15 @@
 | ≪ [ 00 Preface ](/books/packtpub_2024/1118-Android_using_Kotlin/00_Preface) | 01 Pt1-Creating WhatsPackt, a Messaging App | [ 02 Ch1-Building the UI for Your Messaging App ](/books/packtpub_2024/1118-Android_using_Kotlin/02_Ch1-Building_the_UI_for_Your_Messaging_App) ≫ |
 |:----:|:----:|:----:|
 
-# 01 Pt1-Creating WhatsPackt, a Messaging App
-#----> 본문을 기재하는 위치.
+# 01 Part 1: Creating WhatsPackt, a Messaging App
+
+In this part, you will learn to build and structure a messaging app called WhatsPackt, implement real-time communication using WebSockets, and ensure data persistence and backup with Room and Cloud Storage for Firebase. You will gain hands-on experience in creating user interfaces, handling message synchronization, and implementing push notifications, culminating in a robust and reliable messaging system.
+
+This part includes the following chapters:
+
+- Chapter 1, Building the UI for Your Messaging App
+- Chapter 2, Setting Up WhatsPackt’s Messaging Abilities
+- Chapter 3, Backing Up Your WhatsPackt Messages
 
 
 
