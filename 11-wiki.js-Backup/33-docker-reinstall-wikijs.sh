@@ -112,6 +112,7 @@ fi
 echo "#------------ 7. 업로드할 파일 선택"
 echo "#------------"
 
-cmdrun "bash ~/bin/31-last-12-sql.7z--RESTORE-to--wikijs-DB.sh ${up_file}" "(8-1) wiki DB 업로드"
+echo "${yyy}# ----> ${ccc}bash ~/bin/31-last-12-sql.7z--RESTORE-to--wikijs-DB.sh ${up_file} ${ggg}#-- (8-1) wiki DB 업로드${xxx}"
+bash ~/bin/31-last-12-sql.7z--RESTORE-to--wikijs-DB.sh ${up_file}
 echo "#------------ 8. 업로드 작업"
 echo "#------------"
