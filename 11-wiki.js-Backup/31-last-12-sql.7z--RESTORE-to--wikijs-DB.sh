@@ -1,11 +1,17 @@
 #!/bin/bash
 
-lll=$(tput bold)$(tput setaf 0); rrr=$(tput bold)$(tput setaf 1); ggg=$(tput bold)$(tput setaf       2); yyy=$(tput bold)$(tput setaf 3); bbb=$(tput bold)$(tput setaf 4); mmm=$(tput bold)$(tput         setaf 5); ccc=$(tput bold)$(tput setaf 6); www=$(tput bold)$(tput setaf 7); xxx=$(tput               bold)$(tput sgr0); uuu=$(tput cuu 2)
+lll=$(tput bold)$(tput setaf 0); rrr=$(tput bold)$(tput setaf 1); ggg=$(tput bold)$(tput setaf 2); yyy=$(tput bold)$(tput setaf 3); bbb=$(tput bold)$(tput setaf 4); mmm=$(tput bold)$(tput setaf 5); ccc=$(tput bold)$(tput setaf 6); www=$(tput bold)$(tput setaf 7); xxx=$(tput bold)$(tput sgr0); uuu=$(tput cuu 2)
+
+cmdrun () {
+	echo "${yyy}# ----> ${ccc}$1 ${ggg}#-- ${bbb}$2${xxx}"; echo "$1" | sh
+	echo "${yyy}# <~~~~ ${bbb}$1 #-- $2${xxx}"
+}
 
 wikijsdb_dir="wind_bada/wikijsdb"
 if [ ! -d ~/${wikijsdb_dir} ]; then
-	cmdrun "cd ~/; mkdir -p ${wikijsdb_dir}" "받는 폴더를 만들고 이동합니다."
+	cmdrun "cd ~/; mkdir -p ${wikijsdb_dir}" "받는 폴더를 만듭니다."
 fi
+echo "${yyy}#--->${bbb} cd ~/${wikijsdb_dir} ${ggg}#-- ${bbb}받는 폴더로 갑니다.${xxx}"
 cd ~/${wikijsdb_dir}
 
 db_sql_7z="$1"
@@ -19,7 +25,7 @@ if [ "x${db_sql_7z}" = "x" ] || [ ! -f "${db_sql_7z}" ]; then
 	time rclone copy tpn3mi:wikijsdb/$(date +%Y)/ --include "wiki_$(date +%y%m)*wol*sql.7z" .
 	echo "${yyy}#--->${bbb} ls -l wiki_$(date +%y%m)*wol*sql.7z${xxx}"
 	ls -l wiki_$(date +%y%m)*wol*sql.7z
-	echo "${yyy}#--->${bbb} 다운로드 받으려는 wiki_*wol.sql.7z 형식의 이름을 입력하세요:${xxx}"
+	echo "${yyy}#--->${bbb} 다운로드 받으려는 wiki_*wol.sql.7z 형식의 이름을 다음줄에 입력하세요:${xxx}"
 	read db_sql_7z
 	if [ "x${db_sql_7z}" = "x" ] || [ ! -f "${db_sql_7z}" ]; then
 		echo "${rrr}#--->${ggg} DB 에 업로드하기 위한 ${ccc}(${db_sql_7z})${bbb} 백업파일이 없습니다.${xxx}"
@@ -56,4 +62,4 @@ echo "${yyy}#--->${bbb} (5) 위키 도커 다시 시작: sudo docker start ${WIK
 sudo docker start ${WIKI_CONTAINER} ; sudo docker ps -a
 echo "${yyy}#--->${bbb} (6) localhost:5740 (포트번호)${xxx}"
 echo "#------------"
-echo "#------------ 7. wiki.js 리스토어 작업"
+echo "#------------ [31-] wiki.js 리스토어 작업"
