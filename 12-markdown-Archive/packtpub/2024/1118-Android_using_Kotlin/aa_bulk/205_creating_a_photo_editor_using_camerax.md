@@ -1,9 +1,9 @@
 
-| ≪ [ 06 Ch4-Building the Packtagram UI ](/books/packtpub_2024/1118-Android_using_Kotlin/06_Ch4-Building_the_Packtagram_UI) | 07 Ch5-Creating a Photo Editor Using CameraX | [ 08 Ch6-Adding Video and Editing Functionality to Packtagram ](/books/packtpub_2024/1118-Android_using_Kotlin/08_Ch6-Adding_Video_and_Editing_Functionality_to_Packtagram) ≫ |
+| ≪ [ 204 Building the Packtagram UI ](/books/packtpub/2024/1118-Android_using_Kotlin/204_Building_the_Packtagram_UI) | 205 Chapter 5: Creating a Photo Editor Using CameraX | [ 206 Adding Video and Editing Functionality to Packtagram ](/books/packtpub/2024/1118-Android_using_Kotlin/206_Adding_Video_and_Editing_Functionality_to_Packtagram) ≫ |
 |:----:|:----:|:----:|
 
-# 07 Ch5-Creating a Photo Editor Using CameraX
-Creating a Photo Editor Using CameraX
+# 205 Chapter 5: Creating a Photo Editor Using CameraX
+
 In the smartphone era, taking and sharing photos has become second nature, and platforms such as Instagram have shown us how powerful a single photo can be. For apps like these, it’s not just about snapping a picture; it’s about enhancing and personalizing that image to tell a story. But have you ever wondered what lies behind those in-app camera buttons and filters?
 
 Enter CameraX, Android’s go-to tool for everything camera-related. This tool doesn’t just make capturing photos seamless; it’s also the bridge to editing and refining them. In this chapter, we’ll get hands-on with CameraX, discovering how it can transform the Packtagram photography experience. We’ll also design an interactive space for users to tweak and enhance their shots, adding that personal touch. And for the cherry on top? We’ll dive into a bit of smart tech, teaching our app to recognize photo themes and suggest relevant hashtags.
@@ -1315,16 +1315,16 @@ In the next chapter, we will give life to those images by learning how to captur
 
 
 
-| ≪ [ 06 Ch4-Building the Packtagram UI ](/books/packtpub_2024/1118-Android_using_Kotlin/06_Ch4-Building_the_Packtagram_UI) | 07 Ch5-Creating a Photo Editor Using CameraX | [ 08 Ch6-Adding Video and Editing Functionality to Packtagram ](/books/packtpub_2024/1118-Android_using_Kotlin/08_Ch6-Adding_Video_and_Editing_Functionality_to_Packtagram) ≫ |
+| ≪ [ 204 Building the Packtagram UI ](/books/packtpub/2024/1118-Android_using_Kotlin/204_Building_the_Packtagram_UI) | 205 Chapter 5: Creating a Photo Editor Using CameraX | [ 206 Adding Video and Editing Functionality to Packtagram ](/books/packtpub/2024/1118-Android_using_Kotlin/206_Adding_Video_and_Editing_Functionality_to_Packtagram) ≫ |
 |:----:|:----:|:----:|
 
 > Page Properties:
-> (1) Title: 07 Ch5-Creating a Photo Editor Using CameraX
+> (1) Title: 205 Chapter 5: Creating a Photo Editor Using CameraX
 > (2) Short Description: Android using Kotlin
-> (3) Path: books/packtpub_2024/1118-Android_using_Kotlin/07_Ch5-Creating_a_Photo_Editor_Using_CameraX
+> (3) Path: books/packtpub/2024/1118-Android_using_Kotlin/205_Creating_a_Photo_Editor_Using_CameraX
 > Book Jemok: Thriving in Android Development Using Kotlin
 > AuthorDate: Gema Socorro Rodríguez / Jul 2024 / 410 pages 1Ed
 > Link: https://subscription.packtpub.com/book/mobile/9781837631292/pref
-> create: 2024-11-19 화 12:29:06
-> .md Name: 07_ch5-creating_a_photo_editor_using_camerax.md
+> create: 2024-11-22 금 12:23:44
+> .md Name: 205_creating_a_photo_editor_using_camerax.md
 

@@ -1,8 +1,8 @@
 
-| ≪ [ 01 Pt1-Creating WhatsPackt, a Messaging App ](/books/packtpub/2024/1118-Android_using_Kotlin/01_Pt1-Creating_WhatsPackt_a_Messaging_App) | 02 Ch1-Building the UI for Your Messaging App | [ 03 Ch2-Setting Up WhatsPackt’s Messaging Abilities ](/books/packtpub/2024/1118-Android_using_Kotlin/03_Ch2-Setting_Up_WhatsPackts_Messaging_Abilities) ≫ |
+| ≪ [ 100 Creating WhatsPackt, a Messaging App ](/books/packtpub/2024/1118-Android_using_Kotlin/100_Creating_WhatsPackt_a_Messaging_App) | 101 Chapter 1: Building the UI for Your Messaging App | [ 102 Setting Up WhatsPackt’s Messaging Abilities ](/books/packtpub/2024/1118-Android_using_Kotlin/102_Setting_Up_WhatsPackts_Messaging_Abilities) ≫ |
 |:----:|:----:|:----:|
 
-# 02 Ch1-Building the UI for Your Messaging App
+# 101 Chapter 1: Building the UI for Your Messaging App
 
 In this first chapter, we’re going to start building a messaging app called WhatsPackt (referring to a popular messaging app that you probably already know about). At this point in the project, we must make some important technical decisions and create the structure needed to build it. This is what we will be focusing on, as well as working on the app’s user interface.
 
@@ -24,19 +24,16 @@ For that reason, we recommend that you set up your computer with the latest stab
 Once installed, we can start creating the project. Android Studio will offer us a set of templates to start with. We will choose the Empty Activity option, as shown in the following screenshot:
 
 ![ 1.1 Android Studio new project template selection with the Empty Activity option selected ](/packtpub/2024/1118/1.1-android_studio_new.webp)
-
 Figure 1.1: Android Studio new project template selection with the Empty Activity option selected
 
 You will then be asked to select a project and package name:
 
 ![ 1.2 Android Studio – adding a new project name and package name ](/packtpub/2024/1118/1.2-android_studio_adding.webp)
-
 Figure 1.2: Android Studio – adding a new project name and package name
 
 After that, you’re all set! Android Studio will generate the main folders and files needed so that you can start working on our project. Your project structure should look as follows:
 
 ![ 1.3 Android Studio – project template structure ](/packtpub/2024/1118/1.3-android_studio_project.webp)
-
 Figure 1.3: Android Studio – project template structure
 
 Note that all the code for this chapter can be found in this book’s GitHub repository: https://github.com/PacktPublishing/Thriving-in-Android-Development-using-Kotlin/tree/main/Chapter-1/WhatsPackt.
@@ -66,21 +63,21 @@ By exploring various build systems, such as Gradle, Bazel, and Buck, developers 
 Among the organizational patterns, the most common ones are modularization by layers and modularization by feature modules.
 
 #### Modularization by layers
+
 It is common to structure an app by grouping its components based on a set of layers depending on the architecture chosen by the developers. One popular architecture is clean architecture, which splits the code base between the data, domain (or business), and presentation layers.
 
 With this approach, each module focuses on a specific layer of the architecture, such as the presentation layer, domain layer, or data layer. These modules are usually more independent of each other and may have different responsibilities and technologies, depending on the layer they belong to. Following this pattern, our app structure would look like this:
 
 ![ 1.4 App modularization by layers ](/packtpub/2024/1118/1.4-app_modularization_by.webp)
-
 Figure 1.4: App modularization by layers
 
 From this diagram, you can see why layer modularization is also referred to as vertical modularization.
 
 #### Modularization by feature
+
 When modularizing an app by feature (or using horizontal modularization), the application is divided into modules that focus on specific features or related tasks, such as authentication or navigation. These horizontal modules can share common components and resources. We can see this structure in the following figure:
 
 ![ 1.5 App modularization by feature ](/packtpub/2024/1118/1.5-app_modularization_by.webp)
-
 Figure 1.5: App modularization by feature
 
 In our case, we are going to have a main `app` module that will depend on every one of the feature modules that our app needs (one for every one of the features we are going to implement). Then, every one of the feature modules will also depend on two other common modules (in this example, we have divided them into `common` and `common_framework`, using the first to include framework-independent code, and the second to use code that depends on the Android framework).
@@ -88,6 +85,7 @@ In our case, we are going to have a main `app` module that will depend on every 
 One of the main advantages of this pattern is that it can scale with the company if it evolves into a feature-based team (where every team is focused on a single or group of features). This will enable every team to be responsible for one feature module, or a set of feature modules, where they have ownership of the code in those modules. It also allows teams to be easily autonomous regarding their problem space and features.
 
 #### WhatsPackt modularization
+
 In our WhatsPackt example, we are going to combine both modularization approaches:
 
 - We will use a modularization based on features for our features.
@@ -96,7 +94,6 @@ In our WhatsPackt example, we are going to combine both modularization approache
 The structure of our modules and its dependencies will be as follows:
 
 ![ 1.6 Our app modules structure and dependencies ](/packtpub/2024/1118/1.6-our_app_modules.webp)
-
 Figure 1.6: Our app modules structure and dependencies
 
 Now, we are going to start creating this structure in Android Studio. To create a module, follow these steps:
@@ -106,7 +103,6 @@ Now, we are going to start creating this structure in Android Studio. To create 
 1. Fill in the **Module name**, **Package name**, and **Language** fields, as shown here:
 
 ![ 1.7 The Create New Module dialog ](/packtpub/2024/1118/1.7-the_create_new.webp)
-
 Figure 1.7: The Create New Module dialog
 
 4. Click **Finish**.
@@ -123,7 +119,6 @@ We will have to do this same process for all the modules we want to build, excep
 Once we’ve done this, we should have built the following project structure:
 
 ![ 1.8 Project structure, including all modules ](/packtpub/2024/1118/1.8-project_structure_including.webp)
-
 Figure 1.8: Project structure, including all modules
 
 The next step is to set the dependencies between modules. We will do this in the `build.gradle` file of every module. For example, in the `build.gradle` file of the `:app` module, include the following code in the `dependencies` section:
@@ -475,7 +470,6 @@ Now that we have the main structure of our app ready, it is time to start buildi
 Let’s analyze what components our main screen will have:
 
 ![ 1.9 The ConversationsList screen ](/packtpub/2024/1118/1.9-the_conversationslist_screen.webp)
-
 Figure 1.9: The ConversationsList screen
 
 As you can see, we are going to include the following:
@@ -538,7 +532,6 @@ The `Scaffold` composable we have created includes `topBar`, `bottomBar`, `float
 Now, depending on your Android Studio version, you may see the following error:
 
 ![ 1.10 An error with the content padding parameter ](/packtpub/2024/1118/1.10-an_error_with.webp)
-
 Figure 1.10: An error with the content padding parameter
 
 This is happening because the `Scaffold` composable provides a padding parameter to the content Lambda. We will need to take this padding into account when we place the inside components since the scaffold could overlap them if we don’t. For example, in our case, we must consider the padding because otherwise, our content will be kept behind `bottomBar`. We will use this parameter layer when we build the content.
@@ -747,7 +740,6 @@ Our `FloatingActionButton` composable is taking an `onClick` modifier. Here, we 
 At this point, our conversations list screen should look similar to this:
 
 ![ 1.11 The conversations list screen with a top bar, tab bar, and floating action button ](/packtpub/2024/1118/1.11-the_conversations_list.webp)
-
 Figure 1.11: The conversations list screen with a top bar, tab bar, and floating action button
 
 With that, we have created our `Scaffold` composable with all the elements we need to help the user navigate. Now, we are ready for the last step (and the most important one) to complete the screen: creating the list of existing conversations. To do that, we are going to start creating a conversation item.
@@ -952,7 +944,6 @@ Note that here, I’m using a random avatar generator just to make it as similar
 The following screenshot shows what our app would look like with more conversations:
 
 ![ 1.12 ConversationsList screen completed ](/packtpub/2024/1118/1.12-conversationslist_screen_completed.webp)
-
 Figure 1.12: ConversationsList screen completed
 
 Now, let’s switch to the chat screen, also known as the messages list. Whereas the conversations list is a list showing all the conversations we have, the messages list will show the list of messages we have with one user (a single chat screen).
@@ -1235,7 +1226,6 @@ You can add more messages if you want by adding them to the list that’s been c
 Finally, we should have a screen that looks like this:
 
 ![ 1.13 Chat screen UI finished ](/packtpub/2024/1118/1.13-chat_screen_ui.webp)
-
 Figure 1.13: Chat screen UI finished
 
 With that, we are done with the user interface for now. We will continue working on this app during the next two chapters!
@@ -1252,16 +1242,16 @@ As we move forward, it’s time to give some love and life to our chats. In the 
 
 
 
-| ≪ [ 01 Pt1-Creating WhatsPackt, a Messaging App ](/books/packtpub/2024/1118-Android_using_Kotlin/01_Pt1-Creating_WhatsPackt_a_Messaging_App) | 02 Ch1-Building the UI for Your Messaging App | [ 03 Ch2-Setting Up WhatsPackt’s Messaging Abilities ](/books/packtpub/2024/1118-Android_using_Kotlin/03_Ch2-Setting_Up_WhatsPackts_Messaging_Abilities) ≫ |
+| ≪ [ 100 Creating WhatsPackt, a Messaging App ](/books/packtpub/2024/1118-Android_using_Kotlin/100_Creating_WhatsPackt_a_Messaging_App) | 101 Chapter 1: Building the UI for Your Messaging App | [ 102 Setting Up WhatsPackt’s Messaging Abilities ](/books/packtpub/2024/1118-Android_using_Kotlin/102_Setting_Up_WhatsPackts_Messaging_Abilities) ≫ |
 |:----:|:----:|:----:|
 
 > Page Properties:
-> (1) Title: 02 Ch1-Building the UI for Your Messaging App
+> (1) Title: 101 Chapter 1: Building the UI for Your Messaging App
 > (2) Short Description: Android using Kotlin
-> (3) Path: books/packtpub/2024/1118-Android_using_Kotlin/02_Ch1-Building_the_UI_for_Your_Messaging_App
+> (3) Path: books/packtpub/2024/1118-Android_using_Kotlin/101_Building_the_UI_for_Your_Messaging_App
 > Book Jemok: Thriving in Android Development Using Kotlin
 > AuthorDate: Gema Socorro Rodríguez / Jul 2024 / 410 pages 1Ed
 > Link: https://subscription.packtpub.com/book/mobile/9781837631292/pref
-> create: 2024-11-19 화 12:29:06
-> .md Name: 02_ch1-building_the_ui_for_your_messaging_app.md
+> create: 2024-11-22 금 12:23:44
+> .md Name: 101_building_the_ui_for_your_messaging_app.md
 

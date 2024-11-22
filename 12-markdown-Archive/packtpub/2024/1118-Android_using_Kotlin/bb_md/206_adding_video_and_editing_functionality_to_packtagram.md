@@ -1,9 +1,8 @@
 
-| ≪ [ 07 Ch5-Creating a Photo Editor Using CameraX ](/books/packtpub_2024/1118-Android_using_Kotlin/07_Ch5-Creating_a_Photo_Editor_Using_CameraX) | 08 Ch6-Adding Video and Editing Functionality to Packtagram | [ 09 Pt3-Creating Packtflix, a Video Media App ](/books/packtpub_2024/1118-Android_using_Kotlin/09_Pt3-Creating_Packtflix_a_Video_Media_App) ≫ |
+| ≪ [ 205 Creating a Photo Editor Using CameraX ](/books/packtpub/2024/1118-Android_using_Kotlin/205_Creating_a_Photo_Editor_Using_CameraX) | 206 Chapter 6: Adding Video and Editing Functionality to Packtagram | [ 300 Creating Packtflix, a Video Media App ](/books/packtpub/2024/1118-Android_using_Kotlin/300_Creating_Packtflix_a_Video_Media_App) ≫ |
 |:----:|:----:|:----:|
 
-# 08 Ch6-Adding Video and Editing Functionality to Packtagram
-Adding Video and Editing Functionality to Packtagram
+# 206 Chapter 6: Adding Video and Editing Functionality to Packtagram
 Having already mastered the art of capturing stunning photographs and applying mesmerizing filters with CameraX, it’s time to elevate our Packtagram app to new heights. Now, we will embark on an exciting new venture: diving into the world of video.
 
 Videos are not just moving pictures; they are powerful storytelling tools that breathe life into our apps. They create dynamic interactions, keeping users engaged and offering them a canvas to express creativity. In this chapter, we’ll guide you through the process of integrating video capabilities into your app, akin to adding a new dimension to the Instagram-like experience we have been crafting.
@@ -934,16 +933,16 @@ With this chapter, we have finished our work on Packtagram. Now, it’s time to 
 
 
 
-| ≪ [ 07 Ch5-Creating a Photo Editor Using CameraX ](/books/packtpub_2024/1118-Android_using_Kotlin/07_Ch5-Creating_a_Photo_Editor_Using_CameraX) | 08 Ch6-Adding Video and Editing Functionality to Packtagram | [ 09 Pt3-Creating Packtflix, a Video Media App ](/books/packtpub_2024/1118-Android_using_Kotlin/09_Pt3-Creating_Packtflix_a_Video_Media_App) ≫ |
+| ≪ [ 205 Creating a Photo Editor Using CameraX ](/books/packtpub/2024/1118-Android_using_Kotlin/205_Creating_a_Photo_Editor_Using_CameraX) | 206 Chapter 6: Adding Video and Editing Functionality to Packtagram | [ 300 Creating Packtflix, a Video Media App ](/books/packtpub/2024/1118-Android_using_Kotlin/300_Creating_Packtflix_a_Video_Media_App) ≫ |
 |:----:|:----:|:----:|
 
 > Page Properties:
-> (1) Title: 08 Ch6-Adding Video and Editing Functionality to Packtagram
+> (1) Title: 206 Chapter 6: Adding Video and Editing Functionality to Packtagram
 > (2) Short Description: Android using Kotlin
-> (3) Path: books/packtpub_2024/1118-Android_using_Kotlin/08_Ch6-Adding_Video_and_Editing_Functionality_to_Packtagram
+> (3) Path: books/packtpub/2024/1118-Android_using_Kotlin/206_Adding_Video_and_Editing_Functionality_to_Packtagram
 > Book Jemok: Thriving in Android Development Using Kotlin
 > AuthorDate: Gema Socorro Rodríguez / Jul 2024 / 410 pages 1Ed
 > Link: https://subscription.packtpub.com/book/mobile/9781837631292/pref
-> create: 2024-11-19 화 12:29:06
-> .md Name: 08_ch6-adding_video_and_editing_functionality_to_packtagram.md
+> create: 2024-11-22 금 12:23:44
+> .md Name: 206_adding_video_and_editing_functionality_to_packtagram.md
 

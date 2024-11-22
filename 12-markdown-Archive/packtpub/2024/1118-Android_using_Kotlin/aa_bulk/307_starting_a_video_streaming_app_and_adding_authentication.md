@@ -1,8 +1,8 @@
 
-| ≪ [ 09 Pt3-Creating Packtflix, a Video Media App ](/books/packtpub_2024/1118-Android_using_Kotlin/09_Pt3-Creating_Packtflix_a_Video_Media_App) | 10 Ch7-Starting a Video Streaming App and Adding Authentication | [ 11 Ch8-Adding Media Playback to Packtflix with ExoPlayer ](/books/packtpub_2024/1118-Android_using_Kotlin/11_Ch8-Adding_Media_Playback_to_Packtflix_with_ExoPlayer) ≫ |
+| ≪ [ 300 Creating Packtflix, a Video Media App ](/books/packtpub/2024/1118-Android_using_Kotlin/300_Creating_Packtflix_a_Video_Media_App) | 307 Chapter 7: Starting a Video Streaming App and Adding Authentication | [ 308 Adding Media Playback to Packtflix with ExoPlayer ](/books/packtpub/2024/1118-Android_using_Kotlin/308_Adding_Media_Playback_to_Packtflix_with_ExoPlayer) ≫ |
 |:----:|:----:|:----:|
 
-# 10 Ch7-Starting a Video Streaming App and Adding Authentication
+# 307 Chapter 7: Starting a Video Streaming App and Adding Authentication
 
 Having mastered how to create engaging social apps such as WhatsApp and Instagram, it’s now time to dive into the world of video streaming services. This chapter marks the beginning of our third project: a Netflix-like app. Let’s call it Packtflix. Here, we will explore a different aspect of Android development, focusing on multimedia content delivery and user authentication, while continuing to build captivating user interfaces.
 
@@ -1466,16 +1466,16 @@ In the next chapter, we will learn more about how to implement the playback, so 
 
 
 
-| ≪ [ 09 Pt3-Creating Packtflix, a Video Media App ](/books/packtpub_2024/1118-Android_using_Kotlin/09_Pt3-Creating_Packtflix_a_Video_Media_App) | 10 Ch7-Starting a Video Streaming App and Adding Authentication | [ 11 Ch8-Adding Media Playback to Packtflix with ExoPlayer ](/books/packtpub_2024/1118-Android_using_Kotlin/11_Ch8-Adding_Media_Playback_to_Packtflix_with_ExoPlayer) ≫ |
+| ≪ [ 300 Creating Packtflix, a Video Media App ](/books/packtpub/2024/1118-Android_using_Kotlin/300_Creating_Packtflix_a_Video_Media_App) | 307 Chapter 7: Starting a Video Streaming App and Adding Authentication | [ 308 Adding Media Playback to Packtflix with ExoPlayer ](/books/packtpub/2024/1118-Android_using_Kotlin/308_Adding_Media_Playback_to_Packtflix_with_ExoPlayer) ≫ |
 |:----:|:----:|:----:|
 
 > Page Properties:
-> (1) Title: 10 Ch7-Starting a Video Streaming App and Adding Authentication
+> (1) Title: 307 Chapter 7: Starting a Video Streaming App and Adding Authentication
 > (2) Short Description: Android using Kotlin
-> (3) Path: books/packtpub_2024/1118-Android_using_Kotlin/10_Ch7-Starting_a_Video_Streaming_App_and_Adding_Authentication
+> (3) Path: books/packtpub/2024/1118-Android_using_Kotlin/307_Starting_a_Video_Streaming_App_and_Adding_Authentication
 > Book Jemok: Thriving in Android Development Using Kotlin
 > AuthorDate: Gema Socorro Rodríguez / Jul 2024 / 410 pages 1Ed
 > Link: https://subscription.packtpub.com/book/mobile/9781837631292/pref
-> create: 2024-11-19 화 12:29:06
-> .md Name: 10_ch7-starting_a_video_streaming_app_and_adding_authentication.md
+> create: 2024-11-22 금 12:23:44
+> .md Name: 307_starting_a_video_streaming_app_and_adding_authentication.md
 

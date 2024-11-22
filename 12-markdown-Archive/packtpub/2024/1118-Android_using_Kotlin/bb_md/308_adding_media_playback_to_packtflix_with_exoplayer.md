@@ -1,8 +1,8 @@
 
-| ≪ [ 10 Ch7-Starting a Video Streaming App and Adding Authentication ](/books/packtpub_2024/1118-Android_using_Kotlin/10_Ch7-Starting_a_Video_Streaming_App_and_Adding_Authentication) | 11 Ch8-Adding Media Playback to Packtflix with ExoPlayer | [ 12 Ch9-Extending Video Playback' in Your Packtflix App ](/books/packtpub_2024/1118-Android_using_Kotlin/12_Ch9-Extending_Video_Playback_in_Your_Packtflix_App) ≫ |
+| ≪ [ 307 Starting a Video Streaming App and Adding Authentication ](/books/packtpub/2024/1118-Android_using_Kotlin/307_Starting_a_Video_Streaming_App_and_Adding_Authentication) | 308 Chapter 8: Adding Media Playback to Packtflix with ExoPlayer | [ 309 Extending Video Playback' in Your Packtflix App ](/books/packtpub/2024/1118-Android_using_Kotlin/309_Extending_Video_Playback_in_Your_Packtflix_App) ≫ |
 |:----:|:----:|:----:|
 
-# 11 Ch8-Adding Media Playback to Packtflix with ExoPlayer
+# 308 Chapter 8: Adding Media Playback to Packtflix with ExoPlayer
 
 In the journey of Android development, the ability to create rich, engaging multimedia applications is a crucial skill that sets apart great apps from the good ones. As we venture further into the creation of our Netflix-like app, we’ll transition from the foundational structures and user interfaces for browsing movie lists and details to the core of multimedia experiences: video playback. This chapter is dedicated to unlocking the potential of video content within our application, a feature that will significantly enhance user engagement and satisfaction. Here, we will travel into the world of media playback on Android, focusing on the powerful and versatile library known as ExoPlayer.
 
@@ -1168,16 +1168,16 @@ Now that you have a solid grasp of video playback using ExoPlayer, you’re read
 
 
 
-| ≪ [ 10 Ch7-Starting a Video Streaming App and Adding Authentication ](/books/packtpub_2024/1118-Android_using_Kotlin/10_Ch7-Starting_a_Video_Streaming_App_and_Adding_Authentication) | 11 Ch8-Adding Media Playback to Packtflix with ExoPlayer | [ 12 Ch9-Extending Video Playback' in Your Packtflix App ](/books/packtpub_2024/1118-Android_using_Kotlin/12_Ch9-Extending_Video_Playback_in_Your_Packtflix_App) ≫ |
+| ≪ [ 307 Starting a Video Streaming App and Adding Authentication ](/books/packtpub/2024/1118-Android_using_Kotlin/307_Starting_a_Video_Streaming_App_and_Adding_Authentication) | 308 Chapter 8: Adding Media Playback to Packtflix with ExoPlayer | [ 309 Extending Video Playback' in Your Packtflix App ](/books/packtpub/2024/1118-Android_using_Kotlin/309_Extending_Video_Playback_in_Your_Packtflix_App) ≫ |
 |:----:|:----:|:----:|
 
 > Page Properties:
-> (1) Title: 11 Ch8-Adding Media Playback to Packtflix with ExoPlayer
+> (1) Title: 308 Chapter 8: Adding Media Playback to Packtflix with ExoPlayer
 > (2) Short Description: Android using Kotlin
-> (3) Path: books/packtpub_2024/1118-Android_using_Kotlin/11_Ch8-Adding_Media_Playback_to_Packtflix_with_ExoPlayer
+> (3) Path: books/packtpub/2024/1118-Android_using_Kotlin/308_Adding_Media_Playback_to_Packtflix_with_ExoPlayer
 > Book Jemok: Thriving in Android Development Using Kotlin
 > AuthorDate: Gema Socorro Rodríguez / Jul 2024 / 410 pages 1Ed
 > Link: https://subscription.packtpub.com/book/mobile/9781837631292/pref
-> create: 2024-11-19 화 12:29:06
-> .md Name: 11_ch8-adding_media_playback_to_packtflix_with_exoplayer.md
+> create: 2024-11-22 금 12:23:44
+> .md Name: 308_adding_media_playback_to_packtflix_with_exoplayer.md
 

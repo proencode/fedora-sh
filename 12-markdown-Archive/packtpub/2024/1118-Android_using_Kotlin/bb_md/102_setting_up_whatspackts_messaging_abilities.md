@@ -1,8 +1,8 @@
 
-| ≪ [ 02 Ch1-Building the UI for Your Messaging App ](/books/packtpub_2024/1118-Android_using_Kotlin/02_Ch1-Building_the_UI_for_Your_Messaging_App) | 03 Ch2-Setting Up WhatsPackt’s Messaging Abilities | [ 04 Ch3-Backing Up Your WhatsPackt Messages ](/books/packtpub_2024/1118-Android_using_Kotlin/04_Ch3-Backing_Up_Your_WhatsPackt_Messages) ≫ |
+| ≪ [ 101 Building the UI for Your Messaging App ](/books/packtpub/2024/1118-Android_using_Kotlin/101_Building_the_UI_for_Your_Messaging_App) | 102 Chapter 2: Setting Up WhatsPackt’s Messaging Abilities | [ 103 Backing Up Your WhatsPackt Messages ](/books/packtpub/2024/1118-Android_using_Kotlin/103_Backing_Up_Your_WhatsPackt_Messages) ≫ |
 |:----:|:----:|:----:|
 
-# 03 Ch2-Setting Up WhatsPackt’s Messaging Abilities
+# 102 Chapter 2: Setting Up WhatsPackt’s Messaging Abilities
 
 In the previous chapter, we created the structure and UI needed for our messaging app, WhatsPackt.
 
@@ -1980,16 +1980,16 @@ Now, let’s move on to learn how we can optimize our WhatsPackt app so that we 
 
 
 
-| ≪ [ 02 Ch1-Building the UI for Your Messaging App ](/books/packtpub_2024/1118-Android_using_Kotlin/02_Ch1-Building_the_UI_for_Your_Messaging_App) | 03 Ch2-Setting Up WhatsPackt’s Messaging Abilities | [ 04 Ch3-Backing Up Your WhatsPackt Messages ](/books/packtpub_2024/1118-Android_using_Kotlin/04_Ch3-Backing_Up_Your_WhatsPackt_Messages) ≫ |
+| ≪ [ 101 Building the UI for Your Messaging App ](/books/packtpub/2024/1118-Android_using_Kotlin/101_Building_the_UI_for_Your_Messaging_App) | 102 Chapter 2: Setting Up WhatsPackt’s Messaging Abilities | [ 103 Backing Up Your WhatsPackt Messages ](/books/packtpub/2024/1118-Android_using_Kotlin/103_Backing_Up_Your_WhatsPackt_Messages) ≫ |
 |:----:|:----:|:----:|
 
 > Page Properties:
-> (1) Title: 03 Ch2-Setting Up WhatsPackt’s Messaging Abilities
+> (1) Title: 102 Chapter 2: Setting Up WhatsPackt’s Messaging Abilities
 > (2) Short Description: Android using Kotlin
-> (3) Path: books/packtpub_2024/1118-Android_using_Kotlin/03_Ch2-Setting_Up_WhatsPackts_Messaging_Abilities
+> (3) Path: books/packtpub/2024/1118-Android_using_Kotlin/102_Setting_Up_WhatsPackts_Messaging_Abilities
 > Book Jemok: Thriving in Android Development Using Kotlin
 > AuthorDate: Gema Socorro Rodríguez / Jul 2024 / 410 pages 1Ed
 > Link: https://subscription.packtpub.com/book/mobile/9781837631292/pref
-> create: 2024-11-19 화 12:29:06
-> .md Name: 03_ch2-setting_up_whatspackts_messaging_abilities.md
+> create: 2024-11-22 금 12:23:44
+> .md Name: 102_setting_up_whatspackts_messaging_abilities.md
 

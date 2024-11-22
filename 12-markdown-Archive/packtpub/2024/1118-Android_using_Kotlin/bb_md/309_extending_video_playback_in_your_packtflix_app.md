@@ -1,8 +1,8 @@
 
-| ≪ [ 11 Ch8-Adding Media Playback to Packtflix with ExoPlayer ](/books/packtpub/2024/1118-Android_using_Kotlin/11_Ch8-Adding_Media_Playback_to_Packtflix_with_ExoPlayer) | 12 Ch9-Extending Video Playback' in Your Packtflix App | [ 13 Index ](/books/packtpub/2024/1118-Android_using_Kotlin/13_Index) ≫ |
+| ≪ [ 308 Adding Media Playback to Packtflix with ExoPlayer ](/books/packtpub/2024/1118-Android_using_Kotlin/308_Adding_Media_Playback_to_Packtflix_with_ExoPlayer) | 309 Chapter 9: Extending Video Playback' in Your Packtflix App | [ 400 Index ](/books/packtpub/2024/1118-Android_using_Kotlin/400_Index) ≫ |
 |:----:|:----:|:----:|
 
-# 12 Ch9-Extending Video Playback' in Your Packtflix App
+# 309 Chapter 9: Extending Video Playback' in Your Packtflix App
 
 Have you ever wanted your users to continue enjoying their favorite videos even when they switch apps or turn off the screen? This chapter dives deep into the world of extended video playback on Android, bringing you the skills to create a more engaging and versatile user experience.
 
@@ -704,16 +704,16 @@ Thank you for reading this book. I hope it has not only broadened your knowledge
 
 
 
-| ≪ [ 11 Ch8-Adding Media Playback to Packtflix with ExoPlayer ](/books/packtpub/2024/1118-Android_using_Kotlin/11_Ch8-Adding_Media_Playback_to_Packtflix_with_ExoPlayer) | 12 Ch9-Extending Video Playback' in Your Packtflix App | [ 13 Index ](/books/packtpub/2024/1118-Android_using_Kotlin/13_Index) ≫ |
+| ≪ [ 308 Adding Media Playback to Packtflix with ExoPlayer ](/books/packtpub/2024/1118-Android_using_Kotlin/308_Adding_Media_Playback_to_Packtflix_with_ExoPlayer) | 309 Chapter 9: Extending Video Playback' in Your Packtflix App | [ 400 Index ](/books/packtpub/2024/1118-Android_using_Kotlin/400_Index) ≫ |
 |:----:|:----:|:----:|
 
 > Page Properties:
-> (1) Title: 12 Ch9-Extending Video Playback' in Your Packtflix App
+> (1) Title: 309 Chapter 9: Extending Video Playback' in Your Packtflix App
 > (2) Short Description: Android using Kotlin
-> (3) Path: books/packtpub/2024/1118-Android_using_Kotlin/12_Ch9-Extending_Video_Playback_in_Your_Packtflix_App
+> (3) Path: books/packtpub/2024/1118-Android_using_Kotlin/309_Extending_Video_Playback_in_Your_Packtflix_App
 > Book Jemok: Thriving in Android Development Using Kotlin
 > AuthorDate: Gema Socorro Rodríguez / Jul 2024 / 410 pages 1Ed
 > Link: https://subscription.packtpub.com/book/mobile/9781837631292/pref
-> create: 2024-11-19 화 12:29:06
-> .md Name: 12_ch9-extending_video_playback_in_your_packtflix_app.md
+> create: 2024-11-22 금 12:23:45
+> .md Name: 309_extending_video_playback_in_your_packtflix_app.md
 

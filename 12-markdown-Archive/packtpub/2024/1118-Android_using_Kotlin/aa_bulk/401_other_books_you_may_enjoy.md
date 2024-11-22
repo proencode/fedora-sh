@@ -1,8 +1,8 @@
 
-| ≪ [ 13 Index ](/books/packtpub_2024/1118-Android_using_Kotlin/13_Index) | 14 Other Books You May Enjoy | 1118 Thriving in Android Development Using Kotlin 🔔 |
+| ≪ [ 400 Index ](/books/packtpub/2024/1118-Android_using_Kotlin/400_Index) | 401 Other Books You May Enjoy | 1118 Thriving in Android Development Using Kotlin 🔔 |
 |:----:|:----:|:----:|
 
-# 14 Other Books You May Enjoy
+# 401 Other Books You May Enjoy
 
 If you enjoyed this book, you may be interested in these other books by Packt:
 
@@ -64,16 +64,16 @@ That’s it! We’ll send your free PDF and other benefits to your email directl
 
 
 
-| ≪ [ 13 Index ](/books/packtpub_2024/1118-Android_using_Kotlin/13_Index) | 14 Other Books You May Enjoy | 1118 Thriving in Android Development Using Kotlin 🔔 |
+| ≪ [ 400 Index ](/books/packtpub/2024/1118-Android_using_Kotlin/400_Index) | 401 Other Books You May Enjoy | 1118 Thriving in Android Development Using Kotlin 🔔 |
 |:----:|:----:|:----:|
 
 > Page Properties:
-> (1) Title: 14 Other Books You May Enjoy
+> (1) Title: 401 Other Books You May Enjoy
 > (2) Short Description: Android using Kotlin
-> (3) Path: books/packtpub_2024/1118-Android_using_Kotlin/14_Other_Books_You_May_Enjoy
+> (3) Path: books/packtpub/2024/1118-Android_using_Kotlin/401_Other_Books_You_May_Enjoy
 > Book Jemok: Thriving in Android Development Using Kotlin
 > AuthorDate: Gema Socorro Rodríguez / Jul 2024 / 410 pages 1Ed
 > Link: https://subscription.packtpub.com/book/mobile/9781837631292/pref
-> create: 2024-11-19 화 12:29:06
-> .md Name: 14_other_books_you_may_enjoy.md
+> create: 2024-11-22 금 12:23:45
+> .md Name: 401_other_books_you_may_enjoy.md
 

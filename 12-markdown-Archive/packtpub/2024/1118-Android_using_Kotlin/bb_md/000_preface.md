@@ -1,6 +1,5 @@
 
-
-| 🏁 1118 Thriving in Android Development Using Kotlin | 00 Preface | [ 01 Pt1-Creating WhatsPackt, a Messaging App ](/books/packtpub_2024/1118-Android_using_Kotlin/01_Pt1-Creating_WhatsPackt_a_Messaging_App) ≫ |
+| 🏁 1118 Thriving in Android Development Using Kotlin | 000 Preface | [ 100 Part 1: Creating WhatsPackt, a Messaging App ](/books/packtpub/2024/1118-Android_using_Kotlin/100_Creating_WhatsPackt_a_Messaging_App) ≫ |
 |:----:|:----:|:----:|
 
 `Kotlin을 사용한 Android 개발 추진`
@@ -16,25 +15,25 @@ A project-based guide to using the latest Android features for developing produc
 Gema Socorro Rodríguez / Jul 2024 / 410 pages / 1st Edition
 
 ```
-00 Preface
-01 Part 1: Creating WhatsPackt, a Messaging App
-02 Chapter 1: Building the UI for Your Messaging App
-03 Chapter 2: Setting Up WhatsPackt’s Messaging Abilities
-04 Chapter 3: Backing Up Your WhatsPackt Messages
-05 Part 2: Creating Packtagram, a Photo Media App
-06 Chapter 4: Building the Packtagram UI
-07 Chapter 5: Creating a Photo Editor Using CameraX
-08 Chapter 6: Adding Video and Editing Functionality to Packtagram
-09 Part 3: Creating Packtflix, a Video Media App
-10 Chapter 7: Starting a Video Streaming App and Adding Authentication
-11 Chapter 8: Adding Media Playback to Packtflix with ExoPlayer
-12 Chapter 9: Extending Video Playback in Your Packtflix App
-13 Index
-14 Other Books You May Enjoy
+000 Preface
+100 Part 1: Creating WhatsPackt, a Messaging App
+101 Chapter 1: Building the UI for Your Messaging App
+102 Chapter 2: Setting Up WhatsPackt’s Messaging Abilities
+103 Chapter 3: Backing Up Your WhatsPackt Messages
+200 Part 2: Creating Packtagram, a Photo Media App
+204 Chapter 4: Building the Packtagram UI
+205 Chapter 5: Creating a Photo Editor Using CameraX
+206 Chapter 6: Adding Video and Editing Functionality to Packtagram
+300 Part 3: Creating Packtflix, a Video Media App
+307 Chapter 7: Starting a Video Streaming App and Adding Authentication
+308 Chapter 8: Adding Media Playback to Packtflix with ExoPlayer
+309 Chapter 9: Extending Video Playback in Your Packtflix App
+400 Index
+401 Other Books You May Enjoy
 ```
 
 
-# 00 Preface
+# 000 Preface
 https://subscription.packtpub.com/book/mobile/9781837631292/pref
 
 As an Android developer, I consider myself honored to be part of a community that has the power to touch and improve the lives of users worldwide. Android development is not just about writing code; it’s also about creating experiences that resonate, inspire, and connect people in meaningful ways. I have to recognize that my passion for Android development stems from the profound impact we, as developers, can have on individuals and communities.
@@ -149,16 +148,17 @@ https://packt.link/free-ebook/9781837631292
 1. That’s it! We’ll send your free PDF and other benefits to your email directly
 
 
-| 🏁 1118 Thriving in Android Development Using Kotlin | 00 Preface | [ 01 Pt1-Creating WhatsPackt, a Messaging App ](/books/packtpub_2024/1118-Android_using_Kotlin/01_Pt1-Creating_WhatsPackt_a_Messaging_App) ≫ |
+
+| 🏁 1118 Thriving in Android Development Using Kotlin | 000 Preface | [ 100 Part 1: Creating WhatsPackt, a Messaging App ](/books/packtpub/2024/1118-Android_using_Kotlin/100_Creating_WhatsPackt_a_Messaging_App) ≫ |
 |:----:|:----:|:----:|
 
 > Page Properties:
-> (1) Title: 00 Preface
+> (1) Title: 000 Preface
 > (2) Short Description: Android using Kotlin
-> (3) Path: books/packtpub_2024/1118-Android_using_Kotlin/00_Preface
+> (3) Path: books/packtpub/2024/1118-Android_using_Kotlin/000_Preface
 > Book Jemok: Thriving in Android Development Using Kotlin
 > AuthorDate: Gema Socorro Rodríguez / Jul 2024 / 410 pages 1Ed
 > Link: https://subscription.packtpub.com/book/mobile/9781837631292/pref
-> create: 2024-11-19 화 12:29:06
-> .md Name: 00_preface.md
+> create: 2024-11-22 금 12:23:44
+> .md Name: 000_preface.md
 

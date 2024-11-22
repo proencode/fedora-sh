@@ -165,7 +165,6 @@ md_Create () {
 	fi
 }
 
-img_dir="img"
 if [ ! -d ${img_dir} ]; then
 	echo "#-- mkdir -p ${img_dir}"
 	mkdir -p ${img_dir}
@@ -189,6 +188,7 @@ TypingMmDd="1118" #-- 입력월일
 TypingJemok="Android using Kotlin" #-- 짧은 제목
 AuthorDate="Gema Socorro Rodríguez / Jul 2024 / 410 pages 1Ed" #-- 저자등 설명
 https_line="https://subscription.packtpub.com/book/mobile/9781837631292/pref" #-- 책 링크
+img_dir="img-${Publisher}_${TypingYear}_${TypingMmDd}" #-- 이미지 저장 폴더
 #-- -------------------------------------------------------------
 #-- ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 #--
@@ -209,21 +209,21 @@ md_Create "SKIP" "Begin" #-- 첫줄 표시.
 #-- vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv
 #-- -------------------------------------------------------------
 # create  mdSeq  mdChapter
-md_Create "00" "Preface" #-- 서문
-md_Create "01" "Pt1-Creating WhatsPackt, a Messaging App" #-- 이하 본문
-md_Create "02" "Ch1-Building the UI for Your Messaging App"
-md_Create "03" "Ch2-Setting Up WhatsPackt’s Messaging Abilities"
-md_Create "04" "Ch3-Backing Up Your WhatsPackt Messages"
-md_Create "05" "Pt2-Creating Packtagram, a Photo Media App"
-md_Create "06" "Ch4-Building the Packtagram UI"
-md_Create "07" "Ch5-Creating a Photo Editor Using CameraX"
-md_Create "08" "Ch6-Adding Video and Editing Functionality to Packtagram"
-md_Create "09" "Pt3-Creating Packtflix, a Video Media App"
-md_Create "10" "Ch7-Starting a Video Streaming App and Adding Authentication"
-md_Create "11" "Ch8-Adding Media Playback to Packtflix with ExoPlayer"
-md_Create "12" "Ch9-Extending Video Playback' in Your Packtflix App"
-md_Create "13" "Index"
-md_Create "14" "Other Books You May Enjoy"
+md_Create "000" "Preface" #-- 서문
+md_Create "100" "Creating WhatsPackt, a Messaging App" #-- 이하 본문
+md_Create "101" "Building the UI for Your Messaging App"
+md_Create "102" "Setting Up WhatsPackt’s Messaging Abilities"
+md_Create "103" "Backing Up Your WhatsPackt Messages"
+md_Create "200" "Creating Packtagram, a Photo Media App"
+md_Create "204" "Building the Packtagram UI"
+md_Create "205" "Creating a Photo Editor Using CameraX"
+md_Create "206" "Adding Video and Editing Functionality to Packtagram"
+md_Create "300" "Creating Packtflix, a Video Media App"
+md_Create "307" "Starting a Video Streaming App and Adding Authentication"
+md_Create "308" "Adding Media Playback to Packtflix with ExoPlayer"
+md_Create "309" "Extending Video Playback' in Your Packtflix App"
+md_Create "400" "Index"
+md_Create "401" "Other Books You May Enjoy"
 #-- -------------------------------------------------------------
 #-- ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 #--

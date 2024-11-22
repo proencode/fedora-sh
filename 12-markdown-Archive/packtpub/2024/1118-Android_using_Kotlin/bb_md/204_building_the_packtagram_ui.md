@@ -1,8 +1,8 @@
 
-| ≪ [ 05 Pt2-Creating Packtagram, a Photo Media App ](/books/packtpub/2024/1118-Android_using_Kotlin/05_Pt2-Creating_Packtagram_a_Photo_Media_App) | 06 Ch4-Building the Packtagram UI | [ 07 Ch5-Creating a Photo Editor Using CameraX ](/books/packtpub/2024/1118-Android_using_Kotlin/07_Ch5-Creating_a_Photo_Editor_Using_CameraX) ≫ |
+| ≪ [ 200 Creating Packtagram, a Photo Media App ](/books/packtpub/2024/1118-Android_using_Kotlin/200_Creating_Packtagram_a_Photo_Media_App) | 204 Chapter 4: Building the Packtagram UI | [ 205 Creating a Photo Editor Using CameraX ](/books/packtpub/2024/1118-Android_using_Kotlin/205_Creating_a_Photo_Editor_Using_CameraX) ≫ |
 |:----:|:----:|:----:|
 
-# 06 Ch4-Building the Packtagram UI
+# 204 Chapter 4: Building the Packtagram UI
 
 As we leave the exciting world of chat applications behind, it’s time to take on another interesting challenge – social networking. Social networking apps have seen an exponential rise in popularity over the last decade, becoming integral to our daily lives. These platforms have changed the way we communicate, share, and interact with each other on a global scale. Among them, Instagram stands out with its simplicity, its emphasis on visuals, and its engaging features, such as its newsfeed and stories.
 
@@ -1397,16 +1397,17 @@ Additionally, this chapter delved into the intricacies of connecting the develop
 In the next chapter, we will dive into the photo functionality of our app. We will use an incredible library called CameraX and take advantage of some of its capabilities. We will also learn how to apply machine learning to our camera preview using ML Kit.
 
 
-| ≪ [ 05 Pt2-Creating Packtagram, a Photo Media App ](/books/packtpub/2024/1118-Android_using_Kotlin/05_Pt2-Creating_Packtagram_a_Photo_Media_App) | 06 Ch4-Building the Packtagram UI | [ 07 Ch5-Creating a Photo Editor Using CameraX ](/books/packtpub/2024/1118-Android_using_Kotlin/07_Ch5-Creating_a_Photo_Editor_Using_CameraX) ≫ |
+
+| ≪ [ 200 Creating Packtagram, a Photo Media App ](/books/packtpub/2024/1118-Android_using_Kotlin/200_Creating_Packtagram_a_Photo_Media_App) | 204 Chapter 4: Building the Packtagram UI | [ 205 Creating a Photo Editor Using CameraX ](/books/packtpub/2024/1118-Android_using_Kotlin/205_Creating_a_Photo_Editor_Using_CameraX) ≫ |
 |:----:|:----:|:----:|
 
 > Page Properties:
-> (1) Title: 06 Ch4-Building the Packtagram UI
+> (1) Title: 204 Chapter 4: Building the Packtagram UI
 > (2) Short Description: Android using Kotlin
-> (3) Path: books/packtpub/2024/1118-Android_using_Kotlin/06_Ch4-Building_the_Packtagram_UI
+> (3) Path: books/packtpub/2024/1118-Android_using_Kotlin/204_Building_the_Packtagram_UI
 > Book Jemok: Thriving in Android Development Using Kotlin
 > AuthorDate: Gema Socorro Rodríguez / Jul 2024 / 410 pages 1Ed
 > Link: https://subscription.packtpub.com/book/mobile/9781837631292/pref
-> create: 2024-11-19 화 12:29:06
-> .md Name: 06_ch4-building_the_packtagram_ui.md
+> create: 2024-11-22 금 12:23:44
+> .md Name: 204_building_the_packtagram_ui.md
 

@@ -1,8 +1,8 @@
 
-| ≪ [ 03 Ch2-Setting Up WhatsPackt’s Messaging Abilities ](/books/packtpub_2024/1118-Android_using_Kotlin/03_Ch2-Setting_Up_WhatsPackts_Messaging_Abilities) | 04 Ch3-Backing Up Your WhatsPackt Messages | [ 05 Pt2-Creating Packtagram, a Photo Media App ](/books/packtpub_2024/1118-Android_using_Kotlin/05_Pt2-Creating_Packtagram_a_Photo_Media_App) ≫ |
+| ≪ [ 102 Setting Up WhatsPackt’s Messaging Abilities ](/books/packtpub/2024/1118-Android_using_Kotlin/102_Setting_Up_WhatsPackts_Messaging_Abilities) | 103 Chapter 3: Backing Up Your WhatsPackt Messages | [ 200 Creating Packtagram, a Photo Media App ](/books/packtpub/2024/1118-Android_using_Kotlin/200_Creating_Packtagram_a_Photo_Media_App) ≫ |
 |:----:|:----:|:----:|
 
-# 04 Ch3-Backing Up Your WhatsPackt Messages
+# 103 Chapter 3: Backing Up Your WhatsPackt Messages
 
 In any chat application, data handling is a significant concern – we need to ensure that messages sent and received are stored correctly, quickly retrieved when needed, and resilient to potential losses due to unforeseen circumstances such as device failures or accidental deletions. This requires a robust data persistence strategy. We also need to consider performance and user experience, which calls for effective caching mechanisms, as well as making sure that we have backups in the event of data loss or when the user changes devices.
 
@@ -1004,16 +1004,16 @@ Now, we have finished our work in the WhatsPackt app. In the next chapter, we wi
 
 
 
-| ≪ [ 03 Ch2-Setting Up WhatsPackt’s Messaging Abilities ](/books/packtpub_2024/1118-Android_using_Kotlin/03_Ch2-Setting_Up_WhatsPackts_Messaging_Abilities) | 04 Ch3-Backing Up Your WhatsPackt Messages | [ 05 Pt2-Creating Packtagram, a Photo Media App ](/books/packtpub_2024/1118-Android_using_Kotlin/05_Pt2-Creating_Packtagram_a_Photo_Media_App) ≫ |
+| ≪ [ 102 Setting Up WhatsPackt’s Messaging Abilities ](/books/packtpub/2024/1118-Android_using_Kotlin/102_Setting_Up_WhatsPackts_Messaging_Abilities) | 103 Chapter 3: Backing Up Your WhatsPackt Messages | [ 200 Creating Packtagram, a Photo Media App ](/books/packtpub/2024/1118-Android_using_Kotlin/200_Creating_Packtagram_a_Photo_Media_App) ≫ |
 |:----:|:----:|:----:|
 
 > Page Properties:
-> (1) Title: 04 Ch3-Backing Up Your WhatsPackt Messages
+> (1) Title: 103 Chapter 3: Backing Up Your WhatsPackt Messages
 > (2) Short Description: Android using Kotlin
-> (3) Path: books/packtpub_2024/1118-Android_using_Kotlin/04_Ch3-Backing_Up_Your_WhatsPackt_Messages
+> (3) Path: books/packtpub/2024/1118-Android_using_Kotlin/103_Backing_Up_Your_WhatsPackt_Messages
 > Book Jemok: Thriving in Android Development Using Kotlin
 > AuthorDate: Gema Socorro Rodríguez / Jul 2024 / 410 pages 1Ed
 > Link: https://subscription.packtpub.com/book/mobile/9781837631292/pref
-> create: 2024-11-19 화 12:29:06
-> .md Name: 04_ch3-backing_up_your_whatspackt_messages.md
+> create: 2024-11-22 금 12:23:44
+> .md Name: 103_backing_up_your_whatspackt_messages.md
 
