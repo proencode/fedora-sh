@@ -195,7 +195,7 @@ https_line="https://subscription.packtpub.com/book/mobile/9781837631292/pref" #-
 #-- " ' , / 등의 특수문자는 _ 또는 제거한다. , 는 삭제함.
 #-- 수정전내용 mmdd_jemok=$(echo "${TypingMmDd}-${TypingJemok}" | sed 's/ /_/g' | sed 's/\./_/g' | sed 's/“/_/g' | sed 's/”/_/g' | sed 's/\"/_/g' | sed "s/’/_/g" | sed "s/,/_/g" | sed "s/'/_/g" | sed "s/\//-/g")
 mmdd_jemok=$(echo "${TypingMmDd}-${TypingJemok}" | sed 's/ /_/g' | sed 's/“/\"/g' | sed 's/”/\"/g' | sed "s/’//g" | sed "s/,//g" | sed "s/'//g" | sed "s/\//-/g")
-book_path="books/${Publisher}_${TypingYear}/${mmdd_jemok}"
+book_path="books/${Publisher}/${TypingYear}/${mmdd_jemok}"
 #--
 #-- (6) md_Create "권 번호" "제목"
 #-- 첫줄에는 "SKIP" "Begin" , 끝줄에는 "SKIP" "End" 로 표시한다.

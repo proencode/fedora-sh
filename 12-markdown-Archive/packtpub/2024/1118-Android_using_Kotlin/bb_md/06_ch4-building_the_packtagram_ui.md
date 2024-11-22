@@ -1,5 +1,5 @@
 
-| ≪ [ 05 Pt2-Creating Packtagram, a Photo Media App ](/books/packtpub_2024/1118-Android_using_Kotlin/05_Pt2-Creating_Packtagram_a_Photo_Media_App) | 06 Ch4-Building the Packtagram UI | [ 07 Ch5-Creating a Photo Editor Using CameraX ](/books/packtpub_2024/1118-Android_using_Kotlin/07_Ch5-Creating_a_Photo_Editor_Using_CameraX) ≫ |
+| ≪ [ 05 Pt2-Creating Packtagram, a Photo Media App ](/books/packtpub/2024/1118-Android_using_Kotlin/05_Pt2-Creating_Packtagram_a_Photo_Media_App) | 06 Ch4-Building the Packtagram UI | [ 07 Ch5-Creating a Photo Editor Using CameraX ](/books/packtpub/2024/1118-Android_using_Kotlin/07_Ch5-Creating_a_Photo_Editor_Using_CameraX) ≫ |
 |:----:|:----:|:----:|
 
 # 06 Ch4-Building the Packtagram UI
@@ -1397,13 +1397,13 @@ Additionally, this chapter delved into the intricacies of connecting the develop
 In the next chapter, we will dive into the photo functionality of our app. We will use an incredible library called CameraX and take advantage of some of its capabilities. We will also learn how to apply machine learning to our camera preview using ML Kit.
 
 
-| ≪ [ 05 Pt2-Creating Packtagram, a Photo Media App ](/books/packtpub_2024/1118-Android_using_Kotlin/05_Pt2-Creating_Packtagram_a_Photo_Media_App) | 06 Ch4-Building the Packtagram UI | [ 07 Ch5-Creating a Photo Editor Using CameraX ](/books/packtpub_2024/1118-Android_using_Kotlin/07_Ch5-Creating_a_Photo_Editor_Using_CameraX) ≫ |
+| ≪ [ 05 Pt2-Creating Packtagram, a Photo Media App ](/books/packtpub/2024/1118-Android_using_Kotlin/05_Pt2-Creating_Packtagram_a_Photo_Media_App) | 06 Ch4-Building the Packtagram UI | [ 07 Ch5-Creating a Photo Editor Using CameraX ](/books/packtpub/2024/1118-Android_using_Kotlin/07_Ch5-Creating_a_Photo_Editor_Using_CameraX) ≫ |
 |:----:|:----:|:----:|
 
 > Page Properties:
 > (1) Title: 06 Ch4-Building the Packtagram UI
 > (2) Short Description: Android using Kotlin
-> (3) Path: books/packtpub_2024/1118-Android_using_Kotlin/06_Ch4-Building_the_Packtagram_UI
+> (3) Path: books/packtpub/2024/1118-Android_using_Kotlin/06_Ch4-Building_the_Packtagram_UI
 > Book Jemok: Thriving in Android Development Using Kotlin
 > AuthorDate: Gema Socorro Rodríguez / Jul 2024 / 410 pages 1Ed
 > Link: https://subscription.packtpub.com/book/mobile/9781837631292/pref

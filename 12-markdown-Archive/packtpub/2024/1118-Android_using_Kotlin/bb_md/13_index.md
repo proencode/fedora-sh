@@ -1,5 +1,5 @@
 
-| ≪ [ 12 Ch9-Extending Video Playback' in Your Packtflix App ](/books/packtpub_2024/1118-Android_using_Kotlin/12_Ch9-Extending_Video_Playback_in_Your_Packtflix_App) | 13 Index | [ 14 Other Books You May Enjoy ](/books/packtpub_2024/1118-Android_using_Kotlin/14_Other_Books_You_May_Enjoy) ≫ |
+| ≪ [ 12 Ch9-Extending Video Playback' in Your Packtflix App ](/books/packtpub/2024/1118-Android_using_Kotlin/12_Ch9-Extending_Video_Playback_in_Your_Packtflix_App) | 13 Index | [ 14 Other Books You May Enjoy ](/books/packtpub/2024/1118-Android_using_Kotlin/14_Other_Books_You_May_Enjoy) ≫ |
 |:----:|:----:|:----:|
 
 # 13 Index
@@ -1080,13 +1080,13 @@ At www.packtpub.com, you can also read a collection of free technical articles, 
 
 
 
-| ≪ [ 12 Ch9-Extending Video Playback' in Your Packtflix App ](/books/packtpub_2024/1118-Android_using_Kotlin/12_Ch9-Extending_Video_Playback_in_Your_Packtflix_App) | 13 Index | [ 14 Other Books You May Enjoy ](/books/packtpub_2024/1118-Android_using_Kotlin/14_Other_Books_You_May_Enjoy) ≫ |
+| ≪ [ 12 Ch9-Extending Video Playback' in Your Packtflix App ](/books/packtpub/2024/1118-Android_using_Kotlin/12_Ch9-Extending_Video_Playback_in_Your_Packtflix_App) | 13 Index | [ 14 Other Books You May Enjoy ](/books/packtpub/2024/1118-Android_using_Kotlin/14_Other_Books_You_May_Enjoy) ≫ |
 |:----:|:----:|:----:|
 
 > Page Properties:
 > (1) Title: 13 Index
 > (2) Short Description: Android using Kotlin
-> (3) Path: books/packtpub_2024/1118-Android_using_Kotlin/13_Index
+> (3) Path: books/packtpub/2024/1118-Android_using_Kotlin/13_Index
 > Book Jemok: Thriving in Android Development Using Kotlin
 > AuthorDate: Gema Socorro Rodríguez / Jul 2024 / 410 pages 1Ed
 > Link: https://subscription.packtpub.com/book/mobile/9781837631292/pref

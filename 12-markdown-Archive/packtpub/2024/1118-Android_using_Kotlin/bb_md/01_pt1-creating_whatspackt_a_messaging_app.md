@@ -1,5 +1,5 @@
 
-| ≪ [ 00 Preface ](/books/packtpub_2024/1118-Android_using_Kotlin/00_Preface) | 01 Pt1-Creating WhatsPackt, a Messaging App | [ 02 Ch1-Building the UI for Your Messaging App ](/books/packtpub_2024/1118-Android_using_Kotlin/02_Ch1-Building_the_UI_for_Your_Messaging_App) ≫ |
+| ≪ [ 00 Preface ](/books/packtpub/2024/1118-Android_using_Kotlin/00_Preface) | 01 Pt1-Creating WhatsPackt, a Messaging App | [ 02 Ch1-Building the UI for Your Messaging App ](/books/packtpub/2024/1118-Android_using_Kotlin/02_Ch1-Building_the_UI_for_Your_Messaging_App) ≫ |
 |:----:|:----:|:----:|
 
 # 01 Part 1: Creating WhatsPackt, a Messaging App
@@ -14,13 +14,13 @@ This part includes the following chapters:
 
 
 
-| ≪ [ 00 Preface ](/books/packtpub_2024/1118-Android_using_Kotlin/00_Preface) | 01 Pt1-Creating WhatsPackt, a Messaging App | [ 02 Ch1-Building the UI for Your Messaging App ](/books/packtpub_2024/1118-Android_using_Kotlin/02_Ch1-Building_the_UI_for_Your_Messaging_App) ≫ |
+| ≪ [ 00 Preface ](/books/packtpub/2024/1118-Android_using_Kotlin/00_Preface) | 01 Pt1-Creating WhatsPackt, a Messaging App | [ 02 Ch1-Building the UI for Your Messaging App ](/books/packtpub/2024/1118-Android_using_Kotlin/02_Ch1-Building_the_UI_for_Your_Messaging_App) ≫ |
 |:----:|:----:|:----:|
 
 > Page Properties:
 > (1) Title: 01 Pt1-Creating WhatsPackt, a Messaging App
 > (2) Short Description: Android using Kotlin
-> (3) Path: books/packtpub_2024/1118-Android_using_Kotlin/01_Pt1-Creating_WhatsPackt_a_Messaging_App
+> (3) Path: books/packtpub/2024/1118-Android_using_Kotlin/01_Pt1-Creating_WhatsPackt_a_Messaging_App
 > Book Jemok: Thriving in Android Development Using Kotlin
 > AuthorDate: Gema Socorro Rodríguez / Jul 2024 / 410 pages 1Ed
 > Link: https://subscription.packtpub.com/book/mobile/9781837631292/pref

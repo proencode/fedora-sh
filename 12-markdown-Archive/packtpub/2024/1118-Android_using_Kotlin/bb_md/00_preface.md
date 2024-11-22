@@ -1,6 +1,6 @@
 
 
-| 🏁 1118 Thriving in Android Development Using Kotlin | 00 Preface | [ 01 Pt1-Creating WhatsPackt, a Messaging App ](/books/packtpub_2024/1118-Android_using_Kotlin/01_Pt1-Creating_WhatsPackt_a_Messaging_App) ≫ |
+| 🏁 1118 Thriving in Android Development Using Kotlin | 00 Preface | [ 01 Pt1-Creating WhatsPackt, a Messaging App ](/books/packtpub/2024/1118-Android_using_Kotlin/01_Pt1-Creating_WhatsPackt_a_Messaging_App) ≫ |
 |:----:|:----:|:----:|
 
 `Kotlin을 사용한 Android 개발 추진`
@@ -149,13 +149,13 @@ https://packt.link/free-ebook/9781837631292
 1. That’s it! We’ll send your free PDF and other benefits to your email directly
 
 
-| 🏁 1118 Thriving in Android Development Using Kotlin | 00 Preface | [ 01 Pt1-Creating WhatsPackt, a Messaging App ](/books/packtpub_2024/1118-Android_using_Kotlin/01_Pt1-Creating_WhatsPackt_a_Messaging_App) ≫ |
+| 🏁 1118 Thriving in Android Development Using Kotlin | 00 Preface | [ 01 Pt1-Creating WhatsPackt, a Messaging App ](/books/packtpub/2024/1118-Android_using_Kotlin/01_Pt1-Creating_WhatsPackt_a_Messaging_App) ≫ |
 |:----:|:----:|:----:|
 
 > Page Properties:
 > (1) Title: 00 Preface
 > (2) Short Description: Android using Kotlin
-> (3) Path: books/packtpub_2024/1118-Android_using_Kotlin/00_Preface
+> (3) Path: books/packtpub/2024/1118-Android_using_Kotlin/00_Preface
 > Book Jemok: Thriving in Android Development Using Kotlin
 > AuthorDate: Gema Socorro Rodríguez / Jul 2024 / 410 pages 1Ed
 > Link: https://subscription.packtpub.com/book/mobile/9781837631292/pref
