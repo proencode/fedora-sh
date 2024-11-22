@@ -1,16 +1,16 @@
 
-| ≪ [ 101 Building the UI for Your Messaging App ](/books/packtpub/2024/1118-Android_using_Kotlin/101_Building_the_UI_for_Your_Messaging_App) | 102 Chapter 2: Setting Up WhatsPackt’s Messaging Abilities | [ 103 Backing Up Your WhatsPackt Messages ](/books/packtpub/2024/1118-Android_using_Kotlin/103_Backing_Up_Your_WhatsPackt_Messages) ≫ |
+| ≪ [ 101 Building the UI for Your Messaging App ](/books/packtpub/2024/1118-Android_using_Kotlin/101_Building_the_UI_for_Your_Messaging_App) | 102-2장 Setting Up WhatsPackt’s Messaging Abilities | [ 103 Backing Up Your WhatsPackt Messages ](/books/packtpub/2024/1118-Android_using_Kotlin/103_Backing_Up_Your_WhatsPackt_Messages) ≫ |
 |:----:|:----:|:----:|
 
-# 102 Chapter 2: Setting Up WhatsPackt’s Messaging Abilities
+# 102-2장 Setting Up WhatsPackt’s Messaging Abilities
 
 In the previous chapter, we created the structure and UI needed for our messaging app, WhatsPackt.
 
-One of the core features of any messaging app is the ability to facilitate 1:1 conversations between two users, so in this chapter, we will delve into the process of connecting our messaging app to a backend server using WebSockets, handling messages within ViewModel instances, and managing synchronization, error handling, and push notifications.
+One of the core features of any messaging app is the ability to facilitate 1:1 conversations between two users, so in this chapter, we will delve into the process of connecting our messaging app to a backend server using WebSockets, handling messages within `ViewModel` instances, and managing synchronization, error handling, and push notifications.
 
-We will begin by exploring WebSockets, a powerful technology that enables bidirectional communication between client and server, providing a solid foundation for real-time messaging in your app. You will learn how to establish a WebSocket connection, send messages, and handle incoming messages from the server.
+We will begin by exploring **WebSockets**, a powerful technology that enables bidirectional communication between client and server, providing a solid foundation for real-time messaging in your app. You will learn how to establish a WebSocket connection, send messages, and handle incoming messages from the server.
 
-Next, we will demonstrate how to receive messages in your ViewModel. We will discuss best practices for updating the UI, managing message storage, and handling user interactions, ensuring a smooth and responsive messaging experience for your users.
+Next, we will demonstrate how to receive messages in your **ViewModel**. We will discuss best practices for updating the UI, managing message storage, and handling user interactions, ensuring a smooth and responsive messaging experience for your users.
 
 The chapter will also cover the essential aspects of synchronization and error handling. You will learn how to manage message delivery status, handle intermittent connectivity issues, and gracefully recover from errors, resulting in a resilient and reliable messaging system.
 
@@ -20,89 +20,100 @@ By the end of this chapter, you will have gained a comprehensive understanding o
 
 So, in this chapter, we will cover the following topics:
 
-Using a WebSocket connection
-Receiving messages in our ViewModel
-Handling synchronization and errors
-Adding push notifications
-Replacing the WebSocket with Firestore
-Technical requirements
+> - Using a WebSocket connection
+> - Receiving messages in our `ViewModel`
+> - Handling synchronization and errors
+> - Adding push notifications
+> - Replacing the WebSocket with Firestore
+
+# Technical requirements
+
 As in the previous chapter, you will need to have installed Android Studio (or another editor of your preference).
 
 We are also going to assume that you followed along with the previous chapter. If you haven’t, you can download the previous chapter’s complete code from here: https://github.com/PacktPublishing/Thriving-in-Android-Development-using-Kotlin/tree/main/Chapter-1/WhatsPackt.
 
 The code completed in this chapter can also be found at this link: https://github.com/PacktPublishing/Thriving-in-Android-Development-using-Kotlin/tree/main/Chapter-2/WhatsPackt.
 
-Using a WebSocket connection
+# Using a WebSocket connection
+
 As mentioned, WebSockets is a powerful technology that enables bidirectional communication between client and server. In this section, we are going to use a WebSocket connection to connect with our server to obtain and send messages. But before we do that, it is essential to understand the alternatives and the rationale behind choosing WebSockets for our messaging app.
 
-Why WebSockets?
+## Why WebSockets?
+
 There are several options for enabling real-time communication between clients and servers, including the following:
 
-Long polling: This is when the client sends a request to the server, and the server holds the request until new data is available. Once the server responds with the new data, the client sends another request, and the process repeats.
-Server-Sent Events (SSE): SSE is a unidirectional communication method where the server pushes updates to the client over a single HTTP connection.
-Real-time cloud databases (for example, Firebase Firestore): Real-time cloud databases provide an easy-to-use, scalable solution for real-time data synchronization. They automatically push updates to clients whenever data changes, making them suitable for messaging apps.
-WebSockets: WebSockets provide full-duplex, bidirectional communication between clients and servers over a single, long-lived connection. They are widely supported across platforms and are an ideal choice for real-time communication in messaging apps.
+> - **Long polling**: This is when the client sends a request to the server, and the server holds the request until new data is available. Once the server responds with the new data, the client sends another request, and the process repeats.
+> - **Server-Sent Events (SSE)**: SSE is a unidirectional communication method where the server pushes updates to the client over a single HTTP connection.
+> - **Real-time cloud databases (for example, Firebase Firestore)**: Real-time cloud databases provide an easy-to-use, scalable solution for real-time data synchronization. They automatically push updates to clients whenever data changes, making them suitable for messaging apps.
+> - **WebSockets**: WebSockets provide full-duplex, bidirectional communication between clients and servers over a single, long-lived connection. They are widely supported across platforms and are an ideal choice for real-time communication in messaging apps.
+
 Considering these alternatives, we choose to use WebSockets for our messaging app because they offer the following advantages:
 
-Bidirectional communication: WebSockets enable simultaneous data transmission between clients and servers, allowing for faster message exchanges and a more responsive user experience
-Low latency: Unlike long polling, SSE, and some real-time cloud databases, WebSockets provide low-latency communication, which is crucial for a real-time messaging app
-Efficient use of resources: WebSockets maintain a single connection per client, reducing the overhead on both client and server compared to long polling
-Flexibility and control: Implementing custom WebSocket communication allows for more fine-grained control over the messaging infrastructure, avoiding potential limitations or constraints imposed by real-time cloud databases
+> - **Bidirectional communication**: WebSockets enable simultaneous data transmission between clients and servers, allowing for faster message exchanges and a more responsive user experience
+> - **Low latency**: Unlike long polling, SSE, and some real-time cloud databases, WebSockets provide low-latency communication, which is crucial for a real-time messaging app
+> - **Efficient use of resources**: WebSockets maintain a single connection per client, reducing the overhead on both client and server compared to long polling
+> - **Flexibility and control**: Implementing custom WebSocket communication allows for more fine-grained control over the messaging infrastructure, avoiding potential limitations or constraints imposed by real-time cloud databases
+
 For sure, WebSockets also have their disadvantages that we must take into account, such as the following:
 
-Battery and data usage: Maintaining a persistent connection can lead to increased battery drain and data usage, which may be a concern for mobile users.
-Complexity: Implementing WebSocket communication is typically more complex than using RESTful services. You have to handle various scenarios such as reconnection on network changes, which are common in mobile environments.
-Scalability: If your application scales to a large number of users, maintaining WebSocket connections for all of them can be resource-intensive on the server side.
+> - **Battery and data usage**: Maintaining a persistent connection can lead to increased battery drain and data usage, which may be a concern for mobile users.
+> - **Complexity**: Implementing WebSocket communication is typically more complex than using RESTful services. You have to handle various scenarios such as reconnection on network changes, which are common in mobile environments.
+> - **Scalability**: If your application scales to a large number of users, maintaining WebSocket connections for all of them can be resource-intensive on the server side.
+
 Although there are some disadvantages, the advantages of using WebSockets — such as real-time bidirectional communication and lower overheads compared to traditional HTTP polling — significantly outweigh these issues, making them a powerful choice for interactive applications.
 
 Let’s start learning how we can integrate WebSockets.
 
-Integrating WebSockets
+## Integrating WebSockets
+
 There are several libraries available for integrating WebSockets in Android applications. Some popular options include the following:
 
-OkHttp: A popular HTTP client for Android and Java applications that also supports WebSocket communication
-Scarlet: A declarative WebSocket library for Kotlin and Java applications, built on top of OkHttp
-Ktor: A modern, Kotlin-based framework for building asynchronous servers and clients, including WebSocket support
+> - **OkHttp**: A popular HTTP client for Android and Java applications that also supports WebSocket communication
+> - **Scarlet**: A declarative WebSocket library for Kotlin and Java applications, built on top of OkHttp
+> - **Ktor**: A modern, Kotlin-based framework for building asynchronous servers and clients, including WebSocket support
+
 For our app, we will use Ktor due to its ease of use, native support for Kotlin, and extensive documentation.
 
-What is Ktor?
+### What is Ktor?
+
 Ktor stands out for its coroutine-based architecture, which allows for non-blocking asynchronous operations, making it particularly suitable for I/O-intensive tasks such as network communication. It’s lightweight and modular, allowing developers to pick and choose only the features they need, thereby avoiding the overhead of unnecessary functionality.
 
 The framework is built on top of coroutines, a feature in Kotlin that makes your code cleaner and more readable, and simplifies asynchronous programming by allowing functions to be paused and resumed at later times. This provides a powerful way to handle concurrency with a more straightforward and expressive syntax compared to traditional callback mechanisms.
 
 Ktor is versatile, supporting both server-side and client-side development. On the server side, it can be used to build robust and scalable web applications and services. On the client side, it provides a multiplatform HTTP client that can be used on Android, allowing for seamless interaction with web services.
 
-Ktor’s WebSocket client allows for easy setup and management of WebSocket connections, handling complexities such as connection lifecycle, error handling, and message processing. Its domain-specific language (DSL) provides a concise and expressive way to define the behavior of WebSocket interactions, making the code more readable and maintainable.
+Ktor’s WebSocket client allows for easy setup and management of WebSocket connections, handling complexities such as connection lifecycle, error handling, and message processing. Its **domain-specific language (DSL)** provides a concise and expressive way to define the behavior of WebSocket interactions, making the code more readable and maintainable.
 
-Integrating WebSockets with Ktor
+#### Integrating WebSockets with Ktor
+
 To integrate Ktor in our Android app, follow these steps:
 
-In our app’s build.gradle file of the :feature:chat module, add the following Ktor dependencies for the WebSocket client. Make sure to replace $ktor_version with the latest version available (for the examples in this book, we are using version 2.2.4):
-dependencies {
+1. In our app’s `build.gradle` file of the `:feature:chat` module, add the following Ktor dependencies for the WebSocket client. Make sure to replace `$ktor_version` with the latest version available (for the examples in this book, we are using version 2.2.4):
+```
+    dependencies {
     implementation "io.ktor:ktor-client-
         websockets:2.2.4"
     implementation "io.ktor:ktor-client-okhttp:2.2.4"
 }
+```
 
-Copy
-
-Explain
 Each dependency serves a distinct purpose:
 
-io.ktor:ktor-client-websockets: This dependency provides the necessary functionality to manage WebSocket connections in our application. It includes high-level abstractions for opening, sending messages to, and receiving messages from WebSocket servers, facilitating real-time data exchange in a seamless manner. By using this library, we can easily implement WebSocket communication without handling the complex underlying protocols and handshakes manually.
-io.ktor:ktor-client-okhttp: While Ktor is a multiplatform framework, it requires an engine to handle network requests. This dependency integrates OkHttp as the underlying engine for handling HTTP requests and responses in Android applications. OkHttp supports WebSockets along with its robust HTTP client features, providing efficient network operations, connection pooling, and a powerful interface for making and intercepting requests.
+> - `io.ktor:ktor-client-websockets`: This dependency provides the necessary functionality to manage WebSocket connections in our application. It includes high-level abstractions for opening, sending messages to, and receiving messages from WebSocket servers, facilitating real-time data exchange in a seamless manner. By using this library, we can easily implement WebSocket communication without handling the complex underlying protocols and handshakes manually.
+> - `io.ktor:ktor-client-okhttp`: While Ktor is a multiplatform framework, it requires an engine to handle network requests. This dependency integrates OkHttp as the underlying engine for handling HTTP requests and responses in Android applications. OkHttp supports WebSockets along with its robust HTTP client features, providing efficient network operations, connection pooling, and a powerful interface for making and intercepting requests.
+
 Together, these dependencies allow our app to utilize WebSockets for real-time communication and leverage OkHttp’s efficient networking capabilities. This combination is particularly powerful for applications needing to maintain persistent connections and manage high-frequency data exchange, such as messaging apps or live data feeds.
 
-In your AndroidManifest.xml file, add the required permission to access the internet as we will need it to connect our WebSocket and receive/send messages:
+2. In your `AndroidManifest.xml` file, add the required permission to access the internet as we will need it to connect our WebSocket and receive/send messages:
+```
 <uses-permission android:name=
     "android.permission.INTERNET" />
+```
 
-Copy
-
-Explain
 We now have the library included in our project. As we will be using Ktor with Kotlin Flow, let’s introduce it before diving into our WebSocket implementation.
 
-Getting to know Kotlin Flow
+### Getting to know Kotlin Flow
+
 Flow is part of Kotlin’s coroutines library, and it’s a type that can emit multiple values sequentially, as opposed to suspend functions that return only a single value. Flow builds upon the foundational concepts of coroutines to offer a declarative way to work with asynchronous streams of data.
 
 Unlike sequences in Kotlin, which are synchronous and blocking, Flow is asynchronous and non-blocking. This makes Flow ideal for handling a continuous stream of data that can be observed and collected asynchronously, such as real-time messages from a WebSocket.
@@ -113,6 +124,7 @@ For example, in a chat application, incoming messages from a WebSocket can be re
 
 The Flow API is really simple and easy to use. As another example, imagine that we have a flow that emits three strings:
 
+```
 fun main() = runBlocking {
     // Define a simple flow that emits three strings
     val helloFlow = flow {
@@ -125,53 +137,51 @@ fun main() = runBlocking {
         println(value)
     }
 }
+```
 
-Copy
-
-Explain
-In this code block, helloFlow is defined, using the flow builder to emit three strings one after another.
+In this code block, `helloFlow` is defined, using the `flow` builder to emit three strings one after another.
 
 Note
 
-There are several other builders apart from flow, such as flowOf, which creates a flow from a set of values, or toFlow(), which creates a flow from a collection.
+There are several other builders apart from `flow`, such as `flowOf`, which creates a flow from a set of values, or `toFlow()`, which creates a flow from a collection.
 
-The collect() function is then called on helloFlow. It acts as a subscriber that reacts to each emitted value by printing it.
+The `collect()` function is then called on `helloFlow`. It acts as a subscriber that reacts to each emitted value by printing it.
 
 If you run this code, you should see the following output:
 
+```
 Hello
 from
 Flow!
+```
 
-Copy
+Now that we are a bit familiar with Kotlin Flow, we are ready to do the next step: build our implementation of a WebSocket using Ktor and Flow. As it is going to be one of the data sources that will provide messages to our app, we will call it `WebsocketDataSource`.
 
-Explain
-Now that we are a bit familiar with Kotlin Flow, we are ready to do the next step: build our implementation of a WebSocket using Ktor and Flow. As it is going to be one of the data sources that will provide messages to our app, we will call it WebsocketDataSource.
+## Implementing WebSocketDataSource
 
-Implementing WebSocketDataSource
-To implement the WebSocket data source, we are first going to create an HttpClient instance. HttpClient is a Ktor class that allows you to make HTTP requests and manage network connections. In the case of WebSockets, it is responsible for establishing and maintaining the connection between the client and server.
+To implement the WebSocket data source, we are first going to create an `HttpClient` instance. `HttpClient` is a Ktor class that allows you to make HTTP requests and manage network connections. In the case of WebSockets, it is responsible for establishing and maintaining the connection between the client and server.
 
-To create an HttpClient instance with WebSocket support, we are going to create a new file called WebSocketClient in the feature.chat.data.network package (you will need to create the data and network packages as they don’t exist yet) and include the following code:
+To create an `HttpClient` instance with WebSocket support, we are going to create a new file called `WebSocketClient` in the `feature.chat.data.network` package (you will need to create the data and network packages as they don’t exist yet) and include the following code:
 
+```
 object WebsocketClient {
     val client = HttpClient(OkHttp) {
         install(WebSockets)
     }
 }
+```
 
-Copy
-
-Explain
-Here, we’re using the OkHttp engine to create an HttpClient instance, and then we’re installing the WebSockets plugin to enable WebSocket support.
+Here, we’re using the `OkHttp` engine to create an `HttpClient` instance, and then we’re installing the `WebSockets` plugin to enable WebSocket support.
 
 Note
 
-In Ktor, plugins (also called features) are modular components that extend the functionality of Ktor applications. Plugins can be installed on both the client and server sides to provide additional features, such as authentication, logging, serialization, or custom behavior. Ktor’s plugin-based architecture encourages a lightweight and modular approach, allowing you to include only the necessary components in your application.
+In Ktor, **plugins** (also called features) are modular components that extend the functionality of Ktor applications. Plugins can be installed on both the client and server sides to provide additional features, such as authentication, logging, serialization, or custom behavior. Ktor’s plugin-based architecture encourages a lightweight and modular approach, allowing you to include only the necessary components in your application.
 
-Then, we will create our MessagesSocketDataSource class (in the same package).
+Then, we will create our `MessagesSocketDataSource` class (in the same package).
 
-To start creating our WebSocket, we will need a WebSocketSession instance. WebSocketSession represents a single WebSocket connection between the client and server, providing methods for sending and receiving messages, as well as managing the connection’s lifecycle. In our implementation, we will create a WebSocketSession instance when we call the connect() method, like so:
+To start creating our WebSocket, we will need a `WebSocketSession` instance. `WebSocketSession` represents a single WebSocket connection between the client and server, providing methods for sending and receiving messages, as well as managing the connection’s lifecycle. In our implementation, we will create a `WebSocketSession` instance when we call the `connect()` method, like so:
 
+```
 class MessagesSocketDataSource @Inject constructor(
     private val httpClient: HttpClient,
 ) {
@@ -189,26 +199,27 @@ class MessagesSocketDataSource @Inject constructor(
     }
 //...
 }
+```
 
-Copy
-
-Explain
 Let’s break down what this code is going to do:
 
-suspend fun connect(url: String): Flow<Message>: The connect function is defined as a suspending (suspend) function that takes a url parameter of type String and returns a Flow<Message> instance. Flow is a cold asynchronous stream used for processing data in a reactive way in Kotlin (a cold stream is one that will only emit messages when there is a consumer connected).
-httpClient.webSocketSession { url(url) }: This line uses httpClient to create a WebSocket session by calling the webSocketSession function and passing a lambda that sets the session’s URL to the provided URL.
-.apply { webSocketSession = this }: This line stores the newly created WebSocket session using the apply function in the webSocketSession property. We also need to store it as we will need the session later for sending messages.
-.incoming: This line accesses the incoming property of webSocketSession. The incoming property is a channel that receives incoming Frame objects from the WebSocket server.
-.receiveAsFlow(): This line converts the incoming channel to a Flow<Frame> instance so that it can be processed using the Flow API.
-.map { frame -> webSocketSession.handleMessage(frame) }: This line maps each incoming Frame object to the result of calling the handleMessage function. We will define the handleMessage function later.
-.filterNotNull(): This line filters out any null values from the stream, ensuring that only non-null values are processed further.
-.map { it.toDomain() }: This line maps each non-null value to the result of calling the toDomain() function. This function will map the current data-related object to the domain Message model that we will create soon.
+> - `suspend fun connect(url: String): Flow<Message>`: The `connect` function is defined as a suspending (`suspend`) function that takes a url parameter of type `String` and returns a `Flow<Message>` instance. `Flow` is a cold asynchronous stream used for processing data in a reactive way in Kotlin (a cold stream is one that will only emit messages when there is a consumer connected).
+> - `httpClient.webSocketSession { url(url) }`: This line uses `httpClient` to create a WebSocket session by calling the `webSocketSession` function and passing a lambda that sets the session’s URL to the provided URL.
+> - `.apply { webSocketSession = this }`: This line stores the newly created WebSocket session using the `apply` function in the `webSocketSession` property. We also need to store it as we will need the session later for sending messages.
+> - `.incoming`: This line accesses the incoming property of `webSocketSession`. The incoming property is a channel that receives incoming `Frame` objects from the WebSocket server.
+> - `.receiveAsFlow()`: This line converts the incoming channel to a `Flow<Frame>` instance so that it can be processed using the Flow API.
+> - `.map { frame -> webSocketSession.handleMessage(frame) }`: This line maps each incoming `Frame` object to the result of calling the `handleMessage` function. We will define the `handleMessage` function later.
+> - `.filterNotNull()`: This line filters out any `null` values from the stream, ensuring that only non-`null` values are processed further.
+> - `.map { it.toDomain() }`: This line maps each non-null value to the result of calling the `toDomain()` function. This function will map the current data-related object to the domain Message model that we will create soon.
+
 Before processing and handling the messages, we will also want to add two more functions to our WebSocket data source:
 
-We want one function to send messages, as we want our users to be able to send messages to their WhatsPackt friends
-We want another function to disconnect the WebSocket, as we should disconnect it from the server when it is not in use
+> - We want one function to send messages, as we want our users to be able to send messages to their WhatsPackt friends
+> - We want another function to disconnect the WebSocket, as we should disconnect it from the server when it is not in use
+
 We can add these like so:
 
+```
 suspend fun sendMessage(message: String) {
     webSocketSession.send(Frame.Text(message))
 }
@@ -216,20 +227,20 @@ suspend fun disconnect() {
     webSocketSession.close(CloseReason(
         CloseReason.Codes.NORMAL, "Disconnect"))
 }
+```
 
-Copy
+When a WebSocket connection is closed, it’s accompanied by a `CloseReason` class, which contains a code and an optional descriptive text. The code indicates the reason for the connection closure, such as normal closure, protocol error, or unsupported data. In our implementation, we use the `CloseReason` class to close the `WebSocketSession` with a normal closure.
 
-Explain
-When a WebSocket connection is closed, it’s accompanied by a CloseReason class, which contains a code and an optional descriptive text. The code indicates the reason for the connection closure, such as normal closure, protocol error, or unsupported data. In our implementation, we use the CloseReason class to close the WebSocketSession with a normal closure.
+Some common `CloseReason` codes include the following:
 
-Some common CloseReason codes include the following:
+> - `CloseReason.Codes.NORMAL`: Indicates a normal closure of the connection. This is the reason that will be provided when the user is no longer using the chat screen.
+> - `CloseReason.Codes.GOING_AWAY`: Indicates that the server is going away or shutting down.
+> - `CloseReason.Codes.PROTOCOL_ERROR`: Indicates that an error in the WebSocket protocol occurred.
+> - `CloseReason.Codes.UNSUPPORTED_DATA`: Indicates that the received data type is not supported.
 
-CloseReason.Codes.NORMAL: Indicates a normal closure of the connection. This is the reason that will be provided when the user is no longer using the chat screen.
-CloseReason.Codes.GOING_AWAY: Indicates that the server is going away or shutting down.
-CloseReason.Codes.PROTOCOL_ERROR: Indicates that an error in the WebSocket protocol occurred.
-CloseReason.Codes.UNSUPPORTED_DATA: Indicates that the received data type is not supported.
-Now that we know how to close our WebSocket connection, we need to define the handleMessages extension function to process all the messages while the connection is alive:
+Now that we know how to close our WebSocket connection, we need to define the `handleMessages` extension function to process all the messages while the connection is alive:
 
+```
 private suspend fun
 DefaultClientWebSocketSession.handleMessage(frame: Frame):
 WebsocketMessageModel? {
@@ -242,23 +253,21 @@ WebsocketMessageModel? {
         else -> null
     }
 }
+```
 
-Copy
+In the WebSocket protocol, data is transmitted in discrete units called frames. Ktor provides a `Frame` class to represent these units, with different subclasses for each frame type, such as `Frame.Text`, `Frame.Binary`, `Frame.Ping`, and `Frame.Close`.
 
-Explain
-In the WebSocket protocol, data is transmitted in discrete units called frames. Ktor provides a Frame class to represent these units, with different subclasses for each frame type, such as Frame.Text, Frame.Binary, Frame.Ping, and Frame.Close.
+In our case, we are only processing `Frame.Text` and `Frame.Close` messages. To receive a `Frame.Close` message, we will close the WebSocket (for now – in the future, maybe we would want to do a retry here or give feedback about the problem to the user). Then, to receive the `Frame.Text` messages, we are going to **deserialize** them from JSON (a lightweight data-interchange format that is commonly used for communication between systems) to the object we are going to work with. Here, `deserialize` just describes this conversion.
 
-In our case, we are only processing Frame.Text and Frame.Close messages. To receive a Frame.Close message, we will close the WebSocket (for now – in the future, maybe we would want to do a retry here or give feedback about the problem to the user). Then, to receive the Frame.Text messages, we are going to deserialize them from JSON (a lightweight data-interchange format that is commonly used for communication between systems) to the object we are going to work with. Here, deserialize just describes this conversion.
+We can configure a converter in our WebSocket that allows us to easily deserialize our messages. First, we need to add new dependencies to our `build.gradle` file:
 
-We can configure a converter in our WebSocket that allows us to easily deserialize our messages. First, we need to add new dependencies to our build.gradle file:
-
+```
 implementation("io.ktor:ktor-serialization-kotlinx-json:2.2.4)
+```
 
-Copy
+Then, we are ready to set `contentConverter` in our WebSocket plugin:
 
-Explain
-Then, we are ready to set contentConverter in our WebSocket plugin:
-
+```
 object WebsocketClient {
     val client = HttpClient(OkHttp) {
         install(WebSockets) {
@@ -267,14 +276,13 @@ object WebsocketClient {
         }
     }
 }
+```
 
-Copy
+In this case, we are configuring the `kotlinx.serialization` converter for the JSON format (there are also converters available for other standards, such as XML, Protobuf, and CBOR).
 
-Explain
-In this case, we are configuring the kotlinx.serialization converter for the JSON format (there are also converters available for other standards, such as XML, Protobuf, and CBOR).
+In addition, we must add the `@Serializable` annotation to those data classes that we want to be deserialized by the converter. In our case, we will create a `WebsocketMessageModel` class as follows:
 
-In addition, we must add the @Serializable annotation to those data classes that we want to be deserialized by the converter. In our case, we will create a WebsocketMessageModel class as follows:
-
+```
 @Serializable
 class WebsocketMessageModel(
     val id: String,
@@ -286,12 +294,11 @@ class WebsocketMessageModel(
     val messageType: String,
     val messageDescription: String
 )
+```
 
-Copy
+The last step in our flow chain is to convert the `WebsocketMessageModel` class to a domain. As we still don’t have a domain model, we should create it first:
 
-Explain
-The last step in our flow chain is to convert the WebsocketMessageModel class to a domain. As we still don’t have a domain model, we should create it first:
-
+```
 data class Message(
     val id: String,
     val senderName: String,
@@ -306,12 +313,11 @@ data class Message(
         TEXT, IMAGE
     }
 }
+```
 
-Copy
+Now, we can implement the mapper as a function of the `WebsocketMessageModel` class:
 
-Explain
-Now, we can implement the mapper as a function of the WebsocketMessageModel class:
-
+```
 @Serializable
 class WebsocketMessageModel(
     val id: String,
@@ -346,14 +352,13 @@ class WebsocketMessageModel(
         }
     }
 }
+```
 
-Copy
+Here, we are adding the `toDomain()` function that maps the current `WebsocketMessageModel` class to the `Message` model. Note that almost all fields in the data model are similar to those in our domain `Message` model. The key exception is the `messageType` field, which we must convert to the enum we are using in the domain `Message` model. To simplify this conversion, we use the `toContentType()` function, which specifically transforms `messageType` from a `String` object to a `ContentType` enum.
 
-Explain
-Here, we are adding the toDomain() function that maps the current WebsocketMessageModel class to the Message model. Note that almost all fields in the data model are similar to those in our domain Message model. The key exception is the messageType field, which we must convert to the enum we are using in the domain Message model. To simplify this conversion, we use the toContentType() function, which specifically transforms messageType from a String object to a ContentType enum.
+We also would need to convert the domain `Message` object to the `WebsocketMessageModel` class. To do that, we need to add a new function to the `WebsocketMessageModel` class:
 
-We also would need to convert the domain Message object to the WebsocketMessageModel class. To do that, we need to add a new function to the WebsocketMessageModel class:
-
+```
 companion object {
     const val TYPE_TEXT = "TEXT"
     const val TYPE_IMAGE = "IMAGE"
@@ -370,14 +375,13 @@ companion object {
         )
     }
 }
+```
 
-Copy
+Here, we are converting the `Message` domain object into a `WebsocketMessageModel` class.
 
-Explain
-Here, we are converting the Message domain object into a WebsocketMessageModel class.
+Then, in the `send` function, we will proceed as follows:
 
-Then, in the send function, we will proceed as follows:
-
+```
 suspend fun sendMessage(message: Message) {
     val websocketMessage =
         WebsocketMessageModel.fromDomain(message)
@@ -387,15 +391,14 @@ suspend fun sendMessage(message: Message) {
         webSocketSession.send(it)
     }
 }
+```
 
-Copy
+With these changes to the `sendMessage` function, we are now receiving a domain model object, converting it to `WebsocketMessageModel`, and finally serializing it into a `Frame` object and sending it through our WebSocket.
 
-Explain
-With these changes to the sendMessage function, we are now receiving a domain model object, converting it to WebsocketMessageModel, and finally serializing it into a Frame object and sending it through our WebSocket.
+The next step is to connect this component (`MessagesWebsocketDataSource`) with `ViewModel`, which will be responsible for providing the view state to the view so that it can render accordingly.
 
-The next step is to connect this component (MessagesWebsocketDataSource) with ViewModel, which will be responsible for providing the view state to the view so that it can render accordingly.
+# Receiving messages in our ViewModel
 
-Receiving messages in our ViewModel
 Our app is ready to receive and send messages using a WebSocket. Now, we need to make them reach the UI we created in the previous chapter. We will do that in this section, but first, we need to think about the architecture and components needed to do that.
 
 Understanding Clean Architecture implementation
@@ -426,7 +429,7 @@ Repository: The Repository component is responsible for managing the data flow a
 Data source: This layer contains the implementations for accessing specific data sources such as local databases (using Room or another object-relational mapper (ORM)) and remote APIs (using Retrofit or another networking library, as in our case where we are using Ktor).
 In the following diagram, we can see the relationships between the different layers and the typical components every layer includes:
 
-Figure 2.1: Clean Architecture in Android with the typical components per layer
+![ 2.1 Clean Architecture in Android with the typical components per layer ](/packtpub/2024/1118/2.1-clean_architecture_in.webp)
 Figure 2.1: Clean Architecture in Android with the typical components per layer
 
 Having this clear understanding of Clean Architecture’s benefits and structure, let’s now put these principles into practice.
@@ -436,7 +439,7 @@ We have started building the data layer components, where we have created the Me
 
 In the end, this is what our app’s Clean Architecture layers and components should look like:
 
-Figure 2.2: Layers and components that we will build in our project, following Clean Architecture principles
+![ 2.2 Layers and components that we will build in our project, following Clean Architecture principles ](/packtpub/2024/1118/2.2-layers_and_components.webp)
 Figure 2.2: Layers and components that we will build in our project, following Clean Architecture principles
 
 As we have already built the MessagesWebsocketDataSource component, the next component is the repository. The repository component will only connect with MessagesWebsocketDataSource (for now; we have bigger plans for it in the next chapter). We are going to call it MessagesRepository. Let’s start building it:
@@ -1980,11 +1983,11 @@ Now, let’s move on to learn how we can optimize our WhatsPackt app so that we 
 
 
 
-| ≪ [ 101 Building the UI for Your Messaging App ](/books/packtpub/2024/1118-Android_using_Kotlin/101_Building_the_UI_for_Your_Messaging_App) | 102 Chapter 2: Setting Up WhatsPackt’s Messaging Abilities | [ 103 Backing Up Your WhatsPackt Messages ](/books/packtpub/2024/1118-Android_using_Kotlin/103_Backing_Up_Your_WhatsPackt_Messages) ≫ |
+| ≪ [ 101 Building the UI for Your Messaging App ](/books/packtpub/2024/1118-Android_using_Kotlin/101_Building_the_UI_for_Your_Messaging_App) | 102-2장 Setting Up WhatsPackt’s Messaging Abilities | [ 103 Backing Up Your WhatsPackt Messages ](/books/packtpub/2024/1118-Android_using_Kotlin/103_Backing_Up_Your_WhatsPackt_Messages) ≫ |
 |:----:|:----:|:----:|
 
 > Page Properties:
-> (1) Title: 102 Chapter 2: Setting Up WhatsPackt’s Messaging Abilities
+> (1) Title: 102-2장 Setting Up WhatsPackt’s Messaging Abilities
 > (2) Short Description: Android using Kotlin
 > (3) Path: books/packtpub/2024/1118-Android_using_Kotlin/102_Setting_Up_WhatsPackts_Messaging_Abilities
 > Book Jemok: Thriving in Android Development Using Kotlin

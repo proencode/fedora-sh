@@ -1,8 +1,8 @@
 
-| ≪ [ 100 Creating WhatsPackt, a Messaging App ](/books/packtpub/2024/1118-Android_using_Kotlin/100_Creating_WhatsPackt_a_Messaging_App) | 101 Chapter 1: Building the UI for Your Messaging App | [ 102 Setting Up WhatsPackt’s Messaging Abilities ](/books/packtpub/2024/1118-Android_using_Kotlin/102_Setting_Up_WhatsPackts_Messaging_Abilities) ≫ |
+| ≪ [ 100 Creating WhatsPackt, a Messaging App ](/books/packtpub/2024/1118-Android_using_Kotlin/100_Creating_WhatsPackt_a_Messaging_App) | 101-1장 Building the UI for Your Messaging App | [ 102 Setting Up WhatsPackt’s Messaging Abilities ](/books/packtpub/2024/1118-Android_using_Kotlin/102_Setting_Up_WhatsPackts_Messaging_Abilities) ≫ |
 |:----:|:----:|:----:|
 
-# 101 Chapter 1: Building the UI for Your Messaging App
+# 101-1장 Building the UI for Your Messaging App
 
 In this first chapter, we’re going to start building a messaging app called WhatsPackt (referring to a popular messaging app that you probably already know about). At this point in the project, we must make some important technical decisions and create the structure needed to build it. This is what we will be focusing on, as well as working on the app’s user interface.
 
@@ -296,6 +296,7 @@ NavHost(
 
 One common practice to keep our `NavHost` leaner and delegate the definition of routes and URIs to every screen is to define the route with constants. Here is an example:
 
+```
 @Composable
 fun ChatScreen(
     ...
@@ -305,10 +306,8 @@ fun ChatScreen(
         val name = "chat?id={id}"
     }
 }
+```
 
-Copy
-
-Explain
 By doing this, developers can easily manage, update, and maintain the routes in a centralized manner.
 
 Then, in `NavHost`, we would define `uriPattern` using these constants:
@@ -1242,7 +1241,7 @@ As we move forward, it’s time to give some love and life to our chats. In the 
 
 
 
-| ≪ [ 100 Creating WhatsPackt, a Messaging App ](/books/packtpub/2024/1118-Android_using_Kotlin/100_Creating_WhatsPackt_a_Messaging_App) | 101 Chapter 1: Building the UI for Your Messaging App | [ 102 Setting Up WhatsPackt’s Messaging Abilities ](/books/packtpub/2024/1118-Android_using_Kotlin/102_Setting_Up_WhatsPackts_Messaging_Abilities) ≫ |
+| ≪ [ 100 Creating WhatsPackt, a Messaging App ](/books/packtpub/2024/1118-Android_using_Kotlin/100_Creating_WhatsPackt_a_Messaging_App) | 101-1장 Building the UI for Your Messaging App | [ 102 Setting Up WhatsPackt’s Messaging Abilities ](/books/packtpub/2024/1118-Android_using_Kotlin/102_Setting_Up_WhatsPackts_Messaging_Abilities) ≫ |
 |:----:|:----:|:----:|
 
 > Page Properties:
