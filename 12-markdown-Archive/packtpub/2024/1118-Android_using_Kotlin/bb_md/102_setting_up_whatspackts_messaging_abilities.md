@@ -401,32 +401,35 @@ The next step is to connect this component (`MessagesWebsocketDataSource`) with 
 
 Our app is ready to receive and send messages using a WebSocket. Now, we need to make them reach the UI we created in the previous chapter. We will do that in this section, but first, we need to think about the architecture and components needed to do that.
 
-Understanding Clean Architecture implementation
-In the previous chapter, we modularized our app and talked about using a Clean Architecture-based structure to organize our common and feature modules. We have already created our first component of this architecture, MessagesWebsocketDataSource, but it is important to understand the reasons behind this organization and which role every component plays in the architecture.
+## Understanding Clean Architecture implementation
+
+In the previous chapter, we modularized our app and talked about using a Clean Architecture-based structure to organize our common and feature modules. We have already created our first component of this architecture, `MessagesWebsocketDataSource`, but it is important to understand the reasons behind this organization and which role every component plays in the architecture.
 
 There are extensive books, articles, and videos about why and how to apply Clean Architecture principles to an Android app, even from official documentation by Google. Here, we are going to give you a short description and then break down into its layers.
 
-Clean Architecture is an architectural pattern that promotes the organization of code into layers with well-defined responsibilities, making the application more modular, maintainable, testable, and scalable. The key benefits of using Clean Architecture are as follows:
+**Clean Architecture** is an architectural pattern that promotes the organization of code into layers with well-defined responsibilities, making the application more modular, maintainable, testable, and scalable. The key benefits of using Clean Architecture are as follows:
 
-Separation of concerns (SoC): Clean Architecture organizes code into distinct layers with specific responsibilities, ensuring that each layer handles a separate aspect of the application. This SoC leads to a more modular and maintainable code base, making it easier to understand, modify, and extend.
-Testability: By separating the different concerns into independent layers, it becomes easier to test each layer in isolation. This allows developers to write comprehensive unit and integration tests, ensuring that the application behaves correctly and is less prone to bugs.
-Reusability: The modular structure of Clean Architecture promotes reusability by encouraging the creation of components that can be easily shared across different parts of the application or even between different projects. This reduces code duplication and improves the overall efficiency of the development process.
-Flexibility: Clean Architecture decouples the various layers of the application, making it easier to change or update any of these layers independently without affecting the others. This provides more flexibility when refactoring, making changes to the application, or adapting to new requirements.
-Scalability: The modular nature of Clean Architecture makes it easier to scale the application as it grows in complexity or size. By organizing code into well-defined layers and components, developers can more easily add new features, update existing functionality, or improve performance without introducing unintended side effects or making the code base unmanageable.
-Easier collaboration: Clean Architecture helps teams work more effectively by providing a clear structure and guidelines for organizing code. This makes it easier for developers to understand the code base, find the components they need, and contribute to the project more efficiently.
-Future-proofing: By adhering to the principles of Clean Architecture, you ensure that the application is built on a solid foundation that can evolve and adapt over time. This makes it more resilient to changes in technology, requirements, or team members, improving the long-term viability of the project.
+> - **Separation of concerns (SoC)**: Clean Architecture organizes code into distinct layers with specific responsibilities, ensuring that each layer handles a separate aspect of the application. This SoC leads to a more modular and maintainable code base, making it easier to understand, modify, and extend.
+> - **Testability**: By separating the different concerns into independent layers, it becomes easier to test each layer in isolation. This allows developers to write comprehensive unit and integration tests, ensuring that the application behaves correctly and is less prone to bugs.
+> - **Reusability**: The modular structure of Clean Architecture promotes reusability by encouraging the creation of components that can be easily shared across different parts of the application or even between different projects. This reduces code duplication and improves the overall efficiency of the development process.
+> - **Flexibility**: Clean Architecture decouples the various layers of the application, making it easier to change or update any of these layers independently without affecting the others. This provides more flexibility when refactoring, making changes to the application, or adapting to new requirements.
+> - **Scalability**: The modular nature of Clean Architecture makes it easier to scale the application as it grows in complexity or size. By organizing code into well-defined layers and components, developers can more easily add new features, update existing functionality, or improve performance without introducing unintended side effects or making the code base unmanageable.
+> - **Easier collaboration**: Clean Architecture helps teams work more effectively by providing a clear structure and guidelines for organizing code. This makes it easier for developers to understand the code base, find the components they need, and contribute to the project more efficiently.
+> - **Future-proofing**: By adhering to the principles of Clean Architecture, you ensure that the application is built on a solid foundation that can evolve and adapt over time. This makes it more resilient to changes in technology, requirements, or team members, improving the long-term viability of the project.
+
 In summary, using Clean Architecture in your projects leads to better-organized, more maintainable, and scalable code bases. It improves the overall quality of the application, reduces technical debt, and makes it easier for teams to work together effectively.
 
 Now, with the benefits of Clean Architecture firmly in mind, let’s delve into the specifics. What follows are the layers and the components of code that we will incorporate within each layer:
 
-Presentation layer:
-View: This consists of UI components, such as Activity, Fragment, View, and, in our case, Composable components. The view is responsible for displaying data and capturing user input.
-ViewModel: The ViewModel serves as a bridge between the View components and the data layers. It handles the UI logic, exposes LiveData or StateFlow objects for data binding, and communicates with UseCase classes.
-Domain layer:
-UseCase: This layer contains the business logic and coordinates the flow of data between the data layer and the presentation layer. UseCase implementations encapsulate specific actions that can be performed within the app, such as sending a message, fetching chat history, or updating user settings.
-Data layer:
-Repository: The Repository component is responsible for managing the data flow and providing a clean API to request data from different sources (local database, remote API, and so on). It abstracts the underlying data sources and handles caching, synchronization, and data merging.
-Data source: This layer contains the implementations for accessing specific data sources such as local databases (using Room or another object-relational mapper (ORM)) and remote APIs (using Retrofit or another networking library, as in our case where we are using Ktor).
+> - **Presentation layer**:
+>   - **View**: This consists of UI components, such as Activity, Fragment, View, and, in our case, Composable components. The view is responsible for displaying data and capturing user input.
+>   - **ViewModel**: The ViewModel serves as a bridge between the View components and the data layers. It handles the UI logic, exposes LiveData or StateFlow objects for data binding, and communicates with UseCase classes.
+> - **Domain layer**:
+>   - **UseCase**: This layer contains the business logic and coordinates the flow of data between the data layer and the presentation layer. UseCase implementations encapsulate specific actions that can be performed within the app, such as sending a message, fetching chat history, or updating user settings.
+> - **Data layer**:
+>   - **Repository**: The Repository component is responsible for managing the data flow and providing a clean API to request data from different sources (local database, remote API, and so on). It abstracts the underlying data sources and handles caching, synchronization, and data merging.
+>   - **Data source**: This layer contains the implementations for accessing specific data sources such as local databases (using Room or another object-relational mapper (ORM)) and remote APIs (using Retrofit or another networking library, as in our case where we are using Ktor).
+
 In the following diagram, we can see the relationships between the different layers and the typical components every layer includes:
 
 ![ 2.1 Clean Architecture in Android with the typical components per layer ](/packtpub/2024/1118/2.1-clean_architecture_in.webp)
@@ -434,16 +437,18 @@ Figure 2.1: Clean Architecture in Android with the typical components per layer
 
 Having this clear understanding of Clean Architecture’s benefits and structure, let’s now put these principles into practice.
 
-Creating our Clean Architecture components
-We have started building the data layer components, where we have created the MessagesWebsocket DataSource component. Now, it is time we build the rest of our Clean Architecture layers and components to reach the presentation layer.
+## Creating our Clean Architecture components
+
+We have started building the data layer components, where we have created the `MessagesWebsocket DataSource` component. Now, it is time we build the rest of our Clean Architecture layers and components to reach the presentation layer.
 
 In the end, this is what our app’s Clean Architecture layers and components should look like:
 
 ![ 2.2 Layers and components that we will build in our project, following Clean Architecture principles ](/packtpub/2024/1118/2.2-layers_and_components.webp)
 Figure 2.2: Layers and components that we will build in our project, following Clean Architecture principles
 
-As we have already built the MessagesWebsocketDataSource component, the next component is the repository. The repository component will only connect with MessagesWebsocketDataSource (for now; we have bigger plans for it in the next chapter). We are going to call it MessagesRepository. Let’s start building it:
+As we have already built the `MessagesWebsocketDataSource` component, the next component is the repository. The repository component will only connect with `MessagesWebsocketDataSource` (for now; we have bigger plans for it in the next chapter). We are going to call it `MessagesRepository`. Let’s start building it:
 
+```
 class MessagesRepository @Inject constructor(
     private val dataSource: MessagesSocketDataSource
 ) {
@@ -457,31 +462,29 @@ class MessagesRepository @Inject constructor(
         dataSource.disconnect()
     }
 }
+```
 
-Copy
+`MessagesRepository` will just have one dependency (`MessagesSocketDataSource`) and will implement the functionality to connect to messages (the `getMessages` function), send messages (the `sendMessage` function), and disconnect from the WebSocket (the `disconnect` function).
 
-Explain
-MessagesRepository will just have one dependency (MessagesSocketDataSource) and will implement the functionality to connect to messages (the getMessages function), send messages (the sendMessage function), and disconnect from the WebSocket (the disconnect function).
-
-Now, we need to do a little modification to MessagesRepository: we need to create an interface in the domain layer with the MessagesRepository functionality. Creating an interface for the repository in the domain layer and implementing it in the data layer is a technique that follows the Dependency Inversion Principle (DIP) from the SOLID principles of object-oriented programming (OOP).
+Now, we need to do a little modification to `MessagesRepository`: we need to create an interface in the domain layer with the `MessagesRepository` functionality. Creating an interface for the repository in the domain layer and implementing it in the data layer is a technique that follows the **Dependency Inversion Principle (DIP)** from the SOLID principles of **object-oriented programming (OOP)**.
 
 Note
 
 DIP is one of the five principles of OOP and design known as SOLID. DIP states that high-level modules should not depend on low-level modules and both should depend on abstractions. Similarly, abstractions should not depend on details; details should depend on abstractions. The main idea behind DIP is to decouple modules, classes, or components in a software system, promoting flexibility, reusability, and maintainability. By depending on abstractions rather than concrete implementations, the system becomes more adaptable to changes and easier to test and maintain.
 
-Let’s create our IMessagesRepository interface:
+Let’s create our `IMessagesRepository` interface:
 
+```
 interface IMessagesRepository {
     suspend fun getMessages(): Flow<Message>
     suspend fun sendMessage(message: Message)
     suspend fun disconnect()
 }
+```
 
-Copy
+Then, we will change our `MessagesRepository` class to implement this interface, adding the override in its functions:
 
-Explain
-Then, we will change our MessagesRepository class to implement this interface, adding the override in its functions:
-
+```
 class MessagesRepository @Inject constructor(
     private val dataSource: MessagesSocketDataSource
 ): IMessagesRepository {
@@ -495,22 +498,21 @@ class MessagesRepository @Inject constructor(
         dataSource.disconnect()
     }
 }
+```
 
-Copy
-
-Explain
 Now, we will continue in our journey to the presentation layer, implementing the domain layer.
 
-The domain layer is not strictly mandatory, but it is highly recommended. While you can eliminate the domain layer and directly use repositories in your ViewModel instances, doing so would mix the responsibilities of the layers, which can lead to more complex and harder-to-maintain code. There may be cases where not implementing it could be considered; for example, if you are doing a proof of concept (PoC) or a simple app. Therefore, it is recommended to include the UseCase layer to maintain a clean and scalable architecture.
+The domain layer is not strictly mandatory, but it is highly recommended. While you can eliminate the domain layer and directly use repositories in your `ViewModel` instances, doing so would mix the responsibilities of the layers, which can lead to more complex and harder-to-maintain code. There may be cases where not implementing it could be considered; for example, if you are doing a proof of concept (PoC) or a simple app. Therefore, it is recommended to include the `UseCase` layer to maintain a clean and scalable architecture.
 
-Following the Single Responsibility Principle (SRP), in this layer, we will create as many UseCase instances as different functions/responsibilities in our business logic. So, in our case, we will create three UseCase instances: one for retrieving messages, one for sending messages, and one for disconnecting or stopping message retrieval.
+Following the **Single Responsibility Principle (SRP)**, in this layer, we will create as many `UseCase` instances as different functions/responsibilities in our business logic. So, in our case, we will create three `UseCase` instances: one for retrieving messages, one for sending messages, and one for disconnecting or stopping message retrieval.
 
 Note
 
 SRP is one of the five principles of OOP and design known as SOLID. It states that a class, module, or function should have only one reason to change, meaning it should have only one responsibility. The principle aims to promote SoC by encouraging developers to break down their code into smaller, more focused components that handle a single task or aspect of the application. This leads to a more modular, maintainable, and easier-to-understand code base.
 
-First, we will implement the RetrieveMessages use case:
+First, we will implement the `RetrieveMessages` use case:
 
+```
 class RetrieveMessages @Inject constructor(
     private val repository: IMessagesRepository
 ) {
@@ -518,16 +520,15 @@ class RetrieveMessages @Inject constructor(
         return repository.getMessages()
     }
 }
+```
 
-Copy
-
-Explain
 Here, we have just one dependency: the repository. Note that we are declaring it using its interface. It is relevant because, as we detailed before, the domain shouldn’t know anything about the data layer.
 
-RetrieveMessages will have one function that will return a Flow instance with Message objects. For doing that, it will return repository.getMessages(). No mapping or alteration is needed as this function already returned a Flow instance of Message objects.
+`RetrieveMessages` will have one function that will return a `Flow` instance with `Message` objects. For doing that, it will return `repository.getMessages()`. No mapping or alteration is needed as this function already returned a `Flow` instance of `Message` objects.
 
-Second, we are going to implement the SendMessage use case:
+Second, we are going to implement the `SendMessage` use case:
 
+```
 class SendMessage @Inject constructor(
     private val repository: IMessagesRepository
 ) {
@@ -535,14 +536,13 @@ class SendMessage @Inject constructor(
         repository.sendMessage(message)
     }
 }
+```
 
-Copy
+Again, this use case will depend only on the `IMessagesRepository` interface. It will call its `sendMessage` function.
 
-Explain
-Again, this use case will depend only on the IMessagesRepository interface. It will call its sendMessage function.
+And finally, we will code the `DisconnectMessages` use case:
 
-And finally, we will code the DisconnectMessages use case:
-
+```
 class DisconnectMessages @Inject constructor(
     private val repository: IMessagesRepository
 ) {
@@ -550,15 +550,14 @@ class DisconnectMessages @Inject constructor(
         repository.disconnect()
     }
 }
+```
 
-Copy
+The `DisconnectMessages` use case, as with the previous use cases implemented, depends on the `IMessagesRepository` interface and will call its `disconnect` function.
 
-Explain
-The DisconnectMessages use case, as with the previous use cases implemented, depends on the IMessagesRepository interface and will call its disconnect function.
+We are now done with the domain layer. Now, it’s time to implement the `ViewModel` component that we will connect to the `ChatScreen` component, using `ChatViewModel`.
 
-We are now done with the domain layer. Now, it’s time to implement the ViewModel component that we will connect to the ChatScreen component, using ChatViewModel.
+## Implementing ChatViewModel
 
-Implementing ChatViewModel
 In Android, ViewModel is an architectural component introduced as part of the Android Architecture Components (AAC) library. It is designed to store and manage UI-related data in a lifecycle-conscious way. The primary responsibility of a ViewModel component is to hold and process the data required for a UI component (such as an Activity, Fragment, or Composable component) while properly handling configuration changes (such as device rotations) and surviving the lifecycle of the associated UI component.
 
 Our ChatViewModel class will be responsible for handling the data required in our ChatScreen component (which we previously built in Chapter 1). This data will come and change from the use cases we have just created. So first, our ChatViewModel class will have those use cases as dependencies:
