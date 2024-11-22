@@ -1246,7 +1246,7 @@ As we move forward, it’s time to give some love and life to our chats. In the 
 |:----:|:----:|:----:|
 
 > Page Properties:
-> (1) Title: 101 Chapter 1: Building the UI for Your Messaging App
+> (1) Title: 101-1장 Building the UI for Your Messaging App
 > (2) Short Description: Android using Kotlin
 > (3) Path: books/packtpub/2024/1118-Android_using_Kotlin/101_Building_the_UI_for_Your_Messaging_App
 > Book Jemok: Thriving in Android Development Using Kotlin

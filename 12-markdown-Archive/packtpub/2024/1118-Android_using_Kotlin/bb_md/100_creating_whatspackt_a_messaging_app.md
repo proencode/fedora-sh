@@ -18,7 +18,7 @@ This part includes the following chapters:
 |:----:|:----:|:----:|
 
 > Page Properties:
-> (1) Title: 100 Part 1: Creating WhatsPackt, a Messaging App
+> (1) Title: 100-1부 Creating WhatsPackt, a Messaging App
 > (2) Short Description: Android using Kotlin
 > (3) Path: books/packtpub/2024/1118-Android_using_Kotlin/100_Creating_WhatsPackt_a_Messaging_App
 > Book Jemok: Thriving in Android Development Using Kotlin
