@@ -1,8 +1,8 @@
 
-| ≪ [ 100 Creating WhatsPackt, a Messaging App ](/books/packtpub/2024/1118-Android_using_Kotlin/100_Creating_WhatsPackt_a_Messaging_App) | 101-1장 Building the UI for Your Messaging App | [ 102 Setting Up WhatsPackt’s Messaging Abilities ](/books/packtpub/2024/1118-Android_using_Kotlin/102_Setting_Up_WhatsPackts_Messaging_Abilities) ≫ |
+| ≪ [ 100 Creating WhatsPackt, a Messaging App ](/books/packtpub/2024/1118-Android_using_Kotlin/100_Creating_WhatsPackt_a_Messaging_App) | 101 Building the UI for Your Messaging App | [ 102 Setting Up WhatsPackt’s Messaging Abilities ](/books/packtpub/2024/1118-Android_using_Kotlin/102_Setting_Up_WhatsPackts_Messaging_Abilities) ≫ |
 |:----:|:----:|:----:|
 
-# 101-1장 Building the UI for Your Messaging App
+# 101 Building the UI for Your Messaging App
 
 In this first chapter, we’re going to start building a messaging app called WhatsPackt (referring to a popular messaging app that you probably already know about). At this point in the project, we must make some important technical decisions and create the structure needed to build it. This is what we will be focusing on, as well as working on the app’s user interface.
 
@@ -1241,11 +1241,11 @@ As we move forward, it’s time to give some love and life to our chats. In the 
 
 
 
-| ≪ [ 100 Creating WhatsPackt, a Messaging App ](/books/packtpub/2024/1118-Android_using_Kotlin/100_Creating_WhatsPackt_a_Messaging_App) | 101-1장 Building the UI for Your Messaging App | [ 102 Setting Up WhatsPackt’s Messaging Abilities ](/books/packtpub/2024/1118-Android_using_Kotlin/102_Setting_Up_WhatsPackts_Messaging_Abilities) ≫ |
+| ≪ [ 100 Creating WhatsPackt, a Messaging App ](/books/packtpub/2024/1118-Android_using_Kotlin/100_Creating_WhatsPackt_a_Messaging_App) | 101 Building the UI for Your Messaging App | [ 102 Setting Up WhatsPackt’s Messaging Abilities ](/books/packtpub/2024/1118-Android_using_Kotlin/102_Setting_Up_WhatsPackts_Messaging_Abilities) ≫ |
 |:----:|:----:|:----:|
 
 > Page Properties:
-> (1) Title: 101-1장 Building the UI for Your Messaging App
+> (1) Title: 101 Building the UI for Your Messaging App
 > (2) Short Description: Android using Kotlin
 > (3) Path: books/packtpub/2024/1118-Android_using_Kotlin/101_Building_the_UI_for_Your_Messaging_App
 > Book Jemok: Thriving in Android Development Using Kotlin

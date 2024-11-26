@@ -1,8 +1,8 @@
 
-| ≪ [ 101 Building the UI for Your Messaging App ](/books/packtpub/2024/1118-Android_using_Kotlin/101_Building_the_UI_for_Your_Messaging_App) | 102-2장 Setting Up WhatsPackt’s Messaging Abilities | [ 103 Backing Up Your WhatsPackt Messages ](/books/packtpub/2024/1118-Android_using_Kotlin/103_Backing_Up_Your_WhatsPackt_Messages) ≫ |
+| ≪ [ 101 Building the UI for Your Messaging App ](/books/packtpub/2024/1118-Android_using_Kotlin/101_Building_the_UI_for_Your_Messaging_App) | 102 Setting Up WhatsPackt’s Messaging Abilities | [ 103 Backing Up Your WhatsPackt Messages ](/books/packtpub/2024/1118-Android_using_Kotlin/103_Backing_Up_Your_WhatsPackt_Messages) ≫ |
 |:----:|:----:|:----:|
 
-# 102-2장 Setting Up WhatsPackt’s Messaging Abilities
+# 102 Setting Up WhatsPackt’s Messaging Abilities
 
 In the previous chapter, we created the structure and UI needed for our messaging app, WhatsPackt.
 
@@ -210,7 +210,7 @@ Let’s break down what this code is going to do:
 > - `.receiveAsFlow()`: This line converts the incoming channel to a `Flow<Frame>` instance so that it can be processed using the Flow API.
 > - `.map { frame -> webSocketSession.handleMessage(frame) }`: This line maps each incoming `Frame` object to the result of calling the `handleMessage` function. We will define the `handleMessage` function later.
 > - `.filterNotNull()`: This line filters out any `null` values from the stream, ensuring that only non-`null` values are processed further.
-> - `.map { it.toDomain() }`: This line maps each non-null value to the result of calling the `toDomain()` function. This function will map the current data-related object to the domain Message model that we will create soon.
+> - `.map { it.toDomain() }`: This line maps each non-null value to the result of calling the `toDomain()` function. This function will map the current data-related object to the domain `Message` model that we will create soon.
 
 Before processing and handling the messages, we will also want to add two more functions to our WebSocket data source:
 
@@ -424,8 +424,10 @@ Now, with the benefits of Clean Architecture firmly in mind, let’s delve into 
 > - **Presentation layer**:
 >   - **View**: This consists of UI components, such as Activity, Fragment, View, and, in our case, Composable components. The view is responsible for displaying data and capturing user input.
 >   - **ViewModel**: The ViewModel serves as a bridge between the View components and the data layers. It handles the UI logic, exposes LiveData or StateFlow objects for data binding, and communicates with UseCase classes.
+>
 > - **Domain layer**:
 >   - **UseCase**: This layer contains the business logic and coordinates the flow of data between the data layer and the presentation layer. UseCase implementations encapsulate specific actions that can be performed within the app, such as sending a message, fetching chat history, or updating user settings.
+>
 > - **Data layer**:
 >   - **Repository**: The Repository component is responsible for managing the data flow and providing a clean API to request data from different sources (local database, remote API, and so on). It abstracts the underlying data sources and handles caching, synchronization, and data merging.
 >   - **Data source**: This layer contains the implementations for accessing specific data sources such as local databases (using Room or another object-relational mapper (ORM)) and remote APIs (using Retrofit or another networking library, as in our case where we are using Ktor).
@@ -558,10 +560,11 @@ We are now done with the domain layer. Now, it’s time to implement the `ViewMo
 
 ## Implementing ChatViewModel
 
-In Android, ViewModel is an architectural component introduced as part of the Android Architecture Components (AAC) library. It is designed to store and manage UI-related data in a lifecycle-conscious way. The primary responsibility of a ViewModel component is to hold and process the data required for a UI component (such as an Activity, Fragment, or Composable component) while properly handling configuration changes (such as device rotations) and surviving the lifecycle of the associated UI component.
+In Android, `ViewModel` is an architectural component introduced as part of the **Android Architecture Components (AAC)** library. It is designed to store and manage UI-related data in a lifecycle-conscious way. The primary responsibility of a `ViewModel` component is to hold and process the data required for a UI component (such as an `Activity`, `Fragment`, or `Composable` component) while properly handling configuration changes (such as device rotations) and surviving the lifecycle of the associated UI component.
 
-Our ChatViewModel class will be responsible for handling the data required in our ChatScreen component (which we previously built in Chapter 1). This data will come and change from the use cases we have just created. So first, our ChatViewModel class will have those use cases as dependencies:
+Our `ChatViewModel` class will be responsible for handling the data required in our `ChatScreen` component (which we previously built in Chapter 1). This data will come and change from the use cases we have just created. So first, our `ChatViewModel` class will have those use cases as dependencies:
 
+```
 @HiltViewModel
 class ChatViewModel @Inject constructor(
     private val retrieveMessages: RetrieveMessages,
@@ -570,31 +573,28 @@ class ChatViewModel @Inject constructor(
 ) : ViewModel() {
 // ....
 }
+```
 
-Copy
+Then, we will need a property to hold the state. This property needs to be observable from the view but read-only (so that the view shouldn’t be able to modify it). We will solve this by creating two different properties. The first property is `_messages`:
 
-Explain
-Then, we will need a property to hold the state. This property needs to be observable from the view but read-only (so that the view shouldn’t be able to modify it). We will solve this by creating two different properties. The first property is _messages:
-
+```
 private val _messages =
 MutableStateFlow<List<Message>>(emptyList())
+```
 
-Copy
+This line creates a private mutable state flow that holds a list of `Message` objects. We will use it to manage and update messages internally within the `ViewModel`.
 
-Explain
-This line creates a private mutable state flow that holds a list of Message objects. We will use it to manage and update messages internally within the ViewModel.
+The second property will be `messages`:
 
-The second property will be messages:
-
+```
 val messages: StateFlow<List<Message>> = _messages
+```
 
-Copy
-
-Explain
 This line exposes the private mutable state flow as a public read-only state flow. This allows the UI components to observe messages without being able to modify them directly.
 
-Now, we need to implement the loadAndUpdateMessages function that will call the RetrieveMessages use case:
+Now, we need to implement the `loadAndUpdateMessages` function that will call the `RetrieveMessages` use case:
 
+```
 private var messageCollectionJob: Job? = null
 fun loadAndUpdateMessages() {
     messageCollectionJob =
@@ -609,20 +609,19 @@ fun loadAndUpdateMessages() {
             }
     }
 }
+```
 
-Copy
+In the previous code block, it can be seen that we need to declare a `messageCollectionJob` variable. This variable is used to cancel the `messages` collection job when the `ViewModel` is cleared.
 
-Explain
-In the previous code block, it can be seen that we need to declare a messageCollectionJob variable. This variable is used to cancel the messages collection job when the ViewModel is cleared.
+The `loadAndUpdateMessages` function is responsible for fetching and updating messages. It launches a coroutine with the `Dispatchers.IO` context for performing network or disk operations.
 
-The loadAndUpdateMessages function is responsible for fetching and updating messages. It launches a coroutine with the Dispatchers.IO context for performing network or disk operations.
+Inside the coroutine, the `retrieveMessages` function is called, and the resulting messages are mapped into the `Message` UI object and then collected using the `collect` function.
 
-Inside the coroutine, the retrieveMessages function is called, and the resulting messages are mapped into the Message UI object and then collected using the collect function.
-
-For each collected message, the _messages state flow is updated with the new message by switching the coroutine context to Dispatchers.Main.
+For each collected message, the `_messages state` flow is updated with the new message by switching the coroutine context to `Dispatchers.Main`.
 
 Next, to make the mapping more readable, we are going to create two extension functions:
 
+```
 private fun DomainMessage.toUI(): Message {
     return Message(
         id = id,
@@ -643,22 +642,20 @@ MessageContent {
             contentDescription)
     }
 }
+```
 
-Copy
-
-Explain
 So, when retrieving and mapping messages, we just have to call the following:
 
+```
 retrieveMessages()
     .map { it.toUI() }
+```
 
-Copy
+Then, we continue to process the `messages` collection job.
 
-Explain
-Then, we continue to process the messages collection job.
+Then, we should add a function to send a new message. Basically, the idea is to launch the coroutine in the `Dispatchers.IO` context to send the message. As it is a network operation, it is recommended to use the I/O dispatcher and map the `String` object we are getting from the user to the domain object, as you can see in the following code block:
 
-Then, we should add a function to send a new message. Basically, the idea is to launch the coroutine in the Dispatchers.IO context to send the message. As it is a network operation, it is recommended to use the I/O dispatcher and map the String object we are getting from the user to the domain object, as you can see in the following code block:
-
+```
 fun onSendMessage(messageText: String) {
     viewModelScope.launch(Dispatchers.IO) {
         val message = Message(messageText) // We will add
@@ -667,28 +664,26 @@ fun onSendMessage(messageText: String) {
         sendMessage(message)
     }
 }
+```
 
-Copy
+Note that, to create the domain object, we are going to lack some information because, for example, we have no way to obtain the `senderImage` or the `senderName` properties that are mandatory to send a message. So, this function is not going to compile for now, but we will solve this problem in the following section.
 
-Explain
-Note that, to create the domain object, we are going to lack some information because, for example, we have no way to obtain the senderImage or the senderName properties that are mandatory to send a message. So, this function is not going to compile for now, but we will solve this problem in the following section.
+Finally, we can use the `onCleared` function to disconnect from the message’s retrieval:
 
-Finally, we can use the onCleared function to disconnect from the message’s retrieval:
-
+```
 override fun onCleared() {
     messageCollectionJob?.cancel()
     viewModelScope.launch(Dispatchers.IO) {
         disconnectMessages()
     }
 }
+```
 
-Copy
+This function is called when the `ViewModel` is no longer in use and will be disposed of by the system. This involves canceling the `messageCollectionJob` variable, provided it’s not `null`, effectively halting the `messages` collection coroutine. Concurrently, in the context of `Dispatchers.IO`, a new coroutine is launched to execute the `disconnectMessages` function. This guarantees that any essential cleanup associated with disconnecting from the message source is carried out properly.
 
-Explain
-This function is called when the ViewModel is no longer in use and will be disposed of by the system. This involves canceling the messageCollectionJob variable, provided it’s not null, effectively halting the messages collection coroutine. Concurrently, in the context of Dispatchers.IO, a new coroutine is launched to execute the disconnectMessages function. This guarantees that any essential cleanup associated with disconnecting from the message source is carried out properly.
+This is how the `ChatViewModel` component will look (for now):
 
-This is how the ChatViewModel component will look (for now):
-
+```
 import com.packt.feature.chat.domain.models.Message as
 DomainMessage
 // We are using this import with an alias to make it easier
@@ -749,12 +744,11 @@ class ChatViewModel @Inject constructor(
         }
     }
 }
+```
 
-Copy
+Now that we have our `ChatViewModel` component ready, we need to connect it to the view. We will make the changes needed in the `ChatScreen` component so that it connects to our `ChatViewModel` component. As the first step, we have added the `ViewModel` to the arguments:
 
-Explain
-Now that we have our ChatViewModel component ready, we need to connect it to the view. We will make the changes needed in the ChatScreen component so that it connects to our ChatViewModel component. As the first step, we have added the ViewModel to the arguments:
-
+```
 @Composable
 fun ChatScreen(
     viewModel: ChatViewModel = hiltViewModel(),
@@ -762,11 +756,9 @@ fun ChatScreen(
     onBack: () -> Unit
 ) {
 }
+```
 
-Copy
-
-Explain
-Then, we will also add a LaunchEffect composable that will start the messages’ load:
+Then, we will also add a `LaunchEffect` composable that will start the messages’ load:
 
 LaunchedEffect(Unit) {
     viewModel.loadAndUpdateMessages()
@@ -775,15 +767,15 @@ LaunchedEffect(Unit) {
 Copy
 
 Explain
-Next, the SendMessageBox composable takes a lambda parameter, where we are going to send the message using the ViewModel function:
+Next, the SendMessageBox composable takes a lambda parameter, where we are going to send the message using the `ViewModel` function:
 
+```
 SendMessageBox { viewModel.onSendMessage(it) }
+```
 
-Copy
+After that, we add the following new parameter to the `SendMessageBox` composable definition and call it in its `IconButton onClick` property:
 
-Explain
-After that, we add the following new parameter to the SendMessageBox composable definition and call it in its IconButton onClick property:
-
+```
 @Composable
 fun SendMessageBox(sendMessage: (String)->Unit) {
     Box(modifier = Modifier
@@ -818,19 +810,17 @@ fun SendMessageBox(sendMessage: (String)->Unit) {
         }
     }
 }
+```
 
-Copy
+Finally, we will inject the `messages` property to the `ListOfMessages` composable:
 
-Explain
-Finally, we will inject the messages property to the ListOfMessages composable:
-
+```
 ListOfMessages(paddingValues = paddingValues, messages = messages)
+```
 
-Copy
-
-Explain
 This, of course, will also require a change in the composable definition and code:
 
+```
 @Composable
 fun ListOfMessages(messages: List<Message>, paddingValues: PaddingValues) {
     Box(modifier = Modifier
@@ -853,34 +843,35 @@ fun ListOfMessages(messages: List<Message>, paddingValues: PaddingValues) {
         }
     }
 }
+```
 
-Copy
-
-Explain
-Instead of using the getFakeMessages() function we were using when we built the ListOfMessages composable, we will use the messages list that we are now obtaining via properties.
+Instead of using the `getFakeMessages()` function we were using when we built the `ListOfMessages` composable, we will use the `messages` list that we are now obtaining via properties.
 
 And with that, we’ve covered almost everything, but there remain some challenges to address. For instance, we don’t have the necessary information to display the correct avatar and name of the chat members or the necessary information to fill in the required properties for sending a message. While we will receive new messages once we connect to the WebSocket, the question of how to get historical messages remains. We will tackle these issues, along with other concerns related to error handling and synchronization, in the upcoming section.
 
-Handling synchronization and errors
+# Handling synchronization and errors
+
 To make the chat messages functionality complete, we still have some issues we have to take into account: getting historical messages and receiver information and handling possible errors. We will go through them in this section.
 
-Obtaining chat screen initialization data
+## Obtaining chat screen initialization data
+
 Apart from the messages that we are going to be receiving or sending via the data source, we still need to get some additional information. This includes the following:
 
-Messages that have been sent and received before the WebSocket was connected (not all of them, though, because the conversation could have many messages, and it would take a long time to gather/load all of the information; instead we should prioritize fetching a certain number of the most recent messages)
-Receiver information, such as their name or avatar URL
+> Messages that have been sent and received before the WebSocket was connected (not all of them, though, because the conversation could have many messages, and it would take a long time to gather/load all of the information; instead we should prioritize fetching a certain number of the most recent messages)
+> Receiver information, such as their name or avatar URL
+
 There are several options to solve this – for example, we could have a different type of message with all this information when the WebSocket connection is established, or we could have a specific API call to retrieve this information. As we have already played with the Ktor WebSocket for the chat feature, we are going to use it to implement an API call to retrieve this information.
 
-When we built WebsocketMessagesDataSource, we had to provide an HttpClient instance. Usually, these clients are shared within the same application, but we should create a new one to be used for our API requests. For that, we would need to add a new dependency:
+When we built `WebsocketMessagesDataSource`, we had to provide an `HttpClient` instance. Usually, these clients are shared within the same application, but we should create a new one to be used for our API requests. For that, we would need to add a new dependency:
 
+```
 implementation "io.ktor:ktor-client-content-negotiation:
 $ktor_version"
+```
 
-Copy
-
-Explain
 Then, we can create the client like so (we can do it in the same file we defined the WebSocket client):
 
+```
 object RestClient {
     val client = HttpClient{
         install(ContentNegotiation) {
@@ -888,12 +879,11 @@ object RestClient {
         }
     }
 }
+```
 
-Copy
+Next, we are going to create a `ChatRoomDataSource` class that will be in charge of handling this data retrieval:
 
-Explain
-Next, we are going to create a ChatRoomDataSource class that will be in charge of handling this data retrieval:
-
+```
 class ChatRoomDataSource @Inject constructor(
     private val client: HttpClient,
     private val url: String
@@ -903,54 +893,51 @@ class ChatRoomDataSource @Inject constructor(
         return client.get(url.format(id)).body()
     }
 }
+```
 
-Copy
-
-Explain
-As seen here, we are going to inject the client and the URL as dependencies. Then, in the getInitialChatRoom function, we will call the client.get(url) function in order to make a request to the endpoint.
+As seen here, we are going to inject the client and the URL as dependencies. Then, in the `getInitialChatRoom` function, we will call the `client.get(url)` function in order to make a request to the endpoint.
 
 Using the Ktor client, you can use various HTTP methods. Here’s a list of common ones:
 
-GET: Retrieves data from the specified endpoint. To use this method in Ktor, you can call the get function:
-val response: HttpResponse =
-client.get("https://api.example.com/data")
+> - `GET`: Retrieves data from the specified endpoint. To use this method in Ktor, you can call the `get` function:
+> ```
+> val response: HttpResponse =
+> client.get("https://api.example.com/data")
+> ```
 
-Copy
+> - `POST`: Sends data to the specified endpoint, usually for creating a new resource. To use this method in Ktor, you can call the `post` function:
+> ```
+> val response: HttpResponse =
+> client.post("https://api.example.com/data") {
+> body = yourData }
+> ```
+>
+> - `PUT`: Sends data to the specified endpoint, usually for updating an existing resource. To use this method in Ktor, you can call the `put` function:
+>
+> ```
+> val response: HttpResponse =
+> client.put("https://api.example.com/data") {
+> body = yourUpdatedData }
+> ```
+>
+> - `DELETE`: Deletes a specified resource. To use this method in Ktor, you can call the `delete` function:
+>
+> ```
+> val response: HttpResponse =
+> client.delete("https://api.example.com/data/ID")
+> ```
+>
+> - `PATCH`: Applies partial modifications to a resource. To use this method in Ktor, you can call the `patch` function:
+>
+> ```
+> val response: HttpResponse =
+> client.patch("https://api.example.com/data") {
+> body = yourPartialData }
+> ```
 
-Explain
-POST: Sends data to the specified endpoint, usually for creating a new resource. To use this method in Ktor, you can call the post function:
-val response: HttpResponse =
-client.post("https://api.example.com/data") {
-body = yourData }
+In the case of our `getInitialChatRoom` function, we are using the `client.get(URL)` function (note that we have to provide the URL in a format such that we can then replace the ID of `ChatRoom`). We also need to return a new model, `ChatRoomModel`:
 
-Copy
-
-Explain
-PUT: Sends data to the specified endpoint, usually for updating an existing resource. To use this method in Ktor, you can call the put function:
-val response: HttpResponse =
-client.put("https://api.example.com/data") {
-body = yourUpdatedData }
-
-Copy
-
-Explain
-DELETE: Deletes a specified resource. To use this method in Ktor, you can call the delete function:
-val response: HttpResponse =
-client.delete("https://api.example.com/data/ID")
-
-Copy
-
-Explain
-PATCH: Applies partial modifications to a resource. To use this method in Ktor, you can call the patch function:
-val response: HttpResponse =
-client.patch("https://api.example.com/data") {
-body = yourPartialData }
-
-Copy
-
-Explain
-In the case of our getInitialChatRoom function, we are using the client.get(URL) function (note that we have to provide the URL in a format such that we can then replace the ID of ChatRoom). We also need to return a new model, ChatRoomModel:
-
+```
 @kotlinx.serialization.Serializable
 data class ChatRoomModel(
     val id: String,
@@ -958,12 +945,11 @@ data class ChatRoomModel(
     val senderAvatar: String,
     val lastMessages: List<WebsocketMessageModel>
 )
+```
 
-Copy
+Now, in order to provide the dependencies that `ChatRoomDataSource` needs, we have to set our `ChatModule` class in the following way:
 
-Explain
-Now, in order to provide the dependencies that ChatRoomDataSource needs, we have to set our ChatModule class in the following way:
-
+```
 @InstallIn(SingletonComponent::class)
 @Module
 abstract class ChatModule {
@@ -997,18 +983,17 @@ abstract class ChatModule {
         return RestClient.client
     }
 }
+```
 
-Copy
-
-Explain
-As both the providesWebsocketClient and providesApiHttpClient functions are returning the same type (HttpClient), we need them to be identifiable so that we can indicate to Hilt which dependency it should provide to WebsocketDataSource and which one goes to ChatRoomDataSource. That’s the reason we are using qualifiers.
+As both the `providesWebsocketClient` and `providesApiHttpClient` functions are returning the same type (`HttpClient`), we need them to be identifiable so that we can indicate to Hilt which dependency it should provide to `WebsocketDataSource` and which one goes to `ChatRoomDataSource`. That’s the reason we are using qualifiers.
 
 Note
 
 Using qualifiers allows the dependency injection (DI) framework to determine the correct instance of a dependency to inject when there are multiple instances available of the same type. This ensures that the right instance is provided, preventing conflicts or ambiguity in your dependency management.
 
-In the next code block, we are using a WEBSOCKET_CLIENT constant as the qualifier for the WebSocket HttpClient instance and API_CLIENT for the REST API HttpClient instance:
+In the next code block, we are using a `WEBSOCKET_CLIENT` constant as the qualifier for the WebSocket `HttpClient` instance and `API_CLIENT` for the REST API `HttpClient` instance:
 
+```
 @Provides
 @Named(WEBSOCKET_CLIENT)
 fun providesWebsocketHttpClient(): HttpClient {
@@ -1019,14 +1004,13 @@ fun providesWebsocketHttpClient(): HttpClient {
 fun providesAPIHttpClient(): HttpClient {
     return RestClient.client
 }
+```
 
-Copy
+We should also use qualifiers to provide URLs for the WebSocket and for the API. Also, it is important to note that these URL values are now being provided by a companion object in `ChatModule` for simplification, but a better approach would be to have them defined as part of our Gradle file. That way, we will be able to override them depending on the build variant (release, debug, test, and so on) or flavor.
 
-Explain
-We should also use qualifiers to provide URLs for the WebSocket and for the API. Also, it is important to note that these URL values are now being provided by a companion object in ChatModule for simplification, but a better approach would be to have them defined as part of our Gradle file. That way, we will be able to override them depending on the build variant (release, debug, test, and so on) or flavor.
+Regarding the qualifiers, we also need to indicate in the consumers of these dependencies which one should be injected. This will be done using the `@Named` annotation in the affected dependencies as follows:
 
-Regarding the qualifiers, we also need to indicate in the consumers of these dependencies which one should be injected. This will be done using the @Named annotation in the affected dependencies as follows:
-
+```
 class ChatRoomDataSource @Inject constructor(
     @Named(API_CLIENT) private val client: HttpClient,
     @Named(API_CHAT_ROOM_URL_NAME) private val url: String
@@ -1036,37 +1020,34 @@ class ChatRoomDataSource @Inject constructor(
         return client.get(url.format(id)).body()
     }
 }
+```
 
-Copy
+Also, we have to modify the constructor in `MessagesSocketDataSource` so that Hilt knows which one it has to inject:
 
-Explain
-Also, we have to modify the constructor in MessagesSocketDataSource so that Hilt knows which one it has to inject:
-
+```
 class MessagesSocketDataSource @Inject constructor(
     @Named(WEBSOCKET_CLIENT) private val httpClient:
         HttpClient,
     @Named(WEBSOCKET_URL_NAME) private val websocketUrl:
         String
 ) { ... }
+```
 
-Copy
-
-Explain
-Now that we have everything ready for our dependencies to be injected the correct way, it is time to implement the ChatRoomRepository component. We will implement it in a similar way that we implemented the MessagesRepository component.
+Now that we have everything ready for our dependencies to be injected the correct way, it is time to implement the `ChatRoomRepository` component. We will implement it in a similar way that we implemented the `MessagesRepository` component.
 
 First, we want to create an interface in our domain package:
 
+```
 package com.packt.feature.chat.domain
 import com.packt.feature.chat.domain.models.ChatRoom
 interface IChatRoomRepository {
     suspend fun getInitialChatRoom(id: String): ChatRoom
 }
+```
 
-Copy
+Then, we will create the actual implementation in the `data.repository` package:
 
-Explain
-Then, we will create the actual implementation in the data.repository package:
-
+```
 package com.packt.feature.chat.data.network.repository
 import com.packt.feature.chat.data.network.datasource
 .ChatRoomDataSource
@@ -1083,14 +1064,13 @@ class ChatRoomRepository @Inject constructor(
         return chatRoomApiModel.toDomain()
     }
 }
+```
 
-Copy
-
-Explain
 Here, we are obtaining the initial chat room information from the data source, and then we will map the obtained data model into the domain model.
 
-Of course, this will not work unless we create the domain model, ChatRoom:
+Of course, this will not work unless we create the domain model, `ChatRoom`:
 
+```
 package com.packt.feature.chat.domain.models
 data class ChatRoom(
     val id: String,
@@ -1098,12 +1078,11 @@ data class ChatRoom(
     val senderAvatar: String,
     val lastMessages: List<Message>
 )
+```
 
-Copy
+Then, we should create the mapping from `ChatRoomModel`:
 
-Explain
-Then, we should create the mapping from ChatRoomModel:
-
+```
 @Serializable
 data class ChatRoomModel(
     val id: String,
@@ -1120,26 +1099,24 @@ data class ChatRoomModel(
         )
     }
 }
+```
 
-Copy
-
-Explain
-Here, we have just added the toDomain() function, which will map the data object (ChatRoomModel) to the domain object (ChatRoom).
+Here, we have just added the `toDomain()` function, which will map the data object (`ChatRoomModel`) to the domain object (`ChatRoom`).
 
 Now, we need to bind the repository interface to its implementation. For that, we should add a binding declaration to our Hilt module:
 
+```
 @Binds
 abstract fun providesChatRoomRepository(
     chatRoomRepository: ChatRoomRepository
 ): IChatRoomRepository
+```
 
-Copy
-
-Explain
-Here, we are saying to Hilt that every time it needs to provide an IChatRoomRepository dependency, it should provide ChatRoomRepository.
+Here, we are saying to Hilt that every time it needs to provide an `IChatRoomRepository` dependency, it should provide `ChatRoomRepository`.
 
 Now, we have the data source and the repository ready. We will need to implement a new use case whose responsibility will be to provide this initial information:
 
+```
 package com.packt.feature.chat.domain.usecases
 import com.packt.feature.chat.domain.IChatRoomRepository
 import com.packt.feature.chat.domain.models.ChatRoom
@@ -1151,14 +1128,13 @@ class GetInitialChatRoomInformation @Inject constructor(
         return repository.getInitialChatRoom(id)
     }
 }
+```
 
-Copy
+Here, we will be calling the repository `getInitialChatRoom()` function, to obtain it in the `ChatRoom` model.
 
-Explain
-Here, we will be calling the repository getInitialChatRoom() function, to obtain it in the ChatRoom model.
+We are now arriving at our destination: the `ViewModel`. We need to include `GetInitial ChatRoomInformation` as a dependency on the `ViewModel`, obtain this information when it is initialized, and make it available for the UI to observe it:
 
-We are now arriving at our destination: the ViewModel. We need to include GetInitial ChatRoomInformation as a dependency on the ViewModel, obtain this information when it is initialized, and make it available for the UI to observe it:
-
+```
 @HiltViewModel
 class ChatViewModel @Inject constructor(
     private val retrieveMessages: RetrieveMessages,
@@ -1167,20 +1143,18 @@ class ChatViewModel @Inject constructor(
     private val getInitialChatRoomInformation:
         GetInitialChatRoomInformation
 ) : ViewModel() {...}
+```
 
-Copy
+Next, we need to create a new `StateFlow` instance to be consumed by the UI. As it is going to hold the state of almost all the UI (except the messages; we will talk about this later), we are going to call it `uiState`:
 
-Explain
-Next, we need to create a new StateFlow instance to be consumed by the UI. As it is going to hold the state of almost all the UI (except the messages; we will talk about this later), we are going to call it uiState:
-
+```
 private val _uiState = MutableStateFlow(Chat())
 val uiState: StateFlow<Chat> = _uiState
+```
 
-Copy
-
-Explain
 Now, we are going to add a new function to be called upon view initialization:
 
+```
 fun loadChatInformation(id: String) {
     messageCollectionJob =
     viewModelScope.launch(Dispatchers.IO) {
@@ -1193,18 +1167,17 @@ fun loadChatInformation(id: String) {
         }
     }
 }
+```
 
-Copy
+Here, we are using `messagesCollectionJob` (we could change its name to make it more generic as now it is going to be used by the `messages` collection job and the initial data retrieval).
 
-Explain
-Here, we are using messagesCollectionJob (we could change its name to make it more generic as now it is going to be used by the messages collection job and the initial data retrieval).
+Then, we retrieve the initial chat room information, update the `uiState` value, and set the messages we are receiving as the first messages in the `messages StateFlow` object (so that the chat will show the old messages).
 
-Then, we retrieve the initial chat room information, update the uiState value, and set the messages we are receiving as the first messages in the messages StateFlow object (so that the chat will show the old messages).
+Finally, we call the `updateMessages()` function, where we will connect to the WebSocket and start getting asynchronous messages.
 
-Finally, we call the updateMessages() function, where we will connect to the WebSocket and start getting asynchronous messages.
+Note that we will also need a `Chat` model that will be our `uiState` instance; this model is important as it will be the object consumed from the UI to configure it. Add this like so:
 
-Note that we will also need a Chat model that will be our uiState instance; this model is important as it will be the object consumed from the UI to configure it. Add this like so:
-
+```
 data class Chat(
     val id: String? = null,
     val name: String? = null,
@@ -1217,12 +1190,11 @@ fun ChatRoom.toUI() = run {
         avatar = senderAvatar
     )
 }
+```
 
-Copy
+Now, we need to listen to this `uiState` instance from our screen composable and update the UI accordingly:
 
-Explain
-Now, we need to listen to this uiState instance from our screen composable and update the UI accordingly:
-
+```
 @Composable
 fun ChatScreen(
     viewModel: ChatViewModel = hiltViewModel(),
@@ -1251,29 +1223,31 @@ fun ChatScreen(
         messages = messages)
     }
 }
+```
 
-Copy
+Here, we can see that we are calling the `loadChatInformation` function as soon as the `Composable` component is started. Then, once this information is obtained, we would show the name of the participant of the chat in the `TopAppBar` component, obtaining this info from the chat initialization. At the same time, the list of messages will be updated with the last messages.
 
-Explain
-Here, we can see that we are calling the loadChatInformation function as soon as the Composable component is started. Then, once this information is obtained, we would show the name of the participant of the chat in the TopAppBar component, obtaining this info from the chat initialization. At the same time, the list of messages will be updated with the last messages.
+Usually, it is desirable to encapsulate all the `uiState` properties in a single observable value as one of the advantages of Jetpack Compose is that it will handle the recomposition when it detects that the values related to a `Composable` component have changed. In this case, the criteria followed have been to separate them because in reality, the frequency of changes is very different between the two values:
 
-Usually, it is desirable to encapsulate all the uiState properties in a single observable value as one of the advantages of Jetpack Compose is that it will handle the recomposition when it detects that the values related to a Composable component have changed. In this case, the criteria followed have been to separate them because in reality, the frequency of changes is very different between the two values:
+> - The `uiState` properties are not going to change for the same chat
+> - The `messages` list is likely to change with a high frequency (every time we send and receive a message)
 
-The uiState properties are not going to change for the same chat
-The messages list is likely to change with a high frequency (every time we send and receive a message)
-During this section, we have set up our chat initialization, including all the components needed for the architecture, from the data source to the ViewModel changes. Now, it is time we take care of possible errors we could encounter and give some resilience to our chat screen.
+During this section, we have set up our chat initialization, including all the components needed for the architecture, from the data source to the `ViewModel` changes. Now, it is time we take care of possible errors we could encounter and give some resilience to our chat screen.
 
-Handling errors in the WebSocket
+## Handling errors in the WebSocket
+
 Errors are not unusual, especially in a long-lived connection such as a WebSocket, and in such a sensitive environment as a mobile one, it is important to take care of these errors because otherwise, our users could stop being able to send or receive messages and, in the worst case, have a fatal error that crashes the application.
 
 There are several ways we can control these errors. One of them is to make every layer responsible for errors that could happen in its scope and only propagate to the UI (or the user knowledge) when the app cannot recover itself from them.
 
 Here, we could have several errors:
 
-Connection errors that are recuperable errors and will be handled by a retry
-Parsing errors that are likely not recuperable as several retries will not change the way the app or the backend are formatting the messages (we cannot do much with these kinds of errors, apart from detecting them before deploying the app or having analytics tools to detect them)
-In this section, we are going to focus on MessagesSocketDataSource. If we take a look at our connect function, we can see it could have some points of failure (for example, when initiating the session or when the message received is handled). The simplest way to solve this is to wrap those points with try-catch blocks:
+> - Connection errors that are recuperable errors and will be handled by a retry
+> - Parsing errors that are likely not recuperable as several retries will not change the way the app or the backend are formatting the messages (we cannot do much with these kinds of errors, apart from detecting them before deploying the app or having analytics tools to detect them)
 
+In this section, we are going to focus on `MessagesSocketDataSource`. If we take a look at our `connect` function, we can see it could have some points of failure (for example, when initiating the session or when the message received is handled). The simplest way to solve this is to wrap those points with `try-catch` blocks:
+
+```
 suspend fun connect(): Flow<Message> {
     return flow {
         // Wrap the connection attempt with a try-catch
@@ -1320,48 +1294,49 @@ suspend fun connect(): Flow<Message> {
         Log.e(TAG, "Error in WebSocket Flow", e)
     }
 }
+```
 
-Copy
+We need to define also as constants `TAG` (to log messages in Logcat), `MAX_RETRIES`, which will be the number of retries we are going to use (because we cannot be eternally retrying), and `RETRY_DELAY` (the milliseconds we are going to wait between retries):
 
-Explain
-We need to define also as constants TAG (to log messages in Logcat), MAX_RETRIES, which will be the number of retries we are going to use (because we cannot be eternally retrying), and RETRY_DELAY (the milliseconds we are going to wait between retries):
-
+```
 companion object {
     const val TAG = "MessagesSocketDataSource"
     const val RETRY_DELAY = 30000
     const val MAX_RETRIES = 5
 }
+```
 
-Copy
-
-Explain
-Here, we are defining these values as constants, so if the WebSocket connection fails, we will retry the connection in another 30 seconds (30000 milliseconds). This will occur 5 times before giving up if it doesn’t successfully connect.
+Here, we are defining these values as constants, so if the WebSocket connection fails, we will retry the connection in another 30 seconds (`30000` milliseconds). This will occur `5` times before giving up if it doesn’t successfully connect.
 
 Now that our users are receiving messages while using the app, we still need to provide a way of notifying them when they receive a new message but are not using the app. We can solve this problem by using push notifications.
 
-Adding push notifications
+# Adding push notifications
+
 Push notifications are messages that are sent to a user’s device from a server, even when the user is not actively using the app. These messages appear as system notifications outside of the app and can be used to provide updates, alerts, or other relevant information to users.
 
-To send push notifications, we need to decide which of the available options we want to use. The most popular is Firebase Cloud Messaging (FCM), but there are more push notification services such as OneSignal, Pusher, or Amazon Simple Notification Service (SNS). In our case, we are going to take the popular route and use FCM.
+To send push notifications, we need to decide which of the available options we want to use. The most popular is **Firebase Cloud Messaging (FCM)**, but there are more push notification services such as OneSignal, Pusher, or **Amazon Simple Notification Service (SNS)**. In our case, we are going to take the popular route and use FCM.
 
-Firebase is a mobile and web application development platform provided by Google. It offers a suite of tools, services, and infrastructure designed to help developers build, improve, and grow their apps. Some of its features include authentication, push notifications, cloud databases, and so on. We are going to use it for the last two sections of this chapter.
+**Firebase** is a mobile and web application development platform provided by Google. It offers a suite of tools, services, and infrastructure designed to help developers build, improve, and grow their apps. Some of its features include authentication, push notifications, cloud databases, and so on. We are going to use it for the last two sections of this chapter.
 
 To accomplish that, we first need to set up Firebase in our project.
 
-Setting up Firebase
+## Setting up Firebase
+
 To set up Firebase in our project, we need to follow these steps:
 
-Go to the Firebase console (https://console.firebase.google.com/) and click Add project. Then, follow the onscreen instructions to set up your project.
-In the Firebase console, click on the Android icon to register your app. Enter your app’s package name, and optionally, provide the SHA-1 fingerprint for Google Sign-In and other authentication features. Click Register app to proceed.
-After registering our app, we’ll be prompted to download a google-services.json file. Download it and place it in the app module of our Android project, at the root level.
-Add Firebase SDK dependencies to your project’s build.gradle files, like so:
+1. Go to the Firebase console (https://console.firebase.google.com/) and click Add project. Then, follow the onscreen instructions to set up your project.
+1. In the Firebase console, click on the Android icon to register your app. Enter your app’s package name, and optionally, provide the SHA-1 fingerprint for Google Sign-In and other authentication features. Click Register app to proceed.
+1. After registering our app, we’ll be prompted to download a `google-services.json` file. Download it and place it in the `app` module of our Android project, at the root level.
+1. Add Firebase SDK dependencies to your project’s `build.gradle` files, like so:
+
+```
 classpath 'com.google.gms:google-services:
 $latest_version'
+```
 
-Copy
+5. Then in the `app` module’s `build.gradle` file where we are going to use it (in our case, `:common:data`), we should add these dependencies for the following specific Firebase services:
 
-Explain
-Then in the app module’s build.gradle file where we are going to use it (in our case, :common:data), we should add these dependencies for the following specific Firebase services:
+```
 implementation platform('com.google.firebase:
     firebase-bom:$latest_version')
 implementation 'com.google.firebase:firebase-auth'
@@ -1369,30 +1344,29 @@ implementation 'com.google.firebase:
     firebase-firestore'
 implementation 'com.google.firebase:
     firebase-messaging'
+```
 
-Copy
-
-Explain
-Note that, as we did with Jetpack Compose dependencies, here we are going to use the Bill of Materials (BoM). The advantage is that we don’t need to specify the version of every dependency because the compatible ones will be provided by the BoM.
+Note that, as we did with Jetpack Compose dependencies, here we are going to use the **Bill of Materials (BoM)**. The advantage is that we don’t need to specify the version of every dependency because the compatible ones will be provided by the BoM.
 
 Note
 
 A BoM is a mechanism used in dependency management systems to specify and manage the versions of multiple libraries and their transitive dependencies as a single entity. It helps simplify dependency management and ensures compatibility between different libraries that are part of the same ecosystem or suite.
 
-Also, in order to facilitate the use of coroutines to handle Firebase tasks, we are going to add this extra dependency:
+6. Also, in order to facilitate the use of coroutines to handle Firebase tasks, we are going to add this extra dependency:
+```
 implementation 'org.jetbrains.kotlinx:
 kotlinx-coroutines-play-services:$latest_version'
+```
 
-Copy
-
-Explain
 Now, before we can receive a push notification, we need to identify our user. We do that by sending their token to Firebase.
 
-Sending the FCM token to Firebase
-To identify our users and send notifications specifically to them using FCM, we need to use FCM tokens. Each user is assigned a unique FCM token, which is used to send notifications to their devices. This token should be obtained and updated every time the user signs in or when the app starts.
+## Sending the FCM token to Firebase
 
-We can obtain the FCM token by calling the getToken() method from the FirebaseMessaging class. To do that, we are going first to create a data source that will wrap the token-handling functionality:
+To identify our users and send notifications specifically to them using FCM, we need to use FCM **tokens**. Each user is assigned a unique FCM token, which is used to send notifications to their devices. This token should be obtained and updated every time the user signs in or when the app starts.
 
+We can obtain the FCM token by calling the `getToken()` method from the `FirebaseMessaging` class. To do that, we are going first to create a data source that will wrap the token-handling functionality:
+
+```
 package com.packt.data
 import com.google.firebase.messaging.FirebaseMessaging
 import kotlinx.coroutines.tasks.await
@@ -1409,25 +1383,23 @@ class FCMTokenDataSource @Inject constructor(
         }
     }
 }
+```
 
-Copy
-
-Explain
-Here, we are injecting the FirebaseMessaging instance and obtaining the FCM token from Firebase.
+Here, we are injecting the `FirebaseMessaging` instance and obtaining the FCM token from Firebase.
 
 Now, we need this FCM to be stored somewhere so that when a new message is sent to our users, we know which token is associated with them. There is no standard way to store it. Usually, this will be handled in the backend, which is far from the scope of this book. But we can prepare the app components needed. We are going to create a use case that would be the orchestrator of obtaining and then sending the FCM to be stored in the backend. This use case will need a repository to do both tasks: obtaining the token and storing it in our systems.
 
-As always, create the interface for our repository in the domain layer (in this case, in the :common:domain module):
+As always, create the interface for our repository in the domain layer (in this case, in the `:common:domain` module):
 
+```
 interface IFCMTokenRepository {
     suspend fun getFCMToken(): String
 }
+```
 
-Copy
+Then, we will create the repository implementation in the data layer (`:common:data`):
 
-Explain
-Then, we will create the repository implementation in the data layer (:common:data):
-
+```
 class FCMTokenRepository @Inject constructor(
     private val tokenDataSource: FCMTokenDataSource
 ) {
@@ -1435,57 +1407,54 @@ class FCMTokenRepository @Inject constructor(
         return tokenDataSource.getFcmToken()
     }
 }
+```
 
-Copy
-
-Explain
 We will use this repository to obtain the token from Firebase. As said before, we also need to store the token somewhere, so we will create another repository for that:
 
+```
 interface IInternalTokenRepository {
     suspend fun storeToken(userId: String, token: String)
 }
+```
 
-Copy
-
-Explain
 We will again leave the implementation empty as it is outside our scope. The relevant bit to understand here is that the token should be stored so that later, when our user receives a message, we can identify the token and send a push notification to the related device.
 
 In the next code block, we can see how we are implementing the aforementioned interface, where you will provide the means to store the data source of your preference:
 
+```
 class InternalTokenRepository(): IInternalTokenRepository {
     override suspend fun storeToken(userId: String, token:
     String) {
         // Store in the data source of your choosing
     }
 }
+```
 
-Copy
-
-Explain
 Now that we have the token sorted, we need to prepare our app to receive push notifications.
 
-Preparing the app to receive push notifications
+## Preparing the app to receive push notifications
+
 Push notifications are messages that pop up on a mobile device. They are especially useful when the user is not actively using the application and we need to call their attention. In this section, we are going to make our app capable of receiving them when a new message is received.
 
-To start receiving push notifications, we need to make some modifications to our existing code first. For example, we have to think about what would we expect to happen if the user clicks on a notification: we may want it to open the ChatScreen component related to the message notification. Let’s start with those changes.
+To start receiving push notifications, we need to make some modifications to our existing code first. For example, we have to think about what would we expect to happen if the user clicks on a notification: we may want it to open the `ChatScreen` component related to the message notification. Let’s start with those changes.
 
-To open the ChatScreen component directly, we will need to create a link that tells the system that it should open our application showing the ChatScreen component. This link is called a deep link.
+To open the `ChatScreen` component directly, we will need to create a link that tells the system that it should open our application showing the `ChatScreen` component. This link is called a deep link.
 
-A deep link is a type of link that directs a user to a specific piece of content or page within an Android application rather than just launching the application. Deep links are used to provide a more seamless user experience by allowing users to jump directly to a particular function, feature, or piece of content within an app from a website, another app, or even a simple text message or email.
+A **deep link** is a type of link that directs a user to a specific piece of content or page within an Android application rather than just launching the application. Deep links are used to provide a more seamless user experience by allowing users to jump directly to a particular function, feature, or piece of content within an app from a website, another app, or even a simple text message or email.
 
-To create our deep link, we are going to create an object called DeepLinks in the :common:framework module to organize all the deep links we are going to use in our application:
+To create our deep link, we are going to create an object called `DeepLinks` in the `:common:framework` module to organize all the deep links we are going to use in our application:
 
+```
 package com.packt.framework.navigation
 object DeepLinks {
     const val chatRoute =
         "https://whatspackt.com/chat?chatId={chatId}"
 }
+```
 
-Copy
+Then, we need to modify our `NavHost` component– once the application receives an intent with this deep comlink, the app should navigate to the `ChatScreen` component. To accomplish that, we need to add a `Deeplink` instance as an option for the `ChatScreen` navigation graph in `WhatsPacktNavigation`:
 
-Explain
-Then, we need to modify our NavHost component– once the application receives an intent with this deep comlink, the app should navigate to the ChatScreen component. To accomplish that, we need to add a Deeplink instance as an option for the ChatScreen navigation graph in WhatsPacktNavigation:
-
+```
 private fun NavGraphBuilder.addChat(navController:
 NavHostController) {
     composable(
@@ -1505,14 +1474,13 @@ NavHostController) {
             navController.popBackStack() })
     }
 }
+```
 
-Copy
+Here, we are adding the deep link pattern that we have in our `DeepLinks` object to be included as one of the route options for our `ChatScreen` component.
 
-Explain
-Here, we are adding the deep link pattern that we have in our DeepLinks object to be included as one of the route options for our ChatScreen component.
+Then, we need to implement a `FirebaseMessagingService` function that will catch all the push notifications that we receive and will allow us to define a channel where notifications will be posted and handled by the Android system, ultimately showing them to the user (if the user has given our app permissions to do that):
 
-Then, we need to implement a FirebaseMessagingService function that will catch all the push notifications that we receive and will allow us to define a channel where notifications will be posted and handled by the Android system, ultimately showing them to the user (if the user has given our app permissions to do that):
-
+```
 class WhatsPacktMessagingService:
 FirebaseMessagingService() {
     companion object {
@@ -1548,16 +1516,15 @@ FirebaseMessagingService() {
         // Implement here the notification
     }
 }
+```
 
-Copy
-
-Explain
-Here, we are extracting some information from the message received, such as senderName, messageContent, chatId, and so on. Ideally, we could obtain the information we want to show in the notification.
+Here, we are extracting some information from the message received, such as `senderName`, `messageContent`, `chatId`, and so on. Ideally, we could obtain the information we want to show in the notification.
 
 This is just an example, though – the information structure would depend on the payload contract we already defined with the backend implementation.
 
 Once we have extracted this information, we need to show the notification:
 
+```
 private fun showNotification(senderName: String?,
 messageId: String, messageContent: String?, chatId: String)
 {
@@ -1601,22 +1568,21 @@ messageId: String, messageContent: String?, chatId: String)
     notificationManager.notify(messageId.toInt(),
         notification)
 }
+```
 
-Copy
-
-Explain
-First, we create a NotificationChannel instance, then the elements we need for our notification (such as PendingIntent, which will be used when the user clicks on the notification), and then the notification itself (using NotificationCompat). Finally, we use NotificationManager to notify our notification to the system.
+First, we create a `NotificationChannel` instance, then the elements we need for our notification (such as `PendingIntent`, which will be used when the user clicks on the notification), and then the notification itself (using `NotificationCompat`). Finally, we use `NotificationManager` to notify our notification to the system.
 
 Note
 
-Creating a NotificationChannel instance is necessary for Android 8.0 (API level 26) and higher, as it provides users with better control over the app’s notifications. Each NotificationChannel instance represents a unique category of notifications that an app can display, and users can modify the settings for each channel independently. This enables users to customize the behavior of your app’s notifications based on their preferences.
+Creating a `NotificationChannel` instance is necessary for Android 8.0 (API level 26) and higher, as it provides users with better control over the app’s notifications. Each `NotificationChannel` instance represents a unique category of notifications that an app can display, and users can modify the settings for each channel independently. This enables users to customize the behavior of your app’s notifications based on their preferences.
 
 For example, users can set the importance level, enable/disable sound, or set a custom vibration pattern for each channel. They can also block an entire channel so that they no longer receive notifications from that specific category.
 
-When you create a NotificationChannel instance, you need to set an importance level, which determines how the system presents notifications from that channel to the user. The importance levels range from high (urgent and makes a sound) to low (no sound or visual interruption).
+When you create a `NotificationChannel` instance, you need to set an importance level, which determines how the system presents notifications from that channel to the user. The importance levels range from high (urgent and makes a sound) to low (no sound or visual interruption).
 
-The last step is to add our service to the AndroidManifest.xml file, inside the application tag:
+The last step is to add our service to the `AndroidManifest.xml` file, inside the `application` tag:
 
+```
 <application
     android:allowBackup = "true"
     android:dataExtractionRules =
@@ -1649,32 +1615,35 @@ The last step is to add our service to the AndroidManifest.xml file, inside the 
         </intent-filter>
     </service>
 </application>
+```
 
-Copy
-
-Explain
 And with that, we have our app ready to receive push notifications.
 
 In the next section, we are going to see how after all the work we have done to keep our code scalable and decoupled, we can easily use Firebase instead of the WebSocket to send and receive messages.
 
-Replacing the Websocket with Firestore
+# Replacing the Websocket with Firestore
+
 As we saw in the previous section, Firebase is a powerful product that simplifies the implementation of the backend for our apps. Now, we are going to see how we can use it also to simplify the chat messages feature.
 
-What is Firestore?
-Firestore, more formally known as Cloud Firestore, is a flexible, scalable, and real-time NoSQL database provided by Firebase. Firestore is designed to store and sync data for client-side applications, making it an ideal choice for building modern, data-driven applications.
+## What is Firestore?
+
+**Firestore**, more formally known as Cloud Firestore, is a flexible, scalable, and real-time NoSQL database provided by Firebase. Firestore is designed to store and sync data for client-side applications, making it an ideal choice for building modern, data-driven applications.
 
 One of its most important features is the real-time data synchronization. Firestore automatically synchronizes data in real time across all connected clients, ensuring that your application’s data is always up to date. This is especially useful for applications requiring real-time collaboration or live updates, such as our chat app.
 
 It is important to note that as a NoSQL database, we would have first to define the data structure. How are we to structure our documents? Well, let’s start with that.
 
-Chat data structure
+## Chat data structure
+
 To handle chat messages in Firestore NoSQL, we can use the following structure:
 
-Create a collection called chats. Each document in this collection will represent a chat room or conversation between users. The document ID can be generated automatically by Firestore or created using a custom method (for example, a combination of user IDs). Here, we can include common data that we need for the conversation (think about our ChatRoom model), such as the user’s name, avatars, and so on...
-For each chat document, create a subcollection called messages. This subcollection will store the individual messages for that chat room or conversation.
-Each document in the messages subcollection will represent a single message. The structure of a message document might include fields such as senderId, senderName, content, and timestamp.
+> - Create a collection called `chats`. Each document in this collection will represent a chat room or conversation between users. The document ID can be generated automatically by Firestore or created using a custom method (for example, a combination of user IDs). Here, we can include common data that we need for the conversation (think about our `ChatRoom` model), such as the user’s name, avatars, and so on...
+> - For each chat document, create a subcollection called `messages`. This subcollection will store the individual messages for that chat room or conversation.
+> - Each document in the `messages` subcollection will represent a single message. The structure of a message document might include fields such as `senderId`, `senderName`, `content`, and `timestamp`.
+
 Following that, our structure will look like this:
 
+```
 chats (collection)
   |
   └── chatId1 (document)
@@ -1705,16 +1674,15 @@ chats (collection)
                     ├── senderId: "user2"
                     ├── senderName: "Jane Smith"
                     ├── content: "I'm doing great! How
-                                 about you?"
+                    ├──────────── about you?"
                     └── timestamp: 1648749156
+```
 
-Copy
-
-Explain
 One important aspect is that, ideally, we should have authentication set up to identify our users. We will learn how to build it in Chapter 7, but for now, we are assuming that our users will be authenticated in Firebase.
 
 Assuming that our chat will be used by authenticated users, we can limit and restrict access to the chat collection for modifications only for users who have already been authenticated. To accomplish that, we can define a set of rules in Firestore, using the Firebase console. Here is an example:
 
+```
 rules_version = '2';
 service cloud.firestore {
   match /databases/{database}/documents {
@@ -1751,15 +1719,15 @@ service cloud.firestore {
     }
   }
 }
+```
 
-Copy
+Now that we have defined these rules, we can switch to our Android app code and create a `FirestoreMessagesDataSource` class.
 
-Explain
-Now that we have defined these rules, we can switch to our Android app code and create a FirestoreMessagesDataSource class.
+## Creating a FirestoreMessagesDataSource class
 
-Creating a FirestoreMessagesDataSource class
-The first step to creating the FirestoreMessagesDataSource class is to create the model that we are going to use to serialize the documents. This model has to include the same fields we included when we designed the Message document structure:
+The first step to creating the `FirestoreMessagesDataSource` class is to create the model that we are going to use to serialize the documents. This model has to include the same fields we included when we designed the `Message` document structure:
 
+```
 import com.google.firebase.Timestamp
 import com.google.firebase.firestore.PropertyName
 import com.packt.feature.chat.domain.models.Message
@@ -1784,14 +1752,13 @@ data class FirestoreMessageModel(
     @set:PropertyName("timestamp")
     var timestamp: Timestamp = Timestamp.now()
 )
+```
 
-Copy
+Note that we are including a field called `id` that has the `@Transient` annotation – this field will store the document `id` value (that for us will be the unique identification for the message as every message has its own document). The reason we have to put the `@Transient` annotation is to avoid this `id` field being stored in the document itself when writing in Firestore.
 
-Explain
-Note that we are including a field called id that has the @Transient annotation – this field will store the document id value (that for us will be the unique identification for the message as every message has its own document). The reason we have to put the @Transient annotation is to avoid this id field being stored in the document itself when writing in Firestore.
+Now, as we did with the `MessagesSocketDataSource` class, we need to convert this data model into the domain model. We already have the `messages` domain model, so, in this case, we only have to implement the function to convert the `FirestoreMessageModel` data class into our `Message` domain model:
 
-Now, as we did with the MessagesSocketDataSource class, we need to convert this data model into the domain model. We already have the messages domain model, so, in this case, we only have to implement the function to convert the FirestoreMessageModel data class into our Message domain model:
-
+```
 fun toDomain(userId: String): Message {
     return Message(
         id = id,
@@ -1815,14 +1782,13 @@ private fun Timestamp.toDateString(): String {
        instance
     return formatter.format(date)
 }
+```
 
-Copy
+In this case, we are supposing we are only going to have text messages (no images) for simplification. However, it could have been easily done by including a field in the `Firestore` model indicating the type of message. Almost all the mapping between properties is straightforward, with the exception of the timestamp. In the `Message` model, we are expecting a `String` object with the date and time, and we are getting a `Timestamp` object from Firestore. So, we are using the `Timestamp.toDateString()` extension to obtain the formatted `String` object from the `Timestamp` object.
 
-Explain
-In this case, we are supposing we are only going to have text messages (no images) for simplification. However, it could have been easily done by including a field in the Firestore model indicating the type of message. Almost all the mapping between properties is straightforward, with the exception of the timestamp. In the Message model, we are expecting a String object with the date and time, and we are getting a Timestamp object from Firestore. So, we are using the Timestamp.toDateString() extension to obtain the formatted String object from the Timestamp object.
+Also, as we would want to send messages too, we need to convert a domain `Message` object into the data object:
 
-Also, as we would want to send messages too, we need to convert a domain Message object into the data object:
-
+```
 companion object {
     fun fromDomain(message: Message): FirestoreMessageModel
     {
@@ -1834,49 +1800,44 @@ companion object {
         )
     }
 }
+```
 
-Copy
+Note that we are not setting the timestamp (it will be created when the object is created), and the `id` field doesn’t have a real value (as it won’t be stored in Firestore).
 
-Explain
-Note that we are not setting the timestamp (it will be created when the object is created), and the id field doesn’t have a real value (as it won’t be stored in Firestore).
+Now, we can proceed with the `FirestoreMessagesDataSource` implementation. First, we define the class and its dependency:
 
-Now, we can proceed with the FirestoreMessagesDataSource implementation. First, we define the class and its dependency:
-
+```
 class FirestoreMessagesDataSource @Inject constructor(
     private val firestore: FirebaseFirestore =
         FirebaseFirestore.getInstance()
 ) {
+```
 
-Copy
+Then, we are going to add a `getMessages` function, to obtain chat messages:
 
-Explain
-Then, we are going to add a getMessages function, to obtain chat messages:
-
+```
     fun getMessages(chatId: String, userId: String):
     Flow<Message> = callbackFlow {
+```
 
-Copy
+Inside this function, we will get a reference to the `messages` subcollection inside the specified chat:
 
-Explain
-Inside this function, we will get a reference to the messages subcollection inside the specified chat:
-
+```
         val chatRef =
             firestore.collection("chats").document(chatId)
                 .collection("messages")
+```
 
-Copy
-
-Explain
 Now, we will create a query to get the messages ordered by timestamp (ascending):
 
+```
         val query = chatRef.orderBy("timestamp",
             Query.Direction.ASCENDING)
+```
 
-Copy
+In the next step, we add a snapshot listener to the query to listen for real-time updates. Every time a document in the messages is added, we will get a snapshot of the changed document there so that we can emit it through the flow to the consumers connected (in our case, `MessagesRepository`):
 
-Explain
-In the next step, we add a snapshot listener to the query to listen for real-time updates. Every time a document in the messages is added, we will get a snapshot of the changed document there so that we can emit it through the flow to the consumers connected (in our case, MessagesRepository):
-
+```
         val listenerRegistration =
         query.addSnapshotListener { snapshot, exception ->
             // If there's an exception, close the Flow with
@@ -1885,12 +1846,11 @@ In the next step, we add a snapshot listener to the query to listen for real-tim
                 close(exception)
                 return@addSnapshotListener
             }
+```
 
-Copy
+Just before sending the new messages through the flow, we need to map them to their domain counterpart and provide their ID. Also, `userId` will be needed to identify if the user has written the new message or if it is written by the other user in the conversation:
 
-Explain
-Just before sending the new messages through the flow, we need to map them to their domain counterpart and provide their ID. Also, userId will be needed to identify if the user has written the new message or if it is written by the other user in the conversation:
-
+```
             val messages = snapshot?.documents?.mapNotNull
             { doc ->
                 val message =
@@ -1903,12 +1863,11 @@ Just before sending the new messages through the flow, we need to map them to th
             } ?: emptyList()
             val domainMessages = messages.map {
                 it.toDomain(userId) }
+```
 
-Copy
+Finally, we can send the list of messages to `Flow`:
 
-Explain
-Finally, we can send the list of messages to Flow:
-
+```
             domainMessages.forEach {
                 try {
                     trySend(it).isSuccess
@@ -1917,20 +1876,18 @@ Finally, we can send the list of messages to Flow:
                 }
             }
         }
+```
 
-Copy
+In the case `Flow` is no longer needed, we should remove the snapshot listener:
 
-Explain
-In the case Flow is no longer needed, we should remove the snapshot listener:
-
+```
         awaitClose { listenerRegistration.remove() }
     }
+```
 
-Copy
+We also need to add a function to send messages. To send a message, we will simply add it to the `messages` collection in the document with the `chatId` value of the related conversation:
 
-Explain
-We also need to add a function to send messages. To send a message, we will simply add it to the messages collection in the document with the chatId value of the related conversation:
-
+```
     fun sendMessage(chatId: String, message: Message) {
         val chatRef =
             firestore.collection("chats").document(chatId)
@@ -1939,12 +1896,11 @@ We also need to add a function to send messages. To send a message, we will simp
             .fromDomain(message))
     }
 }
+```
 
-Copy
+Next, we need to replace our previous `MessagesSocketDataSource` instance in `MessagesRepository` with `FirestoreMessagesDataSource`:
 
-Explain
-Next, we need to replace our previous MessagesSocketDataSource instance in MessagesRepository with FirestoreMessagesDataSource:
-
+```
 class MessagesRepository @Inject constructor(
     //private val dataSource: MessagesSocketDataSource
     private val dataSource: FirestoreMessagesDataSource
@@ -1963,15 +1919,14 @@ class MessagesRepository @Inject constructor(
            subscribers
     }
 }
+```
 
-Copy
-
-Explain
-And with some minor changes, we will have integrated this new provider. The good thing is that, as we have been working following a Clean Architecture, with mappings between layers, we don’t have to change anything in other layers; for example, in Usecases, ViewModel, or the UI (apart from providing the chatId value and the userId value when calling the getMessages and sendMessage methods).
+And with some minor changes, we will have integrated this new provider. The good thing is that, as we have been working following a Clean Architecture, with mappings between layers, we don’t have to change anything in other layers; for example, in `Usecases`, `ViewModel`, or the UI (apart from providing the `chatId` value and the `userId` value when calling the `getMessages` and `sendMessage` methods).
 
 We could also have the two data sources living together in the same app (one as a fallback of the other), as the role of the repository is to serve as an orchestrator of the different data sources for a certain entity (in this case, the messages). We will see more about this in the next chapter as we will want to add local storage to our messages.
 
-Summary
+# Summary
+
 In this chapter, we explored various aspects of building a messaging app for Android. We discussed different approaches for sending and receiving messages, such as using WebSockets with Ktor or Firebase Firestore. We also covered how to structure the app using Clean Architecture principles, with separate layers for data, domain, and presentation, to ensure a well-organized and maintainable code base, and saw how easy is to introduce changes (for example, a change in the messages provider) if our architecture components are well decoupled.
 
 Then, we delved into handling connection errors and synchronization issues using Kotlin coroutines and Flow, implementing error handling and retry mechanisms for a seamless user experience. Additionally, we examined the importance of push notifications in messaging apps and demonstrated their implementation using FCM, from setting up FCM in a project to handling incoming notifications.
@@ -1982,11 +1937,11 @@ Now, let’s move on to learn how we can optimize our WhatsPackt app so that we 
 
 
 
-| ≪ [ 101 Building the UI for Your Messaging App ](/books/packtpub/2024/1118-Android_using_Kotlin/101_Building_the_UI_for_Your_Messaging_App) | 102-2장 Setting Up WhatsPackt’s Messaging Abilities | [ 103 Backing Up Your WhatsPackt Messages ](/books/packtpub/2024/1118-Android_using_Kotlin/103_Backing_Up_Your_WhatsPackt_Messages) ≫ |
+| ≪ [ 101 Building the UI for Your Messaging App ](/books/packtpub/2024/1118-Android_using_Kotlin/101_Building_the_UI_for_Your_Messaging_App) | 102 Setting Up WhatsPackt’s Messaging Abilities | [ 103 Backing Up Your WhatsPackt Messages ](/books/packtpub/2024/1118-Android_using_Kotlin/103_Backing_Up_Your_WhatsPackt_Messages) ≫ |
 |:----:|:----:|:----:|
 
 > Page Properties:
-> (1) Title: 102-2장 Setting Up WhatsPackt’s Messaging Abilities
+> (1) Title: 102 Setting Up WhatsPackt’s Messaging Abilities
 > (2) Short Description: Android using Kotlin
 > (3) Path: books/packtpub/2024/1118-Android_using_Kotlin/102_Setting_Up_WhatsPackts_Messaging_Abilities
 > Book Jemok: Thriving in Android Development Using Kotlin

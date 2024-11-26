@@ -1,5 +1,5 @@
 
-| 🏁 1118 Thriving in Android Development Using Kotlin | 000 Preface | [ 100 Part 1: Creating WhatsPackt, a Messaging App ](/books/packtpub/2024/1118-Android_using_Kotlin/100_Creating_WhatsPackt_a_Messaging_App) ≫ |
+| 🏁 1118 Thriving in Android Development Using Kotlin | 000 Preface | [ 100 Creating WhatsPackt, a Messaging App ](/books/packtpub/2024/1118-Android_using_Kotlin/100_Creating_WhatsPackt_a_Messaging_App) ≫ |
 |:----:|:----:|:----:|
 
 `Kotlin을 사용한 Android 개발 추진`
@@ -78,6 +78,10 @@ If you are using the digital version of this book, we advise you to type the cod
 # Download the example code files
 You can download the example code files for this book from GitHub at https://github.com/PacktPublishing/Thriving-in-Android-Development-using-Kotlin. If there’s an update to the code, it will be updated in the GitHub repository.
 
+```
+git clone https://github.com/PacktPublishing/Thriving-in-Android-Development-using-Kotlin.git
+```
+
 We also have other code bundles from our rich catalog of books and videos available at https://github.com/PacktPublishing/. Check them out!
 
 # Conventions used
@@ -149,7 +153,7 @@ https://packt.link/free-ebook/9781837631292
 
 
 
-| 🏁 1118 Thriving in Android Development Using Kotlin | 000 Preface | [ 100 Part 1: Creating WhatsPackt, a Messaging App ](/books/packtpub/2024/1118-Android_using_Kotlin/100_Creating_WhatsPackt_a_Messaging_App) ≫ |
+| 🏁 1118 Thriving in Android Development Using Kotlin | 000 Preface | [ 100 Creating WhatsPackt, a Messaging App ](/books/packtpub/2024/1118-Android_using_Kotlin/100_Creating_WhatsPackt_a_Messaging_App) ≫ |
 |:----:|:----:|:----:|
 
 > Page Properties:
