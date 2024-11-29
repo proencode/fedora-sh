@@ -317,12 +317,12 @@ let time = 10; // 10 seconds for testing
 | [비디오](https://danielepais.com/journal/tag/video/) (5) | [웹 디자인](https://danielepais.com/journal/tag/web-design/) (5) | [워드프레스](https://danielepais.com/journal/tag/wordpress/) (28) |  |  |  |
 
 > Page Info:
-> (1) Title: 09-Pomodoro 타이머 크롬 확장
+> (1) Title: 0909 Pomodoro 타이머 크롬 확장
 > (2) Short Description: 크롬 확장 프로그램
-> (3) Path: danielepais/2024/2409/09-Pomodoro_Chrome_Extension
+> (3) Path: danielepais/2024/0909-Pomodoro_Chrome_Extension
 > 제목: Pomodoro Timer Chrome Extension
 > 쓴이: By Daniele Pais / February 2, 2024
 > 링크: https://danielepais.com/journal/make-your-own-pomodoro-timer-chrome-extension/
 > 입력: 2024-09-10 화 09-21-37
-> 파일: 09-Pomodoro_Chrome_Extension.md
+> 파일: 0909-Pomodoro_Chrome_Extension.md
 
