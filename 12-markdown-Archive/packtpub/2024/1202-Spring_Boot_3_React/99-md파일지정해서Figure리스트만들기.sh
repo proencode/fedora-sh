@@ -64,9 +64,21 @@ do
 			#-- 6.4
 			chapter_numb=$(echo ${fig_num} | awk '{print $2}')
 			#-- A video with
-			fig_title=$(echo $fig_memo | awk '{print $1" "$2" "$3}')
+
+			third_word=$(echo $fig_memo | awk '{print $3}')
+			if [ "x${third_word}" == "x" ]; then
+				second_word=$(echo $fig_memo | awk '{print $2}')
+				if [ "x${second_word}" == "x" ]; then
+					fig_title=$(echo $fig_memo | awk '{print $1}')
+				else
+					fig_title=$(echo $fig_memo | awk '{print $1" "$2}')
+				fi
+			else
+				fig_title=$(echo $fig_memo | awk '{print $1" "$2" "$3}')
+			fi
+
 			#-- a_video_with
-			small_fig_title=$(echo "${fig_title,,}" | sed 's/ /_/g' | sed 's/\./_/g' | sed 's/“/\"/g' | sed 's/”/\"/g' | sed "s/’/'/g")
+			small_fig_title=$(echo "${fig_title,,}" | sed 's/ /_/g' | sed 's/\./_/g' | sed 's/“/\"/g' | sed 's/”/\"/g' | sed "s/’/'/g" | sed 's/(//g' | sed "s/)//g")
 			cat <<__EOF__
 ![ ${chapter_numb} ${fig_memo} ](${img_link}/${chapter_numb}-${small_fig_title}.webp)
 ${chapter_numb}-${small_fig_title}.webp
