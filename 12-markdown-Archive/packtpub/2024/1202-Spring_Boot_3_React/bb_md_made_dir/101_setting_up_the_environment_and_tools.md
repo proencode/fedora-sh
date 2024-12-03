@@ -1,5 +1,5 @@
 
-| ≪ [ 000 Preface ](/books/packtpub/2024/1202-Spring_Boot_3_React/000_Preface) | 101 Setting Up the Environment and Tools | [ 102 Understanding Dependency Injection ](/books/packtpub/2024/1202-Spring_Boot_3_React/102_Understanding_Dependency_Injection) ≫ |
+| ≪ [ 000 Preface ](/books/packtpub/2024/1202-Spring_Boot_3_React/000) | 101 Setting Up the Environment and Tools | [ 102 Understanding Dependency Injection ](/books/packtpub/2024/1202-Spring_Boot_3_React/102) ≫ |
 |:----:|:----:|:----:|
 
 # Part 1: Backend Programming with Spring Boot
@@ -35,6 +35,7 @@ Download the code for this chapter from GitHub at https://github.com/PacktPublis
 
 You can either download a ZIP package of Eclipse or an installer package that executes the installation wizard. In the installer, you should select **Eclipse IDE for Enterprise Java and Web Developers**, as shown in the following screenshot:
 
+![ 1.1 Eclipse installer ](/packtpub/2024/1202/1.1-eclipse_installer.webp)
 
 Figure 1.1: Eclipse installer
 
@@ -42,13 +43,14 @@ If using the ZIP package, you have to extract the package to your local disk, an
 
 Eclipse is an IDE for multiple programming languages, such as Java, C++, and Python. Eclipse contains different **perspectives** for your needs, which are a set of views and editors in the Eclipse workbench. The following screenshot shows common perspectives for Java development:
 
+![ 1.2 Eclipse workbench ](/packtpub/2024/1202/1.2-eclipse_workbench.webp)
 
 Figure 1.2: Eclipse workbench
 
 On the left-hand side, we have the **Project Explorer**, where we can see our project structure and resources. The **Project Explorer** is also used to open files by double-clicking on them. The files will be opened in the editor, which is in the middle of the workbench. The **Console** view can be found in the lower section of the workbench. This view is really important because it shows application logging messages.
 
 > IMPORTANT NOTE
-> 
+>
 > You can get **Spring Tool Suite (STS)** for Eclipse if you want, but we are not going to use it in this book because the plain Eclipse installation is enough for our purposes. STS is a set of plugins that makes Spring application development simple, and you can find more information about it here: https://spring.io/tools.
 
 Now that we have installed Eclipse, let’s take a quick look at what Gradle is and how it helps us.
@@ -58,7 +60,7 @@ Now that we have installed Eclipse, let’s take a quick look at what Gradle is 
 **Gradle** is a build automation tool that makes the software development process simpler and also unifies the development process. It manages our project dependencies and handles the build process.
 
 > IMPORTANT NOTE
-> 
+>
 > You can also use another project management tool called **Maven** with Spring Boot, but we will focus on using Gradle in this book because it’s faster and more flexible than Maven.
 
 We don’t need to perform any installations to use Gradle in our Spring Boot project since we are utilizing the Gradle wrapper within our project.
@@ -109,15 +111,19 @@ To create our project using Spring Initalizr, complete the following steps:
 
 1. Open Spring Initializr by navigating to https://start.spring.io using your web browser. You should see the following page:
 
+![ 1.3 Spring Initializr ](/packtpub/2024/1202/1.3-spring_initializr.webp)
+
 Figure 1.3: Spring Initializr
 
 2. We will generate a **Gradle - Groovy** project with **Java** and the latest stable **Spring Boot 3.1.x** version. If you are using a newer major or minor version, you should check the release notes about what’s changed. In the **Group** field, we will define our group ID (**com.packt**), which will also become a base package in our Java project. In the **Artifact** field, we will define an artifact ID (**cardatabase**), which will also be the name of our project in Eclipse.
 
 > IMPORTANT NOTE
-> 
+>
 > Select the correct Java version in Spring Initializr. In this book, we are using Java version 17. In Spring Boot 3, the Java baseline is Java 17.
 
 3. By clicking the **ADD DEPENDENCIES…** button, we will select the starters and dependencies that are needed in our project. Spring Boot provides starter packages that simplify your Gradle configuration. Spring Boot starters are actually a set of dependencies that you can include in your project. We will start our project by selecting two dependencies: **Spring Web** and **Spring Boot DevTools**. You can type the dependencies into the search field or select from a list that appears, as illustrated in the following screenshot:
+
+![ 1.4 Adding dependencies ](/packtpub/2024/1202/1.4-adding_dependencies.webp)
 
 Figure 1.4: Adding dependencies
 
@@ -125,6 +131,7 @@ The **Spring Boot DevTools** dependency gives us the Spring Boot developer tools
 
 The **Spring Web** starter pack is a base for full stack development and provides an embedded Tomcat server. After you have added dependencies, your **Dependencies** section in Spring Initializr should look like this:
 
+![ 1.5 Spring Initializr dependencies ](/packtpub/2024/1202/1.5-spring_initializr_dependencies.webp)
 
 Figure 1.5: Spring Initializr dependencies
 
@@ -138,19 +145,27 @@ Perform the following steps to run the Gradle project in the Eclipse IDE:
 1. Extract the project ZIP package that we created in the previous section and open **Eclipse**.
 2. We are going to import our project into the Eclipse IDE. To start the import process, select the **File | Import** menu and the import wizard will be opened. The following screenshot shows the first page of the wizard:
 
+![ 1.6 Import wizard (step 1) ](/packtpub/2024/1202/1.6-import_wizard_step.webp)
+
 Figure 1.6: Import wizard (step 1)
 
 3. In the first phase, you should select **Existing Gradle Project** from the list under the **Gradle** folder, and then click the **Next >** button. The following screenshot shows the second step of the import wizard:
+
+![ 1.7 Import wizard (step 2) ](/packtpub/2024/1202/1.7-import_wizard_step.webp)
 
 Figure 1.7: Import wizard (step 2)
 
 4. In this phase, click the **Browse...** button and select the extracted project folder.
 5. Click the **Finish** button to finalize the import. If everything ran correctly, you should see the `cardatabase` project in the Eclipse IDE **Project Explorer**. It takes a while before the project is ready because all the dependencies will be downloaded by Gradle after importing them. You can see the progress of the dependency download in the bottom-right corner of Eclipse. The following screenshot shows the Eclipse IDE **Project Explorer** after a successful import:
 
+![ 1.8 Project Explorer ](/packtpub/2024/1202/1.8-project_explorer.webp)
+
 Figure 1.8: Project Explorer
 
-6. The **Project Explorer*** also shows the package structure of our project. In the beginning, there is only one package called `com.packt.cardatabase`. Under that package is our main application class, called `CardatabaseApplication.java`.
+6. The **Project Explorer** also shows the package structure of our project. In the beginning, there is only one package called `com.packt.cardatabase`. Under that package is our main application class, called `CardatabaseApplication.java`.
 7. Now, we don’t have any functionality in our application, but we can run it and see whether everything has started successfully. To run the project, open the main class by double-clicking on it, as shown in the following screenshot, and then click the **Run** button (the play icon) in the Eclipse toolbar. Alternatively, you can select the **Run** menu and click **Run as | Java Application**:
+
+![ 1.9 The Cardatabase project ](/packtpub/2024/1202/1.9-the_cardatabase_project.webp)
 
 Figure 1.9: The Cardatabase project
 
@@ -158,6 +173,7 @@ You can see the **Console** view open in Eclipse, which contains important infor
 
 If the project was executed correctly, you should see the started `CardatabaseApplication` class in the text at the end of the console. The following screenshot shows the content of the Eclipse console after our Spring Boot project has been started:
 
+![ 1.10 Eclipse console ](/packtpub/2024/1202/1.10-eclipse_console.webp)
 
 Figure 1.10: Eclipse console
 
@@ -206,7 +222,7 @@ Table 1.1: SpringBootApplication annotations
 The execution of the application starts from the `main()` method, as in standard Java applications.
 
 > IMPORTANT NOTE
-> 
+>
 > It is recommended that you locate the main application class in the root package above other classes. All packages under the package containing the application class will be covered by Spring Boot’s component scan. A common reason for an application not working correctly is due to Spring Boot being unable to find critical classes.
 
 ## Spring Boot development tools
@@ -249,7 +265,7 @@ public class CardatabaseApplication {
     private static final Logger logger = LoggerFactory.getLogger(
         CardatabaseApplication.class
     );
-    
+
     public static void main(String[] args) {
         SpringApplication.run(CardatabaseApplication.class, args);
         logger.info("Application started");
@@ -259,11 +275,13 @@ public class CardatabaseApplication {
 
 The `logger.info` method prints a log message to the console. Log messages can be seen in the console after you run a project, as shown in the following screenshot:
 
+![ 1.11 Log message ](/packtpub/2024/1202/1.11-log_message.webp)
 
 Figure 1.11: Log message
 
 There are seven different levels of logging: `TRACE`, `DEBUG`, `INFO`, `WARN`, `ERROR`, `FATAL`, and `OFF`. You can configure the level of logging in your Spring Boot `application.properties` file. The file can be found in the `/resources` folder inside your project, as illustrated in the following screenshot:
 
+![ 1.12 Application properties file ](/packtpub/2024/1202/1.12-application_properties_file.webp)
 
 Figure 1.12: Application properties file
 
@@ -283,6 +301,7 @@ server.port=8081
 
 If the port is occupied, the application won’t start, and you will see the following **APPLICATION FAILED TO START** message in the console:
 
+![ 1.13 Port already in use ](/packtpub/2024/1202/1.13-port_already_in.webp)
 
 Figure 1.13: Port already in use
 
@@ -298,18 +317,26 @@ The following steps guide you to install MariaDB:
 
 1. For Windows, there is the **Microsoft Installer (MSI)**, which we will use here. Download the installer and execute it. Install all features from the installation wizard, as illustrated in the following screenshot:
 
+![ 1.14 MariaDB installation (step 1) ](/packtpub/2024/1202/1.14-mariadb_installation_step.webp)
+
 Figure 1.14: MariaDB installation (step 1)
 
 2. In the next step, you should give a password for the root user. This password is needed in the next chapter when we connect our application to the database. The process is illustrated in the following screenshot:
+
+![ 1.15 MariaDB installation (step 2) ](/packtpub/2024/1202/1.15-mariadb_installation_step.webp)
 
 Figure 1.15: MariaDB installation (step 2)
 
 3. In the next phase, we can use the default settings, as illustrated in the following screenshot:
 
+![ 1.16 MariaDB installation (step 3) ](/packtpub/2024/1202/1.16-mariadb_installation_step.webp)
+
 Figure 1.16: MariaDB installation (step 3)
 
 4. Now, the installation will start, and MariaDB will be installed on your local computer. The installation wizard will install **HeidiSQL** for us. This is an easy-to-use, graphical database client. We will use this to add a new database and make queries to our database. You can also use the Command Prompt included in the installation package.
 5. Open **HeidiSQL** and log in using the password that you gave in the installation phase. You should then see the following screen:
+
+![ 1.17 HeidiSQL ](/packtpub/2024/1202/1.17-heidisql.webp)
 
 Figure 1.17: HeidiSQL
 
@@ -350,13 +377,13 @@ https://packt.link/FullStackSpringBootReact4e
 
 
 
-| ≪ [ 000 Preface ](/books/packtpub/2024/1202-Spring_Boot_3_React/000_Preface) | 101 Setting Up the Environment and Tools | [ 102 Understanding Dependency Injection ](/books/packtpub/2024/1202-Spring_Boot_3_React/102_Understanding_Dependency_Injection) ≫ |
+| ≪ [ 000 Preface ](/books/packtpub/2024/1202-Spring_Boot_3_React/000) | 101 Setting Up the Environment and Tools | [ 102 Understanding Dependency Injection ](/books/packtpub/2024/1202-Spring_Boot_3_React/102) ≫ |
 |:----:|:----:|:----:|
 
 > Page Properties:
 > (1) Title: 101 Setting Up the Environment and Tools
 > (2) Short Description: Spring Boot 3 React
-> (3) Path: books/packtpub/2024/1202-Spring_Boot_3_React/101_Setting_Up_the_Environment_and_Tools
+> (3) Path: books/packtpub/2024/1202-Spring_Boot_3_React/101
 > Book Jemok: Full Stack Development with Spring Boot 3 and React 4Ed
 > AuthorDate: Juha Hinkula / Oct 2023 / 454 pages 4Ed
 > Link: https://subscription.packtpub.com/book/web-development/9781805122463/pref

@@ -41,7 +41,7 @@ ${link_box}
 > Page Properties:
 > (1) Title: ${ChapterSeq} ${ChapterJemok}
 > (2) Short Description: ${TypingJemok}
-> (3) Path: ${book_path}/${underline_Jemok}
+> (3) Path: ${book_path}/${ChapterSeq}
 > Book Jemok: ${BookJemok}
 > AuthorDate: ${AuthorDate}
 > Link: ${https_line}
@@ -49,6 +49,8 @@ ${link_box}
 > .md Name: ${small_Jemok}.md
 
 __EOF__
+#--|   $underline_Jemok 을 $ChapterSeq 로 바꿈.
+#--| > (3) Path: ${book_path}/${underline_Jemok}
 
 }
 #-- file_Made "01" "P1 JavaScript Syntax" #from <-- md_Create () {

@@ -1,5 +1,5 @@
 
-| 🏁 1202 Full Stack Development with Spring Boot 3 and React 4Ed | 000 Preface | [ 101 Setting Up the Environment and Tools ](/books/packtpub/2024/1202-Spring_Boot_3_React/101_Setting_Up_the_Environment_and_Tools) ≫ |
+| 🏁 1202 Full Stack Development with Spring Boot 3 and React 4Ed | 000 Preface | [ 101 Setting Up the Environment and Tools ](/books/packtpub/2024/1202-Spring_Boot_3_React/101) ≫ |
 |:----:|:----:|:----:|
 
 # 000 Preface
@@ -167,13 +167,13 @@ https://packt.link/free-ebook/9781805122463
 
 
 
-| 🏁 1202 Full Stack Development with Spring Boot 3 and React 4Ed | 000 Preface | [ 101 Setting Up the Environment and Tools ](/books/packtpub/2024/1202-Spring_Boot_3_React/101_Setting_Up_the_Environment_and_Tools) ≫ |
+| 🏁 1202 Full Stack Development with Spring Boot 3 and React 4Ed | 000 Preface | [ 101 Setting Up the Environment and Tools ](/books/packtpub/2024/1202-Spring_Boot_3_React/101) ≫ |
 |:----:|:----:|:----:|
 
 > Page Properties:
 > (1) Title: 000 Preface
 > (2) Short Description: Spring Boot 3 React
-> (3) Path: books/packtpub/2024/1202-Spring_Boot_3_React/000_Preface
+> (3) Path: books/packtpub/2024/1202-Spring_Boot_3_React/000
 > Book Jemok: Full Stack Development with Spring Boot 3 and React 4Ed
 > AuthorDate: Juha Hinkula / Oct 2023 / 454 pages 4Ed
 > Link: https://subscription.packtpub.com/book/web-development/9781805122463/pref
