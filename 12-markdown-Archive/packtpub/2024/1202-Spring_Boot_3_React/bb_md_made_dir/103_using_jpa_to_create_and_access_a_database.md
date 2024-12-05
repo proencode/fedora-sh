@@ -1,40 +1,45 @@
 
-| ≪ [ 102 Understanding Dependency Injection ](/books/packtpub/2024/1202-Spring_Boot_3_React/102_Understanding_Dependency_Injection) | 103 Using JPA to Create and Access a Database | [ 104 Creating a RESTful Web Service with Spring Boot ](/books/packtpub/2024/1202-Spring_Boot_3_React/104_Creating_a_RESTful_Web_Service_with_Spring_Boot) ≫ |
+| ≪ [ 102 Understanding Dependency Injection ](/books/packtpub/2024/1202-Spring_Boot_3_React/102) | 103 Using JPA to Create and Access a Database | [ 104 Creating a RESTful Web Service with Spring Boot ](/books/packtpub/2024/1202-Spring_Boot_3_React/104) ≫ |
 |:----:|:----:|:----:|
 
 # 103 Using JPA to Create and Access a Database
 
-This chapter covers how to use Jakarta Persistence API (JPA) with Spring Boot and how to define a database by using entity classes. In the first phase, we will be using the H2 database. H2 is an in-memory SQL database that is good for fast development or demonstration purposes. In the second phase, we will move from H2 to MariaDB. This chapter also describes the creation of CRUD repositories and a one-to-many connection between database tables.
+This chapter covers how to use **Jakarta Persistence API (JPA)** with Spring Boot and how to define a database by using entity classes. In the first phase, we will be using the **H2** database. H2 is an in-memory SQL database that is good for fast development or demonstration purposes. In the second phase, we will move from H2 to **MariaDB**. This chapter also describes the creation of CRUD repositories and a one-to-many connection between database tables.
 
 In this chapter, we will cover the following topics:
 
-Basics of ORM, JPA, and Hibernate
-Creating the entity classes
-Creating CRUD repositories
-Adding relationships between tables
-Setting up the MariaDB database
-Technical requirements
+> - Basics of ORM, JPA, and Hibernate
+> - Creating the entity classes
+> - Creating CRUD repositories
+> - Adding relationships between tables
+> - Setting up the MariaDB database
+
+# Technical requirements
+
 The Spring Boot application we created in previous chapters is required.
 
-A MariaDB installation is necessary to create the database application: https://downloads.mariadb.org/. We went through the installation steps in Chapter 1.
+A MariaDB installation is necessary to create the database application: https://downloads.mariadb.org/. We went through the installation steps in *Chapter 1*.
 
 The code for this chapter can be found at the following GitHub link: https://github.com/PacktPublishing/Full-Stack-Development-with-Spring-Boot-3-and-React-Fourth-Edition/tree/main/Chapter03.
 
-Basics of ORM, JPA, and Hibernate
+# Basics of ORM, JPA, and Hibernate
+
 ORM and JPA are widely used techniques in software development for handling relational databases. You don’t have to write complex SQL queries; instead, you can work with objects, which is more natural for Java developers. In this way, ORM and JPA can speed up your development process by reducing the time you spend writing and debugging SQL code. Many JPA implementations can also generate a database schema automatically based on your Java entity classes. In brief:
 
-Object-Relational Mapping (ORM) is a technique that allows you to fetch from and manipulate a database by using an object-oriented programming paradigm. ORM is really good for programmers because it relies on object-oriented concepts rather than database structures. It also makes development much faster and reduces the amount of source code. ORM is mostly independent of databases, and developers don’t have to worry about vendor-specific SQL statements.
-Jakarta Persistence API (JPA, formerly Java Persistence API) provides object-relational mapping for Java developers. The JPA entity is a Java class that represents the structure of a database table. The fields of an entity class represent the columns of the database tables.
-Hibernate is the most popular Java-based JPA implementation and is used in Spring Boot by default. Hibernate is a mature product and is widely used in large-scale applications.
+> - **Object-Relational Mapping (ORM)** is a technique that allows you to fetch from and manipulate a database by using an object-oriented programming paradigm. ORM is really good for programmers because it relies on object-oriented concepts rather than database structures. It also makes development much faster and reduces the amount of source code. ORM is mostly independent of databases, and developers don’t have to worry about vendor-specific SQL statements.
+> - **Jakarta Persistence API** (**JPA**, formerly **Java Persistence API**) provides object-relational mapping for Java developers. The JPA entity is a Java class that represents the structure of a database table. The fields of an entity class represent the columns of the database tables.
+> - **Hibernate** is the most popular Java-based JPA implementation and is used in Spring Boot by default. Hibernate is a mature product and is widely used in large-scale applications.
 Next, we will start to implement our first entity class using the H2 database.
 
-Creating the entity classes
-An entity class is a simple Java class that is annotated with JPA’s @Entity annotation. Entity classes use the standard JavaBean naming convention and have proper getter and setter methods. The class fields have private visibility.
+# Creating the entity classes
 
-JPA creates a database table with the same name as the class when the application is initialized. If you want to use some other name for the database table, you can use the @Table annotation in your entity class.
+An entity class is a simple Java class that is annotated with JPA’s `@Entity` annotation. Entity classes use the standard JavaBean naming convention and have proper getter and setter methods. The class fields have private visibility.
 
-At the beginning of this chapter, we will use the H2 database (https://www.h2database.com/), which is an embedded in-memory database. To be able to use JPA and the H2 database, we have to add the following dependencies to the build.gradle file:
+JPA creates a database table with the same name as the class when the application is initialized. If you want to use some other name for the database table, you can use the `@Table` annotation in your entity class.
 
+At the beginning of this chapter, we will use the H2 database (https://www.h2database.com/), which is an embedded in-memory database. To be able to use JPA and the H2 database, we have to add the following dependencies to the `build.gradle` file:
+
+```
 dependencies {
     implementation 'org.springframework.boot:spring-boot-starter-web'
     implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
@@ -42,54 +47,54 @@ dependencies {
     runtimeOnly 'com.h2database:h2'
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
 }
+```
 
-Copy
-
-Explain
-After you have updated the build.gradle file, you should update your dependencies by selecting the project in Eclipse’s Project Explorer and right-clicking to open the context menu. Then, select Gradle | Refresh Gradle Project, as shown in the next screenshot:
+After you have updated the `build.gradle` file, you should update your dependencies by selecting the project in Eclipse’s **Project Explorer** and right-clicking to open the context menu. Then, select **Gradle | Refresh Gradle Project**, as shown in the next screenshot:
 
 
 Figure 3.1: Refresh Gradle Project
 
-You can also enable automatic project refresh by opening the Window | Preferences menu. Go to the Gradle settings and there is an Automatic Project Synchronization checkbox that you can check. Then, your project will be synchronized automatically if you make changes to your build script file. This is recommended and means you don’t have to manually refresh the project when you update your build script:
+You can also enable automatic project refresh by opening the **Window | Preferences** menu. Go to the **Gradle** settings and there is an **Automatic Project Synchronization** checkbox that you can check. Then, your project will be synchronized automatically if you make changes to your build script file. This is recommended and means you don’t have to manually refresh the project when you update your build script:
 
 
 Figure 3.2: Gradle wrapper settings
 
-You can find the project dependencies from the Project and External Dependencies folder in the Eclipse Project Explorer. Now, you should find spring-boot-starter-data-jpa and h2 dependencies there:
+You can find the project dependencies from the **Project and External Dependencies** folder in the Eclipse **Project Explorer**. Now, you should find `spring-boot-starter-data-jpa` and h2 dependencies there:
 
 
 Figure 3.3: Project dependencies
 
 Let’s look at the following steps to create entity classes:
 
-To create an entity class in Spring Boot, we must create a package for entities. The package should be created under the root package. To begin this process, activate the root package in Eclipse’s Project Explorer and right-click to make a context menu appear.
-From this menu, select New | Package. The following screenshot shows how to create a package for entity classes:
+1. To create an entity class in Spring Boot, we must create a package for entities. The package should be created under the root package. To begin this process, activate the root package in Eclipse’s **Project Explorer** and right-click to make a context menu appear.
+2. From this menu, select **New | Package**. The following screenshot shows how to create a package for entity classes:
 
 Figure 3.4: New package
 
-We will name our package com.packt.cardatabase.domain:
+3. We will name our package `com.packt.cardatabase.domain`:
 
 Figure 3.5: New Java package
 
-Next, we will create our entity class. Activate the new com.packt.cardatabase.domain package, right-click it, and select New | Class from the menu.
-Because we are going to create a car database, the name of the entity class will be Car. Type Car into the Name field and then press the Finish button, as shown in the following screenshot:
+4. Next, we will create our entity class. Activate the new `com.packt.cardatabase.domain` package, right-click it, and select **New | Class** from the menu.
+5. Because we are going to create a car database, the name of the entity class will be `Car`. Type `Car` into the **Name** field and then press the **Finish** button, as shown in the following screenshot:
 
 Figure 3.6: New Java class
 
-Open the Car class file in the editor by double-clicking it in the Project Explorer. First, we must annotate the class with the @Entity annotation. The @Entity annotation is imported from the jakarta.persistence package:
+6. Open the `Car` class file in the editor by double-clicking it in the **Project Explorer**. First, we must annotate the class with the `@Entity` annotation. The `@Entity` annotation is imported from the `jakarta.persistence` package:
+
+```
 package com.packt.cardatabase.domain;
 import jakarta.persistence.Entity;
 @Entity
 public class Car {
 }
+```
 
-Copy
+You can use the *Ctrl + Shift + O* shortcut in the Eclipse IDE to import missing packages automatically. In some cases, there might be multiple packages that contain the same identifier, so you have to be careful to select the correct import. For example, in the next step, `Id` can be found in multiple packages, but you should select `jakarta.persistence.Id`.
 
-Explain
-You can use the Ctrl + Shift + O shortcut in the Eclipse IDE to import missing packages automatically. In some cases, there might be multiple packages that contain the same identifier, so you have to be careful to select the correct import. For example, in the next step, Id can be found in multiple packages, but you should select jakarta.persistence.Id.
+7. Next, we must add some fields to our class. The entity class fields are mapped to database table columns. The entity class must also contain a unique ID that is used as a primary key in the database:
 
-Next, we must add some fields to our class. The entity class fields are mapped to database table columns. The entity class must also contain a unique ID that is used as a primary key in the database:
+```
 package com.packt.cardatabase.domain;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -103,23 +108,22 @@ public class Car {
     private String brand, model, color, registrationNumber;
     private int modelYear, price;
 }
+```
 
-Copy
+The primary key is defined by using the `@Id` annotation. The `@GeneratedValue` annotation defines that the ID is automatically generated by the database. We can also define our key generation strategy; the `AUTO` type means that the JPA provider selects the best strategy for a particular database and it is also the default generation type. You can create a composite primary key by annotating multiple attributes with the `@Id` annotation.
 
-Explain
-The primary key is defined by using the @Id annotation. The @GeneratedValue annotation defines that the ID is automatically generated by the database. We can also define our key generation strategy; the AUTO type means that the JPA provider selects the best strategy for a particular database and it is also the default generation type. You can create a composite primary key by annotating multiple attributes with the @Id annotation.
+The database columns are named according to class field naming conventions by default. If you want to use some other naming convention, you can use the `@Column` annotation. With the `@Column` annotation, you can define the column’s length and whether the column is `nullable`. The following code shows an example of using the `@Column` annotation. With this definition, the column’s name in the database is `explanation`, the length of the column is `512`, and it is not `nullable`:
 
-The database columns are named according to class field naming conventions by default. If you want to use some other naming convention, you can use the @Column annotation. With the @Column annotation, you can define the column’s length and whether the column is nullable. The following code shows an example of using the @Column annotation. With this definition, the column’s name in the database is explanation, the length of the column is 512, and it is not nullable:
-
+```
 @Column(name="explanation", nullable=false, length=512)
 private String description
+```
 
-Copy
+8. Finally, we must add getters, setters, a default constructor, and constructors with attributes to the entity class. We don’t need an ID field in our constructor due to automatic ID generation. The source code of the `Car` entity class constructors is as follows:
 
-Explain
-Finally, we must add getters, setters, a default constructor, and constructors with attributes to the entity class. We don’t need an ID field in our constructor due to automatic ID generation. The source code of the Car entity class constructors is as follows:
-Eclipse provides the automatic addition of getters, setters, and constructors. Activate your cursor in the place where you want to add the code and right-click. From the menu, select Source | Generate Getters and Setters... or Source | Generate Constructor using Fields....
+> Eclipse provides the automatic addition of getters, setters, and constructors. Activate your cursor in the place where you want to add the code and right-click. From the menu, select **Source | Generate Getters and Setters...** or **Source | Generate Constructor using Fields...**.
 
+```
 // Car.java constructors
 public Car() {
 }
@@ -133,12 +137,11 @@ public Car(String brand, String model, String color,
         this.modelYear = modelYear;
         this.price = price;
 }
+```
 
-Copy
+The following is the source code for the `Car` entity class’s getters and setters:
 
-Explain
-The following is the source code for the Car entity class’s getters and setters:
-
+```
     public Long getId() {
             return id;
     }
@@ -155,46 +158,45 @@ The following is the source code for the Car entity class’s getters and setter
             this.model = model;
     }
 // Rest of the setters and getters. See the whole source code from GitHub
+```
 
-Copy
+9. We also have to add new properties to the `application.properties` file. This allows us to log the SQL statements to the console. We also have to define the data source URL. Open the `application.properties` file and add the following two lines to the file:
 
-Explain
-We also have to add new properties to the application.properties file. This allows us to log the SQL statements to the console. We also have to define the data source URL. Open the application.properties file and add the following two lines to the file:
+```
 spring.datasource.url=jdbc:h2:mem:testdb
 spring.jpa.show-sql=true
+```
 
-Copy
+> When you are editing the `application.properties` file, you have to make sure that there are no extra spaces at the end of the lines. Otherwise, the settings won’t work. This might happen when you copy/paste settings.
 
-Explain
-When you are editing the application.properties file, you have to make sure that there are no extra spaces at the end of the lines. Otherwise, the settings won’t work. This might happen when you copy/paste settings.
-
-Now, the car table will be created in the database when we run the application. At this point, we can see the table creation statements in the console:
+10. Now, the `car` table will be created in the database when we run the application. At this point, we can see the table creation statements in the console:
 
 Figure 3.7: Car table SQL statements
 
-If spring.datasource.url is not defined in the application.properties file, Spring Boot creates a random data source URL that can be seen in the console when you run the application; for example, H2 console available at '/h2-console'. Database available at 'jdbc:h2:mem:b92ad05e-8af4-4c33-b22d-ccbf9ffe491e'.
+> If `spring.datasource.url` is not defined in the `application.properties` file, Spring Boot creates a random data source URL that can be seen in the console when you run the application; for example, `H2 console available at '/h2-console'. Database available at 'jdbc:h2:mem:b92ad05e-8af4-4c33-b22d-ccbf9ffe491e'`.
 
-The H2 database provides a web-based console that can be used to explore a database and execute SQL statements. To enable the console, we have to add the following lines to the application.properties file. The first setting enables the H2 console, while the second defines its path:
+11. The H2 database provides a web-based console that can be used to explore a database and execute SQL statements. To enable the console, we have to add the following lines to the `application.properties` file. The first setting enables the H2 console, while the second defines its path:
+
+```
 spring.h2.console.enabled=true
 spring.h2.console.path=/h2-console
+```
 
-Copy
-
-Explain
-You can access the H2 console by starting your application and navigating to localhost:8080/h2-console using your web browser. Use jdbc:h2:mem:testdb as the JDBC URL and leave the Password field empty in the Login window. Press the Connect button to log in to the console, as shown in the following screenshot:
+12. You can access the H2 console by starting your application and navigating to `localhost:8080/h2-console` using your web browser. Use `jdbc:h2:mem:testdb` as the **JDBC URL** and leave the **Password** field empty in the **Login** window. Press the **Connect** button to log in to the console, as shown in the following screenshot:
 
 Figure 3.8: H2 console login
 
-You can also change the H2 database username and password by using the following settings in the application.properties file: spring.datasource.username and spring.datasource.password.
+> You can also change the H2 database username and password by using the following settings in the `application.properties` file: `spring.datasource.username` and `spring.datasource.password`.
 
-Now, you can see our CAR table in the database. You may notice that the registration number and model year have an underscore between the words. The reason for the underscore is the camel case naming of the attribute (registrationNumber):
+Now, you can see our `CAR` table in the database. You may notice that the registration number and model year have an underscore between the words. The reason for the underscore is the camel case naming of the attribute (`registrationNumber`):
 
 
 Figure 3.9: H2 console
 
 Now, we have created our first entity class and learned how JPA generates a database table from the entity class. Next, we will create a repository class that provides CRUD operations.
 
-Creating CRUD repositories
+# Creating CRUD repositories
+
 The Spring Boot Data JPA provides a CrudRepository interface for Create, Read, Update, and Delete (CRUD) operations. It provides CRUD functionalities to our entity class.
 
 Let’s create our repository in the domain package, as follows:
@@ -763,13 +765,13 @@ https://packt.link/FullStackSpringBootReact4e
 
 
 
-| ≪ [ 102 Understanding Dependency Injection ](/books/packtpub/2024/1202-Spring_Boot_3_React/102_Understanding_Dependency_Injection) | 103 Using JPA to Create and Access a Database | [ 104 Creating a RESTful Web Service with Spring Boot ](/books/packtpub/2024/1202-Spring_Boot_3_React/104_Creating_a_RESTful_Web_Service_with_Spring_Boot) ≫ |
+| ≪ [ 102 Understanding Dependency Injection ](/books/packtpub/2024/1202-Spring_Boot_3_React/102) | 103 Using JPA to Create and Access a Database | [ 104 Creating a RESTful Web Service with Spring Boot ](/books/packtpub/2024/1202-Spring_Boot_3_React/104) ≫ |
 |:----:|:----:|:----:|
 
 > Page Properties:
 > (1) Title: 103 Using JPA to Create and Access a Database
 > (2) Short Description: Spring Boot 3 React
-> (3) Path: books/packtpub/2024/1202-Spring_Boot_3_React/103_Using_JPA_to_Create_and_Access_a_Database
+> (3) Path: books/packtpub/2024/1202-Spring_Boot_3_React/103
 > Book Jemok: Full Stack Development with Spring Boot 3 and React 4Ed
 > AuthorDate: Juha Hinkula / Oct 2023 / 454 pages 4Ed
 > Link: https://subscription.packtpub.com/book/web-development/9781805122463/pref

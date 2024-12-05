@@ -1,5 +1,5 @@
 
-| ≪ [ 312 Setting Up the Frontend ](/books/packtpub/2024/1202-Spring_Boot_3_React/312_Setting_Up_the_Frontend) | 313 Adding CRUD Functionalities | [ 314 Styling the Frontend with MUI ](/books/packtpub/2024/1202-Spring_Boot_3_React/314_Styling_the_Frontend_with_MUI) ≫ |
+| ≪ [ 312 Setting Up the Frontend ](/books/packtpub/2024/1202-Spring_Boot_3_React/312) | 313 Adding CRUD Functionalities | [ 314 Styling the Frontend with MUI ](/books/packtpub/2024/1202-Spring_Boot_3_React/314) ≫ |
 |:----:|:----:|:----:|
 
 # 313 Adding CRUD Functionalities
@@ -1280,13 +1280,13 @@ https://packt.link/FullStackSpringBootReact4e
 
 
 
-| ≪ [ 312 Setting Up the Frontend ](/books/packtpub/2024/1202-Spring_Boot_3_React/312_Setting_Up_the_Frontend) | 313 Adding CRUD Functionalities | [ 314 Styling the Frontend with MUI ](/books/packtpub/2024/1202-Spring_Boot_3_React/314_Styling_the_Frontend_with_MUI) ≫ |
+| ≪ [ 312 Setting Up the Frontend ](/books/packtpub/2024/1202-Spring_Boot_3_React/312) | 313 Adding CRUD Functionalities | [ 314 Styling the Frontend with MUI ](/books/packtpub/2024/1202-Spring_Boot_3_React/314) ≫ |
 |:----:|:----:|:----:|
 
 > Page Properties:
 > (1) Title: 313 Adding CRUD Functionalities
 > (2) Short Description: Spring Boot 3 React
-> (3) Path: books/packtpub/2024/1202-Spring_Boot_3_React/313_Adding_CRUD_Functionalities
+> (3) Path: books/packtpub/2024/1202-Spring_Boot_3_React/313
 > Book Jemok: Full Stack Development with Spring Boot 3 and React 4Ed
 > AuthorDate: Juha Hinkula / Oct 2023 / 454 pages 4Ed
 > Link: https://subscription.packtpub.com/book/web-development/9781805122463/pref

@@ -1,5 +1,5 @@
 
-| ≪ [ 314 Styling the Frontend with MUI ](/books/packtpub/2024/1202-Spring_Boot_3_React/314_Styling_the_Frontend_with_MUI) | 315 Testing Your Frontend | [ 316 Securing Your Application ](/books/packtpub/2024/1202-Spring_Boot_3_React/316_Securing_Your_Application) ≫ |
+| ≪ [ 314 Styling the Frontend with MUI ](/books/packtpub/2024/1202-Spring_Boot_3_React/314) | 315 Testing Your Frontend | [ 316 Securing Your Application ](/books/packtpub/2024/1202-Spring_Boot_3_React/316) ≫ |
 |:----:|:----:|:----:|
 
 # 315 Testing React Apps (Testing Your Frontend)
@@ -487,13 +487,13 @@ https://packt.link/FullStackSpringBootReact4e
 
 
 
-| ≪ [ 314 Styling the Frontend with MUI ](/books/packtpub/2024/1202-Spring_Boot_3_React/314_Styling_the_Frontend_with_MUI) | 315 Testing Your Frontend | [ 316 Securing Your Application ](/books/packtpub/2024/1202-Spring_Boot_3_React/316_Securing_Your_Application) ≫ |
+| ≪ [ 314 Styling the Frontend with MUI ](/books/packtpub/2024/1202-Spring_Boot_3_React/314) | 315 Testing Your Frontend | [ 316 Securing Your Application ](/books/packtpub/2024/1202-Spring_Boot_3_React/316) ≫ |
 |:----:|:----:|:----:|
 
 > Page Properties:
 > (1) Title: 315 Testing Your Frontend
 > (2) Short Description: Spring Boot 3 React
-> (3) Path: books/packtpub/2024/1202-Spring_Boot_3_React/315_Testing_Your_Frontend
+> (3) Path: books/packtpub/2024/1202-Spring_Boot_3_React/315
 > Book Jemok: Full Stack Development with Spring Boot 3 and React 4Ed
 > AuthorDate: Juha Hinkula / Oct 2023 / 454 pages 4Ed
 > Link: https://subscription.packtpub.com/book/web-development/9781805122463/pref

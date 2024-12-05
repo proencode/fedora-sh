@@ -1,5 +1,5 @@
 
-| ≪ [ 105 Securing Your Backend ](/books/packtpub/2024/1202-Spring_Boot_3_React/105_Securing_Your_Backend) | 106 Testing Your Backend | [ 207 Setting Up the Environment and Tools ](/books/packtpub/2024/1202-Spring_Boot_3_React/207_Setting_Up_the_Environment_and_Tools) ≫ |
+| ≪ [ 105 Securing Your Backend ](/books/packtpub/2024/1202-Spring_Boot_3_React/105) | 106 Testing Your Backend | [ 207 Setting Up the Environment and Tools ](/books/packtpub/2024/1202-Spring_Boot_3_React/207) ≫ |
 |:----:|:----:|:----:|
 
 # 106 Testing Your Backend
@@ -313,13 +313,13 @@ https://packt.link/FullStackSpringBootReact4e
 
 
 
-| ≪ [ 105 Securing Your Backend ](/books/packtpub/2024/1202-Spring_Boot_3_React/105_Securing_Your_Backend) | 106 Testing Your Backend | [ 207 Setting Up the Environment and Tools ](/books/packtpub/2024/1202-Spring_Boot_3_React/207_Setting_Up_the_Environment_and_Tools) ≫ |
+| ≪ [ 105 Securing Your Backend ](/books/packtpub/2024/1202-Spring_Boot_3_React/105) | 106 Testing Your Backend | [ 207 Setting Up the Environment and Tools ](/books/packtpub/2024/1202-Spring_Boot_3_React/207) ≫ |
 |:----:|:----:|:----:|
 
 > Page Properties:
 > (1) Title: 106 Testing Your Backend
 > (2) Short Description: Spring Boot 3 React
-> (3) Path: books/packtpub/2024/1202-Spring_Boot_3_React/106_Testing_Your_Backend
+> (3) Path: books/packtpub/2024/1202-Spring_Boot_3_React/106
 > Book Jemok: Full Stack Development with Spring Boot 3 and React 4Ed
 > AuthorDate: Juha Hinkula / Oct 2023 / 454 pages 4Ed
 > Link: https://subscription.packtpub.com/book/web-development/9781805122463/pref

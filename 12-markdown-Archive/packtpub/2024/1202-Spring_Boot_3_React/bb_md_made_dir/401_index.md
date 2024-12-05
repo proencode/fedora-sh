@@ -1,5 +1,5 @@
 
-| ≪ [ 400 Other Books You May Enjoy ](/books/packtpub/2024/1202-Spring_Boot_3_React/400_Other_Books_You_May_Enjoy) | 401 Index | 1202 Full Stack Development with Spring Boot 3 and React 4Ed 🔔 |
+| ≪ [ 400 Other Books You May Enjoy ](/books/packtpub/2024/1202-Spring_Boot_3_React/400) | 401 Index | 1202 Full Stack Development with Spring Boot 3 and React 4Ed 🔔 |
 |:----:|:----:|:----:|
 
 # 401 Index
@@ -1017,13 +1017,13 @@ That’s it! We’ll send your free PDF and other benefits to your email directl
 
 
 
-| ≪ [ 400 Other Books You May Enjoy ](/books/packtpub/2024/1202-Spring_Boot_3_React/400_Other_Books_You_May_Enjoy) | 401 Index | 1202 Full Stack Development with Spring Boot 3 and React 4Ed 🔔 |
+| ≪ [ 400 Other Books You May Enjoy ](/books/packtpub/2024/1202-Spring_Boot_3_React/400) | 401 Index | 1202 Full Stack Development with Spring Boot 3 and React 4Ed 🔔 |
 |:----:|:----:|:----:|
 
 > Page Properties:
 > (1) Title: 401 Index
 > (2) Short Description: Spring Boot 3 React
-> (3) Path: books/packtpub/2024/1202-Spring_Boot_3_React/401_Index
+> (3) Path: books/packtpub/2024/1202-Spring_Boot_3_React/401
 > Book Jemok: Full Stack Development with Spring Boot 3 and React 4Ed
 > AuthorDate: Juha Hinkula / Oct 2023 / 454 pages 4Ed
 > Link: https://subscription.packtpub.com/book/web-development/9781805122463/pref

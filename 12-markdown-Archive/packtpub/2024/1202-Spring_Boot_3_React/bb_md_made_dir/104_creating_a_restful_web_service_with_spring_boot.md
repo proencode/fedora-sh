@@ -1,5 +1,5 @@
 
-| ≪ [ 103 Using JPA to Create and Access a Database ](/books/packtpub/2024/1202-Spring_Boot_3_React/103_Using_JPA_to_Create_and_Access_a_Database) | 104 Creating a RESTful Web Service with Spring Boot | [ 105 Securing Your Backend ](/books/packtpub/2024/1202-Spring_Boot_3_React/105_Securing_Your_Backend) ≫ |
+| ≪ [ 103 Using JPA to Create and Access a Database ](/books/packtpub/2024/1202-Spring_Boot_3_React/103) | 104 Creating a RESTful Web Service with Spring Boot | [ 105 Securing Your Backend ](/books/packtpub/2024/1202-Spring_Boot_3_React/105) ≫ |
 |:----:|:----:|:----:|
 
 # 104 Creating a RESTful Web Service with Spring Boot
@@ -409,13 +409,13 @@ https://packt.link/FullStackSpringBootReact4e
 
 
 
-| ≪ [ 103 Using JPA to Create and Access a Database ](/books/packtpub/2024/1202-Spring_Boot_3_React/103_Using_JPA_to_Create_and_Access_a_Database) | 104 Creating a RESTful Web Service with Spring Boot | [ 105 Securing Your Backend ](/books/packtpub/2024/1202-Spring_Boot_3_React/105_Securing_Your_Backend) ≫ |
+| ≪ [ 103 Using JPA to Create and Access a Database ](/books/packtpub/2024/1202-Spring_Boot_3_React/103) | 104 Creating a RESTful Web Service with Spring Boot | [ 105 Securing Your Backend ](/books/packtpub/2024/1202-Spring_Boot_3_React/105) ≫ |
 |:----:|:----:|:----:|
 
 > Page Properties:
 > (1) Title: 104 Creating a RESTful Web Service with Spring Boot
 > (2) Short Description: Spring Boot 3 React
-> (3) Path: books/packtpub/2024/1202-Spring_Boot_3_React/104_Creating_a_RESTful_Web_Service_with_Spring_Boot
+> (3) Path: books/packtpub/2024/1202-Spring_Boot_3_React/104
 > Book Jemok: Full Stack Development with Spring Boot 3 and React 4Ed
 > AuthorDate: Juha Hinkula / Oct 2023 / 454 pages 4Ed
 > Link: https://subscription.packtpub.com/book/web-development/9781805122463/pref

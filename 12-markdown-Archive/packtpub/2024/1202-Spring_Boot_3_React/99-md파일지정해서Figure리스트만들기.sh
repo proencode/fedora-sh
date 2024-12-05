@@ -80,7 +80,7 @@ do
 			#-- a_video_with
 			small_fig_title=$(echo "${fig_title,,}" | sed 's/ /_/g' | sed 's/\./_/g' | sed 's/“/\"/g' | sed 's/”/\"/g' | sed "s/’/'/g" | sed 's/(//g' | sed "s/)//g")
 			cat <<__EOF__
-![ ${chapter_numb} ${fig_memo} ](${img_link}/${chapter_numb}-${small_fig_title}.webp)
+![ ${chapter_numb} ${fig_memo} ](/${Publisher}/${TypingYear}/${TypingMmDd}/${chapter_numb}-${small_fig_title}.webp)
 ${chapter_numb}-${small_fig_title}.webp
 __EOF__
 		fi

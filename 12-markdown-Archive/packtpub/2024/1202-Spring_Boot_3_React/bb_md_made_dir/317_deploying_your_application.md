@@ -1,5 +1,5 @@
 
-| ≪ [ 316 Securing Your Application ](/books/packtpub/2024/1202-Spring_Boot_3_React/316_Securing_Your_Application) | 317 Deploying Your Application | [ 400 Other Books You May Enjoy ](/books/packtpub/2024/1202-Spring_Boot_3_React/400_Other_Books_You_May_Enjoy) ≫ |
+| ≪ [ 316 Securing Your Application ](/books/packtpub/2024/1202-Spring_Boot_3_React/316) | 317 Deploying Your Application | [ 400 Other Books You May Enjoy ](/books/packtpub/2024/1202-Spring_Boot_3_React/400) ≫ |
 |:----:|:----:|:----:|
 
 # 317 Deploying Your Application
@@ -386,7 +386,7 @@ https://packt.link/FullStackSpringBootReact4e
 
 
 
-| ≪ [ 316 Securing Your Application ](/books/packtpub/2024/1202-Spring_Boot_3_React/316_Securing_Your_Application) | 317 Deploying Your Application | [ 400 Other Books You May Enjoy ](/books/packtpub/2024/1202-Spring_Boot_3_React/400_Other_Books_You_May_Enjoy) ≫ |
+| ≪ [ 316 Securing Your Application ](/books/packtpub/2024/1202-Spring_Boot_3_React/316) | 317 Deploying Your Application | [ 400 Other Books You May Enjoy ](/books/packtpub/2024/1202-Spring_Boot_3_React/400) ≫ |
 |:----:|:----:|:----:|
 
 > Page Properties:
