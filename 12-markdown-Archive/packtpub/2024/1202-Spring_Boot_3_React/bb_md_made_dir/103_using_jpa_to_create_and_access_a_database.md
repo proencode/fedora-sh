@@ -197,65 +197,45 @@ Now, we have created our first entity class and learned how JPA generates a data
 
 # Creating CRUD repositories
 
-The Spring Boot Data JPA provides a CrudRepository interface for Create, Read, Update, and Delete (CRUD) operations. It provides CRUD functionalities to our entity class.
+The Spring Boot Data JPA provides a `CrudRepository` interface for **Create**, **Read**, **Update**, and **Delete** (**CRUD**) operations. It provides CRUD functionalities to our entity class.
 
-Let’s create our repository in the domain package, as follows:
+Let’s create our repository in the `domain` package, as follows:
 
-Create a new interface called CarRepository in the com.packt.cardatabase.domain package and modify the file according to the following code snippet:
+1. Create a new interface called `CarRepository` in the `com.packt.cardatabase.domain` package and modify the file according to the following code snippet:
+
+```
 package com.packt.cardatabase.domain;
 import org.springframework.data.repository.CrudRepository;
 public interface CarRepository extends CrudRepository<Car,Long> {
 }
+```
 
-Copy
+`CarRepository` now extends the Spring Boot JPA `CrudRepository` interface. The `<Car, Long>` type arguments define that this is the repository for the `Car` entity class and that the type of the ID field is `Long`.
 
-Explain
-CarRepository now extends the Spring Boot JPA CrudRepository interface. The <Car, Long> type arguments define that this is the repository for the Car entity class and that the type of the ID field is Long.
+The `CrudRepository` interface provides multiple CRUD methods that we can now start to use. The following table lists the most commonly used methods:
 
-The CrudRepository interface provides multiple CRUD methods that we can now start to use. The following table lists the most commonly used methods:
+| Method | Description |
+|:----|:----|
+| `long count()` | Returns the number of entities |
+| `Iterable<T> findAll()` | Returns all items of a given type |
+| `Optional<T> findById(ID Id)` | Returns one item by ID |
+| `void delete(T entity)` | Deletes an entity |
+| `void deleteAll()` | Deletes all the entities in the repository |
+| `<S extends T> save(S entity)` | Saves an entity |
+| `List<S> saveAll(Iterable<S> entities)` | Saves multiple entities |
 
-Method
+## Table 3.1: CRUD methods
 
-Description
+If the method returns only one item, `Optional<T>` is returned instead of `T`. The `Optional` class was introduced in Java 8 SE and is a type of single-value container that either contains a value or doesn’t. If there is a value, the `isPresent()` method returns `true` and you can get it by using the `get()` method; otherwise, it returns `false`. By using `Optional`, we can prevent **null pointer exceptions**. Null pointers can lead to unexpected and often undesirable behavior in Java programs.
 
-long count()
-
-Returns the number of entities
-
-Iterable<T> findAll()
-
-Returns all items of a given type
-
-Optional<T> findById(ID Id)
-
-Returns one item by ID
-
-void delete(T entity)
-
-Deletes an entity
-
-void deleteAll()
-
-Deletes all the entities in the repository
-
-<S extends T> save(S entity)
-
-Saves an entity
-
-List<S> saveAll(Iterable<S> entities)
-
-Saves multiple entities
-
-Table 3.1: CRUD methods
-
-If the method returns only one item, Optional<T> is returned instead of T. The Optional class was introduced in Java 8 SE and is a type of single-value container that either contains a value or doesn’t. If there is a value, the isPresent() method returns true and you can get it by using the get() method; otherwise, it returns false. By using Optional, we can prevent null pointer exceptions. Null pointers can lead to unexpected and often undesirable behavior in Java programs.
-
-After adding the CarRepository class, your project structure should look as follows:
+After adding the `CarRepository` class, your project structure should look as follows:
 
 
 Figure 3.10: Project structure
 
-Now, we are ready to add some demonstration data to our H2 database. For that, we will use the Spring Boot CommandLineRunner interface. The CommandLineRunner interface allows us to execute additional code before the application has fully started. Therefore, it is a good point to add demo data to your database. Your Spring Boot application’s main class implements the CommandLineRunner interface. Therefore, we should implement the run method, as shown in the following CardatabaseApplication.java code:
+2. Now, we are ready to add some demonstration data to our H2 database. For that, we will use the Spring Boot `CommandLineRunner` interface. The `CommandLineRunner` interface allows us to execute additional code before the application has fully started. Therefore, it is a good point to add demo data to your database. Your Spring Boot application’s `main` class implements the `CommandLineRunner` interface. Therefore, we should implement the `run` method, as shown in the following `CardatabaseApplication.java` code:
+
+```
 package com.packt.cardatabase;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
@@ -271,11 +251,11 @@ public class CardatabaseApplication implements CommandLineRunner {
         // Place your code here
     }
 }
+```
 
-Copy
+3. Next, we have to inject our car repository into the main class to be able to save new car objects to the database. We use constructor injection to inject `CarRepository`. We will also add a logger to our `main` class (the code for which we saw in **Chapter 1**):
 
-Explain
-Next, we have to inject our car repository into the main class to be able to save new car objects to the database. We use constructor injection to inject CarRepository. We will also add a logger to our main class (the code for which we saw in Chapter 1):
+```
 package com.packt.cardatabase;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -303,11 +283,11 @@ public class CardatabaseApplication implements CommandLineRunner {
       // Place your code here
     }
 }
+```
 
-Copy
+4. Once we have injected the repository class, we can use the CRUD methods it provides in the `run` method. The following sample code shows how to insert a few cars into the database using the `save` method. We will also use the repository’s `findAll()` method to fetch all the cars from the database and print them to the console using the logger:
 
-Explain
-Once we have injected the repository class, we can use the CRUD methods it provides in the run method. The following sample code shows how to insert a few cars into the database using the save method. We will also use the repository’s findAll() method to fetch all the cars from the database and print them to the console using the logger:
+```
     // CardataseApplication.java run method
     @Override
     public void run(String... args) throws Exception {
@@ -323,11 +303,9 @@ Once we have injected the repository class, we can use the CRUD methods it provi
                 car.getBrand(), car.getModel());
         }
     }
+```
 
-Copy
-
-Explain
-The insert statements and cars we logged can be seen in the Eclipse console once the application has been executed:
+The `insert` statements and cars we logged can be seen in the Eclipse console once the application has been executed:
 
 
 Figure 3.11: Insert statements
@@ -337,8 +315,9 @@ You can now use the H2 console to fetch cars from the database, as shown in the 
 
 Figure 3.12: H2 console: Select cars
 
-You can define queries in the Spring Data repositories. A query must start with a prefix, for example, findBy. After the prefix, you must define the entity class fields that are used in the query. The following is some sample code for three simple queries:
+You can define queries in the Spring Data repositories. A query must start with a prefix, for example, `findBy`. After the prefix, you must define the entity class fields that are used in the query. The following is some sample code for three simple queries:
 
+```
 package com.packt.cardatabase.domain;
 import java.util.List;
 import org.springframework.data.repository.CrudRepository;
@@ -350,12 +329,11 @@ public interface CarRepository extends CrudRepository <Car, Long> {
     // Fetch cars by model year
     List<Car> findByModelYear(int modelYear);
 }
+```
 
-Copy
+There can be multiple fields after the `By` keyword, concatenated with the `And` and `Or` keywords:
 
-Explain
-There can be multiple fields after the By keyword, concatenated with the And and Or keywords:
-
+```
 package com.packt.cardatabase.domain;
 import java.util.List;
 import org.springframework.data.repository.CrudRepository;
@@ -365,12 +343,11 @@ public interface CarRepository extends CrudRepository <Car, Long> {
     // Fetch cars by brand or color
     List<Car> findByBrandOrColor(String brand, String color);
 }
+```
 
-Copy
+Queries can be sorted by using the `OrderBy` keyword in the query method:
 
-Explain
-Queries can be sorted by using the OrderBy keyword in the query method:
-
+```
 package com.packt.cardatabase.domain;
 import java.util.List;
 import org.springframework.data.repository.CrudRepository;
@@ -378,12 +355,11 @@ public interface CarRepository extends CrudRepository <Car, Long> {
     // Fetch cars by brand and sort by year
     List<Car> findByBrandOrderByModelYearAsc(String brand);
 }
+```
 
-Copy
+You can also create queries by using SQL statements via the `@Query` annotation. The following example shows the usage of a SQL query in `CrudRepository`:
 
-Explain
-You can also create queries by using SQL statements via the @Query annotation. The following example shows the usage of a SQL query in CrudRepository:
-
+```
 package com.packt.cardatabase.domain;
 import java.util.List;
 import org.springframework.data.jpa.repository.Query;
@@ -393,12 +369,11 @@ public interface CarRepository extends CrudRepository <Car, Long> {
     @Query("select c from Car c where c.brand = ?1")
     List<Car> findByBrand(String brand);
 }
+```
 
-Copy
+With the `@Query` annotation, you can use more advanced expressions, such as `like`. The following example shows the usage of the `like` query in `CrudRepository`:
 
-Explain
-With the @Query annotation, you can use more advanced expressions, such as like. The following example shows the usage of the like query in CrudRepository:
-
+```
 package com.packt.cardatabase.domain;
 import java.util.List;
 import org.springframework.data.jpa.repository.Query;
@@ -408,54 +383,46 @@ public interface CarRepository extends CrudRepository <Car, Long> {
     @Query("select c from Car c where c.brand like %?1")
     List<Car> findByBrandEndsWith(String brand);
 }
+```
 
-Copy
+> If you use the `@Query` annotation and write SQL queries in your code, your application might be less portable across different database systems.
 
-Explain
-If you use the @Query annotation and write SQL queries in your code, your application might be less portable across different database systems.
+Spring Data JPA also provides `PagingAndSortingRepository`, which extends `CrudRepository`. This offers methods to fetch entities using pagination and sorting. This is a good option if you are dealing with larger amounts of data because you don’t have to return everything from a large result set. You can also sort your data into some meaningful order. `PagingAndSortingRepository` can be created in a similar way to how we created `CrudRepository`:
 
-Spring Data JPA also provides PagingAndSortingRepository, which extends CrudRepository. This offers methods to fetch entities using pagination and sorting. This is a good option if you are dealing with larger amounts of data because you don’t have to return everything from a large result set. You can also sort your data into some meaningful order. PagingAndSortingRepository can be created in a similar way to how we created CrudRepository:
-
+```
 package com.packt.cardatabase.domain;
 import org.springframework.data.repository.PagingAndSortingRepository;
 public interface CarRepository extends
     PagingAndSortingRepository <Car, Long> {
     }
+```
 
-Copy
-
-Explain
 In this case, you now have the two new additional methods that the repository provides:
 
-Method
-
-Description
-
-Iterable<T> findAll(Sort sort)
-
-Returns all entities sorted by the given options
-
-Page<T> findAll(Pageable pageable)
-
-Returns all entities according to the given paging options
+| Method` | Description |
+|:----|:----|
+| `Iterable<T> findAll(Sort sort)` | Returns all entities sorted by the given options |
+| `Page<T> findAll(Pageable pageable)` | Returns all entities according to the given paging options |
 
 Table 3.2: PagingAndSortingRepository methods
 
 At this point, we have completed our first database table and we are ready to add relationships between the database tables.
 
-Adding relationships between tables
-We will create a new table called owner that has a one-to-many relationship with the car table. In this case, a one-to-many relationship means that the owner can own multiple cars, but a car can only have one owner.
+# Adding relationships between tables
 
-The following Unified Modeling Language (UML) diagram shows the relationship between the tables:
+We will create a new table called `owner` that has a one-to-many relationship with the `car` table. In this case, a one-to-many relationship means that the owner can own multiple cars, but a car can only have one owner.
+
+The following **Unified Modeling Language (UML)** diagram shows the relationship between the tables:
 
 
 Figure 3.13: One-to-many relationship
 
 The following are the steps to create a new table:
 
-First, we must create the Owner entity and repository classes in the com.packt.cardatabase.domain package. The Owner entity and repository are created in a similar way to the Car class.
-The following is the source code for the Owner entity class:
+1. First, we must create the `Owner` entity and repository classes in the `com.packt.cardatabase.domain` package. The `Owner` entity and repository are created in a similar way to the `Car` class.
+The following is the source code for the `Owner` entity class:
 
+```
 // Owner.java
 package com.packt.cardatabase.domain;
 import jakarta.persistence.Entity;
@@ -491,23 +458,20 @@ public class Owner {
         this.lastname = lastname;
     }
 }
+```
 
-Copy
+The following is the source code for `OwnerRepository`:
 
-Explain
-The following is the source code for OwnerRepository:
-
+```
 // OwnerRepository.java
 package com.packt.cardatabase.domain;
 import org.springframework.data.repository.CrudRepository;
 public interface OwnerRepository extends 
     CrudRepository<Owner, Long> {
     }
+```
 
-Copy
-
-Explain
-Now, we should check that everything is working. Run the project and check that both database tables have been created and that there are no errors in the console. The following screenshot shows the console messages when the tables are created:
+2. Now, we should check that everything is working. Run the project and check that both database tables have been created and that there are no errors in the console. The following screenshot shows the console messages when the tables are created:
 
 Figure 3.14: The car and owner tables
 
@@ -516,7 +480,9 @@ Now, our domain package contains two entity classes and repositories:
 
 Figure 3.15: The Project Explorer
 
-The one-to-many relationship can be added by using the @ManyToOne and @OneToMany annotations (jakarta.persistence). In the car entity class, which contains a foreign key, you must define the relationship with the @ManyToOne annotation. You should also add the getter and setter for the owner field. It is recommended that you use FetchType.LAZY for all associations. For the toMany relationships, that is the default value, but for the toOne relationships, you should define it. FetchType defines the strategy for fetching data from the database. The value can be either EAGER or LAZY. In our case, the LAZY strategy means that when the owner is fetched from the database, the cars associated with the owner will be fetched when needed. EAGER means that the cars will be fetched immediately by the owner. The following source code shows how to define a one-to-many relationship in the Car class:
+3. The one-to-many relationship can be added by using the `@ManyToOne` and `@OneToMany` annotations (`jakarta.persistence`). In the car entity class, which contains a foreign key, you must define the relationship with the `@ManyToOne` annotation. You should also add the getter and setter for the owner field. It is recommended that you use `FetchType.LAZY` for all associations. For the `toMany` relationships, that is the default value, but for the `toOne` relationships, you should define it. `FetchType` defines the strategy for fetching data from the database. The value can be either `EAGER` or `LAZY`. In our case, the LAZY strategy means that when the owner is fetched from the database, the cars associated with the owner will be fetched when needed. `EAGER` means that the cars will be fetched immediately by the owner. The following source code shows how to define a one-to-many relationship in the `Car` class:
+
+```
 // Car.java
 @ManyToOne(fetch=FetchType.LAZY)
 @JoinColumn(name="owner")
@@ -528,11 +494,11 @@ public Owner getOwner() {
 public void setOwner(Owner owner) {
     this.owner = owner;
 }
+```
 
-Copy
+4. On the owner entity site, the relationship is defined with the `@OneToMany` annotation. The type of field is `List<Car>` because an owner may have multiple cars. Add the getter and setter for this, as follows:
 
-Explain
-On the owner entity site, the relationship is defined with the @OneToMany annotation. The type of field is List<Car> because an owner may have multiple cars. Add the getter and setter for this, as follows:
+```
 // Owner.java
 @OneToMany(cascade=CascadeType.ALL, mappedBy="owner")
 private List<Car> cars;
@@ -543,18 +509,18 @@ public List<Car> getCars() {
 public void setCars(List<Car> cars) {
     this.cars = cars;
 }
+```
 
-Copy
-
-Explain
-The @OneToMany annotation has two attributes that we are using. The cascade attribute defines how cascading affects the entities in the case of deletions or updates. The ALL attribute setting means that all operations are cascaded. For example, if the owner is deleted, the cars that are linked to that owner are deleted as well. The mappedBy="owner" attribute setting tells us that the Car class has the owner field, which is the foreign key for this relationship.
+The `@OneToMany` annotation has two attributes that we are using. The `cascade` attribute defines how cascading affects the entities in the case of deletions or updates. The `ALL` attribute setting means that all operations are cascaded. For example, if the owner is deleted, the cars that are linked to that owner are deleted as well. The `mappedBy="owner"` attribute setting tells us that the `Car` class has the `owner` field, which is the foreign key for this relationship.
 
 When you run the project, by looking in the console, you will see that the relationship has been created:
 
 
 Figure 3.16: Console
 
-Now, we can add some owners to the database with CommandLineRunner. Let’s also modify the Car entity class constructor and add an owner object there:
+5. Now, we can add some owners to the database with `CommandLineRunner`. Let’s also modify the `Car` entity class constructor and add an `owner` object there:
+
+```
 // Car.java constructor
 public Car(String brand, String model, String color, 
            String registrationNumber, int modelYear, int price,
@@ -569,19 +535,19 @@ public Car(String brand, String model, String color,
     this.price = price;
     this.owner = owner;
 }
+```
 
-Copy
+6. First, we will create two owner objects and save these to the database using the repository’s `saveAll` method, which we can use to save multiple entities at once. To save the owners, we have to inject `OwnerRepository` into the main class. Then, we must connect the owners to the cars by using the `Car` constructor. First, let’s modify the `CardatabaseApplication` class by adding the following imports:
 
-Explain
-First, we will create two owner objects and save these to the database using the repository’s saveAll method, which we can use to save multiple entities at once. To save the owners, we have to inject OwnerRepository into the main class. Then, we must connect the owners to the cars by using the Car constructor. First, let’s modify the CardatabaseApplication class by adding the following imports:
+```
 // CardatabaseApplication.java
 import com.packt.cardatabase.domain.Owner;
 import com.packt.cardatabase.domain.OwnerRepository;
+```
 
-Copy
+7. Now, let’s also inject `OwnerRepository` into the `CardatabaseApplication` class using constructor injection:
 
-Explain
-Now, let’s also inject OwnerRepository into the CardatabaseApplication class using constructor injection:
+```
 private final CarRepository repository;
 private final OwnerRepository orepository;
 public CardatabaseApplication(CarRepository repository,
@@ -590,11 +556,11 @@ public CardatabaseApplication(CarRepository repository,
     this.repository = repository;
     this.orepository = orepository;
 }
+```
 
-Copy
+8. At this point, we must modify the `run` method to save owners and link owners and cars:
 
-Explain
-At this point, we must modify the run method to save owners and link owners and cars:
+```
 @Override
 public void run(String... args) throws Exception {
     // Add owner objects and save these to db
@@ -614,19 +580,19 @@ public void run(String... args) throws Exception {
         car.getModel());
       }
 }
+```
 
-Copy
-
-Explain
-Now, if you run the application and fetch cars from the database, you will see that the owners are now linked to the cars:
+9. Now, if you run the application and fetch cars from the database, you will see that the owners are now linked to the cars:
 
 Figure 3.17: OneToMany relationship
 
-If you want to create a many-to-many relationship instead, which means, in practice, that an owner can have multiple cars and a car can have multiple owners, you should use the @ManyToMany annotation. In our example application, we will use a one-to-many relationship. The code that you have completed here will be needed in the next chapter.
+If you want to create a many-to-many relationship instead, which means, in practice, that an owner can have multiple cars and a car can have multiple owners, you should use the `@ManyToMany` annotation. In our example application, we will use a one-to-many relationship. The code that you have completed here will be needed in the next chapter.
 
-Next, you will learn how to change the relationship to many-to-many. In a many-to-many relationship, it is recommended that you use Set instead of List with Hibernate:
+Next, you will learn how to change the relationship to many-to-many. In a many-to-many relationship, it is recommended that you use `Set` instead of `List` with Hibernate:
 
-In the Car entity class’s many-to-many relationship, define the getters and setters in the following way:
+1. In the `Car` entity class’s many-to-many relationship, define the getters and setters in the following way:
+
+```
 // Car.java
 @ManyToMany(mappedBy="cars")
 private Set<Owner> owners = new HashSet<Owner>();
@@ -636,11 +602,11 @@ public Set<Owner> getOwners() {
 public void setOwners(Set<Owner> owners) {
     this.owners = owners;
 }
+```
 
-Copy
+2. In the `Owner` entity class, the many-to-many relationship is defined as follows:
 
-Explain
-In the Owner entity class, the many-to-many relationship is defined as follows:
+```
 // Owner.java
 @ManyToMany(cascade=CascadeType.PERSIST)
 @JoinTable(name="car_owner",joinColumns = 
@@ -657,12 +623,10 @@ public Set<Car> getCars() {
 public void setCars(Set<Car> cars) {
     this.cars = cars;
 }
+```
 
-Copy
-
-Explain
-Now, if you run the application, there will be a new join table called car_owner that is created between the car and owner tables. The join table is a special kind of table that manages the many-to-many relationship between two tables.
-The join table is defined by using the @JoinTable annotation. With this annotation, we can set the name of the join table and join columns. The following screenshot shows the database structure when using a many-to-many relationship:
+3. Now, if you run the application, there will be a new join table called `car_owner` that is created between the car and owner tables. The join table is a special kind of table that manages the many-to-many relationship between two tables.
+The join table is defined by using the `@JoinTable` annotation. With this annotation, we can set the name of the join table and join columns. The following screenshot shows the database structure when using a many-to-many relationship:
 
 
 Figure 3.18: Many-to-many relationship
@@ -677,25 +641,28 @@ We have used an in-memory H2 database in the chapter so far. In the next section
 
 Next, we are going to look at how to use a MariaDB database instead.
 
-Setting up a MariaDB database
+# Setting up a MariaDB database
+
 Now, we will switch the database we are using from H2 to MariaDB. H2 is a good database for test and demonstration purposes, but MariaDB is a better option for a proper production database when applications require performance, reliability, and scalability.
 
 In this book, we are using MariaDB version 10. The database tables are still created automatically by JPA. However, before we run our application, we have to create a database for it.
 
-In this section, we will be using the one-to-many relationship from the previous section.
+> In this section, we will be using the one-to-many relationship from the previous section.
 
 The database can be created using HeidiSQL (or DBeaver, if you are using Linux or macOS). Open HeidiSQL and follow these steps:
 
-Activate the top database connection name (Unnamed) and right-click it.
-Then, select Create new | Database:
+1. Activate the top database connection name (**Unnamed**) and right-click it.
+2. Then, select **Create new | Database**:
 
 Figure 3.20: Create new database
 
-Let’s name our database cardb. After clicking OK, you should see the new cardb database in the database list:
+3. Let’s name our database `cardb`. After clicking OK, you should see the new `cardb` database in the database list:
 
 Figure 3.21: The cardb database
 
-In Spring Boot, add a MariaDB Java client dependency to the build.gradle file and remove the H2 dependency since we don’t need it anymore. Remember to refresh your Gradle project after you have modified your build.gradle file:
+4. In Spring Boot, add a MariaDB Java client dependency to the `build.gradle` file and remove the H2 dependency since we don’t need it anymore. Remember to refresh your Gradle project after you have modified your `build.gradle` file:
+
+```
 dependencies {
     implementation 'org.springframework.boot:spring-boot-starter-web'
     implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
@@ -703,62 +670,66 @@ dependencies {
     runtimeOnly 'org.mariadb.jdbc:mariadb-java-client'
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
 }
+```
 
-Copy
+5. In the `application.properties` file, you must define the database connection for MariaDB. In this phase, you should remove the old H2 database settings. First, you must define the database’s URL, username, password (defined in Chapter 1), and database driver class:
 
-Explain
-In the application.properties file, you must define the database connection for MariaDB. In this phase, you should remove the old H2 database settings. First, you must define the database’s URL, username, password (defined in Chapter 1), and database driver class:
+```
 spring.datasource.url=jdbc:mariadb://localhost:3306/cardb
 spring.datasource.username=root
 spring.datasource.password=YOUR_PASSWORD
 spring.datasource.driver-class-name=org.mariadb.jdbc.Driver
+```
 
-Copy
+> In this example, we are using the database root user, but in production, you should create a user for your database that doesn’t have all root database rights.
 
-Explain
-In this example, we are using the database root user, but in production, you should create a user for your database that doesn’t have all root database rights.
+6. Add the `spring.jpa.generate-ddl` setting, which defines whether JPA should initialize the database (`true`/`false`). Also add the `spring.jpa.hibernate.ddl-auto` setting, which defines the behavior of the database initialization:
 
-Add the spring.jpa.generate-ddl setting, which defines whether JPA should initialize the database (true/false). Also add the spring.jpa.hibernate.ddl-auto setting, which defines the behavior of the database initialization:
+```
 spring.datasource.url=jdbc:mariadb://localhost:3306/cardb
 spring.datasource.username=root
 spring.datasource.password=YOUR_PASSWORD
 spring.datasource.driver-class-name=org.mariadb.jdbc.Driver
 spring.jpa.generate-ddl=true
 spring.jpa.hibernate.ddl-auto=create-drop
+```
 
-Copy
+The possible values for `spring.jpa.hibernate.ddl-auto` are `none`, `validate`, `update`, `create`, and `create-drop`. The default value depends on your database. If you are using an embedded database such as H2, the default value is `create-drop`; otherwise, the default value is `none`. `create-drop` means that the database is created when an application starts, and it is dropped when the application is stopped. The `create` value only creates the database when the application is started. The `update` value creates the database and updates the schema if it has changed.
 
-Explain
-The possible values for spring.jpa.hibernate.ddl-auto are none, validate, update, create, and create-drop. The default value depends on your database. If you are using an embedded database such as H2, the default value is create-drop; otherwise, the default value is none. create-drop means that the database is created when an application starts, and it is dropped when the application is stopped. The create value only creates the database when the application is started. The update value creates the database and updates the schema if it has changed.
-
-Check that the MariaDB database server is running and restart your Spring Boot application. After running the application, you should see the tables in MariaDB. You might have to refresh the database tree in HeidiSQL first by pressing the F5 key. The following screenshot shows the HeidiSQL user interface once the database has been created:
+7. Check that the MariaDB database server is running and restart your Spring Boot application. After running the application, you should see the tables in MariaDB. You might have to refresh the database tree in HeidiSQL first by pressing the F5 key. The following screenshot shows the HeidiSQL user interface once the database has been created:
 
 Figure 3.22: MariaDB cardb You can also run SQL queries in HeidiSQL.
 
 Now, your application is ready to use with MariaDB.
 
-Summary
+# Summary
+
 In this chapter, we used JPA to create our Spring Boot application database. First, we created entity classes, which are mapped to database tables.
 
-Then, we created a CrudRepository for our entity class, which provides CRUD operations for the entity. After that, we managed to add some demo data to our database by using CommandLineRunner. We also created one-to-many relationships between two entities. At the beginning of this chapter, we used the H2 in-memory database, and we switched the database to MariaDB at the end.
+Then, we created a `CrudRepository` for our entity class, which provides CRUD operations for the entity. After that, we managed to add some demo data to our database by using `CommandLineRunner`. We also created one-to-many relationships between two entities. At the beginning of this chapter, we used the H2 in-memory database, and we switched the database to MariaDB at the end.
 
 In the next chapter, we will create a RESTful web service for our backend. We will also look at testing the RESTful web service with the cURL command-line tool and the Postman GUI.
 
-Questions
-What are ORM, JPA, and Hibernate?
-How can you create an entity class?
-How can you create a CrudRepository?
-What does a CrudRepository provide for your application?
-How can you create a one-to-many relationship between tables?
-How can you add demo data to a database with Spring Boot?
-How can you access the H2 console?
-How can you connect your Spring Boot application to MariaDB?
-Further reading
+# Questions
+
+1. What are ORM, JPA, and Hibernate?
+1. How can you create an entity class?
+1. How can you create a `CrudRepository`?
+1. What does a `CrudRepository` provide for your application?
+1. How can you create a one-to-many relationship between tables?
+1. How can you add demo data to a database with Spring Boot?
+1. How can you access the H2 console?
+1. How can you connect your Spring Boot application to MariaDB?
+
+# Further reading
+
 Packt has other resources for learning more about MariaDB, Hibernate, and JPA:
 
-Getting Started with MariaDB, by Daniel Bartholomew (https://www.packtpub.com/product/getting-started-with-mariadb/9781785284120)
-Master Hibernate and JPA with Spring Boot in 100 Steps [Video], by In28Minutes Official (https://www.packtpub.com/product/master-hibernate-and-jpa-with-spring-boot-in-100-steps-video/9781788995320)
-Learn more on Discord
+> - Getting Started with MariaDB, by Daniel Bartholomew (https://www.packtpub.com/product/getting-started-with-mariadb/9781785284120)
+> - Master Hibernate and JPA with Spring Boot in 100 Steps [Video], by In28Minutes Official (https://www.packtpub.com/product/master-hibernate-and-jpa-with-spring-boot-in-100-steps-video/9781788995320)
+
+## Learn more on Discord
+
 To join the Discord community for this book – where you can share feedback, ask the author questions, and learn about new releases – follow the QR code below:
 
 https://packt.link/FullStackSpringBootReact4e
