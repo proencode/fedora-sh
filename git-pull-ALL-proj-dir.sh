@@ -31,6 +31,6 @@ do
 done
 cat <<__EOF__
 ${cYellow}#-- ${cBlue} ghp_kcuCfFsh9O3f1mTcTlNVtlp6IN3Qbe1JK https://github.com/settings/tokens
-A치큰5대2 241002석달용 — repo Expires on Tue, Dec 31 2024.
+A치큰5대2 241002석달용 — repo Expires on Tue, Dec 31 2024. bitbucket 4카 BBwjLQ6yLFTmNrygzXrP3fdm9f6172DA 앹대()육이
 ${cReset}
 __EOF__
