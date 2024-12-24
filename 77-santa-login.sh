@@ -13,6 +13,10 @@ modav="q1"
 solti="q2"
 ssh -oHostKeyAlgorithms=+ssh-dss -Y -p 2022 kaosco@kaos.kr
 
+yy="$(date +%Y)";mm="$(date +%m)"; ssh -oHostKeyAlgorithms=+ssh-dss -Y -p 2022 root@kaos.kr ls "/v*/b*/c*/\${yy}/\${mm}/ /v*/b*/e*/\${yy}/\${mm}/ /v*/b*/g*/\${yy}/\${mm}/ /v*/b*/s*/\${yy}/\${mm}/ /v*/b*/k*2/\${yy}/\${mm}/"; echo "#-- (1) 당월 데이터 일자"
+
+yy="$(date +%Y)";mm="$(date +%m)"; ssh -oHostKeyAlgorithms=+ssh-dss -Y -p 2022 root@kaos.kr ls -lh /v*/b*/c*/${yy}/${mm}/20 /v*/b*/e*/${yy}/${mm}/20 /v*/b*/g*/${yy}/${mm}/06 /v*/b*/s*/${yy}/${mm}/24 /v*/b*/k*2/${yy}/${mm}/*${y2}${mm}[2]* ; echo "#-- (2) 지정일의 데이터 목록"
+
 # rsync -avzr --delete -e 'ssh -oHostKeyAlgorithms=+ssh-dss -p 2022' ./   xxx    kaosco@kaos.kr:docker-start-kaosorder-FOR-TEST-ONLY/kaosorder/ #-- 서버로 보낼때
 
 # rsync -avzr --delete -e 'ssh -oHostKeyAlgorithms=+ssh-dss -p 2022' --exclude=target/classes kaosco@kaos.kr:docker-start-kaosorder-FOR-TEST-ONLY/kaosorder/ ./ XXX #-- 받을때
