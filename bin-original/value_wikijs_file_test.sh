@@ -21,7 +21,7 @@ __EOF__
 else
 	LAST_DEFINE_SH="$(ls -ltr ${BIN_VALUE}*.sh | tail -1 | awk '{print $9}')"
 	echo "(3) LAST_DEFINE_SH [=${LAST_DEFINE_SH}]"
-	$(sh ${LAST_DEFINE_SH}) #-- 여기서 선언을 해서 아래쪽에서 쓸수 있도록 한다.
+	$(bash ${LAST_DEFINE_SH}) #-- 여기서 선언을 해서 아래쪽에서 쓸수 있도록 한다.
 fi
 
 last_file=$(grep DOCKER_DIR ${BIN_VALUE}*.sh | awk -F"=" '{print $2}' | awk -F"#" '{print $1}' | sed -e 's/^ *//g' -e 's/ *$//g') #-- 앞뒤 공백 제거
