@@ -59,7 +59,7 @@ do
 	done
 done
 
-cmdRun "cd ${base_dir}; sh ${HOME}/bin/du-sh-sort-hr.sh" "(5) 디렉토리별 사이즈 확인"
+cmdRun "cd ${base_dir}; bash ${HOME}/bin/du-sh-sort-hr.sh" "(5) 디렉토리별 사이즈 확인"
 # rclone copy /opt/kaos_backup/zip_dir kaosb4mi:
 cmdRun "rclone copy ${opt_home_dir}/ kaosb4mi:" "(6) 클라우드로 복사합니다."
 #-- ${opt_home_dir}/ <---- 뒤에 '/' 가 있던 없던 저 디렉토리 안에 있는 내용이 복사된다.

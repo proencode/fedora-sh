@@ -1,13 +1,13 @@
-#!/bin/sh
+#!/bin/bash
 
 lll=$(tput bold)$(tput setaf 0); rrr=$(tput bold)$(tput setaf 1); ggg=$(tput bold)$(tput setaf 2); yyy=$(tput bold)$(tput setaf 3); bbb=$(tput bold)$(tput setaf 4); mmm=$(tput bold)$(tput setaf 5); ccc=$(tput bold)$(tput setaf 6); www=$(tput bold)$(tput setaf 7); xxx=$(tput bold)$(tput sgr0); uuu=$(tput cuu 2)
 
 cmdrun () {
-	echo "${yyy}# ----> ${ccc}$1 ${ggg}#-- ${bbb}$2${xxx}"; echo "$1" | sh
-	echo "${bbb}# <~~~~ $1 #-- $2${xxx}"
+	echo "${yyy}#-- ${ccc}$1 ${ggg}#-- ${bbb}$2${xxx}"; echo "$1" | bash
+	echo "${bbb}#-- $1 #-- $2${xxx}"
 }
 cmdreada_s () {
-	echo "${yyy}# ----> ${ccc}$1 ${ggg}#-- ${bbb}$2${xxx}"
+	echo "${yyy}#-- ${ccc}$1 ${ggg}#-- ${bbb}$2${xxx}"
 	read -s read_s
 	if [ "x$read_s" = "x" ]; then
 		exit -1
@@ -36,7 +36,7 @@ svrHOST=${read_s}
 #-- 217M lastbada-241018-1405.7z
 #--
 echo "${yyy}#-- ${ccc}(4) copy 7za,lastbada ${bbb}rsync -avzr -e 'ssh -p PORT' USER@HOST:ar*/my*/[7l][za]*[x7][ez] .${xxx}"
-echo "rsync -avzr -e 'ssh -p ${svrPORT}' ${svrUSER}@${svrHOST}:ar*/my*/[7l][za]*[x7][ez] ." | sh
+echo "rsync -avzr -e 'ssh -p ${svrPORT}' ${svrUSER}@${svrHOST}:ar*/my*/[7l][za]*[x7][ez] ." | bash
 #--
 echo "${yyy}#-- ${ccc}(5) lastbada.7z ${bbb}7za x lastbada-*7z${xxx}"
 ./7zr.exe x lastbada-*7z
@@ -70,5 +70,5 @@ for dina in "${dir_names[@]}"
 do
 	dir_cnt=$(( dir_cnt + 1 ))
 	echo "${yyy}#-- ${ggg}[${tot_dir}-${dir_cnt}] ${bbb}rsync -avzr -e 'ssh -p PORT' USER@HOST:${dina} .${xxx}"
-	echo "rsync -avzr -e 'ssh -p ${svrPORT}' ${svrUSER}@${svrHOST}:${dina} ." | sh
+	echo "rsync -avzr -e 'ssh -p ${svrPORT}' ${svrUSER}@${svrHOST}:${dina} ." | bash
 done

@@ -16,8 +16,8 @@ echo "----> ls -al ~/bin"
 rsync -avzr ~/git-projects/fedora-sh/bin*/du-* ~/bin/
 ls -altr ~/bin
 
-echo "----> sh ~/bin/load-keepass.sh"
-sh ~/bin/load-keepass.sh
+echo "----> bash ~/bin/load-keepass.sh"
+bash ~/bin/load-keepass.sh
 rc_lsl=~/rclone-lsl
 if [ ! -d ${rc_lsl} ]; then
 	echo "----> mkdir ${rc_lsl}"
@@ -27,5 +27,5 @@ echo "----> cd ${rc_lsl}"
 cd ${rc_lsl}
 echo "----> /bin/bash ~/bin/rclone-all-list.sh"
 /bin/bash ~/bin/rclone-all-list.sh
-echo "----> sh ~/bin/yesterday-rclone-lsl.sh"
-sh ~/bin/yesterday-rclone-lsl.sh 
+echo "----> bash ~/bin/yesterday-rclone-lsl.sh"
+bash ~/bin/yesterday-rclone-lsl.sh 

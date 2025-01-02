@@ -3,22 +3,22 @@
 cBlack=$(tput bold)$(tput setaf 0); cRed=$(tput bold)$(tput setaf 1); cGreen=$(tput bold)$(tput setaf 2); cYellow=$(tput bold)$(tput setaf 3); cBlue=$(tput bold)$(tput setaf 4); cMagenta=$(tput bold)$(tput setaf 5); cCyan=$(tput bold)$(tput setaf 6); cWhite=$(tput bold)$(tput setaf 7); cReset=$(tput bold)$(tput sgr0); cUp=$(tput cuu 2)
 
 cat_and_run () {
-	echo "${cGreen}----> ${cYellow}$1 ${cCyan}$2${cReset}"; echo "$1" | sh
+	echo "${cGreen}----> ${cYellow}$1 ${cCyan}$2${cReset}"; echo "$1" | bash
 	echo "${cMagenta}<---- $1 ${cBlue}$2${cReset}"
 }
 cat_and_read () {
 	echo -e "${cGreen}----> ${cYellow}$1 ${cCyan}$2${cGreen}\n----> ${cBlue}press ${cRed}Enter:${cReset}"
-	read a ; echo "${cUp}"; echo "$1" | sh
+	read a ; echo "${cUp}"; echo "$1" | bash
 	echo "${cMagenta}<---- press ${cRed}Enter: ${cMagenta}$1 ${cBlue}$2${cReset}"
 }
 cat_and_readY () {
 	echo "${cGreen}----> ${cYellow}$1 ${cCyan}$2${cReset}"
 	if [ "x${ALL_INSTALL}" = "xy" ]; then
-		echo "$1" | sh ; echo "${cMagenta}<---- $1 ${cBlue}$2${cReset}"
+		echo "$1" | bash ; echo "${cMagenta}<---- $1 ${cBlue}$2${cReset}"
 	else
 		echo "${cGreen}----> ${cBlue}press ${cYellow}y${cBlue} or ${cRed}Enter:${cReset}"; read a; echo "${cUp}"
 		if [ "x$a" = "xy" ]; then
-			echo "${cRed}-OK-${cReset}"; echo "$1" | sh
+			echo "${cRed}-OK-${cReset}"; echo "$1" | bash
 		else
 			echo "${cRed}[ ${cYellow}$1 ${cRed}] ${cCyan}<--- 명령을 실행하지 않습니다.${cReset}"
 		fi

@@ -32,4 +32,4 @@ do
 	echo "mv ${PartSec}-${SeqNumber:1}.${ImgFileType} \"${line}\"" >> ${rename_sh_name}
 done
 
-echo "#-- 원래의 이름으로 바꾸려면: sh ${rename_sh_name}"
+echo "#-- 원래의 이름으로 바꾸려면: bash ${rename_sh_name}"
