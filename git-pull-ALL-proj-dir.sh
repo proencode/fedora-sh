@@ -30,7 +30,8 @@ do
 	fi
 done
 cat <<__EOF__
-${cYellow}#-- ${cBlue} ghp_kcuCfFsh9O3f1mTcTlNVtlp6IN3Qbe1JK https://github.com/settings/tokens
-A치큰5대2 241002석달용 — repo Expires on Tue, Dec 31 2024. bitbucket 4카 BBwjLQ6yLFTmNrygzXrP3fdm9f6172DA 앹대()육이
+${cYellow}#-- ${cBlue} ghp_6WsX6oG9ZmWJWn35cgTbpreIkxxJLJ0h
+https://github.com/settings/tokens 떼시에프쀠 25년삼동 — repo Expires on Wed, Apr 2 2025.
+bitbucket 4카 BBwjLQ6yLFTmNrygzXrP3fdm9f6172DA 앹대()육이
 ${cReset}
 __EOF__
