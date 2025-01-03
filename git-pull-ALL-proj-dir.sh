@@ -32,6 +32,6 @@ done
 cat <<__EOF__
 ${cYellow}#-- ${cBlue} ghp_6WsX6oG9ZmWJWn35cgTbpreIkxxJLJ0h
 https://github.com/settings/tokens 떼시에프쀠 25년삼동 — repo Expires on Wed, Apr 2 2025.
-bitbucket 4카 BBwjLQ6yLFTmNrygzXrP3fdm9f6172DA 앹대()육이
+bitbucket 4카 BBwjLQ6yLFTmNrygzXrP3fdm9f6172DA 앹대..육이
 ${cReset}
 __EOF__
