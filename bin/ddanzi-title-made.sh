@@ -17,7 +17,7 @@ sibuncho=$(echo ${a} | awk -F"]" '{print $2}')
 hm=$(echo ${sibuncho} | awk -F":" '{print $1$2}')
 read user
 c="$(date +%y%m%d)-${hm}${user}-${msg}"
-underc=$(echo $c | sed 's/ /_/g')
+underc=$(echo ${c,,} | sed 's/ /_/g')
 cat <<__EOF__
 ${mmm}
 ${underc}${xxx}
