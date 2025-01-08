@@ -1,26 +1,31 @@
-#!/bin/bash
+#!/bin/sh
 
 lll=$(tput bold)$(tput setaf 0); rrr=$(tput bold)$(tput setaf 1); ggg=$(tput bold)$(tput setaf 2); yyy=$(tput bold)$(tput setaf 3); bbb=$(tput bold)$(tput setaf 4); mmm=$(tput bold)$(tput setaf 5); ccc=$(tput bold)$(tput setaf 6); www=$(tput bold)$(tput setaf 7); xxx=$(tput bold)$(tput sgr0); uuu=$(tput cuu 2)
 
 cmdrun () {
-	echo "${yyy}# ----> ${ccc}$1 ${ggg}#-- ${bbb}$2${xxx}"; echo "$1" | sh
-	echo "${bbb}# <~~~~ $1 #-- $2${xxx}"
+	echo "${yyy}#-- ${ccc}$1 ${ggg}#-- ${bbb}$2${xxx}"; echo "$1" | bash
+	echo "${bbb}#-- $1 #-- $2${xxx}"
 }
+#-- cmdreada_s "(1) INPUT: port no" "(서버 포트번호 입력시 숫자 표시 안됨)"
 cmdreada_s () {
-	echo "${yyy}# ----> ${ccc}$1 ${ggg}#-- ${bbb}$2${xxx}"
+	echo "${yyy}#-- ${ccc}$1 ${ggg}#-- ${bbb}$2${xxx}"
 	read -s read_s
 	if [ "x$read_s" = "x" ]; then
 		exit -1
 	fi
 }
-
+dingding () {
+	if [[ "x${ding_val}" < "x1" || "x${ding_val}" > "x6" ]]; then
+		echo "${mmm}#-- play -q ${wavhan[$ding_val]}${xxx}"
+	else
+		play -q ${bin_fs}/${wavbox[$ding_val]} &
+	fi
+}
 wavbox=(NONE play-1-pbong.wav play-2-castanets.wav play-3-ddenng.wav play-4-tiiill.wav play-5-gguuuung.wav play-6-ddeeeng.wav)
 wavhan=(0=none 1=딩~ 2=캐스터네츠~ 3=뗑- 4=띠일~ 5=데에엥~~ 6=교회_뎅-)
 bin_fs="${HOME}/bin/freesound"
-ding_val=$1; if [[ "x${ding_val}" < "x1" || "x${ding_val}" > "x6" ]]; then ding_val="4" ; fi
-#-- play -q ${bin_fs}/${wavbox[$ding_val]} &
-#-- echo "play -q ${wavhan[$ding_val]}"
-#-- cmdreada_s "(1) INPUT: port no" "(서버 포트번호 입력시 숫자 표시 안됨)"
+ding_val=0 #-- 0=play 하지 않고 화면표시만 함, 1..6=이 스크립트에서 지정한 해당 값으로 play 함
+#-- dingding $ding_val
 
 cat <<__EOF__
 
