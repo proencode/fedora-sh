@@ -27,3 +27,17 @@ bin_fs="${HOME}/bin/freesound"
 ding_val=0 #-- 0=play 하지 않고 화면표시만 함, 1..6=이 스크립트에서 지정한 해당 값으로 play 함
 #-- dingding $ding_val
 
+CMD_NAME=`basename $0` # 명령줄에서 실행 프로그램 이름만 꺼냄
+CMD_DIR=${0%/$CMD_NAME} # 실행 이름을 빼고 나머지 디렉토리만 담음
+if [ "x$CMD_DIR" == "x" ] || [ "x$CMD_DIR" == "x$CMD_NAME" ]; then CMD_DIR="." fi
+
+SH_TITLE="---MySQL--- DB 서버를 도커에 설치하기"
+echo "${mmm}>>>>>>>>>>${ggg} $0 ${mmm}||| ${ccc}${SH_TITLE} ${mmm}>>>>>>>>>>${xxx}"
+logs_folder="${HOME}/zz00logs" ; if [ ! -d "${logs_folder}" ]; then cmdrun "mkdir ${logs_folder}" ; fi
+log_name="${logs_folder}/zz.$(date +"%y%m%d-%H%M%S")__RUNNING_${CMD_NAME}" ; touch ${log_name}
+#~~~~ rm -f ${log_name}; log_name="${logs_folder}/zz.$(date +"%y%m%d-%H%M%S")..${CMD_NAME}"
+#~~~~ touch ${log_name}; cmdrun "ls --color ${CMD_DIR}" ; ls --color ${logs_folder}
+#~~~~ echo "${rrr}<<<<<<<<<<${bbb} $0 ${rrr}||| ${mmm}${SH_TITLE} ${rrr}<<<<<<<<<<${xxx}"
+
+#--
+
