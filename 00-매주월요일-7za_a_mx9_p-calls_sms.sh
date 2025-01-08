@@ -6,14 +6,6 @@ cmdrun () {
 	echo "${bbb}#-- ${ccc}$1 ${bbb}#-- ${ggg}$2${xxx}"; echo "$1" | bash
 	echo "${bbb}#-- $1 #-- $2${xxx}"
 }
-a=$(ls -l /bin/sh | awk -F'-> ' '{print $2}') #-- /bin/sh 에 연결된 실행셀 확인
-if [ "x$a" != "xbash" ]; then
-	cat <<__EOF__
-${bbb}#-- ${ccc}현재의 셀 = ${mmm}${a}${ccc}, 얍력한 명령 = ${mmm}$0 $1 $2 $3 $4
-${bbb}#-- ${ccc}셀 명령 실행시 ${yyy}bash ${ccc}를 지정해야 합니다."
-__EOF__
-	exit -1
-fi
 
 calls_sms_dir="wind_bada/calls_sms"
 if [ ! -d ~/${calls_sms_dir} ]; then
