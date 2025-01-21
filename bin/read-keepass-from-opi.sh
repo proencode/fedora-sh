@@ -66,3 +66,4 @@ __EOF__
 	ls -l ${keepsNameExt}
 	echo "#--                           --------------------- (6) 로컬의 최종 파일"
 fi
+ping -n 1 ${svrURL}
