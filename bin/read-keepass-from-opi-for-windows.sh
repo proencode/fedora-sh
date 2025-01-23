@@ -11,6 +11,11 @@ svrDIR="archive/keepass" #-- 파일을 저장하는 디렉토리
 cloudDRV="yosjgc" #-- 클라우드 드라이브
 cloudDIR="keepass" #-- 파일을 저장하는 디렉토리
 
+keepass_dir="archive/keepass"
+if [ ! -d ~/${keepass_dir} ]; then
+	mkdir -p ~/${keepass_dir}
+fi
+cd ~/${keepass_dir}
 cat <<__EOF__
 #-- !!! ${keepsNameExt} 파일이 있는곳에서 실행해야 한다. !!!
 
@@ -66,5 +71,8 @@ __EOF__
 	ls -l ${keepsNameExt}
 	echo "#--                           --------------------- (6) 로컬의 최종 파일"
 fi
-ping -n 1 ${svrURL}
-echo "192.168.100.214 vb"
+cd - #-- 원래 위치로 갑니다.
+cat <<__EOF__
+$(ping -n 1 ${svrURL} | grep PING | awk -F'(' '{print $2}' | awk -F')' '{print $1}') pi
+192.168.100.214 vb
+__EOF__
