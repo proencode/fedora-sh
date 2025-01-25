@@ -71,6 +71,6 @@ __EOF__
 fi
 cd - #-- 원래 위치로 갑니다.
 cat <<__EOF__
-$(ping -c 1 ${svrURL} | grep PING | awk -F'(' '{print $2}' | awk -F')' '{print $1}') pi
-192.168.100.214 vb
+$(ping -c 1 ${svrURL} | grep PING | awk -F'(' '{print $2}' | awk -F')' '{print $1}') pi #-- for Linux
+$(ifconfig | grep -B1 tm | grep 192.168 | awk -F'inet' '{print $2}' | awk -F'netmask' '{print $1"vb"}')
 __EOF__
