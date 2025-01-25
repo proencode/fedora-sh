@@ -72,8 +72,10 @@ __EOF__
 	echo "#--                           --------------------- (6) 로컬의 최종 파일"
 fi
 cd - #-- 원래 위치로 갑니다.
-cat <<__EOF__
-echo "$(ping -n 1 ${svrURL} | awk -F'[' '{print $2}' | awk -F']' '{print $1}') pi #-- for Windows"
+echo "cd - #-- 원래 위치로 갑니다."
 #xxxx $(ping -n 1 ${svrURL} | grep PING | awk -F'(' '{print $2}' | awk -F')' '{print $1}') pi
-$(ifconfig | grep -B1 tm | grep 192.168 | awk -F'inet' '{print $2}' | awk -F'netmask' '{print $1"vb"}')
+#xxxx $(ifconfig | grep -B1 tm | grep 192.168 | awk -F'inet' '{print $2}' | awk -F'netmask' '{print $1"vb"}')
+cat <<__EOF__
+$(ping -n 1 ${svrURL} | awk -F'[' '{print $2}' | awk -F']' '{print $1}') pi
+$(ipconfig | grep -a "192.168." | grep -av ".1$" | awk -F': ' '{print $2}') winhost
 __EOF__
