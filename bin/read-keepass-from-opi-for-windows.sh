@@ -11,15 +11,19 @@ svrDIR="archive/keepass" #-- 파일을 저장하는 디렉토리
 cloudDRV="yosjgc" #-- 클라우드 드라이브
 cloudDIR="keepass" #-- 파일을 저장하는 디렉토리
 
-keepass_dir="archive/keepass"
+keepass_dir="Downloads/bada"
 if [ ! -d ~/${keepass_dir} ]; then
 	mkdir -p ~/${keepass_dir}
 fi
 cd ~/${keepass_dir}
 cat <<__EOF__
-#-- !!! ${keepsNameExt} 파일이 있는곳에서 실행해야 한다. !!!
+#-- ls -l ~/${keepass_dir}
+$(ls -l ~/${keepass_dir})
 
-#-- userID@svrURL:${svrDIR} COPY TO ${keepsNameExt}
+#-- !!! ${keepsNameExt} 파일을 두는곳에서 실행해야 한다. !!!
+
+#-- userID@svrURL:${svrDIR} COPY TO ~/${keepass_dir}/${keepsNameExt}
+
 #-- (1) INPUT: port no (서버 포트번호 입력시 숫자 표시 안됨)
 #--            ----
 __EOF__
@@ -77,5 +81,6 @@ echo "cd - #-- 원래 위치로 갑니다."
 #xxxx $(ifconfig | grep -B1 tm | grep 192.168 | awk -F'inet' '{print $2}' | awk -F'netmask' '{print $1"vb"}')
 cat <<__EOF__
 $(ping -n 1 ${svrURL} | awk -F'[' '{print $2}' | awk -F']' '{print $1}') pi
-$(ipconfig | grep -a "192.168." | grep -av ".1$" | awk -F': ' '{print $2}') winhost
+$(ipconfig | grep -a "192.168." | grep -av ".1$" | awk -F': ' '{print $2}') win
+echo "\$(ipconfig | grep -a "192.168." | grep -av ".1\$" | awk -F': ' '{print \$2}') win"
 __EOF__
