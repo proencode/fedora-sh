@@ -91,6 +91,7 @@ $(ping -n 1 ${svrURL} | awk -F'[' '{print $2}' | awk -F']' '{print $1}') pi
 $(ipconfig | grep -a "192.168." | grep -av ".1$" | awk -F': ' '{print $2}') win
 \$(ipconfig | grep -a "192.168." | grep -av ".2\$" | awk -F': ' '{print \$2}') win #-- for Windows
 ifconfig | grep -B1 tm #-- for Linux
+sudo hostnamectl set-hostname u24041svr-VB
 
 __EOF__
 cmdend "서버에서 keepass 파일을 받아오는 스크립트"
