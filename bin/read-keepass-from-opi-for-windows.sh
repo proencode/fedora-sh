@@ -4,22 +4,22 @@ lll=$(tput bold)$(tput setaf 0); rrr=$(tput bold)$(tput setaf 1); ggg=$(tput bol
 cmdrun () {
         #-- echo "${yyy}#-- ${ccc}$1 ${ggg}#-- ${bbb}$2${xxx}"; echo "$1" | bash
         echo "${yyy}#-- ${ccc}$1 ${bbb}#-- $2${xxx}"; echo "$1" | bash
-        echo "${rrr}#// ${bbb}$1 #-- $2${xxx}"
+        echo "${yyy}#// ${bbb}$1 #-- $2${xxx}"
 }
 cmdend () {
-        echo "${rrr}#--///-- ${mmm}$1${xxx}"
+        echo "${yyy}#--///-- ${mmm}$1${xxx}"
 }
 pswdonly () { #-- "(1) INPUT: port #"  "(입력시 표시 안됨)"
         #-- echo "${yyy}#-- ${ccc}$1 ${ggg}#-- ${bbb}$2${xxx}"
         echo "${yyy}#-- ${ccc}$1 ${bbb}#-- $2${xxx}"
         read -s pswdonly
 	echo " "
-        echo "${rrr}#// ${bbb}$1 #-- $2${xxx}"
+        echo "${yyy}#// ${bbb}$1 #-- $2${xxx}"
 }
 readecho () { #-- "(2) INPUT: 서버 디렉토리"  "${svrDIR}"
         echo "${yyy}#-- ${ccc}$1 ${bbb}#-- $2${xxx}"
         read readecho
-        echo "${rrr}#// ${bbb}$1 #-- $2${xxx}"
+        echo "${yyy}#// ${bbb}$1 #-- $2${xxx}"
 }
 
 keeps_name="keepassproen" #-- keepass 파일의 이름만
@@ -54,7 +54,7 @@ echo "${bbb}#----> ${mmm}svrDIR= ${ccc}${svrDIR}${xxx}"
 tmpfle="x$(date +%y%m%d%H%M%S)"
 echo "${yyy}#-- ${ccc}ssh -p svrPORT userID@svrURL ls -l keepName ${bbb}#-- (4) 서버의 파일 확인${xxx}"
 ssh -p ${svrPORT} ${userID}@${svrURL} ls -l ${svrDIR}/${keepsNameExt} | grep keepass*kdbx > ${tmpfle}
-echo "${rrr}#// ${bbb}ssh -p svrPORT userID@svrURL ls -l keepName #-- (4) 서버의 파일 확인${xxx}"
+echo "${yyy}#// ${bbb}ssh -p svrPORT userID@svrURL ls -l keepName #-- (4) 서버의 파일 확인${xxx}"
 
 kdbsiz=$(awk '{print $5}' ${tmpfle})
 echo "${bbb}$(awk -F${kdbsiz} '{print $1}' ${tmpfle}) ${rrr}${kdbsiz} ${ggg}$(awk -F${kdbsiz} '{print $2}' ${tmpfle}; rm -f ${tmpfle})${xxx}"
