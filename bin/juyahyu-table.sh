@@ -1,8 +1,8 @@
 #!/bin/bash
-12	abcd
-123	efgh
-1234	ijkl
-12345	mnop
+# 12	abcd
+# 123	efgh
+# 1234	ijkl
+# 12345	mnop
 
 #-- 요일 문자열
 yoil="일월화수목금토"
