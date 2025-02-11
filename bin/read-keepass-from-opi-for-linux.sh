@@ -1,9 +1,9 @@
-#!/bin/bash
+#!/bin/sh
 
 lll=$(tput bold)$(tput setaf 0); rrr=$(tput bold)$(tput setaf 1); ggg=$(tput bold)$(tput setaf 2); yyy=$(tput bold)$(tput setaf 3); bbb=$(tput bold)$(tput setaf 4); mmm=$(tput bold)$(tput setaf 5); ccc=$(tput bold)$(tput setaf 6); www=$(tput bold)$(tput setaf 7); xxx=$(tput bold)$(tput sgr0); uuu=$(tput cuu 2)
 cmdrun () {
-        #-- echo "${yyy}#-- ${ccc}$1 ${ggg}#-- ${bbb}$2${xxx}"; echo "$1" | bash
-        echo "${yyy}#-- ${ccc}$1 ${bbb}#-- $2${xxx}"; echo "$1" | bash
+        #-- echo "${yyy}#-- ${ccc}$1 ${ggg}#-- ${bbb}$2${xxx}"; echo "$1" | sh
+        echo "${yyy}#-- ${ccc}$1 ${bbb}#-- $2${xxx}"; echo "$1" | sh
         echo "${rrr}#// ${bbb}$1 #-- $2${xxx}"
 }
 cmdend () {
@@ -90,16 +90,15 @@ ls -l ${keepsNameExt} > ${tmpfle}
 kdbsiz=$(awk '{print $5}' ${tmpfle})
 echo "${bbb}$(awk -F${kdbsiz} '{print $1}' ${tmpfle}) ${rrr}${kdbsiz} ${ggg}$(awk -F${kdbsiz} '{print $2}' ${tmpfle}; rm -f ${tmpfle}) ${bbb}#-- (8) 로컬의 **최종** 파일.${xxx}"
 
-echo "${yyy}#-- ${ccc}cd - ${bbb}#-- (9) 원래 위치로 갑니다.${xxx}"
 cd -
-echo "${bbb}#-- cd - #-- (9) 원래 위치로 갑니다.${xxx}"
 
 #xxxx $(ping -n 1 ${svrURL} | grep PING | awk -F'(' '{print $2}' | awk -F')' '{print $1}') pi
 #xxxx $(ifconfig | grep -B1 tm | grep 192.168 | awk -F'inet' '{print $2}' | awk -F'netmask' '{print $1"vb"}')
+#xxxx sudo hostnamectl set-hostname u24041svr-VB
+
+for i in $(ifconfig | grep -a "192.168." | awk '{print $2}'); do echo "$i vb"; done
 cat <<__EOF__
-$(ping -c 1 ${svrURL} | grep PING | awk -F'(' '{print $2}' | awk -F')' '{print $1}') pi #-- for Linux
-ifconfig | grep -B1 tm #-- for Linux
-sudo hostnamectl set-hostname u24041svr-VB
+$(ping -c 1 ${svrURL} | grep PING | awk -F'(' '{print $2}' | awk -F')' '{print $1}') pi
 
 __EOF__
 cmdend "서버에서 keepass 파일을 받아오는 스크립트"
