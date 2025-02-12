@@ -99,7 +99,8 @@ echo "${bbb}#-- cd - #-- (9) 원래 위치로 갑니다.${xxx}"
 cat <<__EOF__
 $(ping -n 1 ${svrURL} | awk -F'[' '{print $2}' | awk -F']' '{print $1}') pi
 $(ipconfig | grep -a "192.168." | grep -av ".1$" | awk -F': ' '{print $2}') vb
-\$(ipconfig | grep -a "192.168." | grep -av ".2\$" | awk -F': ' '{print \$2}') vb #-- for Windows
+
+\$(ipconfig | grep -a "192.168." | grep -av ".1\$" | awk -F': ' '{print \$2}') vb #-- for Windows
 ifconfig | grep -B1 tm #-- for Linux
 sudo hostnamectl set-hostname u24041svr-VB
 
