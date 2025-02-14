@@ -1,0 +1,107 @@
+#!/bin/sh
+
+cBlack=$(tput bold)$(tput setaf 0); cRed=$(tput bold)$(tput setaf 1); cGreen=$(tput bold)$(tput setaf 2); cYellow=$(tput bold)$(tput setaf 3); cBlue=$(tput bold)$(tput setaf 4); cMagenta=$(tput bold)$(tput setaf 5); cCyan=$(tput bold)$(tput setaf 6); cWhite=$(tput bold)$(tput setaf 7); cReset=$(tput bold)$(tput sgr0); cUp=$(tput cuu 2)
+
+CMD_NAME=`basename $0` # 명령줄에서 실행 프로그램 이름만 꺼냄
+CMD_DIR=${0%/$CMD_NAME} # 실행 이름을 빼고 나머지 디렉토리만 담음
+if [ "x$CMD_DIR" == "x" ] || [ "x$CMD_DIR" == "x$CMD_NAME" ]; then
+	CMD_DIR="."
+fi
+
+cat_and_run () {
+	echo "${cGreen}----> ${cYellow}$1 ${cGreen}#-- ${cCyan}$2${cReset}"; echo "$1" | sh
+	echo "${cMagenta}<---- ${cBlue}$1 #-- $2${cReset}"
+}
+cat_and_run_cr () { #-- for grails
+	echo "${cGreen}----> ${cYellow}$1 ${cGreen}#-- ${cCyan}$2${cReset}"; echo "--"; echo "$1" | sh
+	echo "${cMagenta}<---- ${cBlue}$1 #-- $2${cReset}"
+}
+cat_and_read () {
+	echo -e "${cGreen}----> ${cYellow}$1 ${cGreen}#-- ${cCyan}$2\n${cGreen}----> press Enter${cReset}:"
+	read a ; echo "${cUp}"; echo "$1" | sh
+	echo "${cMagenta}<---- ${cBlue}press Enter${cReset}: ${cMagenta}$1 #-- $2${cReset}"
+}
+cat_and_readY () {
+	echo "${cGreen}----> ${cYellow}$1 ${cGreen}#-- $2${cReset}"
+	if [ "x${ALL_INSTALL}" = "xy" ]; then
+		echo "$1" | sh ; echo "${cMagenta}<---- ${cBlue}$1 #-- $2${cReset}"
+	else
+		echo "${cGreen}----> ${cRed}press ${cGreen}y${cRed} or Enter${cReset}:"; read a; echo "${cUp}"
+		if [ "x$a" = "xy" ]; then
+			echo "${cRed}-OK-${cReset}"; echo "$1" | sh
+		else
+			echo "${cRed}[ ${cGreen}$1 ${cRed}] ${cGreen}<--- 명령을 실행하지 않습니다.${cReset}"
+		fi
+		echo "${cMagenta}<---- ${cBlue}press Enter${cReset}: ${cMagenta}$1 #-- $2${cReset}"
+	fi
+}
+is_password="___"
+view_and_read () {
+	while true
+	do
+		cat <<__EOF__
+
+${cGreen}----> ${cGreen}$1 ${cRed}[ ${cYellow}$2 ${cRed}]${cReset}
+__EOF__
+		read read_val ; echo "${cUp}"
+		if [ "x$read_val" = "x" ]; then
+			read_val="$2"
+		fi
+		if [ "x$read_val" != "x${is_password}" ]; then
+			if [ "x$2" = "x${is_password}" ]; then
+				#-- is_password 이면 그냥엔터 로는 끝나지 않고 끝나면 화면내용을 지워준다.
+				echo "${cRed}[ ${cYellow}**** ${cRed}]                        ${cReset}"
+			else
+				echo "${cRed}[ ${cYellow}$read_val ${cRed}]${cReset}"
+			fi
+			break
+		fi
+	done
+}
+#-- view_and_read "user 이름" "gateroot"
+#-- NAMEforUSER=$read_val
+#-- view_and_read "user 비번" "${is_password}"
+#-- PSWDforUSER=$read_val
+
+show_then_run () {
+	if [ "x$show_ok" = "xok" ]; then
+		cat_and_run "$1" "#-- (${showno}) ${showqq}"
+	else
+		echo "$1" | sh
+	fi
+}
+show_then_view () {
+	if [ "x$show_ok" = "xok" ]; then echo "${cGreen}----> ${cCyan}$1 #-- (${showno}) ${showqq}${cReset}" ; fi
+}
+show_title () {
+	if [ "x$show_ok" = "xok" ]; then
+		cat <<__EOF__
+    ${cGreen}|
+    |
+    | ${cCyan}$1
+    ${cGreen}|
+    |${cReset}
+__EOF__
+	fi
+}
+#---> value_keyin "LOGIN_PATH" "${LOGIN_PATH}" "데이터베이스의 로그인 패쓰 를 입력하세요."
+value_keyin () {
+	FIELD_NAME=$1
+	FIELD_VALUE=$2
+	FIELD_TITLE=$3
+	cat <<__EOF__
+
+${cGreen}----> ${FIELD_TITLE}[ ${cCyan}${FIELD_VALUE} ${cGreen}]${cReset}
+__EOF__
+	read return_value
+
+	if [ "x$return_value" = "x" ]; then
+		return_value="${FIELD_VALUE}"
+	fi
+	cat <<__EOF__
+${cUp}${cCyan}${FIELD_NAME}: ${cRed} ${cYellow}${return_value} ${cRed}]
+
+__EOF__
+}
+#<--- value_keyin
+# ~/lib/color_base 220827-0920 cat_and_run cat_and_run_cr cat_and_read cat_and_readY view_and_read show_then_run show_then_view show_title value_keyin () {
