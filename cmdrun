@@ -1,0 +1,47 @@
+#!/bin/sh
+
+lll=$(tput bold)$(tput setaf 0); rrr=$(tput bold)$(tput setaf 1); ggg=$(tput bold)$(tput setaf 2); yyy=$(tput bold)$(tput setaf 3); bbb=$(tput bold)$(tput setaf 4); mmm=$(tput bold)$(tput setaf 5); ccc=$(tput bold)$(tput setaf 6); www=$(tput bold)$(tput setaf 7); xxx=$(tput bold)$(tput sgr0); uuu=$(tput cuu 2)
+cmdrun () {
+        echo "${yyy}#-- ${ccc}$1 ${ggg}#-- ${bbb}$2${xxx}"; echo "$1" | bash
+        echo "${bbb}#-- $1 #-- $2${xxx}"
+}
+cmdend () {
+        echo "${bbb}#--///-- ${mmm}$1${xxx}"
+}
+cmdreada_s () { #-- cmdreada_s "(1) INPUT: port no" "(입력시 표시 안됨)"
+	echo "${yyy}#-- ${ccc}$1 ${ggg}#-- ${bbb}$2${xxx}"
+	read -s reada_s
+	if [ "x$reada_s" = "x" ]; then
+		exit -1
+	fi
+}
+dingding () {
+	if [[ "x${ding_val}" < "x1" || "x${ding_val}" > "x6" ]]; then
+		echo "${mmm}#-- play -q ${wavhan[$ding_val]}${xxx}"
+	else
+		play -q ${bin_fs}/${wavbox[$ding_val]} &
+	fi
+}
+wavbox=(NONE play-1-pbong.wav play-2-castanets.wav play-3-ddenng.wav play-4-tiiill.wav play-5-gguuuung.wav play-6-ddeeeng.wav)
+wavhan=(0=none 1=딩~ 2=캐스터네츠~ 3=뗑- 4=띠일~ 5=데에엥~~ 6=교회_뎅-)
+bin_fs="${HOME}/bin/freesound"
+#-- dingding $ding_val #-- 0=play 하지 않고 화면표시만 함, 1..6=이 스크립트에서 지정한 해당 값으로 play 함
+ding_val=0
+
+CMD_NAME=`basename $0` # 명령줄에서 실행 프로그램 이름만 꺼냄
+CMD_DIR=${0%/$CMD_NAME} # 실행 이름을 빼고 나머지 디렉토리만 담음
+if [ "x$CMD_DIR" == "x" ] || [ "x$CMD_DIR" == "x$CMD_NAME" ]; then CMD_DIR="." fi
+
+#   logs_folder="${HOME}/zz00logs" ; if [ ! -d "${logs_folder}" ]; then cmdrun "mkdir ${logs_folder}"; fi
+#   log_name="${logs_folder}/zz.$(date +"%y%m%d-%H%M%S")__RUNNING_${CMD_NAME}"
+#   touch ${log_name} #-- 실행 프로그램 이름으로 로그 기록
+#  
+#   rm -f ${log_name} #-- 로그 삭제
+#   log_name="${logs_folder}/zz.$(date +"%y%m%d-%H%M%S")..${CMD_NAME}"
+#   touch ${log_name}; #-- 작업이 끝난 로그 기록
+#  
+#   cmdrun "ls --color ${CMD_DIR}" ; ls --color ${logs_folder} #-- 로그 표시
+#   echo "${rrr}<<<<<<<<<<${bbb} $0 ${rrr}||| ${mmm}${SH_TITLE} ${rrr}<<<<<<<<<<${xxx}"
+
+#--
+
