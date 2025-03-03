@@ -65,11 +65,9 @@ cmdrun "rclone lsl yosjgc:calls_sms/ --include \"[cs]*xml*\" | sort -k4"
 
 cat <<__EOF__
 
-${bbb}#  ${ccc}rclone delete yosjgc:calls_sms/ --include "[cs]*xml" | sort -k4${bbb}
+${bbb}#  ${ccc}rclone delete yosjgc:calls_sms/ --include "[cs]*xml" | sort -k4; rclone lsl yosjgc:calls_sms/ | sort -k4${bbb}
 #
 #  ${ccc}rm [cs]*xml${bbb}
-#
-#  ${ccc}rclone lsl yosjgc:calls_sms/ | sort -k4${xxx}
 
 __EOF__
-play -q ${bin_fs}/${wavbox[ 2 ]} & #-- 2=캐스터네츠~
+# play -q ${bin_fs}/${wavbox[ 2 ]} & #-- 2=캐스터네츠~
