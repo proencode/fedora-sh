@@ -10,8 +10,8 @@ cmdend () {
 }
 cmdreada_s () { #-- cmdreada_s "(1) INPUT: port no" "(입력시 표시 안됨)"
 	echo "${yyy}#-- ${ccc}$1 ${ggg}#-- ${bbb}$2${xxx}"
-	read -s read_s
-	if [ "x$read_s" = "x" ]; then
+	read -s reada_s
+	if [ "x$reada_s" = "x" ]; then
 		exit -1
 	fi
 }
