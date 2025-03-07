@@ -23,13 +23,14 @@ ls -p ~/${to_dir}/ | grep -v '/$' | while read each_file_name #-- 파일 이름�
 do
 	name_str=$(echo ${each_file_name} | sed 's/ /\\ /g')
 	if [ ! -f ~/${from_dir}/${name_str} ]; then
-        echo "${ggg}#-- ${ggg}~/${from_dir}/${name_str} ${ggm}#-- ${mmm}파일이 없음${xxx}"
+        echo "${ggg}#-- ${rrr}~/${from_dir}/${name_str} ${ggm}#-- ${mmm}파일이 없음${xxx}"
 	else
 		diff ~/${from_dir}/${name_str} ~/${to_dir}/${name_str} > ${temp_file}
 		if [ "x$(du ${temp_file} | awk '{print $1}')" == "x0" ]; then
    	     echo "${ggg}#-- ${ggg}${name_str} ${ggg}#-- ${ggg}일치함${xxx}"
 		else
 			cmdrun "diff ~/${from_dir}/${name_str} ~/${to_dir}/${name_str}; ls -l ~/${from_dir}/${name_str} ~/${to_dir}/${name_str}" "${name_str} 비교"
+			echo "${rrr}rsync ${mmm}-avzr ${ccc}~/${from_dir}/${name_str} ${yyy}~/${to_dir}/${name_str};${xxx}    #--"
 		fi
 	fi
 done
