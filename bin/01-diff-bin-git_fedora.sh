@@ -25,14 +25,14 @@ do
 	name_str=$(echo ${each_file_name} | sed 's/ /\\ /g')
 	if [ ! -f ~/${from_dir}/${name_str} ]; then
 		to_seq=$((to_seq+1)) #-- from_seq=$((from_seq+1))
-		echo "${ggg}#-- ${rrr}${name_str} ${ggg}#-- ${mmm}~/git- 에 파일이 없음 ${bbb}${from_seq}${mmm}/${bbb}${to_seq}${xxx}"
+		echo "${ggg}#-- ${rrr}${name_str}${mmm} #-- ${rrr}~/bin 에는 있으나 ${bbb}~/git- 에는 없음 ${rrr}${from_seq}${mmm}:${bbb}${to_seq}${xxx}"
 	else
 		to_seq=$((to_seq + 1)); from_seq=$((from_seq + 1))
 		diff ~/${from_dir}/${name_str} ~/${to_dir}/${name_str} > ${temp_file}
 		if [ "x$(du ${temp_file} | awk '{print $1}')" == "x0" ]; then
-			echo "${ggg}#-- ${ggg}${name_str} ${ggg}#-- ${ggg}일치함 ${ccc}${from_seq}${mmm}/${ccc}${to_seq}${xxx}"
+			echo "${ggg}#-- ${ggg}${name_str} ${ggg}#-- ${ggg}일치함 ${bbb}${from_seq}${rrr}:${bbb}${to_seq}${xxx}"
 		else
-			cmdrun "diff ~/${from_dir}/${name_str} ~/${to_dir}/${name_str}; ls -l ~/${from_dir}/${name_str} ~/${to_dir}/${name_str}" "${name_str} 비교 ${ccc}${from_seq}${mmm}/${ccc}${to_seq}${xxx}"
+			cmdrun "diff ~/${from_dir}/${name_str} ~/${to_dir}/${name_str}; ls -l ~/${from_dir}/${name_str} ~/${to_dir}/${name_str}" "${name_str} 비교 ${from_seq}:${to_seq}${xxx}"
 			echo "${rrr}rsync ${mmm}-avzr ${ccc}~/${from_dir}/${name_str} ${yyy}~/${to_dir}/${name_str};${xxx}    #--"
 		fi
 	fi
