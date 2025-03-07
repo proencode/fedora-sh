@@ -25,7 +25,7 @@ do
 	name_str=$(echo ${each_file_name} | sed 's/ /\\ /g')
 	if [ ! -f ~/${from_dir}/${name_str} ]; then
 		to_seq=$((to_seq+1)) #-- from_seq=$((from_seq+1))
-		echo "${ggg}#-- ${rrr}~/${from_dir}/${name_str} ${ggm}#-- ${mmm}~/bin 에 파일이 없음 ${bbb}${from_seq}${mmm}/${ccc}${to_seq}${xxx}"
+		echo "${ggg}#-- ${rrr}${name_str} ${ggg}#-- ${mmm}~/git- 에 파일이 없음 ${bbb}${from_seq}${mmm}/${bbb}${to_seq}${xxx}"
 	else
 		to_seq=$((to_seq + 1)); from_seq=$((from_seq + 1))
 		diff ~/${from_dir}/${name_str} ~/${to_dir}/${name_str} > ${temp_file}
