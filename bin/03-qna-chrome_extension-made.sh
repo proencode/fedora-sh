@@ -17,7 +17,8 @@ cmdreada () { #-- cmdreada "(2) INPUT: domain name" "호스트 주소 입력"
         read reada
 }
 
-main_dir="~/chrome-extension"
+cd ~/
+main_dir="chrome-extension"
 if [ ! -d ${main_dir} ]; then
 	cmdrun "mkdir ${main_dir}" "(1) 폴더를 만듭니다."
 fi
@@ -74,5 +75,5 @@ __EOF__
 done
 cmdrun "cat ${file_name}"
 echo ""
-echo "${yyy}vi ${ccc}${file_name}    ${bbb}#--///--${xxx}"
+echo "${yyy}cd ~/; vi ${main_dir}/${file_name}    ${bbb}#--///--${xxx}"
 echo ""
