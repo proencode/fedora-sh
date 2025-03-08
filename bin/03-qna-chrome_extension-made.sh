@@ -17,25 +17,31 @@ cmdreada () { #-- cmdreada "(2) INPUT: domain name" "호스트 주소 입력"
         read reada
 }
 
+main_dir="~/chrome-extension"
+if [ ! -d ${main_dir} ]; then
+	cmdrun "mkdir ${main_dir}" "(1) 폴더를 만듭니다."
+fi
+cd ${main_dir}
+
 begin_no=101
-cmdreada "INPUT: QA노트 시작 번호 (3자리 수)" "그냥 Enter 면, ${rrr}[ ${xxx}${begin_no} ${rrr}]"
+cmdreada "INPUT: QA노트 시작 번호 (3자리 수)" "(2) 그냥 Enter 면, ${rrr}[ ${xxx}${begin_no} ${rrr}]"
 if [ "x${reada}" = "x" ]; then
     reada=${begin_no}
 fi
 begin_no=${reada}
 
 end_no=120
-cmdreada "INPUT: QA노트 끝 번호 (3자리 수)" "그냥 Enter 면, ${rrr}[ ${xxx}${end_no} ${rrr}]"
+cmdreada "INPUT: QA노트 끝 번호 (3자리 수)" "(3) 그냥 Enter 면, ${rrr}[ ${xxx}${end_no} ${rrr}]"
 if [ "x${reada}" = "x" ]; then
     reada=${end_no}
 fi
 end_no=${reada}
 
+file_name="qna-chrome-$(date +%y%m%d-%H%M).md"
 date_mark=$(date "+%y%m%d(%a) %H%M")
-a_mark="$(date +%m%d%H)"
+a_mark="$(date +%d%H%M)"
 id_mark="gemini${a_mark}"
 #--------^^^^^^
-file_name="qna-chrome-$(date +%y%m%d-%H%M).md"
 
 cat >> ${file_name} <<__EOF__
 
@@ -50,12 +56,6 @@ do
 ### 🔥 ${id_mark}-${i:1}.
 __EOF__
 done
-cmdrun "cat ${file_name}"
-cat <<__EOF__
-
-${yyy}vi ${ccc}${file_name}    ${bbb}#--///--
-
-__EOF__
 
 cat >> ${file_name} <<__EOF__
 
@@ -73,11 +73,6 @@ do
 __EOF__
 done
 cmdrun "cat ${file_name}"
-cat <<__EOF__
-
-${yyy}vi ${ccc}${file_name}    ${bbb}#--///--
-
-__EOF__
-#--
-#--
-#--
+echo ""
+echo "${yyy}vi ${ccc}${file_name}    ${bbb}#--///--${xxx}"
+echo ""
