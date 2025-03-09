@@ -31,7 +31,7 @@ if [ "x${reada}" = "x" ]; then
 fi
 begin_no=${reada}
 
-end_no=120
+end_no=110
 cmdreada "INPUT: QA노트 끝 번호 (3자리 수)" "(3) 그냥 Enter 면, ${rrr}[ ${xxx}${end_no} ${rrr}]"
 if [ "x${reada}" = "x" ]; then
     reada=${end_no}
