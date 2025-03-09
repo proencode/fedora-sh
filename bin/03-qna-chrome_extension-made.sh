@@ -23,6 +23,7 @@ if [ ! -d ${main_dir} ]; then
 	cmdrun "mkdir ${main_dir}" "(1) 폴더를 만듭니다."
 fi
 cd ${main_dir}
+rsync -avzr ~/bin/03-qna-chrome_extension-made.sh .
 
 begin_no=101
 cmdreada "INPUT: QA노트 시작 번호 (3자리 수)" "(2) 그냥 Enter 면, ${rrr}[ ${xxx}${begin_no} ${rrr}]"
@@ -31,7 +32,7 @@ if [ "x${reada}" = "x" ]; then
 fi
 begin_no=${reada}
 
-end_no=110
+end_no=120
 cmdreada "INPUT: QA노트 끝 번호 (3자리 수)" "(3) 그냥 Enter 면, ${rrr}[ ${xxx}${end_no} ${rrr}]"
 if [ "x${reada}" = "x" ]; then
     reada=${end_no}
@@ -44,19 +45,19 @@ a_mark="$(date +%d%H%M)"
 id_mark="gemini${a_mark}"
 #--------^^^^^^
 
-cat >> ${file_name} <<__EOF__
-
-- ${date_mark} 질문 모음 (qq)
-
-## 🔥 ${id_mark}-${begin_no:1}.
-__EOF__
-start_no=$((begin_no + 1))
-for (( i=start_no; i<=end_no; i++ ))
-do
-    cat >> ${file_name} <<__EOF__
-### 🔥 ${id_mark}-${i:1}.
-__EOF__
-done
+#--- cat >> ${file_name} <<__EOF__
+#--- 
+#--- - ${date_mark} 질문 모음 (qq)
+#--- 
+#--- ## 🔥 ${id_mark}-${begin_no:1}.
+#--- __EOF__
+#--- start_no=$((begin_no + 1))
+#--- for (( i=start_no; i<=end_no; i++ ))
+#--- do
+#---     cat >> ${file_name} <<__EOF__
+#--- ### 🔥 ${id_mark}-${i:1}.
+#--- __EOF__
+#--- done
 
 cat >> ${file_name} <<__EOF__
 
