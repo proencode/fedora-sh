@@ -18,7 +18,12 @@ to_dir="bin"
 cmdrun "cd ~/git-projects/fedora-sh/; git status ; git pull; git ll -1; cd -" "최근의 bin 가져오기"
 echo "${yyy}#-- ${ccc}Press Enter${bbb}: (변경 사항이 있으면, 여기서 중단하고 마무리 해 줘야 합니다.)${xxx}"
 read a
-echo "${bbb}#// Press Enter: (변경 사항이 있으면, 여기서 중단하고 마무리 해 줘야 합니다.)${xxx}"
+cat <<__EOF__
+${bbb}#// Press Enter: (변경 사항이 있으면, 여기서 중단하고 마무리 해 줘야 합니다.)
+#--
+#--
+#--${xxx}
+__EOF__
 
 to_seq=0; from_seq=0
 ls -p ~/${to_dir}/ | grep -v '/$' | while read each_file_name #-- 파일 이름만 한개씩 가져오기
