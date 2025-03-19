@@ -1,0 +1,201 @@
+
+# 우분투 24.04 에 Docker Compose 설치 방법
+https://www.cherryservers.com/blog/install-docker-compose-ubuntu
+
+### 1 단계 : 패키지 목록 업데이트
+먼저 서버에 로그인하고 다음과 같이 패키지 목록을 업데이트하십시오.
+```
+lll=$(tput bold)$(tput setaf 0); rrr=$(tput bold)$(tput setaf 1); ggg=$(tput bold)$(tput setaf 2); yyy=$(tput bold)$(tput setaf 3); bbb=$(tput bold)$(tput setaf 4); mmm=$(tput bold)$(tput setaf 5); ccc=$(tput bold)$(tput setaf 6); www=$(tput bold)$(tput setaf 7); xxx=$(tput bold)$(tput sgr0); uuu=$(tput cuu 2)
+cmdrun () {
+        echo "${yyy}#-- ${ccc}$1 ${mmm}#-- ${bbb}$2${xxx}"; echo "$1" | sh
+        echo "${bbb}#// $1 #-- $2${xxx}"
+}
+cmdend () {
+        echo "${bbb}#--///-- ${mmm}$1${xxx}"
+}
+cmdreada_s () { #-- cmdreada_s "(1) INPUT: port no" "(입력시 표시 안됨)"
+        echo "${yyy}#-- ${ccc}$1 ${ggg}#-- ${bbb}$2${xxx}"
+        read -s reada_s
+}
+cmdreada () { #-- cmdreada "(2) INPUT: domain name" "호스트 주소 입력"
+        echo "${yyy}#-- ${ccc}$1 ${mmm}#-- ${bbb}$2${xxx}"
+        read reada
+}
+
+cmdrun "df -h; free -h; sudo apt update && sudo apt upgrade -y; df -h; free -h" "최신 버전으로 업데이트"
+
+cmdend "1. 우분투 24.04 에 Docker Compose 설치 방법"
+#--
+#--
+#--
+```
+이 명령은 다음에 정의 된 패키지 정보를 다운로드하고 업데이트합니다.
+- /etc/apt/sources.list 파일.
+- /etc/apt/source.list.d 디렉토리.
+
+### 2 단계 : 도커 구성 설치
+
+최신 Docker Compose 플러그인 바이너리를 다운로드하기 전에, 홈 폴더에 cli-plugins 디렉토리를 만들어야 한다.
+```
+if [ ! -d ${HOME}/.docker/cli-plugins/ ]; then
+        cmdrun "mkdir -p ~/.docker/cli-plugins/" "(1a) 디렉토리 만들기"
+else
+        cmdrun "ls -lR ~/.docker/cli-plugins/" "(1b) 디렉토리 확인"
+fi
+
+is_find=$(grep ".docker/cli-plugins" ${HOME}/.profile)
+if [ "x${is_find}" = "x" ]; then
+        cat >> ${HOME}/.profile <<__EOF__
+
+# docker compose 를 위한 폴더 지정 ($(date +%y%m%d-%H%M))
+if [ -d "\$HOME/.docker/cli-plugins" ] ; then
+        PATH="\$HOME/.docker/cli-plugins:\$PATH"
+fi
+__EOF__
+        cmdrun "tail -8 ${HOME}/.profile" "(2) .profile 에 추가한 내용"
+        cmdrun "source ${HOME}/.profile" "(3) .profile 반영"
+fi
+cmdrun "ls -alR ~/.docker/cli-plugins/" "(4) 디렉토리 확인"
+cmdend "2. 홈 폴더에 cli-plugins 디렉토리 만들기"
+#--
+#--
+#--
+```
+
+### 3. 최종 버전 받기
+
+[ 공식 GitHub 저장소 ](https://github.com/docker/compose/releases) 에서 최종버전을 확인한 다음, 아래 스크립트에 입력한다.
+
+```
+latestVersion="2.33.1"
+echo "${ggg}#----> ${bbb}Type docker compose latest version, Or press Enter to ${rrr}[ ${yyy}${latestVersion} ${rrr}] ${bbb}:${xxx}"
+read a
+if [ "x${a}" != "x" ]; then
+        latestVersion=$a
+fi
+echo "${rrr}[ ${yyy}${latestVersion} ${rrr}]${xxx}"
+cmdrun "curl -SL https://github.com/docker/compose/releases/download/v${latestVersion}/docker-compose-linux-x86_64 -o ~/.docker/cli-plugins/docker-compose" "(1) 플러그인 다운로드"
+cmdrun "ls -lh ~/.docker/cli-plugins" "(2) docker-compose 파일이 있는지 확인한다."
+cmdrun "chmod +x ~/.docker/cli-plugins/docker-compose" "(3) 파일에 실행권한을 준다."
+cmdrun "docker compose version" "(4) 설치가 제대로 됐는지 알아보기 위해 docker 버전을 확인한다."
+cmdend "3. https://github.com/docker/compose/releases 의 최종버전 받기"
+#--
+#--
+#--
+```
+
+[ Docker를 제거하는 방법 ](https://www.cherryservers.com/blog/how-to-uninstall-docker)
+
+### 3 단계 : Docker Compose를 사용하여 LAMP 스택 배포
+
+
+## kaosorder 를 docker 에서 실행하는 스크립트 (ing)
+
+### 1. `/usr/tomcat/latest/webapps/kaosorder.war`
+
+1. kaos 서버에 있는 war 파일 확인
+```
+14:06:07 (토) 2025-03-01 kaosco@santa /usr/tomcat/latest
+latest $ ll /usr/tomcat/apache-tomcat-6.0.29/webapps/kaosorder.war
+-rw-r--r-- 1 root root 41697125  6월 29  2022 /usr/tomcat/apache-tomcat-6.0.29/webapps/kaosorder.war
+```
+
+2. 백업서버의 war 파일을 로컬로 복사한다.
+```
+if [ ! -d ~/war-from-santa ]; then
+    cmdrun "mkdir ~/war-from-santa" "(1a) war 파일 보관 디렉토리 만들기"
+fi
+cd ~/war-from-santa
+cmdreada_s "(1b) INPUT: port no" "(입력시 표시 안됨)"
+port_no=${reada_s}
+cmdreada "(2) INPUT: userATdomain" "호스트 유저,주소 입력"
+user_domain=${reada}
+#-- 호스트의 폴더,파일이름을 지정한다.
+war_dir="copy-from-kaoscoATsanta/war-from-santa/"
+war_name="kaosorder.war-220629-usr_tomcat_latest_webapps-41.697.125byte"
+cmdrun "rsync -avzr -e 'ssh -p ${port_no}' ${user_domain}:${war_dir}/${war_name} ." "(3) war 파일 다운로드"
+cmdrun "mv ${war_name} kaosorder.war" "(4) 파일 이름변경"
+cmdend "1-2. 백업서버의 war 파일을 로컬로 복사한다."
+#--
+#--
+#--
+```
+
+### 2. `vi Dockerfile` 로 파일 작성
+```
+FROM tomcat:8.5-jre8
+COPY kaosorder.war /usr/local/tomcat/webapps/kaosorder.war
+```
+### 3. `vi docker-compose.yml` 로 파일 작성
+```
+version: '3.8' #-- Docker Compose 파일 버전입니다.
+services: #-- 실행할 컨테이너들을 정의합니다.
+
+  web: #-- Grails 애플리케이션 컨테이너입니다.
+    build: . #-- 현재 디렉토리의 Dockerfile을 사용하여 이미지를 빌드합니다.
+    ports: #-- 호스트의 8077 포트를 컨테이너의 8080 포트에 매핑합니다.
+      - "8077:8080"
+    depends_on: #-- db 컨테이너가 먼저 실행되어야 함을 명시합니다.
+      - db
+###    environment: #-- Grails 애플리케이션에 필요한 환경 변수 (데이터베이스 연결 정보) 를 설정합니다.
+###      - SPRING_DATASOURCE_URL=jdbc:mysql://db:3306/grailsdb
+###      - SPRING_DATASOURCE_USERNAME=grailsuser
+###      - SPRING_DATASOURCE_PASSWORD=grailspassword
+    environment: #-- Grails 애플리케이션에 필요한 환경 변수 (데이터베이스 연결 정보) 를 설정합니다.
+      DB_TYPE: mysql
+      DB_HOST: db
+      DB_PORT: 3306
+      DB_USER: kaosorder2
+      DB_PASS: zkdhtm2010
+      DB_NAME: kaosorder2
+      restart: unless-stopped
+    container_name:
+      contkaos
+
+  db: #-- MySQL 데이터베이스 컨테이너입니다.
+    image: mysql:8.0.41 #-- mysql:8.0.41: MySQL 8.0.41 이미지를 사용합니다.
+    environment: #-- MySQL 환경 변수 (루트 비밀번호, 데이터베이스 이름, 사용자 이름, 비밀번호) 를 설정합니다.
+      MYSQL_ROOT_PASSWORD: ds2axa
+      MYSQL_DATABASE: kaosorder2
+      MYSQL_USER: kaosorder2
+      MYSQL_PASSWORD: zkdhtm2010
+    ports: #-- 호스트의 3306 포트를 컨테이너의 3306 포트에 매핑합니다.
+      - "3306:3306" #-- (개발 환경에서만 사용하고, 프로덕션 환경에서는 제거하는 것이 좋습니다.)
+    volumes: #-- MySQL 데이터를 영구적으로 저장하기 위해 mysql-data 볼륨을 사용합니다.
+      - mysql-data:/var/lib/mysql
+    container_name:
+      kaosdb
+
+### volumes: #-- Docker 볼륨을 정의합니다.
+###   mysql-data: #-- MySQL 데이터를 저장하는 볼륨입니다.
+```
+
+### 4. `ls -l` 명령으로 만들어진 파일 확인
+```
+14:20:02토250301 yosj@u24041svr-VB ~/kaos-docker-compose-with-gemini
+kaos-docker-compose-with-gemini $ ls -l
+total 40728
+-rw-rw-r-- 1 yosj yosj       80  3월  1 14:18 Dockerfile
+-rw-rw-r-- 1 yosj yosj     2047  3월  1 14:17 docker-compose.yml
+-rw-r--r-- 1 yosj yosj 41697125  6월 29  2022 kaosorder.war
+```
+
+### 5. Docker Compose 실행
+
+docker-compose.yml 파일이 있는 디렉토리에서 다음 명령어를 실행하여 Docker Compose를 실행합니다.
+```
+docker-compose up --build -d
+```
+- --build: 이미지가 없는 경우 이미지를 빌드합니다.
+- -d: 백그라운드에서 컨테이너를 실행합니다.
+
+6. 웹 브라우저에서 http://localhost:8080 에 접속하여 Grails 프로젝트가 실행되는지 확인합니다.
+
+## proenpi@pi4b 의 dockercompose.yml 비교
+```
+ cat 11-ls-l-docker-compose.sh
+#!bin/sh
+
+ls -l ./archive/tpnote-backup-240316/220914-projects-tp/backup-old-running-Project/018-docker-wiki.js/docker-compose.yml ./archive/tpnote-backup-240316/220914-projects-tp/zz_original_dirs/docker-alpine-apache/anand/Docker-Httpd-Tomcat/docker-compose.yml ./archive/tpnote-backup-240316/220914-projects-tp/zz_original_dirs/docker-alpine-apache/sanjay/alpine-apache/apache/docker-compose-template ./archive/tpnote-backup-240316/220914-projects-tp/zz_original_dirs/docker-alpine-apache/sanjay/alpine-apache/apache/docker-compose-template/docker-compose.yml ./archive/tpnote-backup-240316/220914-projects-tp/zz_original_dirs/gb-tomcat/docker-httpd-tomcat/Docker-Httpd-Tomcat/docker-compose.yml ./archive/tpnote-backup-240316/220914-projects-tp/zz_original_dirs/gb-tomcat/gb-tomcat/docker-compose.yml ./archive/tpnote-backup-240316/220914-projects-tp/running-projects/ksam21/047-grails4-ksam---ING/all-files/mysql-docker/docker-compose.yml ./archive/tpnote-backup-240316/220914-projects-tp/running-projects/old-files/045-grails4-ssc-web_수정중/z00-mongodb/docker-compose.yml ./archive/tpnote-backup-240316/220914-projects-tp/running-projects/old-files/018-g4-vue___210624-새로진행중/docker-for-mongodb/docker-compose.yml ./archive/tpnote-backup-240316/220914-projects-tp/running-projects/old-files/029-grails4-tutorial/docker-for-mongodb/docker-compose.yml ./archive/tpnote-backup-240316/220914-projects-tp/300-create-suilgong/mongodb/docker-compose.yml ./archive/tpnote-backup-240316/220914-projects-tp/303-todo-app/original-todo-app/docker-compose.yml ./archive/tpnote-backup-240316/220914-projects-tp/303-todo-app/todo-app/docker-compose.yml ./archive/tpnote-backup-240316/megasc.MEGA/보관폴더/1-bin-scripts/021-docker/003-docker-jekyll/docker-compose.yml ./archive/tpnote-backup-240316/megasc.MEGA/보관폴더/1-bin-scripts/021-docker/013-docker-httpd-tomcat/Docker-Httpd-Tomcat/docker-compose.yml ./archive/tpnote-backup-240316/megasc.MEGA/보관폴더/1-bin-scripts/021-docker/002-docker-tomcat/httpd-tomcat/Docker-Httpd-Tomcat/docker-compose.yml ./archive/tpnote-backup-240316/megasc.MEGA/dd.njsc/1-bin-scripts/021-docker/003-docker-jekyll/docker-compose.yml ./archive/tpnote-backup-240316/megasc.MEGA/dd.njsc/1-bin-scripts/021-docker/013-docker-httpd-tomcat/Docker-Httpd-Tomcat/docker-compose.yml ./archive/tpnote-backup-240316/megasc.MEGA/dd.njsc/1-bin-scripts/021-docker/002-docker-tomcat/httpd-tomcat/Docker-Httpd-Tomcat/docker-compose.yml ./archive/tpnote-backup-240316/ysjeon555.mega/ksam21/047-grails4-ksam---ING/all-files/mysql-docker/docker-compose.yml ./archive/tpnote-backup-240316/220914-projects-tp-big-files/old-files/001-docker-wiki.js/docker-compose.yml ./archive/tpnote-backup-240316/220914-projects-tp-big-files/old-files/015-grails-vue/docker-mongodb/docker-compose.yml ./archive/tpnote-backup-240316/220914-projects-tp-big-files/old-files/014-spas-with-grails-vue/docker-mongodb/docker-compose.yml ./archive/tpnote-backup-240316/220914-projects-tp-big-files/old-files/018-g4-vue___진행중/mongodb/docker-compose.yml ./archive/not_use-myusb-at-pi4b/etc-files/orangepi_jammu_arm64/docker-compose-plugin_2.21.0-1~ubuntu.22.04~jammy_arm64.deb ./archive/not_use-myusb-at-pi4b/etc-files/virtualbox_jammy_amd64/docker-compose-plugin_2.21.0-1~ubuntu.22.04~jammy_amd64.deb ./git-projects/run_sh/backup_wikijsdb/wikijs-files/docker-compose.yml ./git-projects/1-bin-scripts/docker/013-docker-httpd-tomcat/Docker-Httpd-Tomcat/docker-compose.yml ./git-projects/1-bin-scripts/docker/yy.old-files/003-docker-jekyll/docker-compose.yml ./git-projects/1-bin-scripts/docker/018-docker-wiki.js/docker-compose.yml ./git-projects/1-bin-scripts/docker/002-docker-tomcat/httpd-tomcat/Docker-Httpd-Tomcat/docker-compose.yml ./git-projects/1-bin-scripts/old-1-bin-scripts/proj-run/old-files/001-docker-wiki.js/docker-compose.yml ./git-projects/1-bin-scripts/old-1-bin-scripts/proj-run/old-files/021-docker-wiki.js/docker-compose.yml ./git-projects/1-bin-scripts/old-1-bin-scripts/proj-run/old-files/docker-alpine-ruby-mongo/docker-compose.yml ./git-projects/1-bin-scripts/old-1-bin-scripts/proj-run/old-files/018-g4-vue/mongodb/docker-compose.yml ./git-projects/1-bin-scripts/old-1-bin-scripts/proj-run/old-files/029-grails4-tutorial/docker-for-mongodb/docker-compose.yml ./git-projects/1-bin-scripts/old-1-bin-scripts/proj-run/047-grails4-ksam---ING/all-files/mysql-docker/docker-compose.yml ./git-projects/gate242/run_sh/old-21-wikijs-docker/wikijs-files/docker-compose.yml ./git-projects/ubuntu-sh/10-wikijs-docker/wikijs-files/docker-compose.yml ./git-projects/fedora-sh/13-xls2mysql-docker-compose/docker-compose.yml ./copy-from-kaoscoATsanta/kaosco/project-kaosco/01-proj-script/1-bin-scripts/021-docker/013-docker-httpd-tomcat/Docker-Httpd-Tomcat/docker-compose.yml ./copy-from-kaoscoATsanta/kaosco/project-kaosco/01-proj-script/1-bin-scripts/021-docker/yy.old-files/003-docker-jekyll/docker-compose.yml ./copy-from-kaoscoATsanta/kaosco/project-kaosco/01-proj-script/1-bin-scripts/021-docker/018-docker-wiki.js/docker-compose.yml ./copy-from-kaoscoATsanta/kaosco/project-kaosco/01-proj-script/1-bin-scripts/021-docker/002-docker-tomcat/httpd-tomcat/Docker-Httpd-Tomcat/docker-compose.yml ./copy-from-kaoscoATsanta/kaosco/project-kaosco/01-proj-script/1-bin-scripts/run-proj/old-files/001-docker-wiki.js/docker-compose.yml ./copy-from-kaoscoATsanta/kaosco/project-kaosco/01-proj-script/1-bin-scripts/run-proj/old-files/021-docker-wiki.js/docker-compose.yml ./copy-from-kaoscoATsanta/kaosco/project-kaosco/01-proj-script/1-bin-scripts/run-proj/old-files/docker-alpine-ruby-mongo/docker-compose.yml ./copy-from-kaoscoATsanta/kaosco/project-kaosco/01-proj-script/1-bin-scripts/run-proj/old-files/018-g4-vue/mongodb/docker-compose.yml ./copy-from-kaoscoATsanta/kaosco/project-kaosco/01-proj-script/1-bin-scripts/run-proj/old-files/029-grails4-tutorial/docker-for-mongodb/docker-compose.yml ./copy-from-kaoscoATsanta/kaosco/project-kaosco/01-proj-script/1-bin-scripts/run-proj/047-grails4-ksam---ING/all-files/mysql-docker/docker-compose.yml  |  sort -k5 -k8 -k 6 -k 7 -k 9 #-- 5size 6mm 7dd 8yy 9name
+17:20:49토250301 proenpi@pi4b ~
+```
