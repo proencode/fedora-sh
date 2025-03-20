@@ -61,11 +61,10 @@ done
 cmdrun "ls -hl --color *xml*"
 
 cmdrun "rclone copy ./ --include \"[cs]*7z\" yosjgc:calls_sms/"
-cmdrun "rclone lsl yosjgc:calls_sms/ --include \"[cs]*xml*\" | sort -k4"
-
+cmdrun "rclone lsl yosjgc:calls_sms/ | awk -F\"s-20\" '{print \$2\"__\"\$1}' | sort | awk -F\"__\" '{print \$2\"s-20\"\$1}'" "(1) yosjgc:calls_sms/ 로 백업한 내역"
 cat <<__EOF__
 
-${bbb}#  ${ccc}rclone delete yosjgc:calls_sms/ --include "[cs]*xml" | sort -k4; rclone lsl yosjgc:calls_sms/ | sort -k4${bbb}
+${bbb}#  ${ccc}rclone delete yosjgc:calls_sms/ --include "[cs]*xml" | awk -F\"s-20\" '{print \$2\"__\"\$1}' | sort | awk -F\"__\" '{print \$2\"s-20\"\$1}'; rclone lsl yosjgc:calls_sms/ | sort | awk -F\" \" '{print \$2\"s-20\"\$1}'${bbb}
 #
 #  ${ccc}rm [cs]*xml${bbb}
 
