@@ -18,31 +18,41 @@ cmdreada () { #-- cmdreada "(2) INPUT: domain name" "호스트 주소 입력"
 }
 
 cd ~/
-main_dir="chrome-extension"
-if [ ! -d ${main_dir} ]; then
-	cmdrun "mkdir ${main_dir}" "(1) 폴더를 만듭니다."
+date_ymd=$(date +%y%m%d)
+date_HM=$(date +%H%M)
+date_dHM=$(date +%d%H%M)
+date_a=$(date +%a)
+
+todays_dir="qna-chrome-extension-${date_ymd}-${date_HM}"
+chromeEx_dir="${todays_dir}/chrome-extension"
+if [ ! -d ${chromeEx_dir} ]; then
+	cmdrun "mkdir -p ${chromeEx_dir}" "(1) 크롬확장 폴더를 만듭니다."
 fi
-cd ${main_dir}
+old_ver_dir="${todays_dir}/old_version"
+if [ ! -d ${chromeEx_dir} ]; then
+	cmdrun "mkdir -p ${old_ver_dir}" "(2) 수정전 파일 백업폴더를 만듭니다."
+fi
+
+cd ${chromeEx_dir}
 rsync -avzr ~/bin/03-qna-chrome_extension-made.sh .
 
 begin_no=101
-cmdreada "INPUT: QA노트 시작 번호 (3자리 수)" "(2) 그냥 Enter 면, ${rrr}[ ${xxx}${begin_no} ${rrr}]"
+cmdreada "INPUT: QA노트 시작 번호 (3자리 수)" "(3) 그냥 Enter 면, ${rrr}[ ${xxx}${begin_no} ${rrr}]"
 if [ "x${reada}" = "x" ]; then
     reada=${begin_no}
 fi
 begin_no=${reada}
 
-end_no=120
-cmdreada "INPUT: QA노트 끝 번호 (3자리 수)" "(3) 그냥 Enter 면, ${rrr}[ ${xxx}${end_no} ${rrr}]"
+end_no=110
+cmdreada "INPUT: QA노트 끝 번호 (3자리 수)" "(4) 그냥 Enter 면, ${rrr}[ ${xxx}${end_no} ${rrr}]"
 if [ "x${reada}" = "x" ]; then
     reada=${end_no}
 fi
 end_no=${reada}
 
-file_name="qna-chrome-$(date +%y%m%d-%H%M).md"
-date_mark=$(date "+%y%m%d(%a) %H%M")
-a_mark="$(date +%d%H%M)"
-id_mark="gemini${a_mark}"
+file_name="qna-chrome-${date_ymd}-${date_HM}.md"
+date_mark="${date_ymd}(${date_a}) ${date_HM}"
+id_mark="gemini${date_dHM}"
 #--------^^^^^^
 
 #--- cat >> ${file_name} <<__EOF__
@@ -64,17 +74,23 @@ cat >> ${file_name} <<__EOF__
 - ${date_mark} 질문과 답변 (qna)
 
 ## 🔥 ${id_mark}-${begin_no:1}.
-### 🔋 ${a_mark}-${begin_no:1}.
+### 🔋 ${date_dHM}-${begin_no:1}.
 __EOF__
 start_no=$((begin_no + 1))
 for (( i=start_no; i<=end_no; i++ ))
 do
     cat >> ${file_name} <<__EOF__
 ### 🔥 ${id_mark}-${i:1}.
-### 🔋 ${a_mark}-${i:1}.
+### 🔋 ${date_dHM}-${i:1}.
 __EOF__
 done
 cmdrun "cat ${file_name}"
+
+cat <<__EOF__
+
+start_no=$(( end_no + 1 )); end_no=$(( end_no + 10 )); echo ""; for (( i=start_no; i<=end_no; i++ )); do echo "### 🔥 ${id_mark}-\${i:1}."; echo "### 🔋 ${date_dHM}-\${i:1}."; done
+__EOF__
+
 echo ""
-echo "${yyy}cd ~/; vi ${main_dir}/${file_name}    ${bbb}#--///--${xxx}"
+echo "${yyy}cd ~/; vi ${chromeEx_dir}/${file_name}    ${bbb}#--///--${xxx}"
 echo ""
