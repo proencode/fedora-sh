@@ -72,7 +72,7 @@ __EOF__
 done
 cat >> ${file_name} <<__EOF__
 
-start_no=$(( end_no + 1 )); end_no=$(( end_no + 10 )); echo ""; for (( i=start_no; i<=end_no; i++ )); do echo "### 🔥 ${id_mark}-\${i:1}."; echo "### 🔋 ${date_dHM}-\${i:1}."; done
+start_no=$(( end_no + 1 )); lines=10; echo ""; for (( i=start_no; i<=\$(( \$start_no + \$lines - 1 )); i++ )); do echo "### 🔥 ${id_mark}-\${i:1}."; echo "### 🔋 ${date_dHM}-\${i:1}."; done
 __EOF__
 
 cmdrun "cat ${file_name}"
