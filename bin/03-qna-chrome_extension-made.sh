@@ -17,23 +17,23 @@ cmdreada () { #-- cmdreada "(2) INPUT: domain name" "호스트 주소 입력"
         read reada
 }
 
-cd ~/
 date_ymd=$(date +%y%m%d)
 date_HM=$(date +%H%M)
 date_dHM=$(date +%d%H%M)
 date_a=$(date +%a)
+qna_dir="qna-chrome-extension" #-- -${date_ymd}-${date_HM}"
+chromeEx_dir="${qna_dir}/chrome-extension"
 
-todays_dir="qna-chrome-extension-${date_ymd}-${date_HM}"
-chromeEx_dir="${todays_dir}/chrome-extension"
+cd ~/
 if [ ! -d ${chromeEx_dir} ]; then
 	cmdrun "mkdir -p ${chromeEx_dir}" "(1) 크롬확장 폴더를 만듭니다."
 fi
-old_ver_dir="${todays_dir}/old_version"
-if [ ! -d ${chromeEx_dir} ]; then
+old_ver_dir="${qna_dir}/old_version"
+if [ ! -d ${old_ver_dir} ]; then
 	cmdrun "mkdir -p ${old_ver_dir}" "(2) 수정전 파일 백업폴더를 만듭니다."
 fi
 
-cd ${chromeEx_dir}
+cd ${qna_dir}
 rsync -avzr ~/bin/03-qna-chrome_extension-made.sh .
 
 begin_no=101
@@ -54,20 +54,6 @@ file_name="qna-chrome-${date_ymd}-${date_HM}.md"
 date_mark="${date_ymd}(${date_a}) ${date_HM}"
 id_mark="gemini${date_dHM}"
 #--------^^^^^^
-
-#--- cat >> ${file_name} <<__EOF__
-#--- 
-#--- - ${date_mark} 질문 모음 (qq)
-#--- 
-#--- ## 🔥 ${id_mark}-${begin_no:1}.
-#--- __EOF__
-#--- start_no=$((begin_no + 1))
-#--- for (( i=start_no; i<=end_no; i++ ))
-#--- do
-#---     cat >> ${file_name} <<__EOF__
-#--- ### 🔥 ${id_mark}-${i:1}.
-#--- __EOF__
-#--- done
 
 cat >> ${file_name} <<__EOF__
 
