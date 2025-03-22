@@ -78,5 +78,5 @@ __EOF__
 cmdrun "cat ${file_name}"
 
 echo ""
-echo "${yyy}cd ~/; vi ${qna_dir}/${file_name}    ${bbb}#--///--${xxx}"
+echo "${yyy}cd ~/${qna_dir}; vi ${file_name}    ${bbb}#--///--${xxx}"
 echo ""
