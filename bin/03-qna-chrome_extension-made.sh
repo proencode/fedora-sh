@@ -61,6 +61,10 @@ cat >> ${file_name} <<__EOF__
 
 ## 🔥 ${id_mark}-${begin_no:1}.
 ### 🔋 ${date_dHM}-${begin_no:1}.
+
+## 🔥 ${id_mark}-${begin_no:1}a.
+### 🔋 ${date_dHM}-${begin_no:1}a.
+
 __EOF__
 start_no=$((begin_no + 1))
 for (( i=start_no; i<=end_no; i++ ))
@@ -68,11 +72,15 @@ do
     cat >> ${file_name} <<__EOF__
 ### 🔥 ${id_mark}-${i:1}.
 ### 🔋 ${date_dHM}-${i:1}.
+
+### 🔥 ${id_mark}-${i:1}a.
+### 🔋 ${date_dHM}-${i:1}a.
+
 __EOF__
 done
 cat >> ${file_name} <<__EOF__
 
-start_no=$(( end_no + 1 )); lines=10; echo ""; for (( i=start_no; i<=\$(( \$start_no + \$lines - 1 )); i++ )); do echo "### 🔥 ${id_mark}-\${i:1}."; echo "### 🔋 ${date_dHM}-\${i:1}."; done
+start_no=$(( end_no + 1 )); lines=10; echo ""; for (( i=start_no; i<=\$(( \$start_no + \$lines - 1 )); i++ )); do echo "### 🔥 ${id_mark}-\${i:1}."; echo "### 🔋 ${date_dHM}-\${i:1}."; echo ""; echo "### 🔥 ${id_mark}-\${i:1}a."; echo "### 🔋 ${date_dHM}-\${i:1}a."; echo ""; done
 __EOF__
 
 cmdrun "cat ${file_name}"
