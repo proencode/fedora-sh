@@ -52,7 +52,7 @@ end_no=${reada}
 
 file_name="qna-chrome-${date_ymd}-${date_HM}.md"
 date_mark="${date_ymd}(${date_a}) ${date_HM}"
-id_mark="gemini${date_dHM}"
+id_mark="gem${date_dHM}"
 #--------^^^^^^
 
 cat >> ${file_name} <<__EOF__
@@ -78,5 +78,5 @@ __EOF__
 cmdrun "cat ${file_name}"
 
 echo ""
-echo "${yyy}cd ~/; vi ${chromeEx_dir}/${file_name}    ${bbb}#--///--${xxx}"
+echo "${yyy}cd ~/; vi ${qna_dir}/${file_name}    ${bbb}#--///--${xxx}"
 echo ""
