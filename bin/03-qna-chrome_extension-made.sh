@@ -84,12 +84,12 @@ do
 ### 🔋 ${date_dHM}-${i:1}.
 __EOF__
 done
-cmdrun "cat ${file_name}"
-
-cat <<__EOF__
+cat >> ${file_name} <<__EOF__
 
 start_no=$(( end_no + 1 )); end_no=$(( end_no + 10 )); echo ""; for (( i=start_no; i<=end_no; i++ )); do echo "### 🔥 ${id_mark}-\${i:1}."; echo "### 🔋 ${date_dHM}-\${i:1}."; done
 __EOF__
+
+cmdrun "cat ${file_name}"
 
 echo ""
 echo "${yyy}cd ~/; vi ${chromeEx_dir}/${file_name}    ${bbb}#--///--${xxx}"
