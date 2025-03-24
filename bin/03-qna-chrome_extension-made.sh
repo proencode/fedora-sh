@@ -59,11 +59,11 @@ cat >> ${file_name} <<__EOF__
 
 - ${date_mark} 질문과 답변 (qna)
 
-## 🔥 ${id_mark}-${begin_no:1}.
-### 🔋 ${date_dHM}-${begin_no:1}.
-
 ## 🔥 ${id_mark}-${begin_no:1}a.
 ### 🔋 ${date_dHM}-${begin_no:1}a.
+
+## 🔥 ${id_mark}-${begin_no:1}.
+### 🔋 ${date_dHM}-${begin_no:1}.
 
 __EOF__
 start_no=$((begin_no + 1))
@@ -73,14 +73,11 @@ do
 ### 🔥 ${id_mark}-${i:1}.
 ### 🔋 ${date_dHM}-${i:1}.
 
-### 🔥 ${id_mark}-${i:1}a.
-### 🔋 ${date_dHM}-${i:1}a.
-
 __EOF__
 done
 cat >> ${file_name} <<__EOF__
 
-start_no=$(( end_no + 1 )); lines=10; echo ""; for (( i=start_no; i<=\$(( \$start_no + \$lines - 1 )); i++ )); do echo "### 🔥 ${id_mark}-\${i:1}."; echo "### 🔋 ${date_dHM}-\${i:1}."; echo ""; echo "### 🔥 ${id_mark}-\${i:1}a."; echo "### 🔋 ${date_dHM}-\${i:1}a."; echo ""; done
+start_no=$(( end_no + 1 )); lines=10; echo ""; echo "### 🔥 ${id_mark}-\${i:1}a."; echo "### 🔋 ${date_dHM}-\${i:1}a."; echo ""; for (( i=start_no; i<=\$(( \$start_no + \$lines - 1 )); i++ )); do echo "### 🔥 ${id_mark}-\${i:1}."; echo "### 🔋 ${date_dHM}-\${i:1}."; echo ""; done
 __EOF__
 
 cmdrun "cat ${file_name}"
