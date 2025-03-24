@@ -36,14 +36,14 @@ fi
 cd ${qna_dir}
 rsync -avzr ~/bin/03-qna-chrome_extension-made.sh .
 
-begin_no=101
+begin_no=100
 cmdreada "INPUT: QA노트 시작 번호 (3자리 수)" "(3) 그냥 Enter 면, ${rrr}[ ${xxx}${begin_no} ${rrr}]"
 if [ "x${reada}" = "x" ]; then
     reada=${begin_no}
 fi
 begin_no=${reada}
 
-end_no=110
+end_no=109
 cmdreada "INPUT: QA노트 끝 번호 (3자리 수)" "(4) 그냥 Enter 면, ${rrr}[ ${xxx}${end_no} ${rrr}]"
 if [ "x${reada}" = "x" ]; then
     reada=${end_no}
@@ -62,6 +62,7 @@ cat >> ${file_name} <<__EOF__
 ## 🔥 ${id_mark}-${begin_no:1}a.
 ### 🔋 ${date_dHM}-${begin_no:1}a.
 
+
 ## 🔥 ${id_mark}-${begin_no:1}.
 ### 🔋 ${date_dHM}-${begin_no:1}.
 
@@ -77,7 +78,7 @@ __EOF__
 done
 cat >> ${file_name} <<__EOF__
 
-start_no=$(( end_no + 1 )); lines=10; echo ""; echo "### 🔥 ${id_mark}-\${i:1}a."; echo "### 🔋 ${date_dHM}-\${i:1}a."; echo ""; for (( i=start_no; i<=\$(( \$start_no + \$lines - 1 )); i++ )); do echo "### 🔥 ${id_mark}-\${i:1}."; echo "### 🔋 ${date_dHM}-\${i:1}."; echo ""; done
+start_no=$(( end_no + 1 )); lines=10; echo ""; echo "### 🔥 ${id_mark}-\${start_no:1}a."; echo "### 🔋 ${date_dHM}-\${start_no:1}a."; echo ""; echo ""; for (( i=start_no; i<=\$(( \$start_no + \$lines - 1 )); i++ )); do echo "### 🔥 ${id_mark}-\${i:1}."; echo "### 🔋 ${date_dHM}-\${i:1}."; echo ""; done
 __EOF__
 
 cmdrun "cat ${file_name}"
