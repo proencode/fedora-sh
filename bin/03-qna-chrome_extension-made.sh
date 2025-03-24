@@ -52,8 +52,9 @@ end_no=${reada}
 
 file_name="qna-chrome-${date_ymd}-${date_HM}.md"
 date_mark="${date_ymd}(${date_a}) ${date_HM}"
-id_mark="gem${date_dHM}"
-#--------^^^^^^
+my_id="gem"
+#------^^^^^^
+id_mark="${my_id}${date_dHM}"
 
 cat >> ${file_name} <<__EOF__
 
