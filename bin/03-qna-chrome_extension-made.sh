@@ -60,7 +60,7 @@ cat >> ${file_name} <<__EOF__
 
 - ${date_mark} 질문과 답변 (qna)
 
-## 🔥 ${id_mark}-${begin_no:1}a.
+### 🔥 ${id_mark}-${begin_no:1}a.
 ### 🔋 ${date_dHM}-${begin_no:1}a.
 
 
