@@ -31,31 +31,25 @@ if [ ! -d ${chromeEx_dir} ]; then
 else
 	cmdrun "ls -l ${chromeEx_dir}" "(1) 크롬확장 폴더내역 입니다."
 fi
-backup_chrome_dir="${qna_dir}/backup-chrome-extension"
-if [ ! -d ${backup_chrome_dir} ]; then
-	cmdrun "mkdir -p ${backup_chrome_dir}" "(2) 완성된 chrome-extension 을 보관하는 폴더를 만듭니다."
+chromeExtension_md_dir="${qna_dir}/old-chrome-extension-md"
+if [ ! -d ${chromeExtension_md_dir} ]; then
+	cmdrun "mkdir -p ${chromeExtension_md_dir}" "(2) .md 와 완성된 chrome-extension 을 보관하는 폴더를 만듭니다."
 else
-	cmdrun "ls -l ${backup_chrome_dir}" "(2) 완성된 chrome-extension 을 보관하는 폴더내역 입니다."
-fi
-old_chrome_md_dir="${qna_dir}/old-chrome-md"
-if [ ! -d ${old_chrome_md_dir} ]; then
-	cmdrun "mkdir -p ${old_chrome_md_dir}" "(3) 공동작성한 .md 문서를 보관하는 폴더를 만듭니다."
-else
-	cmdrun "ls -l ${old_chrome_md_dir}" "(3) 공동작성한 .md 문서를 보관하는 폴더내역 입니다."
+	cmdrun "ls -l ${chromeExtension_md_dir}" "(2) .md 와 완성된 chrome-extension 을 보관하는 폴더내역 입니다."
 fi
 
 cd ${qna_dir}
 rsync -avzr ~/bin/03-qna-chrome_extension-made.sh .
 
 begin_no=100
-cmdreada "INPUT: QA노트 시작 번호 (3자리 수)" "(4) 그냥 Enter 면, ${rrr}[ ${xxx}${begin_no} ${rrr}]"
+cmdreada "INPUT: QA노트 시작 번호 (3자리 수)" "(3) 그냥 Enter 면, ${rrr}[ ${xxx}${begin_no} ${rrr}]"
 if [ "x${reada}" = "x" ]; then
     reada=${begin_no}
 fi
 begin_no=${reada}
 
 end_no=109
-cmdreada "INPUT: QA노트 끝 번호 (3자리 수)" "(5) 그냥 Enter 면, ${rrr}[ ${xxx}${end_no} ${rrr}]"
+cmdreada "INPUT: QA노트 끝 번호 (3자리 수)" "(4) 그냥 Enter 면, ${rrr}[ ${xxx}${end_no} ${rrr}]"
 if [ "x${reada}" = "x" ]; then
     reada=${end_no}
 fi
@@ -65,7 +59,7 @@ file_name="qna-chrome-${date_ymd}-${date_HM}.md"
 date_mark="${date_ymd}(${date_a}) ${date_HM}"
 my_id="gem"
 #------^^^^^^
-cmdreada "INPUT: 일련번호 앞의 접두어" "(6) 그냥 Enter 면, ${rrr}[ ${xxx}${my_id} ${rrr}]"
+cmdreada "INPUT: 일련번호 앞의 접두어" "(5) 그냥 Enter 면, ${rrr}[ ${xxx}${my_id} ${rrr}]"
 if [ "x${reada}" = "x" ]; then
     reada=${my_id}
 fi
