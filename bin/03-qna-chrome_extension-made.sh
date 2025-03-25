@@ -22,23 +22,28 @@ date_HM=$(date +%H%M)
 date_dHM=$(date +%d%H%M)
 date_a=$(date +%a)
 
-qna_dir="qna-chrome-extension" #-- -${date_ymd}-${date_HM}"
-
 cd ~/
-chromeEx_dir="${qna_dir}/chrome-extension"
-if [ ! -d ${chromeEx_dir} ]; then
-	cmdrun "mkdir -p ${chromeEx_dir}" "(1) 크롬확장 폴더를 만듭니다."
-else
-	cmdrun "ls -l ${chromeEx_dir}" "(1) 크롬확장 폴더내역 입니다."
-fi
-chromeExtension_md_dir="${qna_dir}/old-chrome-extension-md"
-if [ ! -d ${chromeExtension_md_dir} ]; then
-	cmdrun "mkdir -p ${chromeExtension_md_dir}" "(2) .md 와 완성된 chrome-extension 을 보관하는 폴더를 만듭니다."
-else
-	cmdrun "ls -l ${chromeExtension_md_dir}" "(2) .md 와 완성된 chrome-extension 을 보관하는 폴더내역 입니다."
+qna_chrome_extension_DIR="qna-chrome-extension" #-- -${date_ymd}-${date_HM}"
+if [ ! -d ${qna_chrome_extension_DIR} ]; then
+	mkdir -p ${qna_chrome_extension_DIR}
 fi
 
-cd ${qna_dir}
+cd ~/${qna_chrome_extension_DIR}
+
+old_chrome_extension_md_DIR="old-chrome-extension-md"
+if [ ! -d ${old_chrome_extension_md_DIR} ]; then
+	cmdrun "mkdir -p ${old_chrome_extension_md_DIR}" "(2) .md 와 완성된 chrome-extension 을 보관하는 폴더를 만듭니다."
+else
+	cmdrun "ls -l ${old_chrome_extension_md_DIR}" "(2) .md 와 완성된 chrome-extension 을 보관하는 폴더내역 입니다."
+fi
+
+ymdHM_chrome_extension_DIR="${date_ymd}-${date_HM}-chrome-extension"
+if [ ! -d ${ymdHM_chrome_extension_DIR} ]; then
+	cmdrun "mkdir -p ${ymdHM_chrome_extension_DIR}" "(1) 크롬확장 폴더를 만듭니다."
+else
+	cmdrun "ls -l ${ymdHM_chrome_extension_DIR}" "(1) 크롬확장 폴더내역 입니다."
+fi
+
 rsync -avzr ~/bin/03-qna-chrome_extension-made.sh .
 
 begin_no=100
@@ -55,7 +60,7 @@ if [ "x${reada}" = "x" ]; then
 fi
 end_no=${reada}
 
-file_name="qna-chrome-${date_ymd}-${date_HM}.md"
+file_name="${date_ymd}-${date_HM}-qna-chrome.md"
 date_mark="${date_ymd}(${date_a}) ${date_HM}"
 my_id="gem"
 #------^^^^^^
@@ -96,5 +101,5 @@ __EOF__
 cmdrun "cat ${file_name}" "(7) 만든 내용 확인"
 
 echo ""
-echo "${yyy}cd ~/${qna_dir}; vi ${file_name}    ${bbb}#--///-- qna-파일에 입력하기.${xxx}"
+echo "${yyy}cd ~/${qna_chrome_extension_DIR}; vi ${file_name}    ${bbb}#--///-- qna-파일에 입력하기.${xxx}"
 echo ""
