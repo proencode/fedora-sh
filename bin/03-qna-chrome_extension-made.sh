@@ -99,8 +99,8 @@ cat >> ${file_name} <<__EOF__
 start_no=$(( end_no + 1 )); lines=10; echo ""; echo "### 🔥 ${id_mark}-\${start_no:1}a."; echo "### 🔋 ${date_dHM}-\${start_no:1}a."; echo ""; echo ""; for (( i=start_no; i<=\$(( \$start_no + \$lines - 1 )); i++ )); do echo "### 🔥 ${id_mark}-\${i:1}."; echo "### 🔋 ${date_dHM}-\${i:1}."; echo ""; done
 __EOF__
 
-cmdrun "cat ${file_name}"
+cmdrun "cat ${file_name}" "(7) 만든 내용 확인"
 
 echo ""
-echo "${yyy}cd ~/${qna_dir}; vi ${file_name}    ${bbb}#--///--${xxx}"
+echo "${yyy}cd ~/${qna_dir}; vi ${file_name}    ${bbb}#--///-- qna-파일에 입력하기.${xxx}"
 echo ""
