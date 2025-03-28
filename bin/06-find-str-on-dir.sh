@@ -15,27 +15,32 @@ cmdreada () { #-- cmdreada "(2) INPUT: domain name" "호스트 주소 입력"
         read reada
 }
 
-default_dir="./"
-if [ "x$1" != "x" ]; then
-	default_dir="$1"
-fi
-cmdreada "(1) INPUT: 찾기 시작하는 폴더" "${rrr}[ ${yyy}${default_dir} ${rrr}]${xxx}"
-if [ "x${reada}" = "x" ]; then
-	reada="${default_dir}"
-fi
-default_dir="${reada}"
-
 find_str="찾으려는 문자열을 입력하세요"
-if [ "x$2" != "x" ]; then
-	find_str="$2"
+if [ "x$1" != "x" ]; then
+	find_str="$1"
 fi
-cmdreada "(2) INPUT: 찾으려는 문자열" "${rrr}[ ${yyy}${find_str} ${rrr}]${xxx}"
+cmdreada "(1) INPUT: 찾으려는 문자열" "${rrr}[ ${yyy}${find_str} ${rrr}]${xxx}"
 if [ "x${reada}" = "x" ]; then
 	reada="${find_str}"
 fi
 find_str="${reada}"
 
-cmdrun "find ${default_dir} -type f -exec awk '/${find_str}/ {print FILENAME \":${rrr}\" NR \"${xxx}:\" \$0}' {} \;" 
+find_dir="$(pwd)"
+if [ "x$2" != "x" ]; then
+	find_dir="$2"
+fi
+cmdreada "(2) INPUT: ${mmm}현재 위치에서 ${ccc}찾으려는 디렉토리 이름" "${rrr}[ ${ggg}${find_dir} ${rrr}]${xxx}"
+if [ "x${reada}" = "x" ]; then
+	reada="${find_dir}"
+fi
+find_dir="${reada}"
+if [ ! -d ${find_dir} ]; then
+	echo "${rrr}#-- ${ggg}${find_dir} ${xxx}디렉토리가 없습니다."
+	exit -1
+fi
+
+#-- cmdrun "find ${find_dir} -type f -exec awk '/${find_str}/ {print FILENAME \":${rrr}\" NR \"${xxx}:\" \$0}' {} \;" 
+cmdrun "echo \"${ggg}#-- ${bbb}ls -l $(pwd) ${rrr}SIZE ${mmm}월 일 년도 ${bbb}파일 이름${xxx}\"; find ${find_dir} -name \"${find_str}\" | xargs ls -l | sort -k8 -k6 -k7 | awk '{print \"${rrr}\"\$5\" ${mmm}\"\$6\" \"\$7\" \"\$8\" ${bbb}\"\$9 \$10 \$11 \$12 \$13 \$14\"${xxx}\"}'" "사이즈, 날짜, 파일이름만 보기"
 
 cmdend "지정한 디렉토리에서 문자열 찾기"
 #--
