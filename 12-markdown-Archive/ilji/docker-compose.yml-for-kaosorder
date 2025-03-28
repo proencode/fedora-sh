@@ -1,0 +1,41 @@
+version: '3.8'
+services:
+  tomcat:
+    restart: always
+    image: tomcat:6.0 #-- 사용할 tomcat 이미지
+    container_name: kaostc
+    ports:
+      - 8080:8080
+    volumes: #-- /opt/docker_data/ 에 둔 .war 파일을 tomcat의 해당 디렉토리에 연결함.
+      - /opt/docker_data/kaosorder.war:/usr/local/tomcat/webapps/kaosorder.war
+    depends_on:
+      - mysql
+    environment:
+      TZ: Asia/Seoul
+#--      - MYSQL_HOST=mysql
+#--      - MYSQL_PORT=3306
+#--      - MYSQL_DATABASE=kaosorder2
+#--      - MYSQL_USER=root
+#--      - MYSQL_PASSWORD=ds2axa
+  mysql:
+    restart: always
+    image: mysql:8.0 #-- 사용할 mysql 이미지
+    container_name: kaosdb
+    ports:
+      - 3306:3306
+    environment:
+      TZ: Asia/Seoul
+      #-- MYSQL_RANDOM_ROOT_PASSWORD: "true yes"
+      MYSQL_ROOT_PASSWORD: ds2axa
+      MYSQL_DATABASE: kaosorder2
+      MYSQL_USER: root
+      MYSQL_PASSWORD: ds2axa
+    command:
+      --character-set-server=utf8mb4
+      --collation-server=utf8mb4_general_ci
+      --explicit_defaults_for_timestamp=true
+      --lower_case_table_names=1
+      --max_allowed_packet=128M
+      --sql-mode="STRICT_TRANS_TABLES,NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION,NO_ZERO_DATE,NO_ZERO_IN_DATE,ERROR_FOR_DIVISION_BY_ZERO"
+    volumes: #-- MySQL 데이터를 /opt/mysql_data/kaosdb/ 에 저장함.
+      - /opt/mysql_data/kaosdb:/var/lib/mysql
