@@ -16,6 +16,9 @@ cmdreada () { #-- cmdreada "(2) INPUT: domain name" "호스트 주소 입력"
 }
 
 default_dir="./"
+if [ "x$1" != "x" ]; then
+	default_dir="$1"
+fi
 cmdreada "(1) INPUT: 찾기 시작하는 폴더" "${rrr}[ ${yyy}${default_dir} ${rrr}]${xxx}"
 if [ "x${reada}" = "x" ]; then
 	reada="${default_dir}"
@@ -23,13 +26,16 @@ fi
 default_dir="${reada}"
 
 find_str="찾으려는 문자열을 입력하세요"
+if [ "x$2" != "x" ]; then
+	find_str="$2"
+fi
 cmdreada "(2) INPUT: 찾으려는 문자열" "${rrr}[ ${yyy}${find_str} ${rrr}]${xxx}"
 if [ "x${reada}" = "x" ]; then
 	reada="${find_str}"
 fi
 find_str="${reada}"
 
-cmdrun "find ${default_dir}/ -type f -exec awk '/${find_str}/ {print FILENAME ":" NR " : " $0}' {} \;" 
+cmdrun "find ${default_dir} -type f -exec awk '/${find_str}/ {print FILENAME \":${rrr}\" NR \"${xxx}:\" \$0}' {} \;" 
 
 cmdend "지정한 디렉토리에서 문자열 찾기"
 #--
