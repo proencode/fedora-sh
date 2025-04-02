@@ -22,13 +22,12 @@ date_HM=$(date +%H%M)
 date_dHM=$(date +%d%H%M)
 date_a=$(date +%a)
 
-cd ~/
-qna_chrome_extension_DIR="qna-chrome-extension" #-- -${date_ymd}-${date_HM}"
+qna_chrome_extension_DIR="./qna-chrome-extension" #-- -${date_ymd}-${date_HM}"
 if [ ! -d ${qna_chrome_extension_DIR} ]; then
 	mkdir -p ${qna_chrome_extension_DIR}
 fi
 
-cd ~/${qna_chrome_extension_DIR}
+cd ${qna_chrome_extension_DIR}
 
 old_chrome_extension_md_DIR="old-chrome-extension-md"
 if [ ! -d ${old_chrome_extension_md_DIR} ]; then
@@ -100,5 +99,5 @@ __EOF__
 cmdrun "cat ${file_name}" "(7) 만든 내용 확인"
 
 echo ""
-echo "${yyy}cd ~/${qna_chrome_extension_DIR}; vi ${file_name}    ${bbb}#--///-- qna-파일에 입력하기.${xxx}"
+echo "${yyy}cd ${qna_chrome_extension_DIR}; vi ${file_name}    ${bbb}#--///-- qna-파일에 입력하기.${xxx}"
 echo ""
