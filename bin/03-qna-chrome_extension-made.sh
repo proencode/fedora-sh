@@ -24,7 +24,7 @@ date_a=$(date +%a)
 
 cmdreada "(1a) INPUT: CreateinHomeDirectory" "홈 디렉토리에 qna- 폴더 만들려면 = 'y'"
 if [ "x$reada" = "xy" ]; then
-    qna_chrome_extension_DIR="~/qna-chrome-extension" #-- -${date_ymd}-${date_HM}"
+    qna_chrome_extension_DIR="${HOME}/qna-chrome-extension" #-- -${date_ymd}-${date_HM}"
 else
     qna_chrome_extension_DIR="./qna-chrome-extension" #-- -${date_ymd}-${date_HM}"
 fi
@@ -86,6 +86,10 @@ fi
 end_no=${reada}
 
 file_name="${date_ymd}-${date_HM}-qna-chrome.md"
+#- if [ -f ${file_name} ]; then
+#- 	cmdrun "mv ${file_name} ${file_name}-$(date +%y%m%d%a-%H%M%S)" "이전의 파일 이름을 바꿉니다."
+#- fi
+
 date_mark="${date_ymd}(${date_a}) ${date_HM}"
 my_id="gusu"
 #------^^^^^^
