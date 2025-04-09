@@ -33,9 +33,9 @@ svrDIR="archive/keepass" #-- 파일을 저장하는 디렉토리
 cloudDRV="yosjgc" #-- 클라우드 드라이브
 cloudDIR="keepass" #-- 파일을 저장하는 디렉토리
 
-keepass_dir="Downloads/bada"
+keepass_dir="Downloads/01-bada"
 if [ ! -d ~/${keepass_dir} ]; then
-	chdrun "mkdir -p ~/${keepass_dir}" "(0.1) 폴더 만들기"
+	cmdrun "mkdir -p ~/${keepass_dir}" "(0.1) 폴더 만들기"
 fi
 cd ~/${keepass_dir}
 
