@@ -100,6 +100,7 @@ cat <<__EOF__
 $(ping -n 1 ${svrURL} | awk -F'[' '{print $2}' | awk -F']' '{print $1}') pi
 192.168.100.248 pu    #-- pu13
 192.168.100.183 jj    #-- jj18          
+192.168.100.210 j19   #-- jj19          
 
 C:\Windows\System32\drivers\etc\hosts
 위치
