@@ -98,7 +98,8 @@ echo "${bbb}#-- cd - #-- (9) 원래 위치로 갑니다.${xxx}"
 cat <<__EOF__
 $(ping -n 1 ${svrURL} | awk -F'[' '{print $2}' | awk -F']' '{print $1}') pi
 192.168.100.248 pu    #-- pu13
-192.168.100.210 jj    #-- jj18
+192.168.100.156 jj    #-- jj
+192.168.100.210 j18   #-- jj18
 192.168.100.183 j19   #-- jj19          #-- 옆자리
 
 C:\Windows\System32\drivers\etc\hosts
