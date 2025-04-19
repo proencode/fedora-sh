@@ -1,0 +1,41 @@
+241121 목
+0910 푸른숲
+
+thebook.io > Rust Web Development 2212/Bastian Gruber manning
+Game development with Rust and Web Assembly 2204/Smith packtpub
+Rust Web Programming 2ed 2301/Maxwell Fliton 666p packtpub, 2501
+241120 수
+0910 푸른숲
+
+Android using Kotlin 진행
+컴퓨터 원격 제어 팀뷰어 대신 러스트 데스크 원격 제어로 새로운 선택! 녹두장군 https://www.youtube.com/watch?v=Q3R1E6VUTs8구독자 1.23천명 조회수 2.5천회 4일 전
+비트코인 권위자 "제가 직접 들었어요" 한국 이렇게 이용할 겁니다. 미국이 숨긴 진짜 본심, 곧 한반도 발칵 뒤집힌다 (김동현 작가 / 풀버전) 웅달 책방 구독자 75.8만명 조회수 5.1만회 2일 전 https://www.youtube.com/watch?v=B8uuPvAesHs
+와이파이 증폭기 - 구형 스마트폰의 변신! 우리집을 와이파이 천국으로 만드는 DIY Wi-Fi 증폭기 알랑가 IT 꿀팁 구독자 906명 조회수 5.8만회 4주 전 https://www.youtube.com/watch?v=mmY36SLLM38
+"당신은 사실 단골이 아닙니다" 주거래은행을 믿지 마세요 / 김은진 대표 (2부) 와이스트릿 Ystreet 구독자 61.8만명 조회수 7.7천회 2일 전 https://www.youtube.com/watch?v=psZoeiQTjrY
+PPT 어렵게 만들지 마세요. 이젠 이것만 알아도 쉽게 PPT 만들 수 있어요 | 5분 만에 완벽한 발표 자료 만드는 가장 쉬운 방법 오은환의 하이라이트 구독자 4.3만명 조회수 14만회 4주 전 https://www.youtube.com/watch?v=FcVBcGTqIKE
+https://www.oracle.com/kr/cloud/sign-in.html
+pi4b 용량
+11:36:11수241120 proenpi@pi4b ~
+~ $ sh ~/bin/du-sh-sort-hr.sh
+----> 표시할 줄수: [15]
+----> 조사하는 디렉토리: [/home/proenpi]
+----> 로그 담는 디렉토리: [/home/proenpi/zz00logs]
+>>>>>>>>>> /home/proenpi/bin/du-sh-sort-hr.sh ||| [줄수=15] [시작위치=/home/proenpi] [파일명=/home/proenpi/zz00logs/zz.home_proenpi-241120수-113650] >>>>>>>>>>
+----> cd /home/proenpi ; sudo du -sh * .??* | sort -hr > /home/proenpi/zz00logs/zz.home_proenpi-241120수-113650
+----> echo -e "${xxx}$(head -${cnt} ${du_sh_sort_hr_file})
+260G    archive
+11G     yosjgc-copy-241120-1017
+2.1G    git-projects
+722M    snap
+332M    다운로드
+233M    음악
+216M    phone
+Ubuntu 24.04 에서 Android Studio 설치
+출처: How to Install Android Studio on Ubuntu 24.04: A Step-by-Step Guide October 24, 2024 Zahir Alam https://zahiralam.com/blog/how-to-install-android-studio-on-ubuntu-24-04-a-step-by-step-guide/
+
+1. JDK 설치
+sudo apt update
+sudo apt install openjdk-11-jdk
+java -version
+2. Android Studio 다운로드
+
