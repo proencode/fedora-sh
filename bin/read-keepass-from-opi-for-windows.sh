@@ -89,7 +89,6 @@ tmpfle="x$(date +%y%m%d%H%M%S)"
 ls -l ${keepsNameExt} > ${tmpfle}
 kdbsiz=$(awk '{print $5}' ${tmpfle})
 echo "${bbb}$(awk -F${kdbsiz} '{print $1}' ${tmpfle}) ${rrr}${kdbsiz} ${ggg}$(awk -F${kdbsiz} '{print $2}' ${tmpfle}; rm -f ${tmpfle}) ${bbb}#-- (8) 로컬의 **최종** 파일.${xxx}"
-
 echo "${yyy}#-- ${ccc}cd - ${bbb}#-- (9) 원래 위치로 갑니다.${xxx}"
 cd -
 echo "${bbb}#-- cd - #-- (9) 원래 위치로 갑니다.${xxx}"
@@ -100,7 +99,7 @@ cat <<__EOF__
 $(ping -n 1 ${svrURL} | awk -F'[' '{print $2}' | awk -F']' '{print $1}') pi
 192.168.100.248 pu    #-- pu13
 192.168.100.183 jj    #-- jj18          
-192.168.100.210 j19   #-- jj19          
+192.168.100.210 j19   #-- jj19          #-- 옆자리
 
 C:\Windows\System32\drivers\etc\hosts
 위치
