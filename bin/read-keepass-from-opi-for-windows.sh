@@ -97,10 +97,10 @@ echo "${bbb}#-- cd - #-- (9) 원래 위치로 갑니다.${xxx}"
 #xxxx $(ifconfig | grep -B1 tm | grep 192.168 | awk -F'inet' '{print $2}' | awk -F'netmask' '{print $1"vb"}')
 cat <<__EOF__
 $(ping -n 1 ${svrURL} | awk -F'[' '{print $2}' | awk -F']' '{print $1}') pi
-192.168.100.248 pu    #-- pu13
-192.168.100.156 jj    #-- jj
-192.168.100.210 j18   #-- jj18
-192.168.100.183 j19   #-- jj19          #-- 옆자리
+192.168.100.248 pu13
+192.168.100.170 pu14
+192.168.100.210 jj18
+192.168.100.183 jj19         #-- 옆자리
 
 C:\Windows\System32\drivers\etc\hosts
 위치
