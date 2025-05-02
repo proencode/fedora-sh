@@ -26,7 +26,16 @@ blue= {.is-info} ; green= {.is-success} ; yellow= {.is-warning} ; red= {.is-dang
 |:----:|:----:|:----:|
 
 # 04 Pt2 Understanding the Core Features of Vue.js
-#----> 본문을 기재하는 위치.
+
+Part 2 of this book focuses on Vue.js and its core features. We will build the core of the Companion App one step at a time, while continuing to expand our knowledge of the Vue.js framework.
+
+This part contains the following chapters:
+
+- `Chapter 3`, Making Our HTML Dynamic
+- `Chapter 4`, Utilizing Vue’s Built-in Directives for Effortless Development
+- `Chapter 5`, Leveraging Computed Properties and Methods in Vue.js
+- `Chapter 6`, Event and Data Handling in Vue.js
+- `Chapter 7`, Handling API Data and Managing Async Components with Vue.js
 
 
 
