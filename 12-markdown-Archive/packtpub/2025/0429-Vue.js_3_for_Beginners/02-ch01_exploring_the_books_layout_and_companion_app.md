@@ -1,5 +1,32 @@
 
-# Exploring the Book’s Layout and Companion App
+--------> @ Q -> # 붙이고 줄 띄우기 
+--------> @ W -> 현 위치에서 Explain 까지 역따옴표 
+--------> @ E -> 찾은 글자 ~ SPACE 앞뒤로 backtick(`) 붙이기 
+--------> @ R -> 찾은 글자 ~ POINT 앞뒤로 backtick(`) 붙이기 
+--------> @ T -> 찾은 글자 ~ COMMA 앞뒤로 backtick(`) 붙이기 
+--------> @ Y -> 찾은 글자 ~   ;   앞뒤로 backtick(`) 붙이기 
+--------> @ U -> 찾은 글자~닫은괄호앞뒤로 backtick(`) 붙이기 
+--------> @ I -> 찾은 글자 ~ COLON 앞뒤로 backtick(`) 붙이기 
+--------> @ O -> 찾은 글자 ~   }   앞뒤로 backtick(`) 붙이기 
+++++++++> @ A -> 빈 줄에 블록 시작하기 
+++++++++> @ S -> 줄 앞에 > 나오면 안되므로 블록 마감하고 > 앞에 - 끼우기 
+++++++++> @ D -> 줄 아래에 블록 마감하고 한줄 더 띄우기 
+++++++++> @ F -> 이 줄을 타이틀로 만들기 
+++++++++> @ K -> 찾은 글자 ~ COLON 앞뒤로 긁은글자(**) 붙이기 
+========> @ Z -> 현 위치에서 Copy 까지 역따옴표 
+
+마크다운 입력시 vi 커맨드 표시 ; (^[)=Ctrl+[ ; (^M)=Ctrl+M
+인용구 작성시 ; 본문앞에는 꺽쇠 > 붙이고, 스타일 첨가시 끝줄에 종류별 구분을 표시한다.
+https://docs.requarks.io/en/editors/markdown > Blockquotes > Stylings >
+blue= {.is-info} ; green= {.is-success} ; yellow= {.is-warning} ; red= {.is-danger}
+
+---------- cut line ----------
+
+| ≪ [ 01 Pt1 Getting Started with Vue.js ](/packtpub/2024/2409_vue_js_3_for_beginners/01_pt1_getting_started_with_vue_js) | 02 Ch01 Exploring the Books Layout and Companion App | [ 03 Ch02 The Foundation of Vue.js ](/packtpub/2024/2409_vue_js_3_for_beginners/03_ch02_the_foundation_of_vue_js) ≫ |
+|:----:|:----:|:----:|
+
+# 02 Ch01 Exploring the Books Layout and Companion App
+
 Vue.js is an enormously popular framework in the JavaScript (JS) ecosystem. In recent years, it has gained lots of popularity thanks to its simplicity, its great documentation, and, finally, its fantastic community. If you are starting web development now, or are transitioning from a different framework or language, Vue.js is a great choice.
 
 Before we can jump into the main content of the book, it is important to learn how the book is structured and what methods will be used to explain the different topics of this fantastic framework.
@@ -19,6 +46,7 @@ In this chapter, we’ll cover the following topics:
 By the end of this chapter, you will learn about what we are going to build during the course of the book, and cover some theoretical aspects required for us to make the most of the Vue.js framework, such as component-based architecture and the architectural decisions behind the Companion App.
 
 # Technical requirements
+
 The application that accompanies the book has been built using free software and APIs and will not require you to purchase anything. However, there are some specific technical requirements needed for you to follow along:
 
 - Visual Studio Code or another equivalent IDE (integrated development Environment)
@@ -28,6 +56,7 @@ The application that accompanies the book has been built using free software and
 - GIT or a Git GUI (Graphic user interface) such as GitKraken installed on your machine
 
 # The companion app
+
 Learning a new language or framework is not an easy task. There are plenty of free resources, such as documentation, blogs, and YouTube videos on the internet, but I believe learning a new tech requires practice, and there is no better way to achieve this than by building a production-ready, performant, scalable social media application together.
 
 The application is going to be very similar to the social media platform X (formerly Twitter). We will start from a clean canvas and slowly add more features and functionality until the app is fully working and ready to be added to your portfolio and showcased at your next job interview.
@@ -43,6 +72,7 @@ Each chapter includes the following sections:
 - Summary of what Vue.js topics we have learned in this chapter with a glossary
 
 ## The Companion App features
+
 As mentioned previously, the application that we are about to build will be very similar to an existing social media application. To make sure we cover most of the Vue.js features and its ecosystem, we may at times over-architect a specific component or feature, but when this happens, it will be called out so that you will have full knowledge of whether it is a good practice to follow in the future and what would be the correct implementation.
 
 By following the book, you will learn the following:
@@ -61,6 +91,7 @@ By following the book, you will learn the following:
 The preceding list is just an overview of what we will be achieving in the book, and we are going to make this learning fun and interactive by building using the Companion App together.
 
 ## The application code
+
 The code for the application can be found in this repository: https://github.com/PacktPublishing/Vue.js-3-for-Beginners. If you do not know what a repository is or how to use it, I suggest you learn the basics, even if all the information and commands you require to use the code will be provided in each chapter.
 
 The repository has multiple branches for each chapter. This will be the starting point for each chapter and will be specified at the start of each chapter, as mentioned before.
@@ -75,6 +106,7 @@ As it is the first time that we are running the application, I will also provide
 ```
 git clone https://github.com/PacktPublishing/Vue.js-3-for-Beginners
 ```
+
 2. Then, we need to navigate into our newly created project folder:
 ```
 cd vue-for-beginners
@@ -93,13 +125,13 @@ npm run serve
 After a few seconds, the local instance of the application will start, and you should be able to access it by opening the browser at HTTP://localhost:5173. The application should look like this.
 
 Figure 1.1: Screenshot of the Companion App dashboard
-Figure 1.1: Screenshot of the Companion App dashboard
 
 Spend some time navigating the application, both in the browser and within the code base, to see what we will build in the course of the book.
 
 In this section, we have learned about the Companion Application, how it is going to be used to support our learning, its core features, and finally, the commands required to run the application locally. In the next section, we will spend a few moments on the core areas of web applications and explain which technologies/libraries we are going to use in our application.
 
 # The core areas of a web application
+
 The JS ecosystem is not shy of frameworks and libraries, but even with this extensive choice, they mostly share the same core values and areas. These are the core parts of a web application and no matter which framework you use to write your application, you will have to know this and have a basic understanding of what they mean.
 
 The pillars of a web application are as follows:
@@ -114,18 +146,19 @@ The pillars of a web application are as follows:
 In this section, we explained the different areas that make a web application. We also explained the architectural decision behind the technology stack that is going to be used within our Companion App. It is now time to learn about a fundamental methodology called `component-based architecture`. This is the foundation for most frontend frameworks.
 
 # Component-based architecture
+
 We have reached the final section of our introductory discussion and we are almost ready to start coding. This section is going to introduce the concept of component-based architecture. Even if you are already familiar with this topic, I suggest you continue reading this chapter as it will support some of the decisions we will make later in the course of the book.
 
 In this section, we are going to cover how web development worked before this concept was introduced and we will then discuss how component-based architecture has shaped the web development industry as we know it.
 
 ## One page at a time
+
 If you have been a developer for as long as I have been, you have probably worked with languages and frameworks that were not flexible in the way the pages were defined and developed. Using .NET and PHP a few years ago would have meant that each web page was created using a single file (disclaimer: some languages had the definition of “partials”.
 
 This worked well until JS started to be used in the frontend and shook the ecosystem. JS changed sites from static pages to very dynamic entities and in doing so pushed for something more dynamic that would not work with the previous development tools.
 
 Let’s take into consideration a standard website homepage, such as the following one:
 
-Figure 1.2: Wireframe of a standard homepage
 Figure 1.2: Wireframe of a standard homepage
 
 This site follows a standard layout with a header and a footer, a banner, some featured content, and a Contact Us form. Imagine having all this in one single HTML file. Back in the day, this was probably all held in one single HTML file with a shared stylesheet, for example a CSS (Cascading Style Sheet) file. As mentioned previously, things started to change in the industry and JS started to be used more and more.
@@ -137,6 +170,7 @@ Long story short, this change slowly shaped the industry toward frontend librari
 Breaking things down into small units was not something new in the industry, as the backend framework already had this notion with the use of object-oriented programming, but it was an innovation in the frontend side of the industry.
 
 ## From one page to many components
+
 The term component-based development (CBD) is a pattern in which the UI of a given application is broken down into multiple “components.” Breaking down big pages into small individual units reduces the complexity of the application and helps the developer focus on the individual scope and responsibility of each section.
 
 All of today’s frontend frameworks are built on top of this pattern and today’s frontend development is driven by architecture based on CBD.
@@ -151,7 +185,6 @@ The home page would be broken down into the following components:
 - `Contact Us`: A component including all the logic required to validate and submit our form
 - `Footer`: A static component that will include some copy and social links
 
-Figure 1.3: Wireframe of a dashboard divided into different sections, such as header, slideshow, featured, Contact Us, and footer
 Figure 1.3: Wireframe of a dashboard divided into different sections, such as header, slideshow, featured, Contact Us, and footer
 
 As we will see in a few minutes, the components displayed in Figure 1.3 are just an example, as a fully defined CBD will actually break things even further all the way to the single HTML element. What this means is that not only the page is made of components, but components are made up of smaller components too.
@@ -169,6 +202,7 @@ It is clear from the preceding list that using `CBD` brings many benefits to the
 Vue.js implements component-based architecture with the use of a `Single-File Component (SFC)`. These files are denoted by the `.vue` extension and encapsulate styles, HTML, and logic (JS or Typescript) in the same file. SFC will be clearly introduced later in the book.
 
 ## Atomic design
+
 In this last section, we are going to understand how we will structure our components during the course of the book.
 
 The folder structure of components is something that has not been standardized yet around the industry and this can differ from developer to developer.
@@ -181,7 +215,6 @@ The atomic design pattern follows the same concept described in chemistry and th
 
 In this book, we are going to follow the hierarchy proposed in this methodology by breaking down our applications into “sub-atomic,” atoms, molecules, organisms, templates and pages.
 
-Figure 1.4: Visual explanation of the different levels offered by atomic design (source: https://blog.kamathrohan.com/atomic-design-methodology-for-building-design-systems-f912cf714f53)
 Figure 1.4: Visual explanation of the different levels offered by atomic design (source: https://blog.kamathrohan.com/atomic-design-methodology-for-building-design-systems-f912cf714f53)
 
 Atomic design layers are as follows:
@@ -198,6 +231,7 @@ Even if this separation may seem complicated to understand from the preceding de
 Spend some time going through the folder structure of the application and read the components’ names to try and understand how we will break up our application.
 
 ## Separation of concern
+
 So far, we have learned that the modern framework offers the ability to break up the application into small chunks called components and that there is a hierarchy within the component itself.
 
 In this section, we are going to quickly touch base on why this hierarchy was introduced in the first place and understand how this is going to help our development.
@@ -207,7 +241,6 @@ Atomic design not only supports us in breaking up components by their visual com
 As the component definitions get more complex, so does the logic expected to be attached to it.
 
 Figure 1.5: Illustration of the level of UI and Logic complexity for each layer
-Figure 1.5: Illustration of the level of UI and Logic complexity for each layer
 
 What do we mean by logic complexity? Logic complexity can be described as the amount of JS required for the component to function correctly.
 
@@ -216,6 +249,7 @@ For example, a component with low logic complexity such as a button will have ve
 In this section, we have introduced how an application is structured using the component-based architecture. We introduced the different layers that make up a component library and finally defined the advantages that this methodology when used in conjunction with a frontend framework such as Vue.js. Let’s now recap the chapter in the Summary section.
 
 # Summary
+
 It is now the end of the chapter and at this stage, you should have gained some knowledge of what we will achieve in this book and the methods that we will be using.
 
 We have learned about our Companion App and what that will include. We have quickly touched upon the chapters’ structure and how they will support you in your learning journey, and we have finally introduced important topics such as component-based architecture, atomic design, and the core areas of web development that are the foundation of any frontend project.
@@ -223,4 +257,18 @@ We have learned about our Companion App and what that will include. We have quic
 In the next chapter, we will start to learn about the foundation of Vue.js and its core fundamentals and start to give life to our Companion Application.
 
 
+
+| ≪ [ 01 Pt1 Getting Started with Vue.js ](/packtpub/2024/2409_vue_js_3_for_beginners/01_pt1_getting_started_with_vue_js) | 02 Ch01 Exploring the Books Layout and Companion App | [ 03 Ch02 The Foundation of Vue.js ](/packtpub/2024/2409_vue_js_3_for_beginners/03_ch02_the_foundation_of_vue_js) ≫ |
+|:----:|:----:|:----:|
+
+> (1) Path: packtpub/2024/2409_vue_js_3_for_beginners/02-ch01_exploring_the_books_layout_and_companion_app
+> (2) Markdown
+> (3) Title: 02 Ch01 Exploring the Books Layout and Companion App
+> (4) Short Description: Sep 2024 302 pages Author Simone Cuomo
+> (5) tags: vue.js
+> Book Name: 2409 Vue.js 3 for Beginners
+> Link: https://www.packtpub.com/en-kr/product/vuejs-3-for-beginners-9781805123293
+> create: 2025-05-02 금 12:44:56
+> Images: /packtpub/2024/2409_vue_js_3_for_beginners_img/
+> .md Name: 02-ch01_exploring_the_books_layout_and_companion_app.md
 
