@@ -20,6 +20,10 @@ __EOF__
 #-- (1-2) 책에 맞추어 수정하는 부분.
 #--
 Publisher="packtpub" #-- (1) 출판사 --
+BookYear="2024" #-- (2-1) 등록년도
+BookTitle="2409 Vue.js 3 for Beginners" #-- (2-2) 시작월일 + 책 제목 --
+BookCover="${BookYear}/${BookTitle}" #-- (2) 호스트의 경로
+#--
 BookCover="Vue.js 3 for Beginners" #-- (2) 책 제목 --
 small_Publisher=$(echo "${Publisher,,}" | sed 's/ /_/g')
 small_BookCover=$(echo "${BookCover,,}" | sed 's/ /_/g')
