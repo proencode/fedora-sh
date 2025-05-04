@@ -46,4 +46,4 @@ cmdend "지정한 디렉토리에서 문자열 찾기"
 #--
 #--
 #--
-#-- ssh yosj@gg; ssh proenpi@pi; ssh yosj@yow; ssh orangepi@opw; ssh orangepi@myw; ssh yosj@nlw; ssh yosj@mnw;
+#-- for i in yosj@gg yosj@yrw proenpi@rp orangepi@yow orangepi@myw orangepi@nlw orangepi@mnw; do if [ "$i" = "${USER}@$(hostname)" ]; then echo "#-- Skip ${i}"; else ssh $i; fi; done

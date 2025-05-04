@@ -10,11 +10,11 @@ cmdend () {
 }
 
 
-for i in yosj@gg yosj@ryw proenpi@rp orangepi@yow orangepi@myw orangepi@nlw orangepi@mnw
+for i in yosj@gg yosj@yrw proenpi@rp orangepi@yow orangepi@myw orangepi@nlw orangepi@mnw
 do
 	echo "${bbb}#-- ${ccc}ssh ${i} sudo -S apt update && sudo -S apt upgrade -y${xxx}"
 	ssh ${i} sudo -S apt update && sudo -S apt upgrade -y
 done
 #--
-#-- for i in yosj@gg yosj@ryw proenpi@rp orangepi@yow orangepi@myw orangepi@nlw orangepi@mnw; do if [ "$i" = "${USER}@$(hostname)" ]; then echo "#-- Skip ${i}"; else ssh $i; fi; done
+#-- for i in yosj@gg yosj@yrw proenpi@rp orangepi@yow orangepi@myw orangepi@nlw orangepi@mnw; do if [ "$i" = "${USER}@$(hostname)" ]; then echo "#-- Skip ${i}"; else ssh $i; fi; done
 #--
