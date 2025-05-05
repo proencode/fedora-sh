@@ -2,17 +2,17 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>gemini04.1158-03 주간 달력</title>
+<title>3주간 달력</title>
 <style>
 body {
-    width: 600px;
+    width: 600px; /* 필요에 따라 너비 조정 */
     font-family: sans-serif;
-    margin: 4; /* 기본 margin 제거 --> 4로 늘임 */
+    margin: 0;
 }
 .year {
     text-align: center;
     font-size: 1.2em;
-    margin-bottom: 5px;
+    margin-bottom: 10px;
 }
 .week {
     display: grid;
@@ -47,9 +47,15 @@ body {
 </style>
 </head>
 <body>
-    <div class="year" id="year"></div>
-    <div class="week" id="weekdays"></div>
-    <div class="memo-row" id="memoArea"></div>
+    <div class="year" id="year-prev"></div>
+    <div class="week" id="weekdays-prev"></div>
+    <div class="memo-row" id="memoArea-prev"></div>
+
+    <div class="week" id="weekdays-current"></div>
+    <div class="memo-row" id="memoArea-current"></div>
+
+    <div class="week" id="weekdays-next"></div>
+    <div class="memo-row" id="memoArea-next"></div>
     <script src="jpopup.js"></script>
 </body>
 </html>

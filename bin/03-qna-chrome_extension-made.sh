@@ -55,7 +55,7 @@ else
 	cmdrun "ls -l ${backup_chrome_extension_md_DIR}" "(4b) .md 와 완성된 chrome-extension 을 보관하는 폴더내역 입니다."
 fi
 
-chrome_extension_DIR="chrome-extension"
+chrome_extension_DIR="app-${date_ymd}-${date_HM}-chrome-extension"
 if [ ! -d ${chrome_extension_DIR} ]; then
 	cmdrun "mkdir -p ${chrome_extension_DIR}" "(5a) 크롬확장 폴더를 만듭니다."
 else
