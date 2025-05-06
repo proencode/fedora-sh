@@ -55,7 +55,7 @@ else
 	cmdrun "ls -l ${backup_chrome_extension_md_DIR}" "(4b) .md 와 완성된 chrome-extension 을 보관하는 폴더내역 입니다."
 fi
 
-chrome_extension_DIR="app-${date_ymd}-${date_HM}-chrome-extension"
+chrome_extension_DIR="${date_ymd}-${date_HM}-00"
 if [ ! -d ${chrome_extension_DIR} ]; then
 	cmdrun "mkdir -p ${chrome_extension_DIR}" "(5a) 크롬확장 폴더를 만듭니다."
 else
@@ -78,7 +78,7 @@ if [ "x${reada}" = "x" ]; then
 fi
 end_no=${reada}
 
-file_name="${date_ymd}-${date_HM}-qna-chrome.md"
+file_name="app-${date_ymd}-${date_HM}-99-작업이름.md"
 #- if [ -f ${file_name} ]; then
 #- 	cmdrun "mv ${file_name} ${file_name}-$(date +%y%m%d%a-%H%M%S)" "이전의 파일 이름을 바꿉니다."
 #- fi
