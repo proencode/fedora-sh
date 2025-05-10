@@ -55,7 +55,7 @@
 my-calendar-extension/
 ├── manifest.json
 ├── popup.html
-└── popup.js
+└── jpopup.js
 ```
 
 #### 2. manifest.json 작성
@@ -112,7 +112,7 @@ my-calendar-extension/
 </head>
 <body>
   <div id="calendar"></div>
-  <script src="popup.js"></script>
+  <script src="jpopup.js"></script>
 </body>
 </html>
 ```
@@ -121,9 +121,9 @@ my-calendar-extension/
 - `day-box` 클래스는 각 날짜를 표시하는 박스의 스타일을 정의합니다.
 - `today` 클래스는 오늘 날짜의 박스 스타일을 정의합니다.
 
-#### 4. popup.js 작성
+#### 4. jpopup.js 작성
 
-`popup.js` 파일은 확장 프로그램의 기능을 구현하는 JavaScript 코드입니다. 다음 내용을 `popup.js` 파일에 복사합니다.
+`jpopup.js` 파일은 확장 프로그램의 기능을 구현하는 JavaScript 코드입니다. 다음 내용을 `jpopup.js` 파일에 복사합니다.
 
 ```JavaScript
 document.addEventListener('DOMContentLoaded', function() {
@@ -254,7 +254,7 @@ const dayNames = ['(일)', '(월)', '(화)', '(수)', '(목)', '(금)', '(토)']
 </head>
 <body>
   <div id="calendar"></div>
-  <script src="popup.js"></script>
+  <script src="jpopup.js"></script>
 </body>
 </html>
 ```
@@ -277,7 +277,7 @@ const dayNames = ['(일)', '(월)', '(화)', '(수)', '(목)', '(금)', '(토)']
 
 #### 1. 메모 데이터 구조 정의
 
-먼저, 날짜별 메모를 저장할 데이터 구조를 정의해야 합니다. JavaScript 객체를 사용하여 날짜를 키로, 메모 내용을 값으로 저장할 수 있습니다. `popup.js` 파일에 다음과 같이 메모 데이터를 추가합니다.
+먼저, 날짜별 메모를 저장할 데이터 구조를 정의해야 합니다. JavaScript 객체를 사용하여 날짜를 키로, 메모 내용을 값으로 저장할 수 있습니다. `jpopup.js` 파일에 다음과 같이 메모 데이터를 추가합니다.
 
 ```JavaScript
 document.addEventListener('DOMContentLoaded', function() {
@@ -296,7 +296,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
 #### 2. 메모 내용 표시
 
-날짜를 표시하는 박스에 메모 내용을 추가해야 합니다. for 루프 안에서 메모 내용을 가져와서 표시하도록 popup.js 파일을 수정합니다.
+날짜를 표시하는 박스에 메모 내용을 추가해야 합니다. for 루프 안에서 메모 내용을 가져와서 표시하도록 jpopup.js 파일을 수정합니다.
 
 ```JavaScript
 document.addEventListener('DOMContentLoaded', function() {

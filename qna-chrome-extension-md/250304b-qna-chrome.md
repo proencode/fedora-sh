@@ -89,7 +89,7 @@
 </head>
 <body>
   <div id="calendar"></div>
-  <script src="popup.js"></script>
+  <script src="jpopup.js"></script>
 </body>
 </html>
 ```
@@ -98,7 +98,7 @@
 - `day` 클래스를 사용하여 각 날짜를 표시할 박스의 스타일을 정의합니다.
 - `today` 클래스를 사용하여 오늘 날짜의 박스 배경색을 노란색으로 지정합니다.
 
-### 3. JavaScript 파일 (popup.js) 생성:
+### 3. JavaScript 파일 (jpopup.js) 생성:
 
 주간 달력을 생성하고 표시하는 JavaScript 파일을 생성합니다.
 
@@ -182,14 +182,14 @@ HTML 파일의 `<head>` 태그 안에 다음 `<meta>` 태그를 추가하여 문
 </head>
 <body>
   <div id="calendar"></div>
-  <script src="popup.js"></script>
+  <script src="jpopup.js"></script>
 </body>
 </html>
 ```
 
 - `<meta charset="UTF-8">`: 이 태그는 브라우저에게 HTML 문서의 문자 인코딩이 UTF-8임을 알려줍니다. UTF-8은 유니코드 문자를 지원하는 표준 인코딩 방식이므로, 한글과 같은 다양한 언어의 문자를 올바르게 표시할 수 있습니다.
 
-### 2. JavaScript 파일 (popup.js) 수정:
+### 2. JavaScript 파일 (jpopup.js) 수정:
 
 JavaScript 파일에서 요일 이름을 정의하는 배열을 다음과 같이 수정합니다.
 
@@ -213,7 +213,7 @@ const dayNames = ['(일)', '(월)', '(화)', '(수)', '(목)', '(금)', '(토)']
 
 만약 위 단계를 수행한 후에도 문제가 해결되지 않는다면 다음 사항을 확인해 보세요.
 
-- `텍스트 편집기 인코딩`: 텍스트 편집기에서 `popup.html` 및 `popup.js` 파일을 저장할 때 인코딩을 UTF-8로 설정했는지 확인합니다.
+- `텍스트 편집기 인코딩`: 텍스트 편집기에서 `popup.html` 및 `jpopup.js` 파일을 저장할 때 인코딩을 UTF-8로 설정했는지 확인합니다.
 - `운영체제 로캘 설정`: 운영체제의 로캘 설정이 한국어로 되어 있는지 확인합니다.
 - `크롬 브라우저 설정`: 크롬 브라우저의 언어 설정이 한국어로 되어 있는지 확인합니다.
 위 단계를 모두 확인했는데도 문제가 지속된다면, 사용하시는 텍스트 편집기, 운영체제, 크롬 브라우저 버전을 알려주시면 더욱 정확한 문제 해결 방법을 제시해 드릴 수 있습니다.
@@ -374,7 +374,7 @@ displayWeekCalendar();
     </tr>
     <tr></tr>
   </table>
-  <script src="popup.js"></script>
+  <script src="jpopup.js"></script>
 </body>
 </html>
 ```
@@ -384,7 +384,7 @@ displayWeekCalendar();
 - `<th>` 태그는 표의 헤더 셀을 나타냅니다.
 - CSS 스타일을 수정하여 표의 모양을 설정합니다.
 
-### 2. JavaScript 파일 (popup.js) 수정:
+### 2. JavaScript 파일 (jpopup.js) 수정:
 
 JavaScript 코드를 수정하여 날짜를 표의 셀에 삽입합니다.
 
@@ -536,7 +536,7 @@ i `width: 700px;`: 표 전체의 폭을 700픽셀로 설정합니다.
 
 HTML 파일은 그대로 유지합니다.
 
-### 2. JavaScript 파일 (popup.js) 수정:
+### 2. JavaScript 파일 (jpopup.js) 수정:
 
 JavaScript 코드를 다음과 같이 수정합니다.
 
@@ -627,7 +627,7 @@ displayWeekCalendar();
 ### 🔋 08. 네, 요청하신 대로 달력에 월 정보를 추가하는 방법을
 설명해 드리겠습니다. 일요일과 다음 달로 넘어가는 날짜에 월을 표시하도록 JavaScript 코드를 수정해야 합니다.
 
-### 1. JavaScript 파일 (popup.js) 수정:
+### 1. JavaScript 파일 (jpopup.js) 수정:
 
 ```JavaScript
 const schedule = {
@@ -750,7 +750,7 @@ schedule 데이터를 입력받고 달력을 표시하려면 다음과 같은 �
         <tr></tr>
         <tr></tr>
     </table>
-    <script src="popup.js"></script>
+    <script src="jpopup.js"></script>
 </body>
 </html>
 ```
@@ -758,7 +758,7 @@ schedule 데이터를 입력받고 달력을 표시하려면 다음과 같은 �
 - `button` 요소를 사용하여 데이터 입력 완료 후 달력을 표시하는 기능을 수행합니다.
 - `calendar` 테이블의 `display` 속성을 `none`으로 설정하여 초기에는 숨깁니다.
 
-### 2. JavaScript 파일 (popup.js) 수정:
+### 2. JavaScript 파일 (jpopup.js) 수정:
 
 - `schedule` 변수를 전역 변수로 선언하고 초기화합니다.
 - `showCalendar` 버튼 클릭 시 입력된 데이터를 파싱하여 schedule 변수에 저장하고, 달력을 표시하는 함수를 호출합니다.
@@ -889,7 +889,7 @@ schedule 데이터를 입력받고 저장하는 기능을 구현해 보겠습니
         <tr></tr>
         <tr></tr>
     </table>
-    <script src="popup.js"></script>
+    <script src="jpopup.js"></script>
 </body>
 </html>
 ```
@@ -898,7 +898,7 @@ schedule 데이터를 입력받고 저장하는 기능을 구현해 보겠습니
 - `inputRow div` 태그는 날짜와 메모 입력 필드를 묶어줍니다.
 - `dateInput` 및 `memoInput` 클래스를 사용하여 입력 필드를 구분합니다.
 
-### 2. JavaScript 파일 (popup.js) 수정:
+### 2. JavaScript 파일 (jpopup.js) 수정:
 
 - 입력 필드 추가 및 데이터 저장 기능을 구현합니다.
 - `schedule` 변수를 전역 변수로 선언하고 초기화합니다.
@@ -959,7 +959,7 @@ document.getElementById("saveInput").addEventListener("click", function() {
 ### 🔋 12. 네, 탭 키를 사용하여 다음 줄을 생성하는 기능을
 추가하면 사용자 경험이 훨씬 향상될 것입니다. JavaScript 코드를 수정하여 해당 기능을 구현해 보겠습니다.
 
-### 1. JavaScript 파일 (popup.js) 수정:
+### 1. JavaScript 파일 (jpopup.js) 수정:
 
 - 메모 입력 필드에서 탭 키를 눌렀을 때 새로운 입력 필드 행을 추가하는 기능을 구현합니다.
 - 마지막 메모 입력 필드에서 탭 키를 눌렀을 때만 새로운 행을 추가하도록 조건을 추가합니다.
@@ -1088,12 +1088,12 @@ addInputRow();
         <tr></tr>
         <tr></tr>
     </table>
-    <script src="popup.js"></script>
+    <script src="jpopup.js"></script>
 </body>
 </html>
 ```
 
-### 2. JavaScript 파일 (popup.js):
+### 2. JavaScript 파일 (jpopup.js):
 
 ```JavaScript
 let schedule = {};

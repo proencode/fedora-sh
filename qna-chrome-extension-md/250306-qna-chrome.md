@@ -112,14 +112,14 @@
 </head>
 <body>
   <div id="calendar"></div>
-  <script src="popup.js"></script>
+  <script src="jpopup.js"></script>
 </body>
 </html>
 ```
 
-### 3. popup.js 파일 생성
+### 3. jpopup.js 파일 생성
 
-1. 폴더 안에 `popup.js` 파일을 만들고 다음 코드를 추가합니다.
+1. 폴더 안에 `jpopup.js` 파일을 만들고 다음 코드를 추가합니다.
 
 ```JavaScript
 function displayCalendar() {
@@ -169,7 +169,7 @@ displayCalendar();
 
 ### 코드 설명
 
-- `popup.js` 파일에서 `displayCalendar()` 함수는 현재 날짜를 기준으로 이번 주의 날짜를 계산하고 HTML 요소로 표시합니다.
+- `jpopup.js` 파일에서 `displayCalendar()` 함수는 현재 날짜를 기준으로 이번 주의 날짜를 계산하고 HTML 요소로 표시합니다.
 - `popup.html` 파일은 달력을 표시할 `div` 요소를 가지고 있으며, CSS 스타일을 사용하여 날짜를 가로로 표시하고 오늘 날짜의 배경색을 변경합니다.
 
 ### 추가 기능
