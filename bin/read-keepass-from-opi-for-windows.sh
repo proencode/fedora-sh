@@ -26,12 +26,10 @@ keeps_name="keepassproen" #-- keepass 파일의 이름만
 keeps_ext="kdbx" #-- 확장자
 keepsNameExt="${keeps_name}.${keeps_ext}" #-- keepass 파일명 전체
 
-userID="orangepi" #-- 호스트의 사용자
-svrURL="proen.duckdns.org" #-- 호스트 URL
-svrDIR="archive/keepass" #-- 파일을 저장하는 디렉토리
-
 cloudDRV="yosjgc" #-- 클라우드 드라이브
-cloudDIR="keepass" #-- 파일을 저장하는 디렉토리
+cloudDIR="keepass" #-- 클라우드쪽 파일을 저장하는 디렉토리
+
+svrDIR="archive/keepass" #-- 서버쪽 파일을 저장하는 디렉토리
 
 keepass_dir="Downloads/01-bada"
 if [ ! -d ~/${keepass_dir} ]; then
@@ -39,71 +37,74 @@ if [ ! -d ~/${keepass_dir} ]; then
 fi
 cd ~/${keepass_dir}
 
-pswdonly "input: 호스트 접속시 포트번호" "(1) 타이핑하는 글자를 보여주지 않습니다."
-svrPORT=${pswdonly}
+pswdonly "서버 사용자" "(1) 타이핑하는 글자를 보여주지 않습니다."; userID="${pswdonly}"
+pswdonly "서버 주소" "(2) 타이핑하는 글자를 보여주지 않습니다."; svrURL="${pswdonly}"
+pswdonly "서버 포트번호" "(3) 타이핑하는 글자를 보여주지 않습니다."; svrPORT=${pswdonly}
 
-readecho "서버 디렉토리 지정" "(2) 또는, Enter를 눌러서 ${svrDIR} 폴더로 지정."
-if [ "x$readecho" != "x" ]; then
-        svrDIR=$readecho
+readecho "서버 디렉토리 입력" "(4) 또는, Enter를 눌러서 ${svrDIR} 폴더로 지정."
+if [ "x${readecho}" != "x" ]; then
+        svrDIR=${readecho}
 fi
 svrDIR=$(echo "$svrDIR" | perl -pe 's/\/+$//') #-- 마지막에 있는 '/' 는 모두 삭제하는 perl 스크립트
 echo "${bbb}#----> ${mmm}svrDIR= ${ccc}${svrDIR}${xxx}"
 
 tmpfle="x$(date +%y%m%d%H%M%S)"
 tmpfle2="xx$(date +%y%m%d%H%M%S)"
-echo "${yyy}#-- ${ccc}ssh -p svrPORT userID@svrURL ls -l keepName | awk -F'${svrDIR}/' ${bbb}#-- (3) 서버의 파일 확인${xxx}"
+echo "${yyy}#-- ${ccc}ssh -p svrPORT userID@svrURL ls -l keepName | awk -F'${svrDIR}/' ${bbb}#-- (5) 서버의 파일 확인${xxx}"
 ssh -p ${svrPORT} ${userID}@${svrURL} ls -l ${svrDIR}/${keepsNameExt} > ${tmpfle}
 cat ${tmpfle} | awk -F"${svrDIR}/" '{print $1 $2}' > ${tmpfle2} #-- 디렉토리 부분을 뺀다.
-echo "${rrr}#// ${bbb}ssh -p svrPORT userID@svrURL ls -l keepName #-- (3) 서버의 파일 확인${xxx}"
+echo "${rrr}#// ${bbb}ssh -p svrPORT userID@svrURL ls -l keepName #-- (6) 서버의 파일 확인${xxx}"
 
 kdbsiz=$(awk '{print $5}' ${tmpfle2})
-echo "${bbb}$(awk -F${kdbsiz} '{print $1}' ${tmpfle2}) ${rrr}${kdbsiz} ${ggg}$(awk -F${kdbsiz} '{print $2}' ${tmpfle2}; rm -f ${tmpfle} ${tmpfle2}) ${bbb}#-- (4) 서버의 **최종** 파일${xxx}"
+echo "${bbb}$(awk -F${kdbsiz} '{print $1}' ${tmpfle2}) ${rrr}${kdbsiz} ${ggg}$(awk -F${kdbsiz} '{print $2}' ${tmpfle2}; rm -f ${tmpfle} ${tmpfle2}) ${bbb}#-- (7) 서버의 **최종** 파일${xxx}"
 
 if [ -f ${keepsNameExt} ]; then
 	tmpfle="x$(date +%y%m%d%H%M%S)"
 	ls -l ${keepsNameExt} > ${tmpfle}
 	kdbsiz=$(awk '{print $5}' ${tmpfle})
-	echo "${bbb}$(awk -F${kdbsiz} '{print $1}' ${tmpfle}) ${rrr}${kdbsiz} ${ggg}$(awk -F${kdbsiz} '{print $2}' ${tmpfle}; rm -f ${tmpfle}) ${bbb}#-- (5) 로컬의 --변경전-- 파일${xxx}"
+	echo "${bbb}$(awk -F${kdbsiz} '{print $1}' ${tmpfle}) ${rrr}${kdbsiz} ${ggg}$(awk -F${kdbsiz} '{print $2}' ${tmpfle}; rm -f ${tmpfle}) ${bbb}#-- (8) 로컬의 --변경전-- 파일${xxx}"
 	oldkne="o"
 else
-	echo "${bbb}#-- (5) 로컬의 --변경전-- 파일이 없습니다.${xxx}"
+	echo "${bbb}#-- (9) 로컬의 --변경전-- 파일이 없습니다.${xxx}"
 	oldkne="x"
 fi
 
 echo "${bbb}#-- ${ccc}<4> 서버의 파일 ${bbb}이 ${ccc}<5> 로컬의 파일 ${bbb}보다 최신인 경우만 받아옵니다."
 if [ "${oldkne}" == "x" ]; then
 	readecho="y"
-	echo "${bbb}#-- ${yyy}'y' ${bbb}#-- (6) 로컬에 파일이 없으므로 무조건 받아옵니다.${xxx}"
+	echo "${bbb}#-- ${yyy}'y' ${bbb}#-- (10) 로컬에 파일이 없으므로 무조건 받아옵니다.${xxx}"
 else
-	readecho "'y' or Enter:" "(6) 서버의 파일이 더 최근이면, 받아오기 위해 'y' 를 입력하세요."
+	readecho "'y' or Enter:" "(11) 서버의 파일이 더 최근이면, 받아오기 위해 'y' 를 입력하세요."
 fi
-if [ "x$readecho" = "xy" ]; then
-	echo "${yyy}#-- ${ccc}rsync avzr -e \"ssh -p svrPORT\" userID@svrURL:svrDIR/keepsNameExt keepsNameExt ${bbb}#-- (7.1) 서버에서 받아옵니다.${xxx}"
+if [ "x${readecho}" = "xy" ]; then
+	echo "${yyy}#-- ${ccc}rsync avzr -e \"ssh -p svrPORT\" userID@svrURL:svrDIR/keepsNameExt keepsNameExt ${bbb}#-- (12.1) 서버에서 받아옵니다.${xxx}"
 	rsync -avzr -e "ssh -p ${svrPORT}" ${userID}@${svrURL}:${svrDIR}/${keepsNameExt} ${keepsNameExt}
-	echo "${rrr}#// ${bbb}rsync avzr -e \"ssh -p svrPORT\" userID@svrURL:svrDIR/keepsNameExt keepsNameExt #-- (7.1) 서버에서 받아옵니다.${xxx}"
+	echo "${rrr}#// ${bbb}rsync avzr -e \"ssh -p svrPORT\" userID@svrURL:svrDIR/keepsNameExt keepsNameExt #-- (12.2) 서버에서 받아옵니다.${xxx}"
 else
-	echo "${bbb}#-- (7.2) 'y' 가 아니므로 서버에서 받아오지 않습니다.${xxx}"
+	echo "${bbb}#-- (12.3) 'y' 가 아니므로 서버에서 받아오지 않습니다.${xxx}"
 fi
 
 tmpfle="x$(date +%y%m%d%H%M%S)"
 ls -l ${keepsNameExt} > ${tmpfle}
 kdbsiz=$(awk '{print $5}' ${tmpfle})
-echo "${bbb}$(awk -F${kdbsiz} '{print $1}' ${tmpfle}) ${rrr}${kdbsiz} ${ggg}$(awk -F${kdbsiz} '{print $2}' ${tmpfle}; rm -f ${tmpfle}) ${bbb}#-- (8) 로컬의 **최종** 파일.${xxx}"
-echo "${yyy}#-- ${ccc}cd - ${bbb}#-- (9) 원래 위치로 갑니다.${xxx}"
+echo "${bbb}$(awk -F${kdbsiz} '{print $1}' ${tmpfle}) ${rrr}${kdbsiz} ${ggg}$(awk -F${kdbsiz} '{print $2}' ${tmpfle}; rm -f ${tmpfle}) ${bbb}#-- (13) 로컬의 **최종** 파일.${xxx}"
+echo "${yyy}#-- ${ccc}cd - ${bbb}#-- (14) 원래 위치로 갑니다.${xxx}"
 cd -
-echo "${bbb}#-- cd - #-- (9) 원래 위치로 갑니다.${xxx}"
+echo "${bbb}#-- cd - #-- (15) 원래 위치로 갑니다.${xxx}"
 
 #xxxx $(ping -n 1 ${svrURL} | grep PING | awk -F'(' '{print $2}' | awk -F')' '{print $1}') pi
 #xxxx $(ifconfig | grep -B1 tm | grep 192.168 | awk -F'inet' '{print $2}' | awk -F'netmask' '{print $1"vb"}')
 cat <<__EOF__
 $(ping -n 1 ${svrURL} | awk -F'[' '{print $2}' | awk -F']' '{print $1}') pi
-192.168.100.248 pu02
-192.168.100.170 pu14
-192.168.100.210 jj18
-192.168.100.156 jj20         #-- 옆자리
+192.168.100.248 pu
+192.168.100.156 jj         #-- 옆자리
 #-- 13 gg 57 yr 58 rp 59 yo 65 my 89 nl 95 mn
 
 #--    notepad c:\Windows\System32\drivers\etc\hosts    #-- Windows cmd 관리자 권한으로 열기
+
+cd ~/Dow*/02-b*/
+time rsync -avzr -e 'ssh -p 22' proenpi@pi:a*/01-*/u*svr.04* ./
+time rsync -avzr -e 'ssh -p 22' proenpi@pi:a*/iso*/u*1-live* ../
 
 \$(ipconfig | grep -a "192.168." | grep -av ".1\$" | awk -F': ' '{print \$2}') vb #-- for Windows
 ifconfig | grep -B1 tm #-- for Linux
