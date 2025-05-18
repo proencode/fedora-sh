@@ -96,13 +96,14 @@ echo "${bbb}#-- cd - #-- (15) 원래 위치로 갑니다.${xxx}"
 #xxxx $(ifconfig | grep -B1 tm | grep 192.168 | awk -F'inet' '{print $2}' | awk -F'netmask' '{print $1"vb"}')
 cat <<__EOF__
 $(ping -n 1 ${svrURL} | awk -F'[' '{print $2}' | awk -F']' '{print $1}') pi
-192.168.100.248 pu
-192.168.100.156 jj         #-- 옆자리
+192.168.100.217 pu
+192.168.100.156 jj
+
 #-- 13 gg 57 yr 58 rp 59 yo 65 my 89 nl 95 mn
 
 #--    notepad c:\Windows\System32\drivers\etc\hosts    #-- Windows cmd 관리자 권한으로 열기
 
-cd ~/Dow*/02-b*/
+cd ~/Dow*/02-*/
 time rsync -avzr -e 'ssh -p 22' proenpi@pi:a*/01-*/u*svr.04* ./
 time rsync -avzr -e 'ssh -p 22' proenpi@pi:a*/iso*/u*1-live* ../
 
