@@ -103,9 +103,8 @@ $(ping -n 1 ${svrURL} | awk -F'[' '{print $2}' | awk -F']' '{print $1}') pi
 
 #--    notepad c:\Windows\System32\drivers\etc\hosts    #-- Windows cmd 관리자 권한으로 열기
 
-cd ~/Dow*/02-*/
-time rsync -avzr -e 'ssh -p 22' proenpi@pi:a*/01-*/u*svr.04* ./
-time rsync -avzr -e 'ssh -p 22' proenpi@pi:a*/iso*/u*1-live* ../
+cd ~/Dow*/02-*/; time rsync -avzr -e 'ssh -p   22' proenpi@pi:a*/01-*/u*svr.04* ./
+cd ~/Dow*/02-*/; time rsync -avzr -e 'ssh -p   22' proenpi@pi:a*/iso*/u*[12]-live* ../
 
 \$(ipconfig | grep -a "192.168." | grep -av ".1\$" | awk -F': ' '{print \$2}') vb #-- for Windows
 ifconfig | grep -B1 tm #-- for Linux
