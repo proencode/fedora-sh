@@ -80,7 +80,7 @@
 ```JSON
 {
   "manifest_version": 3,
-  "name": "주간 달력",
+  "name": "250306-32 주간 달력",
   "version": "1.0",
   "action": {
     "default_popup": "popup.html"
@@ -96,7 +96,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>주간 달력</title>
+  <title>250306-32 주간 달력</title>
   <style>
     .day {
       display: inline-block;
@@ -122,6 +122,7 @@
 1. 폴더 안에 `jpopup.js` 파일을 만들고 다음 코드를 추가합니다.
 
 ```JavaScript
+/* 250304-13 */
 function displayCalendar() {
   const today = new Date();
   const year = today.getFullYear();

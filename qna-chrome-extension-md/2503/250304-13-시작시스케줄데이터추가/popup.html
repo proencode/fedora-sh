@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>주간 달력</title>
+    <meta charset="UTF-8">
+    <style>
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        th, td {
+            border: 1px solid #ccc;
+            text-align: center;
+            padding: 5px;
+        }
+        .today {
+            background-color: yellow;
+        }
+        #inputContainer {
+            margin-bottom: 10px;
+        }
+        .inputRow {
+            display: flex;
+            margin-bottom: 5px;
+        }
+        .inputRow input {
+            margin-right: 5px;
+        }
+        #calendar {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <div id="inputContainer">
+        <div class="inputRow">
+            <input type="number" placeholder="날짜" class="dateInput">
+            <input type="text" placeholder="메모" class="memoInput">
+        </div>
+        <button id="saveInput">=</button>
+    </div>
+    <table id="calendar">
+        <tr></tr>
+        <tr></tr>
+    </table>
+    <script src="jpopup.js"></script>
+</body>
+</html>

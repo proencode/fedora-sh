@@ -51,7 +51,7 @@
 ```JSON
 {
   "manifest_version": 3,
-  "name": "주간 달력 표시",
+  "name": "250304-02 주간 달력 표시",
   "version": "1.0",
   "description": "현재 주를 가로로 표시합니다.",
   "action": {
@@ -73,7 +73,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>주간 달력</title>
+  <title>250304-02 주간 달력</title>
   <style>
     .day {
       display: inline-block;
@@ -103,6 +103,7 @@
 주간 달력을 생성하고 표시하는 JavaScript 파일을 생성합니다.
 
 ```JavaScript
+/* 250304-02 */
 function displayWeekCalendar() {
   const today = new Date();
   const dayOfWeek = today.getDay(); // 0 (일요일) ~ 6 (토요일)
@@ -344,7 +345,7 @@ displayWeekCalendar();
 <!DOCTYPE html>
 <html>
 <head>
-  <title>주간 달력</title>
+  <title>250304-05 주간 달력</title>
   <meta charset="UTF-8">
   <style>
     table {
@@ -389,10 +390,11 @@ displayWeekCalendar();
 JavaScript 코드를 수정하여 날짜를 표의 셀에 삽입합니다.
 
 ```JavaScript
+/* 250304-05 */
 const schedule = {
-  2: 'meeting',
-  5: 'movie: 007',
-  6: 'drive to customer'
+  19: 'meeting',
+  21: 'movie: 007',
+  24: 'drive to customer'
 };
 
 function displayWeekCalendar() {
@@ -1089,6 +1091,7 @@ addInputRow();
         <tr></tr>
     </table>
     <script src="jpopup.js"></script>
+	250304-13+
 </body>
 </html>
 ```
