@@ -1,4 +1,4 @@
-
+/* 250412.1504-09. 1주간 달력 */
 function displayCalendar() {
   const today = new Date();
   const dayOfWeek = today.getDay();
@@ -39,4 +39,3 @@ function displayCalendar() {
 }
 
 displayCalendar();
-

@@ -1,9 +1,0 @@
-{
-  "manifest_version": 3,
-  "name": "1주간 달력",
-  "version": "1.0",
-  "description": "오늘을 포함한 1주간의 달력을 표시합니다.",
-  "action": {
-    "default_popup": "popup.html"
-  }
-}
