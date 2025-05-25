@@ -17,12 +17,13 @@ cmdreada () { #-- cmdreada "(2) INPUT: domain name" "호스트 주소 입력"
     read reada
 }
 
-date_ymd=$(date +%y%m%d)
-date_HM=$(date +%H%M)
-date_dHM=$(date +%d.%H%M)
-date_a=$(date +%a)
+date_ymd=$(date +%y%m%d) #-- 250524
+date_a=$(date +%a) #-- 토
+date_HM=$(date +%H%M) #-- 1533
 
-date_mark="${date_ymd}(${date_a}) ${date_HM}"
+date_dHM="${date_ymd:4:2}.${date_HM}" #-- 24.1533
+date_ymdHM="${date_ymd}.${date_HM}" #-- 250524.1533
+date_mark="${date_ymd}(${date_a}) ${date_HM}" #-- 250524(토) 1533
 my_id="gemini"
 #------^^^^^^
 cmdreada "(1) INPUT: 일련번호 앞의 접두어" "그냥 Enter 면, ${rrr}[ ${xxx}${my_id} ${rrr}]"
@@ -30,17 +31,21 @@ if [ "x${reada}" = "x" ]; then
     reada=${my_id}
 fi
 my_id=${reada}
+echo "${ccc}#-- ${rrr}[ ${xxx}${my_id} ${rrr}]${xxx}"
 
 id_mark="${my_id}${date_dHM}"
-qna_chrome_extension_DIR="${HOME}/qna-chrome-extension"
+qna_chrome_extension_DIR="last-${date_ymd}-${date_HM}"
+md_dir="md-${date_ymd}-${date_HM}-chrome-extension"
 
-cmdreada "(2a) INPUT: qna- 폴더이름 입력" "그냥 Enter 하면: ${yyy}[ ${bbb}${qna_chrome_extension_DIR} ${yyy} ]"
+echo "${yyy}#-- ${ccc}새 폴더를 ${xxx}$(pwd) ${bbb}아래에 만듭니다.${xxx}"
+cmdreada "(2a) INPUT: 새 폴더 이름 입력" "그냥 Enter 하면: ${yyy}[ ${bbb}${qna_chrome_extension_DIR} ${yyy} ]"
 if [ "x$reada" != "x" ]; then
     qna_chrome_extension_DIR="${reada}"
 fi
 if [ ! -d ${qna_chrome_extension_DIR} ]; then
 	cmdrun "mkdir -p ${qna_chrome_extension_DIR}; ls -l ${qna_chrome_extension_DIR}" "(2b) 폴더를 새로 만듭니다."
 fi
+echo "${ccc}#-- ${rrr}[ ${xxx}${qna_chrome_extension_DIR} ${rrr}]${xxx}"
 
 echo "${yyy}#-- ${ccc}cd ${qna_chrome_extension_DIR} ${mmm}#-- ${bbb}(3) qna- 폴더로 갑니다.${xxx}"
 cd "${qna_chrome_extension_DIR}" #-- cmdrun 으로 실행시 처리 안됨.
@@ -55,14 +60,8 @@ else
 	cmdrun "ls -l ${backup_chrome_extension_md_DIR}" "(4b) .md 와 완성된 chrome-extension 을 보관하는 폴더내역 입니다."
 fi
 
-chrome_extension_DIR="chrome-${date_ymd}-${date_HM}-00"
-if [ ! -d ${chrome_extension_DIR} ]; then
-	cmdrun "mkdir -p ${chrome_extension_DIR}" "(5a) 크롬확장 폴더를 만듭니다."
-else
-	cmdrun "ls -l ${chrome_extension_DIR}" "(5b) 크롬확장 폴더내역 입니다."
-fi
-
-cmdrun "rsync -avzr ~/bin/03-qna-chrome_extension-made.sh ." "(6) 스크립트를 이곳으로 복사합니다."
+echo "${mmm}#-- ${bbb}(6) 03- 스크립트를 이곳으로 복사하는 작업을 취소합니다.${xxx}"
+#-- cmdrun "rsync -avzr ~/bin/03-qna-chrome_extension-made.sh ." "(6) 스크립트를 이곳으로 복사합니다."
 
 begin_no=100
 cmdreada "INPUT: QA노트 시작 번호 (3자리 수)" "(7) 그냥 Enter 면, ${rrr}[ ${xxx}${begin_no} ${rrr}]"
@@ -84,38 +83,34 @@ file_name="app-${date_ymd}-${date_HM}-99-작업이름.md"
 #- fi
 
 
+chrome_extension_DIR="chrome-${date_ymd}-${date_HM}-${begin_no:1}"
+if [ ! -d ${chrome_extension_DIR} ]; then
+	cmdrun "mkdir -p ${chrome_extension_DIR}" "(5a) 크롬확장 폴더를 만듭니다."
+fi
+
 cat >> ${file_name} <<__EOF__
 
 ### ${date_mark} 질문과 답변 (qna)
 
-🔥
-## 🔥 ${id_mark}-${begin_no:1}.
-### 🔋 ${date_dHM}-${begin_no:1}.
-
-mv ${chrome_extension_DIR} ${backup_chrome_extension_md_DIR}/${date_dHM}-${begin_no:1}.${chrome_extension_DIR} ; mkdir ${chrome_extension_DIR} # 질답끝나고 파일 백업: 
-
 __EOF__
-start_no=$((begin_no + 1))
-for (( i=start_no; i<=end_no; i++ ))
+
+for (( i=$begin_no; i<=end_no; i++ ))
 do
     cat >> ${file_name} <<__EOF__
 🔥
 ### 🔥 ${id_mark}-${i:1}.
-### 🔋 ${date_dHM}-${i:1}.
+mkdir chrome-${date_ymd}-${date_HM}-${i:1}
 
-mv ${chrome_extension_DIR} ${backup_chrome_extension_md_DIR}/${date_dHM}-${i:1}.${chrome_extension_DIR} ; mkdir ${chrome_extension_DIR} # 질답끝나고 파일 백업: 
+### 🔋 ${date_dHM}-${i:1}. 
+
 
 __EOF__
 done
 
+begin_no=$((begin_no + 10))
+end_no=$((end_no + 10))
 cat >> ${file_name} <<__EOF__
-
-🔥
-### 🔥 ${id_mark}-${begin_no:1}a.
-### 🔋 ${date_dHM}-${begin_no:1}a.
-
-echo ""; echo "### ${date_mark} 질문과 답변 (qna)"; echo ""; echo "🔥"; echo "## 🔥 ${id_mark}-${end_no:1}."; echo "### 🔋 ${date_dHM}-${end_no:1}."; echo ""; echo " mv ${chrome_extension_DIR} ${backup_chrome_extension_md_DIR}/${date_dHM}-${end_no:1}.${chrome_extension_DIR} ; mkdir ${chrome_extension_DIR} # 질답끝나고 파일 백업:"; echo "";    start_no=$(( end_no + 1 )); lines=10; echo ""; for (( i=start_no; i<=\$(( \$start_no + \$lines - 1 )); i++ )); do echo"🔥"; echo "### 🔥 ${id_mark}-\${i:1}."; echo "### 🔋 ${date_dHM}-\${i:1}."; echo ""; echo "mv ${chrome_extension_DIR} ${backup_chrome_extension_md_DIR}/${date_dHM}-${i:1}.${chrome_extension_DIR} ; mkdir ${chrome_extension_DIR} # 질답끝나고 파일 백업: "; echo ""; done; echo ""; echo "### 🔥 ${id_mark}-\${start_no:1}a."; echo "### 🔋 ${date_dHM}-\${start_no:1}a.";
-
+begin_no=${begin_no}; echo ""; echo "### ${date_mark} 질문과 답변 (qna)"; echo ""; for (( i=begin_no; i<=end_no; i++ )); do echo "🔥"; echo "### 🔥 ${id_mark}-\${i:1}."; echo "mkdir chrome-${date_ymd}-${date_HM}-\${i:1}"; echo ""; echo "### 🔋 ${date_dHM}-\${i:1}."; echo ""; echo ""; done
 __EOF__
 
 cmdrun "cat ${file_name}" "(9) 만든 내용 확인"
