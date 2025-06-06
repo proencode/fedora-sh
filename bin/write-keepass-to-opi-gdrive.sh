@@ -1,6 +1,26 @@
 #!/bin/sh
 
 lll=$(tput bold)$(tput setaf 0); rrr=$(tput bold)$(tput setaf 1); ggg=$(tput bold)$(tput setaf 2); yyy=$(tput bold)$(tput setaf 3); bbb=$(tput bold)$(tput setaf 4); mmm=$(tput bold)$(tput setaf 5); ccc=$(tput bold)$(tput setaf 6); www=$(tput bold)$(tput setaf 7); xxx=$(tput bold)$(tput sgr0); uuu=$(tput cuu 2)
+cmdrun () {
+        #-- echo "${yyy}#-- ${ccc}$1 ${ggg}#-- ${bbb}$2${xxx}"; echo "$1" | bash
+        echo "${yyy}#-- ${ccc}$1 ${bbb}#-- $2${xxx}"; echo "$1" | bash
+        echo "${rrr}#// ${bbb}$1 #-- $2${xxx}"
+}
+cmdend () {
+        echo "${rrr}#--///-- ${mmm}$1${xxx}"
+}
+pswdonly () { #-- "(1) INPUT: port #"  "(입력시 표시 안됨)"
+        #-- echo "${yyy}#-- ${ccc}$1 ${ggg}#-- ${bbb}$2${xxx}"
+        echo "${yyy}#-- ${ccc}$1 ${bbb}#-- $2${xxx}"
+        read -s pswdonly
+	echo " "
+        echo "${rrr}#// ${bbb}$1 #-- $2${xxx}"
+}
+readecho () { #-- "(2) INPUT: 서버 디렉토리"  "${svrDIR}"
+        echo "${yyy}#-- ${ccc}$1 ${bbb}#-- $2${xxx}"
+        read readecho
+        echo "${rrr}#// ${bbb}$1 #-- $2${xxx}"
+}
 
 keeps_name="keepassproen" #-- keepass 파일의 이름만
 keeps_ext="kdbx" #-- 확장자
@@ -16,16 +36,30 @@ __EOF__
 	exit -1
 fi
 
-userID="orangepi" #-- 호스트의 사용자
-svrURL="proen.duckdns.org" #-- 호스트 URL
+pswdonly "(1) INPUT: 서버 사용자" "타이핑하는 글자를 보여주지 않습니다."
+userID="${pswdonly}"
+
+pswdonly "(2) INPUT: 서버 주소" "타이핑하는 글자를 보여주지 않습니다."
+svrURL="${pswdonly}"
+
+pswdonly "(3) INPUT: 서버 포트번호" "타이핑하는 글자를 보여주지 않습니다."
+svrPORT=${pswdonly}
+
 svrDIR="archive/keepass" #-- 파일을 저장하는 디렉토리
+readecho "(4) INPUT: 서버 디렉토리"  "${svrDIR}"
+svrDIR="${readecho}"
+svrDIR=$(echo "$svrDIR" | perl -pe 's/\/+$//') #-- 마지막에 있는 '/' 는 모두 삭제하는 perl 스크립트
 
 cloudDRV="yosjgc" #-- 클라우드 드라이브
+readecho "(5) INPUT: 클라우드 드라이브"  "${cloudDRV}"
+cloudDRV="${readecho}"
 cloudDIR="keepass" #-- 파일을 저장하는 디렉토리
+readecho "(6) INPUT: 클라우드 디렉토리"  "${cloudDIR}"
+cloudDIR="${readecho}"
 
 cat <<__EOF__
 ${bbb}#--
-#-- (1) INPUT: 수정메모
+#-- (7) INPUT: 수정메모
 #--            --------${xxx}
 __EOF__
 read logmsg
@@ -47,31 +81,11 @@ ${bbb}#----------
 __EOF__
 read a
 
-cat <<__EOF__
-${bbb}#--
-#-- ${keepsNameExt} COPYTO userID@svrURL:${svrDIR} AND GDrive
-#--
-#-- (2) INPUT: port no (서버 포트번호 입력시 숫자 표시 안됨)
-#--            -------${xxx}
-__EOF__
-read -s svrPORT #-- 호스트 접속시 포트번호, '-s' 타이핑하는 글자를 안보여준다.
-
-cat <<__EOF__
-${bbb}#--
-#-- (3) INPUT: 서버 디렉토리 [ ${svrDIR} ]
-#--            -------------${xxx}
-__EOF__
-read a
-
-if [ "x$a" != "x" ]; then
-        svrDIR=$a
-fi
-svrDIR=$(echo "$svrDIR" | perl -pe 's/\/+$//') #-- 마지막에 있는 '/' 는 모두 삭제하는 perl 스크립트
 
 cat <<__EOF__
 ${bbb}#--> ${ccc}${svrDIR}
 ${bbb}#--
-#-- (4) 서버의 keepass 파일을 backup/ 으로 이동
+#-- (8) 서버의 keepass 파일을 backup/ 으로 이동
 #-- ssh -p svrPORT userID@svrURL mv ./${svrDIR}/${keepsNameExt} ./${svrDIR}/backup/${keepsName_Date_Ext}${xxx}
 __EOF__
 ssh -p ${svrPORT} ${userID}@${svrURL} mv ./${svrDIR}/${keepsNameExt} ./${svrDIR}/backup/${keepsName_Date_Ext}
@@ -82,42 +96,42 @@ rsync -avzr ${keepsNameExt} backup/${keepsName_Date_Ext}
 
 cat <<__EOF__
 ${bbb}#--
-#-- (5) 서버로 복사
+#-- (9) 서버로 복사
 #-- rsync -avzr -e \"ssh -p svrPORT\" ${keepsNameExt} userID@svrURL:${svrDIR}/${xxx}
 __EOF__
 rsync -avzr -e "ssh -p ${svrPORT}" ${keepsNameExt} ${userID}@${svrURL}:${svrDIR}/
 
 cat <<__EOF__
 ${bbb}#--
-#-- (6) 백업하기 전의 클라우드 파일
+#-- (10) 백업하기 전의 클라우드 파일
 #-- ssh -p svrPORT userID@svrURL rclone lsl cloudDRV:cloudDIR/ --include \"${keeps_name}*.${keeps_ext}\"${xxx}
 __EOF__
 ssh -p ${svrPORT} ${userID}@${svrURL} rclone lsl ${cloudDRV}:${cloudDIR}/ --include "${keeps_name}*.${keeps_ext}"
 
 cat <<__EOF__
 ${bbb}#--
-#-- (7) 클라우드 파일 이름바꾸기
+#-- (11) 클라우드 파일 이름바꾸기
 #-- ssh -p svrPORT userID@svrURL rclone moveto cloudDRV:cloudDIR/${keepsNameExt} cloudDRV:cloudDIR/backup/${keepsName_Date_Ext}${xxx}
 __EOF__
 ssh -p ${svrPORT} ${userID}@${svrURL} rclone moveto ${cloudDRV}:${cloudDIR}/${keepsNameExt} ${cloudDRV}:${cloudDIR}/backup/${keepsName_Date_Ext}
 
 cat <<__EOF__
 ${bbb}#--
-#-- (8) 클라우드로 복사
+#-- (12) 클라우드로 복사
 #-- ssh -p svrPORT userID@svrURL rclone copy ./svrDIR/${keepsNameExt} cloudDRV:cloudDIR/${xxx}
 __EOF__
 ssh -p ${svrPORT} ${userID}@${svrURL} rclone copy ./${svrDIR}/${keepsNameExt} ${cloudDRV}:${cloudDIR}/
 
 cat <<__EOF__
 ${bbb}#--
-#-- (9) 백업 완료후 클라우드의 파일
+#-- (13) 백업 완료후 클라우드의 파일
 #-- ssh -p svrPORT userID@svrURL rclone lsl cloudDRV:cloudDIR/ --include "${keeps_name}*"${xxx}
 __EOF__
 ssh -p ${svrPORT} ${userID}@${svrURL} rclone lsl ${cloudDRV}:${cloudDIR}/ --include "${keeps_name}*.${keeps_ext}"
 
 cat <<__EOF__
 ${bbb}#--
-#-- (10) 로컬의 파일과 server 파일, cloud 파일을 확인하기 위해, 원격 서버에 로그인을 두번 실행합니다.${xxx}
+#-- (14) 로컬의 파일과 server 파일, cloud 파일을 확인하기 위해, 원격 서버에 로그인을 두번 실행합니다.${xxx}
 __EOF__
 cat >> ${log_keepass} <<__EOF__
 =======
@@ -131,6 +145,6 @@ $(ssh -p ${svrPORT} ${userID}@${svrURL} ls -l ${svrDIR}/${keeps_name}*.${keeps_e
 $(ssh -p ${svrPORT} ${userID}@${svrURL} rclone lsl ${cloudDRV}:${cloudDIR}/ --include "${keeps_name}*.${keeps_ext}")
 __EOF__
 
-echo "${bbb}#---------- (11) cat ${log_keepass} ----------${xxx}"
+echo "${bbb}#---------- (15) cat ${log_keepass} ----------${xxx}"
 cat ${log_keepass}
-echo "${bbb}#========== (11) cat ${log_keepass} ==========${xxx}"
+echo "${bbb}#========== (15) cat ${log_keepass} ==========${xxx}"

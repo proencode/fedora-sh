@@ -9,4 +9,4 @@ cmdend () {
         echo "${bbb}#--///-- ${mmm}$1${xxx}"
 }
 
-cmdrun "rsync -avzr ~/git-projects/fedora-sh/bin/[017cdfjprst]* ~/bin" "git fed bin 의 주요 스크립트를 ~/bin 으로 복사합니다."
+cmdrun "rsync -avzr ~/git-projects/fedora-sh/bin/[017cdfjprstw]* ~/bin" "git fed bin 의 주요 스크립트를 ~/bin 으로 복사합니다."
