@@ -37,6 +37,14 @@ if [ ! -d ~/${keepass_dir} ]; then
 fi
 cd ~/${keepass_dir}
 
+cat <<__EOF__
+
+rem -- 'cmd' > 관리자 권한으로 3916.5326 실행
+
+notepad.exe c:/windows/system32/drivers/etc/hosts
+
+__EOF__
+
 pswdonly "서버 사용자" "(1) 타이핑하는 글자를 보여주지 않습니다."; userID="${pswdonly}"
 pswdonly "서버 주소" "(2) 타이핑하는 글자를 보여주지 않습니다."; svrURL="${pswdonly}"
 pswdonly "서버 포트번호" "(3) 타이핑하는 글자를 보여주지 않습니다."; svrPORT=${pswdonly}
