@@ -30,7 +30,7 @@ keepsName_Date_Ext=${keeps_name}-$(date +%y%m%d-%H%M).${keeps_ext} #-- 백업위
 if [ ! -f ${keepsNameExt} ]; then
 	cat <<__EOF__
 ${bbb}#--
-#-- !!! ${keepsNameExt} 파일이 있는곳에서 실행해야 한다. !!!
+#-- !!! ${keepsNameExt} 파일이 있는곳에서 실행해야 합니다. !!!
 #--${xxx}
 __EOF__
 	exit -1
