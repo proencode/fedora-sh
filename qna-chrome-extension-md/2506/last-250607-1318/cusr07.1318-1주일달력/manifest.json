@@ -1,0 +1,19 @@
+{
+  "manifest_version": 3,
+  "name": "1주일 달력",
+  "version": "1.0",
+  "description": "오늘을 포함한 1주일 달력을 보여주는 확장 프로그램",
+  "action": {
+    "default_popup": "popup.html",
+    "default_icon": {
+      "16": "images/icon16.png",
+      "48": "images/icon48.png",
+      "128": "images/icon128.png"
+    }
+  },
+  "icons": {
+    "16": "images/icon16.png",
+    "48": "images/icon48.png",
+    "128": "images/icon128.png"
+  }
+} 

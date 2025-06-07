@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Convert SVG to PNG</title>
+</head>
+<body>
+    <canvas id="canvas16" width="16" height="16"></canvas>
+    <canvas id="canvas48" width="48" height="48"></canvas>
+    <canvas id="canvas128" width="128" height="128"></canvas>
+    <script>
+        const svg = `<?xml version="1.0" encoding="UTF-8"?>
+<svg width="128" height="128" viewBox="0 0 128 128" xmlns="http://www.w3.org/2000/svg">
+    <rect x="14" y="14" width="100" height="100" rx="8" fill="#4285f4"/>
+    <rect x="14" y="14" width="100" height="20" rx="8" fill="#3367d6"/>
+    <text x="64" y="45" font-family="Arial" font-size="24" fill="white" text-anchor="middle">7</text>
+    <text x="64" y="75" font-family="Arial" font-size="16" fill="white" text-anchor="middle">월</text>
+</svg>`;
+
+        function convertToPNG(canvasId, size) {
+            const canvas = document.getElementById(canvasId);
+            const ctx = canvas.getContext('2d');
+            
+            const img = new Image();
+            img.onload = function() {
+                ctx.drawImage(img, 0, 0, size, size);
+                const link = document.createElement('a');
+                link.download = `icon${size}.png`;
+                link.href = canvas.toDataURL('image/png');
+                link.click();
+            };
+            img.src = 'data:image/svg+xml;base64,' + btoa(svg);
+        }
+
+        // 각 크기별로 변환
+        convertToPNG('canvas16', 16);
+        convertToPNG('canvas48', 48);
+        convertToPNG('canvas128', 128);
+    </script>
+</body>
+</html> 

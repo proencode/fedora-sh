@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>1주일 달력</title>
+    <style>
+        .calendar {
+            max-width: 800px;
+            margin: 20px auto;
+            border: 2px solid #333;
+            background-color: #333;
+        }
+        .row {
+            display: grid;
+            grid-template-columns: repeat(7, 1fr);
+            border-bottom: 2px solid #333;
+        }
+        .row:last-child {
+            border-bottom: none;
+        }
+        .cell {
+            background-color: white;
+            padding: 15px 10px;
+            text-align: center;
+            font-size: 16px;
+            border-right: 2px solid #333;
+        }
+        .cell:last-child {
+            border-right: none;
+        }
+        .memo-cell {
+            font-size: 14px;
+            padding: 10px;
+            min-height: 20px;
+        }
+        .sunday {
+            color: red;
+        }
+        .saturday {
+            color: blue;
+        }
+        .today {
+            background-color: #ffff99;
+        }
+    </style>
+</head>
+<body>
+    <div class="calendar" id="calendar"></div>
+
+    <script>
+        // 메모 데이터
+        const memos = {
+            '2025-01-01': '설날',
+            '2025-06-03': '21대 대통령 선거',
+            '2025-06-06': '현충일'
+        };
+
+        function getWeekDays() {
+            const today = new Date();
+            const days = [];
+            
+            // 오늘 날짜의 요일을 기준으로 이번 주 일요일을 찾습니다
+            const sunday = new Date(today);
+            sunday.setDate(today.getDate() - today.getDay());
+            
+            // 일주일 날짜를 생성합니다
+            for (let i = 0; i < 7; i++) {
+                const date = new Date(sunday);
+                date.setDate(sunday.getDate() + i);
+                days.push(date);
+            }
+            
+            return days;
+        }
+
+        function formatDate(date) {
+            const day = date.getDate();
+            const month = date.getMonth() + 1;
+            const weekdays = ['일', '월', '화', '수', '목', '금', '토'];
+            const weekday = weekdays[date.getDay()];
+            
+            if (date.getDay() === 0) {
+                return `${month} / ${day} (${weekday})`;
+            }
+            return `${day} (${weekday})`;
+        }
+
+        function getMemoKey(date) {
+            const year = date.getFullYear();
+            const month = String(date.getMonth() + 1).padStart(2, '0');
+            const day = String(date.getDate()).padStart(2, '0');
+            return `${year}-${month}-${day}`;
+        }
+
+        function isToday(date) {
+            const today = new Date();
+            return date.getDate() === today.getDate() &&
+                   date.getMonth() === today.getMonth() &&
+                   date.getFullYear() === today.getFullYear();
+        }
+
+        function createCalendar() {
+            const calendar = document.getElementById('calendar');
+            const days = getWeekDays();
+            
+            // 날짜 행 생성
+            const dateRow = document.createElement('div');
+            dateRow.className = 'row';
+            
+            // 메모 행 생성
+            const memoRow = document.createElement('div');
+            memoRow.className = 'row';
+            
+            days.forEach(date => {
+                // 날짜 칸 생성
+                const dateCell = document.createElement('div');
+                dateCell.className = 'cell';
+                if (date.getDay() === 0) {
+                    dateCell.classList.add('sunday');
+                } else if (date.getDay() === 6) {
+                    dateCell.classList.add('saturday');
+                }
+                if (isToday(date)) {
+                    dateCell.classList.add('today');
+                }
+                dateCell.textContent = formatDate(date);
+                dateRow.appendChild(dateCell);
+
+                // 메모 칸 생성
+                const memoCell = document.createElement('div');
+                memoCell.className = 'cell memo-cell';
+                if (isToday(date)) {
+                    memoCell.classList.add('today');
+                }
+                const memoKey = getMemoKey(date);
+                if (memos[memoKey]) {
+                    memoCell.textContent = memos[memoKey];
+                }
+                memoRow.appendChild(memoCell);
+            });
+            
+            calendar.appendChild(dateRow);
+            calendar.appendChild(memoRow);
+        }
+
+        createCalendar();
+    </script>
+</body>
+</html> 

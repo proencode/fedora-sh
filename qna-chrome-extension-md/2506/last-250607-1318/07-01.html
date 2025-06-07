@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>1주일 달력</title>
+    <style>
+        .calendar {
+            display: grid;
+            grid-template-columns: repeat(7, 1fr);
+            gap: 1px;
+            max-width: 800px;
+            margin: 20px auto;
+            border: 2px solid #333;
+            background-color: #333;
+        }
+        .day {
+            background-color: white;
+            padding: 15px 10px;
+            text-align: center;
+            font-size: 16px;
+        }
+        .sunday {
+            color: red;
+        }
+        .saturday {
+            color: blue;
+        }
+    </style>
+</head>
+<body>
+    <div class="calendar" id="calendar"></div>
+
+    <script>
+        function getWeekDays() {
+            const today = new Date();
+            const days = [];
+            
+            // 오늘 날짜의 요일을 기준으로 이번 주 일요일을 찾습니다
+            const sunday = new Date(today);
+            sunday.setDate(today.getDate() - today.getDay());
+            
+            // 일주일 날짜를 생성합니다
+            for (let i = 0; i < 7; i++) {
+                const date = new Date(sunday);
+                date.setDate(sunday.getDate() + i);
+                days.push(date);
+            }
+            
+            return days;
+        }
+
+        function formatDate(date) {
+            const day = date.getDate();
+            const month = date.getMonth() + 1;
+            const weekdays = ['일', '월', '화', '수', '목', '금', '토'];
+            const weekday = weekdays[date.getDay()];
+            
+            if (date.getDay() === 0) {
+                return `${month} / ${day} (${weekday})`;
+            }
+            return `${day} (${weekday})`;
+        }
+
+        function createCalendar() {
+            const calendar = document.getElementById('calendar');
+            const days = getWeekDays();
+            
+            days.forEach(date => {
+                const dayDiv = document.createElement('div');
+                dayDiv.className = 'day';
+                if (date.getDay() === 0) {
+                    dayDiv.classList.add('sunday');
+                } else if (date.getDay() === 6) {
+                    dayDiv.classList.add('saturday');
+                }
+                dayDiv.textContent = formatDate(date);
+                calendar.appendChild(dayDiv);
+            });
+        }
+
+        createCalendar();
+    </script>
+</body>
+</html>
