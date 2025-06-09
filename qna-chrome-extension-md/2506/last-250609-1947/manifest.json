@@ -1,0 +1,22 @@
+{
+  "manifest_version": 3,
+  "name": "3주 달력 메모",
+  "version": "1.0",
+  "description": "3주간의 달력과 메모를 관리할 수 있는 Chrome 확장 프로그램",
+  "permissions": [
+    "storage"
+  ],
+  "action": {
+    "default_popup": "calendar.html",
+    "default_icon": {
+      "16": "images/icon16.png",
+      "48": "images/icon48.png",
+      "128": "images/icon128.png"
+    }
+  },
+  "icons": {
+    "16": "images/icon16.png",
+    "48": "images/icon48.png",
+    "128": "images/icon128.png"
+  }
+} 
