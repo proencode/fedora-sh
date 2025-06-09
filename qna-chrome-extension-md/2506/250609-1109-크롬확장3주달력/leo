@@ -1,0 +1,100 @@
+
+chrome-extension 프로그램을 공부중인데, 프로그램 실행시 그 화면의 너비나 높이를 조절하는건 어디서 하나?
+
+Chrome extension 프로그램을 개발할 때, 프로그램 실행시 화면의 너비나 높이를 조절하는 방법은 여러 가지가 있습니다.
+
+manifest.json 파일에서 'width' 및 'height' 속성을 설정합니다.
+json
+
+복사하기
+undefined
+{ "manifest_version": 2, "name": "My Extension", "version": "1.0", "width": 400, // 너비를 설정합니다. "height": 300 // 높이를 설정합니다. }
+
+2. **popup.html** 파일에서 CSS를 사용하여 화면의 너비나 높이를 조절합니다.
+   ```css
+.popup {
+  width: 400px; /* 너비를 설정합니다. */
+  height: 300px; /* 높이를 설정합니다. */
+}
+popup.js 파일에서 JavaScript를 사용하여 화면의 너비나 높이를 조절합니다.
+javascript
+
+복사하기
+undefined
+document.addEventListener('DOMContentLoaded', function () { const popup = document.querySelector('.popup'); popup.style.width = '400px'; /* 너비를 설정합니다. / popup.style.height = '300px'; / 높이를 설정합니다. */ });
+
+4. Chrome browser의 개발자 도구에서 **'Inspect'** 모드에서 화면의 너비나 높이를 조절할 수 있습니다.
+
+위 방법 중 하나를 사용하여 프로그램 실행시 화면의 너비나 높이를 조절할 수 있습니다.
+
+
+
+그러면, 한개의 행에 일곱개의 열을 가진 테이블을 만들고, 그 열은 모두 너비는 1100px 이고 값은 일련번호 1 부터 7 까지로 열 안에 표시를 해서 단순히 보여주기만 하는 chrome-extension 프로그램 소스를 만들어줘.
+
+```
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>테이블 예제</title>
+    <style>
+      table {
+        border-collapse: collapse;
+        width: 100%;
+      }
+      th, td {
+        border: 1px solid #ddd;
+        padding: 10px;
+        text-align: center;
+      }
+      th {
+        background-color: #f0f0f0;
+      }
+    </style>
+  </head>
+  <body>
+    <table id="myTable">
+      <tr>
+        <th>1</th>
+        <th>2</th>
+        <th>3</th>
+        <th>4</th>
+        <th>5</th>
+        <th>6</th>
+        <th>7</th>
+      </tr>
+    </table>
+    <script src="popup.js"></script>
+  </body>
+</html>
+```
+popup.js
+```
+document.addEventListener('DOMContentLoaded', function () {
+  const table = document.getElementById('myTable');
+  const rows = 1; // 행의 개수
+  const cols = 7; // 열의 개수
+  const width = 1100; // 열의 너비
+
+  for (let i = 1; i <= rows; i++) {
+    const row = table.insertRow(i);
+    for (let j = 1; j <= cols; j++) {
+      const cell = row.insertCell(j - 1);
+      cell.innerHTML = j;
+      cell.style.width = `${width}px`;
+    }
+  }
+});
+```
+manifest.json
+```
+{
+  "manifest_version": 2,
+  "name": "테이블 예제",
+  "version": "1.0",
+  "width": 1100, // 프로그램의 너비
+  "height": 600 // 프로그램의 높이
+}
+```
+위 소스를 사용하여 Chrome 확장 프로그램을 만들면, 한개의 행에 일곱개의 열을 가진 테이블이 생성되고, 각 열의 너비는 1100px로 설정되어 있습니다. 열 안에 표시되는 값은 일련번호 1 부터 7 까지입니다.
+
+

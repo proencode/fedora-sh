@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="16" height="16" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg">
+    <rect x="1" y="2" width="14" height="13" fill="white" stroke="#666" stroke-width="1"/>
+    <rect x="1" y="2" width="14" height="2" fill="#666"/>
+    <line x1="4" y1="4" x2="4" y2="4" stroke="white" stroke-width="1"/>
+    <line x1="8" y1="4" x2="8" y2="4" stroke="white" stroke-width="1"/>
+    <line x1="12" y1="4" x2="12" y2="4" stroke="white" stroke-width="1"/>
+    <line x1="4" y1="7" x2="4" y2="7" stroke="#666" stroke-width="1"/>
+    <line x1="8" y1="7" x2="8" y2="7" stroke="#666" stroke-width="1"/>
+    <line x1="12" y1="7" x2="12" y2="7" stroke="#666" stroke-width="1"/>
+    <line x1="4" y1="10" x2="4" y2="10" stroke="#666" stroke-width="1"/>
+    <line x1="8" y1="10" x2="8" y2="10" stroke="#666" stroke-width="1"/>
+    <line x1="12" y1="10" x2="12" y2="10" stroke="#666" stroke-width="1"/>
+    <line x1="4" y1="13" x2="4" y2="13" stroke="#666" stroke-width="1"/>
+    <line x1="8" y1="13" x2="8" y2="13" stroke="#666" stroke-width="1"/>
+    <line x1="12" y1="13" x2="12" y2="13" stroke="#666" stroke-width="1"/>
+</svg> 
