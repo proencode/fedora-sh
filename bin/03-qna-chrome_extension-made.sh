@@ -24,40 +24,39 @@ date_HM=$(date +%H%M) #-- 1533
 date_dHM="${date_ymd:4:2}.${date_HM}" #-- 24.1533
 date_ymdHM="${date_ymd}.${date_HM}" #-- 250524.1533
 date_mark="${date_ymd}(${date_a}) ${date_HM}" #-- 250524(토) 1533
-my_id="gemini"
+support_ai="gemini"
 #------^^^^^^
-cmdreada "(1) INPUT: 일련번호 앞의 접두어" "그냥 Enter 면, ${rrr}[ ${xxx}${my_id} ${rrr}]"
+cmdreada "(1) INPUT: 일련번호 앞의 접두어" "그냥 Enter 면, ${rrr}[ ${xxx}${support_ai} ${rrr}]"
 if [ "x${reada}" = "x" ]; then
-    reada=${my_id}
+    reada=${support_ai}
 fi
-my_id=${reada}
-echo "${ccc}#-- ${rrr}[ ${xxx}${my_id} ${rrr}]${xxx}"
+support_ai=${reada}
+echo "${ccc}#-- ${rrr}[ ${xxx}${support_ai} ${rrr}]${xxx}"
 
-id_mark="${my_id}${date_dHM}"
-qna_chrome_extension_DIR="last-${date_ymd}-${date_HM}"
-md_dir="md-${date_ymd}-${date_HM}-chrome-extension"
+supportAI_dHM="${support_ai}${date_dHM}"
+last_ymd_HM="last-${date_ymd}-${date_HM}"
 
 echo "${yyy}#-- ${ccc}새 폴더를 ${xxx}$(pwd) ${bbb}아래에 만듭니다.${xxx}"
-cmdreada "(2a) INPUT: 새 폴더 이름 입력" "그냥 Enter 하면: ${yyy}[ ${bbb}${qna_chrome_extension_DIR} ${yyy} ]"
+cmdreada "(2a) INPUT: 새 폴더 이름 입력" "그냥 Enter 하면: ${yyy}[ ${bbb}${last_ymd_HM} ${yyy} ]"
 if [ "x$reada" != "x" ]; then
-    qna_chrome_extension_DIR="${reada}"
+    last_ymd_HM="${reada}"
 fi
-if [ ! -d ${qna_chrome_extension_DIR} ]; then
-	cmdrun "mkdir -p ${qna_chrome_extension_DIR}; ls -l ${qna_chrome_extension_DIR}" "(2b) 폴더를 새로 만듭니다."
+if [ ! -d ${last_ymd_HM} ]; then
+	cmdrun "mkdir -p ${last_ymd_HM}; ls -l ${last_ymd_HM}" "(2b) 폴더를 새로 만듭니다."
 fi
-echo "${ccc}#-- ${rrr}[ ${xxx}${qna_chrome_extension_DIR} ${rrr}]${xxx}"
+echo "${ccc}#-- ${rrr}[ ${xxx}${last_ymd_HM} ${rrr}]${xxx}"
 
-echo "${yyy}#-- ${ccc}cd ${qna_chrome_extension_DIR} ${mmm}#-- ${bbb}(3) qna- 폴더로 갑니다.${xxx}"
-cd "${qna_chrome_extension_DIR}" #-- cmdrun 으로 실행시 처리 안됨.
-echo "${bbb}#// cd ${qna_chrome_extension_DIR} #-- (3) qna- 폴더로 갑니다.${xxx}"
+echo "${yyy}#-- ${ccc}cd ${last_ymd_HM} ${mmm}#-- ${bbb}(3) qna- 폴더로 갑니다.${xxx}"
+cd "${last_ymd_HM}" #-- cmdrun 으로 실행시 처리 안됨.
+echo "${bbb}#// cd ${last_ymd_HM} #-- (3) qna- 폴더로 갑니다.${xxx}"
 
 ###
 
-backup_chrome_extension_md_DIR="backup-chrome-extension-md"
-if [ ! -d ${backup_chrome_extension_md_DIR} ]; then
-	cmdrun "mkdir -p ${backup_chrome_extension_md_DIR}" "(4a) .md 와 완성된 chrome-extension 을 보관하는 폴더를 만듭니다."
+backup_md_dir="backup-chrome-extension-md"
+if [ ! -d ${backup_md_dir} ]; then
+	cmdrun "mkdir -p ${backup_md_dir}" "(4a) .md 와 완성된 chrome-extension 을 보관하는 폴더를 만듭니다."
 else
-	cmdrun "ls -l ${backup_chrome_extension_md_DIR}" "(4b) .md 와 완성된 chrome-extension 을 보관하는 폴더내역 입니다."
+	cmdrun "ls -l ${backup_md_dir}" "(4b) .md 와 완성된 chrome-extension 을 보관하는 폴더내역 입니다."
 fi
 
 echo "${mmm}#-- ${bbb}(6) 03- 스크립트를 이곳으로 복사하는 작업을 취소합니다.${xxx}"
@@ -83,7 +82,8 @@ file_name="app-${date_ymd}-${date_HM}-99-작업이름.md"
 #- fi
 
 
-chrome_extension_DIR="chrome-${date_ymd}-${date_HM}-${begin_no:1}"
+#-- 브라우저는 이 폴더를 쓰고, 오류가 없으면 -00, -01 ... 로 바꿔서 보관한다.
+chrome_extension_DIR="${supportAI_dHM}-99"
 if [ ! -d ${chrome_extension_DIR} ]; then
 	cmdrun "mkdir -p ${chrome_extension_DIR}" "(5a) 크롬확장 폴더를 만듭니다."
 fi
@@ -98,10 +98,10 @@ for (( i=$begin_no; i<=end_no; i++ ))
 do
     cat >> ${file_name} <<__EOF__
 🔥
-### 🔥 ${id_mark}-${i:1}.
-mkdir chrome-${date_ymd}-${date_HM}-${i:1}
+### 🔥 ${supportAI_dHM}-${i:1}.
 
 ### 🔋 ${date_dHM}-${i:1}. 
+
 
 
 __EOF__
@@ -110,11 +110,43 @@ done
 begin_no=$((begin_no + 10))
 end_no=$((end_no + 10))
 cat >> ${file_name} <<__EOF__
-begin_no=${begin_no}; echo ""; echo "### ${date_mark} 질문과 답변 (qna)"; echo ""; for (( i=begin_no; i<=end_no; i++ )); do echo "🔥"; echo "### 🔥 ${id_mark}-\${i:1}."; echo "mkdir chrome-${date_ymd}-${date_HM}-\${i:1}"; echo ""; echo "### 🔋 ${date_dHM}-\${i:1}."; echo ""; echo ""; done
+begin_no=${begin_no}; echo ""; echo "### ${date_mark} 질문과 답변 (qna)"; echo ""; for (( i=begin_no; i<=end_no; i++ )); do echo "🔥"; echo "### 🔥 ${supportAI_dHM}-\${i:1}."; echo "mkdir ${supportAI_dHM}-\${i:1}"; echo ""; echo "### 🔋 ${date_dHM}-\${i:1}."; echo ""; echo ""; done
 __EOF__
 
 cmdrun "cat ${file_name}" "(9) 만든 내용 확인"
 
-echo ""
-echo "${yyy}cd ${qna_chrome_extension_DIR}; vi ${file_name}    ${bbb}#--///-- qna-파일에 입력하기.${xxx}"
-echo ""
+cat > saveto-number.sh <<__EOF__
+#!/bin/sh
+
+if [[ "x\${1}" < "x00" || "x\${1}" > "x99" ]]; then
+        echo "#-- 입력값은 "00" ~ "99" 사이의 값이라야 합니다."
+else
+		a="000\${1}" #-- \${a: -2} == 뒤에서 2개를 꺼낸다.
+        dd="${supportAI_dHM}-\${a: -2}"
+        if [ -d \${dd} ]; then
+                echo "#-- \${dd} 폴더가 있어서 백업할 수 없습니다."
+        else
+                #-- echo "#-- rsync -avzr ${supportAI_dHM}-99 ${supportAI_dHM}-\${a: -2}"
+				#-- echo "#-- 복사후 필요없는 파일은 걸러내야 한다."
+
+                echo "#-- mv ${supportAI_dHM}-99 ${supportAI_dHM}-\${a: -2}"
+                mv ${supportAI_dHM}-99 ${supportAI_dHM}-\${a: -2}
+				echo "#-- mkdir ${supportAI_dHM}-99"
+				mkdir ${supportAI_dHM}-99
+				echo "#-- mkdir 후 ide 에서 새로 파일을 내보내야 한다."
+
+                echo "#-- ls -l --color"
+                ls -l --color
+        fi
+fi
+__EOF__
+
+cat <<__EOF__
+
+${yyy}cd ${last_ymd_HM}; vi ${file_name}    ${bbb}#--///-- qna-파일에 입력하기.${xxx}
+
+sh saveto-number.sh 33    #-- ${supportAI_dHM}-99 를 ${supportAI_dHM}-33 으로 바꾸고,
+#-- ${supportAI_dHM}-99 를 새로 만듭니다.
+__EOF__
+
+cmdrun "ls -1" "(10) 소스를 -00 등올 바꾸고, -99 를 새로 만드는 명령을 파일로 표시했습니다."
