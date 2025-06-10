@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>04.1158-02.주간 달력</title>
+<style>
+body {
+    /* 팝업 창의 전체 너비를 원하는 값으로 설정 (예: 600px) */
+    width: 600px;
+    font-family: sans-serif;
+	margin: 8; /* 기본 margin 제거 --> 8로 늘임 */
+}
+.year {
+    text-align: center;
+    font-size: 1.2em;
+    margin-bottom: 5px;
+}
+.week {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    text-align: center;
+}
+.day {
+    padding: 8px;
+    border: 1px solid #eee;
+    /* 각 칸의 최소 너비를 설정하여 내용이 줄 바꿈되지 않도록 함 */
+    min-width: 60px; /* 적절한 값으로 조정 */
+    box-sizing: border-box; /* padding과 border가 width에 포함되도록 함 */
+}
+.today {
+    background-color: yellow;
+}
+.memo-row {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+}
+.memo {
+    padding: 5px;
+    border: 1px solid #eee;
+    font-size: 0.9em;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+</style>
+</head>
+<body>
+    <div class="year" id="year"></div>
+    <div class="week" id="weekdays"></div>
+    <div class="memo-row" id="memoArea"></div>
+    <script src="jpopup.js"></script>
+</body>
+</html>

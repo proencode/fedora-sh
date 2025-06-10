@@ -1,0 +1,10 @@
+{
+  "manifest_version": 3,
+  "name": "주간 달력",
+  "version": "1.0",
+  "description": "250504.1158-07. 오늘을 포함한 주간 달력을 표시하고 교대 근무 일정을 보여줍니다.",
+  "permissions": [],
+  "action": {
+    "default_popup": "popup.html"
+  }
+}

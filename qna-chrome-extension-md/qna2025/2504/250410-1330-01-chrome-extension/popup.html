@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>1주일 달력</title>
+  <style>
+    body {
+      width: 420px; /* 너비를 약간 늘림 */
+      font-size: 14px; /* 기본 글꼴 크기 설정 */
+    }
+    .calendar-row {
+      display: flex;
+      justify-content: space-around;
+      margin-bottom: 5px;
+    }
+    .calendar-cell {
+      border: 1px solid #ccc;
+      padding: 10px;
+      text-align: center;
+      width: 50px;
+    }
+    .yellow-background {
+      background-color: yellow;
+    }
+  </style>
+</head>
+<body>
+  <div id="calendar"></div>
+  <script src="popup.js"></script>
+</body>
+</html>

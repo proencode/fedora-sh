@@ -1,0 +1,8 @@
+{
+    "manifest_version": 3,
+    "name": "🔥 gemini081501-02. Markdown Note+",
+    "version": "1.0",
+    "action": {
+        "default_popup": "popup.html"
+    }
+}

@@ -1,0 +1,31 @@
+body {
+  width: 450px; /* 칸 폭을 넓혔습니다. */
+  font-family: sans-serif;
+  padding: 0px;
+}
+
+.calendar {
+  display: grid;
+  grid-template-rows: auto auto; /* 두 줄을 유지하되 gap 제거 */
+  gap: 0px; /* 박스 사이 간격을 없앱니다. */
+}
+
+.week-row {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+}
+
+.day, .memo {
+  border: 1px solid #ccc;
+  padding: 0px;
+  text-align: center;
+  font-size: 14px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.memo {
+  font-size: 12px;
+  color: #555;
+}
