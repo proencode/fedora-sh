@@ -1,9 +1,0 @@
-{
-  "manifest_version": 3,
-  "name": "chatgpt05.1342-00 manifest.json 3주 교대근무 달력",
-  "version": "1.0",
-  "action": {
-    "default_popup": "popup.html"
-  },
-  "permissions": ["storage"]
-}

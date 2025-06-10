@@ -110,7 +110,7 @@ done
 begin_no=$((begin_no + 10))
 end_no=$((end_no + 10))
 cat >> ${file_name} <<__EOF__
-begin_no=${begin_no}; echo ""; echo "### ${date_mark} 질문과 답변 (qna)"; echo ""; for (( i=begin_no; i<=end_no; i++ )); do echo "🔥"; echo "### 🔥 ${supportAI_dHM}-\${i:1}."; echo "mkdir ${supportAI_dHM}-\${i:1}"; echo ""; echo "### 🔋 ${date_dHM}-\${i:1}."; echo ""; echo ""; done
+begin_no=${begin_no}; end_no=${end_no}; echo ""; echo "### ${date_mark} 질문과 답변 (qna)"; echo ""; for (( i=begin_no; i<=end_no; i++ )); do echo "🔥"; echo "### 🔥 ${supportAI_dHM}-\${i:1}."; echo "mkdir ${supportAI_dHM}-\${i:1}"; echo ""; echo "### 🔋 ${date_dHM}-\${i:1}."; echo ""; echo ""; done
 __EOF__
 
 cmdrun "cat ${file_name}" "(9) 만든 내용 확인"

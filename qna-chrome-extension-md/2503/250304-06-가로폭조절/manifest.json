@@ -1,9 +1,0 @@
-{
-  "manifest_version": 3,
-  "name": "250304-04 주간 달력 표시",
-  "version": "1.1",
-  "description": "현재 주를 가로로 표시합니다.",
-  "action": {
-    "default_popup": "popup.html"
-  }
-}
