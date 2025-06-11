@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>03 주간 달력</title>
+    <style>
+        .calendar-container {
+            max-width: 700px;
+            margin: 20px auto;
+        }
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+            gap: 10px;
+        }
+        .header-right {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .year-display {
+            font-size: 1.2em;
+            font-weight: bold;
+        }
+        .nav-button {
+            padding: 5px 15px;
+            font-size: 1em;
+            cursor: pointer;
+            background: none;
+            border: 1px solid #333;
+            border-radius: 5px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 30px;
+        }
+        .nav-button:hover {
+            background-color: #f0f0f0;
+        }
+        .calendar-grid {
+            display: grid;
+            grid-template-columns: repeat(7, 1fr);
+            max-width: 700px;
+            border: 1px solid #333;
+        }
+        .day {
+            border: 1px solid #333;
+            padding: 5px;
+            text-align: center;
+            height: 35px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            background-color: #f8f8f8;
+            font-size: 0.85em;
+        }
+        .today {
+            background-color: #ffff00;
+        }
+        .memo-cell {
+            padding: 8px;
+            min-height: 60px;
+            border: 1px solid #333;
+            word-break: break-all;
+            font-size: 0.85em;
+            background-color: white;
+        }
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            z-index: 1000;
+        }
+        .modal-content {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: white;
+            padding: 20px;
+            border-radius: 5px;
+            width: 80%;
+            max-width: 500px;
+        }
+        .modal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+        .modal-title {
+            font-size: 1.1em;
+            font-weight: bold;
+        }
+        .modal-close {
+            cursor: pointer;
+            font-size: 1.3em;
+        }
+        .modal-body {
+            margin-bottom: 15px;
+        }
+        .modal-textarea {
+            width: 100%;
+            height: 150px;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            resize: vertical;
+            font-size: 0.9em;
+        }
+        .modal-footer {
+            text-align: right;
+        }
+        .modal-button {
+            padding: 8px 20px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 0.9em;
+        }
+        .modal-button:hover {
+            background-color: #45a049;
+        }
+        .toggle-button {
+            padding: 5px 15px;
+            font-size: 0.9em;
+            cursor: pointer;
+            background: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            margin-right: 10px;
+        }
+        .toggle-button.active {
+            background: #45a049;
+        }
+        .memo-controls {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin-bottom: 15px;
+        }
+        .control-button {
+            padding: 5px 15px;
+            font-size: 0.9em;
+            cursor: pointer;
+            background: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+        }
+        .control-button:hover {
+            background: #45a049;
+        }
+    </style>
+</head>
+<body>
+    <div class="calendar-container">
+        <div class="header">
+            <button class="nav-button" onclick="moveWeeks(-1)">◀</button>
+            <div class="year-display" id="yearDisplay"></div>
+            <div class="header-right">
+                <button class="toggle-button active" id="simpleMemoToggle" onclick="toggleSimpleMemo()">단축메모</button>
+                <button class="nav-button" onclick="moveWeeks(1)">▶</button>
+            </div>
+        </div>
+        <div class="memo-controls">
+            <button class="control-button" onclick="saveToFile()">메모 저장</button>
+            <input type="file" id="fileInput" accept=".json" style="display: none;" onchange="loadFromFile(event)">
+            <button class="control-button" onclick="document.getElementById('fileInput').click()">메모 불러오기</button>
+        </div>
+        <div id="calendarContainer"></div>
+    </div>
+
+    <div id="memoModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <div class="modal-title" id="modalTitle"></div>
+                <span class="modal-close" onclick="closeModal()">&times;</span>
+            </div>
+            <div class="modal-body">
+                <textarea class="modal-textarea" id="memoText"></textarea>
+            </div>
+            <div class="modal-footer">
+                <button class="modal-button" onclick="saveMemo()">끝냄</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        let currentDate = new Date();
+        let isSimpleMemo = true;
+        let selectedDate = null;
+        let memos = {};
+
+        function saveMemosToStorage() {
+            localStorage.setItem('calendarMemos', JSON.stringify(memos));
+        }
+
+        function loadMemosFromStorage() {
+            const savedMemos = localStorage.getItem('calendarMemos');
+            if (savedMemos) {
+                memos = JSON.parse(savedMemos);
+                createCalendar(currentDate);
+            }
+        }
+
+        function getWeekDays(date) {
+            const days = [];
+            const sunday = new Date(date);
+            sunday.setDate(date.getDate() - date.getDay());
+
+            for (let i = 0; i < 7; i++) {
+                const newDate = new Date(sunday);
+                newDate.setDate(sunday.getDate() + i);
+                days.push(newDate);
+            }
+
+            return days;
+        }
+
+        function formatDate(date) {
+            const day = date.getDate();
+            const month = date.getMonth() + 1;
+            const weekdays = ['일', '월', '화', '수', '목', '금', '토'];
+            const weekday = weekdays[date.getDay()];
+
+            if (date.getDay() === 0 || day === 1) {
+                return `${month} / ${day} (${weekday})`;
+            }
+            return `${day} (${weekday})`;
+        }
+
+        function isToday(date) {
+            const today = new Date();
+            return date.getDate() === today.getDate() &&
+                   date.getMonth() === today.getMonth() &&
+                   date.getFullYear() === today.getFullYear();
+        }
+
+        function getDateKey(date) {
+            return `${date.getFullYear()}-${date.getMonth() + 1}-${date.getDate()}`;
+        }
+
+        function createCalendar(date) {
+            const container = document.getElementById('calendarContainer');
+            const yearDisplay = document.getElementById('yearDisplay');
+            yearDisplay.textContent = `${date.getFullYear()} 년`;
+            
+            const calendarGrid = document.createElement('div');
+            calendarGrid.className = 'calendar-grid';
+            
+            for (let i = -1; i <= 1; i++) {
+                const weekDate = new Date(date);
+                weekDate.setDate(date.getDate() + (i * 7));
+                const days = getWeekDays(weekDate);
+                
+                days.forEach(date => {
+                    const dayElement = document.createElement('div');
+                    dayElement.className = 'day';
+                    if (isToday(date)) {
+                        dayElement.classList.add('today');
+                    }
+                    dayElement.textContent = formatDate(date);
+                    dayElement.onclick = () => openModal(date);
+                    calendarGrid.appendChild(dayElement);
+                });
+                
+                days.forEach(date => {
+                    const memoCell = document.createElement('div');
+                    memoCell.className = 'memo-cell';
+                    const dateKey = getDateKey(date);
+                    const memo = memos[dateKey] || '';
+                    
+                    if (isSimpleMemo && memo.length > 20) {
+                        memoCell.textContent = memo.substring(0, 20) + '...';
+                    } else {
+                        memoCell.textContent = memo;
+                    }
+                    
+                    calendarGrid.appendChild(memoCell);
+                });
+            }
+            
+            container.innerHTML = '';
+            container.appendChild(calendarGrid);
+        }
+
+        function moveWeeks(weeks) {
+            currentDate.setDate(currentDate.getDate() + (weeks * 7));
+            createCalendar(currentDate);
+        }
+
+        function toggleSimpleMemo() {
+            isSimpleMemo = !isSimpleMemo;
+            const toggleButton = document.getElementById('simpleMemoToggle');
+            toggleButton.classList.toggle('active');
+            toggleButton.textContent = isSimpleMemo ? '단축메모' : '상세메모';
+            createCalendar(currentDate);
+        }
+
+        function openModal(date) {
+            selectedDate = date;
+            const modal = document.getElementById('memoModal');
+            const modalTitle = document.getElementById('modalTitle');
+            const memoText = document.getElementById('memoText');
+
+            modalTitle.textContent = formatDate(date);
+            memoText.value = memos[getDateKey(date)] || '';
+            modal.style.display = 'block';
+        }
+
+        function closeModal() {
+            const modal = document.getElementById('memoModal');
+            modal.style.display = 'none';
+            selectedDate = null;
+        }
+
+        function saveMemo() {
+            if (selectedDate) {
+                const memoText = document.getElementById('memoText').value;
+                memos[getDateKey(selectedDate)] = memoText;
+                saveMemosToStorage();
+                createCalendar(currentDate);
+                closeModal();
+            }
+        }
+
+        function saveToFile() {
+            const dataStr = JSON.stringify(memos, null, 2);
+            const dataUri = 'data:application/json;charset=utf-8,'+ encodeURIComponent(dataStr);
+            
+            const exportFileDefaultName = `calendar_memo_${new Date().toISOString().split('T')[0]}.json`;
+            
+            const linkElement = document.createElement('a');
+            linkElement.setAttribute('href', dataUri);
+            linkElement.setAttribute('download', exportFileDefaultName);
+            linkElement.click();
+        }
+
+        function loadFromFile(event) {
+            const file = event.target.files[0];
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    try {
+                        const loadedMemos = JSON.parse(e.target.result);
+                        memos = loadedMemos;
+                        saveMemosToStorage();
+                        createCalendar(currentDate);
+                        alert('메모를 불러왔습니다.');
+                    } catch (error) {
+                        alert('파일 형식이 올바르지 않습니다.');
+                    }
+                };
+                reader.readAsText(file);
+            }
+        }
+
+        document.addEventListener('DOMContentLoaded', function() {
+            loadMemosFromStorage();
+        });
+
+        createCalendar(currentDate);
+    </script>
+</body>
+</html> 
