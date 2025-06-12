@@ -126,15 +126,8 @@ else
         if [ -d \${dd} ]; then
                 echo "#-- \${dd} 폴더가 있어서 백업할 수 없습니다."
         else
-                #-- echo "#-- rsync -avzr ${supportAI_dHM}-99 ${supportAI_dHM}-\${a: -2}"
-				#-- echo "#-- 복사후 필요없는 파일은 걸러내야 한다."
-
-                echo "#-- mv ${supportAI_dHM}-99 ${supportAI_dHM}-\${a: -2}"
-                mv ${supportAI_dHM}-99 ${supportAI_dHM}-\${a: -2}
-				echo "#-- mkdir ${supportAI_dHM}-99"
-				mkdir ${supportAI_dHM}-99
-				echo "#-- mkdir 후 ide 에서 새로 파일을 내보내야 한다."
-
+                echo "#-- rsync -avzr ${supportAI_dHM}-99 ${supportAI_dHM}-\${a: -2}"
+                rsync -avzr ${supportAI_dHM}-99 ${supportAI_dHM}-\${a: -2}
                 echo "#-- ls -l --color"
                 ls -l --color
         fi
