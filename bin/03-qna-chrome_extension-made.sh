@@ -115,13 +115,17 @@ __EOF__
 
 cmdrun "cat ${file_name}" "(9) 만든 내용 확인"
 
-cat > saveto-number.sh <<__EOF__
+cat > 02-saveto-number.sh <<__EOF__
 #!/bin/sh
 
+echo "#-- sh 02-saveto-number.sh ($1)"
+echo "#-- "
 if [[ "x\${1}" < "x00" || "x\${1}" > "x99" ]]; then
-        echo "#-- 입력값은 "00" ~ "99" 사이의 값이라야 합니다."
+	echo "#-- sh 02-saveto-number.sh 00"
+	echo "#-- "
+	echo "#-- 입력값은 "00" ~ "99" 사이의 값이라야 합니다."
 else
-		a="000\${1}" #-- \${a: -2} == 뒤에서 2개를 꺼낸다.
+	a="000\${1}" #-- \${a: -2} == 뒤에서 2개를 꺼낸다.
         dd="${supportAI_dHM}-\${a: -2}"
         if [ -d \${dd} ]; then
                 echo "#-- \${dd} 폴더가 있어서 백업할 수 없습니다."
@@ -132,6 +136,23 @@ else
                 ls -l --color
         fi
 fi
+__EOF__
+
+cat > 01-server_last_COPYTO_here.sh <<__EOF__
+#!/bin/sh
+
+yymm="$(date +%y%m)" #-- 2506
+cd ~/Downloads; mkdir ${yymm}; cd ${yymm}
+
+echo "#-- rsync -avzr -e 'ssh -p 5822' proenpi@pi:g*/f*/q*/${yymm}/last* . #-- ${yymm}/last 를 이곳으로 가져옵니다."
+echo "#-- press 'y':"
+read a
+if [ "x$a" != "xy" ]; then
+	echo "#-- 'y' 가 아니므로 가져오기를 중단합니다."
+	exit -1
+fi
+rsync -avzr -e 'ssh -p 5822' proenpi@pi:g*/f*/q*/${yymm}/last* .
+echo "#-- rsync -avzr -e 'ssh -p 5822' proenpi@pi:g*/f*/q*/${yymm}/last* ."
 __EOF__
 
 cat <<__EOF__
