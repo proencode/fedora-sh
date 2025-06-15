@@ -1,0 +1,12 @@
+{
+    "manifest_version": 3,
+    "name": "3주 달력",
+    "version": "1.0",
+    "description": "3주간의 달력을 보여주고 메모를 관리할 수 있는 확장 프로그램",
+    "action": {
+        "default_popup": "popup.html"
+    },
+    "permissions": [
+        "storage"
+    ]
+} 

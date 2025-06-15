@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>3주달력 cusr12.1039-00 index.html</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <button id="prevWeek" class="nav-btn">◀</button>
+            <span id="yearDisplay"></span>
+            <button id="nextWeek" class="nav-btn">▶</button>
+            <div class="button-group">
+                <button id="toggleMemoMode" class="control-btn">단축메모/상세메모</button>
+                <button id="saveMemo" class="control-btn">저장</button>
+                <button id="loadMemo" class="control-btn">불러오기</button>
+            </div>
+        </div>
+        <div class="calendar" id="calendar"></div>
+    </div>
+
+    <div id="memoModal" class="modal">
+        <div class="modal-content">
+            <h3 id="modalDate"></h3>
+            <textarea id="memoText"></textarea>
+            <div class="modal-buttons">
+                <button id="saveMemoBtn" class="control-btn">저장</button>
+                <button id="closeModalBtn" class="control-btn">닫기</button>
+            </div>
+        </div>
+    </div>
+
+    <input type="file" id="fileInput" accept=".json" style="display: none;">
+    <script src="script.js"></script>
+</body>
+</html>

@@ -46,7 +46,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>3주 달력</title>
+    <title>3주달력 cusr12.1039-00 index.html</title>
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
@@ -82,6 +82,7 @@
 ```
 이제 CSS 파일을 생성하여 스타일을 적용하겠습니다.
 ```
+/* cusr12.1039-00 styles.css */
 * {
     margin: 0;
     padding: 0;
@@ -199,6 +200,7 @@ body {
 ```
 마지막으로 JavaScript 파일을 생성하여 기능을 구현하겠습니다.
 ```
+/* cusr12.1039-00 script.js */
 class Calendar {
     constructor() {
         this.currentDate = new Date();
@@ -393,6 +395,7 @@ document.addEventListener('DOMContentLoaded', () => {
 ### 🔋 12.1039-01. 네, 요청하신 수정사항을 반영하겠습니다.
 먼저 CSS 파일을 수정하여 테두리 두께를 맞추고 레이아웃을 변경하겠습니다.
 ```
+/* cusr12.1039-01 styles.css */
 * {
     margin: 0;
     padding: 0;
@@ -526,11 +529,10 @@ body {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>3주 달력</title>
+    <title>3주달력 cusr12.1039-01 index.html</title>
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    cusr12.1039-01.
     <div class="container">
         <div class="header">
             <div class="year-row" id="yearDisplay"></div>
@@ -567,6 +569,7 @@ body {
 ```
 마지막으로 JavaScript 파일을 수정하여 메모 모드 표시 기능을 추가하겠습니다.
 ```
+/* cusr12.1039-01 script.js */
 class Calendar {
     constructor() {
         this.currentDate = new Date();
@@ -769,6 +772,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
 ### 🔋 12.1039-02. 네, 요청하신 수정사항을 반영하겠습니다. 먼저 CSS 파일을 수정하겠습니다.
 ```
+/* cusr12.1039-02 styles.css */
 * {
     margin: 0;
     padding: 0;
@@ -901,11 +905,10 @@ body {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>3주 달력</title>
+    <title>3주달력 cusr12.1039-02 index.html</title>
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    cusr12.1039-02.
     <div class="container">
         <div class="header">
             <div class="year-row" id="yearDisplay"></div>
@@ -968,6 +971,7 @@ body {
 ### 🔋 12.1039-03. 네, 요청하신 수정사항을 반영하겠습니다.
 먼저 CSS 파일을 수정하여 선택된 메모 모드의 색상을 파란색으로 변경하겠습니다.
 ```
+/* cusr12.1039-03 styles.css */
 * {
     margin: 0;
     padding: 0;
@@ -1100,7 +1104,7 @@ body {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>3주 달력 cusr12.1039-03.</title>
+    <title>3주 달력 cusr12.1039-03. index.html</title>
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
@@ -1161,6 +1165,7 @@ body {
 ### 🔋 12.1039-04. 네, 요청하신 사항들을 하나씩 처리하겠습니다.
 1. 먼저 선택된 메모 모드의 색상을 노란색으로 변경하겠습니다.
 ```
+/* cusr12.1039-04 styles.css */
 * {
     margin: 0;
     padding: 0;
@@ -1298,6 +1303,7 @@ body {
 ```
 2. 달력 테이블의 테두리 문제를 해결하기 위해 CSS를 수정하겠습니다.
 ```
+/* cusr12.1039-04 styles.css */
 * {
     margin: 0;
     padding: 0;
@@ -1445,7 +1451,7 @@ body {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>3주 달력 cusr12.1039-04.</title>
+    <title>3주 달력 cusr12.1039-04. index.html</title>
     <link rel="stylesheet" href="styles.css">
     <script src="https://apis.google.com/js/api.js"></script>
     <script src="https://accounts.google.com/gsi/client"></script>
@@ -1487,6 +1493,7 @@ body {
 ```
 이제 JavaScript 파일에 Google Drive 연동 기능을 추가하겠습니다:
 ```
+/* cusr12.1039-04 script.js */
 class Calendar {
     constructor() {
         this.currentDate = new Date();
@@ -1771,7 +1778,7 @@ Google Drive 연동을 사용하기 위해서는 다음 단계가 필요합니�
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>3주 달력 cusr12.1039-05.</title>
+    <title>3주 달력 cusr12.1039-05. index.html</title>
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
@@ -1809,6 +1816,7 @@ Google Drive 연동을 사용하기 위해서는 다음 단계가 필요합니�
 ```
 
 ```
+/* cusr12.1039-05 script.js */
 class Calendar {
     constructor() {
         this.currentDate = new Date();

@@ -118,20 +118,22 @@ cmdrun "cat ${file_name}" "(9) 만든 내용 확인"
 cat > 02-saveto-number.sh <<__EOF__
 #!/bin/sh
 
-echo "#-- sh 02-saveto-number.sh ($1)"
+cc="${supportAI_dHM}" #-- "cusr12.1039"
+
+echo "#-- sh 02-saveto-number.sh (\${1})"
 echo "#-- "
 if [[ "x\${1}" < "x00" || "x\${1}" > "x99" ]]; then
-	echo "#-- sh 02-saveto-number.sh 00"
-	echo "#-- "
-	echo "#-- 입력값은 "00" ~ "99" 사이의 값이라야 합니다."
+        echo "#-- sh 02-saveto-number.sh 00"
+        echo "#-- "
+        echo "#-- 입력값은 "00" ~ "99" 사이의 값이라야 합니다."
 else
-	a="000\${1}" #-- \${a: -2} == 뒤에서 2개를 꺼낸다.
-        dd="${supportAI_dHM}-\${a: -2}"
+        a="000\${1}" #-- \${a: -2} == 뒤에서 2개를 꺼낸다.
+        dd="\${cc}-\${a: -2}"
         if [ -d \${dd} ]; then
                 echo "#-- \${dd} 폴더가 있어서 백업할 수 없습니다."
         else
-                echo "#-- rsync -avzr ${supportAI_dHM}-99 ${supportAI_dHM}-\${a: -2}"
-                rsync -avzr ${supportAI_dHM}-99 ${supportAI_dHM}-\${a: -2}
+                echo "#-- rsync -avzr \${cc}-99/ \${cc}-\${a: -2}/"
+                rsync -avzr \${cc}-99/ \${cc}-\${a: -2}/
                 echo "#-- ls -l --color"
                 ls -l --color
         fi
@@ -140,6 +142,8 @@ __EOF__
 
 cat > 01-server_last_COPYTO_here.sh <<__EOF__
 #!/bin/sh
+
+cc="${supportAI_dHM}" #-- "cusr12.1039"
 
 yymm="$(date +%y%m)" #-- 2506
 cd ~/Downloads; mkdir ${yymm}; cd ${yymm}
@@ -159,8 +163,8 @@ cat <<__EOF__
 
 ${yyy}cd ${last_ymd_HM}; vi ${file_name}    ${bbb}#--///-- qna-파일에 입력하기.${xxx}
 
-sh saveto-number.sh 33    #-- ${supportAI_dHM}-99 를 ${supportAI_dHM}-33 으로 바꾸고,
-#-- ${supportAI_dHM}-99 를 새로 만듭니다.
+sh saveto-number.sh 33    #-- ${cc}-99 를 ${cc}-33 으로 바꾸고,
+#-- ${cc}-99 를 새로 만듭니다.
 __EOF__
 
 cmdrun "ls -1" "(10) 소스를 -00 등올 바꾸고, -99 를 새로 만드는 명령을 파일로 표시했습니다."
