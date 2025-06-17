@@ -1,0 +1,231 @@
+/* 3주 달력 cusr16.1230-04. styles.css */
+body {
+    font-family: sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    min-height: 100vh;
+    background-color: #f4f4f4;
+    margin: 0;
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+.calendar-container {
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 900px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+}
+
+/* --- Header Styles --- */
+.calendar-header {
+    padding: 15px 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+}
+
+.year-display {
+    font-size: 1.2em; /* 연도 폰트 크기 */
+    font-weight: bold;
+    text-align: center;
+    width: 100%;
+}
+
+.controls {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+}
+
+.nav-button {
+    background-color: #4CAF50; /* 녹색 배경 */
+    color: white; /* 흰색 텍스트 */
+    border: none;
+    padding: 8px 12px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 0.7em; /* 버튼 폰트 크기 */
+    transition: background-color 0.2s ease;
+    min-width: 40px; /* 아이콘 버튼 너비 고정 */
+}
+
+.nav-button:hover {
+    background-color: #45a049;
+}
+
+.memo-controls {
+    display: flex;
+    gap: 5px;
+}
+
+.memo-button {
+    background-color: #4CAF50; /* 녹색 배경 */
+    color: white; /* 흰색 텍스트 */
+    border: none;
+    padding: 8px 12px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 0.7em; /* 버튼 폰트 크기 */
+    transition: background-color 0.2s ease;
+    white-space: nowrap; /* 텍스트 줄바꿈 방지 */
+}
+
+.memo-button:hover {
+    background-color: #45a049;
+}
+
+.memo-button .highlight {
+    color: #FFD700; /* 짙은 노란색 */
+    font-weight: bold;
+}
+
+/* --- Calendar Grid Styles --- */
+.calendar-grid {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr); /* 7개 열 동일 너비 */
+    border-top: 1px solid #ccc;
+    border-left: 1px solid #ccc;
+}
+
+.calendar-cell {
+    border-right: 1px solid #ccc;
+    border-bottom: 1px solid #ccc;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden; /* Prevent text overflow for short memo mode */
+    min-height: 110px; /* Adjust min-height for date + short memo to allow 3 lines */
+    box-sizing: border-box;
+    cursor: pointer;
+    transition: background-color 0.1s ease;
+    padding: 5px; /* Add some padding inside cells */
+}
+
+.calendar-cell.full-memo-mode {
+    min-height: auto; /* Allow height to adjust for full memo */
+}
+
+.calendar-cell:hover {
+    background-color: #f9f9f9;
+}
+
+.date-area {
+    height: 35px; /* 날짜 영역 높이 */
+    display: flex;
+    align-items: flex-start; /* 날짜를 상단에 배치 */
+    font-size: 0.85em; /* 날짜 폰트 크기 */
+    padding-bottom: 5px;
+}
+
+.memo-area {
+    min-height: 75px; /* Adjust memo area height to allow 3 lines (e.g., 3 * 0.85em line-height + padding) */
+    font-size: 0.85em; /* 메모 폰트 크기 */
+    word-wrap: break-word; /* 긴 단어 줄바꿈 */
+    white-space: pre-wrap; /* 공백 유지 및 줄바꿈 */
+    text-overflow: ellipsis; /* 말줄임표 처리 */
+    overflow: hidden; /* 오버플로우 숨김 */
+    display: -webkit-box; /* For multi-line ellipsis */
+    -webkit-line-clamp: 3; /* Limit to 3 lines */
+    -webkit-box-orient: vertical; /* Ensure vertical orientation for line clamping */
+}
+
+/* Date colors */
+.sunday {
+    color: red;
+}
+
+.weekday {
+    color: #006400; /* 짙은 녹색 */
+}
+
+.saturday {
+    color: blue;
+}
+
+.today {
+    background-color: #FFFACD; /* 노란색 배경 */
+}
+
+/* --- Modal Styles --- */
+.modal {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Sit on top */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent black background */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.modal-content {
+    background-color: #fefefe;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%;
+    max-width: 500px;
+    border-radius: 8px;
+    position: relative;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.close-button {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    cursor: pointer;
+}
+
+.close-button:hover,
+.close-button:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+#memoInput {
+    width: calc(100% - 20px);
+    height: 150px;
+    margin-top: 15px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 0.85em;
+    resize: vertical;
+}
+
+#saveModalMemoBtn {
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 15px;
+    font-size: 0.7em;
+    transition: background-color 0.2s ease;
+}
+
+#saveModalMemoBtn:hover {
+    background-color: #45a049;
+}
+
+#modalDate {
+    font-size: 1em;
+    margin-bottom: 10px;
+}

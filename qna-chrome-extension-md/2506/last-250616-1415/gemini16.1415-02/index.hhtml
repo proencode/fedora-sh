@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>3주 달력 cusr16.1230-04. index.html</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="calendar-container">
+        <header class="calendar-header">
+            <div class="year-display"></div>
+            <div class="controls">
+                <button id="prevWeekBtn" class="nav-button">▲</button>
+                <div class="memo-controls">
+                    <button id="memoModeBtn" class="memo-button">메모: <span id="shortText" class="highlight">단축</span>/<span id="fullText">상세</span></button>
+                    <button id="saveMemoBtn" class="memo-button">저장</button>
+                    <button id="loadMemoBtn" class="memo-button">불러오기</button>
+                </div>
+                <button id="nextWeekBtn" class="nav-button">▼</button>
+            </div>
+        </header>
+
+        <div id="calendarGrid" class="calendar-grid">
+            </div>
+    </div>
+
+    <div id="memoModal" class="modal">
+        <div class="modal-content">
+            <span class="close-button">&times;</span>
+            <h3 id="modalDate"></h3>
+            <textarea id="memoInput" placeholder="메모를 입력하세요..."></textarea>
+            <button id="saveModalMemoBtn">저장</button>
+        </div>
+    </div>
+
+    <script src="popup.js"></script>
+</body>
+</html>
