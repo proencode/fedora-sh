@@ -1,29 +1,29 @@
 #!/bin/sh
 
 CMD_NAME=`basename $0` ; CMD_DIR=${0%/$CMD_NAME} ; if [ "x$CMD_DIR" == "x" ] || [ "x$CMD_DIR" == "x$CMD_NAME" ]; then CMD_DIR="." ; fi
-cBlack=$(tput bold)$(tput setaf 0); cRed=$(tput bold)$(tput setaf 1); cGreen=$(tput bold)$(tput setaf 2); cYellow=$(tput bold)$(tput setaf 3); cBlue=$(tput bold)$(tput setaf 4); cMagenta=$(tput bold)$(tput setaf 5); cCyan=$(tput bold)$(tput setaf 6); cWhite=$(tput bold)$(tput setaf 7); cReset=$(tput bold)$(tput sgr0); cUp=$(tput cuu 2)
+lll=$(tput bold)$(tput setaf 0); rrr=$(tput bold)$(tput setaf 1); ggg=$(tput bold)$(tput setaf 2); yyy=$(tput bold)$(tput setaf 3); bbb=$(tput bold)$(tput setaf 4); mmm=$(tput bold)$(tput setaf 5); ccc=$(tput bold)$(tput setaf 6); www=$(tput bold)$(tput setaf 7); xxx=$(tput bold)$(tput sgr0); uuu=$(tput cuu 2)
 
 cmdRun () {
-	echo "${cCyan}----> ${cYellow}$1 ${cGreen}#-- ${cCyan}$2${cReset}"; echo "$1" | bash
-	echo "${cGreen}<---- ${cBlue}$1 ${cGreen}#-- $2${cReset}"
+	echo "${ccc}----> ${yyy}$1 ${ggg}#-- ${ccc}$2${xxx}"; echo "$1" | bash
+	echo "${ggg}<---- ${bbb}$1 ${ggg}#-- $2${xxx}"
 }
 cmdCont () {
-	echo -e "${cCyan}----> ${cYellow}$1 ${cGreen}#-- ${cCyan}$2\n----> ${cMagenta}Enter ${cGreen}to continue${cReset}:"
-	read a ; echo "${cUp}"; echo "$1" | bash
-	echo "${cGreen}<---- ${cBlue}$1 ${cGreen}#-- $2${cReset}"
+	echo -e "${ccc}----> ${yyy}$1 ${ggg}#-- ${ccc}$2\n----> ${mmm}Enter ${ggg}to continue${xxx}:"
+	read a ; echo "${uuu}"; echo "$1" | bash
+	echo "${ggg}<---- ${bbb}$1 ${ggg}#-- $2${xxx}"
 }
 ALL_INSTALL="n"
 cmdYenter () {
-	echo "${cCyan}----> ${cYellow}$1 ${cGreen}#-- ${cCyan}$2${cReset}"
+	echo "${ccc}----> ${yyy}$1 ${ggg}#-- ${ccc}$2${xxx}"
 	if [ "x${ALL_INSTALL}" = "xy" ]; then
-		echo "$1" | bash ; echo "${cGreen}<---- ${cBlue}$1 ${cMagenta}#-- $2${cReset}"
+		echo "$1" | bash ; echo "${ggg}<---- ${bbb}$1 ${mmm}#-- $2${xxx}"
 	else
-		echo "${cCyan}----> ${cRed}press ${cCyan}'${cYellow}y${cCyan}'${cRed} or Enter${cReset}:"; read a; echo "${cUp}"
+		echo "${ccc}----> ${rrr}press ${ccc}'${yyy}y${ccc}'${rrr} or Enter${xxx}:"; read a; echo "${uuu}"
 		if [ "x$a" = "xy" ]; then
-			echo "${cRed}-OK-${cReset}"; echo "$1" | bash
-			echo "${cGreen}<---- ${cBlue}$1 press 'y' or Enter: ${cMagenta}#-- $2${cReset}"
+			echo "${rrr}-OK-${xxx}"; echo "$1" | bash
+			echo "${ggg}<---- ${bbb}$1 press 'y' or Enter: ${mmm}#-- $2${xxx}"
 		else
-			echo "${cRed}[ ${cBlue}$1 ${cRed}] ${cMagenta}<--- 명령을 실행하지 않습니다.${cReset}"
+			echo "${rrr}[ ${bbb}$1 ${rrr}] ${mmm}<--- 명령을 실행하지 않습니다.${xxx}"
 		fi
 	fi
 }
@@ -31,38 +31,38 @@ eSq=0
 eSqMsg=""
 echoSeq () {
 	if [ "x$1" = "x" ]; then
-		echo "${cBlue}(${eSq}) ${eSqMsg}${cReset}" ; echo "${cBlue}#--${cReset}"
+		echo "${bbb}(${eSq}) ${eSqMsg}${xxx}" ; echo "${bbb}#--${xxx}"
 	else
 		eSq=$(( ${eSq} + 1 ))
-		echo "${cMagenta}(${eSq}) ${cCyan}$1${cReset}"
+		echo "${mmm}(${eSq}) ${ccc}$1${xxx}"
 		eSqMsg=$1
 	fi
 }
 cmdTTbegin () {
 	cat <<__EOF__
-${cBlue}#---- ----
-v  ${cRed}$1${cBlue}
-v${cReset}
+${bbb}#---- ----
+v  ${rrr}$1${bbb}
+v${xxx}
 __EOF__
 }
 cmdTTend () {
 	cat <<__EOF__
-${cBlue}^
-^  ${cMagenta}$1${cBlue}
-#---- ----${cReset}
+${bbb}^
+^  ${mmm}$1${bbb}
+#---- ----${xxx}
 __EOF__
 }
 #-- source ${HOME}/bin/color_base #-- 230207화1201 CMD_DIR CMD_NAME cmdRun cmdCont cmdYenter echoSeq cmdTTbegin cmdTTend
 
 update_start () {
 	cat <<__EOF__
-${cYellow}
-/etc/dnf/dnf.conf ${cBlue}파일에 다음과 같이 ${cYellow}업데이트를 허가 ${cBlue}해야 합니다.
-${cCyan}#exclude=* # 첫칸이 샵# 으로 시작하면 업데이트를 ${cYellow}허가, ${cBlue}첫칸에 샵# 이 없으면 업데이트 중지.
+${yyy}
+/etc/dnf/dnf.conf ${bbb}파일에 다음과 같이 ${yyy}업데이트를 허가 ${bbb}해야 합니다.
+${ccc}#exclude=* # 첫칸이 샵# 으로 시작하면 업데이트를 ${yyy}허가, ${bbb}첫칸에 샵# 이 없으면 업데이트 중지.
 
-${cGreen}$(sudo cat /etc/dnf/dnf.conf)${cBlue}
+${ggg}$(sudo cat /etc/dnf/dnf.conf)${bbb}
 
-----> ${cCyan}press Enter:${cReset}
+----> ${ccc}press Enter:${xxx}
 __EOF__
 	read a
 
@@ -71,12 +71,12 @@ __EOF__
 }
 update_stop () {
 	cat <<__EOF__
-${cYellow}
-/etc/dnf/dnf.conf ${cBlue}파일에 ${cCyan}exclude=*첫칸에 # 샵을 떼어내서 업데이트를 ${cMagenta}중지${cBlue}해야 합니다.
+${yyy}
+/etc/dnf/dnf.conf ${bbb}파일에 ${ccc}exclude=*첫칸에 # 샵을 떼어내서 업데이트를 ${mmm}중지${bbb}해야 합니다.
 
-${cGreen}$(sudo cat /etc/dnf/dnf.conf)${cBlue}
+${ggg}$(sudo cat /etc/dnf/dnf.conf)${bbb}
 
-----> ${cCyan}press Enter:${cReset}
+----> ${ccc}press Enter:${xxx}
 __EOF__
 	read a
 
@@ -84,12 +84,12 @@ __EOF__
 	cmdRun "sudo grep "exclude=" /etc/dnf/dnf.conf" "첫칸에 샵# 을 떼어내서 업데이트를 중지 (exclude=*) 해야 합니다."
 }
 
-# echo "${cCyan}----> ${cRed}
-# ${cReset}"
-# echo "${cBlue}<---- ${cMagenta}
-# ${cReset}"
+# echo "${ccc}----> ${rrr}
+# ${xxx}"
+# echo "${bbb}<---- ${mmm}
+# ${xxx}"
 MEMO="Fedora 업데이트"
-echo "${cMagenta}>>>>>>>>>>${cGreen} $0 ${cMagenta}||| ${cCyan}${MEMO} ${cMagenta}>>>>>>>>>>${cReset}"
+echo "${mmm}>>>>>>>>>>${ggg} $0 ${mmm}||| ${ccc}${MEMO} ${mmm}>>>>>>>>>>${xxx}"
 
 cmdTTbegin "(1) 시스템 업데이트"
 cmdYenter "sudo vi /etc/sudoers ; reset" "sudo 명령시 비번을 일일이 입력하지 않으려면, 'y' 를 눌러서 수정합니다."
@@ -130,10 +130,10 @@ is_group=$(grep vboxsf /etc/group | grep ${USER})
 if [ "x${is_group}" = "x" ]; then
 	cmdRun "grep vboxsf /etc/group" "vboxsf 그룹이 user 에게 지정되지 않았습니다."
 	cmdRun "sudo gpasswd -a ${USER} vboxsf ; grep vboxsf /etc/group" "vboxsf 그룹을 추가합니다."
-	echo "${cGreen}----> ${cCyan}vboxsf 그룹에 ${USER} 사용자가 추가됐다면, '${cYellow}y${cCyan}' 를 눌러서 이 시스템을 다시 시작해야 합니다.${cReset}"
-	read a ; echo "${cUp}"
+	echo "${ggg}----> ${ccc}vboxsf 그룹에 ${USER} 사용자가 추가됐다면, '${yyy}y${ccc}' 를 눌러서 이 시스템을 다시 시작해야 합니다.${xxx}"
+	read a ; echo "${uuu}"
 	if [ "x$a" = "xy" ]; then
-		echo "${cRed}[ ${cReset}reboot ${cRed}]${cReset}"
+		echo "${rrr}[ ${xxx}reboot ${rrr}]${xxx}"
 		rm -f ${log_name} ; log_name="${logs_folder}/zz.$(date +"%y%m%d-%H%M%S")..${CMD_NAME}__ADD_vboxsf_to_etc_group_and_REBOOT" ; touch ${log_name}
 		sudo reboot
 	fi
@@ -159,13 +159,13 @@ cmdTTend "(3) vbox 그룹 추가"
 cmdTTbegin "(4) 게스트 확장 CD 이미지 삽입"
 cat <<__EOF__
 
-${cCyan}---->${cReset}
-${cCyan}---->${cReset} vfedora 초기화 작업을 진행하기 전에,
-${cCyan}---->${cReset} 화면 맨 윗줄에 표시된 (파일 , 머신 , 보기 , 입력 , 장치 , 도움말) 메뉴에서,
-${cCyan}---->${cReset}
-${cCyan}---->${cReset} [장치] 클릭 >> [게스트 확장 CD 이미지 삽입] 을 클릭하고,
-${cCyan}---->${cReset} 자동으로 시작하기로 한 프로그램 . . . 실행하시겠습니까? >> [실행] 을 클릭하고,
-${cCyan}---->${cBlue} ---->${cReset} Do you wish to continue? [yes or no] ${cBlue}>> 나오면 'yes' 를 입력합니다.${cReset}
+${ccc}---->${xxx}
+${ccc}---->${xxx} vfedora 초기화 작업을 진행하기 전에,
+${ccc}---->${xxx} 화면 맨 윗줄에 표시된 (파일 , 머신 , 보기 , 입력 , 장치 , 도움말) 메뉴에서,
+${ccc}---->${xxx}
+${ccc}---->${xxx} [장치] 클릭 >> [게스트 확장 CD 이미지 삽입] 을 클릭하고,
+${ccc}---->${xxx} 자동으로 시작하기로 한 프로그램 . . . 실행하시겠습니까? >> [실행] 을 클릭하고,
+${ccc}---->${bbb} ---->${xxx} Do you wish to continue? [yes or no] ${bbb}>> 나오면 'yes' 를 입력합니다.${xxx}
 
 __EOF__
 windows_bada_dir="${HOME}/wind_bada"
@@ -179,7 +179,7 @@ cmdTTend "(4) 게스트 확장 CD 이미지 삽입"
 # ---- ----
 
 cmdTTbegin "(5) VundleVim 설치"
-echo "${cCyan}----> https://itlearningcenter.tistory.com/entry/%E3%80%901804-LTS%E3%80%91VIM-Plug-in-%EC%84%A4%EC%B9%98%ED%95%98%EA%B8%B0${cReset}"
+echo "${ccc}----> https://itlearningcenter.tistory.com/entry/%E3%80%901804-LTS%E3%80%91VIM-Plug-in-%EC%84%A4%EC%B9%98%ED%95%98%EA%B8%B0${xxx}"
 # cmdCont "git clone https://github.com/VundleVim/Vundle.vim.git ${HOME}/.vim/bundle/Vundle.vim" "VundleVim 설치"
 cmdCont "git clone https://github.com/susabolca/Vundle.vim ${HOME}/.vim/bundle/Vundle.vim" "VundleVim 설치"
 #xxx-- cmdRun "cp init_files/DOTvimrc-fedora ${HOME}/.vimrc" ".vimrc 설치"
@@ -273,7 +273,7 @@ fi
 cmdRun "cp ${new_DOT_vimrc} ${HOME}/.vimrc" "미리 작성했던 파일을 ${HOME}/.vimrc 로 복사합니다."
 
 
-echo "${cGreen}----> ${cYellow}vi +BundleInstall +qall ${cCyan}Bundle 설치${cReset}"
+echo "${ggg}----> ${yyy}vi +BundleInstall +qall ${ccc}Bundle 설치${xxx}"
 vim +BundleInstall +qall
 cmdTTend "(5) VundleVim 설치"
 
@@ -308,13 +308,13 @@ cmdTTbegin "(6) credential.helper 설치"
 cmdTTbegin "(7) 호스트 이름 바꾸기"
 HOSTNAME=$(hostname)
 cat <<__EOF__
-${cCyan}----> 호스트 이름을 바꾸려면 입력하세요: ${cRed}[${cYellow} ${HOSTNAME} ${cRed}]${cReset}
+${ccc}----> 호스트 이름을 바꾸려면 입력하세요: ${rrr}[${yyy} ${HOSTNAME} ${rrr}]${xxx}
 __EOF__
-read a ; echo "${cUp}"
+read a ; echo "${uuu}"
 if [ "x$a" = "x" ]; then
-	echo "= ${cRed}${HOSTNAME}${cReset} ="
+	echo "= ${rrr}${HOSTNAME}${xxx} ="
 else
-	echo "= ${cRed}${a}${cReset} ="
+	echo "= ${rrr}${a}${xxx} ="
 	cmdRun "sudo hostnamectl set-hostname $a" "호스트 이름을 $a 로 지정합니다."
 fi
 cmdTTend "(7) 호스트 이름 바꾸기"
@@ -352,10 +352,10 @@ if [ -f ${font_zip_file} ]; then
 #--	# ----
 #--	rm -f ${log_name} ; log_name="${logs_folder}/zz.$(date +"%y%m%d-%H%M%S")..${CMD_NAME}" ; touch ${log_name}
 #--	cmdRun "ls --color ${CMD_DIR}" ; ls --color ${logs_folder}
-#--	echo "${cRed}<<<<<<<<<<${cBlue} $0 ${cRed}||| ${cMagenta}${MEMO} ${cRed}<<<<<<<<<<${cReset}"
+#--	echo "${rrr}<<<<<<<<<<${bbb} $0 ${rrr}||| ${mmm}${MEMO} ${rrr}<<<<<<<<<<${xxx}"
 #--	exit 0
 else
-	echo "!!!! ${cRed}----> ${cBlue}압축한 파일이 없습니다.${cReset}"
+	echo "!!!! ${rrr}----> ${bbb}압축한 파일이 없습니다.${xxx}"
 	cmdTTend "(9) 압축한 파일을 찾아서 폰트 설치"
 	cmdTTbegin "(10-1) D2Coding 폰트 설치"
 	FONT_HOST="https://github.com/naver/d2codingfont/releases/download/VER1.3.2"
@@ -427,16 +427,16 @@ cB="\\[\\e[" ;cE="\\]" #-- 색깔 시작과 끝 표시
 # 첫번째 => 0:보통 1:굵게 2:흐림 3:이탤릭 4:밑줄 5:깜빡거림 6 7:반전 8 9:글자에 줄긋기 10:
 # 두번째/세번째의 앞글자 => 3x:글자색 4x:바탕색
 # 두번째/세번째의 뒷글자 => x0:회 x1:빨 x2:초 x3:노 x4:청 x5:보 x6:파 x7:흰
-cGray="\${cB}0;30m\${cE}"; cRed="\${cB}0;31m\${cE}"; cGreen="\${cB}0;32m\${cE}"; cYellow="\${cB}0;33m\${cE}"; cBlue="\${cB}0;34m\${cE}"; cMagenta="\${cB}0;35m\${cE}"; cCyan="\${cB}0;36m\${cE}"; cWhite="\${cB}0;37m\${cE}"; cReset="\${cB}0m\${cE}" #-- 보통 글자색
+cGray="\${cB}0;30m\${cE}"; rrr="\${cB}0;31m\${cE}"; ggg="\${cB}0;32m\${cE}"; yyy="\${cB}0;33m\${cE}"; bbb="\${cB}0;34m\${cE}"; mmm="\${cB}0;35m\${cE}"; ccc="\${cB}0;36m\${cE}"; www="\${cB}0;37m\${cE}"; xxx="\${cB}0m\${cE}" #-- 보통 글자색
 dGray="\${cB}1;30m\${cE}"; dRed="\${cB}1;31m\${cE}"; dGreen="\${cB}1;32m\${cE}"; dYellow="\${cB}1;33m\${cE}"; dBlue="\${cB}1;34m\${cE}"; dMagenta="\${cB}1;35m\${cE}"; dCyan="\${cB}1;36m\${cE}"; dWhite="\${cB}1;37m\${cE}"; #-- 굵은 글자색
 # '\\t' 12:34:56 시분초
 # '\\D' 날짜처리 '{' '}' 사이에 넣는것: %Y=2022 %y=22 %m=01 %d=28 %a=금
 # \\u 사용자아이디 \\h 호스트이름 \\w 현재 디렉토리
-## cWhiteGreen="\${cB}0;37;42m\${cE}"
-cBlackGreen="\${cB}0;30;42m\${cE}"
-# PS1="\${cGreen}\\t\${cYellow}\\D{%a}\${cCyan}\\D{%y}\${cMagenta}\\D{%m}\${cGreen}\\D{%d} \${dCyan}\\u\${cWhite}@\${cBlackGreen}\\h\${cReset} \${cCyan}\\w\\n\${cCyan}\\W\${cReset} \$ " #-- vfed35 220330
-PS1="\${cGreen}\\t\${cRed}\\D{%a}\${cCyan}\\D{%y}\${cYellow}\\D{%m}\${cMagenta}\\D{%d} \${dCyan}\\u\${cWhite}@\${cGreen}\\h\${cReset} \${cCyan}\\w\\n\${cCyan}\\W\${cReset} \$ " #-- vfed35 220330
-## PS1="\${cGreen}\\t\${cYellow}\\D{%a}\${cBlue}\\D{%y}-\${cGreen}\\D{%m-%d} \${dMagenta}\\u\${cWhite}@\${cWhiteGreen}\\h\${cReset} \${cCyan}\\w\\\\n\${cCyan}\\W\${cReset} \$ " #-- oldvfed35
+## wwwGreen="\${cB}0;37;42m\${cE}"
+lllGreen="\${cB}0;30;42m\${cE}"
+# PS1="\${ggg}\\t\${yyy}\\D{%a}\${ccc}\\D{%y}\${mmm}\\D{%m}\${ggg}\\D{%d} \${dCyan}\\u\${www}@\${lllGreen}\\h\${xxx} \${ccc}\\w\\n\${ccc}\\W\${xxx} \$ " #-- vfed35 220330
+PS1="\${ggg}\\t\${rrr}\\D{%a}\${ccc}\\D{%y}\${yyy}\\D{%m}\${mmm}\\D{%d} \${dCyan}\\u\${www}@\${ggg}\\h\${xxx} \${ccc}\\w\\n\${ccc}\\W\${xxx} \$ " #-- vfed35 220330
+## PS1="\${ggg}\\t\${yyy}\\D{%a}\${bbb}\\D{%y}-\${ggg}\\D{%m-%d} \${dMagenta}\\u\${www}@\${wwwGreen}\\h\${xxx} \${ccc}\\w\\\\n\${ccc}\\W\${xxx} \$ " #-- oldvfed35
 ## PS1='\\e[0;36m\\t\\e[0m \\e[0;33m\\D{%a}\\e[0m \\D{%Y-%m-%d} \\e[01;36m\\u\\e[01;37m@\\e[01;42m\\h\\e[0m \\e[0;32m\\w\\e[0m\\n\\e[0;32m\\W\\e[0m \$ ' #-- g1ssd128
 #--
 
@@ -493,9 +493,9 @@ __EOF__
 read a
 
 cat <<__EOF__
-${cCyan}
-터미널을 새로 열고, ${cYellow}source ${HOME}/.bashrc ${cCyan}#--- 이 명령으로 프롬프트를 새로 지정하세요.
-${cGreen}----> press Enter:${cReset}
+${ccc}
+터미널을 새로 열고, ${yyy}source ${HOME}/.bashrc ${ccc}#--- 이 명령으로 프롬프트를 새로 지정하세요.
+${ggg}----> press Enter:${xxx}
 __EOF__
 read a
 cmdTTend "(12) 새로운 .bashrc 만들기"
@@ -525,4 +525,4 @@ __EOF__
 # ----
 rm -f ${log_name} ; log_name="${logs_folder}/zz.$(date +"%y%m%d-%H%M%S")..${CMD_NAME}" ; touch ${log_name}
 cmdRun "ls --color ${CMD_DIR}" ; ls --color ${logs_folder}
-echo "${cRed}<<<<<<<<<<${cBlue} $0 ${cRed}||| ${cMagenta}${MEMO} ${cRed}<<<<<<<<<<${cReset}"
+echo "${rrr}<<<<<<<<<<${bbb} $0 ${rrr}||| ${mmm}${MEMO} ${rrr}<<<<<<<<<<${xxx}"

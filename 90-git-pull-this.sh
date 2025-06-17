@@ -1,29 +1,29 @@
 #!/bin/sh
 
-cBlack=$(tput bold)$(tput setaf 0); cRed=$(tput bold)$(tput setaf 1); cGreen=$(tput bold)$(tput setaf 2); cYellow=$(tput bold)$(tput setaf 3); cBlue=$(tput bold)$(tput setaf 4); cMagenta=$(tput bold)$(tput setaf 5); cCyan=$(tput bold)$(tput setaf 6); cWhite=$(tput bold)$(tput setaf 7); cReset=$(tput bold)$(tput sgr0); cUp=$(tput cuu 2)
+lll=$(tput bold)$(tput setaf 0); rrr=$(tput bold)$(tput setaf 1); ggg=$(tput bold)$(tput setaf 2); yyy=$(tput bold)$(tput setaf 3); bbb=$(tput bold)$(tput setaf 4); mmm=$(tput bold)$(tput setaf 5); ccc=$(tput bold)$(tput setaf 6); www=$(tput bold)$(tput setaf 7); xxx=$(tput bold)$(tput sgr0); uuu=$(tput cuu 2)
 
 cat_and_run () {
-	echo "${cGreen}----> ${cYellow}$1 ${cCyan}$2${cReset}"; echo "$1" | bash
-	echo "${cMagenta}<---- ${cBlue}$1 $2${cReset}"
+	echo "${ggg}----> ${yyy}$1 ${ccc}$2${xxx}"; echo "$1" | bash
+	echo "${mmm}<---- ${bbb}$1 $2${xxx}"
 }
 
 # ---
 
 cat <<__EOF__
 
-${cYellow}git config --global user.name "${USER} at $(uname -n)"${cReset}
-${cYellow}git config --global user.email "yosjeon@gmail.com"${cReset}
-${cYellow}git config --global alias.ll "log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit" # ----> 한줄로 로그보기${cReset}
-${cYellow}git config --global --list${cReset}
+${yyy}git config --global user.name "${USER} at $(uname -n)"${xxx}
+${yyy}git config --global user.email "yosjeon@gmail.com"${xxx}
+${yyy}git config --global alias.ll "log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit" # ----> 한줄로 로그보기${xxx}
+${yyy}git config --global --list${xxx}
 __EOF__
 
 cat_and_run "git config --global --list" "git 의 설정을 확인합니다."
 cat_and_run "git ll -5" "다섯개의 로그를 확인합니다."
 cat <<__EOF__
 
-${cYellow}----> ${cGreen}git pull ${cReset}//////// ${cYellow}//////// ${cBlue}//////// ${cYellow}//////// ${cBlue}//////// ${cYellow}//////// ${cBlue}//////// ${cReset}//////// ${cYellow}---->${cReset}
+${yyy}----> ${ggg}git pull ${xxx}//////// ${yyy}//////// ${bbb}//////// ${yyy}//////// ${bbb}//////// ${yyy}//////// ${bbb}//////// ${xxx}//////// ${yyy}---->${xxx}
 $(git pull)
-${cRed}<---- ${cBlue}git pull ${cReset}//////// ${cMagenta}//////// ${cBlue}//////// ${cMagenta}//////// ${cBlue}//////// ${cMagenta}//////// ${cBlue}//////// ${cReset}//////// ${cRed}<----${cReset}
+${rrr}<---- ${bbb}git pull ${xxx}//////// ${mmm}//////// ${bbb}//////// ${mmm}//////// ${bbb}//////// ${mmm}//////// ${bbb}//////// ${xxx}//////// ${rrr}<----${xxx}
 
 __EOF__
 cat_and_run "git ll -5" "최근 다섯개의 로그를 확인합니다."

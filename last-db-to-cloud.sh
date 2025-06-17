@@ -4,29 +4,29 @@
 ##--- #!/bin/sh
 
 CMD_NAME=`basename $0` ; CMD_DIR=${0%/$CMD_NAME} ; if [ "x$CMD_DIR" == "x" ] || [ "x$CMD_DIR" == "x$CMD_NAME" ]; then CMD_DIR="." ; fi
-cBlack=$(tput bold)$(tput setaf 0); cRed=$(tput bold)$(tput setaf 1); cGreen=$(tput bold)$(tput setaf 2); cYellow=$(tput bold)$(tput setaf 3); cBlue=$(tput bold)$(tput setaf 4); cMagenta=$(tput bold)$(tput setaf 5); cCyan=$(tput bold)$(tput setaf 6); cWhite=$(tput bold)$(tput setaf 7); cReset=$(tput bold)$(tput sgr0); cUp=$(tput cuu 2)
+lll=$(tput bold)$(tput setaf 0); rrr=$(tput bold)$(tput setaf 1); ggg=$(tput bold)$(tput setaf 2); yyy=$(tput bold)$(tput setaf 3); bbb=$(tput bold)$(tput setaf 4); mmm=$(tput bold)$(tput setaf 5); ccc=$(tput bold)$(tput setaf 6); www=$(tput bold)$(tput setaf 7); xxx=$(tput bold)$(tput sgr0); uuu=$(tput cuu 2)
 
 cmdRun () {
-	echo "${cCyan}----> ${cYellow}$1 ${cGreen}#-- ${cCyan}$2${cReset}"; echo "$1" | bash
-	echo "${cGreen}<---- ${cBlue}$1 ${cGreen}#-- $2${cReset}"
+	echo "${ccc}----> ${yyy}$1 ${ggg}#-- ${ccc}$2${xxx}"; echo "$1" | bash
+	echo "${ggg}<---- ${bbb}$1 ${ggg}#-- $2${xxx}"
 }
 cmdCont () {
-	echo -e "${cCyan}----> ${cYellow}$1 ${cGreen}#-- ${cCyan}$2\n${cMagenta}----> Enter to continue${cReset}:"
-	read a ; echo "${cUp}"; echo "$1" | bash
-	echo "${cGreen}<---- ${cBlue}$1 ${cGreen}Enter to continue${cReset}: ${cGreen}#-- $2${cReset}"
+	echo -e "${ccc}----> ${yyy}$1 ${ggg}#-- ${ccc}$2\n${mmm}----> Enter to continue${xxx}:"
+	read a ; echo "${uuu}"; echo "$1" | bash
+	echo "${ggg}<---- ${bbb}$1 ${ggg}Enter to continue${xxx}: ${ggg}#-- $2${xxx}"
 }
 ALL_INSTALL="n"
 cmdYenter () {
-	echo "${cCyan}----> ${cYellow}$1 ${cGreen}#-- ${cCyan}$2${cReset}"
+	echo "${ccc}----> ${yyy}$1 ${ggg}#-- ${ccc}$2${xxx}"
 	if [ "x${ALL_INSTALL}" = "xy" ]; then
-		echo "$1" | bash ; echo "${cGreen}<---- ${cBlue}$1 ${cMagenta}#-- $2${cReset}"
+		echo "$1" | bash ; echo "${ggg}<---- ${bbb}$1 ${mmm}#-- $2${xxx}"
 	else
-		echo "${cCyan}----> ${cRed}press ${cCyan}'${cYellow}y${cCyan}'${cRed} or Enter${cReset}:"; read a; echo "${cUp}"
+		echo "${ccc}----> ${rrr}press ${ccc}'${yyy}y${ccc}'${rrr} or Enter${xxx}:"; read a; echo "${uuu}"
 		if [ "x$a" = "xy" ]; then
-			echo "${cRed}-OK-${cReset}"; echo "$1" | bash
-			echo "${cGreen}<---- ${cBlue}$1 press 'y' or Enter: ${cMagenta}#-- $2${cReset}"
+			echo "${rrr}-OK-${xxx}"; echo "$1" | bash
+			echo "${ggg}<---- ${bbb}$1 press 'y' or Enter: ${mmm}#-- $2${xxx}"
 		else
-			echo "${cRed}[ ${cBlue}$1 ${cRed}] ${cMagenta}<--- 명령을 실행하지 않습니다.${cReset}"
+			echo "${rrr}[ ${bbb}$1 ${rrr}] ${mmm}<--- 명령을 실행하지 않습니다.${xxx}"
 		fi
 	fi
 }
@@ -34,10 +34,10 @@ eSq=0
 eSqMsg=""
 echoSeq () {
 	if [ "x$1" = "x" ]; then
-		echo "${cBlue}(${eSq}) ${eSqMsg}${cReset}" ; echo "${cBlue}#--${cReset}"
+		echo "${bbb}(${eSq}) ${eSqMsg}${xxx}" ; echo "${bbb}#--${xxx}"
 	else
 		eSq=$(( ${eSq} + 1 ))
-		echo "${cMagenta}(${eSq}) ${cCyan}$1${cReset}"
+		echo "${mmm}(${eSq}) ${ccc}$1${xxx}"
 		eSqMsg=$1
 	fi
 }
@@ -54,17 +54,17 @@ show_then_run () {
 	if [ "x$log_signon" = "xok" ]; then echo "----$(date +%y%m%d%a-%H%M%S)--- show_then_run () { $1 }" >> ${log_savefile} ; fi
 }
 show_then_view () {
-	if [ "x$show_ok" = "xok" ]; then echo "${cGreen}----> $1 ${cCyan}#-- (${showno}) ${showqq}${cReset}" ; fi
+	if [ "x$show_ok" = "xok" ]; then echo "${ggg}----> $1 ${ccc}#-- (${showno}) ${showqq}${xxx}" ; fi
 	if [ "x$log_signon" = "xok" ]; then echo "----$(date +%y%m%d%a-%H%M%S)--- show_then_view () { $1 #-- (${showno}) ${showqq} }" >> ${log_savefile} ; fi
 }
 show_title () {
 	if [ "x$show_ok" = "xok" ]; then
 		cat <<__EOF__
-    ${cGreen}|
+    ${ggg}|
     |
-    | ${cCyan}$1
-    ${cGreen}|
-    |${cReset}
+    | ${ccc}$1
+    ${ggg}|
+    |${xxx}
 __EOF__
 	fi
 	if [ "x$log_signon" = "xok" ]; then echo "----$(date +%y%m%d%a-%H%M%S)--- show_title () { $1 }" >> ${log_savefile} ; fi
@@ -76,7 +76,7 @@ value_keyin () {
 	FIELD_TITLE=$3
 	cat <<__EOF__
 
-${cGreen}----> ${FIELD_TITLE}[ ${cCyan}${FIELD_VALUE} ${cGreen}]${cReset}
+${ggg}----> ${FIELD_TITLE}[ ${ccc}${FIELD_VALUE} ${ggg}]${xxx}
 __EOF__
 	read return_value
 
@@ -84,7 +84,7 @@ __EOF__
 		return_value="${FIELD_VALUE}"
 	fi
 	cat <<__EOF__
-${cUp}${cCyan}${FIELD_NAME}: ${cRed} ${cYellow}${return_value} ${cRed}]
+${uuu}${ccc}${FIELD_NAME}: ${rrr} ${yyy}${return_value} ${rrr}]
 
 __EOF__
 }
@@ -92,7 +92,7 @@ __EOF__
 
 MEMO="cron job"
 # cat <<__EOF__
-# ${cMagenta}>>>>>>>>>>${cGreen} $0 ${cMagenta}||| ${cCyan}${MEMO} ${cMagenta}>>>>>>>>>>${cReset}
+# ${mmm}>>>>>>>>>>${ggg} $0 ${mmm}||| ${ccc}${MEMO} ${mmm}>>>>>>>>>>${xxx}
 # __EOF__
 # zz00logs_folder="${HOME}/zz00logs" ; if [ ! -d "${zz00logs_folder}" ]; then cmdRun "mkdir ${zz00logs_folder}" "로그 폴더" ; fi
 # zz00log_name="${zz00logs_folder}/zz.$(date +"%y%m%d%a-%H%M%S")__RUNNING_${CMD_NAME}" ; touch ${zz00log_name}
@@ -122,7 +122,7 @@ if [ "x$1" = "x" ]; then
 #-- db_name	"enter" #-- 조건값을 터미널에서 입력하도록 합니다. 진행 과정도 보여줍니다.
 #--
 
-${cYellow}${CMD_NAME} ${cMagenta}[ DB_NAME ] 을 지정하지 않았으므로 작업을 끝냅니다.${cReset}
+${yyy}${CMD_NAME} ${mmm}[ DB_NAME ] 을 지정하지 않았으므로 작업을 끝냅니다.${xxx}
 __EOF__
 	exit -1
 fi
@@ -156,7 +156,7 @@ if [ "x$1" = "xwiki" ]; then
 else
 	cat <<__EOF__
 
-${cYellow}${CMD_NAME} ${cMagenta} $1 데이터베이스는 프로그램에 등록되지 않았으므로 작업을 끝냅니다.${cReset}
+${yyy}${CMD_NAME} ${mmm} $1 데이터베이스는 프로그램에 등록되지 않았으므로 작업을 끝냅니다.${xxx}
 __EOF__
 	exit -1
 fi
@@ -277,7 +277,7 @@ if [ "x$REMOTE_SQL_7Z_LIST" != "x" ]; then
 
 		OUTRC=$(/usr/bin/rclone deletefile ${RCLONE_NAME}:${REMOTE_YOIL}/${file_name})
 		showno="4a2" ; showqq="오늘날짜 클라우드 백업파일을 삭제합니다."
-		show_then_view "OUTRC=\$(/usr/bin/rclone deletefile ${RCLONE_NAME}:${REMOTE_YOIL}/${file_name}) ${cMagenta}#----${cYellow}${OUTRC}${cMagenta}----"
+		show_then_view "OUTRC=\$(/usr/bin/rclone deletefile ${RCLONE_NAME}:${REMOTE_YOIL}/${file_name}) ${mmm}#----${yyy}${OUTRC}${mmm}----"
 		show_then_view "#"
 	done
 else
@@ -300,7 +300,7 @@ if [ "x${DB_TYPE}" = "xpgsql" ]; then
 else
 	cat <<__EOF__
 
-${cYellow}${DB_TYPE} ${cMagenta}[ DB_TYPE ] 을 지정하지 않았으므로 작업을 끝냅니다.${cReset}
+${yyy}${DB_TYPE} ${mmm}[ DB_TYPE ] 을 지정하지 않았으므로 작업을 끝냅니다.${xxx}
 __EOF__
 	exit -1
 fi
@@ -308,7 +308,7 @@ fi
 
 OUTRC=$(/usr/bin/rclone copy ${LOCAL_YOIL}/${YOIL_sql7z} ${RCLONE_NAME}:${REMOTE_YOIL}/)
 showno="7" ; showqq="로컬 DB 백업파일을 클라우드로 복사합니다."
-show_then_view "OUTRC=\$(/usr/bin/rclone copy ${LOCAL_YOIL}/${YOIL_sql7z} ${RCLONE_NAME}:${REMOTE_YOIL}/) ${cMagenta}#----${cYellow}${OUTRC}${cMagenta}----"
+show_then_view "OUTRC=\$(/usr/bin/rclone copy ${LOCAL_YOIL}/${YOIL_sql7z} ${RCLONE_NAME}:${REMOTE_YOIL}/) ${mmm}#----${yyy}${OUTRC}${mmm}----"
 
 
 showno="8" ; showqq="${REMOTE_YOIL} 월 최근 일주일 백업을 끝냅니다. (${ymd_hm})"
@@ -340,7 +340,7 @@ if [ "x$REMOTE_SQL_7Z_LIST" != "x" ]; then
 
 		OUTRC=$(/usr/bin/rclone deletefile ${RCLONE_NAME}:${REMOTE_YEAR}/${file_name})
 		showno="10a2" ; showqq="${this_wol}월 백업파일을 삭제합니다."
-		show_then_view "OUTRC=\$(/usr/bin/rclone deletefile ${RCLONE_NAME}:${REMOTE_YOIL}/${file_name}) ${cMagenta}#----${cYellow}${OUTRC}${cMagenta}----"
+		show_then_view "OUTRC=\$(/usr/bin/rclone deletefile ${RCLONE_NAME}:${REMOTE_YOIL}/${file_name}) ${mmm}#----${yyy}${OUTRC}${mmm}----"
 	done
 else
 	showno="10b" ; showqq="클라우드에는 ${this_wol}월 백업파일이 없습니다."
@@ -361,11 +361,11 @@ show_then_run "cp ${LOCAL_YOIL}/${YOIL_sql7z} ${LOCAL_THIS_YEAR}/${WOL_sql7z}"
 
 OUTRC=$(/usr/bin/rclone copy ${LOCAL_THIS_YEAR}/${WOL_sql7z} ${RCLONE_NAME}:${REMOTE_YEAR}/)
 showno="14" ; showqq="${this_wol}월 백업파일을 ${this_year}년도 폴더로 복사합니다."
-show_then_view "OUTRC=\$(/usr/bin/rclone copy ${LOCAL_THIS_YEAR}/${WOL_sql7z} ${RCLONE_NAME}:${REMOTE_YEAR}/) ${cMagenta}#----${cYellow}${OUTRC}${cMagenta}----"
+show_then_view "OUTRC=\$(/usr/bin/rclone copy ${LOCAL_THIS_YEAR}/${WOL_sql7z} ${RCLONE_NAME}:${REMOTE_YEAR}/) ${mmm}#----${yyy}${OUTRC}${mmm}----"
 
 OUTRC=$(/usr/bin/rclone ls ${RCLONE_NAME}:${REMOTE_YEAR})
 showno="15" ; showqq="폴더 확인"
-show_then_view "OUTRC=\$(/usr/bin/rclone ls ${RCLONE_NAME}:${REMOTE_YEAR}) ${cMagenta}#----${cYellow}${OUTRC}${cMagenta}----"
+show_then_view "OUTRC=\$(/usr/bin/rclone ls ${RCLONE_NAME}:${REMOTE_YEAR}) ${mmm}#----${yyy}${OUTRC}${mmm}----"
 
 showno="16" ; showqq="${REMOTE_YOIL} 월 백업파일을 ${REMOTE_YEAR} 년도로 복사하는 작업을 끝냅니다. (${ymd_hm})"
 show_then_view "#"
@@ -399,7 +399,7 @@ if [ "x$REMOTE_SQL_7Z_LIST" != "x" ]; then
 
 		OUTRC=$(/usr/bin/rclone deletefile ${RCLONE_NAME}:${REMOTE_JU}/${file_name})
 		showno="18a2" ; showqq="${this_wol}월 백업파일을 삭제합니다."
-		show_then_view "OUTRC=\$(/usr/bin/rclone deletefile ${RCLONE_NAME}:${REMOTE_JU}/${file_name}) ${cMagenta}#----${cYellow}${OUTRC}${cMagenta}----"
+		show_then_view "OUTRC=\$(/usr/bin/rclone deletefile ${RCLONE_NAME}:${REMOTE_JU}/${file_name}) ${mmm}#----${yyy}${OUTRC}${mmm}----"
 	done
 else
 	showno="18b" ; showqq="클라우드에는 ${ju_beonho_sql_7z} 백업파일이 없습니다."
@@ -415,7 +415,7 @@ show_then_run "cp ${LOCAL_YOIL}/${YOIL_sql7z} ${LOCAL_JU}/${JU_sql7z}"
 
 OUTRC=$(/usr/bin/rclone copy ${LOCAL_JU}/${JU_sql7z} ${RCLONE_NAME}:${REMOTE_JU}/)
 showno="21" ; showqq="${this_wol}월 백업파일을 ${REMOTE_JU} 폴더로 복사합니다."
-show_then_view "OUTRC=\$(/usr/bin/rclone copy ${LOCAL_JU}/${JU_sql7z} ${RCLONE_NAME}:${REMOTE_JU}/) ${cMagenta}#----${cYellow}${OUTRC}${cMagenta}----"
+show_then_view "OUTRC=\$(/usr/bin/rclone copy ${LOCAL_JU}/${JU_sql7z} ${RCLONE_NAME}:${REMOTE_JU}/) ${mmm}#----${yyy}${OUTRC}${mmm}----"
 
 showno="22a" ; showqq="보관용 로컬 디렉토리 입니다."
 show_then_run "ls -lR ${LOCAL_THIS_YEAR}"
@@ -433,5 +433,5 @@ show_then_view "#"
 # rm -f ${zz00log_name} ; zz00log_name="${zz00logs_folder}/zz.$(date +"%y%m%d%a-%H%M%S")..${CMD_NAME}" ; touch ${zz00log_name}
 # ls --color ${zz00logs_folder}
 # cat <<__EOF__
-# ${cRed}<<<<<<<<<<${cBlue} $0 ${cRed}||| ${cMagenta}${MEMO} ${cRed}<<<<<<<<<<${cReset}
+# ${rrr}<<<<<<<<<<${bbb} $0 ${rrr}||| ${mmm}${MEMO} ${rrr}<<<<<<<<<<${xxx}
 # __EOF__

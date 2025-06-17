@@ -1,37 +1,38 @@
 #!/bin/sh
 
-cBlack=$(tput bold)$(tput setaf 0); cRed=$(tput bold)$(tput setaf 1); cGreen=$(tput bold)$(tput setaf 2); cYellow=$(tput bold)$(tput setaf 3); cBlue=$(tput bold)$(tput setaf 4); cMagenta=$(tput bold)$(tput setaf 5); cCyan=$(tput bold)$(tput setaf 6); cWhite=$(tput bold)$(tput setaf 7); cReset=$(tput bold)$(tput sgr0); cUp=$(tput cuu 2)
+lll=$(tput bold)$(tput setaf 0); rrr=$(tput bold)$(tput setaf 1); ggg=$(tput bold)$(tput setaf 2); yyy=$(tput bold)$(tput setaf 3); bbb=$(tput bold)$(tput setaf 4); mmm=$(tput bold)$(tput setaf 5); ccc=$(tput bold)$(tput setaf 6); www=$(tput bold)$(tput setaf 7); xxx=$(tput bold)$(tput sgr0); uuu=$(tput cuu 2)
+lll=$(tput bold)$(tput setaf 0); rrr=$(tput bold)$(tput setaf 1); ggg=$(tput bold)$(tput setaf 2); yyy=$(tput bold)$(tput setaf 3); bbb=$(tput bold)$(tput setaf 4); mmm=$(tput bold)$(tput setaf 5); cCyan=$(tput bold)$(tput setaf 6); www=$(tput bold)$(tput setaf 7); xxx=$(tput bold)$(tput sgr0); uuu=$(tput cuu 2)
 
 cat_and_run () {
-	echo "${cGreen}----> ${cYellow}$1 ${cCyan}$2${cReset}"; echo "$1" | bash
-	echo "${cMagenta}<---- $1 ${cBlue}$2${cReset}"
+	echo "${ggg}----> ${yyy}$1 ${cCyan}$2${xxx}"; echo "$1" | bash
+	echo "${mmm}<---- $1 ${bbb}$2${xxx}"
 }
 cat_and_read () {
-	echo -e "${cGreen}----> ${cYellow}$1 ${cCyan}$2${cGreen}\n----> ${cBlue}press ${cRed}Enter:${cReset}"
-	read a ; echo "${cUp}"; echo "$1" | bash
-	echo "${cMagenta}<---- press ${cRed}Enter: ${cMagenta}$1 ${cBlue}$2${cReset}"
+	echo -e "${ggg}----> ${yyy}$1 ${cCyan}$2${ggg}\n----> ${bbb}press ${rrr}Enter:${xxx}"
+	read a ; echo "${uuu}"; echo "$1" | bash
+	echo "${mmm}<---- press ${rrr}Enter: ${mmm}$1 ${bbb}$2${xxx}"
 }
 cat_and_readY () {
-	echo "${cGreen}----> ${cYellow}$1 ${cCyan}$2${cReset}"
+	echo "${ggg}----> ${yyy}$1 ${cCyan}$2${xxx}"
 	if [ "x${ALL_INSTALL}" = "xy" ]; then
-		echo "$1" | bash ; echo "${cMagenta}<---- $1 ${cBlue}$2${cReset}"
+		echo "$1" | bash ; echo "${mmm}<---- $1 ${bbb}$2${xxx}"
 	else
-		echo "${cGreen}----> ${cBlue}press ${cYellow}y${cBlue} or ${cRed}Enter:${cReset}"; read a; echo "${cUp}"
+		echo "${ggg}----> ${bbb}press ${yyy}y${bbb} or ${rrr}Enter:${xxx}"; read a; echo "${uuu}"
 		if [ "x$a" = "xy" ]; then
-			echo "${cRed}-OK-${cReset}"; echo "$1" | bash
+			echo "${rrr}-OK-${xxx}"; echo "$1" | bash
 		else
-			echo "${cRed}[ ${cYellow}$1 ${cRed}] ${cCyan}<--- 명령을 실행하지 않습니다.${cReset}"
+			echo "${rrr}[ ${yyy}$1 ${rrr}] ${cCyan}<--- 명령을 실행하지 않습니다.${xxx}"
 		fi
-		echo "${cMagenta}<---- press ${cRed}Enter: ${cMagenta}$1 ${cBlue}$2${cReset}"
+		echo "${mmm}<---- press ${rrr}Enter: ${mmm}$1 ${bbb}$2${xxx}"
 	fi
 }
 read_and_enter () {
-	echo -e "${cGreen}----> ${cYellow}$1 ${cCyan}$2${cReset}"
+	echo -e "${ggg}----> ${yyy}$1 ${cCyan}$2${xxx}"
 	read a
 	if [ "x$a" = "x" ]; then
 		a="$1"
 	fi
-	echo "${cUp}" ; echo "${cRed}[ ${cYellow}$a ${cRed}]${cReset}" ; echo ""
+	echo "${uuu}" ; echo "${rrr}[ ${yyy}$a ${rrr}]${xxx}" ; echo ""
 }
 CMD_NAME=`basename $0` # 명령줄에서 실행 프로그램 이름만 꺼냄
 CMD_DIR=${0%/$CMD_NAME} # 실행 이름을 빼고 나머지 디렉토리만 담음
@@ -40,7 +41,7 @@ if [ "x$CMD_DIR" == "x" ] || [ "x$CMD_DIR" == "x$CMD_NAME" ]; then
 fi
 
 MEMO="rclone 디렉토리 마운트 하기"
-echo -e "\n${cRed}>>>>>>>>>>${cYellow} $0 ${cGreen}||| ${cMagenta}${MEMO} ${cRed}>>>>>>>>>>${cReset}"
+echo -e "\n${rrr}>>>>>>>>>>${yyy} $0 ${ggg}||| ${mmm}${MEMO} ${rrr}>>>>>>>>>>${xxx}"
 ## logs_folder="${HOME}/zz00logs" ; if [ ! -d "${logs_folder}" ]; then cat_and_run "mkdir ${logs_folder}" ; fi
 ## log_name="${logs_folder}/zz.$(date +"%y%m%d-%H%M%S")__RUNNING_${CMD_NAME}" ; touch ${log_name}
 # ----
@@ -57,7 +58,7 @@ mount_ok=$(df -h | grep ${rclone_name})
 
 if [ "x$mount_ok" != "x" ]; then
 	cat_and_run "ls -lh ${mount_dir}" "${rclone_name} 디렉토리가 이미 마운트 되어 있습니다."
-	echo "${cRed}<<<<<<<<<<${cYellow} $0 ${cRed}||| ${cMagenta}${MEMO} ${cRed}<<<<<<<<<<${cReset}"
+	echo "${rrr}<<<<<<<<<<${yyy} $0 ${rrr}||| ${mmm}${MEMO} ${rrr}<<<<<<<<<<${xxx}"
 	exit 1
 fi
 
@@ -71,4 +72,4 @@ cat_and_run "ls -lh ${mount_dir}"
 # ----
 ## rm -f ${log_name} ; log_name="${logs_folder}/zz.$(date +"%y%m%d-%H%M%S")..${CMD_NAME}" ; touch ${log_name}
 ## cat_and_run "ls --color ${CMD_DIR}" ; ls --color ${logs_folder}
-echo "${cRed}<<<<<<<<<<${cYellow} $0 ${cRed}||| ${cMagenta}${MEMO} ${cRed}<<<<<<<<<<${cReset}"
+echo "${rrr}<<<<<<<<<<${yyy} $0 ${rrr}||| ${mmm}${MEMO} ${rrr}<<<<<<<<<<${xxx}"
