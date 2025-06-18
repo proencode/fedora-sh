@@ -24,9 +24,19 @@ date_HM=$(date +%H%M) #-- 1533
 date_dHM="${date_ymd:4:2}.${date_HM}" #-- 24.1533
 date_ymdHM="${date_ymd}.${date_HM}" #-- 250524.1533
 date_mark="${date_ymd}(${date_a}) ${date_HM}" #-- 250524(토) 1533
+
+use_for="1주 달력"
+#--------^^^^^^^^
+cmdreada "(1) INPUT: 용도 간단 설명" "그냥 Enter 면, ${rrr}[ ${xxx}${use_for} ${rrr}]"
+if [ "x${reada}" = "x" ]; then
+    reada=${use_for}
+fi
+use_for=${reada}
+echo "${ccc}#-- ${rrr}[ ${xxx}${use_for} ${rrr}]${xxx}"
+
 support_ai="gemini"
-#------^^^^^^
-cmdreada "(1) INPUT: 일련번호 앞의 접두어" "그냥 Enter 면, ${rrr}[ ${xxx}${support_ai} ${rrr}]"
+#-----------^^^^^^
+cmdreada "(2) INPUT: 일련번호 앞의 접두어" "그냥 Enter 면, ${rrr}[ ${xxx}${support_ai} ${rrr}]"
 if [ "x${reada}" = "x" ]; then
     reada=${support_ai}
 fi
@@ -42,13 +52,13 @@ if [ "x$reada" != "x" ]; then
     last_ymd_HM="${reada}"
 fi
 if [ ! -d ${last_ymd_HM} ]; then
-	cmdrun "mkdir -p ${last_ymd_HM}; ls -l ${last_ymd_HM}" "(2b) 폴더를 새로 만듭니다."
+	cmdrun "mkdir -p ${last_ymd_HM}; ls -l ${last_ymd_HM}" "(2b) last_ 폴더를 새로 만듭니다."
 fi
 echo "${ccc}#-- ${rrr}[ ${xxx}${last_ymd_HM} ${rrr}]${xxx}"
 
-echo "${yyy}#-- ${ccc}cd ${last_ymd_HM} ${mmm}#-- ${bbb}(3) qna- 폴더로 갑니다.${xxx}"
+echo "${yyy}#-- ${ccc}cd ${last_ymd_HM} ${mmm}#-- ${bbb}(3) last- 폴더로 갑니다.${xxx}"
 cd "${last_ymd_HM}" #-- cmdrun 으로 실행시 처리 안됨.
-echo "${bbb}#// cd ${last_ymd_HM} #-- (3) qna- 폴더로 갑니다.${xxx}"
+echo "${bbb}#// cd ${last_ymd_HM} #-- (3) last- 폴더로 갑니다.${xxx}"
 
 ###
 
@@ -98,7 +108,7 @@ for (( i=$begin_no; i<=end_no; i++ ))
 do
     cat >> ${file_name} <<__EOF__
 🔥
-### 🔥 ${supportAI_dHM}-${i:1}.
+### 🔥 (${use_for}) ${supportAI_dHM}-${i:1}.
 
 ### 🔋 ${date_dHM}-${i:1}. 
 
@@ -110,7 +120,7 @@ done
 begin_no=$((begin_no + 10))
 end_no=$((end_no + 10))
 cat >> ${file_name} <<__EOF__
-begin_no=${begin_no}; end_no=${end_no}; echo ""; echo "### ${date_mark} 질문과 답변 (qna)"; echo ""; for (( i=begin_no; i<=end_no; i++ )); do echo "🔥"; echo "### 🔥 ${supportAI_dHM}-\${i:1}."; echo ""; echo "### 🔋 ${date_dHM}-\${i:1}."; echo ""; echo ""; done
+begin_no=${begin_no}; end_no=${end_no}; echo ""; echo "### ${date_mark} 질문과 답변 (qna)"; echo ""; for (( i=begin_no; i<=end_no; i++ )); do echo "🔥"; echo "### 🔥 (${use_for}) ${supportAI_dHM}-\${i:1}."; echo ""; echo "### 🔋 ${date_dHM}-\${i:1}."; echo ""; echo ""; done
 __EOF__
 
 cmdrun "cat ${file_name}" "(9) 만든 내용 확인"
@@ -118,7 +128,7 @@ cmdrun "cat ${file_name}" "(9) 만든 내용 확인"
 cat > 02-saveto-number.sh <<__EOF__
 #!/bin/sh
 
-cc="${supportAI_dHM}" #-- "cusr12.1039"
+cc="(${use_for}) ${supportAI_dHM}" #-- "cusr12.1039"
 
 echo "#-- sh 02-saveto-number.sh (\${1})"
 echo "#-- "
@@ -143,7 +153,7 @@ __EOF__
 cat > 01-server_last_COPYTO_here.sh <<__EOF__
 #!/bin/sh
 
-cc="${supportAI_dHM}" #-- "cusr12.1039"
+cc="(${use_for}) ${supportAI_dHM}" #-- "cusr12.1039"
 
 yymm="$(date +%y%m)" #-- 2506
 cd ~/Downloads; mkdir ${yymm}; cd ${yymm}
