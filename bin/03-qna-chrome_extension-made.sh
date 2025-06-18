@@ -32,7 +32,8 @@ if [ "x${reada}" = "x" ]; then
     reada=${use_for}
 fi
 use_for=${reada}
-echo "${ccc}#-- ${rrr}[ ${xxx}${use_for} ${rrr}]${xxx}"
+use_for_underline=$(echo ${use_for} | sed 's/ /_/g')
+echo "${ccc}#-- ${rrr}[ ${xxx}${use_for} ${bbb}| ${ccc}${use_for_underline} ${rrr}]${xxx}"
 
 support_ai="gemini"
 #-----------^^^^^^
@@ -44,7 +45,7 @@ support_ai=${reada}
 echo "${ccc}#-- ${rrr}[ ${xxx}${support_ai} ${rrr}]${xxx}"
 
 supportAI_dHM="${support_ai}${date_dHM}"
-last_ymd_HM="last-${date_ymd}-${date_HM}"
+last_ymd_HM="last-${date_ymd}-${date_HM}-${use_for_underline}"
 
 echo "${yyy}#-- ${ccc}새 폴더를 ${xxx}$(pwd) ${bbb}아래에 만듭니다.${xxx}"
 cmdreada "(2a) INPUT: 새 폴더 이름 입력" "그냥 Enter 하면: ${yyy}[ ${bbb}${last_ymd_HM} ${yyy} ]"
@@ -86,7 +87,7 @@ if [ "x${reada}" = "x" ]; then
 fi
 end_no=${reada}
 
-file_name="app-${date_ymd}-${date_HM}-99-작업이름.md"
+file_name="app-${date_ymd}-${date_HM}-99-${use_for_underline}.md"
 #- if [ -f ${file_name} ]; then
 #- 	cmdrun "mv ${file_name} ${file_name}-$(date +%y%m%d%a-%H%M%S)" "이전의 파일 이름을 바꿉니다."
 #- fi
