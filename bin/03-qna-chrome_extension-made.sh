@@ -48,26 +48,35 @@ supportAI_dHM="${support_ai}${date_dHM}"
 last_ymd_HM="last-${date_ymd}-${date_HM}-${use_for_underline}"
 
 echo "${yyy}#-- ${ccc}새 폴더를 ${xxx}$(pwd) ${bbb}아래에 만듭니다.${xxx}"
-cmdreada "(2a) INPUT: 새 폴더 이름 입력" "그냥 Enter 하면: ${yyy}[ ${bbb}${last_ymd_HM} ${yyy} ]"
+cmdreada "(3a) INPUT: 새 폴더 이름 입력" "그냥 Enter 하면: ${yyy}[ ${bbb}${last_ymd_HM} ${yyy} ]"
 if [ "x$reada" != "x" ]; then
     last_ymd_HM="${reada}"
 fi
 if [ ! -d ${last_ymd_HM} ]; then
-	cmdrun "mkdir -p ${last_ymd_HM}; ls -l ${last_ymd_HM}" "(2b) last_ 폴더를 새로 만듭니다."
+	cmdrun "mkdir -p ${last_ymd_HM}; ls -l ${last_ymd_HM}" "(3b) last_ 폴더를 새로 만듭니다."
 fi
 echo "${ccc}#-- ${rrr}[ ${xxx}${last_ymd_HM} ${rrr}]${xxx}"
 
-echo "${yyy}#-- ${ccc}cd ${last_ymd_HM} ${mmm}#-- ${bbb}(3) last- 폴더로 갑니다.${xxx}"
+for tenfolder in a1-${date_ymd:0:4}초순.01-10 a2-${date_ymd:0:4}중순.11-20 a3-${date_ymd:0:4}하순.21-31
+do
+	if [ ! -d $tenfolder ]; then
+		cmdrun "mkdir ${tenfolder}" "(3c) 10일단위 백업 폴더를 만듭니다."
+	else
+		cmdrun "ls -l ${tenfolder}" "(3d) 10일단위 백업 폴더"
+	fi
+done
+
+echo "${yyy}#-- ${ccc}cd ${last_ymd_HM} ${mmm}#-- ${bbb}(4) last- 폴더로 갑니다.${xxx}"
 cd "${last_ymd_HM}" #-- cmdrun 으로 실행시 처리 안됨.
-echo "${bbb}#// cd ${last_ymd_HM} #-- (3) last- 폴더로 갑니다.${xxx}"
+echo "${bbb}#// cd ${last_ymd_HM} #-- (4) last- 폴더로 갑니다.${xxx}"
 
 ###
 
 backup_md_dir="backup-chrome-extension-md"
 if [ ! -d ${backup_md_dir} ]; then
-	cmdrun "mkdir -p ${backup_md_dir}" "(4a) .md 와 완성된 chrome-extension 을 보관하는 폴더를 만듭니다."
+	cmdrun "mkdir -p ${backup_md_dir}" "(5a) .md 와 완성된 chrome-extension 을 보관하는 폴더를 만듭니다."
 else
-	cmdrun "ls -l ${backup_md_dir}" "(4b) .md 와 완성된 chrome-extension 을 보관하는 폴더내역 입니다."
+	cmdrun "ls -l ${backup_md_dir}" "(5b) .md 와 완성된 chrome-extension 을 보관하는 폴더내역 입니다."
 fi
 
 echo "${mmm}#-- ${bbb}(6) 03- 스크립트를 이곳으로 복사하는 작업을 취소합니다.${xxx}"
@@ -96,9 +105,8 @@ file_name="app-${date_ymd}-${date_HM}-99-${use_for_underline}.md"
 #-- 브라우저는 이 폴더를 쓰고, 오류가 없으면 -00, -01 ... 로 바꿔서 보관한다.
 chrome_extension_DIR="${supportAI_dHM}-99"
 if [ ! -d ${chrome_extension_DIR} ]; then
-	cmdrun "mkdir -p ${chrome_extension_DIR}" "(5a) 크롬확장 폴더를 만듭니다."
+	cmdrun "mkdir -p ${chrome_extension_DIR}" "(9) 크롬확장 폴더를 만듭니다."
 fi
-cmdrun "mkdir a1-${date_ymd:2:4}초순.01-10 a2-${date_ymd:2:4}중순.11-20 a3-${date_ymd:2:4}하순.21-31" "(5b) 10일단위 백업 폴더를 만듭니다."
 
 cat >> ${file_name} <<__EOF__
 
@@ -125,7 +133,7 @@ cat >> ${file_name} <<__EOF__
 begin_no=${begin_no}; end_no=${end_no}; echo ""; echo "### ${date_mark} 질문과 답변 (qna)"; echo ""; for (( i=begin_no; i<=end_no; i++ )); do echo "🔥"; echo "### 🔥 (${use_for}) ${supportAI_dHM}-\${i:1}."; echo ""; echo "### 🔋 ${date_dHM}-\${i:1}."; echo ""; echo ""; done
 __EOF__
 
-cmdrun "cat ${file_name}" "(9) 만든 내용 확인"
+cmdrun "cat ${file_name}" "(10) 만든 내용 확인"
 
 cat > 02-saveto-number.sh <<__EOF__
 #!/bin/sh
@@ -179,4 +187,4 @@ sh saveto-number.sh 33    #-- ${cc}-99 를 ${cc}-33 으로 바꾸고,
 #-- ${cc}-99 를 새로 만듭니다.
 __EOF__
 
-cmdrun "ls -1" "(10) 소스를 -00 등올 바꾸고, -99 를 새로 만드는 명령을 파일로 표시했습니다."
+cmdrun "ls -1" "(11) 소스를 -00 등올 바꾸고, -99 를 새로 만드는 명령을 파일로 표시했습니다."
