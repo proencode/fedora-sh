@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>3주 달력 cusr18.1254-00. index.html</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="calendar-container">
+        <header class="calendar-header">
+            <div class="year-display">2025 년</div>
+            <div class="control-panel">
+                <button id="prevWeek" class="nav-btn">▲</button>
+                <div class="action-buttons">
+                    <button id="toggleMemoMode" class="action-btn">
+                        <span class="white">메모: </span>
+                        <span class="short-mode yellow">단축</span>
+                        <span class="white">/</span>
+                        <span class="detail-mode yellow">상세</span>
+                    </button>
+                    <button id="saveMemo" class="action-btn">저장</button>
+                    <button id="loadMemo" class="action-btn">불러오기</button>
+                </div>
+                <button id="nextWeek" class="nav-btn">▼</button>
+            </div>
+        </header>
+        <div class="calendar-grid" id="calendarGrid">
+            <!-- 달력 그리드는 JavaScript로 동적 생성됩니다 -->
+        </div>
+        <div class="file-name-display" id="fileNameDisplay"></div>
+    </div>
+
+    <!-- 메모 입력 모달 -->
+    <div id="memoModal" class="modal">
+        <div class="modal-content">
+            <h2>메모 입력</h2>
+            <textarea id="memoInput" rows="4" cols="50"></textarea>
+            <div class="modal-buttons">
+                <button id="saveMemoBtn" class="action-btn">저장</button>
+                <button id="cancelMemoBtn" class="action-btn">취소</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="popup.js"></script>
+</body>
+</html> 

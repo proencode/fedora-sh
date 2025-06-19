@@ -1,0 +1,161 @@
+/* 3주 달력 cusr18.1254-00. styles.css */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+    padding: 20px;
+}
+
+.calendar-container {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.calendar-header {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.year-display {
+    font-size: 1.2em;
+    margin-bottom: 10px;
+}
+
+.control-panel {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+}
+
+.action-buttons {
+    display: flex;
+    gap: 10px;
+}
+
+.action-btn, .nav-btn {
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    padding: 8px 16px;
+    cursor: pointer;
+    font-size: 0.7em;
+    border-radius: 4px;
+}
+
+.action-btn:hover, .nav-btn:hover {
+    background-color: #45a049;
+}
+
+.calendar-grid {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    grid-template-rows: repeat(3, auto);
+    border: 1px solid #ccc;
+}
+
+.calendar-cell {
+    border: 1px solid #ccc;
+    min-height: 100px;
+    padding: 10px;
+    margin: -1px 0 0 -1px;
+}
+
+.date-display {
+    font-size: 0.85em;
+    margin-bottom: 5px;
+}
+
+.memo-content {
+    font-size: 0.85em;
+    word-break: break-all;
+    line-height: 1.4;
+}
+
+.memo-content.short {
+    height: 5.6em; /* 4줄 높이로 설정 (1.4 * 4 = 5.6) */
+    overflow: hidden;
+}
+
+.memo-content.detail {
+    min-height: 5.6em;
+    height: auto;
+}
+
+/* 요일별 색상 */
+.sunday { color: red; }
+.saturday { color: blue; }
+.weekday { color: #006400; }
+
+/* 오늘 날짜 강조 */
+.today {
+    background-color: yellow;
+}
+
+/* 모달 스타일 */
+.modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 1000;
+}
+
+.modal-content {
+    background-color: white;
+    margin: 15% auto;
+    padding: 20px;
+    border-radius: 5px;
+    width: 80%;
+    max-width: 500px;
+}
+
+.modal-buttons {
+    margin-top: 20px;
+    text-align: right;
+}
+
+textarea {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    resize: vertical;
+}
+
+/* 메모 모드 전환 버튼 스타일 */
+#toggleMemoMode {
+    position: relative;
+}
+
+#toggleMemoMode .white {
+    color: white;
+}
+
+#toggleMemoMode .yellow {
+    color: #FFD700;
+}
+
+#toggleMemoMode .short-mode,
+#toggleMemoMode .detail-mode {
+    display: none;
+}
+
+/* 파일 이름 표시 영역 */
+.file-name-display {
+    margin-top: 5px;
+    padding: 5px;
+    font-size: 0.9em;
+    color: #666;
+    text-align: left;
+} 

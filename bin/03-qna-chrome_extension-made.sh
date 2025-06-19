@@ -98,6 +98,7 @@ chrome_extension_DIR="${supportAI_dHM}-99"
 if [ ! -d ${chrome_extension_DIR} ]; then
 	cmdrun "mkdir -p ${chrome_extension_DIR}" "(5a) 크롬확장 폴더를 만듭니다."
 fi
+cmdrun "mkdir a1-${date_ymd:2:4}초순.01-10 a2-${date_ymd:2:4}중순.11-20 a3-${date_ymd:2:4}하순.21-31" "(5b) 10일단위 백업 폴더를 만듭니다."
 
 cat >> ${file_name} <<__EOF__
 
