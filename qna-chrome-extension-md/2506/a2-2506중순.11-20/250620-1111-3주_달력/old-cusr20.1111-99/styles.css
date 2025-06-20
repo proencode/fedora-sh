@@ -1,9 +1,8 @@
-/* 3주 달력 cusr20.1111-19 styles.css */
+/* 3주 달력 cusr20.1111-03 styles.css */
 body {
   font-family: 'Segoe UI', Arial, sans-serif;
   margin: 0;
   background: #f9f9f9;
-  max-width: none;
 }
 .header {
   margin-bottom: 10px;
@@ -59,19 +58,15 @@ body {
   font-weight: bold;
 }
 .calendar-container {
-  display: flex;
-  justify-content: center;
-  align-items: flex-start;
-  margin-bottom: 10px;
   padding-left: 1em;
   padding-right: 1em;
+  margin-bottom: 10px;
 }
 #calendar-table {
-  width: auto;
-  min-width: 100%;
-  max-width: 1200px;
-  table-layout: fixed;
   border-collapse: collapse;
+  width: 100%;
+  max-width: none;
+  table-layout: fixed;
 }
 #calendar-table td {
   border: 1px solid #ccc;
