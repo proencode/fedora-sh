@@ -25,7 +25,7 @@ date_dHM="${date_ymd:4:2}.${date_HM}" #-- 24.1533
 date_ymdHM="${date_ymd}.${date_HM}" #-- 250524.1533
 date_mark="${date_ymd}(${date_a}) ${date_HM}" #-- 250524(토) 1533
 
-use_for="1주 달력"
+use_for="3주 달력"
 #--------^^^^^^^^
 cmdreada "(1) INPUT: 용도 간단 설명" "그냥 Enter 면, ${rrr}[ ${xxx}${use_for} ${rrr}]"
 if [ "x${reada}" = "x" ]; then
@@ -35,8 +35,8 @@ use_for=${reada}
 use_for_underline=$(echo ${use_for} | sed 's/ /_/g')
 echo "${ccc}#-- ${rrr}[ ${xxx}${use_for} ${bbb}| ${ccc}${use_for_underline} ${rrr}]${xxx}"
 
-support_ai="gemini"
-#-----------^^^^^^
+support_ai="cusr"
+#-----------^^^^
 cmdreada "(2) INPUT: 일련번호 앞의 접두어" "그냥 Enter 면, ${rrr}[ ${xxx}${support_ai} ${rrr}]"
 if [ "x${reada}" = "x" ]; then
     reada=${support_ai}
@@ -62,7 +62,7 @@ do
 	if [ ! -d $tenfolder ]; then
 		cmdrun "mkdir ${tenfolder}" "(3c) 10일단위 백업 폴더를 만듭니다."
 	else
-		cmdrun "ls -l ${tenfolder}" "(3d) 10일단위 백업 폴더"
+		cmdrun "ls -l ${tenfolder}" "(3d) 10일단위 백업 폴더 내용입니다."
 	fi
 done
 
@@ -72,43 +72,36 @@ echo "${bbb}#// cd ${last_ymd_HM} #-- (4) last- 폴더로 갑니다.${xxx}"
 
 ###
 
-backup_md_dir="backup-chrome-extension-md"
-if [ ! -d ${backup_md_dir} ]; then
-	cmdrun "mkdir -p ${backup_md_dir}" "(5a) .md 와 완성된 chrome-extension 을 보관하는 폴더를 만듭니다."
-else
-	cmdrun "ls -l ${backup_md_dir}" "(5b) .md 와 완성된 chrome-extension 을 보관하는 폴더내역 입니다."
-fi
-
-echo "${mmm}#-- ${bbb}(6) 03- 스크립트를 이곳으로 복사하는 작업을 취소합니다.${xxx}"
-#-- cmdrun "rsync -avzr ~/bin/03-qna-chrome_extension-made.sh ." "(6) 스크립트를 이곳으로 복사합니다."
+echo "${mmm}#-- ${bbb}(5) 03- 스크립트를 이곳으로 복사하는 작업을 취소합니다.${xxx}"
+#-- cmdrun "rsync -avzr ~/bin/03-qna-chrome_extension-made.sh ." "(5) 스크립트를 이곳으로 복사합니다."
 
 begin_no=100
-cmdreada "INPUT: QA노트 시작 번호 (3자리 수)" "(7) 그냥 Enter 면, ${rrr}[ ${xxx}${begin_no} ${rrr}]"
+cmdreada "INPUT: QA노트 시작 번호 (3자리 수)" "(6) 그냥 Enter 면, ${rrr}[ ${xxx}${begin_no} ${rrr}]"
 if [ "x${reada}" = "x" ]; then
     reada=${begin_no}
 fi
 begin_no=${reada}
 
 end_no=109
-cmdreada "INPUT: QA노트 끝 번호 (3자리 수)" "(8) 그냥 Enter 면, ${rrr}[ ${xxx}${end_no} ${rrr}]"
+cmdreada "INPUT: QA노트 끝 번호 (3자리 수)" "(7) 그냥 Enter 면, ${rrr}[ ${xxx}${end_no} ${rrr}]"
 if [ "x${reada}" = "x" ]; then
     reada=${end_no}
 fi
 end_no=${reada}
 
-file_name="app-${date_ymd}-${date_HM}-99-${use_for_underline}.md"
-#- if [ -f ${file_name} ]; then
-#- 	cmdrun "mv ${file_name} ${file_name}-$(date +%y%m%d%a-%H%M%S)" "이전의 파일 이름을 바꿉니다."
+app_99_md_file_name="app-${date_ymd}-${date_HM}-99-${use_for_underline}.md"
+#- if [ -f ${app_99_md_file_name} ]; then
+#- 	cmdrun "mv ${app_99_md_file_name} ${app_99_md_file_name}-$(date +%y%m%d%a-%H%M%S)" "이전의 파일 이름을 바꿉니다."
 #- fi
 
 
 #-- 브라우저는 이 폴더를 쓰고, 오류가 없으면 -00, -01 ... 로 바꿔서 보관한다.
 chrome_extension_DIR="${supportAI_dHM}-99"
 if [ ! -d ${chrome_extension_DIR} ]; then
-	cmdrun "mkdir -p ${chrome_extension_DIR}" "(9) 크롬확장 폴더를 만듭니다."
+	cmdrun "mkdir -p ${chrome_extension_DIR}" "(8) 크롬확장 폴더를 만듭니다."
 fi
 
-cat >> ${file_name} <<__EOF__
+cat >> ${app_99_md_file_name} <<__EOF__
 
 ### ${date_mark} 질문과 답변 (qna)
 
@@ -116,7 +109,7 @@ __EOF__
 
 for (( i=$begin_no; i<=end_no; i++ ))
 do
-    cat >> ${file_name} <<__EOF__
+    cat >> ${app_99_md_file_name} <<__EOF__
 🔥
 ### 🔥 (${use_for}) ${supportAI_dHM}-${i:1}.
 
@@ -129,16 +122,17 @@ done
 
 begin_no=$((begin_no + 10))
 end_no=$((end_no + 10))
-cat >> ${file_name} <<__EOF__
+cat >> ${app_99_md_file_name} <<__EOF__
 begin_no=${begin_no}; end_no=${end_no}; echo ""; echo "### ${date_mark} 질문과 답변 (qna)"; echo ""; for (( i=begin_no; i<=end_no; i++ )); do echo "🔥"; echo "### 🔥 (${use_for}) ${supportAI_dHM}-\${i:1}."; echo ""; echo "### 🔋 ${date_dHM}-\${i:1}."; echo ""; echo ""; done
 __EOF__
 
-cmdrun "cat ${file_name}" "(10) 만든 내용 확인"
+cmdrun "cat ${app_99_md_file_name}" "(9) 만든 내용 확인"
 
 cat > 02-saveto-number.sh <<__EOF__
 #!/bin/sh
 
-cc="(${use_for}) ${supportAI_dHM}" #-- "cusr12.1039"
+bb="(${use_for}) ${supportAI_dHM}" #-- "cusr12.1039"
+cc=\$(echo \$bb | awk -F") " '{print \$2}')
 
 echo "#-- sh 02-saveto-number.sh (\${1})"
 echo "#-- "
@@ -147,8 +141,8 @@ if [[ "x\${1}" < "x00" || "x\${1}" > "x99" ]]; then
         echo "#-- "
         echo "#-- 입력값은 "00" ~ "99" 사이의 값이라야 합니다."
 else
-        a="000\${1}" #-- \${a: -2} == 뒤에서 2개를 꺼낸다.
-        dd="\${cc}-\${a: -2}"
+        a="000\${1}"
+        dd="\${cc}-\${a: -2}" #-- \${a: -2} == 뒤에서 2개를 꺼낸다.
         if [ -d \${dd} ]; then
                 echo "#-- \${dd} 폴더가 있어서 백업할 수 없습니다."
         else
@@ -166,25 +160,25 @@ cat > 01-server_last_COPYTO_here.sh <<__EOF__
 cc="(${use_for}) ${supportAI_dHM}" #-- "cusr12.1039"
 
 yymm="$(date +%y%m)" #-- 2506
-cd ~/Downloads; mkdir ${yymm}; cd ${yymm}
+cd ~/Downloads; mkdir \${yymm}; cd \${yymm}
 
-echo "#-- rsync -avzr -e 'ssh -p 5822' proenpi@pi:g*/f*/q*/${yymm}/last* . #-- ${yymm}/last 를 이곳으로 가져옵니다."
+echo "#-- rsync -avzr -e 'ssh -p 5822' proenpi@pi:g*/f*/q*/\${yymm}/last* . #-- \${yymm}/last 를 이곳으로 가져옵니다."
 echo "#-- press 'y':"
 read a
-if [ "x$a" != "xy" ]; then
+if [ "x\$a" != "xy" ]; then
 	echo "#-- 'y' 가 아니므로 가져오기를 중단합니다."
 	exit -1
 fi
-rsync -avzr -e 'ssh -p 5822' proenpi@pi:g*/f*/q*/${yymm}/last* .
-echo "#-- rsync -avzr -e 'ssh -p 5822' proenpi@pi:g*/f*/q*/${yymm}/last* ."
+rsync -avzr -e 'ssh -p 5822' proenpi@pi:g*/f*/q*/\${yymm}/last* .
+echo "#-- rsync -avzr -e 'ssh -p 5822' proenpi@pi:g*/f*/q*/\${yymm}/last* ."
 __EOF__
 
 cat <<__EOF__
 
-${yyy}cd ${last_ymd_HM}; vi ${file_name}    ${bbb}#--///-- qna-파일에 입력하기.${xxx}
+${yyy}cd \${last_ymd_HM}; vi \${app_99_md_file_name}    ${bbb}#--///-- qna-파일에 입력하기.${xxx}
 
-sh saveto-number.sh 33    #-- ${cc}-99 를 ${cc}-33 으로 바꾸고,
-#-- ${cc}-99 를 새로 만듭니다.
+sh saveto-number.sh 33    #-- \${cc}-99 를 \${cc}-33 으로 바꾸고,
+#-- \${cc}-99 를 새로 만듭니다.
 __EOF__
 
-cmdrun "ls -1" "(11) 소스를 -00 등올 바꾸고, -99 를 새로 만드는 명령을 파일로 표시했습니다."
+cmdrun "ls -1" "(10) 소스를 -00 등올 바꾸고, -99 를 새로 만드는 명령을 파일로 표시했습니다."

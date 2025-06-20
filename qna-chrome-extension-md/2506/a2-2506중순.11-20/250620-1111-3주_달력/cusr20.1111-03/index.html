@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>3주 달력 cusr20.1111-02. index.html</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <!-- 상단: 년도 및 버튼 영역 -->
+  <div class="header">
+    <div class="year-row">
+      <span id="year-display">2025 년</span>
+    </div>
+    <div class="button-row">
+      <div class="button-left">
+        <button id="prev-week" class="nav-btn">▲</button>
+      </div>
+      <div class="button-center">
+        <button id="toggle-memo-mode" class="action-btn"><span class="memo-label">메모: <span id="memo-short" class="memo-mode-active">단축</span>/<span id="memo-detail">상세</span></span></button>
+        <button id="save-memo" class="action-btn">저장</button>
+        <button id="load-memo" class="action-btn">불러오기</button>
+      </div>
+      <div class="button-right">
+        <button id="next-week" class="nav-btn">▼</button>
+      </div>
+    </div>
+  </div>
+  <!-- 중앙: 3주 달력 -->
+  <div class="calendar-container">
+    <table id="calendar-table">
+      <tbody id="calendar-body">
+        <!-- JS로 동적 생성 -->
+      </tbody>
+    </table>
+  </div>
+  <!-- 하단: 상태표시 -->
+  <div class="footer">
+    <span id="file-info">파일 없음</span>
+  </div>
+  <!-- 메모 입력 모달 -->
+  <div id="memo-modal" class="modal hidden">
+    <div class="modal-content">
+      <textarea id="memo-input" maxlength="500" rows="6"></textarea>
+      <div class="modal-actions">
+        <button id="modal-save" class="action-btn">저장</button>
+        <button id="modal-cancel" class="action-btn">취소</button>
+      </div>
+    </div>
+  </div>
+  <input type="file" id="file-loader" accept="application/json" style="display:none;" />
+  <script src="popup.js"></script>
+</body>
+</html> 

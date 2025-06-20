@@ -1,0 +1,158 @@
+/* 3주 달력 cusr20.1111-02 styles.css */
+body {
+  font-family: 'Segoe UI', Arial, sans-serif;
+  margin: 0;
+  background: #f9f9f9;
+}
+.header {
+  margin-bottom: 10px;
+}
+.year-row {
+  text-align: center;
+  font-size: 1.2em;
+  margin: 18px 0 6px 0;
+  font-weight: bold;
+}
+.button-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+}
+.button-left, .button-right {
+  flex: 1;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+.button-right {
+  justify-content: flex-end;
+}
+.button-center {
+  flex: 2;
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+}
+.action-btn, .nav-btn {
+  background: #4CAF50;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  padding: 6px 16px;
+  font-size: 0.7em;
+  cursor: pointer;
+  margin: 0 2px;
+  transition: background 0.2s;
+}
+.action-btn:hover, .nav-btn:hover {
+  background: #388e3c;
+}
+.memo-label {
+  color: #fff;
+}
+.memo-mode-active {
+  color: #FFD700;
+  font-weight: bold;
+}
+.calendar-container {
+  padding-left: 2em;
+  padding-right: 2em;
+  margin-bottom: 10px;
+}
+#calendar-table {
+  border-collapse: collapse;
+  width: 100%;
+  max-width: none;
+  table-layout: fixed;
+}
+#calendar-table td {
+  border: 1px solid #ccc;
+  width: 14.28%;
+  vertical-align: top;
+  padding: 0;
+  background: #fff;
+  position: relative;
+}
+.date-area {
+  font-size: 0.85em;
+  margin-top: 5%;
+  margin-bottom: 3%;
+  margin-left: 6px;
+  font-weight: bold;
+}
+.memo-area {
+  font-size: 0.85em;
+  margin-top: 2%;
+  margin-bottom: 5%;
+  margin-left: 6px;
+  word-break: break-all;
+  white-space: pre-line;
+}
+.today {
+  background: #FFFACD !important;
+}
+.sunday {
+  color: #d32f2f;
+}
+.saturday {
+  color: #1976d2;
+}
+.weekday {
+  color: #006400;
+}
+.footer {
+  text-align: right;
+  font-size: 0.85em;
+  color: #888;
+  margin: 10px 20px 10px 0;
+}
+/* 모달 스타일 */
+.modal {
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: rgba(0,0,0,0.3);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+.modal.hidden {
+  display: none;
+}
+.modal-content {
+  background: #fff;
+  padding: 24px 18px 16px 18px;
+  border-radius: 8px;
+  min-width: 320px;
+  max-width: 90vw;
+  box-shadow: 0 2px 16px rgba(0,0,0,0.18);
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+}
+#memo-input {
+  width: 100%;
+  font-size: 0.95em;
+  margin-bottom: 12px;
+  resize: none;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  padding: 8px;
+}
+.modal-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 8px;
+}
+@media (max-width: 600px) {
+  .calendar-container {
+    max-width: 100vw;
+  }
+  #calendar-table {
+    font-size: 0.8em;
+  }
+  .modal-content {
+    min-width: 90vw;
+  }
+} 
