@@ -21,19 +21,11 @@ echo "#----> file_Made CurrentSeq ${CurrentSeq}; CurrentName ${CurrentName}; Pre
 
 	Jemok="${ChapterSeq} ${ChapterName}"
 	small_Jemok=$(echo "${Jemok,,}" | sed 's/ /_/g' | sed 's/\./_/g' | sed 's/“/\"/g' | sed 's/”/\"/g' | sed "s/’/'/g")
-#-- | q     | w     | e     | r     | t     | y     | u     | i     | o     | p     |
-#-- |### tit|\`\`\`Expl| \`찾~ \`| \`찾~.\`| \`찾~,\`| \`찾~;\`| \`찾~)\`| \`찾~:\`| \`찾~}\`|       |
-#-- | a     | s     | d     | f     | g     | h     | j     | k     | l     |
-#-- | \`\`\`   |\`\`\` - >|\`\`\`skip|#### tt|-\`tit:\`|       |       |**tit:*|       |
-#-- | z     | x     | c     | v     | b     | n     | m     |
-#-- |\`\`\`Copy|       |       |       |       |       |       |
 #== 
 #== | q     | w     | e     | r     | t     | y     | u     | i     | o     | p     |
-#== |### tit|\\`\\`\\`Expl| \\`찾~ \\`| \\`찾~.\\`| \\`찾~,\\`| \\`찾~;\\`| \\`찾~)\\`| \\`찾~:\\`| \\`찾~}\\`|       |
+#== |### title | \`\`\` \`\`\` Expl| \`xxx` `\`|\`xxx`.`\`|\`xxx`,`\`|\`xxx`;`\`|\`xxx`)`\`|\`xxx `:`\`|\`xxx `}`\`|       |
 #== | a     | s     | d     | f     | g     | h     | j     | k     | l     |
-#== | \\`\\`\\`   |\\`\\`\\` - >|\\`\\`\\`skip|#### tt|-\\`tit:\\`|       |       |**tit:*|       |
-#== | z     | x     | c     | v     | b     | n     | m     |
-#== |\`\`\`Copy|       |       |       |       |       |       |
+#== |- `xxx`|i **xx**| \*\*xxx` `\*\*| \*\*xxx`.`\*\*| \*\*xxx`,`\*\*| \*\*xxx`;`\*\*| \*\*xxx`)`\*\*| \*\*xxx`:`\*\*| \*\*xxx`}`\*\*|
 #== 
 	cat <<__EOF__ | tee "${small_Jemok}.md"
 
@@ -42,11 +34,10 @@ echo "#----> file_Made CurrentSeq ${CurrentSeq}; CurrentName ${CurrentName}; Pre
 ff-func-key-setting.vi
 
 | q     | w     | e     | r     | t     | y     | u     | i     | o     | p     |
-|### tit|\\\`\\\`\\\`Expl| \\\`찾~ \\\`| \\\`찾~.\\\`| \\\`찾~,\\\`| \\\`찾~;\\\`| \\\`찾~)\\\`| \\\`찾~:\\\`| \\\`찾~}\\\`|       |
+:------:|------:|------:|------:|------:|------:|------:|------:|------:|------:|
+|### title | \\\`\\\`\\\` \\\`\\\`\\\` Expl| \\\`xxx` `\\\`|\\\`xxx`.`\\\`|\\\`xxx`,`\\\`|\\\`xxx`;`\\\`|\\\`xxx`)`\\\`|\\\`xxx `:`\\\`|\\\`xxx `}`\\\`| 없 음 |
 | a     | s     | d     | f     | g     | h     | j     | k     | l     |
-| \\\`\\\`\\\`   |\\\`\\\`\\\` - >|\\\`\\\`\\\`skip|#### tt|-\\\`tit:\\\`|       |       |**tit:*|       |
-| z     | x     | c     | v     | b     | n     | m     |
-|\\\`\\\`\\\`Copy|       |       |       |       |       |       |
+|- \`x\`|- \\*\\*x\\*\\*| \\*\\*xxx` `\\*\\*| \\*\\*xxx`.`\\*\\*| \\*\\*xxx`,`\\*\\*| \\*\\*xxx`;`\\*\\*| \\*\\*xxx`)`\\*\\*| \\*\\*xxx`:`\\*\\*| \\*\\*xxx`}`\\*\\*|
 
 마크다운 입력시 vi 커맨드 표시 ; (^[)=Ctrl+[ ; (^M)=Ctrl+M
 인용구 작성시 ; 본문앞에는 꺽쇠 > 붙이고, 스타일 첨가시 끝줄에 종류별 구분을 표시한다.
@@ -66,7 +57,7 @@ ${link_box}
 ${link_box}
 |:----:|:----:|:----:|
 
-> (1) Path: ${small_Publisher}/${small_BookCover}/${small_Jemok}
+> (1) Path: ${small_Publisher}/${small_BookCover}/${small_Jemok} __
 > (2) Markdown
 > (3) Title: ${ChapterSeq} ${ChapterName}
 > (4) Short Description: ${ShortDescription}
@@ -74,8 +65,8 @@ ${link_box}
 > Book Name: ${BookTitle}
 > Link: ${https_line}
 > create: $(date +'%Y-%m-%d %a %H:%M:%S')
-> Images: /${small_Publisher}/${SMALL_BOOKCOVER_IMG}/
-> .md Name: ${small_Jemok}.md
+> Images: /${small_Publisher}/${SMALL_BOOKCOVER_IMG}/ __
+> .md Name: ${small_Jemok}.md __
 
 __EOF__
 }

@@ -3,29 +3,32 @@
 |:----:|:----:|:----:|
 
 # 01 Welcome to Beginning C++ Game Programming Third Edition!
-Let’s get started on your journey to writing exciting games for the PC using C++ and the OpenGL-powered `SFML`. This third edition has an overwhelming focus on improving and expanding upon what you will learn. All the C++ basics from variables in the beginning, through loops, object-oriented programming, the Standard Template Library, SFML features, and newer C++ possibilities have all been added to and expanded upon. By the end of this book, not only will you have four playable games but you will also have a deep and solid grounding in C++.
+Let’s get started on your journey to writing exciting games for the PC using C++ and the OpenGL-powered **SFML**. This third edition has an overwhelming focus on improving and expanding upon what you will learn. All the C++ basics from variables in the beginning, through loops, object-oriented programming, the **Standard Template Library**, **SFML** features, and newer C++ possibilities have all been added to and expanded upon. By the end of this book, not only will you have four playable games but you will also have a deep and solid grounding in C++.
 
 Here is what is coming up in this chapter
 
-First, we will look at the four games we will build across this book. The first game is the exact same as the previous edition and will help us learn the C++ basics, like variables, loops, and decision-making. The second and third are enhanced, modified, and refined from the previous edition, and the fourth is all new and, in my view, way better for playing and learning than the final two games of the previous edition put together.
-This next bit is mportant in which you will discover why you should learn game programming and perhaps any other programming genre using C++. Using C++ to learn game development can be the best choice for so many reasons.
-Then, we can explore SFML and its relationship with C++.
-Nobody likes corporate evangelism, and you won’t get any here, but there are good reasons to find out about Microsoft Visual Studio and why we will use it in this book.
-Next, it’s time to set up the development environment. This is admittedly a slightly dull affair, but we will get through it in short order, step by step, and when you have done it once, you will never need to learn it again.
-We will then plan and prepare for the first game project, Timber!!!
-Moving on, we will write the first C++ code of this book and make a runnable first stage of the game that draws a pretty background – ooh! In the next chapter, things will advance and begin to move graphics around and what we learned in this chapter will stand us in good stead to make faster progress with our first game.
-Finally, we will cover how to handle any problems you might get as you learn C++ and game programming, such as configuration errors, compile errors, link errors, and bugs.
+- First, we will look at the four games we will build across this book. The first game is the exact same as the previous edition and will help us learn the C++ basics, like **variables**, **loops**, and decision-making. The second and third are enhanced, modified, and refined from the previous edition, and the fourth is all new and, in my view, way better for playing and learning than the final two games of the previous edition put together.
+- This next bit is mportant in which you will discover why you should learn game programming and perhaps any other programming genre using C++. Using C++ to learn game development can be the best choice for so many reasons.
+- Then, we can explore **SFML** and its relationship with C++.
+- Nobody likes corporate evangelism, and you won’t get any here, but there are good reasons to find out about **Microsoft Visual Studio** and why we will use it in this book.
+- Next, it’s time to set up the development environment. This is admittedly a slightly dull affair, but we will get through it in short order, step by step, and when you have done it once, you will never need to learn it again.
+- We will then plan and prepare for the first game project, Timber!!!
+- Moving on, we will write the first C++ code of this book and make a runnable first stage of the game that draws a pretty background – ooh! In the next chapter, things will advance and begin to move graphics around and what we learned in this chapter will stand us in good stead to make faster progress with our first game.
+- Finally, we will cover how to handle any problems you might get as you learn C++ and game programming, such as configuration errors, compile errors, link errors, and bugs.
+
 Of course, what you want to know first is what you are going to have to show for yourself by the end of this weighty tome. So, let’s find out more about the games we will build.
 
 You will find this chapter’s source code in the GitHub repository: https://github.com/PacktPublishing/Beginning-C-Game-Programming-Third-Edition/tree/main/Timber
 
-The games we will build
+# The games we will build
+
 This journey will be smooth as we will learn about the fundamentals of the super-fast C++ language one step at a time, and then put this new knowledge to use by adding cool features to the four games we are going to build.
 
 The following are our four projects for this book.
 
-Timber!!!
-The first game is an addictive, fast-paced clone of the hugely successful Timberman. Our game, Timber!!!, will introduce us to all the beginner basics of C++ while we build a genuinely playable game. Here is what our version of the game will look like when we are done and we have added a few last-minute enhancements:
+## Timber!!!
+
+The first game is an addictive, fast-paced clone of the hugely successful **Timberman**. Our game, **Timber!!!**, will introduce us to all the beginner basics of C++ while we build a genuinely playable game. Here is what our version of the game will look like when we are done and we have added a few last-minute enhancements:
 
 A video game with a person standing in front of trees
 
@@ -34,8 +37,9 @@ Figure 1.1: Timber game
 
 Timberman can be found at http://store.steampowered.com/app/398710/.
 
-Pong
-Pong was one of the first video games ever made. It is an excellent example of how the basics of game object animation, player input, and collision detection work. We will build a version of this simple retro game to explore the concept of classes and object-oriented programming. Here is what it will look like by the end of Chapter 7:
+## Pong
+
+**Pong** was one of the first video games ever made. It is an excellent example of how the basics of game object animation, player input, and collision detection work. We will build a version of this simple retro game to explore the concept of classes and object-oriented programming. Here is what it will look like by the end of Chapter 7:
 
 A black screen with white text
 
@@ -44,7 +48,8 @@ Figure 1.2: Pong game
 
 The player will use the bat at the bottom of the screen and hit the ball back to the top of the screen. If you are interested, find out about Pong’s history here: https://en.wikipedia.org/wiki/Pong.
 
-Zombie Arena
+## Zombie Arena
+
 Next, we will build a frantic, zombie survival shooter, not unlike the Steam hit Over 9,000 Zombies!, which you can find out more about at http://store.steampowered.com/app/273500/. The player will have a machine gun and must fight off ever-growing waves of zombies. All this will take place in a randomly generated, scrolling world:
 
 A video game screen shot
@@ -52,10 +57,11 @@ A video game screen shot
 Description automatically generated
 Figure 1.3: Zombie Arena game
 
-To achieve this, we will learn about how object-oriented programming allows us to have a large code base (lots of code) that is easy to write and maintain. Expect exciting features such as hundreds of enemies, rapid-fire weaponry, pickups, and a character that can be leveled up after each wave.
+To achieve this, we will learn about how object-oriented programming allows us to have a large **code base** (lots of code) that is easy to write and maintain. Expect exciting features such as hundreds of enemies, rapid-fire weaponry, pickups, and a character that can be leveled up after each wave.
 
-Platform game
-The final game is a platform game called Run. Run will be packed with more features enabled by the C++ skills we will have acquired and made easier by the great features of SFML. Take a look at the finished game below:
+## Platform game
+
+The final game is a platform game called **Run**. Run will be packed with more features enabled by the C++ skills we will have acquired and made easier by the great features of SFML. Take a look at the finished game below:
 
 A video game with a person walking on a bridge
 
@@ -64,24 +70,27 @@ Figure 1.4: Platform game
 
 Features include a photo-realistic shader background, parallax scrolling cityscape, spatialized (directional) sound, mini-map, animated player character, rain weather effect, music, pop-up menu, and more. Best of all, the final game will have a reusable code structure that you can use to invent and add your own features to.
 
-Why you should learn game programming using C++ in 2024
+# Why you should learn game programming using C++ in 2024
+
 The title above could also have read, “Why use game programming to learn C++…”, because C++, game programming, and beginners (in my view) are a perfect match. Let’s look at C++ in more detail while also staying focussed on games and beginners:
 
-Speed: C++ is known for its high performance and efficiency. In game development, performance is important. C++ allows you to write code that can run close to the native languages of both the CPU and the GPU, making it well suited for anything demanding, which includes games. This is achieved because C++ is turned into native executable instructions. This is just what we need when coding games with hundreds, thousands, or even hundreds of thousands of entities in it. In the final chapter, Chapter 21, we will see how C++ can interact directly with the GPU using shader programs.
-Cross-platform development: C++ works almost everywhere, meaning you can write code that can be compiled and run on various platforms without significant modifications. This book will focus on Windows but everything we learn and write in this book, with minor modifications, will work on macOS and Linux. C++ itself is also used extensively in next-gen console game development and can even be useful on mobile. Compiled means translating our C++ code into binary machine instructions for the CPU.
-Lots of game engines and libraries: Many game engines and libraries are written in C++ or provide C++ APIs. Learning C++ gives you access to the widest range of tools and resources for game development, such as Unreal Engine, as well as the fastest and best graphics libraries like Vulcan, OpenGL, DirectX, and Metal, as well as physics libraries like Box2D, UI tools like IMGUI, and networking libraries for co-op and multiplayer like RakNet, Enet and SFML’s very own networking features.
-Low-level control: C++ provides low-level control over hardware resources, which is crucial for optimizing game performance. In game development, you may need to manage memory, optimize rendering pipelines, and maintain control over the system your game is running on, and C++ offers the flexibility and power to do this. If managing memory and rendering pipelines sound ominous, then I can assure you that things will be fine. We introduce both these topics in a completely beginner-friendly manner in Chapters 10 and 21, respectively. Far from leaving you baffled, knowing how these powerful things can be controlled will leave you feeling powerful and in control of your programming destiny.
-Documentation and support: There is a thriving community around C++ game development, with numerous resources, tutorials, and forums available to help you learn and troubleshoot issues. If you have a C++ problem, I can guarantee you are not the first and a quick web search will almost always yield a solution. ChatGPT is an ace C++ problem solver, too.
-Learning C++ does have challenges but, taken a step at a time, is easily mastered. It is so rewarding to struggle over a problem and finally see it burst into an exciting gameplay feature when you get it right. Game development often involves seemingly difficult algorithms, data structures, and principles but C++ provides tools like the Standard Template Library (STL) and classes through object-oriented programming (OOP) to boil down complexity into manageable chunks. We will be covering OOP and STL in Chapters 6 and 10, respectively.
-C++ is an industry standard: It is because of everything we have just discussed that C++ is widely used in the game development industry. Familiarity with C++ can make it easier to collaborate with other developers, understand existing code bases, switch between game engines, and secure highly paid jobs in the industry.
-Critics will say that C++ can have a steeper learning curve compared to some other programming languages and that if you’re new to programming or game development, you might consider starting with a more beginner-friendly language like C# (for Unity development) or Python (for simple game projects) before diving into C++. There is some truth in this, but it is nowhere near as true as it used to be. C++ is constantly evolving, and numerous improvements to simplify learning and dramatically speed up development have been introduced in recent years. For example, new keywords like auto, intriguing-sounding logic operators like spaceship, as well as language constructs like lambdas, coroutines, and smart pointers, were introduced over the last 10 years, which dramatically simplify and speed up C++ development.
+- **Speed**: C++ is known for its high performance and efficiency. In game development, performance is important. C++ allows you to write code that can run close to the native languages of both the CPU and the GPU, making it well suited for anything demanding, which includes games. This is achieved because C++ is turned into native executable instructions. This is just what we need when coding games with hundreds, thousands, or even hundreds of thousands of entities in it. In the final chapter, Chapter 21, we will see how C++ can interact directly with the GPU using shader programs.
+- **Cross-platform development**: C++ works almost everywhere, meaning you can write code that can be compiled and run on various platforms without significant modifications. This book will focus on Windows but everything we learn and write in this book, with minor modifications, will work on macOS and Linux. C++ itself is also used extensively in next-gen console game development and can even be useful on mobile. Compiled means translating our C++ code into binary machine instructions for the CPU.
+- **Lots of game engines and libraries**: Many game engines and libraries are written in C++ or provide C++ APIs. Learning C++ gives you access to the widest range of tools and resources for game development, such as **Unreal Engine**, as well as the fastest and best graphics libraries like **Vulcan**, **OpenGL**, **DirectX**, and **Metal**, as well as physics libraries like **Box2D**, UI tools like **IMGUI**, and networking libraries for co-op and multiplayer like **RakNet**, **Enet** and SFML’s very own networking features.
+- **Low-level control**: C++ provides low-level control over hardware resources, which is crucial for optimizing game performance. In game development, you may need to manage memory, optimize rendering pipelines, and maintain control over the system your game is running on, and C++ offers the flexibility and power to do this. If managing memory and rendering pipelines sound ominous, then I can assure you that things will be fine. We introduce both these topics in a completely beginner-friendly manner in Chapters 10 and 21, respectively. Far from leaving you baffled, knowing how these powerful things can be controlled will leave you feeling powerful and in control of your programming destiny.
+- **Documentation and support**: There is a thriving community around C++ game development, with numerous resources, tutorials, and forums available to help you learn and troubleshoot issues. If you have a C++ problem, I can guarantee you are not the first and a quick web search will almost always yield a solution. ChatGPT is an ace C++ problem solver, too.
+- Learning C++ does have challenges but, taken a step at a time, is easily mastered. It is so rewarding to struggle over a problem and finally see it burst into an exciting gameplay feature when you get it right. Game development often involves seemingly difficult algorithms, data structures, and principles but C++ provides tools like the **Standard Template Library (STL)** and classes through **object-oriented programming (OOP)** to boil down complexity into manageable chunks. We will be covering OOP and STL in Chapters 6 and 10, respectively.
+- **C++ is an industry standard**: It is because of everything we have just discussed that C++ is widely used in the game development industry. Familiarity with C++ can make it easier to collaborate with other developers, understand existing code bases, switch between game engines, and secure highly paid jobs in the industry.
+
+Critics will say that C++ can have a steeper learning curve compared to some other programming languages and that if you’re new to programming or game development, you might consider starting with a more beginner-friendly language like **C#** (for Unity development) or **Python** (for simple game projects) before diving into C++. There is some truth in this, but it is nowhere near as true as it used to be. C++ is constantly evolving, and numerous improvements to simplify learning and dramatically speed up development have been introduced in recent years. For example, new keywords like **auto**, intriguing-sounding logic operators like **spaceship**, as well as language constructs like lambdas, coroutines, and smart pointers, were introduced over the last 10 years, which dramatically simplify and speed up C++ development.
 
 In summary, I would suggest that not learning C++ as a first language might be a mistake. And if you want to make learning as fun and rewarding as it possibly can get then learning with games is a no-brainer. Finally, if you want to be an indie game developer or work for a top game studio, unless you have some very specific other path in mind, C++ is the way to go.
 
 But having just stated that C++ is so wonderful and has so many paths and libraries, why would we choose SFML?
 
-SFML
-SFML is the Simple Fast Media Library. It is not the only C++ library for games and multimedia. It is possible to make an argument to use other libraries, but SFML seems to come through for me every time. Firstly, it is written using object-oriented C++. The benefits of object-oriented C++ are numerous, and you will experience them as you progress through this book.
+## SFML
+
+**SFML** is the **Simple Fast Media Library**. It is not the only C++ library for games and multimedia. It is possible to make an argument to use other libraries, but SFML seems to come through for me every time. Firstly, it is written using object-oriented C++. The benefits of object-oriented C++ are numerous, and you will experience them as you progress through this book.
 
 SFML is also easy to get started with and is therefore a good choice if you are a beginner, yet at the same time, it has the potential to build the highest quality 2D games if you are a professional. So, a beginner can get started using SFML and not worry about having to start again with a new language/library as their experience grows. And if you want to build 3D games, C++ and SFML is a great introduction before moving on to Unreal Engine. As an aside, you can build 3D games with SFML and OpenGL but most SFML libraries are focused on 2D, as is this book.
 
@@ -91,23 +100,25 @@ SFML has a library for just about anything you would ever want to do in a 2D gam
 
 SFML allows you to create the following:
 
-2D graphics and animations, including scrolling game worlds.
-Sound effects and music playback, including high-quality directional sound.
-Input handling with a keyboard, mouse, and gamepad.
-Online multiplayer features.
-The same code can be compiled and linked on all major desktop operating systems, and mobile as well!
+- 2D graphics and animations, including scrolling game worlds.
+- Sound effects and music playback, including high-quality directional sound.
+- Input handling with a keyboard, mouse, and gamepad.
+- Online multiplayer features.
+- The same code can be compiled and linked on all major desktop operating systems, and mobile as well!
+
 Extensive research has not uncovered any more suitable ways to build 2D games for PC with C++, even for expert developers, especially if you are a beginner and want to learn C++ in a fun gaming environment. C++, check. SFML, check. Surely we want to steer clear of the big controlling corporations, though, right?
 
-Microsoft Visual Studio
-Visual Studio is an Integrated Development Environment (IDE). Visual Studio provides a neat and well-featured interface that simplifies the game development process while keeping advanced features to hand. Beginners can benefit from features like code completion and syntax highlighting, which help streamline the process of learning C++. Visual Studio is almost unarguably the most advanced free-to-use IDE for C++. Microsoft gives it away, not to seek forgiveness for past transgressions but to get you hooked for the future using a premium version. So, let’s take advantage of the free stuff for now.
+## Microsoft Visual Studio
+
+**Visual Studio** is an **Integrated Development Environment (IDE)**. Visual Studio provides a neat and well-featured interface that simplifies the game development process while keeping advanced features to hand. Beginners can benefit from features like code completion and syntax highlighting, which help streamline the process of learning C++. Visual Studio is almost unarguably the most advanced free-to-use IDE for C++. Microsoft gives it away, not to seek forgiveness for past transgressions but to get you hooked for the future using a premium version. So, let’s take advantage of the free stuff for now.
 
 Visual Studio offers a powerful debugger with features like breakpoints and call stacks. You can run your game in Visual Studio and have it pause at a point of your choosing. You can then inspect the values held by your code and step through execution a line at a time. This makes it easier for beginners to understand how their code works and troubleshoot otherwise near-impossible issues.
 
-IntelliSense is Visual Studio’s code suggestions and real-time error-checking tool. It can help those new to C++ learn the language more quickly by instantly highlighting mistakes and auto-suggesting what you might be trying to think of. This is not just a great learning tool for beginners but it is also a huge speed boost for professionals.
+**IntelliSense** is Visual Studio’s code suggestions and real-time error-checking tool. It can help those new to C++ learn the language more quickly by instantly highlighting mistakes and auto-suggesting what you might be trying to think of. This is not just a great learning tool for beginners but it is also a huge speed boost for professionals.
 
 Visual Studio has a large and active community, and there are many tutorials, forums, and resources available to help beginners with their C++ and SFML projects in Visual Studio.
 
-Visual Studio has many advanced features. As you grow in knowledge and ambition, Visual Studio can grow with you. Visual Studio integrates with popular version control systems (VCSs) like Git, making it easy to get started managing larger projects with multiple programmers. Visual Studio has performance profiling features that allow you to monitor the memory and CPU usage of your game and, therefore, improve and optimize your game.
+Visual Studio has many advanced features. As you grow in knowledge and ambition, Visual Studio can grow with you. Visual Studio integrates with popular **version control systems (VCSs)** like **Git**, making it easy to get started managing larger projects with multiple programmers. Visual Studio has performance profiling features that allow you to monitor the memory and CPU usage of your game and, therefore, improve and optimize your game.
 
 Visual Studio is almost an industry standard. Being one of the most widely used IDEs for C++, Visual Studio has an enormous number of users. This means that beginners can find plenty of online help and tutorials specific to Visual Studio. As an aside, usually, the last place you will look for Visual Studio support will be Microsoft. Being knowledgeable with Visual Studio could be valuable to a future employer.
 
@@ -119,7 +130,8 @@ While there are advanced versions of Visual Studio that cost hundreds of dollars
 
 In the sections that follow, we will set up the development environment, beginning with a discussion on what to do if you are using Mac or Linux operating systems.
 
-What about Mac and Linux?
+## What about Mac and Linux?
+
 The games that we will be making can be built to run on Windows, Mac, and Linux! The code we use will be identical for each platform. However, each version does need to be compiled and linked on the platform for which it is intended, and the tutorials will not be able to help with Mac and Linux.
 
 It would be unfair to say, especially for complete beginners, that this book is perfectly suited for Mac and Linux users. Although, I guess, if you are an enthusiastic Mac or Linux user and you are comfortable with your operating system, you will likely succeed. Most of the extra challenges you will encounter will be in the initial setup of the development environment, SFML, and the first project.
@@ -130,42 +142,47 @@ For Linux, read this to replace the next few sections: https://www.sfml-dev.org/
 
 On Mac, read this tutorial to get started: https://www.sfml-dev.org/tutorials/2.5/start-osx.php.
 
-Installing Visual Studio 2022
+## Installing Visual Studio 2022
+
 To start creating a game, we need to install Visual Studio 2022. Installing Visual Studio can be almost as simple as downloading a file and clicking a few buttons. There is nothing challenging about installing Visual Studio provided you choose the correct edition. I will clearly point out the correct edition at the point of choosing.
 
 Note that, over the years, Microsoft is likely to change the name, appearance, and download page that’s used to obtain Visual Studio. They might change the layout of the user interface and make the instructions that follow out of date. My experience, however, is that they try hard to maintain consistency between editions. Furthermore, the settings that we configure for each project are fundamental to C++ and SFML, so careful interpretation of the instructions that follow in this chapter will likely be possible, even if Microsoft does something radical to Visual Studio.
 
 Let’s get started with installing Visual Studio:
 
-The first thing you need is a Microsoft account and your login details. If you have a Hotmail, Windows, Xbox, or MSN account, then you already have one. If not, you can sign up for a free one here: https://login.live.com/.
-At the time of writing (May 2024), Visual Studio 2022 is the latest version, so hopefully, this chapter will be up to date for a while. To get started, visit https://visualstudio.microsoft.com/ and find the Visual Studio download. This next image shows what the page looks like at the time I visited the previous link:
+1. The first thing you need is a Microsoft account and your login details. If you have a Hotmail, Windows, Xbox, or MSN account, then you already have one. If not, you can sign up for a free one here: https://login.live.com/.
+1. At the time of writing (May 2024), Visual Studio 2022 is the latest version, so hopefully, this chapter will be up to date for a while. To get started, visit https://visualstudio.microsoft.com/ and find the Visual Studio download. This next image shows what the page looks like at the time I visited the previous link:
+
 A screenshot of a computer
 
 Description automatically generated
 Figure 1.5: Downloading Visual Studio
 
-Find the download for Visual Studio and choose Community 2022 from the drop-down options. Note that editions other than Community are premium products that are not free and the Visual Studio Code option, also shown in this image, is not what we want for this book. Click the Save button and your download will begin.
-When the download completes, run the download by double-clicking on it. After giving permission for Visual Studio to make changes to your computer, wait for the installer program to download some files and set up the next stage of the installation.
-Shortly, you will be asked where you want to install Visual Studio. Choose a hard drive with at least 50 GB of storage. Various sources on the web suggest you will get away with much less than 50 GB, but by the time you have started creating projects, 50 GB will make sure you have plenty of room for future development. When you are ready, locate the Desktop development with C++ option and select it. Next, click the Install button. This step might take a while to complete.
+3. Find the download for Visual Studio and choose **Community 2022** from the drop-down options. Note that editions other than Community are premium products that are not free and the Visual Studio Code option, also shown in this image, is not what we want for this book. Click the **Save** button and your download will begin.
+1. When the download completes, run the download by double-clicking on it. After giving permission for Visual Studio to make changes to your computer, wait for the installer program to download some files and set up the next stage of the installation.
+1. Shortly, you will be asked where you want to install Visual Studio. Choose a hard drive with at least 50 GB of storage. Various sources on the web suggest you will get away with much less than 50 GB, but by the time you have started creating projects, 50 GB will make sure you have plenty of room for future development. When you are ready, locate the **Desktop development with C++** option and select it. Next, click the Install button. This step might take a while to complete.
+
 Now, we are ready to turn our attention to SFML and then our first project.
 
-Setting up SFML
+# Setting up SFML
+
 This short tutorial will guide you through downloading the SFML files that allow us to include the functionality contained in the SFML library in our projects. In addition, we will see how we can use the SFML DLL files that will enable our compiled object code to run alongside SFML. To set up SFML, follow these steps:
 
-Visit this link on the SFML website: http://www.sfml-dev.org/download.php. Click on the button that says Latest stable version, as shown here:
+1. Visit this link on the SFML website: http://www.sfml-dev.org/download.php. Click on the button that says **Latest stable version**, as shown here:
 A screenshot of a computer
 
 Description automatically generated
 Figure 1.6: Downloading SFML 2.6
 
-By the time you read this book, the latest version will almost certainly have changed. This won’t matter if you do the next step just right. We want to download the 32-bit version. This might sound counter-intuitive because you probably (most commonly) have a 64-bit PC. The reason we will download the 32-bit version is that 32-bit apps can run on both 32- and 64-bit machines. Furthermore, we need to get the Visual Studio 22 version. Click the Download button that’s shown in the following screenshot:
+2. By the time you read this book, the latest version will almost certainly have changed. This won’t matter if you do the next step just right. We want to download the 32-bit version. This might sound counter-intuitive because you probably (most commonly) have a 64-bit PC. The reason we will download the 32-bit version is that 32-bit apps can run on both 32- and 64-bit machines. Furthermore, we need to get the Visual Studio 22 version. Click the **Download** button that’s shown in the following screenshot:
 A screenshot of a computer
 
 Description automatically generated
 Figure 1.7: Downloading SFML 17_22
 
-When the download completes, create a folder at the root of the same drive where you installed Visual Studio and name it SFML. Also, create another folder at the root of the drive where you installed Visual Studio and call it VS Projects.
-Finally, unzip the SFML download. Do this on your desktop. My file was called SFML-2.6.0-windows-vc17-32-bit.zip but yours may be different to reflect a newer version of SFML. When unzipping is complete, you can delete the .zip folder. You will be left with a single folder on your desktop. Its name will reflect the version of SFML that you downloaded. Double-click this folder to see its contents; I have a folder called SFML-2.6.0. Now double-click again into the folder.
+3. When the download completes, create a folder at the root of the same drive where you installed Visual Studio and name it `SFML`. Also, create another folder at the root of the drive where you installed Visual Studio and call it `VS Projects`.
+4. Finally, unzip the SFML download. Do this on your desktop. My file was called `SFML-2.6.0-windows-vc17-32-bit.zip` but yours may be different to reflect a newer version of SFML. When unzipping is complete, you can delete the `.zip` folder. You will be left with a single folder on your desktop. Its name will reflect the version of SFML that you downloaded. Double-click this folder to see its contents; I have a folder called `SFML-2.6.0`. Now double-click again into the folder.
+
 The following screenshot shows what my SFML folder’s content looks like. Yours should look the same.
 
 A screenshot of a computer
@@ -177,92 +194,98 @@ Copy the entire contents of this folder and paste all the files and folders into
 
 Now, we are ready to start using C++ and SFML in Visual Studio.
 
-Creating a new project in Visual Studio 2022
+# Creating a new project in Visual Studio 2022
+
 As setting up a project is a fiddly process, we will go through it step by step so that we can start getting used to it:
 
-Start Visual Studio in the same way you start any app: by clicking on its icon. The default installation options will have placed a Visual Studio 2022 icon in the Windows Start menu. You will see the following window:
+1. Start Visual Studio in the same way you start any app: by clicking on its icon. The default installation options will have placed a Visual Studio 2022 icon in the Windows Start menu. You will see the following window:
 A screenshot of a computer
 
 Description automatically generated
 Figure 1.9: Starting a new project in VS 2022
 
-Click on the Create a new project button, as highlighted in the preceding screenshot. You will see the Create a new project window, as shown in the following screenshot:
+2. Click on the **Create a new project** button, as highlighted in the preceding screenshot. You will see the **Create a new project** window, as shown in the following screenshot:
 A screenshot of a computer
 
 Description automatically generated
 Figure 1.10: Create a new project screen
 
-In the Create a new project window, we need to choose the type of project we will be creating. We will be creating a console application that has no Windows-related things like menus, selection boxes, or other Windows paraphernalia, so select Console App, as highlighted in the preceding screenshot, and click the Next button. You will then see the Configure your new project window. The following screenshot shows the Configure your new project window after the next three steps have been completed:
+3. In the **Create a new project** window, we need to choose the type of project we will be creating. We will be creating a console application that has no Windows-related things like menus, selection boxes, or other Windows paraphernalia, so select **Console App**, as highlighted in the preceding screenshot, and click the **Next** button. You will then see the **Configure your new project** window. The following screenshot shows the **Configure your new project** window after the next three steps have been completed:
 A screenshot of a computer
 
 Description automatically generated
 Figure 1.11: Configuring your new project
 
-In the Configure your new project window, type Timber in the Project name field. Note that this causes Visual Studio to automatically configure the Solution name field to the same name.
-In the Location field, browse to the VS Projects folder that we created in the previous tutorial. This will be the location where all our project files will be kept.
-Check the option to place the solution and project in the same directory.
-Note that the preceding screenshot shows what the window looks like when the previous three steps have been completed. When you have completed these steps, click Create. The project will be generated, including some C++ code. The following screenshot shows where we will be working throughout this book:
+4. In the **Configure your new project** window, type `Timber` in the **Project name** field. Note that this causes Visual Studio to automatically configure the **Solution name** field to the same name.
+5. In the **Location** field, browse to the `VS Projects` folder that we created in the previous tutorial. This will be the location where all our project files will be kept.
+6. Check the option to place the solution and project in the same directory.
+7. Note that the preceding screenshot shows what the window looks like when the previous three steps have been completed. When you have completed these steps, click **Create**. The project will be generated, including some C++ code. The following screenshot shows where we will be working throughout this book:
 A screenshot of a computer
 
 Description automatically generated
 Figure 1.12: Visual Studio code editor
 
-We will now configure the project to use the SFML files that we put in the SFML folder. From the main menu, select Project | Timber properties…. You will see the following window:
+8. We will now configure the project to use the SFML files that we put in the `SFML` folder. From the main menu, select **Project | Timber properties…**. You will see the following window:
 A screenshot of a computer program
 
 Description automatically generated
 Figure 1.13: Timber Property page
 
-In the preceding screenshot, the OK, Cancel, and Apply buttons are not fully formed. This is likely a glitch with Visual Studio not handling my screen resolution correctly. Yours will hopefully be fully formed. Whether your buttons appear like mine do or not, continuing with the tutorial will be the same.
+In the preceding screenshot, the **OK**, **Cancel**, and **Apply** buttons are not fully formed. This is likely a glitch with Visual Studio not handling my screen resolution correctly. Yours will hopefully be fully formed. Whether your buttons appear like mine do or not, continuing with the tutorial will be the same.
 
 Next, we will begin to configure the project properties. As these steps are quite intricate, I will cover them in a new list of steps.
 
-Configuring the project properties
-At this stage, you should have the Timber Property Pages window open, as shown in the preceding screenshot at the end of the previous section. Now, we will begin to configure some properties while using the following annotated screenshot for guidance:
+## Configuring the project properties
+
+At this stage, you should have the **Timber Property Pages** window open, as shown in the preceding screenshot at the end of the previous section. Now, we will begin to configure some properties while using the following annotated screenshot for guidance:
 
 A screenshot of a computer
 
 Description automatically generated
 Figure 1.14: Configuring the project properties
 
-We will add some intricate and important project settings in this section. This is the laborious part, but we will only need to do this once per project and it will get easier and faster each time you do it. What we need to do is tell Visual Studio where to find a special type of code file from SFML. The special type of file I am referring to is a header file. Header files are the files that define the format of the SFML code so that when we use the SFML code, the compiler knows how to handle it. Note that the header files are distinct from the main source code files, and they are contained in files with the .hpp file extension. All this will become clearer when we eventually start adding our own header files in the second project. In addition, we need to tell Visual Studio where it can find the SFML library files. To achieve these things, on the Timber Property Pages window, perform the following three steps, which are numbered in the preceding screenshot:
+We will add some intricate and important project settings in this section. This is the laborious part, but we will only need to do this once per project and it will get easier and faster each time you do it. What we need to do is tell Visual Studio where to find a special type of code file from SFML. The special type of file I am referring to is a header file. Header files are the files that define the format of the SFML code so that when we use the SFML code, the compiler knows how to handle it. Note that the header files are distinct from the main source code files, and they are contained in files with the `.hpp` file extension. All this will become clearer when we eventually start adding our own header files in the second project. In addition, we need to tell Visual Studio where it can find the SFML library files. To achieve these things, on the **Timber Property Pages** window, perform the following three steps, which are numbered in the preceding screenshot:
 
-First (1), select All Configurations from the Configuration dropdown and check that Win32 is selected in the Platform dropdown to the right.
-Second (2), select C/C++ then General from the left-hand menu.
-Third (3), locate the Additional Include Directories edit box and type the drive letter where your SFML folder is located, followed by \SFML\include. The full path to type, if you located your SFML folder on your D drive, is as shown in the preceding screenshot – that is, D:\SFML\include. Vary your path if you put SFML on a different drive.
-Click Apply to save your configurations so far.
-Now, still in the same window, perform these steps, which refer to the following annotated screenshot. First (1), select Linker and then General.
-Now, find the Additional Library Directories edit box (2) and type the drive letter where your SFML folder is, followed by \SFML\lib. So, the full path to type if you located your SFML folder on your D drive is, as also shown in the following screenshot, D:\SFML\lib. Vary your path if you put SFML on a different drive:
+1. First **(1)**, select **All Configurations** from the **Configuration** dropdown and check that **Win32** is selected in the Platform dropdown to the right.
+2. Second **(2)**, select **C/C++** then **General** from the left-hand menu.
+3. Third **(3)**, locate the **Additional Include Directories** edit box and type the drive letter where your `SFML` folder is located, followed by `\SFML\include`. The full path to type, if you located your `SFML` folder on your D drive, is as shown in the preceding screenshot – that is, `D:\SFML\include`. Vary your path if you put SFML on a different drive.
+4. Click **Apply** to save your configurations so far.
+5. Now, still in the same window, perform these steps, which refer to the following annotated screenshot. First **(1)**, select **Linker** and then **General**.
+6. Now, find the **Additional Library Directories** edit box **(2)** and type the drive letter where your `SFML` folder is, followed by `\SFML\lib`. So, the full path to type if you located your `SFML` folder on your D drive is, as also shown in the following screenshot, `D:\SFML\lib`. Vary your path if you put SFML on a different drive:
 A screenshot of a computer
 
 Description automatically generated
 Figure 1.15: Additional Library Directories
 
-Click Apply to save your configurations so far.
-Finally for this stage, still in the same window, perform these steps,which refers to the following annotated screenshot. Switch the Configuration dropdown (1) to Debug as we will be running and testing our games in Debugging mode.
+7. Click **Apply** to save your configurations so far.
+8. Finally for this stage, still in the same window, perform these steps,which refers to the following annotated screenshot. Switch the Configuration dropdown (1) to Debug as we will be running and testing our games in Debugging mode. #-- mycollect
+8. Finally for this stage, still in the same window, perform these steps, which refers to the following annotated screenshot. Switch the **Configuration** dropdown **(1)** to **Debug** as we will be running and testing our games in Debugging mode.
 A screenshot of a computer
 
 Description automatically generated
 Figure 1.16: Linker input configuration
 
-Select Linker and then Input (2).
-Find the Additional Dependencies edit box (3) and click on it at the far left-hand side. Now, copy and paste/type the following: sfml-graphics-d.lib;sfml-window-d.lib;sfml-system-d.lib;sfml-network-d.lib;sfml-audio-d.lib; at the indicated place. Be extra careful to place the cursor exactly in the right place and not overwrite any of the text that is already there.
-Click OK.
-Click Apply and then OK.
+9. Select **Linker** and then **Input (2)**.
+10. Find the **Additional Dependencies** edit box **(3)** and click on it at the far left-hand side. Now, copy and paste/type the following: `sfml-graphics-d.lib;sfml-window-d.lib;sfml-system-d.lib;sfml-network-d.lib;sfml-audio-d.lib`; at the indicated place. Be extra careful to place the cursor exactly in the right place and not overwrite any of the text that is already there.
+11. Click **OK**.
+12. Click **Apply** and then **OK**.
+
 Phew; that’s it! We have successfully configured Visual Studio and can move on to planning the Timber!!! project.
 
-Planning Timber!!!
+# Planning Timber!!!
+
 Whenever you make a game, it is always best to start with a pencil and paper. If you don’t know exactly how your game is going to work on the screen, how can you possibly make it work in code?
 
 At this point, if you haven’t already, I suggest you go and watch a video of Timberman in action so that you can see what we are aiming for. If you feel your budget can stretch to it, then grab a copy and give it a play. It is often on sale for under $1 on Steam: http://store.steampowered.com/app/398710/.
 
-The features and objects of a game that define the gameplay are known as the mechanics. The basic mechanics of the game are as follows:
+The features and objects of a game that define the gameplay are known as the **mechanics**. The basic mechanics of the game are as follows:
 
-Time is always running out.
-You can get more time by chopping the tree.
-Chopping the tree causes the branches to fall.
-The player must avoid the falling branches.
-Repeat until time runs out or the player is squished by a branch.
+- Time is always running out.
+- You can get more time by chopping the tree.
+- Chopping the tree causes the branches to fall.
+- The player must avoid the falling branches.
+- Repeat until time runs out or the player is squished by a branch.
+
 Expecting you to plan the C++ code at this stage is obviously a bit silly. This is, of course, the first chapter of a C++ beginner’s guide. We can, however, look at all the assets we will use and an overview of what we will need to make our C++ code do.
 
 Look at this annotated screenshot of the game:
@@ -274,27 +297,28 @@ Figure 1.17: Screenshot of the Timber game
 
 You can see that we have the following features:
 
-The player’s score: Each time the player chops a log, they will get one point. They can chop a log with either the left or the right arrow (cursor) key.
-Player character: Each time the player chops, they will move to/stay on the same side of the tree relative to the cursor key they use. Therefore, the player must be careful which side they choose to chop on.
-When the player chops, a simple axe graphic will appear in the player character’s hands.
-Shrinking time-bar: Each time the player chops, a small amount of time will be added to the ever-shrinking time-bar.
-The lethal branches: The faster the player chops, the more time they will win, but also the faster the branches will move down the tree and therefore the more likely they are to get squished. The branches spawn randomly at the top of the tree and move down with each chop.
-When the player gets squished – and they will get squished quite regularly – a gravestone graphic will appear.
-The chopped log: When the player chops, a chopped log graphic will whiz off, away from the player.
-Just for decoration: There are three floating clouds that will drift at random heights and speeds, as well as a bee that does nothing but fly around.
-The background: All this takes place on a pretty background.
+- **The player’s score**: Each time the player chops a log, they will get one point. They can chop a log with either the left or the right arrow (cursor) key.
+- **Player character**: Each time the player chops, they will move to/stay on the same side of the tree relative to the cursor key they use. Therefore, the player must be careful which side they choose to chop on.
+- When the player chops, a simple axe graphic will appear in the player character’s hands.
+- **Shrinking time-bar**: Each time the player chops, a small amount of time will be added to the ever-shrinking time-bar.
+- **The lethal branches**: The faster the player chops, the more time they will win, but also the faster the branches will move down the tree and therefore the more likely they are to get squished. The branches spawn randomly at the top of the tree and move down with each chop.
+- When the player gets squished – and they will get squished quite regularly – a gravestone graphic will appear.
+- **The chopped log**: When the player chops, a chopped log graphic will whiz off, away from the player.
+- **Just for decoration**: There are three floating clouds that will drift at random heights and speeds, as well as a bee that does nothing but fly around.
+- **The background**: All this takes place on a pretty background.
+
 So, in a nutshell, the player must frantically chop to gain points and avoid running out of time. As a slightly perverse but fun consequence, the faster they chop, the more likely their squishy demise.
 
 We now know what the game looks like, how it is played, and the motivation behind the game mechanics. Now, we can go ahead and start building it. Follow these steps:
 
-Now, we need to copy the SFML .dll files into the main project directory. My main project directory is D:\VS Projects\Timber. It was created by Visual Studio in the previous tutorial. If you put your VS Projects folder somewhere else, then perform this step there instead. The files we need to copy into the project folder are in your SFML\bin folder. Open a window for each of the two locations and highlight all the files in the SFML\bin folder, as shown in the following screenshot:
+1. Now, we need to copy the SFML `.dll` files into the main project directory. My main project directory is `D:\VS Projects\Timber`. It was created by Visual Studio in the previous tutorial. If you put your `VS Projects` folder somewhere else, then perform this step there instead. The files we need to copy into the project folder are in your `SFML\bin` folder. Open a window for each of the two locations and highlight all the files in the `SFML\bin` folder, as shown in the following screenshot:
 A screenshot of a computer
 
 Description automatically generated
 Figure 1.18: Selecting all the files you need
 
-Now, copy and paste the highlighted files into the project folder – that is D:\VS Projects\Timber.
-The project is now set up and ready to go. You will be able to see the following screen. I have annotated this screenshot so you can start familiarizing yourself with Visual Studio. We will revisit all these areas, and others, soon:
+2. Now, copy and paste the highlighted files into the project folder – that is `D:\VS Projects\Timber`.
+3. The project is now set up and ready to go. You will be able to see the following screen. I have annotated this screenshot so you can start familiarizing yourself with Visual Studio. We will revisit all these areas, and others, soon:
 A screen shot of a computer
 
 Description automatically generated
@@ -304,31 +328,37 @@ Your layout might look slightly different from what’s shown in the preceding s
 
 We will be back here soon to start coding. But first, we will explore the project assets we will be using.
 
-The project assets
+# The project assets
+
 Assets are anything you need to make your game. In our case, these assets include the following:
 
-A font for drawing the text on the screen
-Some sound effects for different actions, such as chopping, dying, and running out of time
-Some graphics, known as textures, for the character, background, branches, and other game objects
-All the graphics and sounds that are required for this game are included in the download bundle for this book. They can be found in the Chapter 1/graphics and Chapter 1/sound folders as appropriate.
+- A **font** for drawing the text on the screen
+- Some **sound effects** for different actions, such as chopping, dying, and running out of time
+- Some **graphics**, known as **textures**, for the character, background, branches, and other game objects
+
+All the graphics and sounds that are required for this game are included in the download bundle for this book. They can be found in the `Chapter 1/graphics` and `Chapter 1/sound` folders as appropriate.
 
 The font that is required has not been supplied. This is because I wanted to avoid any possible ambiguity regarding the license. This will not cause a problem, though, as I will show you exactly where and how to choose and download fonts for yourself.
 
-Making your own sound FX
-Sound effects (FX) can be downloaded for free from sites such as Freesound (www.freesound.org) but, often, the license won’t allow you to use them if you are selling your game. Another option is to use an open-source software called BFXR from www.bfxr.net, which can help you generate lots of different sound FX that are yours to keep and do with as you like.
+## Making your own sound FX
 
-Adding the assets to the project
+Sound effects (FX) can be downloaded for free from sites such as **Freesound** (www.freesound.org) but, often, the license won’t allow you to use them if you are selling your game. Another option is to use an open-source software called **BFXR** from www.bfxr.net, which can help you generate lots of different sound FX that are yours to keep and do with as you like.
+
+## Adding the assets to the project
+
 Once you have decided which assets you will use, it is time to add them to the project. The following instructions will assume you are using all the assets that are supplied in this book’s download bundle. Where you are using your own, simply replace the appropriate sound or graphic file with your own, using the same filename:
 
-Browse to the project folder – that is, D:\VS Projects\Timber.
-Create three new folders within this folder and name them graphics, sound, and fonts.
-From the download bundle, copy the entire contents of Chapter 1/graphics into the D:\VS Projects\Timber\graphics folder.
-From the download bundle, copy the entire contents of Chapter 1/sound into the D:\VS Projects\Timber\sound folder.
-Now, visit hhttp://www.1001freefonts.com/komika_poster.font in your web browser and download the Komika Poster font.
-Extract the contents of the zipped download and add the KOMIKAP_.ttf file to the D:\VS Projects\Timber\fonts folder.
+1. Browse to the project folder – that is, `D:\VS Projects\Timber`.
+1. Create three new folders within this folder and name them `graphics`, `sound`, and `fonts`.
+1. From the download bundle, copy the entire contents of `Chapter 1/graphics` into the `D:\VS Projects\Timber\graphics` folder.
+1. From the download bundle, copy the entire contents of `Chapter 1/sound` into the `D:\VS Projects\Timber\sound` folder.
+1. Now, visit hhttp://www.1001freefonts.com/komika_poster.font in your web browser and download the **Komika Poster** font.
+1. Extract the contents of the zipped download and add the `KOMIKAP_.ttf` file to the `D:\VS Projects\Timber\fonts` folder.
+
 Let’s look at these assets – especially the graphics – so that we can visualize what is happening when we use them in our C++ code.
 
-Exploring the assets
+## Exploring the assets
+
 The graphical assets make up the parts of the scene that is our game. If you look at the graphical assets, it should be clear where in our game they will be used:
 
 A screenshot of a video game
@@ -336,14 +366,16 @@ A screenshot of a video game
 Description automatically generated
 Figure 1.20: The assets
 
-The sound files are all in .wav format. These files contain the sound effects that we will play at certain events throughout the game. They were all generated using BFXR and are as follows:
+The sound files are all in `.wav` format. These files contain the sound effects that we will play at certain events throughout the game. They were all generated using **BFXR** and are as follows:
 
-chop.wav: A sound that is a bit like an axe chopping a tree
-death.wav: A sound a bit like a retro “losing” sound
-out_of_time.wav: A sound that plays when the player loses by running out of time, as opposed to being squashed
+- `chop.wav`: A sound that is a bit like an axe chopping a tree
+- `death.wav`: A sound a bit like a retro “losing” sound
+- `out_of_time.wav`: A sound that plays when the player loses by running out of time, as opposed to being squashed
+
 We have seen all the assets, including the graphics, so now we will have a short discussion related to the resolution of the screen and how we position the graphics on it.
 
-Understanding screen and internal coordinates
+# Understanding screen and internal coordinates
+
 Before we move on to the actual C++ coding, let’s talk a little about coordinates. All the images that we see on our monitors are made from pixels. Pixels are tiny dots of light that combine to make the images we see on the screen.
 
 There are many different resolutions of a monitor but, as an example, consider that a typical monitor might have 1,920 pixels horizontally and 1,080 pixels vertically.
@@ -364,9 +396,9 @@ A cartoon character with a grid of lines
 Description automatically generated with medium confidence
 Figure 1.22: Drawing central coordinates
 
-In addition to the screen coordinates, our game objects will each have their own similar coordinate system as well. Like the screen coordinate system, their internal or local coordinates start at 0,0 in the top-left corner.
+In addition to the screen coordinates, our game objects will each have their own similar coordinate system as well. Like the screen coordinate system, their **internal** or **local** coordinates start at 0,0 in the top-left corner.
 
-In the previous image, we can see that 0,0 of the character is drawn at 960, 540 of the screen. A visual 2D game object, such as a character or perhaps a zombie, is called a Sprite. A sprite is typically made from an image file. All sprites have what is known as an origin.
+In the previous image, we can see that 0,0 of the character is drawn at 960, 540 of the screen. A visual 2D game object, such as a character or perhaps a zombie, is called a **Sprite**. A sprite is typically made from an image file. All sprites have what is known as an origin.
 
 If we draw a sprite to a specific location on the screen, it is the origin that will be located at this specific location. The 0,0 coordinates of the sprite are its origin. The following image demonstrates this:
 
@@ -383,107 +415,110 @@ Note that, in the real world, gamers have a huge variety of screen resolutions, 
 
 Now, we can write our first piece of C++ code and see it in action.
 
-Getting started with coding the game
-Open Visual Studio if it isn’t already open. Open the Timber project by left-clicking it from the Recent list on the main Visual Studio window.
+# Getting started with coding the game
 
-Find the Solution Explorer window on the right-hand side. Locate the Timber.cpp file under the Source Files folder. The .cpp stands for C plus plus.
+Open Visual Studio if it isn’t already open. Open the **Timber** project by left-clicking it from the **Recent** list on the main Visual Studio window.
+
+Find the Solution Explorer window on the right-hand side. Locate the `Timber.cpp` file under the `Source Files` folder. The `.cpp` stands for C plus plus.
 
 Delete the entire contents of the code window and add the following code so that you have the same code yourself. You can do so in the same way that you would with any text editor or word processor; you could even copy and paste it if you prefer. After you have made the edits, we can talk about it:
 
+```
 // This is where our game starts from int main()
 {
 return 0;
 }
+```
 
-Copy
-
-Explain
 This simple C++ program is a good place to start. Let’s go through it line by line.
 
-Making code clearer with comments
+## Making code clearer with comments
+
 The first line of code is as follows:
 
+```
 // This is where our game starts from
+```
 
-Copy
+Any line of code that starts with two forward slashes (//) is a comment and is ignored by the compiler. As such, this line of code does nothing. It is used to leave in any information that we might find useful when we come back to the code at a later date. The comment ends at the end of the line, so anything on the next line is not part of the comment. There is another type of comment called a **multi-line** or **c-style** comment, which can be used to leave comments that take up more than a single line. We will see some of them later in this chapter. Throughout this book, I will leave hundreds of comments to help add context and further explain the code.
 
-Explain
-Any line of code that starts with two forward slashes (//) is a comment and is ignored by the compiler. As such, this line of code does nothing. It is used to leave in any information that we might find useful when we come back to the code at a later date. The comment ends at the end of the line, so anything on the next line is not part of the comment. There is another type of comment called a multi-line or c-style comment, which can be used to leave comments that take up more than a single line. We will see some of them later in this chapter. Throughout this book, I will leave hundreds of comments to help add context and further explain the code.
+## The main function
 
-The main function
 The next line we see in our code is as follows:
 
+```
 int main()
+```
 
-Copy
+`int` is what is known as a **type**. C++ has many types, and they represent different types of data. An `int` is an **integer** or whole number. Hold that thought and we will come back to it in a minute.
 
-Explain
-int is what is known as a type. C++ has many types, and they represent different types of data. An int is an integer or whole number. Hold that thought and we will come back to it in a minute.
+The `main()` part is the name of the section of code that follows. The section of code is marked out between the opening curly brace (`{`) and the next closing curly brace (`}`).
 
-The main() part is the name of the section of code that follows. The section of code is marked out between the opening curly brace ({) and the next closing curly brace (}).
+So, everything in between these curly braces `{...}` is a part of `main`. We call a section of code like this a **function**.
 
-So, everything in between these curly braces {...} is a part of main. We call a section of code like this a function.
+Every C++ program has a `main` function and it is the place where the **execution** (running) of the entire program will start. As we progress through this book, eventually, our games will have many code files. However, there will only ever be one `main` function, and no matter what code we write, our game will always begin execution from the first line of code that’s inside the opening curly brace of the `main` function.
 
-Every C++ program has a main function and it is the place where the execution (running) of the entire program will start. As we progress through this book, eventually, our games will have many code files. However, there will only ever be one main function, and no matter what code we write, our game will always begin execution from the first line of code that’s inside the opening curly brace of the main function.
+For now, don’t worry about the strange brackets that follow the function name `()`. We will discuss them further in Chapter 4, Loops, Arrays, Switch, Enumerations, and Functions – Implementing Game Mechanics, when we get to see functions in a whole new and more interesting light.
 
-For now, don’t worry about the strange brackets that follow the function name (). We will discuss them further in Chapter 4, Loops, Arrays, Switch, Enumerations, and Functions – Implementing Game Mechanics, when we get to see functions in a whole new and more interesting light.
+Let’s look closely at the one single line of code within our `main` function.
 
-Let’s look closely at the one single line of code within our main function.
+## Presentation and syntax
 
-Presentation and syntax
-Take a look at the entirety of our main function again:
+Take a look at the entirety of our `main` function again:
 
+```
 int main()
 {
     return 0;
 }
+```
 
-Copy
+We can see that, inside `main`, there is just one single line of code, `return 0;`. Before we move on to find out what this line of code does, let’s look at how it is presented. This is useful because it can help us prepare to write code that is easy to read and distinguished from other parts of our code.
 
-Explain
-We can see that, inside main, there is just one single line of code, return 0;. Before we move on to find out what this line of code does, let’s look at how it is presented. This is useful because it can help us prepare to write code that is easy to read and distinguished from other parts of our code.
+First, notice that `return 0;` is indented to the right by one tab. This clearly marks it out as being internal to the `main` function. As our code grows in length, we will see that indenting our code and leaving white space will be essential to maintaining readability.
 
-First, notice that return 0; is indented to the right by one tab. This clearly marks it out as being internal to the main function. As our code grows in length, we will see that indenting our code and leaving white space will be essential to maintaining readability.
-
-Next, notice the punctuation at the end of the line. A semicolon (;) tells the compiler that it is the end of the instruction and that whatever follows it is a new instruction. We call an instruction that’s been terminated by a semicolon a statement.
+**Next**, notice the punctuation at the end of the line. A semicolon (`;`) tells the compiler that it is the end of the instruction and that whatever follows it is a new instruction. We call an instruction that’s been terminated by a semicolon a **statement**.
 
 Note that the compiler doesn’t care whether you leave a new line or even a space between the semicolon and the next statement. However, not starting a new line for each statement will lead to hard-to-read code, and missing the semicolon altogether will result in a syntax error and the game will not compile and run.
 
-A section of code together, often denoted by its indentation with the rest of the section, is called a block.
+A section of code together, often denoted by its indentation with the rest of the section, is called a **block**.
 
-Now that you’re comfortable with the idea of the main function, indenting your code to keep it tidy, and putting a semicolon on the end of each statement, we can move on to finding out exactly what the return 0; statement does.
+Now that you’re comfortable with the idea of the `main` function, indenting your code to keep it tidy, and putting a semicolon on the end of each statement, we can move on to finding out exactly what the `return 0;` statement does.
 
-Returning values from a function
-Actually, return 0; does almost nothing in the context of our game. However, the concept is an important one. When we use the return keyword, either on its own or followed by a value, it is an instruction for the program execution to jump/move back to the code that got the function started in the first place.
+## Returning values from a function
 
-Often, the code that got the function started will be yet another function somewhere else in our code. In this case, however, it is the operating system that started the main function. So, when return 0; is executed, the main function exits and the entire program ends.
+Actually, `return 0;` does almost nothing in the context of our game. However, the concept is an important one. When we use the `return` keyword, either on its own or followed by a value, it is an instruction for the program execution to jump/move back to the code that got the function started in the first place.
 
-Since we have a 0 after the return keyword, that value is also sent to the operating system. We could change the value of 0 to something else and that value would be sent back instead.
+Often, the code that got the function started will be yet another function somewhere else in our code. In this case, however, it is the operating system that started the `main` function. So, when `return 0;` is executed, the `main` function exits and the entire program ends.
 
-In programming speak, we say that the code that starts a function calls the function and that the function returns the value.
+Since we have a `0` after the `return` keyword, that value is also sent to the operating system. We could change the value of `0` to something else and that value would be sent back instead.
 
-You don’t need to fully grasp all this function information just yet. It is just useful to introduce it here. We will go into the full details of functions during this first project. There’s one last thing on functions that I will cover before we move on. Remember the int from int main()? This tells the compiler that the type of value that’s returned from main must be an int (integer/whole number). We can return any value that qualifies as an int; perhaps 0, 1, 999, 6,358, and so on. If we try and return something that isn’t an int, perhaps 12.76, then the code won’t compile, and the game won’t run.
+In programming speak, we say that the code that starts a function **calls** the function and that the function **returns** the value.
+
+You don’t need to fully grasp all this function information just yet. It is just useful to introduce it here. We will go into the full details of functions during this first project. There’s one last thing on functions that I will cover before we move on. Remember the `int` from `int main()`? This tells the compiler that the type of value that’s returned from `main` must be an `int` (integer/whole number). We can return any value that qualifies as an `int`; perhaps 0, 1, 999, 6,358, and so on. If we try and return something that isn’t an `int`, perhaps 12.76, then the code won’t compile, and the game won’t run.
 
 Functions can return a big selection of different types, including types that we invent for ourselves! That type, however, must be made known to the compiler in the way we have just seen.
 
 This little bit of background information on functions will make things smoother as we progress.
 
-Running the game
-You can even run the game at this point. Do so by clicking the Local Windows Debugger button in the quick-launch bar of Visual Studio. Alternatively, you can use the F5 shortcut key:
+## Running the game
+
+You can even run the game at this point. Do so by clicking the **Local Windows Debugger** button in the quick-launch bar of Visual Studio. Alternatively, you can use the F5 shortcut key:
 
 
 Figure 1.24: The Local Windows Debugger button
 
-Be sure that the version next to the Local Windows Debugger button is set to x86, as shown in the next image. This means our program will be 32-bit and match the version of SFML we downloaded.
+Be sure that the version next to the **Local Windows Debugger** button is set to **x86**, as shown in the next image. This means our program will be 32-bit and match the version of SFML we downloaded.
 
 
 Figure 1.25: Be sure you’re running in x86
 
-You will just get a black screen. If the black screen doesn’t automatically close itself, you can tap any key to close it. This window is the C++ console, and we can use this to debug our game. We don’t need to do this now. What is happening is that our program is starting, executing from the first line of main, which is return 0;, and then immediately exiting back to the operating system.
+You will just get a black screen. If the black screen doesn’t automatically close itself, you can tap any key to close it. This window is the C++ console, and we can use this to debug our game. We don’t need to do this now. What is happening is that our program is starting, executing from the first line of `main`, which is `return 0;`, and then immediately exiting back to the operating system.
 
 We now have the simplest program possible coded and running. We will now add some more code to open a window that the game will eventually appear in.
 
-Opening a window using SFML
+# Opening a window using SFML
+
 Now, let’s add some more code. The code that follows will open a window using SFML that Timber!!! will eventually run in. The window will be 1,920 pixels wide by 1,080 pixels high and will be full screen (no border or title).
 
 Enter the new code that is highlighted here to the existing code and then we will examine it. As you type (or copy and paste), try and work out what is going on:
@@ -923,16 +958,16 @@ A) It doesn’t matter; we will be returning to it again constantly and will lea
 | ≪ [ 00 Preface ](/packtpub/2025/0625_beginning_c++_game_programming/00_preface) | 01 Welcome to Beginning C++ Game Programming, 3Ed | [ 02 Variables Operators and Decisions ](/packtpub/2025/0625_beginning_c++_game_programming/02_variables_operators_and_decisions) ≫ |
 |:----:|:----:|:----:|
 
-> (1) Path: packtpub/2025/0625_beginning_c++_game_programming/01_welcome_to_beginning_c++_game_programming,_3ed
+> (1) Path: packtpub/2025/0625_beginning_c++_game_programming/01_welcome_to_beginning_c++_game_programming,_3ed __
 > (2) Markdown
 > (3) Title: 01 Welcome to Beginning C++ Game Programming, 3Ed
 > (4) Short Description: John Horton May 2024 648 pages 3rd Edition
 > (5) tags: C++, game
 > Book Name: 0625 Beginning C++ Game Programming
 > Link: https://subscription.packtpub.com/book/game-development/9781835081747/pref
-> create: 2025-06-25 수 14:49:20
-> Images: /packtpub/2025/0625_beginning_c++_game_programming_img/
-> .md Name: 01_welcome_to_beginning_c++_game_programming,_3ed.md
+> create: 2025-06-29 일 13:52:11
+> Images: /packtpub/2025/0625_beginning_c++_game_programming_img/ __
+> .md Name: 01_welcome_to_beginning_c++_game_programming,_3ed.md __
 
 
 ---------- cut line ----------
@@ -940,11 +975,10 @@ A) It doesn’t matter; we will be returning to it again constantly and will lea
 ff-func-key-setting.vi
 
 | q     | w     | e     | r     | t     | y     | u     | i     | o     | p     |
-|### tit|\`\`\`Expl| \`찾~ \`| \`찾~.\`| \`찾~,\`| \`찾~;\`| \`찾~)\`| \`찾~:\`| \`찾~}\`|       |
+:------:|------:|------:|------:|------:|------:|------:|------:|------:|------:|
+|### title | \`\`\` \`\`\` Expl| \`xxx\`|\`xxx\`|\`xxx\`|\`xxx\`|\`xxx\`|\`xxx \`|\`xxx \`| 없 음 |
 | a     | s     | d     | f     | g     | h     | j     | k     | l     |
-| \`\`\`   |\`\`\` - >|\`\`\`skip|#### tt|-\`tit:\`|       |       |**tit:*|       |
-| z     | x     | c     | v     | b     | n     | m     |
-|\`\`\`Copy|       |       |       |       |       |       |
+| 없 음 | 없 음 | \*\*xxx\*\*| \*\*xxx\*\*| \*\*xxx\*\*| \*\*xxx\*\*| \*\*xxx\*\*| \*\*xxx\*\*| \*\*xxx\*\*|
 
 마크다운 입력시 vi 커맨드 표시 ; (^[)=Ctrl+[ ; (^M)=Ctrl+M
 인용구 작성시 ; 본문앞에는 꺽쇠 > 붙이고, 스타일 첨가시 끝줄에 종류별 구분을 표시한다.
