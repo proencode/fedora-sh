@@ -1,0 +1,23 @@
+2025/2503.md:2153:1. Git-Bash 의 rsync 를 위한 [usr 폴더 압축파일 다운로드](/usb_bada/usr-for-git-rsync-240509-1218.7z) + wiki.js링크만들기
+a2023/2312.md:1873:C:/Program Files/Git/usr/bin/rsync.exe: error while loading shared libraries: msys-crypto-1.1.dll: cannot open shared object file: No such file or directory
+a2024/2401.md:2550:1. Git Bash에서 rsync를 사용하는 방법 채승현 2021년 1월 3일 https://shchae7.medium.com/how-to-use-rsync-on-git-bash-6c6bba6a03ca
+a2024/2401.md:2553:`ls -lR 4Git/rsync-for-GitBash/`
+a2024/2407.md:39:1. Git Bash에서 rsync를 사용하는 방법 채승현 2021년 1월 3일 https://shchae7.medium.com/how-to-use-rsync-on-git-bash-6c6bba6a03ca
+a2024/2408.md:2336:1. Git-Bash 에서 rsync 사용하기 ... 아래로 이동.
+a2024/2408.md:3383:## Git-Bash 에서 rsync 작업을 위한 추가 프로그램
+a2024/2409.md:1418:1. Git에 rsync패키지 복사하기 C:\Program Files\Git\usr\bin\ 경로에 rsync-3.2.3–1-x86_64.pkg\usr\bin\에 있는 rsync.exe파일을 복사한다.
+a2024/2409.md:29:### ilji/2024/2408/[Git-usr_dir-for-rsync.7z](/ilji/2024/2408/Git-usr_dir-for-rsync.7z) --> Git-Bash 에서 rsync 쓰기위해 붙여넣을 usr/ 폴터
+a2024/2409.md:53:#-- https://git-scm.com/downloads Git-Bash 와 rsync 사용
+a2024/2409.md:55:-rw-r--r-- 1 orangepi orangepi  1874076  8월  1 12:36 Git-usr_dir-for-rsync.7z
+a2024/2410.md:2719:( Git-Bash 에서 rsync 명령을 쓰기 위해 추가하는 프로그램 압축파일: [git-usr_dir-for-rsync.7z](/ilji/2024/2410/git-usr_dir-for-rsync.7z) )
+a2024/2410.md:2857:### ilji/2024/2408/[Git-usr_dir-for-rsync.7z](/ilji/2024/2408/Git-usr_dir-for-rsync.7z) --> Git-Bash 에서 rsync 쓰기위해 붙여넣을 usr/ 폴터
+a2024/2410.md:2882:Git-2.46.0-64-bit.exe #-- https://git-scm.com/downloads Git-Bash 와 rsync 사용
+a2024/2410.md:2883:Git-usr_dir-for-rsync.7z #--
+a2024/2411.md:4079:( Git-Bash 에서 rsync 명령을 쓰기 위해 추가하는 프로그램 압축파일: [git-usr_dir-for-rsync.7z](/ilji/2024/2410/git-usr_dir-for-rsync.7z) )
+a2024/2411.md:4217:### ilji/2024/2408/[Git-usr_dir-for-rsync.7z](/ilji/2024/2408/Git-usr_dir-for-rsync.7z) --> Git-Bash 에서 rsync 쓰기위해 붙여넣을 usr/ 폴터
+a2024/2411.md:4242:Git-2.46.0-64-bit.exe #-- https://git-scm.com/downloads Git-Bash 와 rsync 사용
+a2024/2411.md:4243:Git-usr_dir-for-rsync.7z #--
+a2024/2412.md:2285:( Git-Bash 에서 rsync 명령을 쓰기 위해 추가하는 프로그램 압축파일: [git-usr_dir-for-rsync.7z](/ilji/2024/2410/git-usr_dir-for-rsync.7z) )
+a2024/2412.md:2423:### ilji/2024/2408/[Git-usr_dir-for-rsync.7z](/ilji/2024/2408/Git-usr_dir-for-rsync.7z) --> Git-Bash 에서 rsync 쓰기위해 붙여넣을 usr/ 폴터
+a2024/2412.md:2448:Git-2.46.0-64-bit.exe #-- https://git-scm.com/downloads Git-Bash 와 rsync 사용
+a2024/2412.md:2449:Git-usr_dir-for-rsync.7z #--

@@ -9,10 +9,10 @@ file_Made () {
 	ChapterName=$2 #-- wiki.js 왼쪽에 표시할 챕터 제목
 echo "#----> file_Made CurrentSeq ${CurrentSeq}; CurrentName ${CurrentName}; PrevLink ${PrevLink}; NextLink ${NextLink};"
 	if [ "x${PrevLink}" = "xBegin" ]; then
-		link_box="| 🏁 ${BookTitle} | ${ChapterSeq} ${ChapterName} | $4 ≫ |"
+		link_box="| 🏁 ${book_title} | ${ChapterSeq} ${ChapterName} | $4 ≫ |"
 	else
 		if [ "x${NextLink}" = "xEnd" ]; then
-			link_box="| ≪ $3 | ${ChapterSeq} ${ChapterName} | ${BookTitle} 🔔 |"
+			link_box="| ≪ $3 | ${ChapterSeq} ${ChapterName} | ${book_title} 🔔 |"
 			#-- End 🔔 | End 🎆 | End 🎇 | End 🌟 |
 		else
 			link_box="| ≪ $3 | ${ChapterSeq} ${ChapterName} | $4 ≫ |"
@@ -27,7 +27,8 @@ echo "#----> file_Made CurrentSeq ${CurrentSeq}; CurrentName ${CurrentName}; Pre
 #== | a     | s     | d     | f     | g     | h     | j     | k     | l     |
 #== |- `xxx`|i **xx**| \*\*xxx` `\*\*| \*\*xxx`.`\*\*| \*\*xxx`,`\*\*| \*\*xxx`;`\*\*| \*\*xxx`)`\*\*| \*\*xxx`:`\*\*| \*\*xxx`}`\*\*|
 #== 
-	cat <<__EOF__ | tee "${small_Jemok}.md"
+	# echo "#-------- 30: cat <<__EOF__ | tee \"${small_Jemok}.md\""
+	cat <<__EOF__ | tee ${small_Jemok}.md
 
 ---------- cut line ----------
 
@@ -57,18 +58,18 @@ ${link_box}
 ${link_box}
 |:----:|:----:|:----:|
 
-> (1) Path: ${small_Publisher}/${small_BookCover}/${small_Jemok} __
-> (2) Markdown
-> (3) Title: ${ChapterSeq} ${ChapterName}
-> (4) Short Description: ${ShortDescription}
-> (5) tags: ${tags}
-> Book Name: ${BookTitle}
-> Link: ${https_line}
+> (1) Title: ${ChapterSeq} ${ChapterName}
+> (2) Short Description: ${short_description}
+> (3) Path: /${pub_y_md_ch}
+> (4) tags: ${tags}
+> Book Name: ${book_title}
+> Link: ${https_pref}
 > create: $(date +'%Y-%m-%d %a %H:%M:%S')
-> Images: /${small_Publisher}/${SMALL_BOOKCOVER_IMG}/ __
+> Images: /${pub_y_md_ch}/
 > .md Name: ${small_Jemok}.md __
 
 __EOF__
+	# echo "#-------- 72: __EOF__"
 }
 #-- file_Made "01" "P1 JavaScript Syntax" #from <-- md_Create () {
 
@@ -77,20 +78,15 @@ JemokMade () {
 	#-- 다음 페이지가 있으면,
 	#-- 현재 페이지를 만들어낸다.
 	if [ "x${PrevSeq}" = "xSKIP" ]; then
-		PrevLink="$PrevName"
+		PrevLink="${PrevName}"
 	else
-		PrevJemok="${PrevSeq} ${PrevName}"
-		small_PrevJemok=$(echo "${PrevJemok,,}" | sed 's/ /_/g' | sed 's/\./_/g' | sed 's/“/\"/g' | sed 's/”/\"/g' | sed "s/’/'/g")
-
-		PrevLink="[ ${PrevJemok} ](/${small_Publisher}/${small_BookCover}/${small_PrevJemok})"
+		PrevLink="[ ${PrevSeq} ${PrevName} ](/${small_top_pub_y_md}/${PrevSeq})"
 	fi
 
 	if [ "x${NextSeq}" = "xSKIP" ]; then
-		NextLink="$NextName"
+		NextLink="${NextName}"
 	else
-		NextJemok="${NextSeq} ${NextName}"
-		small_NextJemok=$(echo "${NextJemok,,}" | sed 's/ /_/g' | sed 's/\./_/g' | sed 's/“/\"/g' | sed 's/”/\"/g' | sed "s/’/'/g")
-		NextLink="[ ${NextJemok} ](/${small_Publisher}/${small_BookCover}/${small_NextJemok})"
+		NextLink="[ ${NextSeq} ${NextName}} ](/${small_top_pub_y_md}/${NextSeq})"
 	fi
 }
 #-- 링크를 만든다. JemokMade #from <-- md_Create () {
@@ -100,6 +96,9 @@ CurrentSeq="" ; CurrentName=""
 NextSeq="" ; NextName=""
 
 md_Create () {
+	#--
+	#-- md_Create "00" "Preface"
+	#--
 	TitleSeq=$1 #-- 권 번호
 	TitleName=$2 #-- wiki.js 왼쪽에 표시할 챕터 제목
 	if [ "x$NextSeq" = "x" ]; then
@@ -140,11 +139,19 @@ md_Create () {
 
 #-- (1-5) 책에 맞추어 수정하는 부분.
 #--
-Publisher="packtpub" #-- (1) 출판사 --
-BookYear="2025" #-- (2-1) 독서년도
-BookTitle="0625 Beginning C++ Game Programming" #-- (2-2) 독서시작월일 + 책 제목 --
-BookCover="${BookYear}/${BookTitle}" #-- (2) 호스트의 경로
-ShortDescription="John Horton May 2024 648 pages 3rd Edition" #-- (3) 저자등 설명 --
+#--
+#--
+# > (1) Title: ${ChapterSeq} ${ChapterName}
+# > (2) Short Description: ${short_description}
+# > (3) Path: /${pub_y_md_chapSeq}
+# > (4) tags: ${tags}
+# > Book Name: ${book_title}
+# > Link: ${https_pref}
+# > create: $(date +'%Y-%m-%d %a %H:%M:%S')
+# > Images: /${pub_y_md_ch}/
+# > .md Name: ${small_Jemok}.md __
+#--
+#--
 #-- 책 안내문 https://www.packtpub.com/en-us/product/beginning-c-game-programming-9781835088258
 #-- Beginning C++ Game Programming
 #-- : Learn C++ from scratch by building fun games , Third Edition
@@ -152,13 +159,38 @@ ShortDescription="John Horton May 2024 648 pages 3rd Edition" #-- (3) 저자등 
 #-- 4.3 (27 Ratings)
 #-- eBook May 2024 648 pages 3rd Edition
 #-- eBook $5 ($39.99cut) Paperback $32.49 ($49.99XXX)
-
-tags="C++, game" #-- (4) 찾기 위한 태그 --
-https_line="https://subscription.packtpub.com/book/game-development/9781835081747/pref" #-- (5) 출판사 홈페이지 링크 --
 #--
-small_Publisher=$(echo "${Publisher,,}" | sed 's/ /_/g' | sed 's/\./_/g' | sed 's/“/\"/g' | sed 's/”/\"/g' | sed "s/’/'/g")
-small_BookCover=$(echo "${BookCover,,}" | sed 's/ /_/g' | sed 's/\./_/g' | sed 's/“/\"/g' | sed 's/”/\"/g' | sed "s/’/'/g")
-SMALL_BOOKCOVER_IMG="${small_BookCover}_img"
+#--
+#top_path=" " #-- (1) 상단 경로 -- 여기 9줄 복사후 아래에 붙여넣기해서 수정할것.
+#publisher_name=" " #-- (2) 출판사 --
+#reading_year=" " #-- (3) 독서년도 --
+#reading_month_day=" " #-- (4) 독서시작월일 --
+#book_title=" " #-- (5) 책 제목 --
+#tags=" " #-- (6) 찾기 위한 태그 --
+#short_description=" " #-- (7) 저자등 설명 --
+#book_info=" " #-- (8) 책 안내문 링크 --
+#https_pref=" " #-- (9) 서문 링크 --
+#--
+#--
+top_path="books" #-- (1) 상단 경로 --
+publisher_name="packtpub" #-- (2) 출판사 --
+reading_year="2025" #-- (3) 독서년도 --
+reading_month_day="0625" #-- (4) 독서시작월일 --
+book_title="Beginning C++ Game Programming" #-- (5) 책 제목 --
+tags="C++, game" #-- (6) 찾기 위한 태그 --
+short_description="John Horton May 2024 648 pages 3rd Edition" #-- (7) 저자등 설명 --
+book_info="https://www.packtpub.com/en-us/product/beginning-c-game-programming-9781835088258" #-- (8) 책 안내문 링크 --
+https_pref="https://subscription.packtpub.com/book/game-development/9781835081747/pref" #-- (9) 서문 링크 --
+#--
+temp_text="/${top_path}/${publisher_name}/${reading_year}/${reading_month_day}"
+small_top_pub_y_md=$(echo "${temp_text,,}" | sed 's/ /_/g' | sed 's/\./_/g' | sed 's/“/\"/g' | sed 's/”/\"/g' | sed "s/’/'/g")
+#--
+####small_publisher_name=$(echo "${publisher_name,,}" | sed 's/ /_/g' | sed 's/\./_/g' | sed 's/“/\"/g' | sed 's/”/\"/g' | sed "s/’/'/g")
+
+book_year_title="${reading_month_day}/${book_title}" #-- (2) 호스트의 경로
+small_book_year_title=$(echo "${book_year_title,,}" | sed 's/ /_/g' | sed 's/\./_/g' | sed 's/“/\"/g' | sed 's/”/\"/g' | sed "s/’/'/g")
+
+SMALL_BOOKCOVER_IMG="${reading_month_day}_img"
 mkdir ${SMALL_BOOKCOVER_IMG}
 #--
 #-- (6) md_Create "권 번호" "S섹션/C챕터 번호 + 제목"

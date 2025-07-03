@@ -16,7 +16,7 @@ blue= {.is-info} ; green= {.is-success} ; yellow= {.is-warning} ; red= {.is-dang
 
 ---------- cut line ----------
 
-| ≪ [ 16 Sound Game Logic Inter-Object Communication and the Player ](/packtpub/2025/0625_beginning_c++_game_programming/16_sound_game_logic_inter-object_communication_and_the_player) | 17 Graphics Camera Action | [ 18 Coding the Platforms Player Animations and Controls ](/packtpub/2025/0625_beginning_c++_game_programming/18_coding_the_platforms_player_animations_and_controls) ≫ |
+| ≪ [ 16 Sound Game Logic Inter-Object Communication and the Player ](//books/packtpub/2025/0625/16) | 17 Graphics Camera Action | [ 18 Coding the Platforms Player Animations and Controls} ](//books/packtpub/2025/0625/18) ≫ |
 |:----:|:----:|:----:|
 
 # 17 Graphics Camera Action
@@ -24,17 +24,16 @@ blue= {.is-info} ; green= {.is-success} ; yellow= {.is-warning} ; red= {.is-dang
 
 
 
-| ≪ [ 16 Sound Game Logic Inter-Object Communication and the Player ](/packtpub/2025/0625_beginning_c++_game_programming/16_sound_game_logic_inter-object_communication_and_the_player) | 17 Graphics Camera Action | [ 18 Coding the Platforms Player Animations and Controls ](/packtpub/2025/0625_beginning_c++_game_programming/18_coding_the_platforms_player_animations_and_controls) ≫ |
+| ≪ [ 16 Sound Game Logic Inter-Object Communication and the Player ](//books/packtpub/2025/0625/16) | 17 Graphics Camera Action | [ 18 Coding the Platforms Player Animations and Controls} ](//books/packtpub/2025/0625/18) ≫ |
 |:----:|:----:|:----:|
 
-> (1) Path: packtpub/2025/0625_beginning_c++_game_programming/17_graphics_camera_action __
-> (2) Markdown
-> (3) Title: 17 Graphics Camera Action
-> (4) Short Description: John Horton May 2024 648 pages 3rd Edition
-> (5) tags: C++, game
-> Book Name: 0625 Beginning C++ Game Programming
+> (1) Title: 17 Graphics Camera Action
+> (2) Short Description: John Horton May 2024 648 pages 3rd Edition
+> (3) Path: /
+> (4) tags: C++, game
+> Book Name: Beginning C++ Game Programming
 > Link: https://subscription.packtpub.com/book/game-development/9781835081747/pref
-> create: 2025-06-29 일 15:15:25
-> Images: /packtpub/2025/0625_beginning_c++_game_programming_img/ __
+> create: 2025-06-30 월 17:22:50
+> Images: //
 > .md Name: 17_graphics_camera_action.md __
 

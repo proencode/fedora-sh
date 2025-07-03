@@ -16,7 +16,7 @@ blue= {.is-info} ; green= {.is-success} ; yellow= {.is-warning} ; red= {.is-dang
 
 ---------- cut line ----------
 
-| ≪ [ 07 AABB Collision Detection and Physics ](/packtpub/2025/0625_beginning_c++_game_programming/07_aabb_collision_detection_and_physics) | 08 SFML Views | [ 09 C++ References Sprite Sheets and Vertex Arrays ](/packtpub/2025/0625_beginning_c++_game_programming/09_c++_references_sprite_sheets_and_vertex_arrays) ≫ |
+| ≪ [ 07 AABB Collision Detection and Physics ](//books/packtpub/2025/0625/07) | 08 SFML Views | [ 09 C++ References Sprite Sheets and Vertex Arrays} ](//books/packtpub/2025/0625/09) ≫ |
 |:----:|:----:|:----:|
 
 # 08 SFML Views
@@ -24,17 +24,16 @@ blue= {.is-info} ; green= {.is-success} ; yellow= {.is-warning} ; red= {.is-dang
 
 
 
-| ≪ [ 07 AABB Collision Detection and Physics ](/packtpub/2025/0625_beginning_c++_game_programming/07_aabb_collision_detection_and_physics) | 08 SFML Views | [ 09 C++ References Sprite Sheets and Vertex Arrays ](/packtpub/2025/0625_beginning_c++_game_programming/09_c++_references_sprite_sheets_and_vertex_arrays) ≫ |
+| ≪ [ 07 AABB Collision Detection and Physics ](//books/packtpub/2025/0625/07) | 08 SFML Views | [ 09 C++ References Sprite Sheets and Vertex Arrays} ](//books/packtpub/2025/0625/09) ≫ |
 |:----:|:----:|:----:|
 
-> (1) Path: packtpub/2025/0625_beginning_c++_game_programming/08_sfml_views __
-> (2) Markdown
-> (3) Title: 08 SFML Views
-> (4) Short Description: John Horton May 2024 648 pages 3rd Edition
-> (5) tags: C++, game
-> Book Name: 0625 Beginning C++ Game Programming
+> (1) Title: 08 SFML Views
+> (2) Short Description: John Horton May 2024 648 pages 3rd Edition
+> (3) Path: /
+> (4) tags: C++, game
+> Book Name: Beginning C++ Game Programming
 > Link: https://subscription.packtpub.com/book/game-development/9781835081747/pref
-> create: 2025-06-29 일 15:15:24
-> Images: /packtpub/2025/0625_beginning_c++_game_programming_img/ __
+> create: 2025-06-30 월 17:22:49
+> Images: //
 > .md Name: 08_sfml_views.md __
 

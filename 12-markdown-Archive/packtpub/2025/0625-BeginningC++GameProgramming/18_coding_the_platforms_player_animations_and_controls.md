@@ -16,7 +16,7 @@ blue= {.is-info} ; green= {.is-success} ; yellow= {.is-warning} ; red= {.is-dang
 
 ---------- cut line ----------
 
-| ≪ [ 17 Graphics Camera Action ](/packtpub/2025/0625_beginning_c++_game_programming/17_graphics_camera_action) | 18 Coding the Platforms Player Animations and Controls | [ 19 Building the Menu and Making It Rain ](/packtpub/2025/0625_beginning_c++_game_programming/19_building_the_menu_and_making_it_rain) ≫ |
+| ≪ [ 17 Graphics Camera Action ](//books/packtpub/2025/0625/17) | 18 Coding the Platforms Player Animations and Controls | [ 19 Building the Menu and Making It Rain} ](//books/packtpub/2025/0625/19) ≫ |
 |:----:|:----:|:----:|
 
 # 18 Coding the Platforms Player Animations and Controls
@@ -24,17 +24,16 @@ blue= {.is-info} ; green= {.is-success} ; yellow= {.is-warning} ; red= {.is-dang
 
 
 
-| ≪ [ 17 Graphics Camera Action ](/packtpub/2025/0625_beginning_c++_game_programming/17_graphics_camera_action) | 18 Coding the Platforms Player Animations and Controls | [ 19 Building the Menu and Making It Rain ](/packtpub/2025/0625_beginning_c++_game_programming/19_building_the_menu_and_making_it_rain) ≫ |
+| ≪ [ 17 Graphics Camera Action ](//books/packtpub/2025/0625/17) | 18 Coding the Platforms Player Animations and Controls | [ 19 Building the Menu and Making It Rain} ](//books/packtpub/2025/0625/19) ≫ |
 |:----:|:----:|:----:|
 
-> (1) Path: packtpub/2025/0625_beginning_c++_game_programming/18_coding_the_platforms_player_animations_and_controls __
-> (2) Markdown
-> (3) Title: 18 Coding the Platforms Player Animations and Controls
-> (4) Short Description: John Horton May 2024 648 pages 3rd Edition
-> (5) tags: C++, game
-> Book Name: 0625 Beginning C++ Game Programming
+> (1) Title: 18 Coding the Platforms Player Animations and Controls
+> (2) Short Description: John Horton May 2024 648 pages 3rd Edition
+> (3) Path: /
+> (4) tags: C++, game
+> Book Name: Beginning C++ Game Programming
 > Link: https://subscription.packtpub.com/book/game-development/9781835081747/pref
-> create: 2025-06-29 일 15:15:25
-> Images: /packtpub/2025/0625_beginning_c++_game_programming_img/ __
+> create: 2025-06-30 월 17:22:50
+> Images: //
 > .md Name: 18_coding_the_platforms_player_animations_and_controls.md __
 

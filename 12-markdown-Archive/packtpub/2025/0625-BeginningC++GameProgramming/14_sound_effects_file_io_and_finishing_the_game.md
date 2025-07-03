@@ -16,7 +16,7 @@ blue= {.is-info} ; green= {.is-success} ; yellow= {.is-warning} ; red= {.is-dang
 
 ---------- cut line ----------
 
-| ≪ [ 13 Layering Views and Implementing the HUD ](/packtpub/2025/0625_beginning_c++_game_programming/13_layering_views_and_implementing_the_hud) | 14 Sound Effects File IO and Finishing the Game | [ 15 Run ](/packtpub/2025/0625_beginning_c++_game_programming/15_run) ≫ |
+| ≪ [ 13 Layering Views and Implementing the HUD ](//books/packtpub/2025/0625/13) | 14 Sound Effects File IO and Finishing the Game | [ 15 Run} ](//books/packtpub/2025/0625/15) ≫ |
 |:----:|:----:|:----:|
 
 # 14 Sound Effects File IO and Finishing the Game
@@ -24,17 +24,16 @@ blue= {.is-info} ; green= {.is-success} ; yellow= {.is-warning} ; red= {.is-dang
 
 
 
-| ≪ [ 13 Layering Views and Implementing the HUD ](/packtpub/2025/0625_beginning_c++_game_programming/13_layering_views_and_implementing_the_hud) | 14 Sound Effects File IO and Finishing the Game | [ 15 Run ](/packtpub/2025/0625_beginning_c++_game_programming/15_run) ≫ |
+| ≪ [ 13 Layering Views and Implementing the HUD ](//books/packtpub/2025/0625/13) | 14 Sound Effects File IO and Finishing the Game | [ 15 Run} ](//books/packtpub/2025/0625/15) ≫ |
 |:----:|:----:|:----:|
 
-> (1) Path: packtpub/2025/0625_beginning_c++_game_programming/14_sound_effects_file_io_and_finishing_the_game __
-> (2) Markdown
-> (3) Title: 14 Sound Effects File IO and Finishing the Game
-> (4) Short Description: John Horton May 2024 648 pages 3rd Edition
-> (5) tags: C++, game
-> Book Name: 0625 Beginning C++ Game Programming
+> (1) Title: 14 Sound Effects File IO and Finishing the Game
+> (2) Short Description: John Horton May 2024 648 pages 3rd Edition
+> (3) Path: /
+> (4) tags: C++, game
+> Book Name: Beginning C++ Game Programming
 > Link: https://subscription.packtpub.com/book/game-development/9781835081747/pref
-> create: 2025-06-29 일 15:15:24
-> Images: /packtpub/2025/0625_beginning_c++_game_programming_img/ __
+> create: 2025-06-30 월 17:22:50
+> Images: //
 > .md Name: 14_sound_effects_file_io_and_finishing_the_game.md __
 

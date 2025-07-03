@@ -16,7 +16,7 @@ blue= {.is-info} ; green= {.is-success} ; yellow= {.is-warning} ; red= {.is-dang
 
 ---------- cut line ----------
 
-| ≪ [ 09 C++ References Sprite Sheets and Vertex Arrays ](/packtpub/2025/0625_beginning_c++_game_programming/09_c++_references_sprite_sheets_and_vertex_arrays) | 10 Pointers the Standard Template Library and Texture Management | [ 11 Coding the TextureHolder Class and Building a Horde of Zombies ](/packtpub/2025/0625_beginning_c++_game_programming/11_coding_the_textureholder_class_and_building_a_horde_of_zombies) ≫ |
+| ≪ [ 09 C++ References Sprite Sheets and Vertex Arrays ](//books/packtpub/2025/0625/09) | 10 Pointers the Standard Template Library and Texture Management | [ 11 Coding the TextureHolder Class and Building a Horde of Zombies} ](//books/packtpub/2025/0625/11) ≫ |
 |:----:|:----:|:----:|
 
 # 10 Pointers the Standard Template Library and Texture Management
@@ -24,17 +24,16 @@ blue= {.is-info} ; green= {.is-success} ; yellow= {.is-warning} ; red= {.is-dang
 
 
 
-| ≪ [ 09 C++ References Sprite Sheets and Vertex Arrays ](/packtpub/2025/0625_beginning_c++_game_programming/09_c++_references_sprite_sheets_and_vertex_arrays) | 10 Pointers the Standard Template Library and Texture Management | [ 11 Coding the TextureHolder Class and Building a Horde of Zombies ](/packtpub/2025/0625_beginning_c++_game_programming/11_coding_the_textureholder_class_and_building_a_horde_of_zombies) ≫ |
+| ≪ [ 09 C++ References Sprite Sheets and Vertex Arrays ](//books/packtpub/2025/0625/09) | 10 Pointers the Standard Template Library and Texture Management | [ 11 Coding the TextureHolder Class and Building a Horde of Zombies} ](//books/packtpub/2025/0625/11) ≫ |
 |:----:|:----:|:----:|
 
-> (1) Path: packtpub/2025/0625_beginning_c++_game_programming/10_pointers_the_standard_template_library_and_texture_management __
-> (2) Markdown
-> (3) Title: 10 Pointers the Standard Template Library and Texture Management
-> (4) Short Description: John Horton May 2024 648 pages 3rd Edition
-> (5) tags: C++, game
-> Book Name: 0625 Beginning C++ Game Programming
+> (1) Title: 10 Pointers the Standard Template Library and Texture Management
+> (2) Short Description: John Horton May 2024 648 pages 3rd Edition
+> (3) Path: /
+> (4) tags: C++, game
+> Book Name: Beginning C++ Game Programming
 > Link: https://subscription.packtpub.com/book/game-development/9781835081747/pref
-> create: 2025-06-29 일 15:15:24
-> Images: /packtpub/2025/0625_beginning_c++_game_programming_img/ __
+> create: 2025-06-30 월 17:22:50
+> Images: //
 > .md Name: 10_pointers_the_standard_template_library_and_texture_management.md __
 

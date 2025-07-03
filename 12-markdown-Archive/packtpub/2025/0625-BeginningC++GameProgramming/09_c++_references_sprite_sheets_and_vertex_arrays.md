@@ -16,7 +16,7 @@ blue= {.is-info} ; green= {.is-success} ; yellow= {.is-warning} ; red= {.is-dang
 
 ---------- cut line ----------
 
-| ≪ [ 08 SFML Views ](/packtpub/2025/0625_beginning_c++_game_programming/08_sfml_views) | 09 C++ References Sprite Sheets and Vertex Arrays | [ 10 Pointers the Standard Template Library and Texture Management ](/packtpub/2025/0625_beginning_c++_game_programming/10_pointers_the_standard_template_library_and_texture_management) ≫ |
+| ≪ [ 08 SFML Views ](//books/packtpub/2025/0625/08) | 09 C++ References Sprite Sheets and Vertex Arrays | [ 10 Pointers the Standard Template Library and Texture Management} ](//books/packtpub/2025/0625/10) ≫ |
 |:----:|:----:|:----:|
 
 # 09 C++ References Sprite Sheets and Vertex Arrays
@@ -24,17 +24,16 @@ blue= {.is-info} ; green= {.is-success} ; yellow= {.is-warning} ; red= {.is-dang
 
 
 
-| ≪ [ 08 SFML Views ](/packtpub/2025/0625_beginning_c++_game_programming/08_sfml_views) | 09 C++ References Sprite Sheets and Vertex Arrays | [ 10 Pointers the Standard Template Library and Texture Management ](/packtpub/2025/0625_beginning_c++_game_programming/10_pointers_the_standard_template_library_and_texture_management) ≫ |
+| ≪ [ 08 SFML Views ](//books/packtpub/2025/0625/08) | 09 C++ References Sprite Sheets and Vertex Arrays | [ 10 Pointers the Standard Template Library and Texture Management} ](//books/packtpub/2025/0625/10) ≫ |
 |:----:|:----:|:----:|
 
-> (1) Path: packtpub/2025/0625_beginning_c++_game_programming/09_c++_references_sprite_sheets_and_vertex_arrays __
-> (2) Markdown
-> (3) Title: 09 C++ References Sprite Sheets and Vertex Arrays
-> (4) Short Description: John Horton May 2024 648 pages 3rd Edition
-> (5) tags: C++, game
-> Book Name: 0625 Beginning C++ Game Programming
+> (1) Title: 09 C++ References Sprite Sheets and Vertex Arrays
+> (2) Short Description: John Horton May 2024 648 pages 3rd Edition
+> (3) Path: /
+> (4) tags: C++, game
+> Book Name: Beginning C++ Game Programming
 > Link: https://subscription.packtpub.com/book/game-development/9781835081747/pref
-> create: 2025-06-29 일 15:15:24
-> Images: /packtpub/2025/0625_beginning_c++_game_programming_img/ __
+> create: 2025-06-30 월 17:22:49
+> Images: //
 > .md Name: 09_c++_references_sprite_sheets_and_vertex_arrays.md __
 

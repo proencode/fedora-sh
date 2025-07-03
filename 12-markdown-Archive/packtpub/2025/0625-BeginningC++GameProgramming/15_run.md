@@ -16,7 +16,7 @@ blue= {.is-info} ; green= {.is-success} ; yellow= {.is-warning} ; red= {.is-dang
 
 ---------- cut line ----------
 
-| ≪ [ 14 Sound Effects File IO and Finishing the Game ](/packtpub/2025/0625_beginning_c++_game_programming/14_sound_effects_file_io_and_finishing_the_game) | 15 Run | [ 16 Sound Game Logic Inter-Object Communication and the Player ](/packtpub/2025/0625_beginning_c++_game_programming/16_sound_game_logic_inter-object_communication_and_the_player) ≫ |
+| ≪ [ 14 Sound Effects File IO and Finishing the Game ](//books/packtpub/2025/0625/14) | 15 Run | [ 16 Sound Game Logic Inter-Object Communication and the Player} ](//books/packtpub/2025/0625/16) ≫ |
 |:----:|:----:|:----:|
 
 # 15 Run
@@ -24,17 +24,16 @@ blue= {.is-info} ; green= {.is-success} ; yellow= {.is-warning} ; red= {.is-dang
 
 
 
-| ≪ [ 14 Sound Effects File IO and Finishing the Game ](/packtpub/2025/0625_beginning_c++_game_programming/14_sound_effects_file_io_and_finishing_the_game) | 15 Run | [ 16 Sound Game Logic Inter-Object Communication and the Player ](/packtpub/2025/0625_beginning_c++_game_programming/16_sound_game_logic_inter-object_communication_and_the_player) ≫ |
+| ≪ [ 14 Sound Effects File IO and Finishing the Game ](//books/packtpub/2025/0625/14) | 15 Run | [ 16 Sound Game Logic Inter-Object Communication and the Player} ](//books/packtpub/2025/0625/16) ≫ |
 |:----:|:----:|:----:|
 
-> (1) Path: packtpub/2025/0625_beginning_c++_game_programming/15_run __
-> (2) Markdown
-> (3) Title: 15 Run
-> (4) Short Description: John Horton May 2024 648 pages 3rd Edition
-> (5) tags: C++, game
-> Book Name: 0625 Beginning C++ Game Programming
+> (1) Title: 15 Run
+> (2) Short Description: John Horton May 2024 648 pages 3rd Edition
+> (3) Path: /
+> (4) tags: C++, game
+> Book Name: Beginning C++ Game Programming
 > Link: https://subscription.packtpub.com/book/game-development/9781835081747/pref
-> create: 2025-06-29 일 15:15:25
-> Images: /packtpub/2025/0625_beginning_c++_game_programming_img/ __
+> create: 2025-06-30 월 17:22:50
+> Images: //
 > .md Name: 15_run.md __
 

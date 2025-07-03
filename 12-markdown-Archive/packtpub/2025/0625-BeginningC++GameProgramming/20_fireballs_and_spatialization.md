@@ -16,7 +16,7 @@ blue= {.is-info} ; green= {.is-success} ; yellow= {.is-warning} ; red= {.is-dang
 
 ---------- cut line ----------
 
-| ≪ [ 19 Building the Menu and Making It Rain ](/packtpub/2025/0625_beginning_c++_game_programming/19_building_the_menu_and_making_it_rain) | 20 Fireballs and Spatialization | [ 21 Parallax Backgrounds and Shaders ](/packtpub/2025/0625_beginning_c++_game_programming/21_parallax_backgrounds_and_shaders) ≫ |
+| ≪ [ 19 Building the Menu and Making It Rain ](//books/packtpub/2025/0625/19) | 20 Fireballs and Spatialization | [ 21 Parallax Backgrounds and Shaders} ](//books/packtpub/2025/0625/21) ≫ |
 |:----:|:----:|:----:|
 
 # 20 Fireballs and Spatialization
@@ -24,17 +24,16 @@ blue= {.is-info} ; green= {.is-success} ; yellow= {.is-warning} ; red= {.is-dang
 
 
 
-| ≪ [ 19 Building the Menu and Making It Rain ](/packtpub/2025/0625_beginning_c++_game_programming/19_building_the_menu_and_making_it_rain) | 20 Fireballs and Spatialization | [ 21 Parallax Backgrounds and Shaders ](/packtpub/2025/0625_beginning_c++_game_programming/21_parallax_backgrounds_and_shaders) ≫ |
+| ≪ [ 19 Building the Menu and Making It Rain ](//books/packtpub/2025/0625/19) | 20 Fireballs and Spatialization | [ 21 Parallax Backgrounds and Shaders} ](//books/packtpub/2025/0625/21) ≫ |
 |:----:|:----:|:----:|
 
-> (1) Path: packtpub/2025/0625_beginning_c++_game_programming/20_fireballs_and_spatialization __
-> (2) Markdown
-> (3) Title: 20 Fireballs and Spatialization
-> (4) Short Description: John Horton May 2024 648 pages 3rd Edition
-> (5) tags: C++, game
-> Book Name: 0625 Beginning C++ Game Programming
+> (1) Title: 20 Fireballs and Spatialization
+> (2) Short Description: John Horton May 2024 648 pages 3rd Edition
+> (3) Path: /
+> (4) tags: C++, game
+> Book Name: Beginning C++ Game Programming
 > Link: https://subscription.packtpub.com/book/game-development/9781835081747/pref
-> create: 2025-06-29 일 15:15:25
-> Images: /packtpub/2025/0625_beginning_c++_game_programming_img/ __
+> create: 2025-06-30 월 17:22:50
+> Images: //
 > .md Name: 20_fireballs_and_spatialization.md __
 

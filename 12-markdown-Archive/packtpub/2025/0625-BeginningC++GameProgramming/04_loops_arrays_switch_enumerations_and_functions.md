@@ -16,7 +16,7 @@ blue= {.is-info} ; green= {.is-success} ; yellow= {.is-warning} ; red= {.is-dang
 
 ---------- cut line ----------
 
-| ≪ [ 03 C++ Strings SFML Time Player Input and HUD ](/packtpub/2025/0625_beginning_c++_game_programming/03_c++_strings_sfml_time_player_input_and_hud) | 04 Loops Arrays Switch Enumerations and Functions | [ 05 Collisions Sound and End Conditions ](/packtpub/2025/0625_beginning_c++_game_programming/05_collisions_sound_and_end_conditions) ≫ |
+| ≪ [ 03 C++ Strings SFML Time Player Input and HUD ](//books/packtpub/2025/0625/03) | 04 Loops Arrays Switch Enumerations and Functions | [ 05 Collisions Sound and End Conditions} ](//books/packtpub/2025/0625/05) ≫ |
 |:----:|:----:|:----:|
 
 # 04 Loops Arrays Switch Enumerations and Functions
@@ -24,17 +24,16 @@ blue= {.is-info} ; green= {.is-success} ; yellow= {.is-warning} ; red= {.is-dang
 
 
 
-| ≪ [ 03 C++ Strings SFML Time Player Input and HUD ](/packtpub/2025/0625_beginning_c++_game_programming/03_c++_strings_sfml_time_player_input_and_hud) | 04 Loops Arrays Switch Enumerations and Functions | [ 05 Collisions Sound and End Conditions ](/packtpub/2025/0625_beginning_c++_game_programming/05_collisions_sound_and_end_conditions) ≫ |
+| ≪ [ 03 C++ Strings SFML Time Player Input and HUD ](//books/packtpub/2025/0625/03) | 04 Loops Arrays Switch Enumerations and Functions | [ 05 Collisions Sound and End Conditions} ](//books/packtpub/2025/0625/05) ≫ |
 |:----:|:----:|:----:|
 
-> (1) Path: packtpub/2025/0625_beginning_c++_game_programming/04_loops_arrays_switch_enumerations_and_functions __
-> (2) Markdown
-> (3) Title: 04 Loops Arrays Switch Enumerations and Functions
-> (4) Short Description: John Horton May 2024 648 pages 3rd Edition
-> (5) tags: C++, game
-> Book Name: 0625 Beginning C++ Game Programming
+> (1) Title: 04 Loops Arrays Switch Enumerations and Functions
+> (2) Short Description: John Horton May 2024 648 pages 3rd Edition
+> (3) Path: /
+> (4) tags: C++, game
+> Book Name: Beginning C++ Game Programming
 > Link: https://subscription.packtpub.com/book/game-development/9781835081747/pref
-> create: 2025-06-29 일 15:15:24
-> Images: /packtpub/2025/0625_beginning_c++_game_programming_img/ __
+> create: 2025-06-30 월 17:22:49
+> Images: //
 > .md Name: 04_loops_arrays_switch_enumerations_and_functions.md __
 
