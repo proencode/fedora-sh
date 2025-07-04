@@ -4,6 +4,7 @@ lll=$(tput bold)$(tput setaf 0); rrr=$(tput bold)$(tput setaf 1); ggg=$(tput bol
 
 cat <<__EOF__
 ${yyy}#-- ${bbb} ghp_dGoTkeEj52oWphaHfTaasTwMMW2DOf4K
+ghp_YhYmF45FZNfNJ8KAyWPNnCrszmBo6z1l 두아이와이대쿠 2507장마철 — repo Expires on Thu, Oct 2 2025.
 https://github.com/settings/tokens 대엔엪엔이 2543청명전 — repo Expires on Wed, Jul 2 2025.
 bitbucket 4카 BBwjLQ6yLFTmNrygzXrP3fdm9f6172DA 앹대..육이
 
@@ -35,6 +36,7 @@ do
 done
 cat <<__EOF__
 ${yyy}#-- ${bbb} ghp_dGoTkeEj52oWphaHfTaasTwMMW2DOf4K
+ghp_YhYmF45FZNfNJ8KAyWPNnCrszmBo6z1l 두아이와이대쿠 2507장마철 — repo Expires on Thu, Oct 2 2025.
 https://github.com/settings/tokens 대엔엪엔이 2543청명전 — repo Expires on Wed, Jul 2 2025.
 bitbucket 4카 BBwjLQ6yLFTmNrygzXrP3fdm9f6172DA 앹대..육이
 ${xxx}
