@@ -3,9 +3,7 @@
 lll=$(tput bold)$(tput setaf 0); rrr=$(tput bold)$(tput setaf 1); ggg=$(tput bold)$(tput setaf 2); yyy=$(tput bold)$(tput setaf 3); bbb=$(tput bold)$(tput setaf 4); mmm=$(tput bold)$(tput setaf 5); ccc=$(tput bold)$(tput setaf 6); www=$(tput bold)$(tput setaf 7); xxx=$(tput bold)$(tput sgr0); uuu=$(tput cuu 2)
 
 cat <<__EOF__
-${yyy}#-- ${bbb} ghp_dGoTkeEj52oWphaHfTaasTwMMW2DOf4K
-ghp_YhYmF45FZNfNJ8KAyWPNnCrszmBo6z1l 두아이와이대쿠 2507장마철 — repo Expires on Thu, Oct 2 2025.
-https://github.com/settings/tokens 대엔엪엔이 2543청명전 — repo Expires on Wed, Jul 2 2025.
+${yyy}#-- ${bbb} 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 팔아이대아이엘 2507장마철 — repo Expires on Thu, Oct 2 2025.
 bitbucket 4카 BBwjLQ6yLFTmNrygzXrP3fdm9f6172DA 앹대..육이
 
 ${bbb}#${xxx}  ssh -oHostKeyAlgorithms=+ssh-dss -Y -p2022 kaoscOKr
@@ -35,9 +33,7 @@ do
 	fi
 done
 cat <<__EOF__
-${yyy}#-- ${bbb} ghp_dGoTkeEj52oWphaHfTaasTwMMW2DOf4K
-ghp_YhYmF45FZNfNJ8KAyWPNnCrszmBo6z1l 두아이와이대쿠 2507장마철 — repo Expires on Thu, Oct 2 2025.
-https://github.com/settings/tokens 대엔엪엔이 2543청명전 — repo Expires on Wed, Jul 2 2025.
+${yyy}#-- ${bbb} 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 팔아이대아이엘 2507장마철 — repo Expires on Thu, Oct 2 2025.
 bitbucket 4카 BBwjLQ6yLFTmNrygzXrP3fdm9f6172DA 앹대..육이
 ${xxx}
 __EOF__
