@@ -22,7 +22,7 @@ if [ $today_job -lt 0 ] && [ $today_job -gt x5 ]; then
         exit -1
 fi
 cat <<__EOF__
-=== [ ${today_job} ] 오늘의 작업: "${work_tab:$(( today_job * 3 )):2}"
+^^^ [ ${today_job} ] 오늘의 작업: "${work_tab:$(( today_job * 3 )):2}"
 __EOF__
 
 sunday_job=$(( today_job - todays_week ))
@@ -41,16 +41,21 @@ if [ "x${total_ju}" == "x" ]; then
         total_ju=2
 fi
 cat <<__EOF__
-=== [ ${total_ju} ] 주간을 표시합니다.
-#--
-#--
+^^^ [ ${total_ju} ] ${total_ju}주간을 표시합니다.
+
 
 __EOF__
 
 #-- 이번주 일요일 (last Sun)
-yy=$(date +%y --date='TZ="Asia/Seoul" 09:00 last Sun')
-mm=$(date +%m --date='TZ="Asia/Seoul" 09:00 last Sun')
-dd=$(date +%d --date='TZ="Asia/Seoul" 09:00 last Sun')
+if [[ todays_week -ne 0 ]]; then #-- %w .... day of week (0..6); 0 is Sunday
+	yy=$(date +%y --date='TZ="Asia/Seoul" 09:00 last Sun')
+	mm=$(date +%m --date='TZ="Asia/Seoul" 09:00 last Sun')
+	dd=$(date +%d --date='TZ="Asia/Seoul" 09:00 last Sun')
+else
+	yy=$(date +%y --date='TZ="Asia/Seoul" 09:00  Sun')
+	mm=$(date +%m --date='TZ="Asia/Seoul" 09:00  Sun')
+	dd=$(date +%d --date='TZ="Asia/Seoul" 09:00  Sun')
+fi
 y2=${yy}; m2=${mm}; d2=${dd} #-- 1..9일의 경우 01..09일로 바꾼 날짜 보관
 y3="" ; m3="" #-- 년도, 월 바뀐 1일자에만 표시하기 위한것
 
