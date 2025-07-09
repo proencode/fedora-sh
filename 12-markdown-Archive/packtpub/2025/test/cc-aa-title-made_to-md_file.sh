@@ -9,10 +9,10 @@ file_Made () {
 	PrevLink="$3"
 	NextLink="$4"
 	if [ "x${PrevLink}" = "xBegin" ]; then
-		link_box="| 🏁 ${read_mmdd} ${JeMok} | ${ChapterSeq} ${ChapterName} | ${NextLink} ≫ |"
+		link_box="| 🏁 ${JeMok} | ${ChapterSeq} ${ChapterName} | ${NextLink} ≫ |"
 	else
 		if [ "x${NextLink}" = "xEnd" ]; then
-			link_box="| ≪ ${PrevLink} | ${ChapterSeq} ${ChapterName} | ${read_mmdd} ${JeMok} 🔔 |"
+			link_box="| ≪ ${PrevLink} | ${ChapterSeq} ${ChapterName} | ${JeMok} 🔔 |"
 			#-- End 🔔 | End 🎆 | End 🎇 | End 🌟 |
 		else
 			link_box="| ≪ ${PrevLink} | ${ChapterSeq} ${ChapterName} | ${NextLink} ≫ |"
@@ -20,7 +20,7 @@ file_Made () {
 	fi
 
 	Jemok="${ChapterSeq} ${ChapterName}"
-	small_Jemok=$(echo "${Jemok,,}" | sed 's/ /_/g' | sed 's/\./_/g' | sed 's/“/\"/g' | sed 's/”/\"/g' | sed "s/’/'/g" | sed "s/,//g")
+	small_Jemok=$(echo "${Jemok,,}" | sed 's/ /_/g' | sed 's/\./_/g' | sed 's/“/\"/g' | sed 's/”/\"/g' | sed "s/’/'/g")
 	cat <<__EOF__ | tee "${small_Jemok}.md"
 
 ---------- cut line ----------
@@ -53,14 +53,13 @@ ${link_box}
 
 > (1) Title: ${ChapterSeq} ${ChapterName}
 > (2) Short Description: ${JeoJa}
-> (3) Path: /${top_path}/${small_ChulPanSa}/${read_y4}/${small_MMDD_JeMok}/${CurrentSeq}
+> (3) Path: /${top_path}/${small_ChulPanSa}/${read_y4}/${read_mmdd}/
 > (4) tags: ${tags}
 > 책이름: ${JeMok}
 > 책 안내: ${book_info}
 > 서문: ${SeoMun}
 > 독서시작일: $(date +'%Y-%m-%d %a %H:%M:%S')
-> 이미지 링크: ${img_link}
-> 이미지 저장폴더: ${img_dir}
+> 이미지: /${small_ChulPanSa}/${SMALL_BOOKCOVER_IMG}/
 > .md Name: ${small_Jemok}.md
 
 __EOF__
@@ -88,13 +87,6 @@ JemokMade () {
 		#xx small_NextJemok=$(echo "${NextJemok,,}" | sed 's/ /_/g' | sed 's/\./_/g' | sed 's/“/\"/g' | sed 's/”/\"/g' | sed "s/’/'/g")
 		NextLink="[ ${NextJemok} ](/${top_path}/${small_ChulPanSa}/${read_y4}/${small_MMDD_JeMok}/${NextSeq})"
 	fi
-	#-- 이미지 파일을 로컬에 저장하는 폴더를 지정하고, 이곳에 이미지를 저장한다.
-	img_dir="img_${read_mmdd}/${CurrentSeq}"
-	echo "#-- mkdir ${img_dir}"
-	mkdir -p ${img_dir}
-	echo "#== mkdir ${img_dir}"
-	#-- .md 파일에서 지정하는 이미지 보관 폴더.
-	img_link="/${small_ChulPanSa}/${read_y4}/${read_mmdd}/${CurrentSeq}"
 }
 #-- 링크를 만든다. JemokMade #from <-- md_Create () {
 
@@ -153,10 +145,18 @@ tags="C++, game" #-- (6) 찾기 위한 태그
 JeoJa="John Horton May 2024 648 pages 3rd Edition" #-- (7) 저자등 설명
 book_info="https://www.packtpub.com/en-us/product/beginning-c-game-programming-9781835088258" #-- (8) 책 안내
 SeoMun="https://subscription.packtpub.com/book/game-development/9781835081747/pref" #-- (9) 서문 링크
+
+BookCover="${read_y4}/${JeMok}" #-- (2) 호스트의 경로
 #--
+read_mmdd="0625" #-- (4) 독서시작월일
+JeMok="Beginning C++ Game Programming" #-- (5) 책 제목
 MMDD_JeMok="${read_mmdd} ${JeMok}"
-small_MMDD_JeMok=$(echo "${MMDD_JeMok,,}" | sed 's/ /_/g' | sed 's/\./_/g' | sed 's/“/\"/g' | sed 's/”/\"/g' | sed "s/’/'/g" | sed "s/,//g")
-small_ChulPanSa=$(echo "${ChulPanSa,,}" | sed 's/ /_/g' | sed 's/\./_/g' | sed 's/“/\"/g' | sed 's/”/\"/g' | sed "s/’/'/g" | sed "s/,//g")
+small_MMDD_JeMok=$(echo "${MMDD_JeMok,,}" | sed 's/ /_/g' | sed 's/\./_/g' | sed 's/“/\"/g' | sed 's/”/\"/g' | sed "s/’/'/g")
+small_ChulPanSa=$(echo "${ChulPanSa,,}" | sed 's/ /_/g' | sed 's/\./_/g' | sed 's/“/\"/g' | sed 's/”/\"/g' | sed "s/’/'/g")
+small_ChulPanSa=$(echo "${ChulPanSa,,}" | sed 's/ /_/g' | sed 's/\./_/g' | sed 's/“/\"/g' | sed 's/”/\"/g' | sed "s/’/'/g")
+small_BookCover=$(echo "${BookCover,,}" | sed 's/ /_/g' | sed 's/\./_/g' | sed 's/“/\"/g' | sed 's/”/\"/g' | sed "s/’/'/g")
+SMALL_BOOKCOVER_IMG="/${small_ChulPanSa}/${read_y4}/${small_BookCover}_img"
+mkdir ${SMALL_BOOKCOVER_IMG}
 #--
 #-- (6) md_Create "권 번호" "S섹션/C챕터 번호 + 제목"
 #-- 권번호의 0.. 은 목차, 1.. ~ 8.. 은 본문, 9.. 는 색인 등으로 정한다.

@@ -1,9 +1,8 @@
 
-| 🏁 0625 Beginning C++ Game Programming | 00 Preface | [ 01 Welcome to Beginning C++ Game Programming, 3Ed ](/books/packtpub/2025/0625_beginning_c++_game_programming/01) ≫ |
+| 🏁 Beginning C++ Game Programming | 00 Preface | [ 01 Welcome to Beginning C++ Game Programming, 3Ed ](/books/packtpub/2025/beginning_c++_game_programming/01_welcome_to_beginning_c++_game_programming,_3ed) ≫ |
 |:----:|:----:|:----:|
 
 # 00 Preface
-
 Always dreamed of creating your own games? With the third edition of *Beginning C++ Game Programming*, you can turn that dream into reality! This beginner-friendly guide is updated and improved to include the latest features of **VS 2022**, **SFML**, and modern **C++20** programming techniques. You will get a fun introduction to game programming by building four fully playable games of increasing complexity. You’ll build clones of popular games such as Timberman, Pong, a Zombie survival shooter, and an endless runner.
 
 The book starts by covering the basics of programming. You’ll study key C++ topics, such as **object-oriented programming (OOP)** and C++ pointers, and get acquainted with the **Standard Template Library (STL)**. The book helps you learn about collision detection techniques and game physics by building a Pong game. As you build games, you’ll also learn exciting game programming concepts such as vertex arrays, directional sound (spatialization), OpenGL programmable shaders, spawning objects, and much more. You’ll dive deep into game mechanics and implement input handling, levelling up a character, and simple enemy AI. Finally, you’ll explore game design patterns to enhance your C++ game programming skills.
@@ -171,20 +170,20 @@ https://packt.link/free-ebook/9781835081747
 
 
 
-| 🏁 0625 Beginning C++ Game Programming | 00 Preface | [ 01 Welcome to Beginning C++ Game Programming, 3Ed ](/books/packtpub/2025/0625_beginning_c++_game_programming/01) ≫ |
+| 🏁 Beginning C++ Game Programming | 00 Preface | [ 01 Welcome to Beginning C++ Game Programming, 3Ed ](/books/packtpub/2025/beginning_c++_game_programming/01_welcome_to_beginning_c++_game_programming,_3ed) ≫ |
 |:----:|:----:|:----:|
 
 > (1) Title: 00 Preface
 > (2) Short Description: John Horton May 2024 648 pages 3rd Edition
-> (3) Path: /books/packtpub/2025/0625_beginning_c++_game_programming/00
+> (3) Path: /books/packtpub/2025/0625/
 > (4) tags: C++, game
 > 책이름: Beginning C++ Game Programming
 > 책 안내: https://www.packtpub.com/en-us/product/beginning-c-game-programming-9781835088258
 > 서문: https://subscription.packtpub.com/book/game-development/9781835081747/pref
-> 독서시작일: 2025-07-09 수 16:18:00
-> 이미지 링크: /packtpub/2025/0625/00
-> 이미지 저장폴더: img_0625/00
+> 독서시작일: 2025-07-05 토 16:13:55
+> 이미지: /packtpub//packtpub/2025/2025/beginning_c++_game_programming_img/
 > .md Name: 00_preface.md
+
 
 ---------- cut line ----------
 

@@ -1,5 +1,5 @@
 
-| ≪ [ 00 Preface ](/packtpub/2025/0625_beginning_c++_game_programming/00_preface) | 01 Welcome to Beginning C++ Game Programming, 3Ed | [ 02 Variables Operators and Decisions ](/packtpub/2025/0625_beginning_c++_game_programming/02_variables_operators_and_decisions) ≫ |
+| ≪ [ 00 Preface ](/books/packtpub/2025/0625_beginning_c++_game_programming/00) | 01 Welcome to Beginning C++ Game Programming, 3Ed | [ 02 Variables Operators and Decisions ](/books/packtpub/2025/0625_beginning_c++_game_programming/02) ≫ |
 |:----:|:----:|:----:|
 
 # 01 Welcome to Beginning C++ Game Programming Third Edition!
@@ -959,20 +959,20 @@ A) It doesn’t matter; we will be returning to it again constantly and will lea
 
 
 
-| ≪ [ 00 Preface ](/packtpub/2025/0625_beginning_c++_game_programming/00_preface) | 01 Welcome to Beginning C++ Game Programming, 3Ed | [ 02 Variables Operators and Decisions ](/packtpub/2025/0625_beginning_c++_game_programming/02_variables_operators_and_decisions) ≫ |
+| ≪ [ 00 Preface ](/books/packtpub/2025/0625_beginning_c++_game_programming/00) | 01 Welcome to Beginning C++ Game Programming, 3Ed | [ 02 Variables Operators and Decisions ](/books/packtpub/2025/0625_beginning_c++_game_programming/02) ≫ |
 |:----:|:----:|:----:|
 
-> (1) Path: packtpub/2025/0625_beginning_c++_game_programming/01_welcome_to_beginning_c++_game_programming,_3ed __
-> (2) Markdown
-> (3) Title: 01 Welcome to Beginning C++ Game Programming, 3Ed
-> (4) Short Description: John Horton May 2024 648 pages 3rd Edition
-> (5) tags: C++, game
-> Book Name: 0625 Beginning C++ Game Programming
-> Link: https://subscription.packtpub.com/book/game-development/9781835081747/pref
-> create: 2025-06-29 일 13:52:11
-> Images: /packtpub/2025/0625_beginning_c++_game_programming_img/ __
-> .md Name: 01_welcome_to_beginning_c++_game_programming,_3ed.md __
-
+> (1) Title: 01 Welcome to Beginning C++ Game Programming, 3Ed
+> (2) Short Description: John Horton May 2024 648 pages 3rd Edition
+> (3) Path: /books/packtpub/2025/0625_beginning_c++_game_programming/01
+> (4) tags: C++, game
+> 책이름: Beginning C++ Game Programming
+> 책 안내: https://www.packtpub.com/en-us/product/beginning-c-game-programming-9781835088258
+> 서문: https://subscription.packtpub.com/book/game-development/9781835081747/pref
+> 독서시작일: 2025-07-09 수 16:18:00
+> 이미지 링크: /packtpub/2025/0625/01
+> 이미지 저장폴더: img_0625/01
+> .md Name: 01_welcome_to_beginning_c++_game_programming_3ed.md
 
 ---------- cut line ----------
 
@@ -980,9 +980,9 @@ ff-func-key-setting.vi
 
 | q     | w     | e     | r     | t     | y     | u     | i     | o     | p     |
 :------:|------:|------:|------:|------:|------:|------:|------:|------:|------:|
-|### title | \`\`\` \`\`\` Expl| \`xxx\`|\`xxx\`|\`xxx\`|\`xxx\`|\`xxx\`|\`xxx \`|\`xxx \`| 없 음 |
+|### title | ``` ``` Expl| `xxx `|`xxx.`|`xxx,`|`xxx;`|`xxx)`|`xxx:`|`xxx}`| 없 음 |
 | a     | s     | d     | f     | g     | h     | j     | k     | l     |
-| 없 음 | 없 음 | \*\*xxx\*\*| \*\*xxx\*\*| \*\*xxx\*\*| \*\*xxx\*\*| \*\*xxx\*\*| \*\*xxx\*\*| \*\*xxx\*\*|
+|- `xxx`|- \*\*xxx \*\*| \*\*xxx.\*\*| \*\*xxx,\*\*| \*\*xxx;\*\*| \*\*xxx)\*\*| \*\*xxx:\*\*| \*\*xxx}\*\*|
 
 마크다운 입력시 vi 커맨드 표시 ; (^[)=Ctrl+[ ; (^M)=Ctrl+M
 인용구 작성시 ; 본문앞에는 꺽쇠 > 붙이고, 스타일 첨가시 끝줄에 종류별 구분을 표시한다.
