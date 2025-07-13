@@ -1,6 +1,6 @@
 #!/bin/sh
 
-cc="(다운로드사이트 버전확인) gemini01.1155" #-- "cusr12.1039"
+cc="(geminicli TEST) geminiCLI12.1151" #-- "cusr12.1039"
 
 yymm="2507" #-- 2506
 cd ~/Downloads; mkdir ${yymm}; cd ${yymm}

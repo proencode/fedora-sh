@@ -1,0 +1,32 @@
+$ npx https://github.com/google-gemini/gemini-cli
+Need to install the following packages:
+github:google-gemini/gemini-cli
+Ok to proceed? (y) y
+
+
+ ███            █████████  ██████████ ██████   ██████ █████ ██████   █████ █████
+░░░███         ███░░░░░███░░███░░░░░█░░██████ ██████ ░░███ ░░██████ ░░███ ░░███
+  ░░░███      ███     ░░░  ░███  █ ░  ░███░█████░███  ░███  ░███░███ ░███  ░███
+    ░░░███   ░███          ░██████    ░███░░███ ░███  ░███  ░███░░███░███  ░███
+     ███░    ░███    █████ ░███░░█    ░███ ░░░  ░███  ░███  ░███ ░░██████  ░███
+   ███░      ░░███  ░░███  ░███ ░   █ ░███      ░███  ░███  ░███  ░░█████  ░███
+ ███░         ░░█████████  ██████████ █████     █████ █████ █████  ░░█████ █████
+░░░            ░░░░░░░░░  ░░░░░░░░░░ ░░░░░     ░░░░░ ░░░░░ ░░░░░    ░░░░░ ░░░░░
+
+
+Tips for getting started:
+1. Ask questions, edit files, or run commands.
+2. Be specific for the best results.
+3. Create GEMINI.md files to customize your interactions with Gemini.
+4. /help for more information.
+
+╭────────────────────────────────────────────────────────────────────────────────╮
+│                                                                                │
+│ ⠴ Waiting for auth... (Press ESC to cancel)                                    │
+│                                                                                │
+╰────────────────────────────────────────────────────────────────────────────────╯
+
+~\Downloads\250712-1121-ge  no sandbox (see      gemini-2.5-pro (100% context
+m                           /docs)              left)
+
+

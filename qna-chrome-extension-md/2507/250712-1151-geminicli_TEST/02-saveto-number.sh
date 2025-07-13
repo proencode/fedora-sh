@@ -1,6 +1,6 @@
 #!/bin/sh
 
-bb="(다운로드사이트 버전확인) gemini01.1155" #-- "cusr12.1039"
+bb="(geminicli TEST) geminiCLI12.1151" #-- "cusr12.1039"
 cc=$(echo $bb | awk -F") " '{print $2}')
 
 echo "#-- sh 02-saveto-number.sh (${1})"
