@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>자동 탭 열기</title>
+<script>
+  window.onload = function() {
+    // 열고 싶은 URL들을 배열에 저장합니다.
+    const urls = [
+"https://www.cursor.com/downloads?버전=___cursor___1.2.2___25-07-08_화",
+"https://www.virtualbox.org/wiki/Downloads?버전=___VirBox___7.1.10___25-06-28_토",
+"https://www.gimp.org/downloads/?버전=___gimp___3.0.4___25-06-28_토",
+"https://winscp.net/eng/download.php?버전=___winscp___6.5.2___25-06-28_토",
+"https://www.7-zip.org/download.html?버전=___7zip___25.00__25-07-08_화",
+"https://learn.microsoft.com/ko-kr/cpp/windows/latest-supported-vc-redist?view=msvc-170?마=___vc_red___14.44.35200.0___25-06-28_토",
+"https://git-scm.com/downloads?버전=___git-bash___2.50.0___25-06-28_토",
+"https://keepassxc.org/download?버전=___keepassxc___2.7.10___25.06.28_토",
+"https://www.chiark.greenend.org.uk/~sgtatham/putty/latest.html?버전=___PuTTY___0.83___25-06-28_토",
+"https://repo.msys2.org/msys/x86_64/?버전=___rsync___3.4.1-1___25.06.28_토",
+    ];
+
+    // 각 URL을 새 탭에서 엽니다.
+    for (let i = 0; i < urls.length; i++) {
+      window.open(urls[i], '_blank');
+    }
+  };
+</script>
+</head>
+<body>
+  <p>페이지 로드 시 지정된 URL들이 새 탭에서 열립니다.</p>
+  <!-- 주문: 브라우저에서 3개의 탭에 내가 필요한 각각의 주소를 지정해서 띄우는데,
+탐색기에서 해당 html 파일을 클릭하면 화면에서 사용자가 어느 액션이던지 하지 않고,
+지정한 주소를 새 탭을 직접 스스로 열어서 바로 띄우는 html 파일을 만들어줘 -->
+
+cursor | virtualbox | gimp | winscp | 7zip
+
+VC_redist.x64 | KeePassXC | PuTTY | Git-Bash | GIT-rsync
+
+https://nullnull-study.tistory.com/entry/window에서-git-bash로-rsync-설치하는-방법
+
+</body>
+</html>
