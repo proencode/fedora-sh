@@ -1,0 +1,25 @@
+{
+  "manifest_version": 3,
+  "name": "3주 달력",
+  "version": "1.0.0",
+  "description": "오늘이 포함된 3주간의 달력과 메모를 관리하는 크롬 확장 프로그램 (cusr20.1111-13)",
+  "background": {
+    "service_worker": "background.js"
+  },
+  "action": {
+    "default_title": "3주 달력",
+    "default_icon": {
+      "16": "icon16.png",
+      "32": "icon32.png",
+      "48": "icon48.png",
+      "128": "icon128.png"
+    }
+  },
+  "permissions": ["storage", "tabs"],
+  "icons": {
+    "16": "icon16.png",
+    "32": "icon32.png",
+    "48": "icon48.png",
+    "128": "icon128.png"
+  }
+} 

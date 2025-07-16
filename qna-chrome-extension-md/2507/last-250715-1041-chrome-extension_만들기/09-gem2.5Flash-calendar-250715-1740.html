@@ -1,0 +1,528 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>250713수정---3주 달력 cusr20.1111-09. index.html</title>
+    <style>
+        /* 3주 달력 cusr20.1111-19 styles.css */
+        body {
+            font-family: 'Segoe UI', Arial, sans-serif;
+            margin: 0;
+            background: #f9f9f9;
+            max-width: none;
+        }
+        .header {
+            margin-bottom: 10px;
+        }
+        .year-row {
+            text-align: center;
+            font-size: 1.2em;
+            margin: 18px 0 6px 0;
+            font-weight: bold;
+        }
+        .button-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 10px;
+            padding-left: 1em;
+            padding-right: 1em;
+        }
+        .button-left, .button-right {
+            flex: 1;
+            display: flex;
+            justify-content: flex-start;
+            align-items: center;
+        }
+        .button-right {
+            justify-content: flex-end;
+        }
+        .button-center {
+            flex: 2;
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+        }
+        .action-btn, .nav-btn {
+            background: #4CAF50;
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            padding: 6px 16px;
+            font-size: 0.7em;
+            cursor: pointer;
+            margin: 0 2px;
+            transition: background 0.2s;
+        }
+        .action-btn:hover, .nav-btn:hover {
+            background: #388e3c;
+        }
+        .memo-label {
+            color: #fff;
+        }
+        .memo-mode-active {
+            color: #FFD700;
+            font-weight: bold;
+        }
+        .calendar-container {
+            margin: 0 1em;
+        }
+        #calendar-table {
+            width: 100%;
+            table-layout: fixed;
+            border-collapse: collapse;
+        }
+        #calendar-table td {
+            border: 1px solid #ccc;
+            width: 14.28%;
+            vertical-align: top;
+            padding: 0;
+            background: #fff;
+            position: relative;
+        }
+        .date-area {
+            font-size: 0.85em;
+            margin-top: 5%;
+            margin-bottom: 3%;
+            margin-left: 6px;
+            font-weight: bold;
+        }
+        .memo-area {
+            font-size: 0.85em;
+            margin-top: 2%;
+            margin-bottom: 5%;
+            margin-left: 6px;
+            word-break: break-all;
+            white-space: pre-line;
+        }
+        .today {
+            background: #FFFACD !important;
+        }
+        .sunday {
+            color: #d32f2f;
+        }
+        .saturday {
+            color: #1976d2;
+        }
+        .weekday {
+            color: #006400;
+        }
+        .footer {
+            text-align: right;
+            font-size: 0.85em;
+            color: #888;
+            margin: 10px 1em 10px 0;
+        }
+        /* 모달 스타일 */
+        .modal {
+            position: fixed;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: rgba(0,0,0,0.3);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 1000;
+        }
+        .modal.hidden {
+            display: none;
+        }
+        .modal-content {
+            background: #fff;
+            padding: 24px 18px 16px 18px;
+            border-radius: 8px;
+            min-width: 320px;
+            max-width: 90vw;
+            box-shadow: 0 2px 16px rgba(0,0,0,0.18);
+            display: flex;
+            flex-direction: column;
+            align-items: stretch;
+        }
+        #memo-input {
+            width: calc(100% - 16px);
+            font-size: 0.95em;
+            margin-bottom: 12px;
+            resize: none;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            padding: 8px;
+        }
+        .modal-actions {
+            display: flex;
+            justify-content: flex-end;
+            gap: 8px;
+        }
+        @media (max-width: 600px) {
+            .calendar-container {
+                max-width: 100vw;
+            }
+            #calendar-table {
+                font-size: 0.8em;
+            }
+            .modal-content {
+                min-width: 90vw;
+            }
+        }
+        html, body { min-width: 360px; min-height: 420px; }
+        body { box-sizing: border-box; }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <div class="year-row">
+            250713수정---3주 달력 <span id="year-display">2025 년</span>
+        </div>
+        <div class="button-row">
+            <div class="button-left">
+                <button id="prev-week" class="nav-btn">▲</button>
+            </div>
+            <div class="button-center">
+                <button id="toggle-memo-mode" class="action-btn"><span class="memo-label">메모: <span id="memo-short" class="memo-mode-active">단축</span>/<span id="memo-detail">상세</span></span></button>
+                <button id="save-memo" class="action-btn">저장</button>
+                <button id="load-memo" class="action-btn">불러오기</button>
+                <button id="load-name-file" class="action-btn">이름 기록 파일 불러오기</button> </div>
+            <div class="button-right">
+                <button id="next-week" class="nav-btn">▼</button>
+            </div>
+        </div>
+    </div>
+    <div class="calendar-container">
+        <table id="calendar-table">
+            <tbody id="calendar-body">
+                </tbody>
+        </table>
+    </div>
+    <div class="footer">
+        <span id="file-info">파일 없음</span>
+    </div>
+    <div id="memo-modal" class="modal hidden">
+        <div class="modal-content">
+            <textarea id="memo-input" maxlength="500" rows="6"></textarea>
+            <div class="modal-actions">
+                <button id="modal-save" class="action-btn">저장</button>
+                <button id="modal-cancel" class="action-btn">취소</button>
+            </div>
+        </div>
+    </div>
+    <input type="file" id="memo-file-loader" accept="application/json" style="display:none;" />
+    <input type="file" id="name-file-loader" accept="application/json" style="display:none;" /> <script>
+        /* 3주 달력 cusr20.1111-05 popup.js */
+
+        // --- 상수 및 상태 ---
+        const WEEK_DAYS = ['일', '월', '화', '수', '목', '금', '토'];
+        const WEEKDAY_CLASS = ['sunday', 'weekday', 'weekday', 'weekday', 'weekday', 'weekday', 'saturday'];
+        const MEMO_STORAGE_KEY = 'calendar-memos-v1'; // 메모 데이터 저장용 localStorage 키
+        const LAST_MEMO_FILE_NAME_KEY = 'last-memo-file-name-info'; // 마지막 메모 파일 정보 저장용 localStorage 키
+
+        let memoMode = 'short'; // 'short' or 'detail'
+        let calendarStartDate = null; // 3주 시작일 (Date)
+        let memos = {}; // { 'YYYY-MM-DD': '메모내용' }
+        let currentMemoFileName = 'cal_memofirst.json'; // 현재 사용 중인 메모 파일의 이름 (기본값)
+
+        // --- 유틸 함수 ---
+        function pad(n) { return n < 10 ? '0' + n : n; }
+        function dateToKey(date) {
+            return `${date.getFullYear()}-${pad(date.getMonth()+1)}-${pad(date.getDate())}`;
+        }
+        function getToday() {
+            const now = new Date();
+            now.setHours(0,0,0,0);
+            return now;
+        }
+        function cloneDate(date) {
+            return new Date(date.getTime());
+        }
+        function getWeekStart(date) {
+            const d = cloneDate(date);
+            d.setDate(d.getDate() - d.getDay());
+            return d;
+        }
+        function get3WeekStart(today) {
+            return getWeekStart(today);
+        }
+        function get3WeekDates(startDate) {
+            const days = [];
+            for (let w = 0; w < 3; w++) {
+                const week = [];
+                for (let d = 0; d < 7; d++) {
+                    const date = new Date(startDate);
+                    date.setDate(startDate.getDate() + w*7 + d);
+                    week.push(date);
+                }
+                days.push(week);
+            }
+            return days;
+        }
+        function getDayColorClass(dayIdx) {
+            return WEEKDAY_CLASS[dayIdx];
+        }
+        function getDateLabel(date, prevDate) {
+            const m = date.getMonth() + 1;
+            const d = date.getDate();
+            const w = WEEK_DAYS[date.getDay()];
+            if (date.getDay() === 0 || (prevDate && prevDate.getMonth() !== date.getMonth())) {
+                return `${m} / ${d} (${w})`;
+            }
+            return `${d} (${w})`;
+        }
+        function isToday(date) {
+            const t = getToday();
+            return date.getFullYear() === t.getFullYear() && date.getMonth() === t.getMonth() && date.getDate() === t.getDate();
+        }
+        function getCharsPerLine(cell) {
+            const style = window.getComputedStyle(cell);
+            const width = cell.clientWidth - (parseInt(style.paddingLeft)||0) - (parseInt(style.paddingRight)||0) - 12;
+            return Math.max(8, Math.floor(width / 9));
+        }
+        // --- 렌더링 ---
+        function renderCalendar() {
+            const tbody = document.getElementById('calendar-body');
+            tbody.innerHTML = '';
+            const weeks = get3WeekDates(calendarStartDate);
+            let cellRefs = [[],[],[]];
+            weeks.forEach((week, rowIdx) => {
+                const tr = document.createElement('tr');
+                week.forEach((date, colIdx) => {
+                    const td = document.createElement('td');
+                    cellRefs[rowIdx][colIdx] = td;
+                    const prevDate = colIdx > 0 ? week[colIdx-1] : null;
+                    const dateLabel = getDateLabel(date, prevDate);
+                    const dateDiv = document.createElement('div');
+                    dateDiv.className = 'date-area ' + getDayColorClass(date.getDay());
+                    dateDiv.textContent = dateLabel;
+                    if (isToday(date)) td.classList.add('today');
+                    const key = dateToKey(date);
+                    const memoDiv = document.createElement('div');
+                    memoDiv.className = 'memo-area';
+                    let memo = memos[key] || '';
+                    if (memoMode === 'short' && memo.length > 26) {
+                        memo = memo.slice(0, 26) + '...';
+                    }
+                    memoDiv.textContent = memo;
+                    td.addEventListener('click', e => {
+                        openMemoModal(date, key);
+                        e.stopPropagation();
+                    });
+                    td.appendChild(dateDiv);
+                    td.appendChild(memoDiv);
+                    tr.appendChild(td);
+                });
+                tbody.appendChild(tr);
+            });
+            if (memoMode === 'detail') {
+                weeks.forEach((week, rowIdx) => {
+                    let max = 1;
+                    week.forEach((date, colIdx) => {
+                        const td = cellRefs[rowIdx][colIdx];
+                        const key = dateToKey(date);
+                        if (memos[key]) {
+                            const charsPerLine = getCharsPerLine(td);
+                            const lines = memos[key].split('\n').map(line => Math.ceil(line.length / charsPerLine)).reduce((a,b)=>a+b,0);
+                            if (lines > max) max = lines;
+                        }
+                    });
+                    week.forEach((date, colIdx) => {
+                        const td = cellRefs[rowIdx][colIdx];
+                        td.style.height = (max*1.5 + 3) + 'em';
+                    });
+                });
+            } else {
+                weeks.forEach((week, rowIdx) => {
+                    week.forEach((date, colIdx) => {
+                        const td = cellRefs[rowIdx][colIdx];
+                        td.style.height = '5.5em';
+                    });
+                });
+            }
+        }
+        function updateYearDisplay() {
+            const year = calendarStartDate.getFullYear();
+            document.getElementById('year-display').textContent = year + ' 년';
+        }
+        function updateMemoModeButton() {
+            const short = document.getElementById('memo-short');
+            const detail = document.getElementById('memo-detail');
+            if (memoMode === 'short') {
+                short.classList.add('memo-mode-active');
+                detail.classList.remove('memo-mode-active');
+            } else {
+                short.classList.remove('memo-mode-active');
+                detail.classList.add('memo-mode-active');
+            }
+        }
+        function updateFileInfo() {
+            document.getElementById('file-info').textContent = currentMemoFileName ? currentMemoFileName : '파일 없음';
+        }
+        // --- 메모 모달 ---
+        function openMemoModal(date, key) {
+            const modal = document.getElementById('memo-modal');
+            const input = document.getElementById('memo-input');
+            input.value = memos[key] || '';
+            modal.classList.remove('hidden');
+            input.focus();
+            document.getElementById('modal-save').onclick = () => {
+                memos[key] = input.value.trim();
+                saveMemosToLocalStorage();
+                renderCalendar();
+                modal.classList.add('hidden');
+            };
+            document.getElementById('modal-cancel').onclick = () => {
+                modal.classList.add('hidden');
+            };
+        }
+        // --- 메모 데이터 로컬 스토리지 관리 ---
+        function saveMemosToLocalStorage() {
+            localStorage.setItem(MEMO_STORAGE_KEY, JSON.stringify(memos));
+        }
+        function loadMemosFromLocalStorage() {
+            const data = localStorage.getItem(MEMO_STORAGE_KEY);
+            if (data) {
+                try { memos = JSON.parse(data) || {}; } catch { memos = {}; }
+            } else {
+                memos = {};
+            }
+        }
+
+        // --- 마지막 메모 파일 이름 정보 로컬 스토리지 관리 ---
+        function saveLastMemoFileNameInfo() {
+            localStorage.setItem(LAST_MEMO_FILE_NAME_KEY, JSON.stringify({ "memo-file": currentMemoFileName }));
+        }
+
+        function loadLastMemoFileNameInfo() {
+            const data = localStorage.getItem(LAST_MEMO_FILE_NAME_KEY);
+            if (data) {
+                try {
+                    const info = JSON.parse(data);
+                    if (info && info["memo-file"]) {
+                        currentMemoFileName = info["memo-file"];
+                    }
+                } catch {
+                    currentMemoFileName = 'cal_memofirst.json'; // 기본값으로 초기화
+                }
+            } else {
+                currentMemoFileName = 'cal_memofirst.json'; // 기본값으로 초기화
+            }
+            updateFileInfo(); // 파일 정보 업데이트
+        }
+        
+        // --- 파일 저장/불러오기 ---
+        function saveMemosToFile() {
+            const blob = new Blob([JSON.stringify(memos, null, 2)], {type: 'application/json'});
+            const a = document.createElement('a');
+            a.href = URL.createObjectURL(blob);
+            // 저장 시 파일명을 현재 사용 중인 파일명으로 제안
+            a.download = currentMemoFileName; 
+            document.body.appendChild(a);
+            a.click();
+            setTimeout(() => {
+                document.body.removeChild(a);
+                URL.revokeObjectURL(a.href);
+            }, 100);
+
+            // 파일 저장 시 실제 사용자가 선택/입력한 파일명을 알 수 없으므로,
+            // 이 시점에서는 currentMemoFileName을 업데이트하지 않습니다.
+            // 대신, 사용자가 불러오기할 때 새로 로드된 파일명으로 currentMemoFileName이 업데이트됩니다.
+        }
+
+        function loadMemosFromFile(file) {
+            const reader = new FileReader();
+            reader.onload = function(e) {
+                try {
+                    memos = JSON.parse(e.target.result) || {};
+                    saveMemosToLocalStorage();
+                    renderCalendar();
+                    currentMemoFileName = file.name; // 불러온 파일명으로 현재 파일명 업데이트
+                    saveLastMemoFileNameInfo(); // localStorage에 업데이트된 파일명 저장
+                    updateFileInfo();
+                } catch (error) {
+                    alert('파일 형식이 올바르지 않습니다: ' + error.message);
+                    console.error('파일 로드 오류:', error);
+                }
+            };
+            reader.readAsText(file);
+        }
+
+        // --- 이벤트 바인딩 ---
+        document.addEventListener('DOMContentLoaded', () => {
+            // 오늘 기준 3주 시작일 계산
+            const today = getToday();
+            calendarStartDate = get3WeekStart(today);
+            
+            // 1. 메모 데이터는 항상 localStorage에서 초기 로드 (이전 세션 상태 복원)
+            loadMemosFromLocalStorage(); 
+            // 2. 마지막으로 사용했던 메모 파일 이름 정보도 localStorage에서 로드
+            loadLastMemoFileNameInfo(); 
+
+            renderCalendar();
+            updateYearDisplay();
+            updateMemoModeButton();
+            updateFileInfo(); 
+
+            // 주 이동
+            document.getElementById('prev-week').onclick = () => {
+                calendarStartDate.setDate(calendarStartDate.getDate() - 7);
+                updateYearDisplay();
+                renderCalendar();
+            };
+            document.getElementById('next-week').onclick = () => {
+                calendarStartDate.setDate(calendarStartDate.getDate() + 7);
+                updateYearDisplay();
+                renderCalendar();
+            };
+            // 메모 모드 토글
+            document.getElementById('toggle-memo-mode').onclick = () => {
+                memoMode = memoMode === 'short' ? 'detail' : 'short';
+                updateMemoModeButton();
+                renderCalendar();
+            };
+
+            // 저장 버튼: 메모 데이터를 현재 파일명으로 저장 시도
+            document.getElementById('save-memo').onclick = () => {
+                saveMemosToFile();
+                alert(`메모를 '${currentMemoFileName}'(으)로 저장합니다. 다른 이름으로 저장하려면 파일 선택 창에서 이름을 변경하세요.`);
+            };
+
+            // 불러오기 버튼: 메모 데이터 파일을 선택
+            document.getElementById('load-memo').onclick = () => {
+                // 사용자에게 직접 파일 선택 창을 띄웁니다.
+                // 브라우저 보안상 'Downloads/' 폴더를 직접 열 수 없으며, 기본 파일명을 지정할 수도 없습니다.
+                document.getElementById('memo-file-loader').click();
+            };
+            document.getElementById('memo-file-loader').onchange = (e) => {
+                const file = e.target.files[0];
+                if (file) {
+                    loadMemosFromFile(file);
+                }
+            };
+
+            // '이름 기록 파일 불러오기' 버튼: calendar-name.json 파일 선택 (수동)
+            document.getElementById('load-name-file').onclick = () => {
+                document.getElementById('name-file-loader').click();
+            };
+            document.getElementById('name-file-loader').onchange = (e) => {
+                const file = e.target.files[0];
+                if (file) {
+                    const reader = new FileReader();
+                    reader.onload = function(e) {
+                        try {
+                            const info = JSON.parse(e.target.result);
+                            if (info && info["memo-file"]) {
+                                currentMemoFileName = info["memo-file"]; // 기록 파일에서 읽은 메모 파일명으로 업데이트
+                                saveLastMemoFileNameInfo(); // localStorage에 업데이트된 정보 저장
+                                updateFileInfo();
+                                alert(`이름 기록 파일 '${file.name}'에서 메모 파일 이름 '${currentMemoFileName}'을(를) 불러왔습니다. 이제 '불러오기' 버튼을 눌러 메모 파일을 선택해주세요.`);
+                            } else {
+                                alert('이름 기록 파일 형식이 올바르지 않습니다.');
+                            }
+                        } catch (error) {
+                            alert('이름 기록 파일 형식이 올바르지 않습니다: ' + error.message);
+                            console.error('이름 기록 파일 로드 오류:', error);
+                        }
+                    };
+                    reader.readAsText(file);
+                }
+            };
+        });
+    </script>
+</body>
+</html>

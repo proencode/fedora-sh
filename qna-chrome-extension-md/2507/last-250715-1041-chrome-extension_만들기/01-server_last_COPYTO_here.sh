@@ -1,6 +1,6 @@
 #!/bin/sh
 
-cc="(1주 메모달력) geminicli12.1429" #-- "cusr12.1039"
+cc="(chrome-extension 만들기) geminigg15.1041" #-- "cusr12.1039"
 
 yymm="2507" #-- 2506
 cd ~/Downloads; mkdir ${yymm}; cd ${yymm}

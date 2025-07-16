@@ -1,6 +1,6 @@
 #!/bin/sh
 
-bb="(1주 메모달력) geminicli12.1429" #-- "cusr12.1039"
+bb="(chrome-extension 만들기) geminigg15.1041" #-- "cusr12.1039"
 cc=$(echo $bb | awk -F") " '{print $2}')
 
 echo "#-- sh 02-saveto-number.sh (${1})"

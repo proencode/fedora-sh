@@ -22,7 +22,7 @@ if [ $today_job -lt 0 ] && [ $today_job -gt x5 ]; then
         exit -1
 fi
 cat <<__EOF__
-^^^ [ ${today_job} ] 오늘의 작업: "${work_tab:$(( today_job * 3 )):2}"
+^^^ [ ${today_job} ] "${work_tab:$(( today_job * 3 )):2}": 오늘의 작업
 __EOF__
 
 sunday_job=$(( today_job - todays_week ))
@@ -34,14 +34,14 @@ job_cnt=$((sunday_job * 3)) #-- 빈칸포함 3글자로 된 work_tab 에서 일�
 #// 이번주 일요일은 "${work_tab:${job_cnt}:2}" 로 시작합니다. xxx
 cat <<__EOF__
 #--
-#-- 표시할 주의 갯수를 입력하세요. Enter 만 입력하면 2 주간 을 표시합니다.
+#-- 표시할 주의 갯수를 입력하세요. Enter 만 입력하면 [ 2 ] 주간 을 표시합니다.
 __EOF__
 read total_ju
 if [ "x${total_ju}" == "x" ]; then
         total_ju=2
 fi
 cat <<__EOF__
-^^^ [ ${total_ju} ] ${total_ju}주간을 표시합니다.
+^^^ [ ${total_ju} ]: 표시할 주간 수입니다.
 
 
 __EOF__
