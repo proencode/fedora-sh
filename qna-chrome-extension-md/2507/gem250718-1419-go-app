@@ -1,0 +1,655 @@
+🔥
+## 🔥 
+## 🔥 gem250718-1427-00.
+### 🔋 
+
+
+🔥
+## 🔥 gem250718-1427-00.  gin 프레임워크에 관심이 생겨서 자료를 찾아보고 있는데,
+아무래도 go 와 gin 을 사용한 예제를 봐야 감을 잡을수 있겠어.
+예를 들어, 금전출납부를 만드는 예제가 있으면 좋겠어. 날짜, 시각, 거래처, 품목, 수량, 단가, 금액, 적요 등을 입력하고 수정, 삭제하는 창이 하나 있고, 조회와 삭제를 위한 화면과 월별 집계를 보여주는 화면, 그리고 이 데이터를 관리하는 mysql 같은 데이터베이스로 운영하는 샘플 프로젝트를 봤으면 좋겠어.
+그러니, 날짜, 시각, 거래처, 품목, 수량, 단가, 금액, 적요 등을 입력하고 수정, 삭제하고, 내역을 보여주는 CRUD 기능만 가진 Gin 과 Go 와 Vue 로 이루어진 프로젝트를 하나 만들어줄래? 관련 소스와 설치방법도 같이 설명해줘.
+
+### 🔋 Go와 Gin, Vue를 사용하여 금전출납부의 CRUD(생성, 조회, 수정, 삭제) 기능을 구현하는 샘플 프로젝트를 만들어 드릴게요. 이 프로젝트는 백엔드는 Go와 Gin 프레임워크로, 프론트엔드는 Vue.js로 구성됩니다. 데이터는 간단히 메모리(RAM)에 저장하여 데이터베이스 없이도 동작하도록 하겠습니다. 이렇게 하면 프로젝트 설정이 훨씬 간단해져서 Gin과 Vue의 연동 방식을 빠르게 이해하는 데 집중할 수 있습니다.
+
+### 프로젝트 구성
+프로젝트는 크게 두 부분으로 나뉩니다.
+
+1. **백엔드 (Go & Gin)**:
+  - /api/transactions 엔드포인트를 통해 금전출납 데이터를 관리합니다.
+  - 데이터는 서버 메모리에 임시 저장됩니다 (서버 재시작 시 초기화됨).
+  - CORS(Cross-Origin Resource Sharing) 설정으로 Vue 프론트엔드와 통신할 수 있도록 합니다.
+- **프론트엔드 (Vue.js)**:
+  - 사용자 인터페이스를 제공하여 금전출납 데이터를 입력, 조회, 수정, 삭제할 수 있습니다.
+  - 백엔드 API와 통신하여 데이터를 주고받습니다.
+
+### 프로젝트 폴더 구조
+```
+cashbook-app/
+├── backend/
+│   ├── main.go
+│   └── go.mod
+│   └── go.sum
+└── frontend/
+    ├── public/
+    ├── src/
+    │   ├── assets/
+    │   ├── components/
+    │   │   └── TransactionForm.vue
+    │   │   └── TransactionList.vue
+    │   ├── App.vue
+    │   └── main.js
+    ├── index.html
+    ├── package.json
+    └── vite.config.js
+```
+### 1. 백엔드 (Go & Gin) 설정
+
+#### 1.1 backend/main.go
+```Go
+package main
+
+import (
+	"log"
+	"net/http"
+	"strconv"
+	"time"
+
+	"github.com/gin-contrib/cors"
+	"github.com/gin-gonic/gin"
+)
+
+// Transaction 구조체 정의
+type Transaction struct {
+	ID          int       `json:"id"`
+	Date        string    `json:"date"`        // YYYY-MM-DD
+	Time        string    `json:"time"`        // HH:MM
+	Account     string    `json:"account"`     // 거래처
+	Item        string    `json:"item"`        // 품목
+	Quantity    int       `json:"quantity"`    // 수량
+	UnitPrice   int       `json:"unitPrice"`   // 단가
+	Amount      int       `json:"amount"`      // 금액 (수량 * 단가)
+	Description string    `json:"description"` // 적요
+	CreatedAt   time.Time `json:"createdAt"`
+	UpdatedAt   time.Time `json:"updatedAt"`
+}
+
+var transactions = []Transaction{} // 메모리 내 데이터 저장소
+var nextID = 1                     // 다음 트랜잭션 ID
+
+func main() {
+	router := gin.Default()
+
+	// CORS 설정: Vue.js 프론트엔드와 통신 허용
+	// 실제 배포 시에는 특정 도메인으로 제한하는 것이 좋습니다.
+	config := cors.DefaultConfig()
+	config.AllowOrigins = []string{"http://localhost:5173"} // Vue 개발 서버 포트
+	config.AllowMethods = []string{"GET", "POST", "PUT", "DELETE", "OPTIONS"}
+	config.AllowHeaders = []string{"Origin", "Content-Type", "Accept"}
+	router.Use(cors.New(config))
+
+	// API 라우트 정의
+	router.GET("/api/transactions", getTransactions)
+	router.POST("/api/transactions", createTransaction)
+	router.GET("/api/transactions/:id", getTransactionByID)
+	router.PUT("/api/transactions/:id", updateTransaction)
+	router.DELETE("/api/transactions/:id", deleteTransaction)
+
+	log.Println("Gin server running on port 8080")
+	router.Run(":8080")
+}
+
+// 모든 트랜잭션 조회
+func getTransactions(c *gin.Context) {
+	c.JSON(http.StatusOK, transactions)
+}
+
+// 새 트랜잭션 생성
+func createTransaction(c *gin.Context) {
+	var newTransaction Transaction
+	if err := c.ShouldBindJSON(&newTransaction); err != nil {
+		c.JSON(http.StatusBadRequest, gin.H{"error": err.Error()})
+		return
+	}
+
+	// ID, 금액, 생성/수정 시간 자동 할당
+	newTransaction.ID = nextID
+	nextID++
+	newTransaction.Amount = newTransaction.Quantity * newTransaction.UnitPrice
+	newTransaction.CreatedAt = time.Now()
+	newTransaction.UpdatedAt = time.Now()
+
+	transactions = append(transactions, newTransaction)
+	c.JSON(http.StatusCreated, newTransaction)
+}
+
+// 특정 ID의 트랜잭션 조회
+func getTransactionByID(c *gin.Context) {
+	idParam := c.Param("id")
+	id, err := strconv.Atoi(idParam)
+	if err != nil {
+		c.JSON(http.StatusBadRequest, gin.H{"error": "Invalid transaction ID"})
+		return
+	}
+
+	for _, t := range transactions {
+		if t.ID == id {
+			c.JSON(http.StatusOK, t)
+			return
+		}
+	}
+	c.JSON(http.StatusNotFound, gin.H{"error": "Transaction not found"})
+}
+
+// 트랜잭션 수정
+func updateTransaction(c *gin.Context) {
+	idParam := c.Param("id")
+	id, err := strconv.Atoi(idParam)
+	if err != nil {
+		c.JSON(http.StatusBadRequest, gin.H{"error": "Invalid transaction ID"})
+		return
+	}
+
+	var updatedTransaction Transaction
+	if err := c.ShouldBindJSON(&updatedTransaction); err != nil {
+		c.JSON(http.StatusBadRequest, gin.H{"error": err.Error()})
+		return
+	}
+
+	for i, t := range transactions {
+		if t.ID == id {
+			// ID, 생성 시간은 유지하고 나머지 필드 업데이트
+			updatedTransaction.ID = t.ID // ID 유지
+			updatedTransaction.CreatedAt = t.CreatedAt // 생성 시간 유지
+			updatedTransaction.Amount = updatedTransaction.Quantity * updatedTransaction.UnitPrice // 금액 재계산
+			updatedTransaction.UpdatedAt = time.Now() // 수정 시간 업데이트
+
+			transactions[i] = updatedTransaction
+			c.JSON(http.StatusOK, updatedTransaction)
+			return
+		}
+	}
+	c.JSON(http.StatusNotFound, gin.H{"error": "Transaction not found"})
+}
+
+// 트랜잭션 삭제
+func deleteTransaction(c *gin.Context) {
+	idParam := c.Param("id")
+	id, err := strconv.Atoi(idParam)
+	if err != nil {
+		c.JSON(http.StatusBadRequest, gin.H{"error": "Invalid transaction ID"})
+		return
+	}
+
+	for i, t := range transactions {
+		if t.ID == id {
+			// 해당 인덱스의 트랜잭션 제거
+			transactions = append(transactions[:i], transactions[i+1:]...)
+			c.JSON(http.StatusNoContent, nil) // 204 No Content
+			return
+		}
+	}
+	c.JSON(http.StatusNotFound, gin.H{"error": "Transaction not found"})
+}
+```
+#### 1.2 Go 백엔드 설치 및 실행
+1. **backend 폴더 생성**: cashbook-app 디렉토리 안에 backend 폴더를 만듭니다.
+2. **main.go 파일 저장**: 위 코드를 backend/main.go 파일로 저장합니다.
+3. **모듈 초기화**: backend 폴더로 이동하여 Go 모듈을 초기화하고 필요한 의존성을 다운로드합니다.
+```Bash
+cd cashbook-app/backend
+go mod init cashbook-backend
+go get github.com/gin-gonic/gin
+go get github.com/gin-contrib/cors
+```
+4. **백엔드 서버 실행**:
+```Bash
+go run main.go
+```
+서버가 성공적으로 실행되면 터미널에 "Gin server running on port 8080" 메시지가 표시될 것입니다.
+
+### 2. 프론트엔드 (Vue.js) 설정
+
+#### 2.1 Vue 프로젝트 생성
+- **cashbook-app 폴더로 이동**: cashbook-app 디렉토리의 루트로 이동합니다.
+- **Vue 프로젝트 생성**: Vue CLI (또는 Vite)를 사용하여 frontend 폴더에 Vue 프로젝트를 생성합니다. 여기서는 Vite를 사용하겠습니다.
+```Bash
+cd cashbook-app
+npm create vue@latest frontend
+```
+프롬프트가 나타나면 다음과 같이 선택하세요:
+- Project name: frontend
+- Add TypeScript? No
+- Add JSX Support? No
+- Add Vue Router for Single Page Application development? Yes
+- Add Pinia for State Management? No
+- Add Vitest for Unit Testing? No
+- Add an End-to-End Testing Solution? No
+- Add ESLint for code quality? No
+3. **의존성 설치**: frontend 폴더로 이동하여 필요한 npm 패키지를 설치합니다.
+```Bash
+cd frontend
+npm install
+npm install axios # API 호출을 위한 라이브러리 설치
+```
+#### 2.2 Vue 컴포넌트 및 페이지 생성
+frontend/src 폴더의 기존 내용을 아래와 같이 수정합니다.
+
+frontend/src/App.vue (메인 레이아웃)
+```코드 스니펫
+<script setup>
+import { RouterView } from 'vue-router'
+</script>
+
+<template>
+  <div id="app">
+    <header>
+      <h1>간단 금전출납부</h1>
+      <nav>
+        <RouterLink to="/">내역 관리</RouterLink> | 
+        </nav>
+    </header>
+    <main>
+      <RouterView />
+    </main>
+  </div>
+</template>
+
+<style>
+#app {
+  font-family: Avenir, Helvetica, Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-align: center;
+  color: #2c3e50;
+  margin-top: 60px;
+}
+header {
+  margin-bottom: 20px;
+}
+nav {
+  margin-top: 10px;
+}
+nav a {
+  font-weight: bold;
+  color: #2c3e50;
+  text-decoration: none;
+  padding: 5px 10px;
+}
+nav a.router-link-exact-active {
+  color: #42b983;
+}
+main {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 20px;
+  border: 1px solid #eee;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+</style>
+```
+
+frontend/src/main.js (Vue 앱 초기화 및 라우터 설정)
+```JavaScript
+import { createApp } from 'vue'
+import App from './App.vue'
+import { createRouter, createWebHistory } from 'vue-router'
+
+import TransactionList from './components/TransactionList.vue'
+import TransactionForm from './components/TransactionForm.vue'
+
+const routes = [
+  { path: '/', component: TransactionList },
+  { path: '/add', component: TransactionForm },
+  { path: '/edit/:id', component: TransactionForm, props: true },
+]
+
+const router = createRouter({
+  history: createWebHistory(),
+  routes,
+})
+
+const app = createApp(App)
+app.use(router)
+app.mount('#app')
+```
+
+frontend/src/components/TransactionForm.vue (입력/수정 폼)
+```코드 스니펫
+<template>
+  <div>
+    <h2>{{ isEditMode ? '거래 수정' : '새 거래 추가' }}</h2>
+    <form @submit.prevent="saveTransaction">
+      <div class="form-group">
+        <label for="date">날짜:</label>
+        <input type="date" id="date" v-model="transaction.date" required />
+      </div>
+      <div class="form-group">
+        <label for="time">시각:</label>
+        <input type="time" id="time" v-model="transaction.time" required />
+      </div>
+      <div class="form-group">
+        <label for="account">거래처:</label>
+        <input type="text" id="account" v-model="transaction.account" placeholder="거래처 입력" required />
+      </div>
+      <div class="form-group">
+        <label for="item">품목:</label>
+        <input type="text" id="item" v-model="transaction.item" placeholder="품목 입력" required />
+      </div>
+      <div class="form-group">
+        <label for="quantity">수량:</label>
+        <input type="number" id="quantity" v-model.number="transaction.quantity" required />
+      </div>
+      <div class="form-group">
+        <label for="unitPrice">단가:</label>
+        <input type="number" id="unitPrice" v-model.number="transaction.unitPrice" required />
+      </div>
+      <div class="form-group">
+        <label for="amount">금액:</label>
+        <input type="number" id="amount" :value="calculatedAmount" readonly />
+      </div>
+      <div class="form-group">
+        <label for="description">적요:</label>
+        <textarea id="description" v-model="transaction.description" placeholder="적요 입력"></textarea>
+      </div>
+      <button type="submit">{{ isEditMode ? '수정 완료' : '추가' }}</button>
+      <button type="button" @click="cancel">취소</button>
+    </form>
+  </div>
+</template>
+
+<script setup>
+import { ref, computed, onMounted } from 'vue';
+import { useRouter, useRoute } from 'vue-router';
+import axios from 'axios';
+
+const router = useRouter();
+const route = useRoute();
+const API_URL = 'http://localhost:8080/api/transactions';
+
+const transaction = ref({
+  id: null,
+  date: '',
+  time: '',
+  account: '',
+  item: '',
+  quantity: 0,
+  unitPrice: 0,
+  amount: 0, // 금액은 백엔드에서 계산하므로 초기값 0
+  description: ''
+});
+
+const isEditMode = computed(() => route.params.id != null);
+
+// 금액 자동 계산 (프론트엔드에서 단순 표시용)
+const calculatedAmount = computed(() => {
+  return transaction.value.quantity * transaction.value.unitPrice;
+});
+
+onMounted(async () => {
+  if (isEditMode.value) {
+    try {
+      const response = await axios.get(`${API_URL}/${route.params.id}`);
+      // 백엔드에서 받은 데이터를 폼에 채웁니다.
+      // Date와 Time은 백엔드에서 string으로 오므로 그대로 사용합니다.
+      transaction.value = response.data;
+    } catch (error) {
+      console.error('Error fetching transaction:', error);
+      alert('거래 내역을 불러오는 데 실패했습니다.');
+      router.push('/'); // 실패 시 목록 페이지로 리다이렉트
+    }
+  } else {
+    // 새 거래 추가 모드일 경우, 현재 날짜와 시간으로 기본값 설정
+    const now = new Date();
+    transaction.value.date = now.toISOString().split('T')[0]; // YYYY-MM-DD
+    transaction.value.time = now.toTimeString().split(' ')[0].substring(0, 5); // HH:MM
+  }
+});
+
+const saveTransaction = async () => {
+  try {
+    if (isEditMode.value) {
+      await axios.put(`${API_URL}/${transaction.value.id}`, transaction.value);
+      alert('거래 내역이 수정되었습니다.');
+    } else {
+      await axios.post(API_URL, transaction.value);
+      alert('새 거래 내역이 추가되었습니다.');
+    }
+    router.push('/'); // 저장 후 목록 페이지로 이동
+  } catch (error) {
+    console.error('Error saving transaction:', error);
+    alert('거래 내역 저장에 실패했습니다.');
+  }
+};
+
+const cancel = () => {
+  router.push('/'); // 취소 시 목록 페이지로 이동
+};
+</script>
+
+<style scoped>
+.form-group {
+  margin-bottom: 15px;
+  text-align: left;
+}
+.form-group label {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: bold;
+}
+.form-group input[type="text"],
+.form-group input[type="date"],
+.form-group input[type="time"],
+.form-group input[type="number"],
+.form-group textarea {
+  width: calc(100% - 20px);
+  padding: 8px 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+.form-group textarea {
+  resize: vertical;
+  min-height: 80px;
+}
+button {
+  background-color: #42b983;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  margin-right: 10px;
+}
+button:hover {
+  background-color: #369c71;
+}
+button[type="button"] { /* 취소 버튼 스타일 */
+  background-color: #6c757d;
+}
+button[type="button"]:hover {
+  background-color: #5a6268;
+}
+</style>
+```
+
+frontend/src/components/TransactionList.vue (내역 조회 및 삭제)
+```코드 스니펫
+<template>
+  <div>
+    <h2>금전출납 내역</h2>
+    <button @click="goToAddTransaction">새 거래 추가</button>
+    
+    <table v-if="transactions.length > 0">
+      <thead>
+        <tr>
+          <th>날짜</th>
+          <th>시각</th>
+          <th>거래처</th>
+          <th>품목</th>
+          <th>수량</th>
+          <th>단가</th>
+          <th>금액</th>
+          <th>적요</th>
+          <th>관리</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr v-for="transaction in sortedTransactions" :key="transaction.id">
+          <td>{{ transaction.date }}</td>
+          <td>{{ transaction.time }}</td>
+          <td>{{ transaction.account }}</td>
+          <td>{{ transaction.item }}</td>
+          <td>{{ transaction.quantity }}</td>
+          <td>{{ transaction.unitPrice }}</td>
+          <td>{{ transaction.amount.toLocaleString() }}원</td>
+          <td>{{ transaction.description }}</td>
+          <td>
+            <button class="edit-btn" @click="editTransaction(transaction.id)">수정</button>
+            <button class="delete-btn" @click="deleteTransaction(transaction.id)">삭제</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <p v-else>거래 내역이 없습니다. 새로운 거래를 추가해주세요.</p>
+  </div>
+</template>
+
+<script setup>
+import { ref, onMounted, computed } from 'vue';
+import { useRouter } from 'vue-router';
+import axios from 'axios';
+
+const router = useRouter();
+const transactions = ref([]);
+const API_URL = 'http://localhost:8080/api/transactions';
+
+// 날짜 기준 내림차순 정렬 (최신순)
+const sortedTransactions = computed(() => {
+  return [...transactions.value].sort((a, b) => {
+    // 날짜를 기준으로 정렬 (YYYY-MM-DD 형식)
+    const dateA = new Date(a.date);
+    const dateB = new Date(b.date);
+    if (dateA.getTime() !== dateB.getTime()) {
+      return dateB.getTime() - dateA.getTime();
+    }
+    // 날짜가 같으면 시간 기준으로 정렬 (HH:MM 형식)
+    return b.time.localeCompare(a.time);
+  });
+});
+
+
+const fetchTransactions = async () => {
+  try {
+    const response = await axios.get(API_URL);
+    transactions.value = response.data;
+  } catch (error) {
+    console.error('Error fetching transactions:', error);
+  }
+};
+
+const goToAddTransaction = () => {
+  router.push('/add');
+};
+
+const editTransaction = (id) => {
+  router.push(`/edit/${id}`);
+};
+
+const deleteTransaction = async (id) => {
+  if (confirm('정말로 이 거래 내역을 삭제하시겠습니까?')) {
+    try {
+      await axios.delete(`${API_URL}/${id}`);
+      alert('거래 내역이 삭제되었습니다.');
+      fetchTransactions(); // 삭제 후 목록 새로고침
+    } catch (error) {
+      console.error('Error deleting transaction:', error);
+      alert('거래 내역 삭제에 실패했습니다.');
+    }
+  }
+};
+
+onMounted(fetchTransactions); // 컴포넌트 마운트 시 데이터 불러오기
+</script>
+
+<style scoped>
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+}
+th, td {
+  border: 1px solid #ddd;
+  padding: 8px;
+  text-align: left;
+}
+th {
+  background-color: #f2f2f2;
+}
+button {
+  background-color: #42b983;
+  color: white;
+  padding: 8px 15px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  margin-bottom: 10px;
+}
+button:hover {
+  background-color: #369c71;
+}
+.edit-btn {
+  background-color: #007bff;
+  margin-right: 5px;
+}
+.edit-btn:hover {
+  background-color: #0056b3;
+}
+.delete-btn {
+  background-color: #dc3545;
+}
+.delete-btn:hover {
+  background-color: #c82333;
+}
+p {
+  margin-top: 20px;
+  font-style: italic;
+  color: #666;
+}
+</style>
+```
+
+### 3. 프로젝트 실행 방법
+두 개의 터미널이 필요합니다.
+
+1. **백엔드 서버 실행**:
+- 첫 번째 터미널을 열고 cashbook-app/backend 폴더로 이동합니다.
+- go run main.go 명령어를 입력하고 실행합니다.
+- "Gin server running on port 8080" 메시지가 뜨는지 확인합니다.
+
+2. **프론트엔드 개발 서버 실행**:
+- 두 번째 터미널을 열고 cashbook-app/frontend 폴더로 이동합니다.
+- npm run dev 명령어를 입력하고 실행합니다.
+- "Local: http://localhost:5173/"와 같은 메시지가 뜨는지 확인합니다.
+
+3. **웹 브라우저 접속**:
+- 웹 브라우저를 열고 http://localhost:5173/ 로 접속합니다.
+
+#### 기능 설명
+- **메인 화면 (내역 관리)**: 현재까지 입력된 금전출납 내역을 테이블 형태로 보여줍니다. "새 거래 추가" 버튼을 클릭하면 입력 폼으로 이동합니다.
+- **새 거래 추가**: 날짜, 시각, 거래처, 품목, 수량, 단가, 적요를 입력하는 폼입니다. "추가" 버튼을 누르면 백엔드에 데이터가 저장되고 목록 화면으로 돌아갑니다.
+- **수정**: 각 내역 옆의 "수정" 버튼을 클릭하면 해당 내역의 정보를 폼에 미리 채워 넣고 수정할 수 있는 화면으로 이동합니다. 수정 후 "수정 완료" 버튼을 누르면 업데이트됩니다.
+- **삭제**: 각 내역 옆의 "삭제" 버튼을 클릭하면 확인 메시지 후 해당 내역이 삭제됩니다.
+
+#### 추가적인 확장 아이디어 (욕심내고 싶을 때)
+- **데이터베이스 연동**: 현재는 메모리에 저장되지만, 실제 프로젝트에서는 MySQL 같은 데이터베이스와 연동하여 데이터를 영구적으로 저장해야 합니다. Gin에서 GORM 같은 ORM 라이브러리를 사용하면 쉽게 구현할 수 있습니다.
+- **월별 집계 화면**: Gin 백엔드에서 월별 데이터를 집계하는 API를 만들고, Vue 프론트엔드에서 이를 호출하여 차트 등으로 시각화할 수 있습니다.
+- **유효성 검사**: 프론트엔드와 백엔드 모두에서 입력 데이터에 대한 더 정교한 유효성 검사를 추가할 수 있습니다.
+- **인증/인가**: 사용자별로 금전출납부를 관리해야 한다면 로그인 및 사용자 관리 기능을 추가해야 합니다.
+- **검색/필터링**: 특정 조건(날짜 범위, 품목 등)으로 내역을 검색하거나 필터링하는 기능을 추가할 수 있습니다.
+
+이 프로젝트는 Go, Gin, Vue의 기본적인 연동 방식을 이해하고 CRUD 기능을 구현하는 데 좋은 시작점이 될 것입니다.
+
+
+
