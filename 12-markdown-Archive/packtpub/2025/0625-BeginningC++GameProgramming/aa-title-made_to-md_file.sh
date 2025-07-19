@@ -23,23 +23,6 @@ file_Made () {
 	small_Jemok=$(echo "${Jemok,,}" | sed 's/ /_/g' | sed 's/\./_/g' | sed 's/“/\"/g' | sed 's/”/\"/g' | sed "s/’/'/g" | sed "s/,//g")
 	cat <<__EOF__ | tee "${small_Jemok}.md"
 
----------- cut line ----------
-
-ff-func-key-setting.vi
-
-| q     | w     | e     | r     | t     | y     | u     | i     | o     | p     |
-:------:|------:|------:|------:|------:|------:|------:|------:|------:|------:|
-|### title | \`\`\` \`\`\` Expl| \`xxx \`|\`xxx.\`|\`xxx,\`|\`xxx;\`|\`xxx)\`|\`xxx:\`|\`xxx}\`| 없 음 |
-| a     | s     | d     | f     | g     | h     | j     | k     | l     |
-|- \`xxx\`|- \*\*xxx \*\*| \*\*xxx.\*\*| \*\*xxx,\*\*| \*\*xxx;\*\*| \*\*xxx)\*\*| \*\*xxx:\*\*| \*\*xxx}\*\*|
-
-마크다운 입력시 vi 커맨드 표시 ; (^[)=Ctrl+[ ; (^M)=Ctrl+M
-인용구 작성시 ; 본문앞에는 꺽쇠 > 붙이고, 스타일 첨가시 끝줄에 종류별 구분을 표시한다.
-https://docs.requarks.io/en/editors/markdown > Blockquotes > Stylings >
-blue= {.is-info} ; green= {.is-success} ; yellow= {.is-warning} ; red= {.is-danger}
-
----------- cut line ----------
-
 ${link_box}
 |:----:|:----:|:----:|
 
@@ -55,14 +38,54 @@ ${link_box}
 > (2) Short Description: ${JeoJa}
 > (3) Path: /${top_path}/${small_ChulPanSa}/${read_y4}/${small_MMDD_JeMok}/${CurrentSeq}
 > (4) tags: ${tags}
+> (5) .md 파일의 이름: ${small_Jemok}.md
+> (6) 이미지 저장폴더: ./${img_dir}
+> (7) 이미지링크 예시: ![ 설명 ](${img_link}/99-예시_이미지.webp)
 > 책이름: ${JeMok}
-> 책 안내: ${book_info}
+> 안내: ${book_info}
 > 서문: ${SeoMun}
 > 독서시작일: $(date +'%Y-%m-%d %a %H:%M:%S')
-> 이미지 링크: ${img_link}
-> 이미지 저장폴더: ${img_dir}
-> .md Name: ${small_Jemok}.md
 
+---------- cut line ----------
+
+https://coldmater.tistory.com/226
+Vim 에서 매크로 등록하고 실행하기
+1. 알파벳(a-z), 숫자(0-9) 중 1 글자로 된 '레지스터' 를 정해서
+   +---+----------+
+   | q | 레지스터 | 로 매크로 기록을 시작한다.
+   +---+----------+
+- 'q' 를 누르고, 레지스터 이름으로 a-z, 0-9 중 하나를 정해서 입력하면
+  (레지스터로 'a'를 입력했다고 가정)
+  상태표시줄에 'Recording @a' 라고 표시되면서 실제 명령어를 입력받을 준비가 된다.
+- 명령어를 다 입력했으면, 다시 \`q\` 를 눌러서 매크로 기록을 끝낸다.
+   +---+----------+
+2. | @ | 레지스터 | 로 레지스터 에 저장된 매크로를 실행한다.
+   +---+----------+
+   +----+
+3. | @@ | 로 직전에 실행한 매크로를 다시한번 실행한다.
+   +----+
+   +----------+---+----------+      +----------+----+
+4. | 반복횟수 | @ | 레지스터 | 또는 | 반복횟수 | @@ | 로 저장된 매크로를
+   +----------+---+----------+      +----------+----+
+   '반복횟수' 만큼 재실행 할수 있다.
+5. 또는, 아래와 같이 타이핑할 매크로 를 vi 로 입력해 놓고,
+                +---+----------+----+
+해당 줄 위에서, | " | 레지스터 | yy | 로 레지스터에 저장할수 있다.
+                +---+----------+----+
+
+**ff-func-key-setting.vi**
+|   q   |   w   |   e   |   r   |   t   |   y   |   u   |   i   |   o   |   p   |
+:------:|------:|------:|------:|------:|------:|------:|------:|------:|------:|
+|- 'X': |'''Expl| 'XX'Δ | 'XX'. | 'XX', | 'XX'; | 'XX') | 'XX': | 'XX'} |       |
+|'=BackQuote    |Δ=space|       |       |       |       |       |       |       |
+|   a   |   s   |   d   |   f   |   g   |   h   |   j   |   k   |   l   |   ;   |
+|-**X**:|  ###  |**X**_ |**X**. |**X**, |**X**; |**X**) |**X**: |**X**} |       |
+|       |       |       |       |       |       |       |       |       |       |
+|   z   |   x   |   c   |   v   |   b   |   n   |   m   |   ,   |   .   |   /   |
+|       |       |       |       |       |       |       |       |       |       |
+|       |       |       |       |       |       |       |       |       |       |
+
+---------- cut line ----------
 __EOF__
 }
 #-- > (1) Path: /books/packtpub/2025/0625/01
@@ -94,7 +117,7 @@ JemokMade () {
 	mkdir -p ${img_dir}
 	echo "#== mkdir ${img_dir}"
 	#-- .md 파일에서 지정하는 이미지 보관 폴더.
-	img_link="/${small_ChulPanSa}/${read_y4}/${read_mmdd}/${CurrentSeq}"
+	img_link="/img/${small_ChulPanSa}/${read_y4}/${img_dir}"
 }
 #-- 링크를 만든다. JemokMade #from <-- md_Create () {
 
