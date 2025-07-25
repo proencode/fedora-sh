@@ -1,7 +1,8 @@
 <!DOCTYPE html><html><head><meta charset="UTF-8"><title>최종버전 다운로드</title><style>
   /* 테이블 스타일 추가: 테두리, 패딩, 정렬 등을 보기 좋게 합니다. */
   table {
-    width: 50%;
+    width: 94%; /* 전체 너비의 80% 사용 */
+    margin: 0 auto; /* 좌우 여백 자동 설정 (가운데 정렬) */
     border-collapse: collapse;
     margin-top: 15px;
   }
@@ -9,6 +10,8 @@
     border: 1px solid #ddd;
     padding: 8px;
     text-align: left;
+    /* 컬럼 너비를 자동으로 조절하도록 설정 */
+    width: auto;
   }
   th {
     background-color: #f2f2f2;
@@ -22,11 +25,11 @@
       { url_base: "https://www.anaconda.com/download/success",
         name: "Ana_Mini_conda3", version: "2025.06-0", date: "250718_금-0936" },
       { url_base: "https://developer.android.com/studio?hl=ko",
-        name: "AndroidStudio", version: "2025.1.1.14", date: "250716수" },
+        name: "AndroidStudio", version: "Narwhal | 2025.1.1 Patch 1 - 2025.1.1.14", date: "250716수" },
       { url_base: "https://www.google.co.kr/chrome/",
         name: "chrome", version: "138.0.7204.101", date: "250710목" },
       { url_base: "https://www.cursor.com/downloads",
-        name: "cursor", version: "1.2.2", date: "2507118_금-1057" },
+        name: "cursor", version: "1.2.4", date: "250724_목-1012" },
       { url_base: "https://www.gimp.org/downloads/",
         name: "gimp", version: "3.0.4", date: "250628토" },
       { url_base: "https://git-scm.com/downloads",
@@ -48,7 +51,7 @@
       { url_base: "https://www.virtualbox.org/wiki/Downloads",
         name: "VirtualBox", version: "7.1.12", date: "250716수" },
       { url_base: "https://visualstudio.microsoft.com/ko/downloads/",
-        name: "VisualStudio2022__and__VS_Code", version: "x64-1.102.1", date: "250718_금-1706" },
+        name: "Visual_Studio", version: "VS_2022--VSCode_x64-1.102.2", date: "250724_목-1402" },
       { url_base: "https://winscp.net/eng/download.php",
         name: "WinSCP", version: "6.5.3", date: "250717목" },
     ];
@@ -90,7 +93,10 @@
 
       // 본문에 붙이는 각 데이터 (<td>) 생성 및 추가
       const nameTd = document.createElement('td');
-      nameTd.textContent = program.name;
+      // **** 이 부분이 수정됩니다. ****
+      // nameTd.textContent = program.name;
+      // 프로그램 이름에 url_base로 연결되는 링크를 추가합니다.
+      nameTd.innerHTML = `<a href="${program.url_base}" target="_blank">${program.name}</a>`;
       tr.appendChild(nameTd);
 
       const versionTd = document.createElement('td');
