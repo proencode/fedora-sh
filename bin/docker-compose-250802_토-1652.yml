@@ -1,0 +1,35 @@
+version: "3"
+services:
+
+  db:
+    image: postgres:11-alpine
+    environment:
+      POSTGRES_DB: wiki #-- 데이터베이스 이름
+      POSTGRES_USER: imwiki #-- 데이터베이스 사용자 이름
+      POSTGRES_PASSWORD: wikiam9ho #-- 데이터베이스 비번
+
+    logging:
+      driver: "none"
+    restart: unless-stopped
+    volumes:
+      - /home/docker/pgsql:/var/lib/postgresql/data #-- DB 설치위치
+    container_name:
+      wikidb #-- 데이터베이스 컨테이너 이름
+
+  wiki:
+    image: requarks/wiki:2
+    depends_on:
+      - db
+    environment:
+      DB_TYPE: postgres
+      DB_HOST: db
+      DB_PORT: 5432
+      DB_NAME: wiki #-- 데이터베이스 이름
+      DB_USER: imwiki #-- 데이터베이스 사용자 이름
+      DB_PASS: wikiam9ho #-- 데이터베이스 비번
+
+    restart: unless-stopped
+    ports:
+      - "5940:3000" #-- 위키연결 포트번호
+    container_name:
+      wiki #-- 위키 컨테이너 이름
