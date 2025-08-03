@@ -21,9 +21,9 @@ DB_VOLUME=$(enter_value "${qq}-3. DB 설치위치:" "${DOCKER_ROOT}/pgsql")
 echo "${rrr}[ ${xxx}${DB_VOLUME} ${rrr}]${xxx}"
 DB_NAME=$(enter_value "${qq}-4. pgsql 데이터베이스 이름:" "wiki")
 echo "${rrr}[ ${xxx}${DB_NAME} ${rrr}]${xxx}"
-DB_USER=$(enter_value "${qq}-5. pgsql 사용자 이름:" "imwiki")
+DB_USER=$(enter_value "${qq}-5. pgsql 사용자 이름:" "나는위키야")
 echo "${rrr}[ ${xxx}${DB_USER} ${rrr}]${xxx}"
-DB_PASS=$(enter_value "${qq}-6. pgsql 비번:" "wikiam9ho")
+DB_PASS=$(enter_value "${qq}-6. pgsql 비번:" "위키암구호대라")
 echo "${rrr}[ ${xxx}${DB_PASS} ${rrr}]${xxx}"
 DB_CONTAINER=$(enter_value "${qq}-7. 데이터베이스 컨테이너 이름:" "wikidb")
 echo "${rrr}[ ${xxx}${DB_CONTAINER} ${rrr}]${xxx}"
@@ -111,7 +111,7 @@ else
     cat <<__EOF__
 # |
 # | (5-1) 백업하는 .7z 파일에 지정해 줄 새로운 ===${ccc}비밀번호${xxx}=== 를 입력하세요.
-${bbb}v--- 비번 입력:${xxx}
+${bbb}v=== 비번 입력:${xxx}
 __EOF__
     read -s backup_pswd
 
@@ -121,9 +121,11 @@ __EOF__
 # |
 # | (5-2) 업로드 하기전에, 현재의 wiki DB 파일을 백업합니다.
 # |
-# | time sudo docker exec ${DB_CONTAINER} pg_dumpall -U ${DB_USER} | 7za a -mx=9 -pxxx -si ${BACKUP_FILE}
+# | time sudo docker exec ${DB_CONTAINER} pg_dumpall -U ${DB_USER} | 7za a -mx=9 -pxxx -si ${BACKUP_FILE} # 오류 가능성
+# |
+# | time sudo bash -c "docker exec ${DB_CONTAINER} pg_dumpall -U ${DB_USER} | 7za a -mx=9 -p${PASSWD} -si ${BACKUP_FILE}" # OK
 __EOF__
-    time sudo docker exec ${DB_CONTAINER} pg_dumpall -U ${DB_USER} | 7za a -mx=9 -p${backup_pswd} -si ${BACKUP_FILE}
+    time sudo bash -c "docker exec ${DB_CONTAINER} pg_dumpall -U ${DB_USER} | 7za a -mx=9 -p${PASSWD} -si ${BACKUP_FILE}"
 
 	CLOUD_Y2M2=${DB_CONTAINER}/$(date +%y%m)
     cat <<__EOF__
@@ -148,30 +150,35 @@ cat <<__EOF__
 # |
 # | (6) 현재의 wiki DB 를 삭제합니다.
 # |
-    time sudo docker exec -it ${DB_NAME} dropdb -U ${DB_USER} ${DB_CONTAINER}
+# | time sudo docker exec -it ${DB_NAME} dropdb -U ${DB_USER} ${DB_CONTAINER} # 잘못됨.
+# |
+# | time sudo docker exec -it ${DB_CONTAINER} dropdb -U ${DB_USER} ${DB_NAME} # OK
 __EOF__
 time sudo docker exec -it ${DB_NAME} dropdb -U ${DB_USER} ${DB_CONTAINER}
 cat <<__EOF__
 # |
 # | (7) 빈 wiki DB 를 새로 만듭니다.
 # |
-    time sudo docker exec -it ${DB_NAME} createdb -U ${DB_USER} ${DB_CONTAINER}
+# | time sudo docker exec -it ${DB_NAME} createdb -U ${DB_USER} ${DB_CONTAINER} # 잘못됨.
+# |
+# | time sudo docker exec -it ${DB_CONTAINER} createdb -U ${DB_USER} ${DB_NAME} # OK
 __EOF__
 time sudo docker exec -it ${DB_NAME} createdb -U ${DB_USER} ${DB_CONTAINER}
 cat <<__EOF__
 # |
 # | (8) 백업된 wiki DB 파일을 데이터베이스에 다시 붓습니다. (RESTORE)
 # |
-    time 7za x -so ${zzz} | sudo docker exec -i ${DB_NAME} psql -U ${DB_USER} ${DB_CONTAINER}
-# |
-# |
 # | (9) 백업할때 입력한 ----비밀번호---- 를 입력하세요.
 ${bbb}v--- 비번 입력:${xxx}
 __EOF__
     read -s backup_pswd
-    time sudo docker exec ${DB_CONTAINER} pg_dumpall -U ${DB_USER} | 7za a -mx=9 -p${backup_pswd} -si ${BACKUP_FILE}
-time 7za x -so ${RESTORE_FILE} | sudo docker exec -i ${DB_NAME} psql -U ${DB_USER} ${DB_CONTAINER}
+
 cat <<__EOF__
+# |
+# | time  7za x -p${backup_pswd} -so ${RESTORE_FILE} | sudo docker exec -i ${DB_NAME} psql -U ${DB_USER} ${DB_CONTAINER} # 잘못됨.
+# |
+# | time 7za x -p${backup_pswd} -so ${RESTORE_FILE} | sudo docker exec -i ${DB_CONTAINER} psql -U ${DB_USER} -d ${DB_NAME} # OK
+$(time 7za x -p${backup_pswd} -so ${RESTORE_FILE} | sudo docker exec -i ${DB_CONTAINER} psql -U ${DB_USER} -d ${DB_NAME})
 # |
 # | (10) 멈췄던 위키 컨테이너를 다시 시작합니다.
 # |
@@ -184,11 +191,6 @@ $(sudo docker start ${WIKI_CONTAINER})
 # | sudo docker ps -a
 $(sudo docker ps -a)
 # |
-__EOF__
-# |
-
-
-cat <<__EOF__
 # |
 # | (11) 백업 작업이 끝났습니다.
 # |
@@ -199,7 +201,7 @@ $(ls -l ${RESTORE_FILE})
 # |
 __EOF__
 
-NEW_DOCKER_FILE="${DOCKER_ROOT}/compose/$(date +%y%m%d_%a-%H%M)-docker-compose.yml"
+NEW_DOCKER_FILE="${DOCKER_ROOT}/compose/docker-compose-$(date +%y%m%d_%a-%H%M).yml"
 cat > ${NEW_DOCKER_FILE} <<__EOF__
 version: "3"
 services:
