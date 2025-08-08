@@ -1,0 +1,32 @@
+services:
+
+  database:
+    image: postgres:11-alpine
+    environment:
+      POSTGRES_DB: wiki #-- wikidb #-- 데이터베이스 이름
+      POSTGRES_PASSWORD: wikijsrocks #-- wikipswd #-- 데이터베이스 비번
+      POSTGRES_USER: wikijs #-- wikiuser #-- 데이터베이스 사용자 이름
+    logging:
+      driver: "none"
+    restart: unless-stopped
+    volumes:
+      - /home/docker/pgsql:/var/lib/postgresql/data #-- DB 설치위치
+    container_name:
+      wikijsdb #-- dbcon #-- 데이터베이스 컨테이너 이름
+
+  wiki:
+    image: requarks/wiki:2
+    depends_on:
+      - database
+    environment:
+      DB_TYPE: postgres
+      DB_HOST: database
+      DB_PORT: 5432
+      DB_NAME: wiki #-- wikidb #-- 데이터베이스 이름
+      DB_PASS: wikijsrocks #-- wikipswd #-- 데이터베이스 비번
+      DB_USER: wikijs #-- wikiuser #-- 데이터베이스 사용자 이름
+    restart: unless-stopped
+    ports:
+      - "5540:3000" #-- "5940:3000" #-- 위키연결 포트번호
+    container_name:
+      wikijs #-- wikicon #-- 위키 컨테이너 이름
