@@ -27,6 +27,6 @@ services:
       DB_USER: wikijs #-- wikiuser #-- 데이터베이스 사용자 이름
     restart: unless-stopped
     ports:
-      - "5540:3000" #-- "5940:3000" #-- 위키연결 포트번호
+      - "15940:3000" #-- "5940:3000" #-- 위키연결 포트번호
     container_name:
       wikijs #-- wikicon #-- 위키 컨테이너 이름

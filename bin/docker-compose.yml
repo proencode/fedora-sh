@@ -27,6 +27,6 @@ services:
       DB_USER: wikijs
     restart: unless-stopped
     ports:
-      - "5540:3000"
+      - "15940:3000"
     container_name:
       wikijs
