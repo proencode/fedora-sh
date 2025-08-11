@@ -1,0 +1,441 @@
+#!/bin/bash
+
+CMD_NAME=`basename $0` ; CMD_DIR=${0%/$CMD_NAME}
+if [ "x$CMD_DIR" == "x" ] || [ "x$CMD_DIR" == "x$CMD_NAME" ]; then CMD_DIR="." ; fi
+
+lll=$(tput bold)$(tput setaf 0); rrr=$(tput bold)$(tput setaf 1); ggg=$(tput bold)$(tput setaf 2); yyy=$(tput bold)$(tput setaf 3); bbb=$(tput bold)$(tput setaf 4); mmm=$(tput bold)$(tput setaf 5); ccc=$(tput bold)$(tput setaf 6); www=$(tput bold)$(tput setaf 7); xxx=$(tput bold)$(tput sgr0); uuu=$(tput cuu 2)
+
+cmdRun () {
+	echo "${ccc}#-- ${yyy}$1 ${ggg}#-- ${ccc}$2 ${bbb}($(date +%y%m%d_%a-%H%M%S))${xxx}"; echo "$1" | bash
+	echo "${ggg}#// ${bbb}$1 ${ggg}#-- $2 ${bbb}($(date +%y%m%d_%a-%H%M%S))${xxx}"
+}
+cmdCont () {
+	echo -e "${ccc}#-- ${yyy}$1 ${ggg}#-- ${ccc}$2 ${bbb}($(date +%y%m%d_%a-%H%M%S))\n${mmm}#-- Enter to continue${xxx}:"
+	read a ; echo "${uuu}"; echo "$1" | bash
+	echo "${ggg}#// ${bbb}$1 ${ggg}Enter to continue${xxx}: ${ggg}#-- $2 ${bbb}($(date +%y%m%d_%a-%H%M%S))${xxx}"
+}
+ALL_INSTALL="n"
+cmdYenter () {
+	echo "${ccc}#-- ${yyy}$1 ${ggg}#-- ${ccc}$2 ${bbb}($(date +%y%m%d_%a-%H%M%S))${xxx}"
+	if [ "x${ALL_INSTALL}" = "xy" ]; then
+		echo "$1" | bash ; echo "${ggg}#// ${bbb}$1 ${mmm}#-- $2 ${bbb}($(date +%y%m%d_%a-%H%M%S))${xxx}"
+	else
+		echo "${ccc}#-- ${rrr}press ${ccc}'${yyy}y${ccc}'${rrr} or Enter${xxx}:"; read a; echo "${uuu}"
+		if [ "x$a" = "xy" ]; then
+			echo "${rrr}-OK-${xxx}"; echo "$1" | bash
+			echo "${ggg}#// ${bbb}$1 press 'y' or Enter: ${mmm}#-- $2 ${bbb}($(date +%y%m%d_%a-%H%M%S))${xxx}"
+		else
+			echo "${rrr}[ ${bbb}$1 ${rrr}] ${mmm}<--- 명령을 실행하지 않습니다. ${bbb}($(date +%y%m%d_%a-%H%M%S))${xxx}"
+		fi
+	fi
+}
+eSq=0
+eSqMsg=""
+echoSeq () {
+	if [ "x$1" = "x" ]; then
+		echo "${bbb}(${eSq}) ${eSqMsg}${xxx}" ; echo "${bbb}#--${xxx}"
+	else
+		eSq=$(( ${eSq} + 1 ))
+		echo "${mmm}(${eSq}) ${ccc}$1${xxx}"
+		eSqMsg=$1
+	fi
+}
+#-- source ${HOME}/bin/color_base #-- 221027목-1257 CMD_DIR CMD_NAME cmdRun cmdCont cmdYenter echoSeq 
+##<---- source ${HOME}/bin/color_base #-- 221027목-1257 CMD_DIR CMD_NAME cmdRun cmdCont cmdYenter echoSeq 
+
+log_signon="nok" ; log_savefile="/tmp/log_savefile" #-- "ok" 면 log_savefile 에 로그 기록
+show_then_run () {
+	if [ "x$show_ok" = "xok" ]; then
+		cmdRun "$1" "#-- ${showno} ${showqq}"
+	else
+		echo "$1" | bash
+	fi
+	if [ "x$log_signon" = "xok" ]; then echo "show_then_run () { $1 } ${bbb}($(date +%y%m%d_%a-%H%M%S))${xxx}" >> ${log_savefile} ; fi
+}
+show_then_view () {
+	if [ "x$show_ok" = "xok" ]; then echo "${ggg}#-- $1 ${ccc}#-- (${showno}) ${showqq} ${bbb}($(date +%y%m%d_%a-%H%M%S))${xxx}" ; fi
+	if [ "x$log_signon" = "xok" ]; then echo "show_then_view () { $1 #-- (${showno}) ${showqq} } ${bbb}($(date +%y%m%d_%a-%H%M%S))${xxx}" >> ${log_savefile} ; fi
+}
+show_title () {
+	if [ "x$show_ok" = "xok" ]; then
+		cat <<__EOF__
+    ${ggg}|
+    |
+    | ${ccc}$1
+    ${ggg}|
+    |${xxx}
+__EOF__
+	fi
+	if [ "x$log_signon" = "xok" ]; then echo "show_title () { $1 } ${bbb}($(date +%y%m%d_%a-%H%M%S))${xxx}" >> ${log_savefile} ; fi
+}
+#---> value_keyin "LOGIN_PATH" "${LOGIN_PATH}" "데이터베이스의 로그인 패쓰 를 입력하세요."
+value_keyin () {
+	FIELD_NAME=$1
+	FIELD_VALUE=$2
+	FIELD_TITLE=$3
+	cat <<__EOF__
+
+${ggg}#-- ${FIELD_TITLE}[ ${ccc}${FIELD_VALUE} ${ggg}]${xxx}
+__EOF__
+	read return_value
+
+	if [ "x$return_value" = "x" ]; then
+		return_value="${FIELD_VALUE}"
+	fi
+	cat <<__EOF__
+${uuu}${ccc}${FIELD_NAME}: ${rrr} ${yyy}${return_value} ${rrr}]
+
+__EOF__
+}
+#<--- value
+
+MEMO="cron job"
+# cat <<__EOF__
+# ${mmm}>>>>>>>>>>${ggg} $0 ${mmm}||| ${ccc}${MEMO} ${mmm}>>>>>>>>>>${xxx}
+# __EOF__
+# zz00logs_folder="${HOME}/zz00logs" ; if [ ! -d "${zz00logs_folder}" ]; then cmdRun "mkdir ${zz00logs_folder}" "로그 폴더" ; fi
+# zz00log_name="${zz00logs_folder}/zz.$(date +"%y%m%d%a-%H%M%S")__RUNNING_${CMD_NAME}" ; touch ${zz00log_name}
+# ----
+
+this_year=$(date +%Y) #-- 2022
+this_wol=$(date +%m) #-- 07
+ymd_hm=$(date +"%y%m%d%a-%H%M") #-- ymd_hm=$(date +"%y%m%d-%H%M%S")
+pswd_ym=$(date +"%y%m")
+
+yoil_number1to7=$(date +%u) #------------ 월1 화2 수3 목4 금5 토6 일7
+# yoil_atog=$(echo "abcdefg" | cut -c ${yoil_number1to7}) #---- 요일 a...g 일...토 #-- XX
+ju_beonho=$(date +%V) #-- 1년중 몇번째 주인지 표시. V: 월요일마다 하나씩 증가한다. U: 1월1일=일요일: 01, 아니면: 00. 일요일마다 하나씩 증가한다.
+
+
+if [ "x$1" = "x" ]; then
+	cat <<__EOF__
+#-- !		!		~/dbcopy/ 아래	gc:/ 아래	!		!	not--use
+#-- 1		2		3		4		5		6	not--use
+#-- DB_NAME	DB_LOGIN_PATH	LOCAL_FOLDER	REMOTE_FOLDER	RCLONE_NAME	OK?	DB_USER_NAME
+#-- kaosorder2	kaoslog		kaosdb		11-kaosorder	kaosngc		ok/""	kaosorder2 (카오스)
+#-- gate242	swlog		gatedb		11-gate242	swlibgc		ok/""	gateroot (서원)
+#-- wiki	not--use	wikidb		11-wiki.js	yosjgc		ok/""	wiki (wiki.js)
+#--
+#-- db_name	"" #-- 지정한 데이터베이스로 진행합니다.
+#-- db_name	"ok" #-- 지정한 데이터베이스로 진행하면서 과정을 보여줍니다.
+#-- db_name	"enter" #-- 조건값을 터미널에서 입력하도록 합니다. 진행 과정도 보여줍니다.
+#--
+#-- wiki ok #-- wiki 백업용, 진행과정 보여줌,
+#--
+
+${yyy}${CMD_NAME} ${mmm}[ DB_NAME ] 을 지정하지 않았으므로 작업을 끝냅니다.${xxx}
+__EOF__
+	exit -1
+fi
+
+if [ "x$1" = "xkaosorder" ]; then
+	DB_NAME="$1" #-- 백업할 데이터베이스 이름
+	LOGIN_PATH="kaoslog" #-- 데이터베이스 로그인 패쓰
+	LOCAL_FOLDER="kaosdb" #-- 백업파일을 일시적으로 저장하는 로컬 저장소의 디렉토리 이름
+	REMOTE_FOLDER="11-kaosorder" #-- 원격 저장소의 첫번째 폴더 이름
+	RCLONE_NAME="kaosngc" #-- rclone 이름 kaos.notegc
+	DB_TYPE="mysql"
+	PSWD_GEN_CODE="zkdhtm${pswd_ym}"
+else
+if [ "x$1" = "xgate242" ]; then
+	DB_NAME="$1" #-- 백업할 데이터베이스 이름
+	LOGIN_PATH="swlog" #-- 데이터베이스 로그인 패쓰
+	LOCAL_FOLDER="gatedb" #-- 백업파일을 일시적으로 저장하는 로컬 저장소의 디렉토리 이름
+	REMOTE_FOLDER="11-gate242" #-- 원격 저장소의 첫번째 폴더 이름
+	RCLONE_NAME="swlibgc" #-- rclone 이름 seowontire.libgc
+	DB_TYPE="mysql"
+	PSWD_GEN_CODE="tjdnjs${pswd_ym}"
+else
+if [ "x$1" = "xwiki" ]; then
+	DB_NAME="$1" #-- 백업할 데이터베이스 이름
+	LOGIN_PATH="wikipsql" #-- 데이터베이스 로그인 패쓰 ;;; pgsql 이라서 쓰지는 않음.
+	LOCAL_FOLDER="wikidb" #-- 백업파일을 일시적으로 저장하는 로컬 저장소의 디렉토리 이름
+	REMOTE_FOLDER="wikijsdb" #-- 원격 저장소의 첫번째 폴더 이름
+	RCLONE_NAME="swlibgc" #-- rclone 이름 yosjeongc
+	DB_TYPE="pgsql"
+	PSWD_GEN_CODE="dnlzl${pswd_ym}"
+else
+	cat <<__EOF__
+
+${yyy}${CMD_NAME} ${mmm} $1 데이터베이스는 프로그램에 등록되지 않았으므로 작업을 끝냅니다.${xxx}
+__EOF__
+	exit -1
+fi
+fi
+fi
+
+ENTER_VALUE="NOok" #-- ok=환경변수 대신 하나하나 입력하도록 한다.
+show_ok="NOok" #-- ok=작업과정을 화면에 보여준다.
+
+
+if [ "x$2" = "xok" ]; then
+	show_ok="ok"
+else
+	if [ "x$2" = "xenter" ]; then
+		ENTER_VALUE="ok" #-- ok=환경변수 대신 하나하나 입력하도록 한다.
+	else
+		if [ "x$2" != "x" ]; then
+			LOGIN_PATH="$2"
+		fi
+	fi
+fi
+if [ "x$3" != "x" ]; then
+	LOCAL_FOLDER="$3"
+fi
+if [ "x$4" != "x" ]; then
+	REMOTE_FOLDER="$4"
+fi
+if [ "x$5" != "x" ]; then
+	RCLONE_NAME="$5"
+fi
+if [ "x$6" = "xok" ]; then
+	show_ok="ok"
+fi
+
+if [ "x${ENTER_VALUE}" = "xok" ]; then
+	value_keyin "LOGIN_PATH" "${LOGIN_PATH}" "데이터베이스의 로그인 패쓰 를 입력하세요."
+	LOGIN_PATH="${return_value}"
+
+	value_keyin "LOCAL_FOLDER" "${LOCAL_FOLDER}" "백업파일을 임시로 저장할 로컬 저장소의 디렉토리 이름을 입력하세요."
+	LOCAL_FOLDER="${return_value}"
+
+	value_keyin "REMOTE_FOLDER" "${REMOTE_FOLDER}" "원격 저장소의 첫번째 폴더 이름을 입력하세요."
+	REMOTE_FOLDER="${return_value}"
+
+	value_keyin "RCLONE_NAME" "${RCLONE_NAME}" "rclone 이름을 입력하세요."
+	RCLONE_NAME="${return_value}"
+
+fi
+
+# backup_home_dir="${HOME}/dbcopy"
+# backup_home_dir="/home/backup"
+backup_home_dir="/opt/backup"
+LOCAL_FOLDER="${backup_home_dir}/${LOCAL_FOLDER}" #-- /opt 디렉토리 아래에 보관한다.
+
+if [ ! -d ${LOCAL_FOLDER} ];then
+	showno="(0)" ; showqq="보관용 로컬 디렉토리를 만듭니다."
+	#--250811월1106-- show_then_run "sudo mkdir -p ${LOCAL_FOLDER} ; sudo chown ${USER}:${USER} ${LOCAL_FOLDER}"
+	show_then_run "mkdir -p ${LOCAL_FOLDER} ; chown ${USER}:${USER} ${LOCAL_FOLDER}"
+	#--250811월1106-- if [ "x$log_signon" = "xok" ]; then echo "sudo ls -l ${LOCAL_FOLDER}/../ ${LOCAL_FOLDER}" >> ${log_savefile} ; sudo ls -l ${LOCAL_FOLDER}/../ ${LOCAL_FOLDER} >> ${log_savefile} ; echo "#^^^---===---vvv" >> ${log_savefile} ; fi
+	if [ "x$log_signon" = "xok" ]; then echo "ls -l ${LOCAL_FOLDER}/../ ${LOCAL_FOLDER}" >> ${log_savefile} ; ls -l ${LOCAL_FOLDER}/../ ${LOCAL_FOLDER} >> ${log_savefile} ; echo "#^^^---===---vvv" >> ${log_savefile} ; fi
+fi
+uname_n=$(uname -n)
+yoil_sql_7z=".${yoil_number1to7}yoil.sql.7z" #-- Y[1-7].sql.7z // 요일 표시
+YOIL_sql7z=${DB_NAME}_${ymd_hm}_${uname_n}${yoil_sql_7z}
+
+this_wol_sql_7z=".${this_wol}wol.sql.7z" #-- W07.sql.7z // 월 표시
+WOL_sql7z=${DB_NAME}_${ymd_hm}_${uname_n}${this_wol_sql_7z}
+
+ju_beonho_sql_7z=".${ju_beonho}ju.sql.7z" #-- J01.sql.7z // 1년중 몇번째 주인지 표시
+JU_sql7z=${DB_NAME}_${ymd_hm}_${uname_n}${ju_beonho_sql_7z}
+
+LOCAL_THIS_YEAR=${LOCAL_FOLDER}/${this_year} #-- 년도 폴더에는 매월 마지막 백업 1개씩만 보관한다.
+
+LOCAL_YOIL=${LOCAL_THIS_YEAR}/1_7yoil #-- 년도의 yoil 폴더에는 최근 1주일치만 보관한다.
+LOCAL_JU=${LOCAL_THIS_YEAR}/01_53ju #-- 년도의 ju 폴더에는 매주 마지막 백업 1개씩만 보관한다.
+
+REMOTE_YEAR=${REMOTE_FOLDER}/${this_year}
+
+REMOTE_YOIL=${REMOTE_YEAR}/1_7yoil #-- rclone 명령으로 보내는 원격 저장소의 데이터베이스구분/년eh/last7 폴더이름
+REMOTE_JU=${REMOTE_YEAR}/01_53ju #-- rclone 명령으로 보내는 원격 저장소의 데이터베이스구분/년eh/sunday 폴더이름
+
+
+##-- REMOTE / 2022 / 08 / 최근 1주일치
+if [ "x$log_signon" = "xok" ]; then echo "----$(date +%y%m%d%a-%H%M%S)--- 193 --- DB_NAME ${DB_NAME}; LOGIN_PATH ${LOGIN_PATH}; LOCAL_FOLDER ${LOCAL_FOLDER}; REMOTE_FOLDER ${REMOTE_FOLDER}; RCLONE_NAME ${RCLONE_NAME}; DB_TYPE ${DB_TYPE}; PSWD_GEN_CODE ${PSWD_GEN_CODE}; " >> ${log_savefile} ; fi
+
+
+show_title "${this_year}/${this_wol} 최근 일주일 백업을 시작합니다. (${ymd_hm})"
+
+
+if [ ! -d ${LOCAL_YOIL} ]; then
+	showno="(1.a)" ; showqq="보관용 로컬 디렉토리를 만듭니다."
+	show_then_run "mkdir -p ${LOCAL_YOIL}"
+	if [ "x$log_signon" = "xok" ]; then echo "ls -l ${LOCAL_FOLDER}/../ ${LOCAL_FOLDER}" >> ${log_savefile} ; ls -l ${LOCAL_FOLDER}/../ ${LOCAL_FOLDER} >> ${log_savefile} ; echo "#^^^---===---vvv" >> ${log_savefile} ; fi
+fi
+if [ ! -d ${LOCAL_JU} ]; then
+	showno="(1.b)" ; showqq="보관용 로컬 디렉토리를 만듭니다."
+	show_then_run "mkdir -p ${LOCAL_JU}"
+	if [ "x$log_signon" = "xok" ]; then echo "ls -l ${LOCAL_FOLDER}/../ ${LOCAL_FOLDER}" >> ${log_savefile} ; ls -l ${LOCAL_FOLDER}/../ ${LOCAL_FOLDER} >> ${log_savefile} ; echo "#^^^---===---vvv" >> ${log_savefile} ; fi
+fi
+showno="(2)" ; showqq="보관용 로컬 디렉토리 입니다."
+show_then_run "ls -lR ${LOCAL_THIS_YEAR}"
+if [ "x$log_signon" = "xok" ]; then echo "ls -lR ${LOCAL_THIS_YEAR}" >> ${log_savefile} ; ls -lR ${LOCAL_THIS_YEAR} >> ${log_savefile} ; echo "#^^^---===---vvv" >> ${log_savefile} ; fi
+
+
+REMOTE_SQL_7Z_LIST=$(/usr/bin/rclone ls ${RCLONE_NAME}:${REMOTE_YOIL} | grep ${yoil_sql_7z} | awk '{print $2}')
+showno="(3)" ; showqq="오늘날짜 클라우드 백업파일이 있는지 확인 합니다."
+show_then_view "REMOTE_SQL_7Z_LIST=\$(/usr/bin/rclone ls ${RCLONE_NAME}:${REMOTE_YOIL} | grep ${yoil_sql_7z} | awk '{print \$2}')"
+
+
+if [ "x$REMOTE_SQL_7Z_LIST" != "x" ]; then
+	showno="(4.a)" ; shwo_msg="클라우드에 오늘날짜 백업파일이 있는 경우,"
+	show_then_view "mapfile -t Remote_Sql7z_Array <<< \"$REMOTE_SQL_7Z_LIST\""
+	mapfile -t Remote_Sql7z_Array <<< "$REMOTE_SQL_7Z_LIST"
+
+	for val in "${Remote_Sql7z_Array[@]}"
+	do
+		showno="(4.a-1)" ; showqq="빈칸 삭제 // https://linuxhint.com/trim_string_bash/"
+		show_then_view "file_name=\$(echo ${val} | sed 's/ *\$//g')"
+		file_name=$(echo ${val} | sed 's/ *$//g')
+
+		OUTRC=$(/usr/bin/rclone deletefile ${RCLONE_NAME}:${REMOTE_YOIL}/${file_name})
+		showno="(4.a-2)" ; showqq="오늘날짜 클라우드 백업파일을 삭제합니다."
+		show_then_view "OUTRC=\$(/usr/bin/rclone deletefile ${RCLONE_NAME}:${REMOTE_YOIL}/${file_name}) ${mmm}#----${yyy}${OUTRC}${mmm}----"
+		show_then_view "#"
+	done
+else
+	showno="(4.b)" ; showqq="클라우드에는 오늘날짜 백업파일이 없습니다."
+	show_then_view "#"
+fi
+# echo ">>>> ^C" ; read a
+
+showno="(5)" ; showqq="오늘날짜 로컬 백업파일을 삭제합니다."
+show_then_run "rm -f ${LOCAL_YOIL}/*${yoil_sql_7z}"
+
+showno="(6)" ; showqq="DB 를 로컬에 백업합니다."
+ymd_hm=$(date +"%y%m%d%a-%H%M") #-- ymd_hm=$(date +"%y%m%d-%H%M%S")
+#xxx pswd_code="${DB_NAME}${ymd_hm:0:6}" #-- kaosorder2/gate242/wiki + 991231 xxx crontab 으로 실행하므로 보안상 비번을 제외한다.
+if [ "x${DB_TYPE}" = "xmysql" ]; then
+	show_then_run "/usr/bin/mysqldump --login-path=${LOGIN_PATH} --column-statistics=0 ${DB_NAME} | 7za a -mx=9 -si ${LOCAL_YOIL}/${YOIL_sql7z} -p${PSWD_GEN_CODE}"
+else
+if [ "x${DB_TYPE}" = "xpgsql" ]; then
+	#--250811월1106-- show_then_run "sudo docker exec wikijsdb pg_dumpall -U wikijs | 7za a -mx=9 -si ${LOCAL_YOIL}/${YOIL_sql7z} -p${PSWD_GEN_CODE} >> ${log_savefile}"
+	show_then_run "docker exec wikijsdb pg_dumpall -U wikijs | 7za a -mx=9 -si ${LOCAL_YOIL}/${YOIL_sql7z} -p${PSWD_GEN_CODE} >> ${log_savefile}"
+else
+	cat <<__EOF__
+
+${yyy}${DB_TYPE} ${mmm}[ DB_TYPE ] 을 지정하지 않았으므로 작업을 끝냅니다.${xxx}
+__EOF__
+	exit -1
+fi
+fi
+
+OUTRC=$(/usr/bin/rclone copy ${LOCAL_YOIL}/${YOIL_sql7z} ${RCLONE_NAME}:${REMOTE_YOIL}/)
+showno="(7)" ; showqq="로컬 DB 백업파일을 클라우드로 복사합니다."
+show_then_view "OUTRC=\$(/usr/bin/rclone copy ${LOCAL_YOIL}/${YOIL_sql7z} ${RCLONE_NAME}:${REMOTE_YOIL}/) ${mmm}#----${yyy}${OUTRC}${mmm}----"
+
+
+showno="(8)" ; showqq="${REMOTE_YOIL} 월 최근 일주일 백업을 끝냅니다. (${ymd_hm})"
+show_then_view "#"
+
+
+#<---- REMOTE / 2022 / 08 / 최근 1주일치
+
+##-- REMOTE / 2022 / 당월 최종 1개
+
+
+show_title "${REMOTE_YOIL} 월의 마지막 백업파일을 ${REMOTE_YEAR} 년도로 복사 시작 (${ymd_hm})"
+
+
+showno="(9)" ; showqq="${this_wol}월 백업파일이 이전에 백업돼 있었는지 확인 합니다."
+show_then_view "REMOTE_SQL_7Z_LIST=\$(/usr/bin/rclone ls ${RCLONE_NAME}:${REMOTE_YEAR}/ | grep ${this_wol_sql_7z} | awk '{print \$2}')"
+REMOTE_SQL_7Z_LIST=$(/usr/bin/rclone ls ${RCLONE_NAME}:${REMOTE_YEAR}/ | grep ${this_wol_sql_7z} | awk '{print $2}')
+
+if [ "x$REMOTE_SQL_7Z_LIST" != "x" ]; then
+	showno="(10.a)" ; shwo_msg="클라우드에 이달 백업파일이 있는 경우,"
+	show_then_view "mapfile -t Remote_Sql7z_Array <<< \"$REMOTE_SQL_7Z_LIST\""
+	mapfile -t Remote_Sql7z_Array <<< "$REMOTE_SQL_7Z_LIST"
+
+	for val in "${Remote_Sql7z_Array[@]}"
+	do
+		showno="(10.a-1)" ; showqq="빈칸 삭제"
+		show_then_view "file_name=\$(echo ${val} | sed 's/ *\$//g')"
+		file_name=$(echo ${val} | sed 's/ *$//g')
+
+		OUTRC=$(/usr/bin/rclone deletefile ${RCLONE_NAME}:${REMOTE_YEAR}/${file_name})
+		showno="(10.a-2)" ; showqq="${this_wol}월 백업파일을 삭제합니다."
+		show_then_view "OUTRC=\$(/usr/bin/rclone deletefile ${RCLONE_NAME}:${REMOTE_YOIL}/${file_name}) ${mmm}#----${yyy}${OUTRC}${mmm}----"
+	done
+else
+	showno="(10.b)" ; showqq="클라우드에는 ${this_wol}월 백업파일이 없습니다."
+	show_then_view "#"
+fi
+
+showno="(11)" ; showqq="오늘날짜 로컬 백업파일을 삭제합니다."
+show_then_run "rm -f ${LOCAL_THIS_YEAR}/*${this_wol_sql_7z}"
+
+
+
+showno="(12)" ; showqq="${REMOTE_YOIL} 월 백업파일을 ${REMOTE_YEAR} 년도로 복사하는 작업을 시작합니다. (${ymd_hm})"
+show_then_view "#"
+
+
+showno="(13)" ; showqq="로컬 디렉토리의 월 백업파일을 년도로 복사합니다."
+show_then_run "cp ${LOCAL_YOIL}/${YOIL_sql7z} ${LOCAL_THIS_YEAR}/${WOL_sql7z}"
+
+OUTRC=$(/usr/bin/rclone copy ${LOCAL_THIS_YEAR}/${WOL_sql7z} ${RCLONE_NAME}:${REMOTE_YEAR}/)
+showno="(14)" ; showqq="${this_wol}월 백업파일을 ${this_year}년도 폴더로 복사합니다."
+show_then_view "OUTRC=\$(/usr/bin/rclone copy ${LOCAL_THIS_YEAR}/${WOL_sql7z} ${RCLONE_NAME}:${REMOTE_YEAR}/) ${mmm}#----${yyy}${OUTRC}${mmm}----"
+
+OUTRC=$(/usr/bin/rclone ls ${RCLONE_NAME}:${REMOTE_YEAR})
+showno="(15)" ; showqq="폴더 확인"
+show_then_view "OUTRC=\$(/usr/bin/rclone ls ${RCLONE_NAME}:${REMOTE_YEAR}) ${mmm}#----${yyy}${OUTRC}${mmm}----"
+
+showno="(16)" ; showqq="${REMOTE_YOIL} 월 백업파일을 ${REMOTE_YEAR} 년도로 복사하는 작업을 끝냅니다. (${ymd_hm})"
+show_then_view "#"
+
+
+#<---- REMOTE / 2022 / 당월 최종 1개
+
+##-- REMOTE / 2022 / ju / 매주 주말 1개
+
+
+#-- JU_sql7z=${DB_NAME}_${ymd_hm}_${uname_n}${ju_beonho_sql_7z}
+
+show_title "${REMOTE_YOIL} 월의 마지막 백업파일을 ${REMOTE_JU} 폴더에 J${ju_beonho} 번호로 복사 시작 (${ymd_hm})"
+
+
+showno="(17)" ; showqq="${this_wol}월 백업파일이 이전에 백업돼 있었는지 확인 합니다."
+show_then_view "REMOTE_SQL_7Z_LIST=\$(/usr/bin/rclone ls ${RCLONE_NAME}:${REMOTE_JU}/ | grep ${ju_beonho_sql_7z} | awk '{print \$2}')"
+REMOTE_SQL_7Z_LIST=$(/usr/bin/rclone ls ${RCLONE_NAME}:${REMOTE_JU}/ | grep ${ju_beonho_sql_7z} | awk '{print $2}')
+
+
+if [ "x$REMOTE_SQL_7Z_LIST" != "x" ]; then
+	showno="(18.a)" ; shwo_msg="클라우드에 이달 백업파일이 있는 경우,"
+	show_then_view "mapfile -t Remote_Sql7z_Array <<< \"$REMOTE_SQL_7Z_LIST\""
+	mapfile -t Remote_Sql7z_Array <<< "$REMOTE_SQL_7Z_LIST"
+
+	for val in "${Remote_Sql7z_Array[@]}"
+	do
+		showno="(18.a-1)" ; showqq="빈칸 삭제"
+		show_then_view "file_name=\$(echo ${val} | sed 's/ *\$//g')"
+		file_name=$(echo ${val} | sed 's/ *$//g')
+
+		OUTRC=$(/usr/bin/rclone deletefile ${RCLONE_NAME}:${REMOTE_JU}/${file_name})
+		showno="(18.a-2)" ; showqq="${this_wol}월 백업파일을 삭제합니다."
+		show_then_view "OUTRC=\$(/usr/bin/rclone deletefile ${RCLONE_NAME}:${REMOTE_JU}/${file_name}) ${mmm}#----${yyy}${OUTRC}${mmm}----"
+	done
+else
+	showno="(18.b)" ; showqq="클라우드에는 ${ju_beonho_sql_7z} 백업파일이 없습니다."
+	show_then_view "#"
+fi
+
+showno="(19)" ; showqq="오늘날짜 로컬 백업파일을 삭제합니다."
+show_then_run "rm -f ${LOCAL_JU}/*${ju_beonho_sql_7z}"
+
+
+showno="(20)" ; showqq="${ju_beonho_sql_7z} 백업파일을 ${REMOTE_JU} 로 복사하는 작업을 시작합니다. (${ymd_hm})"
+show_then_run "cp ${LOCAL_YOIL}/${YOIL_sql7z} ${LOCAL_JU}/${JU_sql7z}"
+
+OUTRC=$(/usr/bin/rclone copy ${LOCAL_JU}/${JU_sql7z} ${RCLONE_NAME}:${REMOTE_JU}/)
+showno="(21)" ; showqq="${this_wol}월 백업파일을 ${REMOTE_JU} 폴더로 복사합니다."
+show_then_view "OUTRC=\$(/usr/bin/rclone copy ${LOCAL_JU}/${JU_sql7z} ${RCLONE_NAME}:${REMOTE_JU}/) ${mmm}#----${yyy}${OUTRC}${mmm}----"
+
+showno="(22.a)" ; showqq="보관용 로컬 디렉토리 입니다."
+show_then_run "ls -lR ${LOCAL_THIS_YEAR}"
+if [ "x$log_signon" = "xok" ]; then echo "ls -lR ${LOCAL_THIS_YEAR}" >> ${log_savefile} ; ls -lR ${LOCAL_THIS_YEAR} >> ${log_savefile} ; echo "#^^^---===---vvv" >> ${log_savefile} ; fi
+showno="(22.b)" ; showqq="원격 디렉토리 입니다."
+show_then_run "/usr/bin/rclone lsl ${RCLONE_NAME}:${REMOTE_YEAR}"
+
+showno="(23)" ; showqq="${REMOTE_YOIL} 월의 마지막 백업파일을 ${REMOTE_JU} 폴더에 J${ju_beonho} 번호로 복사하는 작업을 끝냅니다. (${ymd_hm})"
+show_then_view "#"
+
+
+#<---- REMOTE / 2022 / ju / 매주 주말 1개
+
+# ----
+# rm -f ${zz00log_name} ; zz00log_name="${zz00logs_folder}/zz.$(date +"%y%m%d%a-%H%M%S")..${CMD_NAME}" ; touch ${zz00log_name}
+# ls --color ${zz00logs_folder}
+# cat <<__EOF__
+# ${rrr}<<<<<<<<<<${bbb} $0 ${rrr}||| ${mmm}${MEMO} ${rrr}<<<<<<<<<<${xxx}
+# __EOF__
