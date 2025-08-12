@@ -1,0 +1,17 @@
+# m  h dom mon dow   command
+#-분-시-일-월-요일(0:일,1:월,2:화,..6:토) 실행프로그램 추가인수 >/dev/null 2>&1
+#-- 오전 백업전 로그 이름을 999-로 변경
+###00 08 * * * /bin/bash /opt/backup/wikidb/00-rename-crontab_log.sh >/dev/null 2>&1
+#-- 오전 백업
+###05 08 * * * /bin/bash /opt/backup/wikidb/01-db-to-swlibgc.sh wiki ok >/dev/null 2>&1
+#
+###-- test
+10 09 * * * /bin/bash /opt/backup/wikidb/00-rename-crontab_log.sh >/dev/null 2>&1
+15 09 * * * /bin/bash /opt/backup/wikidb/01-db-to-swlibgc.sh wiki ok >/opt/backup/wikidb/crontab.log 2>/opt/backup/wikidb/crontab.log
+###// test
+#
+#-- 오후 백업전 로그 이름을 999-로 변경
+00 19 * * * /bin/bash /opt/backup/wikidb/00-rename-crontab_log.sh >/dev/null 2>&1
+#-- 오후 백업
+05 19 * * * /bin/bash /opt/backup/wikidb/01-db-to-swlibgc.sh wiki ok >/opt/backup/wikidb/crontab.log 2>/opt/backup/wikidb/crontab.log
+#-- 28 15 * * * /bin/bash /opt/backup/wikidb/last-db-to-cloud-swlibgc.sh wiki ok >/opt/backup/wikidb/crontab.log 2>/opt/backup/wikidb/crontab.log

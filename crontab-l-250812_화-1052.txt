@@ -1,0 +1,43 @@
+# Edit this file to introduce tasks to be run by cron.
+#
+# Each task to run has to be defined through a single line
+# indicating with different fields when the task will be run
+# and what command to run for the task
+#
+# To define the time you can provide concrete values for
+# minute (m), hour (h), day of month (dom), month (mon),
+# and day of week (dow) or use '*' in these fields (for 'any').
+#
+# Notice that tasks will be started based on the cron's system
+# daemon's notion of time and timezones.
+#
+# Output of the crontab jobs (including errors) is sent through
+# email to the user the crontab file belongs to (unless redirected).
+#
+# For example, you can run a backup of all your user accounts
+# at 5 a.m every week with:
+# 0 5 * * 1 tar -zcf /var/backups/home.tgz /home/
+#
+#-05  21  *  *  *  /bin/sh /opt/backup/wikidb/db-to-cloud-tpn3mi.sh wiki >/dev/null 2>&1 #-- 취소
+#-xxx vvvv--- kaos.kr 의 host 백업이 2010 이므로 그 이후 시각으로 맞춰야 한다.
+#-xxx 30  20  *  *  *  /bin/sh /opt/backup/kaosdb/copy-from-kaoskr-cegs-Y4M2D2.sh >/dev/null 2>&1 #-- 250402 이후로 kaos 서버이전, 업무중단으로 백업종료함.
+#-*/5 = 매일 5분 마다 실행한다.
+#-xxx */5  *  *  *  *  /bin/sh /opt/duckdns/duck.sh >/dev/null 2>&1
+#
+# For more information see the manual pages of crontab(5) and cron(8)
+#
+# m h  dom mon dow   command
+#-분-시-일-월-요일(0:일,1:월,2:화,..6:토) 실행프로그램 추가인수 >/dev/null 2>&1
+#-- 오전 백업전 로그 이름을 999-로 변경
+###00 08 * * * /bin/bash /opt/backup/wikidb/00-rename-crontab_log.sh >/dev/null 2>&1
+#-- 오전 백업
+###05 08 * * * /bin/bash /opt/backup/wikidb/01-db-to-swlibgc.sh wiki ok >/dev/null 2>&1
+###-- test
+10 09 * * * /bin/bash /opt/backup/wikidb/00-rename-crontab_log.sh >/dev/null 2>&1
+15 09 * * * /bin/bash /opt/backup/wikidb/01-db-to-swlibgc.sh wiki ok >/opt/backup/wikidb/crontab.log 2>/opt/backup/wikidb/crontab.log
+###// test
+#-- 오후 백업전 로그 이름을 999-로 변경
+00 19 * * * /bin/bash /opt/backup/wikidb/00-rename-crontab_log.sh >/dev/null 2>&1
+#-- 오후 백업
+05 19 * * * /bin/bash /opt/backup/wikidb/01-db-to-swlibgc.sh wiki ok >/opt/backup/wikidb/crontab.log 2>/opt/backup/wikidb/crontab.log
+#-- 28 15 * * * /bin/bash /opt/backup/wikidb/last-db-to-cloud-swlibgc.sh wiki ok >/opt/backup/wikidb/crontab.log 2>/opt/backup/wikidb/crontab.log

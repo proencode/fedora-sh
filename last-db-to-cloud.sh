@@ -1,30 +1,29 @@
-#!/bin/sh
+#!/bin/bash
 
-##----> source ${HOME}/bin/color_base #-- 221027목-1257 CMD_DIR CMD_NAME cmdRun cmdCont cmdYenter echoSeq 
-##--- #!/bin/sh
+CMD_NAME=`basename $0` ; CMD_DIR=${0%/$CMD_NAME}
+if [ "x$CMD_DIR" == "x" ] || [ "x$CMD_DIR" == "x$CMD_NAME" ]; then CMD_DIR="." ; fi
 
-CMD_NAME=`basename $0` ; CMD_DIR=${0%/$CMD_NAME} ; if [ "x$CMD_DIR" == "x" ] || [ "x$CMD_DIR" == "x$CMD_NAME" ]; then CMD_DIR="." ; fi
 lll=$(tput bold)$(tput setaf 0); rrr=$(tput bold)$(tput setaf 1); ggg=$(tput bold)$(tput setaf 2); yyy=$(tput bold)$(tput setaf 3); bbb=$(tput bold)$(tput setaf 4); mmm=$(tput bold)$(tput setaf 5); ccc=$(tput bold)$(tput setaf 6); www=$(tput bold)$(tput setaf 7); xxx=$(tput bold)$(tput sgr0); uuu=$(tput cuu 2)
 
 cmdRun () {
-	echo "${ccc}----> ${yyy}$1 ${ggg}#-- ${ccc}$2${xxx}"; echo "$1" | bash
-	echo "${ggg}<---- ${bbb}$1 ${ggg}#-- $2${xxx}"
+	echo "${ccc}#-- ${yyy}$1 ${ggg}#-- ${ccc}$2${xxx}"; echo "$1" | bash
+	echo "${ggg}#// ${bbb}$1 ${ggg}#-- $2${xxx}"
 }
 cmdCont () {
-	echo -e "${ccc}----> ${yyy}$1 ${ggg}#-- ${ccc}$2\n${mmm}----> Enter to continue${xxx}:"
+	echo -e "${ccc}#-- ${yyy}$1 ${ggg}#-- ${ccc}$2\n${mmm}#-- Enter to continue${xxx}:"
 	read a ; echo "${uuu}"; echo "$1" | bash
-	echo "${ggg}<---- ${bbb}$1 ${ggg}Enter to continue${xxx}: ${ggg}#-- $2${xxx}"
+	echo "${ggg}#// ${bbb}$1 ${ggg}Enter to continue${xxx}: ${ggg}#-- $2${xxx}"
 }
 ALL_INSTALL="n"
 cmdYenter () {
-	echo "${ccc}----> ${yyy}$1 ${ggg}#-- ${ccc}$2${xxx}"
+	echo "${ccc}#-- ${yyy}$1 ${ggg}#-- ${ccc}$2${xxx}"
 	if [ "x${ALL_INSTALL}" = "xy" ]; then
-		echo "$1" | bash ; echo "${ggg}<---- ${bbb}$1 ${mmm}#-- $2${xxx}"
+		echo "$1" | bash ; echo "${ggg}#// ${bbb}$1 ${mmm}#-- $2${xxx}"
 	else
-		echo "${ccc}----> ${rrr}press ${ccc}'${yyy}y${ccc}'${rrr} or Enter${xxx}:"; read a; echo "${uuu}"
+		echo "${ccc}#-- ${rrr}press ${ccc}'${yyy}y${ccc}'${rrr} or Enter${xxx}:"; read a; echo "${uuu}"
 		if [ "x$a" = "xy" ]; then
 			echo "${rrr}-OK-${xxx}"; echo "$1" | bash
-			echo "${ggg}<---- ${bbb}$1 press 'y' or Enter: ${mmm}#-- $2${xxx}"
+			echo "${ggg}#// ${bbb}$1 press 'y' or Enter: ${mmm}#-- $2${xxx}"
 		else
 			echo "${rrr}[ ${bbb}$1 ${rrr}] ${mmm}<--- 명령을 실행하지 않습니다.${xxx}"
 		fi
@@ -54,7 +53,7 @@ show_then_run () {
 	if [ "x$log_signon" = "xok" ]; then echo "----$(date +%y%m%d%a-%H%M%S)--- show_then_run () { $1 }" >> ${log_savefile} ; fi
 }
 show_then_view () {
-	if [ "x$show_ok" = "xok" ]; then echo "${ggg}----> $1 ${ccc}#-- (${showno}) ${showqq}${xxx}" ; fi
+	if [ "x$show_ok" = "xok" ]; then echo "${ggg}#-- $1 ${ccc}#-- (${showno}) ${showqq}${xxx}" ; fi
 	if [ "x$log_signon" = "xok" ]; then echo "----$(date +%y%m%d%a-%H%M%S)--- show_then_view () { $1 #-- (${showno}) ${showqq} }" >> ${log_savefile} ; fi
 }
 show_title () {
@@ -76,7 +75,7 @@ value_keyin () {
 	FIELD_TITLE=$3
 	cat <<__EOF__
 
-${ggg}----> ${FIELD_TITLE}[ ${ccc}${FIELD_VALUE} ${ggg}]${xxx}
+${ggg}#-- ${FIELD_TITLE}[ ${ccc}${FIELD_VALUE} ${ggg}]${xxx}
 __EOF__
 	read return_value
 
@@ -121,6 +120,8 @@ if [ "x$1" = "x" ]; then
 #-- db_name	"ok" #-- 지정한 데이터베이스로 진행하면서 과정을 보여줍니다.
 #-- db_name	"enter" #-- 조건값을 터미널에서 입력하도록 합니다. 진행 과정도 보여줍니다.
 #--
+#-- wiki ok #-- wiki 백업용, 진행과정 보여줌,
+#--
 
 ${yyy}${CMD_NAME} ${mmm}[ DB_NAME ] 을 지정하지 않았으므로 작업을 끝냅니다.${xxx}
 __EOF__
@@ -149,8 +150,8 @@ if [ "x$1" = "xwiki" ]; then
 	DB_NAME="$1" #-- 백업할 데이터베이스 이름
 	LOGIN_PATH="wikipsql" #-- 데이터베이스 로그인 패쓰 ;;; pgsql 이라서 쓰지는 않음.
 	LOCAL_FOLDER="wikidb" #-- 백업파일을 일시적으로 저장하는 로컬 저장소의 디렉토리 이름
-	REMOTE_FOLDER="11-wiki.js" #-- 원격 저장소의 첫번째 폴더 이름
-	RCLONE_NAME="yosjgc" #-- rclone 이름 yosjeongc
+	REMOTE_FOLDER="wikijsdb" #-- 원격 저장소의 첫번째 폴더 이름
+	RCLONE_NAME="swlibgc" #-- rclone 이름 yosjeongc
 	DB_TYPE="pgsql"
 	PSWD_GEN_CODE="dnlzl${pswd_ym}"
 else
@@ -207,14 +208,16 @@ if [ "x${ENTER_VALUE}" = "xok" ]; then
 fi
 
 # backup_home_dir="${HOME}/dbcopy"
-backup_home_dir="/home/backup"
+# backup_home_dir="/home/backup"
+backup_home_dir="/opt/backup"
 LOCAL_FOLDER="${backup_home_dir}/${LOCAL_FOLDER}" #-- /opt 디렉토리 아래에 보관한다.
 
 if [ ! -d ${LOCAL_FOLDER} ];then
 	showno="0" ; showqq="보관용 로컬 디렉토리를 만듭니다."
-	# show_then_run "sudo mkdir -p ${LOCAL_FOLDER} ; sudo chown ${USER}:${USER} ${LOCAL_FOLDER}"
-	show_then_run "mkdir -p ${LOCAL_FOLDER}"
-	if [ "x$log_signon" = "xok" ]; then echo "sudo ls -l ${LOCAL_FOLDER}/../ ${LOCAL_FOLDER}" >> ${log_savefile} ; sudo ls -l ${LOCAL_FOLDER}/../ ${LOCAL_FOLDER} >> ${log_savefile} ; echo "#^^^---===---vvv" >> ${log_savefile} ; fi
+	#--250811월1106-- show_then_run "sudo mkdir -p ${LOCAL_FOLDER} ; sudo chown ${USER}:${USER} ${LOCAL_FOLDER}"
+	show_then_run "mkdir -p ${LOCAL_FOLDER} ; chown ${USER}:${USER} ${LOCAL_FOLDER}"
+	#--250811월1106-- if [ "x$log_signon" = "xok" ]; then echo "sudo ls -l ${LOCAL_FOLDER}/../ ${LOCAL_FOLDER}" >> ${log_savefile} ; sudo ls -l ${LOCAL_FOLDER}/../ ${LOCAL_FOLDER} >> ${log_savefile} ; echo "#^^^---===---vvv" >> ${log_savefile} ; fi
+	if [ "x$log_signon" = "xok" ]; then echo "ls -l ${LOCAL_FOLDER}/../ ${LOCAL_FOLDER}" >> ${log_savefile} ; ls -l ${LOCAL_FOLDER}/../ ${LOCAL_FOLDER} >> ${log_savefile} ; echo "#^^^---===---vvv" >> ${log_savefile} ; fi
 fi
 uname_n=$(uname -n)
 yoil_sql_7z=".${yoil_number1to7}yoil.sql.7z" #-- Y[1-7].sql.7z // 요일 표시
@@ -237,7 +240,7 @@ REMOTE_YOIL=${REMOTE_YEAR}/1_7yoil #-- rclone 명령으로 보내는 원격 저�
 REMOTE_JU=${REMOTE_YEAR}/01_53ju #-- rclone 명령으로 보내는 원격 저장소의 데이터베이스구분/년eh/sunday 폴더이름
 
 
-#----> REMOTE / 2022 / 08 / 최근 1주일치
+##-- REMOTE / 2022 / 08 / 최근 1주일치
 if [ "x$log_signon" = "xok" ]; then echo "----$(date +%y%m%d%a-%H%M%S)--- 193 --- DB_NAME ${DB_NAME}; LOGIN_PATH ${LOGIN_PATH}; LOCAL_FOLDER ${LOCAL_FOLDER}; REMOTE_FOLDER ${REMOTE_FOLDER}; RCLONE_NAME ${RCLONE_NAME}; DB_TYPE ${DB_TYPE}; PSWD_GEN_CODE ${PSWD_GEN_CODE}; " >> ${log_savefile} ; fi
 
 
@@ -296,7 +299,8 @@ if [ "x${DB_TYPE}" = "xmysql" ]; then
 	show_then_run "/usr/bin/mysqldump --login-path=${LOGIN_PATH} --column-statistics=0 ${DB_NAME} | 7za a -mx=9 -si ${LOCAL_YOIL}/${YOIL_sql7z} -p${PSWD_GEN_CODE}"
 else
 if [ "x${DB_TYPE}" = "xpgsql" ]; then
-	show_then_run "sudo docker exec wikijsdb pg_dumpall -U wikijs | 7za a -mx=9 -si ${LOCAL_YOIL}/${YOIL_sql7z} -p${PSWD_GEN_CODE} >> ${log_savefile}"
+	#--250811월1106-- show_then_run "sudo docker exec wikijsdb pg_dumpall -U wikijs | 7za a -mx=9 -si ${LOCAL_YOIL}/${YOIL_sql7z} -p${PSWD_GEN_CODE} >> ${log_savefile}"
+	show_then_run "docker exec wikijsdb pg_dumpall -U wikijs | 7za a -mx=9 -si ${LOCAL_YOIL}/${YOIL_sql7z} -p${PSWD_GEN_CODE} >> ${log_savefile}"
 else
 	cat <<__EOF__
 
@@ -317,7 +321,7 @@ show_then_view "#"
 
 #<---- REMOTE / 2022 / 08 / 최근 1주일치
 
-#----> REMOTE / 2022 / 당월 최종 1개
+##-- REMOTE / 2022 / 당월 최종 1개
 
 
 show_title "${REMOTE_YOIL} 월의 마지막 백업파일을 ${REMOTE_YEAR} 년도로 복사 시작 (${ymd_hm})"
@@ -373,7 +377,7 @@ show_then_view "#"
 
 #<---- REMOTE / 2022 / 당월 최종 1개
 
-#----> REMOTE / 2022 / ju / 매주 주말 1개
+##-- REMOTE / 2022 / ju / 매주 주말 1개
 
 
 #-- JU_sql7z=${DB_NAME}_${ymd_hm}_${uname_n}${ju_beonho_sql_7z}
