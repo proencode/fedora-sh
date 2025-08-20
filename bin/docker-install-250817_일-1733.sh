@@ -20,7 +20,7 @@ cmdreada () { #-- cmdreada "(2) INPUT: domain name" "호스트 주소 입력"
 
 CMD_NAME=`basename $0` # 명령줄에서 실행 프로그램 이름만 꺼냄
 CMD_DIR=${0%/$CMD_NAME} # 실행 이름을 빼고 나머지 디렉토리만 담음
-if [ "x$CMD_DIR" == "x" ] || [ "x$CMD_DIR" == "x$CMD_NAME" ]; then CMD_DIR="." fi
+if [ "x$CMD_DIR" == "x" ] || [ "x$CMD_DIR" == "x$CMD_NAME" ]; then CMD_DIR="."; fi
 
 
 tt_seq="1"; tt_msg="이전의 버전 제거하기"; i=1
@@ -45,13 +45,13 @@ echo \
   $(. /etc/os-release && echo "$VERSION_CODENAME") stable" | \
   sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
 echo "${bbb}#-- sudo tee /etc/apt/sources.list.d/docker.list > /dev/null #-- (${tt_seq}-${i}) ${tt_msg}"; i=$(( i + 1 ))
-cmdrun "sudo apt-get update && sudo apt upgrade -y"                         "(${tt_seq}-${i}) ${tt_msg}"; i=$(( i + 1 ))
+cmdrun "sudo apt-get update && sudo apt upgrade -y"     "(${tt_seq}-${i}) ${tt_msg}"; i=$(( i + 1 ))
 
 
 tt_seq="3"; tt_msg="Docker 패키지 설치"; i=1
 
 cmdrun "sudo apt-get install docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin" "(${tt_seq}-${i}) ${tt_msg}"; i=$(( i + 1 ))
-cmdrun "sudo service docker start"                                          "(${tt_seq}-${i}) ${tt_msg}"; i=$(( i + 1 ))
+cmdrun "sudo service docker start"                      "(${tt_seq}-${i}) ${tt_msg}"; i=$(( i + 1 ))
 
 DIR_BACKUP="/home/docker/backup"
 DIR_COMPOSE="/home/docker/compose"
@@ -72,7 +72,7 @@ tt_seq="5"; tt_msg="이전의 yml 이름 바꾸기"; i=1
 
 if [ -f ${DIR_COMPOSE}/docker-compose.yml ]; then
     i=1
-	cmdrun "mv ${DIR_COMPOSE}/docker-compose.yml ${DIR_COMPOSE}/docker-compose-$(date +%y%m%d-%H%M).yml"    "(${tt_seq}-${i}) ${tt_msg}"; i=$(( i + 1 ))
+	cmdrun "mv ${DIR_COMPOSE}/docker-compose.yml ${DIR_COMPOSE}/docker-compose-$(date +%y%m%d-%H%M).yml" "(${tt_seq}-${i}) ${tt_msg}"; i=$(( i + 1 ))
 fi
 
 
@@ -124,4 +124,3 @@ cmdrun "sudo docker compose up -d"          "(${tt_seq}-${i}) ${tt_msg}"; i=$(( 
 
             tt_msg="부팅시 실행할 수 있도록 해당 서비스 활성화"
 cmdrun "sudo systemctl enable docker --now" "(${tt_seq}-${i}) ${tt_msg}"; i=$(( i + 1 ))
-
