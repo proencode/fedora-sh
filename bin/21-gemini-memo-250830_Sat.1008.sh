@@ -1,10 +1,10 @@
 #!/bin/sh
 
 date_ymd=$(date +%y%m%d) #-- 250524
-date_a=$(date +%a) #-- 토
+date_a=$(LC_TIME=C date +%a) #-- Sat
 date_HM=$(date +%H%M) #-- 1533
-date_mdHM="${date_ymd:2:4}.${date_HM}" #-- 0524.1533
-date_dHM="${date_ymd:4:2}.${date_HM}" #-- 24.1533
+ymd_mdHM="${date_ymd:2:4}.${date_HM}" #-- 0524.1533
+ymd_dHM="${date_ymd:4:2}.${date_HM}" #-- 24.1533
 
 pressEnter=100
 cat <<__EOF__
@@ -39,7 +39,7 @@ if [ "x${use_for}" = "x" ]; then
 fi
 use_for_underline=$(echo ${use_for} | sed 's/ /_/g')
 
-ai_mdHM="${support_ai}${date_mdHM}"
+ai_mdHM="${support_ai}${ymd_mdHM}"
 dir_name="${ai_mdHM}-${use_for_underline}"
 
 mkdir ${dir_name}
