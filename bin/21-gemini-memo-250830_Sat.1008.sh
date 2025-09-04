@@ -46,7 +46,7 @@ mkdir ${dir_name}
 cd ${dir_name}
 thisdir=$(pwd)
 
-mdirm="${ai_mdHM}-99-${use_for_underline}.md"
+mdirm="../${ai_mdHM}-99-${use_for_underline}.md"
 
 cat >> ${mdirm} <<__EOF__
 
@@ -54,7 +54,7 @@ cd ${thisdir}; head -10 ${mdirm}
 
 #---
 
-end_no=${end_no} ; begin_no=\$((end_no + 1)); end_no=\$((end_no + 10));mdirm="${mdirm}"; for (( i=\${begin_no}; i<=\${end_no}; i++ )); do echo "🔥" >> \${mdirm}; echo "### 🔥 ( ${use_for} ) ${ai_mdHM}-\${i:1}." >> \${mdirm}; echo "🔋" >> \${mdirm}; echo "### 🔋 ${ai_mdHM}-\${i:1}. " >> \${mdirm}; echo "" >> \${mdirm}; done
+end_no=${end_no} ; begin_no=\$((end_no + 1)); end_no=\$((end_no + 10));mdirm="${mdirm}"; for (( i=\${begin_no}; i<=\${end_no}; i++ )); do echo "🔥" >> \${mdirm}; echo "### 🔥 ( ${use_for} ) ${ai_mdHM}-\${i:1}." >> \${mdirm}; echo ""; echo "🔋" >> \${mdirm}; echo "### 🔋 ${ai_mdHM}-\${i:1}. " >> \${mdirm}; echo "" >> \${mdirm}; done
 
 #--- ${use_for}
 
@@ -65,7 +65,15 @@ for (( i=${begin_no}; i<=${end_no}; i++ ))
 do
     cat >> ${mdirm} <<__EOF__
 🔥
-### 🔥 ( ${use_for} ) ${ai_mdHM}-${i:1}.
+### 🔥 ( ${use_for} )
+### 다음줄의 줄 번호를 아래 :13,. w ${i:1}a- 부분의 시작번호로 지정하고, 이 줄을 지운다.
+${ai_mdHM}-${i:1}.
+
+
+# echo " :  13,. w   ${i:1}a-${ai_mdHM}.txt   파일의 내용을 읽고 지시에 따라줘.   "
+__EOF__
+    cat >> ${mdirm} <<__EOF__
+
 🔋
 ### 🔋 ${ai_mdHM}-${i:1}. 
 
