@@ -46,7 +46,7 @@ mkdir ${dir_name}
 cd ${dir_name}
 thisdir=$(pwd)
 
-mdirm="../${ai_mdHM}-99-${use_for_underline}.md"
+mdirm="../last-${ai_mdHM}-99-${use_for_underline}.md"
 
 cat >> ${mdirm} <<__EOF__
 
