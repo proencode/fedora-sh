@@ -37,16 +37,18 @@ read use_for
 if [ "x${use_for}" = "x" ]; then
 	use_for="${pressEnter}"
 fi
-use_for_underline=$(echo ${use_for} | sed 's/ /_/g')
-
+use_by_underline=$(echo ${use_for} | sed 's/ /_/g')
 ai_mdHM="${support_ai}${ymd_mdHM}"
-dir_name="${ai_mdHM}-${use_for_underline}"
 
+backup_dir="backup-${ai_mdHM}"
+mkdir ../${backup_dir}
+
+dir_name="${ai_mdHM}-${use_by_underline}"
 mkdir ${dir_name}
 cd ${dir_name}
 thisdir=$(pwd)
 
-mdirm="../last-${ai_mdHM}-99-${use_for_underline}.md"
+mdirm="../last-${ai_mdHM}-99-${use_by_underline}.md"
 
 cat >> ${mdirm} <<__EOF__
 
@@ -70,7 +72,8 @@ do
 ${ai_mdHM}-${i:1}.
 
 
-# echo " :  13,. w   ${i:1}a-${ai_mdHM}.txt   파일의 내용을 읽고 지시에 따라줘.   "
+# echo " :  13,. w ${i:1}a-${ai_mdHM}.txt   파일의 내용을 읽고 지시에 따라줘.   "
+# echo " : rsync -avzr ../${dir_name}/ ../../${backup_dir}/${i:1}-${dir_name}/   만들어진 txt 를 로컬로 복사.   "
 __EOF__
     cat >> ${mdirm} <<__EOF__
 
