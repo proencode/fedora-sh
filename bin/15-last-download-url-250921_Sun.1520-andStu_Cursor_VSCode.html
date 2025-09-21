@@ -1,0 +1,165 @@
+<!DOCTYPE html><html><head><meta charset="UTF-8"><title>최종버전 다운로드</title><style>
+  /* 테이블 스타일 추가: 테두리, 패딩, 정렬 등을 보기 좋게 합니다. */
+  table {
+    width: 94%; /* 전체 너비의 80% 사용 */
+    margin: 0 auto; /* 좌우 여백 자동 설정 (가운데 정렬) */
+    border-collapse: collapse;
+    margin-top: 15px;
+  }
+  th, td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: left;
+    /* 컬럼 너비를 자동으로 조절하도록 설정 */
+    width: auto;
+  }
+  th {
+    background-color: #f2f2f2;
+  }
+</style><script>
+  window.onload = function() {
+    // 프로그램 정보 (URL 기본 경로, 이름, 버전, 날짜)를 객체 배열로 저장합니다.
+    const programs = [
+      { url_base: "https://addons.mozilla.org/en-US/firefox/addon/darkreader/",
+        name: "Dark Reader", version: "파이어폭스확장", date: "250729_화-0936" },
+      { url_base: "https://addons.mozilla.org/en-US/firefox/addon/keepassxc-browser/",
+        name: "KeePassXC", version: "파이어폭스확장", date: "250729_화-0936" },
+      { url_base: "https://addons.mozilla.org/en-US/firefox/addon/pomodoro-clock/",
+        name: "Pomodoro", version: "파이어폭스확장", date: "250729_화-0936" },
+      { url_base: "https://addons.mozilla.org/en-US/firefox/addon/screen-recorder/",
+        name: "스크린 레코더", version: "파이어폭스확장", date: "250729_화-0936" },
+      { url_base: "https://chromewebstore.google.com/detail/dark-reader/eimadpbcbfnmbkopoojfekhnkhdbieeh",
+        name: "Dark Reader", version: "크롬확장", date: "250726토" },
+      { url_base: "https://chromewebstore.google.com/detail/keepassxc-browser/oboonakemofpalcgghocfoadofidjkkk",
+        name: "KeePassXC", version: "크롬확장", date: "250726토" },
+      { url_base: "https://chromewebstore.google.com/detail/pomodoro-chrome-extension/iccjkhpkdhdhjiaocipcegfeoclioejn",
+        name: "Pomodoro", version: "크롬확장", date: "250726토" },
+      { url_base: "https://chromewebstore.google.com/detail/screen-recorder-for-googl/eclbecdgdoahkliaijlpkigldlkojjdn",
+        name: "스크린 레코더", version: "크롬확장", date: "250726토" },
+      { url_base: "https://www.7-zip.org/download.html",
+        name: "7zip", version: "25.01", date: "250805_화-0939" },
+      { url_base: "https://www.anaconda.com/download/success",
+// ls -l 915M  8월 30 14:00  Anaconda3-2025.06-0-Windows-x86_64.exe*
+        name: "Anaconda3", version: "2025.06-0", date: "250718_금-0936" },
+      { url_base: "https://www.anaconda.com/download/success",
+// ls -l 90M  8월 30 13:59  Miniconda3-latest-Windows-x86_64.exe*
+        name: "Mini_conda3", version: "py313_25.7.0-2", date: "250830_Sat.1359" },
+      { url_base: "https://developer.android.com/studio?hl=ko",
+//        1.4G  8월 30 14:02 android-studio-2025.1.2.13-windows.exe
+//  1430090968  9월 13 12:10 android-studio-2025.1.3.7-windows.exe
+        name: "AndroidStudio", version: "1.3.7", date: "250913_Sat.1210" },
+      { url_base: "https://brave.com/ko/download/",
+        name: "Brave", version: "1.81.131 Chromium: 139.0.7258.66", date: "250810_일-1228" },
+      { url_base: "https://www.google.co.kr/chrome/",
+        name: "chrome", version: "138.0.7204.101", date: "250710목" },
+      { url_base: "https://www.cursor.com/downloads",
+//        115M  8월 30 14:01 CursorUserSetup-x64-1.5.7.exe
+//   119735448  9월 19 11:18 CursorUserSetup-x64-1.6.26.exe
+//   119750840  9월 21 11:14 CursorSetup-x64-1.6.35.exe
+        name: "Cursor", version: "1.6.35", date: "250921_Sun.1114" },
+      { url_base: "https://www.gimp.org/downloads/",
+        name: "gimp", version: "3.0.4", date: "250628토" },
+      { url_base: "https://git-scm.com/downloads",
+        name: "Git-bash", version: "2.51.0", date: "250823_토-1104" },
+      { url_base: "https://www.jetbrains.com/idea/download/?section=windows#",
+// ls -l 949M  8월 30 14:02  ideaIC-2025.2.1.exe
+//   994437992  9월 21 11:15 ideaIC-2025.2.2.exe
+        name: "ideaIC", version: "2025.2.2", date: "250921_Sun.1115" },
+      { url_base: "https://keepassxc.org/download",
+        name: "KeePassXC", version: "2.7.10", date: "250628토" },
+      { url_base: "https://ko.libreoffice.org/download/libreoffice-fresh/",
+// ls -l 349M  8월 30 14:03  LibreOffice_25.8.1_Win_x86-64.msi
+        name: "LibreOffice", version: "25.8.1", date: "250830__Sat.1403" },
+      { url_base: "https://www.chiark.greenend.org.uk/~sgtatham/putty/latest.html",
+        name: "PuTTY", version: "0.83", date: "250628토" },
+      { url_base: "https://www.python.org/downloads/windows/",
+        name: "Python", version: "3.13.7", date: "250818_월-1354" },
+      { url_base: "https://repo.msys2.org/msys/x86_64/",
+        name: "rsync", version: "3.4.1-1", date: "250628토" },
+      { url_base: "https://releases.ubuntu.com/",
+        name: "Ubuntu", version: "24.04.3_LTS", date: "250819_화-1229" },
+      { url_base: "https://learn.microsoft.com/ko-kr/cpp/windows/latest-supported-vc-redist?view=msvc-170",
+        name: "vc-redist", version: "v14.44.35211.0", date: "250710목" },
+      { url_base: "https://www.virtualbox.org/wiki/Downloads",
+        name: "VirtualBox", version: "7.2.0", date: "250815_금-1037" },
+      { url_base: "https://visualstudio.microsoft.com/ko/vs/",
+// ls -l 4.3M  8월 30 14:04  VisualStudioSetup.exe*
+        name: "Visual_Studio_Community_2022", version: "17.14.15", date: "250815_금-1041" },
+      { url_base: "https://visualstudio.microsoft.com/ko/downloads/",
+//        110M  8월 30 14:04 VSCodeUserSetup-x64-1.103.2.exe
+//   115061856  9월 19 11:22 VSCodeUserSetup-x64-1.104.1.exe
+        name: "VSCode", version: "1.104.1", date: "250919_Fri.1122" },
+      { url_base: "https://winscp.net/eng/download.php",
+        name: "WinSCP", version: "6.5.3", date: "250717목" },
+    ];
+
+    const body = document.body; // body 요소 가져오기
+    
+    // 본문에 붙이는 프로그램 정보를 담을 <table> 생성
+    const table = document.createElement('table');
+    const thead = document.createElement('thead');
+    const tbody = document.createElement('tbody');
+    const headerRow = document.createElement('tr');
+
+    // 본문에 붙이는 테이블 헤더 (<th>) 추가
+    ['프로그램 이름', '버전', '다운로드 날짜'].forEach(headerText => {
+      const th = document.createElement('th');
+      th.textContent = headerText;
+      headerRow.appendChild(th);
+    });
+    thead.appendChild(headerRow);
+    table.appendChild(thead); // <thead>를 <table>에 추가
+
+    // for (let i = 0; i < programs.length; i++) { // 앞에서부터 보여준다.
+    for (let i = programs.length - 1; i >= 0; i--) { // 뒤에서부터 보여준다.
+      const program = programs[i];
+      // URL의 ?q= 뒤에 붙는 쿼리 문자열을 생성합니다.
+      const queryString = `____${program.name}____${program.version}____${program.date}`;
+      // 최종 URL을 생성합니다.
+      const fullUrl = `${program.url_base}?q=${queryString}`;
+
+      // 새 탭에서 URL을 엽니다. (이전처럼 유지됩니다)
+      window.open(fullUrl, '_blank');
+    }
+
+    for (let i = 0; i < programs.length; i++) { // 앞에서부터 보여준다.
+    // for (let i = programs.length - 1; i >= 0; i--) { // 뒤에서부터 보여준다.
+      const program = programs[i];
+      // 본문에 붙이는 <table>의 한 행 (<tr>) 생성
+      const tr = document.createElement('tr');
+
+      // 본문에 붙이는 각 데이터 (<td>) 생성 및 추가
+      const nameTd = document.createElement('td');
+      // **** 이 부분이 수정됩니다. ****
+      // nameTd.textContent = program.name;
+      // 프로그램 이름에 url_base로 연결되는 링크를 추가합니다.
+      nameTd.innerHTML = `<a href="${program.url_base}" target="_blank">${program.name}</a>`;
+      tr.appendChild(nameTd);
+
+      const versionTd = document.createElement('td');
+      versionTd.textContent = program.version;
+      tr.appendChild(versionTd);
+
+      const dateTd = document.createElement('td');
+      dateTd.textContent = program.date;
+      tr.appendChild(dateTd);
+      
+      tbody.appendChild(tr); // <tr>을 <tbody>에 추가
+    }
+    table.appendChild(tbody); // <tbody>를 <table>에 추가
+
+    // "최종 다운로드 목록입니다." <p> 태그를 찾아서 그 바로 앞에 테이블을 삽입합니다.
+    const finalDownloadListP = document.getElementById('final-download-list');
+    if (finalDownloadListP) {
+      body.insertBefore(table, finalDownloadListP);
+    } else {
+      // 만약 'final-download-list' ID를 가진 <p> 태그가 없으면 body의 끝에 추가합니다.
+      body.appendChild(table);
+    }
+  };
+</script>
+</head>
+<body> 
+<p id="final-download-list">최종버전 다운로드 목록입니다.</p>
+</body>
+</html>

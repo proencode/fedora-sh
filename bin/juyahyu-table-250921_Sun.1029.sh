@@ -86,7 +86,7 @@ do
                 if [ $job_cnt -ge 12 ]; then
                         this_job="${this_job}| \`${work_tab:${job_cnt}:2}\` "
                 else
-                        this_job="${this_job}| ${work_tab:${job_cnt}:2} "
+                        this_job="${this_job}| **${work_tab:${job_cnt}:2}** "
                 fi
                 job_cnt=$(( job_cnt + 3 ))
                 if [ $job_cnt -gt $work_cnt_minus_1 ]; then
@@ -104,10 +104,12 @@ do
                         dd=1
                         if [ $mm -eq 12 ]; then #-- 다음달의 년도가 바뀌어야 하면,
                                 mm=1
+				((yy++))
+				printf -v yy "%02d" $yy #-- -v yy: 화면에 출력하지 않고, yy 에 저장
                                 if [ $yy -eq 99 ]; then
                                         yy=0
                                 else
-                                        yy=$(( $yy + 1 ))
+					yy=$(( ${yy##0} + 1 ))  # ${mm##0}: $mm="09" 면 앞의 "0" 을 제거함
                                 fi
                                 if [ $yy -lt 10 ]; then
                                         y2="0${yy}"
@@ -116,25 +118,18 @@ do
                                 fi
                                 y3="${y2}/"
                         else #-- 다음달 처리
-                                mm=$(( $mm + 1 ))
+				mm=$(( 10#$mm + 1 ))  # 10#$mm: $mm 을 10진수 로 계산
                         fi
-                        if [ $mm -lt 10 ]; then
-                                m2="0${mm}"
-                        else
-                                m2=$mm
-                        fi
+			printf -v m2 "%02d" $mm #-- -v m2: 화면에 출력하지 않고, m2 에 저장
                         m3="${m2}/"
                         #-- 이달의 마지막 날
                         last_dd=$(date -d "$(date +${y2}-${m2}-01) + 1 month - 1 day" +%d)
                 else #// 말일이 아닌 경우.
-                        dd=$(( $dd + 1 ))
+			dd=$(( 10#$dd + 1 ))
+			### dd+=1 #-- dd=$(( $dd + 1 )) 대신 사용. 또는 ((dd++))
                 fi
 
-                if [ $dd -lt 10 ]; then
-                        d2="0${dd}"
-                else
-                        d2=$dd
-                fi
+		printf -v d2 "%02d" $dd #-- if [ $dd -lt 10 ]; then d2="0${dd}" else d2=$dd fi 대신 사용.
         done
         this_week="${this_week}|"
         this_job="${this_job}|"
