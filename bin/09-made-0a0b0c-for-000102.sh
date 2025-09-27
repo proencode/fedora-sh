@@ -76,3 +76,4 @@ cmdYrun "time 7za a -mx=9 -p ${seq_dir_ymdhm_7z} ${dir_name}/" "(4) ${dir_name} 
 
 cmdrun "ls -l ${trash_dir}/" "(5) 정리할 지난번 파일들 입니다."
 cmdrun "ls -l ${seq_dir_name}*[zl]" "(6) 새로 만든 파일들 입니다."
+cmdrun "tail -9 0as-00*tl; echo \"---\"; tail -9 0ad-00*tl" "(7) 파일을 비교합니다."
