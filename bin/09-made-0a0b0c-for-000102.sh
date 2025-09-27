@@ -67,10 +67,10 @@ cmdrun "ls -l ${seq_dir_name}*[zl]; mv ${seq_dir_name}*[zl] ${trash_dir}/" "(1) 
 seq_dir_ymdhm_7z="${seq_dir_name}-$(LC_TIME=C date +%y%m%d_%a.%H%M).7z"
 
 #-- 이름순
-cmdrun "ls -l ${dir_name}/ | awk 'NR > 1 { file_type = substr(\$1, 1, 1); printf \"%s %12s %5s %2s %5s %s \", file_type, \$5, \$6, \$7, \$8, \$9; printf \"\\n\" }' > ${seq_dir_ymdhm_7z}.ls-l" "(2) 이름순 ${seq_dir_ymdhm_7z}.ls-l 목록을 만듭니다."
+cmdrun "ls -l ${dir_name}/ | awk -v dors="${d_or_s}" 'NR > 1 { file_type = substr(\$1, 1, 1); printf \"%s %s %12s %5s %2s %5s %s \", dors, file_type, \$5, \$6, \$7, \$8, \$9; printf \"\\n\" }' > ${seq_dir_ymdhm_7z}.ls-l" "(2) 이름순 ${seq_dir_ymdhm_7z}.ls-l 목록을 만듭니다."
 
 #-- 기타 = 시간순
-cmdrun "ls -trl ${dir_name}/ | awk 'NR > 1 { file_type = substr(\$1, 1, 1); printf \"%s %12s %5s %2s %5s %s \", file_type, \$5, \$6, \$7, \$8, \$9; printf \"\\n\" }' > ${seq_dir_ymdhm_7z}.ls-trl" "(3) ${seq_dir_ymdhm_7z}.ls-trl 시간순 목록을 만듭니다."
+cmdrun "ls -rtl ${dir_name}/ | awk -v dors="${d_or_s}" 'NR > 1 { file_type = substr(\$1, 1, 1); printf \"%s %s %12s %5s %2s %5s %s \", dors, file_type, \$5, \$6, \$7, \$8, \$9; printf \"\\n\" }' > ${seq_dir_ymdhm_7z}.ls-rtl" "(3) ${seq_dir_ymdhm_7z}.ls-rtl 시간순 목록을 만듭니다."
 
 cmdYrun "time 7za a -mx=9 -p ${seq_dir_ymdhm_7z} ${dir_name}/" "(4) ${dir_name} 폴더를 압축합니다."
 
