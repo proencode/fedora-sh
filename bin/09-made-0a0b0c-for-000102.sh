@@ -36,16 +36,22 @@ ${uuu}${rrr}[ ${yyy}${d_or_s} ${rrr}]${xxx}
 __EOF__
 read zero_or_one
 if [[ "x${zero_or_one}" == "x0" ]]; then
-	dir_name="00-bada"
-	seq_dir_name="0a${d_or_s}-${dir_name}" #-- 0a-00-bada
+	dir_typeNo="00"
+	dir_name="${dir_typeNo}-bada"
+	abc_name="a"
+	seq_dir_name="0${abc_name}${d_or_s}-${dir_name}" #-- 0a-00-bada
 else
 	if [ "x${zero_or_one}" == "x1" ]; then
-		dir_name="01-last_big_files"
-		seq_dir_name="0b${d_or_s}-${dir_name}"
+		dir_typeNo="01"
+		dir_name="${dir_typeNo}-last_big_files"
+		abc_name="b"
+		seq_dir_name="0${abc_name}${d_or_s}-${dir_name}"
 	else
 		if [ "x${zero_or_one}" == "x2" ]; then
-			dir_name="02-more_300M_files"
-			seq_dir_name="0c${d_or_s}-${dir_name}"
+			dir_typeNo="02"
+			dir_name="${dir_typeNo}-more_300M_files"
+			abc_name="c"
+			seq_dir_name="0${abc_name}${d_or_s}-${dir_name}"
 		else
 			echo "#-- 두번째 전달자에 0, 1 또는 2 값이 있어야 합니다."
 			exit -104
@@ -76,4 +82,4 @@ cmdYrun "time 7za a -mx=9 -p ${seq_dir_ymdhm_7z} ${dir_name}/" "(4) ${dir_name} 
 
 cmdrun "ls -l ${trash_dir}/" "(5) 정리할 지난번 파일들 입니다."
 cmdrun "ls -l ${seq_dir_name}*[zl]" "(6) 새로 만든 파일들 입니다."
-cmdrun "tail -9 0as-00*tl; echo \"---\"; tail -9 0ad-00*tl" "(7) 파일을 비교합니다."
+cmdrun "tail -9 0${abc_name}${d_or_s}-${dir_typeNo}*tl; echo \"---\"; tail -9 0${abc_name}${d_or_s}-${dir_typeNo}*tl" "(7) 파일을 비교합니다."
